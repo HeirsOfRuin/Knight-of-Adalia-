@@ -127,12 +127,13 @@
         mods:
           - { if: skill.arms >= 3, add: 1, label: your arms }
           - { if: flag.c1_giles_enemy, add: -1, label: Giles has had a word with the marshal of the lists }
+          - { if: background == archer, add: -1, label: "a bowman's son in the knights' lists" }
       success:
         text: Three courses. You break two lances on Giles Marrick's shield and he breaks one on yours. On the third he is out of his saddle and in the mud before the King. The prize harness is old, Valdrennish, beautifully kept, and yours. The King laughs and throws you a ring off his own hand. It is too big for your finger.
         effects:
           - set: flag.c1_tourney_won
           - item: +prize_harness
-          - add: { res.renown: 3, rep.knights: 1, rep.crown: 1, rel.giles_marrick.respect: 2, rel.giles_marrick.affection: -2 }
+          - add: { res.renown: 2, rep.knights: 1, rep.crown: 1, rel.giles_marrick.respect: 2, rel.giles_marrick.affection: -2 }
         next: { pool: c1_hall, count: 1, then: c1_crisis_router }
       failure:
         text: Giles's lance takes you square in the helm and the next thing you know is the barber-surgeon's tent. The King did not see it, you are told. The King saw it.
@@ -148,6 +149,7 @@
         mods:
           - { if: item.padded_jack, add: 1, label: your jack }
           - { if: flag.c1_giles_enemy, add: -1, label: Giles's friends single you out }
+          - { if: background == archer, add: -1, label: "nobody wants to be beaten by a bowman's son" }
       success:
         text: Forty men with blunted swords in a roped field. It is uglier than war, because everyone is showing off. You are one of the last six standing. The heralds cry your name, which they have to be told how to say. Lord Ravell's steward gives you five shillings from the purse.
         effects: [ { add: { res.renown: 2, res.coin: 60, rep.knights: 1 } } ]

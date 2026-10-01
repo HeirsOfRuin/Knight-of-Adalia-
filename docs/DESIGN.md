@@ -473,6 +473,40 @@ The chapter is slightly over the 25-40 target if events are counted. I kept them
 - Players who don't reach knighthood leave as men-at-arms with a patron. That is the intended Ch2 entry for them; Ch2 offers the battlefield accolade.
 - **Known imbalance:** the archer is strongest on the martial route. The reeve is weakest on diplomacy. Both are flagged for review in `content/TODO.md`.
 
+## Phase 3 review changes (2026-10-01)
+
+### Rule changes
+- **Death rule.** A failed lethal check kills only if he went in unarmoured or already injured. Otherwise he is badly hurt.
+  - "Armoured" means a padded jack or the prize harness.
+  - The new `injured` condition is true while any injury is active.
+  - The warnings say so in the text.
+- **Champions.** A squire is no longer the default champion in a trial by combat. He can:
+  - hire one with coin or a favour; or
+  - fight himself, but only because Sir Hamon is physically unable.
+- **The archer's class cost.**
+  - +1 prejudice with knights.
+  - -1 in the tourney lists.
+  - His master's accolade needs Knights standing 2 (witnesses willing to stand for a bowman's son).
+- **Harder peacetime knighthood.**
+  - Renown bars raised: Ravell 4, King 3, Pryce 3, master 2 (with respect 4).
+  - Lord Ravell and the King also require Courtesy 2 ("a lord or a king will not forgive" bad manners). Your own master does not.
+  - Means are harder: the purchase price is now £6; the master's gift needs affection 4; the Ravell fee needs his regard 4.
+  - Renown from the ford charge, the joust and the trial by combat is reduced from 3 to 2.
+- **Engine.** Text conditions accept `&&` and `||`, with `&&` binding tighter and no parentheses.
+- **Prose.** The sweating sickness is renamed to the bloody flux.
+
+### Balance snapshot after the changes (bot, 300 runs per cell, Ch1 exit knighted / dead)
+| Policy | Archer | Burgess | Reeve | Servant |
+|---|---|---|---|---|
+| Random | 4% / 6% | 5% / 11% | 5% / 10% | 6% / 12% |
+| Martial | 77% / 0% | 30% / 5% | 43% / 1% | 62% / 1% |
+| Cunning | 11% / 2% | 18% / 0% | 22% / 0% | 18% / 8% |
+| Diplomacy and allies | 17% / 3% | 30% / 5% | 17% / 5% | 20% / 8% |
+| Wealth and learning | 4% / 6% | 12% / 3% | 21% / 2% | 22% / 13% |
+| **Average of goal-directed styles** | **27%** | **22%** | **26%** | **30%** |
+
+The bots each pursue a single approach. A real player mixes them; for example, a fighter who also picks up Courtesy. That moves a player toward the martial column.
+
 ## Decisions log
 | Date | Decision |
 |---|---|
@@ -483,3 +517,4 @@ The chapter is slightly over the 25-40 target if events are counted. I kept them
 | 2026-10-01 | Player names protagonist; £sd currency stored in pence; regnal years. |
 | 2026-10-01 | Phase 1 built: see implementation notes. |
 | 2026-10-01 | Phase 2 built: prologue and Chapter 1. See Phase 2 notes. |
+| 2026-10-01 | Phase 3 review decisions: 9a, 11c, 12c, 14b, 13a. Historical items kept, except champion (15, replaced) and the Sweat (17, renamed). See Phase 3 review changes. |

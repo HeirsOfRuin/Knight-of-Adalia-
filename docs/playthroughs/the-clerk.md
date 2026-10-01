@@ -397,11 +397,11 @@ She talks about him until the candles are stubs. He snored. He was kind to dogs 
 
 *Dame Joan Wyck's affection +3 · Lost: Sir Hugh Wyck's sword*
 
-## The Sweat
+## The Flux
 
 *Summer, year 18 of King Aldred*
 
-The sweating sickness comes to Ravell in August. It kills fast: well at Prime, dead by Vespers. Six in the village. A cook. Two grooms. Then Edmund Penn, your master's other squire, who was sixteen.
+The bloody flux comes to Ravell in August, out of the moat and the midden. It takes a man a week to die of it, and he knows the whole week. Six in the village. A cook. Two grooms. Then Edmund Penn, your master's other squire, who was sixteen.
 
 Lady Ravell shuts herself in the solar with her women and burns juniper. Father Benet goes from bed to bed with the oils. Your master needs someone to do Edmund Penn's work and to carry Edmund Penn's body.
 
@@ -410,7 +410,7 @@ Lady Ravell shuts herself in the solar with her women and burns juniper. Father 
 
 **Chose:** Help Father Benet with the sick. (Even: failure)
 
-On the fourth day you take the sweat yourself. You do not remember the next three. Father Benet says he gave you the oils, to be safe. You lived.
+On the fourth day you take the flux yourself. You do not remember much of the week after. Father Benet says he gave you the oils, to be safe. You lived.
 
 *Injury: Fever-weak · Common Folk standing +2 · Piety +1*
 
@@ -538,7 +538,8 @@ You have your copy of the Ashby figures in your shirt.
 - Go through the rolls in front of the commissioners and show where the money went. *(Favorable)*
 - ~~Broker a loan from the Lanzi bank to pay the shortfall, before Lammas.~~ *(Even, Requires: a way in at the Lanzi bank)*
 - ~~Ask Lord Ravell to speak for Sir Hamon to the Earl.~~ *(Risky, Requires: Lord Ravell's ear)*
-- Stand as Sir Hamon's champion when the Earl's man comes to fight. *(Risky, MORTAL DANGER)*
+- ~~Find Sir Hamon a hired champion, a man who fights in the lists for pay.~~ *(Even, Requires: a pound, or someone who owes you)*
+- Sir Hamon's heart fails him the week before the trial. The law lets his sworn man fight for him. Fight. *(Risky, MORTAL DANGER)*
 - Go to Sir Walter Pryce and offer him your service, before the roof falls in.
 - Stand by him, and hope that is enough.
 
@@ -573,9 +574,9 @@ A knight must have a warhorse, a riding horse, a harness of plate, a squire of h
 You have 2s 4d.
 
 - Accept what your master offers: his spare harness and a horse from his string.
-- ~~Accept a fee from Lord Ravell, ten pounds a year for life, for your service.~~ *(Requires: Lord Ravell's favour)*
+- ~~Accept a fee from Lord Ravell, ten pounds a year for life, for your service.~~ *(Requires: Lord Ravell's favour and high regard)*
 - ~~Ride your own horse, in your own prize harness.~~ *(Requires: the prize harness and a horse of your own)*
-- ~~Buy a second-hand harness and a horse in Wendham. Four pounds.~~ *(Requires Coin £4)*
+- ~~Buy a second-hand harness and a horse in Wendham. Six pounds.~~ *(Requires Coin £6)*
 - ~~Borrow twenty pounds from the Lanzi bank against what you will win in Valdrenne.~~ *(Requires: a way in at the Lanzi bank)*
 - Accept Dame Joan Wyck's offer of her late husband's harness and horse.
 - ~~Accept Sir Walter Pryce's offer of horse and harness from the Earl of Carrow, and wear the Earl's livery.~~ *(Requires: Sir Walter Pryce's acquaintance)*
@@ -593,10 +594,12 @@ Sir Hamon gives you his old harness, which was the best in the shire in the old 
 
 You have the means. Now you need a knight willing to give you the accolade, and to stand for you afterwards, because a knight dubbed by nobody in particular is nobody in particular.
 
+And you need to be able to pass for one. A knight who eats with his knife in the salt, or does not know which knee to kneel on, shames the man who dubbed him. Lord Ravell's knights have noticed that you do not know these things. Your own master may forgive it. A lord or a king will not.
+
 - Ask your master to knight you.
-- ~~Accept Lord Ravell's offer to knight you himself, before the household.~~ *(Requires: Lord Ravell's favour, and renown)*
-- Go to Saltcombe, where the King will knight a batch of squires before the army sails.
-- ~~Kneel to Sir Walter Pryce, in the Earl of Carrow's colours.~~ *(Requires: the Earl of Carrow's livery, and a little renown)*
+- ~~Accept Lord Ravell's offer to knight you himself, before the household.~~ *(Requires: Lord Ravell's favour, renown, and Courtesy 2)*
+- ~~Go to Saltcombe, where the King will knight a batch of squires before the army sails.~~ *(Requires: the King's notice, renown, and Courtesy 2)*
+- ~~Kneel to Sir Walter Pryce, in the Earl of Carrow's colours.~~ *(Requires: the Earl of Carrow's livery, and renown)*
 - Not yet. Go to war as a man-at-arms under your master's banner, and win your spurs in the field.
 
 **Chose:** Ask your master to knight you.

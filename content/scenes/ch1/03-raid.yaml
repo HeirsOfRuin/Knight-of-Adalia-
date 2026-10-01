@@ -56,7 +56,7 @@
       text: Take a spear and go into the ford with the horse.
       tags: [martial]
       lethal: true
-      warn: Men die at fords. Without armour, the odds are worse.
+      warn: Men die at fords. Go in without armour, or carrying a wound, and a bad fall can be your last.
       check:
         attr: strength
         skill: arms
@@ -73,7 +73,7 @@
           - set: flag.c1_has_prisoner
           - set: flag.c1_carried_wyck_sword
           - item: +hugh_wyck_sword
-          - add: { res.renown: 3, rel.@master.respect: 2, rep.knights: 1 }
+          - add: { res.renown: 2, rel.@master.respect: 2, rep.knights: 1 }
           - meet: coll_glenhallow
         next: c1_prisoner
       partial:
@@ -84,9 +84,9 @@
           - add: { res.renown: 2, rel.@master.respect: 1 }
         next: c1_raid_return
       failure:
-        text: "[if item.padded_jack]A spear takes you in the chest and the jack stops most of it. You go into the river and come up under a horse. You remember nothing after that until the hall.[else]A spear takes you under the ribs. You go into the water and do not come up.[/if]"
+        text: "[if item.padded_jack][if !injured]A spear takes you in the chest and the jack stops most of it. You go into the river and come up under a horse. You remember nothing after that until the hall.[else]A spear takes you in the chest. The jack stops most of it, but you were not whole when you went in, and you do not come up.[/if][else]A spear takes you under the ribs. You go into the water and do not come up.[/if]"
         effects:
-          - if: item.padded_jack
+          - if: [ item.padded_jack, "!injured" ]
             then: [ { injury: cracked_skull }, { injury: bruised_ribs } ]
             else: [ { die: "Speared in the Leven ford at seventeen, in a raid nobody south of Ravell has heard of." } ]
         next: c1_raid_return

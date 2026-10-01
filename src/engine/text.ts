@@ -1,7 +1,7 @@
 // Passage templating: {var} substitution and [if cond]...[elif cond]...[else]...[/if].
 import type { ContentBundle } from '../content/schema';
 import type { GameState } from './state';
-import { evalCond, parseExpr, validateCond, type Cond } from './conditions';
+import { evalCond, parseInline, validateCond, type Cond } from './conditions';
 import { getValue, checkPath, deref } from './paths';
 import { formatCoin, capitalise } from './format';
 import { describeDate } from './calendar';
@@ -27,14 +27,14 @@ export function parseText(src: string): Node[] {
     if (m.index! > last) out.push({ t: 'text', s: src.slice(last, m.index) });
     last = m.index! + m[0].length;
     if (m[1] !== undefined) {
-      const node: Extract<Node, { t: 'if' }> = { t: 'if', branches: [{ cond: parseExpr(m[1]), src: m[1], body: [] }] };
+      const node: Extract<Node, { t: 'if' }> = { t: 'if', branches: [{ cond: parseInline(m[1]), src: m[1], body: [] }] };
       out.push(node);
       stack.push({ node, body: out });
       out = node.branches[0]!.body;
     } else if (m[2] !== undefined || m[0] === '[else]') {
       const top = stack[stack.length - 1];
       if (!top) throw new TextError(`"${m[0]}" without [if]`);
-      const br = { cond: m[2] !== undefined ? parseExpr(m[2]) : null, src: m[2] ?? 'else', body: [] as Node[] };
+      const br = { cond: m[2] !== undefined ? parseInline(m[2]) : null, src: m[2] ?? 'else', body: [] as Node[] };
       top.node.branches.push(br);
       out = br.body;
     } else if (m[0] === '[/if]') {
@@ -129,7 +129,8 @@ export function validateText(src: string, content: ContentBundle): { errors: str
         for (const b of n.branches) {
           if (b.cond) {
             errors.push(...validateCond(b.src, content));
-            if (b.cond.t === 'cmp' || b.cond.t === 'truthy') paths.push(b.cond.path);
+            const walk = (c: Cond): void => { if (c.t === 'cmp' || c.t === 'truthy') paths.push(c.path); else if (c.t === 'not') walk(c.of); else c.of.forEach(walk); };
+            walk(b.cond);
           }
           visit(b.body);
         }

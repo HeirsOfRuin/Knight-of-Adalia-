@@ -31,7 +31,7 @@
     - id: master
       text: "Accept what your master offers: his spare harness and a horse from his string."
       tags: [allies]
-      requires: [ npc.@master.alive, rel.@master.affection >= 3 ]
+      requires: [ npc.@master.alive, rel.@master.affection >= 4 ]
       label: "Requires: your master's affection"
       text_after: "[if alias.master == hamon_darrell]Sir Hamon gives you his old harness, which was the best in the shire in the old King's day, and his second destrier. He cannot afford either. He will not hear a word about it.[elif alias.master == ancel_brome]Sir Ancel gives you a Caldmoor horse he took in a raid and a harness that has been mended in more places than it has not. \"You'll be killed in it,\" he says. \"Not soon.\"[else]Your master equips you from his own stores. You will owe him for it in service. That is the point.[/if]"
       effects: [ { set: flag.c1_has_means }, { add: { rel.@master.affection: 1, favor.@master: -1 } } ]
@@ -39,8 +39,8 @@
     - id: ravell
       text: Accept a fee from Lord Ravell, ten pounds a year for life, for your service.
       tags: [allies]
-      requires: [ flag.ravell_favor ]
-      label: "Requires: Lord Ravell's favour"
+      requires: [ flag.ravell_favor, rel.thurstan_ravell.respect >= 4 ]
+      label: "Requires: Lord Ravell's favour and high regard"
       text_after: Lord Ravell's clerk draws up the indenture. Ten pounds a year from the rents of Ravell Mill, for your life, for service in peace and war. You are Ravell's man now, in writing. People will treat you as one, for good and ill.
       effects:
         - set: flag.c1_has_means
@@ -58,11 +58,11 @@
       effects: [ { set: flag.c1_has_means }, { add: { rep.knights: 1 } } ]
       next: c1_knighting
     - id: buy
-      text: Buy a second-hand harness and a horse in Wendham. Four pounds.
+      text: Buy a second-hand harness and a horse in Wendham. Six pounds.
       tags: [wealth]
-      requires: [ res.coin >= 960 ]
+      requires: [ res.coin >= 1440 ]
       text_after: The harness belonged to a knight who died of the flux at Christmas. The horse belonged to someone who did not want it. Both will do. Your purse will not recover this year.
-      effects: [ { set: flag.c1_has_means }, { add: { res.coin: -960, res.horses: 1 } } ]
+      effects: [ { set: flag.c1_has_means }, { add: { res.coin: -1440, res.horses: 1 } } ]
       next: c1_knighting
     - id: lanzi
       text: Borrow twenty pounds from the Lanzi bank against what you will win in Valdrenne.
@@ -109,14 +109,16 @@
   text: |
     You have the means. Now you need a knight willing to give you the accolade, and to stand for you afterwards, because a knight dubbed by nobody in particular is nobody in particular.
 
+    And you need to be able to pass for one. A knight who eats with his knife in the salt, or does not know which knee to kneel on, shames the man who dubbed him. [if skill.courtesy < 2]Lord Ravell's knights have noticed that you do not know these things. Your own master may forgive it. A lord or a king will not.[/if]
+
     [if trait.oathbreaker]There are knights at Ravell who will not stand in the same chapel as you.[/if]
   choices:
     - id: master
       text: Ask your master to knight you.
       tags: [allies]
-      requires: [ npc.@master.alive, rel.@master.respect >= 3, res.renown >= 2 ]
-      label: "Requires: your master's respect, and some renown"
-      text_after: He says yes before you have finished asking.
+      requires: [ npc.@master.alive, rel.@master.respect >= 4, res.renown >= 2, { any: [ background != archer, rep.knights >= 2 ] } ]
+      label: "Requires: your master's respect, some renown[if background == archer], and knights willing to stand witness for a bowman's son (Knights standing 2)[/if]"
+      text_after: "He says yes before you have finished asking.[if background == archer] Finding two knights to stand witness takes longer. Some of the men who will not are men you have fought beside.[/if]"
       effects:
         - station: knight
         - set: flag.c1_dubbed_by_master
@@ -125,8 +127,8 @@
     - id: ravell
       text: Accept Lord Ravell's offer to knight you himself, before the household.
       tags: [allies]
-      requires: [ flag.ravell_favor, res.renown >= 3 ]
-      label: "Requires: Lord Ravell's favour, and renown"
+      requires: [ flag.ravell_favor, res.renown >= 4, skill.courtesy >= 2 ]
+      label: "Requires: Lord Ravell's favour, renown, and Courtesy 2"
       text_after: A baron's accolade is worth more than a knight's. Lord Ravell knows it. So does everyone who will hear of it.
       effects:
         - station: knight
@@ -137,8 +139,8 @@
     - id: king
       text: Go to Saltcombe, where the King will knight a batch of squires before the army sails.
       tags: [diplomacy]
-      requires: [ flag.c1_king_noticed, res.renown >= 2 ]
-      label: "Requires: the King's notice, and renown"
+      requires: [ flag.c1_king_noticed, res.renown >= 3, skill.courtesy >= 2 ]
+      label: "Requires: the King's notice, renown, and Courtesy 2"
       text_after: Sixty young men kneel on the shingle at Saltcombe in a gale. The King goes down the line with his sword and does not know most of their names. He knows yours. He says it as he touches your shoulder, so that the men either side of you hear it.
       effects:
         - station: knight
@@ -148,8 +150,8 @@
     - id: pryce
       text: Kneel to Sir Walter Pryce, in the Earl of Carrow's colours.
       tags: [cunning]
-      requires: [ flag.c1_carrow_livery, res.renown >= 1 ]
-      label: "Requires: the Earl of Carrow's livery, and a little renown"
+      requires: [ flag.c1_carrow_livery, res.renown >= 3 ]
+      label: "Requires: the Earl of Carrow's livery, and renown"
       text_after: Sir Walter dubs you in the Earl's chapel at Carrow, with eleven others, all in the black boar. It is quick and businesslike. Afterwards he hands each of you an indenture for three years' service to the Earl. Everyone signs. That was always the price.
       effects:
         - station: knight

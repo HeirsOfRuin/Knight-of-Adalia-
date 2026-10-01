@@ -510,7 +510,8 @@ Sir Hamon says he took nothing. He says he will prove it on any man's body, by c
 - Go through the rolls in front of the commissioners and show where the money went. *(Risky)*
 - Broker a loan from the Lanzi bank to pay the shortfall, before Lammas. *(Favorable)*
 - Ask Lord Ravell to speak for Sir Hamon to the Earl. *(Even)*
-- Stand as Sir Hamon's champion when the Earl's man comes to fight. *(Even, MORTAL DANGER)*
+- ~~Find Sir Hamon a hired champion, a man who fights in the lists for pay.~~ *(Even, Requires: a pound, or someone who owes you)*
+- Sir Hamon's heart fails him the week before the trial. The law lets his sworn man fight for him. Fight. *(Even, MORTAL DANGER)*
 - Go to Sir Walter Pryce and offer him your service, before the roof falls in.
 - Stand by him, and hope that is enough.
 
@@ -573,9 +574,9 @@ A knight must have a warhorse, a riding horse, a harness of plate, a squire of h
 You have 13s 8d.
 
 - ~~Accept what your master offers: his spare harness and a horse from his string.~~ *(Requires: your master's affection)*
-- Accept a fee from Lord Ravell, ten pounds a year for life, for your service.
+- ~~Accept a fee from Lord Ravell, ten pounds a year for life, for your service.~~ *(Requires: Lord Ravell's favour and high regard)*
 - ~~Ride your own horse, in your own prize harness.~~ *(Requires: the prize harness and a horse of your own)*
-- ~~Buy a second-hand harness and a horse in Wendham. Four pounds.~~ *(Requires Coin £4)*
+- ~~Buy a second-hand harness and a horse in Wendham. Six pounds.~~ *(Requires Coin £6)*
 - Borrow twenty pounds from the Lanzi bank against what you will win in Valdrenne.
 - ~~Accept Dame Joan Wyck's offer of her late husband's harness and horse.~~ *(Requires: Dame Joan's regard)*
 - Accept Sir Walter Pryce's offer of horse and harness from the Earl of Carrow, and wear the Earl's livery.

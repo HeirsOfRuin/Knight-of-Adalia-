@@ -16,5 +16,5 @@ relationships:
   hugh_fletcher: { affection: 5, respect: 3 }
   ancel_brome: { affection: 1, respect: 1 }
   gib_shawe: { affection: -3, respect: 0 }
-prejudice: { base: 4 }
+prejudice: { base: 4, knights: 1 }   # a bowman's son: knights resent archers who rise
 rep: { commons: 1 }

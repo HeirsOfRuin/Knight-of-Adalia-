@@ -482,11 +482,11 @@ Isabel Sayer is in the stands with Lady Ravell's women. She has a green sleeve. 
 - Spend the day below the stands, betting on other men. *(Even)*
 - Ask Isabel Sayer for her green sleeve, and wear it.
 
-**Chose:** Fight in the melee on foot. (Risky: failure)
+**Chose:** Fight in the melee on foot. (Risky: success)
 
-Three of Giles's friends find you in the first rush and take you down together. Blunted swords still break things.
+Forty men with blunted swords in a roped field. It is uglier than war, because everyone is showing off. You are one of the last six standing. The heralds cry your name, which they have to be told how to say. Lord Ravell's steward gives you five shillings from the purse.
 
-*Injury: Bruised ribs · Giles Marrick's respect +1*
+*Renown +2 · Coin +5s · Knights standing +1*
 
 ## Wendham Horse Fair
 
@@ -502,7 +502,7 @@ Saint Luke's horse fair at Wendham: a thousand horses, ten thousand liars. Your 
 
 A bay gelding, six years old, sound in wind and limb, with a white sock and a mean eye. He is the first thing you have ever owned that eats.
 
-*Coin −£1 · Horses +1 · Bruised ribs has healed*
+*Coin −£1 · Horses +1*
 
 ## Summer, Year 20
 
@@ -562,12 +562,12 @@ For a squire, there is one question now. Whether you cross the Narrow Sea with s
 
 A knight must have a warhorse, a riding horse, a harness of plate, a squire of his own, and the means to keep all of them for a summer's campaign. A squire with none of those things can be knighted, in law. In practice, nobody will dub a man who cannot afford to be one. It shames the man who dubs him.
 
-You have £4. You have a horse of your own.
+You have £4 5s. You have a horse of your own.
 
 - ~~Accept what your master offers: his spare harness and a horse from his string.~~ *(Requires: your master's affection)*
-- Accept a fee from Lord Ravell, ten pounds a year for life, for your service.
+- ~~Accept a fee from Lord Ravell, ten pounds a year for life, for your service.~~ *(Requires: Lord Ravell's favour and high regard)*
 - ~~Ride your own horse, in your own prize harness.~~ *(Requires: the prize harness and a horse of your own)*
-- Buy a second-hand harness and a horse in Wendham. Four pounds.
+- ~~Buy a second-hand harness and a horse in Wendham. Six pounds.~~ *(Requires Coin £6)*
 - ~~Borrow twenty pounds from the Lanzi bank against what you will win in Valdrenne.~~ *(Requires: a way in at the Lanzi bank)*
 - ~~Accept Dame Joan Wyck's offer of her late husband's harness and horse.~~ *(Requires: Dame Joan's regard)*
 - Accept Sir Walter Pryce's offer of horse and harness from the Earl of Carrow, and wear the Earl's livery.
@@ -585,11 +585,13 @@ The Earl of Carrow equips forty young men this spring, and asks only that they w
 
 You have the means. Now you need a knight willing to give you the accolade, and to stand for you afterwards, because a knight dubbed by nobody in particular is nobody in particular.
 
+And you need to be able to pass for one. A knight who eats with his knife in the salt, or does not know which knee to kneel on, shames the man who dubbed him.
+
 There are knights at Ravell who will not stand in the same chapel as you.
 
-- ~~Ask your master to knight you.~~ *(Requires: your master's respect, and some renown)*
-- ~~Accept Lord Ravell's offer to knight you himself, before the household.~~ *(Requires: Lord Ravell's favour, and renown)*
-- ~~Go to Saltcombe, where the King will knight a batch of squires before the army sails.~~ *(Requires: the King's notice, and renown)*
+- ~~Ask your master to knight you.~~ *(Requires: your master's respect, some renown)*
+- Accept Lord Ravell's offer to knight you himself, before the household.
+- ~~Go to Saltcombe, where the King will knight a batch of squires before the army sails.~~ *(Requires: the King's notice, renown, and Courtesy 2)*
 - Kneel to Sir Walter Pryce, in the Earl of Carrow's colours.
 - Not yet. Go to war as a man-at-arms under your master's banner, and win your spurs in the field.
 

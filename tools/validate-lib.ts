@@ -211,6 +211,8 @@ export function validate(content: ContentBundle): ValidationReport {
       if (ids.has(c.id)) err(cw, 'duplicate choice id');
       ids.add(c.id);
       checkText(cw, c.text);
+      checkText(cw, c.label);
+      checkText(cw, c.warn);
       checkCond(cw, c.requires);
       checkCond(cw, c.visible_if);
       if (c.lethal && !c.warn) err(cw, 'lethal choice without a warn text');

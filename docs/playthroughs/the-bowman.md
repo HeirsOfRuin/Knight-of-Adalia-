@@ -564,19 +564,19 @@ A knight must have a warhorse, a riding horse, a harness of plate, a squire of h
 You have 0d.
 
 - Accept what your master offers: his spare harness and a horse from his string.
-- Accept a fee from Lord Ravell, ten pounds a year for life, for your service.
+- ~~Accept a fee from Lord Ravell, ten pounds a year for life, for your service.~~ *(Requires: Lord Ravell's favour and high regard)*
 - ~~Ride your own horse, in your own prize harness.~~ *(Requires: the prize harness and a horse of your own)*
-- ~~Buy a second-hand harness and a horse in Wendham. Four pounds.~~ *(Requires Coin £4)*
+- ~~Buy a second-hand harness and a horse in Wendham. Six pounds.~~ *(Requires Coin £6)*
 - ~~Borrow twenty pounds from the Lanzi bank against what you will win in Valdrenne.~~ *(Requires: a way in at the Lanzi bank)*
 - ~~Accept Dame Joan Wyck's offer of her late husband's harness and horse.~~ *(Requires: Dame Joan's regard)*
 - Accept Sir Walter Pryce's offer of horse and harness from the Earl of Carrow, and wear the Earl's livery.
 - You cannot. Go to the war as you are, and win it there.
 
-**Chose:** Accept a fee from Lord Ravell, ten pounds a year for life, for your service.
+**Chose:** Accept what your master offers: his spare harness and a horse from his string.
 
-Lord Ravell's clerk draws up the indenture. Ten pounds a year from the rents of Ravell Mill, for your life, for service in peace and war. You are Ravell's man now, in writing. People will treat you as one, for good and ill.
+Sir Ancel gives you a Caldmoor horse he took in a raid and a harness that has been mended in more places than it has not. "You'll be killed in it," he says. "Not soon."
 
-*Gained: Lord Ravell's man · You owe Thurstan Ravell*
+*Sir Ancel Brome's affection +1 · You owe Ancel Brome*
 
 ## The Accolade
 
@@ -584,17 +584,19 @@ Lord Ravell's clerk draws up the indenture. Ten pounds a year from the rents of 
 
 You have the means. Now you need a knight willing to give you the accolade, and to stand for you afterwards, because a knight dubbed by nobody in particular is nobody in particular.
 
+And you need to be able to pass for one. A knight who eats with his knife in the salt, or does not know which knee to kneel on, shames the man who dubbed him. Lord Ravell's knights have noticed that you do not know these things. Your own master may forgive it. A lord or a king will not.
+
 - Ask your master to knight you.
-- Accept Lord Ravell's offer to knight you himself, before the household.
-- ~~Go to Saltcombe, where the King will knight a batch of squires before the army sails.~~ *(Requires: the King's notice, and renown)*
-- ~~Kneel to Sir Walter Pryce, in the Earl of Carrow's colours.~~ *(Requires: the Earl of Carrow's livery, and a little renown)*
+- ~~Accept Lord Ravell's offer to knight you himself, before the household.~~ *(Requires: Lord Ravell's favour, renown, and Courtesy 2)*
+- ~~Go to Saltcombe, where the King will knight a batch of squires before the army sails.~~ *(Requires: the King's notice, renown, and Courtesy 2)*
+- ~~Kneel to Sir Walter Pryce, in the Earl of Carrow's colours.~~ *(Requires: the Earl of Carrow's livery, and renown)*
 - Not yet. Go to war as a man-at-arms under your master's banner, and win your spurs in the field.
 
-**Chose:** Accept Lord Ravell's offer to knight you himself, before the household.
+**Chose:** Ask your master to knight you.
 
-A baron's accolade is worth more than a knight's. Lord Ravell knows it. So does everyone who will hear of it.
+He says yes before you have finished asking. Finding two knights to stand witness takes longer. Some of the men who will not are men you have fought beside.
 
-*Station: Knight · Lord Thurstan Ravell's affection +2 · Great Nobles standing +1*
+*Station: Knight · Sir Ancel Brome's affection +1*
 
 ## The Vigil
 

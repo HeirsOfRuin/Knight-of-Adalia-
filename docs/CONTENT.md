@@ -144,7 +144,8 @@ Clamps:
 - Do not start a passage with `{date}`; the UI already shows the date above every scene.
 - `{npc.hamon_darrell}` gives the name; `{npc.hamon_darrell.title}` gives "Sir Hamon Darrell".
 - Any condition path, for example `{skill.arms}`.
-- `[if cond]...[elif cond]...[else]...[/if]`, which can be nested.
+- `[if cond]...[elif cond]...[else]...[/if]`, which can be nested. A text condition is a single expression or a chain with `&&` and `||` (`&&` binds tighter; no parentheses).
+- `injured` is true while any injury is active. Use it for the death rule: kill only `if: [ "!injured", armour... ]` fails.
 
 ## Backgrounds
 See `backgrounds/reeve.yaml`.

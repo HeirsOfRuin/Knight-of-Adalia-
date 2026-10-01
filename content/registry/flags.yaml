@@ -73,7 +73,7 @@ c1_coll_hanged: { description: "Let Coll of Glenhallow be hanged. Black Ewan kno
 c1_coll_freed: { description: "Set Coll of Glenhallow free", hidden: true }
 c1_raised_at_ford: { description: "Raised from the lower track to squire for the Leven ford", later: ch2, hidden: true }
 c1_raised_at_tourney: { description: "Raised from the lower track to squire at the tourney", later: ch2, hidden: true }
-c1_raised_by_fever: { description: "Raised from the lower track to squire after the sweat", later: ch2, hidden: true }
+c1_raised_by_fever: { description: "Raised from the lower track to squire after the flux", later: ch2, hidden: true }
 c1_joan_owed: { description: "Stood up for Dame Joan against her stepson", later: ch2, hidden: true }
 c1_king_noticed: { description: "The King knows his name" }
 c1_pryce_contact: { description: "Known to Sir Walter Pryce", later: ch2, hidden: true }
@@ -119,3 +119,4 @@ c1_caught_spy: { description: "Caught a Valdrennish spy in the King's train", la
 c1_carrow_livery: { description: "Wears the Earl of Carrow's livery, the black boar" }
 c1_dubbed_by_pryce: { description: "Knighted by Sir Walter Pryce in Carrow's colours", hidden: true, later: ch2 }
 c1_carrow_indenture: { description: "Bound to three years' service to the Earl of Carrow", later: ch2 }
+c1_hired_champion: { description: "Hired a champion to clear Sir Hamon", hidden: true, later: ch2 }

@@ -148,3 +148,49 @@ describe('mergeChanges', () => {
     expect(mergeChanges(['A +1', 'Gained: X', 'A +2', 'B −1', 'B +1'])).toEqual(['A +3', 'Gained: X']);
   });
 });
+
+describe('Phase 3 rules', () => {
+  const c = content();
+  const atScene = (scene: string, bg = 'reeve') => {
+    const s = game(bg);
+    s.scene = scene;
+    return s;
+  };
+
+  it('a failed ford charge kills only the unarmoured or already injured', () => {
+    const armoured = atScene('c1_raid');
+    armoured.items.push('padded_jack');
+    const a = choose(c, armoured, 'charge', { force: 'failure' }).state;
+    expect(a.ended).toBeUndefined();
+    expect(a.injuries.map((i) => i.id)).toContain('cracked_skull');
+
+    const bare = choose(c, atScene('c1_raid'), 'charge', { force: 'failure' }).state;
+    expect(bare.ended?.ending).toBe('death');
+
+    const hurt = atScene('c1_raid');
+    hurt.items.push('padded_jack');
+    hurt.injuries.push({ id: 'bruised_ribs', since: hurt.time });
+    expect(choose(c, hurt, 'charge', { force: 'failure' }).state.ended?.ending).toBe('death');
+  });
+
+  it('text conditions accept && and ||', async () => {
+    const { renderText } = await import('../../src/engine/text');
+    const s = game('archer');
+    expect(renderText('[if background == reeve || item.yew_bow && !injured]yes[else]no[/if]', s, c)).toBe('yes');
+    s.injuries.push({ id: 'bruised_ribs', since: 0 });
+    expect(renderText('[if background == reeve || item.yew_bow && !injured]yes[else]no[/if]', s, c)).toBe('no');
+  });
+
+  it('a bowman\'s son needs knights to stand witness before his master can dub him', () => {
+    const s = atScene('c1_knighting', 'archer');
+    s.aliases.master = 'ancel_brome';
+    s.npcs.ancel_brome!.respect = 6;
+    s.res.renown = 5;
+    s.rep.knights = 0;
+    const locked = view(c, s).choices.find((x) => x.id === 'master')!;
+    expect(locked.available).toBe(false);
+    expect(locked.lockReason).toMatch(/bowman's son/);
+    s.rep.knights = 2;
+    expect(view(c, s).choices.find((x) => x.id === 'master')!.available).toBe(true);
+  });
+});

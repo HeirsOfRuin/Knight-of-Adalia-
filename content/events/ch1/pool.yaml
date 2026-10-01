@@ -225,9 +225,9 @@
   chapter: ch1
   kind: pool
   pool: c1_hall
-  title: The Sweat
+  title: The Flux
   text: |
-    The sweating sickness comes to Ravell in August. It kills fast: well at Prime, dead by Vespers. Six in the village. A cook. Two grooms. Then Edmund Penn, your master's other squire, who was sixteen.
+    The bloody flux comes to Ravell in August, out of the moat and the midden. It takes a man a week to die of it, and he knows the whole week. Six in the village. A cook. Two grooms. Then Edmund Penn, your master's other squire, who was sixteen.
 
     Lady Ravell shuts herself in the solar with her women and burns juniper. Father Benet goes from bed to bed with the oils. Your master needs someone to do Edmund Penn's work and to carry Edmund Penn's body.
   choices:
@@ -236,11 +236,11 @@
       tags: [piety]
       check: { attr: endurance, difficulty: 3 }
       success:
-        text: You carry water and empty basins for a week and do not take the sweat. People who did not know your name know it after that.
+        text: You carry water and empty basins for a week and do not take the flux. People who did not know your name know it after that.
         effects: [ { add: { rep.commons: 2, rep.piety: 1, rel.father_benet.affection: 2 } }, { meet: father_benet } ]
         next: "@return"
       failure:
-        text: On the fourth day you take the sweat yourself. You do not remember the next three. Father Benet says he gave you the oils, to be safe. You lived.
+        text: On the fourth day you take the flux yourself. You do not remember much of the week after. Father Benet says he gave you the oils, to be safe. You lived.
         effects: [ { injury: fever_weak }, { add: { rep.commons: 2, rep.piety: 1 } } ]
         next: "@return"
     - id: replace

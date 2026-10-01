@@ -24,7 +24,7 @@ steps:
   c1_prisoner: free!success
   c1_raid_return: duties
   c1_progress: maud!success
-  c1_tourney: melee!failure
+  c1_tourney: melee!success
   c1_crisis_router: go
   c1_crisis_ancel: pryce
   c1_war_comes: ready

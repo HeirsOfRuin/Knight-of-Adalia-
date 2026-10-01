@@ -133,7 +133,7 @@ export function view(content: ContentBundle, state: GameState, narrator: Narrati
           id: c.id,
           text: narrator.renderPassage(c.text, state, content),
           available,
-          lockReason: available ? undefined : c.label ?? `Requires ${unmetLabel(c.requires!, state, content)}`,
+          lockReason: available ? undefined : c.label ? narrator.renderPassage(c.label, state, content) : `Requires ${unmetLabel(c.requires!, state, content)}`,
           band: c.check ? computeOdds(c.check, state, content).band : undefined,
           lethal: c.lethal,
           warn: c.warn,

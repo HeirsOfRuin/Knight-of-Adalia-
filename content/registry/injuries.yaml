@@ -5,4 +5,4 @@ burned_hands: { label: Burned hands, description: "Blistered palms wrapped in go
 gored_thigh: { label: Gored thigh, description: "A boar's tusk opened the leg. You walk with a stick.", mods: { attr.agility: -1, skill.riding: -1 }, heals_after: 3, scar: gored_scar }
 cracked_skull: { label: Cracked skull, description: "Headaches. Bright light hurts.", mods: { attr.wits: -1 }, heals_after: 2 }
 arrow_wound: { label: Arrow wound, description: "A Caldmoor arrow went through the meat of the shoulder.", mods: { skill.arms: -1, skill.archery: -2 }, heals_after: 2 }
-fever_weak: { label: Fever-weak, description: "The sweating sickness left you thin and short of breath.", mods: { attr.endurance: -1, attr.strength: -1 }, heals_after: 1 }
+fever_weak: { label: Fever-weak, description: "The flux left you thin and short of breath.", mods: { attr.endurance: -1, attr.strength: -1 }, heals_after: 1 }

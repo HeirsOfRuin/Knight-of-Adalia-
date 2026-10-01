@@ -79,11 +79,39 @@
       failure:
         text: Lord Ravell says he cannot be seen to quarrel with Carrow in a year when the King needs both of them. He is sorry. He is not sorry enough.
         next: c1_crisis_hamon_fall
+    - id: hire
+      text: Find Sir Hamon a hired champion, a man who fights in the lists for pay.
+      tags: [wealth, allies]
+      requires: [ { any: [ res.coin >= 240, favor.aymer_ravell >= 1, rel.bertram_oakes.respect >= 3 ] } ]
+      label: "Requires: a pound, or someone who owes you"
+      check:
+        attr: wits
+        skill: arms
+        difficulty: 3
+        mods:
+          - { if: rel.bertram_oakes.respect >= 3, add: 2, label: Sir Bertram names you the right man }
+          - { if: res.coin >= 480, add: 1, label: you can pay for the best }
+      success:
+        text: Ivo Lasker fights for whoever pays, and has for twenty years, and is still alive, which is the only reference that counts. He breaks the Earl's man's collarbone in the second bout. God has spoken, the priests say, and so has the purse. Sir Hamon is cleared. You paid for it.
+        effects:
+          - set: flag.c1_master_cleared
+          - set: flag.c1_hired_champion
+          - if: res.coin >= 240
+            then: [ { add: { res.coin: -240 } } ]
+            else: [ { add: { favor.aymer_ravell: -1, rel.bertram_oakes.affection: 1 } } ]
+          - add: { rel.hamon_darrell.affection: 3, rel.hamon_darrell.respect: 2, res.renown: 1 }
+        next: c1_war_comes
+      failure:
+        text: The man you hire is drunk by Terce and beaten by Sext. God has spoken, and He has spoken against Sir Hamon.
+        effects:
+          - if: res.coin >= 240
+            then: [ { add: { res.coin: -240 } } ]
+        next: c1_crisis_hamon_fall
     - id: champion
-      text: Stand as Sir Hamon's champion when the Earl's man comes to fight.
+      text: Sir Hamon's heart fails him the week before the trial. The law lets his sworn man fight for him. Fight.
       tags: [martial]
       lethal: true
-      warn: The Earl's champion is a professional. Trial by combat is to the death or the yield, and he has never yielded.
+      warn: The Earl's champion is a professional who has never yielded. Without armour, or carrying a wound, losing means dying.
       check:
         attr: strength
         skill: arms
@@ -94,11 +122,11 @@
           - { if: flag.c1_beat_giles, add: 1, label: you have beaten a trained man before }
           - { if: item.holy_ampulla, add: 1, label: "Saint Ebba's water, or your faith in it" }
       success:
-        text: His name is Roger Sallow and he has killed four men in the lists. You do not kill him. You break his knee with a pollaxe in the second hour and stand over him until he yields. God has spoken, the priests say. Sir Hamon is cleared. He kisses you on both cheeks in front of the whole county.
+        text: His name is Roger Sallow and he has killed four men in the lists. You do not kill him. You break his knee with a pollaxe in the second hour and stand over him until he yields. God has spoken, the priests say. Sir Hamon, carried to the lists in a chair, is cleared. He kisses you on both cheeks in front of the whole county.
         effects:
           - set: flag.c1_master_cleared
           - set: flag.c1_won_combat
-          - add: { res.renown: 3, rep.knights: 2, rel.hamon_darrell.affection: 4, rel.hamon_darrell.respect: 3 }
+          - add: { res.renown: 2, rep.knights: 2, rel.hamon_darrell.affection: 4, rel.hamon_darrell.respect: 3 }
         next: c1_war_comes
       partial:
         text: You win, barely. Sallow yields with your dagger at his eye-slit and his axe still in your side. You do not remember the walk out of the lists. Sir Hamon is cleared. The surgeons say you will live.
@@ -109,8 +137,12 @@
           - add: { res.renown: 2, rel.hamon_darrell.affection: 3 }
         next: c1_war_comes
       failure:
-        text: Sallow is better than you. It is that simple.
-        effects: [ { die: "Killed in a trial by combat at Ravell, aged {age}, defending a debt that was not his." } ]
+        text: "Sallow is better than you. [if item.padded_jack && !injured || item.prize_harness && !injured]Your harness turns the blow that should have killed you. You yield on your knees in the sand with your helm split, and Sir Hamon is condemned.[/if]"
+        effects:
+          - if: [ { any: [ item.padded_jack, item.prize_harness ] }, "!injured" ]
+            then: [ { injury: cracked_skull }, { add: { rel.hamon_darrell.affection: 2, rep.honor: 1 } } ]
+            else: [ { die: "Killed in a trial by combat at Ravell, aged {age}, defending a debt that was not his." } ]
+        next: c1_crisis_hamon_fall
     - id: pryce
       text: Go to Sir Walter Pryce and offer him your service, before the roof falls in.
       tags: [cunning]
@@ -289,7 +321,7 @@
       text: Go in at the gate with him, in front of the others.
       tags: [martial]
       lethal: true
-      warn: Thorne has crossbows on the gate. Men will die tonight.
+      warn: Thorne has crossbows on the gate. Men will die tonight. Without armour, or carrying a wound, you could be one of them.
       check:
         attr: strength
         skill: arms
@@ -314,9 +346,9 @@
           - add: { res.renown: 1, rep.ruthlessness: 1 }
         next: c1_new_patron
       failure:
-        text: The bolt that kills Sir Ancel is followed by one for you.
+        text: "The bolt that kills Sir Ancel is followed by one for you. [if item.padded_jack && !injured || item.prize_harness && !injured]It goes through the meat of your shoulder and you live.[/if]"
         effects:
-          - if: item.padded_jack
+          - if: [ { any: [ item.padded_jack, item.prize_harness ] }, "!injured" ]
             then: [ { injury: arrow_wound }, { set: flag.c1_lost_master }, { kill: ancel_brome } ]
             else: [ { die: "Shot in the gate of Thorne Hall at nineteen, in another man's feud." } ]
         next: c1_new_patron

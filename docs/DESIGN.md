@@ -1,6 +1,6 @@
 # DESIGN — Knight of Adalia
 
-Status: Phase 0 approved 2026-10-01. Phase 1 complete, awaiting review. Decisions log at the bottom.
+Status: Phases 0-1 approved. Phase 2 (prologue + Chapter 1 vertical slice) complete, awaiting Phase 3 review. Decisions log at the bottom.
 
 ## Context
 The repo is empty (no commits). This is the Phase 0 deliverable: an architecture proposal, content schema, file layout, background table, and scope pushback. Nothing gets built until you approve it. Once approved, I commit this proposal as `/docs/DESIGN.md` and start Phase 1.
@@ -413,6 +413,66 @@ Where the build differs from the plan above, this section wins.
 - **Tooling.** No ESLint or Prettier; `tsc --strict` is the static check. The browser smoke test (`npm run smoke`) uses Playwright with the preinstalled Chromium.
 - **Test chapter.** A `test` chapter holds the Phase 1 engine test arc (`content/scenes/test/fair.yaml`). It is removed when the prologue replaces it in Phase 2.
 
+## Phase 2 notes (as built)
+
+### Scope delivered
+| Part | Count |
+|---|---|
+| Prologue | 14 scenes: 4 background openings, 3 shared scenes with background passages and options, 1 router, 4 Patronage Gates, the lower road, leaving home |
+| Chapter 1 spine | 27 scenes + 1 ending |
+| Chapter 1 events | 12 pool (a run sees about 6) + 6 queued consequences |
+| Prose | About 21,000 words; one playthrough reads about 6,500 |
+
+The chapter is slightly over the 25-40 target if events are counted. I kept them, because the pool is what makes two runs of the same background differ.
+
+### Chapter 1 shape (age 15 to 20)
+1. **Arrival, duties, the squires' loft** (Giles Marrick). Major branch 1, five approaches: fight, scheme, win allies, buy friends, endure.
+2. **Winter training.** A skill focus.
+3. **The master's trouble.** Variant per master:
+   - Sir Hamon: debts and a short subsidy. Approaches: accounts, Lanzi bank, tell Ravell, keep out.
+   - Sir Ancel: stolen cattle. Approaches: track them, write a plaint, ride on Thorne's mill, keep out.
+4. **Twelfth Night.** The romance intro; five approaches.
+5. **The Leven ford.** Major branch 2, first real danger. Five approaches: charge (lethal), flank, rally the archers, parley, hold the horses. Then the prisoner decision (ransom, give him to your master, hang, free) and the widow at Wyck.
+6. **The King's progress.** Approaches: the King's notice, catch a Valdrennish spy, Sir Walter Pryce, Maud's petition, duty.
+7. **The tourney.** Major branch 3. Approaches: joust, melee, serve, bet, wear a favour.
+8. **The master's crisis.** Major branch 4, five or six approaches per master. Every crisis has a trial-by-combat or gate assault (lethal) and an abandon-your-master option. A fallen master leads to choosing a new patron.
+9. **The claim, horse and harness, the accolade.** Means come by seven routes. The accolade comes by four:
+   - master;
+   - Lord Ravell;
+   - the King at Saltcombe;
+   - Sir Walter Pryce in the Earl of Carrow's livery.
+
+   Otherwise he takes the man-at-arms indenture with a guaranteed patron.
+10. **Farewell and Saltcombe.** Tokens (giving two gets you found out later), family.
+
+### Station flow
+- **Patronage Gate success:** Retainer (squire track) → squire at Michaelmas of Ch1, whatever the outcome of the first duties.
+- **Gate failure:** Retainer (household or levy). Three routes up to squire:
+  - the Leven ford deed;
+  - replacing a squire who died of the sweat;
+  - serving in the lists at the tourney.
+- **Ch1 exit:** knight, or man-at-arms with a patron. If the master is dead or disgraced, Sir Walter Pryce takes him, so no one sails without a patron.
+
+### Engine additions in Phase 2
+- **NPC aliases** (`@master`, `@rival`). Text, conditions and effects can follow whoever fills the slot.
+- **Conditional effects** (`if/then/else`) and **switch routing** on `next`.
+- **`later: chN`** on flags that are set now and read in a later chapter.
+- **Scripted plans** (`tools/plans/`): run by the bot and the tests. `npm run transcript` writes them as Markdown to `docs/playthroughs/` for reading.
+- **Journal tidying:** change chips are merged ("Respect +1, +1" becomes "+2"), and causes queued on scene entry now name the scene.
+
+### Balance snapshot (bot, 300 runs per cell, Ch1 exit)
+| Policy | Archer: knight / dead | Burgess | Reeve | Servant |
+|---|---|---|---|---|
+| Random | 17% / 6% | 14% / 12% | 11% / 14% | 15% / 13% |
+| Martial | 96% / 0% | 70% / 15% | 69% / 17% | 76% / 11% |
+| Cunning | 50% / 2% | 53% / 0% | 58% / 0% | 60% / 8% |
+| Diplomacy and allies | 48% / 3% | 44% / 8% | 32% / 9% | 35% / 11% |
+| Wealth and learning | 40% / 5% | 35% / 3% | 45% / 2% | 35% / 13% |
+
+- Patronage Gate success under random play: 50-62% per background.
+- Players who don't reach knighthood leave as men-at-arms with a patron. That is the intended Ch2 entry for them; Ch2 offers the battlefield accolade.
+- **Known imbalance:** the archer is strongest on the martial route. The reeve is weakest on diplomacy. Both are flagged for review in `content/TODO.md`.
+
 ## Decisions log
 | Date | Decision |
 |---|---|
@@ -422,3 +482,4 @@ Where the build differs from the plan above, this section wins.
 | 2026-10-01 | Romance candidates are women only. |
 | 2026-10-01 | Player names protagonist; £sd currency stored in pence; regnal years. |
 | 2026-10-01 | Phase 1 built: see implementation notes. |
+| 2026-10-01 | Phase 2 built: prologue and Chapter 1. See Phase 2 notes. |

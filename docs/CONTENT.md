@@ -6,7 +6,7 @@ All game content lives in `/content` as YAML. `src/content/schema.ts` (Zod) is t
 | Path | Holds |
 |---|---|
 | `config.yaml` | Attributes, skills, stations, tracks, seasons, chapters, start year |
-| `registry/flags.yaml` | Every flag, with a description. `hidden: true` keeps it out of the UI. |
+| `registry/flags.yaml` | Every flag, with a description. `hidden: true` keeps it out of the UI. `later: ch2` marks a flag set now and read in a later chapter. The "never read" warning stays quiet until that chapter has content. |
 | `registry/npcs.yaml` | Every named NPC: name, title, faction, starting affection/respect, notes |
 | `registry/traits.yaml`, `injuries.yaml`, `items.yaml` | Labels, descriptions and stat `mods` (e.g. `skill.arms: -2`). Injuries have `heals_after` (seasons; omit for permanent) and an optional `scar` trait. |
 | `registry/factions.yaml` | Reputation tracks. `kind: faction` ranges -10..10; `kind: personal` (honor, ruthlessness, piety) ranges 0..10. |
@@ -111,6 +111,24 @@ Station, chapter, season, suit status and pledge compare by their order. For exa
 - advance: { seasons: 1 }         # ages the character, heals injuries
 - journal: "A line for the journal."
 - die: "Cause of death, shown on the ending screen. Takes {variables}."
+- alias: { master: ancel_brome }  # point @master at an NPC
+- if: flag.x                      # conditional effects; else is optional
+  then: [ ...effects ]
+  else: [ ...effects ]
+```
+
+## Aliases
+`config.yaml` declares alias slots (`master`, `rival`). Backgrounds set starting aliases; the `alias` effect changes them.
+- `@master` can be used anywhere an NPC id can: `rel.@master.respect >= 3`, `npc.@master.alive`, `favor.@master`, `{npc.@master.title}`, `kill: "@master"`.
+- `alias.master == hamon_darrell` tests who currently fills the slot.
+
+## Routing
+`next` can be a switch. The first branch whose condition holds wins:
+```yaml
+next:
+  switch:
+    - { if: alias.master == hamon_darrell, go: c1_trouble_hamon }
+  default: c1_trouble_ancel
 ```
 Clamps:
 - attributes 1–6;
@@ -121,7 +139,9 @@ Clamps:
 - health 1–10 (health alone never kills).
 
 ## Text
-- `{name}`, `{date}`, `{coin}`, `{station}`, `{background}`, `{season}`, `{year}`, `{age}`
+- `{name}`, `{date}`, `{coin}`, `{station}`, `{background}` ("Reeve's son"), `{origin}` ("reeve's son"), `{season}`, `{year}`, `{age}`
+- Titles take templates too.
+- Do not start a passage with `{date}`; the UI already shows the date above every scene.
 - `{npc.hamon_darrell}` gives the name; `{npc.hamon_darrell.title}` gives "Sir Hamon Darrell".
 - Any condition path, for example `{skill.arms}`.
 - `[if cond]...[elif cond]...[else]...[/if]`, which can be nested.
@@ -131,3 +151,9 @@ See `backgrounds/reeve.yaml`.
 - `random_flags` picks one flag from each group with the game seed. This is how the reeve's hidden backstory is decided.
 - `roles` defines sub-choices, such as the servant's huntsman, falconer or horse-master.
 - `prejudice.base` and `prejudice.knights` set the starting "new man" prejudice.
+
+## Scripted plans
+`tools/plans/*.yaml` are fixed routes through the game: a choice per scene (`choice!success` forces the roll), an expected ending, and `expect` conditions that must hold at the end.
+- They run in `npm run bot` and in the test suite.
+- `npm run transcript` renders them as readable Markdown in `docs/playthroughs/`.
+- When content changes break a plan, either fix the content or update the plan on purpose.

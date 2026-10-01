@@ -6,7 +6,7 @@
   title: Winter at the Pell
   on_enter: [ { advance: { seasons: 1 } } ]
   text: |
-    {date}. Snow on the moat, ice on the trough, and the hall full of smoke from Martinmas to Candlemas.
+    Snow on the moat, ice on the trough, and the hall full of smoke from Martinmas to Candlemas.
 
     Winter is when a household learns. Sir Bertram Oakes takes the young men to the pell every morning before Mass, whatever the weather. Master Ranulf breaks the new horses in the covered ride. Father Benet keeps the lord's accounts and letters in a cold room over the chapel, and will let a boy sit in if he holds his tongue. [if track == levy]Will Cobb drills the archers in the barn and the yard and the snow.[else]Lady Ravell keeps her own hall, where young men learn to be tolerable company or are not invited back.[/if]
 
@@ -50,8 +50,7 @@
   title: Sir Hamon's Debts
   on_enter: [ { advance: { seasons: 2 } } ]
   text: |
-    {date}.
-
+    
     Sir Hamon owes money. Everyone in the household knows it except Sir Hamon, who knows it the way a man knows he will die: in principle, not today.
 
     This summer it becomes today. Master {npc.bertuccio_lanzi} of the Lanzi bank rides in from Wendham with a clerk and a letter. Forty pounds, borrowed against Ashby's wool. And there is the King's subsidy: Sir Hamon was named collector for the hundred last year. He collected it. He has not yet paid it over. When he looks for it, it is not all there.
@@ -122,8 +121,7 @@
   title: Sir Ancel's Cattle
   on_enter: [ { advance: { seasons: 2 } } ]
   text: |
-    {date}.
-
+    
     Brome Tower is three days north of Ravell, on the March, where the King's peace is a rumour. In June forty of Sir Ancel's cattle are driven off in the night, and his herdsman is found in the burn with his head stove in.
 
     Everyone knows who did it. Sir Godric Thorne holds the next manor down the valley and has been at law with Sir Ancel for eleven years over a mill. Sir Ancel says he will ride to Thorne's mill tonight and burn it with Thorne's miller inside.
@@ -199,7 +197,7 @@
   title: Twelfth Night
   on_enter: [ { advance: { seasons: 2 } } ]
   text: |
-    {date}. You are {age}.
+    You are {age}.
 
     Twelfth Night at Ravell Hall. The great hall is hung with green, there are minstrels from Wendham, and the Lord of Misrule is a fat cook in a paper crown. Everyone drinks too much. The rules are loosened, not lifted.
 

@@ -15,7 +15,7 @@
     - if: background == servant
       then: [ { queue: { event: c1q_family_servant, delay: { seasons: 12 }, earliest_chapter: ch1 } }, { assign: { suit.nell_laundress.status: known } } ]
   text: |
-    {date}. You are {age}, and you leave in the morning.
+    You are {age}, and you leave in the morning.
 
     [if track == squire_track]You go as a knight's boy, which is not yet a squire and is a long way from a knight. You will carry, clean, fetch, serve, and be hit.[elif track == household]You go as a groom in Sir Hamon's household. A groom can rise. Most do not.[else]You go north as an archer in Sir Ancel's company, at the bottom of the roll.[/if]
 

@@ -6,7 +6,7 @@
   title: The King at Ravell
   on_enter: [ { advance: { seasons: 4 } }, { meet: king_aldred }, { meet: osmund_carrow } ]
   text: |
-    {date}. You are {age}.
+    You are {age}.
 
     King Aldred comes to Ravell on his summer progress with three hundred people and eats the house bare in four days. He is thirty-four, thin, quick, with his mother's dark Valdrennish eyes. He talks about Valdrenne at every meal. The crown there is his by right, he says, through his mother, and the peers of Valdrenne gave it to a cousin because they were afraid of an Adalian king. He does not say what he means to do about it. Everyone at the high table knows.
 
@@ -27,7 +27,7 @@
           - { if: flag.ravell_favor, add: 1, label: Lord Ravell puts you forward }
           - { if: flag.c1_schemer, add: -1, label: the steward has a long memory }
       success:
-        text: On the third morning you hold the King's stirrup while he mounts for the hunt. He looks down and asks your name. Lord Ravell, beside him, adds something about the Leven ford. The King repeats your name, as if to keep it. Then he is gone, in a crowd of horses. It lasted the time it takes to say a paternoster. You will remember it all your life.
+        text: On the third morning you hold the King's stirrup while he mounts for the hunt. He looks down and asks your name. [if flag.c1_raid_distinguished]Lord Ravell, beside him, adds something about the Leven ford.[else]Lord Ravell, beside him, has to be reminded whose squire you are.[/if] The King repeats your name, as if to keep it. Then he is gone, in a crowd of horses. It lasted the time it takes to say a paternoster. You will remember it all your life.
         effects:
           - set: flag.c1_king_noticed
           - add: { rep.crown: 2, res.renown: 1 }
@@ -107,11 +107,10 @@
   title: The Ravell Tourney
   on_enter: [ { advance: { seasons: 1 } } ]
   text: |
-    {date}.
-
+    
     For the King's leaving, Lord Ravell holds a tourney in the water meadows. Jousts for the knights, a course for the squires, a melee on foot for anyone fool enough, a prize of a harness for the best squire, and a great deal of betting below the stands.
 
-    [if flag.c1_giles_enemy]Giles Marrick has entered everything. He is twenty now and will be knighted at Christmas. He has been telling everyone that he means to put the {background} in the mud before the King leaves.[else]Giles Marrick is entered in the squires' course. He nods to you, carefully, the way men nod to someone they have decided not to fight.[/if]
+    [if flag.c1_giles_enemy]Giles Marrick has entered everything. He is twenty now and will be knighted at Christmas. He has been telling everyone that he means to put the {origin} in the mud before the King leaves.[else]Giles Marrick is entered in the squires' course. He nods to you, carefully, the way men nod to someone they have decided not to fight.[/if]
 
     [if suit.isabel_sayer.status >= courted]Isabel Sayer is in the stands with Lady Ravell's women. She has a green sleeve. She has not given it to anyone yet.[/if]
   choices:
@@ -209,7 +208,7 @@
   title: Summer, Year {year}
   on_enter: [ { advance: { seasons: 3 } } ]
   text: |
-    {date}. You are {age}.
+    You are {age}.
 
     The King has gone south to Wendmere to ask the Moot for money. Rumour says he will get it, and that it will be spent across the Narrow Sea. Every knight in the shire is counting his horses. Every creditor in the shire is counting his knights.
 

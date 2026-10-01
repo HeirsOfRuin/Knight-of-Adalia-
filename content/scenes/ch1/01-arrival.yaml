@@ -6,7 +6,7 @@
   title: Ravell Hall
   checkpoint: true
   text: |
-    {date}. You are {age}.
+    You are {age}.
 
     Ravell Hall is a stone keep with a timber hall built against it, a moat that stinks in summer, and more people than your whole village: knights, squires, grooms, cooks, laundresses, clerks, priests, dogs. Lord Thurstan Ravell holds it from the King, and holds four knights' fees under him. Sir Hamon Darrell and Sir Ancel Brome are two of them.
 
@@ -50,8 +50,7 @@
   title: "[if track == squire_track]The High Table[elif track == household]The Stables[else]The Butts at Brome[/if]"
   on_enter: [ { advance: { seasons: 1 } } ]
   text: |
-    {date}.
-
+    
     [if track == squire_track]Midsummer feast. The Earl of Carrow's captain, Sir Walter Pryce, is at the high table with Lord Ravell, and your master is to serve the lord's own dish. That means you are. A swan, carved in its proper joints, laid on trenchers in the proper order, with the proper words. Giles Marrick has done it before. He has offered to help you, which means he will not.[elif track == household]Midsummer. Lord Ravell's guests have brought forty horses and the stables are full to the rafters. One of them belongs to Sir Walter Pryce, the Earl of Carrow's captain, and it is the best horse you have ever seen. It is also sick.[else]Midsummer on the March. Sir Ancel's company practises at the butts below Brome Tower every morning, and Will Cobb watches who shoots and who talks. Today Sir Ancel is watching too, with a stranger: Sir Walter Pryce, the Earl of Carrow's captain, who is buying archers for somebody's war.[/if]
   choices:
     - id: careful
@@ -126,11 +125,10 @@
   title: Giles Marrick
   on_enter: [ { advance: { seasons: 1 } }, { meet: giles_marrick } ]
   text: |
-    {date}.
-
+    
     [if station == squire]At Michaelmas your master named you his squire before the household. It means you are fed at the second table, carry his harness, sleep across his door when he travels, and are beaten by him rather than by grooms.[/if]
 
-    Giles Marrick is seventeen, the son of a Carrow knight, and he has decided you are a churl in a borrowed coat. [if track == squire_track]He calls you the {background} in front of the other squires. He has put your master's best harness in the moat and told the marshal you did it.[else]He calls you the {background} whenever he passes. Yesterday he had you whipped for insolence because you did not step out of the mud fast enough when he rode by.[/if]
+    Giles Marrick is seventeen, the son of a Carrow knight, and he has decided you are a churl in a borrowed coat. [if track == squire_track]He calls you the {origin} in front of the other squires. He has put your master's best harness in the moat and told the marshal you did it.[else]He calls you the {origin} whenever he passes. Yesterday he had you whipped for insolence because you did not step out of the mud fast enough when he rode by.[/if]
 
     The other squires watch to see what you do. [if rel.aymer_ravell.affection >= 3]Aymer Ravell catches your eye, and shrugs: your quarrel, not mine, unless you ask.[/if]
   choices:
@@ -208,7 +206,7 @@
       text: Stand the whole loft a cask of Gascon wine on Saint Michael's night.
       tags: [wealth]
       requires: [ res.coin >= 60 ]
-      text_after: Five shillings, and worth it. The loft drinks your health and then sings about you, not all of it kindly. By morning they have stopped calling you the {background}. Giles calls you the tradesman instead, but he says it to fewer people.
+      text_after: Five shillings, and worth it. The loft drinks your health and then sings about you, not all of it kindly. By morning they have stopped calling you the {origin}. Giles calls you the tradesman instead, but he says it to fewer people.
       effects:
         - set: flag.c1_bought_friends
         - add: { res.coin: -60, rep.knights: 1 }

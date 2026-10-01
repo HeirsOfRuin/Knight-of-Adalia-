@@ -5,7 +5,7 @@
   title: The Word from the March
   on_enter: [ { advance: { seasons: 2 } } ]
   text: |
-    {date}. You are {age}.
+    You are {age}.
 
     Black Ewan of Glenhallow has come over the border with eighty men. Steadings burning along the Leven, cattle driven north, a priest hanged from his own lychgate. Lord Ravell sends Sir Ancel north with forty horse and Will Cobb's sixty archers, and Sir Hamon with the Ravell banner, because a banner must be carried by somebody.
 
@@ -224,8 +224,7 @@
     - if: flag.c1_raid_distinguished
       then: [ { set: flag.ravell_favor }, { meet: thurstan_ravell }, { add: { rel.thurstan_ravell.respect: 2 } } ]
   text: |
-    {date}.
-
+    
     Lord Ravell meets the column at the gate. He counts the cattle, then the men, then the dead. One knight, Sir Hugh Wyck. Two archers. A groom nobody can name.
 
     [if flag.c1_raid_distinguished]He stops his horse beside you. "The ford," he says. "That was you." It is not a question. Afterwards, in the hall, he sends you a cup of his own wine from the high table, which every man in the hall sees.[elif flag.c1_raid_late]Nobody speaks to you about the ford. That is its own kind of speech.[else]Nobody singles you out. You are alive and in one piece, more or less, and that is not nothing.[/if]

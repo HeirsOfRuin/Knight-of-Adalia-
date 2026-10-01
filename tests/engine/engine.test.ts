@@ -141,3 +141,10 @@ describe('queued events with a chapter gate', () => {
     expect(c.scenes[after.scene]!.kind).toBe('pool');
   });
 });
+
+describe('mergeChanges', () => {
+  it('folds repeated numeric changes and drops ones that cancel out', async () => {
+    const { mergeChanges } = await import('../../src/engine/index');
+    expect(mergeChanges(['A +1', 'Gained: X', 'A +2', 'B −1', 'B +1'])).toEqual(['A +3', 'Gained: X']);
+  });
+});

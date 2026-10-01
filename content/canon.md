@@ -147,11 +147,51 @@ A single Church across all realms, under **the Pontiff**. For two generations th
 - **Father Anselm.** Parish priest of Ashby. Taught the reeve's son his letters alongside his father.
 - **Grey friars** preach in market squares, often against usury and taxes.
 
+## Ravell country (Chapters 1 and earlier)
+- **Ravell Hall.** Lord Thurstan Ravell's seat: a stone keep with a timber hall, a stinking moat, a tilt-yard, the chase, and Ravell village with its mill.
+- **Lord Ravell** holds four knights' fees. Two of them belong to the protagonist's masters:
+  - **Sir Hamon Darrell** of Ashby. Fifty-something, kind, careless with money, in debt to the Lanzi bank.
+  - **Sir Ancel Brome** of Brome Tower on the March. About forty, hard, poor, at feud with Sir Godric Thorne.
+- **The household**
+  - Lady Eleanor Ravell. Keeps the household's secret: the heir's real father.
+  - Aymer Ravell, the second son.
+  - Lady Maud de Lisle, Lord Ravell's ward and heiress of Lisle.
+  - Isabel Sayer, Lady Ravell's waiting-woman.
+  - Sir Bertram Oakes, master-at-arms.
+  - Master Ranulf, marshal.
+  - Father Benet, chaplain and clerk.
+  - Giles Marrick, a squire from a Carrow family.
+  - Will Cobb, serjeant of Sir Ancel's archers.
+- **Nearby**
+  - **Wyck.** Dame Joan Wyck, widowed at the Leven ford, and her stepson Ralph.
+  - **Thorne Hall.** Sir Godric Thorne.
+  - **Ambry.** The abbey of Austin canons and the nuns, a day away.
+- **Caldmoor border:** Black Ewan of Glenhallow and his nephew Coll. The **Leven** is the border river; its ford is the scene of the Ch1 raid.
+- **The Earl of Carrow's company:** Sir Walter Pryce, captain. Badge: the black boar.
+- **Carn Dubh.** A Caldmoor mill burned with people inside during the Marcher War. The archer background's father stood at its door.
+
+## Romance roster (DESIGN.md §11a)
+| # | Candidate | Introduced | Notes |
+|---|---|---|---|
+| 1 | Childhood attachment | Prologue | One per background: Mag Coker (reeve), Annot Dyer (burgess), Mariot Wood (archer), Nell the laundry girl (servant) |
+| 2 | Isabel Sayer | Ch1 | Waiting-woman, poor shire knight's fourth daughter. Her father has an offer from a widowed knight in Hollesby. |
+| 3 | Lady Maud de Lisle | Ch1 | Ravell's ward, then the King's if her petition succeeds. Otherwise betrothed to Gerard, the Earl of Carrow's younger son. |
+| 4 | Cecily Fuller | Ch1 | Wendham guild warden's daughter. Keeps the books. A Sarenzan factor has asked for her. |
+| 5 | Dame Joan Wyck | Ch1 (hidden) | Unlocked by bringing her husband's sword home from the Leven ford. |
+| 6 | A young noblewoman met at a victory feast | Ch2 | Provisional |
+| 7 | Sister of a Valdrennish captive | Ch2 (hidden) | Provisional |
+| 8 | A Sarenzan banker's daughter, of the Lanzi or Varesco house | Ch2 (hidden) | Provisional |
+| 9 | Widow of a Valdrennish castellan | Ch2 (hidden) | Provisional |
+| 10 | A neighbouring lord's daughter | Ch3 (arranged) | Provisional |
+| 11 | His liege's ward, offered as a reward | Ch3 (arranged) | Provisional |
+| 12 | A woman of royal blood who is out of favour | Ch2 seed, Ch4 (remarriage) | Provisional. The marriage route to the crown. |
+
 ## Low magic (rules for writers)
 - **Alchemy:** practised by a few physicians and charlatans. Results are uncertain, expensive and sometimes poisonous.
 - **Relics, pilgrim waters, charms:** common, cheap, and usually fake. A real one is indistinguishable from a fake one.
 - **Curses and omens:** they work through belief and coincidence as far as anyone can tell. The text never confirms a supernatural cause.
 - **Enchanted objects:** a handful in the whole world, each with a known price. Each is an item with a cost, never a general power.
+- **In Chapter 1:** Mother Rook's flask of Saint Ebba's water gives +1 on lethal checks, labelled "Saint Ebba's water, or your faith in it." The game never says which.
 
 ## Naming conventions
 | Realm | Style | Examples |

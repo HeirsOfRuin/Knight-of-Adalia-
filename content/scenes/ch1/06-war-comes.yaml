@@ -6,7 +6,7 @@
   title: The Claim
   on_enter: [ { advance: { seasons: 2 } } ]
   text: |
-    {date}. You are {age}.
+    You are {age}.
 
     At Christmas the heralds ride through every shire town in Adalia with the King's letters. Aldred, by the grace of God King of Adalia, is by right of his mother the true King of Valdrenne, and will take what is his. The Moot has granted a tenth and a fifteenth. Writs of array go out for archers. The great lords are to bring their companies to Saltcombe by Saint George's Day.
 
@@ -254,7 +254,7 @@
   title: Before the Ships
   on_enter: [ { advance: { seasons: 1 } } ]
   text: |
-    {date}. You are {age}. The army musters at Saltcombe in a week.
+    You are {age}. The army musters at Saltcombe in a week.
 
     There is time for one thing before you go. Perhaps two, if you do not sleep.
 
@@ -335,7 +335,7 @@
     - if: counter.tokens >= 2
       then: [ { set: flag.c1_two_tokens } ]
   text: |
-    {date}. You are {age}.
+    You are {age}.
 
     Saltcombe harbour is so full of ships that you could walk across it on their decks. Horses are being slung aboard in canvas with their legs kicking. Archers are counting arrows. A Sarenzan galley sits at the mouth of the harbour like a crow on a fence, waiting to see who wins.
 

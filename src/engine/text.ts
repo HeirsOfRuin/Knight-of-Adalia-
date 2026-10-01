@@ -51,7 +51,7 @@ export function parseText(src: string): Node[] {
   return root;
 }
 
-const SPECIAL_VARS = ['name', 'date', 'coin', 'station', 'background', 'season', 'year', 'age'];
+const SPECIAL_VARS = ['name', 'date', 'coin', 'station', 'background', 'origin', 'season', 'year', 'age'];
 
 function varValue(name: string, state: GameState, content: ContentBundle): string {
   const reg = content.registry;
@@ -61,6 +61,7 @@ function varValue(name: string, state: GameState, content: ContentBundle): strin
     case 'coin': return formatCoin(state.res.coin ?? 0);
     case 'station': return capitalise(state.station);
     case 'background': return content.backgrounds[state.background]?.label ?? state.background;
+    case 'origin': return (content.backgrounds[state.background]?.label ?? state.background).toLowerCase();
     case 'season': return String(getValue(state, content, 'calendar.season'));
     case 'year': return String(getValue(state, content, 'calendar.year'));
     case 'age': return String(getValue(state, content, 'age'));
@@ -95,6 +96,7 @@ export function renderText(src: string, state: GameState, content: ContentBundle
     .replace(/[ \t]+\n/g, '\n')
     .replace(/\n{3,}/g, '\n\n')
     .replace(/ {2,}/g, ' ')
+    .replace(/^ +/gm, '')
     .trim();
 }
 

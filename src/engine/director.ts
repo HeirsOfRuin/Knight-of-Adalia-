@@ -5,6 +5,7 @@ import type { ContentBundle, Next, Scene, SimpleNext } from '../content/schema';
 import type { GameState } from './state';
 import { test } from './conditions';
 import { applyEffects } from './effects';
+import { renderText } from './text';
 import type { RngCursor } from './rng';
 
 export class DirectorError extends Error {}
@@ -95,6 +96,7 @@ export function enterScene(state: GameState, content: ContentBundle, scene: Scen
   if (scene.kind === 'spine' || scene.kind === 'ending') state.chapter = scene.chapter; // interludes keep the current chapter
   state.seen[scene.id] = state.time;
   if (scene.checkpoint) state.checkpoint = scene.id;
-  applyEffects(state, content, scene.on_enter, { scene: scene.id, choice: '(enter)', choiceText: '', changes });
+  const title = scene.title ? renderText(scene.title, state, content) : scene.id;
+  applyEffects(state, content, scene.on_enter, { scene: scene.id, choice: '(enter)', choiceText: title, changes });
   if (scene.kind === 'ending' && !state.ended) state.ended = { ending: scene.ending ?? 'unknown' };
 }

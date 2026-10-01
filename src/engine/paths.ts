@@ -125,6 +125,12 @@ export function ordinalFor(content: ContentBundle, path: string): string[] | und
   return undefined;
 }
 
+export function npcLabel(content: ContentBundle, id: string): string {
+  const d = content.registry.npcs[id];
+  if (!d) return id;
+  return d.title && !d.title.startsWith('the ') ? `${d.title} ${d.name}` : d.name;
+}
+
 /** Human label for a path, used in requirement labels and journal changes. */
 export function labelFor(content: ContentBundle, path: string): string {
   const [ns, a, b] = path.split('.');
@@ -134,8 +140,8 @@ export function labelFor(content: ContentBundle, path: string): string {
     case 'attr': case 'skill': return cap(a!);
     case 'rep': return reg.factions[a!]?.label ?? cap(a!);
     case 'res': return a === 'coin' ? 'Coin' : cap(a!);
-    case 'rel': return `${reg.npcs[a!]?.name ?? a}'s ${b}`;
-    case 'favor': return `Favor with ${reg.npcs[a!]?.name ?? a}`;
+    case 'rel': return `${npcLabel(content, a!)}'s ${b}`;
+    case 'favor': return `Favor with ${npcLabel(content, a!)}`;
     case 'trait': return reg.traits[a!]?.label ?? cap(a!);
     case 'item': return reg.items[a!]?.label ?? cap(a!);
     case 'injury': return reg.injuries[a!]?.label ?? cap(a!);

@@ -155,6 +155,26 @@ export function view(content: ContentBundle, state: GameState, narrator: Narrati
 
 // ---- Choose ---------------------------------------------------------------
 
+/** Folds repeated numeric changes ("Respect +1", "Respect +1") into one, keeping order. */
+export function mergeChanges(changes: string[]): string[] {
+  const out: string[] = [];
+  const idx = new Map<string, number>();
+  const totals = new Map<string, number>();
+  for (const c of changes) {
+    const m = /^(.*) ([+\u2212])(\d+)$/.exec(c);
+    if (!m) { out.push(c); continue; }
+    const label = m[1]!;
+    const n = (m[2] === '+' ? 1 : -1) * Number(m[3]);
+    if (idx.has(label)) totals.set(label, totals.get(label)! + n);
+    else { idx.set(label, out.length); totals.set(label, n); out.push(c); }
+  }
+  for (const [label, i] of idx) {
+    const t = totals.get(label)!;
+    out[i] = t === 0 ? '' : `${label} ${t > 0 ? '+' : '\u2212'}${Math.abs(t)}`;
+  }
+  return out.filter((c) => c !== '');
+}
+
 export interface ChooseOptions {
   /** debug: force the outcome of this choice's check */
   force?: CheckResult;
@@ -207,15 +227,16 @@ export function choose(content: ContentBundle, prev: GameState, choiceId: string
     changes: [...changes],
     cause,
   };
+  entry.changes = mergeChanges(entry.changes);
   state.journal.push(entry);
-  state.lastOutcome = { text: outcomeText, changes: [...changes], check };
+  state.lastOutcome = { text: outcomeText, changes: mergeChanges(changes), check };
 
   if (!died) {
     const next = outcome.next ?? choice.next;
     if (next === undefined) throw new EngineError(`${scene.id}/${choice.id}: no next scene`);
     const enterChanges: string[] = [];
     transition(state, content, next, rng, enterChanges);
-    if (enterChanges.length) state.lastOutcome.changes.push(...enterChanges);
+    if (enterChanges.length) state.lastOutcome.changes = mergeChanges([...state.lastOutcome.changes, ...enterChanges]);
   }
   state.rng = rng.state;
   return { state, check };

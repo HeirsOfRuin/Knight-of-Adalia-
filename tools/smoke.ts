@@ -30,15 +30,15 @@ try {
     await page.getByRole('radio', { name: /Reeve's son/ }).click();
     await page.screenshot({ path: join(OUT, `${label}-2-newgame.png`), fullPage: true });
     await page.getByRole('button', { name: 'Begin' }).click();
-    await page.getByRole('heading', { name: 'Lammas Fair' }).waitFor();
+    await page.getByRole('heading', { name: 'Lady Day Reckoning' }).waitFor();
     await page.screenshot({ path: join(OUT, `${label}-3-scene.png`), fullPage: true });
 
-    // Choose the literate option (reeve can read), then whatever is first in the interlude.
-    await page.getByRole('button', { name: /bridle-maker's mark/ }).click();
-    await page.locator('.outcome').waitFor();
+    // Copy the tallies (no check), then share bread in the wet year.
+    await page.getByRole('button', { name: /Copy the tallies/ }).click();
+    await page.getByRole('heading', { name: 'The Wet Year' }).waitFor();
     await page.screenshot({ path: join(OUT, `${label}-4-after-choice.png`), fullPage: true });
-    await page.locator('.choice:not([disabled])').first().click();
-    await page.getByRole('heading', { name: 'The Road Home' }).waitFor();
+    await page.getByRole('button', { name: /Take your share of the bread/ }).click();
+    await page.getByRole('heading', { name: 'What a Boy Learns' }).waitFor();
 
     await page.getByRole('button', { name: 'Status' }).click();
     await page.screenshot({ path: join(OUT, `${label}-5-status.png`), fullPage: true });
@@ -53,15 +53,15 @@ try {
     const savePath = join(OUT, `${label}-save.json`);
     await download.saveAs(savePath);
     const exported = JSON.parse(readFileSync(savePath, 'utf8'));
-    if (exported.state.scene !== 't_evening') fail(`${label}: exported save at ${exported.state.scene}`);
+    if (exported.state.scene !== 'p_learning') fail(`${label}: exported save at ${exported.state.scene}`);
 
     await page.reload();
     await page.getByRole('button', { name: /Continue/ }).click();
-    await page.getByRole('heading', { name: 'The Road Home' }).waitFor();
-    await page.locator('.choice:not([disabled])').first().click(); // advance to winter (or the lane)
+    await page.getByRole('heading', { name: 'What a Boy Learns' }).waitFor();
+    await page.locator('.choice:not([disabled])').first().click(); // advance past the export point
     await page.getByRole('button', { name: 'Menu' }).click();
     await page.locator('.menu input[type=file]').setInputFiles(savePath);
-    await page.getByRole('heading', { name: 'The Road Home' }).waitFor();
+    await page.getByRole('heading', { name: 'What a Boy Learns' }).waitFor();
     const restored = await page.evaluate(() => JSON.parse(localStorage.getItem('knight-of-adalia.autosave.v1')!).state);
     if (JSON.stringify(restored) !== JSON.stringify(exported.state)) fail(`${label}: imported state differs from export`);
 

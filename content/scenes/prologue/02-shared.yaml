@@ -6,7 +6,7 @@
   title: The Wet Year
   on_enter: [ { advance: { seasons: 9 } } ]
   text: |
-    {date}. You are {age}.
+    You are {age}.
 
     It has rained since Whitsun. The barley lies flat in the fields and sprouts in the ear. Sheep cough in the folds. By Lammas, bread costs three times what it did, and the bread is half bean flour and grit.
 
@@ -79,7 +79,7 @@
   title: What a Boy Learns
   on_enter: [ { advance: { seasons: 4 } } ]
   text: |
-    {date}. You are {age}. The harvest came in at last, thin but enough.
+    You are {age}. The harvest came in at last, thin but enough.
 
     A boy of your sort has perhaps four years before he is a man and the shape of his life is set. There is time to get good at one thing, if someone will teach it.
 
@@ -137,7 +137,7 @@
   title: "[if background == reeve]Wat Coker[elif background == burgess]Jocelin Tanner[elif background == archer]Gib Shawe[else]Aymer Ravell[/if]"
   on_enter: [ { advance: { seasons: 7 } } ]
   text: |
-    {date}. You are {age}.
+    You are {age}.
 
     [if background == reeve]Wat Coker is fifteen and big for it. He says your father stole his family's holding and he says it at the ale-stake where people can hear. Tonight he is waiting at the churchyard wall with two friends, and he has a cudgel.[elif background == burgess]Jocelin Tanner's father and yours are fighting over a seat on the town council. Today a silver spoon went missing from the guild feast and was found in your satchel. You did not put it there. Jocelin was sitting next to you. The guild wardens want an answer by Vespers.[elif background == archer]The bailiff is choosing one boy from the parish to be trained with the shire archers and paid for it. It is you or Gib Shawe, the bailiff's nephew. On Sunday the bailiff will watch you both shoot. Everyone knows how it will go.[else]Aymer Ravell is fourteen and has guests: two squires from Carrow's household. To impress them he has told you to fetch his falcon, and then told them you stole it, for the joke. They are laughing. One of them is not joking.[/if]
   choices:
@@ -222,7 +222,7 @@
   title: Fourteen
   on_enter: [ { advance: { seasons: 6 } } ]
   text: |
-    {date}. You are {age}.
+    You are {age}.
 
     Fourteen is old enough to be bound apprentice, or put to the plough, or sent for a soldier. It is the age when a boy of your sort is either taken into somebody's service or left where he was born.
 

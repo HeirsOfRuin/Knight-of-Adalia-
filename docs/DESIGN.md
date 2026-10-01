@@ -1,4 +1,6 @@
-# DESIGN — Phase 0 proposal (pending approval)
+# DESIGN — Knight of Adalia
+
+Status: Phase 0 approved 2026-10-01. Decisions log at the bottom.
 
 ## Context
 The repo is empty (no commits). This is the Phase 0 deliverable: an architecture proposal, content schema, file layout, background table, and scope pushback. Nothing gets built until you approve it. Once approved, I commit this proposal as `/docs/DESIGN.md` and start Phase 1.
@@ -186,7 +188,7 @@ Every flag, NPC, trait, injury, item, faction and ending is declared here. The v
 | Station | Typical entry requirement |
 |---|---|
 | Commoner | Start |
-| Retainer | Patronage Gate. Sub-tracks: `squire_track`, `household` (lower), `levy` (lower) |
+| Retainer | Patronage Gate. Sub-tracks: `squire_track`, `household` (lower), `levy` (lower), `man_at_arms` (Ch1 exit, requires a patron) |
 | Squire | Taken as squire by a knight. Courtesy ≥2, Arms ≥2, a sponsor's favor |
 | Knight | Dubbing: peacetime ceremony, battlefield deed, or purchase/patronage. Needs means to keep a horse and harness |
 | Lord | Holds land in fee: grant, marriage, purchase, or conquest |
@@ -225,7 +227,13 @@ Prologue choices adjust the odds for each route.
 | Archer | **Deed:** shooting at the muster, noticed by a captain | **Favor:** the knight who owes the father his life | **Competence:** a hunting service | — |
 | Servant | **Competence:** horses or hounds noticed by a guest knight | **Connection:** the lord's son asks for him | **Deed:** saves someone during a hunt accident | **Leverage:** uses the household secret (risky) |
 
-**Failing the gate** puts him on the household or levy track. Ch1 has at least 2 routes from there to squire. If all of them fail, he enters the Ch2 war as a man-at-arms with a captain's sworn promise of sponsorship. This counts as "knight-in-waiting" and keeps the battlefield-knighting route open.
+**Failing the gate** puts him on the household or levy track. Ch1 offers at least 2 routes from there to squire.
+
+**Entering the Ch2 war (decided).** Nobody goes to war as a squire. At the end of Ch1 he is one of:
+- **Knight** — dubbed in peacetime before the war.
+- **Man-at-arms with patronage** — raised from squire (or from the lower track) into a patron's company, with the patron's standing promise of a chance at knighthood in the field. The battlefield-knighting route is open to him in Ch2.
+
+A man-at-arms without a patron is not a valid Ch2 entry; Ch1 must guarantee patronage on the fallback route (a captain who takes him on, at a cost).
 
 ## 8. Endings (computed in Ch5 from accumulated state)
 1. **Crowned** — kingship by marriage claim, by conquest with recognition, or by a kingmaker bargain. It needs at least two hard gates together, for example a royal-blood marriage, Great Lord station, and Crown or Great Nobles support.
@@ -283,7 +291,7 @@ It reports:
    This check only becomes meaningful in Phase 4+. Until Ch5 exists it reports "pending".
 2. **The prose is the bottleneck, not the code.** At full scope that is roughly 250+ scenes. For Phase 2, the prologue will use background-specific openings plus shared middle scenes that have variant text and options, as you anticipated. Ch1 will target the low end of the range: about 30 scenes plus about 10 pool events.
 3. **Retinue, Estate, War and Politics** are interfaces only in Phase 1. Each gets implemented in the chapter that first needs it. Building all of them up front would mean tuning systems before any content exists to test them against.
-4. **"Knight-in-waiting" needs a definition.** I'm proposing: a Squire, or a man-at-arms holding a sworn sponsorship promise. Without the second case, a lower-track player could arrive at the war ineligible, which conflicts with the rule that he must reach the Ch2 war as a knight or knight-in-waiting.
+4. **"Knight-in-waiting"** — resolved: see §7, "Entering the Ch2 war".
 5. **Romance and marriage** — moved to its own section (§11a) after your feedback.
 
 ## 11a. Romance and marriage
@@ -355,12 +363,12 @@ A typical run should meet 5–7 candidates and have 2–4 real marriage options 
 - Each candidate must be reachable by at least one background.
 - The Crowned ending's marriage route must be reachable through remarriage.
 
-## 12. Assumptions (correct any that are wrong)
+## 12. Assumptions (all confirmed)
 - The player can name the protagonist. A default name is supplied, along with a random option.
 - Currency is pounds, shillings and pence (12d = 1s, 20s = £1), stored internally in pence. A laborer earns about 2d a day.
 - Years are counted as regnal years, for example "the 14th year of King [X]".
 - "Lord" in the reputation list means the protagonist's own liege. It is tracked as a relationship, not a faction.
-- Romance candidates are women. The protagonist is defined as one man in a 14th-century analog, and marriage is the mechanism for alliances and heirs. Tell me if you want other options.
+- Romance candidates are women only (confirmed).
 - No external fonts or CDN dependencies, so the game works fully offline.
 
 ## 13. After approval — Phase 1 plan
@@ -377,3 +385,12 @@ A typical run should meet 5–7 candidates and have 2–4 real marriage options 
   - load the page;
   - make choices;
   - export a save, reload, import it, and confirm the state matches.
+
+## Decisions log
+| Date | Decision |
+|---|---|
+| 2026-10-01 | Phase 0 approved as written, plus the items below. |
+| 2026-10-01 | Romance: every chapter, aimed upward; marriage only from Ch3; ~12 candidates, no run sees all (§11a). |
+| 2026-10-01 | Ch2 entry: Knight (peacetime dubbing) or man-at-arms with patronage and a chance at knighthood in the war. No squires at war. |
+| 2026-10-01 | Romance candidates are women only. |
+| 2026-10-01 | Player names protagonist; £sd currency stored in pence; regnal years. |

@@ -1,7 +1,7 @@
 // Scene transitions: spine links, pool interludes, delayed (queued) events.
 // Interludes use a return stack: a pool or queued scene ends with "@return"
 // and play resumes where it was going.
-import type { ContentBundle, Next, Scene } from '../content/schema';
+import type { ContentBundle, Next, Scene, SimpleNext } from '../content/schema';
 import type { GameState } from './state';
 import { test } from './conditions';
 import { applyEffects } from './effects';
@@ -55,7 +55,15 @@ function takeDueQueued(state: GameState, content: ContentBundle) {
 }
 
 /** Moves the (cloned) state to the scene `next` resolves to. Mutates state. */
-export function transition(state: GameState, content: ContentBundle, next: Next, rng: RngCursor, changes: string[]): void {
+export function resolveSwitch(state: GameState, content: ContentBundle, next: Next): SimpleNext {
+  if (typeof next === 'object' && 'switch' in next) {
+    return next.switch.find((b) => test(b.if, state, content))?.go ?? next.default;
+  }
+  return next;
+}
+
+export function transition(state: GameState, content: ContentBundle, rawNext: Next, rng: RngCursor, changes: string[]): void {
+  const next = resolveSwitch(state, content, rawNext);
   let target: string | undefined;
   if (typeof next === 'object') {
     const picks = drawPool(state, content, next.pool, next.count, rng);

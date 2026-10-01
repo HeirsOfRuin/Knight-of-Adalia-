@@ -43,6 +43,7 @@ export function fromSave(raw: unknown, content: ContentBundle): LoadResult {
 
   // Content may have changed since the save was written.
   for (const id of Object.keys(content.registry.npcs)) state.npcs[id] ??= newNpcState(content, id);
+  state.aliases ??= {};
   if (!content.scenes[state.scene]) {
     const fallback = state.checkpoint && content.scenes[state.checkpoint] ? state.checkpoint : content.backgrounds[state.background]?.start_scene;
     if (!fallback) throw new SaveError(`scene ${state.scene} no longer exists and no checkpoint is available`);

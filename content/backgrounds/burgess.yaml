@@ -3,14 +3,16 @@ label: Burgess's son
 summary: "Your father sits on the Wendham town council and sells wool to Sarenzan ships. The house smells of fleece and ink."
 asset: "Some money of your own, guild and merchant contacts, a head for trade."
 liability: "Knights see a tradesman. The town and your family expect money and loyalty in return."
-start_scene: t_market
+start_scene: p_burgess_open
 start_age: 8
 attributes: { strength: 2, agility: 2, endurance: 2, wits: 2, presence: 3 }
 skills: { trade: 2, diplomacy: 1, learning: 1, intrigue: 1, courtesy: 1 }
 traits: [literate_vernacular]
 coin: 240           # £1
 flags: [family_debt_sarenza]
+aliases: { rival: jocelin_tanner }
 relationships:
+  annot_dyer: { affection: 1, respect: 0 }
   ralf_mercer: { affection: 3, respect: 1 }
   osbert_fuller: { affection: 1, respect: 1 }
   jocelin_tanner: { affection: -3, respect: 1 }

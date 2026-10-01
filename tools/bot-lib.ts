@@ -1,9 +1,14 @@
 // Playthrough bot. Plays the engine headless with a policy and reports how
 // each run ended. It asserts progress: a run that never advances is a failure,
 // not a pass.
+import { readFileSync, readdirSync } from 'node:fs';
+import { join } from 'node:path';
+import YAML from 'yaml';
 import type { ContentBundle } from '../src/content/schema';
 import { newGame, view, choose, type GameState } from '../src/engine/index';
 import { RngCursor, seedRng } from '../src/engine/rng';
+import { test as testCond } from '../src/engine/conditions';
+import type { CheckResult } from '../src/engine/checks';
 
 export type Policy =
   | { kind: 'random' }
@@ -21,6 +26,8 @@ export interface RunResult {
   seasons: number;
   scenes: string[];
   path: string[];
+  /** summary of the final state, for balance reports */
+  final?: Record<string, string>;
 }
 
 const SOFTLOCK_STEPS = 60;
@@ -59,8 +66,11 @@ export function playOnce(content: ContentBundle, background: string, seed: numbe
     }
     let choice = avail[pick.int(avail.length)]!;
     if (policy.kind === 'tags') {
+      // a goal-seeking player takes his preferred approach, and otherwise does not simply give up
       const preferred = avail.filter((c) => c.tags.some((t) => policy.prefer.includes(t)));
-      if (preferred.length) choice = preferred[pick.int(preferred.length)]!;
+      const notYield = avail.filter((c) => !c.tags.includes('yield'));
+      const pool = preferred.length ? preferred : notYield.length ? notYield : avail;
+      choice = pool[pick.int(pool.length)]!;
     } else if (policy.kind === 'script' && script.length) {
       const want = script.shift()!;
       const found = avail.find((c) => c.id === want);
@@ -91,8 +101,22 @@ export function playOnce(content: ContentBundle, background: string, seed: numbe
     }
   }
   res.seasons = state.time;
+  res.final = describeFinal(state);
   res.scenes = [...visited];
   return res;
+}
+
+/** Coarse facts about a finished run, tallied per background in the report. */
+export function describeFinal(s: GameState): Record<string, string> {
+  const suits = Object.entries(s.suits).filter(([, x]) => x.status === 'courted' || x.pledge !== 'none');
+  return {
+    gate: s.flags.p_lower_track ? 'lower track' : 'squire track',
+    exit: s.ended?.ending === 'death' ? 'dead' : s.station === 'knight' ? 'knight' : s.track === 'man_at_arms' ? 'man-at-arms' : `${s.station}/${s.track ?? '-'}`,
+    master: s.aliases.master ?? 'none',
+    'lost first master': s.flags.c1_lost_master ? 'yes' : 'no',
+    'courtships open': String(suits.length),
+    renown: s.res.renown! >= 6 ? '6+' : s.res.renown! >= 3 ? '3-5' : '0-2',
+  };
 }
 
 export interface BotReport {
@@ -102,12 +126,13 @@ export interface BotReport {
     endings: Record<string, number>;
     failures: Record<string, number>;
     avgSteps: number;
-    coverage: number; // fraction of all scenes visited by at least one run
+    coverage: number; // fraction of scenes reachable for this background visited by at least one run
     unvisited: string[];
+    finals: Record<string, Record<string, number>>;
   }>;
 }
 
-export function summarise(content: ContentBundle, runs: RunResult[]): BotReport {
+export function summarise(content: ContentBundle, runs: RunResult[], reachable?: Record<string, Set<string>>): BotReport {
   const byBackground: BotReport['byBackground'] = {};
   const all = Object.keys(content.scenes);
   for (const bg of Object.keys(content.backgrounds)) {
@@ -116,7 +141,12 @@ export function summarise(content: ContentBundle, runs: RunResult[]): BotReport 
     const endings: Record<string, number> = {};
     const failures: Record<string, number> = {};
     const seen = new Set<string>();
+    const finals: Record<string, Record<string, number>> = {};
     for (const r of rs) {
+      if (r.outcome === 'ending') for (const [k, v] of Object.entries(r.final ?? {})) {
+        finals[k] ??= {};
+        finals[k][v] = (finals[k][v] ?? 0) + 1;
+      }
       r.scenes.forEach((s) => seen.add(s));
       if (r.outcome === 'ending') endings[r.ending!] = (endings[r.ending!] ?? 0) + 1;
       else failures[r.outcome] = (failures[r.outcome] ?? 0) + 1;
@@ -126,8 +156,9 @@ export function summarise(content: ContentBundle, runs: RunResult[]): BotReport 
       endings,
       failures,
       avgSteps: rs.reduce((s, r) => s + r.steps, 0) / rs.length,
-      coverage: seen.size / all.length,
-      unvisited: all.filter((s) => !seen.has(s)),
+      coverage: (reachable?.[bg] ? [...reachable[bg]!].filter((x) => seen.has(x)).length / reachable[bg]!.size : seen.size / all.length),
+      unvisited: (reachable?.[bg] ? [...reachable[bg]!] : all).filter((s) => !seen.has(s)),
+      finals,
     };
   }
   return { runs, byBackground };
@@ -140,3 +171,73 @@ export const DEFAULT_POLICIES: Policy[] = [
   { kind: 'tags', prefer: ['diplomacy', 'allies'] },
   { kind: 'tags', prefer: ['wealth', 'learning'] },
 ];
+
+// ---- Scripted plans ---------------------------------------------------------
+// A plan names the choice to take in each scene ("choice" or "choice!success"
+// to force the check). Scenes not in the plan (pool and queued interludes)
+// take the first available non-lethal choice. After the run, every `expect`
+// condition must hold.
+
+export interface Plan {
+  name: string;
+  background: string;
+  seed: number;
+  role?: string;
+  steps: Record<string, string>;
+  ending: string;
+  expect: string[];
+}
+
+export interface PlanResult {
+  plan: string;
+  ok: boolean;
+  problems: string[];
+  path: string[];
+  state: GameState;
+}
+
+export function playPlan(content: ContentBundle, plan: Plan, maxSteps = 500): PlanResult {
+  let state = newGame(content, { background: plan.background, seed: plan.seed, name: 'Plan', role: plan.role });
+  const problems: string[] = [];
+  const path: string[] = [];
+  const used = new Set<string>();
+  for (let i = 0; i < maxSteps && !state.ended; i++) {
+    const v = view(content, state);
+    const avail = v.choices.filter((c) => c.available);
+    if (!avail.length) { problems.push(`dead end in ${state.scene}`); break; }
+    const step = plan.steps[state.scene];
+    let id: string;
+    let force: CheckResult | undefined;
+    if (step) {
+      const [cid, f] = step.split('!');
+      id = cid!;
+      force = f as CheckResult | undefined;
+      if (!avail.some((c) => c.id === id)) {
+        problems.push(`${state.scene}: planned choice "${id}" not available (have ${avail.map((c) => c.id).join(', ')})`);
+        break;
+      }
+      used.add(state.scene);
+    } else {
+      id = (avail.find((c) => !c.lethal) ?? avail[0]!).id;
+    }
+    path.push(`${state.scene}/${id}${force ? `!${force}` : ''}`);
+    state = choose(content, state, id, { force }).state;
+  }
+  if (!state.ended) problems.push('did not finish');
+  else if (state.ended.ending !== plan.ending) problems.push(`ended in "${state.ended.ending}" (${state.ended.cause ?? ''}), expected "${plan.ending}"`);
+  for (const s of Object.keys(plan.steps)) if (!used.has(s)) problems.push(`plan step for ${s} was never reached`);
+  for (const e of plan.expect) {
+    try {
+      if (!testCond(e, state, content)) problems.push(`expectation failed: ${e}`);
+    } catch (err) {
+      problems.push(`bad expectation "${e}": ${(err as Error).message}`);
+    }
+  }
+  return { plan: plan.name, ok: problems.length === 0, problems, path, state };
+}
+
+export const PLAN_DIR = join(import.meta.dirname, 'plans');
+
+export function loadPlans(dir = PLAN_DIR): Plan[] {
+  return readdirSync(dir).filter((f) => f.endsWith('.yaml')).sort().map((f) => YAML.parse(readFileSync(join(dir, f), 'utf8')) as Plan);
+}

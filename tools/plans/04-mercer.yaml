@@ -1,0 +1,43 @@
+# The Mercer: burgess's son who buys his place, spends money to make friends,
+# is wounded at the ford, loses his master to the commissioners, and sails as
+# a man-at-arms in the Earl of Carrow's company.
+name: The Mercer
+background: burgess
+seed: 9
+steps:
+  p_burgess_open: clerk
+  p_hungry_year: work
+  p_learning: manners
+  p_rival: endure
+  p_gate_router: go
+  p_gate_burgess: purchase
+  p_leaving: family
+  c1_arrival: kneel!failure
+  c1_duties: plain!failure
+  c1_winter: letters
+  c1_trouble_hamon: lanzi!failure
+  c1_christmas: cecily!success
+  c1_muster: go
+  c1_raid: charge!partial
+  c1_raid_return: duties
+  c1_progress: king!failure
+  c1_tourney: bet!success
+  c1_crisis_router: go
+  c1_crisis_hamon: stand
+  c1_crisis_hamon_fall: on
+  c1_new_patron: pryce
+  c1_war_comes: ready
+  c1_means: none
+  c1_man_at_arms: haggle!success
+  c1_farewell: cecily
+ending: ch1_complete
+expect:
+  - station == retainer
+  - track == man_at_arms
+  - flag.c1_sponsor_promise
+  - flag.c1_better_terms
+  - alias.master == walter_pryce
+  - flag.c1_hamon_fell
+  - counter.family_debt >= 1
+  - suit.cecily_fuller.pledge == token
+  - trait.literate_vernacular

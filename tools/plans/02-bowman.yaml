@@ -1,0 +1,42 @@
+# The Bowman: archer's son who fails the gate on purpose, goes north with the
+# levy, is raised to squire for the Leven ford, and knighted by Lord Ravell.
+name: The Bowman
+background: archer
+seed: 5
+steps:
+  p_archer_open: shoot
+  p_hungry_year: share
+  p_learning: arms
+  p_rival: fight!success
+  p_gate_router: go
+  p_gate_archer: levy
+  p_gate_failed: levy
+  p_leaving: promise
+  c1_arrival: work
+  c1_duties: careful!success
+  c1_squires: fight!success
+  c1_winter: hall
+  c1_trouble_ancel: track!success
+  c1_christmas: knights!success
+  c1_muster: go
+  c1_raid: archers!success
+  c1_raid_return: squire
+  c1_progress: pryce!success
+  c1_tourney: melee!success
+  c1_crisis_router: go
+  c1_crisis_ancel: proof!success
+  c1_war_comes: ready
+  c1_means: ravell
+  c1_knighting: ravell
+  c1_dubbing: friends
+  c1_farewell: home
+ending: ch1_complete
+expect:
+  - station == knight
+  - flag.p_lower_track
+  - flag.c1_raised_at_ford
+  - flag.c1_dubbed_by_ravell
+  - flag.strong_patron
+  - flag.c1_thorne_taken
+  - npc.ancel_brome.alive
+  - suit.mariot_wood.status >= courted

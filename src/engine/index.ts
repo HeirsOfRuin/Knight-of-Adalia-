@@ -72,6 +72,7 @@ export function newGame(content: ContentBundle, opts: NewGameOptions): GameState
     flags,
     counters: {},
     npcs,
+    aliases: { ...bg.aliases },
     suits: {},
     queue: [],
     seen: {},
@@ -141,7 +142,7 @@ export function view(content: ContentBundle, state: GameState, narrator: Narrati
       });
   return {
     sceneId: scene.id,
-    title: scene.title,
+    title: scene.title ? narrator.renderPassage(scene.title, state, content) : undefined,
     date: describeDate(state, content),
     text: narrator.renderPassage(src, state, content),
     outcome: state.lastOutcome,
@@ -200,7 +201,7 @@ export function choose(content: ContentBundle, prev: GameState, choiceId: string
   const entry: JournalEntry = {
     at: prev.time,
     scene: scene.id,
-    sceneTitle: scene.title,
+    sceneTitle: scene.title ? narrator.renderPassage(scene.title, state, content) : undefined,
     choice: choiceText,
     outcome: outcomeText,
     changes: [...changes],

@@ -20,7 +20,7 @@ export const CondInputSchema: z.ZodType<CondInput> = z.lazy(() =>
 
 // ---- Effects --------------------------------------------------------------
 const Delay = z.object({ seasons: z.number().int().min(0) }).strict();
-export const EffectSchema = z.union([
+const BaseEffectSchema = z.union([
   z.object({ set: z.string() }).strict(), // set: flag.x
   z.object({ clear: z.string() }).strict(), // clear: flag.x
   z.object({ add: z.record(z.string(), z.number()) }).strict(), // numeric deltas
@@ -30,8 +30,9 @@ export const EffectSchema = z.union([
   z.object({ injury: Id }).strict(),
   z.object({ heal: Id }).strict(),
   z.object({ station: Id, track: Id.optional() }).strict(),
-  z.object({ meet: Id }).strict(),
-  z.object({ kill: Id }).strict(),
+  z.object({ meet: z.string().regex(/^@?[a-z][a-z0-9_]*$/) }).strict(),
+  z.object({ kill: z.string().regex(/^@?[a-z][a-z0-9_]*$/) }).strict(),
+  z.object({ alias: z.record(Id, Id) }).strict(), // alias: { master: hamon_darrell }
   z.object({
     queue: z.object({ event: Id, delay: Delay, earliest_chapter: z.string().optional() }).strict(), // chapter id
   }).strict(),
@@ -39,7 +40,16 @@ export const EffectSchema = z.union([
   z.object({ journal: z.string() }).strict(),
   z.object({ die: z.string() }).strict(), // only legal inside lethal choices (validator)
 ]);
-export type Effect = z.infer<typeof EffectSchema>;
+export type BaseEffect = z.infer<typeof BaseEffectSchema>;
+/** Conditional effect: { if: cond, then: [...], else: [...] } */
+export type CondEffect = { if: CondInput; then: Effect[]; else?: Effect[] };
+export type Effect = BaseEffect | CondEffect;
+export const EffectSchema: z.ZodType<Effect> = z.lazy(() =>
+  z.union([
+    BaseEffectSchema,
+    z.object({ if: CondInputSchema, then: z.array(EffectSchema), else: z.array(EffectSchema).optional() }).strict(),
+  ]),
+);
 
 // ---- Navigation -----------------------------------------------------------
 // next: a scene id, "@return" (resume after an interlude), or a pool draw.
@@ -48,7 +58,14 @@ export const PoolNextSchema = z.object({
   count: z.number().int().min(1).max(3).default(1),
   then: Id,
 }).strict();
-export const NextSchema = z.union([z.string(), PoolNextSchema]);
+const SimpleNextSchema = z.union([z.string(), PoolNextSchema]);
+// switch: first branch whose condition holds, else default.
+export const SwitchNextSchema = z.object({
+  switch: z.array(z.object({ if: CondInputSchema, go: SimpleNextSchema }).strict()).min(1),
+  default: SimpleNextSchema,
+}).strict();
+export const NextSchema = z.union([SimpleNextSchema, SwitchNextSchema]);
+export type SimpleNext = z.infer<typeof SimpleNextSchema>;
 export type Next = z.infer<typeof NextSchema>;
 
 export const OutcomeSchema = z.object({
@@ -110,7 +127,12 @@ export const SceneSchema = z.object({
 export type Scene = z.infer<typeof SceneSchema>;
 
 // ---- Registries -----------------------------------------------------------
-export const FlagDefSchema = z.object({ description: z.string(), hidden: z.boolean().default(false) }).strict();
+export const FlagDefSchema = z.object({
+  description: z.string(),
+  hidden: z.boolean().default(false),
+  // chapter that will read this flag; suppresses "never read" until that chapter exists
+  later: z.string().optional(),
+}).strict();
 export const NpcDefSchema = z.object({
   name: z.string(),
   title: z.string().optional(),
@@ -188,6 +210,7 @@ export const BackgroundSchema = z.object({
   flags: z.array(Id).default([]),
   // one flag from each list is chosen by the seeded RNG at game start
   random_flags: z.array(z.array(Id).min(2)).default([]),
+  aliases: z.record(Id, Id).default({}), // starting aliases, e.g. rival: wat_coker
   relationships: z.record(Id, z.object({ affection: z.number().int().default(0), respect: z.number().int().default(0) }).strict()).default({}),
   roles: z.record(Id, z.object({ label: z.string(), skills: StatBlock, flags: z.array(Id).default([]) }).strict()).optional(),
   prejudice: z.object({ base: z.number().int(), knights: z.number().int().default(0) }).strict(),
@@ -205,6 +228,8 @@ export const ConfigSchema = z.object({
   tracks: z.array(Id),
   seasons: z.array(Id).length(4),
   chapters: z.array(z.string()),
+  // named NPC slots ("@master") whose occupant is decided during play
+  aliases: z.array(Id).default([]),
 }).strict();
 export type Config = z.infer<typeof ConfigSchema>;
 

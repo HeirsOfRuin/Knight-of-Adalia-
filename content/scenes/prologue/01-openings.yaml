@@ -1,0 +1,175 @@
+# Prologue, scene 1: one opening per background. Age 8, spring of year 9.
+# Each sets a family relationship, a skill lean and a hidden-flag consequence.
+
+- id: p_reeve_open
+  chapter: prologue
+  title: Lady Day Reckoning
+  checkpoint: true
+  text: |
+    Lady Day at Ashby. The winter stores are counted before the steward eats.
+
+    Your father lays the tally sticks on the trestle in the tithe barn, notch side up, one for each quarter of barley, oats and beans. You have watched him cut them all winter. Master {npc.gervase_holt} sits across from him with his roll and his cough and a clerk who sniffs.
+
+    They read the oats twice. The steward's roll says forty quarters went into the barn at Michaelmas. You count the sticks under your breath. [if flag.father_skims]The sticks say forty too, but you watched your father split two of them in December, and you know what was on them before.[else]The sticks say forty-two. The roll is short by two quarters, and Master Gervase is not looking at it.[/if]
+
+    Your father does not look at you. He knows you can count.
+  choices:
+    - id: speak
+      text: Say what you counted, out loud, in front of the clerk.
+      tags: [learning]
+      text_after: |
+        [if flag.father_skims]The steward has the split sticks fetched from the woodpile. Your father is fined four shillings in the manor court and loses his place at the lord's Christmas table. He does not beat you. He stops speaking to you, which is worse.[else]Master Gervase laughs and says the boy has sharp eyes. He corrects the roll. Later he asks your father, quietly, whether the boy is often in the barn. Your father says no.[/if]
+      effects:
+        - set: flag.p_spoke_up
+        - if: flag.father_skims
+          then: [ { add: { rel.piers_reeve.affection: -3, rel.gervase_holt.respect: 2, rep.honor: 2 } } ]
+          else: [ { add: { rel.gervase_holt.respect: 1, rel.gervase_holt.affection: -2, rep.honor: 1 } } ]
+      next: p_hungry_year
+    - id: quiet
+      text: Keep your mouth shut and tell your father afterwards.
+      tags: [allies]
+      text_after: |
+        That night he sits you on the bench by the fire and asks what you saw. You tell him. He nods for a long time.
+        [if flag.father_skims]"A man has to eat," he says. "So does his son." He gives you a penny. You understand what it is for.[else]"Then we both know," he says. "And the steward knows we know, or he will soon. Keep that close."[/if]
+      effects:
+        - set: flag.p_kept_quiet
+        - add: { rel.piers_reeve.affection: 2, rel.piers_reeve.respect: 1 }
+        - if: flag.father_skims
+          then: [ { add: { res.coin: 1, rep.ruthlessness: 1 } } ]
+      next: p_hungry_year
+    - id: copy
+      text: Say nothing. Copy the tallies onto Father Anselm's scrap of parchment that night.
+      tags: [cunning, learning]
+      text_after: |
+        It takes three candle-ends and you burn your thumb on the last. Father Anselm asks no questions about why a reeve's boy wants a page of figures. He keeps the parchment for you, folded inside his psalter.
+      effects:
+        - set: flag.p_kept_copy
+        - item: +tally_copy
+        - add: { skill.learning: 1, rel.father_anselm.affection: 1 }
+        - meet: father_anselm
+      next: p_hungry_year
+
+- id: p_burgess_open
+  chapter: prologue
+  title: The Counting-House
+  checkpoint: true
+  text: |
+    Wendham, the week after Easter. Fleeces stacked to the rafters, and the whole house smelling of grease and wet wool.
+
+    A Sarenzan in a black gown comes to your father's counting-house with a clerk and a locked box. Master {npc.bertuccio_lanzi}. He bows to your mother as if she were a countess, and your father sends you out of the room before the door is shut.
+
+    The door does not quite shut. Through the crack you hear figures you do not understand and one word you do: owed.
+
+    In the yard, Jocelin Tanner and the tanners' boys are going down to the wharf to throw stones at the Sarenzan ship. Your father's clerk is at his desk by the stair, doing sums for nobody.
+  choices:
+    - id: listen
+      text: Stay by the door and listen.
+      tags: [cunning]
+      text_after: |
+        Three hundred marks, borrowed in your grandfather's time against the wool of years not yet shorn. The Lanzi bank wants the next payment by Michaelmas. Your father promises it in a voice you have not heard him use. When the Sarenzan leaves he looks straight at you on the stair and says nothing at all.
+      effects:
+        - set: flag.p_knows_debt
+        - add: { skill.intrigue: 1, rel.ralf_mercer.respect: -1 }
+      next: p_hungry_year
+    - id: wharf
+      text: Go to the wharf with Jocelin and the tanners' boys.
+      tags: [martial]
+      text_after: |
+        Jocelin throws first and hits a sailor. The sailors come down the gangplank with ropes' ends. You are the slowest because your shoes are the best, and you take the beating for the lot of them. Jocelin laughs about it for a month. The other boys stop calling you the wool-boy.
+      effects:
+        - set: flag.p_wharf_gang
+        - add: { attr.endurance: 1, rep.commons: 1, rel.jocelin_tanner.respect: 2 }
+      next: p_hungry_year
+    - id: clerk
+      text: Sit with the clerk and learn his sums.
+      tags: [learning, wealth]
+      text_after: |
+        He shows you the abacus and the way to reckon a sack of wool in Sarenzan money and in Adalian, and the difference between the two, which is where the profit lives. By evening you can do it faster than he can. He does not like that much.
+      effects:
+        - set: flag.p_counting_house
+        - add: { skill.trade: 1, rel.ralf_mercer.affection: 1 }
+      next: p_hungry_year
+
+- id: p_archer_open
+  chapter: prologue
+  title: The Butts
+  checkpoint: true
+  text: |
+    Sunday after Mass, at the butts behind the church. Every man between sixteen and sixty is meant to shoot. Most of them drink.
+
+    Your father shoots alone at the far end, from one leg, because the other knee will not bear him. He still puts six in the clout from two hundred paces. Nobody watches him any more.
+
+    A man from his old company has walked over from the next parish. {npc.will_cobb}, with a grey beard and a new shirt. He and your father drink from the same jug and do not speak of the war, until Cobb says something about "the mill at Carn Dubh" and your father puts the jug down and tells you to go and fetch arrows.
+  choices:
+    - id: ask
+      text: Ask your father what happened at Carn Dubh.
+      tags: [cunning]
+      text_after: |
+        Not that day. Not for a week. Then one night, drunk, he tells you. The mill was full of people when the captain ordered it fired. He was one of the archers on the door. "We were told they were fighting men," he says. "Some were." He makes you swear never to say the name to anyone. He is ashamed that you know, and glad.
+      effects:
+        - set: flag.p_knows_war_secret
+        - add: { rel.hugh_fletcher.affection: 1, rel.hugh_fletcher.respect: -1 }
+      next: p_hungry_year
+    - id: shoot
+      text: Fetch the arrows, then shoot until your fingers bleed.
+      tags: [martial]
+      text_after: |
+        Your father's old bow is too heavy for you. You draw it anyway, a hand's breadth, then two. By dark the string has cut your fingers to the meat and your back is on fire. He binds your fingers with his own linen and says you will be crooked like him by twenty. He sounds pleased.
+      effects:
+        - set: flag.p_bloody_hands
+        - add: { skill.archery: 1, rel.hugh_fletcher.affection: 2 }
+      next: p_hungry_year
+    - id: cobb
+      text: Follow Will Cobb to the alehouse and listen to his stories.
+      tags: [allies]
+      text_after: |
+        Cobb tells stories for anyone who buys him ale, and you have no money, so he tells them for free. Harrow Ford. The Caldmoor spears coming on like a hedge in a gale. Your father, before his knee, the best shot in the company. He tells you where the serjeants drink and which captains pay. He leaves out Carn Dubh.
+      effects:
+        - set: flag.p_cobb_friend
+        - meet: will_cobb
+        - add: { rel.will_cobb.affection: 3, skill.tactics: 1 }
+      next: p_hungry_year
+
+- id: p_servant_open
+  chapter: prologue
+  title: The Destrier
+  checkpoint: true
+  text: |
+    Ravell Hall, the stable yard, a raw spring morning.
+
+    [if role == horse_master]You have mucked out the great horses since you could carry a fork.[elif role == huntsman]You sleep in the kennels with the lymers, and you smell like them.[else]You keep the mews clean and the hawks' jesses greased.[/if] Your mother dresses Lady Ravell. You eat in the kitchen with the scullions and know more about the family than the family thinks. You know, for one thing, who the heir's real father is. You heard it through a privy wall two years ago and have told no one.
+
+    Aymer Ravell is nine, a year older than you, and the lord's second son. He wants to sit on his father's destrier, Bayard, a stallion that has killed one groom. He wants you to saddle it. Master Ranulf is at the far end of the yard.
+  choices:
+    - id: saddle
+      text: Saddle Bayard for him and hold the head.
+      tags: [allies]
+      check: { attr: agility, skill: riding, difficulty: 3 }
+      success:
+        text: Bayard stands like a church while Aymer sits on him for a count of fifty. Aymer slides off grinning and calls you his man. Master Ranulf sees all of it and says nothing, which is how you know he is angry.
+        effects: [ { set: flag.p_saddled_destrier }, { add: { rel.aymer_ravell.affection: 3, rel.ranulf_marshal.respect: -1 } } ]
+        next: p_hungry_year
+      failure:
+        text: Bayard throws his head and Aymer comes off backwards into the midden. He is not hurt. Your mother is called to the lady's chamber and comes back with her face set. You do not eat that night.
+        effects: [ { set: flag.p_saddled_destrier }, { add: { rel.aymer_ravell.affection: -1, rel.agnes_tirewoman.affection: -2 } } ]
+        next: p_hungry_year
+    - id: refuse
+      text: Refuse him, and fetch Master Ranulf.
+      tags: [diplomacy]
+      text_after: Master Ranulf leads Aymer back to the house by the ear, which only a man of forty years' service could do. Aymer does not forget it. Neither does Ranulf, who starts teaching you properly from that week.
+      effects:
+        - set: flag.p_told_ranulf
+        - add: { rel.ranulf_marshal.respect: 2, rel.ranulf_marshal.affection: 1, rel.aymer_ravell.affection: -2 }
+        - if: role == horse_master
+          then: [ { add: { skill.riding: 1 } } ]
+          else: [ { add: { skill.woodcraft: 1 } } ]
+      next: p_hungry_year
+    - id: blame
+      text: Saddle him, and tell Aymer you will take the blame if you are caught.
+      tags: [martial]
+      text_after: You are caught. Master Ranulf beats you with a stirrup leather in front of the grooms. Aymer watches from the gate and says nothing. That night he brings you a honey cake from the high table and says he owes you. He means it, for now.
+      effects:
+        - set: flag.p_took_blame
+        - injury: bruised_ribs
+        - add: { rel.aymer_ravell.affection: 2, rel.aymer_ravell.respect: 2, rep.honor: 1 }
+      next: p_hungry_year

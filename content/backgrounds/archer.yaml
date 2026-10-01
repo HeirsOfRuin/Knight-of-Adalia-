@@ -3,14 +3,16 @@ label: Veteran archer's son
 summary: "Your father drew a bow in the old king's war and came home with a bad knee and a pension that is rarely paid."
 asset: "Your father's yew bow, a hard body, and the men of his old company."
 liability: "No letters, no money, no patron."
-start_scene: t_market
+start_scene: p_archer_open
 start_age: 8
 attributes: { strength: 3, agility: 3, endurance: 3, wits: 1, presence: 1 }
 skills: { archery: 3, woodcraft: 2, arms: 1 }
 items: [yew_bow]
 coin: 6
 flags: [father_war_secret]
+aliases: { rival: gib_shawe }
 relationships:
+  mariot_wood: { affection: 1, respect: 0 }
   hugh_fletcher: { affection: 5, respect: 3 }
   ancel_brome: { affection: 1, respect: 1 }
   gib_shawe: { affection: -3, respect: 0 }

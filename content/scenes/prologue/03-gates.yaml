@@ -1,0 +1,453 @@
+# The Patronage Gate. Each background has 3+ routes into a knight's service.
+# Prologue choices adjust the odds through mods and requirements.
+# Success: retainer on the squire track. Failure: the lower track.
+# @master is set to the knight he will serve in Chapter 1.
+
+- id: p_gate_reeve
+  chapter: prologue
+  title: The Harvest Reckoning
+  text: |
+    Sir Hamon Darrell comes to Ashby at Michaelmas with four horses, two hounds and no squire. His last one went home to marry. He is past fifty, grey and heavy, kind to dogs, careless with money. He sits in the hall while the steward reads him the year.
+
+    Lord Ravell is to visit at Martinmas with thirty mouths. Master {npc.gervase_holt} is reckoning what the manor must lay in. You can see from the bench by the door that he has doubled the bread and forgotten the horses.
+
+    Your father stands behind the steward with his hat in his hands. [if rel.piers_reeve.affection >= 3]He catches your eye and tips his head toward Sir Hamon: now, if ever.[else]He does not look at you. Things have not been easy between you since the reckoning.[/if]
+  choices:
+    - id: figures
+      text: Step forward and show Sir Hamon where the reckoning is wrong.
+      tags: [learning]
+      check:
+        attr: wits
+        skill: stewardship
+        difficulty: 4
+        audience: knights
+        mods:
+          - { if: flag.p_trained_letters, add: 1, label: your letters }
+          - { if: flag.p_worked_hungry, add: 1, label: the steward knows your head }
+          - { if: flag.p_kept_copy, add: 1, label: your careful habits }
+          - { if: flag.p_thief_caught, add: -2, label: the white sheet at the church door }
+      success:
+        text: Sir Hamon makes you do it again, slowly, with the clerk checking. Then he laughs until he coughs and says he has been robbed by stewards for thirty years and it is time he had a boy who could count. Master Gervase smiles with his mouth only.
+        effects:
+          - station: retainer
+            track: squire_track
+          - alias: { master: hamon_darrell }
+          - add: { rel.hamon_darrell.respect: 2, rel.gervase_holt.affection: -2 }
+          - set: flag.p_gate_competence
+        next: p_leaving
+      failure:
+        text: You get the oats wrong in front of everyone. Sir Hamon is kind about it, which is worse than if he had laughed. The steward does not need to say anything.
+        effects: [ { add: { rel.gervase_holt.affection: -1 } } ]
+        next: p_gate_failed
+    - id: debt
+      text: Let your father call in what Master Gervase owes him.
+      tags: [allies]
+      requires: [ rel.piers_reeve.affection >= 3 ]
+      label: "Requires: your father's goodwill"
+      check:
+        attr: presence
+        skill: diplomacy
+        difficulty: 2
+        mods:
+          - { if: [ flag.steward_skims, { any: [ flag.p_kept_quiet, flag.p_kept_copy ] } ], add: 2, label: the steward knows what you know }
+          - { if: flag.p_spoke_up, add: -1, label: the steward has not forgotten the barn }
+      success:
+        text: Your father and the steward walk in the orchard for a long time. That evening Master Gervase tells Sir Hamon there is a likely boy at the reeve's house. Whatever your father traded for it, he does not say. He never mentions it again.
+        effects:
+          - station: retainer
+            track: squire_track
+          - alias: { master: hamon_darrell }
+          - add: { favor.gervase_holt: -1, rel.piers_reeve.respect: 1 }
+          - set: flag.p_gate_debt
+        next: p_leaving
+      failure:
+        text: Whatever the steward owed your father, he decides he does not owe it now. Your father comes back from the orchard red to the ears.
+        effects: [ { add: { rel.piers_reeve.affection: -1 } } ]
+        next: p_gate_failed
+    - id: deed
+      text: "Wait for a chance to be seen. [if flag.p_trained_arms]You are quick on your feet now.[/if]"
+      tags: [martial]
+      warn: The chance, when it comes, is a fire.
+      check:
+        attr: endurance
+        skill: arms
+        difficulty: 3
+        mods:
+          - { if: flag.p_trained_arms, add: 1, label: your training }
+          - { if: flag.p_shared_bread, add: 1, label: the village runs to help you }
+      success:
+        text: The tithe barn catches during the harvest supper. You are first to the doors and you get Sir Hamon's horses out before the roof goes, two of them screaming. Your hands blister to the wrist. Sir Hamon says a boy who goes into a fire for another man's horses will go into worse for his master. He takes you before the week is out.
+        effects:
+          - station: retainer
+            track: squire_track
+          - alias: { master: hamon_darrell }
+          - injury: burned_hands
+          - add: { rel.hamon_darrell.affection: 2, res.renown: 1, rep.commons: 1 }
+          - set: flag.p_gate_deed
+        next: p_leaving
+      partial:
+        text: The tithe barn catches during the harvest supper. You get one horse out. The other dies, and you nearly do with it. Sir Hamon visits you in your father's house, looks at your hands, and says he will take you if you can hold a bridle by Christmas. You can, just.
+        effects:
+          - station: retainer
+            track: squire_track
+          - alias: { master: hamon_darrell }
+          - injury: burned_hands
+          - add: { rel.hamon_darrell.affection: 1 }
+          - set: flag.p_gate_deed
+        next: p_leaving
+      failure:
+        text: The tithe barn catches during the harvest supper and you run at it like everyone else. The smoke beats you back. Other men get the horses out. You get burned hands and nothing else.
+        effects: [ { injury: burned_hands } ]
+        next: p_gate_failed
+    - id: wait
+      text: Do nothing. Sir Hamon will choose whom he chooses.
+      tags: [yield]
+      text_after: Sir Hamon rides away after Martinmas without a squire, or with one from somewhere else. You hear later that he asked after you, once.
+      next: p_gate_failed
+
+- id: p_gate_burgess
+  chapter: prologue
+  title: A Place Bought or Begged
+  text: |
+    Your father has done the sums. A place in a knight's household costs money, or favour, or both. He has a little of each.
+
+    Sir Hamon Darrell owes the Wendham wool merchants six pounds for fleeces he sold twice. He needs a squire and cannot afford one. Master {npc.osbert_fuller}, warden of the guild, dines with Lord Ravell's steward once a year, and this year it is Thursday. And there is your own purse, which you have kept since you were eight. [if res.coin >= 240]It holds {coin}.[else]It holds {coin}, which is not enough for anything.[/if]
+
+    Your mother says you are too good for knights. Your father tells her that is the point.
+  choices:
+    - id: purchase
+      text: Pay Sir Hamon's price yourself, a pound down and the rest from your father.
+      tags: [wealth]
+      requires: [ res.coin >= 240 ]
+      text_after: Sir Hamon takes the money the way gentlemen take money, without looking at it. Your father finds the other five pounds from somewhere. Later you learn where. It was the Lanzi bank, against next year's clip.
+      effects:
+        - station: retainer
+          track: squire_track
+        - alias: { master: hamon_darrell }
+        - add: { res.coin: -240, rel.hamon_darrell.respect: -1, counter.family_debt: 1 }
+        - set: flag.p_gate_purchase
+      next: p_leaving
+    - id: settle
+      text: Help your father put it to Sir Hamon. His debt forgiven, for your place.
+      tags: [wealth, diplomacy]
+      check:
+        attr: presence
+        skill: trade
+        difficulty: 3
+        audience: knights
+        mods:
+          - { if: flag.p_counting_house, add: 1, label: you know the figures cold }
+          - { if: flag.p_trained_courtesy, add: 1, label: your manners }
+          - { if: flag.p_rival_beaten, add: -1, label: the Tanners talk against you }
+      success:
+        text: You do the talking, because your father cannot keep the contempt out of his voice and you can. Sir Hamon agrees, slowly, like a man selling a horse he loves. He will not forget that he was bought. Neither will the other squires.
+        effects:
+          - station: retainer
+            track: squire_track
+          - alias: { master: hamon_darrell }
+          - add: { rel.hamon_darrell.affection: -1, rel.ralf_mercer.respect: 2 }
+          - set: flag.p_gate_debt
+        next: p_leaving
+      failure:
+        text: Sir Hamon says he will pay his debts in his own time and does not sell his household to tradesmen. He says it pleasantly. Your father's face goes white.
+        effects: [ { add: { rel.ralf_mercer.affection: -1, rep.knights: -1 } } ]
+        next: p_gate_failed
+    - id: osbert
+      text: Ask Master Osbert Fuller to speak for you to Lord Ravell's steward.
+      tags: [allies]
+      requires: [ rel.osbert_fuller.affection >= 1 ]
+      label: "Requires: Master Osbert's goodwill"
+      check:
+        attr: presence
+        skill: diplomacy
+        difficulty: 3
+        audience: nobles
+        mods:
+          - { if: flag.p_trained_letters, add: 1, label: you write the letter yourself }
+          - { if: rep.merchants >= 2, add: 1, label: the guild's good opinion }
+      success:
+        text: Master Osbert's daughter Cecily writes out the letter for him, because her hand is better, and gives you a look over it that you think about for a week. Lord Ravell's steward places you in the household of Sir Ancel Brome, a Marcher knight who needs a boy and does not care where he comes from.
+        effects:
+          - station: retainer
+            track: squire_track
+          - alias: { master: ancel_brome }
+          - meet: osbert_fuller
+          - meet: cecily_fuller
+          - assign: { suit.cecily_fuller.status: known }
+          - add: { suit.cecily_fuller.regard: 1, rel.osbert_fuller.affection: 1 }
+          - set: flag.p_gate_connection
+        next: p_leaving
+      failure:
+        text: The steward reads the letter, says Lord Ravell has boys enough, and asks after the price of wool.
+        effects: [ { meet: osbert_fuller } ]
+        next: p_gate_failed
+    - id: wait
+      text: Tell your father you will make your own way, and wait.
+      tags: [yield]
+      text_after: Your father says nothing for two days. Then he says that if you want to make your own way, Lord Ravell's household is hiring.
+      next: p_gate_failed
+
+- id: p_gate_archer
+  chapter: prologue
+  title: The Muster at Wendham
+  text: |
+    The muster is on the common outside Wendham. Three hundred men in a field, most of them with bows they have not drawn since last year. Clerks with rolls. A fat priest blessing everyone. Sir Ancel Brome sits his horse at the end of the line: a lean man of forty with a Marcher face, burned dark, missing half an ear.
+
+    [if flag.p_rival_beaten]Gib Shawe is there with the bailiff, and does not look at you.[elif flag.p_rival_peace]Gib Shawe is there, and nods to you.[else]Gib Shawe is there with the bailiff, wearing a new jerkin.[/if]
+
+    Your father is leaning on his stick by the clerks' table. [if rel.hugh_fletcher.affection >= 4]He has been watching Sir Ancel all morning. They have not spoken yet.[/if]
+  choices:
+    - id: shoot
+      text: Get into the shooting, and shoot where Sir Ancel can see.
+      tags: [martial]
+      check:
+        attr: agility
+        skill: archery
+        difficulty: 5
+        mods:
+          - { if: flag.p_bloody_hands, add: 1, label: years at the butts }
+          - { if: injury.bruised_ribs, add: -1, label: your ribs }
+      success:
+        text: Twelve arrows at two hundred paces. Ten in the clout. Sir Ancel rides over and asks whose boy you are. When you tell him, he looks across at your father for a long moment. "Hugh Fletcher's," he says. "Then you'll do."
+        effects:
+          - station: retainer
+            track: squire_track
+          - alias: { master: ancel_brome }
+          - add: { res.renown: 1, rel.ancel_brome.respect: 2 }
+          - set: flag.p_gate_deed
+        next: p_leaving
+      failure:
+        text: You shoot well, which is not enough on a field of three hundred. Sir Ancel's eyes go past you to a man who has brought his own horse.
+        next: p_gate_failed
+    - id: favor
+      text: Let your father go to Sir Ancel and remind him of Harrow Ford.
+      tags: [allies]
+      requires: [ rel.hugh_fletcher.affection >= 4 ]
+      label: "Requires: your father's willingness"
+      check:
+        attr: presence
+        skill: courtesy
+        difficulty: 2
+        audience: knights
+        mods:
+          - { if: flag.p_cobb_friend, add: 2, label: Will Cobb vouches for you }
+          - { if: flag.p_trained_courtesy, add: 1, label: you know how to stand before a knight }
+          - { if: flag.p_knows_war_secret, add: 1, label: you know what lies between them }
+      success:
+        text: Sir Ancel gets down from his horse to speak to your father, which knights do not do. Whatever passed between them at Harrow Ford, it is still there. He looks you over like a horse he did not want to buy and says you start Monday.
+        effects:
+          - station: retainer
+            track: squire_track
+          - alias: { master: ancel_brome }
+          - add: { favor.ancel_brome: -1, rel.ancel_brome.affection: 1 }
+          - set: flag.p_gate_debt
+        next: p_leaving
+      failure:
+        text: Sir Ancel listens to your father, gives him a shilling, and asks him not to beg in front of the men. Your father throws the shilling in the ditch on the way home. You go back for it later.
+        effects: [ { add: { res.coin: 12, rel.hugh_fletcher.affection: -1 } } ]
+        next: p_gate_failed
+    - id: hunt
+      text: Find the Ravell huntsmen at the edge of the field and offer yourself as a lymerer for the autumn hunting.
+      tags: [cunning]
+      check:
+        attr: wits
+        skill: woodcraft
+        difficulty: 3
+        mods:
+          - { if: flag.p_poached, add: 1, label: you know the chase better than they do }
+          - { if: flag.p_trained_field, add: 1, label: your field training }
+          - { if: flag.p_poacher_caught, add: -2, label: the forester remembers you }
+      success:
+        text: You track a hart for Sir Hamon Darrell three days running and bring it to bay in the Ravell chase. Sir Hamon, who has no squire and no sense with money, takes you on because you are cheap and know where the deer are.
+        effects:
+          - station: retainer
+            track: squire_track
+          - alias: { master: hamon_darrell }
+          - add: { rel.hamon_darrell.affection: 2 }
+          - set: flag.p_gate_competence
+        next: p_leaving
+      failure:
+        text: The huntsmen have boys of their own, and better shoes.
+        next: p_gate_failed
+    - id: levy
+      text: Put your mark on the levy roll with the others and take what comes.
+      tags: [yield]
+      text_after: The clerk writes your name for you. You are a shire archer now, for what that pays.
+      next: p_gate_failed
+
+- id: p_gate_servant
+  chapter: prologue
+  title: The Autumn Hunting
+  text: |
+    The Ravell household fills for the autumn hunting: knights, their wives, their hounds, their quarrels. Sir Ancel Brome comes down from the March with a lame horse and a bad temper. Sir Hamon Darrell comes from Ashby with neither horse nor money enough.
+
+    This is the year your mother has said you must be placed above the stables or not at all. Lady Ravell is watching you more closely than she used to. [if flag.knows_household_secret]You wonder sometimes whether she guesses what you know.[/if]
+
+    [if rel.aymer_ravell.affection >= 2]Aymer is to go as squire to Sir Hamon in the spring. He has said, twice, that he wants you with him.[else]Aymer is to go as squire to Sir Hamon in the spring. He has not mentioned you.[/if]
+  choices:
+    - id: horses
+      text: Get Sir Ancel's lame horse sound before he leaves.
+      tags: [martial]
+      visible_if: [ role == horse_master ]
+      check:
+        attr: agility
+        skill: riding
+        difficulty: 4
+        mods: [ { if: flag.p_told_ranulf, add: 1, label: Master Ranulf's teaching } ]
+      success:
+        text: A stone bruise, badly shod. You pare it, poultice it, and walk the horse an hour every morning before Prime. On the fifth day Sir Ancel rides it out and back and asks who did the work. Master Ranulf tells him. Sir Ancel needs a boy who can keep horses alive on the March.
+        effects:
+          - station: retainer
+            track: squire_track
+          - alias: { master: ancel_brome }
+          - add: { rel.ancel_brome.respect: 2, rel.ranulf_marshal.affection: 1 }
+          - set: flag.p_gate_competence
+        next: p_leaving
+      failure:
+        text: The horse goes lame again on the sixth day. Sir Ancel blames the farrier, then you.
+        next: p_gate_failed
+    - id: hounds
+      text: Show Sir Ancel what the Ravell hounds and hawks can do in your hands.
+      tags: [cunning]
+      visible_if: [ role != horse_master ]
+      check:
+        attr: wits
+        skill: woodcraft
+        difficulty: 4
+        mods: [ { if: flag.p_told_ranulf, add: 1, label: Master Ranulf's teaching } ]
+      success:
+        text: "[if role == huntsman]Your lymer holds the line through a stream and a sheepfold, and the hart is brought to bay before Terce.[else]The tiercel you trained takes a heron at the first flight, in front of everyone.[/if] Sir Ancel asks Master Ranulf for the boy. Master Ranulf says the boy is worth more than he is going to be paid. Sir Ancel says that is true of everyone on the March."
+        effects:
+          - station: retainer
+            track: squire_track
+          - alias: { master: ancel_brome }
+          - add: { rel.ancel_brome.respect: 2 }
+          - set: flag.p_gate_competence
+        next: p_leaving
+      failure:
+        text: The hounds overrun the line and the guests ride home in the rain with nothing.
+        next: p_gate_failed
+    - id: aymer
+      text: Ask Aymer to ask his father for you, as his fellow squire.
+      tags: [allies]
+      requires: [ rel.aymer_ravell.affection >= 2 ]
+      label: "Requires: Aymer's friendship"
+      check:
+        attr: presence
+        skill: courtesy
+        difficulty: 3
+        audience: nobles
+        mods:
+          - { if: flag.p_took_blame, add: 2, label: Aymer owes you }
+          - { if: flag.p_trained_courtesy, add: 1, label: your manners }
+      success:
+        text: Lord Ravell looks at you as if he has never seen you before, though you have poured his wine for four years. "The tirewoman's boy," he says. "Well. Hamon needs two, and Aymer needs someone who will tell him no." So it is done, between one course and the next.
+        effects:
+          - station: retainer
+            track: squire_track
+          - alias: { master: hamon_darrell }
+          - add: { rel.aymer_ravell.affection: 1, rel.thurstan_ravell.respect: 1 }
+          - meet: thurstan_ravell
+          - set: flag.p_gate_connection
+        next: p_leaving
+      failure:
+        text: Lord Ravell says the household has pages enough, and that his son should choose his friends with more care. Aymer does not raise it again.
+        effects: [ { add: { rel.aymer_ravell.affection: -1 } } ]
+        next: p_gate_failed
+    - id: boar
+      text: Go with the hunt on the boar day, on foot, with a spear.
+      tags: [martial]
+      warn: Boar hunting kills men every year.
+      check:
+        attr: strength
+        skill: arms
+        difficulty: 4
+        mods:
+          - { if: flag.p_trained_arms, add: 1, label: Sir Bertram's pell }
+          - { if: flag.p_trained_field, add: 1, label: you know boar }
+      success:
+        text: The boar breaks from the thicket and Sir Hamon's horse goes down under it. You get your spear into the beast behind the shoulder and hold it there while it tries to reach you up the shaft. Sir Hamon gets up from the mud and says he owes you his life. He says it in front of Lord Ravell.
+        effects:
+          - station: retainer
+            track: squire_track
+          - alias: { master: hamon_darrell }
+          - add: { res.renown: 2, rel.hamon_darrell.affection: 3, rel.thurstan_ravell.respect: 1 }
+          - set: flag.p_gate_deed
+        next: p_leaving
+      partial:
+        text: You get the spear in, and the boar gets its tusk in you. Sir Hamon is alive. You are carried back to the hall on a hurdle. He comes to see you while you are fevered and swears you will be his squire if you live. You live.
+        effects:
+          - station: retainer
+            track: squire_track
+          - alias: { master: hamon_darrell }
+          - injury: gored_thigh
+          - add: { res.renown: 1, rel.hamon_darrell.affection: 2 }
+          - set: flag.p_gate_deed
+        next: p_leaving
+      failure:
+        text: The boar breaks the wrong way. You are knocked flat, and the tusk opens your leg from knee to hip. Other men kill it. You spend the winter learning to walk again.
+        effects: [ { injury: gored_thigh } ]
+        next: p_gate_failed
+    - id: secret
+      text: Go to Lady Ravell alone, and tell her what you heard through the privy wall.
+      tags: [cunning]
+      visible_if: [ flag.knows_household_secret ]
+      check:
+        attr: wits
+        skill: intrigue
+        difficulty: 3
+        audience: nobles
+      success:
+        text: She hears you out without moving. Then she asks what you want. You tell her. A week later Sir Ancel Brome is asked to take a boy from the household to the March, a long way from the hall. Lady Ravell never looks at you again if she can help it. Your mother does not know why.
+        effects:
+          - station: retainer
+            track: squire_track
+          - alias: { master: ancel_brome }
+          - add: { rel.eleanor_ravell.affection: -6, rel.eleanor_ravell.respect: 2, rep.ruthlessness: 2 }
+          - meet: eleanor_ravell
+          - set: flag.p_used_secret
+        next: p_leaving
+      failure:
+        text: She hears you out. Then she calls the steward. Your mother is dismissed from her service that afternoon for raising a liar. You are put in the stables and told you are lucky not to be put on the road.
+        effects:
+          - add: { rel.eleanor_ravell.affection: -6, rel.agnes_tirewoman.affection: -4, rep.ruthlessness: 1 }
+          - meet: eleanor_ravell
+          - set: flag.p_mother_dismissed
+        next: p_gate_failed
+    - id: wait
+      text: Keep your head down and hope to be noticed.
+      tags: [yield]
+      text_after: You are not noticed. The hunting ends. The guests ride home.
+      next: p_gate_failed
+
+- id: p_gate_failed
+  chapter: prologue
+  title: The Lower Road
+  text: |
+    No knight has taken you. That is the end of one road.
+
+    It is not the end of service. A great household needs grooms and kitchen boys and men to carry things. Lord Ravell's levy needs archers, and pays sixpence a day when it marches, which is never. Both are roads that sometimes lead up, if a boy is useful and lucky and not too proud.
+
+    [if background == archer]Your father says the levy made him what he was. He does not say what that was.[elif background == servant]You are already a servant. The question is only whose.[elif background == burgess]Your father says no son of his will carry slops for a knight. Your mother says better that than nothing.[else]Your father says a reeve's son should not have to start in the stables. He says it as if it were not his fault.[/if]
+  choices:
+    - id: household
+      text: Take service in Sir Hamon Darrell's household, as a groom.
+      tags: [allies]
+      text_after: Sir Hamon's steward takes you on at a mark a year and your keep. You will sleep in the stable loft and eat after the squires.
+      effects:
+        - station: retainer
+          track: household
+        - alias: { master: hamon_darrell }
+        - set: flag.p_lower_track
+      next: p_leaving
+    - id: levy
+      text: Take the levy's penny and go north with Sir Ancel Brome's archers.
+      tags: [martial]
+      text_after: Will Cobb is Sir Ancel's serjeant now. He writes your name on his roll and tells you the March is cold, the pay is late, and you will be shot at by spring.
+      effects:
+        - station: retainer
+          track: levy
+        - alias: { master: ancel_brome }
+        - meet: will_cobb
+        - set: flag.p_lower_track
+      next: p_leaving

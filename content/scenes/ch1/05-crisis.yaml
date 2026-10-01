@@ -1,0 +1,374 @@
+# Chapter 1: the master's crisis. Age 19. Fourth major branch.
+# Decides whether the master survives, falls, or is abandoned.
+
+- id: c1_crisis_hamon
+  chapter: ch1
+  title: The Commissioners
+  checkpoint: true
+  text: |
+    Sir Walter Pryce sits at Lord Ravell's table with two clerks, the subsidy rolls, and the Earl of Carrow's commission. Sixty pounds of the King's money passed through Sir Hamon's hands and did not come out of them. Sir Walter is courteous. He says that if it is not found by Lammas, Sir Hamon will answer for it in the King's court, and that the Earl will ask for Ashby to be forfeit.
+
+    Sir Hamon says he took nothing. He says he will prove it on any man's body, by combat, as his grandfather would have. He is fifty-six and has not fought on foot in fifteen years. Sir Walter smiles and says the Earl will provide a champion.
+
+    [if flag.c1_found_skim]You have your copy of the Ashby figures in your shirt.[/if][if flag.c1_lanzi_delay] Master Lanzi has already been asking who will pay the bank if Ashby goes.[/if][if flag.c1_told_ravell] Lord Ravell has known about the money for a year. He has done nothing.[/if]
+  choices:
+    - id: rolls
+      text: Go through the rolls in front of the commissioners and show where the money went.
+      tags: [learning]
+      requires: [ trait.literate_vernacular ]
+      label: "Requires: can read"
+      check:
+        attr: wits
+        skill: stewardship
+        difficulty: 4
+        audience: nobles
+        mods:
+          - { if: flag.c1_found_skim, add: 3, label: you found it a year ago }
+          - { if: item.tally_copy, add: 1, label: your old tally copy }
+      success:
+        text: It takes all afternoon. Sir Walter's clerks check every line and cannot fault it. The money went through Ashby, and Master Gervase Holt's hand is on every entry where it grew lighter. Sir Walter closes the roll and says, mildly, that the Earl will be disappointed. Master Gervase is not in the house. He is found two days later on the Saltcombe road with a horse that is not his.
+        effects:
+          - set: flag.c1_master_cleared
+          - add: { rel.hamon_darrell.respect: 3, rel.hamon_darrell.affection: 2, res.renown: 1, rel.walter_pryce.respect: 2 }
+        next: { switch: [ { if: [ background == reeve, flag.father_skims ], go: c1_crisis_father } ], default: c1_war_comes }
+      failure:
+        text: You know the money is in there somewhere. You cannot make the commissioners see it. Sir Walter thanks you for your diligence.
+        next: c1_crisis_hamon_fall
+    - id: lanzi
+      text: Broker a loan from the Lanzi bank to pay the shortfall, before Lammas.
+      tags: [wealth]
+      requires: [ { any: [ background == burgess, flag.c1_lanzi_delay, npc.bertuccio_lanzi.met ] } ]
+      label: "Requires: a way in at the Lanzi bank"
+      check:
+        attr: presence
+        skill: trade
+        difficulty: 3
+        audience: merchants
+        mods: [ { if: flag.c1_lanzi_delay, add: 1, label: they have dealt with you before } ]
+      success:
+        text: Sixty pounds, at a rate the Church would call usury if the Church did not bank with the Lanzi too, Bertuccio says, and smiles, and you do not. Ashby is pledged for ten years. The money is paid over. Sir Hamon is cleared and ruined at the same moment, and thanks you with tears in his eyes for the first of those.
+        effects:
+          - set: flag.c1_master_cleared
+          - set: flag.c1_hamon_lanzi
+          - add: { rel.hamon_darrell.affection: 3, rep.sarenza: 1, rel.bertuccio_lanzi.respect: 1 }
+        next: c1_war_comes
+      failure:
+        text: The bank has already lent to Sir Hamon once. Master Lanzi says, kindly, that it has learned.
+        next: c1_crisis_hamon_fall
+    - id: ravell
+      text: Ask Lord Ravell to speak for Sir Hamon to the Earl.
+      tags: [allies]
+      requires: [ { any: [ flag.ravell_favor, rel.thurstan_ravell.respect >= 3, flag.p_used_secret ] } ]
+      label: "Requires: Lord Ravell's ear"
+      check:
+        attr: presence
+        skill: courtesy
+        difficulty: 4
+        audience: nobles
+        mods:
+          - { if: flag.p_used_secret, add: 3, label: Lady Ravell would rather this house had no scandals }
+          - { if: flag.c1_raid_distinguished, add: 1, label: the Leven ford }
+      success:
+        text: "Lord Ravell writes to the Earl. The letter is mostly about other things: a marriage, a mill, a debt between their houses. The commission is quietly withdrawn. Sir Hamon is cleared. Lord Ravell lets you know, without saying it, that this has cost him something and that you will be the one to pay it back."
+        effects:
+          - set: flag.c1_master_cleared
+          - set: flag.c1_ravell_owed
+          - set: flag.ravell_favor
+          - add: { rel.hamon_darrell.affection: 2, favor.thurstan_ravell: -1 }
+        next: c1_war_comes
+      failure:
+        text: Lord Ravell says he cannot be seen to quarrel with Carrow in a year when the King needs both of them. He is sorry. He is not sorry enough.
+        next: c1_crisis_hamon_fall
+    - id: champion
+      text: Stand as Sir Hamon's champion when the Earl's man comes to fight.
+      tags: [martial]
+      lethal: true
+      warn: The Earl's champion is a professional. Trial by combat is to the death or the yield, and he has never yielded.
+      check:
+        attr: strength
+        skill: arms
+        difficulty: 5
+        mods:
+          - { if: item.prize_harness, add: 2, label: the prize harness }
+          - { if: item.padded_jack, add: 1, label: your jack }
+          - { if: flag.c1_beat_giles, add: 1, label: you have beaten a trained man before }
+          - { if: item.holy_ampulla, add: 1, label: "Saint Ebba's water, or your faith in it" }
+      success:
+        text: His name is Roger Sallow and he has killed four men in the lists. You do not kill him. You break his knee with a pollaxe in the second hour and stand over him until he yields. God has spoken, the priests say. Sir Hamon is cleared. He kisses you on both cheeks in front of the whole county.
+        effects:
+          - set: flag.c1_master_cleared
+          - set: flag.c1_won_combat
+          - add: { res.renown: 3, rep.knights: 2, rel.hamon_darrell.affection: 4, rel.hamon_darrell.respect: 3 }
+        next: c1_war_comes
+      partial:
+        text: You win, barely. Sallow yields with your dagger at his eye-slit and his axe still in your side. You do not remember the walk out of the lists. Sir Hamon is cleared. The surgeons say you will live.
+        effects:
+          - set: flag.c1_master_cleared
+          - set: flag.c1_won_combat
+          - injury: gored_thigh
+          - add: { res.renown: 2, rel.hamon_darrell.affection: 3 }
+        next: c1_war_comes
+      failure:
+        text: Sallow is better than you. It is that simple.
+        effects: [ { die: "Killed in a trial by combat at Ravell, aged {age}, defending a debt that was not his." } ]
+    - id: pryce
+      text: Go to Sir Walter Pryce and offer him your service, before the roof falls in.
+      tags: [cunning]
+      text_after: Sir Walter is not surprised. "Sensible," he says. "Most squires go down with their masters. Most squires are fools." He takes you into the Earl's company. Sir Hamon hears of it that evening. He does not send for you. In the end, without anyone to fight for him, he gives up Ashby to the Earl and goes to the Austin canons at Ambry to die. Knights who hear the story remember your name for it.
+      effects:
+        - set: flag.c1_left_master
+        - set: flag.c1_lost_master
+        - set: flag.c1_hamon_fell
+        - set: flag.c1_pryce_man
+        - trait: +oathbreaker
+        - alias: { master: walter_pryce }
+        - add: { rep.knights: -2, rep.honor: -2, rel.walter_pryce.respect: 1, rel.hamon_darrell.affection: -6 }
+      next: c1_war_comes
+    - id: stand
+      text: Stand by him, and hope that is enough.
+      tags: [yield]
+      next: c1_crisis_hamon_fall
+
+- id: c1_crisis_father
+  chapter: ch1
+  title: Your Father's Hand
+  text: |
+    You found more than Gervase in the rolls. Beside his entries, in a careful clerk's hand you learned your letters from, are your father's. Piers the reeve took less than the steward. He took enough.
+
+    The commissioners have not noticed yet. Sir Walter Pryce's clerk has the roll on his desk for one more night.
+  choices:
+    - id: expose
+      text: Tell the commissioners everything, your father's part included.
+      tags: [piety]
+      text_after: Your father is taken from Ashby in a cart and held at Wendham for the assizes. He is fined everything he owns and loses the reeveship. He does not hang, because Sir Hamon speaks for him, for your sake. Your mother writes to say you are no son of hers. The commissioners write your name in their report as a young man of rare honesty.
+      effects:
+        - set: flag.c1_father_exposed
+        - add: { rep.honor: 3, rel.piers_reeve.affection: -8, rep.crown: 1, rel.walter_pryce.respect: 2 }
+      next: c1_war_comes
+    - id: shield
+      text: Cut your father's leaf from the roll tonight and burn it.
+      tags: [cunning]
+      check: { attr: agility, skill: intrigue, difficulty: 3 }
+      success:
+        text: The clerk sleeps heavily. In the morning the roll shows only Gervase. Your father will never know what you did, unless you tell him. Gervase, when they catch him, swears there was a second hand. Nobody believes a thief.
+        effects:
+          - set: flag.c1_father_shielded
+          - add: { rep.ruthlessness: 2, rel.piers_reeve.affection: 1 }
+        next: c1_war_comes
+      failure:
+        text: The clerk is awake. He says nothing to the commissioners. He says a great deal to Sir Walter Pryce, privately, and Sir Walter now owns a piece of you.
+        effects:
+          - set: flag.c1_father_shielded
+          - set: flag.c1_pryce_knows
+          - add: { rep.ruthlessness: 2, favor.walter_pryce: -1 }
+        next: c1_war_comes
+    - id: confront
+      text: Ride to Ashby tonight and make your father confess it himself.
+      tags: [diplomacy]
+      check: { attr: presence, skill: diplomacy, difficulty: 3, mods: [ { if: rel.piers_reeve.affection >= 3, add: 2, label: he loves you } ] }
+      success:
+        text: He confesses before Sir Hamon, not the Earl's men, and pays back every penny from what he has saved for your sisters. He loses the reeveship. He keeps his neck and his name. He does not forgive you. He might, one day.
+        effects:
+          - set: flag.c1_father_confessed
+          - add: { rep.honor: 2, rel.piers_reeve.affection: -2, rel.piers_reeve.respect: 3 }
+        next: c1_war_comes
+      failure:
+        text: He denies it, then weeps, then denies it again. By morning the commissioners have found his hand themselves.
+        effects:
+          - set: flag.c1_father_exposed
+          - add: { rel.piers_reeve.affection: -4 }
+        next: c1_war_comes
+
+- id: c1_crisis_hamon_fall
+  chapter: ch1
+  title: Sir Hamon's Fall
+  text: |
+    Lammas comes and the money does not. Sir Hamon is summoned to Wendmere to answer in the King's court. He goes in his best gown, with you riding behind him, and comes back a month later without Ashby. The Earl of Carrow has the manor. Sir Hamon has a pension from the Austin canons at Ambry and a cell to go with it.
+
+    On the last night he gives you his second-best sword. "Find a better master," he says. "There are plenty. They are all worse than me." He means it as a joke. It isn't one.
+  choices:
+    - id: on
+      text: Take the sword. Find a new master.
+      effects: [ { set: flag.c1_lost_master }, { set: flag.c1_hamon_fell }, { add: { rel.hamon_darrell.affection: 2 } } ]
+      next: c1_new_patron
+
+- id: c1_crisis_ancel
+  chapter: ch1
+  title: Fire on the March
+  checkpoint: true
+  text: |
+    Brome's barns are ash. Sir Ancel's reeve is in the churchyard. Sir Godric Thorne says he knows nothing of it, from behind the walls of Thorne Hall with thirty men.
+
+    Sir Ancel means to burn Thorne Hall over Thorne's head. Lord Ravell has forbidden it in writing: the King wants every knight on the March alive and quiet until the army sails. Sir Ancel says the King can come north and stop him.
+
+    [if flag.c1_found_cattle_trail]You still have the Thorne man's knife from the shieling by the drove road.[/if][if flag.c1_plaint_written] The plaint you wrote last year is still before Lord Ravell's court, unread.[/if][if flag.c1_rode_reprisal] Thorne has not forgotten his mill.[/if]
+  choices:
+    - id: proof
+      text: Lay the proof of Thorne's dealings with Black Ewan before Lord Ravell.
+      tags: [cunning, learning]
+      requires: [ flag.c1_found_cattle_trail ]
+      label: "Requires: evidence from the drove road"
+      check: { attr: presence, skill: diplomacy, difficulty: 3, audience: nobles }
+      success:
+        text: A knight who sells cattle to Caldmoor raiders in a year of war is not a feuding neighbour. He is a traitor. Lord Ravell sends to the sheriff. Thorne Hall is taken without a blow struck, by the King's men, and Sir Godric goes south in chains. Sir Ancel gets his cattle back, or their value, and a reputation for patience he has never deserved.
+        effects:
+          - set: flag.c1_master_cleared
+          - set: flag.c1_thorne_taken
+          - set: flag.ravell_favor
+          - add: { rel.ancel_brome.respect: 3, rel.ancel_brome.affection: 2, res.renown: 2, rep.crown: 1 }
+        next: c1_war_comes
+      failure:
+        text: Lord Ravell says a knife in the mud proves that a Thorne man dropped a knife in the mud. He will not move against a knight on that. Sir Ancel is already arming.
+        next: c1_ancel_ride
+    - id: law
+      text: Get the plaint heard, now, while the King's justices are at Wendham.
+      tags: [learning, diplomacy]
+      requires: [ trait.literate_vernacular ]
+      label: "Requires: can read"
+      check:
+        attr: wits
+        skill: learning
+        difficulty: 4
+        mods: [ { if: flag.c1_plaint_written, add: 2, label: the plaint is already written } ]
+      success:
+        text: You ride to Wendham, find a serjeant-at-law who owes Father Benet a favour, and get the plaint read before the justices leave. They bind Sir Godric Thorne over in a hundred pounds to keep the peace and pay damages. Sir Ancel calls it an old woman's revenge. He takes the money.
+        effects:
+          - set: flag.c1_master_cleared
+          - add: { rel.ancel_brome.respect: 2, rel.ancel_brome.affection: -1, rep.crown: 1 }
+        next: c1_war_comes
+      failure:
+        text: The justices have three hundred cases and leave in the morning. Yours is not reached. Sir Ancel is already arming.
+        next: c1_ancel_ride
+    - id: persuade
+      text: Talk him out of it. Tonight, before he rides.
+      tags: [diplomacy]
+      check:
+        attr: presence
+        skill: diplomacy
+        difficulty: 4
+        audience: knights
+        mods:
+          - { if: rel.ancel_brome.affection >= 4, add: 2, label: he trusts you }
+          - { if: background == archer, add: 1, label: you are Hugh Fletcher's son }
+      success:
+        text: You talk until the candle is gone. About the King's war, and the pardons that will be handed out to men who serve in it, and the pleasure of seeing Thorne pay for it in court later, when Sir Ancel has a Valdrennish ransom in his purse. He does not agree. He just does not ride. In the morning he says, "You'd make a lawyer," and it is not a compliment, and he does not take it back.
+        effects:
+          - set: flag.c1_master_cleared
+          - add: { rel.ancel_brome.respect: 2, rel.thurstan_ravell.respect: 1 }
+        next: c1_war_comes
+      failure:
+        text: He hears you out. Then he tells you to saddle his horse.
+        next: c1_ancel_ride
+    - id: pryce
+      text: Go south to Sir Walter Pryce and offer him your service, before Sir Ancel hangs you with him.
+      tags: [cunning]
+      text_after: Sir Walter takes you on. Sir Ancel rides to Thorne Hall without you. He is killed at the gate by a crossbow bolt through the visor. Thorne is pardoned for it within the year, for service in the King's war. Men on the March say your name in a particular way after that.
+      effects:
+        - set: flag.c1_left_master
+        - set: flag.c1_lost_master
+        - set: flag.c1_pryce_man
+        - kill: ancel_brome
+        - trait: +oathbreaker
+        - alias: { master: walter_pryce }
+        - add: { rep.knights: -2, rep.honor: -2, rel.walter_pryce.respect: 1 }
+      next: c1_war_comes
+    - id: obey
+      text: Do as you are told. Saddle his horse.
+      tags: [yield]
+      next: c1_ancel_ride
+
+- id: c1_ancel_ride
+  chapter: ch1
+  title: Thorne Hall
+  text: |
+    Twenty men, at night, with fire. Thorne Hall has a ditch, a palisade, and a gate of oak. Thorne knows you are coming; everyone on the March knows everything.
+
+    Sir Ancel goes for the gate. He will not be talked out of it now. Your place is at his back.
+  choices:
+    - id: gate
+      text: Go in at the gate with him, in front of the others.
+      tags: [martial]
+      lethal: true
+      warn: Thorne has crossbows on the gate. Men will die tonight.
+      check:
+        attr: strength
+        skill: arms
+        difficulty: 4
+        mods:
+          - { if: item.padded_jack, add: 1, label: your jack }
+          - { if: item.prize_harness, add: 2, label: the prize harness }
+          - { if: item.holy_ampulla, add: 1, label: "Saint Ebba's water, or your faith in it" }
+      success:
+        text: The gate goes in on the third blow of the ram. You are through it beside Sir Ancel, and between you and his men the hall is yours before the roof catches. Thorne is taken alive. Lord Ravell is furious and the King, when he hears, is amused, and sells Sir Ancel a pardon for service in Valdrenne. You are named in the pardon too.
+        effects:
+          - set: flag.c1_master_cleared
+          - set: flag.c1_ancel_pardon
+          - add: { res.renown: 2, rep.ruthlessness: 1, rel.ancel_brome.affection: 3, rel.ancel_brome.respect: 2 }
+        next: c1_war_comes
+      partial:
+        text: The gate goes in. A crossbow bolt goes through Sir Ancel's visor at the same moment. You drag him out of the gateway with a bolt in your own leg. He dies in the ditch with his head in your lap, telling you to look after the horses.
+        effects:
+          - set: flag.c1_lost_master
+          - kill: ancel_brome
+          - injury: gored_thigh
+          - add: { res.renown: 1, rep.ruthlessness: 1 }
+        next: c1_new_patron
+      failure:
+        text: The bolt that kills Sir Ancel is followed by one for you.
+        effects:
+          - if: item.padded_jack
+            then: [ { injury: arrow_wound }, { set: flag.c1_lost_master }, { kill: ancel_brome } ]
+            else: [ { die: "Shot in the gate of Thorne Hall at nineteen, in another man's feud." } ]
+        next: c1_new_patron
+    - id: back
+      text: Hold the horses at the back, where he cannot see you.
+      tags: [yield]
+      text_after: Sir Ancel dies at the gate with a bolt through his visor. The others come running back past you, and you get them mounted and away before Thorne's men come out. Nobody calls you a coward. They do not have to; you were at the back.
+      effects:
+        - set: flag.c1_lost_master
+        - kill: ancel_brome
+        - add: { rep.honor: -1 }
+      next: c1_new_patron
+
+- id: c1_new_patron
+  chapter: ch1
+  title: A New Master
+  text: |
+    A squire without a master is nothing, a mouth in the hall that no one is obliged to feed. You need someone, before the army sails.
+
+    [if flag.ravell_favor]Lord Ravell has not forgotten you.[/if] [if alias.master == hamon_darrell]Sir Ancel Brome needs men for the war, and asks nothing about where they came from.[else]Sir Hamon Darrell is still at Ravell, short of everything, including a squire.[/if] Sir Walter Pryce is in Wendham, hiring for the Earl of Carrow's company, and takes anyone who can sit a horse.
+  choices:
+    - id: ravell
+      text: Go to Lord Ravell.
+      tags: [allies]
+      requires: [ flag.ravell_favor ]
+      label: "Requires: Lord Ravell's favour"
+      text_after: Lord Ravell takes you into his own household as a squire of the body. It is a step up and a step into the light, where everything you do is seen. Aymer Ravell, his son, is not entirely pleased.
+      effects:
+        - alias: { master: thurstan_ravell }
+        - add: { rel.aymer_ravell.affection: -1 }
+        - trait: +ravell_man
+      next: c1_war_comes
+    - id: ancel
+      text: Go to Sir Ancel Brome.
+      tags: [martial]
+      visible_if: [ alias.master == hamon_darrell, npc.ancel_brome.alive ]
+      text_after: Sir Ancel looks at you the way he looks at horses. "Hamon's boy," he says. "Can you do anything he didn't teach you?" You can. He takes you.
+      effects: [ { alias: { master: ancel_brome } } ]
+      next: c1_war_comes
+    - id: hamon
+      text: Go to Sir Hamon Darrell.
+      tags: [allies]
+      visible_if: [ alias.master != hamon_darrell, npc.hamon_darrell.alive, "!flag.c1_hamon_fell" ]
+      text_after: Sir Hamon takes you in as if you had always been his. He has no money to keep you. He keeps you anyway.
+      effects: [ { alias: { master: hamon_darrell } } ]
+      next: c1_war_comes
+    - id: pryce
+      text: Go to Sir Walter Pryce, and the Earl of Carrow's company.
+      tags: [cunning]
+      text_after: Sir Walter takes you on before you have finished asking. The Earl's company pays on time, he says again. It is the only thing he ever says about it.
+      effects:
+        - alias: { master: walter_pryce }
+        - set: flag.c1_pryce_man
+        - add: { rel.walter_pryce.affection: 1 }
+      next: c1_war_comes

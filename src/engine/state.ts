@@ -72,6 +72,8 @@ export interface GameState {
   flags: Record<string, true>;
   counters: Record<string, number>;
   npcs: Record<string, NpcState>;
+  /** alias -> npc id, e.g. master -> hamon_darrell */
+  aliases: Record<string, string>;
   suits: Record<string, SuitState>;
   queue: QueuedEvent[];
   /** scene id -> last time played (for once/cooldown) */

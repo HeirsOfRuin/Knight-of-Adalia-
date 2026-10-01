@@ -2,7 +2,7 @@
 import type { ContentBundle } from '../content/schema';
 import type { GameState } from './state';
 import { evalCond, parseExpr, validateCond, type Cond } from './conditions';
-import { getValue, checkPath } from './paths';
+import { getValue, checkPath, deref } from './paths';
 import { formatCoin, capitalise } from './format';
 import { describeDate } from './calendar';
 
@@ -13,7 +13,7 @@ type Node =
 
 export class TextError extends Error {}
 
-const TOKEN = /\[if ([^\]]+)\]|\[elif ([^\]]+)\]|\[else\]|\[\/if\]|\{([a-z_][a-z0-9_.]*)\}/g;
+const TOKEN = /\[if ([^\]]+)\]|\[elif ([^\]]+)\]|\[else\]|\[\/if\]|\{([a-z_][a-z0-9_.@]*)\}/g;
 const cache = new Map<string, Node[]>();
 
 export function parseText(src: string): Node[] {
@@ -65,7 +65,7 @@ function varValue(name: string, state: GameState, content: ContentBundle): strin
     case 'year': return String(getValue(state, content, 'calendar.year'));
     case 'age': return String(getValue(state, content, 'age'));
   }
-  const [ns, id, field] = name.split('.');
+  const [ns, id, field] = deref(state, name).split('.');
   if (ns === 'npc' && id) {
     const def = reg.npcs[id];
     if (!def) return name;
@@ -114,7 +114,9 @@ export function validateText(src: string, content: ContentBundle): { errors: str
         if (SPECIAL_VARS.includes(n.name)) continue;
         const [space, id, field] = n.name.split('.');
         if (space === 'npc') {
-          if (!id || !content.registry.npcs[id]) errors.push(`unknown npc in {${n.name}}`);
+          if (id?.startsWith('@')) {
+            if (!content.config.aliases.includes(id.slice(1))) errors.push(`unknown alias in {${n.name}}`);
+          } else if (!id || !content.registry.npcs[id]) errors.push(`unknown npc in {${n.name}}`);
           else if (field && field !== 'title') errors.push(`unknown npc field in {${n.name}}`);
           continue;
         }

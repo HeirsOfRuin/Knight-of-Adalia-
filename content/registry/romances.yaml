@@ -1,2 +1,10 @@
-# Romance candidates (see DESIGN.md §11a). Authored in Phase 2+.
-{}
+# Romance candidates (DESIGN.md §11a). Slot 1 is one candidate per background.
+# Ch2+ candidates (#6-12) are listed in canon.md and get entries when their chapter is written.
+mag_coker: { npc: mag_coker, introduced: prologue, brings: "Loyalty and Commons standing; Wat Coker as a brother-in-law", obstacle: "The Coker feud. Status cost with gentry." }
+annot_dyer: { npc: annot_dyer, introduced: prologue, brings: "Commons and Wendham goodwill", obstacle: "His father wants a richer match. Status cost." }
+mariot_wood: { npc: mariot_wood, introduced: prologue, brings: "A friend in the Ravell chase; woodcraft", obstacle: "Status cost. The forester's debts." }
+nell_laundress: { npc: nell_laundress, introduced: prologue, brings: "Eyes and ears below stairs at Ravell Hall", obstacle: "Status cost. Lady Ravell's notice." }
+isabel_sayer: { npc: isabel_sayer, introduced: ch1, brings: "A first gentry connection; Courtesy", obstacle: "Lady Ravell guards her waiting-women. Her father wants a knight at least." }
+maud_delisle: { npc: maud_delisle, introduced: ch1, brings: "An heiress's lands and a large cut to prejudice", obstacle: "Her marriage belongs to Lord Ravell, who means to sell it. Scandal is dangerous." }
+cecily_fuller: { npc: cecily_fuller, introduced: ch1, brings: "Coin, credit and Merchant standing", obstacle: "Knights sneer at trade. Her father wants a title first." }
+joan_wyck: { npc: joan_wyck, introduced: ch1, hidden: true, brings: "Wyck manor and a household that already runs", obstacle: "Older than him. Her stepson's claims on Wyck." }

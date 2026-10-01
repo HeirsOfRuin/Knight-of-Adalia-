@@ -1,0 +1,253 @@
+# Chapter 1 queued events: delayed consequences of prologue and Ch1 choices.
+
+- id: c1q_rival
+  chapter: ch1
+  kind: queued
+  title: "[if background == reeve]Wat Coker Again[elif background == burgess]Jocelin Tanner Again[elif background == archer]Gib Shawe Again[else]Aymer[/if]"
+  text: |
+    {date}.
+
+    [if background == reeve]Wat Coker has come to Ravell. He took the levy's penny after his family lost their holding, and he is in Will Cobb's company now, a big man with a bow and a long memory. [if flag.p_rival_peace]He nods to you in the yard. It is not friendship. It is not war.[else]He stands in the stable door and watches you work, and does not say anything, which is worse than anything he could say.[/if][elif background == burgess]Jocelin Tanner has come to Ravell. His father supplies the household with leather, and Jocelin keeps the accounts, badly, in his own favour. [if flag.p_rival_peace]He greets you as an old neighbour, with only a little edge.[else]He tells the steward's clerk who your father owes money to.[/if][elif background == archer]Gib Shawe has come to Ravell. His uncle the bailiff has bought him a place as vintenar in Will Cobb's company: twenty archers under him. [if flag.p_rival_peace]He still cannot draw a war bow. He asks you, privately, to keep it quiet.[else]He makes sure everyone knows he outranks a Fletcher.[/if][else]Aymer Ravell is a squire now, two years ahead of you in everything that counts here. [if flag.p_rival_peace]He tells people you are his oldest friend. Some days it is true.[else]He has not forgotten the falcon. In front of the household he is careful. Alone, he is not.[/if][/if]
+  choices:
+    - id: peace
+      text: Make it right with him, once and for all.
+      tags: [diplomacy]
+      check:
+        attr: presence
+        skill: diplomacy
+        difficulty: 3
+        mods:
+          - { if: flag.p_rival_peace, add: 2, label: you made peace before }
+          - { if: flag.p_rival_beaten, add: -1, label: you beat him once }
+      success:
+        text: It takes a jug of ale and an evening, and some things you would rather not have said. At the end of it you are not friends. You are the next thing to it, which is two men who know the worst of each other and have decided not to use it.
+        effects: [ { set: flag.c1_rival_ally }, { add: { rel.@rival.affection: 4, rel.@rival.respect: 1 } } ]
+        next: "@return"
+      failure:
+        text: He hears you out and laughs. Some things do not get made right.
+        effects: [ { add: { rel.@rival.affection: -1 } } ]
+        next: "@return"
+    - id: cow
+      text: Make it clear, in front of others, who stands higher now.
+      tags: [martial]
+      check: { attr: presence, skill: arms, difficulty: 3 }
+      success:
+        text: There is a moment in the yard when it could become a fight, and it does not, because he looks at you and decides not. Everyone watching sees him decide.
+        effects: [ { set: flag.c1_rival_cowed }, { add: { rel.@rival.respect: 2, rel.@rival.affection: -3 } } ]
+        next: "@return"
+      failure:
+        text: He does not back down. Neither do you. Your master has to separate you, and is not pleased with either.
+        effects: [ { add: { rel.@master.respect: -1, rel.@rival.affection: -2 } } ]
+        next: "@return"
+    - id: use
+      text: "[if background == reeve]Let the marshal know Wat still sets snares in the chase.[elif background == burgess]Show the steward where Jocelin's figures are wrong.[elif background == archer]Let Sir Ancel know his new vintenar cannot draw a war bow.[else]Let it be known what Aymer owes, and to whom.[/if]"
+      tags: [cunning]
+      text_after: "[if background == reeve]Wat is whipped and dismissed from the company. He goes back to Ashby and his sister. You will hear of him again; men like Wat do not go away.[elif background == burgess]The steward finds a new leather-seller. The Tanners lose the Ravell contract and blame you, correctly.[elif background == archer]Gib is broken back to the ranks and paid off at Lady Day. Your father hears about it and laughs until he coughs.[else]Lord Ravell takes his son's horse and allowance for a year. Aymer knows who told. He is polite to you after that, always.[/if]"
+      effects:
+        - set: flag.c1_rival_broken
+        - add: { rel.@rival.affection: -5, rep.ruthlessness: 1, rel.@master.respect: 1 }
+      next: "@return"
+    - id: ignore
+      text: Leave it. You have work to do.
+      text_after: You leave it. It does not leave you, quite. But there is work to do, and you do it.
+      next: "@return"
+
+- id: c1q_family_reeve
+  chapter: ch1
+  kind: queued
+  title: A Letter from Ashby
+  text: |
+    {date}. A letter from your father, in his own careful clerk's hand.
+
+    [if flag.father_skims]Master Gervase is squeezing him. The steward knows things about the old tallies, he writes, and says he will tell Sir Hamon unless your father helps him with "certain accounts". Your father asks you, if you still have that copy you made as a boy, to burn it. "It can only hurt us now," he writes.[else]Master Gervase is squeezing him. The steward has been skimming the manor for years, and now he is blaming your father's tallies for the gaps. Your father asks you, if you still have the copy you made as a boy, to keep it safe. "It may be all that saves me," he writes.[/if]
+  choices:
+    - id: burn
+      text: Burn the old tally copy, as he asks.
+      tags: [allies]
+      visible_if: [ flag.father_skims ]
+      requires: [ item.tally_copy ]
+      label: "Requires: the tally copy"
+      text_after: It goes up in the chapel candle in a moment. Twelve years of careful figures. Your father will sleep better. You are not sure you will.
+      effects: [ { item: -tally_copy }, { add: { rel.piers_reeve.affection: 3, rep.ruthlessness: 1 } }, { set: flag.c1_burned_copy } ]
+      next: "@return"
+    - id: hamon
+      text: Take the copy to Sir Hamon, and tell him what the steward is doing.
+      tags: [learning]
+      visible_if: [ "!flag.father_skims" ]
+      requires: [ item.tally_copy ]
+      label: "Requires: the tally copy"
+      text_after: Sir Hamon reads it with his lips moving. Then he looks up at you, and you see him understand, slowly, that he has been robbed for twenty years by a man he trusted. He does nothing yet. He is not a quick man. But he knows now, and you have given him the proof.
+      effects: [ { set: flag.c1_found_skim }, { add: { rel.hamon_darrell.respect: 2, rel.piers_reeve.affection: 2 } } ]
+      next: "@return"
+    - id: money
+      text: Send him what money you can, and tell him to hold firm.
+      tags: [wealth]
+      requires: [ res.coin >= 60 ]
+      text_after: Five shillings, sewn into a carrier's coat. Your father writes back three words. "God keep you."
+      effects: [ { add: { res.coin: -60, rel.piers_reeve.affection: 2 } } ]
+      next: "@return"
+    - id: refuse
+      text: Write back that you cannot be mixed up in it.
+      tags: [yield]
+      text_after: He does not write again.
+      effects: [ { add: { rel.piers_reeve.affection: -3, rep.honor: 1 } } ]
+      next: "@return"
+
+- id: c1q_family_burgess
+  chapter: ch1
+  kind: queued
+  title: A Letter from Wendham
+  text: |
+    {date}. A letter from your father.
+
+    The Lanzi bank wants its Michaelmas payment and the clip was poor. [if counter.family_debt >= 1]The loan he took for your place has made it worse.[/if] He asks you for a pound, if you have it. If you do not, he asks you to persuade Lord Ravell's steward to buy the household's cloth from Mercer and Fuller this year instead of from Wendmere, at the old price. "Blood is blood," he writes, "and business is business, and this is both."
+  choices:
+    - id: pay
+      text: Send him a pound.
+      tags: [wealth]
+      requires: [ res.coin >= 240 ]
+      text_after: It is most of what you have. He writes back a receipt, as if you were a customer, and then underneath it, in a different ink, "thank you."
+      effects: [ { add: { res.coin: -240, rel.ralf_mercer.affection: 3, counter.family_debt: -1 } } ]
+      next: "@return"
+    - id: steward
+      text: Go to the steward about the cloth contract.
+      tags: [wealth, diplomacy]
+      check: { attr: presence, skill: trade, difficulty: 3 }
+      success:
+        text: The steward wants a little something for himself. You arrange it. Mercer and Fuller have the Ravell cloth for three years. Your father's partner, Osbert Fuller, writes to thank you, and so, at the bottom of the page, does his daughter.
+        effects: [ { add: { rel.ralf_mercer.affection: 3, rep.merchants: 2, rel.osbert_fuller.affection: 2, suit.cecily_fuller.regard: 1 } }, { meet: cecily_fuller } ]
+        next: "@return"
+      failure:
+        text: The steward says the household is entirely happy with its Wendmere cloth, thank you. Your father writes back one line, which you burn.
+        effects: [ { add: { rel.ralf_mercer.affection: -1 } } ]
+        next: "@return"
+    - id: lanzi
+      text: Go to Bertuccio Lanzi yourself and ask for time.
+      tags: [diplomacy]
+      requires: [ npc.bertuccio_lanzi.met ]
+      check: { attr: presence, skill: diplomacy, difficulty: 3, audience: merchants }
+      success:
+        text: Master Lanzi grants a year, at a price, and says he does it because he expects you to be worth knowing. It is the second time someone has said that to you this year. You begin to suspect it is a thing people say.
+        effects: [ { add: { rel.ralf_mercer.affection: 2, rel.bertuccio_lanzi.respect: 1, rep.sarenza: 1 } } ]
+        next: "@return"
+      failure:
+        text: He is courteous, and immovable.
+        next: "@return"
+    - id: refuse
+      text: Write back that you have nothing to send.
+      tags: [yield]
+      text_after: He writes back that he understands. He writes it in the tone he uses for customers who will not be customers again.
+      effects: [ { add: { rel.ralf_mercer.affection: -3 } }, { set: flag.c1_family_refused } ]
+      next: "@return"
+
+- id: c1q_family_archer
+  chapter: ch1
+  kind: queued
+  title: Carn Dubh
+  text: |
+    {date}.
+
+    Will Cobb gets drunk in the long barn on Saint Andrew's night and tells the story of Carn Dubh to the whole company. The mill, the door, the archers, the fire. He tells it as a war story, the way men do. He names the archers on the door. Your father's name is the third.
+
+    [if flag.c1_coll_hanged]Somebody says, loudly, that Fletchers seem to have a way with Caldmoor boys.[elif flag.c1_coll_freed]Somebody says, loudly, that now they know why a Fletcher would let a Caldmoor boy go.[else]The barn is quiet for a moment after. Then somebody laughs, and the moment passes, for them.[/if]
+  choices:
+    - id: stop
+      text: Get Cobb outside and make him stop.
+      tags: [diplomacy]
+      check: { attr: presence, skill: command, difficulty: 3, mods: [ { if: rel.will_cobb.affection >= 3, add: 2, label: he loves your father } ] }
+      success:
+        text: Outside in the snow he weeps and says he did not mean it, and that your father was the best of them, and that it was the captain's order. He swears not to tell it again. He will tell it again. But not in front of you.
+        effects: [ { add: { rel.will_cobb.affection: 1, rel.will_cobb.respect: 2 } } ]
+        next: "@return"
+      failure:
+        text: He shakes you off and tells it again, louder, for the ones in the back.
+        effects: [ { add: { rep.commons: -1 } } ]
+        next: "@return"
+    - id: own
+      text: Stand up and tell them the rest of it, the way your father told it to you.
+      tags: [piety]
+      visible_if: [ flag.p_knows_war_secret ]
+      text_after: You tell them about the order, and the captain, and what your father says when he is drunk enough. The barn listens. When you are done nobody laughs. A Caldmoor man in the company, a deserter, comes and sits by you later and says nothing at all.
+      effects: [ { add: { rep.honor: 2, rep.commons: 1, rep.caldmoor: 1 } } ]
+      next: "@return"
+    - id: leave
+      text: Get up and walk out.
+      tags: [yield]
+      text_after: The cold is better than the barn. You stand in the yard until the noise stops. In the morning nobody mentions it. Everybody remembers it.
+      next: "@return"
+
+- id: c1q_family_servant
+  chapter: ch1
+  kind: queued
+  title: Your Mother
+  text: |
+    {date}.
+
+    [if flag.p_used_secret]A message comes from Ravell Hall, in Lady Ravell's own hand, sealed. She has heard you are prospering. She would be glad if you prospered somewhere else: in the King's war, perhaps, a long way off. There is a purse with the letter. It is heavy.[elif flag.p_mother_dismissed]Your mother is in Wendham, doing other women's washing. She has a cough she will not talk about. A neighbour writes to tell you, because your mother will not.[else]Your mother sends word. Nell's brother wants a place in the stables and has been refused. Could you speak for him? You are a somebody now, she says, which is the first time she has said anything like it.[/if]
+  choices:
+    - id: take
+      text: Take Lady Ravell's purse, and her meaning.
+      tags: [wealth]
+      visible_if: [ flag.p_used_secret ]
+      text_after: Five pounds. You understand perfectly. So does she. You will not trouble each other again, if you can help it.
+      effects: [ { add: { res.coin: 1200, rep.ruthlessness: 1 } }, { set: flag.c1_bought_off } ]
+      next: "@return"
+    - id: send_back
+      text: Send the purse back unopened.
+      tags: [piety]
+      visible_if: [ flag.p_used_secret ]
+      text_after: It goes back by the same messenger. Lady Ravell, you hear later, laughed when she saw it. It was not a pleasant laugh, but it had something like respect in it.
+      effects: [ { add: { rel.eleanor_ravell.respect: 2, rep.honor: 2 } } ]
+      next: "@return"
+    - id: mother
+      text: Send your mother money for a physician and a room of her own.
+      tags: [wealth]
+      visible_if: [ flag.p_mother_dismissed ]
+      requires: [ res.coin >= 120 ]
+      text_after: Ten shillings. The physician bleeds her and charges five. The room costs four. She writes to say she is better. You hope it is true.
+      effects: [ { add: { res.coin: -120, rel.agnes_tirewoman.affection: 4 } } ]
+      next: "@return"
+    - id: speak
+      text: Speak to Master Ranulf for Nell's brother.
+      tags: [allies]
+      visible_if: [ "!flag.p_used_secret", "!flag.p_mother_dismissed" ]
+      text_after: Ranulf takes the boy, because you asked and because you were once that boy. Nell sends you a message by the carrier. It is not in words.
+      effects: [ { add: { rel.agnes_tirewoman.affection: 2, suit.nell_laundress.regard: 2, rel.ranulf_marshal.affection: -1 } } ]
+      next: "@return"
+    - id: nothing
+      text: Do nothing. You have your own road now.
+      tags: [yield]
+      text_after: You put the letter away. Your own road is narrow enough without carrying anyone on it.
+      effects: [ { add: { rel.agnes_tirewoman.affection: -2 } } ]
+      next: "@return"
+
+- id: c1q_maud_sold
+  chapter: ch1
+  kind: queued
+  title: Lady Maud's Marriage
+  requires: [ "!flag.c1_maud_saved", suit.maud_delisle.status != lost ]
+  text: |
+    {date}.
+
+    Lord Ravell has sold Lady Maud de Lisle's marriage to the Earl of Carrow for twelve hundred marks. She is betrothed to the Earl's younger son, Gerard, at the church door at Ravell, with the whole household watching. She makes her responses in a clear voice and does not look at anyone.
+
+    [if suit.maud_delisle.regard >= 3]Afterwards, in the press at the door, her hand finds yours for a moment and lets go.[/if]
+  choices:
+    - id: watch
+      text: Watch, and say nothing.
+      tags: [yield]
+      text_after: It is done. The betrothal is not the wedding; that will be at Carrow, next year. But it is done.
+      effects: [ { assign: { suit.maud_delisle.status: lost } } ]
+      next: "@return"
+    - id: word
+      text: Get a word to her afterwards, whatever it costs.
+      tags: [cunning]
+      check: { attr: wits, skill: intrigue, difficulty: 3 }
+      success:
+        text: A note in her prayer book, by way of a chamber-woman. You do not know what to say, so you say only that you are sorry. She writes back one line. "Betrothals have been broken before."
+        effects: [ { assign: { suit.maud_delisle.status: lost } }, { set: flag.c1_maud_word }, { add: { suit.maud_delisle.regard: 2, suit.maud_delisle.discretion: -2 } } ]
+        next: "@return"
+      failure:
+        text: The chamber-woman takes your note to Lady Ravell. It is short and foolish. Lady Ravell keeps it.
+        effects: [ { assign: { suit.maud_delisle.status: lost } }, { add: { rel.eleanor_ravell.affection: -2 } }, { set: flag.c1_maud_letter_kept } ]
+        next: "@return"

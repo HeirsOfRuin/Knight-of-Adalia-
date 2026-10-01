@@ -1,0 +1,293 @@
+# Chapter 1, Act II: service. Age 15-17. Training, the master's trouble,
+# the Christmas feast (romance), and the first real danger at the Leven ford.
+
+- id: c1_winter
+  chapter: ch1
+  title: Winter at the Pell
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    {date}. Snow on the moat, ice on the trough, and the hall full of smoke from Martinmas to Candlemas.
+
+    Winter is when a household learns. Sir Bertram Oakes takes the young men to the pell every morning before Mass, whatever the weather. Master Ranulf breaks the new horses in the covered ride. Father Benet keeps the lord's accounts and letters in a cold room over the chapel, and will let a boy sit in if he holds his tongue. [if track == levy]Will Cobb drills the archers in the barn and the yard and the snow.[else]Lady Ravell keeps her own hall, where young men learn to be tolerable company or are not invited back.[/if]
+
+    You have the winter. You cannot be everywhere.
+  choices:
+    - id: pell
+      text: Sir Bertram's pell, every morning, until your arms stop shaking.
+      tags: [martial]
+      text_after: He teaches you to fight in harness, which is a different thing from fighting. You learn that a man in plate is slow, and that it does not matter, because he cannot be hurt. You learn where he can be hurt.
+      effects: [ { add: { skill.arms: 2, rel.bertram_oakes.respect: 1 } }, { meet: bertram_oakes } ]
+      next: { switch: [ { if: alias.master == hamon_darrell, go: c1_trouble_hamon } ], default: c1_trouble_ancel }
+    - id: ride
+      text: The covered ride with Master Ranulf and the young horses.
+      tags: [martial]
+      text_after: You are thrown nine times before Candlemas. By Lady Day you can sit a horse that does not want you, and turn it with your knees while your hands do something else.
+      effects: [ { add: { skill.riding: 2, rel.ranulf_marshal.affection: 1 } }, { meet: ranulf_marshal } ]
+      next: { switch: [ { if: alias.master == hamon_darrell, go: c1_trouble_hamon } ], default: c1_trouble_ancel }
+    - id: letters
+      text: Father Benet's cold room, and the lord's accounts.
+      tags: [learning]
+      text_after: |
+        [if trait.literate_vernacular]You learn how a great household is really run: by debt, by delay, and by a clerk who knows where everything went.[else]Father Benet teaches you your letters because he is bored and you are stubborn. By Easter you can read a writ, slowly, with your finger under the line.[/if]
+      effects:
+        - add: { skill.learning: 1, skill.stewardship: 1, rel.father_benet.affection: 1 }
+        - meet: father_benet
+        - if: { not: trait.literate_vernacular }
+          then: [ { trait: +literate_vernacular } ]
+      next: { switch: [ { if: alias.master == hamon_darrell, go: c1_trouble_hamon } ], default: c1_trouble_ancel }
+    - id: hall
+      text: "[if track == levy]Will Cobb's barn, and learning how to make sixty men do one thing.[else]Lady Ravell's hall, where the young men learn to be company.[/if]"
+      tags: [diplomacy]
+      text_after: "[if track == levy]Cobb teaches you to count arrows, call the volleys, and tell which man is drunk before he knows it himself.[else]You learn to sing, badly, to play at tables, and to say a great deal without saying anything. Isabel Sayer laughs at your singing, then helps you with it.[/if]"
+      effects:
+        - if: track == levy
+          then: [ { add: { skill.command: 2, rel.will_cobb.respect: 1 } } ]
+          else: [ { add: { skill.courtesy: 2, suit.isabel_sayer.regard: 1 } }, { meet: isabel_sayer }, { assign: { suit.isabel_sayer.status: known } } ]
+      next: { switch: [ { if: alias.master == hamon_darrell, go: c1_trouble_hamon } ], default: c1_trouble_ancel }
+
+- id: c1_trouble_hamon
+  chapter: ch1
+  title: Sir Hamon's Debts
+  on_enter: [ { advance: { seasons: 2 } } ]
+  text: |
+    {date}.
+
+    Sir Hamon owes money. Everyone in the household knows it except Sir Hamon, who knows it the way a man knows he will die: in principle, not today.
+
+    This summer it becomes today. Master {npc.bertuccio_lanzi} of the Lanzi bank rides in from Wendham with a clerk and a letter. Forty pounds, borrowed against Ashby's wool. And there is the King's subsidy: Sir Hamon was named collector for the hundred last year. He collected it. He has not yet paid it over. When he looks for it, it is not all there.
+
+    He calls you in. He is not angry. He is frightened, which is worse. "You can count," he says. "Count this."
+  choices:
+    - id: accounts
+      text: Sit down with the subsidy rolls and the Ashby accounts, and find where it went.
+      tags: [learning]
+      requires: [ trait.literate_vernacular ]
+      label: "Requires: can read"
+      check:
+        attr: wits
+        skill: stewardship
+        difficulty: 4
+        mods:
+          - { if: item.tally_copy, add: 1, label: your old tally copy }
+          - { if: background == reeve, add: 1, label: you know Ashby's books }
+      success:
+        text: |
+          Three nights. The subsidy was collected in full. Some of it went through Ashby on the way, and came out lighter. The hand on the Ashby entries is Master Gervase Holt's. [if flag.father_skims][if background == reeve]Some of the entries beside them are in your father's.[/if][/if] You do not tell Sir Hamon yet. You copy out what you found and keep it.
+        effects:
+          - set: flag.c1_found_skim
+          - add: { rel.hamon_darrell.respect: 2 }
+        next: { pool: c1_hall, count: 1, then: c1_christmas }
+      failure:
+        text: The figures swim. Every column adds up and the money is still not there. You tell Sir Hamon you do not know. He pats your shoulder as if you were the one who needed comfort.
+        effects: [ { add: { rel.hamon_darrell.affection: 1 } } ]
+        next: { pool: c1_hall, count: 1, then: c1_christmas }
+    - id: lanzi
+      text: Go down to Master Lanzi yourself and talk him into waiting.
+      tags: [wealth, diplomacy]
+      check:
+        attr: presence
+        skill: trade
+        difficulty: 3
+        audience: merchants
+        mods: [ { if: background == burgess, add: 2, label: he knows your family } ]
+      success:
+        text: Bertuccio Lanzi is a reasonable man, which means everything has a price. Two more years, at a higher rate, with Ashby's wool clip pledged for both. Sir Hamon signs without reading it. You read it.
+        effects:
+          - set: flag.c1_lanzi_delay
+          - meet: bertuccio_lanzi
+          - add: { rel.bertuccio_lanzi.respect: 2, rep.sarenza: 1, rel.hamon_darrell.affection: 2 }
+        next: { pool: c1_hall, count: 1, then: c1_christmas }
+      failure:
+        text: Master Lanzi listens politely and says that he is sure Sir Hamon is a man of honour, and that the bank's lawyers are sure of it too.
+        effects: [ { meet: bertuccio_lanzi } ]
+        next: { pool: c1_hall, count: 1, then: c1_christmas }
+    - id: ravell
+      text: Tell Lord Ravell, quietly, before somebody less friendly does.
+      tags: [allies, cunning]
+      text_after: Lord Ravell hears you out in the chapel porch and thanks you, coldly. Then he sends for Sir Hamon. Whatever is said, Sir Hamon comes out of it grey and does not look at you for a week. But Lord Ravell now knows your name, and what you are willing to do.
+      effects:
+        - set: flag.c1_told_ravell
+        - meet: thurstan_ravell
+        - add: { rel.hamon_darrell.affection: -3, rel.thurstan_ravell.respect: 2, rep.ruthlessness: 1 }
+      next: { pool: c1_hall, count: 1, then: c1_christmas }
+    - id: stay_out
+      text: It is your master's business. Keep out of it.
+      tags: [yield]
+      text_after: You clean his harness and hold his horse and say nothing. Sir Hamon is grateful for that, in his way. The money is still missing.
+      effects: [ { add: { rel.hamon_darrell.affection: 1 } } ]
+      next: { pool: c1_hall, count: 1, then: c1_christmas }
+
+- id: c1_trouble_ancel
+  chapter: ch1
+  title: Sir Ancel's Cattle
+  on_enter: [ { advance: { seasons: 2 } } ]
+  text: |
+    {date}.
+
+    Brome Tower is three days north of Ravell, on the March, where the King's peace is a rumour. In June forty of Sir Ancel's cattle are driven off in the night, and his herdsman is found in the burn with his head stove in.
+
+    Everyone knows who did it. Sir Godric Thorne holds the next manor down the valley and has been at law with Sir Ancel for eleven years over a mill. Sir Ancel says he will ride to Thorne's mill tonight and burn it with Thorne's miller inside.
+
+    Lord Ravell has written that there will be no private war on the March this year, by the King's order. Sir Ancel has used the letter to light the fire.
+  choices:
+    - id: track
+      text: Ride out at first light and follow the cattle yourself.
+      tags: [cunning]
+      check:
+        attr: wits
+        skill: woodcraft
+        difficulty: 4
+        mods: [ { if: flag.p_poached, add: 1, label: you have tracked worse } ]
+      success:
+        text: The trail does not go to Thorne's manor. It goes north, over the border, by the old drove road. At a shieling past the Leven you find a Caldmoor cattle-buyer's mark cut on a gatepost, and a Thorne man's knife in the mud. Thorne did not take the cattle for himself. He sold them to Black Ewan of Glenhallow. That is not a feud. That is treason.
+        effects:
+          - set: flag.c1_found_cattle_trail
+          - add: { rel.ancel_brome.respect: 2, skill.woodcraft: 1 }
+          - meet: godric_thorne
+        next: { pool: c1_hall, count: 1, then: c1_christmas }
+      failure:
+        text: The trail goes into the moss and does not come out. You come back with wet feet and nothing to show.
+        next: { pool: c1_hall, count: 1, then: c1_christmas }
+    - id: plaint
+      text: Offer to write out Sir Ancel's plaint to Lord Ravell's court instead.
+      tags: [learning, diplomacy]
+      requires: [ trait.literate_vernacular ]
+      label: "Requires: can read"
+      check:
+        attr: presence
+        skill: learning
+        difficulty: 3
+        audience: knights
+      success:
+        text: Sir Ancel calls the law a coward's weapon. Then he lets you write it anyway, because his own letters are bad and his anger is cooling. The plaint goes to Ravell under his seal. It is a good plaint. You are proud of it, and he is ashamed of it.
+        effects:
+          - set: flag.c1_plaint_written
+          - add: { rel.ancel_brome.respect: 1, rel.ancel_brome.affection: -1, rep.honor: 1 }
+        next: { pool: c1_hall, count: 1, then: c1_christmas }
+      failure:
+        text: He hears you out and tells you to go and saddle his horse. He rides anyway.
+        effects: [ { set: flag.c1_rode_reprisal }, { add: { rel.ancel_brome.affection: -1 } } ]
+        next: { pool: c1_hall, count: 1, then: c1_christmas }
+    - id: ride
+      text: Arm yourself and ride with him to Thorne's mill.
+      tags: [martial]
+      check: { attr: strength, skill: arms, difficulty: 3 }
+      success:
+        text: The miller runs. The mill burns. Nobody dies, by luck, which Sir Ancel does not thank God for. On the way home he tells you that you did well and that you will hang with him if it comes to that.
+        effects:
+          - set: flag.c1_rode_reprisal
+          - add: { rel.ancel_brome.affection: 2, rel.ancel_brome.respect: 1, rep.ruthlessness: 1, res.renown: 1, rel.godric_thorne.affection: -4 }
+          - meet: godric_thorne
+        next: { pool: c1_hall, count: 1, then: c1_christmas }
+      failure:
+        text: Thorne's men are waiting. A night skirmish in a millyard, all shouting and no light. You get a blade across the brow and a lesson in how quickly a raid becomes a rout.
+        effects:
+          - set: flag.c1_rode_reprisal
+          - injury: cut_brow
+          - add: { rel.ancel_brome.affection: 1, rel.godric_thorne.affection: -3 }
+          - meet: godric_thorne
+        next: { pool: c1_hall, count: 1, then: c1_christmas }
+    - id: stay_out
+      text: Hold the horses and keep your own counsel.
+      tags: [yield]
+      text_after: Sir Ancel rides without you and comes back at dawn smelling of smoke, with nothing to say. The mill is gone. So is any hope of settling the thing by law.
+      effects: [ { set: flag.c1_rode_reprisal } ]
+      next: { pool: c1_hall, count: 1, then: c1_christmas }
+
+- id: c1_christmas
+  chapter: ch1
+  title: Twelfth Night
+  on_enter: [ { advance: { seasons: 2 } } ]
+  text: |
+    {date}. You are {age}.
+
+    Twelfth Night at Ravell Hall. The great hall is hung with green, there are minstrels from Wendham, and the Lord of Misrule is a fat cook in a paper crown. Everyone drinks too much. The rules are loosened, not lifted.
+
+    Lady Ravell's women dance the carol in a ring and choose partners from the young men. Isabel Sayer is among them. So is Lady Maud de Lisle, Lord Ravell's ward, fifteen, heiress of the barony of Lisle, who is watched by everyone and spoken to by almost no one. The Wendham burgesses have a table below the salt, with their wives and daughters. Master Osbert Fuller's daughter Cecily is the one doing her father's talking for him.
+
+    At the top table the knights are drinking a health to the King's claim on Valdrenne, whatever that is going to mean.
+  choices:
+    - id: isabel
+      text: Join the carol and dance with Isabel Sayer.
+      tags: [diplomacy]
+      check: { attr: presence, skill: courtesy, difficulty: 3, audience: nobles, mods: [ { if: suit.isabel_sayer.regard >= 2, add: 1, label: she likes you already } ] }
+      success:
+        text: She dances better than you and does not let it show. Halfway round the ring she says you are the only young man in the hall who has not trodden on her. You tread on her. She laughs. Lady Ravell watches the two of you over her cup.
+        effects:
+          - meet: isabel_sayer
+          - assign: { suit.isabel_sayer.status: courted }
+          - add: { suit.isabel_sayer.regard: 3, suit.isabel_sayer.discretion: -1, rel.isabel_sayer.affection: 2 }
+        next: c1_muster
+      failure:
+        text: The carol goes faster than you thought. You lose the step, then her hand, then the ring. She is kind about it. Lady Ravell is not; she says something to her chaplain that makes him smile.
+        effects:
+          - meet: isabel_sayer
+          - assign: { suit.isabel_sayer.status: known }
+          - add: { suit.isabel_sayer.regard: 1, rel.eleanor_ravell.respect: -1 }
+        next: c1_muster
+    - id: maud
+      text: Carry Lady Maud's cup when her own page is drunk, and listen to her.
+      tags: [cunning]
+      check: { attr: wits, skill: courtesy, difficulty: 3, audience: nobles }
+      success:
+        text: She has been waiting all evening for someone to talk to who is not afraid of her guardian. She talks quickly and low. Lord Ravell means to sell her marriage to the Earl of Carrow for his younger son. She has met the younger son. She would sooner take the veil. Then she remembers who you are and stops. "You will not repeat that," she says. It is an order and a question.
+        effects:
+          - set: flag.c1_maud_confided
+          - meet: maud_delisle
+          - assign: { suit.maud_delisle.status: known }
+          - add: { suit.maud_delisle.regard: 2, suit.maud_delisle.discretion: -2 }
+          - queue: { event: c1q_maud_sold, delay: { seasons: 9 }, earliest_chapter: ch1 }
+        next: c1_muster
+      failure:
+        text: She thanks you for the cup without looking at you. A ward of Lord Ravell does not talk to squires. Somebody's steward sees you hovering, and remembers it.
+        effects:
+          - meet: maud_delisle
+          - assign: { suit.maud_delisle.status: known }
+          - add: { suit.maud_delisle.discretion: -1 }
+          - queue: { event: c1q_maud_sold, delay: { seasons: 9 }, earliest_chapter: ch1 }
+        next: c1_muster
+    - id: cecily
+      text: Go below the salt and sit with the Wendham burgesses.
+      tags: [wealth, diplomacy]
+      check: { attr: presence, skill: trade, difficulty: 2, audience: merchants }
+      success:
+        text: Cecily Fuller asks you how a squire is paid, how much, and when. Nobody has ever asked you that. When you tell her, she does the sum in her head and looks sorry for you. Then she asks you to dance, which a burgess's daughter is not supposed to do. You do.
+        effects:
+          - meet: cecily_fuller
+          - assign: { suit.cecily_fuller.status: courted }
+          - add: { suit.cecily_fuller.regard: 3, rep.merchants: 1, rep.knights: -1 }
+        next: c1_muster
+      failure:
+        text: The burgesses are polite to you as a squire and wary of you as a stranger. Cecily Fuller asks what you want. You do not have a good answer.
+        effects:
+          - meet: cecily_fuller
+          - assign: { suit.cecily_fuller.status: known }
+        next: c1_muster
+    - id: knights
+      text: Drink with the knights at the top table, and keep up.
+      tags: [martial]
+      check: { attr: endurance, difficulty: 3 }
+      success:
+        text: You match Sir Bertram cup for cup and are still standing when he is singing. Your master tells the story of it for a year. The knights do not think of you as one of them. They think of you as someone they drank with, which is a start.
+        effects: [ { add: { rep.knights: 1, rel.@master.affection: 2, rel.bertram_oakes.affection: 2 } } ]
+        next: c1_muster
+      failure:
+        text: You are sick in the rushes before the boar's head comes in. The knights find this funny. So does Giles Marrick.
+        effects: [ { add: { rel.@master.affection: 1, rel.giles_marrick.respect: -1 } } ]
+        next: c1_muster
+    - id: letter
+      text: "Slip out to the chapel and write to [if background == reeve]Mag[elif background == burgess]Annot[elif background == archer]Mariot[else]Nell[/if] at home."
+      tags: [learning]
+      text_after: "[if trait.literate_vernacular]You write by one candle, slowly. It is not a good letter. It is the first letter she has ever had.[else]Father Benet writes it for you, for twopence, and reads it back. You hope he will forget it.[/if] You miss the boar's head and the lord's toast. Nobody notices you went."
+      effects:
+        - if: { not: trait.literate_vernacular }
+          then: [ { add: { res.coin: -2 } } ]
+        - if: background == reeve
+          then: [ { add: { suit.mag_coker.regard: 2 } } ]
+        - if: background == burgess
+          then: [ { add: { suit.annot_dyer.regard: 2 } } ]
+        - if: background == archer
+          then: [ { add: { suit.mariot_wood.regard: 2 } } ]
+        - if: background == servant
+          then: [ { add: { suit.nell_laundress.regard: 2 } } ]
+      next: c1_muster

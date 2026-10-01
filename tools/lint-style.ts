@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import type { ContentBundle } from '../src/content/schema';
 import { loadContent, CONTENT_DIR, ContentError } from './content-loader';
+import { flatEffects } from './validate-lib';
 
 export interface StyleRule { pattern: RegExp; source: string; severity: 'error' | 'warning' }
 export interface StyleHit { severity: 'error' | 'warning'; where: string; rule: string; excerpt: string }
@@ -37,10 +38,13 @@ export function textsOf(content: ContentBundle): { where: string; text: string }
       out.push({ where: cw, text: c.text });
       if (c.warn) out.push({ where: `${cw}(warn)`, text: c.warn });
       if (c.text_after) out.push({ where: `${cw}(after)`, text: c.text_after });
+      if (!c.check) for (const e of flatEffects(c.effects)) {
+        if ('journal' in e) out.push({ where: `${cw}(journal)`, text: e.journal });
+      }
       for (const k of ['success', 'partial', 'failure'] as const) {
         const o = c[k];
         if (o?.text) out.push({ where: `${cw}[${k}]`, text: o.text });
-        for (const e of [...(o?.effects ?? []), ...c.effects]) {
+        for (const e of flatEffects([...(o?.effects ?? []), ...(k === 'success' ? c.effects : [])])) {
           if ('journal' in e) out.push({ where: `${cw}(journal)`, text: e.journal });
           if ('die' in e) out.push({ where: `${cw}(death)`, text: e.die });
         }

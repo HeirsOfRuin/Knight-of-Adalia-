@@ -1,0 +1,447 @@
+# Chapter 1 pool: household life at Ravell. Twelve events; a run draws about six.
+# Every event ends with "@return".
+
+- id: c1p_hunt
+  chapter: ch1
+  kind: pool
+  pool: c1_hall
+  title: The Lord's Hunt
+  text: |
+    Lord Ravell hunts the hart in the chase on Holy Cross day, with forty riders and twice as many hounds. Squires and grooms ride behind with the spare horses. The hart goes away north through the deep wood, and the field strings out behind it, and for a while nobody is in charge of anything.
+  choices:
+    - id: ride
+      text: Ride hard and be in at the kill, at Lord Ravell's side.
+      tags: [martial]
+      check: { attr: agility, skill: riding, difficulty: 4 }
+      success:
+        text: You are the third rider to the bay, behind the huntsman and Lord Ravell. He gives you the honour of the hart's right foot. In front of his knights.
+        effects:
+          - add: { rel.thurstan_ravell.respect: 2, res.renown: 1 }
+          - meet: thurstan_ravell
+          - if: rel.thurstan_ravell.respect >= 3
+            then: [ { set: flag.ravell_favor } ]
+        next: "@return"
+      failure:
+        text: A low branch. You come to in a bramble with the hunt gone and your horse eating grass. It takes you till dark to walk home.
+        effects: [ { injury: bruised_ribs } ]
+        next: "@return"
+    - id: track
+      text: Leave the field and follow the hart where you think it will go.
+      tags: [cunning]
+      check: { attr: wits, skill: woodcraft, difficulty: 3 }
+      success:
+        text: It turns where you knew it would. You are waiting at the ford when it comes down, and you hold the hounds there until the lord arrives. The huntsman is furious. Lord Ravell is not.
+        effects:
+          - add: { rel.thurstan_ravell.respect: 1, skill.woodcraft: 1 }
+          - meet: thurstan_ravell
+          - if: rel.thurstan_ravell.respect >= 3
+            then: [ { set: flag.ravell_favor } ]
+        next: "@return"
+      failure:
+        text: It does not turn where you knew it would.
+        next: "@return"
+    - id: spare
+      text: Stay back with the spare horses, as you were told.
+      text_after: Three riders come off in the deep wood and need fresh horses. You are there. It is not glorious. It is noticed by the people who notice such things.
+      effects: [ { add: { rel.@master.respect: 1 } } ]
+      next: "@return"
+
+- id: c1p_isabel
+  chapter: ch1
+  kind: pool
+  pool: c1_hall
+  title: The Herb Garden
+  requires: [ suit.isabel_sayer.status >= known ]
+  text: |
+    Isabel Sayer is in Lady Ravell's herb garden cutting lavender, alone, which she is not supposed to be. She tells you that Lady Ravell is at prayers and will be for an hour, and that you should not be here, and makes room for you on the bench.
+
+    Her father, she says, is a knight with a hundred acres and seven daughters. She is the fourth. He is looking for husbands for all of them, and is not fussy.
+  choices:
+    - id: talk
+      text: Sit and talk, and keep your hands to yourself.
+      tags: [diplomacy]
+      text_after: You talk about her father, and yours, and money, and the impossibility of everything. It is the most honest hour you have had at Ravell. When the chapel bell goes she stands up and says, "Well," and goes, and you sit there a while longer.
+      effects:
+        - assign: { suit.isabel_sayer.status: courted }
+        - add: { suit.isabel_sayer.regard: 2, rel.isabel_sayer.affection: 2 }
+      next: "@return"
+    - id: kiss
+      text: Kiss her.
+      tags: [cunning]
+      check: { attr: presence, skill: courtesy, difficulty: 3 }
+      success:
+        text: She kisses you back, and then pushes you off the bench into the lavender, and laughs. Nobody sees. You think nobody sees.
+        effects:
+          - assign: { suit.isabel_sayer.status: courted }
+          - add: { suit.isabel_sayer.regard: 3, suit.isabel_sayer.discretion: -2 }
+        next: "@return"
+      failure:
+        text: She turns her face away. "Not like that," she says. "Not here, where she can see." You look round. A window in the solar has someone in it.
+        effects:
+          - add: { suit.isabel_sayer.regard: -1, suit.isabel_sayer.discretion: -3, rel.eleanor_ravell.affection: -1 }
+        next: "@return"
+    - id: go
+      text: Tell her you should not be here, and go.
+      text_after: She says you are right, in a voice that says she wishes you were not.
+      effects: [ { add: { suit.isabel_sayer.regard: 1, rep.honor: 1 } } ]
+      next: "@return"
+
+- id: c1p_maud
+  chapter: ch1
+  kind: pool
+  pool: c1_hall
+  title: A Letter for Ambry
+  requires: [ suit.maud_delisle.status >= known, suit.maud_delisle.status != lost, "!flag.c1_maud_saved" ]
+  text: |
+    Lady Maud de Lisle stops you on the solar stair with a folded letter. It is for her aunt, the abbess of Ambry, and it must not go through Lord Ravell's clerks. She does not say what is in it. She says she will not forget who carried it.
+  choices:
+    - id: carry
+      text: Carry it, and tell no one.
+      tags: [cunning]
+      check: { attr: wits, skill: intrigue, difficulty: 3 }
+      success:
+        text: Ambry is a day's ride. The abbess reads the letter in front of you and burns it. "Tell my niece," she says, "that God and the King are both slow, but they are not deaf." Maud hears the message with her eyes shut.
+        effects:
+          - set: flag.c1_maud_confided
+          - add: { suit.maud_delisle.regard: 3, suit.maud_delisle.discretion: -1 }
+        next: "@return"
+      failure:
+        text: Lord Ravell's steward meets you at the gate and asks where you are going with a letter in your shirt. You give him a lie. He gives you a look.
+        effects: [ { add: { suit.maud_delisle.discretion: -3, rel.thurstan_ravell.respect: -1 } } ]
+        next: "@return"
+    - id: refuse
+      text: Tell her you cannot go behind Lord Ravell's back.
+      text_after: She takes the letter back without a word. You have been honest and she has been refused, and both of you know which of those counts for more.
+      effects: [ { add: { suit.maud_delisle.regard: -2, rep.honor: 1 } } ]
+      next: "@return"
+
+- id: c1p_chaplain
+  chapter: ch1
+  kind: pool
+  pool: c1_hall
+  title: Father Benet
+  text: |
+    Father Benet keeps the lord's books, writes the lord's letters, and knows more about the household than God does, he says, because God does not read the accounts. He has a backlog this month and a cold.
+  choices:
+    - id: help
+      text: Offer to help him with the letters in the evenings.
+      tags: [learning]
+      text_after: "[if trait.literate_vernacular]You copy out Lord Ravell's letters to half the knights of the shire. By the end of the month you know who owes whom, who hates whom, and who is about to marry whom. Father Benet watches you learn it and says nothing.[else]He teaches you your letters while you sharpen his pens. It is slow. By Advent you can write your name and read a short writ.[/if]"
+      effects:
+        - add: { skill.learning: 1, rel.father_benet.affection: 2 }
+        - meet: father_benet
+        - if: trait.literate_vernacular
+          then: [ { add: { skill.intrigue: 1 } } ]
+          else: [ { trait: +literate_vernacular } ]
+      next: "@return"
+    - id: confess
+      text: Ask him to hear your confession.
+      tags: [piety]
+      text_after: He hears it, and gives you a penance you have not heard before, involving barefoot walking and a great many paternosters. You do it. You feel better, which surprises you.
+      effects: [ { add: { rep.piety: 2, rep.church: 1 } }, { meet: father_benet } ]
+      next: "@return"
+    - id: leave
+      text: Leave him to his cold.
+      next: "@return"
+
+- id: c1p_dice
+  chapter: ch1
+  kind: pool
+  pool: c1_hall
+  title: Dice in the Guardroom
+  text: |
+    Saturday night in the guardroom over the gate. A blanket on the floor, a candle, three bone dice, and men who have been paid. The game is hazard. The stakes are pennies, then shillings, then whatever anyone has.
+  choices:
+    - id: play
+      text: Play, honestly.
+      tags: [wealth]
+      check: { attr: wits, skill: trade, difficulty: 3 }
+      success:
+        text: You win steadily and stop while you are ahead, which nobody else in the room has ever done. Three shillings.
+        effects: [ { add: { res.coin: 36 } } ]
+        next: "@return"
+      failure:
+        text: You lose steadily and do not stop, like everyone else in the room.
+        effects: [ { add: { res.coin: -24 } } ]
+        next: "@return"
+    - id: cheat
+      text: Play with a die you have shaved on one corner.
+      tags: [cunning]
+      check: { attr: agility, skill: intrigue, difficulty: 3 }
+      success:
+        text: Eight shillings, and a reputation for luck. You throw the shaved die in the moat on the way back.
+        effects: [ { add: { res.coin: 96, rep.ruthlessness: 1 } } ]
+        next: "@return"
+      failure:
+        text: The serjeant takes the die out of your hand and looks at it, and at you. You give back everything you won and some of what you came in with. The story is round the household by morning.
+        effects: [ { add: { res.coin: -36, rep.honor: -2, rep.commons: -1, rep.ruthlessness: 1 } } ]
+        next: "@return"
+    - id: watch
+      text: Watch, and keep your money.
+      text_after: You learn who drinks, who lies, and who cannot lose without hitting someone. It is worth more than three shillings.
+      effects: [ { add: { skill.intrigue: 1 } } ]
+      next: "@return"
+
+- id: c1p_horse_fair
+  chapter: ch1
+  kind: pool
+  pool: c1_hall
+  title: Wendham Horse Fair
+  text: |
+    Saint Luke's horse fair at Wendham: a thousand horses, ten thousand liars. Your master sends you to buy a pack-horse and tells you not to come back with a donkey.
+  choices:
+    - id: buy
+      text: Buy a riding horse for yourself while you are there. A pound.
+      tags: [wealth]
+      requires: [ res.coin >= 240 ]
+      check: { attr: wits, skill: riding, difficulty: 3 }
+      success:
+        text: A bay gelding, six years old, sound in wind and limb, with a white sock and a mean eye. He is the first thing you have ever owned that eats.
+        effects: [ { add: { res.coin: -240, res.horses: 1 } } ]
+        next: "@return"
+      failure:
+        text: He was sound when you bought him. By Wendham bridge he is lame. By Ravell he is worth his hide. You keep him anyway, out of stubbornness, and he comes right by Easter, mostly.
+        effects: [ { add: { res.coin: -240, res.horses: 1 } } ]
+        next: "@return"
+    - id: errand
+      text: Buy the pack-horse, haggle hard, and pocket the difference.
+      tags: [cunning, wealth]
+      check: { attr: presence, skill: trade, difficulty: 3 }
+      success:
+        text: A good pack-horse at two shillings under your master's price. You keep the two shillings. That is what squires do.
+        effects: [ { add: { res.coin: 24 } } ]
+        next: "@return"
+      failure:
+        text: You overpay and have to make up the difference from your own purse.
+        effects: [ { add: { res.coin: -12 } } ]
+        next: "@return"
+    - id: honest
+      text: Buy the pack-horse at a fair price and bring back the change.
+      text_after: Your master counts the change, twice, and looks at you oddly.
+      effects: [ { add: { rel.@master.respect: 1, rep.honor: 1 } } ]
+      next: "@return"
+
+- id: c1p_fever
+  chapter: ch1
+  kind: pool
+  pool: c1_hall
+  title: The Sweat
+  text: |
+    The sweating sickness comes to Ravell in August. It kills fast: well at Prime, dead by Vespers. Six in the village. A cook. Two grooms. Then Edmund Penn, your master's other squire, who was sixteen.
+
+    Lady Ravell shuts herself in the solar with her women and burns juniper. Father Benet goes from bed to bed with the oils. Your master needs someone to do Edmund Penn's work and to carry Edmund Penn's body.
+  choices:
+    - id: nurse
+      text: Help Father Benet with the sick.
+      tags: [piety]
+      check: { attr: endurance, difficulty: 3 }
+      success:
+        text: You carry water and empty basins for a week and do not take the sweat. People who did not know your name know it after that.
+        effects: [ { add: { rep.commons: 2, rep.piety: 1, rel.father_benet.affection: 2 } }, { meet: father_benet } ]
+        next: "@return"
+      failure:
+        text: On the fourth day you take the sweat yourself. You do not remember the next three. Father Benet says he gave you the oils, to be safe. You lived.
+        effects: [ { injury: fever_weak }, { add: { rep.commons: 2, rep.piety: 1 } } ]
+        next: "@return"
+    - id: replace
+      text: Offer yourself to your master in Edmund Penn's place.
+      tags: [allies]
+      visible_if: [ track != squire_track ]
+      check:
+        attr: wits
+        skill: courtesy
+        difficulty: 3
+        audience: knights
+        mods: [ { if: trait.literate_vernacular, add: 1, label: you can read his letters } ]
+      success:
+        text: Your master looks at you the way a man looks at a horse he has been riding for years and never properly seen. "Can you carve?" he says. You can. "Can you keep your mouth shut?" You can do that too. You are his squire by Michaelmas. Edmund Penn's mother sends you his spurs.
+        effects:
+          - station: squire
+            track: squire_track
+          - set: flag.c1_raised_by_fever
+          - add: { rel.@master.affection: 1 }
+        next: "@return"
+      failure:
+        text: Your master takes a cousin's boy from Wendham instead, who has never seen a horse up close. He says he needs a squire with a name. He does not say whose.
+        effects: [ { add: { rel.@master.respect: 1 } } ]
+        next: "@return"
+    - id: away
+      text: Keep away from the sick and the dead.
+      text_after: You live. Some do not. People remember who came and who did not.
+      effects: [ { add: { rep.commons: -1 } } ]
+      next: "@return"
+
+- id: c1p_cunning_woman
+  chapter: ch1
+  kind: pool
+  pool: c1_hall
+  title: The Cunning Woman
+  text: |
+    Old Mother Rook lives in the last house in Ravell village, past the pound. She sells charms against fever, love-philtres, and lead flasks of water from Saint Ebba's well that turn blades, she says. The chaplain calls her a fraud. The chaplain's own groom buys from her.
+  choices:
+    - id: flask
+      text: Buy a flask of Saint Ebba's water. Fourpence.
+      tags: [piety]
+      requires: [ res.coin >= 4 ]
+      text_after: It is cold in your hand and heavier than water should be. You carry it on a cord round your neck after that. You never quite decide whether you believe in it. You never take it off.
+      effects: [ { add: { res.coin: -4 } }, { item: +holy_ampulla }, { trait: +marked_by_saint } ]
+      next: "@return"
+    - id: fortune
+      text: Let her read your hand.
+      tags: [cunning]
+      text_after: She holds your hand a long time. "Higher than your father," she says. "Lower than you want. And a woman with a crown on her, or near her." Then she asks for twopence. Everybody gets the woman with the crown, you find out later. It still sits in your mind like a stone in a shoe.
+      effects: [ { set: flag.c1_omen_crown }, { add: { res.coin: -2 } } ]
+      next: "@return"
+    - id: leave
+      text: Leave her to her charms.
+      next: "@return"
+
+- id: c1p_bout
+  chapter: ch1
+  kind: pool
+  pool: c1_hall
+  title: Sharp Steel
+  text: |
+    Sir Bertram Oakes says the squires have learned to fight with wasters and will die like it. Today, sharp swords, half speed, in the tilt-yard, before Lady Ravell's women. He points at you first.
+  choices:
+    - id: fight
+      text: Take the sword.
+      tags: [martial]
+      check: { attr: agility, skill: arms, difficulty: 3 }
+      success:
+        text: Half speed with a sharp blade is slower than you would think, and more frightening. You touch Sir Bertram's arm once and he touches you nowhere. He nods. That is a great deal, from him.
+        effects: [ { add: { skill.arms: 1, rel.bertram_oakes.respect: 2 } }, { meet: bertram_oakes } ]
+        next: "@return"
+      failure:
+        text: His blade comes over yours and opens your brow before you have seen it move. "That," he says, "is the difference." The women look away.
+        effects: [ { injury: cut_brow }, { add: { rel.bertram_oakes.respect: 1 } } ]
+        next: "@return"
+    - id: decline
+      text: Let one of the gentlemen's sons go first.
+      text_after: Giles Marrick goes first and gets a cut on the forearm. You watch how it happened. It is a good lesson, cheaply bought, by someone else.
+      effects: [ { add: { skill.tactics: 1 } } ]
+      next: "@return"
+
+- id: c1p_letter_home
+  chapter: ch1
+  kind: pool
+  pool: c1_hall
+  title: A Letter from Home
+  text: |
+    A carrier brings a letter. Somebody has paid a clerk to write it.
+
+    [if background == reeve]It is from Mag Coker. Her brother Wat wants her married to a carter from Ashby Moor. She does not want the carter. She does not say what she wants.[elif background == burgess]It is from Annot Dyer. Her father has had an offer for her from a dyer in Wendmere, a widower with four children. She says she has asked him to wait. She does not say for what.[elif background == archer]It is from Mariot Wood. Her father is ill, and the forester's place will go to someone else if he dies. She asks how you are. She asks twice.[else]It is from Nell. Lady Ravell has put her to work in the dairy, away from the house. She says it is because of you. She does not seem to mind.[/if]
+  choices:
+    - id: warm
+      text: Write back and tell her to wait.
+      tags: [diplomacy]
+      text_after: You write it three times before it is right. It costs you a penny to send and a good deal more not to say anything you cannot keep.
+      effects:
+        - if: background == reeve
+          then: [ { add: { suit.mag_coker.regard: 2 } }, { assign: { suit.mag_coker.status: courted } } ]
+        - if: background == burgess
+          then: [ { add: { suit.annot_dyer.regard: 2 } }, { assign: { suit.annot_dyer.status: courted } } ]
+        - if: background == archer
+          then: [ { add: { suit.mariot_wood.regard: 2 } }, { assign: { suit.mariot_wood.status: courted } } ]
+        - if: background == servant
+          then: [ { add: { suit.nell_laundress.regard: 2 } }, { assign: { suit.nell_laundress.status: courted } } ]
+      next: "@return"
+    - id: release
+      text: Write back and tell her not to wait for you.
+      tags: [yield]
+      text_after: It is the honest thing. You know what a squire's prospects are, and what a squire's wife's prospects are. She does not write again.
+      effects:
+        - add: { rep.honor: 1 }
+        - if: background == reeve
+          then: [ { assign: { suit.mag_coker.status: lost } } ]
+        - if: background == burgess
+          then: [ { assign: { suit.annot_dyer.status: lost } } ]
+        - if: background == archer
+          then: [ { assign: { suit.mariot_wood.status: lost } } ]
+        - if: background == servant
+          then: [ { assign: { suit.nell_laundress.status: lost } } ]
+      next: "@return"
+    - id: ignore
+      text: Put it away. You will answer it later.
+      text_after: You do not answer it later.
+      effects:
+        - if: background == reeve
+          then: [ { add: { suit.mag_coker.regard: -2 } } ]
+        - if: background == burgess
+          then: [ { add: { suit.annot_dyer.regard: -2 } } ]
+        - if: background == archer
+          then: [ { add: { suit.mariot_wood.regard: -2 } } ]
+        - if: background == servant
+          then: [ { add: { suit.nell_laundress.regard: -2 } } ]
+      next: "@return"
+
+- id: c1p_wendham
+  chapter: ch1
+  kind: pool
+  pool: c1_hall
+  title: Errand to Wendham
+  text: |
+    Your master sends you to Wendham with a list: wax, pepper, a bolt of russet, horseshoe nails, and a letter for the guild warden, Master Osbert Fuller, about a debt. It will take all day if you are quick and two if you are not.
+  choices:
+    - id: fuller
+      text: Deliver the letter to Master Fuller in person, and stay to dinner if asked.
+      tags: [diplomacy, wealth]
+      text_after: Master Fuller is out. His daughter Cecily reads the letter, does the sum in it, finds the mistake in it, and asks you to stay to dinner so she can explain it to her father in front of you. You stay.
+      effects:
+        - meet: cecily_fuller
+        - add: { suit.cecily_fuller.regard: 2, rep.merchants: 1 }
+        - if: suit.cecily_fuller.status < courted
+          then: [ { assign: { suit.cecily_fuller.status: known } } ]
+      next: "@return"
+    - id: haggle
+      text: Do the errands fast and cheap, and keep what you save.
+      tags: [wealth]
+      check: { attr: presence, skill: trade, difficulty: 2 }
+      success:
+        text: Pepper at a penny under the price, russet at twopence under. You are home by Vespers, a shilling richer.
+        effects: [ { add: { res.coin: 12 } } ]
+        next: "@return"
+      failure:
+        text: The Wendham shopkeepers have seen squires before.
+        next: "@return"
+    - id: tavern
+      text: Do the errands, and spend the afternoon in the Bell listening to the carriers' news.
+      tags: [cunning]
+      text_after: The carriers know everything a week before the lords do. The King is borrowing from the Sarenzans again. The Earl of Carrow is borrowing from the same Sarenzans. Valdrennish ships have been seen off Saltcombe, counting the harbour.
+      effects: [ { add: { skill.intrigue: 1, skill.tactics: 1 } } ]
+      next: "@return"
+
+- id: c1p_aymer
+  chapter: ch1
+  kind: pool
+  pool: c1_hall
+  title: Aymer's Debts
+  text: |
+    Aymer Ravell, the lord's second son, has lost eight pounds at dice to Giles Marrick and two Carrow squires. He cannot ask his father. He is asking you, in the stable, quietly, with his face red.
+
+    [if background == servant]He has known you since you were both eight. He has never asked you for anything before, except to saddle Bayard.[/if]
+  choices:
+    - id: lend
+      text: Lend him what you can. Five shillings.
+      tags: [allies, wealth]
+      requires: [ res.coin >= 60 ]
+      text_after: It is not eight pounds. It is enough to keep Giles off him for a month, and it is all you have. He says he will pay it back. He means it. He has never paid anything back in his life.
+      effects: [ { add: { res.coin: -60, rel.aymer_ravell.affection: 3, favor.aymer_ravell: 1 } }, { meet: aymer_ravell } ]
+      next: "@return"
+    - id: father
+      text: Tell him he must go to his father, and offer to stand beside him when he does.
+      tags: [diplomacy]
+      check: { attr: presence, skill: diplomacy, difficulty: 3 }
+      success:
+        text: He goes. You stand at the door. Lord Ravell pays the debt and takes his son's horse for a year. Afterwards Aymer says you were right and that he will never forgive you. He forgives you within the week.
+        effects: [ { add: { rel.aymer_ravell.affection: 1, rel.aymer_ravell.respect: 2, rel.thurstan_ravell.respect: 1 } }, { meet: aymer_ravell } ]
+        next: "@return"
+      failure:
+        text: He calls you a coward and a servant and goes to a Wendham moneylender instead.
+        effects: [ { add: { rel.aymer_ravell.affection: -2 } }, { meet: aymer_ravell } ]
+        next: "@return"
+    - id: refuse
+      text: Tell him you have nothing to lend.
+      text_after: It is true, near enough. He nods and goes, and does not ask again.
+      effects: [ { add: { rel.aymer_ravell.affection: -1 } }, { meet: aymer_ravell } ]
+      next: "@return"

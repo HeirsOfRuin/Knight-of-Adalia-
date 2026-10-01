@@ -1,0 +1,11 @@
+# Registry entries used only by the engine test arc.
+flags:
+  t_groom_shamed: { description: "Shamed the knight's groom in front of the fair", hidden: true }
+  t_groom_paid: { description: "Paid the groom to go away" }
+  t_named_patron: { description: "Called on his patron's name at the fair", hidden: true }
+  t_preacher_heard: { description: "Stood through the friar's sermon", hidden: true }
+  t_wrestled: { description: "Wrestled at the fair", hidden: true }
+npcs:
+  odo_groom: { name: Odo, notes: "Son of Sir Hamon's groom. Test arc only." }
+endings:
+  test_complete: { chapter: test, label: End of the test scene, description: "Engine test arc complete." }

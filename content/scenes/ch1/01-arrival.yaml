@@ -1,0 +1,225 @@
+# Chapter 1, Act I: arrival at Ravell Hall. Age 15-16.
+# Squire-track boys are made squires here. Lower-track men start service.
+
+- id: c1_arrival
+  chapter: ch1
+  title: Ravell Hall
+  checkpoint: true
+  text: |
+    {date}. You are {age}.
+
+    Ravell Hall is a stone keep with a timber hall built against it, a moat that stinks in summer, and more people than your whole village: knights, squires, grooms, cooks, laundresses, clerks, priests, dogs. Lord Thurstan Ravell holds it from the King, and holds four knights' fees under him. Sir Hamon Darrell and Sir Ancel Brome are two of them.
+
+    [if alias.master == hamon_darrell]Sir Hamon meets you in the yard with a cup of ale in his hand and his belt let out a notch. "There he is," he says, to nobody in particular.[else]Sir Ancel meets you in the yard without getting down from his horse. "You're late," he says. You are not late.[/if]
+
+    [if track == squire_track]You will sleep in the squires' loft over the great chamber with four others. The eldest, Giles Marrick, looks at your boots, then your hands, then your face, and decides something.[elif track == household]You will sleep in the stable loft with the grooms. The squires ride past you on the way to the pell every morning without seeing you.[else]You will sleep in the long barn with Sir Ancel's archers when the company is at Ravell, and in a ditch when it is not. Will Cobb gives you a blanket and the worst place by the door.[/if]
+  choices:
+    - id: kneel
+      text: Kneel to your master in the yard, properly, as if you had been doing it all your life.
+      tags: [diplomacy]
+      check: { attr: presence, skill: courtesy, difficulty: 3, audience: knights }
+      success:
+        text: You go down on the correct knee and say the correct words. Your master grunts. Later you hear him tell Sir Bertram that the boy at least knows how to kneel.
+        effects: [ { add: { rel.@master.respect: 1 } } ]
+        next: c1_duties
+      failure:
+        text: Your knee goes into a puddle and your words come out in the wrong order. Somebody in the squires' window laughs. Your master tells you to get up.
+        effects: [ { add: { rel.giles_marrick.respect: -1 } }, { meet: giles_marrick } ]
+        next: c1_duties
+    - id: work
+      text: Go straight to the stables and make yourself useful before anyone tells you to.
+      tags: [martial]
+      text_after: By Vespers you have mucked out three stalls, found the farrier, and learned which of your master's horses bites. Master Ranulf, the marshal, notices. So does your master, who likes a boy who does not wait to be told.
+      effects:
+        - add: { rel.@master.affection: 1, rel.ranulf_marshal.respect: 1 }
+        - meet: ranulf_marshal
+      next: c1_duties
+    - id: ask
+      text: Find someone in the hall who might tell you how things are done here.
+      tags: [allies]
+      text_after: |
+        Most people are too busy. One is not. A young woman in a good grey gown, carrying a basket of thread for the lady, stops and tells you where to wash, where to eat, which steward to avoid, and that Lady Ravell can hear through walls. Her name is Isabel Sayer. She waits on Lady Ravell, and she is, she says, as poor as you are, only better dressed.
+      effects:
+        - meet: isabel_sayer
+        - assign: { suit.isabel_sayer.status: known }
+        - add: { suit.isabel_sayer.regard: 1 }
+      next: c1_duties
+
+- id: c1_duties
+  chapter: ch1
+  title: "[if track == squire_track]The High Table[elif track == household]The Stables[else]The Butts at Brome[/if]"
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    {date}.
+
+    [if track == squire_track]Midsummer feast. The Earl of Carrow's captain, Sir Walter Pryce, is at the high table with Lord Ravell, and your master is to serve the lord's own dish. That means you are. A swan, carved in its proper joints, laid on trenchers in the proper order, with the proper words. Giles Marrick has done it before. He has offered to help you, which means he will not.[elif track == household]Midsummer. Lord Ravell's guests have brought forty horses and the stables are full to the rafters. One of them belongs to Sir Walter Pryce, the Earl of Carrow's captain, and it is the best horse you have ever seen. It is also sick.[else]Midsummer on the March. Sir Ancel's company practises at the butts below Brome Tower every morning, and Will Cobb watches who shoots and who talks. Today Sir Ancel is watching too, with a stranger: Sir Walter Pryce, the Earl of Carrow's captain, who is buying archers for somebody's war.[/if]
+  choices:
+    - id: careful
+      text: "[if track == squire_track]Serve slowly and correctly, every joint in its place.[elif track == household]Nurse Sir Walter's horse yourself, all night if you have to.[else]Shoot slow and steady and say nothing.[/if]"
+      tags: [diplomacy]
+      check:
+        attr: wits
+        skill: courtesy
+        difficulty: 3
+        audience: nobles
+        mods:
+          - { if: track == household, add: 2, label: horses before lords }
+          - { if: track == levy, add: 3, label: archers before lords }
+      success:
+        text: "[if track == squire_track]The swan comes apart as if it wanted to. Lord Ravell eats without noticing, which is the highest praise. Your master notices. Sir Walter Pryce notices too, and asks whose boy that is.[elif track == household]The horse is on its feet by dawn. Sir Walter Pryce gives you a silver penny and asks your name.[else]Eleven in twelve. Will Cobb nods once. Sir Walter Pryce asks Sir Ancel what he wants for you, as a joke, and Sir Ancel does not laugh.[/if]"
+        effects:
+          - add: { rel.@master.respect: 1, rel.walter_pryce.respect: 1 }
+          - meet: walter_pryce
+          - set: flag.c1_duties_well
+          - if: track == squire_track
+            then: [ { station: squire }, { add: { rel.@master.respect: 1 } } ]
+          - if: track == household
+            then: [ { add: { res.coin: 1 } } ]
+        next: c1_squires
+      failure:
+        text: "[if track == squire_track]The swan's leg comes off in your hand and goes into Sir Walter's lap. The hall laughs. Giles Marrick laughs loudest. Your master says nothing until the hall is empty, and then a great deal.[elif track == household]The horse dies at Lauds. Nobody blames you aloud.[else]Your hand shakes in front of the stranger. Cobb moves you to the end of the line.[/if]"
+        effects:
+          - add: { rel.@master.respect: -1 }
+          - if: track == squire_track
+            then: [ { station: squire }, { add: { rel.giles_marrick.affection: -1 } }, { meet: giles_marrick } ]
+        next: c1_squires
+    - id: plain
+      text: "[if track == squire_track]Serve it fast and plain, the way a hungry man wants to be served.[elif track == household]Tell the marshal straight that the horse needs a farrier, not a groom.[else]Shoot fast. The Caldmoor men will not wait for you to aim.[/if]"
+      tags: [martial]
+      check: { attr: presence, skill: arms, difficulty: 3 }
+      success:
+        text: "[if track == squire_track]It is not how the swan is meant to be carved. Sir Walter Pryce, who is a soldier, says it is how a swan should be carved, and laughs, and Lord Ravell laughs because Sir Walter did.[elif track == household]The marshal listens. The farrier is fetched. You are told you are forward. You are also right.[else]Six in the time other men loose four, and five of them in the target. Sir Walter Pryce raises an eyebrow.[/if]"
+        effects:
+          - add: { rel.walter_pryce.affection: 1, rel.@master.affection: 1 }
+          - meet: walter_pryce
+          - if: track == squire_track
+            then: [ { station: squire } ]
+        next: c1_squires
+      failure:
+        text: Fast and plain turns out to be fast and wrong. You are told so, in front of people.
+        effects:
+          - add: { rel.@master.respect: -1 }
+          - if: track == squire_track
+            then: [ { station: squire } ]
+        next: c1_squires
+    - id: copy
+      text: Watch the others closely and do exactly what the best of them does.
+      tags: [cunning]
+      check: { attr: wits, skill: intrigue, difficulty: 2 }
+      success:
+        text: "[if track == squire_track]You copy Aymer Ravell, not Giles, because Aymer was taught by his mother's carver and Giles was taught by Giles. It works.[else]You find the man everyone else watches, and watch him. By evening you are doing it his way, and nobody has noticed you learning.[/if]"
+        effects:
+          - add: { skill.courtesy: 1 }
+          - if: track == squire_track
+            then: [ { station: squire } ]
+        next: c1_squires
+      failure:
+        text: You copy the wrong man. Giles Marrick, who wanted you to copy him, is delighted.
+        effects:
+          - meet: giles_marrick
+          - if: track == squire_track
+            then: [ { station: squire } ]
+        next: c1_squires
+
+- id: c1_squires
+  chapter: ch1
+  title: Giles Marrick
+  on_enter: [ { advance: { seasons: 1 } }, { meet: giles_marrick } ]
+  text: |
+    {date}.
+
+    [if station == squire]At Michaelmas your master named you his squire before the household. It means you are fed at the second table, carry his harness, sleep across his door when he travels, and are beaten by him rather than by grooms.[/if]
+
+    Giles Marrick is seventeen, the son of a Carrow knight, and he has decided you are a churl in a borrowed coat. [if track == squire_track]He calls you the {background} in front of the other squires. He has put your master's best harness in the moat and told the marshal you did it.[else]He calls you the {background} whenever he passes. Yesterday he had you whipped for insolence because you did not step out of the mud fast enough when he rode by.[/if]
+
+    The other squires watch to see what you do. [if rel.aymer_ravell.affection >= 3]Aymer Ravell catches your eye, and shrugs: your quarrel, not mine, unless you ask.[/if]
+  choices:
+    - id: fight
+      text: Challenge him at the pell, in front of Sir Bertram Oakes.
+      tags: [martial]
+      check:
+        attr: strength
+        skill: arms
+        difficulty: 4
+        mods:
+          - { if: flag.p_trained_arms, add: 1, label: your years at the pell }
+          - { if: injury.burned_hands, add: -1, label: your hands }
+      success:
+        text: Wasters, not swords, but a waster breaks fingers. You break two of his. Sir Bertram Oakes stops it and says, to the yard in general, that birth is a fine thing and so is keeping your guard up. Giles does not speak to you for a month. When he does, it is with care.
+        effects:
+          - set: flag.c1_beat_giles
+          - set: flag.c1_giles_enemy
+          - add: { res.renown: 1, rel.giles_marrick.respect: 2, rel.giles_marrick.affection: -4, rel.bertram_oakes.respect: 2, rep.knights: 1 }
+          - meet: bertram_oakes
+        next: { pool: c1_hall, count: 1, then: c1_winter }
+      failure:
+        text: He has had a sword master since he was six. You have not. He puts you on your back in the mud four times, and the fourth time he takes his time getting off. Sir Bertram says nothing, but he watches you get up.
+        effects:
+          - set: flag.c1_giles_enemy
+          - injury: bruised_ribs
+          - add: { rel.bertram_oakes.respect: 1, rel.giles_marrick.respect: -1 }
+          - meet: bertram_oakes
+        next: { pool: c1_hall, count: 1, then: c1_winter }
+    - id: scheme
+      text: Arrange for Giles to be found where he should not be.
+      tags: [cunning]
+      check:
+        attr: wits
+        skill: intrigue
+        difficulty: 4
+        mods: [ { if: background == servant, add: 2, label: you know this house from below } ]
+      success:
+        text: Giles is found by Lady Ravell's steward in the buttery with a jug of the lord's Gascon wine and no memory of how he got there. He is sent home to his father for a season. Nobody can prove anything. Giles does not need proof.
+        effects:
+          - set: flag.c1_giles_disgraced
+          - set: flag.c1_giles_enemy
+          - add: { rel.giles_marrick.affection: -5, rep.ruthlessness: 1, skill.intrigue: 1 }
+        next: { pool: c1_hall, count: 1, then: c1_winter }
+      failure:
+        text: The wine is found in the right place. So is the groom you paid, who tells the steward everything for another penny. Your master has to apologise to Lord Ravell on your behalf. He does not enjoy it.
+        effects:
+          - set: flag.c1_schemer
+          - set: flag.c1_giles_enemy
+          - add: { rel.@master.respect: -2, rel.@master.affection: -1, rel.giles_marrick.affection: -3 }
+        next: { pool: c1_hall, count: 1, then: c1_winter }
+    - id: allies
+      text: Win over the other squires, one at a time, until Giles is the one who stands alone.
+      tags: [diplomacy, allies]
+      check:
+        attr: presence
+        skill: diplomacy
+        difficulty: 3
+        audience: knights
+        mods:
+          - { if: rel.aymer_ravell.affection >= 3, add: 2, label: Aymer is with you }
+          - { if: flag.p_rival_peace, add: 1, label: you have made peace before }
+      success:
+        text: It takes all autumn. You lend, you listen, you take the blame once for a boy who will remember it. By Martinmas, when Giles makes his jokes, nobody laughs. He notices. He stops making them, mostly.
+        effects:
+          - set: flag.c1_squires_friends
+          - add: { rel.aymer_ravell.affection: 1, rel.giles_marrick.respect: 1, rep.knights: 1 }
+        next: { pool: c1_hall, count: 1, then: c1_winter }
+      failure:
+        text: The others like you well enough. They like not being Giles's target more. Nobody wants to be next.
+        effects:
+          - set: flag.c1_giles_enemy
+        next: { pool: c1_hall, count: 1, then: c1_winter }
+    - id: wine
+      text: Stand the whole loft a cask of Gascon wine on Saint Michael's night.
+      tags: [wealth]
+      requires: [ res.coin >= 60 ]
+      text_after: Five shillings, and worth it. The loft drinks your health and then sings about you, not all of it kindly. By morning they have stopped calling you the {background}. Giles calls you the tradesman instead, but he says it to fewer people.
+      effects:
+        - set: flag.c1_bought_friends
+        - add: { res.coin: -60, rep.knights: 1 }
+        - if: background == burgess
+          then: [ { add: { rel.giles_marrick.affection: -2 } } ]
+      next: { pool: c1_hall, count: 1, then: c1_winter }
+    - id: endure
+      text: Take it. Do your duties better than he does his, and let that be your answer.
+      tags: [yield]
+      text_after: It is a long autumn. Your master's harness is fished out of the moat and cleaned by you, twice. But your master sees whose harness shines and whose does not, and Sir Bertram Oakes says that patience is a knightly virtue, though he does not say it to Giles.
+      effects:
+        - set: flag.c1_giles_enemy
+        - add: { rel.@master.respect: 1, rep.honor: 1, rel.giles_marrick.respect: -1 }
+      next: { pool: c1_hall, count: 1, then: c1_winter }

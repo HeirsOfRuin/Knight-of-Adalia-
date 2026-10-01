@@ -3,7 +3,7 @@
 // lists (all), { all }, { any }, { not }.
 import type { ContentBundle, CondInput } from '../content/schema';
 import type { GameState } from './state';
-import { getValue, checkPath, ordinalFor, labelFor, type Value } from './paths';
+import { getValue, checkPath, ordinalFor, labelFor, deref, type Value } from './paths';
 import { formatCoin, capitalise } from './format';
 
 export type Op = '>=' | '<=' | '>' | '<' | '==' | '!=';
@@ -16,8 +16,8 @@ export type Cond =
 
 export class ConditionError extends Error {}
 
-const EXPR = /^\s*([a-z_][a-z0-9_.]*)\s*(>=|<=|==|!=|>|<)\s*(-?\d+|true|false|[a-z_][a-z0-9_]*)\s*$/;
-const BARE = /^\s*(!?)\s*([a-z_][a-z0-9_.]*)\s*$/;
+const EXPR = /^\s*([a-z_][a-z0-9_.@]*)\s*(>=|<=|==|!=|>|<)\s*(-?\d+|true|false|[a-z_][a-z0-9_]*)\s*$/;
+const BARE = /^\s*(!?)\s*([a-z_][a-z0-9_.@]*)\s*$/;
 
 const cache = new Map<string, Cond>();
 const objCache = new WeakMap<object, Cond>();
@@ -109,6 +109,7 @@ export function validateCond(input: CondInput, content: ContentBundle): string[]
           ord ?? (c.path === 'background' ? Object.keys(content.backgrounds)
           : c.path === 'track' ? [...content.config.tracks, 'none']
           : c.path === 'role' ? ['none', ...Object.values(content.backgrounds).flatMap((b) => Object.keys(b.roles ?? {}))]
+          : c.path.startsWith('alias.') ? ['none', ...Object.keys(content.registry.npcs)]
           : undefined);
         if (!known) errs.push(`"${c.src}": path does not take a named value`);
         else if (!known.includes(c.value)) errs.push(`"${c.src}": unknown value "${c.value}"`);
@@ -131,17 +132,19 @@ export function condPaths(input: CondInput): string[] {
   return out;
 }
 
-function leafLabel(c: Extract<Cond, { t: 'cmp' | 'truthy' }>, content: ContentBundle): string {
+function leafLabel(c: Extract<Cond, { t: 'cmp' | 'truthy' }>, content: ContentBundle, state: GameState): string {
   const reg = content.registry;
+  const cpath = deref(state, c.path);
   if (c.t === 'truthy') {
-    const [ns, id] = c.path.split('.');
+    const [ns, id] = cpath.split('.');
     let base: string;
     if (ns === 'flag') base = reg.flags[id!]?.description ?? id!;
-    else if (ns === 'npc') base = `${reg.npcs[id!]?.name ?? id} ${c.path.endsWith('alive') ? 'alive' : 'known to you'}`;
-    else base = labelFor(content, c.path);
+    else if (ns === 'npc') base = `${reg.npcs[id!]?.name ?? id} ${cpath.endsWith('alive') ? 'alive' : 'known to you'}`;
+    else base = labelFor(content, cpath);
     return c.neg ? `not: ${base}` : base;
   }
-  const { path, op, value } = c;
+  const { op, value } = c;
+  const path = cpath;
   if (path === 'background') return `${op === '!=' ? 'not ' : ''}${content.backgrounds[value as string]?.label ?? value}`;
   if (path === 'station') return `Station ${op === '>=' ? '' : op + ' '}${capitalise(String(value))}`.replace('  ', ' ');
   if (path === 'res.coin' && typeof value === 'number') return `Coin ${formatCoin(value)}`;
@@ -162,7 +165,7 @@ export function unmetLabel(input: CondInput, state: GameState, content: ContentB
       case 'all': return c.of.flatMap((x) => describe(x, onlyUnmet));
       case 'any': return [c.of.map((x) => describe(x, false).join(' and ')).join(' or ')];
       case 'not': return [`not (${describe(c.of, false).join(', ')})`];
-      default: return [leafLabel(c, content)];
+      default: return [leafLabel(c, content, state)];
     }
   };
   return describe(compileCond(input), true).join(', ');

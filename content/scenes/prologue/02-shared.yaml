@@ -1,0 +1,238 @@
+# Prologue scenes 2-4: shared by all backgrounds, with background-specific
+# passages and options. Ages 10 to 13.
+
+- id: p_hungry_year
+  chapter: prologue
+  title: The Wet Year
+  on_enter: [ { advance: { seasons: 9 } } ]
+  text: |
+    {date}. You are {age}.
+
+    It has rained since Whitsun. The barley lies flat in the fields and sprouts in the ear. Sheep cough in the folds. By Lammas, bread costs three times what it did, and the bread is half bean flour and grit.
+
+    [if background == reeve]At Ashby your father has to collect the lord's dues from men who have nothing. The Cokers were put off their holding in the spring for arrears, on your father's word. They live in a hut by the common now. Wat Coker throws stones at you when you pass. His sister Mag does not; she watches.[elif background == burgess]In Wendham the merchants are doing well. Grain comes in on Sarenzan ships and sells for whatever the seller says. In the tanners' alley behind your house, children are eating nettles.[elif background == archer]Your father's pension has not been paid since Candlemas. There are four of you in the cottage and one sack of beans. Gib Shawe's uncle, the bailiff, eats meat every Sunday.[else]At Ravell Hall the high table still has three courses, and the scraps from it go to the poor at the gate. Not all the scraps reach the gate. Nell from the laundry has a mother and five brothers in the village.[/if]
+  choices:
+    - id: share
+      text: "[if background == reeve]Take your share of the bread to the Cokers' hut.[elif background == burgess]Carry bread from your mother's kitchen to the tanners' alley.[elif background == archer]Give half your beans to the widow two doors down, whose boys are worse off than you.[else]Take a loaf from the high table scraps to Nell's mother before it reaches the gate.[/if]"
+      tags: [diplomacy, piety]
+      text_after: |
+        You go hungry for it, and so does your family, and they let you know. [if background == reeve]Wat Coker takes the bread without a word and shuts the door. Mag comes out after and walks with you to the stile.[elif background == burgess]Your father calls it charity with his money. Jocelin Tanner's mother thanks you in the street, in front of everyone.[elif background == archer]The widow's boys follow you about after that, like hounds.[else]Nell kisses you on the cheek. Somebody in the kitchen saw you take the loaf.[/if]
+      effects:
+        - set: flag.p_shared_bread
+        - add: { rep.commons: 2, rep.piety: 1, health: -1 }
+        - if: background == reeve
+          then: [ { add: { rel.wat_coker.affection: 1, rel.mag_coker.affection: 3, rel.piers_reeve.affection: -1 } } ]
+        - if: background == burgess
+          then: [ { add: { rel.jocelin_tanner.affection: 2, rel.ralf_mercer.affection: -1 } } ]
+        - if: background == archer
+          then: [ { add: { rel.hugh_fletcher.respect: 1 } } ]
+        - if: background == servant
+          then: [ { add: { rel.nell_laundress.affection: 3, rel.eleanor_ravell.affection: -1 } } ]
+      next: p_learning
+    - id: poach
+      text: Set snares in Lord Ravell's chase after dark.
+      tags: [cunning]
+      check: { attr: wits, skill: woodcraft, difficulty: 3, mods: [ { if: background == servant, add: 1, label: knows the chase } ] }
+      success:
+        text: Two coneys the first week, a hare the second. You learn which paths the forester walks and when. Nobody at home asks where the meat comes from.
+        effects: [ { set: flag.p_poached }, { add: { skill.woodcraft: 1, health: 1 } } ]
+        next: p_learning
+      failure:
+        text: The forester, John Wood, catches you with a hare in your shirt. He takes you to the hall instead of the gallows because you are small. You are whipped in the yard. His daughter Mariot brings you water afterwards and tells you your snares were set wrong.
+        effects:
+          - set: flag.p_poacher_caught
+          - injury: bruised_ribs
+          - add: { rep.commons: 1, rel.mariot_wood.affection: 2 }
+          - meet: mariot_wood
+        next: p_learning
+    - id: work
+      text: "[if background == reeve]Go round the tenants with your father and the steward, collecting arrears.[elif background == burgess]Count grain for Master Lanzi's ship, buying cheap from farmers who must sell.[elif background == archer]Hire yourself out to the carters on the Wendham road for a penny a day.[else]Serve at the high table, where nobody is hungry, and keep your eyes down.[/if]"
+      tags: [wealth, learning]
+      text_after: |
+        [if background == reeve]You hold the tally while men who used to give you apples hand over their last hens. Master Gervase says you have a clerk's head. Wat Coker spits at your feet in the lane.[elif background == burgess]Master Lanzi pays you a shilling and remembers your name. The farmers' carts go home empty.[elif background == archer]Your back gets broad and your hands get hard. Fourpence by Michaelmas. It buys flour for a week.[else]Lady Ravell notices how quietly you pour. The kitchen notices that you never bring anything down.[/if]
+      effects:
+        - set: flag.p_worked_hungry
+        - if: background == reeve
+          then: [ { add: { skill.stewardship: 1, rel.gervase_holt.respect: 2, rep.commons: -2, rel.wat_coker.affection: -2 } } ]
+        - if: background == burgess
+          then: [ { add: { skill.trade: 1, res.coin: 12, rep.merchants: 1, rep.commons: -1, rel.bertuccio_lanzi.affection: 2 } }, { meet: bertuccio_lanzi } ]
+        - if: background == archer
+          then: [ { add: { res.coin: 4, skill.woodcraft: 1 } } ]
+        - if: background == servant
+          then: [ { add: { skill.courtesy: 1, rel.eleanor_ravell.affection: 1, rep.commons: -1 } }, { meet: eleanor_ravell } ]
+      next: p_learning
+    - id: steal
+      text: Get into the tithe barn at night and fill a sack.
+      tags: [cunning]
+      check: { attr: agility, skill: intrigue, difficulty: 3 }
+      success:
+        text: Half a bushel of barley, and nobody misses it but God, who keeps the tithe. Your mother does not ask. You feel worse about it at Mass than you expected to.
+        effects: [ { set: flag.p_stole_tithe }, { add: { rep.ruthlessness: 1, skill.intrigue: 1, health: 1 } } ]
+        next: p_learning
+      failure:
+        text: The priest's dog finds you. You are made to stand in a white sheet at the church door three Sundays running. Everyone in the parish knows your face now, and what you did.
+        effects: [ { set: flag.p_thief_caught }, { add: { rep.church: -2, rep.commons: -1, rep.ruthlessness: 1 } } ]
+        next: p_learning
+
+- id: p_learning
+  chapter: prologue
+  title: What a Boy Learns
+  on_enter: [ { advance: { seasons: 4 } } ]
+  text: |
+    {date}. You are {age}. The harvest came in at last, thin but enough.
+
+    A boy of your sort has perhaps four years before he is a man and the shape of his life is set. There is time to get good at one thing, if someone will teach it.
+
+    [if background == reeve]Father Anselm will teach Latin letters to any boy who brings him firewood. Old Simon at the forge was a man-at-arms once and still has a sword under his bed.[elif background == burgess]The guild keeps a schoolmaster for members' sons. There is a fencing master by the bridge who teaches apprentices to use a buckler, against the town's rules.[elif background == archer]The priest teaches letters on feast days, if you can be spared from work, which you cannot. Will Cobb says he will teach you the sword and buckler if you carry his water.[else]Father Benet, the chaplain, teaches Aymer his letters and lets the servants' boys sit at the back. Sir Bertram Oakes teaches the household's young men at the pell every morning.[/if]
+
+    Whatever you choose, something else goes untaught.
+  choices:
+    - id: letters
+      text: Learn your letters, Latin and Adalian, properly.
+      tags: [learning]
+      text_after: |
+        [if trait.literate_vernacular]You already read Adalian, slowly. Now you learn the clerks' tongue as well: charters, writs, the psalter. It is dull, and it is power, and you know it.[else]It is like learning to see in the dark. By the end you can read a writ and sign your name, which nobody in your family has ever done.[/if]
+      effects:
+        - set: flag.p_trained_letters
+        - add: { skill.learning: 2 }
+        - if: trait.literate_vernacular
+          then: [ { trait: +literate_latin } ]
+          else: [ { trait: +literate_vernacular } ]
+        - if: background == reeve
+          then: [ { add: { rel.father_anselm.affection: 2 } }, { meet: father_anselm } ]
+        - if: background == servant
+          then: [ { meet: father_benet }, { add: { rel.father_benet.affection: 2 } } ]
+      next: p_rival
+    - id: arms
+      text: Learn to fight with sword and buckler.
+      tags: [martial]
+      text_after: You learn to keep your feet under you and your eyes off the blade. You learn to take a blow on the buckler and not the hand. You learn that you are slower than you thought, and then a little faster.
+      effects:
+        - set: flag.p_trained_arms
+        - add: { skill.arms: 2 }
+        - if: background == archer
+          then: [ { add: { rel.will_cobb.affection: 2 } }, { meet: will_cobb } ]
+        - if: background == servant
+          then: [ { meet: bertram_oakes }, { add: { rel.bertram_oakes.respect: 1 } } ]
+      next: p_rival
+    - id: manners
+      text: Learn how gentlefolk eat, speak and stand, by serving at their tables.
+      tags: [diplomacy]
+      text_after: You learn to carve a capon in the proper joints, pour without spilling, kneel on the correct knee, and never speak first. It feels like learning to act a part. You suspect that is what it is.
+      effects:
+        - set: flag.p_trained_courtesy
+        - add: { skill.courtesy: 2 }
+      next: p_rival
+    - id: field
+      text: Learn horses and hounds, riding and the chase.
+      tags: [martial]
+      text_after: You learn to sit a bad horse and read a deer's slot in the mud and tell from the hounds' voices whether they are on the true line. Gentlemen respect a man who knows these things, even when they do not respect the man.
+      effects:
+        - set: flag.p_trained_field
+        - add: { skill.riding: 1, skill.woodcraft: 1 }
+      next: p_rival
+
+- id: p_rival
+  chapter: prologue
+  title: "[if background == reeve]Wat Coker[elif background == burgess]Jocelin Tanner[elif background == archer]Gib Shawe[else]Aymer Ravell[/if]"
+  on_enter: [ { advance: { seasons: 7 } } ]
+  text: |
+    {date}. You are {age}.
+
+    [if background == reeve]Wat Coker is fifteen and big for it. He says your father stole his family's holding and he says it at the ale-stake where people can hear. Tonight he is waiting at the churchyard wall with two friends, and he has a cudgel.[elif background == burgess]Jocelin Tanner's father and yours are fighting over a seat on the town council. Today a silver spoon went missing from the guild feast and was found in your satchel. You did not put it there. Jocelin was sitting next to you. The guild wardens want an answer by Vespers.[elif background == archer]The bailiff is choosing one boy from the parish to be trained with the shire archers and paid for it. It is you or Gib Shawe, the bailiff's nephew. On Sunday the bailiff will watch you both shoot. Everyone knows how it will go.[else]Aymer Ravell is fourteen and has guests: two squires from Carrow's household. To impress them he has told you to fetch his falcon, and then told them you stole it, for the joke. They are laughing. One of them is not joking.[/if]
+  choices:
+    - id: fight
+      text: "[if background == reeve]Meet him at the wall with your fists.[elif background == burgess]Find Jocelin and beat the truth out of him.[elif background == archer]Shoot better than Gib. Nothing else.[else]Tell the Carrow squire to his face that you are no thief, and stand there.[/if]"
+      tags: [martial]
+      check: { attr: strength, skill: arms, difficulty: 3, mods: [ { if: background == archer, add: 3, label: your archery } ] }
+      success:
+        text: |
+          [if background == reeve]You leave Wat on his back in the nettles. His friends take him home. He does not wait at the wall again. He does not forget it either.[elif background == burgess]Jocelin admits it with a split lip, in front of his own father. The guild fines the Tanners. Jocelin will not be a friend now, and he is the sort who keeps lists.[elif background == archer]You beat Gib by four arrows. The bailiff gives the place to Gib anyway. But the parish saw, and Will Cobb saw, and Gib knows what everyone saw.[else]The squire hits you. You do not fall. Aymer stops laughing and says it was a jest. The Carrow boy looks at you a long time. You have made an enemy who is going to be a knight.[/if]
+        effects:
+          - set: flag.p_rival_beaten
+          - add: { rel.@rival.respect: 2, rel.@rival.affection: -3, rep.commons: 1 }
+          - if: background == servant
+            then: [ { meet: giles_marrick }, { add: { rel.giles_marrick.affection: -3 } } ]
+          - queue: { event: c1q_rival, delay: { seasons: 10 }, earliest_chapter: ch1 }
+        next: p_gate_router
+      failure:
+        text: |
+          [if background == reeve]Three of them, one cudgel. You wake up in your own bed with a lump over your ear. Your father goes to the manor court about it and wins, which makes everything worse.[elif background == burgess]Jocelin is stronger than you thought. You go home bloody, and the wardens take a split lip for a confession.[elif background == archer]Your hand shakes. Gib wins clean. The place is his and so, for a while, is the parish's opinion.[else]The squire knocks you down and Aymer laughs again, louder, to show he was not worried. You are put on bread and water for insolence.[/if]
+        effects:
+          - set: flag.p_rival_endured
+          - add: { rel.@rival.respect: -1, rel.@rival.affection: -1 }
+          - injury: bruised_ribs
+          - if: background == servant
+            then: [ { meet: giles_marrick }, { add: { rel.giles_marrick.respect: -2 } } ]
+          - queue: { event: c1q_rival, delay: { seasons: 10 }, earliest_chapter: ch1 }
+        next: p_gate_router
+    - id: outwit
+      text: "[if background == reeve]Go round by the mill and let the steward's men find Wat waiting with a weapon.[elif background == burgess]Find someone who saw Jocelin near your satchel, and get to the wardens first.[elif background == archer]Find out what the bailiff owes, and to whom, before Sunday.[else]Find the falcon where Aymer really hid it, and let the Carrow boys watch you do it.[/if]"
+      tags: [cunning]
+      check: { attr: wits, skill: intrigue, difficulty: 3 }
+      success:
+        text: |
+          [if background == reeve]Wat spends a night in the stocks for carrying a cudgel after curfew. He knows who arranged it. So does his sister.[elif background == burgess]A pot-boy saw everything and is happy to say so for twopence. The Tanners are fined. Jocelin learns you fight with your head, and starts doing the same.[elif background == archer]The bailiff owes the alewife eleven shillings. You mention it to the alewife. On Sunday the bailiff decides both boys should go, for fairness.[else]The falcon is in Aymer's own chest. The Carrow boys find that funny, at Aymer's cost. Aymer never quite forgives you for being clever in front of guests.[/if]
+        effects:
+          - set: flag.p_rival_outwitted
+          - add: { rel.@rival.affection: -2, rel.@rival.respect: 1, skill.intrigue: 1 }
+          - if: background == reeve
+            then: [ { add: { rel.mag_coker.affection: -2 } } ]
+          - queue: { event: c1q_rival, delay: { seasons: 10 }, earliest_chapter: ch1 }
+        next: p_gate_router
+      failure:
+        text: Your scheme comes apart in your hands, the way schemes do when you are thirteen. Everyone learns what you tried, and that you are the kind who tries it.
+        effects:
+          - set: flag.p_rival_endured
+          - add: { rel.@rival.affection: -2, rep.commons: -1, rep.ruthlessness: 1 }
+          - queue: { event: c1q_rival, delay: { seasons: 10 }, earliest_chapter: ch1 }
+        next: p_gate_router
+    - id: peace
+      text: "[if background == reeve]Go to the Cokers' hut by daylight and talk to Wat.[elif background == burgess]Go to Jocelin's father, not Jocelin, and offer to drop it.[elif background == archer]Go to Gib before Sunday and offer to split the work and the pay.[else]Laugh along with Aymer, take the blame, and talk to him alone later.[/if]"
+      tags: [diplomacy]
+      check: { attr: presence, skill: diplomacy, difficulty: 3, mods: [ { if: flag.p_shared_bread, add: 2, label: you shared bread in the wet year } ] }
+      success:
+        text: |
+          [if background == reeve]Wat listens because Mag makes him. You do not become friends. You agree not to kill each other, which is more than your fathers managed.[elif background == burgess]Master Tanner is a hard man but a practical one. The spoon is found under a bench. Jocelin is told to keep away from you, and mostly does.[elif background == archer]Gib is surprised enough to agree. It turns out the bailiff's nephew cannot draw a war bow, and knows it. You do the shooting, he does the talking, and you both get paid.[else]Alone, Aymer apologises, in his way. He says you are the only one in the house who does not want something from him. It is not quite true.[/if]
+        effects:
+          - set: flag.p_rival_peace
+          - add: { rel.@rival.affection: 3, rel.@rival.respect: 1 }
+          - queue: { event: c1q_rival, delay: { seasons: 10 }, earliest_chapter: ch1 }
+        next: p_gate_router
+      failure:
+        text: You are taken for weak. The matter is settled against you and talked about for a month.
+        effects:
+          - set: flag.p_rival_endured
+          - add: { rel.@rival.respect: -2, rep.commons: -1 }
+          - queue: { event: c1q_rival, delay: { seasons: 10 }, earliest_chapter: ch1 }
+        next: p_gate_router
+    - id: endure
+      text: Do nothing. Let it pass and keep your head down.
+      tags: [yield]
+      text_after: It costs you, in pride and in the way people look at you for a while. [if background == archer]Gib gets the place. [/if]It also costs you nothing that cannot be earned back, and the older men notice a boy who does not rise to every bait.
+      effects:
+        - set: flag.p_rival_endured
+        - add: { rep.honor: 1, rel.@rival.respect: -1 }
+        - queue: { event: c1q_rival, delay: { seasons: 10 }, earliest_chapter: ch1 }
+      next: p_gate_router
+
+# Routes each background to its own Patronage Gate.
+- id: p_gate_router
+  chapter: prologue
+  title: Fourteen
+  on_enter: [ { advance: { seasons: 6 } } ]
+  text: |
+    {date}. You are {age}.
+
+    Fourteen is old enough to be bound apprentice, or put to the plough, or sent for a soldier. It is the age when a boy of your sort is either taken into somebody's service or left where he was born.
+
+    [if background == reeve]Sir Hamon Darrell is coming to Ashby for the harvest reckoning. He has no squire. Everyone in the manor knows it.[elif background == burgess]Your father has decided you will not be a wool merchant. He wants a son in a knight's household, and he has money to spend on it, though not much.[elif background == archer]Sir Ancel Brome is holding a muster at Wendham for Lord Ravell's levy. Your father has put on his good shirt.[else]Lord Ravell's household is choosing its pages and grooms for the year. Guests are coming for the autumn hunting, Sir Ancel Brome among them.[/if]
+  choices:
+    - id: go
+      text: Go and see what can be made of it.
+      next:
+        switch:
+          - { if: background == reeve, go: p_gate_reeve }
+          - { if: background == burgess, go: p_gate_burgess }
+          - { if: background == archer, go: p_gate_archer }
+        default: p_gate_servant

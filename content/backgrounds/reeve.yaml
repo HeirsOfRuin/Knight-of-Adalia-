@@ -3,14 +3,16 @@ label: Reeve's son
 summary: "Your father keeps the tallies of Ashby manor for Sir Hamon Darrell. You learned your letters at his elbow."
 asset: "Literate, good with numbers, knows how a manor really runs."
 liability: "The village sees your family as the lord's enforcers. Your father's office is held at the lord's pleasure."
-start_scene: t_market
+start_scene: p_reeve_open
 start_age: 8
 attributes: { strength: 2, agility: 2, endurance: 2, wits: 3, presence: 2 }
 skills: { stewardship: 2, learning: 2, trade: 1, diplomacy: 1 }
 traits: [literate_vernacular]
 coin: 40            # 3s 4d
 random_flags: [[father_skims, steward_skims]]
+aliases: { rival: wat_coker }
 relationships:
+  mag_coker: { affection: 1, respect: 0 }
   piers_reeve: { affection: 4, respect: 2 }
   gervase_holt: { affection: 0, respect: 1 }
   wat_coker: { affection: -4, respect: 0 }

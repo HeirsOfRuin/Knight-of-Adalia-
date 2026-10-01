@@ -1,0 +1,222 @@
+# Chapter 1, Act III: the King's progress and the Ravell tourney. Age 18.
+# Third major branch. Lower-track men get one more road to squire here.
+
+- id: c1_progress
+  chapter: ch1
+  title: The King at Ravell
+  on_enter: [ { advance: { seasons: 4 } }, { meet: king_aldred }, { meet: osmund_carrow } ]
+  text: |
+    {date}. You are {age}.
+
+    King Aldred comes to Ravell on his summer progress with three hundred people and eats the house bare in four days. He is thirty-four, thin, quick, with his mother's dark Valdrennish eyes. He talks about Valdrenne at every meal. The crown there is his by right, he says, through his mother, and the peers of Valdrenne gave it to a cousin because they were afraid of an Adalian king. He does not say what he means to do about it. Everyone at the high table knows.
+
+    The Earl of Carrow rides in on the second day with Sir Walter Pryce and forty men. The Earl does not like the King's war; he likes it less that the King has not asked him to pay for it yet. [if flag.c1_maud_confided]You notice that Carrow's younger son is seated next to Lady Maud de Lisle. She looks at her plate the whole meal.[/if]
+
+    The household is in a fever. Squires are everywhere at once. For three days it is possible, just, for anyone to be seen by anyone.
+  choices:
+    - id: king
+      text: Get yourself near the King. Hold his stirrup, carry his cup, be there.
+      tags: [diplomacy]
+      check:
+        attr: presence
+        skill: courtesy
+        difficulty: 4
+        audience: nobles
+        mods:
+          - { if: res.renown >= 3, add: 1, label: your name from the Leven }
+          - { if: flag.ravell_favor, add: 1, label: Lord Ravell puts you forward }
+          - { if: flag.c1_schemer, add: -1, label: the steward has a long memory }
+      success:
+        text: On the third morning you hold the King's stirrup while he mounts for the hunt. He looks down and asks your name. Lord Ravell, beside him, adds something about the Leven ford. The King repeats your name, as if to keep it. Then he is gone, in a crowd of horses. It lasted the time it takes to say a paternoster. You will remember it all your life.
+        effects:
+          - set: flag.c1_king_noticed
+          - add: { rep.crown: 2, res.renown: 1 }
+        next: c1_tourney
+      failure:
+        text: There are forty squires trying to hold the King's stirrup and thirty-nine of them have fathers. You get close enough to smell his horse.
+        next: c1_tourney
+    - id: spy
+      text: Watch the King's household for whoever is watching it.
+      tags: [cunning]
+      check:
+        attr: wits
+        skill: intrigue
+        difficulty: 4
+        mods:
+          - { if: background == servant, add: 1, label: you know who belongs in this house }
+          - { if: skill.learning >= 3, add: 1, label: you can read what he writes }
+      success:
+        text: A Sarenzan clerk in the King's chancery train writes more letters than his master. You follow him to the carrier's at Wendham and back, and on the third night you lift one from his satchel. It is to Cordelle, and it lists the King's ships by name. The King's marshal takes it from you without a word and the clerk is gone by morning. That evening the marshal brings you before the King, who asks your name and does not smile.
+        effects:
+          - set: flag.c1_king_noticed
+          - set: flag.c1_caught_spy
+          - add: { rep.crown: 2, res.renown: 1, rep.sarenza: -1 }
+        next: c1_tourney
+      failure:
+        text: You follow the wrong man for two days. He is a clerk, and he is writing to his mother.
+        next: c1_tourney
+    - id: pryce
+      text: Make yourself known to Sir Walter Pryce, who is hiring men for the war.
+      tags: [allies, cunning]
+      check: { attr: presence, skill: diplomacy, difficulty: 3, mods: [ { if: flag.c1_duties_well, add: 1, label: he remembers you } ] }
+      success:
+        text: Sir Walter is a younger son who has made himself a captain and is proud of it. He likes men who came up the hard way, he says, because they know what things cost. He tells you that if you ever need a place, the Earl's company pays on time. He says it as though most companies do not. They do not.
+        effects:
+          - set: flag.c1_pryce_contact
+          - meet: walter_pryce
+          - add: { rel.walter_pryce.affection: 2, rel.walter_pryce.respect: 1 }
+        next: c1_tourney
+      failure:
+        text: Sir Walter is polite and busy, and calls you by the wrong name.
+        effects: [ { meet: walter_pryce } ]
+        next: c1_tourney
+    - id: maud
+      text: Get Lady Maud's petition into the King's hands, past her guardian.
+      tags: [cunning]
+      visible_if: [ flag.c1_maud_confided ]
+      check:
+        attr: wits
+        skill: intrigue
+        difficulty: 4
+        audience: nobles
+        mods: [ { if: background == servant, add: 2, label: you know every back stair in this house } ]
+      success:
+        text: The petition goes in among the King's letters by way of a clerk who owes Father Benet money. It asks the King to take her wardship into his own hand. On the last morning, at Mass, the King announces that he will do exactly that. Lord Ravell smiles and loses a thousand marks. He does not know how. Lady Maud does, and looks at you across the chapel once, for a long time.
+        effects:
+          - set: flag.c1_maud_saved
+          - add: { suit.maud_delisle.regard: 4, suit.maud_delisle.discretion: -2, rep.crown: 1 }
+          - assign: { suit.maud_delisle.status: courted }
+        next: c1_tourney
+      failure:
+        text: The clerk takes the petition and the money and gives both to Lord Ravell's steward. Lady Maud is sent to the nuns at Ambry before the King has left the house. Lord Ravell does not accuse you. He does not need to. Your master is told to keep you on a shorter rein.
+        effects:
+          - set: flag.c1_maud_scandal
+          - assign: { suit.maud_delisle.status: lost }
+          - add: { rel.thurstan_ravell.affection: -4, rel.@master.respect: -2 }
+          - clear: flag.ravell_favor
+        next: c1_tourney
+    - id: duty
+      text: Keep to your master's side and do your work well.
+      tags: [yield]
+      text_after: Somebody has to make sure the horses are fed while everyone else is being seen. Your master notices who that somebody is.
+      effects: [ { add: { rel.@master.respect: 1, rel.@master.affection: 1 } } ]
+      next: c1_tourney
+
+- id: c1_tourney
+  chapter: ch1
+  title: The Ravell Tourney
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    {date}.
+
+    For the King's leaving, Lord Ravell holds a tourney in the water meadows. Jousts for the knights, a course for the squires, a melee on foot for anyone fool enough, a prize of a harness for the best squire, and a great deal of betting below the stands.
+
+    [if flag.c1_giles_enemy]Giles Marrick has entered everything. He is twenty now and will be knighted at Christmas. He has been telling everyone that he means to put the {background} in the mud before the King leaves.[else]Giles Marrick is entered in the squires' course. He nods to you, carefully, the way men nod to someone they have decided not to fight.[/if]
+
+    [if suit.isabel_sayer.status >= courted]Isabel Sayer is in the stands with Lady Ravell's women. She has a green sleeve. She has not given it to anyone yet.[/if]
+  choices:
+    - id: joust
+      text: Ride in the squires' course.
+      tags: [martial]
+      requires: [ { any: [ res.horses >= 1, rel.@master.affection >= 3 ] } ]
+      label: "Requires: a horse, or your master's loan of one"
+      check:
+        attr: agility
+        skill: riding
+        difficulty: 4
+        audience: knights
+        mods:
+          - { if: skill.arms >= 3, add: 1, label: your arms }
+          - { if: flag.c1_giles_enemy, add: -1, label: Giles has had a word with the marshal of the lists }
+      success:
+        text: Three courses. You break two lances on Giles Marrick's shield and he breaks one on yours. On the third he is out of his saddle and in the mud before the King. The prize harness is old, Valdrennish, beautifully kept, and yours. The King laughs and throws you a ring off his own hand. It is too big for your finger.
+        effects:
+          - set: flag.c1_tourney_won
+          - item: +prize_harness
+          - add: { res.renown: 3, rep.knights: 1, rep.crown: 1, rel.giles_marrick.respect: 2, rel.giles_marrick.affection: -2 }
+        next: { pool: c1_hall, count: 1, then: c1_crisis_router }
+      failure:
+        text: Giles's lance takes you square in the helm and the next thing you know is the barber-surgeon's tent. The King did not see it, you are told. The King saw it.
+        effects: [ { injury: cracked_skull }, { add: { rel.giles_marrick.respect: 1 } } ]
+        next: { pool: c1_hall, count: 1, then: c1_crisis_router }
+    - id: melee
+      text: Fight in the melee on foot.
+      tags: [martial]
+      check:
+        attr: strength
+        skill: arms
+        difficulty: 4
+        mods:
+          - { if: item.padded_jack, add: 1, label: your jack }
+          - { if: flag.c1_giles_enemy, add: -1, label: Giles's friends single you out }
+      success:
+        text: Forty men with blunted swords in a roped field. It is uglier than war, because everyone is showing off. You are one of the last six standing. The heralds cry your name, which they have to be told how to say. Lord Ravell's steward gives you five shillings from the purse.
+        effects: [ { add: { res.renown: 2, res.coin: 60, rep.knights: 1 } } ]
+        next: { pool: c1_hall, count: 1, then: c1_crisis_router }
+      failure:
+        text: Three of Giles's friends find you in the first rush and take you down together. Blunted swords still break things.
+        effects: [ { injury: bruised_ribs }, { add: { rel.giles_marrick.respect: 1 } } ]
+        next: { pool: c1_hall, count: 1, then: c1_crisis_router }
+    - id: serve
+      text: "[if track == squire_track]Serve your master in the lists: his horse, his lances, his helm, everything right.[else]Serve in the lists, for any knight who needs a pair of hands.[/if]"
+      tags: [diplomacy, allies]
+      check:
+        attr: wits
+        skill: courtesy
+        difficulty: 3
+        mods:
+          - { if: skill.riding >= 3, add: 1, label: you know horses }
+          - { if: rel.@master.affection >= 3, add: 1, label: he trusts your hands }
+      success:
+        text: "[if track == squire_track]Every lance is sound, every buckle tight, every horse fresh. [if alias.master == hamon_darrell]Sir Hamon, who has not jousted in ten years, unhorses a Carrow knight half his age and weeps with joy in front of the King.[else]Sir Ancel rides five courses and breaks five lances and is cheered by men who usually cross the road to avoid him.[/if][else]Sir Bertram Oakes's squire is drunk. You do his work, and do it well. At Vespers Sir Bertram has a word with your master. That evening your master names you his squire in the hall. Sir Bertram says it is the best course he has run in years, and it was not on a horse.[/if]"
+        effects:
+          - set: flag.c1_served_well
+          - add: { rel.@master.respect: 2, rel.@master.affection: 2, rel.bertram_oakes.respect: 1 }
+          - meet: bertram_oakes
+          - if: track != squire_track
+            then: [ { station: squire, track: squire_track }, { set: flag.c1_raised_at_tourney } ]
+          - if: rel.thurstan_ravell.respect >= 3
+            then: [ { set: flag.ravell_favor } ]
+        next: { pool: c1_hall, count: 1, then: c1_crisis_router }
+      failure:
+        text: A girth you checked twice breaks anyway. Your master goes into the sand in front of the King. Nobody says it was your fault. Nobody needs to.
+        effects: [ { add: { rel.@master.respect: -2 } } ]
+        next: { pool: c1_hall, count: 1, then: c1_crisis_router }
+    - id: bet
+      text: Spend the day below the stands, betting on other men.
+      tags: [wealth, cunning]
+      requires: [ res.coin >= 24 ]
+      check: { attr: wits, skill: trade, difficulty: 3 }
+      success:
+        text: You know which horses are lame and which squires are hungover, because you looked after them. By evening you have turned two shillings into ten. The bookmen will not take your bets tomorrow.
+        effects: [ { add: { res.coin: 120, rep.merchants: 1 } } ]
+        next: { pool: c1_hall, count: 1, then: c1_crisis_router }
+      failure:
+        text: The favourite falls at the first course. So does your purse.
+        effects: [ { add: { res.coin: -24 } } ]
+        next: { pool: c1_hall, count: 1, then: c1_crisis_router }
+    - id: sleeve
+      text: Ask Isabel Sayer for her green sleeve, and wear it.
+      tags: [diplomacy]
+      visible_if: [ suit.isabel_sayer.status >= courted ]
+      text_after: She gives it to you in front of Lady Ravell, which is either brave or foolish. You do not ride or fight. You stand at the barrier with her sleeve on your arm all day, which is a statement of a different kind. Lady Ravell speaks to her that evening. Isabel tells you about it afterwards, laughing, with her eyes red.
+      effects:
+        - add: { suit.isabel_sayer.regard: 3, suit.isabel_sayer.discretion: -3, rel.eleanor_ravell.affection: -2 }
+      next: { pool: c1_hall, count: 1, then: c1_crisis_router }
+
+- id: c1_crisis_router
+  chapter: ch1
+  title: Summer, Year {year}
+  on_enter: [ { advance: { seasons: 3 } } ]
+  text: |
+    {date}. You are {age}.
+
+    The King has gone south to Wendmere to ask the Moot for money. Rumour says he will get it, and that it will be spent across the Narrow Sea. Every knight in the shire is counting his horses. Every creditor in the shire is counting his knights.
+
+    [if alias.master == hamon_darrell]The Earl of Carrow's commissioners arrive at Ravell in June to audit the King's subsidy. They ask for Sir Hamon by name.[else]In June, word comes down from the March. Sir Godric Thorne's men have burned Brome's barns and killed Sir Ancel's reeve.[/if]
+  choices:
+    - id: go
+      text: Go to your master.
+      next:
+        switch: [ { if: alias.master == hamon_darrell, go: c1_crisis_hamon } ]
+        default: c1_crisis_ancel

@@ -26,7 +26,13 @@ export function effectiveSkill(state: GameState, content: ContentBundle, id: str
   return Math.max(0, (state.skills[id] ?? 0) + modifierFor(state, content, `skill.${id}`));
 }
 
-export function getValue(state: GameState, content: ContentBundle, path: string): Value {
+/** Replaces @alias segments with the NPC id they currently point to. */
+export function deref(state: GameState, path: string): string {
+  return path.includes('@') ? path.replace(/@([a-z_][a-z0-9_]*)/g, (m, a: string) => state.aliases?.[a] ?? m) : path;
+}
+
+export function getValue(state: GameState, content: ContentBundle, rawPath: string): Value {
+  const path = deref(state, rawPath);
   const [ns, a, b] = path.split('.');
   switch (ns) {
     case 'flag': return !!state.flags[a!];
@@ -58,6 +64,7 @@ export function getValue(state: GameState, content: ContentBundle, path: string)
       if (a === 'season') return seasonName(state, content);
       if (a === 'year') return regnalYear(state, content);
       return undefined;
+    case 'alias': return state.aliases?.[a!] ?? 'none';
     case 'station': return state.station;
     case 'track': return state.track ?? 'none';
     case 'background': return state.background;
@@ -80,7 +87,16 @@ export function checkPath(content: ContentBundle, path: string): string | null {
   const single = ['station', 'track', 'background', 'role', 'chapter', 'age', 'health', 'time', 'prejudice'];
   if (single.includes(ns!)) return a === undefined ? null : `"${ns}" takes no sub-path ("${path}")`;
   if (a === undefined) return `incomplete path "${path}"`;
+  if (a.startsWith('@')) {
+    if (!['rel', 'npc', 'favor'].includes(ns!)) return `alias not allowed in "${path}"`;
+    if (!content.config.aliases.includes(a.slice(1))) return `unknown alias in "${path}"`;
+    if (ns === 'favor') return null;
+    return ns === 'rel'
+      ? need(['affection', 'respect', 'loyalty'].includes(b ?? ''), 'relationship field')
+      : need(['met', 'alive'].includes(b ?? ''), 'npc field');
+  }
   switch (ns) {
+    case 'alias': return need(content.config.aliases.includes(a), 'alias');
     case 'flag': return need(a in reg.flags, 'flag');
     case 'counter': return null; // counters are free-form numeric tallies
     case 'attr': return need(content.config.attributes.includes(a), 'attribute');

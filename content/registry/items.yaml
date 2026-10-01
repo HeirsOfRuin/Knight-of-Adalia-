@@ -1,3 +1,10 @@
 yew_bow: { label: Father's yew bow, description: "Old, heavy in the draw, true.", mods: { skill.archery: 1 } }
 good_knife: { label: Good knife, description: "Good steel from a Wendham smith. Worth more than his shirt." }
 holy_ampulla: { label: Lead ampulla, description: "A pilgrim's flask said to hold water from Saint Ebba's well. It may be ditch water.", magic: true }
+tally_copy: { label: Copied tallies, description: "Your own parchment copy of the Ashby barley tallies for the hungry year." }
+padded_jack: { label: Padded jack, description: "Twenty layers of linen, stitched and stinking. Stops a cut, mostly.", mods: {} }
+kettle_hat: { label: Kettle hat, description: "A broad iron hat. Dented once already." }
+caldmoor_ring: { label: Black ring, description: "A jet ring taken off a dead raider. The grooms say it is cursed. It may be.", magic: true }
+hugh_wyck_sword: { label: Sir Hugh Wyck's sword, description: "A good blade that belongs to someone else." }
+prize_harness: { label: Prize harness, description: "A knight's harness won at the Ravell tourney. Old style, well kept." }
+girl_token: { label: A keepsake, description: "A token given in return for yours." }

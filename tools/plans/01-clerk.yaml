@@ -1,0 +1,42 @@
+# The Clerk: reeve's son, competence at the gate, accounts and loyalty,
+# knighted by his own master in peacetime. Courts Isabel Sayer.
+name: The Clerk
+background: reeve
+seed: 11
+steps:
+  p_reeve_open: copy
+  p_hungry_year: work
+  p_learning: letters
+  p_rival: peace!success
+  p_gate_router: go
+  p_gate_reeve: figures!success
+  p_leaving: family
+  c1_arrival: kneel!success
+  c1_duties: careful!success
+  c1_squires: endure
+  c1_winter: letters
+  c1_trouble_hamon: accounts!success
+  c1_christmas: isabel!success
+  c1_muster: buy
+  c1_raid: horses
+  c1_raid_return: wyck
+  c1_wyck_widow: comfort
+  c1_progress: king!success
+  c1_tourney: serve!success
+  c1_crisis_router: go
+  c1_crisis_hamon: rolls!success
+  c1_war_comes: ready
+  c1_means: master
+  c1_knighting: master
+  c1_dubbing: pray
+  c1_farewell: isabel
+ending: ch1_complete
+expect:
+  - station == knight
+  - flag.c1_dubbed_by_master
+  - alias.master == hamon_darrell
+  - flag.c1_master_cleared
+  - suit.isabel_sayer.pledge == token
+  - suit.joan_wyck.status >= known
+  - item.tally_copy
+  - "!flag.p_lower_track"

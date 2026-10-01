@@ -1,0 +1,298 @@
+# Chapter 1: the Leven ford. Age 17. First real danger. Second major branch.
+
+- id: c1_muster
+  chapter: ch1
+  title: The Word from the March
+  on_enter: [ { advance: { seasons: 2 } } ]
+  text: |
+    {date}. You are {age}.
+
+    Black Ewan of Glenhallow has come over the border with eighty men. Steadings burning along the Leven, cattle driven north, a priest hanged from his own lychgate. Lord Ravell sends Sir Ancel north with forty horse and Will Cobb's sixty archers, and Sir Hamon with the Ravell banner, because a banner must be carried by somebody.
+
+    You are going. Everyone is going. The armourer in the outer ward has a queue at his door and has put his prices up by half.
+
+    [if !item.padded_jack]You own a shirt, a cloak, and whatever your master lends you. A Caldmoor spear does not care which.[/if]
+  choices:
+    - id: buy
+      text: Buy a padded jack and a kettle hat from the armourer. Three shillings.
+      tags: [wealth, martial]
+      requires: [ res.coin >= 36 ]
+      text_after: The jack is second-hand, stiff with someone else's sweat. The hat has a dent in it you try not to think about. Both fit, more or less.
+      effects: [ { add: { res.coin: -36 } }, { item: +padded_jack }, { item: +kettle_hat } ]
+      next: c1_raid
+    - id: borrow
+      text: Ask your master for the loan of his old jack.
+      tags: [allies, martial]
+      requires: [ rel.@master.affection >= 2 ]
+      label: "Requires: your master's goodwill"
+      text_after: "[if alias.master == hamon_darrell]Sir Hamon finds it in a chest under three cloaks and a dead mouse. It is too big. He says you will grow into it.[else]Sir Ancel throws it at you without a word. It has a Caldmoor spear-hole in it, neatly patched.[/if]"
+      effects: [ { item: +padded_jack }, { add: { rel.@master.affection: 1 } } ]
+      next: c1_raid
+    - id: pray
+      text: Spend the night before in the chapel, instead.
+      tags: [piety]
+      text_after: Father Benet hears your confession and gives you a candle-end and a blessing. You sleep on the chapel floor and wake stiff. You go north in your shirt.
+      effects: [ { add: { rep.piety: 1, rep.church: 1 } } ]
+      next: c1_raid
+    - id: go
+      text: Go as you are.
+      tags: [yield]
+      text_after: You go as you are.
+      next: c1_raid
+
+- id: c1_raid
+  chapter: ch1
+  title: The Leven Ford
+  text: |
+    Dawn on the fourth day, in a cold mist off the river. Black Ewan's men are driving the cattle across the Leven ford, slowly, because cattle will not be hurried through water. Eighty men, perhaps more, half of them on the far bank already. They have not seen you.
+
+    Sir Ancel draws up the horse behind a fold of ground. Will Cobb has the archers strung and waiting in the alders. Sir Hamon sits the Ravell banner and looks old in the grey light. Beside him is Sir Hugh Wyck, a knight of Lord Ravell's from the next valley, who smiles at you as if this were a hunt.
+
+    Sir Ancel says the horse will go in when the archers have loosed twice. That is all the plan there is.
+
+    [if !item.padded_jack]You have no armour. A ford fight is a lottery for a man without it.[/if]
+  choices:
+    - id: charge
+      text: Take a spear and go into the ford with the horse.
+      tags: [martial]
+      lethal: true
+      warn: Men die at fords. Without armour, the odds are worse.
+      check:
+        attr: strength
+        skill: arms
+        difficulty: 2
+        mods:
+          - { if: item.padded_jack, add: 1, label: your jack }
+          - { if: item.kettle_hat, add: 1, label: your hat }
+          - { if: skill.riding >= 3, add: 1, label: you sit a horse well }
+          - { if: item.holy_ampulla, add: 1, label: "Saint Ebba's water, or your faith in it" }
+      success:
+        text: "The horse hits them in the middle of the river and the river does the rest. You put your spear into a man's back, lose it, draw, and find yourself on the far bank with a boy your age under your horse's hooves, his hands up. He is somebody: good boots, a jet brooch. You take him. Behind you, in the ford, Sir Hugh Wyck is face down in the water, and his horse is standing over him."
+        effects:
+          - set: flag.c1_raid_distinguished
+          - set: flag.c1_has_prisoner
+          - set: flag.c1_carried_wyck_sword
+          - item: +hugh_wyck_sword
+          - add: { res.renown: 3, rel.@master.respect: 2, rep.knights: 1 }
+          - meet: coll_glenhallow
+        next: c1_prisoner
+      partial:
+        text: The horse goes in and so do you. An arrow from the far bank takes you through the shoulder before you reach the middle. You stay in the saddle, which is all anyone remembers afterwards. You are carried home with Sir Hugh Wyck, who was not so lucky.
+        effects:
+          - set: flag.c1_raid_distinguished
+          - injury: arrow_wound
+          - add: { res.renown: 2, rel.@master.respect: 1 }
+        next: c1_raid_return
+      failure:
+        text: "[if item.padded_jack]A spear takes you in the chest and the jack stops most of it. You go into the river and come up under a horse. You remember nothing after that until the hall.[else]A spear takes you under the ribs. You go into the water and do not come up.[/if]"
+        effects:
+          - if: item.padded_jack
+            then: [ { injury: cracked_skull }, { injury: bruised_ribs } ]
+            else: [ { die: "Speared in the Leven ford at seventeen, in a raid nobody south of Ravell has heard of." } ]
+        next: c1_raid_return
+    - id: flank
+      text: Take two of Cobb's men upstream to the second ford and get behind the herd.
+      tags: [cunning]
+      check:
+        attr: wits
+        skill: woodcraft
+        difficulty: 4
+        mods: [ { if: flag.c1_found_cattle_trail, add: 2, label: you have walked this valley before } ]
+      success:
+        text: The second ford is waist-deep and colder than anything you have known. You come out of the alders behind the drovers, shouting, and the cattle turn back into the river on top of Ewan's own men. In the confusion you find a boy holding the raiders' horses, and he gives himself up rather than be trampled. Sir Ancel says, after, that it was the cattle that won the fight, and that someone put them there.
+        effects:
+          - set: flag.c1_raid_distinguished
+          - set: flag.c1_has_prisoner
+          - add: { res.renown: 2, rel.@master.respect: 2, rel.ancel_brome.respect: 1 }
+          - meet: coll_glenhallow
+        next: c1_prisoner
+      failure:
+        text: The second ford is not where the shepherds said. By the time you find it, it is over. Sir Hugh Wyck is dead in the river and the cattle are back on the Adalian side, no thanks to you.
+        effects: [ { set: flag.c1_raid_late } ]
+        next: c1_raid_return
+    - id: archers
+      text: Get down into the alders with Cobb's archers and make them shoot faster.
+      tags: [martial, allies]
+      check:
+        attr: presence
+        skill: command
+        difficulty: 4
+        mods:
+          - { if: track == levy, add: 2, label: these are your men }
+          - { if: rel.will_cobb.affection >= 3, add: 1, label: Cobb backs you }
+          - { if: skill.archery >= 4, add: 1, label: your own shooting }
+      success:
+        text: Six volleys instead of two. The far bank is a mess of screaming horses before the knights even move. When the horse goes in, there is not much left to fight. Will Cobb tells Sir Ancel whose voice was calling the volleys. Only one knight dies at the ford, Sir Hugh Wyck, and he dies because he went in early.
+        effects:
+          - set: flag.c1_raid_distinguished
+          - add: { res.renown: 2, rel.will_cobb.respect: 2, rel.ancel_brome.respect: 1, skill.command: 1 }
+          - meet: will_cobb
+        next: c1_raid_return
+      failure:
+        text: In the mist and the noise nobody listens to you. A Caldmoor arrow comes back the other way and goes through your shoulder.
+        effects: [ { injury: arrow_wound } ]
+        next: c1_raid_return
+    - id: parley
+      text: Wade out and shout for a parley. The cattle, for their lives.
+      tags: [diplomacy]
+      check:
+        attr: presence
+        skill: diplomacy
+        difficulty: 5
+        mods:
+          - { if: flag.p_knows_war_secret, add: 1, label: your father taught you a few words of their tongue }
+          - { if: rep.caldmoor >= 1, add: 1, label: your name is known over the border }
+      success:
+        text: "Black Ewan himself comes down to the water's edge: a tall man with grey in his beard and a voice like a cart on stones. He laughs at you for a long time. Then he takes the bargain, because a cattle raid is a business and he has lost enough. He leaves his sister's boy Coll as a pledge. Sir Ancel calls it a merchant's victory. Lord Ravell calls it forty cattle and no widows. Only Sir Hugh Wyck, who went in before the parley was done, is dead."
+        effects:
+          - set: flag.c1_parley
+          - set: flag.c1_has_prisoner
+          - add: { rep.caldmoor: 2, rep.honor: 1, res.renown: 1, rel.ancel_brome.respect: -1, rel.thurstan_ravell.respect: 2 }
+          - meet: coll_glenhallow
+          - meet: ewan_dubh
+        next: c1_prisoner
+      failure:
+        text: Somebody on the far bank shoots at you. You go back to the line soaked to the chest and shaking, and the fight happens anyway.
+        effects: [ { add: { rel.@master.respect: -1 } } ]
+        next: c1_raid_return
+    - id: horses
+      text: Stay with the horses, as you were told.
+      tags: [yield]
+      text_after: You stay with the horses. From the fold of ground you see the archers loose, and the knights go in, and Sir Hugh Wyck's horse come back out of the river without him. You are the one who goes down into the water afterwards and brings him out. His sword is still in his hand. Nobody else wants to take it from him.
+      effects:
+        - set: flag.c1_carried_wyck_sword
+        - item: +hugh_wyck_sword
+        - add: { rel.@master.respect: 1 }
+      next: c1_raid_return
+
+- id: c1_prisoner
+  chapter: ch1
+  title: Coll of Glenhallow
+  text: |
+    The prisoner is sixteen, red-haired, and frightened, though he is trying not to be. His name is Coll. He is Black Ewan's sister's son. Ewan will pay for him, or will burn half the March to get him back, or both.
+
+    [if background == archer]When he hears your father's name he goes white. His grandmother died at Carn Dubh, he says. In the mill. Everyone in Glenhallow knows the names of the archers who stood at the door.[/if]
+
+    Sir Ancel's men want to hang him from the nearest tree, for the priest at the lychgate. Lord Ravell wants him ransomed. Sir Ancel says he is yours to decide, since you took him, and watches to see what you will do.
+  choices:
+    - id: ransom
+      text: Hold him for ransom, properly, through Lord Ravell.
+      tags: [wealth]
+      text_after: The ransom is set at twenty pounds, an absurd sum for a cattle-thief's nephew and a fair one for Black Ewan's heir. Most of it goes to Lord Ravell and your master, by right. Your share is two pounds, more money than your father has seen in a year. Coll goes home in the autumn and does not say goodbye.
+      effects:
+        - set: flag.c1_coll_ransomed
+        - add: { res.coin: 480, rep.caldmoor: 1, rel.thurstan_ravell.respect: 1, rel.coll_glenhallow.respect: 1 }
+      next: c1_raid_return
+    - id: give
+      text: Hand him over to your master, and let him take the credit and the money.
+      tags: [allies]
+      text_after: Your master is surprised, then pleased, then thoughtful. It is the right thing for a squire to do and almost nobody does it. The ransom goes to him. The gratitude comes to you.
+      effects:
+        - set: flag.c1_coll_given
+        - add: { rel.@master.affection: 3, rel.@master.respect: 1, rep.honor: 1 }
+      next: c1_raid_return
+    - id: hang
+      text: Let the men hang him, for the priest at the lychgate.
+      tags: [martial]
+      text_after: They hang him from an alder by the ford and leave him for Ewan to find. The men cheer you. Lord Ravell, who wanted the twenty pounds, does not. Somewhere north of the Leven a man with a voice like a cart on stones learns your name.
+      effects:
+        - set: flag.c1_coll_hanged
+        - kill: coll_glenhallow
+        - add: { rep.ruthlessness: 3, rep.caldmoor: -5, rel.ancel_brome.affection: 1, rel.thurstan_ravell.respect: -1 }
+      next: c1_raid_return
+    - id: free
+      text: Cut his bonds in the night and let him go.
+      tags: [cunning, piety]
+      check: { attr: agility, skill: intrigue, difficulty: 3 }
+      success:
+        text: He goes over the wall without a word and stops at the top to look back at you. In the morning nobody can say how the knots came loose. Sir Ancel looks at you a long time and decides not to ask.
+        effects:
+          - set: flag.c1_coll_freed
+          - add: { rep.honor: 1, rep.caldmoor: 3, rel.coll_glenhallow.affection: 5 }
+        next: c1_raid_return
+      failure:
+        text: The guard wakes. Coll gets away. You do not. Lord Ravell has twenty pounds less and a squire he will not forget. Your master takes the stick to you himself, to save you worse.
+        effects:
+          - set: flag.c1_coll_freed
+          - add: { rep.caldmoor: 3, rel.coll_glenhallow.affection: 5, rel.thurstan_ravell.respect: -3, rel.@master.respect: -2 }
+        next: c1_raid_return
+
+- id: c1_raid_return
+  chapter: ch1
+  title: Home from the Leven
+  on_enter:
+    - if: flag.c1_raid_distinguished
+      then: [ { set: flag.ravell_favor }, { meet: thurstan_ravell }, { add: { rel.thurstan_ravell.respect: 2 } } ]
+  text: |
+    {date}.
+
+    Lord Ravell meets the column at the gate. He counts the cattle, then the men, then the dead. One knight, Sir Hugh Wyck. Two archers. A groom nobody can name.
+
+    [if flag.c1_raid_distinguished]He stops his horse beside you. "The ford," he says. "That was you." It is not a question. Afterwards, in the hall, he sends you a cup of his own wine from the high table, which every man in the hall sees.[elif flag.c1_raid_late]Nobody speaks to you about the ford. That is its own kind of speech.[else]Nobody singles you out. You are alive and in one piece, more or less, and that is not nothing.[/if]
+
+    [if track != squire_track][if flag.c1_raid_distinguished]Your master is looking at you as if he were seeing you for the first time.[/if][/if]
+  choices:
+    - id: squire
+      text: Kneel when your master offers to take you as his squire.
+      tags: [martial]
+      visible_if: [ track != squire_track ]
+      requires: [ flag.c1_raid_distinguished ]
+      label: "Requires: distinguished at the ford"
+      text_after: "[if alias.master == hamon_darrell]\"I need a squire who can do something besides count,\" Sir Hamon says, which is unfair to squires who count. He names you before the household that night.[else]\"You'll do,\" Sir Ancel says. That is the whole ceremony.[/if] Grooms and archers do not become squires. You just did."
+      effects:
+        - station: squire
+          track: squire_track
+        - add: { rel.@master.affection: 2 }
+        - set: flag.c1_raised_at_ford
+      next: { pool: c1_hall, count: 2, then: c1_progress }
+    - id: wyck
+      text: Take Sir Hugh Wyck's sword home to his widow yourself.
+      tags: [diplomacy]
+      visible_if: [ flag.c1_carried_wyck_sword ]
+      next: c1_wyck_widow
+    - id: duties
+      text: Go back to your duties.
+      text_after: There is harness to mend and horses to doctor and a ford to stop dreaming about. You do all three, slowly.
+      next: { pool: c1_hall, count: 2, then: c1_progress }
+
+- id: c1_wyck_widow
+  chapter: ch1
+  title: Wyck
+  text: |
+    Wyck is a half-day's ride west: a moated house, a mill, a church, and two hundred acres of good land with too many sheep on it.
+
+    Dame Joan Wyck is twenty-seven. She meets you in the hall in her working apron, because nobody has told her yet. You tell her. You give her the sword. She holds it across her knees for a long time and asks how he died. [if flag.c1_raid_distinguished]You tell her the truth: he went in early, and bravely, and alone.[else]You tell her he died well. It is not quite a lie.[/if]
+
+    Her stepson Ralph, nineteen and Sir Hugh's son by his first wife, comes in while you are still talking and asks whether the sword is his now. She does not answer him.
+  choices:
+    - id: comfort
+      text: Stay to supper, and let her talk about him.
+      tags: [diplomacy]
+      text_after: She talks about him until the candles are stubs. He snored. He was kind to dogs and careless with money and wanted a son by her. When you leave she gives you her hand, and holds yours a moment, and says you must come back when you are passing. You are never passing Wyck. You will find reasons.
+      effects:
+        - meet: joan_wyck
+        - assign: { suit.joan_wyck.status: known }
+        - add: { suit.joan_wyck.regard: 3, rel.joan_wyck.affection: 3 }
+        - item: -hugh_wyck_sword
+      next: { pool: c1_hall, count: 2, then: c1_progress }
+    - id: ralph
+      text: Tell Ralph Wyck plainly that the sword is his father's widow's to give.
+      tags: [martial]
+      text_after: Ralph goes red, then white, and leaves the hall. Dame Joan thanks you, and then says you have made her life harder, and both things are true. She asks you to write to her if you hear of anything said about Wyck at Ravell. It is the beginning of something; neither of you would call it that.
+      effects:
+        - meet: joan_wyck
+        - assign: { suit.joan_wyck.status: known }
+        - set: flag.c1_joan_owed
+        - add: { suit.joan_wyck.regard: 2, rel.joan_wyck.respect: 2, rep.honor: 1 }
+        - item: -hugh_wyck_sword
+      next: { pool: c1_hall, count: 2, then: c1_progress }
+    - id: leave
+      text: Give her the sword, say what must be said, and go.
+      tags: [yield]
+      text_after: She thanks you. You ride back to Ravell in the rain. It was a duty, and you did it.
+      effects:
+        - meet: joan_wyck
+        - assign: { suit.joan_wyck.status: known }
+        - item: -hugh_wyck_sword
+        - add: { rep.honor: 1 }
+      next: { pool: c1_hall, count: 2, then: c1_progress }

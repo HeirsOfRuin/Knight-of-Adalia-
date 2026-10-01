@@ -6,5 +6,5 @@ founder: { chapter: ch5, label: Founder of a House, description: "A secure great
 diminished: { chapter: ch5, label: Diminished Lord, description: "Keeps some land, loses the rest and most of his influence." }
 exile: { chapter: ch5, label: Exile, description: "Lives abroad in Sarenza, Hroswald or Valdrenne, on sufferance." }
 ruin: { chapter: ch5, label: Ruin, description: "Attainted, landless, his name struck from the rolls." }
-death: { chapter: test, label: Death, description: "Dead before his time. The manner of it is recorded." }
-test_complete: { chapter: test, label: End of the test scene, description: "Phase 1 engine test arc complete." }
+death: { chapter: prologue, label: Death, description: "Dead before his time. The manner of it is recorded." }
+ch1_complete: { chapter: ch1, label: End of Chapter 1, description: "The army sails for Valdrenne. Chapter 2 continues from here." }

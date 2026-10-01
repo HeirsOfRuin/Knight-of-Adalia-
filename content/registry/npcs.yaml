@@ -19,5 +19,26 @@ aymer_ravell: { name: Aymer Ravell, notes: "Lord Ravell's younger son. Companion
 thurstan_ravell: { name: Thurstan Ravell, title: Lord, notes: "Baron of Ravell. The household's master.", station: great_lord, faction: nobles }
 # Shared
 hamon_darrell: { name: Hamon Darrell, title: Sir, notes: "Knight, lord of Ashby. Owes service to Lord Ravell.", station: knight, faction: knights }
-# Test arc
-odo_groom: { name: Odo, notes: "Son of Sir Hamon's groom. Two years older than the protagonist and a head taller." }
+father_anselm: { name: Anselm, title: Father, notes: "Parish priest of Ashby. Teaches letters for eggs and firewood.", faction: church }
+# Childhood attachments (romance slot 1, one per background)
+mag_coker: { name: Mag Coker, notes: "Wat Coker's sister. Sharp-tongued, quick, poor.", tags: [romance] }
+annot_dyer: { name: Annot Dyer, notes: "A dyer's daughter in Wendham. Blue hands to the wrist.", tags: [romance] }
+mariot_wood: { name: Mariot Wood, notes: "The Ravell forester's daughter. Knows every path in the chase.", tags: [romance] }
+nell_laundress: { name: Nell, notes: "Laundry girl at Ravell Hall. Laughs at everyone, including the family.", tags: [romance] }
+# Ravell Hall
+eleanor_ravell: { name: Eleanor Ravell, title: Lady, notes: "Lord Ravell's wife. Runs the household. Keeps its secret.", faction: nobles, station: great_lord }
+maud_delisle: { name: Maud de Lisle, title: Lady, notes: "Lord Ravell's ward. Heiress of Lisle. Her marriage is for sale.", faction: nobles, tags: [romance] }
+isabel_sayer: { name: Isabel Sayer, notes: "Lady Ravell's waiting-woman. Daughter of a poor shire knight.", tags: [romance] }
+giles_marrick: { name: Giles Marrick, notes: "Squire. Son of a Carrow retainer. Hates commoners in the squires' loft.", faction: knights }
+bertram_oakes: { name: Bertram Oakes, title: Sir, notes: "Old knight, master-at-arms at Ravell. Missing two fingers.", station: knight, faction: knights }
+father_benet: { name: Benet, title: Father, notes: "Lord Ravell's chaplain. Clever, worldly, writes the lord's letters.", faction: church }
+will_cobb: { name: Will Cobb, notes: "Serjeant of Sir Ancel's archers. Served with Hugh Fletcher in the Marcher War." }
+# Wider world
+walter_pryce: { name: Walter Pryce, title: Sir, notes: "Captain in the Earl of Carrow's service. Recruits for the war.", station: knight, faction: knights, tags: [rising_man] }
+osmund_carrow: { name: Osmund, title: Earl, notes: "Earl of Carrow. Leads the Old Baronage.", station: great_lord, faction: nobles }
+godric_thorne: { name: Godric Thorne, title: Sir, notes: "Marcher knight, Sir Ancel's neighbour and enemy.", station: knight, faction: knights }
+ewan_dubh: { name: Ewan Dubh, notes: "Black Ewan of Glenhallow. Caldmoor border raider.", faction: caldmoor }
+coll_glenhallow: { name: Coll, notes: "Ewan Dubh's nephew, sixteen. Taken in the raid at the Leven ford.", faction: caldmoor }
+joan_wyck: { name: Joan Wyck, title: Dame, notes: "Widow of Sir Hugh Wyck. Holds Wyck manor in her own right for now.", tags: [romance] }
+cecily_fuller: { name: Cecily Fuller, notes: "Master Osbert Fuller's daughter. Keeps her father's books better than he does.", tags: [romance] }
+king_aldred: { name: Aldred, title: King, notes: "Aldred II of Adalia.", faction: crown, station: royal }

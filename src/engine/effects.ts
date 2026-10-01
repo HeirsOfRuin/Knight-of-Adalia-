@@ -2,7 +2,8 @@
 import type { ContentBundle, Effect } from '../content/schema';
 import type { GameState, NpcState, SuitState } from './state';
 import { advanceSeasons } from './calendar';
-import { labelFor } from './paths';
+import { labelFor, deref } from './paths';
+import { test } from './conditions';
 import { formatCoin, signed, capitalise } from './format';
 
 export interface EffectCtx {
@@ -31,7 +32,8 @@ function suit(state: GameState, id: string): SuitState {
   return (state.suits[id] ??= newSuitState());
 }
 
-function addNumber(state: GameState, content: ContentBundle, path: string, delta: number, changes: string[]): void {
+function addNumber(state: GameState, content: ContentBundle, rawPath: string, delta: number, changes: string[]): void {
+  const path = deref(state, rawPath);
   const [ns, a, b] = path.split('.') as [string, string, string | undefined];
   const note = (label: string, d: number) => { if (d !== 0) changes.push(`${label} ${signed(d)}`); };
   switch (ns) {
@@ -96,7 +98,8 @@ function addNumber(state: GameState, content: ContentBundle, path: string, delta
   }
 }
 
-function assignValue(state: GameState, content: ContentBundle, path: string, value: string | number | boolean): void {
+function assignValue(state: GameState, content: ContentBundle, rawPath: string, value: string | number | boolean): void {
+  const path = deref(state, rawPath);
   const [ns, a, b] = path.split('.') as [string, string, string | undefined];
   switch (ns) {
     case 'chapter': state.chapter = String(value); return;
@@ -122,6 +125,11 @@ function assignValue(state: GameState, content: ContentBundle, path: string, val
 export function applyEffects(state: GameState, content: ContentBundle, effects: Effect[], ctx: EffectCtx): boolean {
   const reg = content.registry;
   for (const e of effects) {
+    if ('if' in e) {
+      const branch = test(e.if, state, content) ? e.then : (e.else ?? []);
+      if (applyEffects(state, content, branch, ctx)) return true;
+      continue;
+    }
     if ('set' in e) state.flags[e.set.replace(/^flag\./, '')] = true;
     else if ('clear' in e) delete state.flags[e.clear.replace(/^flag\./, '')];
     else if ('add' in e) for (const [p, d] of Object.entries(e.add)) addNumber(state, content, p, d, ctx.changes);
@@ -166,10 +174,16 @@ export function applyEffects(state: GameState, content: ContentBundle, effects: 
       state.station = e.station;
       if (e.track) state.track = e.track;
     } else if ('meet' in e) {
-      npc(state, content, e.meet).met = true;
+      npc(state, content, deref(state, e.meet)).met = true;
+    } else if ('alias' in e) {
+      for (const [k, v] of Object.entries(e.alias)) {
+        state.aliases[k] = v;
+        npc(state, content, v).met = true;
+      }
     } else if ('kill' in e) {
-      const n = npc(state, content, e.kill);
-      if (n.alive) ctx.changes.push(`${reg.npcs[e.kill]?.name ?? e.kill} is dead`);
+      const id = deref(state, e.kill);
+      const n = npc(state, content, id);
+      if (n.alive) ctx.changes.push(`${reg.npcs[id]?.name ?? id} is dead`);
       n.alive = false;
     } else if ('queue' in e) {
       state.queue.push({

@@ -1,0 +1,68 @@
+# Prologue, last scene. Age 15. Sets the childhood romance and the family
+# obligation that comes back in Chapter 1.
+
+- id: p_leaving
+  chapter: prologue
+  title: Leaving
+  on_enter:
+    - advance: { seasons: 2 }
+    - if: background == reeve
+      then: [ { queue: { event: c1q_family_reeve, delay: { seasons: 13 }, earliest_chapter: ch1 } }, { assign: { suit.mag_coker.status: known } } ]
+    - if: background == burgess
+      then: [ { queue: { event: c1q_family_burgess, delay: { seasons: 11 }, earliest_chapter: ch1 } }, { assign: { suit.annot_dyer.status: known } } ]
+    - if: background == archer
+      then: [ { queue: { event: c1q_family_archer, delay: { seasons: 14 }, earliest_chapter: ch1 } }, { assign: { suit.mariot_wood.status: known } }, { meet: mariot_wood } ]
+    - if: background == servant
+      then: [ { queue: { event: c1q_family_servant, delay: { seasons: 12 }, earliest_chapter: ch1 } }, { assign: { suit.nell_laundress.status: known } } ]
+  text: |
+    {date}. You are {age}, and you leave in the morning.
+
+    [if track == squire_track]You go as a knight's boy, which is not yet a squire and is a long way from a knight. You will carry, clean, fetch, serve, and be hit.[elif track == household]You go as a groom in Sir Hamon's household. A groom can rise. Most do not.[else]You go north as an archer in Sir Ancel's company, at the bottom of the roll.[/if]
+
+    [if background == reeve]Your father walks with you to the stile. He has something to say and takes a long time not saying it. "Master Gervase will be watching you," he says at last. "And he will be watching me. Remember who your friends are." Mag Coker is at the well when you pass. She does not pretend not to see you.[elif background == burgess]Your father gives you a purse and a list of the people in Lord Ravell's country who owe the family money. Your mother gives you three shirts. Annot Dyer is at the dye-vats by the river, her arms blue to the elbow. She stops working when you come down the lane.[elif background == archer]Your father gives you his bracer, the old one, worn through at the wrist. He holds your arm a moment too long. Mariot Wood is waiting where the chase meets the road, which is not where she lives.[else]Your mother straightens your collar and tells you not to shame her. [if flag.p_mother_dismissed]She has no place now, because of you. She says it anyway.[else]She means: do not shame her in front of the lady.[/if] Nell is hanging sheets in the drying-yard and has stopped hanging them.[/if]
+  choices:
+    - id: promise
+      text: "Go to [if background == reeve]Mag[elif background == burgess]Annot[elif background == archer]Mariot[else]Nell[/if] and tell her you will come back."
+      tags: [diplomacy]
+      text_after: |
+        She says you will not, and that it does not matter, and kisses you as if it does. [if background == reeve]Wat sees. He will tell your father, and his own, and both fathers will be angry for opposite reasons.[elif background == burgess]Her hands leave blue on your collar. Your mother will find it.[elif background == archer]She gives you a horn button off her own coat. It is the only thing you carry north that is not useful.[else]Half the laundry sees. By supper the whole house knows.[/if]
+      effects:
+        - set: flag.p_promised_girl
+        - if: background == reeve
+          then: [ { assign: { suit.mag_coker.status: courted } }, { add: { suit.mag_coker.regard: 3, suit.mag_coker.family: -3, rel.wat_coker.affection: -1 } } ]
+        - if: background == burgess
+          then: [ { assign: { suit.annot_dyer.status: courted } }, { add: { suit.annot_dyer.regard: 3, rel.ralf_mercer.affection: -1 } } ]
+        - if: background == archer
+          then: [ { assign: { suit.mariot_wood.status: courted } }, { add: { suit.mariot_wood.regard: 3 } } ]
+        - if: background == servant
+          then: [ { assign: { suit.nell_laundress.status: courted } }, { add: { suit.nell_laundress.regard: 3, suit.nell_laundress.discretion: -3 } } ]
+      next: c1_arrival
+    - id: family
+      text: "[if background == reeve]Promise your father you will keep an eye on Master Gervase for him.[elif background == burgess]Promise your father a share of whatever you earn, sent home every quarter.[elif background == archer]Promise your father you will find Will Cobb and keep the company's good name.[else]Promise your mother you will never speak of the secret again, to anyone.[/if]"
+      tags: [allies]
+      text_after: "[if background == reeve]He grips your shoulder. It is the first time he has touched you in a year.[elif background == burgess]He writes it down. He is a merchant.[elif background == archer]He nods. He does not ask you to promise anything about Carn Dubh. He does not need to.[else]She makes you swear on the cross at your neck. You swear.[/if] You walk past the girl without stopping. You tell yourself you will write."
+      effects:
+        - set: flag.p_family_promise
+        - if: background == reeve
+          then: [ { add: { rel.piers_reeve.affection: 2 } } ]
+        - if: background == burgess
+          then: [ { add: { rel.ralf_mercer.affection: 2, rel.ralf_mercer.respect: 1 } } ]
+        - if: background == archer
+          then: [ { add: { rel.hugh_fletcher.affection: 1, rel.will_cobb.affection: 1 } } ]
+        - if: background == servant
+          then: [ { add: { rel.agnes_tirewoman.affection: 2 } } ]
+      next: c1_arrival
+    - id: go
+      text: Leave before dawn, before anyone can make you promise anything.
+      tags: [yield]
+      text_after: The road is empty and the frost is hard. By the time the village wakes you are two miles gone. Nobody will say you broke a promise. Nobody will say you made one, either.
+      effects:
+        - if: background == reeve
+          then: [ { add: { suit.mag_coker.regard: -1 } } ]
+        - if: background == burgess
+          then: [ { add: { suit.annot_dyer.regard: -1 } } ]
+        - if: background == archer
+          then: [ { add: { suit.mariot_wood.regard: -1 } } ]
+        - if: background == servant
+          then: [ { add: { suit.nell_laundress.regard: -1 } } ]
+      next: c1_arrival

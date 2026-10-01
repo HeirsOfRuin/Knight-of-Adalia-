@@ -1,0 +1,45 @@
+# The Turncoat: servant's son who blackmails his way into service, schemes,
+# frees a prisoner, saves Lady Maud, abandons his master, and is knighted in
+# the Earl of Carrow's livery.
+name: The Turncoat
+background: servant
+role: huntsman
+seed: 3
+steps:
+  p_servant_open: blame
+  p_hungry_year: poach!success
+  p_learning: manners
+  p_rival: outwit!success
+  p_gate_router: go
+  p_gate_servant: secret!success
+  p_leaving: go
+  c1_arrival: ask
+  c1_duties: copy!success
+  c1_squires: scheme!success
+  c1_winter: ride
+  c1_trouble_ancel: stay_out
+  c1_christmas: maud!success
+  c1_muster: pray
+  c1_raid: flank!success
+  c1_prisoner: free!success
+  c1_raid_return: duties
+  c1_progress: maud!success
+  c1_tourney: melee!failure
+  c1_crisis_router: go
+  c1_crisis_ancel: pryce
+  c1_war_comes: ready
+  c1_means: carrow
+  c1_knighting: pryce
+  c1_dubbing: think
+  c1_farewell: maud
+ending: ch1_complete
+expect:
+  - station == knight
+  - trait.oathbreaker
+  - "!npc.ancel_brome.alive"
+  - alias.master == walter_pryce
+  - flag.c1_dubbed_by_pryce
+  - flag.c1_maud_saved
+  - suit.maud_delisle.pledge == token
+  - flag.c1_coll_freed
+  - rel.eleanor_ravell.affection <= -5

@@ -3,3 +3,7 @@ literate_latin: { label: Reads the clerks' tongue, description: "Can read charte
 scarred_face: { label: Scarred face, description: "A scar across the face. Soldiers trust it; ladies look away.", mods: {} }
 hot_tempered: { label: Hot-tempered, description: "Quick to strike. Others know it.", mods: { skill.diplomacy: -1 } }
 marked_by_saint: { label: Carries a saint's token, description: "He believes it helps. Others may think him gullible or blessed." }
+burn_scarred: { label: Burn-scarred hands, description: "Shiny, tight skin across both palms. A grip like a vice, when it holds.", mods: {} }
+gored_scar: { label: Boar scar, description: "A long seam up the thigh. Aches in wet weather.", mods: {} }
+oathbreaker: { label: Left his lord, description: "Known to have abandoned a master in trouble. Knights remember.", mods: {} }
+ravell_man: { label: Lord Ravell's man, description: "Known in the shire as one of Ravell's.", mods: {} }

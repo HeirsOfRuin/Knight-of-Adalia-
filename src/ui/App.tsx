@@ -3,7 +3,8 @@ import type { ContentBundle } from '../content/schema';
 import type { GameState } from '../engine/state';
 import { newGame, choose, type NewGameOptions } from '../engine/index';
 import type { CheckResult } from '../engine/checks';
-import { readAutosave, writeAutosave, clearAutosave, importSave } from './storage';
+import { readAutosave, writeAutosave, clearAutosave, importSave, importSaveText } from './storage';
+import { ConfirmButton } from './components/Confirm';
 import { NewGame } from './components/NewGame';
 import { GameScreen } from './components/GameScreen';
 
@@ -59,6 +60,18 @@ export function App({ content }: { content: ContentBundle }) {
     }
   };
 
+  const onImportText = (text: string) => {
+    try {
+      const r = importSaveText(text.trim(), content);
+      update(r.state);
+      setNotice(r.warnings);
+      setError(undefined);
+      setScreen('game');
+    } catch (e) {
+      setError(`That text is not a save this game can read: ${(e as Error).message}`);
+    }
+  };
+
   const onImport = async (file: File) => {
     try {
       const r = await importSave(file, content);
@@ -82,6 +95,7 @@ export function App({ content }: { content: ContentBundle }) {
         onChoose={onChoose}
         onReplace={update}
         onImport={onImport}
+        onImportText={onImportText}
         onNewGame={() => setScreen('new')}
         onToggleDebug={() => setDebug((d) => !d)}
         onDismissNotice={() => setNotice([])}
@@ -119,13 +133,28 @@ export function App({ content }: { content: ContentBundle }) {
           }} />
         </label>
         {autosave && (
-          <button class="btn subtle" onClick={() => { if (confirm('Delete the autosave? This cannot be undone.')) { clearAutosave(); location.reload(); } }}>
+          <ConfirmButton class="btn subtle" question="Delete the autosaved life? This cannot be undone." confirmLabel="Delete it" onConfirm={() => { clearAutosave(); location.reload(); }}>
             Delete autosave
-          </button>
+          </ConfirmButton>
         )}
       </div>
+      <details class="advanced">
+        <summary>Load a life from saved text</summary>
+        <PasteLoad onLoad={onImportText} />
+      </details>
       {error && <p class="error" role="alert">{error}</p>}
       <p class="fineprint">Saves stay in this browser. Export a save file to keep it safe or move it.</p>
     </main>
+  );
+}
+
+function PasteLoad({ onLoad }: { onLoad: (t: string) => void }) {
+  const [text, setText] = useState('');
+  return (
+    <div class="savecode-box">
+      <label for="title-save-in">Paste the text you kept from "Save as text".</label>
+      <textarea id="title-save-in" rows={4} value={text} onInput={(e) => setText((e.currentTarget as HTMLTextAreaElement).value)} />
+      <button class="btn primary" disabled={!text.trim()} onClick={() => onLoad(text)}>Load this life</button>
+    </div>
   );
 }

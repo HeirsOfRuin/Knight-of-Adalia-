@@ -49,7 +49,7 @@ try {
 
     // Export, then reload and continue from autosave, then import the export.
     await page.getByRole('button', { name: 'Menu' }).click();
-    const [download] = await Promise.all([page.waitForEvent('download'), page.getByRole('button', { name: 'Export save file' }).click()]);
+    const [download] = await Promise.all([page.waitForEvent('download'), page.getByRole('button', { name: 'Download save file' }).click()]);
     const savePath = join(OUT, `${label}-save.json`);
     await download.saveAs(savePath);
     const exported = JSON.parse(readFileSync(savePath, 'utf8'));

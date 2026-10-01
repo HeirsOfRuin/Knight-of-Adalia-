@@ -48,7 +48,10 @@ export function exportSave(state: GameState, content: ContentBundle): void {
 }
 
 export async function importSave(file: File, content: ContentBundle): Promise<LoadResult> {
-  const text = await file.text();
+  return importSaveText(await file.text(), content);
+}
+
+export function importSaveText(text: string, content: ContentBundle): LoadResult {
   let raw: unknown;
   try {
     raw = JSON.parse(text);

@@ -33,6 +33,21 @@
     color-scheme: dark;
   }
 }
+:root[data-theme='dark'] {
+    --bg: #1d1a16;
+    --surface: #26221d;
+    --ink: #e9e2d4;
+    --muted: #a59c8c;
+    --rule: #3d372f;
+    --accent: #d08a62;
+    --accent-ink: #1d1a16;
+    --good: #8cbf86;
+    --even: #d6b45e;
+    --risky: #e08a6c;
+    --danger: #ef7d7d;
+    --focus: #7fb2ff;
+    color-scheme: dark;
+  }
 
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -93,7 +108,7 @@ code, pre { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.
 
 /* Game layout */
 .topbar {
-  position: sticky; top: 0; z-index: 5;
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
   display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;
   padding: 0.25rem 16px; background: var(--bg); border-bottom: 1px solid var(--rule);
   font-family: var(--sans);
@@ -186,3 +201,10 @@ code, pre { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.
 .row select { flex: 1; min-width: 0; }
 .flags li { margin: 0.1rem 0; }
 .game.has-debug .story { padding-bottom: 60vh; }
+
+.confirm { display: flex; flex-direction: column; gap: 0.4rem; font-family: var(--sans); font-size: 0.95rem; border: 1px solid var(--rule); border-radius: 6px; padding: 0.6rem 0.8rem; background: var(--surface); margin: 0.4rem 0; }
+.confirm p { margin: 0; }
+.confirm-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.savecode { display: flex; flex-direction: column; gap: 0.5rem; margin: 0.4rem 0; }
+.savecode-box { display: flex; flex-direction: column; gap: 0.4rem; font-family: var(--sans); font-size: 0.9rem; }
+.savecode-box textarea { width: 100%; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.75rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); color: var(--ink); padding: 0.5rem; }

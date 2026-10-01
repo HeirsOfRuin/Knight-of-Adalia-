@@ -6,6 +6,8 @@ import type { CheckResult } from '../../engine/checks';
 import { capitalise } from '../../engine/format';
 import { ageOf } from '../../engine/calendar';
 import { exportSave } from '../storage';
+import { ConfirmButton } from './Confirm';
+import { SaveCode } from './SaveCode';
 import { StatusPanel } from './StatusPanel';
 import { Journal } from './Journal';
 import { DebugDrawer } from './DebugDrawer';
@@ -20,6 +22,7 @@ interface Props {
   onChoose: (id: string, force?: CheckResult) => void;
   onReplace: (s: GameState) => void;
   onImport: (f: File) => void;
+  onImportText: (t: string) => void;
   onNewGame: () => void;
   onToggleDebug: () => void;
   onDismissNotice: () => void;
@@ -129,7 +132,8 @@ export function GameScreen(p: Props) {
               <div class="menu">
                 <h2>Menu</h2>
                 <p class="muted">The game saves itself after every choice, in this browser only.</p>
-                <button class="btn wide" onClick={() => exportSave(state, content)}>Export save file</button>
+                <button class="btn wide" onClick={() => exportSave(state, content)}>Download save file</button>
+                <p class="fineprint">If the download does nothing (some hosted pages block downloads), use Save as text instead.</p>
                 <label class="btn wide file-btn">
                   Import save file
                   <input type="file" accept="application/json,.json" onChange={(e) => {
@@ -137,7 +141,8 @@ export function GameScreen(p: Props) {
                     if (f) p.onImport(f);
                   }} />
                 </label>
-                <button class="btn wide" onClick={() => { if (confirm('Start a new life? The current one stays in the autosave until you make your first choice.')) p.onNewGame(); }}>New life</button>
+                <SaveCode state={state} content={content} onLoadText={p.onImportText} />
+                <ConfirmButton class="btn wide" question="Start a new life? This one stays in the autosave until you make your first choice in the new one." confirmLabel="Start a new life" onConfirm={p.onNewGame}>New life</ConfirmButton>
                 <button class="btn wide subtle" onClick={p.onToggleDebug}>{p.debug ? 'Hide' : 'Show'} debug tools</button>
                 <p class="fineprint">Seed {state.seed} &middot; content {content.hash}</p>
               </div>

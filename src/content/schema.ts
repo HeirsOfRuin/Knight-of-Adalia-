@@ -33,6 +33,8 @@ const BaseEffectSchema = z.union([
   z.object({ meet: z.string().regex(/^@?[a-z][a-z0-9_]*$/) }).strict(),
   z.object({ kill: z.string().regex(/^@?[a-z][a-z0-9_]*$/) }).strict(),
   z.object({ alias: z.record(Id, Id) }).strict(), // alias: { master: hamon_darrell }
+  z.object({ join: z.string().regex(/^@?[a-z][a-z0-9_]*$/) }).strict(), // npc joins his retinue
+  z.object({ leave: z.string().regex(/^@?[a-z][a-z0-9_]*$/) }).strict(), // npc leaves it
   z.object({
     queue: z.object({ event: Id, delay: Delay, earliest_chapter: z.string().optional() }).strict(), // chapter id
   }).strict(),
@@ -143,6 +145,14 @@ export const NpcDefSchema = z.object({
   affection: z.number().int().default(0),
   respect: z.number().int().default(0),
   notes: z.string().optional(),
+  // People page: entries appear once their condition holds (or once met, if no condition)
+  codex: z.array(z.object({ if: CondInputSchema.optional(), text: z.string() }).strict()).default([]),
+}).strict();
+export const LoreDefSchema = z.object({
+  title: z.string(),
+  category: z.enum(['places', 'powers', 'people', 'customs', 'money', 'war', 'faith']),
+  if: CondInputSchema.optional(), // shown once this holds; omitted = known from the start
+  text: z.string(),
 }).strict();
 export const TraitDefSchema = z.object({
   label: z.string(),
@@ -189,6 +199,7 @@ export const RegistrySchema = z.object({
   factions: z.record(Id, FactionDefSchema),
   endings: z.record(Id, EndingDefSchema),
   romances: z.record(Id, RomanceDefSchema).default({}),
+  lore: z.record(Id, LoreDefSchema).default({}),
 });
 export type Registry = z.infer<typeof RegistrySchema>;
 

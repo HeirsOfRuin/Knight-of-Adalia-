@@ -528,30 +528,32 @@ The bots each pursue a single approach. A real player mixes them; for example, a
 10. **Plague.** A "great mortality" arrives just after the war and shapes Ch3. Rumours of it start late in Ch2.
 11. **Length.** Ch2 is slightly longer than Ch1, because it handles more.
 
-## Writing depth and word budget (2026-10-01)
-The user's review: the writing needs much more fleshing out, including more world-building, more character investment, and stronger feeling toward the cast. The target for the finished game is **400,000-500,000 words**.
+## Writing direction (revised 2026-10-01, after the depth calibration)
+The user's verdict on the calibration scenes: too long-winded. The revised direction:
+- **Tighter prose.** Scenes are shorter and broken up with Continue pages (a `[break]` line inside a scene's text). The player reads in beats rather than walls.
+- **Branching instead of length.** Words saved per scene go into more branching, especially in Ch3-5.
+  - Every chapter has more scenes than the one before. It does not have more scenes *seen* per playthrough.
+  - Choices in earlier chapters open and close paths later, a butterfly effect.
+- **Word count is an approximate goal, not a target.** The 400-500k total and the per-chapter budget below are guides. Never pad to reach them.
+- **Narrative continuity.** Avoid "flashing from life point to life point". Scenes connect: they open from where the last one left off, time skips are bridged in prose, and "You are 14." openers are dropped.
+- **Date header** shows only when the season or year changes.
+- **Quiet scenes:** agreed.
+- **Friends, not retainers.** A friend is anyone whose affection is 5 or more and respect 2 or more; family are never counted.
+  - Friends appear in some scenes, help with some difficulties as a check modifier or an extra option, and soften or share the cost of some failures.
+  - They are not followers: the retinue (`join`/`leave`) is separate.
+- **Partial results are mixed wins, never failures.** A check with no partial outcome written has no partial band at all.
+- **Reading aids:** People and World pages, with entries that unlock by condition (`registry/codex.yaml`, `registry/lore.yaml`).
+- **Order of work:** build the Ch2 skeleton at first-pass depth next, then deepen the prologue, Ch1 and Ch2 together.
 
-### Budget
-A playthrough reads roughly a third of what is written.
-
-| Part | Written | Read per run |
+### Budget (approximate, not strict)
+| Part | Written (approx.) | Scenes (target) |
 |---|---|---|
-| Prologue | 40,000 | 15,000 |
-| Chapter 1 | 70,000 | 25,000 |
-| Chapter 2 | 100,000 | 35,000 |
-| Chapter 3 | 85,000 | 30,000 |
-| Chapter 4 | 85,000 | 30,000 |
-| Chapter 5 and endings | 70,000 | 20,000 |
-| **Total** | **about 450,000** | **about 155,000 (12-15 hours of reading)** |
-
-### Depth standard
-These are the norms the calibration scenes `p_reeve_open` and `c1_arrival` are written to.
-- **Scene length:** a spine scene runs 500-1,000 words. A pool scene runs 300-600. An outcome runs 100-350; the important ones are longer.
-- **Named people:** every named person on the page has a look, a voice and a want. Recurring cast follow `content/cast.md`.
-- **World:** every scene carries at least one concrete piece of how this world works. That means how things are done and who owes what, shown in passing rather than explained.
-- **Feelings:** shown through behaviour, objects and what people do not say, never by naming them.
-- **Quiet scenes:** non-crisis scenes (meals, roads, letters, work) with small choices are allowed and encouraged. They are where investment in the cast is built.
-- **What does not change:** the original style rules still hold. Plain prose, short-to-medium sentences, no inspirational speeches, no tidy outcomes.
+| Prologue | 30,000 | 20 |
+| Chapter 1 | 60,000 | 50 |
+| Chapter 2 | 80,000 | 60+ |
+| Chapter 3 | 90,000 | 75+ |
+| Chapter 4 | 100,000 | 90+ |
+| Chapter 5 and endings | 90,000 | 100+ |
 
 ## Decisions log
 | Date | Decision |
@@ -563,5 +565,6 @@ These are the norms the calibration scenes `p_reeve_open` and `c1_arrival` are w
 | 2026-10-01 | Player names protagonist; £sd currency stored in pence; regnal years. |
 | 2026-10-01 | Phase 1 built: see implementation notes. |
 | 2026-10-01 | Phase 2 built: prologue and Chapter 1. See Phase 2 notes. |
+| 2026-10-01 | Writing direction revised: tighter prose with Continue pages, branching over length, butterfly effect, approximate word goals, date header on change only, friends as semi-companions, partial = mixed win, People/World pages. Ch2 skeleton next, then deepen all. |
 | 2026-10-01 | Ch2 design decisions 1-11 recorded (see Chapter 2 decisions). Writing depth: target 400-500k words; prologue and Ch1 to be deepened before Ch2 (see Writing depth). |
 | 2026-10-01 | Phase 3 review decisions: 9a, 11c, 12c, 14b, 13a. Historical items kept, except champion (15, replaced) and the Sweat (17, renamed). See Phase 3 review changes. |

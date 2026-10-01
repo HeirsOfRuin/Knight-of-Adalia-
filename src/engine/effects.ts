@@ -175,6 +175,13 @@ export function applyEffects(state: GameState, content: ContentBundle, effects: 
       if (e.track) state.track = e.track;
     } else if ('meet' in e) {
       npc(state, content, deref(state, e.meet)).met = true;
+    } else if ('join' in e || 'leave' in e) {
+      const id = deref(state, 'join' in e ? e.join : e.leave);
+      const n = npc(state, content, id);
+      const joining = 'join' in e;
+      if (!!n.follower !== joining) ctx.changes.push(`${reg.npcs[id]?.name ?? id} ${joining ? 'joins your following' : 'leaves your following'}`);
+      n.follower = joining;
+      if (joining) n.met = true;
     } else if ('alias' in e) {
       for (const [k, v] of Object.entries(e.alias)) {
         state.aliases[k] = v;

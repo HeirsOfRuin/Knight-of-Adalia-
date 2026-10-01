@@ -1,0 +1,92 @@
+# People page entries. An entry shows once its condition holds; no condition
+# means it shows as soon as he has met the person. Keep entries short: what he
+# has seen or heard, in his terms, not the writer's.
+
+piers_reeve:
+  - text: Your father. Reeve of Ashby, chosen by the village eleven years running. Cuts his tallies by the fire and nods when he is thinking.
+  - if: flag.c1_father_exposed
+    text: You told the commissioners about his part in the theft. He lost the reeveship and everything he owned.
+  - if: flag.c1_father_confessed
+    text: He confessed before Sir Hamon and paid it back. He has not forgiven you. He might.
+gervase_holt:
+  - text: Steward of Ashby for Sir Hamon. A cough, a bald fur collar, and a habit of looking at the roof.
+  - if: flag.c1_found_skim
+    text: You have seen his hand on every entry where the King's money grew lighter.
+father_anselm:
+  - text: Priest of Ashby. A farmer's son with farmer's hands. Keeps bees and teaches letters for firewood.
+  - if: item.tally_copy
+    text: He keeps your copy of the tallies inside the back board of his psalter.
+wat_coker:
+  - text: His family lost their holding on your father's word. He has not forgotten it.
+  - if: flag.c1_rival_ally
+    text: Something like peace between you now. Two men who know the worst of each other.
+mag_coker:
+  - text: Wat's sister. Sharp-tongued and watchful. The one in that family who decides things.
+ralf_mercer:
+  - text: Your father. Wool merchant, councillor of Wendham. Writes everything down and talks to you in the voice he uses for customers.
+bertuccio_lanzi:
+  - text: Factor of the Lanzi bank in Wendham. Courteous, amused, speaks Adalian a little too correctly.
+cecily_fuller:
+  - text: Master Osbert Fuller's daughter. Keeps her father's books better than he does and asks the questions nobody else asks.
+hugh_fletcher:
+  - text: Your father. Drew a bow at Harrow Ford in the old King's war and came home with a ruined knee and a pension that is rarely paid.
+  - if: flag.p_knows_war_secret
+    text: He stood on the door at Carn Dubh while the mill burned with people inside. He was told they were fighting men. Some were.
+will_cobb:
+  - text: Serjeant of Sir Ancel's archers. A voice like a millrace, hands like roots. Served with Hugh Fletcher in the Marcher War.
+mariot_wood:
+  - text: The Ravell forester's daughter. Quiet, exact, knows every path in the chase.
+agnes_tirewoman:
+  - text: Your mother. Tirewoman to Lady Ravell. Straightens collars and never raises her voice.
+nell_laundress:
+  - text: Laundry girl at Ravell Hall. Laughs at everyone, including the family.
+aymer_ravell:
+  - text: Lord Ravell's second son. Fair, quick, bored, generous with other people's money.
+  - if: favor.aymer_ravell >= 1
+    text: He owes you money. He means to pay it back. He has never paid anything back in his life.
+thurstan_ravell:
+  - text: Lord of Ravell. Eleven manors and four knights' fees. Speaks little and remembers everything.
+  - if: flag.ravell_favor
+    text: He has noticed you. That is worth a great deal, and costs something you have not been told yet.
+eleanor_ravell:
+  - text: Lady of Ravell. Elegant, devout, hard. Hears through walls.
+  - if: flag.knows_household_secret
+    text: You know who the heir's real father is. She may know that you know.
+isabel_sayer:
+  - text: Waits on Lady Ravell. The fourth of seven daughters of a poor knight in Hollesby. Ink on her forefinger, and funnier the unhappier she is.
+maud_delisle:
+  - text: Lord Ravell's ward. Heiress of Lisle. Composed in company, quick and fierce when she thinks no one is listening.
+  - if: flag.c1_maud_confided
+    text: Lord Ravell means to sell her marriage to the Earl of Carrow's younger son. She would sooner take the veil.
+  - if: flag.c1_maud_saved
+    text: Now in the King's wardship, because of a petition you carried.
+giles_marrick:
+  - text: Squire, son of a Carrow knight. Good teeth, a better sword, and a way of smiling at the side of your head.
+bertram_oakes:
+  - text: Master-at-arms at Ravell. Sixty, missing two fingers. Says "You're dead" more often than anything else.
+ranulf_marshal:
+  - text: Marshal of Ravell's stables these thirty years. Kicks the straw to see what is underneath. His approval is a nod.
+father_benet:
+  - text: Lord Ravell's chaplain and clerk. Worldly, witty, and knows where everything went.
+hamon_darrell:
+  - text: Knight of Ashby. Big, going soft, red-faced, white-haired. Loves his hounds, feeds everyone, has never checked an account in his life.
+  - if: flag.c1_hamon_fell
+    text: Lost Ashby to the Earl of Carrow and went to the Austin canons at Ambry.
+ancel_brome:
+  - text: Knight of Brome Tower on the March. Lean as a hayrake, half an ear gone at Harrow Ford. Says "Hm." Kind only by silence.
+  - if: flag.c1_ancel_lamed
+    text: Lamed by a bolt at the gate of Thorne Hall. Walks with a stick. Still rides.
+walter_pryce:
+  - text: Captain in the Earl of Carrow's service. A younger son who made himself. "The Earl's company pays on time."
+joan_wyck:
+  - text: Widow of Sir Hugh Wyck, who died at the Leven ford. Holds Wyck in her own right, for now. Grieves by working.
+coll_glenhallow:
+  - text: Black Ewan's nephew, taken at the Leven ford. Red-haired, sixteen, trying not to be afraid.
+ewan_dubh:
+  - text: Black Ewan of Glenhallow. A Caldmoor raider with a voice like a cart on stones.
+  - if: flag.c1_coll_hanged
+    text: He knows your name now, and why.
+king_aldred:
+  - text: Aldred, second of the name, King of Adalia. Thin, quick, with his mother's dark Valdrennish eyes. Claims Valdrenne through her.
+  - if: flag.c1_king_noticed
+    text: He has heard your name, and repeated it as if to keep it.

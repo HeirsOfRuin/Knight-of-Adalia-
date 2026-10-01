@@ -6,7 +6,15 @@
   title: Ravell Hall
   checkpoint: true
   text: |
-    You are {age}, and you have never seen so many people in one place who were not at a fair.
+    [if background == servant]You are {age}, and you have lived at Ravell Hall all your life without ever once coming in by the front.
+
+    You know every stone of it from the back. Which drain floods. Which door of the buttery sticks. Where the kitchen cats have their kittens. Which of the grooms will cover for you and which will not. You know the castle the way a mouse knows a house.
+
+    Now you cross the outer ward with your bundle on your shoulder, past the stables where you slept last night, and nobody stops you, and that is the strange part. Hob Crane, the head groom, sees you go by and raises a hand, then lowers it, as if he is not sure he is still allowed to. A laundress you have known since you could walk looks at you twice, the second time as if you were somebody else.
+
+    The house has not changed. You are on the other side of it now, and from this side it looks different. It is bigger, and colder, and full of people you have served at table who have never once looked at your face.
+
+    [else]    You are {age}, and you have never seen so many people in one place who were not at a fair.
 
     You see Ravell Hall first from the ridge road, a mile off, across the water meadows: a square grey keep with a timber hall built against its flank like a barn leaning on a church, a curtain wall, a gatehouse, a moat that catches the light. Smoke from a dozen chimneys. Around the walls, outside them, the village: the mill, the smithy, the church of Saint Ebba with its squat tower, the alehouse with a bush over the door. Strip fields running down to the river. Sheep everywhere.
 
@@ -14,9 +22,15 @@
 
     Grooms leading horses two at a time. A cartload of firewood being unloaded by men who swear at it. Laundresses carrying baskets the size of coffins. A falconer with a hooded bird on his fist, walking slowly so as not to unsettle it. Two boys in good cloth fighting with wooden swords while a grey old knight, missing two fingers on his left hand, tells them both they are dead. Hounds. Chickens. A priest. A man in a fur-trimmed gown shouting at a man in a plain one about candles. Nobody looks at you, because everyone here is going somewhere and you are not yet anyone.
 
+    [/if]
+
+    [break]
+
     Lord Thurstan Ravell holds this castle and eleven manors from the King. He holds four knights' fees under him: four knights who owe him forty days' service a year, mounted and armed, in return for their land. Sir Hamon Darrell of Ashby and Sir Ancel Brome of Brome Tower are two of those four. Their households live under his roof for half the year, eat his bread, and fight his quarrels. Yours will too.
 
-    [if alias.master == hamon_darrell]Sir Hamon meets you at the foot of the hall steps with a cup of ale in his hand, his belt let out a notch, and two of his hounds leaning against his legs. He is a big man going soft, with a broad red face, white hair cut short, and the kind of smile that has never once in his life been calculated. "There he is," he says, to nobody in particular, and then to you, "You'll have eaten? No. Of course not. Nobody feeds anybody on the road." He shouts for bread. It comes. He watches you eat it as if he had made it himself.[else]Sir Ancel meets you in the yard without getting down from his horse. He is lean as a hayrake, burned dark by the March wind, with half his left ear gone to a Caldmoor sword at Harrow Ford and grey coming into his beard. He looks at you for a long time. "You're late," he says. You are not late; you came the day you were told. You do not say so. Something in his face eases, very slightly, at your not saying so. "Stables," he says. "Then find Cobb. Then find me."[/if]
+    [if alias.master == hamon_darrell]Sir Hamon meets you at the foot of the hall steps with a cup of ale in his hand, his belt let out a notch, and two of his hounds leaning against his legs. He is a big man going soft, with a broad red face, white hair cut short, and the kind of smile that has never once in his life been calculated. "There he is," he says, to nobody in particular, and then to you, "You'll have eaten? No. Of course not. [if background == servant]Nobody feeds the grooms properly in this house.[else]Nobody feeds anybody on the road.[/if]" He shouts for bread. It comes. He watches you eat it as if he had made it himself.[else]Sir Ancel meets you in the yard without getting down from his horse. He is lean as a hayrake, burned dark by the March wind, with half his left ear gone to a Caldmoor sword at Harrow Ford and grey coming into his beard. He looks at you for a long time. "You're late," he says. You are not late; you came the day you were told. You do not say so. Something in his face eases, very slightly, at your not saying so. "Stables," he says. "Then find Cobb. Then find me."[/if]
+
+    [break]
 
     [if track == squire_track]You will sleep in the squires' loft over the great chamber, with four others, on straw pallets under a roof that drips in one corner. The loft has its own rules, and nobody tells them to you; you learn them by breaking them.
 

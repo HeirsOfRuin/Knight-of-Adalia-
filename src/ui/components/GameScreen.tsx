@@ -10,6 +10,7 @@ import { ConfirmButton } from './Confirm';
 import { SaveCode } from './SaveCode';
 import { StatusPanel } from './StatusPanel';
 import { Journal } from './Journal';
+import { PeoplePanel, WorldPanel } from './Codex';
 import { DebugDrawer } from './DebugDrawer';
 
 interface Props {
@@ -28,7 +29,7 @@ interface Props {
   onDismissNotice: () => void;
 }
 
-type Panel = 'none' | 'status' | 'journal' | 'menu';
+type Panel = 'none' | 'status' | 'people' | 'world' | 'journal' | 'menu';
 
 function Paragraphs({ text }: { text: string }) {
   return <>{text.split(/\n\s*\n/).map((p, i) => <p key={i}>{p.replace(/\n/g, ' ')}</p>)}</>;
@@ -39,6 +40,13 @@ export function GameScreen(p: Props) {
   const [panel, setPanel] = useState<Panel>('none');
   const [force, setForce] = useState<CheckResult | undefined>();
   const v = view(content, state);
+  // A scene can be split into pages with a [break] line; the player reads them with Continue.
+  const pages = v.text.split(/\n\s*\[break\]\s*(?:\n|$)/).map((t) => t.trim()).filter(Boolean);
+  const pageKey = `${v.sceneId}@${state.time}@${state.journal.length}`;
+  const [pageState, setPageState] = useState({ key: pageKey, n: 1 });
+  const shown = pageState.key === pageKey ? pageState.n : 1;
+  const morePages = shown < pages.length;
+  const nextPage = () => setPageState({ key: pageKey, n: shown + 1 });
   const toggle = (x: Panel) => setPanel((cur) => (cur === x ? 'none' : x));
   const ending = v.ended ? content.registry.endings[v.ended.ending] : undefined;
 
@@ -51,6 +59,8 @@ export function GameScreen(p: Props) {
         </div>
         <nav class="topbar-nav">
           <button class={`tab ${panel === 'status' ? 'on' : ''}`} aria-expanded={panel === 'status'} onClick={() => toggle('status')}>Status</button>
+          <button class={`tab ${panel === 'people' ? 'on' : ''}`} aria-expanded={panel === 'people'} onClick={() => toggle('people')}>People</button>
+          <button class={`tab ${panel === 'world' ? 'on' : ''}`} aria-expanded={panel === 'world'} onClick={() => toggle('world')}>World</button>
           <button class={`tab ${panel === 'journal' ? 'on' : ''}`} aria-expanded={panel === 'journal'} onClick={() => toggle('journal')}>Journal</button>
           <button class={`tab ${panel === 'menu' ? 'on' : ''}`} aria-expanded={panel === 'menu'} onClick={() => toggle('menu')}>Menu</button>
         </nav>
@@ -77,15 +87,19 @@ export function GameScreen(p: Props) {
           )}
 
           <article class="scene">
-            <p class="date">{describeDate(state, content)}</p>
+            {v.dateChanged && <p class="date">{describeDate(state, content)}</p>}
             {v.title && <h1>{v.title}</h1>}
             {v.cause && (
               <p class="cause">This follows from {describeDate({ ...state, time: v.cause.at }, content).toLowerCase()}: <em>{v.cause.text}</em></p>
             )}
-            <Paragraphs text={v.text} />
+            {pages.slice(0, shown).map((t, i) => <Paragraphs key={i} text={t} />)}
           </article>
 
-          {v.ended ? (
+          {morePages ? (
+            <section class="choices">
+              <button class="choice continue" onClick={nextPage}><span class="choice-text">Continue</span></button>
+            </section>
+          ) : v.ended ? (
             <section class="ending">
               <h2>{ending?.label ?? v.ended.ending}</h2>
               {v.ended.cause && <p>{v.ended.cause}</p>}
@@ -127,6 +141,8 @@ export function GameScreen(p: Props) {
           <aside class="panel" aria-label={panel}>
             <button class="panel-close link" onClick={() => setPanel('none')}>Close</button>
             {panel === 'status' && <StatusPanel content={content} state={state} />}
+            {panel === 'people' && <PeoplePanel content={content} state={state} />}
+            {panel === 'world' && <WorldPanel content={content} state={state} />}
             {panel === 'journal' && <Journal content={content} state={state} />}
             {panel === 'menu' && (
               <div class="menu">

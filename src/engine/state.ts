@@ -10,6 +10,8 @@ export interface NpcState {
   respect: number; // -10..10
   loyalty: number; // -10..10, meaningful for followers and liege
   grudges: string[];
+  /** serves in his retinue */
+  follower?: boolean;
 }
 
 export type SuitStatus = 'hidden' | 'known' | 'courted' | 'available' | 'married' | 'lost';

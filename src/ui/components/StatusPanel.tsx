@@ -80,43 +80,6 @@ export function StatusPanel({ content, state }: { content: ContentBundle; state:
         </dl>
       </Section>
 
-      {Object.entries(state.suits).some(([, s]) => s.status !== 'hidden' && s.status !== 'lost') && (
-        <Section title="Courtship">
-          <ul class="plain">
-            {Object.entries(state.suits)
-              .filter(([, s]) => s.status !== 'hidden' && s.status !== 'lost')
-              .map(([id, s]) => {
-                const npc = reg.npcs[reg.romances[id]?.npc ?? id];
-                const warmth = s.regard >= 6 ? 'loves you, perhaps' : s.regard >= 3 ? 'warm to you' : s.regard >= 0 ? 'friendly' : 'cool';
-                const talk = s.discretion <= 3 ? '; people are talking' : '';
-                return (
-                  <li key={id}>
-                    <strong>{npc?.title && !npc.title.startsWith('the ') ? `${npc.title} ${npc.name}` : npc?.name}</strong>: {s.status === 'courted' ? 'courted' : 'acquainted'}, {warmth}{s.pledge !== 'none' ? `, ${s.pledge} exchanged` : ''}{talk}
-                  </li>
-                );
-              })}
-          </ul>
-        </Section>
-      )}
-
-      <Section title="People">
-        {npcs.length === 0 ? <p class="muted">You know no one of note yet.</p> : (
-          <ul class="plain">
-            {npcs.map(([id, n]) => {
-              const def = reg.npcs[id];
-              const r = regard(n.respect);
-              return (
-                <li key={id} class={n.alive ? '' : 'muted'}>
-                  <strong>{npcLabel(content, id)}</strong>
-                  {!n.alive && ' (dead)'}: {feeling(n.affection)}{r ? `, ${r}` : ''}
-                  {(state.favors[id] ?? 0) > 0 && ', owes you'}
-                  {(state.favors[id] ?? 0) < 0 && ', you owe a favor'}
-                </li>
-              );
-            })}
-          </ul>
-        )}
-      </Section>
     </div>
   );
 }

@@ -31,6 +31,15 @@ export function deref(state: GameState, path: string): string {
   return path.includes('@') ? path.replace(/@([a-z_][a-z0-9_]*)/g, (m, a: string) => state.aliases?.[a] ?? m) : path;
 }
 
+/** A friend: someone whose affection and respect have both grown high enough. Friends back him up in scenes. */
+export const FRIEND_AFFECTION = 5;
+export const FRIEND_RESPECT = 2;
+export function isFriend(state: GameState, content: ContentBundle, id: string): boolean {
+  const n = state.npcs[id];
+  if (content.registry.npcs[id]?.tags.includes('family')) return false; // family are family, not friends
+  return !!n && n.alive && n.affection >= FRIEND_AFFECTION && n.respect >= FRIEND_RESPECT;
+}
+
 export function getValue(state: GameState, content: ContentBundle, rawPath: string): Value {
   const path = deref(state, rawPath);
   const [ns, a, b] = path.split('.');
@@ -53,6 +62,8 @@ export function getValue(state: GameState, content: ContentBundle, rawPath: stri
       const n = state.npcs[a!];
       if (b === 'met') return n?.met ?? false;
       if (b === 'alive') return n?.alive ?? true;
+      if (b === 'follower') return !!n?.follower && n.alive;
+      if (b === 'friend') return isFriend(state, content, a!);
       return undefined;
     }
     case 'suit': {
@@ -73,6 +84,7 @@ export function getValue(state: GameState, content: ContentBundle, rawPath: stri
     case 'age': return ageOf(state);
     case 'health': return state.health;
     case 'injured': return state.injuries.length > 0;
+    case 'retinue': return Object.values(state.npcs).filter((n) => n.follower && n.alive).length + (state.res.men ?? 0);
     case 'time': return state.time;
     case 'prejudice': return computePrejudice(state, content, 'nobles');
     default: return undefined;
@@ -85,7 +97,7 @@ export function checkPath(content: ContentBundle, path: string): string | null {
   const reg = content.registry;
   const need = (ok: boolean, what: string) => (ok ? null : `unknown ${what} in "${path}"`);
   if (extra !== undefined) return `too many segments in "${path}"`;
-  const single = ['station', 'track', 'background', 'role', 'chapter', 'age', 'health', 'injured', 'time', 'prejudice'];
+  const single = ['station', 'track', 'background', 'role', 'chapter', 'age', 'health', 'injured', 'retinue', 'time', 'prejudice'];
   if (single.includes(ns!)) return a === undefined ? null : `"${ns}" takes no sub-path ("${path}")`;
   if (a === undefined) return `incomplete path "${path}"`;
   if (a.startsWith('@')) {
@@ -94,7 +106,7 @@ export function checkPath(content: ContentBundle, path: string): string | null {
     if (ns === 'favor') return null;
     return ns === 'rel'
       ? need(['affection', 'respect', 'loyalty'].includes(b ?? ''), 'relationship field')
-      : need(['met', 'alive'].includes(b ?? ''), 'npc field');
+      : need(['met', 'alive', 'follower', 'friend'].includes(b ?? ''), 'npc field');
   }
   switch (ns) {
     case 'alias': return need(content.config.aliases.includes(a), 'alias');
@@ -103,13 +115,13 @@ export function checkPath(content: ContentBundle, path: string): string | null {
     case 'attr': return need(content.config.attributes.includes(a), 'attribute');
     case 'skill': return need(content.config.skills.includes(a), 'skill');
     case 'rep': return need(a in reg.factions, 'faction');
-    case 'res': return need(['coin', 'supplies', 'horses', 'renown'].includes(a), 'resource');
+    case 'res': return need(['coin', 'supplies', 'horses', 'renown', 'men'].includes(a), 'resource');
     case 'favor': return need(a in reg.npcs, 'npc');
     case 'trait': return need(a in reg.traits, 'trait');
     case 'injury': return need(a in reg.injuries, 'injury');
     case 'item': return need(a in reg.items, 'item');
     case 'rel': return need(a in reg.npcs, 'npc') ?? need(['affection', 'respect', 'loyalty'].includes(b ?? ''), 'relationship field');
-    case 'npc': return need(a in reg.npcs, 'npc') ?? need(['met', 'alive'].includes(b ?? ''), 'npc field');
+    case 'npc': return need(a in reg.npcs, 'npc') ?? need(['met', 'alive', 'follower', 'friend'].includes(b ?? ''), 'npc field');
     case 'suit': return need(a in reg.romances, 'romance') ?? need(['status', 'regard', 'family', 'discretion', 'pledge'].includes(b ?? ''), 'suit field');
     case 'calendar': return need(['season', 'year'].includes(a), 'calendar field');
     default: return `unknown namespace "${ns}" in "${path}"`;

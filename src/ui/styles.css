@@ -117,7 +117,7 @@ code, pre { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.
 .who { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .when { font-size: 0.8rem; color: var(--muted); }
 .topbar-nav { display: flex; gap: 0.25rem; }
-.tab { min-height: 44px; padding: 0 0.7rem; border: 1px solid transparent; border-radius: 6px; background: none; font-size: 0.95rem; }
+.tab { min-height: 44px; padding: 0 0.5rem; border: 1px solid transparent; border-radius: 6px; background: none; font-size: 0.95rem; }
 .tab.on { border-color: var(--rule); background: var(--surface); }
 
 .layout { display: flex; justify-content: center; gap: 2rem; }
@@ -208,3 +208,17 @@ code, pre { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.
 .savecode { display: flex; flex-direction: column; gap: 0.5rem; margin: 0.4rem 0; }
 .savecode-box { display: flex; flex-direction: column; gap: 0.4rem; font-family: var(--sans); font-size: 0.9rem; }
 .savecode-box textarea { width: 100%; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.75rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); color: var(--ink); padding: 0.5rem; }
+
+.choice.continue { align-items: center; font-family: var(--sans); font-size: 1rem; color: var(--muted); }
+.codex h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin: 1.2rem 0 0.3rem; }
+.person { border-top: 1px solid var(--rule); padding: 0.5rem 0; }
+.person p { margin: 0.2rem 0; }
+.person-name { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; }
+.person.dead { opacity: 0.6; }
+.tag.good { color: var(--good); }
+.lore { border-top: 1px solid var(--rule); padding: 0.3rem 0; }
+.lore summary { cursor: pointer; min-height: 40px; display: flex; align-items: center; font-weight: 600; }
+@media (max-width: 480px) {
+  .topbar-info .when { display: none; }
+  .tab { padding: 0 0.35rem; font-size: 0.85rem; }
+}

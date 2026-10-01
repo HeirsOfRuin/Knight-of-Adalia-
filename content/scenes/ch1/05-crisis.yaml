@@ -338,13 +338,17 @@
           - add: { res.renown: 2, rep.ruthlessness: 1, rel.ancel_brome.affection: 3, rel.ancel_brome.respect: 2 }
         next: c1_war_comes
       partial:
-        text: The gate goes in. A crossbow bolt goes through Sir Ancel's visor at the same moment. You drag him out of the gateway with a bolt in your own leg. He dies in the ditch with his head in your lap, telling you to look after the horses.
+        text: |
+          The gate goes in on the fourth blow. You are through it beside Sir Ancel, and the hall is yours before the roof catches, and Thorne is dragged out of his own buttery by the collar.
+
+          It is not cheap. A crossbow bolt takes Sir Ancel through the thigh in the gateway, and another takes you through the calf. He will ride again, the barber says, but he will never walk without a stick. Lord Ravell is furious. The King, when he hears, sells Sir Ancel a pardon for service in Valdrenne, and names you in it too.
         effects:
-          - set: flag.c1_lost_master
-          - kill: ancel_brome
+          - set: flag.c1_master_cleared
+          - set: flag.c1_ancel_pardon
+          - set: flag.c1_ancel_lamed
           - injury: gored_thigh
-          - add: { res.renown: 1, rep.ruthlessness: 1 }
-        next: c1_new_patron
+          - add: { res.renown: 1, rep.ruthlessness: 1, rel.ancel_brome.affection: 3, rel.ancel_brome.respect: 1 }
+        next: c1_war_comes
       failure:
         text: "The bolt that kills Sir Ancel is followed by one for you. [if item.padded_jack && !injured || item.prize_harness && !injured]It goes through the meat of your shoulder and you live.[/if]"
         effects:

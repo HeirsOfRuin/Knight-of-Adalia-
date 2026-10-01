@@ -158,3 +158,13 @@ See `backgrounds/reeve.yaml`.
 - They run in `npm run bot` and in the test suite.
 - `npm run transcript` renders them as readable Markdown in `docs/playthroughs/`.
 - When content changes break a plan, either fix the content or update the plan on purpose.
+
+## Pages, friends, followers, codex
+- **Pages.** A line containing only `[break]` in a scene's text splits it into pages. The player sees a Continue button between pages, and the choices appear after the last page.
+- **Friends.** `npc.X.friend` is true when affection is 5 or more and respect 2 or more, unless the NPC is tagged `family`.
+  - Use it for mods, for example `{ if: npc.will_cobb.friend, add: 1, label: Cobb has your back }`.
+  - Use it for extra options, and to soften failures.
+- **Followers.** The `join: npc` and `leave: npc` effects move an NPC into or out of the retinue. `npc.X.follower` tests one NPC. `retinue` counts living followers plus `res.men` (unnamed soldiers).
+- **People page.** `registry/codex.yaml` maps an NPC id to a list of `{ if?, text }` entries, shown once met and once the condition holds.
+- **World page.** `registry/lore.yaml` holds entries `{ title, category, if?, text }`. Categories are places, powers, people, customs, money, war and faith.
+- **Partial outcomes.** A check gets a partial band only if the choice defines `partial:`. Write a partial as a mixed win, never as a failure.

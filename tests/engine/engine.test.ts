@@ -194,3 +194,40 @@ describe('Phase 3 rules', () => {
     expect(view(c, s).choices.find((x) => x.id === 'master')!.available).toBe(true);
   });
 });
+
+describe('Phase 3b engine changes', () => {
+  const c = content();
+  it('a check with no partial outcome has no partial band, and a forced partial counts as failure', () => {
+    const s = game('reeve');
+    s.scene = 'c1_tourney';
+    s.res.horses = 1;
+    const r = choose(c, s, 'joust', { force: 'partial' });
+    expect(r.check?.result).toBe('failure');
+  });
+  it('reports a date change only when the season moves', () => {
+    let s = game('reeve');
+    expect(view(c, s).dateChanged).toBe(true);
+    s = choose(c, s, 'give_up').state; // same season, into a pool scene
+    expect(view(c, s).dateChanged).toBe(false);
+  });
+  it('followers join and leave, friends are derived from affection and respect', async () => {
+    const { applyEffects } = await import('../../src/engine/effects');
+    const { EffectSchema } = await import('../../src/content/schema');
+    const { getValue } = await import('../../src/engine/paths');
+    const s = game('archer');
+    const ctx = { scene: 's', choice: 'c', choiceText: 't', changes: [] as string[] };
+    applyEffects(s, c, [EffectSchema.parse({ join: 'will_cobb' }), EffectSchema.parse({ add: { 'res.men': 3 } })], ctx);
+    expect(getValue(s, c, 'npc.will_cobb.follower')).toBe(true);
+    expect(getValue(s, c, 'retinue')).toBe(4);
+    expect(ctx.changes.join('|')).toMatch(/joins your following/);
+    expect(getValue(s, c, 'npc.mariot_wood.friend')).toBe(false);
+    s.npcs.mariot_wood!.affection = 6;
+    s.npcs.mariot_wood!.respect = 3;
+    expect(getValue(s, c, 'npc.mariot_wood.friend')).toBe(true);
+    s.npcs.hugh_fletcher!.affection = 9;
+    s.npcs.hugh_fletcher!.respect = 9;
+    expect(getValue(s, c, 'npc.hugh_fletcher.friend')).toBe(false); // family are never 'friends'
+    applyEffects(s, c, [EffectSchema.parse({ leave: 'will_cobb' })], ctx);
+    expect(getValue(s, c, 'retinue')).toBe(3);
+  });
+});

@@ -26,7 +26,8 @@ export function bandFor(p: number): Band {
   return 'Favorable';
 }
 
-export function computeOdds(check: Check, state: GameState, content: ContentBundle): Odds {
+/** hasPartial: the choice defines a partial outcome. Without one, there is no partial band. */
+export function computeOdds(check: Check, state: GameState, content: ContentBundle, hasPartial = true): Odds {
   const breakdown: { label: string; value: number }[] = [];
   const attr = effectiveAttr(state, content, check.attr);
   breakdown.push({ label: check.attr, value: attr });
@@ -38,7 +39,7 @@ export function computeOdds(check: Check, state: GameState, content: ContentBund
   breakdown.push({ label: 'difficulty', value: -check.difficulty });
   const score = breakdown.reduce((s, b) => s + b.value, 0);
   const success = Math.min(0.95, Math.max(0.05, 0.5 + 0.1 * score));
-  const partial = Math.min(PARTIAL_WIDTH, 1 - success);
+  const partial = hasPartial ? Math.min(PARTIAL_WIDTH, 1 - success) : 0;
   return { score, success, partial, band: bandFor(success), breakdown };
 }
 

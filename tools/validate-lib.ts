@@ -171,6 +171,9 @@ export function validate(content: ContentBundle): ValidationReport {
       } else if ('meet' in e || 'kill' in e) {
         const id = 'meet' in e ? e.meet : e.kill;
         if (id.startsWith('@') ? !content.config.aliases.includes(id.slice(1)) : !(id in reg.npcs)) err(where, `unknown npc or alias "${id}"`);
+      } else if ('join' in e || 'leave' in e) {
+        const id = 'join' in e ? e.join : e.leave;
+        if (id.startsWith('@') ? !content.config.aliases.includes(id.slice(1)) : !(id in reg.npcs)) err(where, `unknown npc or alias "${id}"`);
       } else if ('alias' in e) {
         for (const [k, v] of Object.entries(e.alias)) {
           if (!content.config.aliases.includes(k)) err(where, `unknown alias "${k}"`);
@@ -251,6 +254,10 @@ export function validate(content: ContentBundle): ValidationReport {
     else warn('flags', `flag "${f}" is set but never read${later ? ` (marked for ${later}, which now exists)` : ''}`);
   }
   for (const f of Object.keys(reg.flags)) if (!flagsRead.has(f) && !flagsSet.has(f) && !['noble_marriage', 'strong_patron'].includes(f)) warn('flags', `flag "${f}" is declared but unused`);
+
+  // Codex: People and World pages
+  for (const [id, n] of Object.entries(reg.npcs)) n.codex.forEach((c, i) => { checkCond(`npcs/${id}.codex[${i}]`, c.if); checkText(`npcs/${id}.codex[${i}]`, c.text); });
+  for (const [id, l] of Object.entries(reg.lore)) { checkCond(`lore/${id}`, l.if); checkText(`lore/${id}`, l.text); }
 
   // Backgrounds
   for (const bg of Object.values(content.backgrounds)) {

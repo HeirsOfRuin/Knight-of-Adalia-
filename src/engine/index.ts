@@ -107,6 +107,8 @@ export interface SceneView {
   cause?: GameState['activeCause'];
   choices: ChoiceView[];
   ended?: GameState['ended'];
+  /** true when the season or year differs from the previous scene's (or this is the first scene) */
+  dateChanged: boolean;
   /** true when no choice is available: a content bug the UI must explain */
   deadEnd: boolean;
 }
@@ -134,7 +136,7 @@ export function view(content: ContentBundle, state: GameState, narrator: Narrati
           text: narrator.renderPassage(c.text, state, content),
           available,
           lockReason: available ? undefined : c.label ? narrator.renderPassage(c.label, state, content) : `Requires ${unmetLabel(c.requires!, state, content)}`,
-          band: c.check ? computeOdds(c.check, state, content).band : undefined,
+          band: c.check ? computeOdds(c.check, state, content, !!c.partial).band : undefined,
           lethal: c.lethal,
           warn: c.warn,
           tags: c.tags,
@@ -150,6 +152,7 @@ export function view(content: ContentBundle, state: GameState, narrator: Narrati
     choices,
     ended: state.ended,
     deadEnd: !state.ended && !choices.some((c) => c.available),
+    dateChanged: state.journal.length === 0 || state.journal[state.journal.length - 1]!.at !== state.time,
   };
 }
 
@@ -205,10 +208,11 @@ export function choose(content: ContentBundle, prev: GameState, choiceId: string
   let outcome: Outcome = { text: choice.text_after, effects: [], next: choice.next };
   let check: ChooseResult['check'];
   if (choice.check) {
-    const odds = computeOdds(choice.check, state, content);
-    const result = resolveCheck(odds, rng, opts.force);
+    const odds = computeOdds(choice.check, state, content, !!choice.partial);
+    let result = resolveCheck(odds, rng, opts.force);
+    if (result === 'partial' && !choice.partial) result = 'failure'; // only reachable by forcing
     check = { band: odds.band, result };
-    const o = choice[result] ?? (result === 'partial' ? choice.failure : undefined);
+    const o = choice[result];
     if (!o) throw new EngineError(`${scene.id}/${choice.id}: no outcome for ${result}`);
     outcome = o;
   }

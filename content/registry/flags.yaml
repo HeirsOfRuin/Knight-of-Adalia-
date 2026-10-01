@@ -120,3 +120,4 @@ c1_carrow_livery: { description: "Wears the Earl of Carrow's livery, the black b
 c1_dubbed_by_pryce: { description: "Knighted by Sir Walter Pryce in Carrow's colours", hidden: true, later: ch2 }
 c1_carrow_indenture: { description: "Bound to three years' service to the Earl of Carrow", later: ch2 }
 c1_hired_champion: { description: "Hired a champion to clear Sir Hamon", hidden: true, later: ch2 }
+c1_ancel_lamed: { description: "Sir Ancel was lamed at the gate of Thorne Hall", hidden: true, later: ch2 }

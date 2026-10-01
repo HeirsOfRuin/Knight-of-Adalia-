@@ -1,0 +1,113 @@
+# World page entries. "if" decides when he knows it; omitted = known from the start.
+
+adalia:
+  title: Adalia
+  category: powers
+  text: |
+    Your kingdom: the southern two-thirds of the island, rich in wool and short of money. The King rules with his Council, and cannot raise a tax without the consent of the Moot, the assembly of lords, shire knights and burgesses.
+caldmoor:
+  title: Caldmoor
+  category: powers
+  text: |
+    The poor, fierce highland kingdom north of the March. Spearmen, cattle-raiders, and a boy king ruled by regents. Bound to Valdrenne by the Old Bond, and paid by it.
+valdrenne:
+  title: Valdrenne
+  category: powers
+  if: chapter >= ch1
+  text: |
+    Across the Narrow Sea: the largest and richest realm in the known world. Grain, wine, salt, more castles than anyone can count. Its great dukes keep their own courts and coin.
+
+    When its last king of the old line died without a son, the peers crowned his cousin, Amaury of Sauvel, and passed over the dead king's sister's son, who was King Aldred.
+the_claim:
+  title: The King's claim
+  category: powers
+  if: chapter >= ch1
+  text: |
+    King Aldred's mother, Queen Ysolde, was sister to the last Valdrennish king of the old line. By Adalian reckoning that makes Aldred the rightful King of Valdrenne. The Valdrennish peers ruled that a crown cannot pass through a woman. Aldred has not accepted the ruling.
+sarenza:
+  title: Sarenza
+  category: powers
+  if: { any: [ npc.bertuccio_lanzi.met, chapter >= ch1 ] }
+  text: |
+    A league of merchant ports on the southern sea. It lends to everyone and is owed by most, and backs whoever profits it. The Lanzi and the Varesco are its great banking houses.
+hroswald:
+  title: Hroswald
+  category: powers
+  if: chapter >= ch1
+  text: |
+    A patchwork of princes, bishops and free cities east of Valdrenne, under an elected king. It sells soldiers to anyone who pays: the free companies.
+march:
+  title: The March
+  category: places
+  if: { any: [ alias.master == ancel_brome, flag.c1_raid_distinguished, chapter >= ch1 ] }
+  text: |
+    The border country between Adalia and Caldmoor: tower houses, cattle raids, and families with a foot on both sides. The King's peace is a rumour there.
+ravell:
+  title: Ravell Hall
+  category: places
+  if: { any: [ background == servant, chapter >= ch1 ] }
+  text: |
+    Lord Ravell's seat: a stone keep with a timber hall against it, a moat that stinks in summer, a tilt-yard, a chase, and a village with a mill and the church of Saint Ebba.
+wendham:
+  title: Wendham
+  category: places
+  text: |
+    The wool town of the shire. A market, a guild hall, the Bell inn, and Sarenzan ships at the wharf buying fleece.
+reeve:
+  title: Reeves and tallies
+  category: customs
+  if: background == reeve
+  text: |
+    A reeve is chosen by the village and confirmed by the lord, to take the lord's due from his neighbours and keep the account. Grain is counted on split hazel tallies: one half for the reeve, one for the barn, so neither can be altered alone.
+knights_fee:
+  title: Knights' fees
+  category: customs
+  if: chapter >= ch1
+  text: |
+    A knight holds land from his lord in return for service: forty days a year, mounted and armed. Lord Ravell holds four such fees. Sir Hamon and Sir Ancel hold two of them.
+squires:
+  title: Squires
+  category: customs
+  if: chapter >= ch1
+  text: |
+    A squire serves a knight: carries his harness, carves at his table, sleeps across his door, and learns to fight. Most are knights' sons. Commoners are rare, and are reminded of it.
+knighthood:
+  title: Knighthood
+  category: customs
+  if: station >= squire
+  text: |
+    Any knight may dub another, in law. In practice a man must be able to keep a warhorse, a riding horse, a harness and a squire, and to pass for gentle, or the knight who dubs him is shamed.
+money:
+  title: Money
+  category: money
+  text: |
+    Twelve pence make a shilling, twenty shillings a pound, and a mark is thirteen shillings and fourpence. A labourer earns two pence a day. A good knife costs a shilling. A warhorse costs more than most men see in their lives.
+ransom:
+  title: Ransom
+  category: war
+  if: { any: [ flag.c1_has_prisoner, chapter >= ch2 ] }
+  text: |
+    A captured man of rank is worth more alive than dead. His captor sets a price, his family pays it, and a share goes up the chain to the captor's captain and lord. Sarenzan brokers handle the money, for a fee.
+archers:
+  title: Adalian archers
+  category: war
+  if: { any: [ background == archer, track == levy, chapter >= ch1 ] }
+  text: |
+    Every Adalian man between sixteen and sixty is meant to practise at the butts on Sundays. The war bow takes years to master and breaks men's backs. At Harrow Ford it broke the Caldmoor spears.
+church:
+  title: The Church
+  category: faith
+  text: |
+    One Church across all the realms, under the Pontiff. For two generations the Pontiff has lived at Saint-Lys in Valdrenne, which is why Adalians mutter that the Church leans Valdrennish.
+low_magic:
+  title: Charms and relics
+  category: faith
+  if: { any: [ item.holy_ampulla, flag.c1_omen_crown ] }
+  text: |
+    Pedlars sell saints' water, cunning women sell charms and fortunes, and priests call most of it fraud. Some of it may not be. Nobody can tell which.
+carn_dubh:
+  title: Carn Dubh
+  category: war
+  if: flag.p_knows_war_secret
+  text: |
+    A Caldmoor mill burned with people inside, in the old King's war. The archers on the door were ordered to keep it shut. Your father was one of them.

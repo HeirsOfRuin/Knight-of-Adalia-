@@ -16,6 +16,14 @@ const PORT = addr.port;
 const exe = ['/opt/pw-browsers/chromium-1194/chrome-linux/chrome'].find((p) => existsSync(p));
 const browser = await chromium.launch(exe ? { executablePath: exe } : {});
 const fail = (m: string) => { throw new Error(m); };
+// Click through any Continue page breaks so the scene's choices are showing.
+async function readAll(page: import('playwright').Page) {
+  for (let i = 0; i < 10; i++) {
+    const cont = page.getByRole('button', { name: 'Continue', exact: true });
+    if (!(await cont.count())) return;
+    await cont.first().click();
+  }
+}
 const errors: string[] = [];
 try {
   for (const [label, viewport] of [['phone', { width: 390, height: 844 }], ['desktop', { width: 1280, height: 900 }]] as const) {
@@ -31,15 +39,22 @@ try {
     await page.screenshot({ path: join(OUT, `${label}-2-newgame.png`), fullPage: true });
     await page.getByRole('button', { name: 'Begin' }).click();
     await page.getByRole('heading', { name: 'Lady Day Reckoning' }).waitFor();
+    await readAll(page);
     await page.screenshot({ path: join(OUT, `${label}-3-scene.png`), fullPage: true });
 
     // Copy the tallies (no check), then share bread in the wet year.
     await page.getByRole('button', { name: /Copy the tallies/ }).click();
     await page.getByRole('heading', { name: 'The Wet Year' }).waitFor();
+    await readAll(page);
     await page.screenshot({ path: join(OUT, `${label}-4-after-choice.png`), fullPage: true });
     await page.getByRole('button', { name: /Take your share of the bread/ }).click();
     await page.getByRole('heading', { name: 'What a Boy Learns' }).waitFor();
 
+    await page.getByRole('button', { name: 'People' }).click();
+    await page.getByRole('heading', { name: 'People' }).waitFor();
+    await page.screenshot({ path: join(OUT, `${label}-5b-people.png`), fullPage: true });
+    await page.getByRole('button', { name: 'World' }).click();
+    await page.screenshot({ path: join(OUT, `${label}-5c-world.png`), fullPage: true });
     await page.getByRole('button', { name: 'Status' }).click();
     await page.screenshot({ path: join(OUT, `${label}-5-status.png`), fullPage: true });
     await page.getByRole('button', { name: 'Journal' }).click();
@@ -58,6 +73,7 @@ try {
     await page.reload();
     await page.getByRole('button', { name: /Continue/ }).click();
     await page.getByRole('heading', { name: 'What a Boy Learns' }).waitFor();
+    await readAll(page);
     await page.locator('.choice:not([disabled])').first().click(); // advance past the export point
     await page.getByRole('button', { name: 'Menu' }).click();
     await page.locator('.menu input[type=file]').setInputFiles(savePath);

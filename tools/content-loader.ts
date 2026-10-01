@@ -48,10 +48,21 @@ export function loadContent(dir = CONTENT_DIR): ContentBundle {
   const config = parse(ConfigSchema, readYaml(join(dir, 'config.yaml')), 'config.yaml');
 
   const regRaw: Record<string, unknown> = {};
-  for (const key of ['flags', 'npcs', 'traits', 'injuries', 'items', 'factions', 'endings', 'romances']) {
+  for (const key of ['flags', 'npcs', 'traits', 'injuries', 'items', 'factions', 'endings', 'romances', 'lore']) {
     const p = join(dir, 'registry', `${key}.yaml`);
     regRaw[key] = existsSync(p) ? (readYaml(p) ?? {}) : {};
     if (existsSync(p)) hash.update(readFileSync(p));
+  }
+  // People-page entries live in registry/codex.yaml (npc id -> entries) and are merged into the NPCs.
+  const codexPath = join(dir, 'registry', 'codex.yaml');
+  if (existsSync(codexPath)) {
+    hash.update(readFileSync(codexPath));
+    const codex = (readYaml(codexPath) ?? {}) as Record<string, unknown[]>;
+    const npcs = regRaw.npcs as Record<string, Record<string, unknown>>;
+    for (const [id, entries] of Object.entries(codex)) {
+      if (!npcs[id]) throw new ContentError(`registry/codex.yaml: unknown npc "${id}"`);
+      npcs[id] = { ...npcs[id], codex: entries };
+    }
   }
   const registry = parse(RegistrySchema, regRaw, 'registry/');
 

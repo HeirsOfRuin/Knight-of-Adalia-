@@ -1,6 +1,6 @@
 # DESIGN — Knight of Adalia
 
-Status: Phase 0 approved 2026-10-01. Decisions log at the bottom.
+Status: Phase 0 approved 2026-10-01. Phase 1 complete, awaiting review. Decisions log at the bottom.
 
 ## Context
 The repo is empty (no commits). This is the Phase 0 deliverable: an architecture proposal, content schema, file layout, background table, and scope pushback. Nothing gets built until you approve it. Once approved, I commit this proposal as `/docs/DESIGN.md` and start Phase 1.
@@ -386,6 +386,33 @@ A typical run should meet 5–7 candidates and have 2–4 real marriage options 
   - make choices;
   - export a save, reload, import it, and confirm the state matches.
 
+## Phase 1 implementation notes (as built)
+Where the build differs from the plan above, this section wins.
+
+- **Module layout.** Character, reputation, resources and relationships are not separate modules. They are namespaces in one path resolver (`src/engine/paths.ts`, read side) and one effect applier (`src/engine/effects.ts`, write side). Displayed values and resolved values come from the same function, so they cannot drift.
+- **Deferred systems.** Retinue, war, estate and politics are type interfaces in `src/engine/systems.ts`. Magic is items with `magic: true` plus traits; no engine code is needed yet.
+- **Interludes.** Pool and queued events run on a return stack. A spine choice's `next: { pool, count, then }` plays up to `count` pool scenes, then continues to `then`. Due queued events fire before any scene transition and resume afterwards. Queued events carry their origin, and the journal shows the link.
+- **Chapter gating of queued events.** `earliest_chapter` takes a chapter id (`ch3`), not an index.
+- **Check math.**
+  - Success = 50% + 10% × (attr + skill + mods − difficulty), clamped to 5–95%.
+  - Partial success is the next 15%.
+  - A forced debug outcome still consumes the RNG draw, so later rolls do not shift.
+- **Prejudice.**
+  - Base 4 for all backgrounds; the burgess's son gets +1 with knights.
+  - Reduced by station steps above squire, renown/10, a noble marriage and a strong patron. Floor of 1.
+  - Check modifier:
+
+    | Audience | Modifier |
+    |---|---|
+    | Nobles, knights | −⌈p/2⌉ |
+    | Clergy | −⌊p/4⌋ |
+    | Commons, merchants | +⌈p/4⌉ |
+- **Health.** Health never drops below 1 by itself. Death happens only through a `die` effect, which the validator allows only inside a lethal choice that has a `warn`.
+- **Fail-forward rule.** The validator requires at least one unconditional choice in every scene, as the static guarantee against dead ends. The bot catches dynamic ones.
+- **Structural checks.** These are the per-background requirements: squire, knight, gate and lower-track routes, man-at-arms entry, and endings. They report PENDING until the chapter they concern has content.
+- **Tooling.** No ESLint or Prettier; `tsc --strict` is the static check. The browser smoke test (`npm run smoke`) uses Playwright with the preinstalled Chromium.
+- **Test chapter.** A `test` chapter holds the Phase 1 engine test arc (`content/scenes/test/fair.yaml`). It is removed when the prologue replaces it in Phase 2.
+
 ## Decisions log
 | Date | Decision |
 |---|---|
@@ -394,3 +421,4 @@ A typical run should meet 5–7 candidates and have 2–4 real marriage options 
 | 2026-10-01 | Ch2 entry: Knight (peacetime dubbing) or man-at-arms with patronage and a chance at knighthood in the war. No squires at war. |
 | 2026-10-01 | Romance candidates are women only. |
 | 2026-10-01 | Player names protagonist; £sd currency stored in pence; regnal years. |
+| 2026-10-01 | Phase 1 built: see implementation notes. |

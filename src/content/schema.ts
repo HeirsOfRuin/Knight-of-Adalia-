@@ -33,7 +33,7 @@ export const EffectSchema = z.union([
   z.object({ meet: Id }).strict(),
   z.object({ kill: Id }).strict(),
   z.object({
-    queue: z.object({ event: Id, delay: Delay, earliest_chapter: z.number().int().optional() }).strict(),
+    queue: z.object({ event: Id, delay: Delay, earliest_chapter: z.string().optional() }).strict(), // chapter id
   }).strict(),
   z.object({ advance: Delay }).strict(),
   z.object({ journal: z.string() }).strict(),

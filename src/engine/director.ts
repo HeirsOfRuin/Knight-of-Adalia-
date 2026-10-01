@@ -43,7 +43,7 @@ function takeDueQueued(state: GameState, content: ContentBundle) {
   const ch = chapterNumber(content, state.chapter);
   const due = state.queue
     .map((q, i) => ({ q, i }))
-    .filter(({ q }) => q.dueAt <= state.time && (q.earliestChapter === undefined || ch >= q.earliestChapter))
+    .filter(({ q }) => q.dueAt <= state.time && (q.earliestChapter === undefined || ch >= chapterNumber(content, q.earliestChapter)))
     .filter(({ q }) => {
       const sc = content.scenes[q.event];
       return sc && test(sc.requires, state, content);

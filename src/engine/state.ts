@@ -29,7 +29,7 @@ export interface ActiveInjury {
 export interface QueuedEvent {
   event: string;
   dueAt: number; // absolute season index
-  earliestChapter?: number;
+  earliestChapter?: string;
   origin: { scene: string; choice: string; at: number; text: string };
 }
 

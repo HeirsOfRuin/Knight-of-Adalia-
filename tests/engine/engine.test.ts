@@ -130,3 +130,14 @@ describe('engine', () => {
     expect(view(cc, s).deadEnd).toBe(true);
   });
 });
+
+describe('queued events with a chapter gate', () => {
+  it('wait for the named chapter even when due', () => {
+    const c = content();
+    const s = game('burgess');
+    s.queue.push({ event: 't_q_odo', dueAt: 0, earliestChapter: 'ch1', origin: { scene: 'x', choice: 'y', at: 0, text: 't' } });
+    const after = choose(c, s, 'give_up').state;
+    expect(after.queue).toHaveLength(1);
+    expect(c.scenes[after.scene]!.kind).toBe('pool');
+  });
+});

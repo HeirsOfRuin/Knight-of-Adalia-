@@ -116,6 +116,7 @@ export function validate(content: ContentBundle): ValidationReport {
       } else if ('queue' in e) {
         queued.add(e.queue.event);
         const q = scenes[e.queue.event];
+        if (e.queue.earliest_chapter && !content.config.chapters.includes(e.queue.earliest_chapter)) err(where, `queue: unknown chapter "${e.queue.earliest_chapter}"`);
         if (!q) err(where, `queue: unknown event "${e.queue.event}"`);
         else if (q.kind !== 'queued') err(where, `queue: "${e.queue.event}" is not kind: queued`);
       } else if ('die' in e) {

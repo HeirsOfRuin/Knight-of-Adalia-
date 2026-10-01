@@ -6,19 +6,51 @@
   title: Lady Day Reckoning
   checkpoint: true
   text: |
-    Lady Day at Ashby. The winter stores are counted, and the steward will not sit down to eat until they are.
+    You are eight years old, and you have been awake since before the cock, because today the steward comes.
 
-    Your father lays the tally sticks on the trestle in the tithe barn, notch side up, one for each quarter of barley, oats and beans. You have watched him cut them all winter. Master {npc.gervase_holt} sits across from him with his roll and his cough and a clerk who sniffs.
+    Your mother has had you scrubbed at the trough with a handful of ash, ears and all, and dressed you in your brother's old tunic, the blue one, which was your brother's until the winter fever took him at four and has been waiting in the chest for you to grow into it. It is still too long in the sleeve. She turns the cuffs back twice, looks at you, turns them back again, and says you will do. Your sisters, Cis and Avice, are under orders to stay in the house and not be seen. They are at the shutter now, watching the lane.
 
-    They read the oats twice. The steward's roll says forty quarters went into the barn at Michaelmas. You count the sticks under your breath. [if flag.father_skims]The sticks say forty too, but you watched your father split two of them in December, and you know what was on them before.[else]The sticks say forty-two. The roll is short by two quarters, and Master Gervase is not looking at it.[/if]
+    Ashby is thirty-one households, a church, a mill, and a manor house with a hall so cold that Sir Hamon Darrell, who holds it, spends Christmas at Ravell instead. The land belongs to Sir Hamon. The running of it belongs, as far as anyone in Ashby is concerned, to your father. Piers the reeve. He was chosen by the village at Michaelmas eleven years ago and confirmed by the lord, and he has been chosen every year since, which no reeve in living memory has managed, because a reeve is the man who takes the lord's due from his neighbours, and neighbours remember.
 
-    Your father does not look at you. He knows you can count.
+    Your father keeps the account on hazel tallies. You have watched him cut them all winter by the fire: one notch for a quarter of grain, a thin one for a bushel, the stick split down its length when the grain goes into the barn, so that he keeps one half and the barn keeps the other, and nobody can add a notch to one without the halves disagreeing. He showed you how when you were six. You took to it the way some boys take to stones and slings. Numbers stay where you put them. People do not.
+
+    Lady Day. The winter stores are counted, and the steward will not sit down to eat until they are.
+
+    Master Gervase Holt rides in at Terce on a grey cob, with a clerk on a mule behind him. He is a thin man in a good brown gown with a fur collar gone bald at the neck, and he has a cough that he carries about with him like a dog. He does not get down from the cob until your father has come out to hold its head. He looks at you over your father's shoulder.
+
+    "This is the boy?"
+
+    "My son, Master Gervase. The one who reckons."
+
+    "We shall see," says the steward, and coughs.
+
+    In the tithe barn the air is cold and sweet with old straw. The clerk, a young man called Walter who sniffs constantly and wipes his nose on his wrist, sets up a trestle and a stool and unrolls the steward's roll. It is written in the clerks' tongue, which you cannot read yet, with the numbers in the old letters that your father taught you on the hearthstone with a burnt stick. Your father lays out his halves of the tallies, notch side up, in rows: barley, oats, beans and peas, maslin. You stand at his elbow, as you have been told, and say nothing.
+
+    They read the barley. It agrees. They read the beans. They agree. They read the oats.
+
+    "Oats, into the grange at Michaelmas," says the clerk, through his nose. "Forty quarters."
+
+    The steward nods and looks at the roof.
+
+    You count the sticks under your breath, the way you always do, without meaning to. [if flag.father_skims]Forty. They say forty. But you sat by the fire in Advent while your father split two oat tallies and fed one half of each into the flames, and cut two new ones, a little shorter, and you saw his face while he did it, which was the face of a man counting coin in a bad market. Before Advent, the oat sticks said forty-two.[else]Forty-two. The sticks say forty-two. You count again. Forty-two quarters went into the barn, and the roll says forty, and Master Gervase is looking at the roof, and the two missing quarters are worth, at this year's price, more than your father is paid in a year.[/if]
+
+    Your father does not look at you. His hands are flat on the trestle and do not move. He knows you can count. He taught you.
   choices:
     - id: speak
       text: Say what you counted, out loud, in front of the clerk.
       tags: [learning]
       text_after: |
-        [if flag.father_skims]The steward has the split sticks fetched from the woodpile. Your father is fined four shillings in the manor court and loses his place at the lord's Christmas table. He does not beat you. He stops speaking to you, which is worse.[else]Master Gervase laughs and says the boy has sharp eyes. He corrects the roll. Later he asks your father, quietly, whether the boy is often in the barn. Your father says no.[/if]
+        "Forty-two," you say. Your voice comes out higher than you meant. "The oats. There were forty-two."
+
+        Everything in the barn stops. Walter the clerk stops sniffing.
+
+        [if flag.father_skims]Master Gervase looks at you for the first time as if you were a person rather than a piece of your father's furniture. Then he has the woodpile searched. It takes the reeve's own men half an hour, standing in the cold, to find the charred end of a split oat tally that did not quite burn. Nobody says anything to your father in the barn. Nobody needs to.
+
+        At the manor court on Saint Mark's day he is fined four shillings for false account, which is a great deal, and is not chosen to carry the lord's candle at Easter, which is worse. He does not beat you. He has never beaten you. He stops speaking to you, which is worse than any beating, and it lasts until Whitsun, and when it ends it does not end properly. Your mother tells you that you did right. She tells you in a whisper, in the dairy, where he cannot hear.
+
+        Master Gervase, leaving, pats your head and says that honest boys are rare and valuable and that he will remember your name.[else]Master Gervase stops looking at the roof. For a long moment he looks at you, and then he laughs, a short dry laugh that turns into his cough. "Sharp eyes," he says. "Walter, you have miscopied. Again." Walter goes red to the ears and alters the roll.
+
+        Nobody says anything else about it in the barn. On the ride home the steward asks your father, quietly, whether the boy spends much time around the accounts. Your father says no. That night your father sits up late with the tallies, counting them again, all of them, and you lie awake listening to the click of the sticks. In the morning he says, "Next time, tell me first." It is the closest he comes to saying that you have made an enemy, and that the enemy is not the clerk.[/if]
       effects:
         - set: flag.p_spoke_up
         - if: flag.father_skims
@@ -29,8 +61,15 @@
       text: Keep your mouth shut and tell your father afterwards.
       tags: [allies]
       text_after: |
-        That night he sits you on the bench by the fire and asks what you saw. You tell him. He nods for a long time.
-        [if flag.father_skims]"A man has to eat," he says. "So does his son." He gives you a penny. You understand what it is for.[else]"Then we both know," he says. "And the steward knows we know, or he will soon. Keep that close."[/if]
+        You say nothing. The reckoning goes on. The steward eats your mother's best hen and drinks the ale she has been saving since Candlemas and rides away before Vespers, coughing.
+
+        That night, when your sisters are asleep, your father sits you on the bench by the fire, where the light is, and asks you what you saw in the barn. Not whether you saw anything. What.
+
+        You tell him.
+
+        He nods. He keeps nodding for a long time, looking at the fire, the way he does when the weather is turning.
+
+        [if flag.father_skims]"Two quarters," he says at last. "Two quarters, in a winter when the Cokers were put out. A man has to eat, boy. So does his son. So do his daughters." He gets up, goes to the chest, and comes back with a silver penny, which he puts in your hand and closes your fingers over. You have never held a whole penny before. You understand exactly what it is for. You keep it for a year before you can bring yourself to spend it.[else]"Two quarters," he says at last. "And the roll says forty, and Gervase Holt has signed the roll." He is quiet a while. "Then we both know, you and I. And the steward knows we know, or he will soon, because he is not a fool, whatever else he is." He puts his hand on your head, which he does not often do. "Keep that close. Close as your shirt. A thing like that is worth more kept than spent."[/if]
       effects:
         - set: flag.p_kept_quiet
         - add: { rel.piers_reeve.affection: 2, rel.piers_reeve.respect: 1 }
@@ -41,7 +80,17 @@
       text: Say nothing. Copy the tallies onto Father Anselm's scrap of parchment that night.
       tags: [cunning, learning]
       text_after: |
-        It takes three candle-ends and you burn your thumb on the last. Father Anselm asks no questions about why a reeve's boy wants a page of figures. He keeps the parchment for you, folded inside his psalter.
+        You say nothing in the barn. But the numbers will not leave you alone, and that night you go to Father Anselm.
+
+        The priest of Ashby is a big soft man with a farmer's hands, the son of a smallholder from over the hill, who reads the gospel badly and the weather very well. He keeps bees behind the church, teaches letters to any boy who will bring him firewood, and has a habit of humming the psalms when he thinks no one is listening. He has a box of parchment scraps, cut from the margins of old service books, that he uses for his own sums.
+
+        "A page of figures," he says, when you ask. "At this hour. For a boy of eight." He gives you one anyway, and an ink-horn, and a candle-end, and goes back to his bees.
+
+        It takes you three candle-ends and you burn your thumb on the last. You copy every tally: barley, oats, beans and peas, maslin, each in your father's way of reckoning, with the notches drawn as little strokes. At the bottom you write the date as Father Anselm has shown you, the feast and the year of the King, so that anyone reading it will know when it was made.
+
+        You do not know yet why you are doing it. You only know that the numbers in the barn and the numbers on the roll were not the same, and that tomorrow the sticks may be different, and that the parchment will not.
+
+        Father Anselm reads it over your shoulder when you are done. He does not ask any questions. He folds it twice and tucks it inside the back board of his psalter, between the leather and the wood. "It will keep there," he says. "Nobody reads my psalter but me, and I only read it on Sundays."
       effects:
         - set: flag.p_kept_copy
         - item: +tally_copy

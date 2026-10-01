@@ -507,6 +507,52 @@ The chapter is slightly over the 25-40 target if events are counted. I kept them
 
 The bots each pursue a single approach. A real player mixes them; for example, a fighter who also picks up Courtesy. That moves a player toward the martial column.
 
+## Chapter 2 decisions (2026-10-01)
+1. **The war.** It must feel large, real and important.
+   - It contains skirmishes, raids and fights, two battles (the second a major one), and a siege.
+   - His actions matter locally but do not change the war.
+   - Big ransoms and important victories are available to him, but often go to others. They still happen, just not always through him.
+2. **Span.** About five years, ages 20 to 25.
+3. **Command.** He commands his own small company, from himself and a squire up to 10-20 men. Battles resolve in 3-6 rounds from his place in the line. Army command waits for Ch4.
+4. **Knighthood.** Battlefield knighthood comes before the battle, for a deed in it, or at the siege. If he ends Ch2 unknighted, he still receives the land grant, plus a ceremonial knighting for his service. Ch3 always opens with him as a knight.
+5. **Land.** A conquered Valdrennish manor granted by the King, with a hostile population. Adalian land through marriage or purchase is rarer.
+6. **War crimes.** The boundary is signed off by the user:
+   - He can order or allow burning and killing, with lasting consequences: reputation, Valdrennish hatred, Ruthlessness.
+   - Sexual violence is acknowledged and can be stopped or ignored, but is never described and is never the player's act.
+7. **Retinue.** Starts in Ch2: a squire of his own, a groom, and 2-6 archers or men-at-arms, several of them named, with pay and loyalty. They can die. This is the main way to build investment in his men, and practice for Ch3.
+8. **Romance.**
+   - Ch2 introduces candidates 6-9.
+   - Home courtships continue by letter.
+   - Some women pursue the courtship themselves, by writing, arriving or arranging things.
+9. **Home front.** Letters, plus 2-3 home events: Black Ewan, family debts, the girl left behind. One trip home, during the truce, at a cost.
+10. **Plague.** A "great mortality" arrives just after the war and shapes Ch3. Rumours of it start late in Ch2.
+11. **Length.** Ch2 is slightly longer than Ch1, because it handles more.
+
+## Writing depth and word budget (2026-10-01)
+The user's review: the writing needs much more fleshing out, including more world-building, more character investment, and stronger feeling toward the cast. The target for the finished game is **400,000-500,000 words**.
+
+### Budget
+A playthrough reads roughly a third of what is written.
+
+| Part | Written | Read per run |
+|---|---|---|
+| Prologue | 40,000 | 15,000 |
+| Chapter 1 | 70,000 | 25,000 |
+| Chapter 2 | 100,000 | 35,000 |
+| Chapter 3 | 85,000 | 30,000 |
+| Chapter 4 | 85,000 | 30,000 |
+| Chapter 5 and endings | 70,000 | 20,000 |
+| **Total** | **about 450,000** | **about 155,000 (12-15 hours of reading)** |
+
+### Depth standard
+These are the norms the calibration scenes `p_reeve_open` and `c1_arrival` are written to.
+- **Scene length:** a spine scene runs 500-1,000 words. A pool scene runs 300-600. An outcome runs 100-350; the important ones are longer.
+- **Named people:** every named person on the page has a look, a voice and a want. Recurring cast follow `content/cast.md`.
+- **World:** every scene carries at least one concrete piece of how this world works. That means how things are done and who owes what, shown in passing rather than explained.
+- **Feelings:** shown through behaviour, objects and what people do not say, never by naming them.
+- **Quiet scenes:** non-crisis scenes (meals, roads, letters, work) with small choices are allowed and encouraged. They are where investment in the cast is built.
+- **What does not change:** the original style rules still hold. Plain prose, short-to-medium sentences, no inspirational speeches, no tidy outcomes.
+
 ## Decisions log
 | Date | Decision |
 |---|---|
@@ -517,4 +563,5 @@ The bots each pursue a single approach. A real player mixes them; for example, a
 | 2026-10-01 | Player names protagonist; £sd currency stored in pence; regnal years. |
 | 2026-10-01 | Phase 1 built: see implementation notes. |
 | 2026-10-01 | Phase 2 built: prologue and Chapter 1. See Phase 2 notes. |
+| 2026-10-01 | Ch2 design decisions 1-11 recorded (see Chapter 2 decisions). Writing depth: target 400-500k words; prologue and Ch1 to be deepened before Ch2 (see Writing depth). |
 | 2026-10-01 | Phase 3 review decisions: 9a, 11c, 12c, 14b, 13a. Historical items kept, except champion (15, replaced) and the Sweat (17, renamed). See Phase 3 review changes. |

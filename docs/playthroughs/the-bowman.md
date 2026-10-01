@@ -159,13 +159,21 @@ She says you will not, and that it does not matter, and kisses you as if it does
 
 *Spring, year 16 of King Aldred*
 
-You are 15.
+You are 15, and you have never seen so many people in one place who were not at a fair.
 
-Ravell Hall is a stone keep with a timber hall built against it, a moat that stinks in summer, and more people than your whole village: knights, squires, grooms, cooks, laundresses, clerks, priests, dogs. Lord Thurstan Ravell holds it from the King, and holds four knights' fees under him. Sir Hamon Darrell and Sir Ancel Brome are two of them.
+You see Ravell Hall first from the ridge road, a mile off, across the water meadows: a square grey keep with a timber hall built against its flank like a barn leaning on a church, a curtain wall, a gatehouse, a moat that catches the light. Smoke from a dozen chimneys. Around the walls, outside them, the village: the mill, the smithy, the church of Saint Ebba with its squat tower, the alehouse with a bush over the door. Strip fields running down to the river. Sheep everywhere.
 
-Sir Ancel meets you in the yard without getting down from his horse. "You're late," he says. You are not late.
+Up close it smells. The moat is green and takes the castle's slops, and in spring it ripens. The gate passage is dark and wet and full of carts. And then you are through, into the outer ward, and it is like being dropped into a hive.
 
-You will sleep in the long barn with Sir Ancel's archers when the company is at Ravell, and in a ditch when it is not. Will Cobb gives you a blanket and the worst place by the door.
+Grooms leading horses two at a time. A cartload of firewood being unloaded by men who swear at it. Laundresses carrying baskets the size of coffins. A falconer with a hooded bird on his fist, walking slowly so as not to unsettle it. Two boys in good cloth fighting with wooden swords while a grey old knight, missing two fingers on his left hand, tells them both they are dead. Hounds. Chickens. A priest. A man in a fur-trimmed gown shouting at a man in a plain one about candles. Nobody looks at you, because everyone here is going somewhere and you are not yet anyone.
+
+Lord Thurstan Ravell holds this castle and eleven manors from the King. He holds four knights' fees under him: four knights who owe him forty days' service a year, mounted and armed, in return for their land. Sir Hamon Darrell of Ashby and Sir Ancel Brome of Brome Tower are two of those four. Their households live under his roof for half the year, eat his bread, and fight his quarrels. Yours will too.
+
+Sir Ancel meets you in the yard without getting down from his horse. He is lean as a hayrake, burned dark by the March wind, with half his left ear gone to a Caldmoor sword at Harrow Ford and grey coming into his beard. He looks at you for a long time. "You're late," he says. You are not late; you came the day you were told. You do not say so. Something in his face eases, very slightly, at your not saying so. "Stables," he says. "Then find Cobb. Then find me."
+
+You will sleep in the long barn with Sir Ancel's archers when the company is at Ravell, which is half the year, and in a ditch on the March when it is not. Will Cobb, the serjeant, a grey-bearded man with a voice like a millrace and hands like roots, gives you a blanket and the worst place by the door, where the wind comes under. "Everyone starts by the door," he says. "Some of 'em die there." He means it as a joke. Then he looks at you again, longer. "Hugh Fletcher's boy. God's teeth. You've his shoulders." He gives you a second blanket and does not explain.
+
+That night you lie awake listening to the castle: a dog barking in the outer ward, the watch calling the hours, someone singing badly in the hall below, a woman laughing somewhere, rain on the roof. You think about home. You think about how far down you are, here, and how many people stand between you and anything. You count them, because counting is what you do. You lose count somewhere past forty.
 
 - Kneel to your master in the yard, properly, as if you had been doing it all your life. *(Risky)*
 - Go straight to the stables and make yourself useful before anyone tells you to.
@@ -173,7 +181,13 @@ You will sleep in the long barn with Sir Ancel's archers when the company is at 
 
 **Chose:** Go straight to the stables and make yourself useful before anyone tells you to.
 
-By Vespers you have mucked out three stalls, found the farrier, and learned which of your master's horses bites. Master Ranulf, the marshal, notices. So does your master, who likes a boy who does not wait to be told.
+Nobody has told you what to do, so you do the first thing that needs doing, which is the stables, because there is always something in a stable.
+
+By Vespers you have mucked out three stalls, carried water for twelve horses, found the farrier, held a kicking cob while he shod it, and learned which of your master's horses bites. (The grey. Always the grey.) You have also learned the name of Master Ranulf, the marshal of Ravell, a narrow grey-whiskered man in a leather apron who has run these stables for thirty years and who watches you all afternoon without speaking.
+
+At Compline he stops beside you, looks at the stall you have just cleaned, and kicks the straw to see what is underneath. There is nothing underneath. He nods once and walks away.
+
+Your master hears about it at supper. Sir Ancel says nothing. But the next morning, when the horses are brought out, he hands you the grey's bridle without a word, and you understand that you have passed something.
 
 *Sir Ancel Brome's affection +1 · Master Ranulf's respect +1*
 

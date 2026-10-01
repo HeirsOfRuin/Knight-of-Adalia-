@@ -143,13 +143,25 @@ The road is empty and the frost is hard. By the time the village wakes you are t
 
 *Spring, year 16 of King Aldred*
 
-You are 15.
+You are 15, and you have never seen so many people in one place who were not at a fair.
 
-Ravell Hall is a stone keep with a timber hall built against it, a moat that stinks in summer, and more people than your whole village: knights, squires, grooms, cooks, laundresses, clerks, priests, dogs. Lord Thurstan Ravell holds it from the King, and holds four knights' fees under him. Sir Hamon Darrell and Sir Ancel Brome are two of them.
+You see Ravell Hall first from the ridge road, a mile off, across the water meadows: a square grey keep with a timber hall built against its flank like a barn leaning on a church, a curtain wall, a gatehouse, a moat that catches the light. Smoke from a dozen chimneys. Around the walls, outside them, the village: the mill, the smithy, the church of Saint Ebba with its squat tower, the alehouse with a bush over the door. Strip fields running down to the river. Sheep everywhere.
 
-Sir Ancel meets you in the yard without getting down from his horse. "You're late," he says. You are not late.
+Up close it smells. The moat is green and takes the castle's slops, and in spring it ripens. The gate passage is dark and wet and full of carts. And then you are through, into the outer ward, and it is like being dropped into a hive.
 
-You will sleep in the squires' loft over the great chamber with four others. The eldest, Giles Marrick, looks at your boots, then your hands, then your face, and decides something.
+Grooms leading horses two at a time. A cartload of firewood being unloaded by men who swear at it. Laundresses carrying baskets the size of coffins. A falconer with a hooded bird on his fist, walking slowly so as not to unsettle it. Two boys in good cloth fighting with wooden swords while a grey old knight, missing two fingers on his left hand, tells them both they are dead. Hounds. Chickens. A priest. A man in a fur-trimmed gown shouting at a man in a plain one about candles. Nobody looks at you, because everyone here is going somewhere and you are not yet anyone.
+
+Lord Thurstan Ravell holds this castle and eleven manors from the King. He holds four knights' fees under him: four knights who owe him forty days' service a year, mounted and armed, in return for their land. Sir Hamon Darrell of Ashby and Sir Ancel Brome of Brome Tower are two of those four. Their households live under his roof for half the year, eat his bread, and fight his quarrels. Yours will too.
+
+Sir Ancel meets you in the yard without getting down from his horse. He is lean as a hayrake, burned dark by the March wind, with half his left ear gone to a Caldmoor sword at Harrow Ford and grey coming into his beard. He looks at you for a long time. "You're late," he says. You are not late; you came the day you were told. You do not say so. Something in his face eases, very slightly, at your not saying so. "Stables," he says. "Then find Cobb. Then find me."
+
+You will sleep in the squires' loft over the great chamber, with four others, on straw pallets under a roof that drips in one corner. The loft has its own rules, and nobody tells them to you; you learn them by breaking them.
+
+The eldest of the four is Giles Marrick, nineteen, the second son of a Carrow knight, with good teeth and a better sword and a way of smiling at the side of your head instead of your face. He looks at your boots, which are your father's, then your hands, which are not a gentleman's, then your face, and decides something. You watch him decide it.
+
+Aymer Ravell is there too: the lord's younger son, sixteen, fair, quick, restless, already bored with you and everyone else. He knew you when you were both small enough to hide in the hay. He looks at you now the way a man looks at an old coat he forgot he owned: not unkindly, but not as if it matters.
+
+That night you lie awake listening to the castle: a dog barking in the outer ward, the watch calling the hours, someone singing badly in the hall below, a woman laughing somewhere, rain on the roof. You think about home. You think about how far down you are, here, and how many people stand between you and anything. You count them, because counting is what you do. You lose count somewhere past forty.
 
 - Kneel to your master in the yard, properly, as if you had been doing it all your life. *(Even)*
 - Go straight to the stables and make yourself useful before anyone tells you to.
@@ -157,7 +169,17 @@ You will sleep in the squires' loft over the great chamber with four others. The
 
 **Chose:** Find someone in the hall who might tell you how things are done here.
 
-Most people are too busy. One is not. A young woman in a good grey gown, carrying a basket of thread for the lady, stops and tells you where to wash, where to eat, which steward to avoid, and that Lady Ravell can hear through walls. Her name is Isabel Sayer. She waits on Lady Ravell, and she is, she says, as poor as you are, only better dressed.
+Everybody is too busy. You try the steward's clerk, who tells you to ask the steward. You try the steward, who looks through you. You try a cook, who throws a turnip at you, not hard.
+
+Then you try the young woman in the good grey gown who is crossing the inner ward with a basket of thread, because she is the only person in the castle walking slowly.
+
+She stops. She has a narrow, clever face, dark hair under a linen cap, ink on her right forefinger, and an expression that suggests she has been waiting all day for something interesting to happen and is prepared to accept you as a poor substitute.
+
+"You're new," she says. "You have the look. Everyone has it the first week. Like a calf at a fair." She tells you, in about the time it takes to say a paternoster, where to wash, where to eat, which of the stewards to avoid (the fat one), which of the cooks will give you bread if you ask nicely (the one who threw the turnip), how to tell the lord's chamber from the lady's in the dark, and that Lady Ravell can hear through walls and very likely through floors.
+
+"I am Isabel Sayer," she says. "I wait on Lady Ravell. My father is a knight with a hundred acres in Hollesby and seven daughters, and I am the fourth, so I am as poor as you are, only better dressed. Don't tell anyone I talk to grooms."
+
+You are not a groom. You do not say so. She sees you not say so, and smiles for the first time, and goes off with her basket. You stand in the inner ward for some time after.
 
 ## The High Table
 

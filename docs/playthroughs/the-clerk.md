@@ -6,13 +6,35 @@ Background: Reeve's son. Seed 11.
 
 *Spring, year 9 of King Aldred*
 
-Lady Day at Ashby. The winter stores are counted, and the steward will not sit down to eat until they are.
+You are eight years old, and you have been awake since before the cock, because today the steward comes.
 
-Your father lays the tally sticks on the trestle in the tithe barn, notch side up, one for each quarter of barley, oats and beans. You have watched him cut them all winter. Master Gervase Holt sits across from him with his roll and his cough and a clerk who sniffs.
+Your mother has had you scrubbed at the trough with a handful of ash, ears and all, and dressed you in your brother's old tunic, the blue one, which was your brother's until the winter fever took him at four and has been waiting in the chest for you to grow into it. It is still too long in the sleeve. She turns the cuffs back twice, looks at you, turns them back again, and says you will do. Your sisters, Cis and Avice, are under orders to stay in the house and not be seen. They are at the shutter now, watching the lane.
 
-They read the oats twice. The steward's roll says forty quarters went into the barn at Michaelmas. You count the sticks under your breath. The sticks say forty-two. The roll is short by two quarters, and Master Gervase is not looking at it.
+Ashby is thirty-one households, a church, a mill, and a manor house with a hall so cold that Sir Hamon Darrell, who holds it, spends Christmas at Ravell instead. The land belongs to Sir Hamon. The running of it belongs, as far as anyone in Ashby is concerned, to your father. Piers the reeve. He was chosen by the village at Michaelmas eleven years ago and confirmed by the lord, and he has been chosen every year since, which no reeve in living memory has managed, because a reeve is the man who takes the lord's due from his neighbours, and neighbours remember.
 
-Your father does not look at you. He knows you can count.
+Your father keeps the account on hazel tallies. You have watched him cut them all winter by the fire: one notch for a quarter of grain, a thin one for a bushel, the stick split down its length when the grain goes into the barn, so that he keeps one half and the barn keeps the other, and nobody can add a notch to one without the halves disagreeing. He showed you how when you were six. You took to it the way some boys take to stones and slings. Numbers stay where you put them. People do not.
+
+Lady Day. The winter stores are counted, and the steward will not sit down to eat until they are.
+
+Master Gervase Holt rides in at Terce on a grey cob, with a clerk on a mule behind him. He is a thin man in a good brown gown with a fur collar gone bald at the neck, and he has a cough that he carries about with him like a dog. He does not get down from the cob until your father has come out to hold its head. He looks at you over your father's shoulder.
+
+"This is the boy?"
+
+"My son, Master Gervase. The one who reckons."
+
+"We shall see," says the steward, and coughs.
+
+In the tithe barn the air is cold and sweet with old straw. The clerk, a young man called Walter who sniffs constantly and wipes his nose on his wrist, sets up a trestle and a stool and unrolls the steward's roll. It is written in the clerks' tongue, which you cannot read yet, with the numbers in the old letters that your father taught you on the hearthstone with a burnt stick. Your father lays out his halves of the tallies, notch side up, in rows: barley, oats, beans and peas, maslin. You stand at his elbow, as you have been told, and say nothing.
+
+They read the barley. It agrees. They read the beans. They agree. They read the oats.
+
+"Oats, into the grange at Michaelmas," says the clerk, through his nose. "Forty quarters."
+
+The steward nods and looks at the roof.
+
+You count the sticks under your breath, the way you always do, without meaning to. Forty-two. The sticks say forty-two. You count again. Forty-two quarters went into the barn, and the roll says forty, and Master Gervase is looking at the roof, and the two missing quarters are worth, at this year's price, more than your father is paid in a year.
+
+Your father does not look at you. His hands are flat on the trestle and do not move. He knows you can count. He taught you.
 
 - Say what you counted, out loud, in front of the clerk.
 - Keep your mouth shut and tell your father afterwards.
@@ -20,7 +42,17 @@ Your father does not look at you. He knows you can count.
 
 **Chose:** Say nothing. Copy the tallies onto Father Anselm's scrap of parchment that night.
 
-It takes three candle-ends and you burn your thumb on the last. Father Anselm asks no questions about why a reeve's boy wants a page of figures. He keeps the parchment for you, folded inside his psalter.
+You say nothing in the barn. But the numbers will not leave you alone, and that night you go to Father Anselm.
+
+The priest of Ashby is a big soft man with a farmer's hands, the son of a smallholder from over the hill, who reads the gospel badly and the weather very well. He keeps bees behind the church, teaches letters to any boy who will bring him firewood, and has a habit of humming the psalms when he thinks no one is listening. He has a box of parchment scraps, cut from the margins of old service books, that he uses for his own sums.
+
+"A page of figures," he says, when you ask. "At this hour. For a boy of eight." He gives you one anyway, and an ink-horn, and a candle-end, and goes back to his bees.
+
+It takes you three candle-ends and you burn your thumb on the last. You copy every tally: barley, oats, beans and peas, maslin, each in your father's way of reckoning, with the notches drawn as little strokes. At the bottom you write the date as Father Anselm has shown you, the feast and the year of the King, so that anyone reading it will know when it was made.
+
+You do not know yet why you are doing it. You only know that the numbers in the barn and the numbers on the roll were not the same, and that tomorrow the sticks may be different, and that the parchment will not.
+
+Father Anselm reads it over your shoulder when you are done. He does not ask any questions. He folds it twice and tucks it inside the back board of his psalter, between the leather and the wood. "It will keep there," he says. "Nobody reads my psalter but me, and I only read it on Sundays."
 
 *Gained: Copied tallies · Learning +1 · Father Anselm's affection +1*
 
@@ -146,13 +178,25 @@ He grips your shoulder. It is the first time he has touched you in a year. You w
 
 *Spring, year 16 of King Aldred*
 
-You are 15.
+You are 15, and you have never seen so many people in one place who were not at a fair.
 
-Ravell Hall is a stone keep with a timber hall built against it, a moat that stinks in summer, and more people than your whole village: knights, squires, grooms, cooks, laundresses, clerks, priests, dogs. Lord Thurstan Ravell holds it from the King, and holds four knights' fees under him. Sir Hamon Darrell and Sir Ancel Brome are two of them.
+You see Ravell Hall first from the ridge road, a mile off, across the water meadows: a square grey keep with a timber hall built against its flank like a barn leaning on a church, a curtain wall, a gatehouse, a moat that catches the light. Smoke from a dozen chimneys. Around the walls, outside them, the village: the mill, the smithy, the church of Saint Ebba with its squat tower, the alehouse with a bush over the door. Strip fields running down to the river. Sheep everywhere.
 
-Sir Hamon meets you in the yard with a cup of ale in his hand and his belt let out a notch. "There he is," he says, to nobody in particular.
+Up close it smells. The moat is green and takes the castle's slops, and in spring it ripens. The gate passage is dark and wet and full of carts. And then you are through, into the outer ward, and it is like being dropped into a hive.
 
-You will sleep in the squires' loft over the great chamber with four others. The eldest, Giles Marrick, looks at your boots, then your hands, then your face, and decides something.
+Grooms leading horses two at a time. A cartload of firewood being unloaded by men who swear at it. Laundresses carrying baskets the size of coffins. A falconer with a hooded bird on his fist, walking slowly so as not to unsettle it. Two boys in good cloth fighting with wooden swords while a grey old knight, missing two fingers on his left hand, tells them both they are dead. Hounds. Chickens. A priest. A man in a fur-trimmed gown shouting at a man in a plain one about candles. Nobody looks at you, because everyone here is going somewhere and you are not yet anyone.
+
+Lord Thurstan Ravell holds this castle and eleven manors from the King. He holds four knights' fees under him: four knights who owe him forty days' service a year, mounted and armed, in return for their land. Sir Hamon Darrell of Ashby and Sir Ancel Brome of Brome Tower are two of those four. Their households live under his roof for half the year, eat his bread, and fight his quarrels. Yours will too.
+
+Sir Hamon meets you at the foot of the hall steps with a cup of ale in his hand, his belt let out a notch, and two of his hounds leaning against his legs. He is a big man going soft, with a broad red face, white hair cut short, and the kind of smile that has never once in his life been calculated. "There he is," he says, to nobody in particular, and then to you, "You'll have eaten? No. Of course not. Nobody feeds anybody on the road." He shouts for bread. It comes. He watches you eat it as if he had made it himself.
+
+You will sleep in the squires' loft over the great chamber, with four others, on straw pallets under a roof that drips in one corner. The loft has its own rules, and nobody tells them to you; you learn them by breaking them.
+
+The eldest of the four is Giles Marrick, nineteen, the second son of a Carrow knight, with good teeth and a better sword and a way of smiling at the side of your head instead of your face. He looks at your boots, which are your father's, then your hands, which are not a gentleman's, then your face, and decides something. You watch him decide it.
+
+Aymer Ravell is there too: the lord's younger son, sixteen, fair, quick, restless, already bored with you and everyone else. He asks where you are from, and when you tell him he says "Ah," as if that explained something, and goes back to his dice.
+
+That night you lie awake listening to the castle: a dog barking in the outer ward, the watch calling the hours, someone singing badly in the hall below, a woman laughing somewhere, rain on the roof. You think about home. You think about how far down you are, here, and how many people stand between you and anything. You count them, because counting is what you do. You lose count somewhere past forty.
 
 - Kneel to your master in the yard, properly, as if you had been doing it all your life. *(Risky)*
 - Go straight to the stables and make yourself useful before anyone tells you to.
@@ -160,7 +204,11 @@ You will sleep in the squires' loft over the great chamber with four others. The
 
 **Chose:** Kneel to your master in the yard, properly, as if you had been doing it all your life. (Risky: success)
 
-You go down on the correct knee and say the correct words. Your master grunts. Later you hear him tell Sir Bertram that the boy at least knows how to kneel.
+You have practised this in your head for a month. Right knee, never the left; head bowed, but not so low that you look like a beggar; hands together; the words your father got from somebody who got them from somebody who had actually done it. "My lord, I am come to your service, to do it faithfully, by God's help."
+
+It is a little too formal for a yard full of horse dung. It is also correct. Your master looks down at you for a moment with an expression you cannot read.
+
+"Well," says Sir Hamon, "well, well," and pulls you up by the arm himself, and claps you on the back hard enough to knock the wind out of you, and tells the whole yard that his new boy has better manners than his old one.
 
 *Sir Hamon Darrell's respect +1*
 

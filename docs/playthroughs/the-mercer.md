@@ -146,13 +146,25 @@ He writes it down. He is a merchant. You walk past the girl without stopping. Yo
 
 *Spring, year 16 of King Aldred*
 
-You are 15.
+You are 15, and you have never seen so many people in one place who were not at a fair.
 
-Ravell Hall is a stone keep with a timber hall built against it, a moat that stinks in summer, and more people than your whole village: knights, squires, grooms, cooks, laundresses, clerks, priests, dogs. Lord Thurstan Ravell holds it from the King, and holds four knights' fees under him. Sir Hamon Darrell and Sir Ancel Brome are two of them.
+You see Ravell Hall first from the ridge road, a mile off, across the water meadows: a square grey keep with a timber hall built against its flank like a barn leaning on a church, a curtain wall, a gatehouse, a moat that catches the light. Smoke from a dozen chimneys. Around the walls, outside them, the village: the mill, the smithy, the church of Saint Ebba with its squat tower, the alehouse with a bush over the door. Strip fields running down to the river. Sheep everywhere.
 
-Sir Hamon meets you in the yard with a cup of ale in his hand and his belt let out a notch. "There he is," he says, to nobody in particular.
+Up close it smells. The moat is green and takes the castle's slops, and in spring it ripens. The gate passage is dark and wet and full of carts. And then you are through, into the outer ward, and it is like being dropped into a hive.
 
-You will sleep in the squires' loft over the great chamber with four others. The eldest, Giles Marrick, looks at your boots, then your hands, then your face, and decides something.
+Grooms leading horses two at a time. A cartload of firewood being unloaded by men who swear at it. Laundresses carrying baskets the size of coffins. A falconer with a hooded bird on his fist, walking slowly so as not to unsettle it. Two boys in good cloth fighting with wooden swords while a grey old knight, missing two fingers on his left hand, tells them both they are dead. Hounds. Chickens. A priest. A man in a fur-trimmed gown shouting at a man in a plain one about candles. Nobody looks at you, because everyone here is going somewhere and you are not yet anyone.
+
+Lord Thurstan Ravell holds this castle and eleven manors from the King. He holds four knights' fees under him: four knights who owe him forty days' service a year, mounted and armed, in return for their land. Sir Hamon Darrell of Ashby and Sir Ancel Brome of Brome Tower are two of those four. Their households live under his roof for half the year, eat his bread, and fight his quarrels. Yours will too.
+
+Sir Hamon meets you at the foot of the hall steps with a cup of ale in his hand, his belt let out a notch, and two of his hounds leaning against his legs. He is a big man going soft, with a broad red face, white hair cut short, and the kind of smile that has never once in his life been calculated. "There he is," he says, to nobody in particular, and then to you, "You'll have eaten? No. Of course not. Nobody feeds anybody on the road." He shouts for bread. It comes. He watches you eat it as if he had made it himself.
+
+You will sleep in the squires' loft over the great chamber, with four others, on straw pallets under a roof that drips in one corner. The loft has its own rules, and nobody tells them to you; you learn them by breaking them.
+
+The eldest of the four is Giles Marrick, nineteen, the second son of a Carrow knight, with good teeth and a better sword and a way of smiling at the side of your head instead of your face. He looks at your boots, which are your father's, then your hands, which are not a gentleman's, then your face, and decides something. You watch him decide it.
+
+Aymer Ravell is there too: the lord's younger son, sixteen, fair, quick, restless, already bored with you and everyone else. He asks where you are from, and when you tell him he says "Ah," as if that explained something, and goes back to his dice.
+
+That night you lie awake listening to the castle: a dog barking in the outer ward, the watch calling the hours, someone singing badly in the hall below, a woman laughing somewhere, rain on the roof. You think about home. You think about how far down you are, here, and how many people stand between you and anything. You count them, because counting is what you do. You lose count somewhere past forty.
 
 - Kneel to your master in the yard, properly, as if you had been doing it all your life. *(Even)*
 - Go straight to the stables and make yourself useful before anyone tells you to.
@@ -160,7 +172,11 @@ You will sleep in the squires' loft over the great chamber with four others. The
 
 **Chose:** Kneel to your master in the yard, properly, as if you had been doing it all your life. (Even: failure)
 
-Your knee goes into a puddle and your words come out in the wrong order. Somebody in the squires' window laughs. Your master tells you to get up.
+You go down on one knee in the yard, and the knee goes straight into a puddle that is not entirely water. The words come out in the wrong order. You say "faithfully" twice.
+
+Somebody in the squires' window above laughs, a high, delighted laugh. You do not look up. You know already whose it will be.
+
+Your master tells you to get up. Sir Hamon is kind about it, which makes it worse: he pats your shoulder and says that he knelt in a cowpat on the day he was knighted and it never did him any harm. You spend the evening scrubbing your hose.
 
 *Giles Marrick's respect −1*
 

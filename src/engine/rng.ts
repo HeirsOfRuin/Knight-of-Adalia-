@@ -54,7 +54,3 @@ export class RngCursor {
     return items[items.length - 1];
   }
 }
-
-export function randomSeed(): number {
-  return (Math.random() * 2 ** 31) >>> 0;
-}

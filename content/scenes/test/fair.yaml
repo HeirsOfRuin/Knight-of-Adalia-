@@ -200,7 +200,7 @@
       text: Go for the biggest one, and keep going.
       tags: [martial]
       lethal: true
-      warn: Three of them, on frozen ground. If this goes badly it will go very badly.
+      warn: Three of them, on frozen ground. If it goes wrong, you may not get up.
       check: { attr: strength, skill: arms, difficulty: 6 }
       success:
         text: You break Odo's nose and the other two lose heart. Nobody in that lane will forget it.

@@ -1,0 +1,15 @@
+# Every flag used anywhere must be declared here.
+# hidden: true flags are never shown in the UI outside debug mode.
+father_skims: { description: "The reeve has been skimming the manor's accounts", hidden: true }
+steward_skims: { description: "The steward skims and has been blaming the reeve's tallies", hidden: true }
+family_debt_sarenza: { description: "The burgess family owes a Sarenzan banking house", hidden: true }
+father_war_secret: { description: "The archer's father did something in the last war he does not speak of", hidden: true }
+knows_household_secret: { description: "Knows the truth of the heir's paternity", hidden: true }
+noble_marriage: { description: "Married into a gentle or noble family" }
+strong_patron: { description: "Enjoys the open favor of a powerful patron" }
+# test arc
+t_groom_shamed: { description: "Shamed the knight's groom in front of the fair", hidden: true }
+t_groom_paid: { description: "Paid the groom to go away" }
+t_named_patron: { description: "Called on his patron's name at the fair", hidden: true }
+t_preacher_heard: { description: "Stood through the friar's sermon", hidden: true }
+t_wrestled: { description: "Wrestled at the fair", hidden: true }

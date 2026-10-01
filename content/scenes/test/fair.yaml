@@ -1,0 +1,234 @@
+# Phase 1 engine test arc. Exercises: background-conditional text, a check
+# with three outcomes, a gated choice with a visible requirement, a hidden
+# choice, a pool interlude, a queued event a season later, a lethal check
+# with a warning, and an ending. Replaced by the real prologue in Phase 2.
+
+- id: t_market
+  chapter: test
+  title: Lammas Fair
+  checkpoint: true
+  text: |
+    Lammas fair at Wendham. The square is packed hoof to hoof and the gutters run with beer and dung.
+    [if background == reeve]Your father sent you with two cheeses and orders to bring back every penny.[elif background == burgess]Your father's stall sells fleece by the stone. You are meant to be minding it.[elif background == archer]Your father went to the butts behind the church. He left you by the ale-stake with a farthing and a warning.[else]You came behind Master Ranulf's cart, to hold the horses while he buys.[/if]
+
+    {npc.odo_groom}, son of Sir Hamon's groom, has you by the collar. He is two years older and a head taller. He says the bridle in your hand is his master's and you stole it. It is not. People stop to watch.
+  choices:
+    - id: argue
+      text: Tell him whose bridle it is, loud enough for the crowd.
+      tags: [diplomacy]
+      check: { attr: presence, skill: diplomacy, difficulty: 3, audience: commons }
+      success:
+        text: Someone laughs. Then more of them. Odo lets go and tells you he will see you again.
+        effects: [ { set: flag.t_groom_shamed }, { add: { rep.commons: 1 } }, { queue: { event: t_q_odo, delay: { seasons: 1 } } } ]
+        next: { pool: test_fair, count: 1, then: t_evening }
+      failure:
+        text: The crowd likes a big boy better than a loud one. Odo takes the bridle and walks off with it.
+        effects: [ { add: { rep.commons: -1 } } ]
+        next: { pool: test_fair, count: 1, then: t_evening }
+    - id: strike
+      text: Hit him first, while he is still talking.
+      tags: [martial]
+      check: { attr: strength, skill: arms, difficulty: 4 }
+      success:
+        text: He goes down in the muck. He gets up slowly, and he looks at you for a long time.
+        effects: [ { set: flag.t_groom_shamed }, { add: { rep.commons: 1 } }, { queue: { event: t_q_odo, delay: { seasons: 1 } } } ]
+        next: { pool: test_fair, count: 1, then: t_evening }
+      partial:
+        text: You both bleed. A brewer's wife pulls you apart. Your eyebrow is split to the bone.
+        effects: [ { set: flag.t_groom_shamed }, { injury: cut_brow }, { queue: { event: t_q_odo, delay: { seasons: 1 } } } ]
+        next: { pool: test_fair, count: 1, then: t_evening }
+      failure:
+        text: He is bigger than you. That is the whole of it. He kneels on you until you stop moving.
+        effects: [ { injury: bruised_ribs }, { add: { rep.commons: -1 } } ]
+        next: { pool: test_fair, count: 1, then: t_evening }
+    - id: tally
+      text: Show him the bridle-maker's mark and the tally scratched under it.
+      tags: [learning]
+      requires: [ trait.literate_vernacular ]
+      label: "Requires: can read"
+      text_after: The bridle-maker comes over, reads his own mark aloud, and cuffs Odo for wasting his morning.
+      effects: [ { add: { rep.merchants: 1 } } ]
+      next: { pool: test_fair, count: 1, then: t_evening }
+    - id: name_patron
+      text: "[if background == servant]Tell him you are Lord Ravell's man, and ask if he wants to explain himself to Master Ranulf.[else]Tell him you are the reeve's son, and that Sir Hamon reads your father's tallies.[/if]"
+      tags: [allies]
+      visible_if: { any: [ background == servant, background == reeve ] }
+      text_after: He lets go. Nobody in the crowd looks at you quite the same way. You are the lord's creature, and now they all know it.
+      effects: [ { set: flag.t_named_patron }, { add: { rep.commons: -1 } } ]
+      next: { pool: test_fair, count: 1, then: t_evening }
+    - id: pay
+      text: Give him sixpence to let go.
+      tags: [wealth]
+      requires: [ res.coin >= 6 ]
+      text_after: He bites the coin and lets go. He will remember that you pay.
+      effects: [ { add: { res.coin: -6 } }, { set: flag.t_groom_paid }, { queue: { event: t_q_odo, delay: { seasons: 1 } } } ]
+      next: { pool: test_fair, count: 1, then: t_evening }
+    - id: give_up
+      text: Let him have the bridle.
+      tags: [yield]
+      text_after: You will have to explain the missing bridle to someone. It costs you a hiding at home and a little of your name in the square.
+      effects: [ { add: { rep.commons: -1 } } ]
+      next: { pool: test_fair, count: 1, then: t_evening }
+
+- id: t_pool_pedlar
+  chapter: test
+  kind: pool
+  pool: test_fair
+  title: The Pedlar
+  text: |
+    A pedlar with one eye sells pilgrim tokens off a tray: lead badges, a dried hand he says is a martyr's, and small stoppered flasks. Water from Saint Ebba's well, he says. It cures fevers and turns blades. Fourpence.
+  choices:
+    - id: buy
+      text: Buy a flask.
+      tags: [piety]
+      requires: [ res.coin >= 4 ]
+      text_after: The flask is cold and heavier than water should be. Or you imagine it is.
+      effects: [ { add: { res.coin: -4, rep.piety: 1 } }, { item: +holy_ampulla } ]
+      next: "@return"
+    - id: refuse
+      text: Walk on.
+      text_after: He calls something after you about the fires of the pit.
+      next: "@return"
+
+- id: t_pool_friar
+  chapter: test
+  kind: pool
+  pool: test_fair
+  title: The Friar
+  text: |
+    A grey friar stands on a mounting block and preaches against usurers and the Sarenzan ships that carry the kingdom's wool away. The crowd listens with its mouth open.
+  choices:
+    - id: listen
+      text: Stand and hear him out.
+      tags: [piety]
+      text_after: Your feet are cold by the end. He blesses the crowd and asks for bread.
+      effects: [ { set: flag.t_preacher_heard }, { add: { rep.piety: 1 } } ]
+      next: "@return"
+    - id: cutpurse
+      text: Lift the purse of a man who is listening too hard.
+      tags: [cunning]
+      visible_if: [ skill.intrigue >= 1 ]
+      check: { attr: agility, skill: intrigue, difficulty: 4 }
+      success:
+        text: Tenpence and a bone die. Nobody turns.
+        effects: [ { add: { res.coin: 10, rep.ruthlessness: 1 } } ]
+        next: "@return"
+      failure:
+        text: A hand closes on your wrist. They beat you against the church wall while the friar talks about mercy.
+        effects: [ { injury: bruised_ribs }, { add: { rep.commons: -1, rep.ruthlessness: 1 } } ]
+        next: "@return"
+    - id: leave
+      text: Leave before he asks for alms.
+      next: "@return"
+
+- id: t_pool_wrestle
+  chapter: test
+  kind: pool
+  pool: test_fair
+  title: The Ram
+  text: |
+    Behind the Bell they are wrestling for a ram. A carter's boy has thrown three in a row and wants a fourth.
+  choices:
+    - id: wrestle
+      text: Step into the ring.
+      tags: [martial]
+      check: { attr: strength, skill: arms, difficulty: 5 }
+      success:
+        text: You put him on his back. The ram sells for two shillings before dark.
+        effects: [ { set: flag.t_wrestled }, { add: { res.coin: 24, res.renown: 1 } } ]
+        next: "@return"
+      failure:
+        text: He throws you on your side and something in your chest gives.
+        effects: [ { set: flag.t_wrestled }, { injury: bruised_ribs } ]
+        next: "@return"
+    - id: watch
+      text: Watch, and learn how he does it.
+      text_after: He sets his feet wide and waits for them to come to him. You remember it.
+      effects: [ { add: { skill.arms: 1 } } ]
+      next: "@return"
+
+- id: t_evening
+  chapter: test
+  title: The Road Home
+  text: |
+    The road home is dark by Vespers.
+    [if injury.bruised_ribs]Every step jars your ribs.[/if]
+    [if flag.t_groom_shamed]Odo did not forget. Boys like Odo do not.[elif flag.t_groom_paid]Odo has learned that you pay. He will want paying again.[/if]
+  choices:
+    - id: home
+      text: Go home and keep your head down until the frost.
+      effects: [ { advance: { seasons: 1 } } ]
+      next: t_winter
+    - id: pie
+      text: Spend a penny on a hot pie first.
+      requires: [ res.coin >= 1 ]
+      text_after: Mutton and too much pepper. Worth it.
+      effects: [ { add: { res.coin: -1 } }, { advance: { seasons: 1 } } ]
+      next: t_winter
+
+- id: t_q_odo
+  chapter: test
+  kind: queued
+  title: The Lane
+  text: |
+    {season}. Odo is waiting in the lane behind the tannery with two friends. Nobody else is about. The ground is frozen hard.
+  choices:
+    - id: take_it
+      text: Cover your head and take it.
+      tags: [endurance]
+      text_after: They go at it until they are bored. You remember every face.
+      effects: [ { injury: bruised_ribs } ]
+      next: "@return"
+    - id: run
+      text: Run for the mill.
+      tags: [agility]
+      check: { attr: agility, skill: woodcraft, difficulty: 3 }
+      success:
+        text: Through the hedge, over the leat, gone. They do not follow on the ice.
+        next: "@return"
+      failure:
+        text: You go down on the ice and they catch you.
+        effects: [ { injury: bruised_ribs } ]
+        next: "@return"
+    - id: name_patron
+      text: Remind him whose man you are.
+      tags: [allies]
+      visible_if: [ flag.t_named_patron ]
+      text_after: It works a second time. It will not work forever.
+      next: "@return"
+    - id: fight
+      text: Go for the biggest one, and keep going.
+      tags: [martial]
+      lethal: true
+      warn: Three of them, on frozen ground. If this goes badly it will go very badly.
+      check: { attr: strength, skill: arms, difficulty: 6 }
+      success:
+        text: You break Odo's nose and the other two lose heart. Nobody in that lane will forget it.
+        effects: [ { add: { rep.commons: 1, res.renown: 1 } }, { trait: +hot_tempered } ]
+        next: "@return"
+      partial:
+        text: You hurt Odo. They hurt you more. Two of your fingers point the wrong way.
+        effects: [ { injury: broken_hand }, { trait: +hot_tempered } ]
+        next: "@return"
+      failure:
+        text: A boot to the head on frozen ground. The tanner's man finds you at first light.
+        effects: [ { die: "Beaten to death in a frozen lane behind the Wendham tannery, aged {age}." } ]
+
+- id: t_winter
+  chapter: test
+  title: Winter
+  text: |
+    {date}. Snow on the thatch, salt pork twice a week, and nothing to do but mend harness and wait for spring.
+    [if injury.broken_hand]Your fingers have set crooked. You can still close the hand.[/if]
+  choices:
+    - id: wait
+      text: Wait for spring.
+      next: t_end
+
+- id: t_end
+  chapter: test
+  kind: ending
+  ending: test_complete
+  title: End of the Test Arc
+  text: |
+    This is the end of the Phase 1 test arc. {name}, {background}, age {age}, with {coin} to his name.

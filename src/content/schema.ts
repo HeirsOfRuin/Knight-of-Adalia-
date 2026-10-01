@@ -1,0 +1,219 @@
+// Content schema. Single source of truth for authored data: Zod validates the
+// YAML at build time and the inferred types are what the engine consumes.
+import { z } from 'zod';
+
+const Id = z.string().regex(/^[a-z][a-z0-9_]*$/, 'ids are lower_snake_case');
+
+// ---- Conditions -----------------------------------------------------------
+// Authored as a string ("skill.diplomacy >= 4"), a list (all of), or
+// { all: [...] } / { any: [...] } / { not: ... }.
+export type CondInput = string | CondInput[] | { all: CondInput[] } | { any: CondInput[] } | { not: CondInput };
+export const CondInputSchema: z.ZodType<CondInput> = z.lazy(() =>
+  z.union([
+    z.string(),
+    z.array(CondInputSchema),
+    z.object({ all: z.array(CondInputSchema) }).strict(),
+    z.object({ any: z.array(CondInputSchema) }).strict(),
+    z.object({ not: CondInputSchema }).strict(),
+  ]),
+);
+
+// ---- Effects --------------------------------------------------------------
+const Delay = z.object({ seasons: z.number().int().min(0) }).strict();
+export const EffectSchema = z.union([
+  z.object({ set: z.string() }).strict(), // set: flag.x
+  z.object({ clear: z.string() }).strict(), // clear: flag.x
+  z.object({ add: z.record(z.string(), z.number()) }).strict(), // numeric deltas
+  z.object({ assign: z.record(z.string(), z.union([z.string(), z.number(), z.boolean()])) }).strict(),
+  z.object({ trait: z.string().regex(/^[+-][a-z][a-z0-9_]*$/) }).strict(),
+  z.object({ item: z.string().regex(/^[+-][a-z][a-z0-9_]*$/) }).strict(),
+  z.object({ injury: Id }).strict(),
+  z.object({ heal: Id }).strict(),
+  z.object({ station: Id, track: Id.optional() }).strict(),
+  z.object({ meet: Id }).strict(),
+  z.object({ kill: Id }).strict(),
+  z.object({
+    queue: z.object({ event: Id, delay: Delay, earliest_chapter: z.number().int().optional() }).strict(),
+  }).strict(),
+  z.object({ advance: Delay }).strict(),
+  z.object({ journal: z.string() }).strict(),
+  z.object({ die: z.string() }).strict(), // only legal inside lethal choices (validator)
+]);
+export type Effect = z.infer<typeof EffectSchema>;
+
+// ---- Navigation -----------------------------------------------------------
+// next: a scene id, "@return" (resume after an interlude), or a pool draw.
+export const PoolNextSchema = z.object({
+  pool: Id, // pool group name
+  count: z.number().int().min(1).max(3).default(1),
+  then: Id,
+}).strict();
+export const NextSchema = z.union([z.string(), PoolNextSchema]);
+export type Next = z.infer<typeof NextSchema>;
+
+export const OutcomeSchema = z.object({
+  text: z.string().optional(),
+  effects: z.array(EffectSchema).default([]),
+  next: NextSchema.optional(),
+}).strict();
+export type Outcome = z.infer<typeof OutcomeSchema>;
+
+export const CheckSchema = z.object({
+  attr: Id,
+  skill: Id.optional(),
+  difficulty: z.number().int(),
+  // whose eyes are on him: applies the "new man" prejudice modifier
+  audience: z.enum(['nobles', 'knights', 'commons', 'merchants', 'clergy', 'none']).default('none'),
+  mods: z.array(z.object({ if: CondInputSchema, add: z.number().int(), label: z.string() }).strict()).default([]),
+}).strict();
+export type Check = z.infer<typeof CheckSchema>;
+
+export const ChoiceSchema = z.object({
+  id: Id,
+  text: z.string(),
+  tags: z.array(Id).default([]), // approach tags: martial, cunning, diplomacy, wealth, ...
+  requires: CondInputSchema.optional(), // visible; shown locked with a label when unmet
+  visible_if: CondInputSchema.optional(), // hidden when unmet
+  label: z.string().optional(), // override for the auto-generated requirement label
+  lethal: z.boolean().default(false),
+  warn: z.string().optional(), // risk signal shown with the choice; required for lethal
+  // Without a check: text/effects/next apply directly.
+  text_after: z.string().optional(),
+  effects: z.array(EffectSchema).default([]),
+  next: NextSchema.optional(),
+  // With a check: success/partial/failure outcomes. Partial falls back to failure.
+  check: CheckSchema.optional(),
+  success: OutcomeSchema.optional(),
+  partial: OutcomeSchema.optional(),
+  failure: OutcomeSchema.optional(),
+}).strict();
+export type Choice = z.infer<typeof ChoiceSchema>;
+
+export const SceneSchema = z.object({
+  id: Id,
+  chapter: z.string(), // prologue | ch1..ch5 | test
+  kind: z.enum(['spine', 'pool', 'queued', 'ending']).default('spine'),
+  title: z.string().optional(),
+  tags: z.array(Id).default([]),
+  pool: Id.optional(), // pool group for kind: pool
+  requires: CondInputSchema.optional(),
+  weight: z.number().min(0).default(10),
+  once: z.boolean().default(true),
+  cooldown: Delay.optional(),
+  checkpoint: z.boolean().default(false),
+  ending: Id.optional(), // for kind: ending
+  text: z.string(),
+  variants: z.record(Id, z.string()).optional(), // background id -> replacement text
+  on_enter: z.array(EffectSchema).default([]),
+  choices: z.array(ChoiceSchema).default([]),
+}).strict();
+export type Scene = z.infer<typeof SceneSchema>;
+
+// ---- Registries -----------------------------------------------------------
+export const FlagDefSchema = z.object({ description: z.string(), hidden: z.boolean().default(false) }).strict();
+export const NpcDefSchema = z.object({
+  name: z.string(),
+  title: z.string().optional(),
+  faction: Id.optional(),
+  station: Id.optional(),
+  traits: z.array(Id).default([]),
+  tags: z.array(Id).default([]), // e.g. rising_man, romance
+  affection: z.number().int().default(0),
+  respect: z.number().int().default(0),
+  notes: z.string().optional(),
+}).strict();
+export const TraitDefSchema = z.object({
+  label: z.string(),
+  description: z.string(),
+  mods: z.record(z.string(), z.number()).default({}), // e.g. attr.presence: -1
+}).strict();
+export const InjuryDefSchema = z.object({
+  label: z.string(),
+  description: z.string(),
+  mods: z.record(z.string(), z.number()).default({}),
+  heals_after: z.number().int().optional(), // seasons; omitted = permanent
+  scar: Id.optional(), // trait granted when it heals (or immediately if permanent)
+}).strict();
+export const ItemDefSchema = z.object({
+  label: z.string(),
+  description: z.string(),
+  mods: z.record(z.string(), z.number()).default({}),
+  magic: z.boolean().default(false),
+}).strict();
+export const FactionDefSchema = z.object({
+  label: z.string(),
+  kind: z.enum(['faction', 'personal']),
+}).strict();
+export const EndingDefSchema = z.object({
+  label: z.string(),
+  description: z.string(),
+  // chapter whose content must exist before the validator demands reachability
+  chapter: z.string(),
+}).strict();
+export const RomanceDefSchema = z.object({
+  npc: Id,
+  introduced: z.string(),
+  hidden: z.boolean().default(false),
+  brings: z.string(),
+  obstacle: z.string(),
+}).strict();
+
+export const RegistrySchema = z.object({
+  flags: z.record(Id, FlagDefSchema),
+  npcs: z.record(Id, NpcDefSchema),
+  traits: z.record(Id, TraitDefSchema),
+  injuries: z.record(Id, InjuryDefSchema),
+  items: z.record(Id, ItemDefSchema),
+  factions: z.record(Id, FactionDefSchema),
+  endings: z.record(Id, EndingDefSchema),
+  romances: z.record(Id, RomanceDefSchema).default({}),
+});
+export type Registry = z.infer<typeof RegistrySchema>;
+
+// ---- Backgrounds ----------------------------------------------------------
+const StatBlock = z.record(Id, z.number().int());
+export const BackgroundSchema = z.object({
+  id: Id,
+  label: z.string(),
+  summary: z.string(),
+  asset: z.string(),
+  liability: z.string(),
+  start_scene: Id,
+  start_age: z.number().int(),
+  attributes: StatBlock,
+  skills: StatBlock,
+  traits: z.array(Id).default([]),
+  items: z.array(Id).default([]),
+  coin: z.number().int(), // pence
+  flags: z.array(Id).default([]),
+  // one flag from each list is chosen by the seeded RNG at game start
+  random_flags: z.array(z.array(Id).min(2)).default([]),
+  relationships: z.record(Id, z.object({ affection: z.number().int().default(0), respect: z.number().int().default(0) }).strict()).default({}),
+  roles: z.record(Id, z.object({ label: z.string(), skills: StatBlock, flags: z.array(Id).default([]) }).strict()).optional(),
+  prejudice: z.object({ base: z.number().int(), knights: z.number().int().default(0) }).strict(),
+  rep: z.record(Id, z.number().int()).default({}),
+}).strict();
+export type Background = z.infer<typeof BackgroundSchema>;
+
+export const ConfigSchema = z.object({
+  title: z.string(),
+  start_year: z.number().int(),
+  regnal_king: z.string(),
+  attributes: z.array(Id),
+  skills: z.array(Id),
+  stations: z.array(Id),
+  tracks: z.array(Id),
+  seasons: z.array(Id).length(4),
+  chapters: z.array(z.string()),
+}).strict();
+export type Config = z.infer<typeof ConfigSchema>;
+
+export interface ContentBundle {
+  hash: string;
+  config: Config;
+  registry: Registry;
+  backgrounds: Record<string, Background>;
+  scenes: Record<string, Scene>;
+  /** source file per scene id, for validator messages */
+  sources: Record<string, string>;
+}

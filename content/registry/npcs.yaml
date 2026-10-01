@@ -1,0 +1,23 @@
+# Starting NPCs for the four backgrounds. Names provisional (see canon.md).
+# Reeve's son
+piers_reeve: { name: Piers, title: "the reeve", notes: "Father. Reeve of Ashby manor." }
+gervase_holt: { name: Gervase Holt, title: Master, notes: "Steward of Ashby, for Sir Hamon Darrell." }
+wat_coker: { name: Wat Coker, notes: "Rival. His family's holding was seized under Piers's enforcement.", tags: [rival] }
+# Burgess's son
+ralf_mercer: { name: Ralf Mercer, notes: "Father. Burgess of Wendham, wool merchant." }
+osbert_fuller: { name: Osbert Fuller, title: Master, notes: "Warden of the Wendham wool guild. Patron." }
+jocelin_tanner: { name: Jocelin Tanner, notes: "Rival. Son of a rival guild master.", tags: [rival] }
+bertuccio_lanzi: { name: Bertuccio Lanzi, notes: "Sarenzan factor in Wendham. Knows the family's debt.", faction: sarenza }
+# Archer's son
+hugh_fletcher: { name: Hugh Fletcher, notes: "Father. Veteran archer of the last war. Bad knee." }
+ancel_brome: { name: Ancel Brome, title: Sir, notes: "Knight. Owes Hugh his life from the last war. Patron.", station: knight }
+gib_shawe: { name: Gib Shawe, notes: "Rival. The bailiff's nephew, after the same militia place.", tags: [rival] }
+# Household servant's son
+agnes_tirewoman: { name: Agnes, notes: "Mother. Tirewoman to Lady Ravell." }
+ranulf_marshal: { name: Ranulf, title: Master, notes: "Master of horse and hunt at Ravell Hall. Patron." }
+aymer_ravell: { name: Aymer Ravell, notes: "Lord Ravell's younger son. Companion and rival.", tags: [rival] }
+thurstan_ravell: { name: Thurstan Ravell, title: Lord, notes: "Baron of Ravell. The household's master.", station: great_lord, faction: nobles }
+# Shared
+hamon_darrell: { name: Hamon Darrell, title: Sir, notes: "Knight, lord of Ashby. Owes service to Lord Ravell.", station: knight, faction: knights }
+# Test arc
+odo_groom: { name: Odo, notes: "Son of Sir Hamon's groom. Two years older than the protagonist and a head taller." }

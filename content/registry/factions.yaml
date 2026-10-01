@@ -1,0 +1,13 @@
+crown: { label: Crown, kind: faction }
+church: { label: Church, kind: faction }
+nobles: { label: Great Nobles, kind: faction }
+knights: { label: Knights, kind: faction }
+commons: { label: Common Folk, kind: faction }
+merchants: { label: Merchants, kind: faction }
+valdrenne: { label: Valdrenne, kind: faction }
+caldmoor: { label: Caldmoor, kind: faction }
+hroswald: { label: Hroswald, kind: faction }
+sarenza: { label: Sarenza, kind: faction }
+honor: { label: Honor, kind: personal }
+ruthlessness: { label: Ruthlessness, kind: personal }
+piety: { label: Piety, kind: personal }

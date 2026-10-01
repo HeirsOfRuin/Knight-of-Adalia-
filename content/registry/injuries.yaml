@@ -1,0 +1,3 @@
+bruised_ribs: { label: Bruised ribs, description: "Every breath catches.", mods: { attr.strength: -1, attr.endurance: -1 }, heals_after: 1 }
+cut_brow: { label: Cut brow, description: "A split brow that will leave a mark.", mods: { attr.presence: -1 }, heals_after: 1, scar: scarred_face }
+broken_hand: { label: Broken hand, description: "Two fingers set badly.", mods: { skill.arms: -2, skill.archery: -3 }, heals_after: 2 }

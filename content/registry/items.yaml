@@ -1,0 +1,3 @@
+yew_bow: { label: Father's yew bow, description: "Old, heavy in the draw, true.", mods: { skill.archery: 1 } }
+good_knife: { label: Good knife, description: "Good steel from a Wendham smith. Worth more than his shirt." }
+holy_ampulla: { label: Lead ampulla, description: "A pilgrim's flask said to hold water from Saint Ebba's well. It may be ditch water.", magic: true }

@@ -1,0 +1,22 @@
+id: servant
+label: Household servant's son
+summary: "Your mother dresses Lady Ravell. You grew up in the stables and kennels of Ravell Hall, close to the family and never of it."
+asset: "Horses or hounds or hawks, the manners of a great house seen from below, and its secrets."
+liability: "You serve at your master's pleasure, with no money of your own. Your mother's place depends on your conduct."
+start_scene: t_market
+start_age: 8
+attributes: { strength: 2, agility: 3, endurance: 2, wits: 2, presence: 2 }
+skills: { courtesy: 1, intrigue: 1 }
+coin: 12
+flags: [knows_household_secret]
+roles:
+  horse_master: { label: "Horse-master's boy", skills: { riding: 3, woodcraft: 1 } }
+  huntsman: { label: "Huntsman's boy", skills: { woodcraft: 3, archery: 1 } }
+  falconer: { label: "Falconer's boy", skills: { woodcraft: 2, riding: 1, courtesy: 1 } }
+relationships:
+  agnes_tirewoman: { affection: 5, respect: 1 }
+  ranulf_marshal: { affection: 1, respect: 1 }
+  aymer_ravell: { affection: 2, respect: -1 }
+  thurstan_ravell: { affection: 0, respect: 0 }
+prejudice: { base: 4 }
+rep: { nobles: 0 }

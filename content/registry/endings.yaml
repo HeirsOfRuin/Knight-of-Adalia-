@@ -1,0 +1,10 @@
+# Chapter 5 endings are computed from accumulated state. The validator only
+# demands reachability once the named chapter has content.
+crowned: { chapter: ch5, label: Crowned, description: "Kingship by marriage claim, conquest with recognition, or a kingmaker's bargain." }
+kingmaker: { chapter: ch5, label: Kingmaker, description: "The power behind a throne he does not sit on." }
+founder: { chapter: ch5, label: Founder of a House, description: "A secure great lord with heirs and lands that will outlast him." }
+diminished: { chapter: ch5, label: Diminished Lord, description: "Keeps some land, loses the rest and most of his influence." }
+exile: { chapter: ch5, label: Exile, description: "Lives abroad in Sarenza, Hroswald or Valdrenne, on sufferance." }
+ruin: { chapter: ch5, label: Ruin, description: "Attainted, landless, his name struck from the rolls." }
+death: { chapter: test, label: Death, description: "Dead before his time. The manner of it is recorded." }
+test_complete: { chapter: test, label: End of the test scene, description: "Phase 1 engine test arc complete." }

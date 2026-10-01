@@ -7,3 +7,5 @@ burn_scarred: { label: Burn-scarred hands, description: "Shiny, tight skin acros
 gored_scar: { label: Boar scar, description: "A long seam up the thigh. Aches in wet weather.", mods: {} }
 oathbreaker: { label: Left his lord, description: "Known to have abandoned a master in trouble. Knights remember.", mods: {} }
 ravell_man: { label: Lord Ravell's man, description: "Known in the shire as one of Ravell's.", mods: {} }
+veteran: { label: Veteran, description: "You have stood in a line and lived. Men who have not, notice.", mods: { skill.command: 1 } }
+burner: { label: Burner of villages, description: "You have burned what you could not carry. Valdrennish peasants know your banner." }

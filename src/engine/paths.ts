@@ -83,7 +83,9 @@ export function getValue(state: GameState, content: ContentBundle, rawPath: stri
     case 'chapter': return state.chapter;
     case 'age': return ageOf(state);
     case 'health': return state.health;
-    case 'injured': return state.injuries.length > 0;
+    case 'injured': return state.injuries.some((i) => content.registry.injuries[i.id]?.serious);
+    case 'wounded': return state.injuries.length > 0;
+    case 'armour': return state.items.reduce((m, it) => Math.max(m, content.registry.items[it]?.armour ?? 0), 0);
     case 'retinue': return Object.values(state.npcs).filter((n) => n.follower && n.alive).length + (state.res.men ?? 0);
     case 'time': return state.time;
     case 'prejudice': return computePrejudice(state, content, 'nobles');
@@ -97,7 +99,7 @@ export function checkPath(content: ContentBundle, path: string): string | null {
   const reg = content.registry;
   const need = (ok: boolean, what: string) => (ok ? null : `unknown ${what} in "${path}"`);
   if (extra !== undefined) return `too many segments in "${path}"`;
-  const single = ['station', 'track', 'background', 'role', 'chapter', 'age', 'health', 'injured', 'retinue', 'time', 'prejudice'];
+  const single = ['station', 'track', 'background', 'role', 'chapter', 'age', 'health', 'injured', 'wounded', 'armour', 'retinue', 'time', 'prejudice'];
   if (single.includes(ns!)) return a === undefined ? null : `"${ns}" takes no sub-path ("${path}")`;
   if (a === undefined) return `incomplete path "${path}"`;
   if (a.startsWith('@')) {

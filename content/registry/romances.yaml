@@ -8,3 +8,7 @@ isabel_sayer: { npc: isabel_sayer, introduced: ch1, brings: "A first gentry conn
 maud_delisle: { npc: maud_delisle, introduced: ch1, brings: "An heiress's lands and a large cut to prejudice", obstacle: "Her marriage belongs to Lord Ravell, who means to sell it. Scandal is dangerous." }
 cecily_fuller: { npc: cecily_fuller, introduced: ch1, brings: "Coin, credit and Merchant standing", obstacle: "Knights sneer at trade. Her father wants a title first." }
 joan_wyck: { npc: joan_wyck, introduced: ch1, hidden: true, brings: "Wyck manor and a household that already runs", obstacle: "Older than him. Her stepson's claims on Wyck." }
+alys_fane: { npc: alys_fane, introduced: ch2, brings: "A connection to the Earl of Westry, a great house", obstacle: "Her father wants a ransom-rich husband; rivals for her are many and well born." }
+heloise_corbie: { npc: heloise_corbie, introduced: ch2, hidden: true, brings: "Valdrenne standing; kin in the conquered country", obstacle: "Enemy blood. Crown suspicion. Her brother's ransom stands between you." }
+fiammetta_lanzi: { npc: fiammetta_lanzi, introduced: ch2, hidden: true, brings: "Credit, ships, Sarenza standing", obstacle: "Foreign, and her father's bank holds half the shire's debts. The Church distrusts the family." }
+clemence_vaux: { npc: clemence_vaux, introduced: ch2, hidden: true, brings: "Standing in Sauvemer and its march; a household that knows the country", obstacle: "Hostile townsfolk, her own kin's claims, and whatever happened at the siege." }

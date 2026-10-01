@@ -34,7 +34,7 @@
       requires: [ npc.@master.alive, rel.@master.affection >= 4 ]
       label: "Requires: your master's affection"
       text_after: "[if alias.master == hamon_darrell]Sir Hamon gives you his old harness, which was the best in the shire in the old King's day, and his second destrier. He cannot afford either. He will not hear a word about it.[elif alias.master == ancel_brome]Sir Ancel gives you a Caldmoor horse he took in a raid and a harness that has been mended in more places than it has not. \"You'll be killed in it,\" he says. \"Not soon.\"[else]Your master equips you from his own stores. You will owe him for it in service. That is the point.[/if]"
-      effects: [ { set: flag.c1_has_means }, { add: { rel.@master.affection: 1, favor.@master: -1 } } ]
+      effects: [ { set: flag.c1_has_means }, { add: { rel.@master.affection: 1, favor.@master: -1 } }, { item: +harness } ]
       next: c1_knighting
     - id: ravell
       text: Accept a fee from Lord Ravell, ten pounds a year for life, for your service.
@@ -45,6 +45,7 @@
       effects:
         - set: flag.c1_has_means
         - set: flag.c1_ravell_fee
+        - item: +harness
         - set: flag.strong_patron
         - trait: +ravell_man
         - add: { favor.thurstan_ravell: -1 }
@@ -62,7 +63,7 @@
       tags: [wealth]
       requires: [ res.coin >= 1440 ]
       text_after: The harness belonged to a knight who died of the flux at Christmas. The horse belonged to someone who did not want it. Both will do. Your purse will not recover this year.
-      effects: [ { set: flag.c1_has_means }, { add: { res.coin: -1440, res.horses: 1 } } ]
+      effects: [ { set: flag.c1_has_means }, { add: { res.coin: -1440, res.horses: 1 } }, { item: +harness } ]
       next: c1_knighting
     - id: lanzi
       text: Borrow twenty pounds from the Lanzi bank against what you will win in Valdrenne.
@@ -73,6 +74,7 @@
       effects:
         - set: flag.c1_has_means
         - set: flag.c1_lanzi_debt
+        - item: +harness
         - add: { counter.lanzi_debt: 20, res.horses: 1, rep.sarenza: 1 }
       next: c1_knighting
     - id: joan
@@ -84,6 +86,7 @@
       effects:
         - set: flag.c1_has_means
         - set: flag.c1_joan_harness
+        - item: +harness
         - add: { suit.joan_wyck.regard: 2, suit.joan_wyck.discretion: -3 }
       next: c1_knighting
     - id: carrow
@@ -95,6 +98,7 @@
       effects:
         - set: flag.c1_has_means
         - set: flag.c1_carrow_livery
+        - item: +harness
         - add: { rel.thurstan_ravell.affection: -3, rel.walter_pryce.affection: 1, rep.nobles: 1, res.horses: 1 }
       next: c1_knighting
     - id: none
@@ -197,6 +201,7 @@
   chapter: ch1
   title: The Indenture
   on_enter:
+    - item: +mail_shirt
     - if: { any: [ "!npc.@master.alive", alias.master == hamon_darrell ] }
       then:
         - if: { any: [ "!npc.@master.alive", flag.c1_hamon_fell ] }
@@ -330,8 +335,6 @@
 
 - id: c1_end
   chapter: ch1
-  kind: ending
-  ending: ch1_complete
   title: Saltcombe
   on_enter:
     - if: counter.tokens >= 2
@@ -341,8 +344,10 @@
 
     Saltcombe harbour is so full of ships that you could walk across it on their decks. Horses are being slung aboard in canvas with their legs kicking. Archers are counting arrows. A Sarenzan galley sits at the mouth of the harbour like a crow on a fence, waiting to see who wins.
 
-    [if station == knight]You go aboard as Sir {name}, with a horse below decks and a harness in a barrel, and no idea what any of it will be worth in a month.[else]You go aboard as a man-at-arms in {npc.@master.title}'s company, with a promise in your purse in place of spurs.[/if]
+    [if station == knight]You will go aboard as Sir {name}, with a horse below decks and a harness in a barrel, and no idea what any of it will be worth in a month.[else]You will go aboard as a man-at-arms in {npc.@master.title}'s company, with a promise in your purse in place of spurs.[/if]
 
     [if trait.oathbreaker]There are men on this ship who know what you did to your old master. They will be beside you in the line.[/if][if flag.c1_coll_hanged] Somewhere north of the Leven, Black Ewan is waiting for the army to be gone.[/if][if flag.c1_lanzi_debt] The Lanzi bank has your name in its book, and twenty pounds against it.[/if][if flag.c1_two_tokens] Two women have your token, and each believes she is the only one.[/if]
-
-    End of Chapter 1. The war is next.
+  choices:
+    - id: muster
+      text: Find your men.
+      next: c2_following

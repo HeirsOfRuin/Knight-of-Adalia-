@@ -4,6 +4,7 @@ import type { GameState, NpcState, SuitState } from './state';
 import { advanceSeasons } from './calendar';
 import { labelFor, deref } from './paths';
 import { test } from './conditions';
+import type { RngCursor } from './rng';
 import { formatCoin, signed, capitalise } from './format';
 
 export interface EffectCtx {
@@ -11,6 +12,8 @@ export interface EffectCtx {
   choice: string;
   choiceText: string;
   changes: string[];
+  /** needed for random casualties; absent in contexts that cannot draw */
+  rng?: RngCursor;
 }
 
 const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v));
@@ -175,6 +178,23 @@ export function applyEffects(state: GameState, content: ContentBundle, effects: 
       if (e.track) state.track = e.track;
     } else if ('meet' in e) {
       npc(state, content, deref(state, e.meet)).met = true;
+    } else if ('casualties' in e) {
+      const lost = Math.min(e.casualties.men, state.res.men ?? 0);
+      if (lost > 0) {
+        state.res.men = (state.res.men ?? 0) - lost;
+        ctx.changes.push(`${lost} of your men ${lost === 1 ? 'is' : 'are'} dead`);
+      }
+      for (let k = 0; k < e.casualties.named; k++) {
+        const pool = Object.entries(state.npcs)
+          .filter(([id, n]) => n.follower && n.alive && !e.casualties.spare.includes(id))
+          .map(([id]) => id)
+          .sort();
+        if (!pool.length || !ctx.rng) break;
+        const id = pool[ctx.rng.int(pool.length)]!;
+        state.npcs[id]!.alive = false;
+        state.npcs[id]!.follower = false;
+        ctx.changes.push(`${reg.npcs[id]?.name ?? id} is dead`);
+      }
     } else if ('join' in e || 'leave' in e) {
       const id = deref(state, 'join' in e ? e.join : e.leave);
       const n = npc(state, content, id);

@@ -147,7 +147,7 @@
         skill: arms
         difficulty: 4
         mods:
-          - { if: item.padded_jack, add: 1, label: your jack }
+          - { if: armour >= 1, add: 1, label: your armour }
           - { if: flag.c1_giles_enemy, add: -1, label: Giles's friends single you out }
           - { if: background == archer, add: -1, label: "nobody wants to be beaten by a bowman's son" }
       success:

@@ -1,0 +1,358 @@
+# Chapter 2 pools.
+# c2_road: on the march (one draw). c2_camp: the siege camp and garrison (several draws).
+
+- id: c2r_deserter
+  chapter: ch2
+  kind: pool
+  pool: c2_road
+  title: The Deserter
+  text: |
+    On the third day of the march, the provost's men catch a deserter from your company's part of the column: a Ravell boy of sixteen, trying to walk home to Adalia across a country that wants him dead. The provost means to hang him by the road as an example. The boy looks at you. He knows your face.
+  choices:
+    - id: speak
+      text: Speak for him. Say he is yours, and you will answer for him.
+      tags: [allies]
+      check: { attr: presence, skill: command, difficulty: 3 }
+      success:
+        text: The provost lets him go to you, with a warning. The boy carries your baggage for the rest of the war and never once tries to run again.
+        effects: [ { add: { res.men: 1, rep.commons: 1 } } ]
+        next: "@return"
+      failure:
+        text: The provost says the boy is the King's, not yours. They hang him by the road. Your men watch.
+        effects: [ { add: { rep.commons: 1 } } ]
+        next: "@return"
+    - id: leave
+      text: Leave it to the provost. That is what provosts are for.
+      tags: [yield]
+      text_after: They hang him by the road. Nobody else deserts from that part of the column.
+      next: "@return"
+
+- id: c2r_child
+  chapter: ch2
+  kind: pool
+  pool: c2_road
+  title: The Child in the Barn
+  text: |
+    In a burned farm, in the barn, under the straw, there is a girl of six or seven. She does not cry. She just looks at you. There is nobody else alive on the farm.
+  choices:
+    - id: take
+      text: Take her to the nearest village that is still standing, and pay someone to keep her.
+      tags: [piety]
+      text_after: The nearest village is two hours out of your way. You leave her with the priest and a shilling. You never learn her name. You think about her more than you would expect.
+      effects: [ { add: { rep.piety: 1, rep.honor: 1, res.coin: -12, rep.valdrenne: 1 } } ]
+      next: "@return"
+    - id: leave
+      text: Leave her. You cannot help every child in Valdrenne.
+      tags: [yield]
+      text_after: You cannot. That is true. You leave her some bread.
+      next: "@return"
+
+- id: c2r_herald
+  chapter: ch2
+  kind: pool
+  pool: c2_road
+  title: The Herald
+  text: |
+    A Valdrennish herald, in his tabard with the lilies, rides into the column under a white wand, lost, looking for the King. Herald's persons are sacred. He is also alone, and frightened, and carrying letters.
+  choices:
+    - id: escort
+      text: Escort him to the King yourself, honourably.
+      tags: [diplomacy]
+      text_after: He thanks you in three languages and tells you, on the way, which of the Valdrennish lords will fight and which will not. It is more than he meant to tell. You pass it on.
+      effects: [ { add: { rep.honor: 1, skill.tactics: 1, rel.@master.respect: 1 } } ]
+      next: "@return"
+    - id: read
+      text: Delay him long enough to have someone read his letters.
+      tags: [cunning]
+      text_after: It is done in an hour, and the seals put back with a hot knife. The letters are to the Duke of Armance's enemies. You pass what you learned to the King's marshal, who asks no questions and remembers your face.
+      effects: [ { add: { rep.honor: -1, rep.crown: 1, skill.intrigue: 1 } } ]
+      next: "@return"
+
+- id: c2c_dice
+  chapter: ch2
+  kind: pool
+  pool: c2_camp
+  title: Hazard in Newtown
+  text: |
+    Newtown has a street of taverns now, and every tavern has a dice game, and every dice game has men who have been paid.
+  choices:
+    - id: play
+      text: Play.
+      tags: [wealth]
+      check: { attr: wits, skill: trade, difficulty: 3 }
+      success:
+        text: You win steadily, and leave while you are winning, which makes you no friends.
+        effects: [ { add: { res.coin: 60 } } ]
+        next: "@return"
+      failure:
+        text: You lose steadily, and stay, which makes you several.
+        effects: [ { add: { res.coin: -60 } } ]
+        next: "@return"
+    - id: watch
+      text: Watch your men instead, and make sure none of them loses his boots.
+      tags: [allies]
+      text_after: Simkin Barre loses his boots. You buy them back. He swears it will not happen again. It happens again.
+      effects: [ { add: { rel.simkin_barre.loyalty: 1, res.coin: -6 } } ]
+      next: "@return"
+
+- id: c2c_letter_isabel
+  chapter: ch2
+  kind: pool
+  pool: c2_camp
+  title: A Letter from Ravell
+  requires: [ suit.isabel_sayer.status >= courted ]
+  text: |
+    A letter, in a hand you know: narrow, slanting, with ink blots where she has pressed too hard. Isabel Sayer has written to you without being written to first, which a woman in her position does not do.
+
+    It is mostly news. Lady Ravell has a new confessor. Aymer has been sent home from the war with a broken arm and is unbearable. Her father has had another offer for her and she has refused it. At the end, in smaller letters: "I would like to know you are alive. That is all. I find I would like to know it."
+  choices:
+    - id: write
+      text: Write back, properly, whatever it costs to send.
+      tags: [diplomacy]
+      text_after: It costs fourpence and three drafts. You tell her about Hautbois, some of it. You tell her you are alive. You do not say anything you cannot keep. She will read what is not there.
+      effects: [ { add: { suit.isabel_sayer.regard: 2 } } ]
+      next: "@return"
+    - id: short
+      text: Send a short answer. You are alive.
+      text_after: Two lines. She will know what it cost you to write them, or she will not.
+      effects: [ { add: { suit.isabel_sayer.regard: 1 } } ]
+      next: "@return"
+
+- id: c2c_letter_cecily
+  chapter: ch2
+  kind: pool
+  pool: c2_camp
+  title: A Letter from Wendham
+  requires: [ suit.cecily_fuller.status >= courted ]
+  text: |
+    Cecily Fuller does not write letters, she writes accounts. This one has a column for the price of wool in Wendham, a column for the price of Valdrennish wine in Saltcombe, and a column headed "You", with a note: "Alive, I assume. A merchant in Saltcombe says the Sauvemer garrison is short of salt. Buy it in the Armance. Sell it to them. Write when you have done it."
+
+    There is a bill of exchange folded inside, for five pounds, on the Lanzi house in Newtown, "as capital".
+  choices:
+    - id: do
+      text: Do it. Buy salt in the Armance, sell it to the garrison.
+      tags: [wealth]
+      check: { attr: wits, skill: trade, difficulty: 3 }
+      success:
+        text: She was right. You send her back her five pounds and five more, and a letter in columns, which is the only kind she will respect.
+        effects: [ { add: { res.coin: 240, suit.cecily_fuller.regard: 3, rep.merchants: 1 } } ]
+        next: "@return"
+      failure:
+        text: "Someone else had the same idea a week sooner. You send her back her five pounds and an apology. She writes back: \"Next time, be quicker.\""
+        effects: [ { add: { suit.cecily_fuller.regard: 1 } } ]
+        next: "@return"
+    - id: thank
+      text: Send the money back with your thanks. You are a soldier, not a salt merchant.
+      text_after: She writes back one line. "You are a fool. I knew that." The line has been written twice.
+      effects: [ { add: { suit.cecily_fuller.regard: 1 } } ]
+      next: "@return"
+
+- id: c2c_letter_joan
+  chapter: ch2
+  kind: pool
+  pool: c2_camp
+  title: A Cart from Wyck
+  requires: [ { any: [ suit.joan_wyck.regard >= 3, flag.c1_joan_owed ] } ]
+  text: |
+    A carter from Saltcombe, asking for you by name, with a cart: two sides of bacon, a cheese, a barrel of Wyck ale, six pairs of good wool hose, and a letter in a firm, practical hand.
+
+    Dame Joan Wyck has heard that the Sauvemer garrison is short of everything. She has sent what she could. Ralph, her stepson, has brought a suit against her in the King's court for Wyck. She is fighting it. "I find I have a taste for fighting," she writes. "I did not know that about myself until this year."
+  choices:
+    - id: write
+      text: Write back, and send her something from Valdrenne in return.
+      tags: [diplomacy]
+      text_after: A bolt of Vaudrey cloth, blue, that you took in the sack and never knew what to do with. She will know where it came from. She writes back that she has had it made into a gown and wears it to court, to annoy Ralph.
+      effects: [ { add: { suit.joan_wyck.regard: 3 } }, { assign: { suit.joan_wyck.status: courted } } ]
+      next: "@return"
+    - id: men
+      text: Share it all out among your men, and write to tell her so.
+      tags: [allies]
+      text_after: Your men drink Dame Joan's health in her own ale. She writes back that she approves, and that next time she will send twice as much ale and half as much hose.
+      effects: [ { add: { suit.joan_wyck.regard: 2, rel.davy_ludd.loyalty: 1, rel.simkin_barre.loyalty: 1, rel.jankin_rooke.loyalty: 1 } } ]
+      next: "@return"
+
+- id: c2c_letter_home
+  chapter: ch2
+  kind: pool
+  pool: c2_camp
+  title: A Letter Brought by Hand
+  requires: [ { any: [ suit.mag_coker.status >= courted, suit.annot_dyer.status >= courted, suit.mariot_wood.status >= courted, suit.nell_laundress.status >= courted ] } ]
+  text: |
+    A letter, brought by a man from home who has come over to the garrison: [if background == reeve]Mag Coker cannot write, and has paid Father Anselm to write for her, and has then crossed out half of what he wrote and put her own mark beside it.[elif background == burgess]Annot Dyer writes in a big round hand, as if she were shouting.[elif background == archer]Mariot Wood has sent no letter, only a horn button and a sprig of something from the chase, dried flat.[else]Nell has sent a letter written by her brother's priest, which says almost nothing, and a lock of hair, which says rather more.[/if]
+  choices:
+    - id: answer
+      text: Send something back with the same man.
+      tags: [diplomacy]
+      text_after: A Valdrennish ribbon, a silver penny with the lilies on it, a few lines. The man swears he will deliver it. He does.
+      effects:
+        - if: background == reeve
+          then: [ { add: { suit.mag_coker.regard: 2 } } ]
+        - if: background == burgess
+          then: [ { add: { suit.annot_dyer.regard: 2 } } ]
+        - if: background == archer
+          then: [ { add: { suit.mariot_wood.regard: 2 } } ]
+        - if: background == servant
+          then: [ { add: { suit.nell_laundress.regard: 2 } } ]
+      next: "@return"
+    - id: keep
+      text: Keep it. You do not know what to say.
+      text_after: You keep it in your shirt. You do not answer. She will understand, or she will not.
+      next: "@return"
+
+- id: c2c_tallis
+  chapter: ch2
+  kind: pool
+  pool: c2_camp
+  title: Tallis's Story
+  requires: [ npc.roger_tallis.follower ]
+  text: |
+    Late one night, drunk for the first time since you have known him, Roger Tallis tells you why he left the free companies.
+
+    It was a town in Hroswald, he says. The company had been paid to take it and the town would not pay to be spared. So the company took it. He does not say what happened then. He says that afterwards he walked for nine days and did not stop until he reached the sea, and he has never been drunk since, until tonight.
+  choices:
+    - id: listen
+      text: Listen, and say nothing.
+      tags: [allies]
+      text_after: You listen. He falls asleep by the fire. In the morning neither of you mentions it, and he treats you, from then on, as a man who knows something about him. That is a kind of loyalty.
+      effects: [ { add: { rel.roger_tallis.loyalty: 3, rel.roger_tallis.affection: 2 } } ]
+      next: "@return"
+    - id: ask
+      text: Ask him what happened in the town.
+      tags: [cunning]
+      text_after: He looks at you for a long time. "The same thing that happened at Bréval," he says. "Only more of it." Then he goes to bed.
+      effects: [ { add: { rel.roger_tallis.respect: 1 } } ]
+      next: "@return"
+
+- id: c2c_davy
+  chapter: ch2
+  kind: pool
+  pool: c2_camp
+  title: Davy
+  requires: [ npc.davy_ludd.follower ]
+  text: |
+    Davy Ludd is seventeen now, and has stopped talking quite so much, and has started looking at you in a particular way when you give orders, as if learning how it is done.
+
+    One evening he asks you, formally, whether he might ever hope to be more than a squire. He means: could a groom's grandson be knighted, as you were, or will be. He has clearly been thinking about it for a long time.
+  choices:
+    - id: yes
+      text: Tell him yes, and that you will see to it if you can.
+      tags: [allies]
+      text_after: He goes red to the ears and says nothing for a whole day. Then he starts asking Tallis to teach him the sword properly, every morning, in the cold.
+      effects: [ { set: flag.c2_promised_davy }, { add: { rel.davy_ludd.loyalty: 3, rel.davy_ludd.affection: 3 } } ]
+      next: "@return"
+    - id: truth
+      text: Tell him the truth. It is hard, and rare, and it cost you everything you had.
+      tags: [diplomacy]
+      text_after: He listens, and nods, and says that he thought so. Then he asks how you did it. You tell him that too. He listens to every word.
+      effects: [ { add: { rel.davy_ludd.respect: 2, rel.davy_ludd.loyalty: 1 } } ]
+      next: "@return"
+
+- id: c2c_flux
+  chapter: ch2
+  kind: pool
+  pool: c2_camp
+  title: The Flux
+  text: |
+    The flux comes through the camp again in the heat. It always does. Men who survived Hautbois die of it in a week, squatting in the ditches, and are buried in the ditches.
+  choices:
+    - id: water
+      text: Make your men boil everything they drink, and dig their latrines away from the well.
+      tags: [learning]
+      text_after: They think you are mad, and do it anyway, because you are watching. Your company loses nobody to the flux that summer. The company next door loses nine.
+      effects: [ { add: { skill.stewardship: 1, rel.davy_ludd.loyalty: 1, rel.jankin_rooke.loyalty: 1, rel.simkin_barre.loyalty: 1 } } ]
+      next: "@return"
+    - id: luck
+      text: There is nothing to be done. Trust to luck.
+      tags: [yield]
+      check: { attr: endurance, difficulty: 3 }
+      success:
+        text: Luck holds, for you.
+        next: "@return"
+      failure:
+        text: Luck does not hold. You spend two weeks in your own filth in a tent, and come out of it light as a boy.
+        effects: [ { injury: camp_flux }, { casualties: { men: 1, named: 0 } } ]
+        next: "@return"
+
+- id: c2c_giles
+  chapter: ch2
+  kind: pool
+  pool: c2_camp
+  title: Sir Giles
+  requires: [ flag.c1_giles_enemy ]
+  text: |
+    Sir Giles Marrick is in Newtown with the Earl of Carrow's company, richer than he was, [if flag.c2_giles_took_corbie]because of Corbie's ransom,[/if] and drunker. He finds you in a tavern one night and calls you, in front of the room, by what he called you in the squires' loft.
+  choices:
+    - id: fight
+      text: Take him outside.
+      tags: [martial]
+      check: { attr: strength, skill: arms, difficulty: 4, mods: [ { if: trait.veteran, add: 1, label: you are not the boy he knew } ] }
+      success:
+        text: It is not a duel, it is a brawl in a muddy street, and you win it. Giles lies in the mud and laughs, and gets up, and says, "Well. You have learned something." It is almost respect. It is not enough to be anything else.
+        effects: [ { add: { rel.giles_marrick.respect: 3, res.renown: 1 } } ]
+        next: "@return"
+      failure:
+        text: He has kept up his sword, and you have been digging trenches. The room enjoys it.
+        effects: [ { injury: cut_brow }, { add: { rel.giles_marrick.respect: 1 } } ]
+        next: "@return"
+    - id: ignore
+      text: Finish your drink and leave.
+      tags: [yield]
+      text_after: The room watches you go. A year ago, it would have cost you. Tonight it costs you nothing, because everyone in the room knows what you did at Hautbois, and nobody remembers what Giles did there.
+      effects: [ { add: { rep.honor: 1 } } ]
+      next: "@return"
+
+- id: c2c_rooke
+  chapter: ch2
+  kind: pool
+  pool: c2_camp
+  title: Rooke's Vow
+  requires: [ npc.jankin_rooke.follower ]
+  text: |
+    Jankin Rooke, who prays before he looses and has never missed, comes to you after Mass one Sunday and asks leave to go on pilgrimage to Saint-Lys when the truce allows. He has killed, he says, a great many men he could see clearly, and he would like to be forgiven for it, or at least to ask.
+  choices:
+    - id: yes
+      text: Give him leave, and money for the road.
+      tags: [piety]
+      text_after: He goes in the spring and comes back in the autumn, thinner, quieter, and better at shooting, which he says is God's sense of humour.
+      effects: [ { add: { rel.jankin_rooke.loyalty: 3, rel.jankin_rooke.affection: 2, rep.piety: 1, res.coin: -24 } } ]
+      next: "@return"
+    - id: no
+      text: Tell him you cannot spare him.
+      tags: [martial]
+      text_after: He accepts it. He stops praying before he looses, and starts missing, once in a while. You notice. He knows you notice.
+      effects: [ { add: { rel.jankin_rooke.loyalty: -2 } } ]
+      next: "@return"
+
+- id: c2c_barre
+  chapter: ch2
+  kind: pool
+  pool: c2_camp
+  title: Barre's Thieving
+  requires: [ npc.simkin_barre.follower ]
+  text: |
+    The provost's men catch Simkin Barre with a Sauvemer goldsmith's silver cup in his shirt. The goldsmith wants him hanged. The provost would like to oblige. Barre looks at you over the provost's shoulder, grinning, as if it were a joke you were both in on.
+  choices:
+    - id: pay
+      text: Pay the goldsmith for the cup, and the provost for his trouble.
+      tags: [wealth]
+      text_after: Two pounds. Barre swears he will pay you back. He does, in fact, over a year, in stolen things you do not ask about.
+      effects: [ { add: { res.coin: -480, rel.simkin_barre.loyalty: 4 } } ]
+      next: "@return"
+    - id: hang
+      text: Let the provost have him. A thief is a thief.
+      tags: [yield]
+      text_after: They hang him in the market square of Sauvemer, still grinning. Your other men do not look at you for a week.
+      effects: [ { kill: simkin_barre }, { add: { rep.honor: 1, rel.jankin_rooke.loyalty: -1, rel.davy_ludd.loyalty: -1 } } ]
+      next: "@return"
+    - id: talk
+      text: Talk the goldsmith round.
+      tags: [diplomacy]
+      check: { attr: presence, skill: diplomacy, difficulty: 4, mods: [ { if: flag.c2_learned_town, add: 2, label: the goldsmith knows you } ] }
+      success:
+        text: The cup goes back, the goldsmith gets an apology and a promise, and Barre gets thirty lashes instead of a rope. He takes them grinning.
+        effects: [ { add: { rel.simkin_barre.loyalty: 3, rep.valdrenne: 1 } } ]
+        next: "@return"
+      failure:
+        text: The goldsmith will not be talked round. You end up paying, and more than the cup was worth.
+        effects: [ { add: { res.coin: -600, rel.simkin_barre.loyalty: 3 } } ]
+        next: "@return"

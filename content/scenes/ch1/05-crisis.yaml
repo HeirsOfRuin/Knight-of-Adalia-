@@ -117,8 +117,8 @@
         skill: arms
         difficulty: 5
         mods:
-          - { if: item.prize_harness, add: 2, label: the prize harness }
-          - { if: item.padded_jack, add: 1, label: your jack }
+          - { if: armour >= 2, add: 2, label: your harness }
+          - { if: armour == 1, add: 1, label: your jack }
           - { if: flag.c1_beat_giles, add: 1, label: you have beaten a trained man before }
           - { if: item.holy_ampulla, add: 1, label: "Saint Ebba's water, or your faith in it" }
       success:
@@ -137,9 +137,9 @@
           - add: { res.renown: 2, rel.hamon_darrell.affection: 3 }
         next: c1_war_comes
       failure:
-        text: "Sallow is better than you. [if item.padded_jack && !injured || item.prize_harness && !injured]Your harness turns the blow that should have killed you. You yield on your knees in the sand with your helm split, and Sir Hamon is condemned.[/if]"
+        text: "Sallow is better than you. [if armour >= 1 && !injured]Your harness turns the blow that should have killed you. You yield on your knees in the sand with your helm split, and Sir Hamon is condemned.[/if]"
         effects:
-          - if: [ { any: [ item.padded_jack, item.prize_harness ] }, "!injured" ]
+          - if: [ armour >= 1, "!injured" ]
             then: [ { injury: cracked_skull }, { add: { rel.hamon_darrell.affection: 2, rep.honor: 1 } } ]
             else: [ { die: "Killed in a trial by combat at Ravell, aged {age}, defending a debt that was not his." } ]
         next: c1_crisis_hamon_fall
@@ -327,8 +327,8 @@
         skill: arms
         difficulty: 4
         mods:
-          - { if: item.padded_jack, add: 1, label: your jack }
-          - { if: item.prize_harness, add: 2, label: the prize harness }
+          - { if: armour == 1, add: 1, label: your jack }
+          - { if: armour >= 2, add: 2, label: your harness }
           - { if: item.holy_ampulla, add: 1, label: "Saint Ebba's water, or your faith in it" }
       success:
         text: The gate goes in on the third blow of the ram. You are through it beside Sir Ancel, and between you and his men the hall is yours before the roof catches. Thorne is taken alive. Lord Ravell is furious and the King, when he hears, is amused, and sells Sir Ancel a pardon for service in Valdrenne. You are named in the pardon too.
@@ -350,9 +350,9 @@
           - add: { res.renown: 1, rep.ruthlessness: 1, rel.ancel_brome.affection: 3, rel.ancel_brome.respect: 1 }
         next: c1_war_comes
       failure:
-        text: "The bolt that kills Sir Ancel is followed by one for you. [if item.padded_jack && !injured || item.prize_harness && !injured]It goes through the meat of your shoulder and you live.[/if]"
+        text: "The bolt that kills Sir Ancel is followed by one for you. [if armour >= 1 && !injured]It goes through the meat of your shoulder and you live.[/if]"
         effects:
-          - if: [ { any: [ item.padded_jack, item.prize_harness ] }, "!injured" ]
+          - if: [ armour >= 1, "!injured" ]
             then: [ { injury: arrow_wound }, { set: flag.c1_lost_master }, { kill: ancel_brome } ]
             else: [ { die: "Shot in the gate of Thorne Hall at nineteen, in another man's feud." } ]
         next: c1_new_patron

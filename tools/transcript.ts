@@ -13,9 +13,10 @@ export function transcript(content: ContentBundle, plan: Plan): string {
   const out: string[] = [`# ${plan.name}`, '', `Background: ${content.backgrounds[plan.background]!.label}. Seed ${plan.seed}.`, ''];
   for (let i = 0; i < 500 && !state.ended; i++) {
     const v = view(content, state);
-    out.push(`## ${v.title ?? v.sceneId}`, '', `*${v.date}*`, '');
+    out.push(`## ${v.title ?? v.sceneId}`, '');
+    if (v.dateChanged) out.push(`*${v.date}*`, '');
     if (v.cause) out.push(`> Consequence of: ${v.cause.text}`, '');
-    out.push(v.text, '');
+    out.push(v.text.replace(/\n\s*\[break\]\s*\n/g, '\n\n*(Continue)*\n\n'), '');
     for (const c of v.choices) {
       const meta = [c.band, c.lethal ? 'MORTAL DANGER' : '', c.lockReason ?? ''].filter(Boolean).join(', ');
       out.push(`- ${c.available ? '' : '~~'}${c.text}${c.available ? '' : '~~'}${meta ? ` *(${meta})*` : ''}`);

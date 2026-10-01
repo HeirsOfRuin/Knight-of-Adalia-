@@ -169,7 +169,7 @@ describe('Phase 3 rules', () => {
 
     const hurt = atScene('c1_raid');
     hurt.items.push('padded_jack');
-    hurt.injuries.push({ id: 'bruised_ribs', since: hurt.time });
+    hurt.injuries.push({ id: 'cracked_skull', since: hurt.time });
     expect(choose(c, hurt, 'charge', { force: 'failure' }).state.ended?.ending).toBe('death');
   });
 
@@ -177,7 +177,9 @@ describe('Phase 3 rules', () => {
     const { renderText } = await import('../../src/engine/text');
     const s = game('archer');
     expect(renderText('[if background == reeve || item.yew_bow && !injured]yes[else]no[/if]', s, c)).toBe('yes');
-    s.injuries.push({ id: 'bruised_ribs', since: 0 });
+    s.injuries.push({ id: 'bruised_ribs', since: 0 }); // minor wounds do not count
+    expect(renderText('[if background == reeve || item.yew_bow && !injured]yes[else]no[/if]', s, c)).toBe('yes');
+    s.injuries.push({ id: 'cracked_skull', since: 0 });
     expect(renderText('[if background == reeve || item.yew_bow && !injured]yes[else]no[/if]', s, c)).toBe('no');
   });
 

@@ -30,10 +30,16 @@ steps:
   c1_means: none
   c1_man_at_arms: haggle!success
   c1_farewell: cecily
-ending: ch1_complete
+  c2_following: hire
+  c2_landing: lead!success
+  c2_vaudrey: house!success
+  c2_corbie: kind
+ending: ch2_complete
 expect:
-  - station == retainer
-  - track == man_at_arms
+  - station == lord
+  - flag.c2_ceremonial_knight || flag.c2_knighted_eve || flag.c2_knighted_field || flag.c2_knighted_siege
+  - flag.c2_took_corbie
+  - npc.roger_tallis.follower || !npc.roger_tallis.alive
   - flag.c1_sponsor_promise
   - flag.c1_better_terms
   - alias.master == walter_pryce

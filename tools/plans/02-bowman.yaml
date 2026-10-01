@@ -30,9 +30,13 @@ steps:
   c1_knighting: master
   c1_dubbing: friends
   c1_farewell: home
-ending: ch1_complete
+  c2_following: master
+  c2_sorre: archers!success
+  c2_hautbois_2: hold!success
+ending: ch2_complete
 expect:
-  - station == knight
+  - station == lord
+  - npc.jankin_rooke.follower
   - flag.p_lower_track
   - flag.c1_raised_at_ford
   - flag.c1_dubbed_by_master

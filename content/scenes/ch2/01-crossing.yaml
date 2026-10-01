@@ -1,0 +1,562 @@
+# Chapter 2, part 1: Saltcombe to Vaudrey. Spring and summer, year 21. Age 20.
+# Forms the retinue, crosses, lands, and begins the chevauchee.
+
+- id: c2_following
+  chapter: ch2
+  title: Your Following
+  checkpoint: true
+  on_enter:
+    - join: davy_ludd
+    - queue: { event: c2q_maud, delay: { seasons: 3 } }
+    - queue: { event: c2q_isabel, delay: { seasons: 4 } }
+    - queue: { event: c2q_ewan, delay: { seasons: 5 } }
+    - queue: { event: c2q_lanzi, delay: { seasons: 12 } }
+    - if: background == archer
+      then: [ { queue: { event: c2q_family_archer, delay: { seasons: 18 } } } ]
+      else:
+        - if: background == reeve
+          then: [ { queue: { event: c2q_family_reeve, delay: { seasons: 9 } } } ]
+        - if: background == burgess
+          then: [ { queue: { event: c2q_family_burgess, delay: { seasons: 9 } } } ]
+        - if: background == servant
+          then: [ { queue: { event: c2q_family_servant, delay: { seasons: 9 } } } ]
+  text: |
+    Every man who goes to war goes with a tail behind him. A great lord brings hundreds. A knight brings a squire, a groom, a few archers. Even a man-at-arms brings a boy to hold his horse.
+
+    Yours, so far, is Davy Ludd: Hob Crane's grandson from the Ravell stables, fourteen, freckled, and so pleased to be going to war that he has not stopped talking since Wendham. [if station == knight]He is your squire now. He has never been anyone's squire.[else]He is your page. He calls himself your squire when he thinks you cannot hear.[/if]
+
+    [break]
+
+    Saltcombe is full of men looking for a place. Archers whose lords did not bring them. Old soldiers whose last captain died owing them pay. Boys who ran away from home and are already sorry.
+
+    [if alias.master != none]Your master has men to spare, if you want them, and will expect to be thanked.[/if] [if res.coin >= 240]You have money enough to hire, if you want men who are yours alone.[/if]
+
+    A following has to be fed, and paid, and kept in hand. It is also the only thing on a battlefield that will look after you.
+
+    [if flag.p_lower_track]Some of the men on the quay knew you when you [if track == levy || flag.c1_raised_at_ford]drew a bow in Cobb's company[else]slept in a stable loft[/if]. They look at you now with something that is not quite envy. It might be hope.[/if]
+  choices:
+    - id: master
+      text: Take the two archers your master offers from Will Cobb's company.
+      tags: [allies]
+      text_after: |
+        Jankin Rooke and Simkin Barre. Rooke is eighteen, quiet, crosses himself before he looses, and never misses. Barre is a Wendham carter's son who talks the whole time Rooke is silent, and who has stolen your knife and given it back before the first day is out, to show he could.
+
+        They are your master's men lent to you, and they know it. So does your master.
+      effects:
+        - join: jankin_rooke
+        - join: simkin_barre
+        - set: flag.c2_men_from_master
+        - add: { rel.@master.affection: 1, rel.jankin_rooke.loyalty: 1, rel.simkin_barre.loyalty: 1 }
+      next: c2_crossing
+    - id: home
+      text: "Send home for a man you trust: [if background == reeve]Wat Coker[elif background == burgess]Perkin Dyer, Annot's brother[elif background == archer]Gib Shawe[else]Dickon, Nell's brother[/if]. Take Jankin Rooke as well."
+      tags: [allies]
+      text_after: |
+        [if background == reeve][if flag.c1_rival_ally || flag.p_rival_peace]Wat Coker comes down from Ashby with a bow and a bundle and stands in front of you on the quay. "Mag said I was to come," he says. "Somebody has to keep you alive. It'll not be you." It is the most he has said to you without anger in ten years.[else]Wat Coker sends back word that he would sooner drown. A lad from Ashby comes instead, the miller's youngest, who has never held a bow.[/if][elif background == burgess]Perkin Dyer comes down from Wendham in a borrowed jack, big and slow and red in the face. "Annot sent me," he says. "She said I was to bring you back. She did not say in what condition."[elif background == archer][if flag.c1_rival_ally || flag.p_rival_peace]Gib Shawe comes, to everyone's surprise including his own. "I can't draw a war bow," he says, quietly, on the quay. "You know that." You do. "I can do everything else."[else]Gib Shawe will not come. Jankin Rooke's cousin comes instead, a farm boy who has never been further than Wendham.[/if][else]Dickon comes up from Ravell village, small and sharp and quick with a knife, with a message from Nell that he will not repeat in front of the others.[/if]
+
+        Jankin Rooke completes the number: an archer from Cobb's company, eighteen, quiet, who crosses himself before he looses. These are men who are with you because of you. That is worth more than it costs. It costs you most of what you have.
+      effects:
+        - join: jankin_rooke
+        - set: flag.c2_men_from_home
+        - if: background == reeve
+          then:
+            - if: { any: [ flag.c1_rival_ally, flag.p_rival_peace ] }
+              then: [ { join: wat_coker }, { add: { rel.wat_coker.loyalty: 3, rel.wat_coker.affection: 2 } } ]
+              else: [ { add: { res.men: 1 } } ]
+        - if: background == burgess
+          then: [ { join: perkin_dyer }, { add: { rel.perkin_dyer.loyalty: 4 } } ]
+        - if: background == archer
+          then:
+            - if: { any: [ flag.c1_rival_ally, flag.p_rival_peace ] }
+              then: [ { join: gib_shawe }, { add: { rel.gib_shawe.loyalty: 4, rel.gib_shawe.affection: 2 } } ]
+              else: [ { add: { res.men: 1 } } ]
+        - if: background == servant
+          then: [ { join: dickon_laund }, { add: { rel.dickon_laund.loyalty: 4 } } ]
+        - if: res.coin >= 60
+          then: [ { add: { res.coin: -60 } } ]
+          else: [ { add: { rel.jankin_rooke.loyalty: -1 } } ]
+      next: c2_crossing
+    - id: hire
+      text: Hire Roger Tallis, a veteran of the free companies, and the three hard men who follow him. A pound for the season.
+      tags: [wealth, martial]
+      requires: [ res.coin >= 240 ]
+      text_after: |
+        Roger Tallis is forty-odd, grey at the temples, with the flat patient eyes of a man who has seen a great many people die and expects to see more. Ten years in the free companies, he says, in Valdrenne and Hroswald. He speaks Valdrennish like a native and Adalian like a man who has had to learn it again.
+
+        "I'll keep your boys alive if they listen," he says, counting your money twice. "I'll keep you alive if you listen. I'll not die for you. Nobody should promise you that, and anyone who does is lying."
+
+        His three men do not give their names. You learn them later.
+      effects:
+        - join: roger_tallis
+        - add: { res.coin: -240, res.men: 3 }
+        - set: flag.c2_hired_tallis
+      next: c2_crossing
+    - id: alone
+      text: Go as you are, with Davy.
+      tags: [yield]
+      text_after: You go as you are. A man alone eats less and is noticed less. He is also alone.
+      next: c2_crossing
+
+- id: c2_crossing
+  chapter: ch2
+  title: The Narrow Sea
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    It takes eleven days to get the army aboard and four to cross, because the wind turns in the night and blows half the fleet back toward Adalia.
+
+    Your ship is a Saltcombe cog called the Marie, fat and slow, with forty horses slung in her belly and sixty men on her deck. On the second night the storm comes. The horses scream below in the dark. Men are sick over the side, and then over each other. [if npc.aymer_ravell.friend]Aymer Ravell is on the Marie too, by his own arrangement. He is greener than anyone, and still making jokes.[/if]
+
+    [break]
+
+    The shipmaster says the horses must be quieted or they will kick the planks out of her. Davy is too sick to stand. [if retinue >= 3]Your men are looking at you, the way men look at whoever is supposed to know what to do.[/if]
+  choices:
+    - id: horses
+      text: Go down into the hold with the horses.
+      tags: [martial]
+      check: { attr: endurance, skill: riding, difficulty: 3 }
+      success:
+        text: Six hours in the stinking dark, with a lantern and your own voice, going from head to head. When the Marie comes into the lee of the Valdrennish coast at dawn, not one horse in her hold is dead. The shipmaster calls you a lunatic and gives you his own breakfast.
+        effects: [ { add: { res.renown: 1, rel.@master.respect: 1, skill.riding: 1 } } ]
+        next: c2_landing
+      failure:
+        text: You do what you can. Three horses break their legs in the slings before dawn and have to be killed where they hang. One of them is yours.
+        effects: [ { add: { res.horses: -1 } } ]
+        next: c2_landing
+    - id: men
+      text: Stay on deck with your men and keep them together.
+      tags: [diplomacy]
+      check: { attr: presence, skill: command, difficulty: 3, mods: [ { if: retinue >= 3, add: 1, label: they are yours } ] }
+      success:
+        text: You get them singing, badly, the Harrow Ford song, all twenty verses. By the end, half the ship is singing it. Nobody goes over the side. In the morning your men look at you differently.
+        effects: [ { add: { rel.jankin_rooke.loyalty: 1, rel.simkin_barre.loyalty: 1, rel.roger_tallis.loyalty: 1, rel.davy_ludd.loyalty: 2, skill.command: 1 } } ]
+        next: c2_landing
+      failure:
+        text: Nobody can sing in that. You hold on to the rail with the rest of them and wait for it to be over.
+        next: c2_landing
+    - id: pray
+      text: Pray. There is nothing else to be done in a storm.
+      tags: [piety]
+      text_after: You pray to Saint Nicholas, who is meant to be good with ships, and to Saint Ebba, who is not, out of habit. [if item.holy_ampulla]You hold the lead flask so hard it leaves a mark in your palm.[/if] The Marie does not sink. You will never know why.
+      effects: [ { add: { rep.piety: 1 } } ]
+      next: c2_landing
+
+- id: c2_landing
+  chapter: ch2
+  title: Port-Haudry
+  text: |
+    The Armance coast at dawn: grey dunes, a grey sea, a small grey town with a church tower, and along the dunes a line of men who have been waiting for you.
+
+    Not many. Two hundred, perhaps: townsmen with spears, a few crossbowmen in red, a knight on a white horse riding up and down behind them shouting. The Valdrennish crown's men in the Armance, who have heard the Adalians were coming and decided to make a stand on the beach.
+
+    [break]
+
+    The boats go in. The first wave is already in the water to the waist, wading, holding their bows over their heads. The crossbows begin.
+  choices:
+    - id: lead
+      text: Lead your men up the beach, straight at them.
+      tags: [martial]
+      lethal: true
+      warn: A crossbow bolt at forty paces goes through mail. Without armour, or carrying a wound, a bad bolt is the end.
+      check:
+        attr: strength
+        skill: arms
+        difficulty: 3
+        mods:
+          - { if: armour == 1, add: 1, label: your jack }
+          - { if: armour >= 2, add: 2, label: your harness }
+          - { if: retinue >= 3, add: 1, label: men at your back }
+          - { if: npc.roger_tallis.follower, add: 1, label: Tallis knows how this goes }
+          - { if: flag.c1_raid_distinguished, add: 1, label: the Leven ford taught you this }
+      success:
+        text: You go up the beach through the soft sand that drags at your feet like a dream, and the crossbowmen do not have time to wind again. The line breaks. The knight on the white horse rides away along the dunes and does not look back. By the time the King steps ashore, dry-shod, the beach is his. Men saw who went first.
+        effects: [ { add: { res.renown: 2, rep.knights: 1 } }, { trait: +veteran } ]
+        next: c2_armance
+      partial:
+        text: You take the dunes. It costs. A bolt goes through the man beside you, and another through your own arm, and you do not remember the last twenty paces. The beach is the King's.
+        effects: [ { add: { res.renown: 1 } }, { injury: arrow_wound }, { casualties: { men: 1, named: 0 } }, { trait: +veteran } ]
+        next: c2_armance
+      failure:
+        text: "[if armour >= 1 && !injured]A bolt hits you square in the chest and your armour stops it, and you go down in the surf with all the breath gone out of you. Your men drag you out of the water. Others take the beach.[else]A bolt takes you in the throat in the surf at Port-Haudry, the first morning of the war.[/if]"
+        effects:
+          - if: [ armour >= 1, "!injured" ]
+            then: [ { injury: crushed_ribs } ]
+            else: [ { die: "Killed on the beach at Port-Haudry on the first morning of the war, aged {age}." } ]
+        next: c2_armance
+    - id: archers
+      text: Get your archers onto the dunes on the flank, and shoot them off the beach.
+      tags: [martial, allies]
+      check:
+        attr: presence
+        skill: command
+        difficulty: 3
+        mods:
+          - { if: npc.jankin_rooke.follower, add: 1, label: Rooke does not miss }
+          - { if: background == archer, add: 1, label: you know how archers think }
+      success:
+        text: From the top of the dune you can see the whole line of them. The arrows go in from the side, where their pavises do not cover them, and after the third flight they break. The King steps ashore on a beach that cost him eleven men.
+        effects: [ { add: { res.renown: 1, rel.@master.respect: 1 } }, { trait: +veteran } ]
+        next: c2_armance
+      failure:
+        text: The dune is further than it looked and softer. By the time you are up, the first wave has taken the beach by itself.
+        next: c2_armance
+    - id: horses
+      text: See to the horses and the boats while others do the fighting.
+      tags: [yield]
+      text_after: Someone has to get forty horses ashore through the surf without drowning them. It is not glorious. Your master's horses all come ashore alive, and that is noticed by the man who owns them.
+      effects: [ { add: { rel.@master.respect: 1 } } ]
+      next: c2_armance
+
+- id: c2_armance
+  chapter: ch2
+  title: The Duchess's Camp
+  on_enter: [ { meet: jehanne_armance } ]
+  text: |
+    Port-Haudry opens its gates by noon, because the alternative is obvious. By evening the Adalian army is spread across the fields behind it, and the Duchess of Armance has come down from her castle at Lannec to greet her allies.
+
+    Jehanne of Armance is thirty, plain, sunburned, and wears her husband's sword because her husband is in a Valdrennish prison. She has been fighting King Amaury's men for three years with whatever she could raise. She has called the Adalians in because she has nothing left. Everyone knows it, including her.
+
+    [break]
+
+    There is a council in her pavilion. There is also wine in the Armance knights' tents, and in Roger Tallis's head a great deal of knowledge about this country that nobody has asked him for. [if !npc.roger_tallis.follower]Somebody in the camp will know the roads.[/if]
+  choices:
+    - id: duchess
+      text: Get yourself into the Duchess's pavilion, carrying something for your master.
+      tags: [diplomacy]
+      check: { attr: presence, skill: courtesy, difficulty: 4, audience: nobles }
+      success:
+        text: You stand against the canvas wall for two hours holding your master's cup. The Duchess speaks Adalian badly and Valdrennish beautifully, and she does not plead. She tells the King exactly what she can give him, which is the roads and the ports of the Armance, and exactly what she wants, which is her husband back. At the end she looks along the wall of squires and pages and stops at you. "That one did not yawn," she says. "Who is he?"
+        effects: [ { set: flag.c2_jehanne_noticed }, { add: { rep.valdrenne: 1, rel.jehanne_armance.respect: 2 } } ]
+        next: c2_march
+      failure:
+        text: The Duchess's steward takes the message from your hand at the door and shuts the flap in your face.
+        next: c2_march
+    - id: tallis
+      text: Sit by the fire and learn the country from someone who knows it.
+      tags: [learning]
+      text_after: |
+        [if npc.roger_tallis.follower]Tallis draws it in the ashes with a stick.[else]An old Armance carter draws it for you in the ashes, for a cup of wine.[/if] The Armance, a fist of land sticking out into the sea. The Valdrennish heartland beyond it, rich and flat and full of rivers. The rivers are the problem. An army that goes inland has to cross them, and every bridge will be broken or held. "The King wants a battle," the voice says. "Amaury doesn't. So the King will burn until Amaury has to come and stop him. That's the whole of it."
+      effects: [ { add: { skill.tactics: 1 } }, { set: flag.c2_knows_country } ]
+      next: c2_march
+    - id: armance_men
+      text: Drink in the Armance knights' tents.
+      tags: [allies]
+      check: { attr: endurance, skill: diplomacy, difficulty: 3 }
+      success:
+        text: They are poorer than Adalian knights and prouder, and they hate King Amaury with the particular hatred of men who used to serve him. By the end of the night you have three Armance names who will remember yours, and a headache.
+        effects: [ { add: { rep.valdrenne: 1 } }, { set: flag.c2_armance_friends } ]
+        next: c2_march
+      failure:
+        text: Somebody says something about Adalian archers, and somebody else says something about Valdrennish mothers, and you are asked to leave.
+        next: c2_march
+
+- id: c2_march
+  chapter: ch2
+  title: The Long Burning
+  text: |
+    Three days later the army marches inland, and the orders are read out at the head of every company.
+
+    The King's war is a war on Amaury's purse. Everything between Port-Haudry and the river Sorre that can be carried is to be carried. Everything that cannot is to be burned: mills, barns, granges, villages. The country will be made to pay for the war, and Amaury will be made to come out and defend it, or be seen not to.
+
+    [break]
+
+    It is not a new kind of war. It is the kind Will Cobb tells stories about. The old men in the army have done it before, on the March, and say it is the only way. The young men have not, and are about to.
+
+    Your men are looking at you again.
+  choices:
+    - id: orders
+      text: Tell your men you will follow the orders to the letter. Burn what you are told, take what you are told, nothing more.
+      tags: [martial]
+      text_after: It is clear and it is legal and nobody can say afterwards that you did anything you were not told to do. Roger Tallis, if he is with you, says nothing at all, which from him means he has heard this before.
+      effects: [ { set: flag.c2_stance_orders }, { add: { rep.crown: 1, rep.ruthlessness: 1 } } ]
+      next: { pool: c2_road, count: 1, then: c2_village }
+    - id: spare
+      text: Tell them you will take what you need and burn nothing you do not have to.
+      tags: [piety]
+      text_after: Your men take it in different ways. Rooke is relieved. Barre is disappointed. Your master, when he hears, tells you that you will not be the one to decide that when it comes to it. He is probably right.
+      effects: [ { set: flag.c2_stance_spare }, { add: { rep.honor: 1, rel.@master.respect: -1 } } ]
+      next: { pool: c2_road, count: 1, then: c2_village }
+    - id: loose
+      text: Tell them what they take, they keep.
+      tags: [cunning, wealth]
+      text_after: Your men cheer. Every company in the army is hearing the same thing from someone. By the end of the first week your men are richer than they have ever been, and harder to find in the mornings.
+      effects:
+        - set: flag.c2_stance_loose
+        - add: { rep.ruthlessness: 2, res.coin: 60 }
+        - add: { rel.simkin_barre.loyalty: 2, rel.roger_tallis.loyalty: 1, rel.jankin_rooke.loyalty: -1 }
+      next: { pool: c2_road, count: 1, then: c2_village }
+
+- id: c2_village
+  chapter: ch2
+  title: Bréval
+  text: |
+    The village is called Bréval. Thirty houses, a church, a mill on a stream, cherry trees in the gardens. The people did not run in time. They are in the church, most of them, with the doors barred, and the priest in the porch with his arms spread.
+
+    Your company is the first to reach it. Your master has gone on ahead with the van. For the next hour, what happens in Bréval is your decision, whatever the orders say.
+
+    [break]
+
+    [if flag.c2_stance_loose]Your men are already going through the houses. Some of them are looking at the church.[elif flag.c2_stance_spare]Your men are waiting to see whether you meant it.[else]Your men are waiting for the order.[/if] Somewhere behind the church a woman is screaming, and it is not one of yours who is making her scream, and it may soon be.
+  choices:
+    - id: burn
+      text: Get the people out of the church and onto the road. Then burn Bréval, as ordered.
+      tags: [martial]
+      text_after: |
+        It takes the priest to bring them out, and he does it, because the alternative is plain to him. They stand in the road with what they can carry and watch. The thatch goes up with a sound like a crowd drawing breath. An old woman curses you in Valdrennish, the same words over and over, until her son pulls her away.
+
+        The mill takes longest. It is stone. You are glad it is stone, and you could not say why.
+      effects:
+        - set: flag.c2_breval_burned
+        - trait: +burner
+        - add: { rep.ruthlessness: 1, rep.valdrenne: -2, rep.crown: 1, res.supplies: 2 }
+      next: c2_foragers
+    - id: ransom
+      text: Offer the village a bargain. Pay, and Bréval stands.
+      tags: [wealth, diplomacy]
+      check:
+        attr: presence
+        skill: trade
+        difficulty: 3
+        mods:
+          - { if: npc.roger_tallis.follower, add: 1, label: Tallis speaks their tongue }
+          - { if: flag.c1_parley, add: 1, label: you have bargained across water before }
+          - { if: flag.p_counting_house || flag.p_worked_hungry, add: 1, label: you were raised to a bargain }
+      success:
+        text: The priest has the parish silver and the miller has a pot of coin under his floor, and between them they buy Bréval for four pounds and a cart of flour. It is called a ransom of the land, and it is done all over this country, by every army that ever marched. The houses stand. Your men are paid in coin instead of in fire. Some of them would have preferred the fire.
+        effects:
+          - set: flag.c2_breval_ransomed
+          - add: { res.coin: 960, rep.honor: 1, rep.valdrenne: 1, res.supplies: 1 }
+          - if: flag.c2_stance_loose
+            then: [ { add: { rel.simkin_barre.loyalty: -1 } } ]
+        next: c2_foragers
+      failure:
+        text: The priest does not believe you, and why would he. By the time the bargain is agreed, the van's rearguard has arrived and set fire to the mill on its own account.
+        effects: [ { set: flag.c2_breval_burned }, { add: { rep.valdrenne: -1 } } ]
+        next: c2_foragers
+    - id: stop
+      text: Go behind the church yourself, and stop what is happening there. Then decide about the village.
+      tags: [piety, martial]
+      check:
+        attr: presence
+        skill: command
+        difficulty: 3
+        mods:
+          - { if: flag.c2_stance_loose, add: -2, label: you told them it was theirs }
+          - { if: retinue >= 3, add: 1, label: your own men back you }
+      success:
+        text: |
+          They are not your men. They are from another company, three of them, and they let the girl go when you draw, because they do not know who you are and you look as if you do not care. She runs into the church. The priest shuts the door behind her.
+
+          Bréval burns anyway, an hour later, when the rest of the army arrives. But nobody else goes behind the church.
+        effects:
+          - set: flag.c2_breval_stopped
+          - set: flag.c2_breval_burned
+          - add: { rep.honor: 2, rep.valdrenne: 1, rel.jankin_rooke.loyalty: 2, rel.roger_tallis.respect: 1 }
+        next: c2_foragers
+      failure:
+        text: |
+          You stop the one you reach. You cannot be everywhere, and Bréval is thirty houses, and there are more men than you. When you ride out of it in the afternoon with the smoke behind you, you know what you saw and what you did not stop. Nobody in the army will ever ask you about Bréval. That is the worst of it.
+        effects:
+          - set: flag.c2_breval_burned
+          - add: { rep.honor: 1, rep.valdrenne: -1 }
+        next: c2_foragers
+    - id: loot
+      text: Let your men do as they please. It is war, and they were promised.
+      tags: [cunning]
+      text_after: |
+        They take everything, and they burn the rest, and some of them do worse than take and burn. You do not go behind the church. You make sure you are somewhere else.
+
+        Your men are rich and pleased with you. Simkin Barre gives you a silver cup from the priest's house as your share. It has a saint on it you do not recognise. [if npc.jankin_rooke.follower]Jankin Rooke does not speak to you for three days.[/if]
+      effects:
+        - set: flag.c2_breval_sacked
+        - trait: +burner
+        - add: { rep.ruthlessness: 3, rep.honor: -3, rep.valdrenne: -4, res.coin: 120, rel.simkin_barre.loyalty: 2, rel.jankin_rooke.loyalty: -3 }
+      next: c2_foragers
+
+- id: c2_foragers
+  chapter: ch2
+  title: The Foragers
+  text: |
+    By the second week the army has eaten everything within a day's march and has to forage further and further out, in small parties, across country the Valdrennish know and you do not.
+
+    Your company is sent out with two wagons to a grange called Les Aulnes, three miles off the line of march. You find the grange. You find its granary full. You also find, when you come out of it, that the lane back to the army is full of Valdrennish horsemen: twenty of them, perhaps, knights and serjeants, with the morning sun behind them.
+  choices:
+    - id: fight
+      text: Form your men across the lane and fight it out from the wagons.
+      tags: [martial]
+      lethal: true
+      warn: Twenty horsemen against a foraging party. Some of yours may die. Without armour, or carrying a wound, you could be one of them.
+      check:
+        attr: strength
+        skill: arms
+        difficulty: 4
+        mods:
+          - { if: retinue >= 4, add: 1, label: you have the men }
+          - { if: npc.roger_tallis.follower, add: 1, label: Tallis has done this before }
+          - { if: trait.veteran, add: 1, label: you have been in a fight like this }
+      success:
+        text: The wagons make a wall. The horsemen come in twice and twice break against it, and the third time they do not come, and ride off to find easier work. You come back to the army with full wagons and two captured horses.
+        effects: [ { add: { res.renown: 2, res.horses: 1, res.supplies: 2 } } ]
+        next: c2_vaudrey
+      partial:
+        text: The wagons hold. Not everyone behind them does.
+        effects: [ { add: { res.renown: 1, res.supplies: 1 } }, { casualties: { men: 1, named: 1, spare: [ davy_ludd ] } } ]
+        next: c2_vaudrey
+      failure:
+        text: "[if armour >= 1 && !injured]They ride through you. A lance takes you off your feet and the wagons go up in flames and the survivors of your party get back to the army on foot, carrying you.[else]They ride through you, and a lance takes you through the body in a lane in the Armance whose name you never learned.[/if]"
+        effects:
+          - if: [ armour >= 1, "!injured" ]
+            then: [ { injury: crushed_ribs }, { casualties: { men: 1, named: 1, spare: [ davy_ludd ] } } ]
+            else: [ { die: "Killed by Valdrennish horsemen in a lane near Les Aulnes, defending two wagons of grain, aged {age}." } ]
+        next: c2_vaudrey
+    - id: archers
+      text: Get everyone into the stone granary and let the archers shoot from the doors.
+      tags: [cunning, allies]
+      check:
+        attr: wits
+        skill: tactics
+        difficulty: 3
+        mods: [ { if: npc.jankin_rooke.follower || npc.simkin_barre.follower, add: 1, label: your archers } ]
+      success:
+        text: Stone walls, two doors, archers in each. The horsemen try once, lose four horses in the doorway, and decide the grain is not worth it. You walk out at dusk with everything.
+        effects: [ { add: { res.renown: 1, res.supplies: 2 } } ]
+        next: c2_vaudrey
+      failure:
+        text: They set the thatch alight to smoke you out. You get out the back with the men and lose the wagons, the grain and your dignity.
+        effects: [ { add: { res.supplies: -1 } } ]
+        next: c2_vaudrey
+    - id: friend
+      text: Send Davy back for help on the fastest horse, and hold until it comes.
+      tags: [allies]
+      check:
+        attr: wits
+        skill: command
+        difficulty: 3
+        mods:
+          - { if: npc.aymer_ravell.friend, add: 2, label: Aymer comes at a gallop }
+          - { if: npc.will_cobb.friend, add: 2, label: Cobb brings his archers }
+          - { if: flag.c1_squires_friends || flag.c1_bought_friends, add: 1, label: the squires you won over come too }
+      success:
+        text: "[if npc.aymer_ravell.friend]It is Aymer Ravell who comes, at the head of a dozen lances, shouting your name. He has never looked so happy in his life.[elif npc.will_cobb.friend]It is Will Cobb who comes, with thirty archers at the run, cursing you for a fool the whole way.[else]Help comes, slower than you hoped and faster than you feared.[/if] The Valdrennish ride off without a fight. You owe someone now. That is how armies work."
+        effects: [ { add: { res.supplies: 2 } }, { if: npc.aymer_ravell.friend, then: [ { add: { favor.aymer_ravell: -1, rel.aymer_ravell.affection: 1 } } ] } ]
+        next: c2_vaudrey
+      failure:
+        text: Davy gets through. Help gets there too late for the wagons.
+        effects: [ { add: { res.supplies: -1 } } ]
+        next: c2_vaudrey
+    - id: give
+      text: Leave the wagons and get your men away while you can.
+      tags: [yield]
+      text_after: You walk back to the army empty-handed and alive. Your master is not pleased. Your men are.
+      effects: [ { add: { rel.@master.respect: -1 } } ]
+      next: c2_vaudrey
+
+- id: c2_vaudrey
+  chapter: ch2
+  title: Vaudrey
+  on_enter: [ { meet: giles_marrick } ]
+  text: |
+    Vaudrey is a walled town on the river, rich from cloth, with a stone bridge and a castle on an island in the middle of the stream. The townsmen think the walls will hold. They hold for one afternoon.
+
+    The Adalian archers clear the walls. The men-at-arms go over them with ladders. The bridge gate is the last thing to fall, and when it falls the town is open, and the army goes into it like water into a breached dyke.
+
+    [break]
+
+    In the market square there is a great stone house with a coat of arms over the door, three black crows on gold. The house of a lord. [if flag.c1_giles_enemy]Giles Marrick, a knight now, in his father's colours, is already riding toward it.[else]Other men have seen it too.[/if]
+  choices:
+    - id: house
+      text: Get to the house with the crows before anyone else does.
+      tags: [martial]
+      check:
+        attr: agility
+        skill: arms
+        difficulty: 4
+        mods:
+          - { if: flag.c1_giles_enemy, add: -1, label: Giles is ahead of you }
+          - { if: flag.c1_giles_disgraced, add: -1, label: Giles has not forgotten the buttery }
+          - { if: npc.roger_tallis.follower, add: 1, label: Tallis knows the back way in }
+      success:
+        text: |
+          You go in by the kitchen while Giles is still beating on the front door. In the hall, with his sword across his knees and his household behind him, sits a man of thirty in good mail with the three crows on his surcoat. Messire Raoul de Corbie. He looks at you, and at your men, and at the noise from the front of the house, and he offers you his sword hilt first. "I would rather be taken by a man who came in by the kitchen," he says, in excellent Adalian.
+
+          Giles Marrick arrives a moment later and sees whose prisoner Corbie is. He does not say anything. He does not need to.
+        effects:
+          - set: flag.c2_took_corbie
+          - meet: raoul_corbie
+          - add: { res.renown: 2, rel.giles_marrick.affection: -2, rel.raoul_corbie.respect: 2 }
+        next: c2_corbie
+      failure:
+        text: By the time you get there, Giles Marrick is in the hall, and a Valdrennish lord with three crows on his surcoat is handing him his sword. Corbie's ransom will be the making of Giles. He gives you a little bow as he leads his prisoner past.
+        effects:
+          - set: flag.c2_giles_took_corbie
+          - meet: raoul_corbie
+          - add: { rel.giles_marrick.respect: 1 }
+        next: c2_corbie
+    - id: hand
+      text: Keep your men together and stop them going wild in the town.
+      tags: [piety, allies]
+      check: { attr: presence, skill: command, difficulty: 3, mods: [ { if: flag.c2_stance_loose, add: -2, label: you told them it was theirs } ] }
+      success:
+        text: You hold them at the bridge, and then at the cloth hall, and you keep them there all night while Vaudrey is sacked around you. In the morning your men have nothing but their lives. The Vaudrey cloth merchants who sheltered in the hall go free. One of them writes your name down.
+        effects: [ { set: flag.c2_vaudrey_held }, { add: { rep.honor: 2, rep.valdrenne: 1, rep.merchants: 1 } } ]
+        next: c2_corbie
+      failure:
+        text: Your men melt away into the town like everyone else's. You find most of them by morning. Not all.
+        effects: [ { casualties: { men: 1, named: 0 } } ]
+        next: c2_corbie
+    - id: loot
+      text: Take your share of Vaudrey.
+      tags: [wealth]
+      text_after: Cloth, silver, a box of spices, a good horse. Vaudrey makes you richer in a night than you have been in your life. The town burns behind the army for three days.
+      effects: [ { set: flag.c2_vaudrey_looted }, { add: { res.coin: 360, res.horses: 1, rep.ruthlessness: 1, rep.valdrenne: -1 } } ]
+      next: c2_corbie
+
+- id: c2_corbie
+  chapter: ch2
+  title: The Three Crows
+  on_enter: [ { meet: heloise_corbie } ]
+  text: |
+    Raoul de Corbie's ransom is set at two thousand marks, a sum so large it has to be written down twice to be believed. Ransoms like that take months to raise and years to pay.
+
+    His sister comes to treat for it four days later, riding into the Adalian camp under a safe-conduct with an old priest and two servants. Héloïse de Corbie. She is twenty-two, dark, and furious, and holds herself as if the camp were her own hall and the Adalians her servants.
+
+    [break]
+
+    [if flag.c2_took_corbie]She is brought to you, because her brother is yours.[else]She is brought to Giles Marrick, because her brother is his. Giles does not speak Valdrennish well. Someone has to translate. Somebody remembers that you were at the house with the crows.[/if]
+  choices:
+    - id: honest
+      text: Deal with her honestly. Tell her what the ransom is, what it will cost, and how it can be paid.
+      tags: [diplomacy]
+      check: { attr: presence, skill: diplomacy, difficulty: 3, mods: [ { if: npc.roger_tallis.follower, add: 1, label: Tallis translates } ] }
+      success:
+        text: She expects to be cheated, and is not. It surprises her more than anything else in the camp. By the end she is speaking to you as to a man rather than an enemy. "My brother says you came in by the kitchen," she says, as she leaves. "He seemed to think it a compliment."
+        effects:
+          - assign: { suit.heloise_corbie.status: known }
+          - add: { suit.heloise_corbie.regard: 3, rel.raoul_corbie.respect: 1, rep.valdrenne: 1 }
+          - if: flag.c2_took_corbie
+            then: [ { set: flag.c2_corbie_ransom_due }, { item: +corbie_ring } ]
+        next: c2_sorre_eve
+      failure:
+        text: She does not believe a word, and says so, beautifully, in two languages.
+        effects: [ { assign: { suit.heloise_corbie.status: known } }, { if: flag.c2_took_corbie, then: [ { set: flag.c2_corbie_ransom_due } ] } ]
+        next: c2_sorre_eve
+    - id: squeeze
+      text: "[if flag.c2_took_corbie]Squeeze her. Two thousand marks, and a thousand more for your trouble.[else]Help Giles squeeze her, for a share.[/if]"
+      tags: [cunning, wealth]
+      text_after: She agrees, because she has to. She looks at you once, at the end, the way people look at a wolf. [if flag.c2_took_corbie]You will be paid. Raoul de Corbie will remember the price.[else]Giles pays you your share with a smile you do not like.[/if]
+      effects:
+        - assign: { suit.heloise_corbie.status: known }
+        - add: { suit.heloise_corbie.regard: -4, rep.ruthlessness: 2 }
+        - if: flag.c2_took_corbie
+          then: [ { set: flag.c2_corbie_ransom_due }, { set: flag.c2_corbie_squeezed }, { item: +corbie_ring } ]
+          else: [ { add: { res.coin: 240, rel.giles_marrick.affection: 1 } } ]
+      next: c2_sorre_eve
+    - id: kind
+      text: See that she is properly lodged, fed, and kept safe in a camp full of soldiers.
+      tags: [piety, diplomacy]
+      text_after: It is a small thing. A dry tent, a guard you trust at the door, bread that is not mouldy. She notices every bit of it, and does not thank you, and on the third day she asks your name.
+      effects:
+        - assign: { suit.heloise_corbie.status: known }
+        - add: { suit.heloise_corbie.regard: 4, rep.honor: 1 }
+        - if: flag.c2_took_corbie
+          then: [ { set: flag.c2_corbie_ransom_due }, { item: +corbie_ring } ]
+      next: c2_sorre_eve

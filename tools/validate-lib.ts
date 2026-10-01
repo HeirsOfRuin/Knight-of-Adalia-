@@ -171,6 +171,8 @@ export function validate(content: ContentBundle): ValidationReport {
       } else if ('meet' in e || 'kill' in e) {
         const id = 'meet' in e ? e.meet : e.kill;
         if (id.startsWith('@') ? !content.config.aliases.includes(id.slice(1)) : !(id in reg.npcs)) err(where, `unknown npc or alias "${id}"`);
+      } else if ('casualties' in e) {
+        for (const id of e.casualties.spare) if (!(id in reg.npcs)) err(where, `casualties: unknown npc "${id}" in spare`);
       } else if ('join' in e || 'leave' in e) {
         const id = 'join' in e ? e.join : e.leave;
         if (id.startsWith('@') ? !content.config.aliases.includes(id.slice(1)) : !(id in reg.npcs)) err(where, `unknown npc or alias "${id}"`);

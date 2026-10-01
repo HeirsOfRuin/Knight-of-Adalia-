@@ -202,7 +202,7 @@ export function choose(content: ContentBundle, prev: GameState, choiceId: string
   const rng = new RngCursor(state.rng);
   const changes: string[] = [];
   const choiceText = narrator.renderPassage(choice.text, state, content);
-  const ctx = { scene: scene.id, choice: choice.id, choiceText, changes };
+  const ctx = { scene: scene.id, choice: choice.id, choiceText, changes, rng };
   const cause = state.activeCause;
 
   let outcome: Outcome = { text: choice.text_after, effects: [], next: choice.next };

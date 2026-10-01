@@ -30,9 +30,15 @@ steps:
   c1_knighting: master
   c1_dubbing: pray
   c1_farewell: isabel
-ending: ch1_complete
+  c2_following: home
+  c2_march: spare
+  c2_village: ransom!success
+  c2_mouths: queen!success
+ending: ch2_complete
 expect:
-  - station == knight
+  - station == lord
+  - flag.c2_breval_ransomed
+  - flag.c2_mouths_queen
   - flag.c1_dubbed_by_master
   - alias.master == hamon_darrell
   - flag.c1_master_cleared

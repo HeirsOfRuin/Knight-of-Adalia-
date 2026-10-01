@@ -1,0 +1,356 @@
+# Chapter 2, part 4: the truce, Sauvemer garrison, home, and the grants.
+# Autumn year 22 to spring year 25. Ages 21-24.
+
+- id: c2_truce
+  chapter: ch2
+  title: The Truce of Saint-Lys
+  checkpoint: true
+  on_enter: [ { advance: { seasons: 1 } }, { meet: orsino_brancale } ]
+  text: |
+    The Pontiff's legate, Cardinal Orsino Brancale, a soft-spoken Sarenzan with a merchant's eyes, has been riding between the two kings since Hautbois. In the autumn he gets what he wants: a truce, for three years, sealed at Saint-Lys. Sauvemer stays Adalian. Everything else is to be argued about later.
+
+    Half the army goes home. The rest stays, to garrison Sauvemer and the castles the King has taken in the Armance, and to be paid even more slowly than before.
+
+    [break]
+
+    Your master's choice is made for him. Yours is not, quite.
+  choices:
+    - id: garrison
+      text: Stay with the garrison in Sauvemer. That is where the King's grants will be given, when they are given.
+      tags: [cunning]
+      text_after: "You take a house in the Rue des Tanneurs with your men: two rooms, a yard, a well, and neighbours who will not look you in the eye. Sauvemer is yours now, in a sense. It does not feel like it."
+      effects: [ { set: flag.c2_garrison } ]
+      next: { pool: c2_camp, count: 2, then: c2_garrison_life }
+    - id: march
+      text: Go with the companies sent to hold the castles of the Armance.
+      tags: [martial]
+      text_after: The Armance castles are small, cold and surrounded by people who hate you less than the Sauvemer people do, because the Duchess is on your side. The Duchess remembers you, or says she does.
+      effects: [ { set: flag.c2_armance_castles }, { add: { rel.jehanne_armance.respect: 1, rep.valdrenne: 1 } } ]
+      next: { pool: c2_camp, count: 2, then: c2_garrison_life }
+    - id: pryce
+      text: Take service with Sir Walter Pryce, who is keeping a company in the field through the truce, for pay.
+      tags: [wealth]
+      text_after: |
+        [if flag.c1_pryce_knows]Sir Walter mentions, pleasantly, the night you burned a page of the commissioners' roll. He does not mention it again. He does not have to.[/if] A truce is only a truce for kings. Sir Walter's company rides the border country all through it, collecting protection money from villages that cannot say no. The pay is good. The work is not work you will tell anyone about.
+      effects: [ { set: flag.c2_pryce_company }, { add: { res.coin: 360, rep.ruthlessness: 2, rel.walter_pryce.affection: 2 } } ]
+      next: { pool: c2_camp, count: 2, then: c2_garrison_life }
+
+- id: c2_garrison_life
+  chapter: ch2
+  title: The Garrison
+  on_enter: [ { advance: { seasons: 4 } } ]
+  text: |
+    A truce is a strange thing to live in. You are a conqueror in a conquered country, which sounds grand. In fact it is boredom, cold, short pay, and the feeling of being watched.
+
+    The Sauvemer people have not forgiven the siege and will not, in your lifetime. The Adalian garrison drinks, gambles, marries local girls who would rather not, quarrels with the townsmen, and sometimes kills one. The townsmen sometimes kill one back. Every month there is a hanging.
+
+    [break]
+
+    Your following has changed since Saltcombe. [if retinue >= 4]It is bigger: men drift to a captain who pays.[elif retinue <= 1]It is smaller: men drift away from a captain who does not.[else]Some faces are new. Some are gone.[/if] Davy Ludd is nearly eighteen and taller than you. [if npc.roger_tallis.follower]Tallis has found a Valdrennish widow in the Rue des Tanneurs and is talking about staying for good.[/if]
+
+    You have time, for the first time in years, to choose what to do with it.
+  choices:
+    - id: train
+      text: Train your men properly, every day, as if the war will start again tomorrow.
+      tags: [martial]
+      text_after: It will start again. Everyone knows the truce will end. When it does, your men will be the best-drilled company in Sauvemer, and they will know it, and so will the men who give out grants.
+      effects: [ { set: flag.c2_drilled }, { add: { skill.command: 1, skill.tactics: 1, rel.@master.respect: 1 } } ]
+      next: c2_iron_company
+    - id: town
+      text: Learn the town. The language, the people, who owes whom.
+      tags: [diplomacy, learning]
+      text_after: It is slow. They do not want to be learned. But by spring you can bargain in Valdrennish, you know which of the burghers is a Valdrennish spy and which is an Adalian one, and the baker on the corner has started giving you yesterday's bread for nothing.
+      effects: [ { set: flag.c2_learned_town }, { add: { rep.valdrenne: 2, skill.diplomacy: 1, skill.intrigue: 1 } } ]
+      next: c2_iron_company
+    - id: court
+      text: Spend your evenings where the women of rank are.
+      tags: [diplomacy]
+      text_after: |
+        In a garrison town there are not many such places, and you know them all by Candlemas.
+        [if suit.clemence_vaux.status >= known]Dame Clémence keeps her husband's house and her own counsel, and receives you twice, with her household present, and once without.[/if] [if suit.fiammetta_lanzi.status >= known]Fiammetta Lanzi keeps the bank's house and asks you to dine whenever she needs someone to argue with.[/if] [if suit.heloise_corbie.status >= known]Héloïse de Corbie writes from her brother's lands, now that the ransom is half paid. Her letters are long and do not say much, and you read them several times.[/if]
+      effects:
+        - if: suit.clemence_vaux.status >= known
+          then: [ { add: { suit.clemence_vaux.regard: 2 } }, { assign: { suit.clemence_vaux.status: courted } } ]
+        - if: suit.fiammetta_lanzi.status >= known
+          then: [ { add: { suit.fiammetta_lanzi.regard: 2 } }, { assign: { suit.fiammetta_lanzi.status: courted } } ]
+        - if: suit.heloise_corbie.status >= known
+          then: [ { add: { suit.heloise_corbie.regard: 2 } } ]
+      next: c2_iron_company
+    - id: trade
+      text: "Put your money to work. Cloth, wine, ransoms: there is money to be made in a garrison town by a man who can count."
+      tags: [wealth]
+      check: { attr: wits, skill: trade, difficulty: 3, mods: [ { if: npc.fiammetta_lanzi.met, add: 1, label: the Lanzi house advises you } ] }
+      success:
+        text: Valdrennish wine bought cheap from people who need coin, sold dear to an Adalian garrison that needs drink. By spring you have doubled what you put in. You are not proud of it. You are richer.
+        effects: [ { add: { res.coin: 480, rep.merchants: 1 } } ]
+        next: c2_iron_company
+      failure:
+        text: The wine is sour by the time it arrives. You learn something. It is expensive.
+        effects: [ { add: { res.coin: -60 } } ]
+        next: c2_iron_company
+
+- id: c2_iron_company
+  chapter: ch2
+  title: The Iron Company
+  on_enter: [ { advance: { seasons: 3 } }, { meet: ulric_rotbart } ]
+  text: |
+    In the second summer of the truce the Iron Company comes over the eastern border: eight hundred Hroswald mercenaries under a captain called Ulric Rotbart, whom both kings paid during the war and neither king is paying now.
+
+    A free company without a war is a plague with a banner. It takes a village a week and a town a month. The Valdrennish crown will not fight it, because it might be useful later. The Adalian garrison will not fight it, because there is a truce.
+
+    [break]
+
+    It comes into the march country behind Sauvemer, and the villages there, which were burned once by you, are burned again by them. A delegation of their headmen comes to the garrison to ask the Adalians for protection, since the Adalians are now their lords. The garrison captain laughs at them.
+
+    They come to you next.
+  choices:
+    - id: fight
+      text: Take your men and whoever will follow you, and fight the Iron Company off.
+      tags: [martial]
+      lethal: true
+      warn: Hroswald mercenaries are professionals. Without armour, or carrying a wound, you could die for a village that hates you.
+      check:
+        attr: presence
+        skill: command
+        difficulty: 5
+        mods:
+          - { if: flag.c2_drilled, add: 2, label: your men are drilled }
+          - { if: retinue >= 4, add: 1, label: your following }
+          - { if: rep.valdrenne >= 2, add: 1, label: the villages fight beside you }
+          - { if: armour >= 2, add: 1, label: your harness }
+      success:
+        text: Not a battle. A week of ambushes in the marsh, where the Hroswald horsemen cannot ride and the village men know every path. At the end of it Rotbart decides the march country is not worth the trouble and moves on. The headmen do not thank you. They send a cart of eels and a ham, and they stop spitting when you pass.
+        effects: [ { set: flag.c2_fought_iron }, { add: { res.renown: 2, rep.valdrenne: 3, rep.commons: 1 } } ]
+        next: c2_home_choice
+      partial:
+        text: Rotbart moves on. It costs you men.
+        effects: [ { set: flag.c2_fought_iron }, { add: { res.renown: 1, rep.valdrenne: 2 } }, { casualties: { men: 1, named: 1, spare: [ davy_ludd ] } } ]
+        next: c2_home_choice
+      failure:
+        text: "[if armour >= 1 && !injured]The Iron Company knows its business better than you know yours. You are carried back to Sauvemer on a hurdle.[else]The Iron Company knows its business better than you know yours. You die in a marsh behind Sauvemer, for people who never wanted you there.[/if]"
+        effects:
+          - if: [ armour >= 1, "!injured" ]
+            then: [ { injury: crushed_ribs }, { casualties: { men: 1, named: 1, spare: [ davy_ludd ] } } ]
+            else: [ { die: "Killed fighting the Iron Company in the marshes behind Sauvemer, aged {age}." } ]
+        next: c2_home_choice
+    - id: bargain
+      text: Ride out to Ulric Rotbart and buy him off.
+      tags: [wealth, diplomacy]
+      check:
+        attr: presence
+        skill: trade
+        difficulty: 4
+        mods: [ { if: npc.roger_tallis.follower, add: 2, label: Tallis rode with Rotbart once } ]
+      success:
+        text: Rotbart is a big, courteous, tired man, who would rather be paid than fight and says so. [if npc.roger_tallis.follower]He and Tallis embrace like brothers and then argue about money for an hour.[/if] Forty pounds, half from the villages and half from you, and the Iron Company goes east. The villages pay their half. They remember who paid the other.
+        effects: [ { set: flag.c2_bought_iron }, { add: { res.coin: -240, rep.valdrenne: 2, rel.ulric_rotbart.respect: 2 } } ]
+        next: c2_home_choice
+      failure:
+        text: Rotbart takes your money and stays a month anyway.
+        effects: [ { add: { res.coin: -120 } } ]
+        next: c2_home_choice
+    - id: warn
+      text: You cannot stop them. But you can warn the villages in their path, and get the people out.
+      tags: [piety, cunning]
+      text_after: It is not enough. It is something. Four villages are empty when the Iron Company comes. The people come back afterwards to ashes, but they come back.
+      effects: [ { add: { rep.valdrenne: 1, rep.honor: 1 } } ]
+      next: c2_home_choice
+    - id: refuse
+      text: Send them away. There is a truce, and it is not your affair.
+      tags: [yield]
+      text_after: They go. The Iron Company stays a month. When it leaves, the march country behind Sauvemer is empty of everything, including people who might have been your tenants one day.
+      effects: [ { set: flag.c2_refused_villages }, { add: { rep.valdrenne: -2 } } ]
+      next: c2_home_choice
+
+- id: c2_home_choice
+  chapter: ch2
+  title: A Ship for Saltcombe
+  on_enter: [ { advance: { seasons: 3 } } ]
+  text: |
+    In the spring of the third year of the truce, a ship sails from Sauvemer for Saltcombe with the garrison's letters, and a few places for men on leave.
+
+    You have been away for three years. You have letters from home that are a year old. [if retinue >= 3]Your men will keep, if Tallis or someone you trust is in charge.[/if] The passage costs a pound. The journey home and back will take the whole summer.
+
+    The King's grants for the conquered lands are to be decided at Michaelmas, in Sauvemer. A man who is away when grants are decided is easy to forget.
+  choices:
+    - id: go
+      text: Go home, for the summer.
+      tags: [allies]
+      requires: [ res.coin >= 240 ]
+      text_after: You are on the ship with the letters three days later. The Narrow Sea is calm this time. You stand at the rail all the way, watching for the white cliffs that are not white at all, close to, but grey and streaked with green.
+      effects: [ { add: { res.coin: -240 } }, { set: flag.c2_went_home } ]
+      next: c2_home
+    - id: stay
+      text: Stay. Grants are given to men who are there.
+      tags: [cunning]
+      text_after: You send letters instead. They will be three months on the road, and the answers three months more. You stand on the quay and watch the ship go.
+      effects: [ { set: flag.c2_stayed_for_grants }, { add: { rel.@master.respect: 1 } } ]
+      next: { pool: c2_camp, count: 1, then: c2_grants }
+
+- id: c2_home
+  chapter: ch2
+  title: Home
+  text: |
+    Everything at home is smaller than you remember it.
+
+    [if background == reeve]Ashby is the same thirty-one households, the same church, the same mill. [if flag.c1_father_exposed]Your father is not reeve any more. He lives with your mother in the end cottage by the common, the one that used to be the Cokers'.[else]Your father is greyer and slower and still reeve. He stands in the lane when you ride in and does not move until you have dismounted, and then he holds you by both shoulders and looks at you for a long time.[/if] [if suit.mag_coker.status != lost]Mag Coker is still at the well. She is not married.[/if][elif background == burgess]Wendham is louder and dirtier and richer: the war has been good for wool. Your father has a new gown and a new seat on the council. He introduces you to everyone as "my son the soldier", and you discover that you do not mind. [if suit.annot_dyer.status != lost]Annot Dyer is still at the vats.[/if][elif background == archer]Your father's cottage has a new roof, which you paid for with Hautbois money and did not know he had used for that. He is thinner. He can barely walk to the butts now. He goes anyway, every Sunday, and makes you shoot with him. [if suit.mariot_wood.status != lost]Mariot Wood comes to watch.[/if][else]Ravell Hall is the same, and the faces are not. Hob Crane is dead. Master Ranulf is half blind. [if flag.p_mother_dismissed]Your mother is in Wendham, in a room you are paying for.[else]Your mother is still Lady Ravell's tirewoman, and still straightens your collar.[/if] [if suit.nell_laundress.status != lost]Nell is in the dairy now, and has a child that is not yours, and is not married.[/if][/if]
+
+    [break]
+
+    [if flag.c1_coll_hanged]There is other news. In the second winter of the war, Black Ewan came over the border while the army was in Valdrenne. He burned four steadings in the March and asked, at every one, for a man with your name.[/if]
+  choices:
+    - id: family
+      text: Spend the summer with your family.
+      tags: [allies]
+      text_after: It is a quiet summer, and the best one you have had in years. You mend things. You eat too much. At the end of it your family stand in the lane and watch you go, and this time you look back.
+      effects:
+        - if: background == reeve
+          then: [ { add: { rel.piers_reeve.affection: 3 } } ]
+        - if: background == burgess
+          then: [ { add: { rel.ralf_mercer.affection: 3 } } ]
+        - if: background == archer
+          then: [ { add: { rel.hugh_fletcher.affection: 3 } } ]
+        - if: background == servant
+          then: [ { add: { rel.agnes_tirewoman.affection: 3 } } ]
+      next: c2_home_ravell
+    - id: girl
+      text: "Find [if background == reeve]Mag[elif background == burgess]Annot[elif background == archer]Mariot[else]Nell[/if]."
+      tags: [diplomacy]
+      visible_if: [ { any: [ [ background == reeve, suit.mag_coker.status != lost ], [ background == burgess, suit.annot_dyer.status != lost ], [ background == archer, suit.mariot_wood.status != lost ], [ background == servant, suit.nell_laundress.status != lost ] ] } ]
+      text_after: |
+        [if flag.p_promised_girl]You told her once that you would come back. She reminds you of it, the first evening, as if it were a debt you had paid.[/if] She has waited, or she has not waited and has not married either, which comes to the same thing. You walk out together on the long evenings. Nobody in the village thinks it will come to anything, because you are what you are now and she is what she is. She knows that better than they do. She walks out with you anyway.
+      effects:
+        - if: background == reeve
+          then: [ { add: { suit.mag_coker.regard: 3 } }, { assign: { suit.mag_coker.status: courted } } ]
+        - if: background == burgess
+          then: [ { add: { suit.annot_dyer.regard: 3 } }, { assign: { suit.annot_dyer.status: courted } } ]
+        - if: background == archer
+          then: [ { add: { suit.mariot_wood.regard: 3 } }, { assign: { suit.mariot_wood.status: courted } } ]
+        - if: background == servant
+          then: [ { add: { suit.nell_laundress.regard: 3 } }, { assign: { suit.nell_laundress.status: courted } } ]
+      next: c2_home_ravell
+    - id: ewan
+      text: Ride north to the March, and see what Black Ewan has done.
+      tags: [martial]
+      visible_if: [ flag.c1_coll_hanged ]
+      text_after: The steadings are rebuilt, mostly. The people in them look at you the way people look at the reason for something. At Brome Tower an old woman spits at your horse. You ride back south knowing that one day you will have to settle this, and that it will not be settled by anyone but you.
+      effects: [ { set: flag.c2_saw_ewan_work }, { add: { rep.commons: -1 } } ]
+      next: c2_home_ravell
+
+- id: c2_home_ravell
+  chapter: ch2
+  title: Ravell, in Passing
+  text: |
+    On the way back to Saltcombe you stop at Ravell, because everyone stops at Ravell.
+
+    [if npc.hamon_darrell.alive && !flag.c1_hamon_fell]Sir Hamon is there, too old for the war now, living on what is left of Ashby. He feeds you until you cannot move and asks about Hautbois four times, and each time listens as if it were the first.[elif flag.c1_hamon_fell]Sir Hamon is dead. He died at Ambry in the second winter, among the canons, and left you his hounds in a will nobody could find. The canons kept the hounds.[/if]
+
+    [if suit.isabel_sayer.status >= courted][if flag.c2q_isabel_married]Isabel Sayer is not at Ravell any more. She married the widowed knight from Hollesby, as her father wanted.[else]Isabel Sayer is still with Lady Ravell. She sees you across the inner ward and stops walking.[/if][/if]
+  choices:
+    - id: isabel
+      text: Find Isabel Sayer.
+      tags: [diplomacy]
+      visible_if: [ suit.isabel_sayer.status >= courted, "!flag.c2q_isabel_married" ]
+      text_after: She has turned down the knight from Hollesby, and two others since, and her father has stopped speaking to her. "I told him I was waiting for a man who went to war," she says. "He asked which one. I said I would know him when he came back." She looks at your spurs, or the place where they are not, and says nothing about them at all.
+      effects: [ { add: { suit.isabel_sayer.regard: 3 } } ]
+      next: c2_grants
+    - id: on
+      text: Go on to Saltcombe.
+      text_after: The ship back is full of men going to the war that is not, at the moment, a war.
+      next: c2_grants
+
+- id: c2_grants
+  chapter: ch2
+  title: The King's Grants
+  checkpoint: true
+  on_enter:
+    - advance: { seasons: 2 }
+    - if: station != knight
+      then: [ { station: knight }, { set: flag.c2_ceremonial_knight } ]
+  text: |
+    At Michaelmas the King's council sits in the great hall of Sauvemer castle to give out the conquered lands.
+
+    It is not a generous business. The King wants loyal men holding the country around his new port, men who will defend it because it is theirs. He also wants it cheap. So the great lords get towns and castles, and the bannerets get manors, and men like you, if you are lucky, get a village in the marshes that nobody else wanted, and the duty to hold it.
+
+    [break]
+
+    [if flag.c2_ceremonial_knight]Before the grants are read, the King knights eleven men for their service in the war, all at once, quickly, in the hall. You are one. You have not won your spurs in any single moment. You have won them by being there, all of it, for four years. Some knights will say that is not the same. Some will say it is the only kind that counts.[/if]
+
+    Then the clerk reads your name, and the name of a place: **Ormel**. A manor in the marsh country behind Sauvemer. A village, a mill, a church, some salt pans, three hundred acres that flood every winter, and two hundred people who watched you besiege their town.
+  choices:
+    - id: accept
+      text: Kneel, and do homage for Ormel.
+      text_after: You put your hands between the King's hands and swear to be his man for the land of Ormel. It takes less time than a paternoster. Then you stand up, and you are a lord of somewhere. The clerk writes it in the roll. Two hundred people in a marsh do not know yet that they are yours.
+      effects: [ { set: flag.c2_granted_ormel }, { station: lord }, { add: { res.renown: 1 } } ]
+      next: c2_plague
+    - id: ask_more
+      text: Kneel, and ask, respectfully, for more.
+      tags: [cunning]
+      check:
+        attr: presence
+        skill: diplomacy
+        difficulty: 5
+        audience: nobles
+        mods:
+          - { if: res.renown >= 10, add: 2, label: your name }
+          - { if: flag.c2_took_duke, add: 2, label: the Duke of Orbec }
+          - { if: flag.strong_patron, add: 1, label: your patron speaks for you }
+          - { if: flag.c1_ravell_owed, add: -1, label: Lord Ravell reminds the council you are in his debt }
+          - { if: flag.c2_saved_burghers, add: -1, label: the King has not forgotten the six burghers }
+          - { if: flag.c1_caught_spy, add: 1, label: the spy you caught }
+      success:
+        text: The King's chamberlain looks at the King, and the King looks at you, and something in your record makes him smile. Ormel, and the salt rights of the whole marsh behind it, and the fishery. It doubles what Ormel is worth. Nobody else in the hall gets more than he was given. Several people notice.
+        effects: [ { set: flag.c2_granted_ormel }, { set: flag.c2_granted_salt }, { station: lord }, { add: { res.renown: 1, rep.nobles: -1 } } ]
+        next: c2_plague
+      failure:
+        text: The King's face does not change. Ormel, the clerk reads again, and moves on. You have been noted as a man who asks.
+        effects: [ { set: flag.c2_granted_ormel }, { station: lord }, { add: { rep.crown: -1 } } ]
+        next: c2_plague
+
+- id: c2_plague
+  chapter: ch2
+  title: News from the South
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    That winter the Sarenzan galleys come into Sauvemer harbour late, and fewer of them, and the sailors bring a story.
+
+    In the south, they say, in the ports of the Midsea, there is a sickness. It begins with a swelling under the arm or in the groin, black, the size of an egg. Then fever, then blood, then death, in three days, sometimes in one. In Sarenza itself, they say, the dead are being buried in trenches because there are no more graves. In one city a third of the people are dead. In another, half.
+
+    [break]
+
+    Nobody believes it, quite. Sailors' stories always grow. [if npc.fiammetta_lanzi.met]Fiammetta Lanzi believes it. Her letters from Sarenza have stopped.[/if]
+
+    In the spring you will go to Ormel.
+  choices:
+    - id: prepare
+      text: Begin to prepare. Grain, salt, a physician if you can find one.
+      tags: [learning]
+      text_after: People laugh at you, gently. You buy grain anyway, and salt, and a Sarenzan physician's book that you cannot read and have read to you. If the sailors are wrong, you have wasted some money. You do not think they are wrong.
+      effects: [ { set: flag.c2_prepared_plague }, { add: { res.coin: -120, res.supplies: 2 } } ]
+      next: c2_end
+    - id: pray
+      text: Pray, and have Masses said, against it.
+      tags: [piety]
+      text_after: The priests of Sauvemer are glad of the money. Every church in the town says Masses against the pestilence all that winter. It is all anyone can think of to do.
+      effects: [ { set: flag.c2_prayed_plague }, { add: { rep.piety: 1, rep.church: 1, res.coin: -24 } } ]
+      next: c2_end
+    - id: ignore
+      text: It is a sailors' story.
+      tags: [yield]
+      text_after: It is a sailors' story. You go to Ormel in the spring with your men and your grant and a great many plans.
+      next: c2_end
+
+- id: c2_end
+  chapter: ch2
+  kind: ending
+  ending: ch2_complete
+  title: Ormel
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    In the spring you ride out of Sauvemer by the land gate, the one the useless mouths came out of, with your banner and your following and the King's writ, along the dunes and across the marsh to Ormel.
+
+    [if retinue >= 4]Behind you ride the men who have followed you through the war, or the ones who are left.[elif retinue >= 1]Behind you ride the few who are left.[else]You ride alone, with Davy, if Davy is still with you.[/if] [if npc.davy_ludd.alive && npc.davy_ludd.follower]Davy carries your banner. He is a man now.[/if]
+
+    The village sees you coming a mile off across the flat country. By the time you reach it, everyone is indoors, and the street is empty, and the church bell is ringing. Not for you. For a death. The first, in Ormel, of the great mortality.
+
+    End of Chapter 2. Ormel is next.

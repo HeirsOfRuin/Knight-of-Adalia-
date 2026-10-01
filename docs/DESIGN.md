@@ -555,6 +555,75 @@ The user's verdict on the calibration scenes: too long-winded. The revised direc
 | Chapter 4 | 100,000 | 90+ |
 | Chapter 5 and endings | 90,000 | 100+ |
 
+## Chapter 2 skeleton (as built, first pass)
+**Scenes:** 56 in all: 30 main scenes and an ending, 14 side events (3 on the march, 11 in the camp), and 8 delayed consequences. Ch1 has 46. Prose is about 17,000 words, at first-pass depth, to be deepened alongside the prologue and Ch1.
+
+**Span:** spring of year 21 to spring of year 26, ages 20 to 25.
+
+### Shape
+1. **Saltcombe.** Form the following:
+   - master's archers, a man from home, hired veterans, or go alone;
+   - Davy Ludd is always there as squire or page.
+2. **The crossing.** Storm.
+3. **Port-Haudry.** An opposed landing, the first fight.
+4. **The Duchess of Armance's camp.**
+5. **The burning march.**
+   - Set your stance: orders, spare, or let the men keep what they take.
+   - Bréval, the first war-crime decision: burn as ordered, ransom, stop the assault behind the church, or let the men sack it.
+   - The foragers' fight.
+   - Vaudrey: storm and sack. Raoul de Corbie is taken by you or by Giles. His sister Héloïse comes to treat (romance #7).
+6. **Battle 1: forcing the ford of the Sorre** at low tide.
+7. **The eve of Hautbois.** The King knights men in the line.
+8. **Battle 2: Hautbois.** Four rounds:
+   - the rain and the wet crossbows;
+   - the first charge;
+   - the long afternoon: the duke's ransom, or saving a friend, or holding the line;
+   - dusk.
+
+   Then the field and the count, field knighting for a deed, and the victory feast (Lady Alys Fane, romance #6).
+9. **The siege of Sauvemer**, about eleven months:
+   - Newtown;
+   - the Lanzi house (Fiammetta, romance #8);
+   - unpaid men in winter;
+   - the night sortie;
+   - the useless mouths: let them through, petition the Queen, share bread, or obey (Dame Clémence, romance #9);
+   - the relief army that does not fight;
+   - the surrender and the six burghers.
+10. **The truce.** Garrison, the Armance castles, or Pryce's company. Then garrison life, the Iron Company, the one trip home, and Ravell in passing.
+11. **The King's grants** at Michaelmas: the manor of **Ormel**, with ceremonial knighting if he is not yet knighted. Then news of the great mortality, and the end: arrival at Ormel as its bell tolls for the first death.
+
+### Systems added
+- **Retinue:** `join`/`leave`, loyalty, and the `retinue` count. The `casualties` effect kills unnamed men and random named followers, and can spare named people such as Davy.
+- **Armour:** an item value. A jack is 1; a harness is 2. Every means-of-knighthood option now grants a harness, and the man-at-arms indenture grants a mail shirt.
+- **Serious wounds:** an injury flag. `injured` now means seriously wounded; minor wounds such as bruises, a cut brow or an arrow wound do not trigger the death rule.
+- **Friends:** they appear as modifiers and options (Aymer, Cobb, the squires, Tallis).
+
+### Butterfly hooks
+Ch2 reads 28 more Ch1 and prologue flags. Examples:
+- the Leven ford experience at the landing;
+- bargaining background at Bréval;
+- the tourney or a trial by combat at Hautbois;
+- the relics oath on the eve of Hautbois;
+- the Ravell fee in the winter camp;
+- Pryce's leverage;
+- Maud's scandal and her note;
+- Coll's fate in Ewan's letter;
+- the cunning woman's crown at the feast.
+
+The 33 not yet read are marked `later: ch3`.
+
+### Balance through the end of Ch2 (bot, 200 runs per cell)
+| Policy | Knighted in Ch1/Ch2, not ceremonially | Dead |
+|---|---|---|
+| Martial | 83-96% | 5-17% |
+| Cunning | 86-91% | 2-7% |
+| Diplomacy | 72-89% | 3-7% |
+| Wealth | 75-85% | 6-17% |
+| Random | 65-84% | 7-17% |
+
+- Deaths cluster at the first charge at Hautbois, Thorne Hall and the trial by combat.
+- Every death follows a marked mortal-danger choice taken unarmoured or seriously wounded.
+
 ## Decisions log
 | Date | Decision |
 |---|---|

@@ -1,8 +1,10 @@
 bruised_ribs: { label: Bruised ribs, description: "Every breath catches.", mods: { attr.strength: -1, attr.endurance: -1 }, heals_after: 1 }
 cut_brow: { label: Cut brow, description: "A split brow that will leave a mark.", mods: { attr.presence: -1 }, heals_after: 1, scar: scarred_face }
-broken_hand: { label: Broken hand, description: "Two fingers set badly.", mods: { skill.arms: -2, skill.archery: -3 }, heals_after: 2 }
-burned_hands: { label: Burned hands, description: "Blistered palms wrapped in goose grease and linen.", mods: { skill.arms: -1, skill.archery: -2 }, heals_after: 2, scar: burn_scarred }
-gored_thigh: { label: Gored thigh, description: "A boar's tusk opened the leg. You walk with a stick.", mods: { attr.agility: -1, skill.riding: -1 }, heals_after: 3, scar: gored_scar }
-cracked_skull: { label: Cracked skull, description: "Headaches. Bright light hurts.", mods: { attr.wits: -1 }, heals_after: 2 }
+broken_hand: { label: Broken hand, description: "Two fingers set badly.", mods: { skill.arms: -2, skill.archery: -3 }, heals_after: 2, serious: true }
+burned_hands: { label: Burned hands, description: "Blistered palms wrapped in goose grease and linen.", mods: { skill.arms: -1, skill.archery: -2 }, heals_after: 2, scar: burn_scarred, serious: true }
+gored_thigh: { label: Gored thigh, description: "A boar's tusk opened the leg. You walk with a stick.", mods: { attr.agility: -1, skill.riding: -1 }, heals_after: 3, scar: gored_scar, serious: true }
+cracked_skull: { label: Cracked skull, description: "Headaches. Bright light hurts.", mods: { attr.wits: -1 }, heals_after: 2, serious: true }
 arrow_wound: { label: Arrow wound, description: "A Caldmoor arrow went through the meat of the shoulder.", mods: { skill.arms: -1, skill.archery: -2 }, heals_after: 2 }
-fever_weak: { label: Fever-weak, description: "The flux left you thin and short of breath.", mods: { attr.endurance: -1, attr.strength: -1 }, heals_after: 1 }
+fever_weak: { label: Fever-weak, description: "The flux left you thin and short of breath.", mods: { attr.endurance: -1, attr.strength: -1 }, heals_after: 1, serious: true }
+crushed_ribs: { label: Crushed ribs, description: "A horse fell on you. Breathing hurts, and so does not breathing.", mods: { attr.endurance: -2, skill.arms: -1 }, heals_after: 2, serious: true }
+camp_flux: { label: Camp flux, description: "The bloody flux that runs through every siege camp.", mods: { attr.strength: -1, attr.endurance: -1 }, heals_after: 1, serious: true }

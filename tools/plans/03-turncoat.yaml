@@ -32,9 +32,15 @@ steps:
   c1_knighting: pryce
   c1_dubbing: think
   c1_farewell: maud
-ending: ch1_complete
+  c2_following: alone
+  c2_march: loose
+  c2_village: loot
+  c2_vaudrey: loot
+ending: ch2_complete
 expect:
-  - station == knight
+  - station == lord
+  - flag.c2_breval_sacked
+  - trait.burner
   - trait.oathbreaker
   - "!npc.ancel_brome.alive"
   - alias.master == walter_pryce

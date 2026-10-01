@@ -1,0 +1,189 @@
+# Chapter 2 queued events: delayed consequences, and the world at home moving
+# on without him. Queued from c2_following (on_enter) and from Ch1 choices.
+
+- id: c2q_isabel
+  chapter: ch2
+  kind: queued
+  title: Isabel's Father
+  requires: [ suit.isabel_sayer.status >= known ]
+  text: |
+    A letter from Isabel Sayer, short, in a hand that has been steadier.
+
+    Her father has accepted the widowed knight from Hollesby for her, without asking. The betrothal is to be at Lady Day. She has refused, and been told that refusing is not hers to do. [if suit.isabel_sayer.pledge == token]She still has your token. She does not say what she means to do with it.[else]She does not ask you for anything. She is telling you, she says, so that you will not hear it from someone else.[/if]
+  choices:
+    - id: write
+      text: Write to her father yourself, and ask him to wait for you.
+      tags: [diplomacy]
+      check:
+        attr: presence
+        skill: diplomacy
+        difficulty: 4
+        audience: knights
+        mods:
+          - { if: station == knight, add: 2, label: you are a knight now }
+          - { if: res.renown >= 6, add: 1, label: your name from the war }
+      success:
+        text: Sir John Sayer writes back, stiffly, that he has heard of you, and that a knight who has done well in the King's war may be worth waiting for, and that he will wait one year. Isabel writes too. Her letter is two words long.
+        effects: [ { add: { suit.isabel_sayer.regard: 3, suit.isabel_sayer.family: 3 } }, { set: flag.c2q_isabel_waits } ]
+        next: "@return"
+      failure:
+        text: Sir John Sayer writes back that he has never heard of you and that his daughter's marriage is no concern of a soldier's. Isabel is married at Lady Day.
+        effects: [ { set: flag.c2q_isabel_married }, { assign: { suit.isabel_sayer.status: lost } } ]
+        next: "@return"
+    - id: let
+      text: Write back that she must do what she must. You cannot ask her to wait for a man who may not come home.
+      tags: [yield]
+      text_after: It is honest. She is married at Lady Day. She writes once more, after, a short polite letter wishing you well, and then not again.
+      effects: [ { set: flag.c2q_isabel_married }, { assign: { suit.isabel_sayer.status: lost } }, { add: { rep.honor: 1 } } ]
+      next: "@return"
+
+- id: c2q_maud
+  chapter: ch2
+  kind: queued
+  title: News of Lady Maud
+  requires: [ suit.maud_delisle.regard >= 3 ]
+  text: |
+    Among the dead at Hautbois, the heralds found Gerard of Carrow, the Earl's younger son, who was betrothed to Lady Maud de Lisle. He was killed in the eleventh charge by a Valdrennish knight he had insulted at dinner the year before.
+
+    Three weeks later a letter reaches you, by way of [if flag.c1_maud_scandal]the nuns at Ambry, where her guardian sent her after the business of the petition[else]the Queen's household[/if], in a quick, low hand. Lady Maud is in the King's wardship and her betrothal is dissolved by death. She is sorry for Gerard, who was a fool, and sorrier for his mother. "Betrothals have been broken before," she writes. "This one broke itself." Nothing else. It does not need anything else.
+  choices:
+    - id: write
+      text: Write back.
+      tags: [diplomacy]
+      text_after: |
+        [if flag.c1_maud_word]She has kept your note from the church door, she says. She has kept it in her psalter.[/if] You write back carefully. She writes back carelessly, which is how you know she means it. The letters go on all through the truce.
+      effects: [ { assign: { suit.maud_delisle.status: courted } }, { add: { suit.maud_delisle.regard: 2 } } ]
+      next: "@return"
+    - id: wait
+      text: Do not answer yet. A dead man's betrothed should be allowed a little time.
+      text_after: You wait. When you do write, months later, her reply comes back by the next ship.
+      effects: [ { assign: { suit.maud_delisle.status: known } }, { add: { suit.maud_delisle.regard: 1, rep.honor: 1 } } ]
+      next: "@return"
+
+- id: c2q_ewan
+  chapter: ch2
+  kind: queued
+  title: Word from the March
+  requires: [ { any: [ flag.c1_coll_hanged, flag.c1_coll_freed, flag.c1_coll_ransomed, flag.c1_coll_given ] } ]
+  text: |
+    [if flag.c1_coll_hanged]A letter from Ravell, from Father Benet: Black Ewan came over the border in the winter while the army was away. Four steadings burned in the March. At each one, his men asked for you by name. Nobody could tell them where you were, except across the sea. Before he went back he left a message nailed to the door of the church at Brome: the name of his sister's son, Coll, and yours, together.[else]A letter from Ravell, from Father Benet: Black Ewan came over the border in the winter while the army was away, and turned back at the Leven without burning anything. A young red-haired Caldmoor man was seen with him. Somebody says Coll of Glenhallow told his uncle that the March men were not worth the trouble this year. Nobody in the March knows why.[/if][if flag.c1_coll_ransomed || flag.c1_coll_given] Coll of Glenhallow, ransomed home, rides with his uncle now. He is said to have asked after you, without anger.[/if][if flag.father_war_secret && background == archer] At Brome, an old Caldmoor woman taken in the raid asked whether there was still a Fletcher alive. Nobody told her.[/if]
+  choices:
+    - id: read
+      text: Read it twice, and put it away.
+      text_after: There is nothing to be done from Sauvemer. [if flag.c1_coll_hanged]It will keep. These things keep.[else]You think of a red-haired boy going over a wall, stopping at the top to look back.[/if]
+      effects:
+        - if: flag.c1_coll_hanged
+          then: [ { set: flag.c2_ewan_vendetta } ]
+          else: [ { set: flag.c2_coll_repaid }, { add: { rep.caldmoor: 1 } } ]
+      next: "@return"
+
+- id: c2q_family_reeve
+  chapter: ch2
+  kind: queued
+  title: A Letter from Ashby
+  requires: [ background == reeve ]
+  text: |
+    [if flag.c1_father_exposed]A letter from your mother, written by Father Anselm. Your father is not well. He does not ask for you. She does.[elif flag.father_skims]A letter from your father. The new steward at Ashby is honest, which is worse than Gervase. He looks at every tally twice. Your father is tired, he writes, and would like to stop being reeve, and cannot afford to.[else]A letter from your father. Ashby has a new steward, an honest one. Your father is reeve for the twelfth year running. He is proud of you, he writes, in a sentence he has clearly rewritten several times.[/if]
+  choices:
+    - id: money
+      text: Send money home.
+      tags: [wealth]
+      requires: [ res.coin >= 120 ]
+      text_after: Ten shillings, by a Sauvemer merchant going to Wendham. [if flag.c1_father_exposed]Your mother writes back. Your father has not, but he has kept the letter.[else]Your father writes back, a receipt, the way he writes everything.[/if]
+      effects: [ { add: { res.coin: -120, rel.piers_reeve.affection: 2 } } ]
+      next: "@return"
+    - id: write
+      text: Write back.
+      text_after: You write. It is difficult. It gets easier toward the end.
+      effects: [ { add: { rel.piers_reeve.affection: 1 } } ]
+      next: "@return"
+
+- id: c2q_family_burgess
+  chapter: ch2
+  kind: queued
+  title: A Letter from Wendham
+  requires: [ background == burgess ]
+  text: |
+    A letter from your father. The war has been good for wool, he writes, and the Lanzi debt is half paid for the first time in three generations. [if flag.p_knows_debt]You have known about that debt since you were eight and listening at the counting-house door. He has never known that you knew.[/if] [if flag.c1_family_refused]He does not mention the pound you did not send. He mentions it by not mentioning it.[/if] He has heard you did well at Hautbois. Everyone in Wendham has heard. He has told them.
+  choices:
+    - id: write
+      text: Write back, and tell him something he can tell the council.
+      tags: [allies]
+      text_after: You tell him about the Duke of Orbec's lilies, and Vaudrey cloth, and the price of salt in the garrison. He will tell the council all of it. He will be insufferable for a year. You find you do not mind.
+      effects: [ { add: { rel.ralf_mercer.affection: 3, rep.merchants: 1 } } ]
+      next: "@return"
+    - id: short
+      text: Send a short note.
+      text_after: Short. He reads it to the council anyway.
+      effects: [ { add: { rel.ralf_mercer.affection: 1 } } ]
+      next: "@return"
+
+- id: c2q_family_archer
+  chapter: ch2
+  kind: queued
+  title: Your Father
+  requires: [ background == archer ]
+  text: |
+    [if flag.c2_went_home]A letter, a month after you come back from Adalia, from the priest at home. Your father died at Martinmas, at the butts, after Mass, with a bow in his hand. He had just put six in the clout. The priest thought you would want to know that.[else]A letter from the priest at home. Your father died at Martinmas, at the butts, after Mass, with a bow in his hand. He had asked for you, at the end. The priest is sorry. He did not know where to write until now.[/if]
+  choices:
+    - id: grieve
+      text: Find somewhere to be alone for a while.
+      text_after: The garrison chapel is empty in the afternoons. You sit there until it is dark. [if npc.will_cobb.alive]Will Cobb finds you there, and sits down at the other end of the bench, and says nothing for an hour, which is the kindest thing anyone has ever done for you.[/if]
+      effects: [ { kill: hugh_fletcher } ]
+      next: "@return"
+    - id: shoot
+      text: Go out to the butts below the walls and shoot until your fingers bleed.
+      tags: [martial]
+      text_after: Twelve arrows at two hundred paces. Ten in the clout. He would have said nine was good enough.
+      effects: [ { kill: hugh_fletcher }, { add: { skill.archery: 1 } } ]
+      next: "@return"
+
+- id: c2q_family_servant
+  chapter: ch2
+  kind: queued
+  title: A Letter from Ravell Hall
+  requires: [ background == servant ]
+  text: |
+    [if flag.c1_bought_off]Lady Ravell writes, which she said she would never do. She has paid you once to stay away; she is not writing to pay you again. [/if][if flag.p_used_secret]A letter from Lady Ravell, in her own hand. Your mother is ill. Lady Ravell has had her nursed, at her own expense, because Agnes was a good servant for twenty years whatever her son is. She thought you should know. She does not sign it with love.[else]A letter from your mother, written by Father Benet. She is getting old, she writes, and her eyes are going, and Lady Ravell has been kind. She is proud of you. She has told everyone in the house. She hopes you are wearing your good shirt.[/if]
+  choices:
+    - id: money
+      text: Send money for her care.
+      tags: [wealth]
+      requires: [ res.coin >= 120 ]
+      text_after: Ten shillings. [if flag.p_used_secret]You send it to Lady Ravell, with a note that says only "for Agnes". It comes back. Then it goes again, by a different road, and is not sent back the second time.[else]Your mother writes back that it is too much and that she has bought a new cap with it.[/if]
+      effects: [ { add: { res.coin: -120, rel.agnes_tirewoman.affection: 2 } } ]
+      next: "@return"
+    - id: write
+      text: Write back.
+      text_after: You write. You tell her you are wearing your good shirt. You are not.
+      effects: [ { add: { rel.agnes_tirewoman.affection: 1 } } ]
+      next: "@return"
+
+- id: c2q_lanzi
+  chapter: ch2
+  kind: queued
+  title: The Lanzi Book
+  requires: [ { any: [ flag.c1_lanzi_debt, flag.c2_lanzi_loan ] } ]
+  # Sir Hamon's Lanzi debt (c1_hamon_lanzi) is his, not yours, but the bank remembers who brokered it.
+  text: |
+    A clerk from the Lanzi house in Newtown, polite, with a ledger. [if flag.c1_hamon_lanzi]He mentions, in passing, that Sir Hamon Darrell's loan, which you brokered, is also in arrears.[/if] Your loan is due. [if counter.lanzi_debt >= 20]Twenty pounds and the interest, which is another eight.[else]The principal and the interest, which is more than you remember agreeing to.[/if]
+  choices:
+    - id: pay
+      text: Pay it, all of it.
+      tags: [wealth]
+      requires: [ res.coin >= 1200 ]
+      text_after: It hurts. When it is done the clerk crosses your name out of the book with a single neat line, and bows, and you are free of the Lanzi for the first time since Saltcombe.
+      effects: [ { add: { res.coin: -1200 } }, { clear: flag.c1_lanzi_debt }, { clear: flag.c2_lanzi_loan }, { assign: { counter.lanzi_debt: 0 } }, { add: { rep.sarenza: 1 } } ]
+      next: "@return"
+    - id: roll
+      text: Ask to roll it over, against your grant.
+      tags: [diplomacy]
+      check: { attr: presence, skill: trade, difficulty: 3, mods: [ { if: suit.fiammetta_lanzi.regard >= 3, add: 2, label: Fiammetta speaks for you } ] }
+      success:
+        text: The Lanzi will lend against land. They always will. Your debt rolls over against whatever the King gives you, at a slightly worse rate. You will be paying the Lanzi from Ormel for years.
+        effects: [ { set: flag.c2_lanzi_against_land }, { add: { counter.lanzi_debt: 5 } } ]
+        next: "@return"
+      failure:
+        text: The Lanzi will not roll it over. They will, however, take your second-best horse and your Valdrennish sword as part payment, and the rest by Easter.
+        effects: [ { add: { res.horses: -1, counter.lanzi_debt: 5 } }, { item: -valdrennish_sword } ]
+        next: "@return"

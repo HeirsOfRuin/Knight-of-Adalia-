@@ -34,6 +34,8 @@ const BaseEffectSchema = z.union([
   z.object({ kill: z.string().regex(/^@?[a-z][a-z0-9_]*$/) }).strict(),
   z.object({ alias: z.record(Id, Id) }).strict(), // alias: { master: hamon_darrell }
   z.object({ join: z.string().regex(/^@?[a-z][a-z0-9_]*$/) }).strict(), // npc joins his retinue
+  // battle losses: unnamed men lost, and how many named followers (chosen at random) are killed
+  z.object({ casualties: z.object({ men: z.number().int().min(0).default(0), named: z.number().int().min(0).default(0), spare: z.array(Id).default([]) }).strict() }).strict(),
   z.object({ leave: z.string().regex(/^@?[a-z][a-z0-9_]*$/) }).strict(), // npc leaves it
   z.object({
     queue: z.object({ event: Id, delay: Delay, earliest_chapter: z.string().optional() }).strict(), // chapter id
@@ -164,6 +166,7 @@ export const InjuryDefSchema = z.object({
   description: z.string(),
   mods: z.record(z.string(), z.number()).default({}),
   heals_after: z.number().int().optional(), // seasons; omitted = permanent
+  serious: z.boolean().default(false), // counts for the death rule (`injured`)
   scar: Id.optional(), // trait granted when it heals (or immediately if permanent)
 }).strict();
 export const ItemDefSchema = z.object({
@@ -171,6 +174,7 @@ export const ItemDefSchema = z.object({
   description: z.string(),
   mods: z.record(z.string(), z.number()).default({}),
   magic: z.boolean().default(false),
+  armour: z.number().int().min(0).max(3).default(0), // 1 light (jack), 2 full harness
 }).strict();
 export const FactionDefSchema = z.object({
   label: z.string(),

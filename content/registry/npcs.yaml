@@ -42,3 +42,22 @@ coll_glenhallow: { name: Coll, notes: "Ewan Dubh's nephew, sixteen. Taken in the
 joan_wyck: { name: Joan Wyck, title: Dame, notes: "Widow of Sir Hugh Wyck. Holds Wyck manor in her own right for now.", tags: [romance] }
 cecily_fuller: { name: Cecily Fuller, notes: "Master Osbert Fuller's daughter. Keeps her father's books better than he does.", tags: [romance] }
 king_aldred: { name: Aldred, title: King, notes: "Aldred II of Adalia.", faction: crown, station: royal }
+# ---- Chapter 2: the war ----------------------------------------------------
+davy_ludd: { name: Davy Ludd, notes: "Hob Crane's grandson from the Ravell stables. Fourteen, freckled, talks too much. Your squire or page." }
+roger_tallis: { name: Roger Tallis, notes: "Man-at-arms, forty-odd, ten years in the free companies. Speaks Valdrennish. Cynical, careful, a survivor." }
+jankin_rooke: { name: Jankin Rooke, notes: "Archer, eighteen, from the Ravell levy. Quiet, devout, the best shot in the company." }
+simkin_barre: { name: Simkin Barre, notes: "Archer, a Wendham carter's son. A joker and a thief. Braver than he lets anyone see." }
+perkin_dyer: { name: Perkin Dyer, notes: "Annot Dyer's brother. Big, slow-spoken, loyal as a dog." }
+dickon_laund: { name: Dickon, notes: "Nell's brother from Ravell village. Sharp, small, quick with a knife." }
+jehanne_armance: { name: Jehanne, title: Duchess, faction: valdrenne, notes: "Duchess of Armance. Her husband is Amaury's prisoner; she fights on, and has called in the Adalians." }
+gaucelin_brese: { name: Gaucelin de Brésy, title: Messire, faction: valdrenne, station: great_lord, notes: "Constable of Valdrenne. Despises archers." }
+raoul_corbie: { name: Raoul de Corbie, title: Messire, faction: valdrenne, station: knight, notes: "A Valdrennish knight of good family. Prisoner, and worth a great deal." }
+heloise_corbie: { name: Héloïse de Corbie, faction: valdrenne, tags: [romance], notes: "Raoul de Corbie's sister. Came to the Adalian camp to treat for his ransom." }
+baldwin_westry: { name: Baldwin, title: Earl, faction: nobles, station: great_lord, notes: "Earl of Westry. A King's man, rich in Adalian land." }
+alys_fane: { name: Alys Fane, title: Lady, faction: nobles, tags: [romance], notes: "The Earl of Westry's daughter, with the Queen's household in the King's camp." }
+fiammetta_lanzi: { name: Fiammetta Lanzi, faction: sarenza, tags: [romance], notes: "Matteo Lanzi's daughter. Keeps the bank's house in Sauvemer." }
+enguerrand_vaux: { name: Enguerrand de Vaux, title: Sire, faction: valdrenne, station: knight, notes: "Castellan of Sauvemer." }
+clemence_vaux: { name: Clémence de Vaux, title: Dame, faction: valdrenne, tags: [romance], notes: "The castellan's wife. Runs the town's stores during the siege." }
+orsino_brancale: { name: Orsino Brancale, title: Cardinal, faction: church, notes: "Papal legate, Sarenzan by birth. Brokers the truce." }
+ulric_rotbart: { name: Ulric Rotbart, faction: hroswald, notes: "Captain of the Iron Company, a free company of eight hundred." }
+queen_mathilde: { name: Mathilde, title: Queen, faction: crown, notes: "Aldred's queen. Comes to the camp at Sauvemer." }

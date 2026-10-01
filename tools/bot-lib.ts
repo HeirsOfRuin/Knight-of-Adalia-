@@ -115,7 +115,9 @@ export function describeFinal(s: GameState): Record<string, string> {
     master: s.aliases.master ?? 'none',
     'lost first master': s.flags.c1_lost_master ? 'yes' : 'no',
     'courtships open': String(suits.length),
-    renown: s.res.renown! >= 6 ? '6+' : s.res.renown! >= 3 ? '3-5' : '0-2',
+    renown: s.res.renown! >= 12 ? '12+' : s.res.renown! >= 6 ? '6-11' : '0-5',
+    'knighted by': s.flags.c1_dubbed_by_master ? 'master (ch1)' : s.flags.c1_dubbed_by_ravell ? 'Ravell (ch1)' : s.flags.c1_dubbed_by_king ? 'King (ch1)' : s.flags.c1_dubbed_by_pryce ? 'Pryce (ch1)' : s.flags.c2_knighted_eve ? 'eve of Hautbois' : s.flags.c2_knighted_field ? 'field of Hautbois' : s.flags.c2_knighted_siege ? 'siege' : s.flags.c2_ceremonial_knight ? 'ceremonial' : 'not knighted',
+    'following at end': String(Object.values(s.npcs).filter((n) => n.follower && n.alive).length + (s.res.men ?? 0)),
   };
 }
 

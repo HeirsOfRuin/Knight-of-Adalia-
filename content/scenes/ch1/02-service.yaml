@@ -75,11 +75,11 @@
         effects:
           - set: flag.c1_found_skim
           - add: { rel.hamon_darrell.respect: 2 }
-        next: { pool: c1_hall, count: 1, then: c1_christmas }
+        next: { pool: c1_hall, count: 1, then: c1_harvest_home }
       failure:
         text: The figures swim. Every column adds up and the money is still not there. You tell Sir Hamon you do not know. He pats your shoulder as if you were the one who needed comfort.
         effects: [ { add: { rel.hamon_darrell.affection: 1 } } ]
-        next: { pool: c1_hall, count: 1, then: c1_christmas }
+        next: { pool: c1_hall, count: 1, then: c1_harvest_home }
     - id: lanzi
       text: Go down to Master Lanzi yourself and talk him into waiting.
       tags: [wealth, diplomacy]
@@ -88,18 +88,18 @@
         skill: trade
         difficulty: 3
         audience: merchants
-        mods: [ { if: background == burgess, add: 2, label: he knows your family } ]
+        mods: [ { if: background == burgess, add: 2, label: he knows your family }, { if: flag.p_graded_wool, add: 1, label: you know what Ashby's clip is worth } ]
       success:
         text: Bertuccio Lanzi is a reasonable man, which means everything has a price. Two more years, at a higher rate, with Ashby's wool clip pledged for both. Sir Hamon signs without reading it. You read it.
         effects:
           - set: flag.c1_lanzi_delay
           - meet: bertuccio_lanzi
           - add: { rel.bertuccio_lanzi.respect: 2, rep.sarenza: 1, rel.hamon_darrell.affection: 2 }
-        next: { pool: c1_hall, count: 1, then: c1_christmas }
+        next: { pool: c1_hall, count: 1, then: c1_harvest_home }
       failure:
         text: Master Lanzi listens politely and says that he is sure Sir Hamon is a man of honour, and that the bank's lawyers are sure of it too.
         effects: [ { meet: bertuccio_lanzi } ]
-        next: { pool: c1_hall, count: 1, then: c1_christmas }
+        next: { pool: c1_hall, count: 1, then: c1_harvest_home }
     - id: ravell
       text: Tell Lord Ravell, quietly, before somebody less friendly does.
       tags: [allies, cunning]
@@ -108,13 +108,13 @@
         - set: flag.c1_told_ravell
         - meet: thurstan_ravell
         - add: { rel.hamon_darrell.affection: -3, rel.thurstan_ravell.respect: 2, rep.ruthlessness: 1 }
-      next: { pool: c1_hall, count: 1, then: c1_christmas }
+      next: { pool: c1_hall, count: 1, then: c1_harvest_home }
     - id: stay_out
       text: It is your master's business. Keep out of it.
       tags: [yield]
       text_after: You clean his harness and hold his horse and say nothing. Sir Hamon is grateful for that, in his way. The money is still missing.
       effects: [ { add: { rel.hamon_darrell.affection: 1 } } ]
-      next: { pool: c1_hall, count: 1, then: c1_christmas }
+      next: { pool: c1_hall, count: 1, then: c1_harvest_home }
 
 - id: c1_trouble_ancel
   chapter: ch1
@@ -142,10 +142,10 @@
           - set: flag.c1_found_cattle_trail
           - add: { rel.ancel_brome.respect: 2, skill.woodcraft: 1 }
           - meet: godric_thorne
-        next: { pool: c1_hall, count: 1, then: c1_christmas }
+        next: { pool: c1_hall, count: 1, then: c1_harvest_home }
       failure:
         text: The trail goes into the moss and does not come out. You come back with wet feet and nothing to show.
-        next: { pool: c1_hall, count: 1, then: c1_christmas }
+        next: { pool: c1_hall, count: 1, then: c1_harvest_home }
     - id: plaint
       text: Offer to write out Sir Ancel's plaint to Lord Ravell's court instead.
       tags: [learning, diplomacy]
@@ -161,11 +161,11 @@
         effects:
           - set: flag.c1_plaint_written
           - add: { rel.ancel_brome.respect: 1, rel.ancel_brome.affection: -1, rep.honor: 1 }
-        next: { pool: c1_hall, count: 1, then: c1_christmas }
+        next: { pool: c1_hall, count: 1, then: c1_harvest_home }
       failure:
         text: He hears you out and tells you to go and saddle his horse. He rides anyway.
         effects: [ { set: flag.c1_rode_reprisal }, { add: { rel.ancel_brome.affection: -1 } } ]
-        next: { pool: c1_hall, count: 1, then: c1_christmas }
+        next: { pool: c1_hall, count: 1, then: c1_harvest_home }
     - id: ride
       text: Arm yourself and ride with him to Thorne's mill.
       tags: [martial]
@@ -176,7 +176,7 @@
           - set: flag.c1_rode_reprisal
           - add: { rel.ancel_brome.affection: 2, rel.ancel_brome.respect: 1, rep.ruthlessness: 1, res.renown: 1, rel.godric_thorne.affection: -4 }
           - meet: godric_thorne
-        next: { pool: c1_hall, count: 1, then: c1_christmas }
+        next: { pool: c1_hall, count: 1, then: c1_harvest_home }
       failure:
         text: Thorne's men are waiting. A night skirmish in a millyard, all shouting and no light. You get a blade across the brow and a lesson in how quickly a raid becomes a rout.
         effects:
@@ -184,22 +184,24 @@
           - injury: cut_brow
           - add: { rel.ancel_brome.affection: 1, rel.godric_thorne.affection: -3 }
           - meet: godric_thorne
-        next: { pool: c1_hall, count: 1, then: c1_christmas }
+        next: { pool: c1_hall, count: 1, then: c1_harvest_home }
     - id: stay_out
       text: Hold the horses and keep your own counsel.
       tags: [yield]
       text_after: Sir Ancel rides without you and comes back at dawn smelling of smoke, with nothing to say. The mill is gone. So is any hope of settling the thing by law.
       effects: [ { set: flag.c1_rode_reprisal } ]
-      next: { pool: c1_hall, count: 1, then: c1_christmas }
+      next: { pool: c1_hall, count: 1, then: c1_harvest_home }
 
 - id: c1_christmas
   chapter: ch1
   title: Twelfth Night
-  on_enter: [ { advance: { seasons: 2 } } ]
+  on_enter: [ { advance: { seasons: 1 } } ]
   text: |
-    You are {age}.
+    Twelfth Night at Ravell Hall, your second in service, and the first at which anyone has bothered to learn your name.
 
-    Twelfth Night at Ravell Hall. The great hall is hung with green, there are minstrels from Wendham, and the Lord of Misrule is a fat cook in a paper crown. Everyone drinks too much. The rules are loosened, not lifted.
+    [break]
+
+    The great hall is hung with green, there are minstrels from Wendham, and the Lord of Misrule is a fat cook in a paper crown. Everyone drinks too much. The rules are loosened, not lifted.
 
     Lady Ravell's women dance the carol in a ring and choose partners from the young men. Isabel Sayer is among them. So is Lady Maud de Lisle, Lord Ravell's ward, fifteen, heiress of the barony of Lisle, who is watched by everyone and spoken to by almost no one. The Wendham burgesses have a table below the salt, with their wives and daughters. Master Osbert Fuller's daughter Cecily is the one doing her father's talking for him.
 
@@ -215,14 +217,14 @@
           - meet: isabel_sayer
           - assign: { suit.isabel_sayer.status: courted }
           - add: { suit.isabel_sayer.regard: 3, suit.isabel_sayer.discretion: -1, rel.isabel_sayer.affection: 2 }
-        next: c1_muster
+        next: c1_master_ride
       failure:
         text: The carol goes faster than you thought. You lose the step, then her hand, then the ring. She is kind about it. Lady Ravell is not; she says something to her chaplain that makes him smile.
         effects:
           - meet: isabel_sayer
           - assign: { suit.isabel_sayer.status: known }
           - add: { suit.isabel_sayer.regard: 1, rel.eleanor_ravell.respect: -1 }
-        next: c1_muster
+        next: c1_master_ride
     - id: maud
       text: Carry Lady Maud's cup when her own page is drunk, and listen to her.
       tags: [cunning]
@@ -235,7 +237,7 @@
           - assign: { suit.maud_delisle.status: known }
           - add: { suit.maud_delisle.regard: 2, suit.maud_delisle.discretion: -2 }
           - queue: { event: c1q_maud_sold, delay: { seasons: 9 }, earliest_chapter: ch1 }
-        next: c1_muster
+        next: c1_master_ride
       failure:
         text: She thanks you for the cup without looking at you. A ward of Lord Ravell does not talk to squires. Somebody's steward sees you hovering, and remembers it.
         effects:
@@ -243,7 +245,7 @@
           - assign: { suit.maud_delisle.status: known }
           - add: { suit.maud_delisle.discretion: -1 }
           - queue: { event: c1q_maud_sold, delay: { seasons: 9 }, earliest_chapter: ch1 }
-        next: c1_muster
+        next: c1_master_ride
     - id: cecily
       text: Go below the salt and sit with the Wendham burgesses.
       tags: [wealth, diplomacy]
@@ -254,13 +256,13 @@
           - meet: cecily_fuller
           - assign: { suit.cecily_fuller.status: courted }
           - add: { suit.cecily_fuller.regard: 3, rep.merchants: 1, rep.knights: -1 }
-        next: c1_muster
+        next: c1_master_ride
       failure:
         text: The burgesses are polite to you as a squire and wary of you as a stranger. Cecily Fuller asks what you want. You do not have a good answer.
         effects:
           - meet: cecily_fuller
           - assign: { suit.cecily_fuller.status: known }
-        next: c1_muster
+        next: c1_master_ride
     - id: knights
       text: Drink with the knights at the top table, and keep up.
       tags: [martial]
@@ -268,11 +270,11 @@
       success:
         text: You match Sir Bertram cup for cup and are still standing when he is singing. Your master tells the story of it for a year. The knights do not think of you as one of them. They think of you as someone they drank with, which is a start.
         effects: [ { add: { rep.knights: 1, rel.@master.affection: 2, rel.bertram_oakes.affection: 2 } } ]
-        next: c1_muster
+        next: c1_master_ride
       failure:
         text: You are sick in the rushes before the boar's head comes in. The knights find this funny. So does Giles Marrick.
         effects: [ { add: { rel.@master.affection: 1, rel.giles_marrick.respect: -1 } } ]
-        next: c1_muster
+        next: c1_master_ride
     - id: letter
       text: "Slip out to the chapel and write to [if background == reeve]Mag[elif background == burgess]Annot[elif background == archer]Mariot[else]Nell[/if] at home."
       tags: [learning]
@@ -288,4 +290,4 @@
           then: [ { add: { suit.mariot_wood.regard: 2 } } ]
         - if: background == servant
           then: [ { add: { suit.nell_laundress.regard: 2 } } ]
-      next: c1_muster
+      next: c1_master_ride

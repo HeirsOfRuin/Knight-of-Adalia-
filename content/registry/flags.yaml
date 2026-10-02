@@ -139,6 +139,14 @@ c1_dubbed_by_pryce: { description: "Knighted by Sir Walter Pryce in Carrow's col
 c1_carrow_indenture: { description: "Bound to three years' service to the Earl of Carrow", later: ch3 }
 c1_hired_champion: { description: "Hired a champion to clear Sir Hamon", hidden: true, later: ch3 }
 c1_ancel_lamed: { description: "Sir Ancel was lamed at the gate of Thorne Hall", hidden: true, later: ch3 }
+c1_aymer_pie: { description: "Aymer shared a stolen pie with him on his first night", hidden: true }
+c1_first_night_friend: { description: "Made a friend on his first night in service", hidden: true, later: ch3 }
+c1_harvest_family: { description: "Spent his harvest leave with his family", hidden: true, later: ch2 }
+c1_harvest_girl: { description: "Spent his harvest leave with his childhood sweetheart", hidden: true, later: ch2 }
+c1_master_confided: { description: "His master told him something private on the Lent ride", hidden: true, later: ch2 }
+c1_master_taught: { description: "His master taught him the one thing he knows best", hidden: true, later: ch2 }
+c1_shared_the_ford: { description: "Talked to a friend about the Leven ford", hidden: true, later: ch2 }
+c1_confessed_ford: { description: "Confessed the Leven ford to Father Benet", hidden: true, later: ch3 }
 
 # ---- Chapter 2 -------------------------------------------------------------
 c2_men_from_master: { description: "His first followers were lent by his master", hidden: true, later: ch3 }

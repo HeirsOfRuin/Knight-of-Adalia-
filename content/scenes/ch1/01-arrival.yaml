@@ -6,7 +6,7 @@
   title: Ravell Hall
   checkpoint: true
   text: |
-    [if background == servant]You are {age}, and you have lived at Ravell Hall all your life without ever once coming in by the front.
+    [if background == servant]You have lived at Ravell Hall all your life without ever once coming in by the front.
 
     You know every stone of it from the back. Which drain floods. Which door of the buttery sticks. Where the kitchen cats have their kittens. Which of the grooms will cover for you and which will not. You know the castle the way a mouse knows a house.
 
@@ -14,7 +14,7 @@
 
     The house has not changed. You are on the other side of it now, and from this side it looks different. It is bigger, and colder, and full of people you have served at table who have never once looked at your face.
 
-    [else]    You are {age}, and you have never seen so many people in one place who were not at a fair.
+    [else]    You have never seen so many people in one place who were not at a fair.
 
     You see Ravell Hall first from the ridge road, a mile off, across the water meadows: a square grey keep with a timber hall built against its flank like a barn leaning on a church, a curtain wall, a gatehouse, a moat that catches the light. Smoke from a dozen chimneys. Around the walls, outside them, the village: the mill, the smithy, the church of Saint Ebba with its squat tower, the alehouse with a bush over the door. Strip fields running down to the river. Sheep everywhere.
 
@@ -54,7 +54,7 @@
 
           [if alias.master == hamon_darrell]"Well," says Sir Hamon, "well, well," and pulls you up by the arm himself, and claps you on the back hard enough to knock the wind out of you, and tells the whole yard that his new boy has better manners than his old one.[else]"Get up," says Sir Ancel. You get up. Later, from the stable, you hear him tell Sir Bertram Oakes that the Fletcher boy, or the reeve's boy, or whatever he is, at least knows how to kneel. Sir Bertram says that is more than can be said for most of them. Sir Ancel says, "Hm."[/if]
         effects: [ { add: { rel.@master.respect: 1 } } ]
-        next: c1_duties
+        next: c1_first_night
       failure:
         text: |
           You go down on one knee in the yard, and the knee goes straight into a puddle that is not entirely water. The words come out in the wrong order. You say "faithfully" twice.
@@ -63,7 +63,7 @@
 
           Your master tells you to get up. [if alias.master == hamon_darrell]Sir Hamon is kind about it, which makes it worse: he pats your shoulder and says that he knelt in a cowpat on the day he was knighted and it never did him any harm.[else]Sir Ancel says nothing at all, which is his way of being kind. You find out later that this is the kindest thing he does.[/if] You spend the evening scrubbing your hose.
         effects: [ { add: { rel.giles_marrick.respect: -1 } }, { meet: giles_marrick } ]
-        next: c1_duties
+        next: c1_first_night
     - id: work
       text: Go straight to the stables and make yourself useful before anyone tells you to.
       tags: [martial]
@@ -78,7 +78,7 @@
       effects:
         - add: { rel.@master.affection: 1, rel.ranulf_marshal.respect: 1 }
         - meet: ranulf_marshal
-      next: c1_duties
+      next: c1_first_night
     - id: ask
       text: Find someone in the hall who might tell you how things are done here.
       tags: [allies]
@@ -98,15 +98,26 @@
         - meet: isabel_sayer
         - assign: { suit.isabel_sayer.status: known }
         - add: { suit.isabel_sayer.regard: 1 }
-      next: c1_duties
+      next: c1_first_night
 
 - id: c1_duties
   chapter: ch1
   title: "[if track == squire_track]The High Table[elif track == household]The Stables[else]The Butts at Brome[/if]"
   on_enter: [ { advance: { seasons: 1 } } ]
   text: |
-    
-    [if track == squire_track]Midsummer feast. The Earl of Carrow's captain, Sir Walter Pryce, is at the high table with Lord Ravell, and your master is to serve the lord's own dish. That means you are. A swan, carved in its proper joints, laid on trenchers in the proper order, with the proper words. Giles Marrick has done it before. He has offered to help you, which means he will not.[elif track == household]Midsummer. Lord Ravell's guests have brought forty horses and the stables are full to the rafters. One of them belongs to Sir Walter Pryce, the Earl of Carrow's captain, and it is the best horse you have ever seen. It is also sick.[else]Midsummer on the March. Sir Ancel's company practises at the butts below Brome Tower every morning, and Will Cobb watches who shoots and who talks. Today Sir Ancel is watching too, with a stranger: Sir Walter Pryce, the Earl of Carrow's captain, who is buying archers for somebody's war.[/if]
+    By Midsummer you have learned the first lesson of service, which is that nobody will tell you anything twice, and the second, which is that nobody will tell you anything once.
+
+    [break]
+
+    [if track == squire_track]Midsummer feast. The Earl of Carrow's captain, Sir Walter Pryce, is at the high table with Lord Ravell, and your master is to serve the lord's own dish. That means you are.
+
+    A swan, roasted and then dressed again in its own skin and feathers, with a gilded beak. It must be carved in its proper joints, laid on trenchers in the proper order, and presented with the proper words, while forty people watch and the Earl of Carrow's man judges Lord Ravell's household by how it is done. Giles Marrick has done it before. He has offered to help you, which means he will not.[elif track == household]Midsummer. Lord Ravell's guests have brought forty horses, and the stables are full to the rafters, and you have not sat down since Prime.
+
+    One of the horses belongs to Sir Walter Pryce, the Earl of Carrow's captain: a bay courser with a white blaze, the best horse you have ever seen, worth more than your father will earn in his life. It is standing in the end stall with its head low and its flanks going like a bellows. It is sick, and its owner does not know yet, and when he finds out, someone in this stable will be blamed.[else]Midsummer on the March. Sir Ancel's company practises at the butts below Brome Tower every morning, in the wind off the hills, and Will Cobb walks up and down behind the line and watches who shoots and who talks.
+
+    Today Sir Ancel is watching too, with a stranger: Sir Walter Pryce, the Earl of Carrow's captain, in a red surcoat with a black boar, who is buying archers for somebody's war and says so openly. Cobb says the best man today shoots for the Earl's money. Cobb does not say whether that is a reward or a punishment.[/if]
+
+    [if flag.p_met_pryce]You knew the name before you heard it. A knight on a lame horse in the wet year, and a penny, and four things a man needs. He does not look at you. Why would he.[/if]
   choices:
     - id: careful
       text: "[if track == squire_track]Serve slowly and correctly, every joint in its place.[elif track == household]Nurse Sir Walter's horse yourself, all night if you have to.[else]Shoot slow and steady and say nothing.[/if]"
@@ -180,12 +191,15 @@
   title: Giles Marrick
   on_enter: [ { advance: { seasons: 1 } }, { meet: giles_marrick } ]
   text: |
-    
-    [if station == squire]At Michaelmas your master named you his squire before the household. It means you are fed at the second table, carry his harness, sleep across his door when he travels, and are beaten by him rather than by grooms.[/if]
+    [if station == squire]At Michaelmas your master names you his squire before the household, in the hall, after Mass, with his hand on your shoulder. It means you are fed at the second table, carry his harness, sleep across his door when he travels, and are beaten by him rather than by grooms. It means more than that, and less, and you will spend years finding out which.[else]By Michaelmas you know every job in your corner of the household, and which of them nobody else will do, and that those are now yours.[/if]
 
-    Giles Marrick is seventeen, the son of a Carrow knight, and he has decided you are a churl in a borrowed coat. [if track == squire_track]He calls you the {origin} in front of the other squires. He has put your master's best harness in the moat and told the marshal you did it.[else]He calls you the {origin} whenever he passes. Yesterday he had you whipped for insolence because you did not step out of the mud fast enough when he rode by.[/if]
+    [break]
 
-    The other squires watch to see what you do. [if rel.aymer_ravell.affection >= 3]Aymer Ravell catches your eye, and shrugs: your quarrel, not mine, unless you ask.[/if]
+    Giles Marrick is seventeen, the second son of a Carrow knight, tall, with good teeth and a better sword, and he has decided you are a churl in a borrowed coat. He does not shout about it. He smiles at the side of your head.
+
+    [if track == squire_track]He calls you the {origin} in front of the other squires, as if it were your name, and they have started to use it too. Last week your master's best harness went into the moat, and Giles told the marshal you had been careless with it, and the marshal believed him, because Giles is a gentleman.[else]He calls you the {origin} whenever he passes. Yesterday he had you whipped for insolence, in the yard, because you did not step out of the mud fast enough when he rode by, and the man who whipped you apologised afterwards, quietly, which was worse.[/if]
+
+    The other squires watch to see what you do. [if rel.aymer_ravell.affection >= 3]Aymer Ravell catches your eye and shrugs: your quarrel, not mine, unless you ask.[/if] [if flag.c1_first_night_friend && alias.master == ancel_brome]Will Cobb says only, "There's always one."[/if]
   choices:
     - id: fight
       text: Challenge him at the pell, in front of Sir Bertram Oakes.

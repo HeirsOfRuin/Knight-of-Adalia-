@@ -216,7 +216,7 @@
     - id: family
       text: Spend the summer with your family.
       tags: [allies]
-      text_after: It is a quiet summer, and the best one you have had in years. You mend things. You eat too much. At the end of it your family stand in the lane and watch you go, and this time you look back.
+      text_after: It is a quiet summer, and the best one you have had in years. [if flag.c1_harvest_family]It is like the harvest leave, long ago, when you were a boy in a new coat, except that this time you are the one who notices how they have aged.[/if] You mend things. You eat too much. At the end of it your family stand in the lane and watch you go, and this time you look back.
       effects:
         - if: background == reeve
           then: [ { add: { rel.piers_reeve.affection: 3 } } ]
@@ -232,7 +232,7 @@
       tags: [diplomacy]
       visible_if: [ { any: [ [ background == reeve, suit.mag_coker.status != lost ], [ background == burgess, suit.annot_dyer.status != lost ], [ background == archer, suit.mariot_wood.status != lost ], [ background == servant, suit.nell_laundress.status != lost ] ] } ]
       text_after: |
-        [if flag.p_promised_girl]You told her once that you would come back. She reminds you of it, the first evening, as if it were a debt you had paid.[/if] She has waited, or she has not waited and has not married either, which comes to the same thing. You walk out together on the long evenings. Nobody in the village thinks it will come to anything, because you are what you are now and she is what she is. She knows that better than they do. She walks out with you anyway.
+        [if flag.c1_harvest_girl]"Next year, then," she said, the last time. It has been six years. She does not mention it. Neither do you.[/if] [if flag.p_promised_girl]You told her once that you would come back. She reminds you of it, the first evening, as if it were a debt you had paid.[/if] She has waited, or she has not waited and has not married either, which comes to the same thing. You walk out together on the long evenings. Nobody in the village thinks it will come to anything, because you are what you are now and she is what she is. She knows that better than they do. She walks out with you anyway.
       effects:
         - if: background == reeve
           then: [ { add: { suit.mag_coker.regard: 3 } }, { assign: { suit.mag_coker.status: courted } } ]

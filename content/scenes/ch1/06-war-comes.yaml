@@ -6,9 +6,7 @@
   title: The Claim
   on_enter: [ { advance: { seasons: 2 } } ]
   text: |
-    You are {age}.
-
-    At Christmas the heralds ride through every shire town in Adalia with the King's letters. Aldred, by the grace of God King of Adalia, is by right of his mother the true King of Valdrenne, and will take what is his. The Moot has granted a tenth and a fifteenth. Writs of array go out for archers. The great lords are to bring their companies to Saltcombe by Saint George's Day.
+    The summer's trouble ends one way or another, as trouble does, and leaves its marks. Then, at Christmas, the heralds ride through every shire town in Adalia with the King's letters. Aldred, by the grace of God King of Adalia, is by right of his mother the true King of Valdrenne, and will take what is his. The Moot has granted a tenth and a fifteenth. Writs of array go out for archers. The great lords are to bring their companies to Saltcombe by Saint George's Day.
 
     Lord Ravell will take forty lances and two hundred archers. Every knight of his is going. Every squire is going. [if alias.master == walter_pryce]The Earl of Carrow's company will be twice that, and Sir Walter Pryce means to come home from it a banneret.[/if]
 
@@ -113,14 +111,16 @@
   text: |
     You have the means. Now you need a knight willing to give you the accolade, and to stand for you afterwards, because a knight dubbed by nobody in particular is nobody in particular.
 
-    And you need to be able to pass for one. A knight who eats with his knife in the salt, or does not know which knee to kneel on, shames the man who dubbed him. [if skill.courtesy < 2]Lord Ravell's knights have noticed that you do not know these things. Your own master may forgive it. A lord or a king will not.[/if]
+    [break]
+
+    And you need to be able to pass for one. A knight who eats with his knife in the salt, or does not know which knee to kneel on, or calls a banneret "sir" when he should say "my lord," shames the man who dubbed him, and the man who dubbed him knows it. [if skill.courtesy < 2]Lord Ravell's knights have noticed that you do not know these things. Your own master may forgive it. A lord or a king will not.[elif flag.p_mother_gentle]Your mother taught you most of it, with her hand over yours on her father's sword. It turns out she was right.[/if]
 
     [if trait.oathbreaker]There are knights at Ravell who will not stand in the same chapel as you.[/if]
   choices:
     - id: master
       text: Ask your master to knight you.
       tags: [allies]
-      requires: [ npc.@master.alive, rel.@master.respect >= 4, res.renown >= 2, { any: [ background != archer, rep.knights >= 2 ] } ]
+      requires: [ npc.@master.alive, rel.@master.respect >= 6, res.renown >= 2, { any: [ background != archer, rep.knights >= 2 ] } ]
       label: "Requires: your master's respect, some renown[if background == archer], and knights willing to stand witness for a bowman's son (Knights standing 2)[/if]"
       text_after: "He says yes before you have finished asking.[if background == archer] Finding two knights to stand witness takes longer. Some of the men who will not are men you have fought beside.[/if]"
       effects:
@@ -174,7 +174,13 @@
   chapter: ch1
   title: The Vigil
   text: |
-    The night before, you keep vigil in the chapel in a white shirt, with your sword on the altar. You are supposed to pray until dawn and think about the duties of a knight: to defend the Church, the weak, the widow, and his lord.
+    The night before, you keep vigil in the chapel in a white shirt, barefoot on the cold stone, with your sword on the altar and a candle burning down beside it.
+
+    You are supposed to pray until dawn and think about the duties of a knight: to defend the Church, the weak, the widow, and his lord. You try. Your mind keeps going elsewhere.
+
+    [break]
+
+    [if background == reeve]To Ashby, and the tithe barn, and a boy in his dead brother's blue tunic counting oats.[if flag.p_asked_brother] To a wooden horse with the paint worn off its back.[/if][elif background == burgess]To Wendham, and the wool loft, and the smell of money.[if flag.p_mother_gentle] To your mother's father's spurs, which fit you now.[/if][elif background == archer]To Hollin, and the butts, and your father shooting from one leg with nobody watching.[if flag.p_mothers_ask] To your mother at the wheel, asking you to come home all of you.[/if][else]To the kitchen at Ravell, forty paces from this chapel and a whole life away, and Hob Crane spitting in the fire.[/if] [if flag.p_asked_knight]To a knight on a road, and his four things. Be useful. Be lucky. Be there. Don't die. You have managed three.[/if]
 
     In the morning you are bathed, dressed, armed, and struck once on the neck. It is harder than you expected. Then you are Sir {name}, and the world is exactly the same, except that it is not.
   choices:
@@ -207,11 +213,13 @@
         - if: { any: [ "!npc.@master.alive", flag.c1_hamon_fell ] }
           then: [ { alias: { master: walter_pryce } }, { set: flag.c1_pryce_man } ]
   text: |
-    You will cross as a man-at-arms: a mounted soldier in harness, paid a shilling a day, a long step below a knight and a long step above an archer.
+    You will cross as a man-at-arms: a mounted soldier in harness, paid a shilling a day, a long step below a knight and a long step above an archer. It is not what you hoped for. It is more than anyone in your family has ever had.
 
-    [if alias.master == walter_pryce]Sir Walter Pryce draws up the indenture for the Earl of Carrow's company. A year's service, half the profits of war to the Earl, a third of your ransoms to your captain. He adds a line in his own hand: that he will present you for knighthood at the first fit occasion in the field. "I keep my word," he says. "It's cheaper than keeping men."[elif alias.master == thurstan_ravell]Lord Ravell's clerk draws up the indenture. A year, wages at the King's rate, ransoms shared by custom. Lord Ravell signs it himself, and adds that he will see you knighted on the field if you give him the chance.[else]Your master draws up the indenture with Father Benet. A year's service, a shilling a day, a share of ransoms. Then he swears on the chapel relics, in front of you, that he will put you forward for the spurs at the first fight worth the name.[/if]
+    [break]
 
-    It is a promise. On campaign promises are what men live on, until the pay comes.
+    [if alias.master == walter_pryce]Sir Walter Pryce draws up the indenture for the Earl of Carrow's company in a Wendham inn, at a table covered with other men's indentures. A year's service, half the profits of war to the Earl, a third of your ransoms to your captain. He adds a line in his own hand: that he will present you for knighthood at the first fit occasion in the field. "I keep my word," he says. "It's cheaper than keeping men."[elif alias.master == thurstan_ravell]Lord Ravell's clerk draws up the indenture. A year, wages at the King's rate, ransoms shared by custom. Lord Ravell signs it himself, without reading it, and adds, without looking up, that he will see you knighted on the field if you give him the chance.[else]Your master draws up the indenture with Father Benet. A year's service, a shilling a day, a share of ransoms. Then he swears on the chapel relics, in front of you, that he will put you forward for the spurs at the first fight worth the name.[/if]
+
+    It is a promise. On campaign, promises are what men live on, until the pay comes.
   choices:
     - id: sign
       text: Put your hand to it.
@@ -261,11 +269,13 @@
   title: Before the Ships
   on_enter: [ { advance: { seasons: 1 } } ]
   text: |
-    You are {age}. The army musters at Saltcombe in a week.
+    Spring comes early that year, which the old men say is a bad sign, and the young men say is a good one. The army musters at Saltcombe in a week.
 
     There is time for one thing before you go. Perhaps two, if you do not sleep.
 
-    [if suit.isabel_sayer.status >= courted]Isabel Sayer is at Ravell with Lady Ravell's household.[/if] [if suit.maud_delisle.status >= courted]Lady Maud de Lisle is at Wendmere in the King's wardship, and has written to you twice.[/if] [if suit.cecily_fuller.status >= courted]Cecily Fuller is in Wendham, keeping her father's books.[/if] [if suit.joan_wyck.regard >= 3]Dame Joan Wyck is at Wyck, a half-day west.[/if] [if counter.tokens >= 1]You have already given a token to someone. Men who give two tokens are found out.[/if]
+    [break]
+
+    [if suit.isabel_sayer.status >= courted]Isabel Sayer is at Ravell with Lady Ravell's household.[/if] [if suit.maud_delisle.status >= courted]Lady Maud de Lisle is at Wendmere in the King's wardship, and has written to you twice.[/if] [if suit.cecily_fuller.status >= courted]Cecily Fuller is in Wendham, keeping her father's books.[/if] [if suit.joan_wyck.regard >= 3]Dame Joan Wyck is at Wyck, a half-day west.[/if] [if flag.c1_harvest_girl]At home, someone said "Next year, then," as if it were settled.[/if] [if counter.tokens >= 1]You have already given a token to someone. Men who give two tokens are found out.[/if]
   choices:
     - id: isabel
       text: Find Isabel Sayer and give her your token.
@@ -340,7 +350,9 @@
     - if: counter.tokens >= 2
       then: [ { set: flag.c1_two_tokens } ]
   text: |
-    You are {age}.
+    You come down into Saltcombe on Saint George's Eve with the rest of the shire, behind the Ravell banner, at the end of a column a mile long.
+
+    [break]
 
     Saltcombe harbour is so full of ships that you could walk across it on their decks. Horses are being slung aboard in canvas with their legs kicking. Archers are counting arrows. A Sarenzan galley sits at the mouth of the harbour like a crow on a fence, waiting to see who wins.
 

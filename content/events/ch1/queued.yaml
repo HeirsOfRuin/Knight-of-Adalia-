@@ -18,6 +18,7 @@
         mods:
           - { if: flag.p_rival_peace, add: 2, label: you made peace before }
           - { if: flag.p_rival_beaten, add: -1, label: you beat him once }
+          - { if: flag.p_jumped_alone, add: 1, label: he has respected you since Midsummer }
       success:
         text: It takes a jug of ale and an evening, and some things you would rather not have said. At the end of it you are not friends. You are the next thing to it, which is two men who know the worst of each other and have decided not to use it.
         effects: [ { set: flag.c1_rival_ally }, { add: { rel.@rival.affection: 4, rel.@rival.respect: 1 } } ]

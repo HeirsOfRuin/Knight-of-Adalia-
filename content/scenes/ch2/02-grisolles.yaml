@@ -203,7 +203,7 @@
 
     [break]
 
-    [if npc.aymer_ravell.friend]You see Aymer Ravell, on foot, his horse gone, in a knot of his father's men who are fighting back to back by a burning cart.[elif npc.will_cobb.friend]You see Will Cobb and the last of his archers out on the right, cut off by the river, with Valdrennish horse between them and the bridge.[/if]
+    [if npc.aymer_ravell.friend]You see Aymer Ravell,[if flag.c1_aymer_pie] who shared a stolen pie with you on your first night at Ravell,[/if] on foot, his horse gone, in a knot of his father's men who are fighting back to back by a burning cart.[elif npc.will_cobb.friend]You see Will Cobb and the last of his archers out on the right, cut off by the river, with Valdrennish horse between them and the bridge.[/if]
 
     [if alias.master != walter_pryce][if flag.c2_grisolles_with_master]Your master is beside you, and the bridge is four hundred paces behind.[else]You cannot see your master's banner. The last you saw of it, it was going down into the press.[/if][/if]
   choices:
@@ -254,7 +254,7 @@
           - { if: armour >= 2, add: 2, label: your harness }
           - { if: armour == 1, add: 1, label: your jack }
           - { if: npc.roger_tallis.follower, add: 1, label: "Tallis comes with you, cursing" }
-          - { if: rel.@master.affection >= 5, add: 1, label: you know where he will be }
+          - { if: rel.@master.affection >= 5 || flag.c1_master_confided, add: 1, label: you know where he will be }
       success:
         text: |
           [if alias.master == hamon_darrell]Sir Hamon is on his knees by a dead horse with his sword still up, and three men around him deciding whether he is worth more alive. You come through them.[elif alias.master == thurstan_ravell]Lord Ravell's banner is down and he is under it, unhorsed, with a Valdrennish knight reaching for his helm to see his face. You come through them.[else]Your master is fighting with his back to a cart, and his left arm hanging. You come through to him.[/if] You do not remember the way back. You remember the bridge, and the engineers' faces as you came over it, and the arch going down behind your heels.
@@ -348,7 +348,7 @@
     - id: count
       text: Count your men, and name the missing.
       tags: [allies]
-      text_after: You go round them in the dark, twice. [if retinue >= 3]You know the faces that are here. It is the faces that are not that you keep seeing.[else]There are not many to count.[/if] [if npc.davy_ludd.follower]Davy sits beside you afterwards with his knees drawn up and asks whether it is always like this. You say no. You do not know if that is true.[/if]
+      text_after: You go round them in the dark, twice. [if flag.c1_shared_the_ford]You remember the winter after the Leven, and who sat up with you, and you sit up with them now.[/if] [if retinue >= 3]You know the faces that are here. It is the faces that are not that you keep seeing.[else]There are not many to count.[/if] [if npc.davy_ludd.follower]Davy sits beside you afterwards with his knees drawn up and asks whether it is always like this. You say no. You do not know if that is true.[/if]
       effects: [ { add: { rel.davy_ludd.loyalty: 1, rel.jankin_rooke.loyalty: 1, rel.simkin_barre.loyalty: 1, rel.roger_tallis.loyalty: 1, rel.wat_coker.loyalty: 1, rel.perkin_dyer.loyalty: 1, rel.gib_shawe.loyalty: 1, rel.dickon_laund.loyalty: 1 } } ]
       next: c2_retreat
     - id: list
@@ -410,6 +410,7 @@
         mods:
           - { if: npc.jankin_rooke.follower || npc.simkin_barre.follower, add: 1, label: your archers }
           - { if: flag.c2_heard_council, add: 1, label: you know the road ahead }
+          - { if: flag.c1_master_taught && alias.master == ancel_brome, add: 1, label: Sir Ancel taught you to read ground }
           - { if: npc.roger_tallis.follower, add: 1, label: Tallis knows how they ride }
       success:
         text: Archers in the alders, a felled tree on the far bank, your men-at-arms behind it. Twenty Hroswald riders come down to the water at dusk, and only a few of them ride back up. You take six horses and a prisoner who tells you, cheerfully, that the Iron Company has been promised Valdrennish pay through the winter, and does not believe it either.

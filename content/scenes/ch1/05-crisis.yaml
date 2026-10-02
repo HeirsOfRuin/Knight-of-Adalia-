@@ -6,11 +6,19 @@
   title: The Commissioners
   checkpoint: true
   text: |
-    Sir Walter Pryce sits at Lord Ravell's table with two clerks, the subsidy rolls, and the Earl of Carrow's commission. Sixty pounds of the King's money passed through Sir Hamon's hands and did not come out of them. Sir Walter is courteous. He says that if it is not found by Lammas, Sir Hamon will answer for it in the King's court, and that the Earl will ask for Ashby to be forfeit.
+    The commissioners come on the feast of Saint John, in the rain, and take over Lord Ravell's chapel chamber for a month.
 
-    Sir Hamon says he took nothing. He says he will prove it on any man's body, by combat, as his grandfather would have. He is fifty-six and has not fought on foot in fifteen years. Sir Walter smiles and says the Earl will provide a champion.
+    Sir Walter Pryce sits at the table with two clerks, the subsidy rolls, and the Earl of Carrow's commission under the Earl's seal. He is courteous to everyone, including the boy who brings the wine. He is courteous to Sir Hamon. He explains, courteously, that sixty pounds of the King's money passed through Sir Hamon's hands and did not come out of them, and that if it is not found by Lammas, Sir Hamon will answer for it in the King's court, and the Earl will ask for Ashby to be forfeit.
 
-    [if flag.c1_found_skim]You have your copy of the Ashby figures in your shirt.[/if][if flag.c1_lanzi_delay] Master Lanzi has already been asking who will pay the bank if Ashby goes.[/if][if flag.c1_told_ravell] Lord Ravell has known about the money for a year. He has done nothing.[/if]
+    [break]
+
+    Sir Hamon goes red, then white. He says he took nothing. He says he will prove it on any man's body, by combat, as his grandfather would have. He is fifty-six and has not fought on foot in fifteen years, and everyone at the table looks at the table.
+
+    Sir Walter smiles, not unkindly, and says the Earl will provide a champion.
+
+    Afterwards, in the passage, Sir Hamon leans against the wall with his hand on his chest for a while before he can walk on. He says it is the stairs.
+
+    [if flag.c1_found_skim]You have your copy of the Ashby figures in your shirt. You can feel it there, like a second heart.[/if][if flag.c1_lanzi_delay] Master Lanzi has already been asking who will pay the bank if Ashby goes.[/if][if flag.c1_told_ravell] Lord Ravell has known about the money for a year. He has done nothing.[/if]
   choices:
     - id: rolls
       text: Go through the rolls in front of the commissioners and show where the money went.
@@ -165,7 +173,13 @@
   chapter: ch1
   title: Your Father's Hand
   text: |
-    You found more than Gervase in the rolls. Beside his entries, in a careful clerk's hand you learned your letters from, are your father's. Piers the reeve took less than the steward. He took enough.
+    You found more than Gervase Holt in the rolls.
+
+    Beside his entries, in the careful hand that taught you your letters on a hearthstone with a burnt stick, are your father's. Piers the reeve took less than the steward. Less by far. He took enough.
+
+    [break]
+
+    You sit with the roll in the commissioners' chamber long after the candle should have gone out, looking at the shape of the numbers, which you would know anywhere. [if flag.p_spoke_up]You told the truth about him once, at eight, in the tithe barn. You remember his silence afterwards, all the way to Whitsun.[elif flag.p_kept_quiet]He gave you a silver penny, once, and closed your fingers over it. You understand now exactly how much it cost.[/if]
 
     The commissioners have not noticed yet. Sir Walter Pryce's clerk has the roll on his desk for one more night.
   choices:
@@ -229,11 +243,17 @@
   title: Fire on the March
   checkpoint: true
   text: |
-    Brome's barns are ash. Sir Ancel's reeve is in the churchyard. Sir Godric Thorne says he knows nothing of it, from behind the walls of Thorne Hall with thirty men.
+    The word comes down from the March in June: Brome's barns are ash, and Sir Ancel's reeve is in the churchyard with his skull broken, and his widow is sitting in the burned barn and will not come out.
 
-    Sir Ancel means to burn Thorne Hall over Thorne's head. Lord Ravell has forbidden it in writing: the King wants every knight on the March alive and quiet until the army sails. Sir Ancel says the King can come north and stop him.
+    You ride north with Sir Ancel the same day. He does not say anything for three days. On the fourth, when Brome Tower comes in sight with the black patch beside it where the barns were, he says "Hm," and you understand that it is the angriest you will ever hear him.
 
-    [if flag.c1_found_cattle_trail]You still have the Thorne man's knife from the shieling by the drove road.[/if][if flag.c1_plaint_written] The plaint you wrote last year is still before Lord Ravell's court, unread.[/if][if flag.c1_rode_reprisal] Thorne has not forgotten his mill.[/if]
+    [break]
+
+    Sir Godric Thorne says he knows nothing of it. He says it from behind the palisade of Thorne Hall, with thirty men.
+
+    Sir Ancel means to burn Thorne Hall over Thorne's head. Lord Ravell has forbidden it in writing: the King wants every knight on the March alive and quiet until the army sails. Sir Ancel reads the letter twice and says the King can come north and stop him.
+
+    [if flag.c1_found_cattle_trail]You still have the Thorne man's knife from the shieling by the drove road.[/if][if flag.c1_plaint_written] The plaint you wrote last year is still before Lord Ravell's court, unread.[/if][if flag.c1_rode_reprisal] Thorne has not forgotten his mill.[/if] [if flag.c1_master_confided]He told you about Harrow Ford, once, on the pass. He has never told you what he will do if anyone else he owes dies on his land. You think you are about to find out.[/if]
   choices:
     - id: proof
       text: Lay the proof of Thorne's dealings with Black Ewan before Lord Ravell.
@@ -313,9 +333,15 @@
   chapter: ch1
   title: Thorne Hall
   text: |
-    Twenty men, at night, with fire. Thorne Hall has a ditch, a palisade, and a gate of oak. Thorne knows you are coming; everyone on the March knows everything.
+    Twenty men, at night, with fire.
 
-    Sir Ancel goes for the gate. He will not be talked out of it now. Your place is at his back.
+    Thorne Hall has a ditch, a palisade of sharpened oak, and a gate with iron straps, and a lamp in the gatehouse window. Thorne knows you are coming. Everyone on the March knows everything, usually before it happens.
+
+    [break]
+
+    Sir Ancel goes for the gate. He has had three days to be talked out of it, and nobody has managed, and nobody will now. He sits his horse in the dark at the edge of the trees, looking at the lamp, and says, quite softly, "Hm."
+
+    Then he goes. Your place is at his back.
   choices:
     - id: gate
       text: Go in at the gate with him, in front of the others.
@@ -370,9 +396,13 @@
   chapter: ch1
   title: A New Master
   text: |
-    A squire without a master is nothing, a mouth in the hall that no one is obliged to feed. You need someone, before the army sails.
+    A squire without a master is nothing: a mouth in the hall that no one is obliged to feed, sleeping in a corner on sufferance, until someone remembers to tell him to go.
 
-    [if flag.ravell_favor]Lord Ravell has not forgotten you.[/if] [if alias.master == hamon_darrell]Sir Ancel Brome needs men for the war, and asks nothing about where they came from.[else]Sir Hamon Darrell is still at Ravell, short of everything, including a squire.[/if] Sir Walter Pryce is in Wendham, hiring for the Earl of Carrow's company, and takes anyone who can sit a horse.
+    You have perhaps a month before someone remembers. The army sails in the spring. Every captain in the shire is hiring.
+
+    [break]
+
+    [if flag.ravell_favor]Lord Ravell has not forgotten you. He has not said so, either.[/if] [if alias.master == hamon_darrell]Sir Ancel Brome needs men for the war, and asks nothing about where they came from.[else]Sir Hamon Darrell is still at Ravell, short of everything, including a squire.[/if] Sir Walter Pryce is in Wendham, hiring for the Earl of Carrow's company, and takes anyone who can sit a horse. [if flag.p_met_pryce]He told you, once, on a road in the wet year, that a man needs to be useful to someone who matters. You think about who matters.[/if]
   choices:
     - id: ravell
       text: Go to Lord Ravell.

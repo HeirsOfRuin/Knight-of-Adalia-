@@ -4,13 +4,15 @@
 - id: c1_progress
   chapter: ch1
   title: The King at Ravell
-  on_enter: [ { advance: { seasons: 4 } }, { meet: king_aldred }, { meet: osmund_carrow } ]
+  on_enter: [ { advance: { seasons: 2 } }, { meet: king_aldred }, { meet: osmund_carrow } ]
   text: |
-    You are {age}.
+    In the summer the King comes, and the winter's dreams go wherever such things go when there is no time for them.
 
     King Aldred comes to Ravell on his summer progress with three hundred people and eats the house bare in four days. He is thirty-four, thin, quick, with his mother's dark Valdrennish eyes. He talks about Valdrenne at every meal. The crown there is his by right, he says, through his mother, and the peers of Valdrenne gave it to a cousin because they were afraid of an Adalian king. He does not say what he means to do about it. Everyone at the high table knows.
 
-    The Earl of Carrow rides in on the second day with Sir Walter Pryce and forty men. The Earl does not like the King's war; he likes it less that the King has not asked him to pay for it yet. [if flag.c1_maud_confided]You notice that Carrow's younger son is seated next to Lady Maud de Lisle. She looks at her plate the whole meal.[/if]
+    [break]
+
+    The Earl of Carrow rides in on the second day with Sir Walter Pryce and forty men.[if flag.p_met_pryce] Sir Walter is a banneret's age now, browner and harder, in better harness. You know him at once. He does not know you, and then, across the hall, at supper, he does: you see it in his face.[/if] The Earl does not like the King's war; he likes it less that the King has not asked him to pay for it yet. [if flag.c1_maud_confided]You notice that Carrow's younger son is seated next to Lady Maud de Lisle. She looks at her plate the whole meal.[/if]
 
     The household is in a fever. Squires are everywhere at once. For three days it is possible, just, for anyone to be seen by anyone.
   choices:
@@ -58,9 +60,9 @@
     - id: pryce
       text: Make yourself known to Sir Walter Pryce, who is hiring men for the war.
       tags: [allies, cunning]
-      check: { attr: presence, skill: diplomacy, difficulty: 3, mods: [ { if: flag.c1_duties_well, add: 1, label: he remembers you } ] }
+      check: { attr: presence, skill: diplomacy, difficulty: 3, mods: [ { if: flag.c1_duties_well, add: 1, label: he remembers you }, { if: flag.p_asked_knight || flag.p_kicked_squire, add: 1, label: the boy on the road } ] }
       success:
-        text: Sir Walter is a younger son who has made himself a captain and is proud of it. He likes men who came up the hard way, he says, because they know what things cost. He tells you that if you ever need a place, the Earl's company pays on time. He says it as though most companies do not. They do not.
+        text: "[if flag.p_kicked_squire]'The dog,' he says, before you can speak. 'You kicked Hugo for the dog.' He laughs. 'Hugo's dead, at a tourney in the north. Broke his neck. He was a fool.' [elif flag.p_asked_knight]'Be useful, be lucky, be there, don't die,' he says, before you can speak. 'You remembered. Most don't.' [/if]Sir Walter is a younger son who has made himself a captain and is proud of it. He likes men who came up the hard way, he says, because they know what things cost. He tells you that if you ever need a place, the Earl's company pays on time. He says it as though most companies do not. They do not."
         effects:
           - set: flag.c1_pryce_contact
           - meet: walter_pryce
@@ -107,12 +109,15 @@
   title: The Ravell Tourney
   on_enter: [ { advance: { seasons: 1 } } ]
   text: |
-    
-    For the King's leaving, Lord Ravell holds a tourney in the water meadows. Jousts for the knights, a course for the squires, a melee on foot for anyone fool enough, a prize of a harness for the best squire, and a great deal of betting below the stands.
+    For the King's leaving, Lord Ravell holds a tourney in the water meadows below the hall, and spends on it, Father Benet says, what the manor of Ashby brings in for two years.
 
-    [if flag.c1_giles_enemy]Giles Marrick has entered everything. He is twenty now and will be knighted at Christmas. He has been telling everyone that he means to put the {origin} in the mud before the King leaves.[else]Giles Marrick is entered in the squires' course. He nods to you, carefully, the way men nod to someone they have decided not to fight.[/if]
+    Stands of new timber hung with painted cloth. Pavilions in every colour along the river. Jousts for the knights, a course at the ring for the squires, a melee on foot for anyone fool enough, a prize of a harness for the best squire, and below the stands a great deal of betting, and pie-sellers, and pickpockets, and half of Wendham come out to see the King.
 
-    [if suit.isabel_sayer.status >= courted]Isabel Sayer is in the stands with Lady Ravell's women. She has a green sleeve. She has not given it to anyone yet.[/if]
+    [break]
+
+    [if flag.c1_giles_enemy]Giles Marrick has entered everything. He is twenty now and is to be knighted at Christmas. He has been telling everyone, smiling, that he means to put the {origin} in the mud before the King leaves.[else]Giles Marrick is entered in the squires' course. He nods to you, carefully, the way men nod to someone they have decided not to fight.[/if]
+
+    [if suit.isabel_sayer.status >= courted]Isabel Sayer is in the stands with Lady Ravell's women. She has a green sleeve in her lap. She has not given it to anyone yet. She is not looking at you, in a way that takes some effort.[/if] [if rel.aymer_ravell.affection >= 5]Aymer has bet a pound he does not have on you, without asking, and told you so.[/if]
   choices:
     - id: joust
       text: Ride in the squires' course.
@@ -207,10 +212,10 @@
 
 - id: c1_crisis_router
   chapter: ch1
-  title: Summer, Year {year}
+  title: The Commission
   on_enter: [ { advance: { seasons: 3 } } ]
   text: |
-    You are {age}.
+    The tourney's pavilions come down, and the King's three hundred go south, and Ravell is quiet for the first time in a month, and then for a whole winter. The quiet does not last.
 
     The King has gone south to Wendmere to ask the Moot for money. Rumour says he will get it, and that it will be spent across the Narrow Sea. Every knight in the shire is counting his horses. Every creditor in the shire is counting his knights.
 

@@ -1,0 +1,209 @@
+# Chapter 1: quiet scenes that join the life points into one life.
+# The first night in service, harvest home, a ride with the master, and the
+# winter after the Leven ford. Friends are built here: Aymer for Hamon's
+# household at Ravell, Will Cobb for Sir Ancel's men at Brome.
+
+- id: c1_first_night
+  chapter: ch1
+  title: The First Night
+  text: |
+    [if track == levy]The archers sleep in the long barn at Brome Tower, sixty of them in two rows on straw, with the wind coming through the boards and a brazier at each end that nobody is allowed to build up.[elif track == household]The grooms sleep in the loft over the stables, on straw, with the horses shifting and blowing below, and the warmth of them coming up through the boards.[elif alias.master == ancel_brome]Sir Ancel's household sleeps in the hall of Brome Tower, round the hearth, on pallets, the knight himself in the chamber above with the door open and his sword on the bed.[else]The squires and pages sleep in the loft over the great hall, eight of them on pallets, with the smoke from the hall fire coming up through the gaps in the boards and the noise of the men-at-arms still drinking below.[/if]
+
+    You have a place by the wall, which is the worst place, because it is the coldest and furthest from the light. Nobody tells you so. Nobody tells you anything. You lie in the dark with your bundle under your head and listen to the sounds of a house that is not yours.
+
+    [break]
+
+    [if alias.master == hamon_darrell]Somebody sits down on the end of your pallet in the dark. It is Aymer Ravell, the lord's second son, who has no business in a groom's loft or a squires' corner at this hour, with a candle-end and a pie he has stolen from the kitchen. [if background == servant]"I told you I'd get you out of the stables," he says, which is not quite what happened.[else]"You're Hamon's new boy," he says. "So am I, come spring. Want some pie?"[/if][else]Somebody stops by your place in the dark on the way to the privy. It is Will Cobb, the serjeant of archers, in his shirt, with his breath smoking. [if background == archer]"Hugh Fletcher's boy," he says. "I said I'd keep an eye on you. Consider it kept."[else]"New," he says. It is not a question. "You'll be cold tonight. Tomorrow you'll be too tired to notice."[/if][/if]
+  choices:
+    - id: friend
+      text: "[if alias.master == hamon_darrell]Share the pie, and talk until the candle goes out.[else]Get up and walk with him, and ask him about this place.[/if]"
+      tags: [allies]
+      text_after: |
+        [if alias.master == hamon_darrell]Aymer talks the way he rides, fast and careless and well. His elder brother, who will have everything. His father, who notices him only to be disappointed. His mother, who notices everything. Sir Hamon, who is kind, and broke, and has the best hounds in the shire. By the time the candle gutters you know more about Ravell than you learned in all the years before, and Aymer knows almost nothing about you, because he has not thought to ask. That is Aymer. You will learn that it is not unkindness.[else]Cobb walks you round the outside of the tower in the dark, slowly, with his hands in his armpits, and tells you everything you need to know and nothing you do not. Which of Sir Ancel's men will steal from you. Which will stand by you. Where the wall is low enough to see Thorne's lights down the valley. "Sir Ancel says nothing," he says. "When he's pleased, he says 'Hm.' When he's not, you'll know." At the barn door he says, "Get some sleep," and then, "You'll do," which you think about for a week.[/if]
+      effects:
+        - set: flag.c1_first_night_friend
+        - if: alias.master == hamon_darrell
+          then: [ { meet: aymer_ravell }, { set: flag.c1_aymer_pie }, { add: { rel.aymer_ravell.affection: 2, rel.aymer_ravell.respect: 1 } } ]
+          else: [ { meet: will_cobb }, { add: { rel.will_cobb.affection: 2, rel.will_cobb.respect: 1 } } ]
+      next: c1_duties
+    - id: home
+      text: Lie awake, and think about home.
+      text_after: |
+        [if background == reeve]Ashby at this hour: your father at the fire with the tallies, your mother banking it for the night, Cis and Avice asleep in the box bed. [if flag.p_jumped_fire || flag.p_walked_home]Mag at the far end of the village, on the other side of the stile.[/if][elif background == burgess]Wendham at this hour: the watch going by with his lantern, the river under the bridge, your father writing the day's figures by a good wax candle. [if flag.p_jumped_fire || flag.p_walked_home]Annot's blue hands.[/if][elif background == archer]Hollin at this hour: the owls in the chase, your mother's wheel stopped at last, Kit asleep against the wall. [if flag.p_jumped_fire || flag.p_walked_home]Mariot somewhere out in the dark, on a path you cannot see.[/if][else]The kitchen at this hour, forty paces and a world away, with the fire banked and Hob Crane snoring at the top of the table. [if flag.p_jumped_fire || flag.p_walked_home]Nell on the bakehouse roof, with her feet over the edge.[/if][/if]
+
+        You do not sleep until the small hours. In the morning you are tired, and you are no longer homesick, exactly. You have decided something, and you are not sure what.
+      effects:
+        - if: [ background == reeve, { any: [ flag.p_jumped_fire, flag.p_walked_home ] } ]
+          then: [ { add: { suit.mag_coker.regard: 1 } } ]
+        - if: [ background == burgess, { any: [ flag.p_jumped_fire, flag.p_walked_home ] } ]
+          then: [ { add: { suit.annot_dyer.regard: 1 } } ]
+        - if: [ background == archer, { any: [ flag.p_jumped_fire, flag.p_walked_home ] } ]
+          then: [ { add: { suit.mariot_wood.regard: 1 } } ]
+        - if: [ background == servant, { any: [ flag.p_jumped_fire, flag.p_walked_home ] } ]
+          then: [ { add: { suit.nell_laundress.regard: 1 } } ]
+      next: c1_duties
+    - id: early
+      text: Get up before anyone, and have your work done before they wake.
+      tags: [martial]
+      text_after: You are up in the dark, before the bell, before the cooks. By the time the house stirs, [if track == levy]the brazier is lit, the water fetched, and your bow strung and unstrung twice to warm the wood[elif track == household]the horses are watered and the dung is out[else]your master's boots are clean and his fire is lit[/if]. Nobody says anything. Somebody notices. It is a long time before you learn who.
+      effects: [ { add: { rel.@master.respect: 1 } } ]
+      next: c1_duties
+
+- id: c1_harvest_home
+  chapter: ch1
+  title: Harvest Home
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    At Michaelmas the household goes to Ravell for the lord's court and the audit, as it does every year, and for three days nobody needs [if track == squire_track]a squire[elif track == household]a groom[else]an archer[/if] much. You ask leave to go home. To your surprise, you get it.
+
+    [if background == servant]Home is forty paces away. That is the strange part. You walk across the outer ward to the kitchen door, in your new coat, and the kitchen looks up, and for a moment nobody knows what to say to you.[else]Home is a day's walk. You do it in less, and come over the last rise at dusk, and see the smoke going up straight from the chimneys in the still air, and stop, and do not know why you have stopped.[/if]
+
+    [break]
+
+    [if background == reeve]Your father has a new cough and the same tallies. Your mother has put the blue tunic away at last; Cis is wearing it, cut down, and is furious about it. Mag Coker is at the well with two buckets.[elif background == burgess]Your father has a new account book and the same debts. Your mother asks you how the knights hold their knives at table, and listens to the answer carefully. Annot Dyer is at the vats, singing.[elif background == archer]Your father is at the butts, on his stick. Your mother is at the wheel. Kit has grown a hand's breadth and pretends not to know you. Mariot Wood is at the edge of the chase, as if she knew you were coming. She probably did.[else]Your mother sits you down at the end of the long table and feeds you, and watches you eat, and straightens your collar four times. Nell comes in from the laundry with her arms red to the elbow, and stops in the door.[/if]
+  choices:
+    - id: family
+      text: Spend all three days with your family.
+      tags: [allies]
+      text_after: |
+        You mend the things that need mending. You eat too much. You tell them about [if alias.master == hamon_darrell]Sir Hamon and his hounds[else]Sir Ancel and the March[/if], and leave out the parts they would worry about, and they know you are leaving them out, and let you.
+
+        [if background == reeve]On the last night your father walks you to the stile, as he did the first time. "You're doing well," he says. He has never said it before. He nods, and keeps nodding, all the way home.[elif background == burgess]On the last night your father shows you the new account book, page by page, as if it were a letter to you. Perhaps it is.[elif background == archer]On the last night your father takes you to the butts and makes you shoot, and does not say anything about your loose, and then says, "Better," and limps home.[else]On the last night your mother says she is proud of you, in a voice that does not match the words, and you realise that she has been afraid for you every day since you went above stairs.[/if]
+      effects:
+        - set: flag.c1_harvest_family
+        - if: background == reeve
+          then: [ { add: { rel.piers_reeve.affection: 2 } } ]
+        - if: background == burgess
+          then: [ { add: { rel.ralf_mercer.affection: 2 } } ]
+        - if: background == archer
+          then: [ { add: { rel.hugh_fletcher.affection: 2 } } ]
+        - if: background == servant
+          then: [ { add: { rel.agnes_tirewoman.affection: 2 } } ]
+      next: c1_christmas
+    - id: girl
+      text: "Find [if background == reeve]Mag[elif background == burgess]Annot[elif background == archer]Mariot[else]Nell[/if], and spend the evenings with her."
+      tags: [diplomacy]
+      text_after: |
+        [if flag.p_promised_girl]"You said you'd come back," she says. "I didn't think you meant this soon." She sounds annoyed. She does not look annoyed.[elif flag.p_jumped_fire || flag.p_walked_home]She has not forgotten Midsummer. Neither have you. Neither of you mentions it, for the first evening.[else]She is surprised you came looking. So are you, a little.[/if]
+
+        [if background == reeve]You walk out along the headlands while the light goes. She tells you the price of everything again, and who in Ashby is in debt to whom, and that your father coughs at night. She knows more about your family than you do.[elif background == burgess]She takes you down to the river below the vats, where the water runs blue, and you sit on the bank and throw stones, and she asks you whether knights are as stupid as they look. You tell her the truth.[elif background == archer]She takes you into the chase at dusk to watch the deer come down to the stream, and you lie in the bracken for an hour without speaking, and it is the best hour of the year.[else]You sit on the bakehouse roof again, the two of you, and she does the voice of every knight at Ravell, and you laugh until someone shouts up at you to be quiet.[/if]
+
+        When you leave, she does not say goodbye. She says, "Next year, then," as if it were settled.
+      effects:
+        - set: flag.c1_harvest_girl
+        - if: background == reeve
+          then: [ { meet: mag_coker }, { add: { suit.mag_coker.regard: 2 } }, { if: { not: suit.mag_coker.status >= known }, then: [ { assign: { suit.mag_coker.status: known } } ] } ]
+        - if: background == burgess
+          then: [ { meet: annot_dyer }, { add: { suit.annot_dyer.regard: 2 } }, { if: { not: suit.annot_dyer.status >= known }, then: [ { assign: { suit.annot_dyer.status: known } } ] } ]
+        - if: background == archer
+          then: [ { meet: mariot_wood }, { add: { suit.mariot_wood.regard: 2 } }, { if: { not: suit.mariot_wood.status >= known }, then: [ { assign: { suit.mariot_wood.status: known } } ] } ]
+        - if: background == servant
+          then: [ { meet: nell_laundress }, { add: { suit.nell_laundress.regard: 2 } }, { if: { not: suit.nell_laundress.status >= known }, then: [ { assign: { suit.nell_laundress.status: known } } ] } ]
+      next: c1_christmas
+    - id: gifts
+      text: Spend your wages on gifts for everyone, and let them see you can.
+      tags: [wealth]
+      requires: [ res.coin >= 12 ]
+      text_after: |
+        Ribbons, a knife, a bag of figs from a Sarenzan pedlar at the fair on the way, a pair of shoes for [if background == archer]Kit[elif background == reeve]Avice[else]your mother[/if]. A shilling, all told, which is more than you have ever spent on anything.
+
+        They are delighted, and a little uneasy, the way people are when someone they know comes back with money. A neighbour asks how much a [if track == squire_track]squire[elif track == household]groom[else]archer[/if] is paid. Your mother answers before you can.
+      effects:
+        - add: { res.coin: -12, rep.commons: 1 }
+        - if: background == reeve
+          then: [ { add: { rel.piers_reeve.affection: 1 } } ]
+        - if: background == burgess
+          then: [ { add: { rel.ralf_mercer.respect: 1 } } ]
+        - if: background == archer
+          then: [ { add: { rel.hugh_fletcher.affection: 1 } } ]
+        - if: background == servant
+          then: [ { add: { rel.agnes_tirewoman.affection: 1 } } ]
+      next: c1_christmas
+    - id: stay
+      text: Give up your leave, and stay with your master.
+      tags: [yield]
+      text_after: You stay. There is always work. Your master notices, and says nothing, and the next week gives you the job of carrying his purse at the Michaelmas fair, which is a sign of trust and also, it turns out, a great deal of carrying.
+      effects: [ { add: { rel.@master.respect: 1 } } ]
+      next: c1_christmas
+
+- id: c1_master_ride
+  chapter: ch1
+  title: "[if alias.master == hamon_darrell]Sir Hamon's Hounds[else]The Long Ride North[/if]"
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    [if alias.master == hamon_darrell]In Lent, Sir Hamon takes you out with the hounds, just the two of you and the huntsman, on a raw grey day when nobody else would hunt. He does not want to hunt. He wants to be out of the house, away from the letters on his table, with his dogs.[else]In Lent, Sir Ancel rides the length of his land along the March, as he does every year, to see what the winter has broken, and takes you with him, because he needs someone to hold the horses while he looks at walls.[/if]
+
+    It is the first time you have been alone with your master for more than an hour.
+
+    [break]
+
+    [if alias.master == hamon_darrell]The hounds find nothing all morning. Sir Hamon does not seem to mind. He sits his old grey on the edge of a covert with the reins loose, eating bread and cheese from his saddlebag and giving half to the dogs, and talks: about his father, who was a hard man, and his wife, who died eleven years ago in childbed with the child, and whom he still talks to sometimes, at night. He says it as if it were ordinary. Perhaps it is.[else]Sir Ancel does not talk. He rides, and stops, and looks at a wall, or a ditch, or a ford, and says "Hm," and rides on. In three days he says perhaps forty words to you. On the third evening, at the top of the pass where you can see down into Caldmoor, he gets off his horse and stands for a long time looking north, and then says, without turning round, "Your father would have liked this view."[if background != archer] You do not know what he means. It is a while before you learn that he says it to all his boys, about their fathers, because he never knew his own.[/if][/if]
+  choices:
+    - id: ask
+      text: "[if alias.master == hamon_darrell]Ask him about his wife.[else]Ask him about Harrow Ford.[/if]"
+      tags: [diplomacy]
+      text_after: |
+        [if alias.master == hamon_darrell]Her name was Alice. She laughed at him, which nobody else dared. She kept the accounts, which is why Ashby was solvent while she lived and has not been since. He does not say that last part. You work it out. "She'd have liked you," he says. "She liked anyone who could count." Then he blows his horn, for no reason, and the hounds go off after nothing, and he goes after them, laughing.[else]He does not answer for a long time. Then he tells it, in about a dozen sentences: the Caldmoor spears, the ford, his horse killed under him in the water, a Caldmoor axe coming down, and an arrow from somewhere behind him that took the axeman through the throat. "Your father's," he says, if you are Hugh Fletcher's son, and "a bowman's" if you are not. "I never thanked him properly. You don't, for that." He gets back on his horse. That is the end of it. It is more than he has told anyone in years.[/if]
+      effects: [ { set: flag.c1_master_confided }, { add: { rel.@master.affection: 2, rel.@master.respect: 1 } } ]
+      next: c1_muster
+    - id: learn
+      text: "[if alias.master == hamon_darrell]Ask him to teach you the hounds properly.[else]Ask him to teach you to read the ground as he does.[/if]"
+      tags: [learning, martial]
+      text_after: |
+        [if alias.master == hamon_darrell]For the rest of the day he does: their names, their voices, which of them lies and which of them is never wrong, how to cast a pack that has lost the line. He is good at it, better than at anything else in his life. By evening you can tell the voices apart. "There," he says. "Now you know the one thing I know."[else]He grunts, and then he does, after a fashion: where a raiding party will cross, and why; where a small force can hold a large one; where water will be in August and where it will not. He points with his whip and says one word for each, and you have to work out the rest. By the end of the ride you can look at a valley and see where the fighting will be.[/if]
+      effects:
+        - set: flag.c1_master_taught
+        - add: { rel.@master.respect: 2 }
+        - if: alias.master == hamon_darrell
+          then: [ { add: { skill.woodcraft: 1 } } ]
+          else: [ { add: { skill.tactics: 1 } } ]
+      next: c1_muster
+    - id: quiet
+      text: Say nothing, and keep him company.
+      text_after: You say nothing. It is the right thing, as it turns out. At dusk he says, "Good day," to nobody in particular, and on the way home he lets you ride beside him instead of behind.
+      effects: [ { add: { rel.@master.affection: 1 } } ]
+      next: c1_muster
+
+- id: c1_after_leven
+  chapter: ch1
+  title: The Winter After
+  on_enter: [ { advance: { seasons: 2 } } ]
+  text: |
+    The Leven ford stays with you longer than you expect.
+
+    Not all the time. In daylight there is work, and noise, and other people, and it goes away. It comes back at night, and in odd moments: the smell of wet wool, the sound of cattle in water, a man laughing in the yard the way Sir Hugh Wyck laughed in the grey light before the charge. [if flag.c1_raid_distinguished]Men still talk about what you did at the ford. They do not ask what it felt like. You would not know what to tell them.[elif flag.c1_raid_late]Men do not talk about what you did at the ford. You find that you cannot stop thinking about it either way.[/if]
+
+    [break]
+
+    [if flag.c1_coll_hanged]Mostly it is Coll. A red-haired boy of sixteen, turning slowly on a rope from an alder over the Leven.[elif flag.c1_coll_freed]Sometimes it is Coll, going away into the mist on the far bank, and whether you did right.[else]Sometimes it is the first man you saw die close enough to touch. You did not know his name. You never will.[/if]
+
+    By Candlemas, other men have noticed that you are not sleeping.
+  choices:
+    - id: friend
+      text: "[if alias.master == hamon_darrell]Talk to Aymer about it.[else]Talk to Will Cobb about it.[/if]"
+      tags: [allies]
+      text_after: |
+        [if alias.master == hamon_darrell]Aymer was at the ford, at the back, with the Ravell banner, and saw less than you and dreamed more. He has been waiting for someone to say it first. You sit up in the hayloft with a stolen jug, the two of you, and say almost nothing, and it helps more than it has any right to. At the end he says, "Don't tell my father," and you say, "Tell him what," and he laughs for the first time in a month.[else]Cobb listens with his hands round a cup and his eyes on the fire. When you have finished, he says, "Aye." Then, after a while: "It doesn't stop. It gets quieter. [if background == archer]Your father had it worse than any man I knew, and he still shoots on Sundays.[else]I knew a man had it worse than any of us, and he still shoots on Sundays.[/if]" He does not say anything else. He does not need to. You sleep that night, for the first time since the ford.[/if]
+      effects:
+        - set: flag.c1_shared_the_ford
+        - if: alias.master == hamon_darrell
+          then: [ { meet: aymer_ravell }, { add: { rel.aymer_ravell.affection: 2, rel.aymer_ravell.respect: 1 } } ]
+          else: [ { meet: will_cobb }, { add: { rel.will_cobb.affection: 2, rel.will_cobb.respect: 1 } } ]
+      next: c1_progress
+    - id: priest
+      text: Go to Father Benet, and make your confession.
+      tags: [piety]
+      text_after: Father Benet hears you in the cold chapel with his hands in his sleeves. He is worldlier than most priests and kinder than he lets on. He gives you a penance that is mostly prayer and partly carrying firewood for the almshouse, which he says is better for the soul than either alone. It does not take it away. It gives it somewhere to go.
+      effects: [ { set: flag.c1_confessed_ford }, { meet: father_benet }, { add: { rep.piety: 1, rel.father_benet.affection: 1 } } ]
+      next: c1_progress
+    - id: work
+      text: Work until you are too tired to dream.
+      tags: [martial]
+      text_after: You are at the pell before Prime and in the stables after Compline, every day until Lady Day. Your arms get harder and your face gets thinner. You stop dreaming, or you stop remembering it, which is the same. Sir Bertram says you are the best-drilled young man in the household. He says it as if it worried him.
+      effects: [ { add: { skill.arms: 1, rel.bertram_oakes.respect: 1 } }, { meet: bertram_oakes } ]
+      next: c1_progress
+    - id: alone
+      text: Keep it to yourself. Everyone has their own.
+      tags: [yield]
+      text_after: You keep it to yourself. It is what men do. By spring it is quieter, the way Cobb says, though nobody told you so, and you did not ask.
+      next: c1_progress

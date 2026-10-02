@@ -4,11 +4,13 @@
 - id: p_hungry_year
   chapter: prologue
   title: The Wet Year
-  on_enter: [ { advance: { seasons: 9 } } ]
+  on_enter: [ { advance: { seasons: 8 } } ]
   text: |
-    You are {age}.
+    Two good years, and then the wet one.
 
-    It has rained since Whitsun. The barley lies flat in the fields and sprouts in the ear. Sheep cough in the folds. By Lammas, bread costs three times what it did, and the bread is half bean flour and grit.
+    It begins to rain at Whitsun, the summer you turn ten, and it does not stop. It has rained since Whitsun. The barley lies flat in the fields and sprouts in the ear. Sheep cough in the folds. By Lammas, bread costs three times what it did, and the bread is half bean flour and grit.
+
+    [break]
 
     [if background == reeve]At Ashby your father has to collect the lord's dues from men who have nothing. The Cokers were put off their holding in the spring for arrears, on your father's word. They live in a hut by the common now. Wat Coker throws stones at you when you pass. His sister Mag does not; she watches.[elif background == burgess]In Wendham the merchants are doing well. Grain comes in on Sarenzan ships and sells for whatever the seller says. In the tanners' alley behind your house, children are eating nettles.[elif background == archer]Your father's pension has not been paid since Candlemas. There are four of you in the cottage and one sack of beans. Gib Shawe's uncle, the bailiff, eats meat every Sunday.[else]At Ravell Hall the high table still has three courses, and the scraps from it go to the poor at the gate. Not all the scraps reach the gate. Nell from the laundry has a mother and five brothers in the village.[/if]
   choices:
@@ -28,7 +30,7 @@
           then: [ { add: { rel.hugh_fletcher.respect: 1 } } ]
         - if: background == servant
           then: [ { add: { rel.nell_laundress.affection: 3, rel.eleanor_ravell.affection: -1 } } ]
-      next: p_learning
+      next: p_knight
     - id: poach
       text: Set snares in Lord Ravell's chase after dark.
       tags: [cunning]
@@ -36,7 +38,7 @@
       success:
         text: Two coneys the first week, a hare the second. You learn which paths the forester walks and when. Nobody at home asks where the meat comes from.
         effects: [ { set: flag.p_poached }, { add: { skill.woodcraft: 1, health: 1 } } ]
-        next: p_learning
+        next: p_knight
       failure:
         text: The forester, John Wood, catches you with a hare in your shirt. He takes you to the hall instead of the gallows because you are small. You are whipped in the yard. His daughter Mariot brings you water afterwards and tells you your snares were set wrong.
         effects:
@@ -44,7 +46,7 @@
           - injury: bruised_ribs
           - add: { rep.commons: 1, rel.mariot_wood.affection: 2 }
           - meet: mariot_wood
-        next: p_learning
+        next: p_knight
     - id: work
       text: "[if background == reeve]Go round the tenants with your father and the steward, collecting arrears.[elif background == burgess]Count grain for Master Lanzi's ship, buying cheap from farmers who must sell.[elif background == archer]Hire yourself out to the carters on the Wendham road for a penny a day.[else]Serve at the high table, where nobody is hungry, and keep your eyes down.[/if]"
       tags: [wealth, learning]
@@ -60,7 +62,7 @@
           then: [ { add: { res.coin: 4, skill.woodcraft: 1 } } ]
         - if: background == servant
           then: [ { add: { skill.courtesy: 1, rel.eleanor_ravell.affection: 1, rep.commons: -1 } }, { meet: eleanor_ravell } ]
-      next: p_learning
+      next: p_knight
     - id: steal
       text: Get into the tithe barn at night and fill a sack.
       tags: [cunning]
@@ -68,20 +70,68 @@
       success:
         text: Half a bushel of barley, and nobody misses it but God, who keeps the tithe. Your mother does not ask. You feel worse about it at Mass than you expected to.
         effects: [ { set: flag.p_stole_tithe }, { add: { rep.ruthlessness: 1, skill.intrigue: 1, health: 1 } } ]
-        next: p_learning
+        next: p_knight
       failure:
         text: The priest's dog finds you. You are made to stand in a white sheet at the church door three Sundays running. Everyone in the parish knows your face now, and what you did.
         effects: [ { set: flag.p_thief_caught }, { add: { rep.church: -2, rep.commons: -1, rep.ruthlessness: 1 } } ]
-        next: p_learning
+        next: p_knight
+
+- id: p_knight
+  chapter: prologue
+  title: The Knight on the Road
+  on_enter: [ { meet: walter_pryce } ]
+  text: |
+    At Michaelmas, when the worst of the wet year is over and nobody has yet believed it, a knight comes through.
+
+    [if background == reeve]He comes up the lane into Ashby[elif background == burgess]He comes over the bridge into Wendham[elif background == archer]He comes out of the chase into Hollin[else]He comes in at the gate of Ravell Hall, not as a guest, on the way to somewhere else[/if] with his horse lame in the off fore, and stops at the smithy, and the smith downs tools for him, because a knight does not wait.
+
+    [break]
+
+    He is not old, as knights go: about thirty, lean and brown, in a red surcoat badged with a black boar, the Earl of Carrow's. His harness is plain and well kept and has been mended in places. His horse is better than his harness. He has one squire, a sulky boy of sixteen in a better coat than his master's, who stands about kicking at the dogs.
+
+    He sees you watching from the smithy door. Everyone else has found a reason to be elsewhere; ordinary people do not stand about near knights. He looks at you with a kind of amusement, as if you were a puppy that had wandered into church, and says, "Well? Do you want to hold him, or don't you?"
+  choices:
+    - id: hold
+      text: Hold his horse while the smith works.
+      tags: [martial]
+      text_after: |
+        You hold the great bay's head for an hour while the smith pares and fits, and the horse leans on you the whole time, and you do not move. The knight talks, not to you exactly, but near you: about the Earl's business in the north, about the price of a good horse, about the King, whom he has seen twice.
+
+        When the shoe is on he gives you a penny, which you expected, and asks your name, which you did not. "Pryce," he says, in return. "Walter Pryce. I was a younger son with a horse and a sword and nothing else. Now look at me." He looks down at his own mended harness and laughs. "Well. Look at me in ten years." Then he is gone up the road, and the squire never once looked at you.
+      effects: [ { set: flag.p_met_pryce }, { add: { rel.walter_pryce.respect: 1, res.coin: 1 } } ]
+      next: p_learning
+    - id: ask
+      text: Ask him how a man becomes a knight.
+      tags: [diplomacy]
+      text_after: |
+        The squire laughs out loud. The knight does not.
+
+        "Be born one," he says. "That's the usual way." He considers you. "Failing that: be useful to someone who matters, be lucky, be there when it counts, and don't die. In about that order. Most men manage two." He swings up into the saddle, testing the new shoe. "I managed three. I'm still working on the fourth." He tosses you a penny and rides off up the road, and you stand in the mud with the penny in your hand and his four things going round in your head like a song you cannot stop.
+      effects: [ { set: flag.p_asked_knight }, { set: flag.p_met_pryce }, { add: { rel.walter_pryce.affection: 1, res.coin: 1 } } ]
+      next: p_learning
+    - id: squire
+      text: The squire kicks the smith's dog. Kick him back.
+      tags: [martial]
+      text_after: |
+        You get one good kick in, on the shin, before the squire knocks you flat in the mud. He is twice your size. He is reaching for you again when the knight says, quite quietly, "Leave it, Hugo," and Hugo leaves it.
+
+        The knight looks down at you, in the mud, with your nose bleeding. "That was stupid," he says. "Do you know what happens to a peasant who kicks a gentleman?" You do. He nods. "Remember it. And remember he kicked the dog first." He rides off without paying the smith. The smith does not complain. The dog follows you home.
+      effects: [ { set: flag.p_kicked_squire }, { set: flag.p_met_pryce }, { add: { rep.commons: 1, rep.honor: 1, rel.walter_pryce.respect: 2 } } ]
+      next: p_learning
+    - id: watch
+      text: Watch from a safe distance, and say nothing.
+      tags: [yield]
+      text_after: "You watch from behind the water-butt until he rides away. You notice everything: how he sits, how the squire hands him the reins without being asked, how the smith takes his hat off and does not put it back on until the horse is out of sight. You will practise sitting like that on the cart-horse for a month, when nobody is looking."
+      next: p_learning
 
 - id: p_learning
   chapter: prologue
   title: What a Boy Learns
   on_enter: [ { advance: { seasons: 4 } } ]
   text: |
-    You are {age}. The harvest came in at last, thin but enough.
+    The wet year ends, as they all do. The next harvest comes in thin but enough, and people stop counting the beans in the sack, and the year after that is ordinary, which is the best kind.
 
-    A boy of your sort has perhaps four years before he is a man and the shape of his life is set. There is time to get good at one thing, if someone will teach it.
+    You are old enough now to be useful, and a boy of your sort has perhaps four years before he is a man and the shape of his life is set. There is time to get good at one thing, if someone will teach it.
 
     [if background == reeve]Father Anselm will teach Latin letters to any boy who brings him firewood. Old Simon at the forge was a man-at-arms once and still has a sword under his bed.[elif background == burgess]The guild keeps a schoolmaster for members' sons. There is a fencing master by the bridge who teaches apprentices to use a buckler, against the town's rules.[elif background == archer]The priest teaches letters on feast days, if you can be spared from work, which you cannot. Will Cobb says he will teach you the sword and buckler if you carry his water.[else]Father Benet, the chaplain, teaches Aymer his letters and lets the servants' boys sit at the back. Sir Bertram Oakes teaches the household's young men at the pell every morning.[/if]
 
@@ -102,7 +152,7 @@
           then: [ { add: { rel.father_anselm.affection: 2 } }, { meet: father_anselm } ]
         - if: background == servant
           then: [ { meet: father_benet }, { add: { rel.father_benet.affection: 2 } } ]
-      next: p_rival
+      next: p_midsummer
     - id: arms
       text: Learn to fight with sword and buckler.
       tags: [martial]
@@ -114,7 +164,7 @@
           then: [ { add: { rel.will_cobb.affection: 2 } }, { meet: will_cobb } ]
         - if: background == servant
           then: [ { meet: bertram_oakes }, { add: { rel.bertram_oakes.respect: 1 } } ]
-      next: p_rival
+      next: p_midsummer
     - id: manners
       text: Learn how gentlefolk eat, speak and stand, by serving at their tables.
       tags: [diplomacy]
@@ -122,7 +172,7 @@
       effects:
         - set: flag.p_trained_courtesy
         - add: { skill.courtesy: 2 }
-      next: p_rival
+      next: p_midsummer
     - id: field
       text: Learn horses and hounds, riding and the chase.
       tags: [martial]
@@ -130,14 +180,83 @@
       effects:
         - set: flag.p_trained_field
         - add: { skill.riding: 1, skill.woodcraft: 1 }
+      next: p_midsummer
+
+- id: p_midsummer
+  chapter: prologue
+  title: Midsummer Eve
+  on_enter: [ { advance: { seasons: 3 } } ]
+  text: |
+    On Midsummer Eve the whole [if background == burgess]town goes down to the river meadow below the bridge[elif background == servant]household that is not on duty goes down to Ravell village green[else]village goes up to the hill above the church[/if], where the fire is built, and nobody is anybody's servant until morning.
+
+    There is a fiddler, and a man with a pipe and tabor, and a barrel that the [if background == burgess]guild[elif background == servant]lord[else]lord's steward[/if] pays for once a year, and a fire as tall as a house. The young men jump it, for luck and to be seen. The girls jump it in pairs, holding hands, for husbands. The old women watch who jumps with whom and remember.
+
+    [break]
+
+    You are twelve, and this year, for the first time, you are not one of the children running about in the dark beyond the firelight. You are standing at the edge of it, with the young men, trying to look as if you belong there.
+
+    [if background == reeve]Mag Coker is by the barrel, with her brother Wat watching her like a dog with a bone.[elif background == burgess]Annot Dyer is by the fiddler, with her blue hands, laughing louder than anyone.[elif background == archer]Mariot Wood is at the far edge of the light, as if she might go back into the trees at any moment.[else]Nell is in the middle of the dancing, doing Lady Ravell's walk, and half the household is weeping with laughter.[/if] [if flag.p_mag_buttermilk || flag.p_met_annot || flag.p_met_mariot || flag.p_met_nell]She sees you. She does not look away.[else]You have known her by sight for years. Tonight, for some reason, you keep seeing her.[/if]
+  choices:
+    - id: jump
+      text: "Ask [if background == reeve]Mag[elif background == burgess]Annot[elif background == archer]Mariot[else]Nell[/if] to jump the fire with you."
+      tags: [diplomacy]
+      text_after: |
+        [if background == reeve]She looks at Wat first, which you notice. Then she takes your hand anyway.[elif background == burgess]She laughs at you, which is a yes.[elif background == archer]She says nothing at all and holds out her hand.[else]She stops halfway through Lady Ravell's walk and takes your hand in front of everyone.[/if]
+
+        You run at the fire together, and it is much hotter close to than it looked, and for a moment you are in the middle of it with sparks going up all round you, and then you are through, on the other side, in the dark, still holding hands. Neither of you lets go for a while.
+
+        The old women saw. By Lammas the whole [if background == burgess]street[else]village[/if] has an opinion about it. [if background == reeve]Your father's opinion is that the reeve's son does not jump fires with Cokers.[elif background == burgess]Your father's opinion is that it was a children's game and need not be mentioned.[elif background == archer]Your father's opinion is a grin that he does not explain.[else]Your mother's opinion is not expressed in words.[/if]
+      effects:
+        - set: flag.p_jumped_fire
+        - if: background == reeve
+          then: [ { meet: mag_coker }, { assign: { suit.mag_coker.status: known } }, { add: { suit.mag_coker.regard: 2, rel.piers_reeve.affection: -1, rel.wat_coker.affection: -1 } } ]
+        - if: background == burgess
+          then: [ { meet: annot_dyer }, { assign: { suit.annot_dyer.status: known } }, { add: { suit.annot_dyer.regard: 2 } } ]
+        - if: background == archer
+          then: [ { meet: mariot_wood }, { assign: { suit.mariot_wood.status: known } }, { add: { suit.mariot_wood.regard: 2 } } ]
+        - if: background == servant
+          then: [ { meet: nell_laundress }, { assign: { suit.nell_laundress.status: known } }, { add: { suit.nell_laundress.regard: 2, suit.nell_laundress.discretion: -1 } } ]
+      next: p_rival
+    - id: young_men
+      text: Stay with the young men, and jump it alone.
+      tags: [martial]
+      text_after: |
+        You take a long run and jump it alone, the way the men do, and land badly, and get up laughing with your shins scorched, and the young men cheer you, a little, because you are the youngest to try it this year.
+
+        [if background == reeve]Wat Coker jumps after you, higher, and lands better, and looks at you as he lands. It is the first time he has looked at you as someone worth beating.[elif background == burgess]Jocelin Tanner jumps after you, and lands in the river by mistake, and the whole meadow laughs at him instead of with him. He will remember who jumped first.[elif background == archer]Gib Shawe will not jump it at all, and everyone notices, and he notices them noticing.[else]Aymer Ravell, down from the hall with two friends, jumps after you, and lands like a cat, and claps you on the back as if you were his idea.[/if]
+      effects: [ { set: flag.p_jumped_alone }, { add: { rep.commons: 1, rel.@rival.respect: 1 } } ]
+      next: p_rival
+    - id: walk
+      text: "Walk [if background == reeve]Mag[elif background == burgess]Annot[elif background == archer]Mariot[else]Nell[/if] home the long way, when the fire burns down."
+      tags: [diplomacy]
+      visible_if: [ { any: [ flag.p_mag_buttermilk, flag.p_met_annot, flag.p_met_mariot, flag.p_met_nell ] } ]
+      text_after: |
+        The long way is long, and dark, and neither of you says much on it. [if background == reeve]At the stile, Mag tells you that her father will lose the holding by Michaelmas if the rain goes on next year the way it went the year before. She says it as if it were your fault. Then she says it is not your fault. Then she kisses you, quickly, and goes over the stile without looking back.[elif background == burgess]On the bridge, Annot tells you that her father wants her to marry the dyer's journeyman, who is thirty and has a squint. She tells it as a joke. It is not a joke. At her door she kisses your cheek and leaves a smear of blue on it.[elif background == archer]At the edge of the chase, Mariot tells you that her father's chest is bad and that if he cannot walk the chase, Lord Ravell will put another forester in the lodge, and they will have nowhere. She has never told anyone. Then she goes into the trees and is gone.[else]On the back stair, Nell tells you that she means to go to Wendham and be a laundress in a merchant's house and have a room of her own. Then she kisses you on the mouth, as if to see what it is like, and goes up the stair laughing.[/if]
+      effects:
+        - set: flag.p_walked_home
+        - if: background == reeve
+          then: [ { add: { suit.mag_coker.regard: 3, suit.mag_coker.discretion: -2 } } ]
+        - if: background == burgess
+          then: [ { add: { suit.annot_dyer.regard: 3, suit.annot_dyer.discretion: -2 } } ]
+        - if: background == archer
+          then: [ { add: { suit.mariot_wood.regard: 3, suit.mariot_wood.discretion: -2 } } ]
+        - if: background == servant
+          then: [ { add: { suit.nell_laundress.regard: 3, suit.nell_laundress.discretion: -2 } } ]
+      next: p_rival
+    - id: home
+      text: Go home before the drinking starts.
+      tags: [yield]
+      text_after: You go home before the barrel is half empty, and lie awake listening to the fiddler on the wind until long after midnight. In the morning everyone is talking about who jumped with whom. You were not there. It turns out that this is also a way of being talked about.
       next: p_rival
 
 - id: p_rival
   chapter: prologue
   title: "[if background == reeve]Wat Coker[elif background == burgess]Jocelin Tanner[elif background == archer]Gib Shawe[else]Aymer Ravell[/if]"
-  on_enter: [ { advance: { seasons: 7 } } ]
+  on_enter: [ { advance: { seasons: 4 } } ]
   text: |
-    You are {age}.
+    By the next spring, you have stopped being a child in other people's eyes, and some of them do not like what they see instead.
+
+    [break]
 
     [if background == reeve]Wat Coker is fifteen and big for it. He says your father stole his family's holding and he says it at the ale-stake where people can hear. Tonight he is waiting at the churchyard wall with two friends, and he has a cudgel.[elif background == burgess]Jocelin Tanner's father and yours are fighting over a seat on the town council. Today a silver spoon went missing from the guild feast and was found in your satchel. You did not put it there. Jocelin was sitting next to you. The guild wardens want an answer by Vespers.[elif background == archer]The bailiff is choosing one boy from the parish to be trained with the shire archers and paid for it. It is you or Gib Shawe, the bailiff's nephew. On Sunday the bailiff will watch you both shoot. Everyone knows how it will go.[else]Aymer Ravell is fourteen and has guests: two squires from Carrow's household. To impress them he has told you to fetch his falcon, and then told them you stole it, for the joke. They are laughing. One of them is not joking.[/if]
   choices:
@@ -222,7 +341,7 @@
   title: Fourteen
   on_enter: [ { advance: { seasons: 6 } } ]
   text: |
-    You are {age}.
+    It takes a year and a half for that to settle, and in a village nothing settles completely. Then it is autumn again, and you are fourteen.
 
     Fourteen is old enough to be bound apprentice, or put to the plough, or sent for a soldier. It is the age when a boy of your sort is either taken into somebody's service or left where he was born.
 

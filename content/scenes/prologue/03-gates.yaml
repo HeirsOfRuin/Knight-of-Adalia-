@@ -9,6 +9,10 @@
   text: |
     Sir Hamon Darrell comes to Ashby at Michaelmas with four horses, two hounds and no squire. His last one went home to marry. He is past fifty, grey and heavy, kind to dogs, careless with money. He sits in the hall while the steward reads him the year.
 
+    [break]
+
+    [if flag.p_ploughing_tally]You have kept the ploughing tally for five years now, and the harvest tally for three. Half the village thinks you are the reeve already.[elif flag.p_kept_copy]Father Anselm's psalter still has your page of figures in its back board. You have added to it, every year, without quite knowing why.[/if]
+
     Lord Ravell is to visit at Martinmas with thirty mouths. Master {npc.gervase_holt} is reckoning what the manor must lay in. You can see from the bench by the door that he has doubled the bread and forgotten the horses.
 
     Your father stands behind the steward with his hat in his hands. [if rel.piers_reeve.affection >= 3]He catches your eye and tips his head toward Sir Hamon: now, if ever.[else]He does not look at you. Things have not been easy between you since the reckoning.[/if]
@@ -113,7 +117,9 @@
 
     Sir Hamon Darrell owes the Wendham wool merchants six pounds for fleeces he sold twice. He needs a squire and cannot afford one. Master {npc.osbert_fuller}, warden of the guild, dines with Lord Ravell's steward once a year, and this year it is Thursday. And there is your own purse, which you have kept since you were eight. [if res.coin >= 240]It holds {coin}.[else]It holds {coin}, which is not enough for anything.[/if]
 
-    Your mother says you are too good for knights. Your father tells her that is the point.
+    [break]
+
+    [if flag.p_mother_gentle]Your mother says nothing at all, for once. She looks at her father's sword over the hearth, and then at you, and you understand that she has been waiting for this since the day you were born.[else]Your mother says you are too good for knights. Your father tells her that is the point.[/if]
   choices:
     - id: purchase
       text: Pay Sir Hamon's price yourself, a pound down and the rest from your father.
@@ -192,6 +198,10 @@
   title: The Muster at Wendham
   text: |
     The muster is on the common outside Wendham. Three hundred men in a field, most of them with bows they have not drawn since last year. Clerks with rolls. A fat priest blessing everyone. Sir Ancel Brome sits his horse at the end of the line: a lean man of forty with a Marcher face, burned dark, missing half an ear.
+
+    [break]
+
+    [if flag.p_met_pryce]At the far end of the common, under a black boar banner, the Earl of Carrow's captain is sitting at a table taking names for the Earl's own company. You know the face. You do not think he knows yours.[/if]
 
     [if flag.p_rival_beaten]Gib Shawe is there with the bailiff, and does not look at you.[elif flag.p_rival_peace]Gib Shawe is there, and nods to you.[else]Gib Shawe is there with the bailiff, wearing a new jerkin.[/if]
 
@@ -281,7 +291,9 @@
   text: |
     The Ravell household fills for the autumn hunting: knights, their wives, their hounds, their quarrels. Sir Ancel Brome comes down from the March with a lame horse and a bad temper. Sir Hamon Darrell comes from Ashby with neither horse nor money enough.
 
-    This is the year your mother has said you must be placed above the stables or not at all. Lady Ravell is watching you more closely than she used to. [if flag.knows_household_secret]You wonder sometimes whether she guesses what you know.[/if]
+    [break]
+
+    This is the year your mother has said you must be placed above the stables or not at all. [if flag.p_mother_lessons]You have practised standing straight and speaking only when spoken to for five years. You are good at it now. You are not sure it has made you anyone.[/if] Lady Ravell is watching you more closely than she used to. [if flag.knows_household_secret]You wonder sometimes whether she guesses what you know.[/if]
 
     [if rel.aymer_ravell.affection >= 2]Aymer is to go as squire to Sir Hamon in the spring. He has said, twice, that he wants you with him.[else]Aymer is to go as squire to Sir Hamon in the spring. He has not mentioned you.[/if]
   choices:

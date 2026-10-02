@@ -6,7 +6,7 @@
   title: Lady Day Reckoning
   checkpoint: true
   text: |
-    You are eight years old, and you have been awake since before the cock, because today the steward comes.
+    You have been awake since before the cock, because today the steward comes, and you are eight, and nothing this important has ever happened to you.
 
     Your mother has had you scrubbed at the trough with a handful of ash, ears and all, and dressed you in your brother's old tunic, the blue one, which was your brother's until the winter fever took him at four and has been waiting in the chest for you to grow into it. It is still too long in the sleeve. She turns the cuffs back twice, looks at you, turns them back again, and says you will do. Your sisters, Cis and Avice, are under orders to stay in the house and not be seen. They are at the shutter now, watching the lane.
 
@@ -58,7 +58,7 @@
         - if: flag.father_skims
           then: [ { add: { rel.piers_reeve.affection: -3, rel.gervase_holt.respect: 2, rep.honor: 2 } } ]
           else: [ { add: { rel.gervase_holt.respect: 1, rel.gervase_holt.affection: -2, rep.honor: 1 } } ]
-      next: p_hungry_year
+      next: p_reeve_home
     - id: quiet
       text: Keep your mouth shut and tell your father afterwards.
       tags: [allies]
@@ -77,7 +77,7 @@
         - add: { rel.piers_reeve.affection: 2, rel.piers_reeve.respect: 1 }
         - if: flag.father_skims
           then: [ { add: { res.coin: 1, rep.ruthlessness: 1 } } ]
-      next: p_hungry_year
+      next: p_reeve_home
     - id: copy
       text: Say nothing. Copy the tallies onto Father Anselm's scrap of parchment that night.
       tags: [cunning, learning]
@@ -98,129 +98,189 @@
         - item: +tally_copy
         - add: { skill.learning: 1, rel.father_anselm.affection: 1 }
         - meet: father_anselm
-      next: p_hungry_year
+      next: p_reeve_home
 
 - id: p_burgess_open
   chapter: prologue
   title: The Counting-House
   checkpoint: true
   text: |
-    Wendham, the week after Easter. Fleeces stacked to the rafters, and the whole house smelling of grease and wet wool.
+    Easter week in Wendham, and the whole house smells of wet wool.
 
-    A Sarenzan in a black gown comes to your father's counting-house with a clerk and a locked box. Master {npc.bertuccio_lanzi}. He bows to your mother as if she were a countess, and your father sends you out of the room before the door is shut.
+    The fleeces came down from the hill farms before the feast, and now they are everywhere: stacked to the rafters of the wool loft, heaped in the passage, laid out in rows on the counting-house floor for grading, so that you have to step over them to reach the stair. Your father says it is the smell of money. Your mother says it is the smell of sheep, and keeps dried lavender on every sill, which does nothing.
 
-    The door does not quite shut. Through the crack you hear figures you do not understand and one word you do: owed.
+    Ralf Mercer is a tidy man in a tidy house: three storeys on Sheep Street, a hall with glass in one window, a counting-house at the front where he can see who comes to the door. He sits on the town council. He writes everything down. When he talks to you, he uses the voice he uses for customers: patient, pleasant, a little careful, as if you might yet decide to buy elsewhere.
 
-    In the yard, Jocelin Tanner and the tanners' boys are going down to the wharf to throw stones at the Sarenzan ship. Your father's clerk is at his desk by the stair, doing sums for nobody.
+    [break]
+
+    On the Wednesday a man in a black gown comes to the counting-house door with a clerk and a locked box.
+
+    It is the Sarenzan factor, Master {npc.bertuccio_lanzi}. You have seen him before, at Mass, in the merchants' pew, where he kneels bolt upright and never sings. Close to, he is younger than you thought, with clever eyes and beautiful gloves. He bows to your mother as if she were a countess. He bows to you too, a smaller bow, which no grown man has ever done. "The son," he says, in careful Adalian. "Good. A house needs a son."
+
+    Your father sends you out before the door is shut.
+
+    [break]
+
+    The door does not quite shut. It never has; the damp from the wool swells the frame. Through the gap you hear your father's voice and the Sarenzan's, and figures, a great many of them, in a reckoning you half understand. And one word you understand completely, because your father says it the way other men swear: owed.
+
+    Out in the yard, Jocelin Tanner is at the gate with the tanners' boys from the alley behind, stones in their fists, on their way to the wharf to throw them at the Sarenzan ship. Jocelin is your age and lives forty yards and a whole world away, in a house that stinks of the pits. He sees you and jerks his head: come on, wool-boy.
+
+    In the passage, old Thomas Penny, your father's clerk, sits at his desk by the stair with the abacus, doing sums for nobody, the way he does when the door is shut and he has been told to be elsewhere.
   choices:
     - id: listen
       text: Stay by the door and listen.
       tags: [cunning]
       text_after: |
-        Three hundred marks, borrowed in your grandfather's time against the wool of years not yet shorn. The Lanzi bank wants the next payment by Michaelmas. Your father promises it in a voice you have not heard him use. When the Sarenzan leaves he looks straight at you on the stair and says nothing at all.
+        Three hundred marks, borrowed in your grandfather's time against the wool of years not yet shorn. The Lanzi bank wants the next payment by Michaelmas. Your father promises it in a voice you have never heard him use, the voice of a man asking.
+
+        When the Sarenzan has gone, your father comes out into the passage and finds you on the stair. He looks at you for a long moment. He says nothing at all. That night he is pleasant to everyone at supper, and you understand that you have learned two things today, and that the second is how a man looks when his son has seen him afraid.
       effects:
         - set: flag.p_knows_debt
         - add: { skill.intrigue: 1, rel.ralf_mercer.respect: -1 }
-      next: p_hungry_year
+      next: p_burgess_home
     - id: wharf
       text: Go to the wharf with Jocelin and the tanners' boys.
       tags: [martial]
       text_after: |
-        Jocelin throws first and hits a sailor. The sailors come down the gangplank with ropes' ends. You are the slowest because your shoes are the best, and you take the beating for the lot of them. Jocelin laughs about it for a month. The other boys stop calling you the wool-boy.
+        The Sarenzan ship is a tall, fat thing with a painted eye on the bow, and the sailors on her deck are mending sail and paying no attention to boys. Jocelin throws first and hits one on the ear.
+
+        The sailors come down the gangplank with ropes' ends. Everybody runs. You are the slowest, because your shoes are the best, and you take the beating for the lot of them, face down on the wet planks of the wharf. Jocelin laughs about it for a month. But the other boys stop calling you the wool-boy, and when the tanners' alley plays at war, you are allowed to be on a side.
       effects:
         - set: flag.p_wharf_gang
         - add: { attr.endurance: 1, rep.commons: 1, rel.jocelin_tanner.respect: 2 }
-      next: p_hungry_year
+      next: p_burgess_home
     - id: clerk
-      text: Sit with the clerk and learn his sums.
+      text: Sit with old Thomas and learn his sums.
       tags: [learning, wealth]
       text_after: |
-        He shows you the abacus and the way to reckon a sack of wool in Sarenzan money and in Adalian, and the difference between the two, which is where the profit lives. By evening you can do it faster than he can. He does not like that much.
+        He shows you the abacus, and the way to reckon a sack of wool in Sarenzan money and in Adalian, and the difference between the two, which is where the profit lives. "Every coin is two coins," he says, "the one it is, and the one the other man thinks it is." By evening you can do it faster than he can.
+
+        He does not like that much. But he tells your father, who comes and stands in the doorway and watches you work the beads, and does not say anything, and goes away again with a look on his face you will remember for a long time.
       effects:
         - set: flag.p_counting_house
         - add: { skill.trade: 1, rel.ralf_mercer.affection: 1 }
-      next: p_hungry_year
+      next: p_burgess_home
 
 - id: p_archer_open
   chapter: prologue
   title: The Butts
   checkpoint: true
   text: |
-    Sunday after Mass, at the butts behind the church. Every man between sixteen and sixty is meant to shoot. Most of them drink.
+    Sunday after Mass, at the butts behind the church at Hollin, where the parish ends and the Ravell chase begins.
 
-    Your father shoots alone at the far end, from one leg, because the other knee will not bear him. He still puts six in the clout from two hundred paces. Nobody watches him any more.
+    By the King's law every man between sixteen and sixty is meant to shoot on Sundays. Most of them drink, and some of them shoot, badly, between drinks. The targets are two banks of turf at either end of the long meadow, with a white clout pegged to each, and boys like you run up and down between them all afternoon fetching arrows for a farthing a dozen.
 
-    A man from his old company has walked over from the next parish. {npc.will_cobb}, with a grey beard and a new shirt. He and your father drink from the same jug and do not speak of the war, until Cobb says something about "the mill at Carn Dubh" and your father puts the jug down and tells you to go and fetch arrows.
+    Your father shoots alone, at the far end, from one leg. The other knee will not bear him; a Caldmoor spear saw to that at Harrow Ford, before you were born. He leans on his stick, sets it aside, draws, looses, and picks the stick up again before the arrow lands. He still puts six in the clout from two hundred paces. Nobody watches him any more. You watch him every week.
+
+    [break]
+
+    This Sunday a man from his old company has walked over from the next parish. {npc.will_cobb}: grey beard, new shirt, a voice like a millrace and hands like tree roots. He and your father sit on the bank with a jug between them and do not talk about the war, carefully, for a long time.
+
+    Then Cobb says something you do not catch, and then, clearly, "the mill at Carn Dubh."
+
+    Your father puts the jug down. He does not look at Cobb. He looks at you, and says, quite gently, "Fetch the arrows, boy," though there are no arrows to fetch.
   choices:
     - id: ask
       text: Ask your father what happened at Carn Dubh.
       tags: [cunning]
       text_after: |
-        Not that day. Not for a week. Then one night, drunk, he tells you. The mill was full of people when the captain ordered it fired. He was one of the archers on the door. "We were told they were fighting men," he says. "Some were." He makes you swear never to say the name to anyone. He is ashamed that you know, and glad.
+        Not that day. He does not answer, and he does not shout, which is worse. Not that week either.
+
+        Then one night, when the jug is empty and your mother and your little sister are asleep, he tells you. A mill in Caldmoor, at the end of the war, full of people. The captain said they were fighting men and ordered it fired. Your father was one of the archers on the door. "Some were fighting men," he says. "Some were." He makes you swear on your mother's cross never to say the name to anyone, and you swear.
+
+        He is ashamed that you know, and glad that someone does. You can see both, in the firelight, on his face at once.
       effects:
         - set: flag.p_knows_war_secret
         - add: { rel.hugh_fletcher.affection: 1, rel.hugh_fletcher.respect: -1 }
-      next: p_hungry_year
+      next: p_archer_home
     - id: shoot
       text: Fetch the arrows, then shoot until your fingers bleed.
       tags: [martial]
       text_after: |
-        Your father's old bow is too heavy for you. You draw it anyway, a hand's breadth, then two. By dark the string has cut your fingers to the meat and your back is on fire. He binds your fingers with his own linen and says you will be crooked like him by twenty. He sounds pleased.
+        Your father's old war bow is too heavy for you by half. You draw it anyway, a hand's breadth, then two, with Cobb and your father pretending not to watch.
+
+        By dark the string has cut your fingers to the meat and your back is on fire from neck to belt. Your father binds your fingers with linen torn from his own shirt and says you will be crooked like him by twenty, with one shoulder higher than the other and arms like a smith. He sounds pleased. Cobb says nothing, and on the way home he tells you that he has seen grown men give up sooner.
       effects:
         - set: flag.p_bloody_hands
         - add: { skill.archery: 1, rel.hugh_fletcher.affection: 2 }
-      next: p_hungry_year
+      next: p_archer_home
     - id: cobb
       text: Follow Will Cobb to the alehouse and listen to his stories.
       tags: [allies]
       text_after: |
-        Cobb tells stories for anyone who buys him ale, and you have no money, so he tells them for free. Harrow Ford. The Caldmoor spears coming on like a hedge in a gale. Your father, before his knee, the best shot in the company. He tells you where the serjeants drink and which captains pay. He leaves out Carn Dubh.
+        Cobb tells stories for anyone who buys him ale, and you have no money, so he tells them for free, which he says he has never done before and will never do again.
+
+        Harrow Ford: the Caldmoor spears coming on like a hedge in a gale, and the arrows going into them like rain into a pond. Your father, before his knee, the best shot in the company, who once put an arrow through a Caldmoor chief's mouth while he was shouting. Where the serjeants drink. Which captains pay. Which lords keep their word to archers, and which do not, by name.
+
+        He leaves out Carn Dubh. You notice that he leaves it out.
       effects:
         - set: flag.p_cobb_friend
         - meet: will_cobb
         - add: { rel.will_cobb.affection: 3, skill.tactics: 1 }
-      next: p_hungry_year
+      next: p_archer_home
 
 - id: p_servant_open
   chapter: prologue
   title: The Destrier
   checkpoint: true
   text: |
-    Ravell Hall, the stable yard, a raw spring morning.
+    Ravell Hall, the stable yard, a raw spring morning, with the mist still lying in the moat and the jackdaws going up and down the keep.
 
-    [if role == horse_master]You have mucked out the great horses since you could carry a fork.[elif role == huntsman]You sleep in the kennels with the lymers, and you smell like them.[else]You keep the mews clean and the hawks' jesses greased.[/if] Your mother dresses Lady Ravell. You eat in the kitchen with the scullions and know more about the family than the family thinks. You know, for one thing, who the heir's real father is. You heard it through a privy wall two years ago and have told no one.
+    [if role == horse_master]You have mucked out the great horses since you could carry a fork, and you know each of them by the sound of its feet.[elif role == huntsman]You sleep in the kennels with the lymers, curled against the warm one with the torn ear, and you smell like them, and do not mind.[else]You keep the mews clean and the hawks' jesses greased, and you can tell a hawk's temper from across the yard by how she holds her feathers.[/if]
 
-    Aymer Ravell is nine, a year older than you, and the lord's second son. He wants to sit on his father's destrier, Bayard, a stallion that has killed one groom. He wants you to saddle it. Master Ranulf is at the far end of the yard.
+    Your mother, Agnes, dresses Lady Ravell. You eat in the kitchen with the scullions, at the end of the long table nearest the door, and you know more about the family than the family thinks. You know, for one thing, who the heir's real father is. You heard it through a privy wall two winters ago, in Lady Ravell's own voice, and you have told no one, not even your mother, and you think about it more than you would like.
+
+    [break]
+
+    Aymer Ravell is nine, a year older than you, and the lord's second son. He is fair and quick and bored, and he has decided this morning that he wants to sit on his father's destrier.
+
+    Bayard is a grey stallion seventeen hands high who has killed one groom and crippled another. He is standing in the end stall with his ears back, listening to you both.
+
+    "Saddle him," says Aymer. "I only want to sit on him. Nobody will know." He smiles at you, the smile that gets him whatever he wants from everyone in the hall except his father.
+
+    Master Ranulf, the marshal, is at the far end of the yard with his back to you, arguing with the farrier.
   choices:
     - id: saddle
       text: Saddle Bayard for him and hold the head.
       tags: [allies]
       check: { attr: agility, skill: riding, difficulty: 3 }
       success:
-        text: Bayard stands like a church while Aymer sits on him for a count of fifty. Aymer slides off grinning and calls you his man. Master Ranulf sees all of it and says nothing, which is how you know he is angry.
+        text: |
+          You talk to Bayard the whole time, low, the way Master Ranulf does, and he lets you. Then he stands like a church while Aymer sits on him, white-faced and grinning, for a count of fifty.
+
+          Aymer slides off and punches your arm and calls you his man, as if he had been granting you a manor. Master Ranulf has turned round. He has seen all of it, and says nothing, which is how you know exactly how angry he is.
         effects: [ { set: flag.p_saddled_destrier }, { add: { rel.aymer_ravell.affection: 3, rel.ranulf_marshal.respect: -1 } } ]
-        next: p_hungry_year
+        next: p_servant_home
       failure:
-        text: Bayard throws his head and Aymer comes off backwards into the midden. He is not hurt. Your mother is called to the lady's chamber and comes back with her face set. You do not eat that night.
+        text: |
+          Bayard throws his head at the first touch of the girth and Aymer, who has climbed onto the mounting block to wait, goes over backwards into the midden.
+
+          He is not hurt. He is filthy, and furious, and by noon his mother has heard. Your own mother is called to Lady Ravell's chamber and comes back with her face set like a door. You do not eat that night, and she does not speak to you until Sunday.
         effects: [ { set: flag.p_saddled_destrier }, { add: { rel.aymer_ravell.affection: -1, rel.agnes_tirewoman.affection: -2 } } ]
-        next: p_hungry_year
+        next: p_servant_home
     - id: refuse
       text: Refuse him, and fetch Master Ranulf.
       tags: [diplomacy]
-      text_after: Master Ranulf leads Aymer back to the house by the ear, which only a man of forty years' service could do. Aymer does not forget it. Neither does Ranulf, who starts teaching you properly from that week.
+      text_after: |
+        Master Ranulf leads Aymer back to the house by the ear, which only a man of thirty years' service could do to a lord's son and live.
+
+        Aymer does not forget it, and does not speak to you for a month. Ranulf does not forget it either. From that week he starts teaching you properly, the way he never taught the other boys: how to read a horse's eye, where the heat sits in a bad hoof, why you never stand where a frightened animal can see you and not reach you.
       effects:
         - set: flag.p_told_ranulf
         - add: { rel.ranulf_marshal.respect: 2, rel.ranulf_marshal.affection: 1, rel.aymer_ravell.affection: -2 }
         - if: role == horse_master
           then: [ { add: { skill.riding: 1 } } ]
           else: [ { add: { skill.woodcraft: 1 } } ]
-      next: p_hungry_year
+      next: p_servant_home
     - id: blame
       text: Saddle him, and tell Aymer you will take the blame if you are caught.
       tags: [martial]
-      text_after: You are caught. Master Ranulf beats you with a stirrup leather in front of the grooms. Aymer watches from the gate and says nothing. That night he brings you a honey cake from the high table and says he owes you. He means it, for now.
+      text_after: |
+        You are caught, before Aymer is even off the horse. Master Ranulf beats you with a stirrup leather in front of the grooms, ten strokes, not hard by his standards.
+
+        Aymer watches from the gate and says nothing. That night he comes down to the kitchen, where he is never seen, with a honey cake from the high table wrapped in a napkin, and gives it to you in front of the scullions, and says he owes you. He means it. For now.
       effects:
         - set: flag.p_took_blame
         - injury: bruised_ribs
         - add: { rel.aymer_ravell.affection: 2, rel.aymer_ravell.respect: 2, rep.honor: 1 }
-      next: p_hungry_year
+      next: p_servant_home

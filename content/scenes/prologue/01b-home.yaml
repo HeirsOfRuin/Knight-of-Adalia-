@@ -1,0 +1,203 @@
+# Prologue: one quiet home scene per background, straight after the opening.
+# Age 8-9. Builds the family and introduces the childhood attachment (romance #1)
+# before the wet year takes things away.
+
+- id: p_reeve_home
+  chapter: prologue
+  title: The Dairy
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    The steward's visit is the talk of Ashby for a week, and then it is not, because it is ploughing time, and nobody in a village can think about anything else in ploughing time.
+
+    Your mother, Edith, runs the house the way your father runs the manor, by keeping everything in its place and noticing when it is not. She is a small, quick, devout woman with forearms like a smith's from the churn. She does not say much in front of your father. In the dairy, where he never comes, she says a great deal.
+
+    [break]
+
+    The dairy is cold and smells of whey and stone. Cis, who is six, is supposed to be scalding the pans, and is instead telling Avice, who is four, a long story about a dragon who lives in the mill-race. Your mother is at the churn. You are there because she wanted you there, though she has not said why.
+
+    [if flag.p_spoke_up]"Your father will come round," she says, without looking up. "He is a proud man and you shamed him. That is not the same as being wrong."[elif flag.p_kept_quiet]"Your father told me," she says, without looking up, "that you have a head on you. He has never said that about anyone. Do not let it go to yours."[else]"Father Anselm says you were at the church till Compline," she says, without looking up. "He would not say what for. I did not ask him."[/if]
+
+    [break]
+
+    Somebody knocks at the dairy door, which nobody ever does; people come in. It is Mag Coker, from the far end of the village, a thin, sharp girl a year older than you with her hair scraped back under a cloth. She has a jug. Her mother is lying in with the new baby, she says, and has no milk, and is there any buttermilk going.
+
+    She says it to your mother. She looks at you while she says it, as if daring you to say something.
+  choices:
+    - id: mag
+      text: Fill Mag's jug yourself, and carry it home for her.
+      tags: [diplomacy]
+      text_after: |
+        Your mother lets you. She does not say anything about your father, who does not like the Cokers, and who will hear of it by supper.
+
+        It is half a mile to the Cokers' holding, along the lane and over the stile. Mag walks beside you and does not talk until the stile, and then talks all the way, about her mother and the baby and her brother Wat, who is eleven and wants to be a soldier, and the price of everything, which she knows to the farthing. At the door she takes the jug and says, "You can come in, if you like. Wat's out." You do not, quite. You will think about the fact that she asked.
+      effects:
+        - set: flag.p_mag_buttermilk
+        - meet: mag_coker
+        - assign: { suit.mag_coker.status: known }
+        - add: { suit.mag_coker.regard: 2, rel.mag_coker.affection: 2, rel.piers_reeve.affection: -1 }
+      next: p_hungry_year
+    - id: brother
+      text: Ask your mother about the brother whose tunic you wear.
+      tags: [piety]
+      text_after: |
+        Your mother fills Mag's jug and sends her off, and then sits down on the edge of the cheese-press, which she never does in working hours.
+
+        His name was Piers, for your father. He was four. He had a fever in the winter you were born, and it took six days, and on the seventh he was better and asked for bread and honey, and in the night he died. "That is the way of it," she says. "They seem better." She keeps a wooden horse of his in the chest under the blue tunic. She shows it to you. The paint is worn off its back where he held it.
+
+        "You are the one who lived," she says. "So live properly. That is all I want." She does not say what properly means. You think about it for years.
+      effects: [ { set: flag.p_asked_brother }, { add: { rep.piety: 1 } } ]
+      next: p_hungry_year
+    - id: father
+      text: Go out to the fields where your father is with the plough-teams.
+      tags: [allies, learning]
+      text_after: |
+        Your father is at the end of the long furlong with two teams and four men, watching. He does not say anything when you come and stand beside him. After a while he starts telling you, without looking at you, what he is watching for: which team is pulling crooked, which man is skimping the headland, which strip will flood if the furrows run that way.
+
+        By Vespers you can see it too. On the way home he says, "Next year you can keep the tally for the ploughing." It is the most he has said to you since the steward came.
+      effects: [ { set: flag.p_ploughing_tally }, { add: { rel.piers_reeve.affection: 2, skill.stewardship: 1 } } ]
+      next: p_hungry_year
+
+- id: p_burgess_home
+  chapter: prologue
+  title: The Wool Loft
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    The Sarenzan's ship sails at Whitsun with your father's fleeces in her hold, and the house breathes out.
+
+    It is a good summer for a while. Your father grades the second clip in the wool loft, under the roof, where it is hot as an oven and the light comes in through the hoist door in a long dusty bar. Your mother, Isabel, reads in the hall in the afternoons. She is the daughter of a poor knight from Hollesby, married to wool because her father needed the money, and she has never quite stopped being a knight's daughter. She keeps her father's sword above the hearth. Your father keeps his account books under it.
+
+    [break]
+
+    In the yard, a girl is waiting with a basket of cloth samples: hanks of yarn and squares of woollen dyed in every blue there is, woad blue and sky blue and the deep blue that is nearly black, from Dyer's yard down by the river. Her name is Annot. She is nine, with blue hands to the wrist, and she has a laugh you can hear from the loft.
+
+    She is supposed to wait for your father. She is not waiting hard; she is looking at the Sarenzan's empty berth at the wharf, and at you, in the hoist door, in about equal measure.
+  choices:
+    - id: loft
+      text: Stay in the loft and grade fleeces with your father.
+      tags: [wealth, learning]
+      text_after: |
+        He shows you how to read a fleece: the crimp, the length of the staple, the grease, the colour at the root. Hill wool and marsh wool, March wool that is coarse and Wendham wool that is not. A good grader can tell which farm a fleece came from with his eyes shut. Your father nearly can.
+
+        It is the longest you have ever spent alone with him. At the end of it he says, "You have the hands for this." Then he says, "You will not need them, mind," and looks at the floor, as if he could see through it to the sword over the hearth.
+      effects: [ { set: flag.p_graded_wool }, { add: { rel.ralf_mercer.affection: 2, skill.trade: 1 } } ]
+      next: p_hungry_year
+    - id: annot
+      text: Go down to the yard and talk to the dyer's girl.
+      tags: [diplomacy]
+      text_after: |
+        She tells you which blue is which, and what each costs, and how many dippings in the vat it takes to get from one to the next. Then she tells you that your house smells of sheep, and that her house smells of piss, because that is what fixes the dye, and laughs her enormous laugh at your face.
+
+        When your father comes down for the samples, she curtsies to him like a lady. When he has gone back up, she sticks out a blue tongue at his back. You will not be able to stop thinking about that tongue.
+      effects:
+        - set: flag.p_met_annot
+        - meet: annot_dyer
+        - assign: { suit.annot_dyer.status: known }
+        - add: { suit.annot_dyer.regard: 2, rel.annot_dyer.affection: 2 }
+      next: p_hungry_year
+    - id: mother
+      text: Sit with your mother in the hall, and ask about her father.
+      tags: [diplomacy, learning]
+      text_after: |
+        Sir Roger of Hollesby fought at Harrow Ford under the old King and came home with a scar and no money, and sold his best horse, and then his second-best, and then his daughter, though she does not say it like that. She says he was a kind man who did not know what anything cost.
+
+        She shows you how he held his sword, with her hand over yours on the hilt of the one above the hearth, and how a knight's son bows, and how he stands when someone better comes in. "You will need to know this," she says, "if your father gets what he wants." She does not say whether she wants it too.
+      effects: [ { set: flag.p_mother_gentle }, { add: { skill.courtesy: 1 } } ]
+      next: p_hungry_year
+
+- id: p_archer_home
+  chapter: prologue
+  title: Hollin
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    Hollin is a dozen cottages and a church on the edge of the Ravell chase, where the fields stop and the oaks begin, and everybody in it lives on the lord's sufferance and the forest's leavings. Your father's cottage is the last one, nearest the trees, because it was cheapest.
+
+    There are four of you in it. Your father, who fletches arrows for the Ravell huntsmen at a penny a dozen and drinks some of the pennies. Your mother, Alison, who spins for a Wendham clothier and never stops, so that you have grown up to the whirr of the wheel the way other children grow up to a mill. And Kit, your sister, who is five and follows you everywhere.
+
+    [break]
+
+    In summer the chase is the whole world. The forester, John Wood, lives at the lodge a mile in, with his daughter Mariot, who is your age and knows every path in it, and who walks them alone, which nobody else's daughter is allowed to do.
+
+    This evening your father is on the bench outside the door with a sheaf of goose feathers and a knife. Your mother is at the wheel inside. Mariot Wood is at the edge of the trees, where the chase meets your father's garden, with a basket, watching you the way a deer watches: still, and ready to go.
+  choices:
+    - id: fletch
+      text: Sit on the bench with your father and learn to fletch.
+      tags: [martial, allies]
+      text_after: |
+        Three feathers to an arrow, from the same wing, or it flies crooked. The cock feather out, so it does not foul the bow. Glue of boiled hide, a binding of silk thread if you have it and linen if you do not. Your father does it without looking. You take an hour over your first, and he takes it apart and gives it back to you.
+
+        At dark he holds the last one you made up to the light, sights along it, and puts it in his own quiver without a word. You know he will shoot it on Sunday. You know he will tell nobody whose it is.
+      effects: [ { set: flag.p_fletched }, { add: { rel.hugh_fletcher.affection: 1, skill.archery: 1 } } ]
+      next: p_hungry_year
+    - id: mariot
+      text: Go to the edge of the trees, and ask Mariot what is in the basket.
+      tags: [diplomacy]
+      text_after: |
+        Wild strawberries, from a bank in the chase that nobody else knows. She does not offer you any. She does offer to show you the bank, if you can keep up and keep quiet, and you go, and you can, mostly.
+
+        You come back after dark with red fingers and a scolding waiting. Mariot does not come back with you. She goes off along a path you cannot see, toward the lodge, and stops once at the edge of the dark and lifts her hand, and then she is gone. Kit asks you all the next day where you went. You do not tell her. It is the first secret you have ever had that belongs only to you.
+      effects:
+        - set: flag.p_met_mariot
+        - meet: mariot_wood
+        - assign: { suit.mariot_wood.status: known }
+        - add: { suit.mariot_wood.regard: 2, rel.mariot_wood.affection: 2, skill.woodcraft: 1 }
+      next: p_hungry_year
+    - id: mother
+      text: Sit with your mother at the wheel, and ask about the day your father came home.
+      tags: [piety]
+      text_after: |
+        She does not stop spinning. She never does. But she tells you.
+
+        He came home from the March on a cart, with the knee in splints and a captain's letter for his pension, and a look on him she did not know. He did not speak for a month. Then one day he went out to the butts on his stick and shot, and came back, and ate his supper, and was himself again, mostly. "Mostly," she says. "There is a piece of him that did not come home. I do not ask where it is." The wheel goes round. "You will want to go to the war," she says. "Every boy does. If you go, come home all of you. That is all I ask."
+      effects: [ { set: flag.p_mothers_ask }, { add: { rel.hugh_fletcher.respect: 1, rep.piety: 1 } } ]
+      next: p_hungry_year
+
+- id: p_servant_home
+  chapter: prologue
+  title: Below Stairs
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    Ravell Hall at night belongs to the servants.
+
+    When the family has gone up and the hall fire is banked, the kitchen comes alive: the cooks, the scullions, the grooms in from the yard, the laundry women, the men-at-arms off watch, all round the long table with the ends of the day's bread and the dregs of the day's ale. Old Hob Crane, the head groom, bent and profane, holds court at the top. Your mother sits at the far end, mending one of Lady Ravell's sleeves by rushlight, apart, because a tirewoman is not quite a servant like the others, and not quite anything else.
+
+    [break]
+
+    The laundry girls come in late with their arms red to the elbow from the copper. One of them, Nell, is your age, with a gap in her teeth and a laugh like a jay. She does the voices of the family for the kitchen: Lady Ravell's way of saying "Agnes," Lord Ravell's silence, Aymer's whine. The kitchen roars. Your mother does not look up from her sleeve.
+
+    Tonight Nell has a basket of wet sheets that should have been carried up to the drying-yard before dark, and was not, and she is looking round the table for somebody to help her carry it, and looking at you.
+  choices:
+    - id: nell
+      text: Help Nell carry the sheets up to the drying-yard.
+      tags: [diplomacy]
+      text_after: |
+        It is a heavy basket and a long stair, and the drying-yard is on the roof of the bakehouse, with the whole of the chase black around it and the stars out. You hang the sheets together in the dark, by feel. Nell does Master Ranulf's voice for you, and then your mother's, and then yours, which is not fair, because you do not sound like that.
+
+        When the sheets are up she sits on the parapet with her feet hanging over and says, "Do you ever think you'll get out of here?" You say you do not know. She says, "I will," and you believe her, for no reason, completely.
+      effects:
+        - set: flag.p_met_nell
+        - meet: nell_laundress
+        - assign: { suit.nell_laundress.status: known }
+        - add: { suit.nell_laundress.regard: 2, rel.nell_laundress.affection: 2, rel.agnes_tirewoman.affection: -1 }
+      next: p_hungry_year
+    - id: hob
+      text: Sit with Hob Crane and listen to him talk about horses.
+      tags: [learning]
+      text_after: |
+        Hob has worked in the Ravell stables for fifty years, under three lords, and he has opinions about every horse that has ever stood in them, most of them obscene. But in among the filth there is more horse-sense than in any book, and he gives it away to anyone who will sit still.
+
+        Near midnight, when the kitchen has emptied, he says, "Your mother wants you above stairs. Pouring wine, carrying cloaks. A gentleman's boy." He spits in the fire. "There's worse. But a man who knows horses is never out of bread. Remember that, when they put you above stairs and then take it away."
+      effects:
+        - set: flag.p_hob_lessons
+        - if: role == horse_master
+          then: [ { add: { skill.riding: 1 } } ]
+          else: [ { add: { skill.woodcraft: 1 } } ]
+      next: p_hungry_year
+    - id: mother
+      text: Go and sit by your mother, and help her with the sleeve.
+      tags: [allies, diplomacy]
+      text_after: |
+        She does not need help with the sleeve. She lets you hold the rushlight, and shows you the stitch, and then, low, so the table cannot hear, tells you what she has wanted to tell you for a year: that she means you to go above stairs, as a page, and then further, if she can manage it. That Lady Ravell has noticed you. That you must stand straight, speak when spoken to, never be seen to listen, and never, ever repeat anything you hear in that house.
+
+        She looks at you when she says that last thing, a long look. You wonder, for a cold moment, whether she knows what you heard through the privy wall. She cannot. You think she cannot.
+      effects: [ { set: flag.p_mother_lessons }, { add: { rel.agnes_tirewoman.affection: 2, skill.courtesy: 1 } } ]
+      next: p_hungry_year

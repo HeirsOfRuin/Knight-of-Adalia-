@@ -46,6 +46,24 @@ p_mother_dismissed: { description: "His mother was dismissed because of him", hi
 p_lower_track: { description: "Entered service on the lower track", later: ch2, hidden: true }
 p_promised_girl: { description: "Promised his childhood sweetheart he would come back", later: ch2, hidden: true }
 p_family_promise: { description: "Made his family a promise when he left", later: ch3, hidden: true }
+p_mag_buttermilk: { description: "Carried buttermilk home for Mag Coker as a boy", hidden: true }
+p_asked_brother: { description: "Asked his mother about his dead brother", hidden: true }
+p_ploughing_tally: { description: "Kept the ploughing tally for his father from age nine", hidden: true }
+p_graded_wool: { description: "Learned to grade fleeces in the wool loft with his father", hidden: true, later: ch1 }
+p_met_annot: { description: "Met Annot Dyer in the yard as a boy", hidden: true }
+p_mother_gentle: { description: "His mother, a knight's daughter, taught him a knight's son's manners", hidden: true }
+p_fletched: { description: "Learned to fletch on the bench with his father", hidden: true, later: ch1 }
+p_met_mariot: { description: "Mariot Wood showed him the strawberry bank in the chase", hidden: true }
+p_mothers_ask: { description: "Promised his mother he would come home whole from any war", hidden: true }
+p_met_nell: { description: "Helped Nell with the sheets on the bakehouse roof", hidden: true }
+p_hob_lessons: { description: "Sat with Hob Crane and learned horses", hidden: true }
+p_mother_lessons: { description: "His mother taught him to serve above stairs", hidden: true }
+p_met_pryce: { description: "Met Sir Walter Pryce on the road as a boy", hidden: true }
+p_asked_knight: { description: "Asked Pryce how a man becomes a knight", hidden: true, later: ch1 }
+p_kicked_squire: { description: "Kicked Pryce's squire for kicking a dog", hidden: true, later: ch1 }
+p_jumped_fire: { description: "Jumped the Midsummer fire with his childhood sweetheart", hidden: true, later: ch1 }
+p_jumped_alone: { description: "Jumped the Midsummer fire alone with the young men", hidden: true, later: ch1 }
+p_walked_home: { description: "Walked his childhood sweetheart home on Midsummer Eve", hidden: true, later: ch1 }
 
 # ---- Chapter 1 -------------------------------------------------------------
 c1_duties_well: { description: "Did his first duties at Ravell well", hidden: true }

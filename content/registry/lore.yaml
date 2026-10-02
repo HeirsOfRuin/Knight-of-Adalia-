@@ -134,13 +134,13 @@ les_salines:
   category: war
   if: { any: [ npc.alys_fane.met, chapter >= ch3 ] }
   text: |
-    The battle on the salt pans before Sauvemer, in the third summer of the war. The Valdrennish came along the causeways on foot, the garrison came out behind, and the King's banner went down. The Duchess of Armance's lances turned it. Adalia held the field and lost a fifth of the army doing it.
+    The battle on the salt pans before Sauvemer, in the third summer of the war: the King's gamble. The Valdrennish came along the causeways on foot, the garrison came out behind, and the King's banner went down. The Duchess of Armance's lances and the rising tide turned it, and King Amaury's host drowned in the pans. Adalia lost a fifth of its army winning.
 lenders_truce:
-  title: The Lenders' Truce
+  title: The truce of Saint-Lys
   category: war
   if: { any: [ npc.orsino_brancale.met, chapter >= ch3 ] }
   text: |
-    The truce of Saint-Lys, made when the Lanzi and Varesco banks stopped lending to both kings in the same week. Adalia kept Sauvemer and its marshes. The wool went back to Vervais. The Armance was not mentioned.
+    Made when the Lanzi and Varesco banks stopped lending to both kings in the same week. Les Salines decided the terms: Sauvemer and its march to Adalia, held of no one; the Duke of Armance exchanged home; the wool back to Vervais. Not the crown of Valdrenne. A port, a march and an ally kept.
 the_mottle:
   title: The Mottle
   category: faith

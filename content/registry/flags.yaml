@@ -167,6 +167,8 @@ c2_lanzi_loan: { description: "Borrowed from the Lanzi house to pay his men", hi
 c2_raided_country: { description: "Raided the Constable's lands to pay his men", hidden: true, later: ch3 }
 c2_shelter: { description: "Built his men a proper shelter on the dunes before Sauvemer", hidden: true }
 c2_engineers: { description: "Worked with the siege engineers at Sauvemer", hidden: true, later: ch3 }
+c2_fireship: { description: "Steered a fireship into Sauvemer harbour", later: ch3 }
+c2_cut_out_ship: { description: "Cut out a Valdrennish ship from Sauvemer harbour", hidden: true, later: ch3 }
 c2_breach_survived: { description: "Went up the breach at the Tanners' Tower and came back", later: ch3 }
 c2_held_ditch: { description: "Held the ditch below the breach to bring the storming party back", hidden: true, later: ch3 }
 c2_kept_out_of_breach: { description: "Talked his company out of the storm of the breach", hidden: true, later: ch3 }

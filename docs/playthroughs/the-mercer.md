@@ -1002,7 +1002,9 @@ She lends against your future ransoms at a rate she calls friendly. It is not fr
 
 *Summer, year 22 of King Aldred*
 
-The King comes back in the summer with four thousand fresh men, a new pay chest, and a face that has aged five years in six months.
+The King comes back in the summer with four thousand fresh men, a new pay chest, a face that has aged five years in six months, and a victory.
+
+In Lent, at Harlow Moss below the Leven, he and the Marcher lords caught the Caldmoor host going home with its plunder, strung out along a drove road in the snow, and broke it. The regent got away. Black Ewan got away; Black Ewan always does. Four thousand Caldmoor spears did not. The army in the Armance hears the news at Easter and gets drunk on it for three days. It is the first good news anyone has had since the Lisonne.
 
 The Moot gave him the money. It made him pay for it. He has sworn before the lords and the shire knights and the burgesses that the wool will go back to Vervais on their terms, not his, the day the war ends. Every man in the army knows it. It means the King has a year, perhaps two, to win something worth the price.
 
@@ -1035,11 +1037,34 @@ You win steadily, and leave while you are winning, which makes you no friends.
 
 *Coin +5s*
 
+## Fire in the Harbour
+
+Sauvemer's harbour holds thirty Valdrennish ships: the ones that burned Saltcombe's suburbs in the spring, and the ones that would bring the town bread and men for as long as the siege lasts. While they float, the King can sit in front of the walls until doomsday.
+
+So on a dark night at the end of July, with the wind onshore and the tide making, the King's admiral sends in the fireships: six old cogs bought cheap in Saltcombe, packed to the gunwales with brushwood, tar and pig fat, each with a skeleton crew to steer her in and light her and get off her alive if they can.
+
+*(Continue)*
+
+Behind them go the boats: every ship's boat in the fleet, full of men with axes and hooks, to cut out whatever does not burn. And on the mole at the harbour mouth, under the sea tower, archers to keep the tower's crossbows busy.
+
+The admiral wants volunteers for all three. He is honest about the fireships. "Some of you will not come back," he says. "The ones who do will drink free in Saltcombe for the rest of their lives."
+
+- Volunteer to steer a fireship in. *(Even, MORTAL DANGER)*
+- Take your men in the boats, to cut out the ships that do not burn. *(Even)*
+- Take your archers onto the mole and keep the sea tower's crossbows busy. *(Even)*
+- Watch from the dunes.
+
+**Chose:** Take your men in the boats, to cut out the ships that do not burn. (Even: failure)
+
+The ship you pick has her crew aboard. You get back to the boat with two men fewer than you went with, and nothing to show for it but the light of the others burning.
+
+*1 of your men is dead · Roger Tallis is dead*
+
 ## The Breach
 
 *Autumn, year 22 of King Aldred*
 
-By Michaelmas the Tanners' Tower is a heap of rubble with a ramp up the middle of it, and the King orders the storm.
+With the harbour burned, the King's council thinks the town is beaten and only needs to be told. By Michaelmas the Tanners' Tower is a heap of rubble with a ramp up the middle of it, and the King orders the storm.
 
 It is to go in at dawn, at low tide, when the ditch is mud and not water. Five hundred men-at-arms up the rubble, with the archers shooting over their heads to keep the defenders down, and ladders at the curtain wall on either side to draw men away from the breach.
 
@@ -1054,11 +1079,11 @@ At dawn the trumpets go.
 - Hold the ditch below the breach, to bring back whoever comes down.
 - Tell your captain the breach is a trap, and keep your men out of it. *(Even)*
 
-**Chose:** Take your men to the ladders on the curtain wall, to draw the defenders off. (Even: failure)
+**Chose:** Take your men to the ladders on the curtain wall, to draw the defenders off. (Even: success)
 
-The ladders go up and come straight down again. Boiling sand. Stones. One of your men falls from the top of a ladder and lies at the foot of the wall all day, and you cannot get to him until dark.
+You get two ladders up and keep them up long enough that the defenders have to send men from the breach to throw them down. It is all a feint is for. It does not save the storm. Your men come back from the wall with burns and bruises and every one of them alive, which is more than any other company on the ladders can say.
 
-*1 of your men is dead · Roger Tallis is dead*
+*Renown +1 · Sir Walter Pryce's respect +1*
 
 ## The Dead in the Ditch
 
@@ -1095,7 +1120,7 @@ So the King settles down to do what he did not mean to do: sit in front of Sauve
 
 *(Continue)*
 
-The town is not starving. On dark nights, Sarenzan galleys hired by King Amaury slip in under the sea wall with flour and salt pork, and slip out again before dawn, and the King's ships cannot catch them. Everyone knows whose galleys they are. The Varesco bank lends to Amaury. The Lanzi bank lends to Aldred. "It is not personal," Fiammetta Lanzi tells you. "It is business. Ugolino Varesco would sell flour to the Devil, if the Devil could post a bond."
+The town is not starving. Its own ships are ash, but on dark nights, Sarenzan galleys hired by King Amaury slip in under the sea wall with flour and salt pork, and slip out again before dawn, and the King's ships cannot catch them. Everyone knows whose galleys they are. The Varesco bank lends to Amaury. The Lanzi bank lends to Aldred. "It is not personal," Fiammetta Lanzi tells you. "It is business. Ugolino Varesco would sell flour to the Devil, if the Devil could post a bond."
 
 Your men are dry, at least.
 
@@ -1110,20 +1135,16 @@ It means a longer walk to the lines and a quarrel with the company that had the 
 
 *Stewardship +1 · Davy Ludd's loyalty +1*
 
-## A Letter from Wendham
+## A Letter Brought by Hand
 
-Cecily Fuller does not write letters, she writes accounts. This one has a column for the price of wool in Wendham, a column for the price of Valdrennish wine in Saltcombe, and a column headed "You", with a note: "Alive, I assume. A merchant in Saltcombe says the Sauvemer garrison is short of salt. Buy it in the Armance. Sell it to them. Write when you have done it."
+A letter, brought by a man from home who has come over to the garrison: Annot Dyer writes in a big round hand, as if she were shouting.
 
-There is a bill of exchange folded inside, for five pounds, on the Lanzi house before Sauvemer, "as capital".
+- Send something back with the same man.
+- Keep it. You do not know what to say.
 
-- Do it. Buy salt in the Armance, sell it to the garrison. *(Favorable)*
-- Send the money back with your thanks. You are a soldier, not a salt merchant.
+**Chose:** Send something back with the same man.
 
-**Chose:** Do it. Buy salt in the Armance, sell it to the garrison. (Favorable: success)
-
-She was right. You send her back her five pounds and five more, and a letter in columns, which is the only kind she will respect.
-
-*Coin +£1 · Merchants standing +1*
+A Valdrennish ribbon, a silver penny with the lilies on it, a few lines. The man swears he will deliver it. He does.
 
 ## The Mine
 
@@ -1184,6 +1205,8 @@ The Adalian army in front of Sauvemer is eleven thousand men, after two years of
 *(Continue)*
 
 The King holds a council in the ruins of a salt-boiler's house. Half the captains want to break the siege and get the army onto the ships while there are ships. The King listens, and then walks them out to look at the ground in front of the lines: the salt pans, square shallow ponds by the hundred, cut by dykes and causeways and sluices, with the sea behind. "They will have to come to us along the causeways," he says. "On foot. Let them come."
+
+If he is wrong, there will be no army to put on the ships. Every man in the army knows it. Most of them think he is wrong.
 
 - Ride out with the young men who go skirmishing under the heights. *(Even)*
 - Have Father Benet or a camp priest write your men's wills.
@@ -1297,11 +1320,17 @@ You get there third. Sir Walter Pryce gets there first, and has Thibaut de Brés
 
 In the middle of the afternoon, three hundred lances come along the beach at the gallop from the west, under the ermine of Armance, and go into the Valdrennish flank where the causeways are crowded. The Duchess has come. She has brought everything she has left.
 
-It is not a rout. Nothing that day is a rout. But the weight comes off the dyke, a little at a time, and toward evening the Valdrennish columns begin to go back along the causeways the way they came, in good order, with their wounded, walking. The water is up to their knees. Nobody follows them.
+For a long time it makes no difference. Then it does. The weight comes off the dyke, a little at a time, and the columns behind the front ranks start to look over their shoulders at the causeways, and the tide coming up over the pans on either side of them.
+
+Then they are going back. Not in order. The causeways are a man and a half wide, and the whole host is trying to use them at once, and the water is at their waists and rising. Men in plate who step off a causeway into a salt pan at high tide do not come out again.
 
 *(Continue)*
 
-The gold shuttle banners of Vervais go back up the heights with the rest. They never came down. Nobody on the Adalian side knows why, and nobody on the Valdrennish side will say.
+The King gives the word, and what is left of the Adalian line comes down off the dyke after them.
+
+You will remember the next hour for the rest of your life, and not as glory. By dusk the salt pans are full of Valdrennish dead, and the Constable has got away up the heights with his rearguard in good order, because he is the Constable, and King Amaury's host is a host no longer.
+
+The gold shuttle banners of Vervais go back up the heights with the rest. They never came down all day. Nobody on the Adalian side knows why, and nobody on the Valdrennish side will say.
 
 The sun goes down on the salt pans and on the dead in them, and the water is red where it is not grey.
 
@@ -1324,9 +1353,9 @@ You stand in the line with your new spurs, a knight of one day, and the King loo
 
 *(Continue)*
 
-The count comes in during the day. Two thousand Adalians dead or dying, a fifth of the army. The Valdrennish dead are no more than that, the heralds think, and perhaps fewer. Among the Adalian dead are two earls and a bishop's nephew. Among the wounded is the King.
+The count comes in during the day. Two thousand Adalians dead or dying, a fifth of the army. The Valdrennish dead the heralds stop counting at five thousand, half of them drowned. Among the Adalian dead are two earls and a bishop's nephew. Among the wounded is the King. Among the prisoners, a duke, eleven counts, and more knights than there are Adalian knights left standing to guard them.
 
-It is a victory, because the host on the heights is going away. It does not feel like one. On the walls of Sauvemer, the people who were watching the heights watch them empty.
+It is a victory. Two years ago, it is the victory everyone in the army thought they would have by Lammas. Now they know what it cost, and that they nearly did not have it at all. On the walls of Sauvemer, the people who were watching the heights watch them empty.
 
 - Bury your dead, and go on.
 
@@ -1338,7 +1367,7 @@ It is a victory, because the host on the heights is going away. It does not feel
 
 *Autumn, year 23 of King Aldred*
 
-Sauvemer treats within the month. There is nobody left to wait for.
+Sauvemer treats within the month. There is nobody left to wait for, and the people on the walls watched the salt pans fill up with their relief.
 
 The King cannot afford to storm it and cannot afford to sit in front of it another winter. The town cannot afford to be stormed. So for three weeks heralds go back and forth across the ditch with terms, and the terms change every time they cross, and nobody is happy with any of them.
 
@@ -1382,26 +1411,28 @@ She looks at your hands, which are not a gentleman's, and at your face, and says
 
 *Lady Alys Fane's affection +2*
 
-## The Lenders' Truce
+## The Truce of Saint-Lys
 
 *Spring, year 24 of King Aldred*
 
-The war does not end because anyone wins it. It ends because the money stops.
+King Aldred would fight on, if he could pay for it. He cannot. Nor can King Amaury, who has lost an army on the salt pans and needs ten years and a great deal of borrowed money to raise another.
 
-In Lent, the Lanzi house tells King Aldred that it will lend him nothing more until he treats. In the same week, the Varesco house tells King Amaury the same thing, in almost the same words. Neither king can pay his army for another summer without them. The Signory of Sarenza has lent too much to both to let either one win, or lose.
+In Lent, the Lanzi house tells King Aldred that it will lend him nothing more until he treats. In the same week, the Varesco house tells King Amaury the same thing, in almost the same words. The Signory of Sarenza has lent too much to both to let either one fight to the end.
 
 *(Continue)*
 
-The Pontiff's legate, Cardinal Orsino Brancale, a soft-spoken Sarenzan with a merchant's eyes, rides between the two courts with the bankers' letters in his saddlebag. At Saint-Lys, at Lady Day, he gets his truce: three years. Sauvemer and its marshes stay Adalian. The prisoners of Grisolles and Les Salines are to be ransomed at rates the bankers will fix. The wool goes back to Vervais, as the Moot was promised.
+The Pontiff's legate, Cardinal Orsino Brancale, a soft-spoken Sarenzan with a merchant's eyes, rides between the two courts with the bankers' letters in his saddlebag. At Saint-Lys, at Lady Day, he gets his truce: three years, and the terms are the terms of the side that won at Les Salines.
 
-And the Armance is not mentioned at all. The Duke of Armance stays in his Valdrennish prison. The Duchess, who came along the beach at Les Salines with everything she had left, is left to make her own peace with King Amaury, or not.
+Sauvemer and all its march are Adalian, held of no one. The Duke of Armance comes home, exchanged for Thibaut de Brésy and the duke taken on the salt, and the Armance is to be left in peace. The prisoners of Grisolles are released at rates the bankers fix, which nobody likes. And the wool goes back to Vervais, as the Moot was promised.
+
+It is not the crown of Valdrenne. Nobody in the army ever really thought it would be, after the Lisonne. It is a port, a march, an ally kept, and a King of Valdrenne who has learned what it costs to fight one. Men argue in the taverns of Sauvemer for months about whether that was worth Grisolles. Most decide it was. The ones who were in the rearguard are not so sure.
 
 *(Continue)*
 
 Half the army goes home. The rest stays, to garrison Sauvemer and its march, and to be paid even more slowly than before.
 
 - Stay with the garrison in Sauvemer. That is where the King's grants will be given, when they are given.
-- Go with the few companies the King leaves to help the Duchess hold the Armance.
+- Go with the companies the King lends the Armance, to hold its castles through the truce.
 - Take service with Sir Walter Pryce, who is keeping a company in the field through the truce, for pay.
 
 **Chose:** Stay with the garrison in Sauvemer. That is where the King's grants will be given, when they are given.
@@ -1436,16 +1467,20 @@ He goes red to the ears and says nothing for a whole day. Then he starts asking 
 
 *Davy Ludd's affection +3*
 
-## A Letter Brought by Hand
+## A Letter from Wendham
 
-A letter, brought by a man from home who has come over to the garrison: Annot Dyer writes in a big round hand, as if she were shouting.
+Cecily Fuller does not write letters, she writes accounts. This one has a column for the price of wool in Wendham, a column for the price of Valdrennish wine in Saltcombe, and a column headed "You", with a note: "Alive, I assume. A merchant in Saltcombe says the Sauvemer garrison is short of salt. Buy it in the Armance. Sell it to them. Write when you have done it."
 
-- Send something back with the same man.
-- Keep it. You do not know what to say.
+There is a bill of exchange folded inside, for five pounds, on the Lanzi house before Sauvemer, "as capital".
 
-**Chose:** Send something back with the same man.
+- Do it. Buy salt in the Armance, sell it to the garrison. *(Favorable)*
+- Send the money back with your thanks. You are a soldier, not a salt merchant.
 
-A Valdrennish ribbon, a silver penny with the lilies on it, a few lines. The man swears he will deliver it. He does.
+**Chose:** Do it. Buy salt in the Armance, sell it to the garrison. (Favorable: success)
+
+She was right. You send her back her five pounds and five more, and a letter in columns, which is the only kind she will respect.
+
+*Coin +£1 · Merchants standing +1*
 
 ## The Garrison
 
@@ -1524,7 +1559,7 @@ Wendham is quieter and shabbier: the staple was shut for three years, and the wo
 
 *(Continue)*
 
-The March is quiet now, the way a burned field is quiet. When the Caldmoor host crossed in the first winter of the war, the Marcher lords held the towers and the King came north with what he had brought home from Valdrenne, and in the spring the regent went back over the Leven with his cattle and his plunder and nothing else. Everyone at home calls it a victory. Nobody in the March does.
+The March is quiet now, the way a burned field is quiet. Everyone at home talks about Harlow Moss, where the King broke the Caldmoor host in the snow. In the March they talk about the winter before it, when the towers held and everything outside them burned.
 
 - Spend the summer with your family.
 - Find Annot.

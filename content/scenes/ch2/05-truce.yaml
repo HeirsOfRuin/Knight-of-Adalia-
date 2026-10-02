@@ -1,24 +1,27 @@
-# Chapter 2, part 5: the Lenders' Truce, the Sauvemer garrison, home, and the grants.
+# Chapter 2, part 5: the truce of Saint-Lys, the Sauvemer garrison, home, and the grants.
 # Spring year 24 to spring year 26. Ages 23-25.
-# Neither king won. The banks stopped lending, and the war stopped with them.
+# Adalia won the war it could afford, not the one it set out to fight. The
+# banks made both kings stop; Les Salines decided who stopped with what.
 
 - id: c2_truce
   chapter: ch2
-  title: The Lenders' Truce
+  title: The Truce of Saint-Lys
   checkpoint: true
   on_enter: [ { advance: { seasons: 1 } }, { meet: orsino_brancale } ]
   text: |
-    The war does not end because anyone wins it. It ends because the money stops.
+    King Aldred would fight on, if he could pay for it. He cannot. Nor can King Amaury, who has lost an army on the salt pans and needs ten years and a great deal of borrowed money to raise another.
 
-    In Lent, the Lanzi house tells King Aldred that it will lend him nothing more until he treats. In the same week, the Varesco house tells King Amaury the same thing, in almost the same words. Neither king can pay his army for another summer without them. The Signory of Sarenza has lent too much to both to let either one win, or lose.
+    In Lent, the Lanzi house tells King Aldred that it will lend him nothing more until he treats. In the same week, the Varesco house tells King Amaury the same thing, in almost the same words. The Signory of Sarenza has lent too much to both to let either one fight to the end.
 
     [break]
 
-    The Pontiff's legate, Cardinal Orsino Brancale, a soft-spoken Sarenzan with a merchant's eyes, rides between the two courts with the bankers' letters in his saddlebag. At Saint-Lys, at Lady Day, he gets his truce: three years. Sauvemer and its marshes stay Adalian. The prisoners of Grisolles and Les Salines are to be ransomed at rates the bankers will fix. The wool goes back to Vervais, as the Moot was promised.
+    The Pontiff's legate, Cardinal Orsino Brancale, a soft-spoken Sarenzan with a merchant's eyes, rides between the two courts with the bankers' letters in his saddlebag. At Saint-Lys, at Lady Day, he gets his truce: three years, and the terms are the terms of the side that won at Les Salines.
 
-    And the Armance is not mentioned at all. The Duke of Armance stays in his Valdrennish prison. The Duchess, who came along the beach at Les Salines with everything she had left, is left to make her own peace with King Amaury, or not.
+    Sauvemer and all its march are Adalian, held of no one. The Duke of Armance comes home, exchanged for Thibaut de Brésy and the duke taken on the salt, and the Armance is to be left in peace. The prisoners of Grisolles are released at rates the bankers fix, which nobody likes. And the wool goes back to Vervais, as the Moot was promised.
 
-    [if flag.c2_jehanne_message]You never did get the chance to give the King her message. It would not have mattered.[/if]
+    It is not the crown of Valdrenne. Nobody in the army ever really thought it would be, after the Lisonne. It is a port, a march, an ally kept, and a King of Valdrenne who has learned what it costs to fight one. Men argue in the taverns of Sauvemer for months about whether that was worth Grisolles. Most decide it was. The ones who were in the rearguard are not so sure.
+
+    [if flag.c2_jehanne_message]You never did get the chance to give the King the Duchess's message. Someone did. Her husband rides into Lannec at Whitsun, thin and grey and blinking, and she meets him at the gate.[/if]
 
     [break]
 
@@ -31,9 +34,9 @@
       effects: [ { set: flag.c2_garrison } ]
       next: { pool: c2_camp, count: 2, then: c2_garrison_life }
     - id: march
-      text: Go with the few companies the King leaves to help the Duchess hold the Armance.
+      text: Go with the companies the King lends the Armance, to hold its castles through the truce.
       tags: [martial, piety]
-      text_after: It is not the King's war any more, and everyone knows it. The King sends two hundred men to the Armance so that he can say he sent someone. The castles are small, cold, and short of everything, and the Duchess's people look at the Adalians the way you look at a friend who has lied to you. The Duchess remembers you, or says she does. She does not mention the truce. She does not have to.
+      text_after: The Armance castles are small, cold and short of everything, and the people round them are the first Valdrennish you have met who are glad to see an Adalian. The Duke is home and ill and sees nobody. The Duchess runs everything, and remembers you, or says she does.
       effects: [ { set: flag.c2_armance_castles }, { add: { rel.jehanne_armance.respect: 1, rep.valdrenne: 1 } } ]
       next: { pool: c2_camp, count: 2, then: c2_garrison_life }
     - id: pryce
@@ -206,7 +209,7 @@
 
     [break]
 
-    The March is quiet now, the way a burned field is quiet. When the Caldmoor host crossed in the first winter of the war, the Marcher lords held the towers and the King came north with what he had brought home from Valdrenne, and in the spring the regent went back over the Leven with his cattle and his plunder and nothing else. Everyone at home calls it a victory. Nobody in the March does.
+    The March is quiet now, the way a burned field is quiet. Everyone at home talks about Harlow Moss, where the King broke the Caldmoor host in the snow. In the March they talk about the winter before it, when the towers held and everything outside them burned.
 
     [if flag.c1_coll_hanged]Black Ewan rode ahead of the Caldmoor host that winter. He burned four steadings in the March and asked, at every one, for a man with your name.[/if]
   choices:
@@ -308,6 +311,7 @@
           - { if: res.renown >= 10, add: 2, label: your name }
           - { if: flag.c2_took_thibaut, add: 2, label: the Constable's son }
           - { if: flag.c2_saved_banner, add: 2, label: the King's banner at Les Salines }
+          - { if: flag.c2_fireship, add: 1, label: the fireships at Sauvemer }
           - { if: flag.strong_patron, add: 1, label: your patron speaks for you }
           - { if: flag.c1_ravell_owed, add: -1, label: Lord Ravell reminds the council you are in his debt }
           - { if: flag.c2_spoke_for_town || flag.c2_terms_carried, add: -1, label: the council thinks you soft on the Valdrennish }

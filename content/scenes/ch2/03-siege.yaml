@@ -93,7 +93,9 @@
   title: Sauvemer
   on_enter: [ { advance: { seasons: 2 } }, { meet: enguerrand_vaux } ]
   text: |
-    The King comes back in the summer with four thousand fresh men, a new pay chest, and a face that has aged five years in six months.
+    The King comes back in the summer with four thousand fresh men, a new pay chest, a face that has aged five years in six months, and a victory.
+
+    In Lent, at Harlow Moss below the Leven, he and the Marcher lords caught the Caldmoor host going home with its plunder, strung out along a drove road in the snow, and broke it. The regent got away. Black Ewan got away; Black Ewan always does. Four thousand Caldmoor spears did not. The army in the Armance hears the news at Easter and gets drunk on it for three days. It is the first good news anyone has had since the Lisonne.
 
     The Moot gave him the money. It made him pay for it. He has sworn before the lords and the shire knights and the burgesses that the wool will go back to Vervais on their terms, not his, the day the war ends. Every man in the army knows it. It means the King has a year, perhaps two, to win something worth the price.
 
@@ -108,7 +110,7 @@
       tags: [allies]
       text_after: It takes a week of everybody's labour and some of your coin. Turf walls, a sailcloth roof, a drain. Other companies laugh. When the autumn gales come, half the army is living in sodden tents. Yours are dry. Men notice who thought ahead.
       effects: [ { set: flag.c2_shelter }, { add: { res.coin: -24, rel.davy_ludd.loyalty: 1, rel.jankin_rooke.loyalty: 1, rel.simkin_barre.loyalty: 1, rel.roger_tallis.loyalty: 1, rel.wat_coker.loyalty: 1, rel.perkin_dyer.loyalty: 1, rel.gib_shawe.loyalty: 1, rel.dickon_laund.loyalty: 1 } } ]
-      next: { pool: c2_camp, count: 1, then: c2_assault }
+      next: { pool: c2_camp, count: 1, then: c2_fireships }
     - id: engineers
       text: Offer yourself to the siege engineers, who need men who can count.
       tags: [learning]
@@ -116,7 +118,7 @@
       label: "Requires: can read"
       text_after: The King's master engineer, a Sarenzan named Bonifacio, needs someone to reckon timber, stone and men. You learn more about walls in a month than most knights learn in a life. You learn where Sauvemer's walls are weakest. You also learn that Bonifacio does not think the breach at the Tanners' Tower will be ready by Michaelmas, and that the King has told him it will be.
       effects: [ { set: flag.c2_engineers }, { add: { skill.tactics: 1, skill.stewardship: 1 } } ]
-      next: { pool: c2_camp, count: 1, then: c2_assault }
+      next: { pool: c2_camp, count: 1, then: c2_fireships }
     - id: lanzi
       text: Find the Lanzi house in the siege camp. Every army has a banker.
       tags: [wealth]
@@ -124,12 +126,99 @@
       text_after: |
         The Lanzi have followed the army up the coast and taken a timber house in the siege camp with a strongroom dug under it. The person who runs it is Matteo Lanzi's daughter, Fiammetta: twenty-four, sharp as a quill, in black like a widow though she is not one. "[if flag.c1_lanzi_debt]You owe us twenty pounds,[elif npc.bertuccio_lanzi.met]You are the one Bertuccio writes about,[else]You are one of Carrow's,[/if]" she says. "Sit down. Tell me what an army costs. I have been trying to work it out since Grisolles, and nobody here can count."
       effects: [ { meet: fiammetta_lanzi }, { assign: { suit.fiammetta_lanzi.status: known } }, { add: { suit.fiammetta_lanzi.regard: 2 } } ]
-      next: { pool: c2_camp, count: 1, then: c2_assault }
+      next: { pool: c2_camp, count: 1, then: c2_fireships }
     - id: rest
       text: Rest. You have earned it.
       tags: [yield]
       text_after: You sleep for two days. When you wake up the camp has organised itself without you, and the best places on the dunes are taken.
-      next: { pool: c2_camp, count: 1, then: c2_assault }
+      next: { pool: c2_camp, count: 1, then: c2_fireships }
+
+- id: c2_fireships
+  chapter: ch2
+  title: Fire in the Harbour
+  text: |
+    Sauvemer's harbour holds thirty Valdrennish ships: the ones that burned Saltcombe's suburbs in the spring, and the ones that would bring the town bread and men for as long as the siege lasts. While they float, the King can sit in front of the walls until doomsday.
+
+    So on a dark night at the end of July, with the wind onshore and the tide making, the King's admiral sends in the fireships: six old cogs bought cheap in Saltcombe, packed to the gunwales with brushwood, tar and pig fat, each with a skeleton crew to steer her in and light her and get off her alive if they can.
+
+    [break]
+
+    Behind them go the boats: every ship's boat in the fleet, full of men with axes and hooks, to cut out whatever does not burn. And on the mole at the harbour mouth, under the sea tower, archers to keep the tower's crossbows busy.
+
+    The admiral wants volunteers for all three. He is honest about the fireships. "Some of you will not come back," he says. "The ones who do will drink free in Saltcombe for the rest of their lives."
+  choices:
+    - id: fireship
+      text: Volunteer to steer a fireship in.
+      tags: [martial]
+      lethal: true
+      warn: You will be on a burning ship under the walls with crossbows on you, and then in the sea at night. Carrying a wound, you will not get out of the water.
+      check:
+        attr: endurance
+        skill: command
+        difficulty: 5
+        mods:
+          - { if: trait.veteran, add: 1, label: you keep your head }
+          - { if: background == burgess, add: 1, label: you grew up round wharves }
+          - { if: item.holy_ampulla, add: 1, label: "Saint Ebba's water, or your faith in it" }
+      success:
+        text: |
+          You are not a sailor. You do not need to be. A Saltcombe shipman does the steering and you do the rest: keeping the crew down behind the bulwark while the bolts come in, and then the flint and the torch, and then the cog goes up under you like a haystack in August and you are over the side in the black water.
+
+          Four of the six fireships get in among the moorings. By dawn Sauvemer's harbour is a field of black hulks and floating ash, and the people on the walls are watching it in silence. You are in a ship's boat, wrapped in a sail, with your teeth going like a mill. The admiral comes to find you himself.
+        effects: [ { set: flag.c2_fireship }, { add: { res.renown: 3, rep.crown: 1 } }, { trait: +veteran } ]
+        next: c2_assault
+      partial:
+        text: You get her in among the moorings and lit. Getting off her is the part that goes wrong. The bulwark catches you across the ribs on the way over, and you come out of the water half-drowned, and one of the crew does not come out at all. The harbour burns behind you.
+        effects: [ { set: flag.c2_fireship }, { injury: bruised_ribs }, { add: { res.renown: 2 } } ]
+        next: c2_assault
+      failure:
+        text: "[if !injured]A bolt takes the shipman at the steering oar and the cog goes wide, onto the harbour chain, and burns there uselessly. You are in the sea a long time before a boat finds you. Other fireships get in.[else]A bolt takes the shipman at the steering oar and the cog goes wide, onto the harbour chain, and you go over the side into the black water at Sauvemer, and the water keeps you.[/if]"
+        effects:
+          - if: "!injured"
+            then: [ { injury: fever_weak } ]
+            else: [ { die: "Drowned in Sauvemer harbour from a burning fireship, aged {age}." } ]
+        next: c2_assault
+    - id: boats
+      text: Take your men in the boats, to cut out the ships that do not burn.
+      tags: [martial, wealth]
+      check:
+        attr: strength
+        skill: command
+        difficulty: 4
+        mods:
+          - { if: retinue >= 4, add: 1, label: enough men for a boarding }
+          - { if: npc.roger_tallis.follower, add: 1, label: "Tallis has done this before, somewhere" }
+      success:
+        text: A fat Valdrennish hulk at the inner moorings, with her crew ashore and six boys aboard her, who surrender to your men with their hands up and are glad to. You cut her cable and the tide carries her out past the burning ones, with you on her deck, past the sea tower, into the fleet. She is full of wine. Prize money is paid on wine.
+        effects: [ { set: flag.c2_cut_out_ship }, { add: { res.renown: 1, res.coin: 360, rel.simkin_barre.loyalty: 1, rel.roger_tallis.loyalty: 1 } } ]
+        next: c2_assault
+      failure:
+        text: The ship you pick has her crew aboard. You get back to the boat with two men fewer than you went with, and nothing to show for it but the light of the others burning.
+        effects: [ { casualties: { men: 1, named: 1, spare: [ davy_ludd ] } } ]
+        next: c2_assault
+    - id: mole
+      text: Take your archers onto the mole and keep the sea tower's crossbows busy.
+      tags: [allies, martial]
+      check:
+        attr: presence
+        skill: archery
+        difficulty: 4
+        mods:
+          - { if: npc.jankin_rooke.follower, add: 1, label: Rooke does not miss }
+          - { if: background == archer, add: 1, label: you were raised on this }
+      success:
+        text: Lying flat on wet stone under the sea tower, shooting at the slits by the light of the burning harbour. Every bolt that comes at you is one that did not go at a fireship. You lose nobody. Afterwards the shipmen of the fireships come along the mole and shake your archers' hands one by one, without saying anything.
+        effects: [ { add: { res.renown: 1, rep.commons: 1 } } ]
+        next: c2_assault
+      failure:
+        text: The tower has the range of the mole to an inch. You are pinned behind a bollard all night, and you are no use to anyone.
+        effects: [ { injury: bruised_ribs } ]
+        next: c2_assault
+    - id: watch
+      text: Watch from the dunes.
+      tags: [yield]
+      text_after: From the dunes it looks like the end of the world. Six small lights go in across the black water, and then there is a great deal of light, and noise, and the harbour burns until dawn. You find yourself praying for the men on the fireships, whom you do not know.
+      next: c2_assault
 
 - id: c2_assault
   chapter: ch2
@@ -137,7 +226,7 @@
   checkpoint: true
   on_enter: [ { advance: { seasons: 1 } } ]
   text: |
-    By Michaelmas the Tanners' Tower is a heap of rubble with a ramp up the middle of it, and the King orders the storm.
+    With the harbour burned, the King's council thinks the town is beaten and only needs to be told. By Michaelmas the Tanners' Tower is a heap of rubble with a ramp up the middle of it, and the King orders the storm.
 
     It is to go in at dawn, at low tide, when the ditch is mud and not water. Five hundred men-at-arms up the rubble, with the archers shooting over their heads to keep the defenders down, and ladders at the curtain wall on either side to draw men away from the breach.
 
@@ -299,7 +388,7 @@
 
     [break]
 
-    The town is not starving. On dark nights, Sarenzan galleys hired by King Amaury slip in under the sea wall with flour and salt pork, and slip out again before dawn, and the King's ships cannot catch them. Everyone knows whose galleys they are. The Varesco bank lends to Amaury. The Lanzi bank lends to Aldred. [if suit.fiammetta_lanzi.status >= known]"It is not personal," Fiammetta Lanzi tells you. "It is business. Ugolino Varesco would sell flour to the Devil, if the Devil could post a bond."[/if]
+    The town is not starving. Its own ships are ash, but on dark nights, Sarenzan galleys hired by King Amaury slip in under the sea wall with flour and salt pork, and slip out again before dawn, and the King's ships cannot catch them. Everyone knows whose galleys they are. The Varesco bank lends to Amaury. The Lanzi bank lends to Aldred. [if suit.fiammetta_lanzi.status >= known]"It is not personal," Fiammetta Lanzi tells you. "It is business. Ugolino Varesco would sell flour to the Devil, if the Devil could post a bond."[/if]
 
     [if flag.c2_shelter]Your men are dry, at least.[else]Your men are wet through, and have been since November.[/if]
   choices:

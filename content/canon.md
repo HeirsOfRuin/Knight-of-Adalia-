@@ -18,7 +18,7 @@ Two kingdoms share a cold, wet island. Adalia, in the south, is rich in wool and
 | 21 | Chapter 2 opens. Spring: the invasion lands in the Armance. Lammas: Vervais does not rise. Late summer: **defeat at Grisolles**. Winter: Caldmoor crosses the March under the Old Bond; the King goes home. |
 | 22 | Summer: the siege of Sauvemer begins. Michaelmas: the storm of the breach fails. |
 | 23 | Spring: the Water Tower mined. Midsummer: **Les Salines**, held at great cost. Michaelmas: Sauvemer surrenders on terms. |
-| 24 | Lady Day: **the Lenders' Truce** of Saint-Lys. The Armance is abandoned. The Iron Company unpaid in the Sauvemer march. |
+| 24 | Lady Day: **the truce of Saint-Lys**, forced by the Sarenzan banks on Adalian terms: Sauvemer and its march to Adalia, the Duke of Armance exchanged home, the wool back to Vervais. The Iron Company unpaid in the Sauvemer march. |
 | 25 | Michaelmas: the King's grants at Sauvemer. Winter: news of the Mottle from the Midsea. |
 | 26 | Spring: Chapter 2 ends at Ormel. |
 

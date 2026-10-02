@@ -25,6 +25,8 @@
     [break]
 
     The King holds a council in the ruins of a salt-boiler's house. Half the captains want to break the siege and get the army onto the ships while there are ships. The King listens, and then walks them out to look at the ground in front of the lines: the salt pans, square shallow ponds by the hundred, cut by dykes and causeways and sluices, with the sea behind. "They will have to come to us along the causeways," he says. "On foot. Let them come."
+
+    If he is wrong, there will be no army to put on the ships. Every man in the army knows it. Most of them think he is wrong.
   choices:
     - id: sluice
       text: Tell your captain what you know of the sluices on the salt pans.
@@ -382,11 +384,17 @@
   text: |
     In the middle of the afternoon, three hundred lances come along the beach at the gallop from the west, under the ermine of Armance, and go into the Valdrennish flank where the causeways are crowded. The Duchess has come. She has brought everything she has left.
 
-    It is not a rout. Nothing that day is a rout. But the weight comes off the dyke, a little at a time, and toward evening the Valdrennish columns begin to go back along the causeways the way they came, in good order, with their wounded, walking. The water is up to their knees. Nobody follows them.
+    For a long time it makes no difference. Then it does. The weight comes off the dyke, a little at a time, and the columns behind the front ranks start to look over their shoulders at the causeways, and the tide coming up over the pans on either side of them[if flag.c2_opened_sluice], and the water you let in at the sluices[/if].
+
+    Then they are going back. Not in order. The causeways are a man and a half wide, and the whole host is trying to use them at once, and the water is at their waists and rising. Men in plate who step off a causeway into a salt pan at high tide do not come out again.
 
     [break]
 
-    The gold shuttle banners of Vervais go back up the heights with the rest. They never came down. Nobody on the Adalian side knows why, and nobody on the Valdrennish side will say.
+    The King gives the word, and what is left of the Adalian line comes down off the dyke after them.
+
+    You will remember the next hour for the rest of your life, and not as glory. By dusk the salt pans are full of Valdrennish dead, and the Constable has got away up the heights with his rearguard in good order, because he is the Constable, and King Amaury's host is a host no longer.
+
+    The gold shuttle banners of Vervais go back up the heights with the rest. They never came down all day. Nobody on the Adalian side knows why, and nobody on the Valdrennish side will say.
 
     The sun goes down on the salt pans and on the dead in them, and the water is red where it is not grey.
   choices:
@@ -431,9 +439,9 @@
 
     [break]
 
-    The count comes in during the day. Two thousand Adalians dead or dying, a fifth of the army. The Valdrennish dead are no more than that, the heralds think, and perhaps fewer. Among the Adalian dead are two earls and a bishop's nephew. Among the wounded is the King.
+    The count comes in during the day. Two thousand Adalians dead or dying, a fifth of the army. The Valdrennish dead the heralds stop counting at five thousand, half of them drowned. Among the Adalian dead are two earls and a bishop's nephew. Among the wounded is the King. Among the prisoners, a duke, eleven counts, and more knights than there are Adalian knights left standing to guard them.
 
-    It is a victory, because the host on the heights is going away. It does not feel like one. [if flag.c2_turned_garrison]On the walls of Sauvemer, nobody is watching the heights any more.[else]On the walls of Sauvemer, the people who were watching the heights watch them empty.[/if]
+    It is a victory. Two years ago, it is the victory everyone in the army thought they would have by Lammas. Now they know what it cost, and that they nearly did not have it at all. [if flag.c2_turned_garrison]On the walls of Sauvemer, nobody is watching the heights any more.[else]On the walls of Sauvemer, the people who were watching the heights watch them empty.[/if]
   choices:
     - id: on
       text: Bury your dead, and go on.
@@ -447,7 +455,7 @@
   title: The Keys of Sauvemer
   on_enter: [ { advance: { seasons: 1 } } ]
   text: |
-    Sauvemer treats within the month. There is nobody left to wait for.
+    Sauvemer treats within the month. There is nobody left to wait for, and the people on the walls watched the salt pans fill up with their relief.
 
     The King cannot afford to storm it and cannot afford to sit in front of it another winter. The town cannot afford to be stormed. So for three weeks heralds go back and forth across the ditch with terms, and the terms change every time they cross, and nobody is happy with any of them.
 

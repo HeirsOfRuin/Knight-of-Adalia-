@@ -367,7 +367,7 @@
       check: { attr: agility, skill: arms, difficulty: 3 }
       success:
         text: Half speed with a sharp blade is slower than you would think, and more frightening. You touch Sir Bertram's arm once and he touches you nowhere. He nods. That is a great deal, from him.
-        effects: [ { add: { skill.arms: 1, rel.bertram_oakes.respect: 2 } }, { meet: bertram_oakes } ]
+        effects: [ { train: { arms: 1, ceiling: 5 } }, { add: { rel.bertram_oakes.respect: 2 } }, { meet: bertram_oakes } ]
         next: "@return"
       failure:
         text: His blade comes over yours and opens your brow before you have seen it move. "That," he says, "is the difference." The women look away.
@@ -497,7 +497,7 @@
       check: { attr: presence, skill: diplomacy, difficulty: 3 }
       success:
         text: He goes. You stand at the door. Lord Ravell pays the debt and takes his son's horse for a year. Afterwards Aymer says you were right and that he will never forgive you. He forgives you within the week.
-        effects: [ { add: { rel.aymer_ravell.affection: 1, rel.aymer_ravell.respect: 2, rel.thurstan_ravell.respect: 1 } }, { meet: aymer_ravell } ]
+        effects: [ { train: { diplomacy: 1, quiet: 1 } }, { add: { rel.aymer_ravell.affection: 1, rel.aymer_ravell.respect: 2, rel.thurstan_ravell.respect: 1 } }, { meet: aymer_ravell } ]
         next: "@return"
       failure:
         text: He calls you a coward and a servant and goes to a Wendham moneylender instead.
@@ -527,7 +527,7 @@
       success:
         text: |
           Big Hodge is strong as an ox and about as quick. You let him come, and come, and then you get a hip under him the way Sir Bertram showed you for fighting in harness, and over he goes, flat on his back in the mud with a noise like a dropped sack of meal. The green goes mad. You lead the ram home on a rope, and the household eats it, and for a month the grooms call you "Ram" and grin when they say it.
-        effects: [ { add: { skill.arms: 1, rep.commons: 2, counter.training: 1 } } ]
+        effects: [ { train: { arms: 1 } }, { add: { rep.commons: 2, counter.training: 1 } } ]
         next: "@return"
       failure:
         text: |
@@ -538,7 +538,7 @@
       text: Stay on the hurdles and bet on Hodge.
       tags: [wealth]
       text_after: Hodge wins, as everyone knew he would, and you win twopence off a groom who should have known better. You also watch how Hodge does it, which is worth more than the twopence.
-      effects: [ { add: { res.coin: 2, skill.arms: 1 } } ]
+      effects: [ { train: { arms: 1 } }, { add: { res.coin: 2 } } ]
       next: "@return"
 
 - id: c1p_ring
@@ -563,14 +563,14 @@
       success:
         text: |
           First pass, nothing. Second pass, you touch it and it spins away. Third pass, the point goes clean through and the thread snaps and the ring slides down the lance to your fist, and the meadow erupts. [if flag.c1_giles_enemy]Giles has to take the empty string off his neck in front of everyone.[else]Aymer whoops as if he'd won it himself.[/if] You wear the ring on a thong for the rest of the summer and lose it at Michaelmas, and do not mind.
-        effects: [ { add: { skill.riding: 1, rep.knights: 1, counter.training: 1 } } ]
+        effects: [ { train: { riding: 1 } }, { add: { rep.knights: 1, counter.training: 1 } } ]
         next: "@return"
       failure:
         text: Three passes and three misses, the last one so wide you nearly spear the gallows-post and yourself with it. You buy the ale. It is expensive ale. But you ride better for it by the end of the summer, because you go out every evening after that, alone, until you can do it.
-        effects: [ { add: { res.coin: -3, skill.riding: 1, counter.training: 1 } } ]
+        effects: [ { train: { riding: 1 } }, { add: { res.coin: -3, counter.training: 1 } } ]
         next: "@return"
     - id: hold
       text: Hold the horses, and watch how the good ones do it.
       text_after: You watch. The good riders do not look at the ring until the last stride. The bad ones stare at it all the way down and miss. It seems a small thing. It is not.
-      effects: [ { add: { skill.riding: 1 } } ]
+      effects: [ { train: { riding: 1 } } ]
       next: "@return"

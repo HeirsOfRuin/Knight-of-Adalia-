@@ -64,6 +64,7 @@
       success:
         text: "[if flag.p_kicked_squire]'The dog,' he says, before you can speak. 'You kicked Hugo for the dog.' He laughs. 'Hugo's dead, at a tourney in the north. Broke his neck. He was a fool.' [elif flag.p_asked_knight]'Be useful, be lucky, be there, don't die,' he says, before you can speak. 'You remembered. Most don't.' [/if]Sir Walter is a younger son who has made himself a captain and is proud of it. He likes men who came up the hard way, he says, because they know what things cost. He tells you that if you ever need a place, the Earl's company pays on time. He says it as though most companies do not. They do not."
         effects:
+          - { train: { diplomacy: 1, quiet: 1 } }
           - set: flag.c1_pryce_contact
           - meet: walter_pryce
           - add: { rel.walter_pryce.affection: 2, rel.walter_pryce.respect: 1 }

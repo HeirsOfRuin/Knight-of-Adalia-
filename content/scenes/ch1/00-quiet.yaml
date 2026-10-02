@@ -189,21 +189,77 @@
         - if: alias.master == hamon_darrell
           then: [ { meet: aymer_ravell }, { add: { rel.aymer_ravell.affection: 2, rel.aymer_ravell.respect: 1 } } ]
           else: [ { meet: will_cobb }, { add: { rel.will_cobb.affection: 2, rel.will_cobb.respect: 1 } } ]
-      next: c1_bertram_test
+      next: c1_watch
     - id: priest
       text: Go to Father Benet, and make your confession.
       tags: [piety]
       text_after: Father Benet hears you in the cold chapel with his hands in his sleeves. He is worldlier than most priests and kinder than he lets on. He gives you a penance that is mostly prayer and partly carrying firewood for the almshouse, which he says is better for the soul than either alone. It does not take it away. It gives it somewhere to go.
       effects: [ { set: flag.c1_confessed_ford }, { meet: father_benet }, { add: { rep.piety: 1, rel.father_benet.affection: 1 } } ]
-      next: c1_bertram_test
+      next: c1_watch
     - id: work
       text: Work until you are too tired to dream.
       tags: [martial]
       text_after: You are at the pell before Prime and in the stables after Compline, every day until Lady Day. Your arms get harder and your face gets thinner. You stop dreaming, or you stop remembering it, which is the same. Sir Bertram says you are the best-drilled young man in the household. He says it as if it worried him.
-      effects: [ { add: { skill.arms: 1, rel.bertram_oakes.respect: 1 } }, { meet: bertram_oakes } ]
-      next: c1_bertram_test
+      effects: [ { train: { arms: 1, ceiling: 5 } }, { add: { rel.bertram_oakes.respect: 1 } }, { meet: bertram_oakes } ]
+      next: c1_watch
     - id: alone
       text: Keep it to yourself. Everyone has their own.
       tags: [yield]
       text_after: You keep it to yourself. It is what men do. By spring it is quieter, the way Cobb says, though nobody told you so, and you did not ask.
+      next: c1_watch
+
+- id: c1_watch
+  chapter: ch1
+  title: The Ford at Aikbank
+  text: |
+    "Twelve men," [if alias.master == hamon_darrell]Sir Hamon says, counting them on his fingers and getting it wrong twice[else]Sir Ancel says[/if]. "Six weeks. The ford at Aikbank, till the Leven's too high to cross. If Ewan comes back, you light the beacon and you run. You don't fight him. Understood?"
+
+    It is a winter job nobody else wanted, dressed up as a command. Aikbank is a burned tower, a burned village, and a ford the colour of pewter, and the wind there comes straight off the Caldmoor hills with nothing in between to slow it down.
+
+    [break]
+
+    Your twelve are what was left over: four Ravell foresters, three of Cobb's youngest archers, two serving-men, a carter with one eye, and a pair of brothers from Brome called Ingram who have never in their lives agreed about anything. The serjeant they send with you is old Thwaite, who was at Harrow Ford with [if background == archer]your father[else]half the old men in the March[/if], and who has a cough like a dog barking down a well.
+
+    The first night, two of them are asleep on watch, the carter has lost the flint, and the Ingrams are fighting over a blanket. Thwaite sits by the fire, coughs, and watches to see what you will do about it.
+  choices:
+    - id: names
+      text: Sit down with them, one at a time, and learn who they are.
+      tags: [allies]
+      text_after: |
+        It takes a week. The foresters are easy, the archers are shy, and the carter talks for an hour about a woman in Hollin. The Ingrams turn out to be fighting over their dead father's blanket, which is the only thing he left them. You cut it in half with your knife, in front of everyone. They stare at you, and then at each other, and then the elder one laughs, and that is the end of it.
+
+        After that, nobody sleeps on watch. Not because they are afraid of you. Because they would be letting you down, and they know your name now as well as you know theirs. Thwaite says nothing for five weeks. On the last night he says, "You'll do, sir," and you notice the "sir" more than the rest.
+      effects: [ { set: flag.c1_watch_names }, { train: { command: 1 } }, { add: { rep.commons: 1 } } ]
+      next: c1_bertram_test
+    - id: hard
+      text: Set a hard roster, and walk the watch yourself every night.
+      tags: [martial]
+      check: { attr: presence, skill: command, difficulty: 3 }
+      success:
+        text: |
+          You walk it every night, all of it, from the tower to the ford and back, in the dark and the wind, until your feet are blocks of ice in your boots. The first man you find asleep, you do not shout at. You stand there until he wakes, and then you stand there a bit longer. He never does it again. Nobody does.
+
+          By the third week the Ingrams are taking their turns without being told, and the carter has found the flint, and the beacon is built and dry under a hide, and Thwaite has stopped watching you and started watching the ford. That is the compliment. You know it is, because he never pays any other.
+        effects: [ { set: flag.c1_watch_hard }, { train: { command: 2 } } ]
+        next: c1_bertram_test
+      partial:
+        text: |
+          It works, mostly. You walk the watch every night and catch them twice, and the second time you shout, and the man you shout at is the elder Ingram, who sulks for a fortnight and takes his brother with him. But the beacon is built, and the ford is watched, and when you march them home at the end of six weeks nobody has died of anything but boredom.
+        effects: [ { set: flag.c1_watch_hard }, { train: { command: 1 } } ]
+        next: c1_bertram_test
+      failure:
+        text: |
+          You walk the watch every night, and they hate you for it. The foresters say you think you're a lord. The archers call you "the beadle" behind your back, and not quietly enough. In the fourth week one of the serving-men walks home to Ravell in the night and does not come back, and you have to report it.
+
+          [if alias.master == hamon_darrell]Sir Hamon hears it out, rubbing his face. "Well," he says at last. "Now you know one way that doesn't work. I learned that one at your age too. Twice."[else]"Hm," says Sir Ancel, when you do. Then, after a while: "Well. Now you know one way that doesn't work."[/if] It is the kindest thing anyone says to you all spring. It stings worse than a beating.
+        effects: [ { train: { command: 1 } }, { add: { rep.commons: -1 } } ]
+        next: c1_bertram_test
+    - id: ride
+      text: Leave the men to Thwaite, and spend the weeks riding the fords.
+      tags: [learning, martial]
+      text_after: |
+        Thwaite can run twelve men in his sleep, and does, mostly. You take the best horse and ride the Leven from the moss to the sea: every ford, every cattle-crossing, every place a man could wade at low water in a dry summer. You draw them on a scrap of birch bark with a burnt stick, and you get lost twice, and once you meet three Caldmoor shepherds on the wrong bank who look at you for a long while before they decide you are not worth the trouble.
+
+        When you come back, the men are fine, and do not know you any better than when you left. But you know the March now. You could find a way across it in the dark.
+      effects: [ { set: flag.c1_watch_rode }, { add: { skill.tactics: 1, skill.woodcraft: 1 } } ]
       next: c1_bertram_test

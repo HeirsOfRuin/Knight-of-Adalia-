@@ -34,12 +34,12 @@
           The sandbag takes you off on the first run, and the third, and the seventh, and the grooms cheer every time. Then, somewhere around the twentieth, your body stops thinking about it. Knees, seat, the lance couched under your arm, the point on the shield, and you're past before the bag comes round. The cheering stops.
 
           "Huh," says Sir Bertram. "Do it again." You do. "Huh," he says again, and walks off, and you sit on your borrowed horse grinning like a fool.
-        effects: [ { set: flag.c1_rode_quintain }, { add: { skill.riding: 1, counter.training: 1, rel.bertram_oakes.respect: 1 } }, { meet: bertram_oakes } ]
+        effects: [ { set: flag.c1_rode_quintain }, { train: { riding: 1 } }, { add: { counter.training: 1, rel.bertram_oakes.respect: 1 } }, { meet: bertram_oakes } ]
         next: c1_muster
       failure:
         text: |
           The bag takes you off so many times you lose count, and on the last one you land on your shoulder and hear something creak. You learn a great deal about falling. "Better than nothing," Sir Bertram says, standing over you. "Falling's half of it. Up you get."
-        effects: [ { add: { skill.riding: 1, counter.training: 1 } }, { injury: bruised_ribs }, { meet: bertram_oakes } ]
+        effects: [ { train: { riding: 1 } }, { add: { counter.training: 1 } }, { injury: bruised_ribs }, { meet: bertram_oakes } ]
         next: c1_muster
     - id: sword
       text: Ask Sir Bertram for sword and buckler, every morning, until he is sick of you.
@@ -50,7 +50,7 @@
         "Feet," he says. Whack. "Feet, boy, not hands." Whack. "A man who fights with his hands is dead. Fight with your feet and your hands'll follow." Whack. "You're dead. Again."
 
         By the end of the month your forearms are purple from wrist to elbow and you have touched him twice. The second time he steps back and looks at you over the buckler for a while. "You're dead," he says. "But you took me with you. That's a start."
-      effects: [ { set: flag.c1_bertram_sword }, { add: { skill.arms: 1, counter.training: 1, rel.bertram_oakes.respect: 1, rel.bertram_oakes.affection: 1 } }, { meet: bertram_oakes } ]
+      effects: [ { set: flag.c1_bertram_sword }, { train: { arms: 1, ceiling: 5 } }, { add: { counter.training: 1, rel.bertram_oakes.respect: 1, rel.bertram_oakes.affection: 1 } }, { meet: bertram_oakes } ]
       next: c1_muster
     - id: butts
       text: Go down to the long butts and shoot with Cobb's archers.
@@ -59,7 +59,7 @@
         "Look who's slumming it," somebody shouts as you come down the meadow. Cobb hands you a bow without a word and points at the far butt.
 
         Two hundred and twenty paces. You put the first arrow in the river. The archers howl. [if background == archer]By the end of the week you are shooting with the best of them, and the jokes have stopped, and Cobb says, "Your father's arm," to nobody in particular.[else]By the end of the month you are hitting the butt one time in three, and the archers have stopped laughing, mostly, and started teaching.[/if] You learn more than shooting. You learn what archers think of knights, which is a good deal, none of it fit for chapel.
-      effects: [ { set: flag.c1_shot_with_cobb }, { meet: will_cobb }, { add: { skill.archery: 1, counter.training: 1, rel.will_cobb.affection: 1, rep.commons: 1 } } ]
+      effects: [ { set: flag.c1_shot_with_cobb }, { meet: will_cobb }, { train: { archery: 1, ceiling: 5 } }, { add: { counter.training: 1, rel.will_cobb.affection: 1, rep.commons: 1 } } ]
       next: c1_muster
     - id: arms
       text: Sit with Father Benet and the rolls of arms.
@@ -110,21 +110,21 @@
           "Well," he says, a little short of breath himself. "Well, now." He pulls off his helm. He is grinning, which nobody at Ravell has ever seen. "Somebody get this boy a drink before he falls over and gets in the ballads."
 
           The grooms cheer. [if suit.isabel_sayer.status >= known]Under the awning, Isabel Sayer lets her breath out.[/if]
-        effects: [ { set: flag.c1_passed_test }, { add: { skill.arms: 1, res.renown: 1, rep.knights: 1, rel.bertram_oakes.respect: 2, counter.training: 1 } } ]
+        effects: [ { set: flag.c1_passed_test }, { train: { arms: 1, ceiling: 6 } }, { add: { res.renown: 1, rep.knights: 1, rel.bertram_oakes.respect: 2, counter.training: 1 } } ]
         next: c1_progress
       partial:
         text: |
           He knocks you down twice. Twice you get up, though the second time you have to use the rail. The third time you stay on your feet and trade blows with him until he steps back and lowers his sword.
 
           "Enough," he says. "You'll do." From Sir Bertram, in front of the household, that is a medal. You find out later, from the bruises, that he held nothing back.
-        effects: [ { set: flag.c1_passed_test }, { injury: bruised_ribs }, { add: { skill.arms: 1, rel.bertram_oakes.respect: 1, counter.training: 1 } } ]
+        effects: [ { set: flag.c1_passed_test }, { injury: bruised_ribs }, { train: { arms: 1, ceiling: 6 } }, { add: { rel.bertram_oakes.respect: 1, counter.training: 1 } } ]
         next: c1_progress
       failure:
         text: |
           He puts you on your back in the mud three times, and the third time you do not get up quickly enough. "You're dead," he says, and offers you his hand. The cooks laugh. Someone throws a cabbage.
 
           Afterwards, in the armoury, he unbuckles you himself. "You went at me like a bull at a gate," he says. "Brave and stupid. I can fix stupid. Can't teach brave." He gives you a shove that nearly knocks you over again. "Next year."
-        effects: [ { injury: cut_brow }, { add: { skill.arms: 1, skill.tactics: 1, rel.bertram_oakes.affection: 1, counter.training: 1 } } ]
+        effects: [ { injury: cut_brow }, { train: { arms: 1, ceiling: 6 } }, { add: { skill.tactics: 1, rel.bertram_oakes.affection: 1, counter.training: 1 } } ]
         next: c1_progress
     - id: wait
       text: Make him come to you. Let him tire himself.
@@ -150,7 +150,7 @@
       tags: [yield]
       text_after: |
         He looks at you a while through the slot of his helm. "Well," he says. "At least you know it." There are boos from the wall. Giles Marrick laughs out loud. You spend the next year making sure that nobody ever has cause to say it again, which is a kind of training too.
-      effects: [ { add: { skill.arms: 1, rep.knights: -1 } } ]
+      effects: [ { train: { arms: 1 } }, { add: { rep.knights: -1 } } ]
       next: c1_progress
 
 - id: c1_long_winter
@@ -172,16 +172,16 @@
       text: Ask for a file of men, and learn to drill them.
       tags: [martial, allies]
       text_after: |
-        [if track == levy]Cobb gives you ten of the newest archers and the worst corner of the barn.[else]Your master gives you a dozen of the household grooms and serving-men who will be going to the war as foot.[/if] They are cold, bored, and certain they know better than you. For the first week they are right.
+        [if track == levy]Cobb gives you ten of the newest archers and the worst corner of the barn.[else]Your master gives you a dozen of the household grooms and serving-men who will be going to the war as foot.[/if] They are cold, bored, and certain they know better than you. [if flag.c1_watch_names || flag.c1_watch_hard]After Aikbank, you know what to do about that.[else]For the first week they are right.[/if]
 
         By Candlemas they will form a line when you shout, and hold it when someone runs at them with a broom, and come to you when they have a quarrel instead of settling it with knives. One of them, a big slow lad called Hodge, tells you at Lent that you are "a hard bastard, but fair, sir," and you will hear that "sir" in your head for a week.
-      effects: [ { set: flag.c1_drilled_men }, { add: { skill.command: 1, counter.training: 1 } } ]
+      effects: [ { set: flag.c1_drilled_men }, { train: { command: 2 } }, { add: { counter.training: 1 } } ]
       next: c1_crisis_router
     - id: war
       text: Sit with your master over the old campaigns, and learn how wars are fought.
       tags: [learning, martial]
       text_after: |
-        [if alias.master == hamon_darrell]Sir Hamon has a box of letters from the old King's war, and a memory that is better than he lets on. He draws Harrow Ford on the table in spilled ale, and the March raids, and a siege in Caldmoor where he spent eleven weeks in a ditch eating his horse.[else]Sir Ancel draws in the ashes with a stick. Fords, passes, the ground where horse cannot go, the ground where foot cannot hold. He says one word for each and makes you work out the rest.[/if] "Battles are rare," your master says. "Marching, feeding, finding water, keeping men together when they're hungry and frightened. That's war. The fighting's the easy part."
+        [if alias.master == hamon_darrell]Sir Hamon has a box of letters from the old King's war, and a memory that is better than he lets on. He draws Harrow Ford on the table in spilled ale, and the March raids, and a siege in Caldmoor where he spent eleven weeks in a ditch eating his horse.[else]Sir Ancel draws in the ashes with a stick. Fords, passes, the ground where horse cannot go, the ground where foot cannot hold. He says one word for each and makes you work out the rest.[/if][if flag.c1_watch_rode] When he gets to the Leven, you take the stick and draw the fords yourself, all of them. Your master looks at the ashes, and then at you, and says nothing at all.[/if] "Battles are rare," your master says. "Marching, feeding, finding water, keeping men together when they're hungry and frightened. That's war. The fighting's the easy part."
 
         You do not believe him. You will.
       effects: [ { set: flag.c1_studied_war }, { add: { skill.tactics: 1, counter.training: 1 } } ]

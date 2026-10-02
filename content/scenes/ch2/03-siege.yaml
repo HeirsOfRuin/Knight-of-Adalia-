@@ -83,7 +83,7 @@
           - { if: trait.veteran, add: 1, label: they have seen you in a line }
       success:
         text: They grumble. They stay. A promise from a man who brought them out of Grisolles is worth something, for a while.
-        effects: [ { add: { rel.roger_tallis.respect: 1 } } ]
+        effects: [ { train: { command: 1, ceiling: 5, quiet: 1 } }, { add: { rel.roger_tallis.respect: 1 } } ]
         next: c2_sauvemer
       failure:
         text: They hear you out. In the morning, two of them are gone, and so is a horse.

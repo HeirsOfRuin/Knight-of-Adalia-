@@ -674,7 +674,7 @@ Giles Marrick has the ring tonight, on a string round his neck, and is making a 
 
 Three passes and three misses, the last one so wide you nearly spear the gallows-post and yourself with it. You buy the ale. It is expensive ale. But you ride better for it by the end of the summer, because you go out every evening after that, alone, until you can do it.
 
-*Coin −3d · Riding +1*
+*Riding +1 · Coin −3d*
 
 ## Aymer's Debts
 
@@ -694,7 +694,7 @@ He has known you since you were both eight. He has never asked you for anything 
 
 He goes. You stand at the door. Lord Ravell pays the debt and takes his son's horse for a year. Afterwards Aymer says you were right and that he will never forgive you. He forgives you within the week.
 
-*Aymer Ravell's affection +1 · Aymer Ravell's respect +2 · Lord Thurstan Ravell's respect +1*
+*Diplomacy +1 · Aymer Ravell's affection +1 · Aymer Ravell's respect +2 · Lord Thurstan Ravell's respect +1*
 
 ## The Winter After
 
@@ -720,6 +720,30 @@ By Candlemas, other men have noticed that you are not sleeping.
 Cobb listens with his hands round a cup and his eyes on the fire. When you have finished, he says, "Aye." Then, after a while: "It doesn't stop. It gets quieter. I knew a man had it worse than any of us, and he still shoots on Sundays." He does not say anything else. He does not need to. You sleep that night, for the first time since the ford.
 
 *Will Cobb's affection +2 · Will Cobb's respect +1*
+
+## The Ford at Aikbank
+
+"Twelve men," Sir Ancel says. "Six weeks. The ford at Aikbank, till the Leven's too high to cross. If Ewan comes back, you light the beacon and you run. You don't fight him. Understood?"
+
+It is a winter job nobody else wanted, dressed up as a command. Aikbank is a burned tower, a burned village, and a ford the colour of pewter, and the wind there comes straight off the Caldmoor hills with nothing in between to slow it down.
+
+*(Continue)*
+
+Your twelve are what was left over: four Ravell foresters, three of Cobb's youngest archers, two serving-men, a carter with one eye, and a pair of brothers from Brome called Ingram who have never in their lives agreed about anything. The serjeant they send with you is old Thwaite, who was at Harrow Ford with half the old men in the March, and who has a cough like a dog barking down a well.
+
+The first night, two of them are asleep on watch, the carter has lost the flint, and the Ingrams are fighting over a blanket. Thwaite sits by the fire, coughs, and watches to see what you will do about it.
+
+- Sit down with them, one at a time, and learn who they are.
+- Set a hard roster, and walk the watch yourself every night. *(Even)*
+- Leave the men to Thwaite, and spend the weeks riding the fords.
+
+**Chose:** Sit down with them, one at a time, and learn who they are.
+
+It takes a week. The foresters are easy, the archers are shy, and the carter talks for an hour about a woman in Hollin. The Ingrams turn out to be fighting over their dead father's blanket, which is the only thing he left them. You cut it in half with your knife, in front of everyone. They stare at you, and then at each other, and then the elder one laughs, and that is the end of it.
+
+After that, nobody sleeps on watch. Not because they are afraid of you. Because they would be letting you down, and they know your name now as well as you know theirs. Thwaite says nothing for five weeks. On the last night he says, "You'll do, sir," and you notice the "sir" more than the rest.
+
+*Command +1 · Common Folk standing +1*
 
 ## Sir Bertram's Test
 
@@ -863,11 +887,11 @@ There is not time for everything. There never is.
 
 **Chose:** Ask for a file of men, and learn to drill them.
 
-Your master gives you a dozen of the household grooms and serving-men who will be going to the war as foot. They are cold, bored, and certain they know better than you. For the first week they are right.
+Your master gives you a dozen of the household grooms and serving-men who will be going to the war as foot. They are cold, bored, and certain they know better than you. After Aikbank, you know what to do about that.
 
 By Candlemas they will form a line when you shout, and hold it when someone runs at them with a broom, and come to you when they have a quarrel instead of settling it with knives. One of them, a big slow lad called Hodge, tells you at Lent that you are "a hard bastard, but fair, sir," and you will hear that "sir" in your head for a week.
 
-*Command +1*
+*Command +2*
 
 ## The Commission
 
@@ -1086,7 +1110,7 @@ The shipmaster comes aft along the rail, hand over hand, streaming water. "Those
 Davy is too sick to stand.
 
 - Go down into the hold with the horses. *(Favorable)*
-- Stay on deck with your men and keep them together. *(Even)*
+- Stay on deck with your men and keep them together. *(Favorable)*
 - Pray. There is nothing else to be done in a storm.
 
 **Chose:** Go down into the hold with the horses. (Favorable: success)
@@ -1112,12 +1136,14 @@ The boats go in. The first wave is already over the side and wading, chest-deep,
 Then the crossbows begin, with a noise like a flock of birds getting up, and the first man near you goes under the water and does not come up.
 
 - Lead your men up the beach, straight at them. *(Favorable, MORTAL DANGER)*
-- Get your archers onto the dunes on the flank, and shoot them off the beach. *(Even)*
+- Get your archers onto the dunes on the flank, and shoot them off the beach. *(Favorable)*
 - See to the horses and the boats while others do the fighting.
 
-**Chose:** Get your archers onto the dunes on the flank, and shoot them off the beach. (Even: failure)
+**Chose:** Get your archers onto the dunes on the flank, and shoot them off the beach. (Favorable: success)
 
-The dune is further than it looked and softer. By the time you are up, the first wave has taken the beach by itself, at a price. They are laying the dead out in rows above the tideline when you come down.
+From the top of the dune you can see the whole line of them. The arrows go in from the side, where their big shields do not cover them, and after the third flight they break back toward the Tour. The King steps ashore on a beach that cost him thirty men, most of them in the first boats.
+
+*Command +1 · Renown +1 · Sir Walter Pryce's respect +1 · Gained: Veteran*
 
 ## The First Night Ashore
 
@@ -1224,7 +1250,7 @@ Somewhere behind the church a woman is screaming. It is not one of yours who is 
 
 - Get the people out of the church and onto the road. Then burn Bréval, as ordered.
 - Offer the village a bargain. Pay, and Bréval stands. *(Even)*
-- Go behind the church yourself, and stop what is happening there. Then decide about the village. *(Risky)*
+- Go behind the church yourself, and stop what is happening there. Then decide about the village. *(Favorable)*
 - Let your men do as they please. It is war, and they were promised.
 
 **Chose:** Let your men do as they please. It is war, and they were promised.
@@ -1249,7 +1275,7 @@ That should have told you something. It is when you come out of the granary with
 
 - Form your men across the lane and fight it out from the wagons. *(Even, MORTAL DANGER)*
 - Get everyone into the stone granary and let the archers shoot from the doors. *(Even)*
-- Send Davy back for help on the fastest horse, and hold until it comes. *(Even)*
+- Send Davy back for help on the fastest horse, and hold until it comes. *(Favorable)*
 - Leave the wagons and get your men away while you can.
 
 **Chose:** Get everyone into the stone granary and let the archers shoot from the doors. (Even: success)
@@ -1271,7 +1297,7 @@ It is not a sack. There is no time for a sack. The Constable of Valdrenne's van 
 In the market square there is a great stone house with a coat of arms over the door, three black crows on gold. The house of a lord. Giles Marrick, a knight now, in his father's colours, is already riding toward it.
 
 - Get to the house with the crows before anyone else does. *(Even)*
-- Keep your men together and stop them going wild in the town. *(Risky)*
+- Keep your men together and stop them going wild in the town. *(Favorable)*
 - Take your share of Vaudrey.
 
 **Chose:** Take your share of Vaudrey.
@@ -1367,15 +1393,15 @@ Away on the right, along the river, their horse is going at a canter for the bri
 The archers start shooting. You hear the arrows hit the painted shields like hail on a roof. The block does not stop.
 
 - Take your place in the line of men-at-arms and meet them. *(Favorable, MORTAL DANGER)*
-- Get your archers shooting over the shields, at the crossbowmen as they wind. *(Even)*
+- Get your archers shooting over the shields, at the crossbowmen as they wind. *(Favorable)*
 - Mount up and ride for the bridge, where their horse is going for the baggage. *(Favorable)*
 - Stay at your master's side, wherever he goes.
 
-**Chose:** Get your archers shooting over the shields, at the crossbowmen as they wind. (Even: success)
+**Chose:** Get your archers shooting over the shields, at the crossbowmen as they wind. (Favorable: success)
 
 High, so they drop. The crossbowmen have to stand up from behind their shields to wind, and when they stand up, your archers are waiting. For as long as the arrows last, the crossbows on your front go quiet. It buys the line a little time. It costs the archers every arrow they have.
 
-*Renown +1 · Common Folk standing +1 · Gained: Veteran*
+*Command +1 · Renown +1 · Common Folk standing +1*
 
 ## The Bridge
 
@@ -1385,12 +1411,14 @@ Word comes down the line, shouted from man to man: the King's engineers are at t
 
 [break]
 
-- Keep your own men together and get them over the bridge in order. *(Even)*
+- Keep your own men together and get them over the bridge in order. *(Favorable)*
 - Get yourself over the bridge. Your men can follow or not.
 
-**Chose:** Keep your own men together and get them over the bridge in order. (Even: partial)
+**Chose:** Keep your own men together and get them over the bridge in order. (Favorable: success)
 
-You keep them together most of the way. The last hundred paces they run, because everyone is running, and not all of them reach the bridge before the arch goes down.
+You walk them back. You do not let them run, because men who run get ridden down. Step, turn, step, shields to the enemy, with the archers in the middle. It takes forever. You are on the bridge when the engineers start swinging their picks, and across it, every one of you, when the arch goes into the Aube with a noise like a church bell falling.
+
+*Renown +1 · Davy Ludd's loyalty +2*
 
 ## The Far Bank
 
@@ -1432,7 +1460,7 @@ Behind it and on its flanks ride the Iron Company, eight hundred Hroswald horse 
 
 Every morning there are fewer men in the column than there were the night before. Some of them were caught. Some of them are walking home on their own. Some of them are lying in ditches with their boots off, too tired to get up.
 
-- Carry your wounded with you, all of them, whatever it costs in pace. *(Even)*
+- Carry your wounded with you, all of them, whatever it costs in pace. *(Favorable)*
 - Lay an ambush at a stream crossing for the Hroswald riders who follow the column. *(Even)*
 - Take what you need from the villages along the road. Your men come first.
 - Keep your head down and keep marching.
@@ -1570,12 +1598,12 @@ Behind them go the boats: every ship's boat in the fleet, full of men with axes 
 
 The admiral wants volunteers for all three. He is honest about the fireships. "Some of you will not come back," he says. "The ones who do will drink free in Saltcombe for the rest of their lives."
 
-- Volunteer to steer a fireship in. *(Even, MORTAL DANGER)*
-- Take your men in the boats, to cut out the ships that do not burn. *(Even)*
+- Volunteer to steer a fireship in. *(Favorable, MORTAL DANGER)*
+- Take your men in the boats, to cut out the ships that do not burn. *(Favorable)*
 - Take your archers onto the mole and keep the sea tower's crossbows busy. *(Even)*
 - Watch from the dunes.
 
-**Chose:** Take your men in the boats, to cut out the ships that do not burn. (Even: success)
+**Chose:** Take your men in the boats, to cut out the ships that do not burn. (Favorable: success)
 
 A fat Valdrennish hulk at the inner moorings, with her crew ashore and six boys aboard her, who surrender to your men with their hands up and are glad to. You cut her cable and the tide carries her out past the burning ones, with you on her deck, past the sea tower, into the fleet. She is full of wine. Prize money is paid on wine.
 
@@ -1598,11 +1626,11 @@ At first light a Carrow captain walks along the storming party, slapping backs. 
 At dawn the trumpets go.
 
 - Go up the rubble with the storming party. *(Favorable, MORTAL DANGER)*
-- Take your men to the ladders on the curtain wall, to draw the defenders off. *(Even)*
+- Take your men to the ladders on the curtain wall, to draw the defenders off. *(Favorable)*
 - Hold the ditch below the breach, to bring back whoever comes down.
 - Tell your captain the breach is a trap, and keep your men out of it. *(Even)*
 
-**Chose:** Take your men to the ladders on the curtain wall, to draw the defenders off. (Even: success)
+**Chose:** Take your men to the ladders on the curtain wall, to draw the defenders off. (Favorable: success)
 
 You get two ladders up and keep them up long enough that the defenders have to send men from the breach to throw them down. It is all a feint is for. It does not save the storm. Your men come back from the wall with burns and bruises and every one of them alive, which is more than any other company on the ladders can say.
 
@@ -1621,7 +1649,7 @@ The one in charge of the townswomen is the castellan's wife: Dame Clémence de V
 Sire Enguerrand watches from the wall above the breach with his arms folded. He does not come down.
 
 - Take off your sword and work in the ditch with the rest.
-- Speak to Dame Clémence, in what Valdrennish you have. *(Risky)*
+- Speak to Dame Clémence, in what Valdrennish you have. *(Even)*
 - Use the truce to get a good look at the new wall behind the breach. *(Even)*
 - Stay in the lines. You have seen enough of that ditch.
 
@@ -1796,7 +1824,7 @@ They come down off the heights at dawn and out across the salt pans in long colu
 The archers shoot. The shields take it. The columns come on at a walk, and the walk does not change.
 
 - Run for the sluice-gates, and open them yourself. *(Even)*
-- Steady the men around you. Nobody here has seen anything like this. *(Even)*
+- Steady the men around you. Nobody here has seen anything like this. *(Favorable)*
 - Take a bow and pick off the shield-bearers at the heads of the columns. *(Even)*
 - Kneel with the line when the priests go along it.
 
@@ -1888,8 +1916,6 @@ It is a victory. Two years ago, it is the victory everyone in the army thought t
 - Bury your dead, and go on.
 
 **Chose:** Bury your dead, and go on.
-
-*Davy Ludd's loyalty +1*
 
 ## The Keys of Sauvemer
 
@@ -2001,7 +2027,7 @@ You hear it before you see it: men groaning in the night, men running for the di
 
 They think you are mad, and do it anyway, because you are watching. Your company loses nobody to the flux that summer. The company next door loses nine.
 
-*Stewardship +1 · Davy Ludd's loyalty +1*
+*Stewardship +1*
 
 ## The Garrison
 
@@ -2409,7 +2435,7 @@ Their leader is a big, red-faced Saltcombe brewer's son called Hodge Brewster, w
 
 - Give them the empty houses in the village, among the locals.
 - Settle them together on the far fields, apart, with their own lane.
-- Mix them holding by holding, and make the locals stand godparent to the settlers' children. *(Risky)*
+- Mix them holding by holding, and make the locals stand godparent to the settlers' children. *(Even)*
 - Send them back. Your people have had enough strangers.
 
 **Chose:** Give them the empty houses in the village, among the locals.
@@ -2591,11 +2617,11 @@ By morning there is a crowd at your gate: forty men, more, settlers and locals t
 
 Your men are in the yard behind you, armed, waiting for the word.
 
-- Open the gate, walk out alone, and hear them. *(Risky)*
+- Open the gate, walk out alone, and hear them. *(Even)*
 - Clear the gate.
 - Find out who burned the rick, and hang him.
 
-**Chose:** Open the gate, walk out alone, and hear them. (Risky: failure)
+**Chose:** Open the gate, walk out alone, and hear them. (Even: failure)
 
 Somebody throws a stone before you have said ten words. It takes you on the forehead, and you go down on one knee in the road, and the crowd goes silent, frightened of what it has done. They go home. Nothing is settled. Everyone is ashamed. It is a start, of a kind.
 

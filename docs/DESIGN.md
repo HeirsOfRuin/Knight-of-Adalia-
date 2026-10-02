@@ -794,6 +794,32 @@ At the end of Ch2 the King pays men with land near where they earned it. Ch2 dee
 - no Ch3 deaths so far;
 - coin at the end averages £9-16.
 
+## Training ceilings and learning by doing (2026-10-02)
+
+From a playtest save: a focused archer entered Ch2 with Arms 7 and won every fighting check at the 95% cap, while almost nobody could lead men (Command 0-1 for every bot policy) or talk (Diplomacy had one source before the war).
+
+- **`train` effect.** Ordinary drill (`{ train: { arms: 1 } }`) raises a skill only to a ceiling, 4 by default. A real teacher sets a higher one (Sir Bertram's lessons and the marshal 5, Bertram's test 6). Battle deeds still use plain `add` and are uncapped.
+- **Overflow.** Drill past the ceiling in a physical skill goes into the body instead, once per attribute (to a max of 5): Arms to Endurance, Archery to Strength, Riding and Woodcraft to Endurance. The note says so ("practice alone can take you no further..."). Other skills just get the note.
+- **Learning by doing.** `quiet: 1` is the same cap without the note. Success at a leadership check early in Ch2 trains Command (ceiling 5). Success at a Diplomacy check in the prologue and Ch1 trains Diplomacy (ceiling 4).
+- **New scene.** `c1_watch` (The Ford at Aikbank), between the winter after the Leven and Sir Bertram's test: twelve men and six weeks on the March. Learn their names, keep a hard watch (a Command check), or leave them to Thwaite and ride the fords (Tactics and Woodcraft). The long-winter drill option now gives Command +2.
+
+Result (bot, 100 runs per background, entering Ch2; median / top 10%):
+
+| Policy | Arms | Command | Diplomacy |
+|---|---|---|---|
+| martial | 5 / 6 (was 5 / 7) | 2 / 4 (was 1 / 1) | 1 / 2 |
+| diplomacy | 1 / 2 | 2 / 4 | 4 / 5 (was 1 / 2) |
+| random | 3 / 5 | 1 / 3 | 1 / 3 |
+
+## Chapters 4 and 5: direction (2026-10-02, framing to follow Ch3)
+
+- **Order of work.** Finish Ch3, then a stabilisation pass (save size and export, a full read-through), then frame Ch5 first and Ch4 back from it, in one document. Build Ch4 only after the frame is approved.
+- **The crown.** The throne in play is a new one: forged either from the corpse of an invaded kingdom, or out of a civil war or rebellion. It means independence from both powers on either side. It is not Adalia's throne, taken.
+- **Crowned is rare.** Aim for 5-7% of runs, needing a deliberate long play.
+- **Ch4 shape.** 3-4 acts with time skips across ages 32-42, the same as Ch3.
+- **Heirs.** A mix: moments of mentorship, management, drama and pride, woven into the diplomatic gains and life decisions. Not a separate story arc for each child.
+- **Scope guard.** Cut any Ch4 thread that no ending reads.
+
 ## Decisions log
 | Date | Decision |
 |---|---|
@@ -810,3 +836,4 @@ At the end of Ch2 the King pays men with land near where they earned it. Ch2 dee
 | 2026-10-02 | House voice adopted from the author's sample chapters (style-guide). Ch3 frame drafted for approval. |
 | 2026-10-02 | Ch2 war revised twice: original campaign that swings back and forth (Vervais fails, Grisolles lost, Harlow Moss and the fireships won, the breach fails, Les Salines a costly gamble won, truce on Adalian terms); harder knighting; partials never deal serious wounds; debug Rewind added. |
 | 2026-10-01 | Phase 3 review decisions: 9a, 11c, 12c, 14b, 13a. Historical items kept, except champion (15, replaced) and the Sweat (17, renamed). See Phase 3 review changes. |
+| 2026-10-02 | Training ceilings with overflow into attributes; Command and Diplomacy learned by doing; Aikbank watch scene. Ch4-5 direction: new independent crown (from an invaded kingdom or a civil war), Crowned 5-7%, Ch4 in 3-4 acts with skips, heirs mixed into the main story. Frame Ch5 first, after Ch3 and stabilisation. |

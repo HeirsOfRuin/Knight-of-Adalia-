@@ -154,6 +154,8 @@ export function validate(content: ContentBundle): ValidationReport {
           if (!ADDABLE.includes(ns)) err(where, `add: cannot add to "${p}"`);
           else if (ns !== 'health') { const pe = checkPath(content, p); if (pe) err(where, `add: ${pe}`); }
         }
+      } else if ('train' in e) {
+        for (const k of Object.keys(e.train)) { if (k === 'ceiling' || k === 'quiet') continue; const pe = checkPath(content, `skill.${k}`); if (pe) err(where, `train: ${pe}`); }
       } else if ('found_estate' in e) {
         for (const f of Object.keys(e.found_estate)) { const pe = checkPath(content, `estate.${f}`); if (pe) err(where, `found_estate: ${pe}`); }
       } else if ('lose_share' in e) {

@@ -163,7 +163,7 @@
           - { if: background == archer, add: 1, label: you were raised on this }
       success:
         text: High, so they drop. The crossbowmen have to stand up from behind their shields to wind, and when they stand up, your archers are waiting. For as long as the arrows last, the crossbows on your front go quiet. It buys the line a little time. It costs the archers every arrow they have.
-        effects: [ { add: { res.renown: 1, rep.commons: 1 } }, { trait: +veteran } ]
+        effects: [ { train: { command: 1, ceiling: 5, quiet: 1 } }, { add: { res.renown: 1, rep.commons: 1 } }, { trait: +veteran } ]
         next: c2_grisolles_rout
       failure:
         text: The crossbowmen know this trick better than you do. They wind behind the shields and come up shooting, and your archers lose three men in the first flight and the rest fall back to the river.
@@ -227,11 +227,11 @@
           - { if: flag.c1_drilled_men, add: 1, label: you have drilled men before }
       success:
         text: You walk them back. You do not let them run, because men who run get ridden down. Step, turn, step, shields to the enemy, with the archers in the middle. It takes forever. You are on the bridge when the engineers start swinging their picks, and across it, every one of you, when the arch goes into the Aube with a noise like a church bell falling.
-        effects: [ { set: flag.c2_men_brought_out }, { add: { res.renown: 1, rel.davy_ludd.loyalty: 2, rel.jankin_rooke.loyalty: 2, rel.simkin_barre.loyalty: 2, rel.roger_tallis.loyalty: 2, rel.wat_coker.loyalty: 2, rel.perkin_dyer.loyalty: 2, rel.gib_shawe.loyalty: 2, rel.dickon_laund.loyalty: 2 } } ]
+        effects: [ { train: { command: 1, ceiling: 5, quiet: 1 } }, { set: flag.c2_men_brought_out }, { add: { res.renown: 1, rel.davy_ludd.loyalty: 2, rel.jankin_rooke.loyalty: 2, rel.simkin_barre.loyalty: 2, rel.roger_tallis.loyalty: 2, rel.wat_coker.loyalty: 2, rel.perkin_dyer.loyalty: 2, rel.gib_shawe.loyalty: 2, rel.dickon_laund.loyalty: 2 } } ]
         next: c2_grisolles_after
       partial:
         text: You keep them together most of the way. The last hundred paces they run, because everyone is running, and not all of them reach the bridge before the arch goes down.
-        effects: [ { set: flag.c2_men_brought_out }, { casualties: { men: 1, named: 1, spare: [ davy_ludd ] } } ]
+        effects: [ { train: { command: 1, ceiling: 5, quiet: 1 } }, { set: flag.c2_men_brought_out }, { casualties: { men: 1, named: 1, spare: [ davy_ludd ] } } ]
         next: c2_grisolles_after
       failure:
         text: It is no good. The rearguard breaks all round you, and your men break with it, and you reach the bridge in a crowd of strangers. When you count afterwards, you count twice.

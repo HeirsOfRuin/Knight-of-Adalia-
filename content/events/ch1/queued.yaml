@@ -21,7 +21,7 @@
           - { if: flag.p_jumped_alone, add: 1, label: he has respected you since Midsummer }
       success:
         text: It takes a jug of ale and an evening, and some things you would rather not have said. At the end of it you are not friends. You are the next thing to it, which is two men who know the worst of each other and have decided not to use it.
-        effects: [ { set: flag.c1_rival_ally }, { add: { rel.@rival.affection: 4, rel.@rival.respect: 1 } } ]
+        effects: [ { train: { diplomacy: 1, quiet: 1 } }, { set: flag.c1_rival_ally }, { add: { rel.@rival.affection: 4, rel.@rival.respect: 1 } } ]
         next: "@return"
       failure:
         text: He hears you out and laughs. Some things do not get made right.
@@ -128,7 +128,7 @@
       check: { attr: presence, skill: diplomacy, difficulty: 3, audience: merchants }
       success:
         text: Master Lanzi grants a year, at a price, and says he does it because he expects you to be worth knowing. It is the second time someone has said that to you this year. You begin to suspect it is a thing people say.
-        effects: [ { add: { rel.ralf_mercer.affection: 2, rel.bertuccio_lanzi.respect: 1, rep.sarenza: 1 } } ]
+        effects: [ { train: { diplomacy: 1, quiet: 1 } }, { add: { rel.ralf_mercer.affection: 2, rel.bertuccio_lanzi.respect: 1, rep.sarenza: 1 } } ]
         next: "@return"
       failure:
         text: He is courteous, and immovable.
@@ -156,7 +156,7 @@
       check: { attr: presence, skill: command, difficulty: 3, mods: [ { if: rel.will_cobb.affection >= 3, add: 2, label: he loves your father } ] }
       success:
         text: Outside in the snow he weeps and says he did not mean it, and that your father was the best of them, and that it was the captain's order. He swears not to tell it again. He will tell it again. But not in front of you.
-        effects: [ { add: { rel.will_cobb.affection: 1, rel.will_cobb.respect: 2 } } ]
+        effects: [ { train: { command: 1, quiet: 1 } }, { add: { rel.will_cobb.affection: 1, rel.will_cobb.respect: 2 } } ]
         next: "@return"
       failure:
         text: He shakes you off and tells it again, louder, for the ones in the back.

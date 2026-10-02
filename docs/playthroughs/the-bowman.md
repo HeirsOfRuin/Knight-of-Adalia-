@@ -736,6 +736,30 @@ Cobb listens with his hands round a cup and his eyes on the fire. When you have 
 
 *Will Cobb's affection +2 · Will Cobb's respect +1*
 
+## The Ford at Aikbank
+
+"Twelve men," Sir Ancel says. "Six weeks. The ford at Aikbank, till the Leven's too high to cross. If Ewan comes back, you light the beacon and you run. You don't fight him. Understood?"
+
+It is a winter job nobody else wanted, dressed up as a command. Aikbank is a burned tower, a burned village, and a ford the colour of pewter, and the wind there comes straight off the Caldmoor hills with nothing in between to slow it down.
+
+*(Continue)*
+
+Your twelve are what was left over: four Ravell foresters, three of Cobb's youngest archers, two serving-men, a carter with one eye, and a pair of brothers from Brome called Ingram who have never in their lives agreed about anything. The serjeant they send with you is old Thwaite, who was at Harrow Ford with your father, and who has a cough like a dog barking down a well.
+
+The first night, two of them are asleep on watch, the carter has lost the flint, and the Ingrams are fighting over a blanket. Thwaite sits by the fire, coughs, and watches to see what you will do about it.
+
+- Sit down with them, one at a time, and learn who they are.
+- Set a hard roster, and walk the watch yourself every night. *(Even)*
+- Leave the men to Thwaite, and spend the weeks riding the fords.
+
+**Chose:** Sit down with them, one at a time, and learn who they are.
+
+It takes a week. The foresters are easy, the archers are shy, and the carter talks for an hour about a woman in Hollin. The Ingrams turn out to be fighting over their dead father's blanket, which is the only thing he left them. You cut it in half with your knife, in front of everyone. They stare at you, and then at each other, and then the elder one laughs, and that is the end of it.
+
+After that, nobody sleeps on watch. Not because they are afraid of you. Because they would be letting you down, and they know your name now as well as you know theirs. Thwaite says nothing for five weeks. On the last night he says, "You'll do, sir," and you notice the "sir" more than the rest.
+
+*Command +1 · Common Folk standing +1*
+
 ## Sir Bertram's Test
 
 *Winter, year 18 of King Aldred*
@@ -791,7 +815,7 @@ The household is in a fever. Squires are everywhere at once. For three days it i
 
 Sir Walter is a younger son who has made himself a captain and is proud of it. He likes men who came up the hard way, he says, because they know what things cost. He tells you that if you ever need a place, the Earl's company pays on time. He says it as though most companies do not. They do not.
 
-*Sir Walter Pryce's affection +2 · Sir Walter Pryce's respect +1*
+*Diplomacy +1 · Sir Walter Pryce's affection +2 · Sir Walter Pryce's respect +1*
 
 ## The Ravell Tourney
 
@@ -856,11 +880,11 @@ There is not time for everything. There never is.
 
 **Chose:** Ask for a file of men, and learn to drill them.
 
-Your master gives you a dozen of the household grooms and serving-men who will be going to the war as foot. They are cold, bored, and certain they know better than you. For the first week they are right.
+Your master gives you a dozen of the household grooms and serving-men who will be going to the war as foot. They are cold, bored, and certain they know better than you. After Aikbank, you know what to do about that.
 
 By Candlemas they will form a line when you shout, and hold it when someone runs at them with a broom, and come to you when they have a quarrel instead of settling it with knives. One of them, a big slow lad called Hodge, tells you at Lent that you are "a hard bastard, but fair, sir," and you will hear that "sir" in your head for a week.
 
-*Command +1*
+*Command: practice alone can take you no further. It will take a master, or a hard day, to teach you more.*
 
 ## Carn Dubh
 
@@ -917,7 +941,7 @@ You still have the Thorne man's knife from the shieling by the drove road. He to
 
 A knight who sells cattle to Caldmoor raiders in a year of war is not a feuding neighbour. He is a traitor. Lord Ravell sends to the sheriff. Thorne Hall is taken without a blow struck, by the King's men, and Sir Godric goes south in chains. Sir Ancel gets his cattle back, or their value, and a reputation for patience he has never deserved.
 
-*Sir Ancel Brome's respect +3 · Sir Ancel Brome's affection +2 · Renown +2 · Crown standing +1*
+*Diplomacy +1 · Sir Ancel Brome's respect +3 · Sir Ancel Brome's affection +2 · Renown +2 · Crown standing +1*
 
 ## The Claim
 
@@ -1161,7 +1185,7 @@ There is a council in her pavilion. There is also wine in the Armance knights' t
 
 - Get yourself into the Duchess's pavilion, carrying something for your master. *(Risky)*
 - Sit by the fire and learn the country from someone who knows it.
-- Drink in the Armance knights' tents. *(Even)*
+- Drink in the Armance knights' tents. *(Favorable)*
 
 **Chose:** Get yourself into the Duchess's pavilion, carrying something for your master. (Risky: failure)
 
@@ -1306,11 +1330,11 @@ The whole camp turns out to look at her. Héloïse de Corbie is twenty-two, dark
 
 She does not look at any of them. She is brought to you, because her brother is yours, and she looks at you for the first time as if she had found the one pig that could talk.
 
-- Deal with her honestly. Tell her what the ransom is, what it will cost, and how it can be paid. *(Risky)*
+- Deal with her honestly. Tell her what the ransom is, what it will cost, and how it can be paid. *(Even)*
 - Squeeze her. Two thousand marks, and a thousand more for your trouble.
 - See that she is properly lodged, fed, and kept safe in a camp full of soldiers.
 
-**Chose:** Deal with her honestly. Tell her what the ransom is, what it will cost, and how it can be paid. (Risky: success)
+**Chose:** Deal with her honestly. Tell her what the ransom is, what it will cost, and how it can be paid. (Even: success)
 
 She expects to be cheated, and is not. It surprises her more than anything else in the camp. By the end she is speaking to you as to a man rather than an enemy. "My brother says you came in by the kitchen," she says, as she leaves. "He seemed to think it a compliment."
 
@@ -1385,7 +1409,7 @@ The archers start shooting. You hear the arrows hit the painted shields like hai
 
 High, so they drop. The crossbowmen have to stand up from behind their shields to wind, and when they stand up, your archers are waiting. For as long as the arrows last, the crossbows on your front go quiet. It buys the line a little time. It costs the archers every arrow they have.
 
-*Renown +1 · Common Folk standing +1 · Gained: Veteran*
+*Command +1 · Renown +1 · Common Folk standing +1 · Gained: Veteran*
 
 ## The Bridge
 
@@ -1455,11 +1479,11 @@ Every morning there are fewer men in the column than there were the night before
 - Take what you need from the villages along the road. Your men come first.
 - Keep your head down and keep marching.
 
-**Chose:** Carry your wounded with you, all of them, whatever it costs in pace. (Favorable: partial)
+**Chose:** Carry your wounded with you, all of them, whatever it costs in pace. (Favorable: success)
 
-You bring them all in, every one. The cost is the fever you pick up in the second week, sleeping wet, which does not leave you for a month.
+You make litters of spears and cloaks. Your company falls back through the column, day by day, until it is the last company in it, with the Hroswald riders watching from the hills. They never come down. You bring every man you had into the Armance, and you nearly do not bring yourself.
 
-*Injury: Fever-weak · Honor +1 · Davy Ludd's loyalty +2 · Jankin Rooke's loyalty +2 · Fever-weak has healed*
+*Honor +1 · Common Folk standing +1 · Davy Ludd's loyalty +2 · Jankin Rooke's loyalty +2 · Simkin Barre's loyalty +1*
 
 ## Winter at Lannec
 
@@ -1556,7 +1580,7 @@ The admiral wants volunteers for all three. He is honest about the fireships. "S
 
 A fat Valdrennish hulk at the inner moorings, with her crew ashore and six boys aboard her, who surrender to your men with their hands up and are glad to. You cut her cable and the tide carries her out past the burning ones, with you on her deck, past the sea tower, into the fleet. She is full of wine. Prize money is paid on wine.
 
-*Renown +1 · Coin +£1 10s · Simkin Barre's loyalty +1*
+*Renown +1 · Coin +£1 10s*
 
 ## The Breach
 
@@ -1598,7 +1622,7 @@ The one in charge of the townswomen is the castellan's wife: Dame Clémence de V
 Sire Enguerrand watches from the wall above the breach with his arms folded. He does not come down.
 
 - Take off your sword and work in the ditch with the rest.
-- Speak to Dame Clémence, in what Valdrennish you have. *(Risky)*
+- Speak to Dame Clémence, in what Valdrennish you have. *(Even)*
 - Use the truce to get a good look at the new wall behind the breach. *(Risky)*
 - Stay in the lines. You have seen enough of that ditch.
 
@@ -1643,7 +1667,7 @@ The provost's men catch Simkin Barre with a Sauvemer goldsmith's silver cup in h
 
 - Pay the goldsmith for the cup, and the provost for his trouble.
 - Let the provost have him. A thief is a thief.
-- Talk the goldsmith round. *(Risky)*
+- Talk the goldsmith round. *(Even)*
 
 **Chose:** Pay the goldsmith for the cup, and the provost for his trouble.
 
@@ -1871,7 +1895,7 @@ The King cannot afford to storm it and cannot afford to sit in front of it anoth
 
 The keys are held by Dame Clémence de Vaux, who has held them since her husband died in May. The King's council wants the town emptied of everyone who will not swear to him, and their houses given to Adalians. The town wants its people to keep their homes and its garrison to march out with its arms. Somewhere between the two there is a bargain. Somebody has to find it.
 
-- ~~Offer to carry the terms between the King's council and Dame Clémence.~~ *(Risky, Requires: Dame Clémence's trust)*
+- ~~Offer to carry the terms between the King's council and Dame Clémence.~~ *(Even, Requires: Dame Clémence's trust)*
 - Speak for gentle terms in your captain's ear, and hope it reaches the council. *(Risky)*
 - Make sure your company gets a good house in the town before the others do.
 - Leave it to the heralds. It is the King's business.
@@ -1898,7 +1922,7 @@ Héloïse de Corbie is at the feast too, at the far end of a lower table with th
 
 - Ask Lady Alys to dance, before the young lord can. *(Risky)*
 - Go down to the lower table and sit with Héloïse de Corbie.
-- Work the room. Every great lord in the army is here tonight, drunk and generous. *(Risky)*
+- Work the room. Every great lord in the army is here tonight, drunk and generous. *(Even)*
 - Slip out and drink with your own men in the castle stables.
 
 **Chose:** Ask Lady Alys to dance, before the young lord can. (Risky: failure)
@@ -2187,7 +2211,7 @@ The village has come out, in spite of everything, to look at its new lord. They 
 A one-eyed man in a leather apron that smells of eels leans on the churchyard wall, chewing a straw. "Bastien," he says. "Headman, for my sins. You'll be wanting to know who's sick." He spits. "Ask who isn't. Quicker."
 
 - Go into the dead woman's house yourself, and see.
-- Climb the church steps and speak to them, in their own tongue. *(Risky)*
+- Climb the church steps and speak to them, in their own tongue. *(Even)*
 - Keep your men apart from the village, and send for the priest to tell you what is needed.
 - Turn round and ride back to the town until it has passed.
 
@@ -2403,7 +2427,7 @@ Their leader is a big, red-faced Saltcombe brewer's son called Hodge Brewster, w
 
 - Give them the empty houses in the village, among the locals.
 - Settle them together on the far fields, apart, with their own lane.
-- Mix them holding by holding, and make the locals stand godparent to the settlers' children. *(Risky)*
+- Mix them holding by holding, and make the locals stand godparent to the settlers' children. *(Even)*
 - Send them back. Your people have had enough strangers.
 
 **Chose:** Give them the empty houses in the village, among the locals.

@@ -93,3 +93,32 @@ describe('estate', () => {
     expect(s.estate!.temper).toBe(5);
   });
 });
+
+describe('train', () => {
+  const c = content();
+  const fx = (...e: unknown[]) => e.map((x) => EffectSchema.parse(x));
+  it('stops drill at the ceiling and puts the overflow into the body once', () => {
+    const s = game();
+    s.skills.arms = 3;
+    s.attributes.endurance = 2;
+    const cx = ctx();
+    applyEffects(s, c, fx({ train: { arms: 2 } }), cx);
+    expect(s.skills.arms).toBe(4);
+    expect(s.attributes.endurance).toBe(3);
+    applyEffects(s, c, fx({ train: { arms: 1 } }), cx);
+    expect(s.skills.arms).toBe(4);
+    expect(s.attributes.endurance).toBe(3); // once per attribute
+    expect(cx.changes.some((m) => m.includes('take a master'))).toBe(true);
+  });
+  it('lets a mentor go higher, and learning on the job stays quiet', () => {
+    const s = game();
+    s.skills.arms = 4;
+    applyEffects(s, c, fx({ train: { arms: 1, ceiling: 6 } }), ctx());
+    expect(s.skills.arms).toBe(5);
+    s.skills.command = 5;
+    const cx = ctx();
+    applyEffects(s, c, fx({ train: { command: 1, ceiling: 5, quiet: 1 } }), cx);
+    expect(s.skills.command).toBe(5);
+    expect(cx.changes).toEqual([]);
+  });
+});

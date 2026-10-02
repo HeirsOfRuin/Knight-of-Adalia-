@@ -43,6 +43,10 @@ const BaseEffectSchema = z.union([
   z.object({ advance: Delay }).strict(),
   z.object({ found_estate: z.record(z.string(), z.number()) }).strict(), // creates state.estate (Ch3)
   z.object({ lose_share: z.record(z.string(), z.number()) }).strict(), // estate.<field>: percent lost (plague, famine)
+  // ordinary drill: { train: { arms: 1 } } raises a skill only up to a ceiling (default 4; a mentor sets a higher one;
+  // quiet: 1 suppresses the 'no further' note, for learning on the job).
+  // Past the ceiling a physical skill's effort goes into the body instead (once per attribute).
+  z.object({ train: z.record(z.string(), z.number().int()) }).strict(),
   z.object({ journal: z.string() }).strict(),
   z.object({ die: z.string() }).strict(), // only legal inside lethal choices (validator)
 ]);

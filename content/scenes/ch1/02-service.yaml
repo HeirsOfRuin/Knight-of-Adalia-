@@ -23,7 +23,7 @@
         "Harness," Sir Bertram says on the first morning, and buckles you into a rusty old suit that smells of a dead man. "Fighting in harness is a different trade from fighting. Forget the dancing. In plate you are slow and you don't care, because nobody can hurt you." He hits you across the breastplate with a waster, hard. You stagger. "See? Didn't hurt." He hits you in the armpit, where there is no plate, and you yell. "That did. Remember where."
 
         By Candlemas you know every gap in a harness: armpit, groin, the back of the knee, the slot of the visor. You know them because he has hit you in every one.
-      effects: [ { add: { skill.arms: 2, rel.bertram_oakes.respect: 1 } }, { meet: bertram_oakes } ]
+      effects: [ { train: { arms: 2, ceiling: 5 } }, { add: { rel.bertram_oakes.respect: 1 } }, { meet: bertram_oakes } ]
       next: { switch: [ { if: alias.master == hamon_darrell, go: c1_trouble_hamon } ], default: c1_trouble_ancel }
     - id: ride
       text: The covered ride with Master Ranulf and the young horses.
@@ -32,7 +32,7 @@
         "Again," says Master Ranulf, without looking up from the young horse he is soothing. "And this time stay on."
 
         You are thrown nine times before Candlemas, once into the water-trough, through the ice. The grooms keep count on the stable door in chalk. By Lady Day the count stops, because you can sit a horse that does not want you and turn it with your knees while your hands do something else. Ranulf rubs the count off the door with his sleeve and says nothing. You know what it means.
-      effects: [ { add: { skill.riding: 2, rel.ranulf_marshal.affection: 1 } }, { meet: ranulf_marshal } ]
+      effects: [ { train: { riding: 2, ceiling: 5 } }, { add: { rel.ranulf_marshal.affection: 1 } }, { meet: ranulf_marshal } ]
       next: { switch: [ { if: alias.master == hamon_darrell, go: c1_trouble_hamon } ], default: c1_trouble_ancel }
     - id: letters
       text: Father Benet's cold room, and the lord's accounts.

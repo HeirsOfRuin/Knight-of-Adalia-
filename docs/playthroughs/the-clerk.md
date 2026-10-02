@@ -225,7 +225,7 @@ Wat Coker is fifteen and built like a barn door. He says your father stole his f
 
 Mag opens the door of the hut and looks at you. "Well," she says. "You've got some nerve." She makes Wat sit down, and makes you sit down, and stands over the pair of you with her arms folded until you both talk. You do not become friends. You agree not to kill each other, which is more than your fathers ever managed. On the way out, Mag gives you the ghost of a smile.
 
-*Wat Coker's affection +3 · Wat Coker's respect +1*
+*Diplomacy +1 · Wat Coker's affection +3 · Wat Coker's respect +1*
 
 ## Fourteen
 
@@ -419,7 +419,7 @@ Wat Coker has come to Ravell. He took the levy's penny after his family lost the
 
 It takes a jug of ale and an evening, and some things you would rather not have said. At the end of it you are not friends. You are the next thing to it, which is two men who know the worst of each other and have decided not to use it.
 
-*Wat Coker's affection +4 · Wat Coker's respect +1*
+*Diplomacy +1 · Wat Coker's affection +4 · Wat Coker's respect +1*
 
 ## The Flux
 
@@ -658,7 +658,7 @@ Your mouth is dry. Your hands are steady, which surprises you. Somewhere across 
 - Take a spear and go into the ford with the horse. *(Favorable, MORTAL DANGER)*
 - Take two of Cobb's men upstream to the second ford and get behind the herd. *(Even)*
 - Get down into the alders with Cobb's archers and make them shoot faster. *(Risky)*
-- Wade out and shout for a parley. The cattle, for their lives. *(Risky)*
+- Wade out and shout for a parley. The cattle, for their lives. *(Even)*
 - Stay with the horses, as you were told.
 
 **Chose:** Stay with the horses, as you were told.
@@ -736,7 +736,7 @@ Giles Marrick has the ring tonight, on a string round his neck, and is making a 
 
 Three passes and three misses, the last one so wide you nearly spear the gallows-post and yourself with it. You buy the ale. It is expensive ale. But you ride better for it by the end of the summer, because you go out every evening after that, alone, until you can do it.
 
-*Coin −3d · Riding +1*
+*Riding +1 · Coin −3d*
 
 ## The Winter After
 
@@ -762,6 +762,30 @@ By Candlemas, other men have noticed that you are not sleeping.
 Aymer was at the ford, at the back, with the Ravell banner, and saw less than you and dreamed more. He has been waiting for someone to say it first. You sit up in the hayloft with a stolen jug, the two of you, and say almost nothing, and it helps more than it has any right to. At the end he says, "Don't tell my father," and you say, "Tell him what," and he laughs for the first time in a month.
 
 *Aymer Ravell's affection +2 · Aymer Ravell's respect +1*
+
+## The Ford at Aikbank
+
+"Twelve men," Sir Hamon says, counting them on his fingers and getting it wrong twice. "Six weeks. The ford at Aikbank, till the Leven's too high to cross. If Ewan comes back, you light the beacon and you run. You don't fight him. Understood?"
+
+It is a winter job nobody else wanted, dressed up as a command. Aikbank is a burned tower, a burned village, and a ford the colour of pewter, and the wind there comes straight off the Caldmoor hills with nothing in between to slow it down.
+
+*(Continue)*
+
+Your twelve are what was left over: four Ravell foresters, three of Cobb's youngest archers, two serving-men, a carter with one eye, and a pair of brothers from Brome called Ingram who have never in their lives agreed about anything. The serjeant they send with you is old Thwaite, who was at Harrow Ford with half the old men in the March, and who has a cough like a dog barking down a well.
+
+The first night, two of them are asleep on watch, the carter has lost the flint, and the Ingrams are fighting over a blanket. Thwaite sits by the fire, coughs, and watches to see what you will do about it.
+
+- Sit down with them, one at a time, and learn who they are.
+- Set a hard roster, and walk the watch yourself every night. *(Even)*
+- Leave the men to Thwaite, and spend the weeks riding the fords.
+
+**Chose:** Sit down with them, one at a time, and learn who they are.
+
+It takes a week. The foresters are easy, the archers are shy, and the carter talks for an hour about a woman in Hollin. The Ingrams turn out to be fighting over their dead father's blanket, which is the only thing he left them. You cut it in half with your knife, in front of everyone. They stare at you, and then at each other, and then the elder one laughs, and that is the end of it.
+
+After that, nobody sleeps on watch. Not because they are afraid of you. Because they would be letting you down, and they know your name now as well as you know theirs. Thwaite says nothing for five weeks. On the last night he says, "You'll do, sir," and you notice the "sir" more than the rest.
+
+*Command +1 · Common Folk standing +1*
 
 ## Sir Bertram's Test
 
@@ -807,7 +831,7 @@ The household is in a fever. Squires are everywhere at once. For three days it i
 
 - Get yourself near the King. Hold his stirrup, carry his cup, be there. *(Risky)*
 - Watch the King's household for whoever is watching it. *(Even)*
-- Make yourself known to Sir Walter Pryce, who is hiring men for the war. *(Even)*
+- Make yourself known to Sir Walter Pryce, who is hiring men for the war. *(Favorable)*
 - Keep to your master's side and do your work well.
 
 **Chose:** Get yourself near the King. Hold his stirrup, carry his cup, be there. (Risky: success)
@@ -869,10 +893,10 @@ Aymer Ravell is in the end stall of the stable, in the dark, with his face red t
 "So I'm asking you," he says. "God help me. You're the only one I know who wouldn't tell."
 
 - ~~Lend him what you can. Five shillings.~~ *(Requires Coin 5s)*
-- Tell him he must go to his father, and offer to stand beside him when he does. *(Even)*
+- Tell him he must go to his father, and offer to stand beside him when he does. *(Favorable)*
 - Tell him you have nothing to lend.
 
-**Chose:** Tell him he must go to his father, and offer to stand beside him when he does. (Even: failure)
+**Chose:** Tell him he must go to his father, and offer to stand beside him when he does. (Favorable: failure)
 
 He calls you a coward and a servant and goes to a Wendham moneylender instead.
 
@@ -899,11 +923,11 @@ There is not time for everything. There never is.
 
 **Chose:** Ask for a file of men, and learn to drill them.
 
-Your master gives you a dozen of the household grooms and serving-men who will be going to the war as foot. They are cold, bored, and certain they know better than you. For the first week they are right.
+Your master gives you a dozen of the household grooms and serving-men who will be going to the war as foot. They are cold, bored, and certain they know better than you. After Aikbank, you know what to do about that.
 
 By Candlemas they will form a line when you shout, and hold it when someone runs at them with a broom, and come to you when they have a quarrel instead of settling it with knives. One of them, a big slow lad called Hodge, tells you at Lent that you are "a hard bastard, but fair, sir," and you will hear that "sir" in your head for a week.
 
-*Command +1*
+*Command +2*
 
 ## The Commission
 
@@ -1126,7 +1150,7 @@ The shipmaster comes aft along the rail, hand over hand, streaming water. "Those
 Davy is too sick to stand. Your men are looking at you, the way men look at whoever is supposed to know what to do.
 
 - Go down into the hold with the horses. *(Even)*
-- Stay on deck with your men and keep them together. *(Even)*
+- Stay on deck with your men and keep them together. *(Favorable)*
 - Pray. There is nothing else to be done in a storm.
 
 **Chose:** Go down into the hold with the horses. (Even: failure)
@@ -1150,12 +1174,14 @@ The boats go in. The first wave is already over the side and wading, chest-deep,
 Then the crossbows begin, with a noise like a flock of birds getting up, and the first man near you goes under the water and does not come up.
 
 - Lead your men up the beach, straight at them. *(Favorable, MORTAL DANGER)*
-- Get your archers onto the dunes on the flank, and shoot them off the beach. *(Even)*
+- Get your archers onto the dunes on the flank, and shoot them off the beach. *(Favorable)*
 - See to the horses and the boats while others do the fighting.
 
-**Chose:** Get your archers onto the dunes on the flank, and shoot them off the beach. (Even: failure)
+**Chose:** Get your archers onto the dunes on the flank, and shoot them off the beach. (Favorable: success)
 
-The dune is further than it looked and softer. By the time you are up, the first wave has taken the beach by itself, at a price. They are laying the dead out in rows above the tideline when you come down.
+From the top of the dune you can see the whole line of them. The arrows go in from the side, where their big shields do not cover them, and after the third flight they break back toward the Tour. The King steps ashore on a beach that cost him thirty men, most of them in the first boats.
+
+*Command +1 · Renown +1 · Gained: Veteran*
 
 ## The First Night Ashore
 
@@ -1193,7 +1219,7 @@ There is a council in her pavilion. There is also wine in the Armance knights' t
 
 - Get yourself into the Duchess's pavilion, carrying something for your master. *(Risky)*
 - Sit by the fire and learn the country from someone who knows it.
-- Drink in the Armance knights' tents. *(Even)*
+- Drink in the Armance knights' tents. *(Favorable)*
 
 **Chose:** Get yourself into the Duchess's pavilion, carrying something for your master. (Risky: success)
 
@@ -1260,7 +1286,7 @@ Somewhere behind the church a woman is screaming. It is not one of yours who is 
 
 - Get the people out of the church and onto the road. Then burn Bréval, as ordered.
 - Offer the village a bargain. Pay, and Bréval stands. *(Even)*
-- Go behind the church yourself, and stop what is happening there. Then decide about the village. *(Even)*
+- Go behind the church yourself, and stop what is happening there. Then decide about the village. *(Favorable)*
 - Let your men do as they please. It is war, and they were promised.
 
 **Chose:** Offer the village a bargain. Pay, and Bréval stands. (Even: success)
@@ -1283,7 +1309,7 @@ That should have told you something. It is when you come out of the granary with
 
 - Form your men across the lane and fight it out from the wagons. *(Even, MORTAL DANGER)*
 - Get everyone into the stone granary and let the archers shoot from the doors. *(Favorable)*
-- Send Davy back for help on the fastest horse, and hold until it comes. *(Even)*
+- Send Davy back for help on the fastest horse, and hold until it comes. *(Favorable)*
 - Leave the wagons and get your men away while you can.
 
 **Chose:** Get everyone into the stone granary and let the archers shoot from the doors. (Favorable: success)
@@ -1305,7 +1331,7 @@ It is not a sack. There is no time for a sack. The Constable of Valdrenne's van 
 In the market square there is a great stone house with a coat of arms over the door, three black crows on gold. The house of a lord. Giles Marrick, a knight now, in his father's colours, is already riding toward it.
 
 - Get to the house with the crows before anyone else does. *(Even)*
-- Keep your men together and stop them going wild in the town. *(Even)*
+- Keep your men together and stop them going wild in the town. *(Favorable)*
 - Take your share of Vaudrey.
 
 **Chose:** Get to the house with the crows before anyone else does. (Even: failure)
@@ -1332,11 +1358,11 @@ The whole camp turns out to look at her. Héloïse de Corbie is twenty-two, dark
 
 She does not look at any of them. She is brought to Giles Marrick, because her brother is his. Giles does not speak Valdrennish well. Somebody has to translate. Somebody remembers that you were at the house with the crows.
 
-- Deal with her honestly. Tell her what the ransom is, what it will cost, and how it can be paid. *(Even)*
+- Deal with her honestly. Tell her what the ransom is, what it will cost, and how it can be paid. *(Favorable)*
 - Help Giles squeeze her, for a share.
 - See that she is properly lodged, fed, and kept safe in a camp full of soldiers.
 
-**Chose:** Deal with her honestly. Tell her what the ransom is, what it will cost, and how it can be paid. (Even: success)
+**Chose:** Deal with her honestly. Tell her what the ransom is, what it will cost, and how it can be paid. (Favorable: success)
 
 She expects to be cheated, and is not. It surprises her more than anything else in the camp. By the end she is speaking to you as to a man rather than an enemy. "My brother says you came in by the kitchen," she says, as she leaves. "He seemed to think it a compliment."
 
@@ -1402,16 +1428,16 @@ Away on the right, along the river, their horse is going at a canter for the bri
 
 The archers start shooting. You hear the arrows hit the painted shields like hail on a roof. The block does not stop.
 
-- Take your place in the line of men-at-arms and meet them. *(Even, MORTAL DANGER)*
-- Get your archers shooting over the shields, at the crossbowmen as they wind. *(Even)*
+- Take your place in the line of men-at-arms and meet them. *(Favorable, MORTAL DANGER)*
+- Get your archers shooting over the shields, at the crossbowmen as they wind. *(Favorable)*
 - Mount up and ride for the bridge, where their horse is going for the baggage. *(Even)*
 - Stay at your master's side, wherever he goes.
 
-**Chose:** Get your archers shooting over the shields, at the crossbowmen as they wind. (Even: success)
+**Chose:** Get your archers shooting over the shields, at the crossbowmen as they wind. (Favorable: success)
 
 High, so they drop. The crossbowmen have to stand up from behind their shields to wind, and when they stand up, your archers are waiting. For as long as the arrows last, the crossbows on your front go quiet. It buys the line a little time. It costs the archers every arrow they have.
 
-*Renown +1 · Common Folk standing +1 · Gained: Veteran*
+*Command +1 · Renown +1 · Common Folk standing +1*
 
 ## The Bridge
 
@@ -1423,7 +1449,7 @@ Word comes down the line, shouted from man to man: the King's engineers are at t
 
 You cannot see your master's banner. The last you saw of it, it was going down into the press.
 
-- Keep your own men together and get them over the bridge in order. *(Even)*
+- Keep your own men together and get them over the bridge in order. *(Favorable)*
 - Go back into the press for your master. *(Favorable, MORTAL DANGER)*
 - Get yourself over the bridge. Your men can follow or not.
 
@@ -1475,12 +1501,12 @@ Behind it and on its flanks ride the Iron Company, eight hundred Hroswald horse 
 
 Every morning there are fewer men in the column than there were the night before. Some of them were caught. Some of them are walking home on their own. Some of them are lying in ditches with their boots off, too tired to get up.
 
-- Carry your wounded with you, all of them, whatever it costs in pace. *(Even)*
+- Carry your wounded with you, all of them, whatever it costs in pace. *(Favorable)*
 - Lay an ambush at a stream crossing for the Hroswald riders who follow the column. *(Favorable)*
 - Take what you need from the villages along the road. Your men come first.
 - Keep your head down and keep marching.
 
-**Chose:** Carry your wounded with you, all of them, whatever it costs in pace. (Even: success)
+**Chose:** Carry your wounded with you, all of them, whatever it costs in pace. (Favorable: success)
 
 You make litters of spears and cloaks. Your company falls back through the column, day by day, until it is the last company in it, with the Hroswald riders watching from the hills. They never come down. You bring every man you had into the Armance, and you nearly do not bring yourself.
 
@@ -1550,10 +1576,10 @@ A letter from Isabel Sayer, short, in a hand that has been steadier.
 
 Her father has accepted the widowed knight from Hollesby for her, without asking. The betrothal is to be at Lady Day. She has refused, and been told that refusing is not hers to do. She still has your token. She does not say what she means to do with it.
 
-- Write to her father yourself, and ask him to wait for you. *(Even)*
+- Write to her father yourself, and ask him to wait for you. *(Favorable)*
 - Write back that she must do what she must. You cannot ask her to wait for a man who may not come home.
 
-**Chose:** Write to her father yourself, and ask him to wait for you. (Even: success)
+**Chose:** Write to her father yourself, and ask him to wait for you. (Favorable: success)
 
 Sir John Sayer writes back, stiffly, that he has heard of you, and that a knight who has done well in the King's war may be worth waiting for, and that he will wait one year. Isabel writes too. Her letter is two words long.
 
@@ -1582,12 +1608,12 @@ Behind them go the boats: every ship's boat in the fleet, full of men with axes 
 
 The admiral wants volunteers for all three. He is honest about the fireships. "Some of you will not come back," he says. "The ones who do will drink free in Saltcombe for the rest of their lives."
 
-- Volunteer to steer a fireship in. *(Even, MORTAL DANGER)*
-- Take your men in the boats, to cut out the ships that do not burn. *(Even)*
+- Volunteer to steer a fireship in. *(Favorable, MORTAL DANGER)*
+- Take your men in the boats, to cut out the ships that do not burn. *(Favorable)*
 - Take your archers onto the mole and keep the sea tower's crossbows busy. *(Even)*
 - Watch from the dunes.
 
-**Chose:** Take your men in the boats, to cut out the ships that do not burn. (Even: success)
+**Chose:** Take your men in the boats, to cut out the ships that do not burn. (Favorable: success)
 
 A fat Valdrennish hulk at the inner moorings, with her crew ashore and six boys aboard her, who surrender to your men with their hands up and are glad to. You cut her cable and the tide carries her out past the burning ones, with you on her deck, past the sea tower, into the fleet. She is full of wine. Prize money is paid on wine.
 
@@ -1806,7 +1832,7 @@ They come down off the heights at dawn and out across the salt pans in long colu
 The archers shoot. The shields take it. The columns come on at a walk, and the walk does not change.
 
 - Run for the sluice-gates, and open them yourself. *(Favorable)*
-- Steady the men around you. Nobody here has seen anything like this. *(Even)*
+- Steady the men around you. Nobody here has seen anything like this. *(Favorable)*
 - Take a bow and pick off the shield-bearers at the heads of the columns. *(Risky)*
 - Kneel with the line when the priests go along it.
 
@@ -1950,7 +1976,7 @@ Héloïse de Corbie is at the feast too, at the far end of a lower table with th
 
 - Ask Lady Alys to dance, before the young lord can. *(Even)*
 - Go down to the lower table and sit with Héloïse de Corbie.
-- Work the room. Every great lord in the army is here tonight, drunk and generous. *(Even)*
+- Work the room. Every great lord in the army is here tonight, drunk and generous. *(Favorable)*
 - Slip out and drink with your own men in the castle stables.
 
 **Chose:** Ask Lady Alys to dance, before the young lord can. (Even: success)
@@ -2143,7 +2169,7 @@ The Duchess's steward, standing by the dais in her ermine, looks across the hall
 The people of Kerval are the only Valdrennish you have met who are glad to see an Adalian. That may not last.
 
 - Kneel, and do homage for Kerval.
-- Kneel, and ask, respectfully, for more. *(Risky)*
+- Kneel, and ask, respectfully, for more. *(Even)*
 
 **Chose:** Kneel, and do homage for Kerval.
 
@@ -2218,11 +2244,11 @@ The village has come out, in spite of everything, to look at its new lord. They 
 A huge cheerful man shoves through, beaming, with his hat in his hands. "Gwenaël! I am the reeve! Welcome, welcome!" His smile falters. "Is a bad day. A bad, bad day. But welcome!"
 
 - Go into the dead woman's house yourself, and see.
-- Climb the church steps and speak to them, in their own tongue. *(Even)*
+- Climb the church steps and speak to them, in their own tongue. *(Favorable)*
 - Keep your men apart from the village, and send for the priest to tell you what is needed.
 - Turn round and ride back to the town until it has passed.
 
-**Chose:** Climb the church steps and speak to them, in their own tongue. (Even: success)
+**Chose:** Climb the church steps and speak to them, in their own tongue. (Favorable: success)
 
 You do not make a speech. You tell them what you know, which is little, and what you will do, which is stay. You tell them nobody will be put out of a house for being sick, and that the manor's grain will feed the houses that cannot work. "And if I take it," you say, "you'll bury me with the rest of you, and I'll thank you not to be glad."
 
@@ -2433,7 +2459,7 @@ You notice one of the settlers is a Coker: a cousin of Wat's, with the family's 
 
 - Give them the empty houses in the village, among the locals.
 - Settle them together on the far fields, apart, with their own lane.
-- Mix them holding by holding, and make the locals stand godparent to the settlers' children. *(Even)*
+- Mix them holding by holding, and make the locals stand godparent to the settlers' children. *(Favorable)*
 - Send them back. Your people have had enough strangers.
 
 **Chose:** Give them the empty houses in the village, among the locals.

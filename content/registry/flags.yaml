@@ -152,6 +152,9 @@ c1_bertram_sword: { description: "Trained sword and buckler with Sir Bertram eve
 c1_shot_with_cobb: { description: "Shot at the long butts with Cobb's archers", hidden: true, later: ch2 }
 c1_knows_arms: { description: "Learned the rolls of arms from Father Benet", hidden: true, later: ch2 }
 c1_passed_test: { description: "Passed Sir Bertram's Lady Day test in harness", hidden: true, later: ch2 }
+c1_watch_names: { description: "Learned the names of his men on the Aikbank watch", hidden: true }
+c1_watch_hard: { description: "Kept a hard watch at Aikbank", hidden: true }
+c1_watch_rode: { description: "Rode the Leven fords instead of keeping the watch", hidden: true }
 c1_drilled_men: { description: "Drilled a file of men through the long winter", hidden: true, later: ch2 }
 c1_studied_war: { description: "Studied the old campaigns with his master", hidden: true, later: ch2 }
 c1_learned_manor: { description: "Learned the business of a manor from the steward's books", hidden: true, later: ch3 }

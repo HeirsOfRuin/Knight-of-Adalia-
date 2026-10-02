@@ -179,6 +179,7 @@
       success:
         text: "Black Ewan himself comes down to the water's edge: a tall man with grey in his beard and a voice like a cart on stones. He laughs until he has to wipe his eyes. Then he takes the bargain, because a cattle raid is a business and he has lost enough. He leaves his sister's boy Coll as a pledge. Sir Ancel calls it a merchant's victory. Lord Ravell calls it forty cattle and no widows. Only Sir Hugh Wyck, who went in before the parley was done, is dead."
         effects:
+          - { train: { diplomacy: 1, quiet: 1 } }
           - set: flag.c1_parley
           - set: flag.c1_has_prisoner
           - add: { rep.caldmoor: 2, rep.honor: 1, res.renown: 1, rel.ancel_brome.respect: -1, rel.thurstan_ravell.respect: 2 }

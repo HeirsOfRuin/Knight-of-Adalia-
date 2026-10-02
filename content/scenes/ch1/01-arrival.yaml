@@ -264,6 +264,7 @@
       success:
         text: It takes all autumn. You lend, you listen, you take the blame once for a boy who will remember it. By Martinmas, when Giles makes his jokes, nobody laughs. He notices. He stops making them, mostly.
         effects:
+          - { train: { diplomacy: 1, quiet: 1 } }
           - set: flag.c1_squires_friends
           - add: { rel.aymer_ravell.affection: 1, rel.giles_marrick.respect: 1, rep.knights: 1 }
         next: { pool: c1_hall, count: 1, then: c1_winter }

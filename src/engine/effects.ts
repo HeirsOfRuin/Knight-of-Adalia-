@@ -19,6 +19,32 @@ export interface EffectCtx {
 
 const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v));
 
+export const DRILL_CEILING = 4;
+/** Where drill goes once the skill is past what drill can teach: the work hardens the body instead. */
+export const TRAIN_OVERFLOW: Record<string, string> = { arms: 'endurance', archery: 'strength', riding: 'endurance', woodcraft: 'endurance' };
+const OVERFLOW_MAX = 5;
+
+function train(state: GameState, content: ContentBundle, spec: Record<string, number>, changes: string[]): void {
+  const ceiling = spec.ceiling ?? DRILL_CEILING;
+  for (const [skill, by] of Object.entries(spec)) {
+    if (skill === 'ceiling' || skill === 'quiet') continue;
+    const before = state.skills[skill] ?? 0;
+    const room = Math.max(0, ceiling - before);
+    if (room > 0) addNumber(state, content, `skill.${skill}`, Math.min(by, room), changes);
+    if (by <= room || spec.quiet) continue;
+    const label = labelFor(content, `skill.${skill}`);
+    const attr = TRAIN_OVERFLOW[skill];
+    const key = `overflow_${attr}`;
+    if (attr && !state.counters[key] && (state.attributes[attr] ?? 1) < OVERFLOW_MAX) {
+      state.counters[key] = 1;
+      changes.push(`${label}: practice alone can take you no further. The work goes into your body instead.`);
+      addNumber(state, content, `attr.${attr}`, 1, changes);
+    } else {
+      changes.push(`${label}: practice alone can take you no further. It will take a master, or a hard day, to teach you more.`);
+    }
+  }
+}
+
 export function newNpcState(content: ContentBundle, id: string): NpcState {
   const def = content.registry.npcs[id];
   return { met: false, alive: true, affection: def?.affection ?? 0, respect: def?.respect ?? 0, loyalty: 0, grudges: [] };
@@ -239,6 +265,8 @@ export function applyEffects(state: GameState, content: ContentBundle, effects: 
         const d = state.estate[f]! - before;
         if (d) ctx.changes.push(`${labelFor(content, raw)} ${d}`);
       }
+    } else if ('train' in e) {
+      train(state, content, e.train, ctx.changes);
     } else if ('found_estate' in e) {
       state.estate = {};
       for (const f of ESTATE_FIELDS) state.estate[f] = clampEstate(f, e.found_estate[f] ?? 0);

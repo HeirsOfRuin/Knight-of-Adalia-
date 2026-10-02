@@ -220,6 +220,7 @@
       success:
         text: He confesses before Sir Hamon, not the Earl's men, and pays back every penny from what he has saved for your sisters. He loses the reeveship. He keeps his neck and his name. He does not forgive you. He might, one day.
         effects:
+          - { train: { diplomacy: 1, quiet: 1 } }
           - set: flag.c1_father_confessed
           - add: { rep.honor: 2, rel.piers_reeve.affection: -2, rel.piers_reeve.respect: 3 }
         next: c1_war_comes
@@ -269,6 +270,7 @@
       success:
         text: A knight who sells cattle to Caldmoor raiders in a year of war is not a feuding neighbour. He is a traitor. Lord Ravell sends to the sheriff. Thorne Hall is taken without a blow struck, by the King's men, and Sir Godric goes south in chains. Sir Ancel gets his cattle back, or their value, and a reputation for patience he has never deserved.
         effects:
+          - { train: { diplomacy: 1, quiet: 1 } }
           - set: flag.c1_master_cleared
           - set: flag.c1_thorne_taken
           - set: flag.ravell_favor
@@ -310,6 +312,7 @@
       success:
         text: You talk until the candle is gone. About the King's war, and the pardons that will be handed out to men who serve in it, and the pleasure of seeing Thorne pay for it in court later, when Sir Ancel has a Valdrennish ransom in his purse. He does not agree. He just does not ride. In the morning he says, "You'd make a lawyer," and it is not a compliment, and he does not take it back.
         effects:
+          - { train: { diplomacy: 1, quiet: 1 } }
           - set: flag.c1_master_cleared
           - add: { rel.ancel_brome.respect: 2, rel.thurstan_ravell.respect: 1 }
         next: c1_war_comes

@@ -8,8 +8,7 @@ Background: Burgess's son. Seed 3.
 
 Easter week in Wendham, and the whole house stinks of wet sheep.
 
-The fleeces came down from thewrote /home/user/Knight-of-Adalia-/docs/playthroughs/the-mercer.md
-to the rafters of the wool loft, heaped in the passage, laid out in rows on the counting-house floor for grading, so you have to hop over them to reach the stair. "That," your father says, breathing it in, "is the smell of money." Your mother keeps dried lavender on every sill. It does not help.
+The fleeces came down from the hill farms before the feast, and now they are everywhere: stacked to the rafters of the wool loft, heaped in the passage, laid out in rows on the counting-house floor for grading, so you have to hop over them to reach the stair. "That," your father says, breathing it in, "is the smell of money." Your mother keeps dried lavender on every sill. It does not help.
 
 Ralf Mercer is a tidy man in a tidy house: three storeys on Sheep Street, a hall with glass in one window, a counting-house at the front where he can see who comes to the door. He sits on the town council. He writes everything down. When he talks to you he uses the voice he uses for customers, patient and pleasant and careful, as if you might yet take your custom elsewhere.
 
@@ -385,7 +384,7 @@ Jocelin Tanner has come to Ravell. His father supplies the household with leathe
 
 It takes a jug of ale and an evening, and some things you would rather not have said. At the end of it you are not friends. You are the next thing to it, which is two men who know the worst of each other and have decided not to use it.
 
-*Jocelin Tanner's affection +4 · Jocelin Tanner's respect +1*
+*Diplomacy +1 · Jocelin Tanner's affection +4 · Jocelin Tanner's respect +1*
 
 ## Wendham Horse Fair
 
@@ -682,7 +681,7 @@ Giles Marrick has the ring tonight, on a string round his neck, and is making a 
 
 Three passes and three misses, the last one so wide you nearly spear the gallows-post and yourself with it. You buy the ale. It is expensive ale. But you ride better for it by the end of the summer, because you go out every evening after that, alone, until you can do it.
 
-*Coin −3d · Riding +1 · Cut brow has healed · Gained: Scarred face*
+*Riding +1 · Coin −3d · Cut brow has healed · Gained: Scarred face*
 
 ## The Winter After
 
@@ -707,7 +706,31 @@ By Candlemas, other men have noticed that you are not sleeping.
 
 Aymer was at the ford, at the back, with the Ravell banner, and saw less than you and dreamed more. He has been waiting for someone to say it first. You sit up in the hayloft with a stolen jug, the two of you, and say almost nothing, and it helps more than it has any right to. At the end he says, "Don't tell my father," and you say, "Tell him what," and he laughs for the first time in a month.
 
-*Aymer Ravell's affection +2 · Aymer Ravell's respect +1 · Arrow wound has healed*
+*Aymer Ravell's affection +2 · Aymer Ravell's respect +1*
+
+## The Ford at Aikbank
+
+"Twelve men," Sir Hamon says, counting them on his fingers and getting it wrong twice. "Six weeks. The ford at Aikbank, till the Leven's too high to cross. If Ewan comes back, you light the beacon and you run. You don't fight him. Understood?"
+
+It is a winter job nobody else wanted, dressed up as a command. Aikbank is a burned tower, a burned village, and a ford the colour of pewter, and the wind there comes straight off the Caldmoor hills with nothing in between to slow it down.
+
+*(Continue)*
+
+Your twelve are what was left over: four Ravell foresters, three of Cobb's youngest archers, two serving-men, a carter with one eye, and a pair of brothers from Brome called Ingram who have never in their lives agreed about anything. The serjeant they send with you is old Thwaite, who was at Harrow Ford with half the old men in the March, and who has a cough like a dog barking down a well.
+
+The first night, two of them are asleep on watch, the carter has lost the flint, and the Ingrams are fighting over a blanket. Thwaite sits by the fire, coughs, and watches to see what you will do about it.
+
+- Sit down with them, one at a time, and learn who they are.
+- Set a hard roster, and walk the watch yourself every night. *(Even)*
+- Leave the men to Thwaite, and spend the weeks riding the fords.
+
+**Chose:** Sit down with them, one at a time, and learn who they are.
+
+It takes a week. The foresters are easy, the archers are shy, and the carter talks for an hour about a woman in Hollin. The Ingrams turn out to be fighting over their dead father's blanket, which is the only thing he left them. You cut it in half with your knife, in front of everyone. They stare at you, and then at each other, and then the elder one laughs, and that is the end of it.
+
+After that, nobody sleeps on watch. Not because they are afraid of you. Because they would be letting you down, and they know your name now as well as you know theirs. Thwaite says nothing for five weeks. On the last night he says, "You'll do, sir," and you notice the "sir" more than the rest.
+
+*Command +1 · Common Folk standing +1 · Arrow wound has healed*
 
 ## Sir Bertram's Test
 
@@ -776,7 +799,7 @@ The household is in a fever. Squires are everywhere at once. For three days it i
 
 - Get yourself near the King. Hold his stirrup, carry his cup, be there. *(Favorable)*
 - Watch the King's household for whoever is watching it. *(Even)*
-- Make yourself known to Sir Walter Pryce, who is hiring men for the war. *(Even)*
+- Make yourself known to Sir Walter Pryce, who is hiring men for the war. *(Favorable)*
 - Keep to your master's side and do your work well.
 
 **Chose:** Get yourself near the King. Hold his stirrup, carry his cup, be there. (Favorable: failure)
@@ -845,11 +868,11 @@ There is not time for everything. There never is.
 
 **Chose:** Ask for a file of men, and learn to drill them.
 
-Your master gives you a dozen of the household grooms and serving-men who will be going to the war as foot. They are cold, bored, and certain they know better than you. For the first week they are right.
+Your master gives you a dozen of the household grooms and serving-men who will be going to the war as foot. They are cold, bored, and certain they know better than you. After Aikbank, you know what to do about that.
 
 By Candlemas they will form a line when you shout, and hold it when someone runs at them with a broom, and come to you when they have a quarrel instead of settling it with knives. One of them, a big slow lad called Hodge, tells you at Lent that you are "a hard bastard, but fair, sir," and you will hear that "sir" in your head for a week.
 
-*Command +1*
+*Command +2*
 
 ## The Commission
 
@@ -1103,7 +1126,7 @@ The boats go in. The first wave is already over the side and wading, chest-deep,
 Then the crossbows begin, with a noise like a flock of birds getting up, and the first man near you goes under the water and does not come up.
 
 - Lead your men up the beach, straight at them. *(Favorable, MORTAL DANGER)*
-- Get your archers onto the dunes on the flank, and shoot them off the beach. *(Even)*
+- Get your archers onto the dunes on the flank, and shoot them off the beach. *(Favorable)*
 - See to the horses and the boats while others do the fighting.
 
 **Chose:** Lead your men up the beach, straight at them. (Favorable: success)
@@ -1244,7 +1267,7 @@ That should have told you something. It is when you come out of the granary with
 
 - Form your men across the lane and fight it out from the wagons. *(Favorable, MORTAL DANGER)*
 - Get everyone into the stone granary and let the archers shoot from the doors. *(Even)*
-- Send Davy back for help on the fastest horse, and hold until it comes. *(Even)*
+- Send Davy back for help on the fastest horse, and hold until it comes. *(Favorable)*
 - Leave the wagons and get your men away while you can.
 
 **Chose:** Get everyone into the stone granary and let the archers shoot from the doors. (Even: failure)
@@ -1372,15 +1395,15 @@ Away on the right, along the river, their horse is going at a canter for the bri
 The archers start shooting. You hear the arrows hit the painted shields like hail on a roof. The block does not stop.
 
 - Take your place in the line of men-at-arms and meet them. *(Favorable, MORTAL DANGER)*
-- Get your archers shooting over the shields, at the crossbowmen as they wind. *(Even)*
+- Get your archers shooting over the shields, at the crossbowmen as they wind. *(Favorable)*
 - Mount up and ride for the bridge, where their horse is going for the baggage. *(Even)*
 - Stay at your master's side, wherever he goes.
 
-**Chose:** Get your archers shooting over the shields, at the crossbowmen as they wind. (Even: failure)
+**Chose:** Get your archers shooting over the shields, at the crossbowmen as they wind. (Favorable: success)
 
-The crossbowmen know this trick better than you do. They wind behind the shields and come up shooting, and your archers lose three men in the first flight and the rest fall back to the river.
+High, so they drop. The crossbowmen have to stand up from behind their shields to wind, and when they stand up, your archers are waiting. For as long as the arrows last, the crossbows on your front go quiet. It buys the line a little time. It costs the archers every arrow they have.
 
-*1 of your men is dead*
+*Command +1 · Renown +1 · Common Folk standing +1*
 
 ## The Bridge
 
@@ -1397,7 +1420,7 @@ Word comes down the line, shouted from man to man: the King's engineers are at t
 
 You walk them back. You do not let them run, because men who run get ridden down. Step, turn, step, shields to the enemy, with the archers in the middle. It takes forever. You are on the bridge when the engineers start swinging their picks, and across it, every one of you, when the arch goes into the Aube with a noise like a church bell falling.
 
-*Renown +1 · Davy Ludd's loyalty +2 · Roger Tallis's loyalty +2*
+*Command +1 · Renown +1 · Davy Ludd's loyalty +2 · Roger Tallis's loyalty +2*
 
 ## The Far Bank
 
@@ -1439,12 +1462,12 @@ Behind it and on its flanks ride the Iron Company, eight hundred Hroswald horse 
 
 Every morning there are fewer men in the column than there were the night before. Some of them were caught. Some of them are walking home on their own. Some of them are lying in ditches with their boots off, too tired to get up.
 
-- Carry your wounded with you, all of them, whatever it costs in pace. *(Even)*
+- Carry your wounded with you, all of them, whatever it costs in pace. *(Favorable)*
 - Lay an ambush at a stream crossing for the Hroswald riders who follow the column. *(Even)*
 - Take what you need from the villages along the road. Your men come first.
 - Keep your head down and keep marching.
 
-**Chose:** Carry your wounded with you, all of them, whatever it costs in pace. (Even: success)
+**Chose:** Carry your wounded with you, all of them, whatever it costs in pace. (Favorable: success)
 
 You make litters of spears and cloaks. Your company falls back through the column, day by day, until it is the last company in it, with the Hroswald riders watching from the hills. They never come down. You bring every man you had into the Armance, and you nearly do not bring yourself.
 
@@ -1534,7 +1557,7 @@ Behind them go the boats: every ship's boat in the fleet, full of men with axes 
 
 The admiral wants volunteers for all three. He is honest about the fireships. "Some of you will not come back," he says. "The ones who do will drink free in Saltcombe for the rest of their lives."
 
-- Volunteer to steer a fireship in. *(Even, MORTAL DANGER)*
+- Volunteer to steer a fireship in. *(Favorable, MORTAL DANGER)*
 - Take your men in the boats, to cut out the ships that do not burn. *(Favorable)*
 - Take your archers onto the mole and keep the sea tower's crossbows busy. *(Even)*
 - Watch from the dunes.
@@ -1562,15 +1585,15 @@ At first light a Carrow captain walks along the storming party, slapping backs. 
 At dawn the trumpets go.
 
 - Go up the rubble with the storming party. *(Even, MORTAL DANGER)*
-- Take your men to the ladders on the curtain wall, to draw the defenders off. *(Even)*
+- Take your men to the ladders on the curtain wall, to draw the defenders off. *(Favorable)*
 - Hold the ditch below the breach, to bring back whoever comes down.
 - Tell your captain the breach is a trap, and keep your men out of it. *(Even)*
 
-**Chose:** Take your men to the ladders on the curtain wall, to draw the defenders off. (Even: failure)
+**Chose:** Take your men to the ladders on the curtain wall, to draw the defenders off. (Favorable: success)
 
-The ladders go up and come straight down again. Boiling sand. Stones. One of your men falls from the top of a ladder and lies at the foot of the wall all day, and you cannot get to him until dark.
+You get two ladders up and keep them up long enough that the defenders have to send men from the breach to throw them down. It is all a feint is for. It does not save the storm. Your men come back from the wall with burns and bruises and every one of them alive, which is more than any other company on the ladders can say.
 
-*1 of your men is dead · Roger Tallis is dead*
+*Renown +1 · Sir Walter Pryce's respect +1*
 
 ## The Dead in the Ditch
 
@@ -1585,7 +1608,7 @@ The one in charge of the townswomen is the castellan's wife: Dame Clémence de V
 Sire Enguerrand watches from the wall above the breach with his arms folded. He does not come down.
 
 - Take off your sword and work in the ditch with the rest.
-- Speak to Dame Clémence, in what Valdrennish you have. *(Even)*
+- Speak to Dame Clémence, in what Valdrennish you have. *(Favorable)*
 - Use the truce to get a good look at the new wall behind the breach. *(Even)*
 - Stay in the lines. You have seen enough of that ditch.
 
@@ -1609,7 +1632,7 @@ So the King settles down to do what he did not mean to do: sit in front of Sauve
 
 The town is not starving. Its own ships are ash, but on dark nights, Sarenzan galleys hired by King Amaury slip in under the sea wall with flour and salt pork, and slip out again before dawn, and the King's ships cannot catch them. Everyone knows whose galleys they are. The Varesco bank lends to Amaury. The Lanzi bank lends to Aldred. "It is not personal," Fiammetta Lanzi tells you. "It is business. Ugolino Varesco would sell flour to the Devil, if the Devil could post a bond."
 
-"Two years' bread," says one of your men, looking at the walls. "That's what their castellan said. I thought he was lying." He blows on his hands. "I'm starting to think he was being modest."
+"Two years' bread," says Tallis, looking at the walls. "That's what their castellan said. I thought he was lying." He blows on his hands. "I'm starting to think he was being modest."
 
 Your men are dry, at least.
 
@@ -1618,26 +1641,28 @@ Your men are dry, at least.
 - Help the engineers build a boom across the harbour mouth to stop the galleys. *(Even)*
 - Keep your head down and get through it.
 
-**Chose:** Move your men's camp up to the chapel spring, away from the latrine ditches. (Favorable: success)
+**Chose:** Move your men's camp up to the chapel spring, away from the latrine ditches. (Favorable: failure)
 
-It means a longer walk to the lines and a quarrel with the company that had the spring first. You win the quarrel. Your men drink clean water all winter, and dig their latrines downhill, and laugh at you for it. Your company loses nobody to the flux that winter. You are the only one in the camp that can say so.
+You move them. The company at the spring has friends in the Earl's household, and you are moved back. The flux finds your men in Lent.
 
-*Stewardship +1 · Davy Ludd's loyalty +1*
+*1 of your men is dead*
 
-## Davy
+## Hazard
 
-Davy Ludd is seventeen now, and has stopped talking quite so much, and has started looking at you in a particular way when you give orders, as if learning how it is done.
+The camp on the dunes has a street of taverns now, built of turf and driftwood and stolen doors, and every tavern has a dice game, and every dice game has men who were paid this week and mean not to be by Sunday.
 
-One evening he asks you, formally, whether he might ever hope to be more than a squire. He means: could a groom's grandson be knighted, as you were, or will be. He has clearly been chewing on it for weeks.
+"Seven's the main! SEVEN! Ah, Christ's wounds!"
 
-- Tell him yes, and that you will see to it if you can.
-- Tell him the truth. It is hard, and rare, and it cost you everything you had.
+The best game is in a tavern called the Drowned Man, under a sail roof that leaks, with a Sarenzan holding the bank.
 
-**Chose:** Tell him yes, and that you will see to it if you can.
+- Play. *(Favorable)*
+- Watch your men instead, and make sure none of them loses his boots.
 
-He goes red to the ears and says nothing for a whole day. Then he starts asking the old men-at-arms in the camp to teach him the sword properly, every morning, in the cold.
+**Chose:** Play. (Favorable: success)
 
-*Davy Ludd's affection +3*
+You win steadily, and leave while you are winning, which makes you no friends.
+
+*Coin +5s*
 
 ## The Mine
 
@@ -1673,7 +1698,7 @@ Two hundred of his men come out of the sea gate at low tide and along the beach 
 
 Your company is the nearest.
 
-- Get your men up and go straight at them. *(Even, MORTAL DANGER)*
+- Get your men up and go straight at them. *(Favorable, MORTAL DANGER)*
 - Save what can be saved of the engines and the men under them.
 - Go for the sea gate behind them and cut them off from the town. *(Even)*
 
@@ -1795,7 +1820,7 @@ The line you are standing in has enemies in front and enemies behind.
 
 It is where a captain is supposed to stand, some say. Others say different. The front rank takes the weight and holds, mostly. You lose men you put in front of you. You keep your own skin, and you know exactly what it cost.
 
-*1 of your men is dead*
+*1 of your men is dead · Roger Tallis is dead*
 
 ## The King's Banner
 
@@ -1864,7 +1889,7 @@ It is a victory. Two years ago, it is the victory everyone in the army thought t
 
 **Chose:** Bury your dead, and go on.
 
-*Bruised ribs has healed*
+*Davy Ludd's loyalty +1 · Bruised ribs has healed*
 
 ## The Keys of Sauvemer
 
@@ -1880,16 +1905,16 @@ The King cannot afford to storm it and cannot afford to sit in front of it anoth
 
 The keys are held by Dame Clémence de Vaux, who has held them since her husband died in May. The King's council wants the town emptied of everyone who will not swear to him, and their houses given to Adalians. The town wants its people to keep their homes and its garrison to march out with its arms. Somewhere between the two there is a bargain. Somebody has to find it.
 
-- ~~Offer to carry the terms between the King's council and Dame Clémence.~~ *(Even, Requires: Dame Clémence's trust)*
+- ~~Offer to carry the terms between the King's council and Dame Clémence.~~ *(Favorable, Requires: Dame Clémence's trust)*
 - Speak for gentle terms in your captain's ear, and hope it reaches the council. *(Favorable)*
 - Make sure your company gets a good house in the town before the others do.
 - Leave it to the heralds. It is the King's business.
 
-**Chose:** Speak for gentle terms in your captain's ear, and hope it reaches the council. (Favorable: failure)
+**Chose:** Speak for gentle terms in your captain's ear, and hope it reaches the council. (Favorable: success)
 
-Your captain hears you out and tells you, tiredly, to leave the town to men who were not born in a village. The King's terms stand.
+Your captain carries it to the Marshal, who carries it to the King. Nobody tells you whether it mattered. The terms, when they come, are kinder than anyone expected, and the King is praised for them. That is how it should be told.
 
-*Honor +1*
+*Honor +1 · Valdrenne standing +2*
 
 ## Christmas at Sauvemer
 
@@ -1907,7 +1932,7 @@ Héloïse de Corbie is at the feast too, at the far end of a lower table with th
 
 - Ask Lady Alys to dance, before the young lord can. *(Favorable)*
 - Go down to the lower table and sit with Héloïse de Corbie.
-- Work the room. Every great lord in the army is here tonight, drunk and generous. *(Even)*
+- Work the room. Every great lord in the army is here tonight, drunk and generous. *(Favorable)*
 - Slip out and drink with your own men in the castle stables.
 
 **Chose:** Ask Lady Alys to dance, before the young lord can. (Favorable: success)
@@ -1953,9 +1978,9 @@ A clerk from the Lanzi house in Sauvemer, polite, with a ledger. Your loan is du
 - ~~Pay it, all of it.~~ *(Requires Coin £5)*
 - Ask to roll it over, against your grant. *(Favorable)*
 
-**Chose:** Ask to roll it over, against your grant. (Favorable: failure)
+**Chose:** Ask to roll it over, against your grant. (Favorable: success)
 
-The Lanzi will not roll it over. They will, however, take your second-best horse and your Valdrennish sword as part payment, and the rest by Easter.
+The Lanzi will lend against land. They always will. Your debt rolls over against whatever the King gives you, at a slightly worse rate. You will be paying the Lanzi from Ormel for years.
 
 ## The Flux
 
@@ -2003,7 +2028,7 @@ The Sauvemer people have not forgiven the siege and will not, in your lifetime. 
 
 *(Continue)*
 
-Your following has changed since Saltcombe. It is smaller: the war and the flux have seen to that. Davy Ludd is seventeen and taller than you.
+Your following has changed since Saltcombe. Some faces are new. Some are gone. Davy Ludd is seventeen and taller than you.
 
 "Boring," says Davy, sitting on the well-head, kicking his heels. "I never thought I'd say it. I'd give a month's pay for a Valdrennish army to come over the hill." "You haven't had a month's pay since Lent," says somebody. "That's why I can afford to give it."
 
@@ -2150,7 +2175,7 @@ In the spring you will go to Ormel.
 
 People laugh at you, gently. You buy grain anyway, and salt, and a Sarenzan physician's book that you cannot read and have read to you. If the sailors are wrong, you have wasted some money. You do not think they are wrong.
 
-*Coin −2s 10d · Supplies +2*
+*Coin −7s 10d · Supplies +2*
 
 ## Ormel
 
@@ -2191,7 +2216,7 @@ The village has come out, in spite of everything, to look at its new lord. They 
 A one-eyed man in a leather apron that smells of eels leans on the churchyard wall, chewing a straw. "Bastien," he says. "Headman, for my sins. You'll be wanting to know who's sick." He spits. "Ask who isn't. Quicker."
 
 - Go into the dead woman's house yourself, and see.
-- Climb the church steps and speak to them, in their own tongue. *(Even)*
+- Climb the church steps and speak to them, in their own tongue. *(Favorable)*
 - Keep your men apart from the village, and send for the priest to tell you what is needed.
 - Turn round and ride back to the town until it has passed.
 
@@ -2229,7 +2254,7 @@ Everybody has a cure. Nobody has a cure. Whatever you choose, people will die, a
 
 You burn them. You put the families who are left in the tithe barn, on clean straw, and you burn the rest: thatch, beds, clothes, a cradle. The smoke hangs over the manor for a month. Whether it helps, nobody can say. It feels like doing something. The people who lost their houses will not forget whose men held the torches.
 
-*Temper of the village −1 · Ruthlessness +1*
+*Temper of the village −1 · Ruthlessness +1 · 1 of your men is dead*
 
 ## Your Own House
 
@@ -2298,7 +2323,7 @@ The barley is standing in the strips along the marsh edge, and the hay is still 
 
 The far fields rot standing. The geese get fat on them, and so do the rats. It is a hungry winter coming, and everyone can count.
 
-*Grain in store (seasons) −1 · Harvest in: 4 seasons of grain · Michaelmas rents: £1 8s 4d · People -50*
+*Grain in store (seasons) −1 · Harvest in: 4 seasons of grain · Michaelmas rents: £1 8s 4d · People -66*
 
 ## The Reckoning of the Dead
 
@@ -2310,7 +2335,7 @@ The frost comes at Martinmas, and with the frost, the Mottle goes, the way a tid
 
 You count the dead with the priest, in the cold church, from his list. It takes all afternoon.
 
-A quarter of the manor. One in four. "It's less than Sauvemer," the priest says. "It's less than anywhere I've heard of." He does not sound glad. Nobody does. There are 150 souls left on your manor.
+A third of the manor. One in three. Whole families gone, houses standing empty with the doors open and the hens walking in and out. There are 134 souls left on your manor.
 
 Bastien comes to the church at the end and leans in the doorway. "Lost my brother," he says. "Lost my brother's wife. Lost the eel-traps, nobody to set 'em." He spits. "Still here." He looks at you. "So are you. I'll give you that."
 
@@ -2360,7 +2385,7 @@ Everybody is looking at you. The law is the King's. The manor is yours.
 
 - Enforce the ordinance. The King's law is the King's law.
 - Pay them what the market asks, quietly, and keep it off the rolls.
-- Let the empty holdings to them as tenants, on easy rents. Land instead of wages. *(Favorable)*
+- Let the empty holdings to them as tenants, on easy rents. Land instead of wages. *(Even)*
 - Put your own men to work in the fields beside them, and hold the line on wages.
 
 **Chose:** Enforce the ordinance. The King's law is the King's law.
@@ -2371,23 +2396,23 @@ Two families leave in the night, walking east toward lords who pay. You send men
 
 *Temper of the village −2 · People −8 · Crown standing +1 · Common Folk standing −1*
 
-## The Poacher
+## The Bank's Clerk
 
-Your men catch a boy of fourteen with a sack of your eels from the lord's weirs, at dawn, and bring him up to the house by the ear.
+A clerk from the Lanzi house rides out from Sauvemer with a ledger under his arm, a black band on his sleeve, and the look of a man who has had to make this journey to a great many manors this year.
 
-He is thin as a rake and plague-orphaned and furious, and he looks at you the way you once looked at anybody who had what you did not.
+"Madonna Fiammetta sends her regards," he says. "She is the house now. Her father and two brothers died of the Mottle in Sarenza. She asks me to say that the bank survives, and that its debts survive with it."
 
-"Hang him," says somebody. "That's the law." It is.
+He opens the ledger. Your debt was rolled over against your land, as you agreed, and the interest has been accruing, as interest does.
 
-- Put him to work in your stables, where you can keep an eye on him.
-- Have him flogged at the church door, and let it be known.
-- Hang him. The law is the law.
+- Pay it, all of it, and be free of them.
+- Give the bank a lien on the manor's income instead.
+- Write to Fiammetta Lanzi yourself.
 
-**Chose:** Put him to work in your stables, where you can keep an eye on him.
+**Chose:** Pay it, all of it, and be free of them.
 
-He bolts twice in the first month. The third time he comes back on his own, at dark, wet through, and sleeps in the hay without a word. By the spring he is the best hand with a horse in the place. He never says thank you. He never takes so much as a turnip again.
+You count it out on the table. The clerk counts it again. He writes you a quittance in a beautiful hand, sands it, and bows. "You are one of three this year, my lord," he says. "The other forty want more time."
 
-*Temper of the village +1 · Men +1*
+*Coin −£1*
 
 ## The Settlers
 
@@ -2412,25 +2437,22 @@ The empty houses still have the dead's pots on the hearths. The settlers move in
 
 There is a fight at the well within a week, and another at the alehouse, and a Valdrennish boy and an Adalian girl are found in a hayloft by Lammas. By Michaelmas you have more people than before the plague, and two villages in one street that do not speak to each other.
 
-*People +35 · Temper of the village −1*
+*People +35*
 
-## The Bank's Clerk
+## The Salt Merchants
 
-A clerk from the Lanzi house rides out from Sauvemer with a ledger under his arm, a black band on his sleeve, and the look of a man who has had to make this journey to a great many manors this year.
+A Sarenzan salt-buyer comes up the dyke on a mule, with a clerk, an abacus and a smile, and offers to buy the whole of this year's salt, in advance, at a price that seems handsome until you think about it.
 
-"Madonna Fiammetta sends her regards," he says. "She is the house now. Her father and two brothers died of the Mottle in Sarenza. She asks me to say that the bank survives, and that its debts survive with it."
+"The Varesco house pays on the nail, my lord," he says. "No waiting for the Sauvemer market. No haggling with Adalian fishmongers." His smile widens. "The Lanzi, I hear, are short of cash this year. Desperately short."
 
-He opens the ledger. Your debt is due, with the interest, as you agreed.
+- Sell him the year's salt.
+- Take it to the Sauvemer market yourself. *(Favorable)*
 
-- Pay it, all of it, and be free of them.
-- Give the bank a lien on the manor's income instead.
-- Write to Fiammetta Lanzi yourself.
+**Chose:** Sell him the year's salt.
 
-**Chose:** Pay it, all of it, and be free of them.
+Coin in your hand before the pans are even drawn. Three months later the price of salt in Sauvemer doubles, because half the coast sold to the Varesco, and the Varesco are holding it. The salt-boilers say nothing to you. They do not need to.
 
-You count it out on the table. The clerk counts it again. He writes you a quittance in a beautiful hand, sands it, and bows. "You are one of three this year, my lord," he says. "The other forty want more time."
-
-*Coin −£1*
+*Coin +12s 6d · Sarenza standing +1*
 
 ## The Old Lord's Kin
 
@@ -2449,22 +2471,23 @@ At Michaelmas a young man rides into Ormel on a good horse, with a Valdrennish c
 
 The justices find for you. It takes eighteen months and costs you more than Ormel brings in for two years, and by the end of it every lawyer in Sauvemer has had a piece of you.
 
-*Coin −3s 4d*
+*Coin −10s*
 
-## The Salt Merchants
+## The Church Roof
 
-A Sarenzan salt-buyer comes up the dyke on a mule, with a clerk, an abacus and a smile, and offers to buy the whole of this year's salt, in advance, at a price that seems handsome until you think about it.
+The church roof leaks. It leaked before the Mottle, and the old lord never mended it, and now it leaks onto the new cross and the names on it.
 
-"The Varesco house pays on the nail, my lord," he says. "No waiting for the Sauvemer market. No haggling with Adalian fishmongers." His smile widens. "The Lanzi, I hear, are short of cash this year. Desperately short."
+"IT LEAKS!" Père Guérin shouts, pointing at the drip as if you might have missed it. "ON THE ALTAR!"
 
-- Sell him the year's salt.
-- Take it to the Sauvemer market yourself. *(Favorable)*
+- Pay for new lead and a new roof.
+- Give the timber, and let the village give the labour.
+- Next year.
 
-**Chose:** Sell him the year's salt.
+**Chose:** Pay for new lead and a new roof.
 
-Coin in your hand before the pans are even drawn. Three months later the price of salt in Sauvemer doubles, because half the coast sold to the Varesco, and the Varesco are holding it. The salt-boilers say nothing to you. They do not need to.
+The roofers come from the town, and the lead goes up, and the drip stops. On the first Sunday the priest preaches about the lord who mended the house of God. It is a long sermon. You sleep through most of it, and so does everyone else, contentedly.
 
-*Coin +12s 6d · Sarenza standing +1 · Harvest in: 4 seasons of grain · Michaelmas rents: £1 5s 5d*
+*Coin −4s 2d · Church and priest +2 · Temper of the village +1 · Church standing +1 · Harvest in: 3 seasons of grain · Michaelmas rents: £1 3s 5d*
 
 ## Lady Day
 
@@ -2490,23 +2513,23 @@ You have the spring to get ready.
 
 All spring, every spare hand digs. You dig a ditch round the church and the tithe barn and plant a hedge of stakes in it. The village grumbles about the work. The village also sleeps better.
 
-*Defences +2*
+*Defences +2 · Temper of the village −1*
 
-## The Church Roof
+## The Sea Comes In
 
-The church roof leaks. It leaked before the Mottle, and the old lord never mended it, and now it leaks onto the new cross and the names on it.
+In February a gale and a spring tide come together, and the sea comes over the dyke at the low end of the marsh, and does not go out again.
 
-"IT LEAKS!" Père Guérin shouts, pointing at the drip as if you might have missed it. "ON THE ALTAR!"
+You stand on the dyke in the rain with the headman and watch salt water creep across your best fields, inch by inch, white with foam. "Three days to close it," Bastien shouts over the wind. "If every soul on the manor carries clay. Every soul. Including you."
 
-- Pay for new lead and a new roof.
-- Give the timber, and let the village give the labour.
-- Next year.
+- Pick up a basket and carry clay with them.
+- Hire labourers from Sauvemer to close it.
+- Let the low fields go. Save the village end.
 
-**Chose:** Pay for new lead and a new roof.
+**Chose:** Pick up a basket and carry clay with them.
 
-The roofers come from the town, and the lead goes up, and the drip stops. On the first Sunday the priest preaches about the lord who mended the house of God. It is a long sermon. You sleep through most of it, and so does everyone else, contentedly.
+Three days and two nights in the wind and the mud, everyone, lord and settlers and grandmothers, a chain of baskets from the clay pit to the breach. On the third night it holds. You have never been so cold or so filthy or so proud of anything. The fields are spoiled for a year. The manor is saved.
 
-*Coin −4s 2d · Church and priest +2 · Temper of the village +1 · Church standing +1*
+*Temper of the village +2 · Grain in store (seasons) −1*
 
 ## Fire in the Night
 
@@ -2526,27 +2549,29 @@ At the head of the horsemen, under a black-and-silver banner, a young knight wit
 - Get everyone into the church and hold it. Let them have the cattle. *(Favorable)*
 - Ride out under a white cloth and talk to Thibaut. *(Even)*
 
-**Chose:** Get everyone into the church and hold it. Let them have the cattle. (Favorable: failure)
+**Chose:** Get everyone into the church and hold it. Let them have the cattle. (Favorable: success)
 
-Not everyone hears the bell in time. In the morning you bury nine, and the cattle are gone over the border.
+Every soul you can find, children and grandmothers and the settlers' pigs, inside the walls before the raiders have finished with the first barn. They ride round you twice, shouting, and loose a few arrows, and take the cattle and the hay and go. You lose the cattle. You lose nobody.
 
-*Grain in store (seasons) −2 · People −9 · Temper of the village −1*
+*Temper of the village +1*
 
-## The Sea Comes In
+## The Manor Court
 
-In February a gale and a spring tide come together, and the sea comes over the dyke at the low end of the marsh, and does not go out again.
+Manor court, in the hall, on a wet Thursday, with the whole village crammed in to watch, because it is better than work.
 
-You stand on the dyke in the rain with the headman and watch salt water creep across your best fields, inch by inch, white with foam. "Three days to close it," Bastien shouts over the wind. "If every soul on the manor carries clay. Every soul. Including you."
+A widow called Guillemette says that Pierre the carter's pigs have been in her barley three times since Easter, and she has lost half her strip, and she wants paying. Pierre the carter says his pigs are honest pigs and her fence is a disgrace. Pierre the carter is also Bastien's cousin, and everyone in the hall knows it, and is watching to see whether you know it too.
 
-- Pick up a basket and carry clay with them.
-- Hire labourers from Sauvemer to close it.
-- Let the low fields go. Save the village end.
+"Well, monseigneur?" says the steward, pen ready.
 
-**Chose:** Pick up a basket and carry clay with them.
+- Find for the widow. Pierre pays for the barley and mends her fence.
+- Find for Pierre. Keep the headman sweet; you need him.
+- Split it. Half the barley, and both of them mend the fence together.
 
-Three days and two nights in the wind and the mud, everyone, lord and settlers and grandmothers, a chain of baskets from the clay pit to the breach. On the third night it holds. You have never been so cold or so filthy or so proud of anything. The fields are spoiled for a year. The manor is saved.
+**Chose:** Find for the widow. Pierre pays for the barley and mends her fence.
 
-*Temper of the village +2 · Hunger on the manor: 7 dead or gone*
+"Two bushels, and the fence mended by Sunday." The hall breathes out. Pierre the carter goes red, and looks at his cousin, and his cousin looks at the ceiling. Guillemette cries. On the way out an old man you have never spoken to touches his cap to you. "Fair," he says. "That was fair."
+
+*Temper of the village +1 · Honor +1 · Hunger on the manor: 7 dead or gone*
 
 ## The Masterless Men
 
@@ -2570,7 +2595,7 @@ And then one evening their captain rides up to your gate, alone, with his hands 
 
 Sixty Hroswald mercenaries in your barns and your alehouse. The village is terrified of them. Hodge Brewster's settlers start a fight with them in the first week and lose it. By Christmas the bandits on the road have stopped, because the worst of them are eating your bread, and the Sauvemer captain writes you a nervous little letter asking what you intend to do with an army.
 
-*Coin −10s · Defences +3 · Temper of the village −1 · Ulric Rotbart's respect +2*
+*Coin −10s · Defences +3 · Temper of the village −2 · Ulric Rotbart's respect +2*
 
 ## The Burning Rick
 
@@ -2588,13 +2613,11 @@ Your men are in the yard behind you, armed, waiting for the word.
 - Clear the gate.
 - Find out who burned the rick, and hang him.
 
-**Chose:** Open the gate, walk out alone, and hear them. (Even: success)
+**Chose:** Open the gate, walk out alone, and hear them. (Even: failure)
 
-You walk out of your own gate alone, without a sword, and stand in front of them, and say, "Well? Who's first?"
+Somebody throws a stone before you have said ten words. It takes you on the forehead, and you go down on one knee in the road, and the crowd goes silent, frightened of what it has done. They go home. Nothing is settled. Everyone is ashamed. It is a start, of a kind.
 
-It takes all day. You sit on a mounting block in the road and hear every one of them, the fines and the wages and the boon-work and the pigs, and the steward writes it all down. At the end you give them some of it: the fines halved, the boon-work bought out at a fair rate, the burned rick forgotten. They do not cheer. They go home. That is what victory looks like, in a manor.
-
-*Temper of the village +3 · Coin −5s · Common Folk standing +1 · Harvest in: 3 seasons of grain · Michaelmas rents: £2 6s 11d*
+*Injury: Cut brow · Temper of the village +1 · Harvest in: 3 seasons of grain · Michaelmas rents: £1 2s 7d · Cut brow has healed*
 
 ## Winter in the Hall
 

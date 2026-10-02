@@ -206,7 +206,7 @@
           - { if: background == archer, add: 1, label: you know how archers think }
       success:
         text: From the top of the dune you can see the whole line of them. The arrows go in from the side, where their big shields do not cover them, and after the third flight they break back toward the Tour. The King steps ashore on a beach that cost him thirty men, most of them in the first boats.
-        effects: [ { add: { res.renown: 1, rel.@master.respect: 1 } }, { trait: +veteran } ]
+        effects: [ { train: { command: 1, ceiling: 5, quiet: 1 } }, { add: { res.renown: 1, rel.@master.respect: 1 } }, { trait: +veteran } ]
         next: c2_first_fire
       failure:
         text: The dune is further than it looked and softer. By the time you are up, the first wave has taken the beach by itself, at a price. They are laying the dead out in rows above the tideline when you come down.
@@ -410,6 +410,7 @@
         effects:
           - set: flag.c2_breval_stopped
           - set: flag.c2_breval_burned
+          - train: { command: 1, ceiling: 5, quiet: 1 }
           - add: { rep.honor: 2, rep.valdrenne: 1, rel.jankin_rooke.loyalty: 2, rel.roger_tallis.respect: 1 }
         next: c2_foragers
       failure:
@@ -566,7 +567,7 @@
       check: { attr: presence, skill: command, difficulty: 3, mods: [ { if: flag.c2_stance_loose, add: -2, label: you told them it was theirs } ] }
       success:
         text: You hold them at the bridge, and then at the cloth hall, and you keep them there all night while Vaudrey is stripped around you. In the morning your men have nothing but their lives. The Vaudrey cloth merchants who sheltered in the hall go free. One of them writes your name down. So does the dyer who opened the gate, who has watched the army he let in take his neighbours' looms.
-        effects: [ { set: flag.c2_vaudrey_held }, { add: { rep.honor: 2, rep.valdrenne: 1, rep.merchants: 1 } } ]
+        effects: [ { train: { command: 1, ceiling: 5, quiet: 1 } }, { set: flag.c2_vaudrey_held }, { add: { rep.honor: 2, rep.valdrenne: 1, rep.merchants: 1 } } ]
         next: c2_corbie
       failure:
         text: Your men melt away into the town like everyone else's. You find most of them by morning. Not all.

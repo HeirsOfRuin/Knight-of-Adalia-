@@ -359,6 +359,7 @@
           - { if: npc.roger_tallis.follower, add: 1, label: Tallis speaks their tongue }
           - { if: flag.c1_parley, add: 1, label: you have bargained across water before }
           - { if: flag.p_counting_house || flag.p_worked_hungry, add: 1, label: you were raised to a bargain }
+          - { if: flag.c1_learned_valdrennish, add: 1, label: you can bargain in Valdrennish }
       success:
         text: The priest has the parish silver and the miller has a pot of coin under his floor, and between them they buy Bréval for four pounds and a cart of flour. It is called a ransom of the land, and it is done all over this country, by every army that ever marched. The houses stand. Your men are paid in coin instead of in fire. Some of them would have preferred the fire.
         effects:
@@ -519,6 +520,7 @@
         difficulty: 4
         mods:
           - { if: flag.c1_giles_enemy, add: -1, label: Giles is ahead of you }
+          - { if: flag.c1_knows_arms, add: 1, label: you know the three crows and whose they are }
           - { if: flag.c1_giles_disgraced, add: -1, label: Giles has not forgotten the buttery }
           - { if: npc.roger_tallis.follower, add: 1, label: Tallis knows the back way in }
       success:
@@ -573,7 +575,7 @@
     - id: honest
       text: Deal with her honestly. Tell her what the ransom is, what it will cost, and how it can be paid.
       tags: [diplomacy]
-      check: { attr: presence, skill: diplomacy, difficulty: 3, mods: [ { if: npc.roger_tallis.follower, add: 1, label: Tallis translates } ] }
+      check: { attr: presence, skill: diplomacy, difficulty: 3, mods: [ { if: npc.roger_tallis.follower, add: 1, label: Tallis translates }, { if: flag.c1_learned_valdrennish, add: 1, label: you speak her language } ] }
       success:
         text: She expects to be cheated, and is not. It surprises her more than anything else in the camp. By the end she is speaking to you as to a man rather than an enemy. "My brother says you came in by the kitchen," she says, as she leaves. "He seemed to think it a compliment."
         effects:

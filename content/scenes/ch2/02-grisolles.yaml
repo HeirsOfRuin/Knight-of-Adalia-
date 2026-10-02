@@ -126,6 +126,7 @@
           - { if: trait.veteran, add: 1, label: you have stood in a fight before }
           - { if: flag.c2_grisolles_ready, add: 1, label: your men were ready }
           - { if: retinue >= 4, add: 1, label: your following at your shoulder }
+          - { if: flag.c1_passed_test, add: 1, label: you passed Sir Bertram's test in harness }
           - { if: item.holy_ampulla, add: 1, label: "Saint Ebba's water, or your faith in it" }
       success:
         text: |
@@ -174,6 +175,7 @@
         mods:
           - { if: res.horses >= 2, add: 1, label: a good horse }
           - { if: background == servant, add: 1, label: you were raised in a stable }
+          - { if: flag.c1_rode_quintain, add: 1, label: Sir Bertram's quintain }
       success:
         text: |
           You get there with a handful of others as the Valdrennish riders reach the carts. It is a scramble of horses and oxen and screaming drivers in a lane between ditches. You hold the head of the bridge long enough for a dozen carts to get over, among them [if alias.master == walter_pryce]Sir Walter's[else]your master's[/if] and your own.
@@ -218,6 +220,7 @@
           - { if: flag.c2_grisolles_ready, add: 1, label: they were ready }
           - { if: retinue >= 4, add: 1, label: enough of them to hold a shape }
           - { if: npc.roger_tallis.follower, add: 1, label: Tallis has done this before }
+          - { if: flag.c1_drilled_men, add: 1, label: you have drilled men before }
       success:
         text: You walk them back. You do not let them run, because men who run get ridden down. Step, turn, step, shields to the enemy, with the archers in the middle. It takes forever. You are on the bridge when the engineers start swinging their picks, and across it, every one of you, when the arch goes into the Aube with a noise like a church bell falling.
         effects: [ { set: flag.c2_men_brought_out }, { add: { res.renown: 1, rel.davy_ludd.loyalty: 2, rel.jankin_rooke.loyalty: 2, rel.simkin_barre.loyalty: 2, rel.roger_tallis.loyalty: 2, rel.wat_coker.loyalty: 2, rel.perkin_dyer.loyalty: 2, rel.gib_shawe.loyalty: 2, rel.dickon_laund.loyalty: 2 } } ]

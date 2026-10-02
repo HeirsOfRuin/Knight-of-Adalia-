@@ -3,7 +3,7 @@
 # a man-at-arms in the Earl of Carrow's company.
 name: The Mercer
 background: burgess
-seed: 9
+seed: 3
 steps:
   p_burgess_open: clerk
   p_hungry_year: work

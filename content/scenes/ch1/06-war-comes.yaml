@@ -120,7 +120,7 @@
     - id: master
       text: Ask your master to knight you.
       tags: [allies]
-      requires: [ npc.@master.alive, rel.@master.respect >= 6, res.renown >= 2, { any: [ background != archer, rep.knights >= 2 ] } ]
+      requires: [ npc.@master.alive, rel.@master.respect >= 7, res.renown >= 2, { any: [ background != archer, rep.knights >= 2 ] } ]
       label: "Requires: your master's respect, some renown[if background == archer], and knights willing to stand witness for a bowman's son (Knights standing 2)[/if]"
       text_after: "He says yes before you have finished asking.[if background == archer] Finding two knights to stand witness takes longer. Some of the men who will not are men you have fought beside.[/if]"
       effects:

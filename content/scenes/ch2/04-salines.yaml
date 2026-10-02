@@ -168,7 +168,7 @@
         attr: agility
         skill: archery
         difficulty: 4
-        mods: [ { if: background == archer, add: 1, label: your father's bow } ]
+        mods: [ { if: background == archer, add: 1, label: your father's bow }, { if: flag.c1_shot_with_cobb, add: 1, label: the long butts with Cobb } ]
       success:
         text: A man carrying a shield as tall as a door has to show his feet, and sometimes his hand. You wait for it. Three columns lose their shields in front of you, and for a few dozen paces the archers have them naked on the causeways.
         effects: [ { add: { counter.sl_edge: 1, rep.commons: 1 } } ]
@@ -315,7 +315,7 @@
         attr: strength
         skill: arms
         difficulty: 6
-        mods: [ { if: retinue >= 4, add: 1, label: your men go with you }, { if: counter.sl_held >= 1, add: 1, label: you are where he is going } ]
+        mods: [ { if: retinue >= 4, add: 1, label: your men go with you }, { if: counter.sl_held >= 1, add: 1, label: you are where he is going }, { if: flag.c1_knows_arms, add: 1, label: you know the Constable's colours } ]
       success:
         text: You get to him first, through his own men, and he gives you his gauntlet before anyone else can reach him. Thibaut de Brésy, nineteen, furious, weeping with rage inside his helm. His ransom will be set by the King himself, and the King will take most of it. Your share will still be more money than your family has seen in four generations. It was luck. The man who should have had him is lying dead a yard short.
         effects:

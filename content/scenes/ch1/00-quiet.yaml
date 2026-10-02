@@ -145,7 +145,7 @@
       text_after: |
         [if alias.master == hamon_darrell]Her name was Alice. She laughed at him, which nobody else dared. She kept the accounts, which is why Ashby was solvent while she lived and has not been since. He does not say that last part. You work it out. "She'd have liked you," he says. "She liked anyone who could count." Then he blows his horn, for no reason, and the hounds go off after nothing, and he goes after them, laughing.[else]He chews on it for half a mile. Then he tells it, in about a dozen sentences: the Caldmoor spears, the ford, his horse killed under him in the water, a Caldmoor axe coming down, and an arrow from somewhere behind him that took the axeman through the throat. "Your father's," he says, if you are Hugh Fletcher's son, and "a bowman's" if you are not. "I never thanked him properly. You don't, for that." He gets back on his horse. That is the end of it. It is more than he has told anyone in years.[/if]
       effects: [ { set: flag.c1_master_confided }, { add: { rel.@master.affection: 2, rel.@master.respect: 1 } } ]
-      next: c1_muster
+      next: c1_quintain
     - id: learn
       text: "[if alias.master == hamon_darrell]Ask him to teach you the hounds properly.[else]Ask him to teach you to read the ground as he does.[/if]"
       tags: [learning, martial]
@@ -157,17 +157,17 @@
         - if: alias.master == hamon_darrell
           then: [ { add: { skill.woodcraft: 1 } } ]
           else: [ { add: { skill.tactics: 1 } } ]
-      next: c1_muster
+      next: c1_quintain
     - id: quiet
       text: Say nothing, and keep him company.
       text_after: You say nothing. It is the right thing, as it turns out. At dusk he says, "Good day," to nobody in particular, and on the way home he lets you ride beside him instead of behind.
       effects: [ { add: { rel.@master.affection: 1 } } ]
-      next: c1_muster
+      next: c1_quintain
 
 - id: c1_after_leven
   chapter: ch1
   title: The Winter After
-  on_enter: [ { advance: { seasons: 2 } } ]
+  on_enter: [ { advance: { seasons: 1 } } ]
   text: |
     The Leven ford stays with you longer than you expect.
 
@@ -189,21 +189,21 @@
         - if: alias.master == hamon_darrell
           then: [ { meet: aymer_ravell }, { add: { rel.aymer_ravell.affection: 2, rel.aymer_ravell.respect: 1 } } ]
           else: [ { meet: will_cobb }, { add: { rel.will_cobb.affection: 2, rel.will_cobb.respect: 1 } } ]
-      next: c1_progress
+      next: c1_bertram_test
     - id: priest
       text: Go to Father Benet, and make your confession.
       tags: [piety]
       text_after: Father Benet hears you in the cold chapel with his hands in his sleeves. He is worldlier than most priests and kinder than he lets on. He gives you a penance that is mostly prayer and partly carrying firewood for the almshouse, which he says is better for the soul than either alone. It does not take it away. It gives it somewhere to go.
       effects: [ { set: flag.c1_confessed_ford }, { meet: father_benet }, { add: { rep.piety: 1, rel.father_benet.affection: 1 } } ]
-      next: c1_progress
+      next: c1_bertram_test
     - id: work
       text: Work until you are too tired to dream.
       tags: [martial]
       text_after: You are at the pell before Prime and in the stables after Compline, every day until Lady Day. Your arms get harder and your face gets thinner. You stop dreaming, or you stop remembering it, which is the same. Sir Bertram says you are the best-drilled young man in the household. He says it as if it worried him.
       effects: [ { add: { skill.arms: 1, rel.bertram_oakes.respect: 1 } }, { meet: bertram_oakes } ]
-      next: c1_progress
+      next: c1_bertram_test
     - id: alone
       text: Keep it to yourself. Everyone has their own.
       tags: [yield]
       text_after: You keep it to yourself. It is what men do. By spring it is quieter, the way Cobb says, though nobody told you so, and you did not ask.
-      next: c1_progress
+      next: c1_bertram_test

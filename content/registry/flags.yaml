@@ -147,6 +147,15 @@ c1_master_confided: { description: "His master told him something private on the
 c1_master_taught: { description: "His master taught him the one thing he knows best", hidden: true, later: ch2 }
 c1_shared_the_ford: { description: "Talked to a friend about the Leven ford", hidden: true, later: ch2 }
 c1_confessed_ford: { description: "Confessed the Leven ford to Father Benet", hidden: true, later: ch3 }
+c1_rode_quintain: { description: "Mastered the quintain in his second spring", hidden: true, later: ch2 }
+c1_bertram_sword: { description: "Trained sword and buckler with Sir Bertram every morning for a month", hidden: true }
+c1_shot_with_cobb: { description: "Shot at the long butts with Cobb's archers", hidden: true, later: ch2 }
+c1_knows_arms: { description: "Learned the rolls of arms from Father Benet", hidden: true, later: ch2 }
+c1_passed_test: { description: "Passed Sir Bertram's Lady Day test in harness", hidden: true, later: ch2 }
+c1_drilled_men: { description: "Drilled a file of men through the long winter", hidden: true, later: ch2 }
+c1_studied_war: { description: "Studied the old campaigns with his master", hidden: true, later: ch2 }
+c1_learned_manor: { description: "Learned the business of a manor from the steward's books", hidden: true, later: ch3 }
+c1_learned_valdrennish: { description: "Learned Valdrennish from the Queen's snowed-in clerk", hidden: true, later: ch2 }
 
 # ---- Chapter 2 -------------------------------------------------------------
 c2_men_from_master: { description: "His first followers were lent by his master", hidden: true, later: ch3 }

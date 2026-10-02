@@ -4,7 +4,7 @@
 - id: c1_progress
   chapter: ch1
   title: The King at Ravell
-  on_enter: [ { advance: { seasons: 2 } }, { meet: king_aldred }, { meet: osmund_carrow } ]
+  on_enter: [ { advance: { seasons: 1 } }, { meet: king_aldred }, { meet: osmund_carrow } ]
   text: |
     In the summer the King comes, and the winter's dreams go wherever such things go when there is no time for them.
 
@@ -139,11 +139,11 @@
           - set: flag.c1_tourney_won
           - item: +prize_harness
           - add: { res.renown: 2, rep.knights: 1, rep.crown: 1, rel.giles_marrick.respect: 2, rel.giles_marrick.affection: -2 }
-        next: { pool: c1_hall, count: 1, then: c1_crisis_router }
+        next: { pool: c1_hall, count: 1, then: c1_long_winter }
       failure:
         text: Giles's lance takes you square in the helm and the next thing you know is the barber-surgeon's tent. The King did not see it, you are told. The King saw it.
         effects: [ { injury: cracked_skull }, { add: { rel.giles_marrick.respect: 1 } } ]
-        next: { pool: c1_hall, count: 1, then: c1_crisis_router }
+        next: { pool: c1_hall, count: 1, then: c1_long_winter }
     - id: melee
       text: Fight in the melee on foot.
       tags: [martial]
@@ -158,11 +158,11 @@
       success:
         text: Forty men with blunted swords in a roped field. It is uglier than war, because everyone is showing off. You are one of the last six standing. The heralds cry your name, which they have to be told how to say. Lord Ravell's steward gives you five shillings from the purse.
         effects: [ { add: { res.renown: 2, res.coin: 60, rep.knights: 1 } } ]
-        next: { pool: c1_hall, count: 1, then: c1_crisis_router }
+        next: { pool: c1_hall, count: 1, then: c1_long_winter }
       failure:
         text: Three of Giles's friends find you in the first rush and take you down together. Blunted swords still break things.
         effects: [ { injury: bruised_ribs }, { add: { rel.giles_marrick.respect: 1 } } ]
-        next: { pool: c1_hall, count: 1, then: c1_crisis_router }
+        next: { pool: c1_hall, count: 1, then: c1_long_winter }
     - id: serve
       text: "[if track == squire_track]Serve your master in the lists: his horse, his lances, his helm, everything right.[else]Serve in the lists, for any knight who needs a pair of hands.[/if]"
       tags: [diplomacy, allies]
@@ -183,11 +183,11 @@
             then: [ { station: squire, track: squire_track }, { set: flag.c1_raised_at_tourney } ]
           - if: rel.thurstan_ravell.respect >= 3
             then: [ { set: flag.ravell_favor } ]
-        next: { pool: c1_hall, count: 1, then: c1_crisis_router }
+        next: { pool: c1_hall, count: 1, then: c1_long_winter }
       failure:
         text: A girth you checked twice breaks anyway. Your master goes into the sand in front of the King. Nobody says it was your fault. Nobody needs to.
         effects: [ { add: { rel.@master.respect: -2 } } ]
-        next: { pool: c1_hall, count: 1, then: c1_crisis_router }
+        next: { pool: c1_hall, count: 1, then: c1_long_winter }
     - id: bet
       text: Spend the day below the stands, betting on other men.
       tags: [wealth, cunning]
@@ -196,11 +196,11 @@
       success:
         text: You know which horses are lame and which squires are hungover, because you looked after them. By evening you have turned two shillings into ten. The bookmen will not take your bets tomorrow.
         effects: [ { add: { res.coin: 120, rep.merchants: 1 } } ]
-        next: { pool: c1_hall, count: 1, then: c1_crisis_router }
+        next: { pool: c1_hall, count: 1, then: c1_long_winter }
       failure:
         text: The favourite falls at the first course. So does your purse.
         effects: [ { add: { res.coin: -24 } } ]
-        next: { pool: c1_hall, count: 1, then: c1_crisis_router }
+        next: { pool: c1_hall, count: 1, then: c1_long_winter }
     - id: sleeve
       text: Ask Isabel Sayer for her green sleeve, and wear it.
       tags: [diplomacy]
@@ -208,14 +208,14 @@
       text_after: She gives it to you in front of Lady Ravell, which is either brave or foolish. You do not ride or fight. You stand at the barrier with her sleeve on your arm all day, which is a statement of a different kind. Lady Ravell speaks to her that evening. Isabel tells you about it afterwards, laughing, with her eyes red.
       effects:
         - add: { suit.isabel_sayer.regard: 3, suit.isabel_sayer.discretion: -3, rel.eleanor_ravell.affection: -2 }
-      next: { pool: c1_hall, count: 1, then: c1_crisis_router }
+      next: { pool: c1_hall, count: 1, then: c1_long_winter }
 
 - id: c1_crisis_router
   chapter: ch1
   title: The Commission
-  on_enter: [ { advance: { seasons: 3 } } ]
+  on_enter: [ { advance: { seasons: 1 } } ]
   text: |
-    The tourney's pavilions come down, and the King's three hundred go south, and Ravell is quiet for the first time in a month, and then for a whole winter. The quiet does not last.
+    The snow goes at last, all in a week, in a roar of meltwater, and the roads open, and the world comes back in along them.
 
     The King has gone south to Wendmere to ask the Moot for money. Rumour says he will get it, and that it will be spent across the Narrow Sea. Every knight in the shire is counting his horses. Every creditor in the shire is counting his knights.
 

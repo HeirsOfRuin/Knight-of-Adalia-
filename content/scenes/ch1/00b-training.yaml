@@ -1,0 +1,206 @@
+# Chapter 1: training. Ch1 is five years of learning a trade; these three
+# scenes mark the stages of it. Spring of the second year (the quintain),
+# the spring after the Leven (Sir Bertram's test), and the long winter after
+# the tourney (learning to lead and to manage).
+
+- id: c1_quintain
+  chapter: ch1
+  title: The Quintain
+  text: |
+    "Again!"
+
+    Sir Bertram Oakes has had the quintain set up in the tilt-yard for the spring: a post, a swinging arm, a shield nailed on one end and a sack of wet sand on the other. Hit the shield square with a lance at the gallop and the arm swings round and you are past it. Hit it badly and the sandbag comes round and takes you out of the saddle like the hand of God.
+
+    "Again! You, the {origin}. Sit up. You ride like a sack of turnips. AGAIN!"
+
+    [break]
+
+    It is the second spring. The household has stopped noticing you, which is a kind of acceptance. Every morning after Mass the young men go down to the yard and the meadows and the butts, and every evening they come back black and blue, and boast about it at supper.
+
+    [if track == levy]Sir Ancel's archers have come down to Ravell for the season. Will Cobb has the long butts in the water meadow and is roaring at anyone who shoots short.[else]Will Cobb's archers are down from the March for the season, shooting at the long butts in the water meadow, and making bets on the squires' falls.[/if] Father Benet has the rolls of arms out in the chapel chamber, and is trying, without much hope, to get anyone to look at them.
+
+    "You've got a month before the March gets lively," Sir Bertram says, wiping his face with a two-fingered hand. "Use it, or don't. It's your neck."
+  choices:
+    - id: quintain
+      text: Ride at the quintain until it stops knocking you down.
+      tags: [martial]
+      check:
+        attr: agility
+        skill: riding
+        difficulty: 3
+        mods: [ { if: flag.p_trained_field || flag.p_hob_lessons, add: 1, label: you grew up round horses } ]
+      success:
+        text: |
+          The sandbag takes you off on the first run, and the third, and the seventh, and the grooms cheer every time. Then, somewhere around the twentieth, your body stops thinking about it. Knees, seat, the lance couched under your arm, the point on the shield, and you're past before the bag comes round. The cheering stops.
+
+          "Huh," says Sir Bertram. "Do it again." You do. "Huh," he says again, and walks off, and you sit on your borrowed horse grinning like a fool.
+        effects: [ { set: flag.c1_rode_quintain }, { add: { skill.riding: 1, counter.training: 1, rel.bertram_oakes.respect: 1 } }, { meet: bertram_oakes } ]
+        next: c1_muster
+      failure:
+        text: |
+          The bag takes you off so many times you lose count, and on the last one you land on your shoulder and hear something creak. You learn a great deal about falling. "Better than nothing," Sir Bertram says, standing over you. "Falling's half of it. Up you get."
+        effects: [ { add: { skill.riding: 1, counter.training: 1 } }, { injury: bruised_ribs }, { meet: bertram_oakes } ]
+        next: c1_muster
+    - id: sword
+      text: Ask Sir Bertram for sword and buckler, every morning, until he is sick of you.
+      tags: [martial]
+      text_after: |
+        He is sick of you by the second day. He keeps going anyway, because you keep turning up.
+
+        "Feet," he says. Whack. "Feet, boy, not hands." Whack. "A man who fights with his hands is dead. Fight with your feet and your hands'll follow." Whack. "You're dead. Again."
+
+        By the end of the month your forearms are purple from wrist to elbow and you have touched him twice. The second time he steps back and looks at you over the buckler for a while. "You're dead," he says. "But you took me with you. That's a start."
+      effects: [ { set: flag.c1_bertram_sword }, { add: { skill.arms: 1, counter.training: 1, rel.bertram_oakes.respect: 1, rel.bertram_oakes.affection: 1 } }, { meet: bertram_oakes } ]
+      next: c1_muster
+    - id: butts
+      text: Go down to the long butts and shoot with Cobb's archers.
+      tags: [martial, allies]
+      text_after: |
+        "Look who's slumming it," somebody shouts as you come down the meadow. Cobb hands you a bow without a word and points at the far butt.
+
+        Two hundred and twenty paces. You put the first arrow in the river. The archers howl. [if background == archer]By the end of the week you are shooting with the best of them, and the jokes have stopped, and Cobb says, "Your father's arm," to nobody in particular.[else]By the end of the month you are hitting the butt one time in three, and the archers have stopped laughing, mostly, and started teaching.[/if] You learn more than shooting. You learn what archers think of knights, which is a good deal, none of it fit for chapel.
+      effects: [ { set: flag.c1_shot_with_cobb }, { meet: will_cobb }, { add: { skill.archery: 1, counter.training: 1, rel.will_cobb.affection: 1, rep.commons: 1 } } ]
+      next: c1_muster
+    - id: arms
+      text: Sit with Father Benet and the rolls of arms.
+      tags: [learning, diplomacy]
+      text_after: |
+        "At last," says Father Benet. "A volunteer. Sit, sit. Mind the candle."
+
+        Three black crows on gold: Corbie, a Valdrennish house. A red boar on silver: Carrow, and the black boar is his captains. A white hart on green: Westry, the richest earl in the south, with a daughter everybody talks about. Who married whom, who holds of whom, who quarrels with whom over what. "A knight who can't read a shield," Benet says, "is a knight who bows to the wrong man. And that, my son, is how wars start."
+
+        It is dull, and it sticks. Months later you will look at a banner across a field and know whose it is, and who his cousins are, and whether he pays his ransoms.
+      effects: [ { set: flag.c1_knows_arms }, { meet: father_benet }, { add: { skill.courtesy: 1, skill.learning: 1, counter.training: 1, rel.father_benet.affection: 1 } } ]
+      next: c1_muster
+
+- id: c1_bertram_test
+  chapter: ch1
+  title: Sir Bertram's Test
+  on_enter: [ { advance: { seasons: 1 } }, { meet: bertram_oakes } ]
+  text: |
+    Every Lady Day, Sir Bertram tests the young men of the household in harness, on foot, with blunted swords, in the tilt-yard, in front of everybody. It has been the custom at Ravell for thirty years. Nobody remembers who started it. Everyone remembers who failed.
+
+    "It's not a tourney," he tells you, on the morning, buckling you into borrowed plate that smells of somebody else's sweat. "Nobody's winning anything. I want to see what you do when you're tired and frightened and can't see, because that's what a fight is." He thumps your breastplate. "And don't fall over. Gets in the ballads."
+
+    [break]
+
+    The whole household is on the wall and round the rails: the grooms, the cooks, the laundresses, Lady Ravell's women under an awning. [if suit.isabel_sayer.status >= known]Isabel Sayer is there, with her hands folded, still as a post.[/if] [if rel.aymer_ravell.affection >= 3]Aymer is on the rail, shouting your name and a great deal of advice, all of it wrong.[/if] [if flag.c1_giles_enemy]Giles Marrick has already been tested, and passed, and is watching you with his arms folded.[/if]
+
+    Inside the helm, the world is a slot of light and the sound of your own breath, enormous. Sir Bertram is a grey shape at the other end of the yard. He lifts his sword.
+
+    "When you're ready," he says. "Or not. Up to you."
+  choices:
+    - id: fight
+      text: Go at him, and keep going.
+      tags: [martial]
+      check:
+        attr: endurance
+        skill: arms
+        difficulty: 4
+        mods:
+          - { if: counter.training >= 1, add: 1, label: your months of practice }
+          - { if: flag.c1_bertram_sword, add: 1, label: "he taught you, and you know his habits" }
+          - { if: trait.veteran || flag.c1_raid_distinguished, add: 1, label: you have been in a real fight }
+      success:
+        text: |
+          You have no idea how long it lasts. Long enough that your arms go to lead and your breath roars in the helm like a forge. You take a blow on the shoulder that turns you half round and come back, and take another, and come back, and on the third time you get inside his sword and put yours against the side of his helm, and hold it there.
+
+          The yard goes quiet. Sir Bertram lowers his sword.
+
+          "Well," he says, a little short of breath himself. "Well, now." He pulls off his helm. He is grinning, which nobody at Ravell has ever seen. "Somebody get this boy a drink before he falls over and gets in the ballads."
+
+          The grooms cheer. [if suit.isabel_sayer.status >= known]Under the awning, Isabel Sayer lets her breath out.[/if]
+        effects: [ { set: flag.c1_passed_test }, { add: { skill.arms: 1, res.renown: 1, rep.knights: 1, rel.bertram_oakes.respect: 2, counter.training: 1 } } ]
+        next: c1_progress
+      partial:
+        text: |
+          He knocks you down twice. Twice you get up, though the second time you have to use the rail. The third time you stay on your feet and trade blows with him until he steps back and lowers his sword.
+
+          "Enough," he says. "You'll do." From Sir Bertram, in front of the household, that is a medal. You find out later, from the bruises, that he held nothing back.
+        effects: [ { set: flag.c1_passed_test }, { injury: bruised_ribs }, { add: { skill.arms: 1, rel.bertram_oakes.respect: 1, counter.training: 1 } } ]
+        next: c1_progress
+      failure:
+        text: |
+          He puts you on your back in the mud three times, and the third time you do not get up quickly enough. "You're dead," he says, and offers you his hand. The cooks laugh. Someone throws a cabbage.
+
+          Afterwards, in the armoury, he unbuckles you himself. "You went at me like a bull at a gate," he says. "Brave and stupid. I can fix stupid. Can't teach brave." He gives you a shove that nearly knocks you over again. "Next year."
+        effects: [ { injury: cut_brow }, { add: { skill.arms: 1, skill.tactics: 1, rel.bertram_oakes.affection: 1, counter.training: 1 } } ]
+        next: c1_progress
+    - id: wait
+      text: Make him come to you. Let him tire himself.
+      tags: [cunning]
+      check:
+        attr: wits
+        skill: tactics
+        difficulty: 4
+        mods: [ { if: flag.c1_master_taught, add: 1, label: your master taught you patience } ]
+      success:
+        text: |
+          He comes, and you give ground, and he comes again, and you give more, round and round the yard, while the crowd boos you for a coward. Then he overreaches, just a little, an old man's lunge, and you are there.
+
+          "Huh," says Sir Bertram, with your blunt blade against his gorget. "Sly. I don't like sly." He considers. "On a battlefield, I'd like it a great deal."
+        effects: [ { set: flag.c1_passed_test }, { add: { skill.tactics: 1, rel.bertram_oakes.respect: 2, counter.training: 1 } } ]
+        next: c1_progress
+      failure:
+        text: He does not come to you. He just stands there, patient as a heron, until the crowd starts to jeer, and you lose your nerve and go to him, and he puts you down. "Waiting only works," he says, helping you up, "if you can wait longer than the other fellow. You can't. Yet."
+        effects: [ { add: { skill.tactics: 1, counter.training: 1 } } ]
+        next: c1_progress
+    - id: decline
+      text: Tell him you are not ready, and take your test next year.
+      tags: [yield]
+      text_after: |
+        He looks at you a while through the slot of his helm. "Well," he says. "At least you know it." There are boos from the wall. Giles Marrick laughs out loud. You spend the next year making sure that nobody ever has cause to say it again, which is a kind of training too.
+      effects: [ { add: { skill.arms: 1, rep.knights: -1 } } ]
+      next: c1_progress
+
+- id: c1_long_winter
+  chapter: ch1
+  title: The Long Winter
+  on_enter: [ { advance: { seasons: 2 } } ]
+  text: |
+    The winter after the tourney is the longest anyone can remember. Snow from Martinmas to Lady Day, the moat frozen so hard the boys play at camp-ball on it, and the roads shut to everything but rumour.
+
+    The rumour is war. The King has gone south to argue with the Moot. Every man in the household who can count is counting horses, and every man who can't is sharpening something.
+
+    [break]
+
+    [if alias.master == hamon_darrell]"You'll be twenty soon," Sir Hamon says one evening, with his feet on a hound. "A squire learns to fight. A knight has to know a great deal more, God help him, or he ends up like me." He laughs. It does not quite come off. "Choose something to learn this winter. Something useful."[else]"Twenty, near enough," Sir Ancel says one evening, apropos of nothing, staring at the fire. "Old enough to lead men. Not old enough to know how. Hm." He pokes the fire. "Learn something this winter. Not sword. You've sword."[/if]
+
+    There is not time for everything. There never is.
+  choices:
+    - id: drill
+      text: Ask for a file of men, and learn to drill them.
+      tags: [martial, allies]
+      text_after: |
+        [if track == levy]Cobb gives you ten of the newest archers and the worst corner of the barn.[else]Your master gives you a dozen of the household grooms and serving-men who will be going to the war as foot.[/if] They are cold, bored, and certain they know better than you. For the first week they are right.
+
+        By Candlemas they will form a line when you shout, and hold it when someone runs at them with a broom, and come to you when they have a quarrel instead of settling it with knives. One of them, a big slow lad called Hodge, tells you at Lent that you are "a hard bastard, but fair, sir," and you will hear that "sir" in your head for a week.
+      effects: [ { set: flag.c1_drilled_men }, { add: { skill.command: 1, counter.training: 1 } } ]
+      next: c1_crisis_router
+    - id: war
+      text: Sit with your master over the old campaigns, and learn how wars are fought.
+      tags: [learning, martial]
+      text_after: |
+        [if alias.master == hamon_darrell]Sir Hamon has a box of letters from the old King's war, and a memory that is better than he lets on. He draws Harrow Ford on the table in spilled ale, and the March raids, and a siege in Caldmoor where he spent eleven weeks in a ditch eating his horse.[else]Sir Ancel draws in the ashes with a stick. Fords, passes, the ground where horse cannot go, the ground where foot cannot hold. He says one word for each and makes you work out the rest.[/if] "Battles are rare," your master says. "Marching, feeding, finding water, keeping men together when they're hungry and frightened. That's war. The fighting's the easy part."
+
+        You do not believe him. You will.
+      effects: [ { set: flag.c1_studied_war }, { add: { skill.tactics: 1, counter.training: 1 } } ]
+      next: c1_crisis_router
+    - id: steward
+      text: Learn the business of a manor, from the steward's books.
+      tags: [learning, wealth]
+      text_after: |
+        "A knight with land is a farmer with a sword," says the steward, a fussy little man called Master Clement, delighted to have an audience. "Most of them forget the farmer part, and then they wonder where the money went."
+
+        Rents, fines, the mill, the woodland, the boon-works, the price of seed corn, the difference between a good reeve and an honest one. [if background == reeve]Half of it you knew at eight. The other half makes your father look like a genius.[/if] By spring you could run a small manor, at least on parchment.
+      effects: [ { set: flag.c1_learned_manor }, { add: { skill.stewardship: 1, skill.trade: 1, counter.training: 1 } } ]
+      next: c1_crisis_router
+    - id: tongue
+      text: Learn Valdrennish from the Queen's Valdrennish clerk who is snowed in at Ravell.
+      tags: [diplomacy, learning]
+      text_after: |
+        His name is Maître Jehan, he is round and bald and homesick, and he is so pleased that anybody in this frozen barbarian castle wants to speak his language that he teaches you for nothing, every evening, over his own wine.
+
+        "Non, non. Not 'je voo-lay.' Je voudrais. Softly. You are asking, not demanding. You are not Adalian when you speak it." By Lady Day you can ask for bread, a bed, the road to Cordelle and a lady's name, and swear in four different ways. "If you go across," he says, when the roads open, sadly, "be kind to my country. It is beautiful, and stupid, like yours."
+      effects: [ { set: flag.c1_learned_valdrennish }, { add: { skill.diplomacy: 1, skill.learning: 1, counter.training: 1, rep.valdrenne: 1 } } ]
+      next: c1_crisis_router

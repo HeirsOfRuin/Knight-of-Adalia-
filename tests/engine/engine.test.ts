@@ -186,7 +186,7 @@ describe('Phase 3 rules', () => {
   it('a bowman\'s son needs knights to stand witness before his master can dub him', () => {
     const s = atScene('c1_knighting', 'archer');
     s.aliases.master = 'ancel_brome';
-    s.npcs.ancel_brome!.respect = 6;
+    s.npcs.ancel_brome!.respect = 7;
     s.res.renown = 5;
     s.rep.knights = 0;
     const locked = view(c, s).choices.find((x) => x.id === 'master')!;

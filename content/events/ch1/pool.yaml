@@ -445,3 +445,69 @@
       text_after: It is true, near enough. He nods and goes, and does not ask again.
       effects: [ { add: { rel.aymer_ravell.affection: -1 } }, { meet: aymer_ravell } ]
       next: "@return"
+
+- id: c1p_wrestling
+  chapter: ch1
+  kind: pool
+  pool: c1_hall
+  title: Wrestling on the Green
+  once: true
+  text: |
+    Whitsun, and the village has a ram tied to a post on the green for the best wrestler, the way it has every year since before the Ravells. The grooms and the archers and the farm lads strip to the waist and go at it in a ring of hurdles, with half the parish shouting odds.
+
+    "Come on, then, Lord Ravell's own!" somebody yells at you. "Or are you too fine for it now?" The crowd hoots. A huge red-faced ploughman called Big Hodge is standing in the ring with his arms folded, waiting for anybody stupid enough.
+  choices:
+    - id: wrestle
+      text: Strip off and get in the ring.
+      tags: [martial]
+      check: { attr: strength, skill: arms, difficulty: 3 }
+      success:
+        text: |
+          Big Hodge is strong as an ox and about as quick. You let him come, and come, and then you get a hip under him the way Sir Bertram showed you for fighting in harness, and over he goes, flat on his back in the mud with a noise like a dropped sack of meal. The green goes mad. You lead the ram home on a rope, and the household eats it, and for a month the grooms call you "Ram" and grin when they say it.
+        effects: [ { add: { skill.arms: 1, rep.commons: 2, counter.training: 1 } } ]
+        next: "@return"
+      failure:
+        text: |
+          Big Hodge picks you up like a sheaf and puts you down like one. Then he helps you up, and pats your head, and the green laughs itself sick. "No shame in it, lad," he says. "I've put down better." He has, too. You learn a good deal about where your feet should have been, lying in the mud looking at the sky.
+        effects: [ { injury: bruised_ribs }, { add: { rep.commons: 1, counter.training: 1 } } ]
+        next: "@return"
+    - id: watch
+      text: Stay on the hurdles and bet on Hodge.
+      tags: [wealth]
+      text_after: Hodge wins, as everyone knew he would, and you win twopence off a groom who should have known better. You also watch how Hodge does it, which is worth more than the twopence.
+      effects: [ { add: { res.coin: 2, skill.arms: 1 } } ]
+      next: "@return"
+
+- id: c1p_ring
+  chapter: ch1
+  kind: pool
+  pool: c1_hall
+  title: Running at the Ring
+  once: true
+  text: |
+    The squires have a game on summer evenings, after the knights have gone in: a brass ring the size of a bracelet hung from a gallows-post on a thread, and a lance, and a horse at the gallop. Take the ring on your lance-point and you keep it till someone takes it off you. Miss, and you buy the ale.
+
+    [if flag.c1_giles_enemy]Giles Marrick has the ring tonight, on a string round his neck, and is making a show of it.[else]Aymer Ravell has the ring tonight, and is making a great deal of it.[/if] "Well?" he calls across the meadow. "Anyone?"
+  choices:
+    - id: ride
+      text: Borrow a horse and a lance, and go for the ring.
+      tags: [martial]
+      check:
+        attr: agility
+        skill: riding
+        difficulty: 4
+        mods: [ { if: flag.c1_rode_quintain, add: 1, label: the quintain taught you }, { if: background == servant, add: 1, label: you know these horses } ]
+      success:
+        text: |
+          First pass, nothing. Second pass, you touch it and it spins away. Third pass, the point goes clean through and the thread snaps and the ring slides down the lance to your fist, and the meadow erupts. [if flag.c1_giles_enemy]Giles has to take the empty string off his neck in front of everyone.[else]Aymer whoops as if he'd won it himself.[/if] You wear the ring on a thong for the rest of the summer and lose it at Michaelmas, and do not mind.
+        effects: [ { add: { skill.riding: 1, rep.knights: 1, counter.training: 1 } } ]
+        next: "@return"
+      failure:
+        text: Three passes and three misses, the last one so wide you nearly spear the gallows-post and yourself with it. You buy the ale. It is expensive ale. But you ride better for it by the end of the summer, because you go out every evening after that, alone, until you can do it.
+        effects: [ { add: { res.coin: -3, skill.riding: 1, counter.training: 1 } } ]
+        next: "@return"
+    - id: hold
+      text: Hold the horses, and watch how the good ones do it.
+      text_after: You watch. The good riders do not look at the ring until the last stride. The bad ones stare at it all the way down and miss. It seems a small thing. It is not.
+      effects: [ { add: { skill.riding: 1 } } ]
+      next: "@return"

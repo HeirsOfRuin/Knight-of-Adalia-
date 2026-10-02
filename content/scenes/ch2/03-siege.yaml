@@ -206,6 +206,7 @@
         mods:
           - { if: npc.jankin_rooke.follower, add: 1, label: Rooke does not miss }
           - { if: background == archer, add: 1, label: you were raised on this }
+          - { if: flag.c1_shot_with_cobb, add: 1, label: the long butts with Cobb }
       success:
         text: Lying flat on wet stone under the sea tower, shooting at the slits by the light of the burning harbour. Every bolt that comes at you is one that did not go at a fireship. You lose nobody. Afterwards the shipmen of the fireships come along the mole and shake your archers' hands one by one, without saying anything.
         effects: [ { add: { res.renown: 1, rep.commons: 1 } } ]
@@ -304,6 +305,7 @@
         difficulty: 4
         mods:
           - { if: flag.c2_engineers, add: 2, label: you have seen the new wall }
+          - { if: flag.c1_studied_war, add: 1, label: your master's lessons on sieges }
           - { if: rel.@master.respect >= 5, add: 1, label: your master listens to you }
       success:
         text: Your captain hears you out, swears, and puts your company in the reserve. He does not say why. When the storm comes back down the rubble, broken, your men are standing in the reserve unhurt, watching. Some of the other captains look at you afterwards as if you had cheated at dice.
@@ -349,6 +351,7 @@
           - { if: npc.roger_tallis.follower, add: 1, label: Tallis translates }
           - { if: flag.c2_knows_country || flag.c2_armance_friends, add: 1, label: you have learned the tongue }
           - { if: flag.c2_held_ditch, add: 1, label: she saw you in the ditch yesterday }
+          - { if: flag.c1_learned_valdrennish, add: 1, label: Maitre Jehan's lessons }
       success:
         text: |
           She does not want to talk to an Adalian, and says so, and then talks to you anyway, because you ask about the dead and not about the walls. The town is not starving, she says, whatever your King thinks. The galleys bring flour on dark nights. But there is flux in the lower town, and the people there are afraid, and her husband will not give up a town that has bread in it, because he gave his word to his King.

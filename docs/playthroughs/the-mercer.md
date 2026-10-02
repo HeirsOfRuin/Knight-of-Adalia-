@@ -6,28 +6,32 @@ Background: Burgess's son. Seed 9.
 
 *Spring, year 9 of King Aldred*
 
-Easter week in Wendham, and the whole house smells of wet wool.
+Easter week in Wendham, and the whole house stinks of wet sheep.
 
-The fleeces came down from the wrote /home/user/Knight-of-Adalia-/docs/playthroughs/the-mercer.md
-o the rafters of the wool loft, heaped in the passage, laid out in rows on the counting-house floor for grading, so that you have to step over them to reach the stair. Your father says it is the smell of money. Your mother says it is the smell of sheep, and keeps dried lavender on every sill, which does nothing.
+The fleeces came down from thewrote /home/user/Knight-of-Adalia-/docs/playthroughs/the-mercer.md
+to the rafters of the wool loft, heaped in the passage, laid out in rows on the counting-house floor for grading, so you have to hop over them to reach the stair. "That," your father says, breathing it in, "is the smell of money." Your mother keeps dried lavender on every sill. It does not help.
 
-Ralf Mercer is a tidy man in a tidy house: three storeys on Sheep Street, a hall with glass in one window, a counting-house at the front where he can see who comes to the door. He sits on the town council. He writes everything down. When he talks to you, he uses the voice he uses for customers: patient, pleasant, a little careful, as if you might yet decide to buy elsewhere.
+Ralf Mercer is a tidy man in a tidy house: three storeys on Sheep Street, a hall with glass in one window, a counting-house at the front where he can see who comes to the door. He sits on the town council. He writes everything down. When he talks to you he uses the voice he uses for customers, patient and pleasant and careful, as if you might yet take your custom elsewhere.
 
 *(Continue)*
 
 On the Wednesday a man in a black gown comes to the counting-house door with a clerk and a locked box.
 
-It is the Sarenzan factor, Master Bertuccio Lanzi. You have seen him before, at Mass, in the merchants' pew, where he kneels bolt upright and never sings. Close to, he is younger than you thought, with clever eyes and beautiful gloves. He bows to your mother as if she were a countess. He bows to you too, a smaller bow, which no grown man has ever done. "The son," he says, in careful Adalian. "Good. A house needs a son."
+The Sarenzan factor, Master Bertuccio Lanzi. You have seen him at Mass, kneeling bolt upright in the merchants' pew and never singing. Close to he is younger than you thought, with clever eyes and gloves so fine you could see through them. He bows to your mother as if she were a countess. Then, to your astonishment, he bows to you.
 
-Your father sends you out before the door is shut.
+"The son," he says, in careful Adalian. "Good. A house needs a son."
+
+"Out," says your father, pleasantly, and shuts the door on you.
 
 *(Continue)*
 
-The door does not quite shut. It never has; the damp from the wool swells the frame. Through the gap you hear your father's voice and the Sarenzan's, and figures, a great many of them, in a reckoning you half understand. And one word you understand completely, because your father says it the way other men swear: owed.
+The door does not quite shut. It never has; the wool damp swells the frame. Through the crack come your father's voice and the Sarenzan's, and figures, a great many figures, and one word you understand completely, because your father says it the way other men swear.
 
-Out in the yard, Jocelin Tanner is at the gate with the tanners' boys from the alley behind, stones in their fists, on their way to the wharf to throw them at the Sarenzan ship. Jocelin is your age and lives forty yards and a whole world away, in a house that stinks of the pits. He sees you and jerks his head: come on, wool-boy.
+Owed.
 
-In the passage, old Thomas Penny, your father's clerk, sits at his desk by the stair with the abacus, doing sums for nobody, the way he does when the door is shut and he has been told to be elsewhere.
+In the yard, Jocelin Tanner is hanging off the gate with the tanners' boys, stones in their fists, on their way to the wharf to pelt the Sarenzan ship. "Oi! Wool-boy!" He jerks his head. "Coming, or are you scared you'll muss your hose?"
+
+And in the passage, old Thomas Penny, your father's clerk, sits at his desk by the stair clicking the abacus, doing sums for nobody, the way he does whenever the door is shut and he has been told to be elsewhere.
 
 - Stay by the door and listen.
 - Go to the wharf with Jocelin and the tanners' boys.
@@ -35,9 +39,11 @@ In the passage, old Thomas Penny, your father's clerk, sits at his desk by the s
 
 **Chose:** Sit with old Thomas and learn his sums.
 
-He shows you the abacus, and the way to reckon a sack of wool in Sarenzan money and in Adalian, and the difference between the two, which is where the profit lives. "Every coin is two coins," he says, "the one it is, and the one the other man thinks it is." By evening you can do it faster than he can.
+"Sit, then, if you're sitting," old Thomas says. "And don't breathe on the beads."
 
-He does not like that much. But he tells your father, who comes and stands in the doorway and watches you work the beads, and does not say anything, and goes away again with a look on his face you will remember for a long time.
+He shows you the abacus, and how to reckon a sack of wool in Sarenzan money and in Adalian, and the difference between the two, which is where the profit lives. "Every coin's two coins," he says, tapping his nose. "What it is, and what the other fellow thinks it is."
+
+By evening you can do it faster than he can, and he does not like that one bit. But he tells your father, grumbling. Your father comes and stands in the doorway with his arms folded and watches your fingers on the beads, and says nothing, and goes away again. You catch his face as he turns, and it is pride, and you have not seen it pointed at you before.
 
 *Trade +1 · Ralf Mercer's affection +1*
 
@@ -73,11 +79,13 @@ It is the longest you have ever spent alone with him. At the end of it he says, 
 
 Two good years, and then the wet one.
 
-It begins to rain at Whitsun, the summer you turn ten, and it does not stop. It has rained since Whitsun. The barley lies flat in the fields and sprouts in the ear. Sheep cough in the folds. By Lammas, bread costs three times what it did, and the bread is half bean flour and grit.
+It starts raining at Whitsun, the summer you turn ten, and it does not stop. "It'll clear by Saint John's," the old men say, and then, "By Lammas, surely," and then they stop saying anything and just stand in their doorways watching it come down.
+
+The barley lies flat in the fields and sprouts in the ear. The sheep cough in the folds. By Lammas bread costs three times what it did, and the bread is half bean flour and grit, and you can hear it crunch.
 
 *(Continue)*
 
-In Wendham the merchants are doing well. Grain comes in on Sarenzan ships and sells for whatever the seller says. In the tanners' alley behind your house, children are eating nettles.
+In Wendham the merchants are doing well out of it. Grain comes in on Sarenzan ships and sells for whatever the seller says. In the tanners' alley behind your house, children are eating nettles, and one of the little Tanner girls has stopped coming out to play, and nobody will say why.
 
 - Carry bread from your mother's kitchen to the tanners' alley.
 - Set snares in Lord Ravell's chase after dark. *(Even)*
@@ -119,11 +127,15 @@ When the shoe is on he gives you a penny, which you expected, and asks your name
 
 *Summer, year 12 of King Aldred*
 
-The wet year ends, as they all do. The next harvest comes in thin but enough, and people stop counting the beans in the sack, and the year after that is ordinary, which is the best kind.
+The wet year ends, as they all do. The next harvest comes in thin but enough, and people stop counting the beans in the sack, and the year after is ordinary, which is the best kind.
 
-You are old enough now to be useful, and a boy of your sort has perhaps four years before he is a man and the shape of his life is set. There is time to get good at one thing, if someone will teach it.
+"You're getting tall," your father says one day, sounding almost accusing, as if you had done it on purpose.
 
-The guild keeps a schoolmaster for members' sons. There is a fencing master by the bridge who teaches apprentices to use a buckler, against the town's rules.
+*(Continue)*
+
+You are old enough now to be useful, and a boy of your sort has perhaps four years before he is a man and the shape of his life sets like mortar. There is time to get good at one thing, if someone will teach you.
+
+The guild keeps a schoolmaster for members' sons, a dry stick of a man who smells of mice. And there is a fencing master by the bridge who teaches apprentices to use a buckler, against the town's rules, for a penny a lesson and no questions.
 
 Whatever you choose, something else goes untaught.
 
@@ -172,7 +184,7 @@ By the next spring, you have stopped being a child in other people's eyes, and s
 
 *(Continue)*
 
-Jocelin Tanner's father and yours are fighting over a seat on the town council. Today a silver spoon went missing from the guild feast and was found in your satchel. You did not put it there. Jocelin was sitting next to you. The guild wardens want an answer by Vespers.
+Jocelin Tanner's father and yours are at each other's throats over a seat on the town council. Today a silver spoon went missing from the guild feast, and was found in your satchel. You did not put it there. Jocelin was sitting next to you, grinning into his ale. The guild wardens want an answer by Vespers, and the whole of Sheep Street is already whispering. "Ralf Mercer's boy, a thief! Who'd have thought it?"
 
 - Find Jocelin and beat the truth out of him. *(Even)*
 - Find someone who saw Jocelin near your satchel, and get to the wardens first. *(Even)*
@@ -189,11 +201,13 @@ It costs you, in pride and in the way people look at you for a while. It also co
 
 *Autumn, year 15 of King Aldred*
 
-It takes a year and a half for that to settle, and in a village nothing settles completely. Then it is autumn again, and you are fourteen.
+It takes a year and a half for all that to settle, and in a village nothing settles completely. Then it is autumn again, and you are fourteen.
 
-Fourteen is old enough to be bound apprentice, or put to the plough, or sent for a soldier. It is the age when a boy of your sort is either taken into somebody's service or left where he was born.
+"Fourteen," your mother says, as if it were bad news. In a way it is. Fourteen is old enough to be bound apprentice, or put to the plough, or sent for a soldier. It is the age when a boy of your sort is either taken into somebody's service or left where he was born, for good.
 
-Your father has decided you will not be a wool merchant. He wants a son in a knight's household, and he has money to spend on it, though not much.
+*(Continue)*
+
+Your father has decided you will not be a wool merchant. He wants a son in a knight's household, and he has money to spend on it, though not much, and he has been doing the sums at night with the door shut.
 
 - Go and see what can be made of it.
 
@@ -224,7 +238,7 @@ Sir Hamon takes the money the way gentlemen take money, without looking at it. Y
 
 *Spring, year 16 of King Aldred*
 
-The winter after the choosing is the last one at home, though you do not know it until it is nearly over. In the spring the word comes, and all at once there are three days left, and then one.
+The winter after the choosing is your last one at home, though you do not know it until it is nearly over. Then in the spring the word comes, and all at once there are three days left, and then one.
 
 *(Continue)*
 
@@ -232,7 +246,9 @@ You leave in the morning.
 
 You go as a knight's boy, which is not yet a squire and is a long way from a knight. You will carry, clean, fetch, serve, and be hit.
 
-Your father gives you a purse and a list of the people in Lord Ravell's country who owe the family money. Your mother gives you three shirts. Annot Dyer is at the dye-vats by the river, her arms blue to the elbow. She stops working when you come down the lane.
+*(Continue)*
+
+Your father gives you a purse and a list, in his neat hand, of everyone in Lord Ravell's country who owes the family money. "Not to collect," he says. "To know." Your mother gives you three shirts. Annot Dyer is at the dye-vats by the river, blue to the elbow. She stops working when you come down the lane.
 
 - Go to Annot and tell her you will come back.
 - Promise your father a share of whatever you earn, sent home every quarter.
@@ -267,8 +283,6 @@ You will sleep in the squires' loft over the great chamber, with four others, on
 The eldest of the four is Giles Marrick, nineteen, the second son of a Carrow knight, with good teeth and a better sword and a way of smiling at the side of your head instead of your face. He looks at your boots, which are your father's, then your hands, which are not a gentleman's, then your face, and decides something. You watch him decide it.
 
 Aymer Ravell is there too: the lord's younger son, sixteen, fair, quick, restless, already bored with you and everyone else. He asks where you are from, and when you tell him he says "Ah," as if that explained something, and goes back to his dice.
-
-That night you lie awake listening to the castle: a dog barking in the outer ward, the watch calling the hours, someone singing badly in the hall below, a woman laughing somewhere, rain on the roof. You think about home. You think about how far down you are, here, and how many people stand between you and anything. You count them, because counting is what you do. You lose count somewhere past forty.
 
 - Kneel to your master in the yard, properly, as if you had been doing it all your life. *(Even)*
 - Go straight to the stables and make yourself useful before anyone tells you to.
@@ -414,7 +428,7 @@ Sir Hamon owes money. Everyone in the household knows it except Sir Hamon, who k
 
 This summer it becomes today. Master Bertuccio Lanzi of the Lanzi bank rides in from Wendham with a clerk and a letter. Forty pounds, borrowed against Ashby's wool. And there is the King's subsidy: Sir Hamon was named collector for the hundred last year. He collected it. He has not yet paid it over. When he looks for it, it is not all there.
 
-He calls you in. He is not angry. He is frightened, which is worse. "You can count," he says. "Count this."
+He calls you in. He is not angry. He is frightened, and he is trying to hide it under a laugh that does not come off. "You can count," he says. "Count this."
 
 - Sit down with the subsidy rolls and the Ashby accounts, and find where it went. *(Even)*
 - Go down to Master Lanzi yourself and talk him into waiting. *(Favorable)*
@@ -739,7 +753,7 @@ Sir Walter Pryce sits at the table with two clerks, the subsidy rolls, and the E
 
 Sir Hamon goes red, then white. He says he took nothing. He says he will prove it on any man's body, by combat, as his grandfather would have. He is fifty-six and has not fought on foot in fifteen years, and everyone at the table looks at the table.
 
-Sir Walter smiles, not unkindly, and says the Earl will provide a champion.
+Sir Walter smiles. "Oh, there's no need for that, Sir Hamon. The Earl will provide a champion."
 
 Afterwards, in the passage, Sir Hamon leans against the wall with his hand on his chest for a while before he can walk on. He says it is the stairs.
 
@@ -822,7 +836,7 @@ Many men have won their spurs in the field. Many more have died trying. You know
 
 ## The Indenture
 
-You will cross as a man-at-arms: a mounted soldier in harness, paid a shilling a day, a long step below a knight and a long step above an archer. It is not what you hoped for. It is more than anyone in your family has ever had.
+You will cross as a man-at-arms: a mounted soldier in harness, paid a shilling a day, a long step below a knight and a long step above an archer. Not what you hoped for, but more than anyone in your family has ever had.
 
 *(Continue)*
 
@@ -1079,7 +1093,7 @@ He does. Three hundred men go in behind him in the dark, along the dyers' quay, 
 
 *(Continue)*
 
-It is not a sack. There is no time for a sack. The Constable of Valdrenne's van is two days away, and everyone knows it, so Vaudrey is stripped in one night by men in a hurry, which is worse for the town in some ways and better in others.
+It is not a sack. There is no time for a sack. The Constable of Valdrenne's van is two days away, and everyone knows it, so Vaudrey is stripped in one night by men in a hurry, worse for the town in some ways and better in others.
 
 In the market square there is a great stone house with a coat of arms over the door, three black crows on gold. The house of a lord. Giles Marrick, a knight now, in his father's colours, is already riding toward it.
 
@@ -1157,7 +1171,7 @@ There is a mist coming up off the marshes. By midnight you cannot see the river 
 
 **Chose:** Sleep, if you can.
 
-You lie in the wet grass by the horses and do not sleep. Nobody near you sleeps. Davy talks until you tell him to stop, and then lies awake in silence, which is worse. Somewhere out in the mist, far off, a horse whinnies, and is answered.
+You lie in the wet grass by the horses and do not sleep. Nobody near you sleeps. Davy talks until you tell him to stop, and then lies awake in silence, sniffing, pretending he has a cold. Somewhere out in the mist, far off, a horse whinnies, and is answered.
 
 ## The Mist at Grisolles
 
@@ -1273,7 +1287,7 @@ The Lanzi bank has a house in Lannec. Everybody knows it. It is the only house i
 
 The person who runs the Lanzi house in Lannec is not a factor. It is Matteo Lanzi's daughter, Fiammetta: twenty-four, sharp as a quill, in black like a widow though she is not one. She knows your name before you give it. "You are the one my cousin Bertuccio writes about," she says. "Sit down. Tell me what an army costs. I have been trying to work it out since Grisolles, and nobody here can count."
 
-She lends against your future ransoms at a rate she calls friendly. It is not friendly. It is cheaper than losing your men. "You see?" she says. "This is what a war costs. Somebody always pays, and it is never the King."
+She lends against your future ransoms at a rate she calls friendly. "Friendly to whom?" you ask. She smiles. It is still cheaper than losing your men. "You see?" she says. "This is what a war costs. Somebody always pays, and it is never the King."
 
 *Davy Ludd's loyalty +2 · Roger Tallis's loyalty +2*
 
@@ -1599,7 +1613,7 @@ You get there third. Sir Walter Pryce gets there first, and has Thibaut de Brés
 
 In the middle of the afternoon, three hundred lances come along the beach at the gallop from the west, under the ermine of Armance, and go into the Valdrennish flank where the causeways are crowded. The Duchess has come. She has brought everything she has left.
 
-For a long time it makes no difference. Then it does. The weight comes off the dyke, a little at a time, and the columns behind the front ranks start to look over their shoulders at the causeways, and the tide coming up over the pans on either side of them.
+For the space of a Mass it makes no difference. Then it does. The weight comes off the dyke, a little at a time, and the columns behind the front ranks start to look over their shoulders at the causeways, and the tide coming up over the pans on either side of them.
 
 Then they are going back. Not in order. The causeways are a man and a half wide, and the whole host is trying to use them at once, and the water is at their waists and rising. Men in plate who step off a causeway into a salt pan at high tide do not come out again.
 
@@ -1659,7 +1673,7 @@ The keys are held by Dame Clémence de Vaux, who has held them since her husband
 
 **Chose:** Speak for gentle terms in your captain's ear, and hope it reaches the council. (Favorable: failure)
 
-Your captain hears you out and tells you, not unkindly, to leave the town to men who were not born in a village. The King's terms stand.
+Your captain hears you out and tells you, tiredly, to leave the town to men who were not born in a village. The King's terms stand.
 
 *Honor +1*
 
@@ -1733,7 +1747,7 @@ The Lanzi will lend against land. They always will. Your debt rolls over against
 
 Davy Ludd is seventeen now, and has stopped talking quite so much, and has started looking at you in a particular way when you give orders, as if learning how it is done.
 
-One evening he asks you, formally, whether he might ever hope to be more than a squire. He means: could a groom's grandson be knighted, as you were, or will be. He has clearly been thinking about it for a long time.
+One evening he asks you, formally, whether he might ever hope to be more than a squire. He means: could a groom's grandson be knighted, as you were, or will be. He has clearly been chewing on it for weeks.
 
 - Tell him yes, and that you will see to it if you can.
 - Tell him the truth. It is hard, and rare, and it cost you everything you had.

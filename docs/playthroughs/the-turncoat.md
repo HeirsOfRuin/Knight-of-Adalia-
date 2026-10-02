@@ -6,21 +6,25 @@ Background: Household servant's son. Seed 3.
 
 *Spring, year 9 of King Aldred*
 
-Ravell Hall, the stable yard, a raw spring morning, with the mist still lying in the moat and the jackdaws going up and down the keep.
+Ravell Hall, the stable yard, a raw spring morning, with mist lying in the moat and the jackdaws squabbling up and down the keep.
 
-You sleep in the kennels with the lymers, curled against the warm one with the torn ear, and you smell like them, and do not mind.
+You sleep in the kennels with the lymers, curled against the warm one with the torn ear, and you smell like them, and do not care who knows it.
 
-Your mother, Agnes, dresses Lady Ravell. You eat in the kitchen with the scullions, at the end of the long table nearest the door, and you know more about the family than the family thinks. You know, for one thing, who the heir's real father is. You heard it through a privy wall two winters ago, in Lady Ravell's own voice, and you have told no one, not even your mother, and you think about it more than you would like.
+Your mother, Agnes, dresses Lady Ravell. You eat in the kitchen at the end of the long table nearest the draught, and you know more about the family than the family thinks. You know, for one thing, who the heir's real father is. You heard it through a privy wall two winters ago, in Lady Ravell's own voice, and you have told no one, not even your mother, and some nights it sits on your chest like a cat.
 
 *(Continue)*
 
-Aymer Ravell is nine, a year older than you, and the lord's second son. He is fair and quick and bored, and he has decided this morning that he wants to sit on his father's destrier.
+"Psst. You. Horse-boy."
 
-Bayard is a grey stallion seventeen hands high who has killed one groom and crippled another. He is standing in the end stall with his ears back, listening to you both.
+Aymer Ravell is nine, a year older than you, the lord's second son: fair, quick, and bored out of his wits. He is leaning in the stable door with his hands behind his back, which means he wants something.
 
-"Saddle him," says Aymer. "I only want to sit on him. Nobody will know." He smiles at you, the smile that gets him whatever he wants from everyone in the hall except his father.
+"I want to sit on Bayard," he says.
 
-Master Ranulf, the marshal, is at the far end of the yard with his back to you, arguing with the farrier.
+Bayard is his father's destrier, a grey stallion seventeen hands high who has killed one groom and crippled another. He is standing in the end stall with his ears pinned back, listening to every word.
+
+"Just sit. That's all. Nobody'll know." Aymer gives you the smile that gets him anything he wants from anyone in the hall except his father. "Go on. You're not scared of him. Not you."
+
+Master Ranulf, the marshal, is at the far end of the yard with his back to you, roaring at the farrier.
 
 - Saddle Bayard for him and hold the head. *(Even)*
 - Refuse him, and fetch Master Ranulf.
@@ -66,11 +70,13 @@ When the sheets are up she sits on the parapet with her feet hanging over and sa
 
 Two good years, and then the wet one.
 
-It begins to rain at Whitsun, the summer you turn ten, and it does not stop. It has rained since Whitsun. The barley lies flat in the fields and sprouts in the ear. Sheep cough in the folds. By Lammas, bread costs three times what it did, and the bread is half bean flour and grit.
+It starts raining at Whitsun, the summer you turn ten, and it does not stop. "It'll clear by Saint John's," the old men say, and then, "By Lammas, surely," and then they stop saying anything and just stand in their doorways watching it come down.
+
+The barley lies flat in the fields and sprouts in the ear. The sheep cough in the folds. By Lammas bread costs three times what it did, and the bread is half bean flour and grit, and you can hear it crunch.
 
 *(Continue)*
 
-At Ravell Hall the high table still has three courses, and the scraps from it go to the poor at the gate. Not all the scraps reach the gate. Nell from the laundry has a mother and five brothers in the village.
+At Ravell Hall the high table still has three courses, and the scraps go out to the poor at the gate. Not all of them reach the gate. Nell from the laundry has a mother and five brothers in the village, and she has gone thin as a rake, and she still makes the kitchen laugh.
 
 - Take a loaf from the high table scraps to Nell's mother before it reaches the gate.
 - Set snares in Lord Ravell's chase after dark. *(Favorable)*
@@ -112,11 +118,15 @@ When the shoe is on he gives you a penny, which you expected, and asks your name
 
 *Summer, year 12 of King Aldred*
 
-The wet year ends, as they all do. The next harvest comes in thin but enough, and people stop counting the beans in the sack, and the year after that is ordinary, which is the best kind.
+The wet year ends, as they all do. The next harvest comes in thin but enough, and people stop counting the beans in the sack, and the year after is ordinary, which is the best kind.
 
-You are old enough now to be useful, and a boy of your sort has perhaps four years before he is a man and the shape of his life is set. There is time to get good at one thing, if someone will teach it.
+"You're getting tall," your mother says one day, sounding almost accusing, as if you had done it on purpose.
 
-Father Benet, the chaplain, teaches Aymer his letters and lets the servants' boys sit at the back. Sir Bertram Oakes teaches the household's young men at the pell every morning.
+*(Continue)*
+
+You are old enough now to be useful, and a boy of your sort has perhaps four years before he is a man and the shape of his life sets like mortar. There is time to get good at one thing, if someone will teach you.
+
+Father Benet, the chaplain, teaches Aymer his letters and lets the servants' boys sit at the back if they keep quiet. Sir Bertram Oakes drills the household's young men at the pell every morning before Mass, and shouts "You're dead!" so often the grooms do it for a joke.
 
 Whatever you choose, something else goes untaught.
 
@@ -166,7 +176,7 @@ By the next spring, you have stopped being a child in other people's eyes, and s
 
 *(Continue)*
 
-Aymer Ravell is fourteen and has guests: two squires from Carrow's household. To impress them he has told you to fetch his falcon, and then told them you stole it, for the joke. They are laughing. One of them is not joking.
+Aymer Ravell is fourteen and has guests: two squires from Carrow's household, swaggering in good wool. To impress them, he told you to fetch his falcon, and then told them you'd stolen it. For the joke. They are laughing. One of them, a tall boy with good teeth, has his hand on his dagger, and he is not laughing at all.
 
 - Tell the Carrow squire to his face that you are no thief, and stand there. *(Even)*
 - Find the falcon where Aymer really hid it, and let the Carrow boys watch you do it. *(Even)*
@@ -183,11 +193,13 @@ The falcon is in Aymer's own chest. The Carrow boys find that funny, at Aymer's 
 
 *Autumn, year 15 of King Aldred*
 
-It takes a year and a half for that to settle, and in a village nothing settles completely. Then it is autumn again, and you are fourteen.
+It takes a year and a half for all that to settle, and in a village nothing settles completely. Then it is autumn again, and you are fourteen.
 
-Fourteen is old enough to be bound apprentice, or put to the plough, or sent for a soldier. It is the age when a boy of your sort is either taken into somebody's service or left where he was born.
+"Fourteen," your mother says, as if it were bad news. In a way it is. Fourteen is old enough to be bound apprentice, or put to the plough, or sent for a soldier. It is the age when a boy of your sort is either taken into somebody's service or left where he was born, for good.
 
-Lord Ravell's household is choosing its pages and grooms for the year. Guests are coming for the autumn hunting, Sir Ancel Brome among them.
+*(Continue)*
+
+Lord Ravell's household is choosing its pages and grooms for the year. Guests are coming for the autumn hunting, Sir Ancel Brome among them, and your mother has let out the seams of your best coat twice.
 
 - Go and see what can be made of it.
 
@@ -219,13 +231,15 @@ She hears you out without moving. Then she asks what you want. You tell her. A w
 
 *Spring, year 16 of King Aldred*
 
-The winter after the choosing is the last one at home, though you do not know it until it is nearly over. In the spring the word comes, and all at once there are three days left, and then one.
+The winter after the choosing is your last one at home, though you do not know it until it is nearly over. Then in the spring the word comes, and all at once there are three days left, and then one.
 
 *(Continue)*
 
-You are not going far. Tomorrow you carry your bundle across the outer ward of Ravell Hall, from the stable loft where you have slept all your life, to the knights' side of the house, as a knight's boy: not yet a squire, a long way from a knight. You will carry, clean, fetch, serve, and be hit, by better people than before.
+You are not going far. That is the joke of it. Tomorrow you carry your bundle across the outer ward of Ravell Hall, from the stable loft where you have slept your whole life, to the knights' side of the house, as a knight's boy: not yet a squire, a long way from a knight. You will carry, clean, fetch, serve, and be hit, by better people than before.
 
-Your mother straightens your collar and tells you not to shame her. She means: do not shame her in front of the lady. Nell is hanging sheets in the drying-yard and has stopped hanging them.
+*(Continue)*
+
+Your mother straightens your collar four times. "Don't shame me," she says. She means: not in front of the lady. Nell is hanging sheets in the drying-yard, and has stopped hanging them.
 
 - Go to Nell and tell her you will come back.
 - Promise your mother you will never speak of the secret again, to anyone.
@@ -249,7 +263,7 @@ The house has not changed. You are on the other side of it now, and from this si
 
 Lord Thurstan Ravell holds this castle and eleven manors from the King. He holds four knights' fees under him: four knights who owe him forty days' service a year, mounted and armed, in return for their land. Sir Hamon Darrell of Ashby and Sir Ancel Brome of Brome Tower are two of those four. Their households live under his roof for half the year, eat his bread, and fight his quarrels. Yours will too.
 
-Sir Ancel meets you in the yard without getting down from his horse. He is lean as a hayrake, burned dark by the March wind, with half his left ear gone to a Caldmoor sword at Harrow Ford and grey coming into his beard. He looks at you for a long time. "You're late," he says. You are not late; you came the day you were told. You do not say so. Something in his face eases, slightly, at your not saying so. "Stables," he says. "Then find Cobb. Then find me."
+Sir Ancel meets you in the yard without getting down from his horse. He is lean as a hayrake, burned dark by the March wind, with half his left ear gone to a Caldmoor sword at Harrow Ford and grey coming into his beard. He looks you up and down like a horse he has been sold. "You're late," he says. You are not late; you came the day you were told. You do not say so. Something in his face eases, slightly, at your not saying so. "Stables," he says. "Then find Cobb. Then find me."
 
 *(Continue)*
 
@@ -257,9 +271,7 @@ You will sleep in the squires' loft over the great chamber, with four others, on
 
 The eldest of the four is Giles Marrick, nineteen, the second son of a Carrow knight, with good teeth and a better sword and a way of smiling at the side of your head instead of your face. He looks at your boots, which are your father's, then your hands, which are not a gentleman's, then your face, and decides something. You watch him decide it.
 
-Aymer Ravell is there too: the lord's younger son, sixteen, fair, quick, restless, already bored with you and everyone else. He knew you when you were both small enough to hide in the hay. He looks at you now the way a man looks at an old coat he forgot he owned: not unkindly, but not as if it matters.
-
-That night you lie awake listening to the castle: a dog barking in the outer ward, the watch calling the hours, someone singing badly in the hall below, a woman laughing somewhere, rain on the roof. You think about home. You think about how far down you are, here, and how many people stand between you and anything. You count them, because counting is what you do. You lose count somewhere past forty.
+Aymer Ravell is there too: the lord's younger son, sixteen, fair, quick, restless, already bored with you and everyone else. He knew you when you were both small enough to hide in the hay. He looks at you now the way a man looks at an old coat he forgot he owned. "Well, look who's come up in the world," he says, and grins, and it is not quite friendly and not quite not.
 
 - Kneel to your master in the yard, properly, as if you had been doing it all your life. *(Even)*
 - Go straight to the stables and make yourself useful before anyone tells you to.
@@ -273,7 +285,7 @@ Then you try the young woman in the good grey gown who is crossing the inner war
 
 She stops. She has a narrow, clever face, dark hair under a linen cap, ink on her right forefinger, and an expression that suggests she has been waiting all day for something interesting to happen and is prepared to accept you as a poor substitute.
 
-"You're new," she says. "You have the look. Everyone has it the first week. Like a calf at a fair." She tells you, in about the time it takes to say a paternoster, where to wash, where to eat, which of the stewards to avoid (the fat one), which of the cooks will give you bread if you ask nicely (the one who threw the turnip), how to tell the lord's chamber from the lady's in the dark, and that Lady Ravell can hear through walls and very likely through floors.
+"You're new," she says. "You have the look. Everyone has it the first week. Like a calf at a fair." She tells you, in about the time it takes to say a paternoster, where to wash, where to eat, which of the stewards to avoid (the fat one), which of the cooks will give you bread if you ask nicely (the one who threw the turnip), how to tell the lord's chamber from the lady's in the dark, and that Lady Ravell can hear through walls and likely through floors.
 
 "I am Isabel Sayer," she says. "I wait on Lady Ravell. My father is a knight with a hundred acres in Hollesby and seven daughters, and I am the fourth, so I am as poor as you are, only better dressed. Don't tell anyone I talk to grooms."
 
@@ -457,7 +469,7 @@ Your mother sits you down at the end of the long table and feeds you, and watche
 
 You mend the things that need mending. You eat too much. You tell them about Sir Ancel and the March, and leave out the parts they would worry about, and they know you are leaving them out, and let you.
 
-On the last night your mother says she is proud of you, in a voice that does not match the words, and you realise that she has been afraid for you every day since you went above stairs.
+On the last night your mother says she is proud of you, in a voice that does not match the words, and it dawns on you that she has been afraid for you every day since you went above stairs.
 
 *Agnes's affection +2*
 
@@ -495,7 +507,7 @@ It is the first time you have been alone with your master for more than an hour.
 
 *(Continue)*
 
-Sir Ancel does not talk. He rides, and stops, and looks at a wall, or a ditch, or a ford, and says "Hm," and rides on. In three days he says perhaps forty words to you. On the third evening, at the top of the pass where you can see down into Caldmoor, he gets off his horse and stands for a long time looking north, and then says, without turning round, "Your father would have liked this view." You do not know what he means. It is a while before you learn that he says it to all his boys, about their fathers, because he never knew his own.
+Sir Ancel does not talk. He rides, and stops, and looks at a wall, or a ditch, or a ford, and says "Hm," and rides on. In three days he says perhaps forty words to you. On the third evening, at the top of the pass where you can see down into Caldmoor, he gets off his horse and stands looking north until his horse gets bored and nudges him, and then says, without turning round, "Your father would have liked this view." You do not know what he means. It is a while before you learn that he says it to all his boys, about their fathers, because he never knew his own.
 
 - Ask him about Harrow Ford.
 - Ask him to teach you to read the ground as he does.
@@ -503,7 +515,7 @@ Sir Ancel does not talk. He rides, and stops, and looks at a wall, or a ditch, o
 
 **Chose:** Ask him about Harrow Ford.
 
-He does not answer for a long time. Then he tells it, in about a dozen sentences: the Caldmoor spears, the ford, his horse killed under him in the water, a Caldmoor axe coming down, and an arrow from somewhere behind him that took the axeman through the throat. "Your father's," he says, if you are Hugh Fletcher's son, and "a bowman's" if you are not. "I never thanked him properly. You don't, for that." He gets back on his horse. That is the end of it. It is more than he has told anyone in years.
+He chews on it for half a mile. Then he tells it, in about a dozen sentences: the Caldmoor spears, the ford, his horse killed under him in the water, a Caldmoor axe coming down, and an arrow from somewhere behind him that took the axeman through the throat. "Your father's," he says, if you are Hugh Fletcher's son, and "a bowman's" if you are not. "I never thanked him properly. You don't, for that." He gets back on his horse. That is the end of it. It is more than he has told anyone in years.
 
 *Sir Ancel Brome's affection +2 · Sir Ancel Brome's respect +1*
 
@@ -676,7 +688,7 @@ The household is in a fever. Squires are everywhere at once. For three days it i
 
 **Chose:** Get Lady Maud's petition into the King's hands, past her guardian. (Even: success)
 
-The petition goes in among the King's letters by way of a clerk who owes Father Benet money. It asks the King to take her wardship into his own hand. On the last morning, at Mass, the King announces that he will do exactly that. Lord Ravell smiles and loses a thousand marks. He does not know how. Lady Maud does, and looks at you across the chapel once, for a long time.
+The petition goes in among the King's letters by way of a clerk who owes Father Benet money. It asks the King to take her wardship into his own hand. On the last morning, at Mass, the King announces that he will do exactly that. Lord Ravell smiles and loses a thousand marks. He does not know how. Lady Maud does, and looks at you across the chapel once, and holds it, until someone coughs.
 
 *Crown standing +1*
 
@@ -1091,7 +1103,7 @@ He does. Three hundred men go in behind him in the dark, along the dyers' quay, 
 
 *(Continue)*
 
-It is not a sack. There is no time for a sack. The Constable of Valdrenne's van is two days away, and everyone knows it, so Vaudrey is stripped in one night by men in a hurry, which is worse for the town in some ways and better in others.
+It is not a sack. There is no time for a sack. The Constable of Valdrenne's van is two days away, and everyone knows it, so Vaudrey is stripped in one night by men in a hurry, worse for the town in some ways and better in others.
 
 In the market square there is a great stone house with a coat of arms over the door, three black crows on gold. The house of a lord. Giles Marrick, a knight now, in his father's colours, is already riding toward it.
 
@@ -1143,7 +1155,7 @@ The Constable of Valdrenne, Gaucelin de Brésy, has twenty thousand men a day's 
 
 **Chose:** Go with your master to the edge of the King's council, and listen. (Even: success)
 
-You hold a horse outside the King's pavilion for three hours, close enough to hear. The Earl of Carrow wants to cross into Vervais anyway and take the towns by force. The Marshal wants to go back to the Armance while there is an army left to take. The King listens to them both for a long time. Then he asks how many days of bread there are. Somebody tells him. "Then we go back," he says. "By the Aube. Quickly."
+You hold a horse outside the King's pavilion for three hours, close enough to hear. The Earl of Carrow wants to cross into Vervais anyway and take the towns by force. The Marshal wants to go back to the Armance while there is an army left to take. The King lets them shout until they run out of breath. Then he asks how many days of bread there are. Somebody tells him. "Then we go back," he says. "By the Aube. Quickly."
 
 You know the road before the army does. That will matter.
 
@@ -1167,7 +1179,7 @@ There is a mist coming up off the marshes. By midnight you cannot see the river 
 
 **Chose:** Sleep, if you can.
 
-You lie in the wet grass by the horses and do not sleep. Nobody near you sleeps. Davy talks until you tell him to stop, and then lies awake in silence, which is worse. Somewhere out in the mist, far off, a horse whinnies, and is answered.
+You lie in the wet grass by the horses and do not sleep. Nobody near you sleeps. Davy talks until you tell him to stop, and then lies awake in silence, sniffing, pretending he has a cold. Somewhere out in the mist, far off, a horse whinnies, and is answered.
 
 ## The Mist at Grisolles
 
@@ -1294,7 +1306,7 @@ Three weeks later a letter reaches you, by way of the Queen's household, in a qu
 
 **Chose:** Write back.
 
-You write back carefully. She writes back carelessly, which is how you know she means it. The letters go on all through the truce.
+You write back carefully. She writes back carelessly, scrawled and blotted, and you know she means every word. The letters go on all through the truce.
 
 ## Sauvemer
 
@@ -1639,7 +1651,7 @@ You get to him first, through his own men, and he gives you his gauntlet before 
 
 In the middle of the afternoon, three hundred lances come along the beach at the gallop from the west, under the ermine of Armance, and go into the Valdrennish flank where the causeways are crowded. The Duchess has come. She has brought everything she has left.
 
-For a long time it makes no difference. Then it does. The weight comes off the dyke, a little at a time, and the columns behind the front ranks start to look over their shoulders at the causeways, and the tide coming up over the pans on either side of them.
+For the space of a Mass it makes no difference. Then it does. The weight comes off the dyke, a little at a time, and the columns behind the front ranks start to look over their shoulders at the causeways, and the tide coming up over the pans on either side of them.
 
 Then they are going back. Not in order. The causeways are a man and a half wide, and the whole host is trying to use them at once, and the water is at their waists and rising. Men in plate who step off a causeway into a salt pan at high tide do not come out again.
 

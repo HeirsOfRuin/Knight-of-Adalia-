@@ -6,37 +6,47 @@ Background: Reeve's son. Seed 11.
 
 *Spring, year 9 of King Aldred*
 
-You have been awake since before the cock, because today the steward comes, and you are eight, and nothing this important has ever happened to you.
+"Stand still. Stand STILL, or I'll scrub the other ear as well."
 
-Your mother has had you scrubbed at the trough with a handful of ash, ears and all, and dressed you in your brother's old tunic, the blue one, which was your brother's until the winter fever took him at four and has been waiting in the chest for you to grow into it. It is still too long in the sleeve. She turns the cuffs back twice, looks at you, turns them back again, and says you will do. Your sisters, Cis and Avice, are under orders to stay in the house and not be seen. They are at the shutter now, watching the lane.
+Your mother has had you at the trough since before the cock, with a handful of wood-ash and no mercy, and now she is wrestling you into your brother's old tunic: the blue one, which was his until the winter fever took him at four, and has waited in the chest ever since for you to grow into it. You have not grown into it. She turns the cuffs back twice, looks at you, turns them back again.
 
-Ashby is thirty-one households, a church, a mill, and a cold manor house that its lord, Sir Hamon Darrell, avoids. The land is Sir Hamon's. The running of it is your father's. Piers the reeve: chosen by the village eleven years running, which no reeve in memory has managed, because a reeve takes the lord's due from his neighbours, and neighbours remember.
+"You'll do," she says, which from Edith the reeve's wife is nearly a blessing.
 
-Your father keeps the account on hazel tallies: a notch for a quarter of grain, the stick split down its length, one half for him and one for the barn, so nobody can add a notch without the halves disagreeing. He showed you how when you were six. You took to it the way other boys take to slings. Numbers stay where you put them. People do not.
+Cis and Avice are at the shutter, under orders to stay out of sight, and are failing. "He looks like a sack of meal," Cis tells the lane, loudly. Avice, who is four, laughs because Cis laughed.
+
+You are eight, and you have never been so important in your life. Today the steward comes.
 
 *(Continue)*
 
-Master Gervase Holt rides in at Terce on a grey cob, with a clerk on a mule behind him. He is a thin man in a good brown gown with a fur collar gone bald at the neck, and he has a cough that he carries about with him like a dog. He does not get down from the cob until your father has come out to hold its head. He looks at you over your father's shoulder.
+Ashby is thirty-one households, a church, a mill, and a cold manor house its lord, Sir Hamon Darrell, avoids whenever he can. The land is Sir Hamon's. The running of it is your father's. Piers the reeve, chosen by the village eleven years running, which no reeve in memory has managed, because a reeve takes the lord's due from his neighbours, and neighbours remember.
 
-"This is the boy?"
+Your father keeps the account on hazel tallies: a notch for every quarter of grain, the stick split down its length, one half for him and one for the barn, so nobody can cut a notch without the halves disagreeing. He showed you how when you were six. You took to it the way other boys take to slings. Numbers stay where you put them. People do not.
+
+*(Continue)*
+
+Master Gervase Holt rides in at Terce on a grey cob, with a clerk on a mule behind him. He is a thin man in a good brown gown with a fur collar gone bald at the neck, and a cough he carries about with him like a dog. He does not get down until your father has come out to hold the cob's head.
+
+He looks at you over your father's shoulder. "This is the boy?"
 
 "My son, Master Gervase. The one who reckons."
 
 "We shall see," says the steward, and coughs.
 
+Behind the hedge, somebody snorts. Half the village has found a reason to be in the lane this morning.
+
 *(Continue)*
 
-In the tithe barn the air is cold and sweet with old straw. The clerk, a young man called Walter who sniffs constantly and wipes his nose on his wrist, sets up a trestle and a stool and unrolls the steward's roll. It is written in the clerks' tongue, which you cannot read yet, with the numbers in the old letters that your father taught you on the hearthstone with a burnt stick. Your father lays out his halves of the tallies, notch side up, in rows: barley, oats, beans and peas, maslin. You stand at his elbow, as you have been told, and say nothing.
+The tithe barn is cold and smells sweetly of old straw. The clerk, a young man called Walter who sniffs like a wet dog and wipes his nose on his wrist, sets up a trestle and unrolls the steward's roll. It is written in the clerks' tongue, which you cannot read yet, with the numbers in the old letters your father taught you on the hearthstone with a burnt stick. Your father lays out his halves of the tallies, notch side up, in rows: barley, oats, beans and peas, maslin. You stand at his elbow and say nothing, as you were told, with your heart going like a hammer in a smithy.
 
-They read the barley. It agrees. They read the beans. They agree. They read the oats.
+They read the barley. It agrees. They read the beans. They agree.
 
-"Oats, into the grange at Michaelmas," says the clerk, through his nose. "Forty quarters."
+"Oats," Walter says, through his nose. "Into the grange at Michaelmas, forty quarters."
 
 The steward nods and looks at the roof.
 
-You count the sticks under your breath, the way you always do, without meaning to. Forty-two. The sticks say forty-two. You count again. Forty-two quarters went into the barn, and the roll says forty, and Master Gervase is looking at the roof, and the two missing quarters are worth, at this year's price, more than your father is paid in a year.
+You count the sticks under your breath. You cannot help it; you never can. Forty-two. The sticks say forty-two. You count again, and your face goes hot. Forty-two quarters went into that barn, and the roll says forty, and Master Gervase is looking at the roof, and two quarters of oats at this year's price is more than your father is paid in a year.
 
-Your father does not look at you. His hands are flat on the trestle and do not move. He knows you can count. He taught you.
+Your father does not look at you. His hands are flat on the trestle and still as stones. He knows you can count. He taught you.
 
 - Say what you counted, out loud, in front of the clerk.
 - Keep your mouth shut and tell your father afterwards.
@@ -46,15 +56,15 @@ Your father does not look at you. His hands are flat on the trestle and do not m
 
 You say nothing in the barn. But the numbers will not leave you alone, and that night you go to Father Anselm.
 
-The priest of Ashby is a big soft man with a farmer's hands, the son of a smallholder from over the hill, who reads the gospel badly and the weather very well. He keeps bees behind the church, teaches letters to any boy who will bring him firewood, and has a habit of humming the psalms when he thinks no one is listening. He has a box of parchment scraps, cut from the margins of old service books, that he uses for his own sums.
+The priest of Ashby is a big soft farmer's son from over the hill, who reads the gospel badly and the weather well. He keeps bees behind the church, teaches letters to any boy who brings him firewood, and hums psalms when he thinks nobody is listening. He has a box of parchment scraps, cut from the margins of old service books, for his own sums.
 
-"A page of figures," he says, when you ask. "At this hour. For a boy of eight." He gives you one anyway, and an ink-horn, and a candle-end, and goes back to his bees.
+"A page of figures," he says, when you ask, peering at you over the candle. "At this hour. For a boy of eight." He sighs like a bellows. "Go on, then. Mind the ink, it's dear."
 
-It takes you three candle-ends and you burn your thumb on the last. You copy every tally: barley, oats, beans and peas, maslin, each in your father's way of reckoning, with the notches drawn as little strokes. At the bottom you write the date as Father Anselm has shown you, the feast and the year of the King, so that anyone reading it will know when it was made.
+It takes three candle-ends, and you burn your thumb on the last. You copy every tally: barley, oats, beans and peas, maslin, the notches as little strokes, the way your father reckons. At the bottom you write the date as Father Anselm showed you, the feast and the year of the King.
 
-You do not know yet why you are doing it. You only know that the numbers in the barn and the numbers on the roll were not the same, and that tomorrow the sticks may be different, and that the parchment will not.
+You do not know yet why you are doing it. You only know the numbers in the barn and the numbers on the roll were not the same, and tomorrow the sticks might be different, and the parchment will not.
 
-Father Anselm reads it over your shoulder when you are done. He does not ask any questions. He folds it twice and tucks it inside the back board of his psalter, between the leather and the wood. "It will keep there," he says. "Nobody reads my psalter but me, and I only read it on Sundays."
+Father Anselm reads it over your shoulder, humming. He asks no questions. He folds it twice and slips it inside the back board of his psalter, between the leather and the wood. "It'll keep there," he says. "Nobody reads my psalter but me, and God knows I only manage it on Sundays."
 
 *Gained: Copied tallies · Learning +1 · Father Anselm's affection +1*
 
@@ -96,11 +106,13 @@ It is half a mile to the Cokers' holding, along the lane and over the stile. Mag
 
 Two good years, and then the wet one.
 
-It begins to rain at Whitsun, the summer you turn ten, and it does not stop. It has rained since Whitsun. The barley lies flat in the fields and sprouts in the ear. Sheep cough in the folds. By Lammas, bread costs three times what it did, and the bread is half bean flour and grit.
+It starts raining at Whitsun, the summer you turn ten, and it does not stop. "It'll clear by Saint John's," the old men say, and then, "By Lammas, surely," and then they stop saying anything and just stand in their doorways watching it come down.
+
+The barley lies flat in the fields and sprouts in the ear. The sheep cough in the folds. By Lammas bread costs three times what it did, and the bread is half bean flour and grit, and you can hear it crunch.
 
 *(Continue)*
 
-At Ashby your father has to collect the lord's dues from men who have nothing. The Cokers were put off their holding in the spring for arrears, on your father's word. They live in a hut by the common now. Wat Coker throws stones at you when you pass. His sister Mag does not; she watches.
+At Ashby your father has to collect the lord's dues from men who have nothing. The Cokers were put off their holding in the spring for arrears, on your father's word, and live in a hut by the common now, five of them in a space you could spit across. Wat Coker throws stones at you when you pass. "Reeve's whelp! Fat on our oats!" His sister Mag does not throw anything. She watches, and you would rather the stones.
 
 - Take your share of the bread to the Cokers' hut.
 - Set snares in Lord Ravell's chase after dark. *(Even)*
@@ -142,11 +154,15 @@ When the shoe is on he gives you a penny, which you expected, and asks your name
 
 *Summer, year 12 of King Aldred*
 
-The wet year ends, as they all do. The next harvest comes in thin but enough, and people stop counting the beans in the sack, and the year after that is ordinary, which is the best kind.
+The wet year ends, as they all do. The next harvest comes in thin but enough, and people stop counting the beans in the sack, and the year after is ordinary, which is the best kind.
 
-You are old enough now to be useful, and a boy of your sort has perhaps four years before he is a man and the shape of his life is set. There is time to get good at one thing, if someone will teach it.
+"You're getting tall," your father says one day, sounding almost accusing, as if you had done it on purpose.
 
-Father Anselm will teach Latin letters to any boy who brings him firewood. Old Simon at the forge was a man-at-arms once and still has a sword under his bed.
+*(Continue)*
+
+You are old enough now to be useful, and a boy of your sort has perhaps four years before he is a man and the shape of his life sets like mortar. There is time to get good at one thing, if someone will teach you.
+
+Father Anselm will teach Latin letters to any boy who brings him firewood. Old Simon at the forge was a man-at-arms once, and still has a sword under his bed, and will show it to you if you ask nicely and fetch his ale.
 
 Whatever you choose, something else goes untaught.
 
@@ -198,7 +214,7 @@ By the next spring, you have stopped being a child in other people's eyes, and s
 
 *(Continue)*
 
-Wat Coker is fifteen and big for it. He says your father stole his family's holding and he says it at the ale-stake where people can hear. Tonight he is waiting at the churchyard wall with two friends, and he has a cudgel.
+Wat Coker is fifteen and built like a barn door. He says your father stole his family's holding, and he says it at the ale-stake where everyone can hear. "Thief's son! Ask him where our oats went!" Tonight he is waiting at the churchyard wall with two friends, and one of them has a cudgel. Mag ran past your door at dusk and said, without stopping, "Don't go by the church." Then she was gone.
 
 - Meet him at the wall with your fists. *(Even)*
 - Go round by the mill and let the steward's men find Wat waiting with a weapon. *(Even)*
@@ -207,7 +223,7 @@ Wat Coker is fifteen and big for it. He says your father stole his family's hold
 
 **Chose:** Go to the Cokers' hut by daylight and talk to Wat. (Even: success)
 
-Wat listens because Mag makes him. You do not become friends. You agree not to kill each other, which is more than your fathers managed.
+Mag opens the door of the hut and looks at you. "Well," she says. "You've got some nerve." She makes Wat sit down, and makes you sit down, and stands over the pair of you with her arms folded until you both talk. You do not become friends. You agree not to kill each other, which is more than your fathers ever managed. On the way out, Mag gives you the ghost of a smile.
 
 *Wat Coker's affection +3 · Wat Coker's respect +1*
 
@@ -215,11 +231,13 @@ Wat listens because Mag makes him. You do not become friends. You agree not to k
 
 *Autumn, year 15 of King Aldred*
 
-It takes a year and a half for that to settle, and in a village nothing settles completely. Then it is autumn again, and you are fourteen.
+It takes a year and a half for all that to settle, and in a village nothing settles completely. Then it is autumn again, and you are fourteen.
 
-Fourteen is old enough to be bound apprentice, or put to the plough, or sent for a soldier. It is the age when a boy of your sort is either taken into somebody's service or left where he was born.
+"Fourteen," your mother says, as if it were bad news. In a way it is. Fourteen is old enough to be bound apprentice, or put to the plough, or sent for a soldier. It is the age when a boy of your sort is either taken into somebody's service or left where he was born, for good.
 
-Sir Hamon Darrell is coming to Ashby for the harvest reckoning. He has no squire. Everyone in the manor knows it.
+*(Continue)*
+
+Sir Hamon Darrell is coming to Ashby for the harvest reckoning. He has no squire. Everyone in the manor knows it, and every mother with a son of fourteen has been scrubbing him since Lammas.
 
 - Go and see what can be made of it.
 
@@ -252,7 +270,7 @@ Sir Hamon makes you do it again, slowly, with the clerk checking. Then he laughs
 
 *Spring, year 16 of King Aldred*
 
-The winter after the choosing is the last one at home, though you do not know it until it is nearly over. In the spring the word comes, and all at once there are three days left, and then one.
+The winter after the choosing is your last one at home, though you do not know it until it is nearly over. Then in the spring the word comes, and all at once there are three days left, and then one.
 
 *(Continue)*
 
@@ -260,7 +278,9 @@ You leave in the morning.
 
 You go as a knight's boy, which is not yet a squire and is a long way from a knight. You will carry, clean, fetch, serve, and be hit.
 
-Your father walks with you to the stile. He has something to say and takes a long time not saying it. "Master Gervase will be watching you," he says at last. "And he will be watching me. Remember who your friends are." Mag Coker is at the well when you pass. She does not pretend not to see you.
+*(Continue)*
+
+Your father walks you to the stile. He has something to say, and takes most of the lane not saying it. "Master Gervase will be watching you," he manages at last. "And he'll be watching me. You remember who your friends are." Cis says you'd better send her a ribbon. Avice cries. Mag Coker is at the well when you pass, with two buckets, and she does not pretend not to see you.
 
 - Go to Mag and tell her you will come back.
 - Promise your father you will keep an eye on Master Gervase for him.
@@ -295,8 +315,6 @@ You will sleep in the squires' loft over the great chamber, with four others, on
 The eldest of the four is Giles Marrick, nineteen, the second son of a Carrow knight, with good teeth and a better sword and a way of smiling at the side of your head instead of your face. He looks at your boots, which are your father's, then your hands, which are not a gentleman's, then your face, and decides something. You watch him decide it.
 
 Aymer Ravell is there too: the lord's younger son, sixteen, fair, quick, restless, already bored with you and everyone else. He asks where you are from, and when you tell him he says "Ah," as if that explained something, and goes back to his dice.
-
-That night you lie awake listening to the castle: a dog barking in the outer ward, the watch calling the hours, someone singing badly in the hall below, a woman laughing somewhere, rain on the roof. You think about home. You think about how far down you are, here, and how many people stand between you and anything. You count them, because counting is what you do. You lose count somewhere past forty.
 
 - Kneel to your master in the yard, properly, as if you had been doing it all your life. *(Risky)*
 - Go straight to the stables and make yourself useful before anyone tells you to.
@@ -386,7 +404,7 @@ It is a long autumn. Your master's harness is fished out of the moat and cleaned
 
 > Consequence of: Go to the Cokers' hut by daylight and talk to Wat.
 
-Wat Coker has come to Ravell. He took the levy's penny after his family lost their holding, and he is in Will Cobb's company now, a big man with a bow and a long memory. He nods to you in the yard. It is not friendship. It is not war.
+Wat Coker has come to Ravell. He took the levy's penny after his family lost their holding, and he is in Will Cobb's company now, a big man with a bow and a long memory. He nods to you in the yard. Not friendship. Not war either.
 
 - Make it right with him, once and for all. *(Favorable)*
 - Make it clear, in front of others, who stands higher now. *(Even)*
@@ -442,7 +460,7 @@ Sir Hamon owes money. Everyone in the household knows it except Sir Hamon, who k
 
 This summer it becomes today. Master Bertuccio Lanzi of the Lanzi bank rides in from Wendham with a clerk and a letter. Forty pounds, borrowed against Ashby's wool. And there is the King's subsidy: Sir Hamon was named collector for the hundred last year. He collected it. He has not yet paid it over. When he looks for it, it is not all there.
 
-He calls you in. He is not angry. He is frightened, which is worse. "You can count," he says. "Count this."
+He calls you in. He is not angry. He is frightened, and he is trying to hide it under a laugh that does not come off. "You can count," he says. "Count this."
 
 - Sit down with the subsidy rolls and the Ashby accounts, and find where it went. *(Favorable)*
 - Go down to Master Lanzi yourself and talk him into waiting. *(Even)*
@@ -620,7 +638,7 @@ Dame Joan Wyck is twenty-seven, brown-haired, square-handed, with her sleeves ro
 
 *(Continue)*
 
-You tell her anyway. You give her the sword. She holds it across her knees for a long time, not crying, running her thumb along the guard where his hand wore it smooth, and asks how he died. You tell her he died well. It is not quite a lie.
+You tell her anyway. You give her the sword. She holds it across her knees, not crying, running her thumb along the guard where his hand wore it smooth, and asks how he died. You tell her he died well. It is not quite a lie.
 
 Her stepson Ralph, nineteen and Sir Hugh's son by his first wife, comes in while you are still talking, with mud to the knee, and asks whether the sword is his now. She does not answer him. She does not look at him. She looks at you.
 
@@ -709,7 +727,7 @@ The household is in a fever. Squires are everywhere at once. For three days it i
 
 **Chose:** Get yourself near the King. Hold his stirrup, carry his cup, be there. (Risky: success)
 
-On the third morning you hold the King's stirrup while he mounts for the hunt. He looks down and asks your name. Lord Ravell, beside him, has to be reminded whose squire you are. The King repeats your name, as if to keep it. Then he is gone, in a crowd of horses. It lasted the time it takes to say a paternoster. You will remember it all your life.
+On the third morning you hold the King's stirrup while he mounts for the hunt. He looks down and asks your name. Lord Ravell, beside him, has to be reminded whose squire you are. The King repeats your name, as if to keep it. Then he is gone, in a crowd of horses. It lasted the time it takes to say a paternoster. You carry it with you all your life.
 
 *Crown standing +2 · Renown +1*
 
@@ -795,7 +813,7 @@ Sir Walter Pryce sits at the table with two clerks, the subsidy rolls, and the E
 
 Sir Hamon goes red, then white. He says he took nothing. He says he will prove it on any man's body, by combat, as his grandfather would have. He is fifty-six and has not fought on foot in fifteen years, and everyone at the table looks at the table.
 
-Sir Walter smiles, not unkindly, and says the Earl will provide a champion.
+Sir Walter smiles. "Oh, there's no need for that, Sir Hamon. The Earl will provide a champion."
 
 Afterwards, in the passage, Sir Hamon leans against the wall with his hand on his chest for a while before he can walk on. He says it is the stairs.
 
@@ -1126,7 +1144,7 @@ He does. Three hundred men go in behind him in the dark, along the dyers' quay, 
 
 *(Continue)*
 
-It is not a sack. There is no time for a sack. The Constable of Valdrenne's van is two days away, and everyone knows it, so Vaudrey is stripped in one night by men in a hurry, which is worse for the town in some ways and better in others.
+It is not a sack. There is no time for a sack. The Constable of Valdrenne's van is two days away, and everyone knows it, so Vaudrey is stripped in one night by men in a hurry, worse for the town in some ways and better in others.
 
 In the market square there is a great stone house with a coat of arms over the door, three black crows on gold. The house of a lord. Giles Marrick, a knight now, in his father's colours, is already riding toward it.
 
@@ -1200,7 +1218,7 @@ There is a mist coming up off the marshes. By midnight you cannot see the river 
 
 **Chose:** Sleep, if you can.
 
-You lie in the wet grass by the horses and do not sleep. Nobody near you sleeps. Davy talks until you tell him to stop, and then lies awake in silence, which is worse. Somewhere out in the mist, far off, a horse whinnies, and is answered.
+You lie in the wet grass by the horses and do not sleep. Nobody near you sleeps. Davy talks until you tell him to stop, and then lies awake in silence, sniffing, pretending he has a cold. Somewhere out in the mist, far off, a horse whinnies, and is answered.
 
 ## The Mist at Grisolles
 
@@ -1666,7 +1684,7 @@ You get there third. Sir Walter Pryce gets there first, and has Thibaut de Brés
 
 In the middle of the afternoon, three hundred lances come along the beach at the gallop from the west, under the ermine of Armance, and go into the Valdrennish flank where the causeways are crowded. The Duchess has come. She has brought everything she has left.
 
-For a long time it makes no difference. Then it does. The weight comes off the dyke, a little at a time, and the columns behind the front ranks start to look over their shoulders at the causeways, and the tide coming up over the pans on either side of them, and the water you let in at the sluices.
+For the space of a Mass it makes no difference. Then it does. The weight comes off the dyke, a little at a time, and the columns behind the front ranks start to look over their shoulders at the causeways, and the tide coming up over the pans on either side of them, and the water you let in at the sluices.
 
 Then they are going back. Not in order. The causeways are a man and a half wide, and the whole host is trying to use them at once, and the water is at their waists and rising. Men in plate who step off a causeway into a salt pan at high tide do not come out again.
 

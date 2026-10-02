@@ -348,7 +348,7 @@
     - id: count
       text: Count your men, and name the missing.
       tags: [allies]
-      text_after: You go round them in the dark, twice. [if flag.c1_shared_the_ford]You remember the winter after the Leven, and who sat up with you, and you sit up with them now.[/if] [if retinue >= 3]You know the faces that are here. It is the faces that are not that you keep seeing.[else]There are not many to count.[/if] [if npc.davy_ludd.follower]Davy sits beside you afterwards with his knees drawn up and asks whether it is always like this. You say no. You do not know if that is true.[/if]
+      text_after: You go round them in the dark, twice. [if flag.c1_shared_the_ford]You remember the winter after the Leven, and who sat up with you, and you sit up with them now.[/if] [if retinue >= 3]You know the faces that are here. It is the faces that are not that you keep seeing.[else]There are not many to count.[/if] [if flag.c2_knew_men]You know whose mothers to write to. You learned that by a fire on the first night ashore, without knowing what you were learning.[/if] [if npc.davy_ludd.follower]Davy sits beside you afterwards with his knees drawn up and asks whether it is always like this. You say no. You do not know if that is true.[/if]
       effects: [ { add: { rel.davy_ludd.loyalty: 1, rel.jankin_rooke.loyalty: 1, rel.simkin_barre.loyalty: 1, rel.roger_tallis.loyalty: 1, rel.wat_coker.loyalty: 1, rel.perkin_dyer.loyalty: 1, rel.gib_shawe.loyalty: 1, rel.dickon_laund.loyalty: 1 } } ]
       next: c2_retreat
     - id: list

@@ -6,7 +6,7 @@ Background: Reeve's son. Seed 11.
 
 *Spring, year 9 of King Aldred*
 
-You are eight years old, and you have been awake since before the cock, because today the steward comes.
+You have been awake since before the cock, because today the steward comes, and you are eight, and nothing this important has ever happened to you.
 
 Your mother has had you scrubbed at the trough with a handful of ash, ears and all, and dressed you in your brother's old tunic, the blue one, which was your brother's until the winter fever took him at four and has been waiting in the chest for you to grow into it. It is still too long in the sleeve. She turns the cuffs back twice, looks at you, turns them back again, and says you will do. Your sisters, Cis and Avice, are under orders to stay in the house and not be seen. They are at the shutter now, watching the lane.
 
@@ -58,13 +58,47 @@ Father Anselm reads it over your shoulder when you are done. He does not ask any
 
 *Gained: Copied tallies · Learning +1 · Father Anselm's affection +1*
 
+## The Dairy
+
+*Summer, year 9 of King Aldred*
+
+The steward's visit is the talk of Ashby for a week, and then it is not, because it is ploughing time, and nobody in a village can think about anything else in ploughing time.
+
+Your mother, Edith, runs the house the way your father runs the manor, by keeping everything in its place and noticing when it is not. She is a small, quick, devout woman with forearms like a smith's from the churn. She does not say much in front of your father. In the dairy, where he never comes, she says a great deal.
+
+*(Continue)*
+
+The dairy is cold and smells of whey and stone. Cis, who is six, is supposed to be scalding the pans, and is instead telling Avice, who is four, a long story about a dragon who lives in the mill-race. Your mother is at the churn. You are there because she wanted you there, though she has not said why.
+
+"Father Anselm says you were at the church till Compline," she says, without looking up. "He would not say what for. I did not ask him."
+
+*(Continue)*
+
+Somebody knocks at the dairy door, which nobody ever does; people come in. It is Mag Coker, from the far end of the village, a thin, sharp girl a year older than you with her hair scraped back under a cloth. She has a jug. Her mother is lying in with the new baby, she says, and has no milk, and is there any buttermilk going.
+
+She says it to your mother. She looks at you while she says it, as if daring you to say something.
+
+- Fill Mag's jug yourself, and carry it home for her.
+- Ask your mother about the brother whose tunic you wear.
+- Go out to the fields where your father is with the plough-teams.
+
+**Chose:** Fill Mag's jug yourself, and carry it home for her.
+
+Your mother lets you. She does not say anything about your father, who does not like the Cokers, and who will hear of it by supper.
+
+It is half a mile to the Cokers' holding, along the lane and over the stile. Mag walks beside you and does not talk until the stile, and then talks all the way, about her mother and the baby and her brother Wat, who is eleven and wants to be a soldier, and the price of everything, which she knows to the farthing. At the door she takes the jug and says, "You can come in, if you like. Wat's out." You do not, quite. You will think about the fact that she asked.
+
+*Mag Coker's affection +2 · Piers's affection −1*
+
 ## The Wet Year
 
 *Summer, year 11 of King Aldred*
 
-You are 10.
+Two good years, and then the wet one.
 
-It has rained since Whitsun. The barley lies flat in the fields and sprouts in the ear. Sheep cough in the folds. By Lammas, bread costs three times what it did, and the bread is half bean flour and grit.
+It begins to rain at Whitsun, the summer you turn ten, and it does not stop. It has rained since Whitsun. The barley lies flat in the fields and sprouts in the ear. Sheep cough in the folds. By Lammas, bread costs three times what it did, and the bread is half bean flour and grit.
+
+*(Continue)*
 
 At Ashby your father has to collect the lord's dues from men who have nothing. The Cokers were put off their holding in the spring for arrears, on your father's word. They live in a hut by the common now. Wat Coker throws stones at you when you pass. His sister Mag does not; she watches.
 
@@ -79,13 +113,38 @@ You hold the tally while men who used to give you apples hand over their last he
 
 *Stewardship +1 · Master Gervase Holt's respect +2 · Common Folk standing −2 · Wat Coker's affection −2*
 
+## The Knight on the Road
+
+At Michaelmas, when the worst of the wet year is over and nobody has yet believed it, a knight comes through.
+
+He comes up the lane into Ashby with his horse lame in the off fore, and stops at the smithy, and the smith downs tools for him, because a knight does not wait.
+
+*(Continue)*
+
+He is not old, as knights go: about thirty, lean and brown, in a red surcoat badged with a black boar, the Earl of Carrow's. His harness is plain and well kept and has been mended in places. His horse is better than his harness. He has one squire, a sulky boy of sixteen in a better coat than his master's, who stands about kicking at the dogs.
+
+He sees you watching from the smithy door. Everyone else has found a reason to be elsewhere; ordinary people do not stand about near knights. He looks at you with a kind of amusement, as if you were a puppy that had wandered into church, and says, "Well? Do you want to hold him, or don't you?"
+
+- Hold his horse while the smith works.
+- Ask him how a man becomes a knight.
+- The squire kicks the smith's dog. Kick him back.
+- Watch from a safe distance, and say nothing.
+
+**Chose:** Hold his horse while the smith works.
+
+You hold the great bay's head for an hour while the smith pares and fits, and the horse leans on you the whole time, and you do not move. The knight talks, not to you exactly, but near you: about the Earl's business in the north, about the price of a good horse, about the King, whom he has seen twice.
+
+When the shoe is on he gives you a penny, which you expected, and asks your name, which you did not. "Pryce," he says, in return. "Walter Pryce. I was a younger son with a horse and a sword and nothing else. Now look at me." He looks down at his own mended harness and laughs. "Well. Look at me in ten years." Then he is gone up the road, and the squire never once looked at you.
+
+*Sir Walter Pryce's respect +1 · Coin +1d*
+
 ## What a Boy Learns
 
 *Summer, year 12 of King Aldred*
 
-You are 11. The harvest came in at last, thin but enough.
+The wet year ends, as they all do. The next harvest comes in thin but enough, and people stop counting the beans in the sack, and the year after that is ordinary, which is the best kind.
 
-A boy of your sort has perhaps four years before he is a man and the shape of his life is set. There is time to get good at one thing, if someone will teach it.
+You are old enough now to be useful, and a boy of your sort has perhaps four years before he is a man and the shape of his life is set. There is time to get good at one thing, if someone will teach it.
 
 Father Anselm will teach Latin letters to any boy who brings him firewood. Old Simon at the forge was a man-at-arms once and still has a sword under his bed.
 
@@ -102,11 +161,42 @@ You already read Adalian, slowly. Now you learn the clerks' tongue as well: char
 
 *Learning +2 · Gained: Reads the clerks' tongue · Father Anselm's affection +2*
 
+## Midsummer Eve
+
+*Spring, year 13 of King Aldred*
+
+On Midsummer Eve the whole village goes up to the hill above the church, where the fire is built, and nobody is anybody's servant until morning.
+
+There is a fiddler, and a man with a pipe and tabor, and a barrel that the lord's steward pays for once a year, and a fire as tall as a house. The young men jump it, for luck and to be seen. The girls jump it in pairs, holding hands, for husbands. The old women watch who jumps with whom and remember.
+
+*(Continue)*
+
+You are twelve, and this year, for the first time, you are not one of the children running about in the dark beyond the firelight. You are standing at the edge of it, with the young men, trying to look as if you belong there.
+
+Mag Coker is by the barrel, with her brother Wat watching her like a dog with a bone. She sees you. She does not look away.
+
+- Ask Mag to jump the fire with you.
+- Stay with the young men, and jump it alone.
+- Walk Mag home the long way, when the fire burns down.
+- Go home before the drinking starts.
+
+**Chose:** Ask Mag to jump the fire with you.
+
+She looks at Wat first, which you notice. Then she takes your hand anyway.
+
+You run at the fire together, and it is much hotter close to than it looked, and for a moment you are in the middle of it with sparks going up all round you, and then you are through, on the other side, in the dark, still holding hands. Neither of you lets go for a while.
+
+The old women saw. By Lammas the whole village has an opinion about it. Your father's opinion is that the reeve's son does not jump fires with Cokers.
+
+*Piers's affection −1 · Wat Coker's affection −1*
+
 ## Wat Coker
 
 *Spring, year 14 of King Aldred*
 
-You are 13.
+By the next spring, you have stopped being a child in other people's eyes, and some of them do not like what they see instead.
+
+*(Continue)*
 
 Wat Coker is fifteen and big for it. He says your father stole his family's holding and he says it at the ale-stake where people can hear. Tonight he is waiting at the churchyard wall with two friends, and he has a cudgel.
 
@@ -125,7 +215,7 @@ Wat listens because Mag makes him. You do not become friends. You agree not to k
 
 *Autumn, year 15 of King Aldred*
 
-You are 14.
+It takes a year and a half for that to settle, and in a village nothing settles completely. Then it is autumn again, and you are fourteen.
 
 Fourteen is old enough to be bound apprentice, or put to the plough, or sent for a soldier. It is the age when a boy of your sort is either taken into somebody's service or left where he was born.
 
@@ -139,12 +229,16 @@ Sir Hamon Darrell is coming to Ashby for the harvest reckoning. He has no squire
 
 Sir Hamon Darrell comes to Ashby at Michaelmas with four horses, two hounds and no squire. His last one went home to marry. He is past fifty, grey and heavy, kind to dogs, careless with money. He sits in the hall while the steward reads him the year.
 
+*(Continue)*
+
+Father Anselm's psalter still has your page of figures in its back board. You have added to it, every year, without quite knowing why.
+
 Lord Ravell is to visit at Martinmas with thirty mouths. Master Gervase Holt is reckoning what the manor must lay in. You can see from the bench by the door that he has doubled the bread and forgotten the horses.
 
-Your father stands behind the steward with his hat in his hands. He catches your eye and tips his head toward Sir Hamon: now, if ever.
+Your father stands behind the steward with his hat in his hands. He does not look at you. Things have not been easy between you since the reckoning.
 
 - Step forward and show Sir Hamon where the reckoning is wrong. *(Favorable)*
-- Let your father call in what Master Gervase owes him. *(Favorable)*
+- ~~Let your father call in what Master Gervase owes him.~~ *(Favorable, Requires: your father's goodwill)*
 - Wait for a chance to be seen. *(Even)*
 - Do nothing. Sir Hamon will choose whom he chooses.
 
@@ -158,7 +252,11 @@ Sir Hamon makes you do it again, slowly, with the clerk checking. Then he laughs
 
 *Spring, year 16 of King Aldred*
 
-You are 15, and you leave in the morning.
+The winter after the choosing is the last one at home, though you do not know it until it is nearly over. In the spring the word comes, and all at once there are three days left, and then one.
+
+*(Continue)*
+
+You leave in the morning.
 
 You go as a knight's boy, which is not yet a squire and is a long way from a knight. You will carry, clean, fetch, serve, and be hit.
 
@@ -176,7 +274,7 @@ He grips your shoulder. It is the first time he has touched you in a year. You w
 
 ## Ravell Hall
 
-You are 15, and you have never seen so many people in one place who were not at a fair.
+You have never seen so many people in one place who were not at a fair.
 
 You see Ravell Hall first from the ridge road, a mile off, across the water meadows: a square grey keep with a timber hall built against its flank like a barn leaning on a church, a curtain wall, a gatehouse, a moat that catches the light. Smoke from a dozen chimneys. Around the walls, outside them, the village: the mill, the smithy, the church of Saint Ebba with its squat tower, the alehouse with a bush over the door. Strip fields running down to the river. Sheep everywhere.
 
@@ -214,11 +312,39 @@ It is a little too formal for a yard full of horse dung. It is also correct. You
 
 *Sir Hamon Darrell's respect +1*
 
+## The First Night
+
+The squires and pages sleep in the loft over the great hall, eight of them on pallets, with the smoke from the hall fire coming up through the gaps in the boards and the noise of the men-at-arms still drinking below.
+
+You have a place by the wall, which is the worst place, because it is the coldest and furthest from the light. Nobody tells you so. Nobody tells you anything. You lie in the dark with your bundle under your head and listen to the sounds of a house that is not yours.
+
+*(Continue)*
+
+Somebody sits down on the end of your pallet in the dark. It is Aymer Ravell, the lord's second son, who has no business in a groom's loft or a squires' corner at this hour, with a candle-end and a pie he has stolen from the kitchen. "You're Hamon's new boy," he says. "So am I, come spring. Want some pie?"
+
+- Share the pie, and talk until the candle goes out.
+- Lie awake, and think about home.
+- Get up before anyone, and have your work done before they wake.
+
+**Chose:** Share the pie, and talk until the candle goes out.
+
+Aymer talks the way he rides, fast and careless and well. His elder brother, who will have everything. His father, who notices him only to be disappointed. His mother, who notices everything. Sir Hamon, who is kind, and broke, and has the best hounds in the shire. By the time the candle gutters you know more about Ravell than you learned in all the years before, and Aymer knows almost nothing about you, because he has not thought to ask. That is Aymer. You will learn that it is not unkindness.
+
+*Aymer Ravell's affection +2 · Aymer Ravell's respect +1*
+
 ## The High Table
 
 *Summer, year 16 of King Aldred*
 
-Midsummer feast. The Earl of Carrow's captain, Sir Walter Pryce, is at the high table with Lord Ravell, and your master is to serve the lord's own dish. That means you are. A swan, carved in its proper joints, laid on trenchers in the proper order, with the proper words. Giles Marrick has done it before. He has offered to help you, which means he will not.
+By Midsummer you have learned the first lesson of service, which is that nobody will tell you anything twice, and the second, which is that nobody will tell you anything once.
+
+*(Continue)*
+
+Midsummer feast. The Earl of Carrow's captain, Sir Walter Pryce, is at the high table with Lord Ravell, and your master is to serve the lord's own dish. That means you are.
+
+A swan, roasted and then dressed again in its own skin and feathers, with a gilded beak. It must be carved in its proper joints, laid on trenchers in the proper order, and presented with the proper words, while forty people watch and the Earl of Carrow's man judges Lord Ravell's household by how it is done. Giles Marrick has done it before. He has offered to help you, which means he will not.
+
+You knew the name before you heard it. A knight on a lame horse in the wet year, and a penny, and four things a man needs. He does not look at you. Why would he.
 
 - Serve slowly and correctly, every joint in its place. *(Risky)*
 - Serve it fast and plain, the way a hungry man wants to be served. *(Even)*
@@ -234,9 +360,13 @@ The swan comes apart as if it wanted to. Lord Ravell eats without noticing, whic
 
 *Autumn, year 16 of King Aldred*
 
-At Michaelmas your master named you his squire before the household. It means you are fed at the second table, carry his harness, sleep across his door when he travels, and are beaten by him rather than by grooms.
+At Michaelmas your master names you his squire before the household, in the hall, after Mass, with his hand on your shoulder. It means you are fed at the second table, carry his harness, sleep across his door when he travels, and are beaten by him rather than by grooms. It means more than that, and less, and you will spend years finding out which.
 
-Giles Marrick is seventeen, the son of a Carrow knight, and he has decided you are a churl in a borrowed coat. He calls you the reeve's son in front of the other squires. He has put your master's best harness in the moat and told the marshal you did it.
+*(Continue)*
+
+Giles Marrick is seventeen, the second son of a Carrow knight, tall, with good teeth and a better sword, and he has decided you are a churl in a borrowed coat. He does not shout about it. He smiles at the side of your head.
+
+He calls you the reeve's son in front of the other squires, as if it were your name, and they have started to use it too. Last week your master's best harness went into the moat, and Giles told the marshal you had been careless with it, and the marshal believed him, because Giles is a gentleman.
 
 The other squires watch to see what you do.
 
@@ -339,13 +469,40 @@ It is from Mag Coker. Her brother Wat wants her married to a carter from Ashby M
 
 You write it three times before it is right. It costs you a penny to send and a good deal more not to say anything you cannot keep.
 
+## Harvest Home
+
+*Autumn, year 17 of King Aldred*
+
+At Michaelmas the household goes to Ravell for the lord's court and the audit, as it does every year, and for three days nobody needs a squire much. You ask leave to go home. To your surprise, you get it.
+
+Home is a day's walk. You do it in less, and come over the last rise at dusk, and see the smoke going up straight from the chimneys in the still air, and stop, and do not know why you have stopped.
+
+*(Continue)*
+
+Your father has a new cough and the same tallies. Your mother has put the blue tunic away at last; Cis is wearing it, cut down, and is furious about it. Mag Coker is at the well with two buckets.
+
+- Spend all three days with your family.
+- Find Mag, and spend the evenings with her.
+- Spend your wages on gifts for everyone, and let them see you can.
+- Give up your leave, and stay with your master.
+
+**Chose:** Spend all three days with your family.
+
+You mend the things that need mending. You eat too much. You tell them about Sir Hamon and his hounds, and leave out the parts they would worry about, and they know you are leaving them out, and let you.
+
+On the last night your father walks you to the stile, as he did the first time. "You're doing well," he says. He has never said it before. He nods, and keeps nodding, all the way home.
+
+*Piers's affection +2*
+
 ## Twelfth Night
 
 *Winter, year 17 of King Aldred*
 
-You are 16.
+Twelfth Night at Ravell Hall, your second in service, and the first at which anyone has bothered to learn your name.
 
-Twelfth Night at Ravell Hall. The great hall is hung with green, there are minstrels from Wendham, and the Lord of Misrule is a fat cook in a paper crown. Everyone drinks too much. The rules are loosened, not lifted.
+*(Continue)*
+
+The great hall is hung with green, there are minstrels from Wendham, and the Lord of Misrule is a fat cook in a paper crown. Everyone drinks too much. The rules are loosened, not lifted.
 
 Lady Ravell's women dance the carol in a ring and choose partners from the young men. Isabel Sayer is among them. So is Lady Maud de Lisle, Lord Ravell's ward, fifteen, heiress of the barony of Lisle, who is watched by everyone and spoken to by almost no one. The Wendham burgesses have a table below the salt, with their wives and daughters. Master Osbert Fuller's daughter Cecily is the one doing her father's talking for him.
 
@@ -363,13 +520,37 @@ She dances better than you and does not let it show. Halfway round the ring she 
 
 *Isabel Sayer's affection +2*
 
+## Sir Hamon's Hounds
+
+*Spring, year 18 of King Aldred*
+
+In Lent, Sir Hamon takes you out with the hounds, just the two of you and the huntsman, on a raw grey day when nobody else would hunt. He does not want to hunt. He wants to be out of the house, away from the letters on his table, with his dogs.
+
+It is the first time you have been alone with your master for more than an hour.
+
+*(Continue)*
+
+The hounds find nothing all morning. Sir Hamon does not seem to mind. He sits his old grey on the edge of a covert with the reins loose, eating bread and cheese from his saddlebag and giving half to the dogs, and talks: about his father, who was a hard man, and his wife, who died eleven years ago in childbed with the child, and whom he still talks to sometimes, at night. He says it as if it were ordinary. Perhaps it is.
+
+- Ask him about his wife.
+- Ask him to teach you the hounds properly.
+- Say nothing, and keep him company.
+
+**Chose:** Ask him to teach you the hounds properly.
+
+For the rest of the day he does: their names, their voices, which of them lies and which of them is never wrong, how to cast a pack that has lost the line. He is good at it, better than at anything else in his life. By evening you can tell the voices apart. "There," he says. "Now you know the one thing I know."
+
+*Sir Hamon Darrell's respect +2 · Woodcraft +1*
+
 ## The Word from the March
 
 *Summer, year 18 of King Aldred*
 
-You are 17.
+The word comes at the end of May, on a lathered horse, while Sir Hamon is still talking about the hounds.
 
 Black Ewan of Glenhallow has come over the border with eighty men. Steadings burning along the Leven, cattle driven north, a priest hanged from his own lychgate. Lord Ravell sends Sir Ancel north with forty horse and Will Cobb's sixty archers, and Sir Hamon with the Ravell banner, because a banner must be carried by somebody.
+
+*(Continue)*
 
 You are going. Everyone is going. The armourer in the outer ward has a queue at his door and has put his prices up by half.
 
@@ -388,11 +569,19 @@ The jack is second-hand, stiff with someone else's sweat. The hat has a dent in 
 
 ## The Leven Ford
 
-Dawn on the fourth day, in a cold mist off the river. Black Ewan's men are driving the cattle across the Leven ford, slowly, because cattle will not be hurried through water. Eighty men, perhaps more, half of them on the far bank already. They have not seen you.
+Three days north, through rain, sleeping in barns and once in a church. On the fourth day, before dawn, the scouts come back.
 
-Sir Ancel draws up the horse behind a fold of ground. Will Cobb has the archers strung and waiting in the alders. Sir Hamon sits the Ravell banner and looks old in the grey light. Beside him is Sir Hugh Wyck, a knight of Lord Ravell's from the next valley, who smiles at you as if this were a hunt.
+*(Continue)*
+
+Dawn, in a cold mist off the river. Black Ewan's men are driving the cattle across the Leven ford, slowly, because cattle will not be hurried through water. Eighty men, perhaps more, half of them on the far bank already, shouting at the beasts in a language you do not know. They have not seen you.
+
+Sir Ancel draws up the horse behind a fold of ground. Will Cobb has the archers strung and waiting in the alders, sixty of them, not a sound. Sir Hamon sits the Ravell banner and looks old in the grey light. Beside him is Sir Hugh Wyck, a knight of Lord Ravell's from the next valley, cheerful and freckled and forty, who smiles at you as if this were a hunt and says, "Your first? Stay by me."
 
 Sir Ancel says the horse will go in when the archers have loosed twice. That is all the plan there is.
+
+*(Continue)*
+
+Your mouth is dry. Your hands are steady, which surprises you. Somewhere across the water a cow is bellowing, the same note over and over.
 
 - Take a spear and go into the ford with the horse. *(Favorable, MORTAL DANGER)*
 - Take two of Cobb's men upstream to the second ford and get behind the herd. *(Even)*
@@ -404,13 +593,19 @@ Sir Ancel says the horse will go in when the archers have loosed twice. That is 
 
 You stay with the horses. From the fold of ground you see the archers loose, and the knights go in, and Sir Hugh Wyck's horse come back out of the river without him. You are the one who goes down into the water afterwards and brings him out. His sword is still in his hand. Nobody else wants to take it from him.
 
-*Gained: Sir Hugh Wyck's sword · Sir Hamon Darrell's respect +1*
+*Gained: Sir Hugh Wyck's sword*
 
 ## Home from the Leven
 
-Lord Ravell meets the column at the gate. He counts the cattle, then the men, then the dead. One knight, Sir Hugh Wyck. Two archers. A groom nobody can name.
+It takes five days to drive the cattle home, and they lose four on the way, and nobody cares.
+
+Lord Ravell meets the column at the gate. He counts the cattle, then the men, then the dead. One knight, Sir Hugh Wyck, across his own saddle with a cloak over him. Two archers. A groom nobody can name.
+
+*(Continue)*
 
 Nobody singles you out. You are alive and in one piece, more or less, and that is not nothing.
+
+Somebody has to take Sir Hugh Wyck's sword home to his widow.
 
 - Take Sir Hugh Wyck's sword home to his widow yourself.
 - Go back to your duties.
@@ -419,11 +614,15 @@ Nobody singles you out. You are alive and in one piece, more or less, and that i
 
 ## Wyck
 
-Wyck is a half-day's ride west: a moated house, a mill, a church, and two hundred acres of good land with too many sheep on it.
+Wyck is a half-day's ride west: a moated house, a mill, a church, and two hundred acres of good land with too many sheep on it. Everything is neat. Somebody here works hard.
 
-Dame Joan Wyck is twenty-seven. She meets you in the hall in her working apron, because nobody has told her yet. You tell her. You give her the sword. She holds it across her knees for a long time and asks how he died. You tell her he died well. It is not quite a lie.
+Dame Joan Wyck is twenty-seven, brown-haired, square-handed, with her sleeves rolled. She meets you in the hall in her working apron, because nobody has told her yet, and she sees the sword in your hands and knows before you open your mouth.
 
-Her stepson Ralph, nineteen and Sir Hugh's son by his first wife, comes in while you are still talking and asks whether the sword is his now. She does not answer him.
+*(Continue)*
+
+You tell her anyway. You give her the sword. She holds it across her knees for a long time, not crying, running her thumb along the guard where his hand wore it smooth, and asks how he died. You tell her he died well. It is not quite a lie.
+
+Her stepson Ralph, nineteen and Sir Hugh's son by his first wife, comes in while you are still talking, with mud to the knee, and asks whether the sword is his now. She does not answer him. She does not look at him. She looks at you.
 
 - Stay to supper, and let her talk about him.
 - Tell Ralph Wyck plainly that the sword is his father's widow's to give.
@@ -464,15 +663,42 @@ He goes. You stand at the door. Lord Ravell pays the debt and takes his son's ho
 
 *Aymer Ravell's affection +1 · Aymer Ravell's respect +2 · Lord Thurstan Ravell's respect +1 · Fever-weak has healed*
 
+## The Winter After
+
+*Winter, year 18 of King Aldred*
+
+The Leven ford stays with you longer than you expect.
+
+Not all the time. In daylight there is work, and noise, and other people, and it goes away. It comes back at night, and in odd moments: the smell of wet wool, the sound of cattle in water, a man laughing in the yard the way Sir Hugh Wyck laughed in the grey light before the charge.
+
+*(Continue)*
+
+Sometimes it is the first man you saw die close enough to touch. You did not know his name. You never will.
+
+By Candlemas, other men have noticed that you are not sleeping.
+
+- Talk to Aymer about it.
+- Go to Father Benet, and make your confession.
+- Work until you are too tired to dream.
+- Keep it to yourself. Everyone has their own.
+
+**Chose:** Talk to Aymer about it.
+
+Aymer was at the ford, at the back, with the Ravell banner, and saw less than you and dreamed more. He has been waiting for someone to say it first. You sit up in the hayloft with a stolen jug, the two of you, and say almost nothing, and it helps more than it has any right to. At the end he says, "Don't tell my father," and you say, "Tell him what," and he laughs for the first time in a month.
+
+*Aymer Ravell's affection +2 · Aymer Ravell's respect +1*
+
 ## The King at Ravell
 
 *Summer, year 19 of King Aldred*
 
-You are 18.
+In the summer the King comes, and the winter's dreams go wherever such things go when there is no time for them.
 
 King Aldred comes to Ravell on his summer progress with three hundred people and eats the house bare in four days. He is thirty-four, thin, quick, with his mother's dark Valdrennish eyes. He talks about Valdrenne at every meal. The crown there is his by right, he says, through his mother, and the peers of Valdrenne gave it to a cousin because they were afraid of an Adalian king. He does not say what he means to do about it. Everyone at the high table knows.
 
-The Earl of Carrow rides in on the second day with Sir Walter Pryce and forty men. The Earl does not like the King's war; he likes it less that the King has not asked him to pay for it yet.
+*(Continue)*
+
+The Earl of Carrow rides in on the second day with Sir Walter Pryce and forty men. Sir Walter is a banneret's age now, browner and harder, in better harness. You know him at once. He does not know you, and then, across the hall, at supper, he does: you see it in his face. The Earl does not like the King's war; he likes it less that the King has not asked him to pay for it yet.
 
 The household is in a fever. Squires are everywhere at once. For three days it is possible, just, for anyone to be seen by anyone.
 
@@ -503,17 +729,21 @@ Master Gervase is squeezing him. The steward has been skimming the manor for yea
 
 Sir Hamon reads it with his lips moving. Then he looks up at you, and you see him understand, slowly, that he has been robbed for twenty years by a man he trusted. He does nothing yet. He is not a quick man. But he knows now, and you have given him the proof.
 
-*Sir Hamon Darrell's respect +1 · Piers's affection +2*
+*Piers's affection +2*
 
 ## The Ravell Tourney
 
 *Autumn, year 19 of King Aldred*
 
-For the King's leaving, Lord Ravell holds a tourney in the water meadows. Jousts for the knights, a course for the squires, a melee on foot for anyone fool enough, a prize of a harness for the best squire, and a great deal of betting below the stands.
+For the King's leaving, Lord Ravell holds a tourney in the water meadows below the hall, and spends on it, Father Benet says, what the manor of Ashby brings in for two years.
 
-Giles Marrick has entered everything. He is twenty now and will be knighted at Christmas. He has been telling everyone that he means to put the reeve's son in the mud before the King leaves.
+Stands of new timber hung with painted cloth. Pavilions in every colour along the river. Jousts for the knights, a course at the ring for the squires, a melee on foot for anyone fool enough, a prize of a harness for the best squire, and below the stands a great deal of betting, and pie-sellers, and pickpockets, and half of Wendham come out to see the King.
 
-Isabel Sayer is in the stands with Lady Ravell's women. She has a green sleeve. She has not given it to anyone yet.
+*(Continue)*
+
+Giles Marrick has entered everything. He is twenty now and is to be knighted at Christmas. He has been telling everyone, smiling, that he means to put the reeve's son in the mud before the King leaves.
+
+Isabel Sayer is in the stands with Lady Ravell's women. She has a green sleeve in her lap. She has not given it to anyone yet. She is not looking at you, in a way that takes some effort. Aymer has bet a pound he does not have on you, without asking, and told you so.
 
 - ~~Ride in the squires' course.~~ *(Risky, Requires: a horse, or your master's loan of one)*
 - Fight in the melee on foot. *(Risky)*
@@ -541,11 +771,11 @@ You copy out Lord Ravell's letters to half the knights of the shire. By the end 
 
 *Learning +1 · Father Benet's affection +2 · Intrigue +1*
 
-## Summer, Year 20
+## The Commission
 
 *Summer, year 20 of King Aldred*
 
-You are 19.
+The tourney's pavilions come down, and the King's three hundred go south, and Ravell is quiet for the first time in a month, and then for a whole winter. The quiet does not last.
 
 The King has gone south to Wendmere to ask the Moot for money. Rumour says he will get it, and that it will be spent across the Narrow Sea. Every knight in the shire is counting his horses. Every creditor in the shire is counting his knights.
 
@@ -557,11 +787,19 @@ The Earl of Carrow's commissioners arrive at Ravell in June to audit the King's 
 
 ## The Commissioners
 
-Sir Walter Pryce sits at Lord Ravell's table with two clerks, the subsidy rolls, and the Earl of Carrow's commission. Sixty pounds of the King's money passed through Sir Hamon's hands and did not come out of them. Sir Walter is courteous. He says that if it is not found by Lammas, Sir Hamon will answer for it in the King's court, and that the Earl will ask for Ashby to be forfeit.
+The commissioners come on the feast of Saint John, in the rain, and take over Lord Ravell's chapel chamber for a month.
 
-Sir Hamon says he took nothing. He says he will prove it on any man's body, by combat, as his grandfather would have. He is fifty-six and has not fought on foot in fifteen years. Sir Walter smiles and says the Earl will provide a champion.
+Sir Walter Pryce sits at the table with two clerks, the subsidy rolls, and the Earl of Carrow's commission under the Earl's seal. He is courteous to everyone, including the boy who brings the wine. He is courteous to Sir Hamon. He explains, courteously, that sixty pounds of the King's money passed through Sir Hamon's hands and did not come out of them, and that if it is not found by Lammas, Sir Hamon will answer for it in the King's court, and the Earl will ask for Ashby to be forfeit.
 
-You have your copy of the Ashby figures in your shirt.
+*(Continue)*
+
+Sir Hamon goes red, then white. He says he took nothing. He says he will prove it on any man's body, by combat, as his grandfather would have. He is fifty-six and has not fought on foot in fifteen years, and everyone at the table looks at the table.
+
+Sir Walter smiles, not unkindly, and says the Earl will provide a champion.
+
+Afterwards, in the passage, Sir Hamon leans against the wall with his hand on his chest for a while before he can walk on. He says it is the stairs.
+
+You have your copy of the Ashby figures in your shirt. You can feel it there, like a second heart.
 
 - Go through the rolls in front of the commissioners and show where the money went. *(Favorable)*
 - ~~Broker a loan from the Lanzi bank to pay the shortfall, before Lammas.~~ *(Even, Requires: a way in at the Lanzi bank)*
@@ -581,9 +819,7 @@ It takes all afternoon. Sir Walter's clerks check every line and cannot fault it
 
 *Winter, year 20 of King Aldred*
 
-You are 19.
-
-At Christmas the heralds ride through every shire town in Adalia with the King's letters. Aldred, by the grace of God King of Adalia, is by right of his mother the true King of Valdrenne, and will take what is his. The Moot has granted a tenth and a fifteenth. Writs of array go out for archers. The great lords are to bring their companies to Saltcombe by Saint George's Day.
+The summer's trouble ends one way or another, as trouble does, and leaves its marks. Then, at Christmas, the heralds ride through every shire town in Adalia with the King's letters. Aldred, by the grace of God King of Adalia, is by right of his mother the true King of Valdrenne, and will take what is his. The Moot has granted a tenth and a fifteenth. Writs of array go out for archers. The great lords are to bring their companies to Saltcombe by Saint George's Day.
 
 Lord Ravell will take forty lances and two hundred archers. Every knight of his is going. Every squire is going.
 
@@ -597,7 +833,7 @@ For a squire, there is one question now. Whether you cross the Narrow Sea with s
 
 A knight must have a warhorse, a riding horse, a harness of plate, a squire of his own, and the means to keep all of them for a summer's campaign. A squire with none of those things can be knighted, in law. In practice, nobody will dub a man who cannot afford to be one. It shames the man who dubs him.
 
-You have 2s 4d.
+You have 2s 5d.
 
 - Accept what your master offers: his spare harness and a horse from his string.
 - ~~Accept a fee from Lord Ravell, ten pounds a year for life, for your service.~~ *(Requires: Lord Ravell's favour and high regard)*
@@ -618,7 +854,9 @@ Sir Hamon gives you his old harness, which was the best in the shire in the old 
 
 You have the means. Now you need a knight willing to give you the accolade, and to stand for you afterwards, because a knight dubbed by nobody in particular is nobody in particular.
 
-And you need to be able to pass for one. A knight who eats with his knife in the salt, or does not know which knee to kneel on, shames the man who dubbed him. Lord Ravell's knights have noticed that you do not know these things. Your own master may forgive it. A lord or a king will not.
+*(Continue)*
+
+And you need to be able to pass for one. A knight who eats with his knife in the salt, or does not know which knee to kneel on, or calls a banneret "sir" when he should say "my lord," shames the man who dubbed him, and the man who dubbed him knows it. Lord Ravell's knights have noticed that you do not know these things. Your own master may forgive it. A lord or a king will not.
 
 - Ask your master to knight you.
 - ~~Accept Lord Ravell's offer to knight you himself, before the household.~~ *(Requires: Lord Ravell's favour, renown, and Courtesy 2)*
@@ -634,7 +872,13 @@ He says yes before you have finished asking.
 
 ## The Vigil
 
-The night before, you keep vigil in the chapel in a white shirt, with your sword on the altar. You are supposed to pray until dawn and think about the duties of a knight: to defend the Church, the weak, the widow, and his lord.
+The night before, you keep vigil in the chapel in a white shirt, barefoot on the cold stone, with your sword on the altar and a candle burning down beside it.
+
+You are supposed to pray until dawn and think about the duties of a knight: to defend the Church, the weak, the widow, and his lord. You try. Your mind keeps going elsewhere.
+
+*(Continue)*
+
+To Ashby, and the tithe barn, and a boy in his dead brother's blue tunic counting oats.
 
 In the morning you are bathed, dressed, armed, and struck once on the neck. It is harder than you expected. Then you are Sir Hal, and the world is exactly the same, except that it is not.
 
@@ -652,9 +896,11 @@ Around Lauds you stop asking for things and just kneel. When the light comes thr
 
 *Spring, year 21 of King Aldred*
 
-You are 20. The army musters at Saltcombe in a week.
+Spring comes early that year, which the old men say is a bad sign, and the young men say is a good one. The army musters at Saltcombe in a week.
 
 There is time for one thing before you go. Perhaps two, if you do not sleep.
+
+*(Continue)*
 
 Isabel Sayer is at Ravell with Lady Ravell's household. Dame Joan Wyck is at Wyck, a half-day west.
 
@@ -672,7 +918,9 @@ She gives you a ring of plaited hair in return and tells you not to be a fool in
 
 ## Saltcombe
 
-You are 20.
+You come down into Saltcombe on Saint George's Eve with the rest of the shire, behind the Ravell banner, at the end of a column a mile long.
+
+*(Continue)*
 
 Saltcombe harbour is so full of ships that you could walk across it on their decks. Horses are being slung aboard in canvas with their legs kicking. Archers are counting arrows. A Sarenzan galley sits at the mouth of the harbour like a crow on a fence, waiting to see who wins.
 
@@ -717,7 +965,7 @@ Jankin Rooke completes the number: an archer from Cobb's company, eighteen, quie
 
 It takes eleven days to get the army aboard and nine to cross, because the wind turns on the second night and blows half the fleet back toward Adalia, and a quarter of it somewhere else entirely. Ships are still straggling into the Armance a fortnight later. Some never come. One of them was carrying the King's siege timber.
 
-Your ship is a Saltcombe cog called the Marie, fat and slow, with forty horses slung in her belly and sixty men on her deck. On the second night the storm comes. The horses scream below in the dark. Men are sick over the side, and then over each other.
+Your ship is a Saltcombe cog called the Marie, fat and slow, with forty horses slung in her belly and sixty men on her deck. On the second night the storm comes. The horses scream below in the dark. Men are sick over the side, and then over each other. Aymer Ravell is on the Marie too, by his own arrangement. He is greener than anyone, and still making jokes.
 
 *(Continue)*
 
@@ -748,6 +996,30 @@ The boats go in. The first wave is already in the water to the waist, wading, ho
 **Chose:** Get your archers onto the dunes on the flank, and shoot them off the beach. (Even: failure)
 
 The dune is further than it looked and softer. By the time you are up, the first wave has taken the beach by itself, at a price. They are laying the dead out in rows above the tideline when you come down.
+
+## The First Night Ashore
+
+That night you sleep in Valdrenne for the first time, in a field outside Port-Haudry, under a hedge, with the sea grumbling on the shingle a mile off and a thousand fires going up and down the coast.
+
+Your following builds its own fire. It is the first time you have all sat round one together with nobody else's men about, and it is different from Saltcombe. Somebody has found a hen. Somebody else has found wine. Nobody asks where.
+
+*(Continue)*
+
+Davy has your harness off and is scrubbing the salt out of it with sand, talking the whole time, about the beach, and the crossbowmen, and the man he saw with no face. Jankin Rooke sits a little back from the fire, telling his beads. Wat Coker is across the fire from you, as far as it goes, watching you the way he watched you at the churchyard wall when you were boys.
+
+They are looking at you, a little, the way men look at the one who is supposed to say something.
+
+- Sit with them, and get each of them talking about home.
+- Tell them plainly how you mean to run things.
+- Walk the edge of the camp alone, and look at the dark.
+
+**Chose:** Sit with them, and get each of them talking about home.
+
+It takes a while, and some of the wine. Rooke has a mother and four sisters in Ravell village and sends them every penny. Wat says Mag is well. He says it to the fire, not to you, but he says it. Davy has nobody, it turns out, except old Hob Crane, his grandfather, who sent him off with a clout round the ear and a blessing, in that order.
+
+By the time the fire is embers, you know them. That is a weight you will carry, though you do not know it yet.
+
+*Davy Ludd's loyalty +1 · Jankin Rooke's loyalty +1 · Wat Coker's loyalty +1*
 
 ## The Duchess's Camp
 
@@ -825,13 +1097,19 @@ The priest has the parish silver and the miller has a pot of coin under his floo
 
 ## The Foragers
 
-By the second week the army has eaten everything within a day's march and has to forage further and further out, in small parties, across country the Valdrennish know and you do not.
+By the second week, the army has eaten everything within a day's march and has to forage further and further out, in small parties, across country the Valdrennish know and you do not.
 
-Your company is sent out with two wagons to a grange called Les Aulnes, three miles off the line of march. You find the grange. You find its granary full. You also find, when you come out of it, that the lane back to the army is full of Valdrennish horsemen: twenty of them, perhaps, knights and serjeants, with the morning sun behind them.
+Your company is sent out with two wagons to a grange called Les Aulnes, three miles off the line of march, down a sunken lane between hedges taller than a man on horseback.
+
+*(Continue)*
+
+You find the grange. You find its granary full, and its people gone, so recently that the bread in the oven is still warm.
+
+That should have told you something. It is when you come out of the granary with the first sacks that you see it: the lane back to the army is full of Valdrennish horsemen, twenty of them, perhaps, knights and serjeants with lances, the morning sun behind them, sitting their horses quite still, waiting for you to notice.
 
 - Form your men across the lane and fight it out from the wagons. *(Risky, MORTAL DANGER)*
 - Get everyone into the stone granary and let the archers shoot from the doors. *(Even)*
-- Send Davy back for help on the fastest horse, and hold until it comes. *(Even)*
+- Send Davy back for help on the fastest horse, and hold until it comes. *(Favorable)*
 - Leave the wagons and get your men away while you can.
 
 **Chose:** Get everyone into the stone granary and let the archers shoot from the doors. (Even: success)
@@ -955,10 +1233,13 @@ Word comes down the line, shouted from man to man: the King's engineers are at t
 
 *(Continue)*
 
+You see Aymer Ravell, who shared a stolen pie with you on your first night at Ravell, on foot, his horse gone, in a knot of his father's men who are fighting back to back by a burning cart.
+
 You cannot see your master's banner. The last you saw of it, it was going down into the press.
 
 - Keep your own men together and get them over the bridge in order. *(Risky)*
 - Go back into the press for your master. *(Even, MORTAL DANGER)*
+- Go for Aymer. *(Even, MORTAL DANGER)*
 - Get yourself over the bridge. Your men can follow or not.
 
 **Chose:** Go back into the press for your master. (Even: success)
@@ -987,7 +1268,7 @@ Nobody sings anything that night. The King walks among the fires bareheaded, and
 
 **Chose:** Count your men, and name the missing.
 
-You go round them in the dark, twice. You know the faces that are here. It is the faces that are not that you keep seeing. Davy sits beside you afterwards with his knees drawn up and asks whether it is always like this. You say no. You do not know if that is true.
+You go round them in the dark, twice. You remember the winter after the Leven, and who sat up with you, and you sit up with them now. You know the faces that are here. It is the faces that are not that you keep seeing. You know whose mothers to write to. You learned that by a fire on the first night ashore, without knowing what you were learning. Davy sits beside you afterwards with his knees drawn up and asks whether it is always like this. You say no. You do not know if that is true.
 
 *Davy Ludd's loyalty +1 · Jankin Rooke's loyalty +1 · Wat Coker's loyalty +1*
 
@@ -1366,10 +1647,13 @@ Two hundred paces to your right, where the line is thinnest, the Valdrennish bre
 
 In the same moment, in front of you, a knot of Valdrennish knights in the Constable's colours, black and silver, comes over the dyke after a young man with a gold circlet on his helm. Thibaut de Brésy, the Constable's son. Worth more than everything you will ever own.
 
+And to your left, Aymer Ravell is down, under a Valdrennish knight with an axe.
+
 Away on the far left, on their own causeway, the gold shuttle banners of Vervais have not moved since dawn.
 
 - Go right, for the King's banner. *(Even, MORTAL DANGER)*
 - Go for the Constable's son. *(Risky)*
+- Go for Aymer. *(Even, MORTAL DANGER)*
 - Stay in your place in the line. The line is everything.
 
 **Chose:** Go for the Constable's son. (Risky: failure)
@@ -1609,7 +1893,7 @@ The March is quiet now, the way a burned field is quiet. Everyone at home talks 
 
 **Chose:** Spend the summer with your family.
 
-It is a quiet summer, and the best one you have had in years. You mend things. You eat too much. At the end of it your family stand in the lane and watch you go, and this time you look back.
+It is a quiet summer, and the best one you have had in years. It is like the harvest leave, long ago, when you were a boy in a new coat, except that this time you are the one who notices how they have aged. You mend things. You eat too much. At the end of it your family stand in the lane and watch you go, and this time you look back.
 
 ## Ravell, in Passing
 

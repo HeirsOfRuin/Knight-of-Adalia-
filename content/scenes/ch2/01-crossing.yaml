@@ -170,18 +170,18 @@
       success:
         text: You go up the beach through the soft sand that drags at your feet like a dream, and the crossbowmen do not have time to wind again. Their line breaks and goes back up the hill into the Tour, and the gate shuts behind them. The beach is the King's. The Tour will hold out for another month and cost forty more men. But men saw who went first off the boats.
         effects: [ { add: { res.renown: 2, rep.knights: 1 } }, { trait: +veteran } ]
-        next: c2_armance
+        next: c2_first_fire
       partial:
         text: You take the dunes. It costs. A bolt goes through the man beside you, and another through your own arm, and you do not remember the last twenty paces. The beach is the King's.
         effects: [ { add: { res.renown: 1 } }, { injury: arrow_wound }, { casualties: { men: 1, named: 0 } }, { trait: +veteran } ]
-        next: c2_armance
+        next: c2_first_fire
       failure:
         text: "[if armour >= 1 && !injured]A bolt hits you square in the chest and your armour stops it, and you go down in the surf with all the breath gone out of you. Your men drag you out of the water. Others take the beach.[else]A bolt takes you in the throat in the surf at Port-Haudry, the first morning of the war.[/if]"
         effects:
           - if: [ armour >= 1, "!injured" ]
             then: [ { injury: crushed_ribs } ]
             else: [ { die: "Killed on the beach at Port-Haudry on the first morning of the war, aged {age}." } ]
-        next: c2_armance
+        next: c2_first_fire
     - id: archers
       text: Get your archers onto the dunes on the flank, and shoot them off the beach.
       tags: [martial, allies]
@@ -195,15 +195,52 @@
       success:
         text: From the top of the dune you can see the whole line of them. The arrows go in from the side, where their big shields do not cover them, and after the third flight they break back toward the Tour. The King steps ashore on a beach that cost him thirty men, most of them in the first boats.
         effects: [ { add: { res.renown: 1, rel.@master.respect: 1 } }, { trait: +veteran } ]
-        next: c2_armance
+        next: c2_first_fire
       failure:
         text: The dune is further than it looked and softer. By the time you are up, the first wave has taken the beach by itself, at a price. They are laying the dead out in rows above the tideline when you come down.
-        next: c2_armance
+        next: c2_first_fire
     - id: horses
       text: See to the horses and the boats while others do the fighting.
       tags: [yield]
       text_after: Someone has to get forty horses ashore through the surf without drowning them. It is not glorious. Your master's horses all come ashore alive, and that is noticed by the man who owns them.
       effects: [ { add: { rel.@master.respect: 1 } } ]
+      next: c2_first_fire
+
+- id: c2_first_fire
+  chapter: ch2
+  title: The First Night Ashore
+  text: |
+    That night you sleep in Valdrenne for the first time, in a field outside Port-Haudry, under a hedge, with the sea grumbling on the shingle a mile off and a thousand fires going up and down the coast.
+
+    Your following builds its own fire. It is the first time you have all sat round one together with nobody else's men about, and it is different from Saltcombe. Somebody has found a hen. Somebody else has found wine. Nobody asks where.
+
+    [break]
+
+    [if npc.davy_ludd.follower]Davy has your harness off and is scrubbing the salt out of it with sand, talking the whole time, about the beach, and the crossbowmen, and the man he saw with no face.[/if] [if npc.jankin_rooke.follower]Jankin Rooke sits a little back from the fire, telling his beads.[/if] [if npc.simkin_barre.follower]Simkin Barre is cooking the hen and telling everyone how he came by it, which changes each time.[/if] [if npc.roger_tallis.follower]Roger Tallis has his back to a tree and his eyes on the dark, and has not taken his sword off.[/if] [if npc.wat_coker.follower]Wat Coker is across the fire from you, as far as it goes, watching you the way he watched you at the churchyard wall when you were boys.[/if][if npc.perkin_dyer.follower]Perkin Dyer is eating, steadily, anything anyone hands him.[/if][if npc.gib_shawe.follower]Gib Shawe is restringing every bow in the company, because it is the thing he can do.[/if][if npc.dickon_laund.follower]Dickon is whittling something and not saying what.[/if] [if retinue <= 1]It is a small fire. It is yours.[/if]
+
+    They are looking at you, a little, the way men look at the one who is supposed to say something.
+  choices:
+    - id: talk
+      text: Sit with them, and get each of them talking about home.
+      tags: [allies]
+      text_after: |
+        It takes a while, and some of the wine. [if npc.jankin_rooke.follower]Rooke has a mother and four sisters in Ravell village and sends them every penny. [/if][if npc.simkin_barre.follower]Barre's father is a carter who beat him, and whom he misses. [/if][if npc.roger_tallis.follower]Tallis, when it comes to him, says only that he was born in Saltcombe and has not been home in twenty years, and that there is nobody there now who would know him. [/if][if npc.wat_coker.follower]Wat says Mag is well. He says it to the fire, not to you, but he says it. [/if][if npc.perkin_dyer.follower]Perkin says Annot made him promise to bring you back, and that he means to. [/if][if npc.gib_shawe.follower]Gib says the bailiff, his uncle, is dead, and that he did not cry, and then does not say anything for a while. [/if][if npc.dickon_laund.follower]Dickon says Nell's child has a cough, and that he is here for the money, and that he is not sorry. [/if][if npc.davy_ludd.follower]Davy has nobody, it turns out, except old Hob Crane, his grandfather, who sent him off with a clout round the ear and a blessing, in that order.[/if]
+
+        By the time the fire is embers, you know them. That is a weight you will carry, though you do not know it yet.
+      effects: [ { set: flag.c2_knew_men }, { add: { rel.davy_ludd.loyalty: 1, rel.jankin_rooke.loyalty: 1, rel.simkin_barre.loyalty: 1, rel.roger_tallis.loyalty: 1, rel.wat_coker.loyalty: 1, rel.perkin_dyer.loyalty: 1, rel.gib_shawe.loyalty: 1, rel.dickon_laund.loyalty: 1 } } ]
+      next: c2_armance
+    - id: rules
+      text: Tell them plainly how you mean to run things.
+      tags: [martial]
+      text_after: |
+        Short and plain: nobody wanders off alone, nobody drinks on watch, nobody takes anything from the Duchess's people, and every man gets his share of whatever comes, the same share, yours included. [if npc.roger_tallis.follower]Tallis grunts, which you take for approval.[/if] [if npc.simkin_barre.follower]Barre asks what counts as taking. You tell him. He looks disappointed and impressed.[/if]
+
+        It is not friendly. It is clear. In the weeks to come, nobody in your following can say they did not know the rules.
+      effects: [ { set: flag.c2_laid_down_rules }, { add: { skill.command: 1, rel.roger_tallis.respect: 1 } } ]
+      next: c2_armance
+    - id: walk
+      text: Walk the edge of the camp alone, and look at the dark.
+      text_after: Out past the last fire, the dark goes on for ever. Somewhere in it there are people who want you dead and have every reason to. You stand there a long time. When you come back, the fire is low and most of your men are asleep, except [if npc.roger_tallis.follower]Tallis, who nods to you as you sit down, as if you had done the right thing.[else]Davy, who has waited up.[/if]
       next: c2_armance
 
 - id: c2_armance
@@ -378,9 +415,15 @@
   chapter: ch2
   title: The Foragers
   text: |
-    By the second week the army has eaten everything within a day's march and has to forage further and further out, in small parties, across country the Valdrennish know and you do not.
+    By the second week, the army has eaten everything within a day's march and has to forage further and further out, in small parties, across country the Valdrennish know and you do not.
 
-    Your company is sent out with two wagons to a grange called Les Aulnes, three miles off the line of march. You find the grange. You find its granary full. You also find, when you come out of it, that the lane back to the army is full of Valdrennish horsemen: twenty of them, perhaps, knights and serjeants, with the morning sun behind them.
+    Your company is sent out with two wagons to a grange called Les Aulnes, three miles off the line of march, down a sunken lane between hedges taller than a man on horseback. [if flag.c2_laid_down_rules]Your men keep together, as you told them, and grumble about it.[/if]
+
+    [break]
+
+    You find the grange. You find its granary full, and its people gone, so recently that the bread in the oven is still warm.
+
+    That should have told you something. It is when you come out of the granary with the first sacks that you see it: the lane back to the army is full of Valdrennish horsemen, twenty of them, perhaps, knights and serjeants with lances, the morning sun behind them, sitting their horses quite still, waiting for you to notice.
   choices:
     - id: fight
       text: Form your men across the lane and fight it out from the wagons.

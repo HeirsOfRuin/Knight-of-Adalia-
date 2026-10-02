@@ -168,6 +168,8 @@ c2_vaudrey_held: { description: "Kept his men in hand during the sack of Vaudrey
 c2_vaudrey_looted: { description: "Took his share of Vaudrey", hidden: true, later: ch3 }
 c2_corbie_ransom_due: { description: "Corbie's ransom is owed to him", hidden: true, later: ch3 }
 c2_corbie_squeezed: { description: "Squeezed the Corbies for a larger ransom", hidden: true, later: ch3 }
+c2_knew_men: { description: "Got his men talking about home on the first night ashore", hidden: true }
+c2_laid_down_rules: { description: "Laid down plain rules to his following on the first night ashore", hidden: true }
 c2_heard_council: { description: "Heard the King decide to turn back at the Lisonne", hidden: true, later: ch3 }
 c2_cut_down_weavers: { description: "Cut down the hanged weavers of Vervais at the Lisonne ferry", hidden: true, later: ch3 }
 c2_men_warned: { description: "Told his men the truth at the Lisonne and made them carry bread", hidden: true }

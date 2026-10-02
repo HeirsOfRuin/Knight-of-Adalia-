@@ -15,7 +15,7 @@ The working reference for every recurring character: how they look and talk, wha
   - **What drives him:** Wants to stay reeve and to see his son rise further than any Ashby man has. Afraid of being found out, if he skims, or of being blamed, if he does not.
   - **Secret:** Either he has skimmed for years (`father_skims`) or he knows the steward has.
   - **Arc:** Ch1 crisis (exposed, shielded or confessed). Ch3: what he thinks of his son as a lord who has his own reeve.
-- **Edith, his mother.**
+- **Edith, his mother.** (named in the home scene, "The Dairy")
   - **Look and voice:** Practical, devout, quietly braver than her husband. Speaks to her son in the dairy, where Piers cannot hear.
   - **History:** Lost her first son at four, to a winter fever. His blue tunic waits in the chest.
 - **Cis and Avice, his younger sisters.**
@@ -35,6 +35,9 @@ The working reference for every recurring character: how they look and talk, wha
 - **Ralf Mercer.**
   - **Look and voice:** Wool merchant on the council. A tidy man who writes everything down and speaks to his son in the tone he uses for customers.
   - **What drives him:** Ashamed of his trade in front of knights, and proud of it everywhere else. Wants a son in the gentry. Afraid of the Lanzi debt.
+- **Margery Mercer, his mother.**
+  - A poor knight's daughter from Hollesby (Sir Roger, who fought at Harrow Ford), married to wool for money. Keeps her father's sword over the hearth and his spurs in a box; gives the spurs to her son when he leaves if he sat with her.
+- **Thomas Penny, the clerk.** Old, slow, jealous of a boy who does sums faster.
 - **Master Osbert Fuller, guild warden.**
   - **Look and voice:** Fat and shrewd. His daughter does his sums. Says "Well now" before every bargain.
 - **Cecily Fuller.**
@@ -55,6 +58,8 @@ The working reference for every recurring character: how they look and talk, wha
 - **Will Cobb, serjeant.**
   - **Look and voice:** A voice like a millrace, hands like roots. Grey beard, new shirts. Tells war stories for ale. Loves Hugh Fletcher like a brother and owes him something unspecified.
   - **Arc:** Will be in the Ch2 army. May die there.
+- **Alison, his mother, and Kit, his sister.** Alison spins for a Wendham clothier and never stops; asks him to come home from any war "all of you". Kit is three years younger and follows him everywhere.
+- **Home:** Hollin, a dozen cottages on the edge of the Ravell chase.
 - **Gib Shawe.**
   - **Look and voice:** The bailiff's nephew. Cannot draw a war bow and is terrified someone will find out.
 - **Mariot Wood.**
@@ -72,6 +77,7 @@ The working reference for every recurring character: how they look and talk, wha
 - **Lord Thurstan Ravell.**
   - **Look and voice:** Fifty, heavy, intelligent, cold. Speaks little and remembers everything.
   - **What drives him:** Wants Ravell to outlast him and is willing to sell anything else to make sure it does. Afraid of Carrow and of the King's war bankrupting the shire.
+- **Hob Crane, head groom.** See below. Davy Ludd's grandfather.
 - **Lady Eleanor Ravell.**
   - **Look and voice:** Elegant, devout, hard. Hears through walls. Burns juniper against everything.
   - **Secret:** The heir's real father is not her husband. This is the household secret the servant's son knows.
@@ -100,6 +106,7 @@ The working reference for every recurring character: how they look and talk, wha
 
 ## The masters
 - **Sir Hamon Darrell of Ashby.**
+  - **Wife:** Alice, dead eleven years in childbed. She kept the accounts; Ashby was solvent while she lived. He still talks to her at night.
   - **Look and voice:** Fifty-six, big, going soft. A red face, white hair, an uncalculated smile. Loves his hounds. Says "Well, well." Feeds people.
   - **What drives him:** Wants to be thought a good lord. Has never once checked an account.
   - **Arc:** Ch1 crisis. Ch2: too old for the war, or dies in it.
@@ -117,3 +124,9 @@ The working reference for every recurring character: how they look and talk, wha
   - **Situation:** Holds Wyck in her own right for now. Her stepson Ralph wants it.
 - **Black Ewan of Glenhallow.**
   - **Look and voice:** A tall Caldmoor raider with a voice like a cart on stones. Laughs at everything except his family.
+
+## Added in the deepening pass (2026-10-02)
+- **Hugo,** Pryce's squire in the wet year. Kicks dogs. Dies at a northern tourney before Ch1's progress.
+- **Bonifacio,** Sarenzan master engineer at Sauvemer.
+- **Treloar,** captain of the tin miners at Sauvemer.
+- **Thibaut de Brésy,** the Constable's son, nineteen; taken at Les Salines by the player or by Pryce.

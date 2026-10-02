@@ -636,6 +636,26 @@ The 33 not yet read are marked `later: ch3`.
 - Cautious and diplomatic players mostly reach the ceremonial knighting at the grants.
 - Deaths cluster at the Ch1 crises, the rout at Grisolles, and the King's banner at Les Salines.
 
+## Deepening pass (2026-10-02)
+**Prologue:** 14 to 20 scenes, about 17k words.
+- Burgess, archer and servant openings rewritten to the reeve opening's depth.
+- One home scene per background builds the family and introduces the childhood sweetheart.
+- Shared scenes added: Sir Walter Pryce on the road at ten, and Midsummer Eve at twelve.
+- Every time jump is bridged.
+
+**Ch1:** 46 to 50 scenes.
+- New quiet scenes: the first night, harvest home, the master's ride, and the winter after the Leven.
+- Fourteen main scenes deepened with Continue pages and callbacks.
+- Friends built deliberately: Aymer for Hamon's household, Will Cobb for Brome.
+- The master's knighting now needs respect 6, which keeps the goal-directed peacetime average near 30%. Martial play is the outlier, at about 70%.
+
+**Ch2:** the first night ashore added, to build the men before the war starts killing them.
+
+**Still to do:**
+- deepen the Ch1 side events and delayed consequences;
+- deepen the Ch2 camp events;
+- second-pass prose on the Ch2 opening scenes.
+
 ## Decisions log
 | Date | Decision |
 |---|---|

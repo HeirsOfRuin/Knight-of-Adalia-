@@ -6,9 +6,23 @@
   title: The Claim
   on_enter: [ { advance: { seasons: 2 } } ]
   text: |
-    The summer's trouble ends one way or another, as trouble does, and leaves its marks. Then, at Christmas, the heralds ride through every shire town in Adalia with the King's letters. Aldred, by the grace of God King of Adalia, is by right of his mother the true King of Valdrenne, and will take what is his. The Moot has granted a tenth and a fifteenth. Writs of array go out for archers. The great lords are to bring their companies to Saltcombe by Saint George's Day.
+    The summer's trouble ends one way or another, as trouble does, and leaves its marks. Then, at Christmas, the heralds come.
 
-    Lord Ravell will take forty lances and two hundred archers. Every knight of his is going. Every squire is going. [if alias.master == walter_pryce]The Earl of Carrow's company will be twice that, and Sir Walter Pryce means to come home from it a banneret.[/if]
+    They ride into every shire town in Adalia in the King's colours with trumpets, and stand on the market cross, and read the King's letters to whoever will listen, which is everybody.
+
+    [break]
+
+    "Aldred, by the grace of God King of Adalia, by right of his lady mother the true King of Valdrenne..."
+
+    "About time!" somebody yells, at Wendham. "Let's have their wine!"
+
+    "...will take what is his. The Moot has granted a tenth and a fifteenth..."
+
+    "There's our wool money gone, then," mutters a burgess.
+
+    "...and the great lords are to bring their companies to Saltcombe by Saint George's Day."
+
+    Lord Ravell will take forty lances and two hundred archers. Every knight of his is going. Every squire is going. [if alias.master == walter_pryce]The Earl of Carrow's company will be twice that, and Sir Walter Pryce means to come home from it a banneret, and says so, cheerfully, to anybody who will listen.[/if]
 
     For a squire, there is one question now. Whether you cross the Narrow Sea with spurs on your heels, or without them.
   choices:
@@ -122,7 +136,8 @@
       tags: [allies]
       requires: [ npc.@master.alive, rel.@master.respect >= 7, res.renown >= 2, { any: [ background != archer, rep.knights >= 2 ] } ]
       label: "Requires: your master's respect, some renown[if background == archer], and knights willing to stand witness for a bowman's son (Knights standing 2)[/if]"
-      text_after: "He says yes before you have finished asking.[if background == archer] Finding two knights to stand witness takes longer. Some of the men who will not are men you have fought beside.[/if]"
+      text_after: |
+        "Ha!" [if alias.master == hamon_darrell]Sir Hamon slaps the table so hard the hounds jump. "I was wondering when you'd ask. I'd have asked you myself, but I thought you'd say no, and then where would I be?"[elif alias.master == ancel_brome]Sir Ancel looks at you a long moment over his cup. "Hm," he says. Then: "Yes." Then, as you turn to go, as if it costs him: "Should have asked sooner. You'd earned it."[elif alias.master == walter_pryce]"Of course," says Sir Walter, before you have finished. "I've had the indenture drawn since Michaelmas. I was waiting for you to ask, to see if you would."[else]Your master says yes before you have finished asking.[/if][if background == archer] Finding two knights to stand witness takes longer. Some of the men who will not are men you have fought beside, and they will not meet your eye in the yard.[/if]
       effects:
         - station: knight
         - set: flag.c1_dubbed_by_master
@@ -281,7 +296,8 @@
       text: Find Isabel Sayer and give her your token.
       tags: [diplomacy]
       visible_if: [ suit.isabel_sayer.status >= courted ]
-      text_after: She gives you a ring of plaited hair in return and tells you not to be a fool in Valdrenne. Her father, she says, has had an offer for her from a widowed knight in Hollesby. She has asked him to wait a year. He will not wait two.
+      text_after: |
+        "Don't be a fool in Valdrenne," Isabel says, pressing a ring of plaited hair into your palm, and closing your fingers over it. "I mean it. No heroics. Heroes come home in carts." She is trying to laugh. "Father has had an offer from Hollesby. The widower. Gout, five children, a lovely mill. I've told him to wait a year." She looks at the ring and not at you. "He won't wait two."
       effects:
         - assign: { suit.isabel_sayer.pledge: token }
         - add: { suit.isabel_sayer.regard: 2, counter.tokens: 1 }
@@ -301,7 +317,8 @@
       text: Go to Wendham and see Cecily Fuller.
       tags: [wealth]
       visible_if: [ suit.cecily_fuller.status >= courted ]
-      text_after: She gives you a purse she has embroidered herself, with a pound in it, and says it is a loan. Then she says it is not a loan. Then she says her father has been asked for her hand by a Sarenzan factor and has not said no.
+      text_after: |
+        Cecily Fuller gives you a purse she has embroidered herself, with a pound in it. "It's a loan," she says briskly. "Ten per cent, payable at Michaelmas." Then, before you can answer: "It isn't a loan." Then, looking at the floor: "Father has been asked for me by a Sarenzan factor. He hasn't said no." She looks up. "He hasn't said yes either. I'm keeping the books on that one myself."
       effects:
         - assign: { suit.cecily_fuller.pledge: token }
         - add: { suit.cecily_fuller.regard: 2, res.coin: 240, counter.tokens: 1 }
@@ -339,7 +356,10 @@
       next: c1_end
     - id: alehouse
       text: Spend the last night in the alehouse with the men.
-      text_after: Will Cobb's archers sing the old Harrow Ford song, all twenty verses. You know nineteen. Nobody sleeps. Everyone remembers.
+      text_after: |
+        "Room for one more! Shove up, Tom, you fat bastard!"
+
+        Will Cobb's archers are in the alehouse at Ravell, all of them, and the alewife has given up trying to close. They sing the Harrow Ford song, all twenty verses, standing on the benches, and you know nineteen of them, and they make you stand up and sing the twentieth alone, badly, and cheer you as if you'd sung it like an angel. Nobody sleeps. Some of these men will not come home. Everyone in the room knows it, and nobody says it, and the singing gets louder.
       effects: [ { add: { rep.commons: 1, rep.knights: 1 } } ]
       next: c1_end
 

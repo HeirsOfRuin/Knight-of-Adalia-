@@ -65,7 +65,7 @@
 
     "Well, it did. Everyone knows it did."
 
-    [if flag.c2_granted_marsalin]A big woman with forearms like hams pushes to the front, wiping her hands on her apron. "Margot," she says. "I keep the salt-boilers. I saw you on the dyke, the day of the battle." She looks at you without love and without hate. "My man's still out there in the pans somewhere. Well. You're here now. What are you going to do?"[elif flag.c2_granted_kerval]A huge cheerful man shoves through, beaming, with his hat in his hands. "Gwenaël! I am the reeve! Welcome, welcome!" His smile falters. "Is a bad day. Very bad. But welcome!"[else]A one-eyed man in a leather apron that smells of eels leans on the churchyard wall, chewing a straw. "Bastien," he says. "Headman, for my sins. You'll be wanting to know who's sick." He spits. "Ask who isn't. Quicker."[/if]
+    [if flag.c2_granted_marsalin]A big woman with forearms like hams pushes to the front, wiping her hands on her apron. "Margot," she says. "I keep the salt-boilers. I saw you on the dyke, the day of the battle." She looks at you without love and without hate. "My man's still out there in the pans somewhere. Well. You're here now. What are you going to do?"[elif flag.c2_granted_kerval]A huge cheerful man shoves through, beaming, with his hat in his hands. "Gwenaël! I am the reeve! Welcome, welcome!" His smile falters. "Is a bad day. A bad, bad day. But welcome!"[else]A one-eyed man in a leather apron that smells of eels leans on the churchyard wall, chewing a straw. "Bastien," he says. "Headman, for my sins. You'll be wanting to know who's sick." He spits. "Ask who isn't. Quicker."[/if]
   choices:
     - id: house
       text: Go into the dead woman's house yourself, and see.
@@ -406,8 +406,6 @@
 
 - id: c3_spring
   chapter: ch3
-  kind: ending
-  ending: ch3_complete
   title: The First Spring
   on_enter: [ { advance: { seasons: 1 } } ]
   text: |
@@ -420,5 +418,7 @@
     There is a letter on your table, under the King's seal, about the wages of labourers. There is another from [if flag.c2_granted_kerval]the Duchess[else]the captain at Sauvemer[/if], about the truce, which runs out at Lady Day next year. There is a third, unopened, from home.
 
     You are a lord of a manor that has lived through the end of the world. Now you have to find out how to live in what comes after.
-
-    End of the chapters written so far. Chapter 3 continues with the Lord, the Match and the Reckoning.
+  choices:
+    - id: open
+      text: Break the King's seal.
+      next: c3_ordinance

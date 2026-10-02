@@ -1,0 +1,290 @@
+# Chapter 3 pool: c3_manor, the everyday business of a lord. One draw between
+# each spine scene of Act II. Manor-specific events use requires on the grant flag.
+
+- id: c3m_pigs
+  chapter: ch3
+  kind: pool
+  pool: c3_manor
+  title: The Manor Court
+  once: true
+  text: |
+    Manor court, in the hall, on a wet Thursday, with the whole village crammed in to watch, because it is better than work.
+
+    A widow called Guillemette says that Pierre the carter's pigs have been in her barley three times since Easter, and she has lost half her strip, and she wants paying. Pierre the carter says his pigs are honest pigs and her fence is a disgrace. Pierre the carter is also [if flag.c2_granted_marsalin]Margot's[elif flag.c2_granted_kerval]Gwenaël's[else]Bastien's[/if] cousin, and everyone in the hall knows it, and is watching to see whether you know it too.
+
+    "Well, monseigneur?" says the steward, pen ready.
+  choices:
+    - id: fair
+      text: Find for the widow. Pierre pays for the barley and mends her fence.
+      tags: [piety, learning]
+      text_after: |
+        "Two bushels, and the fence mended by Sunday." The hall breathes out. Pierre the carter goes red, and looks at his cousin, and his cousin looks at the ceiling. Guillemette cries. On the way out an old man you have never spoken to touches his cap to you. "Fair," he says. "That was fair."
+      effects: [ { add: { estate.temper: 1, rep.honor: 1 } } ]
+      next: "@return"
+    - id: cousin
+      text: Find for Pierre. Keep the headman sweet; you need him.
+      tags: [cunning]
+      text_after: The widow's fence is a disgrace, you find. The pigs are honest pigs. Pierre grins, and the headman nods to you, barely, across the hall. Guillemette goes home dry-eyed, and you would rather she had cried. The village learns how your court works.
+      effects: [ { add: { estate.temper: -1, rep.ruthlessness: 1 } } ]
+      next: "@return"
+    - id: split
+      text: Split it. Half the barley, and both of them mend the fence together.
+      tags: [diplomacy]
+      text_after: Neither of them is happy. "That," says the steward afterwards, sanding the roll, "is what they call justice, monseigneur." By Midsummer Guillemette and Pierre the carter are seen walking out together on Sunday afternoons, which nobody, least of all you, predicted.
+      effects: [ { add: { estate.temper: 1 } } ]
+      next: "@return"
+
+- id: c3m_mill
+  chapter: ch3
+  kind: pool
+  pool: c3_manor
+  title: The Mill
+  once: true
+  text: |
+    The great wheel of the mill cracks in the spring flood, a split right through the shaft, and the miller comes up to the house with his cap in his hands and flour still in his eyebrows.
+
+    "No grinding, monseigneur," he says. "Not till it's mended. And it's the lord's mill." He coughs, delicately. "So it's the lord's shaft."
+
+    A new shaft is oak, and oak means a carpenter from the town, and a carpenter from the town means money. Until then, everyone on the manor grinds their grain by hand in querns, which is the custom forbidden by the lord, because the lord takes a toll at the mill.
+  choices:
+    - id: pay
+      text: Pay for the carpenter and the oak.
+      tags: [wealth]
+      requires: [ res.coin >= 60 ]
+      text_after: The carpenter comes, and the oak, and the wheel turns again by Whitsun. The miller gives you a bag of the first flour, as if you had baked it.
+      effects: [ { add: { res.coin: -60, estate.temper: 1 } } ]
+      next: "@return"
+    - id: querns
+      text: Let them grind by hand until it is mended. No toll, no fines.
+      tags: [piety, allies]
+      text_after: The querns come out of every attic in the village, and for two months the whole manor sounds like a beehive. You lose the mill toll for the season. Nobody forgets that you did not fine a single quern.
+      effects: [ { add: { res.coin: -20, estate.temper: 2 } } ]
+      next: "@return"
+    - id: miller
+      text: Make the miller pay for it. He takes a toll too.
+      tags: [cunning]
+      text_after: The miller pays, because he must, and then raises his toll, because he can. Everyone on the manor knows exactly why their bread costs more.
+      effects: [ { add: { estate.temper: -1 } } ]
+      next: "@return"
+
+- id: c3m_wedding
+  chapter: ch3
+  kind: pool
+  pool: c3_manor
+  title: The Marriage Fine
+  once: true
+  text: |
+    A plague widow and a plague widower, both with children, both with empty houses and fields too big to work alone, come to the manor court together to ask leave to marry. They are not young. They hold hands under the table where they think nobody can see.
+
+    By the custom of the manor, a villein's daughter or widow who marries pays the lord a fine. The steward has the sum written down. It is more than either of them has.
+
+    "It's the custom, monseigneur," the steward murmurs.
+  choices:
+    - id: waive
+      text: Waive the fine, and come to the wedding.
+      tags: [piety, allies]
+      text_after: You come to the wedding. They are so astonished they forget their words. You dance with the bride, badly, and she laughs, and the whole village sees you do it.
+      effects: [ { add: { estate.temper: 2, estate.people: 2 } } ]
+      next: "@return"
+    - id: take
+      text: Take the fine. The custom is the custom.
+      tags: [wealth]
+      text_after: They pay it in eggs and a pig, over a year. They marry anyway. They do not invite you.
+      effects: [ { add: { res.coin: 18, estate.temper: -1 } } ]
+      next: "@return"
+
+- id: c3m_poacher
+  chapter: ch3
+  kind: pool
+  pool: c3_manor
+  title: The Poacher
+  once: true
+  text: |
+    Your men catch a boy of fourteen [if flag.c2_granted_kerval]with a buck from the hill woods across his shoulders[else]with a sack of your eels from the lord's weirs[/if], at dawn, and bring him up to the house by the ear.
+
+    He is thin as a rake and plague-orphaned and furious, and he looks at you the way you once looked at [if background == archer]the forester who caught you[else]anybody who had what you did not[/if].
+
+    "Hang him," says somebody. "That's the law." It is.
+  choices:
+    - id: work
+      text: Put him to work in your stables, where you can keep an eye on him.
+      tags: [allies]
+      text_after: He bolts twice in the first month. The third time he comes back on his own, at dark, wet through, and sleeps in the hay without a word. By the spring he is the best hand with a horse in the place. He never says thank you. He never takes so much as a turnip again.
+      effects: [ { add: { estate.temper: 1, res.men: 1 } } ]
+      next: "@return"
+    - id: flog
+      text: Have him flogged at the church door, and let it be known.
+      tags: [martial]
+      text_after: Ten strokes, in front of the village. He does not cry out. Afterwards nobody poaches your [if flag.c2_granted_kerval]deer[else]eels[/if] for a year, and nobody looks at your men in the street.
+      effects: [ { add: { estate.temper: -1, rep.ruthlessness: 1 } } ]
+      next: "@return"
+    - id: hang
+      text: Hang him. The law is the law.
+      tags: [martial]
+      text_after: You hang him from the oak at the crossroads. He is fourteen. Your own men will not look at you that night. The village is quiet, and obedient, for years.
+      effects: [ { add: { estate.temper: -3, rep.ruthlessness: 2, rep.honor: -1 } } ]
+      next: "@return"
+
+- id: c3m_flood
+  chapter: ch3
+  kind: pool
+  pool: c3_manor
+  title: The Sea Comes In
+  once: true
+  requires: [ { not: flag.c2_granted_kerval } ]
+  text: |
+    In February a gale and a spring tide come together, and the sea comes over the dyke at the [if flag.c2_granted_marsalin]north pans[else]low end of the marsh[/if], and does not go out again.
+
+    You stand on the dyke in the rain with the headman and watch salt water creep across your best fields, inch by inch, white with foam. "Three days to close it," [if flag.c2_granted_marsalin]Margot[else]Bastien[/if] shouts over the wind. "If every soul on the manor carries clay. Every soul. Including you."
+  choices:
+    - id: carry
+      text: Pick up a basket and carry clay with them.
+      tags: [allies, martial]
+      text_after: Three days and two nights in the wind and the mud, everyone, lord and settlers and grandmothers, a chain of baskets from the clay pit to the breach. On the third night it holds. You have never been so cold or so filthy or so proud of anything. The fields are spoiled for a year. The manor is saved.
+      effects: [ { add: { estate.temper: 2, estate.food: -1 } } ]
+      next: "@return"
+    - id: hire
+      text: Hire labourers from Sauvemer to close it.
+      tags: [wealth]
+      requires: [ res.coin >= 80 ]
+      text_after: The hired men close it in a week, for a great deal of money. In that week the sea takes the low fields and two houses. Your people watched from the dyke, carrying nothing, because you had paid someone else to.
+      effects: [ { add: { res.coin: -80, estate.food: -1 } } ]
+      next: "@return"
+    - id: let
+      text: Let the low fields go. Save the village end.
+      tags: [yield]
+      text_after: The sea takes the low fields and keeps them. Next year there will be samphire where the barley was. The village survives on less.
+      effects: [ { add: { estate.food: -2, estate.people: -5 } } ]
+      next: "@return"
+
+- id: c3m_frost
+  chapter: ch3
+  kind: pool
+  pool: c3_manor
+  title: The Late Frost
+  once: true
+  requires: [ flag.c2_granted_kerval ]
+  text: |
+    A frost comes in the first week of May, when the apple trees are in full blossom, and in one night turns the whole valley brown.
+
+    Gwenaël walks through the orchards in the morning, touching the dead blossoms, with tears running into his beard. "No apples," he says. "No cider. No money. Is a bad year coming, monseigneur." Dom Hervé says the frost is a judgement. Nobody asks him on whom.
+  choices:
+    - id: grain
+      text: Buy grain in Lannec to see them through.
+      tags: [wealth, allies]
+      requires: [ res.coin >= 80 ]
+      text_after: You buy it before the price goes up, which is the only clever thing anyone does that year. Kerval is hungry but nobody starves. Gwenaël tells everyone it was his idea.
+      effects: [ { add: { res.coin: -80, estate.food: 2, estate.temper: 1 } } ]
+      next: "@return"
+    - id: rents
+      text: Halve the year's rents.
+      tags: [piety]
+      text_after: You halve them. It hurts. It hurts the village less.
+      effects: [ { add: { res.coin: -50, estate.temper: 2 } } ]
+      next: "@return"
+    - id: nothing
+      text: It is a bad year. Everyone has bad years.
+      tags: [yield]
+      text_after: It is a bad year. Two families leave for Lannec. One old man dies, of hunger or of age, nobody can tell.
+      effects: [ { add: { estate.orchard: -1, estate.people: -6, estate.temper: -1 } } ]
+      next: "@return"
+
+- id: c3m_salt
+  chapter: ch3
+  kind: pool
+  pool: c3_manor
+  title: The Salt Merchants
+  once: true
+  requires: [ { not: flag.c2_granted_kerval } ]
+  text: |
+    A Sarenzan salt-buyer comes up the dyke on a mule, with a clerk, an abacus and a smile, and offers to buy the whole of this year's salt, in advance, at a price that seems handsome until you think about it.
+
+    "The Varesco house pays on the nail, my lord," he says. "No waiting for the Sauvemer market. No haggling with Adalian fishmongers." His smile widens. "The Lanzi, I hear, are short of cash this year. Desperately short."
+  choices:
+    - id: sell
+      text: Sell him the year's salt.
+      tags: [wealth]
+      text_after: Coin in your hand before the pans are even drawn. Three months later the price of salt in Sauvemer doubles, because half the coast sold to the Varesco, and the Varesco are holding it. The salt-boilers say nothing to you. They do not need to.
+      effects: [ { add: { res.coin: 150, estate.temper: -1, rep.sarenza: 1 } } ]
+      next: "@return"
+    - id: market
+      text: Take it to the Sauvemer market yourself.
+      tags: [cunning, wealth]
+      check: { attr: wits, skill: trade, difficulty: 3, mods: [ { if: background == burgess, add: 1, label: you were raised to this } ] }
+      success:
+        text: You hold it back until the price climbs, and sell it in small lots to the fishmongers, who need it for the herring. Twice what the Sarenzan offered. The salt-boilers get a share of it, which nobody expected.
+        effects: [ { add: { res.coin: 250, estate.temper: 1, estate.salt: 1 } } ]
+        next: "@return"
+      failure:
+        text: You hold it back too long. A Varesco ship comes in with a cargo from the south and the price falls through the floor.
+        effects: [ { add: { res.coin: 60 } } ]
+        next: "@return"
+
+- id: c3m_lanzi
+  chapter: ch3
+  kind: pool
+  pool: c3_manor
+  title: The Bank's Clerk
+  once: true
+  requires: [ { any: [ flag.c2_lanzi_loan, flag.c1_lanzi_debt, flag.c2_lanzi_against_land ] } ]
+  text: |
+    A clerk from the Lanzi house rides out from [if flag.c2_granted_kerval]Lannec[else]Sauvemer[/if] with a ledger under his arm, a black band on his sleeve, and the look of a man who has had to make this journey to a great many manors this year.
+
+    [if npc.fiammetta_lanzi.met]"Madonna Fiammetta sends her regards," he says. "She is the house now. Her father and two brothers died of the Mottle in Sarenza. She asks me to say that the bank survives, and that its debts survive with it."[else]"The house of Lanzi survives the Mottle," he says, "though a great many of its partners did not. Its debts, my lord, also survive."[/if]
+
+    He opens the ledger. [if flag.c2_lanzi_against_land]Your debt was rolled over against your land, as you agreed, and the interest has been accruing, as interest does.[else]Your debt is due, with the interest, as you agreed.[/if]
+  choices:
+    - id: pay
+      text: Pay it, all of it, and be free of them.
+      tags: [wealth]
+      requires: [ res.coin >= 240 ]
+      text_after: You count it out on the table. The clerk counts it again. He writes you a quittance in a beautiful hand, sands it, and bows. "You are one of three this year, my lord," he says. "The other forty want more time."
+      effects: [ { add: { res.coin: -240 } }, { clear: flag.c2_lanzi_against_land } ]
+      next: "@return"
+    - id: lien
+      text: Give the bank a lien on the manor's income instead.
+      tags: [cunning, wealth]
+      text_after: A tenth of your [if flag.c2_granted_kerval]cider and grain[else]salt[/if] for ten years. The clerk writes it with great care. "Madonna Fiammetta," he says, "will be pleased to be your partner." It does not sound entirely like a business remark.
+      effects: [ { set: flag.c2_lanzi_against_land }, { add: { estate.temper: -1 } } ]
+      next: "@return"
+    - id: write
+      text: Write to Fiammetta Lanzi yourself.
+      tags: [diplomacy]
+      visible_if: [ npc.fiammetta_lanzi.met ]
+      text_after: |
+        You write it four times. In the end you write that you are sorry about her father and brothers, which is true, and that you will pay, which is true, and that you would like to see her, which you had not known was true until you wrote it.
+
+        The answer comes in a month, in her own sharp hand. The debt can wait a year. "So can I," she adds, at the bottom, "though I am not in the habit of saying so."
+      effects: [ { add: { suit.fiammetta_lanzi.regard: 2 } } ]
+      next: "@return"
+
+- id: c3m_roof
+  chapter: ch3
+  kind: pool
+  pool: c3_manor
+  title: The Church Roof
+  once: true
+  text: |
+    The church roof leaks. It leaked before the Mottle, and the old lord never mended it, and now it leaks onto the new cross and the names on it.
+
+    [if flag.c2_granted_marsalin]"God sees it, monseigneur," Père Yves says, earnestly, looking up at the drip. "God sees everything."[elif flag.c2_granted_kerval]"The abbey," says Dom Hervé delicately, "would of course consider it a great kindness."[else]"IT LEAKS!" Père Guérin shouts, pointing at the drip as if you might have missed it. "ON THE ALTAR!"[/if]
+  choices:
+    - id: mend
+      text: Pay for new lead and a new roof.
+      tags: [piety, wealth]
+      requires: [ res.coin >= 50 ]
+      text_after: The roofers come from the town, and the lead goes up, and the drip stops. On the first Sunday the priest preaches about the lord who mended the house of God. It is a long sermon. You sleep through most of it, and so does everyone else, contentedly.
+      effects: [ { add: { res.coin: -50, estate.church: 2, estate.temper: 1, rep.church: 1 } } ]
+      next: "@return"
+    - id: village
+      text: Give the timber, and let the village give the labour.
+      tags: [allies]
+      text_after: Timber from your woods, labour from everyone. It takes all summer and it leaks a little at the corner forever after. But it is their roof, and they mended it, and every one of them knows which rafter was theirs.
+      effects: [ { add: { estate.church: 1, estate.temper: 1 } } ]
+      next: "@return"
+    - id: later
+      text: Next year.
+      tags: [yield]
+      text_after: The drip goes on. The priest stops mentioning it, and starts praying about it, loudly, during Mass.
+      effects: [ { add: { estate.church: -1 } } ]
+      next: "@return"

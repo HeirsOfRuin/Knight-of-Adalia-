@@ -2215,7 +2215,7 @@ The village has come out, in spite of everything, to look at its new lord. They 
 
 "Well, it did. Everyone knows it did."
 
-A huge cheerful man shoves through, beaming, with his hat in his hands. "Gwenaël! I am the reeve! Welcome, welcome!" His smile falters. "Is a bad day. Very bad. But welcome!"
+A huge cheerful man shoves through, beaming, with his hat in his hands. "Gwenaël! I am the reeve! Welcome, welcome!" His smile falters. "Is a bad day. A bad, bad day. But welcome!"
 
 - Go into the dead woman's house yourself, and see.
 - Climb the church steps and speak to them, in their own tongue. *(Even)*
@@ -2355,14 +2355,286 @@ A mason from the town cuts them all, every name the priest wrote down, and for t
 
 ## The First Spring
 
+*Winter, year 26 of King Aldred*
+
 In the spring the swallows come back, as if nothing had happened.
 
 The manor is quieter. There are empty houses on every lane, and strips of land with nobody to work them, and a great many children living with aunts and grandmothers. The people who are left look at you differently from the way they looked at you on the day of the bell. Most of them nod when you pass. A few of them smile.
 
-[break]
+*(Continue)*
 
 There is a letter on your table, under the King's seal, about the wages of labourers. There is another from the Duchess, about the truce, which runs out at Lady Day next year. There is a third, unopened, from home.
 
 You are a lord of a manor that has lived through the end of the world. Now you have to find out how to live in what comes after.
 
-End of the chapters written so far. Chapter 3 continues with the Lord, the Match and the Reckoning.
+- Break the King's seal.
+
+**Chose:** Break the King's seal.
+
+## The Ordinance of Labourers
+
+The letter under the King's seal is read out at the church door on Lady Day, by your steward, to everyone who is left, in Adalian and then in Valdrennish, so that nobody can say they did not hear it.
+
+No labourer may take more wages than he took before the mortality. No labourer may leave his lord to seek better. Any lord who pays more shall be fined double what he paid. "By order of the King and his Council," the steward finishes, "for the common good of the realm."
+
+*(Continue)*
+
+There is a silence. Then somebody at the back laughs, a short ugly bark.
+
+"Common good," says a voice. "Whose?"
+
+Gwenaël turns his hat round and round in his big hands. "Monseigneur. In the next valley, the lord pays fourpence. Everybody knows. If you pay a penny, by harvest you will have nobody. Is not a threat. Is just arithmetic."
+
+Everybody is looking at you. The law is the King's. The manor is yours.
+
+- Enforce the ordinance. The King's law is the King's law.
+- Pay them what the market asks, quietly, and keep it off the rolls.
+- Let the empty holdings to them as tenants, on easy rents. Land instead of wages. *(Favorable)*
+- Put your own men to work in the fields beside them, and hold the line on wages.
+
+**Chose:** Enforce the ordinance. The King's law is the King's law.
+
+You have the steward cry it again, and your men stand behind him, and the labourers go back to work at the old rate with faces like a shut door.
+
+Two families leave in the night, walking east toward lords who pay. You send men after them and bring one family back, by the law, in a cart. The other gets away. The King's commissioners, when they come round at Michaelmas, write your name down as a lord who keeps the peace of the realm. Nobody on the manor writes it down at all. They do not need to.
+
+*Temper of the village −2 · People −8 · Crown standing +1 · Common Folk standing −1*
+
+## The Marriage Fine
+
+A plague widow and a plague widower, both with children, both with empty houses and fields too big to work alone, come to the manor court together to ask leave to marry. They are not young. They hold hands under the table where they think nobody can see.
+
+By the custom of the manor, a villein's daughter or widow who marries pays the lord a fine. The steward has the sum written down. It is more than either of them has.
+
+"It's the custom, monseigneur," the steward murmurs.
+
+- Waive the fine, and come to the wedding.
+- Take the fine. The custom is the custom.
+
+**Chose:** Waive the fine, and come to the wedding.
+
+You come to the wedding. They are so astonished they forget their words. You dance with the bride, badly, and she laughs, and the whole village sees you do it.
+
+*Temper of the village +2 · People +2*
+
+## The Settlers
+
+*Spring, year 27 of King Aldred*
+
+In the summer the Duchess's steward sends you people to fill your empty houses.
+
+They are not Adalians, at Kerval: the Duchess sends you nine families from her own burned villages on the eastern border, and three Adalian archers' widows from Lannec who want a roof, and a letter asking you to make them welcome. They come up the road in a straggling line with their bundles, and stop in the street, and look at your village. Your village looks back.
+
+*(Continue)*
+
+Their leader is a big, red-faced Saltcombe brewer's son called Hodge Brewster, with hands like hams and opinions to match. "Your lordship," he says, pulling his forelock as if he had been told to and resented it. "We was promised houses. And land. And that the locals was tame." He looks at a Valdrennish woman glaring at him from a doorway. "I don't think they was told."
+
+You notice one of the settlers is a Coker: a cousin of Wat's, with the family's jaw and the family's way of looking at a reeve's son.
+
+- Give them the empty houses in the village, among the locals.
+- Settle them together on the far fields, apart, with their own lane.
+- Mix them holding by holding, and make the locals stand godparent to the settlers' children. *(Even)*
+- Send them back. Your people have had enough strangers.
+
+**Chose:** Give them the empty houses in the village, among the locals.
+
+The empty houses still have the dead's pots on the hearths. The settlers move in, and scrub them, and paint crosses on the doors, and the locals stand in the street and watch strangers sleep in their dead neighbours' beds.
+
+There is a fight at the well within a week, and another at the alehouse, and a Valdrennish boy and an Adalian girl are found in a hayloft by Lammas. By Michaelmas you have more people than before the plague, and two villages in one street that do not speak to each other.
+
+*People +35 · Temper of the village −2*
+
+## The Poacher
+
+Your men catch a boy of fourteen with a buck from the hill woods across his shoulders, at dawn, and bring him up to the house by the ear.
+
+He is thin as a rake and plague-orphaned and furious, and he looks at you the way you once looked at anybody who had what you did not.
+
+"Hang him," says somebody. "That's the law." It is.
+
+- Put him to work in your stables, where you can keep an eye on him.
+- Have him flogged at the church door, and let it be known.
+- Hang him. The law is the law.
+
+**Chose:** Put him to work in your stables, where you can keep an eye on him.
+
+He bolts twice in the first month. The third time he comes back on his own, at dark, wet through, and sleeps in the hay without a word. By the spring he is the best hand with a horse in the place. He never says thank you. He never takes so much as a turnip again.
+
+*Temper of the village +1 · Men +1*
+
+## The Old Lord's Kin
+
+*Summer, year 27 of King Aldred*
+
+At Michaelmas a knight rides up the valley with twenty men and the arms of Penhoët on his shield, and stops at the edge of your land, and sends a herald. Messire Yann de Penhoët, of the party of the Count of Léhon, the Duchess's rival for the Armance. Kerval, his herald says, was Penhoët land in his grandfather's day, before the Duchess's father took it in the last war. The Count of Léhon will restore it to its rightful lord when he takes the duchy. Messire Yann would be glad to spare everyone the trouble.
+
+"Tell your master," the herald adds, in a lower voice, "that Messire Yann is not a patient man."
+
+- Take it to law, before the King's justices at Sauvemer. *(Favorable)*
+- Buy the claim out, for a sum that will make them go away.
+- Offer them a share, a holding of their own, in return for their oath.
+- Tell them plainly that the land is yours by the sword, and they may try to take it the same way.
+
+**Chose:** Take it to law, before the King's justices at Sauvemer. (Favorable: success)
+
+The Duchess's court at Lannec finds that Kerval was taken lawfully in war by her father, and granted lawfully by her, and Penhoët's claim is a rebel's. Messire Yann does not attend. He sends word that he does not recognise the court. Nobody expected him to.
+
+*Crown standing +1 · Temper of the village −1*
+
+## The Late Frost
+
+A frost comes in the first week of May, when the apple trees are in full blossom, and in one night turns the whole valley brown.
+
+Gwenaël walks through the orchards in the morning, touching the dead blossoms, with tears running into his beard. "No apples," he says. "No cider. No money. Is a bad year coming, monseigneur." Dom Hervé says the frost is a judgement. Nobody asks him on whom.
+
+- Buy grain in Lannec to see them through.
+- Halve the year's rents.
+- It is a bad year. Everyone has bad years.
+
+**Chose:** Buy grain in Lannec to see them through.
+
+You buy it before the price goes up, which is the only clever thing anyone does that year. Kerval is hungry but nobody starves. Gwenaël tells everyone it was his idea.
+
+*Coin −6s 8d · Grain in store (seasons) +2 · Temper of the village +1 · Harvest in: 6 seasons of grain · Michaelmas rents: £3 1s 6d*
+
+## Lady Day
+
+*Winter, year 27 of King Aldred*
+
+The truce of Saint-Lys runs out at Lady Day, three years to the day after the bankers made it, and nobody renews it, and nobody declares war either.
+
+The kings have no money. The kings' men do. Along the whole march of Sauvemer and the border of the Armance, every lord who lost something in the war, or a son, or a ransom, or his pride, starts riding out to take it back from whoever is nearest.
+
+*(Continue)*
+
+"It'll be raids," says the oldest of your men, sharpening a sword he has not drawn in three years. "No armies. Twenty men at night, burning a barn, taking the cows, gone by dawn. The worst kind of war."
+
+And there is news from over the border. Thibaut de Brésy, the Constable's son, is ransomed home from Sir Walter Pryce at last, poorer and angrier, and riding with the march lords.
+
+You have the spring to get ready.
+
+- Put everyone to the defences. Ditch, palisade, a watch on the road.
+- Train the villagers, settlers and all, with bows and bills. *(Favorable)*
+- Ride round your neighbours and agree to come to each other's aid.
+
+**Chose:** Put everyone to the defences. Ditch, palisade, a watch on the road.
+
+All spring, every spare hand digs. You wall the fortified farm on the ridge properly, and clear the orchards back from it a bowshot. The village grumbles about the work. The village also sleeps better.
+
+*Defences +2 · Temper of the village −1*
+
+## The Mill
+
+The great wheel of the mill cracks in the spring flood, a split right through the shaft, and the miller comes up to the house with his cap in his hands and flour still in his eyebrows.
+
+"No grinding, monseigneur," he says. "Not till it's mended. And it's the lord's mill." He coughs, delicately. "So it's the lord's shaft."
+
+A new shaft is oak, and oak means a carpenter from the town, and a carpenter from the town means money. Until then, everyone on the manor grinds their grain by hand in querns, which is the custom forbidden by the lord, because the lord takes a toll at the mill.
+
+- Pay for the carpenter and the oak.
+- Let them grind by hand until it is mended. No toll, no fines.
+- Make the miller pay for it. He takes a toll too.
+
+**Chose:** Pay for the carpenter and the oak.
+
+The carpenter comes, and the oak, and the wheel turns again by Whitsun. The miller gives you a bag of the first flour, as if you had baked it.
+
+*Coin −5s · Temper of the village +1*
+
+## Fire in the Night
+
+*Spring, year 28 of King Aldred*
+
+They come on a night at the end of June, with no moon, the way raiders always do.
+
+You wake to the bell, and shouting, and a red light under the shutters that is not dawn. A barn is burning on the lower orchard. In the light of it you can see horsemen in the street, twenty or thirty of them, and cattle being driven, and people running.
+
+*(Continue)*
+
+Davy is already at your door with your sword. "Sir! Sir, they're in the village!"
+
+At the head of the horsemen, under a black-and-silver banner, a young knight with a gold circlet on his helm is sitting his horse in the firelight, watching your house. Thibaut de Brésy, the Constable's son.
+
+- Arm and ride straight at them with every man you have. *(Favorable, MORTAL DANGER)*
+- Get everyone into the walled farm and hold it. Let them have the cattle. *(Favorable)*
+- Ride out under a white cloth and talk to Thibaut. *(Even)*
+
+**Chose:** Get everyone into the walled farm and hold it. Let them have the cattle. (Favorable: success)
+
+Every soul you can find, children and grandmothers and the settlers' pigs, inside the walls before the raiders have finished with the first barn. They ride round you twice, shouting, and loose a few arrows, and take the cattle and the hay and go. You lose the cattle. You lose nobody.
+
+*Grain in store (seasons) −2 · Temper of the village +1*
+
+## The Church Roof
+
+The church roof leaks. It leaked before the Mottle, and the old lord never mended it, and now it leaks onto the new cross and the names on it.
+
+"The abbey," says Dom Hervé delicately, "would of course consider it a great kindness."
+
+- Pay for new lead and a new roof.
+- Give the timber, and let the village give the labour.
+- Next year.
+
+**Chose:** Pay for new lead and a new roof.
+
+The roofers come from the town, and the lead goes up, and the drip stops. On the first Sunday the priest preaches about the lord who mended the house of God. It is a long sermon. You sleep through most of it, and so does everyone else, contentedly.
+
+*Coin −4s 2d · Church and priest +2 · Church standing +1*
+
+## The Masterless Men
+
+*Summer, year 28 of King Aldred*
+
+In the autumn the Iron Company comes back, or what is left of it.
+
+Not eight hundred any more. Sixty or seventy hard, ragged men with good weapons and no master, living in the hill woods above the valley, taking a sheep here and a woman there and a whole wagon of salt on the Sauvemer road in broad daylight. Nobody pays them now. They pay themselves.
+
+*(Continue)*
+
+And then one evening their captain rides up to your gate, alone, with his hands open. Ulric Rotbart: older, greyer, thinner, with a cough. "Herr," he says. "I hear you are a lord now. Lords need men." He smiles, tiredly. "I have sixty men who will die of hunger this winter, or hang. I would rather they did neither. Would you?"
+
+- Take them on as your garrison, under your banner and your law.
+- Hunt them down, with your men and your neighbours. *(Favorable)*
+- Feed them for a night, and send them on their way.
+
+**Chose:** Take them on as your garrison, under your banner and your law.
+
+"Your law," Rotbart repeats. "Ja. Good. Somebody's law." He spits on his palm and holds it out.
+
+Sixty Hroswald mercenaries in your barns and your alehouse. The village is terrified of them. Hodge Brewster's settlers start a fight with them in the first week and lose it. By Christmas the bandits on the road have stopped, because the worst of them are eating your bread, and the Duchess's steward writes you a nervous little letter asking what you intend to do with an army.
+
+*Coin −10s · Defences +3 · Temper of the village −2 · Ulric Rotbart's respect +2 · Harvest in: 6 seasons of grain · Michaelmas rents: £3 1s 6d*
+
+## Winter in the Hall
+
+*Autumn, year 28 of King Aldred*
+
+The second winter on the manor is quiet. You had forgotten what that was like.
+
+Snow on the orchards, the fire built up in the hall, the steward's accounts done, the dogs asleep. Your men, the ones who are left, round the fire with the ale. Villagers come in of an evening now, to sit at the bottom of the hall and listen to the stories, the way people used to come into your own lord's hall when you were a boy.
+
+*(Continue)*
+
+Davy Ludd is twenty-two, and broad in the shoulder, and has a beard he is proud of and a Valdrennish girl from the village he is prouder of. He comes to you one evening, after the others have gone to bed, and stands at your chair turning his cap round in his hands, the way he did at fourteen on the quay at Saltcombe.
+
+"Sir," he says. "I've two things to ask. I don't know which one first."
+
+- Give Davy leave to marry his girl, and a holding to keep her on.
+- Kneel him down by the fire, and knight him.
+- Tell them the story of Grisolles, the way it really was.
+
+**Chose:** Give Davy leave to marry his girl, and a holding to keep her on.
+
+"Her name's Aude," he says, red to the ears. "Her father thinks I'm a heathen. Her mother likes me." You give him the empty holding by the mill, and a cow, and stand as his witness at the church door at Candlemas. Half the village comes. Aude's father comes at the last moment and stands at the back, scowling, and gets drunk, and dances. Davy, at the end, says, "Thank you, sir," and cannot say anything else.
+
+*Davy Ludd's affection +3 · Temper of the village +1 · People +1*
+
+## The Second Spring
+
+Two years. The manor has filled up again, mostly, with strangers and children, and the barns are full, and the village is yours, as much as any village is any man's.
+
+[break]
+
+In Lent a letter comes from home, and another from the Duchess, and a third from someone you have not heard from in a long time. They are all, one way or another, about the same thing. You are twenty-eight. You hold land. People have started asking, at dinner, in letters, in the street, when you mean to marry.
+
+End of the chapters written so far. Chapter 3 continues with the Match and the Reckoning.

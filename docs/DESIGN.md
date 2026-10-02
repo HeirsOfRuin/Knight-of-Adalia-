@@ -770,7 +770,29 @@ At the end of Ch2 the King pays men with land near where they earned it. Ch2 dee
   - one parent dies at home (Piers, Ralf or Agnes; the archer's mother Alison, since Hugh died in Ch2).
 - **Bot results:** most runs lose a third. Fleeing or the processions push it towards 42%. Preparations plus a physician or a shut manor bring it to 25%.
 
-**Current end of build:** `c3_spring` uses ending `ch3_complete` as a placeholder ("the story so far") until Acts II to IV exist.
+**Act II, the Lord** (spring year 27 to spring year 29). Eight spine scenes and nine manor events (pool `c3_manor`, one draw between spine scenes).
+- **The Ordinance of Labourers.** Enforce it, pay the market quietly, let the empty holdings as tenancies (stewardship check), or put his own men in the fields.
+- **The Settlers.** Adalians from Saltcombe led by Hodge Brewster; at Kerval, the Duchess's burned-out border families instead. Give them the empty houses, settle them apart, mix them holding by holding (diplomacy check), or refuse them.
+- **The Old Lord's Kin**, one per manor:
+  - Hugues d'Ormel, the nephew, with a Cordelle writ;
+  - Dame Péronnelle de Salines, the widow claiming her dower third;
+  - Yann de Penhoët, of the rival claimant's party.
+
+  Fight it at law, buy them out, share part of the manor for their oath, or threaten.
+- **Lady Day.** The truce expires into raiding. Thibaut de Brésy rides with the march lords. Prepare with defences, a village militia, or a pact with the neighbours.
+- **Fire in the Night.** The border raid. Fight (lethal; uses defences and the pact), shelter everyone, or parley with Thibaut.
+- **The Masterless Men.** Rotbart and sixty Iron Company remnants. Hire them as a garrison, hunt them, or feed them and send them home.
+- **The Burning Rick** (only if temper is -3 or below). The manor rises at his gate. Hear them, clear the gate, or hang the rick-burner.
+- **Winter in the Hall.** Davy asks leave to marry Aude and, if `c2_promised_davy`, reminds him of the promise. Give him a holding, knight him by the fire, or tell Grisolles properly.
+- **The Second Spring.** The current end of build (`ch3_complete`), with marriage now the question.
+
+**Manor events:** the manor court (pigs in the widow's barley), the mill shaft, the marriage fine, the poacher boy, the sea over the dyke (Ormel, Marsalin), the late frost (Kerval), the Varesco salt-buyer (Ormel, Marsalin), the Lanzi clerk (if in debt to them; Fiammetta now heads the house), and the church roof.
+
+**Bot results (200 runs per policy):**
+- people at the end of Act II average 165-216;
+- the unrest fires in 41% of cunning runs, 27% of random runs, and 0-5% of the rest;
+- no Ch3 deaths so far;
+- coin at the end averages £9-16.
 
 ## Decisions log
 | Date | Decision |

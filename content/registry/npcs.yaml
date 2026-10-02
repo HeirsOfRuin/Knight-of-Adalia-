@@ -69,3 +69,8 @@ yves_marsalin: { name: Yves, title: Père, faction: church, notes: "Priest of Ma
 margot_marsalin: { name: Margot, notes: "Forewoman of the Marsalin salt-boilers. Big-armed. Her husband drowned in the pans at Les Salines." }
 herve_kerval: { name: Hervé, title: Dom, faction: church, notes: "Benedictine from the Duchess's abbey, priest at Kerval. Fat, kind, shrewd." }
 gwenael_kerval: { name: Gwenaël, notes: "Reeve of Kerval. A cheerful giant who speaks Adalian badly and loudly." }
+hugues_ormel: { name: Hugues d'Ormel, title: Sire, faction: valdrenne, notes: "Nephew of the dead lord of Ormel. Nineteen, pale, proud, with a Valdrennish writ and the marsh's sympathy." }
+peronnelle_marsalin: { name: Péronnelle de Salines, title: Dame, faction: valdrenne, notes: "Widow of the last lord of Marsalin. Claims her dower third by law. Sixty, sharp, patient." }
+yann_penhoet: { name: Yann de Penhoët, title: Messire, faction: valdrenne, notes: "Armance knight of the rival claimant's party. Claims Kerval was his grandfather's." }
+thibaut_brese: { name: Thibaut de Brésy, title: Messire, faction: valdrenne, notes: "The Constable's son, taken at Les Salines, ransomed home. Rides with the march lords." }
+hodge_brewster: { name: Hodge Brewster, notes: "Leader of the Adalian settlers. A Saltcombe brewer's son with big hands and bigger opinions." }

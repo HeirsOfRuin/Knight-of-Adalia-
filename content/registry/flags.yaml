@@ -279,3 +279,24 @@ c3_compelled: { description: "Compelled boon-work by the old custom after the pl
 c3_lost_fields: { description: "Let the far fields go unreaped in the plague year", hidden: true, later: ch4 }
 c3_raised_cross: { description: "Raised a cross for the plague dead", hidden: true, later: ch4 }
 c3_gave_back_rents: { description: "Gave back the widows' rents after the plague", hidden: true, later: ch4 }
+c3_enforced_ordinance: { description: "Enforced the King's Ordinance of Labourers on his manor", later: ch4 }
+c3_paid_market: { description: "Quietly paid the labourers what the market asked", hidden: true, later: ch4 }
+c3_new_tenancies: { description: "Let the empty holdings to labourers as tenants on easy terms", later: ch4 }
+c3_settlers_houses: { description: "Gave the settlers the empty houses in the village", hidden: true, later: ch4 }
+c3_settlers_apart: { description: "Settled the Adalians on the far fields, apart", hidden: true, later: ch4 }
+c3_settlers_mixed: { description: "Mixed settlers and locals holding by holding", hidden: true, later: ch4 }
+c3_refused_settlers: { description: "Refused the Crown's settlers", later: ch4 }
+c3_claim_law: { description: "Fought the old lord's kin's claim at law", hidden: true, later: ch4 }
+c3_claim_won: { description: "Kept his manor against the old lord's kin", later: ch4 }
+c3_claim_bought: { description: "Bought off the old lord's kin's claim", later: ch4 }
+c3_claim_shared: { description: "Shared part of the manor with the old lord's kin", later: ch4 }
+c3_claim_threat: { description: "Drove off the old lord's kin by threat", later: ch4 }
+c3_raid_held: { description: "Held his manor against the border raid", later: ch4 }
+c3_raid_sheltered: { description: "Got his people to shelter in the border raid", hidden: true, later: ch4 }
+c3_thibaut_spared: { description: "Spared or freed Thibaut de Brésy in the border raid", later: ch4 }
+c3_hired_bandits: { description: "Hired Iron Company remnants as his garrison", later: ch4 }
+c3_hunted_bandits: { description: "Hunted down the Iron Company remnants", hidden: true, later: ch4 }
+c3_davy_married: { description: "Gave Davy Ludd leave to marry on the manor", later: ch4 }
+c3_davy_knighted: { description: "Knighted Davy Ludd, as he once promised", later: ch4 }
+c3_unrest_met: { description: "Faced the manor's unrest in the second year", hidden: true, later: ch4 }
+c3_neighbours_pact: { description: "Swore with his neighbours to ride to each other's bells", hidden: true, later: ch4 }

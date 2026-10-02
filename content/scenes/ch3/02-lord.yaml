@@ -1,0 +1,500 @@
+# Chapter 3, Act II: the Lord. Spring of year 27 to spring of year 29. Ages 26-28.
+# The estate cycle: a spine scene each season with a draw from the c3_manor
+# pool between. Labour after the plague, settlers, the old lord's kin, the
+# truce running out into border raids, Iron Company bandits, and a winter at
+# home with the men who are left.
+
+- id: c3_ordinance
+  chapter: ch3
+  title: The Ordinance of Labourers
+  checkpoint: true
+  on_enter:
+    - if: flag.c2_granted_more
+      then:
+        - if: flag.c2_granted_kerval
+          then: [ { add: { estate.orchard: 1, estate.people: 20 } } ]
+          else: [ { add: { estate.salt: 2 } } ]
+  text: |
+    The letter under the King's seal is read out at the church door on Lady Day, by your steward, to everyone who is left, in Adalian and then in Valdrennish, so that nobody can say they did not hear it.
+
+    No labourer may take more wages than he took before the mortality. No labourer may leave his lord to seek better. Any lord who pays more shall be fined double what he paid. "By order of the King and his Council," the steward finishes, "for the common good of the realm."
+
+    [break]
+
+    There is a silence. Then somebody at the back laughs, a short ugly bark.
+
+    "Common good," says a voice. "Whose?"
+
+    [if flag.c2_granted_marsalin]"Before the Mottle," Margot says, loudly, to you and not to the steward, "there were forty of us working the pans. There are twenty-six. You want the same salt for the same pay, you'll want the dead back first."[elif flag.c2_granted_kerval]Gwenaël turns his hat round and round in his big hands. "Monseigneur. In the next valley, the lord pays fourpence. Everybody knows. If you pay a penny, by harvest you will have nobody. Is not a threat. Is just arithmetic."[else]Bastien spits. "Penny a day," he says. "Penny a day, for eels and barley and digging your ditches, when there's land standing empty all over the marsh for any man who'll walk to it. Good luck to the King."[/if]
+
+    Everybody is looking at you. The law is the King's. The manor is yours.
+  choices:
+    - id: enforce
+      text: Enforce the ordinance. The King's law is the King's law.
+      tags: [martial]
+      text_after: |
+        You have the steward cry it again, and your men stand behind him, and the labourers go back to work at the old rate with faces like a shut door.
+
+        Two families leave in the night, walking east toward lords who pay. You send men after them and bring one family back, by the law, in a cart. The other gets away. The King's commissioners, when they come round at Michaelmas, write your name down as a lord who keeps the peace of the realm. Nobody on the manor writes it down at all. They do not need to.
+      effects: [ { set: flag.c3_enforced_ordinance }, { add: { estate.temper: -2, estate.people: -8, rep.crown: 1, rep.commons: -1 } } ]
+      next: { pool: c3_manor, count: 1, then: c3_settlers }
+    - id: pay
+      text: Pay them what the market asks, quietly, and keep it off the rolls.
+      tags: [cunning, wealth]
+      text_after: |
+        "Tuppence," you tell the headman, quietly, "and a dinner. And a farthing more at harvest. And it's a penny on the roll, for the commissioners." He looks at you with his head on one side, as if you were a dog that had started to talk. Then he grins.
+
+        It costs you. It is not a secret for long; nothing is, in a village. But the work gets done, and nobody leaves, and your neighbours, who hear of it, send you letters about the common good of the realm.
+      effects: [ { set: flag.c3_paid_market }, { add: { res.coin: -100, estate.temper: 2, rep.nobles: -1 } } ]
+      next: { pool: c3_manor, count: 1, then: c3_settlers }
+    - id: tenancies
+      text: Let the empty holdings to them as tenants, on easy rents. Land instead of wages.
+      tags: [learning, diplomacy]
+      check:
+        attr: wits
+        skill: stewardship
+        difficulty: 3
+        mods:
+          - { if: flag.c1_learned_manor, add: 1, label: you learned the business of a manor }
+          - { if: background == reeve, add: 1, label: you were raised to this }
+      success:
+        text: |
+          There are holdings standing empty with nobody to inherit them. You call the labourers to the manor court one by one and offer each man a holding, a house and twelve acres, at a rent he can pay, for his life and his son's. No wages. Their own land.
+
+          Grown men weep at the court table. "My father worked these strips for the old lord forty years," one of them says, "for nothing." You have just made forty families who will fight for this manor, because it is theirs. You have also made a precedent that every lord in the march will curse you for.
+        effects: [ { set: flag.c3_new_tenancies }, { add: { estate.temper: 3, estate.food: 1, rep.commons: 2, rep.nobles: -1 } } ]
+        next: { pool: c3_manor, count: 1, then: c3_settlers }
+      failure:
+        text: The terms you write are too generous by half. Half the holdings go to men who cannot work them, and the steward spends the year untangling who owes what. The village is pleased. Your purse is not.
+        effects: [ { set: flag.c3_new_tenancies }, { add: { estate.temper: 2, res.coin: -60 } } ]
+        next: { pool: c3_manor, count: 1, then: c3_settlers }
+    - id: men
+      text: Put your own men to work in the fields beside them, and hold the line on wages.
+      tags: [allies]
+      text_after: |
+        [if retinue >= 3]Your men grumble like a summer storm. "We're soldiers, sir, not ploughboys." "You're eating," you tell them, "aren't you?"[else]There are not many of your men left to put to anything.[/if] It holds the wages down, a little. It shames the labourers, a little. Nobody is happy, which in a manor court is often the sign of a fair judgement.
+      effects: [ { add: { estate.food: 1, rel.roger_tallis.loyalty: -1, rel.simkin_barre.loyalty: -1 } } ]
+      next: { pool: c3_manor, count: 1, then: c3_settlers }
+
+- id: c3_settlers
+  chapter: ch3
+  title: The Settlers
+  on_enter: [ { advance: { seasons: 1 } }, { meet: hodge_brewster } ]
+  text: |
+    In the summer the [if flag.c2_granted_kerval]Duchess's steward[else]Crown[/if] sends you people to fill your empty houses.
+
+    [if flag.c2_granted_kerval]They are not Adalians, at Kerval: the Duchess sends you nine families from her own burned villages on the eastern border, and three Adalian archers' widows from Lannec who want a roof, and a letter asking you to make them welcome.[else]They come over from Saltcombe in a hired cog: thirty-odd Adalian men and women, labourers and their wives and their children, from the plague-emptied villages of the south, promised land in the new march if they would cross the sea for it.[/if] They come up the road in a straggling line with their bundles, and stop in the street, and look at your village. Your village looks back.
+
+    [break]
+
+    Their leader is a big, red-faced Saltcombe brewer's son called Hodge Brewster, with hands like hams and opinions to match. "Your lordship," he says, pulling his forelock as if he had been told to and resented it. "We was promised houses. And land. And that the locals was tame." He looks at a Valdrennish woman glaring at him from a doorway. "I don't think they was told."
+
+    [if background == reeve]You notice one of the settlers is a Coker: a cousin of Wat's, with the family's jaw and the family's way of looking at a reeve's son.[/if]
+  choices:
+    - id: houses
+      text: Give them the empty houses in the village, among the locals.
+      tags: [allies]
+      text_after: |
+        The empty houses still have the dead's pots on the hearths. The settlers move in, and scrub them, and paint crosses on the doors, and the locals stand in the street and watch strangers sleep in their dead neighbours' beds.
+
+        There is a fight at the well within a week, and another at the alehouse, and a Valdrennish boy and an Adalian girl are found in a hayloft by Lammas. By Michaelmas you have more people than before the plague, and two villages in one street that do not speak to each other.
+      effects: [ { set: flag.c3_settlers_houses }, { add: { estate.people: 35, estate.temper: -2 } } ]
+      next: { pool: c3_manor, count: 1, then: c3_claimant }
+    - id: apart
+      text: Settle them together on the far fields, apart, with their own lane.
+      tags: [cunning]
+      text_after: |
+        They get the far fields and the old shepherd's huts, and build a lane of their own within a year: the Adalian end, everyone calls it. They keep to it. The locals keep to theirs.
+
+        It is peaceful. It is two manors in one, and one day, you know, they will have to become one or the other. "Mark my words, your lordship," Hodge Brewster says cheerfully, "there'll be blood over that boundary ditch inside ten years." You suspect he will be the one spilling it.
+      effects: [ { set: flag.c3_settlers_apart }, { add: { estate.people: 35 } } ]
+      next: { pool: c3_manor, count: 1, then: c3_claimant }
+    - id: mixed
+      text: Mix them holding by holding, and make the locals stand godparent to the settlers' children.
+      tags: [diplomacy, piety]
+      check:
+        attr: presence
+        skill: diplomacy
+        difficulty: 4
+        mods:
+          - { if: estate.temper >= 2, add: 1, label: the village trusts you }
+          - { if: flag.c1_learned_valdrennish || flag.c2_learned_town, add: 1, label: you speak to both in their own tongue }
+      success:
+        text: |
+          It takes the priest, and you, and every feast day for a year. Christenings with a Valdrennish godmother and an Adalian godfather. A shared harvest supper where you sit Hodge Brewster next to [if flag.c2_granted_marsalin]Margot[elif flag.c2_granted_kerval]Gwenaël[else]Bastien[/if] and leave them there until they are both drunk enough to laugh.
+
+          It does not make them one village. It makes it possible that their grandchildren will be.
+        effects: [ { set: flag.c3_settlers_mixed }, { add: { estate.people: 35, estate.temper: 1, estate.church: 1 } } ]
+        next: { pool: c3_manor, count: 1, then: c3_claimant }
+      failure:
+        text: The first christening ends in a brawl when the Adalian godfather drops the baby, or is said to have. After that nobody will stand godparent to anyone. The settlers take their holdings and keep their doors shut.
+        effects: [ { set: flag.c3_settlers_houses }, { add: { estate.people: 35, estate.temper: -1 } } ]
+        next: { pool: c3_manor, count: 1, then: c3_claimant }
+    - id: refuse
+      text: Send them back. Your people have had enough strangers.
+      tags: [yield]
+      text_after: |
+        Hodge Brewster stares at you. "Back?" he says. "Back where, your lordship? We sold everything."
+
+        Some of them go on to the next manor, where the lord is less particular. Some go back to Saltcombe. Two families just sit down in the road and will not move, and in the end you give them a barn. The [if flag.c2_granted_kerval]Duchess[else]Crown[/if] notes that you refused its settlers. Your own people note it too, and for once, they approve.
+      effects: [ { set: flag.c3_refused_settlers }, { add: { estate.people: 8, estate.temper: 1, rep.crown: -1 } } ]
+      next: { pool: c3_manor, count: 1, then: c3_claimant }
+
+- id: c3_claimant
+  chapter: ch3
+  title: The Old Lord's Kin
+  on_enter:
+    - advance: { seasons: 1 }
+    - if: flag.c2_granted_marsalin
+      then: [ { meet: peronnelle_marsalin } ]
+      else:
+        - if: flag.c2_granted_kerval
+          then: [ { meet: yann_penhoet } ]
+          else: [ { meet: hugues_ormel } ]
+  text: |
+    [if flag.c2_granted_marsalin]At Michaelmas an old woman in black comes up the dyke road in a litter with four servants, and has herself set down at your gate, and sends in her name. Dame Péronnelle de Salines: the widow of the last lord of Marsalin, who died in the pans with the rest of the Valdrennish. By the custom of Valdrenne, a widow keeps a third of her husband's land for her life. She has come for her third.
+
+    "I am sixty-one," she says, accepting a cup of your wine and not drinking it. "I do not expect to trouble you for long. But I was married in that chapel, monseigneur, and I mean to be buried in it, from my own house, on my own land. Your King's writ says nothing about widows. My lawyers say a great deal."[elif flag.c2_granted_kerval]At Michaelmas a knight rides up the valley with twenty men and the arms of Penhoët on his shield, and stops at the edge of your land, and sends a herald. Messire Yann de Penhoët, of the party of the Count of Léhon, the Duchess's rival for the Armance. Kerval, his herald says, was Penhoët land in his grandfather's day, before the Duchess's father took it in the last war. The Count of Léhon will restore it to its rightful lord when he takes the duchy. Messire Yann would be glad to spare everyone the trouble.
+
+    "Tell your master," the herald adds, in a lower voice, "that Messire Yann is not a patient man."[else]At Michaelmas a young man rides into Ormel on a good horse, with a Valdrennish clerk and a writ from the court at Cordelle, and the whole village comes out to see him, smiling, as if a son had come home. Sire Hugues d'Ormel: nineteen, pale, proud, the dead lord's nephew. The writ says Ormel is his by inheritance, whatever any Adalian king may say.
+
+    "I do not ask you to leave," he says, in careful, cold Adalian. "I ask you to admit that you are a thief. After that, perhaps, we can talk." Behind him, Bastien is leaning on the churchyard wall, looking at nobody in particular.[/if]
+  choices:
+    - id: law
+      text: Take it to law, before the King's justices at Sauvemer.
+      tags: [learning, diplomacy]
+      check:
+        attr: wits
+        skill: learning
+        difficulty: 4
+        mods:
+          - { if: flag.c1_learned_manor, add: 1, label: you know how manors are held }
+          - { if: rep.crown >= 2, add: 1, label: the King's justices know your name }
+          - { if: flag.c2_granted_kerval, add: -1, label: the Duchess's courts are slow and partial }
+      success:
+        text: |
+          [if flag.c2_granted_marsalin]The justices find for the widow's dower, in principle, and for you, in practice: she has her third for life, in rents, paid by you, and the land stays yours. She takes it with a little bow. "You fought fair," she says. "My husband never did." She lives in a house in the town and comes to Mass at Marsalin every Sunday, in black, in the front pew, and watches you.[elif flag.c2_granted_kerval]The Duchess's court at Lannec finds that Kerval was taken lawfully in war by her father, and granted lawfully by her, and Penhoët's claim is a rebel's. Messire Yann does not attend. He sends word that he does not recognise the court. Nobody expected him to.[else]The King's justices at Sauvemer find that the King's grant stands and a Valdrennish writ is worth the wax it is sealed with. Hugues d'Ormel hears it standing, white to the lips. "Then it is a thief's law," he says, "in a thief's court," and walks out, and the village watches him go.[/if]
+        effects: [ { set: flag.c3_claim_law }, { set: flag.c3_claim_won }, { add: { rep.crown: 1, estate.temper: -1 } } ]
+        next: { pool: c3_manor, count: 1, then: c3_truce_ends }
+      failure:
+        text: "[if flag.c2_granted_marsalin]The justices find for the widow, and generously: her third, in land, for life. A third of the pans go to an old woman who will lease them to your enemies.[elif flag.c2_granted_kerval]The court at Lannec delays, and delays, and the Duchess writes that she cannot be seen to quarrel with Penhoët's kin this year. Messire Yann takes that for permission.[else]The justices find for you. It takes eighteen months and costs you more than Ormel brings in for two years, and by the end of it every lawyer in Sauvemer has had a piece of you.[/if]"
+        effects: [ { set: flag.c3_claim_law }, { add: { res.coin: -120, estate.temper: -1 } } ]
+        next: { pool: c3_manor, count: 1, then: c3_truce_ends }
+    - id: buy
+      text: Buy the claim out, for a sum that will make them go away.
+      tags: [wealth, cunning]
+      requires: [ res.coin >= 200 ]
+      text_after: |
+        [if flag.c2_granted_marsalin]A lump sum and a pension. Dame Péronnelle counts it with a long finger, nodding. "Sensible," she says. "My husband would have fought you and lost. You are cleverer than he was. That is not saying a great deal."[elif flag.c2_granted_kerval]Messire Yann takes your gold and signs a quitclaim and rides away, and the Duchess's steward tells you, with some satisfaction, that you have just paid for a rebel's horses.[else]Hugues d'Ormel takes it with his face burning. "My uncle's land," he says, "for a merchant's purse." He takes it anyway. He has nothing else. He spends it, they say, in Cordelle, on lawyers.[/if]
+      effects: [ { set: flag.c3_claim_bought }, { set: flag.c3_claim_won }, { add: { res.coin: -200 } } ]
+      next: { pool: c3_manor, count: 1, then: c3_truce_ends }
+    - id: share
+      text: Offer them a share, a holding of their own, in return for their oath.
+      tags: [diplomacy, piety]
+      text_after: |
+        [if flag.c2_granted_marsalin]Dame Péronnelle gets the dower house by the chapel and its garden and the rent of the four best pans for her life. She swears to you in the chapel she was married in, and cries, once, afterwards, in the porch.[elif flag.c2_granted_kerval]You offer Messire Yann the hamlet at the head of the valley, to hold of you, if he will swear to you and leave the Count of Léhon. He laughs in your face. Then he goes away and thinks about it for a month. Then, astonishingly, he comes back and swears, with his hand on the Gospels and his eyes on yours. You have bought a dangerous man. You may have bought him.[else]Hugues d'Ormel gets the old manor farm on the island in the marsh, and its eel-weirs, to hold of you. "So I am to be the thief's tenant," he says. "In my own uncle's house." He takes it. Bastien, at the churchyard wall, nods to you, barely.[/if]
+      effects: [ { set: flag.c3_claim_shared }, { add: { estate.people: -10, estate.temper: 2, rep.valdrenne: 1 } } ]
+      next: { pool: c3_manor, count: 1, then: c3_truce_ends }
+    - id: threat
+      text: Tell them plainly that the land is yours by the sword, and they may try to take it the same way.
+      tags: [martial]
+      text_after: |
+        [if flag.c2_granted_marsalin]Dame Péronnelle looks at you a long moment over her untouched cup. "Ah," she says. "One of those." She leaves. Her lawyers do not.[elif flag.c2_granted_kerval]The herald bows, and goes, and you know exactly what you have said yes to.[else]Hugues d'Ormel goes white, then red. "Then I will," he says. Bastien, at the wall, spits, and goes indoors.[/if]
+      effects: [ { set: flag.c3_claim_threat }, { add: { rep.ruthlessness: 1, estate.temper: -2, estate.defence: 1 } } ]
+      next: { pool: c3_manor, count: 1, then: c3_truce_ends }
+
+- id: c3_truce_ends
+  chapter: ch3
+  title: Lady Day
+  on_enter: [ { advance: { seasons: 2 } } ]
+  text: |
+    The truce of Saint-Lys runs out at Lady Day, three years to the day after the bankers made it, and nobody renews it, and nobody declares war either.
+
+    The kings have no money. The kings' men do. Along the whole march of Sauvemer and the border of the Armance, every lord who lost something in the war, or a son, or a ransom, or his pride, starts riding out to take it back from whoever is nearest.
+
+    [break]
+
+    "It'll be raids," [if npc.roger_tallis.follower]Tallis says, sharpening a sword he has not drawn in three years. "No armies. No battles. Twenty men at night, burning a barn, taking the cows, gone by dawn. The worst kind. Nobody gets glory and everybody gets hurt."[else]says the oldest of your men, sharpening a sword he has not drawn in three years. "No armies. Twenty men at night, burning a barn, taking the cows, gone by dawn. The worst kind of war."[/if]
+
+    [if flag.c2_took_thibaut]And there is news from over the border. Thibaut de Brésy, the Constable's son, whom you took at Les Salines, is ransomed home at last, and has been heard saying at his father's table that he has a debt to pay you, and does not mean money.[elif flag.c2_pryce_took_thibaut]And there is news from over the border. Thibaut de Brésy, the Constable's son, is ransomed home from Sir Walter Pryce at last, poorer and angrier, and riding with the march lords.[else]And there is news from over the border: Thibaut de Brésy, the Constable's son, ransomed home and riding with the march lords, looking for Adalian barns to burn.[/if]
+
+    You have the spring to get ready.
+  choices:
+    - id: walls
+      text: Put everyone to the defences. Ditch, palisade, a watch on the road.
+      tags: [martial]
+      text_after: All spring, every spare hand digs. [if flag.c2_granted_marsalin]You raise the dyke wall by the stone house and cut the causeway so it can be blocked with a cart.[elif flag.c2_granted_kerval]You wall the fortified farm on the ridge properly, and clear the orchards back from it a bowshot.[else]You dig a ditch round the church and the tithe barn and plant a hedge of stakes in it.[/if] The village grumbles about the work. The village also sleeps better.
+      effects: [ { add: { estate.defence: 2, estate.temper: -1 } } ]
+      next: { pool: c3_manor, count: 1, then: c3_raid }
+    - id: drill
+      text: Train the villagers, settlers and all, with bows and bills.
+      tags: [allies, martial]
+      check: { attr: presence, skill: command, difficulty: 3, mods: [ { if: flag.c1_drilled_men || flag.c2_drilled, add: 1, label: you have drilled men before } ] }
+      success:
+        text: Every Sunday after Mass, on the green, the whole manor at the butts, the way it is at home. The Valdrennish think it is mad, and then they think it is a game, and then, when the young men start beating the settlers at the clout, they think it is theirs. By midsummer you have forty bows and a dozen bills that will stand, maybe, for a while.
+        effects: [ { add: { estate.defence: 2, estate.temper: 1, skill.command: 1 } } ]
+        next: { pool: c3_manor, count: 1, then: c3_raid }
+      failure:
+        text: Half of them come once and never again. The other half come for the ale. You end the spring with twelve archers who can hit a barn door and a great deal of resentment about your Sundays.
+        effects: [ { add: { estate.defence: 1, estate.temper: -1 } } ]
+        next: { pool: c3_manor, count: 1, then: c3_raid }
+    - id: neighbours
+      text: Ride round your neighbours and agree to come to each other's aid.
+      tags: [diplomacy]
+      text_after: |
+        [if flag.c2_granted_kerval]The Armance knights in the next valleys are glad of an Adalian with a following, and say so, and you swear to ride to each other's bells.[else]The other Adalian grantees in the Sauvemer march are a mixed lot: a Carrow knight who drinks, a Wendmere merchant's son who bought his manor, a one-armed archer captain who never stops talking. You agree to ride to each other's bells. Some of them may even mean it.[/if]
+      effects: [ { set: flag.c3_neighbours_pact }, { add: { estate.defence: 1, rep.knights: 1 } } ]
+      next: { pool: c3_manor, count: 1, then: c3_raid }
+
+- id: c3_raid
+  chapter: ch3
+  title: Fire in the Night
+  checkpoint: true
+  on_enter: [ { advance: { seasons: 1 } }, { meet: thibaut_brese } ]
+  text: |
+    They come on a night at the end of June, with no moon, the way raiders always do.
+
+    You wake to the bell, and shouting, and a red light under the shutters that is not dawn. A barn is burning on the [if flag.c2_granted_kerval]lower orchard[elif flag.c3_settlers_apart]Adalian end[else]edge of the village[/if]. In the light of it you can see horsemen in the street, twenty or thirty of them, and cattle being driven, and people running.
+
+    [break]
+
+    [if npc.davy_ludd.alive && npc.davy_ludd.follower]Davy is already at your door with your sword. "Sir! Sir, they're in the village!"[else]Your men are already shouting in the yard.[/if]
+
+    At the head of the horsemen, under a black-and-silver banner, a young knight with a gold circlet on his helm is sitting his horse in the firelight, watching your house. [if flag.c2_took_thibaut]You know that helm. You last saw it in the mud at Les Salines, with your sword at its throat.[else]Thibaut de Brésy, the Constable's son.[/if]
+  choices:
+    - id: fight
+      text: Arm and ride straight at them with every man you have.
+      tags: [martial]
+      lethal: true
+      warn: A night fight in a burning village. Without armour, or carrying a serious wound, you could die in your own street.
+      check:
+        attr: strength
+        skill: arms
+        difficulty: 4
+        mods:
+          - { if: estate.defence >= 4, add: 2, label: your defences }
+          - { if: estate.defence >= 2, add: 1, label: the village is ready }
+          - { if: armour >= 2, add: 1, label: your harness }
+          - { if: retinue >= 3, add: 1, label: your men }
+          - { if: flag.c3_neighbours_pact, add: 1, label: your neighbours ride to the bell }
+      success:
+        text: |
+          You go out of the gate with your men behind you and the villagers behind them with bills and pitchforks and a scythe on a pole, and the raiders, who expected to be gone before anyone was awake, find themselves in a narrow street with fire at their backs.
+
+          It is short and savage. When it is over they are gone back over the border, without the cattle, leaving four dead and two prisoners. [if flag.c2_took_thibaut]Thibaut de Brésy is not among them. He shouted something at you across the fire as he went. It sounded like your name.[else]Thibaut de Brésy is not among them. He got away, as his kind do.[/if] In the morning the village comes to your gate, all of it, and nobody says anything, and then the headman says, "Well. That's that, then," and they go home.
+        effects: [ { set: flag.c3_raid_held }, { add: { estate.temper: 3, res.renown: 2, estate.people: -3 } } ]
+        next: { pool: c3_manor, count: 1, then: c3_bandits }
+      partial:
+        text: You drive them off. A lance takes you across the ribs in the dark, and the cattle go over the border with them, and three houses burn. But they go. The village sees whose blood is in the street.
+        effects: [ { set: flag.c3_raid_held }, { injury: bruised_ribs }, { add: { estate.temper: 2, res.renown: 1, estate.food: -1, estate.people: -5 } } ]
+        next: { pool: c3_manor, count: 1, then: c3_bandits }
+      failure:
+        text: "[if armour >= 1 && !injured]A horse rides you down in your own street. You wake in your own bed with the priest praying over you and the village half burned.[else]A horse rides you down in your own street, in the light of your own burning barn, and the last thing you hear is your people screaming.[/if]"
+        effects:
+          - if: [ armour >= 1, "!injured" ]
+            then: [ { injury: crushed_ribs }, { add: { estate.food: -2, estate.people: -12, estate.temper: -1 } } ]
+            else: [ { die: "Killed defending his own village from a border raid, aged {age}." } ]
+        next: { pool: c3_manor, count: 1, then: c3_bandits }
+    - id: shelter
+      text: Get everyone into the [if flag.c2_granted_marsalin]stone house[elif flag.c2_granted_kerval]walled farm[else]church[/if] and hold it. Let them have the cattle.
+      tags: [allies, cunning]
+      check:
+        attr: wits
+        skill: command
+        difficulty: 3
+        mods: [ { if: estate.defence >= 2, add: 1, label: you prepared }, { if: estate.temper >= 2, add: 1, label: they trust you and come when called } ]
+      success:
+        text: Every soul you can find, children and grandmothers and the settlers' pigs, inside the walls before the raiders have finished with the first barn. They ride round you twice, shouting, and loose a few arrows, and take the cattle and the hay and go. You lose the cattle. You lose nobody.
+        effects: [ { set: flag.c3_raid_sheltered }, { add: { estate.food: -2, estate.temper: 1 } } ]
+        next: { pool: c3_manor, count: 1, then: c3_bandits }
+      failure:
+        text: Not everyone hears the bell in time. In the morning you bury nine, and the cattle are gone over the border.
+        effects: [ { add: { estate.food: -2, estate.people: -9, estate.temper: -1 } } ]
+        next: { pool: c3_manor, count: 1, then: c3_bandits }
+    - id: parley
+      text: Ride out under a white cloth and talk to Thibaut.
+      tags: [diplomacy]
+      check:
+        attr: presence
+        skill: diplomacy
+        difficulty: 5
+        mods:
+          - { if: flag.c2_took_thibaut, add: -2, label: you took him at Les Salines }
+          - { if: flag.c1_learned_valdrennish, add: 1, label: you speak his tongue }
+          - { if: rep.honor >= 5, add: 1, label: your name for keeping faith }
+      success:
+        text: |
+          He lifts his visor. He is twenty-three, with a scar down one cheek that you [if flag.c2_took_thibaut]gave him[else]did not give him, but somebody did[/if]. "Well?" he says. "Talk."
+
+          You talk about the truce, and the kings who have no money, and the cattle, and his father, and what it costs to burn villages full of people who were Valdrennish four years ago. At the end he looks at the burning barn until the roof falls in. "Keep your cows," he says. "I'll keep the barn." He turns his horse. "This is not over." It is, for this year.
+        effects: [ { set: flag.c3_thibaut_spared }, { add: { estate.temper: 1, rep.valdrenne: 1, rel.thibaut_brese.respect: 2 } } ]
+        next: { pool: c3_manor, count: 1, then: c3_bandits }
+      failure:
+        text: He listens to half a sentence. Then he laughs, and turns his horse, and his men take the cattle, and the barn, and the next barn.
+        effects: [ { add: { estate.food: -2, estate.temper: -1 } } ]
+        next: { pool: c3_manor, count: 1, then: c3_bandits }
+
+- id: c3_bandits
+  chapter: ch3
+  title: The Masterless Men
+  on_enter: [ { advance: { seasons: 1 } }, { meet: ulric_rotbart } ]
+  text: |
+    In the autumn the Iron Company comes back, or what is left of it.
+
+    Not eight hundred any more. Sixty or seventy hard, ragged men with good weapons and no master, living in the [if flag.c2_granted_kerval]hill woods above the valley[else]reed-beds of the marsh[/if], taking a sheep here and a woman there and a whole wagon of salt on the Sauvemer road in broad daylight. Nobody pays them now. They pay themselves.
+
+    [break]
+
+    And then one evening their captain rides up to your gate, alone, with his hands open. Ulric Rotbart: older, greyer, thinner, with a cough. "Herr," he says. [if flag.c2_bought_iron]"You paid me once to go away. I went. I am a man of my word."[elif flag.c2_fought_iron]"You fought us in the marsh, three years ago. You were good. I remember."[else]"I hear you are a lord now. Lords need men."[/if] He smiles, tiredly. "I have sixty men who will die of hunger this winter, or hang. I would rather they did neither. Would you?"
+  choices:
+    - id: hire
+      text: Take them on as your garrison, under your banner and your law.
+      tags: [martial, wealth]
+      requires: [ res.coin >= 120 ]
+      text_after: |
+        "Your law," Rotbart repeats. "Ja. Good. Somebody's law." He spits on his palm and holds it out.
+
+        Sixty Hroswald mercenaries in your barns and your alehouse. The village is terrified of them. Hodge Brewster's settlers start a fight with them in the first week and lose it. By Christmas the bandits on the road have stopped, because the worst of them are eating your bread, and the [if flag.c2_granted_kerval]Duchess's steward[else]Sauvemer captain[/if] writes you a nervous little letter asking what you intend to do with an army.
+      effects: [ { set: flag.c3_hired_bandits }, { add: { res.coin: -120, estate.defence: 3, estate.temper: -2, rel.ulric_rotbart.respect: 2 } } ]
+      next: { switch: [ { if: estate.temper <= -3, go: c3_unrest } ], default: c3_winter_hall }
+    - id: hunt
+      text: Hunt them down, with your men and your neighbours.
+      tags: [martial]
+      check:
+        attr: wits
+        skill: tactics
+        difficulty: 4
+        mods:
+          - { if: flag.c3_neighbours_pact, add: 1, label: your neighbours ride with you }
+          - { if: flag.c2_fought_iron, add: 1, label: you have fought them before }
+          - { if: estate.defence >= 3, add: 1, label: your village bowmen }
+      success:
+        text: It takes a month of cold, wet, ugly work in the [if flag.c2_granted_kerval]woods[else]reeds[/if]. At the end of it the masterless men are dead, or hanged at the crossroads, or gone over the border to be someone else's trouble. Rotbart is not among the dead. You never find out what became of him.
+        effects: [ { set: flag.c3_hunted_bandits }, { add: { estate.temper: 1, res.renown: 1, rep.commons: 1 } } ]
+        next: { switch: [ { if: estate.temper <= -3, go: c3_unrest } ], default: c3_winter_hall }
+      failure:
+        text: They know the country better than you. You lose two men in an ambush in the first week, and the masterless men move on in their own time, to someone else's manor, laughing.
+        effects: [ { casualties: { men: 1, named: 0 } }, { add: { estate.temper: -1 } } ]
+        next: { switch: [ { if: estate.temper <= -3, go: c3_unrest } ], default: c3_winter_hall }
+    - id: send
+      text: Feed them for a night, and send them on their way.
+      tags: [piety]
+      text_after: |
+        You feed them in your hall, all sixty, with the village peering in at the windows. Rotbart eats like a man who has forgotten how. In the morning they go east, toward Hroswald, toward home, if they have homes.
+
+        "You are a strange lord," Rotbart says at the gate. "Most would hang us. Some would hire us. Nobody feeds us." He touches his hat. "I will remember." You think he means it.
+      effects: [ { add: { res.coin: -12, estate.food: -1, rep.honor: 1, rel.ulric_rotbart.affection: 3 } } ]
+      next: { switch: [ { if: estate.temper <= -3, go: c3_unrest } ], default: c3_winter_hall }
+
+- id: c3_unrest
+  chapter: ch3
+  title: The Burning Rick
+  text: |
+    It starts with a rick of your barley, burning at midnight in the stackyard, and nobody saw who.
+
+    By morning there is a crowd at your gate: forty men, more, settlers and locals together for once, with staves and flails and a few rusty bills, and [if flag.c2_granted_marsalin]Margot[elif flag.c2_granted_kerval]Gwenaël, grey in the face,[else]Bastien[/if] at the front of them, because somebody has to be.
+
+    [break]
+
+    "We want the old custom back," somebody shouts. "Or the new wages. One or the other!" "We want the boon-work stopped!" "We want the fines stopped!" "We want bread!" They do not agree on what they want. They agree that they want it from you.
+
+    [if npc.roger_tallis.follower]"I can clear that gate with six men," Tallis says, quietly, at your shoulder. "If you want it cleared."[else]Your men are in the yard behind you, armed, waiting for the word.[/if]
+  choices:
+    - id: hear
+      text: Open the gate, walk out alone, and hear them.
+      tags: [diplomacy, piety]
+      check:
+        attr: presence
+        skill: diplomacy
+        difficulty: 4
+        mods:
+          - { if: flag.c3_nursed || flag.c3_reaped, add: 1, label: they remember the plague year }
+          - { if: flag.c1_learned_valdrennish, add: 1, label: you speak their tongue }
+      success:
+        text: |
+          You walk out of your own gate alone, without a sword, and stand in front of them, and say, "Well? Who's first?"
+
+          It takes all day. You sit on a mounting block in the road and hear every one of them, the fines and the wages and the boon-work and the pigs, and the steward writes it all down. At the end you give them some of it: the fines halved, the boon-work bought out at a fair rate, the burned rick forgotten. They do not cheer. They go home. That is what victory looks like, in a manor.
+        effects: [ { set: flag.c3_unrest_met }, { add: { estate.temper: 3, res.coin: -60, rep.commons: 1 } } ]
+        next: c3_winter_hall
+      failure:
+        text: Somebody throws a stone before you have said ten words. It takes you on the forehead, and you go down on one knee in the road, and the crowd goes silent, frightened of what it has done. They go home. Nothing is settled. Everyone is ashamed. It is a start, of a kind.
+        effects: [ { set: flag.c3_unrest_met }, { injury: cut_brow }, { add: { estate.temper: 1 } } ]
+        next: c3_winter_hall
+    - id: clear
+      text: Clear the gate.
+      tags: [martial]
+      text_after: |
+        Your men go out with staves and the flats of their swords, and the crowd breaks and runs, the way crowds do. Nobody is killed. A settler's arm is broken. Two of the ringleaders spend the winter in your cellar, and come out thinner and quieter.
+
+        The manor is quiet again. It is the quiet of a held breath.
+      effects: [ { set: flag.c3_unrest_met }, { add: { estate.temper: -1, rep.ruthlessness: 1, estate.people: -4 } } ]
+      next: c3_winter_hall
+    - id: hang
+      text: Find out who burned the rick, and hang him.
+      tags: [cunning, martial]
+      text_after: |
+        It takes a week and some silver to find out. It was a settler's boy of seventeen, drunk, with a grudge about a girl. You hang him at the crossroads. The settlers will not forgive it, and the locals are frightened, and frightened people do as they are told. For a while.
+      effects: [ { set: flag.c3_unrest_met }, { add: { estate.temper: -1, rep.ruthlessness: 2, rep.honor: -1 } } ]
+      next: c3_winter_hall
+
+- id: c3_winter_hall
+  chapter: ch3
+  title: Winter in the Hall
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    The second winter on the manor is quiet. You had forgotten what that was like.
+
+    Snow on the [if flag.c2_granted_kerval]orchards[else]marsh[/if], the fire built up in the hall, the steward's accounts done, the dogs asleep. Your men, the ones who are left, round the fire with the ale. [if estate.temper >= 2]Villagers come in of an evening now, to sit at the bottom of the hall and listen to the stories, the way people used to come into your own lord's hall when you were a boy.[/if]
+
+    [break]
+
+    [if npc.davy_ludd.alive && npc.davy_ludd.follower]Davy Ludd is twenty-two, and broad in the shoulder, and has a beard he is proud of and a Valdrennish girl from the village he is prouder of. He comes to you one evening, after the others have gone to bed, and stands at your chair turning his cap round in his hands, the way he did at fourteen on the quay at Saltcombe.
+
+    "Sir," he says. "I've two things to ask. I don't know which one first."[else]There is nobody left from the old days to sit up with you. You sit up anyway, and look at the fire, and count the faces that are not there.[/if]
+  choices:
+    - id: marry
+      text: "[if npc.davy_ludd.alive && npc.davy_ludd.follower]Give Davy leave to marry his girl, and a holding to keep her on.[else]Sit up with the fire.[/if]"
+      tags: [allies]
+      text_after: |
+        [if npc.davy_ludd.alive && npc.davy_ludd.follower]"Her name's Aude," he says, red to the ears. "Her father thinks I'm a heathen. Her mother likes me." You give him the empty holding by the mill, and a cow, and stand as his witness at the church door at Candlemas. Half the village comes. Aude's father comes at the last moment and stands at the back, scowling, and gets drunk, and dances. Davy, at the end, says, "Thank you, sir," and cannot say anything else.[else]You sit up with the fire until it is ash. Then you go to bed.[/if]
+      effects:
+        - if: [ npc.davy_ludd.alive, npc.davy_ludd.follower ]
+          then: [ { set: flag.c3_davy_married }, { add: { rel.davy_ludd.affection: 3, rel.davy_ludd.loyalty: 2, estate.temper: 1, estate.people: 1 } } ]
+      next: c3_second_spring
+    - id: knight
+      text: Kneel him down by the fire, and knight him.
+      tags: [allies, martial]
+      visible_if: [ npc.davy_ludd.alive, npc.davy_ludd.follower ]
+      text_after: |
+        [if flag.c2_promised_davy]"You promised," he says, when he understands what you are doing, and his voice breaks. "In the camp at Sauvemer. You promised, and I never thought..."[else]He does not understand what you are doing until you draw your sword. Then he does, and goes white, and kneels as if his legs had given way.[/if]
+
+        The flat of the blade on his shoulder, once, light as a hand, as it was done to you. "Be a good knight." There is nobody to see it but the dogs and the fire. He gets up Sir David Ludd, a groom's grandson from the Ravell stables, and stands there in your hall, and laughs, and wipes his face, and laughs again.
+
+        It will cost you, a little, with men who think a knight should be made by somebody who matters. You find you do not care.
+      effects: [ { set: flag.c3_davy_knighted }, { add: { rel.davy_ludd.affection: 4, rel.davy_ludd.respect: 3, rel.davy_ludd.loyalty: 3, rep.knights: -1, rep.commons: 1 } } ]
+      next: c3_second_spring
+    - id: stories
+      text: Tell them the story of Grisolles, the way it really was.
+      tags: [allies]
+      text_after: |
+        You have never told it, all of it, to anybody. Tonight, for some reason, you do: the mist, the block of men on foot, the bridge, the arch going into the Aube. [if flag.c2_saved_master]Going back for your master.[/if][if flag.c2_ford_saved]The ford.[/if] The men who did not come back.
+
+        Nobody interrupts. When you finish, the fire is low, and the villagers at the bottom of the hall are still there, and an old Valdrennish woman says something you do not quite catch. "She says her son was there," the steward translates, quietly. "On the other side. She says she is glad somebody remembers it properly."
+      effects: [ { add: { estate.temper: 1, rep.valdrenne: 1 } } ]
+      next: c3_second_spring
+
+- id: c3_second_spring
+  chapter: ch3
+  kind: ending
+  ending: ch3_complete
+  title: The Second Spring
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    Two years. The manor has [if estate.people >= 250]more people than the day you came, near enough[elif estate.people >= 180]filled up again, mostly, with strangers and children[else]never quite filled up again[/if], and [if estate.food >= 3]the barns are full[elif estate.food >= 1]the barns are not empty[else]the barns are bare, and everyone knows it[/if], and the village is [if estate.temper >= 3]yours, as much as any village is any man's[elif estate.temper >= 0]used to you, which is something[else]waiting for you to fail[/if].
+
+    [break]
+
+    In Lent a letter comes from home, and another from [if flag.c2_granted_kerval]the Duchess[else]Sauvemer[/if], and a third from someone you have not heard from in a long time. They are all, one way or another, about the same thing. You are twenty-eight. You hold land. People have started asking, at dinner, in letters, in the street, when you mean to marry.
+
+    End of the chapters written so far. Chapter 3 continues with the Match and the Reckoning.

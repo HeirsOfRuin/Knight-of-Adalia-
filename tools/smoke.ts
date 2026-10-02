@@ -44,11 +44,14 @@ try {
 
     // Copy the tallies (no check), then share bread in the wet year.
     await page.getByRole('button', { name: /Copy the tallies/ }).click();
+    await page.getByRole('heading', { name: 'The Dairy' }).waitFor();
+    await readAll(page);
+    await page.getByRole('button', { name: /plough-teams/ }).click();
     await page.getByRole('heading', { name: 'The Wet Year' }).waitFor();
     await readAll(page);
     await page.screenshot({ path: join(OUT, `${label}-4-after-choice.png`), fullPage: true });
     await page.getByRole('button', { name: /Take your share of the bread/ }).click();
-    await page.getByRole('heading', { name: 'What a Boy Learns' }).waitFor();
+    await page.getByRole('heading', { name: 'The Knight on the Road' }).waitFor();
 
     await page.getByRole('button', { name: 'People' }).click();
     await page.getByRole('heading', { name: 'People' }).waitFor();
@@ -68,16 +71,16 @@ try {
     const savePath = join(OUT, `${label}-save.json`);
     await download.saveAs(savePath);
     const exported = JSON.parse(readFileSync(savePath, 'utf8'));
-    if (exported.state.scene !== 'p_learning') fail(`${label}: exported save at ${exported.state.scene}`);
+    if (exported.state.scene !== 'p_knight') fail(`${label}: exported save at ${exported.state.scene}`);
 
     await page.reload();
     await page.getByRole('button', { name: /Continue/ }).click();
-    await page.getByRole('heading', { name: 'What a Boy Learns' }).waitFor();
+    await page.getByRole('heading', { name: 'The Knight on the Road' }).waitFor();
     await readAll(page);
     await page.locator('.choice:not([disabled])').first().click(); // advance past the export point
     await page.getByRole('button', { name: 'Menu' }).click();
     await page.locator('.menu input[type=file]').setInputFiles(savePath);
-    await page.getByRole('heading', { name: 'What a Boy Learns' }).waitFor();
+    await page.getByRole('heading', { name: 'The Knight on the Road' }).waitFor();
     const restored = await page.evaluate(() => JSON.parse(localStorage.getItem('knight-of-adalia.autosave.v1')!).state);
     if (JSON.stringify(restored) !== JSON.stringify(exported.state)) fail(`${label}: imported state differs from export`);
 

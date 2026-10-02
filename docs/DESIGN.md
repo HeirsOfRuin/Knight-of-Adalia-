@@ -656,6 +656,94 @@ The 33 not yet read are marked `later: ch3`.
 - deepen the Ch2 camp events;
 - second-pass prose on the Ch2 opening scenes.
 
+## Chapter 3 frame (draft, 2026-10-02, for approval)
+**Working title:** Ormel.
+**Span:** spring of year 26 to spring of year 32. Ages 25 to 31. About 24 seasons.
+**Size:** 75+ scenes, about 90k words written; a single run sees perhaps 35-40.
+
+### Premise
+He holds land at last: a marsh manor in conquered country, behind Sauvemer.
+- **The manor:** a village, a mill, a church, salt pans, three hundred acres that flood every winter.
+- **The people:** two hundred, who watched him besiege their town.
+- **The plague:** the Mottle reaches Ormel the day he does.
+
+Ch3 is about holding land and people through the great mortality, and choosing a wife. The war is in the background. When the truce runs out in year 27, it comes back as border raiding, not campaigns.
+
+### Acts
+1. **The Mortality** (spring year 26 to spring year 27, about 4 seasons).
+   - **The arrival.** The bell is already tolling.
+   - **His plague choices:** shut the village in, flee to Sauvemer, stay and nurse, burn the sick houses, or bring in Sarenzan physicians.
+   - **Who dies:** named followers can die. Letters from home bring deaths there too, because the Mottle crosses the Narrow Sea.
+   - **Ch2 decides the death toll:** `c2_prepared_plague`, `c2_clean_water`, `c2_prayed_plague`, `c2_learned_town`, and how Ormel already sees him (`c2_fought_iron`, `c2_refused_villages`, `c2_terms_carried`).
+   - **Ends with:** empty houses, unharvested fields, a third of Ormel dead.
+2. **The Lord** (years 27-29).
+   - **The estate cycle:** each season brings one estate decision and one event. Labour is short after the plague. Tenants want wages. The King's ordinance says wages must stay at pre-plague rates. He can hold to the ordinance, pay, or bring in settlers.
+   - **Cast:**
+     - the Valdrennish priest;
+     - the miller;
+     - the salt-boilers' headman;
+     - Adalian settlers sent by the Crown;
+     - the dead lord's kin, who still claim the land.
+   - **Threats:**
+     - remnants of the Iron Company turned bandit;
+     - the truce expiring in year 27, which brings border raids by Valdrennish march lords;
+     - Thibaut de Brésy as a neighbour, enemy or friend depending on Les Salines.
+3. **The Match** (years 28-30).
+   - **The marriage decision.** The candidates are the suits he has kept alive:
+     - the childhood sweetheart;
+     - Isabel, Maud, Cecily or Joan;
+     - Alys, Héloïse, Fiammetta or Clémence.
+   - **Two new candidates:** #10, a neighbouring march lord's daughter (an arranged offer), and #11, his liege's ward, given as a reward.
+   - **The process:** proposal, her family, the dowry, prejudice, the wedding.
+   - **Two homes:** a marriage can bring an Adalian holding (Wyck, Lisle, Fuller money), so he has a home on each side of the sea.
+   - **Heirs** arrive from here on.
+4. **The Reckoning** (years 30-32). The home threads converge:
+   - Black Ewan's vendetta (`c2_ewan_vendetta`, `c1_coll_hanged`);
+   - the Lanzi debt secured on his land;
+   - Ravell ruined by its ransom, and Aymer;
+   - the household secret, for the servant background;
+   - Wat Coker as leader of the settlers' unrest;
+   - Pryce, now a banneret, wanting him in the Carrow faction against the King's party;
+   - Prince Edwin coming of age;
+   - **the Vervais reveal:** the Queen bought Duke Lothaire with the staple. This sets up the Ch4 politics.
+
+   **Ends with** the opening to rise: a second grant, a barony, a summons to Council or Moot. Ending `ch3_complete`.
+
+### Systems to build
+- **Estate (`estate.ts`, specced in Phase 1, built now).** Ormel tracks:
+  - people;
+  - labour;
+  - granary, in seasons of food;
+  - income;
+  - temper, the village's goodwill, from -5 to +5;
+  - church;
+  - defences;
+  - salt.
+
+  Each season ticks the numbers and draws events whose conditions read them. The UI gets an Estate panel.
+- **Plague.** A seasonal mortality draw, adjusted by preparations. Named deaths go through the existing `casualties` effect, extended to family and candidates.
+- **Marriage.** Suits are evaluated into available candidates. Then come the proposal, family and dowry checks, and the wedding. The spouse becomes an NPC with an agenda.
+- **Heirs.** Births are drawn with the seeded RNG. Each child is a small NPC record.
+
+### Butterfly payoffs (examples)
+| Earlier choice | Ch3 consequence |
+|---|---|
+| `c2_breval_sacked`, `c2_raided_country`, the `burner` trait | Ormel's temper starts low. A burned village's daughter is among his tenants. |
+| `c2_terms_carried`, `c2_learned_town` | Ormel's temper starts higher. Clémence is a near neighbour. |
+| `c2_fought_iron` / `c2_refused_villages` | Ormel already knows what kind of lord he is. |
+| `c2_took_thibaut` / `c2_pryce_took_thibaut` | Who the Constable's son blames when the truce ends. |
+| `c2_lanzi_loan`, `c1_lanzi_debt` | Fiammetta's house holds a lien on Ormel's salt. |
+| `c1_coll_hanged` / `c1_coll_freed` / `c2_coll_repaid` | Black Ewan's vendetta, or Coll as an unlikely ally. |
+| `c2_saved_master` / `c2_master_taken` | His old master as a guest, a creditor, or a grave. |
+| `p_family_promise`, `c2_went_home` | What his family expects of a lord. |
+
+### Open questions for the author
+1. **Where does Ch3 happen?** Recommendation: Ormel is primary, and marriage may add an Adalian holding, which creates a two-home tension.
+2. **How brutal is the plague?** Recommendation: about a third of Ormel dies whatever he does. Preparations move that by about 10 points either way. In most runs, someone he cares about dies.
+3. **Does the war resume when the truce ends?** Recommendation: yes, as border raiding only. Save the next great campaign for Ch4.
+4. **Post-plague labour unrest:** a revolt in Ormel, in Adalia, or both? Recommendation: a rising in Adalia, which reaches him through family and Wat, and unrest in Ormel that he can head off.
+5. **Children:** births and child deaths on screen? Recommendation: yes, sparingly, never sentimentalised.
+
 ## Decisions log
 | Date | Decision |
 |---|---|
@@ -668,5 +756,6 @@ The 33 not yet read are marked `later: ch3`.
 | 2026-10-01 | Phase 2 built: prologue and Chapter 1. See Phase 2 notes. |
 | 2026-10-01 | Writing direction revised: tighter prose with Continue pages, branching over length, butterfly effect, approximate word goals, date header on change only, friends as semi-companions, partial = mixed win, People/World pages. Ch2 skeleton next, then deepen all. |
 | 2026-10-01 | Ch2 design decisions 1-11 recorded (see Chapter 2 decisions). Writing depth: target 400-500k words; prologue and Ch1 to be deepened before Ch2 (see Writing depth). |
+| 2026-10-02 | House voice adopted from the author's sample chapters (style-guide). Ch3 frame drafted for approval. |
 | 2026-10-02 | Ch2 war revised twice: original campaign that swings back and forth (Vervais fails, Grisolles lost, Harlow Moss and the fireships won, the breach fails, Les Salines a costly gamble won, truce on Adalian terms); harder knighting; partials never deal serious wounds; debug Rewind added. |
 | 2026-10-01 | Phase 3 review decisions: 9a, 11c, 12c, 14b, 13a. Historical items kept, except champion (15, replaced) and the Sweat (17, renamed). See Phase 3 review changes. |

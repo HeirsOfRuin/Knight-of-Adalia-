@@ -147,3 +147,21 @@ the_mottle:
   if: chapter >= ch3
   text: |
     The great mortality, as the sailors named it: a cough, a fever, skin gone grey and dark like a spreading bruise, blood. It came west through the Midsea ports in the last winter of the truce.
+ormel:
+  title: Ormel
+  category: places
+  if: flag.c2_granted_ormel
+  text: |
+    Your manor. A village, a mill, a church and some salt pans in the marsh behind Sauvemer: three hundred acres that flood every winter, and two hundred people who watched you besiege their town. Nobody else wanted it.
+marsalin:
+  title: Marsalin
+  category: places
+  if: flag.c2_granted_marsalin
+  text: |
+    Your manor. The salt manor on the edge of Les Salines, with a stone house on the dyke, the sluice-gates, the causeway to Sauvemer, and the best salt on the coast. The salt-boilers watched the battle from their roofs. Some of them buried kin out of the pans.
+kerval:
+  title: Kerval
+  category: places
+  if: flag.c2_granted_kerval
+  text: |
+    Your manor. Orchards, a mill, a fortified farm on a ridge and a stream that never floods, in the Armance hills behind Lannec, held of the King with the Duchess's assent. The best land given at Sauvemer, and the furthest from help.

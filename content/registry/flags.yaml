@@ -245,7 +245,12 @@ c2_stayed_for_grants: { description: "Stayed in Sauvemer for the grants", hidden
 c2_saw_ewan_work: { description: "Saw what Black Ewan did in the March", hidden: true, later: ch3 }
 c2_ceremonial_knight: { description: "Knighted with the others at the grants, for long service", hidden: true, later: ch3 }
 c2_granted_ormel: { description: "Granted the manor of Ormel", later: ch3 }
-c2_granted_salt: { description: "Granted Ormel's salt rights and fishery too", later: ch3 }
+c2_granted_more: { description: "Asked the King for more land at the grants, and got it", later: ch3 }
+c2_granted_marsalin: { description: "Granted Marsalin, the salt manor at Les Salines", later: ch3 }
+c2_granted_kerval: { description: "Granted Kerval in the Armance, with the Duchess's assent", later: ch3 }
+c2_grant_ormel: { description: "Earned the poor grant (Ormel): not known for much", hidden: true, later: ch3 }
+c2_grant_marsalin: { description: "Earned the Sauvemer grant (Marsalin)", hidden: true }
+c2_grant_kerval: { description: "Earned the Armance grant (Kerval)", hidden: true }
 c2_prepared_plague: { description: "Laid in grain, salt and a physician's book against the mortality", hidden: true, later: ch3 }
 c2_prayed_plague: { description: "Had Masses said against the mortality", hidden: true, later: ch3 }
 c2_promised_davy: { description: "Promised Davy Ludd he would see him knighted", hidden: true, later: ch3 }

@@ -680,93 +680,75 @@ Most training choices give +1 to a skill and +1 to `counter.training`. The train
 - Deaths are concentrated in the Ch1 crises and the Grisolles rout.
 - A trained, martial player now rarely dies in Ch2. War costs land on his men, his master and his friends rather than on him. Raise the Ch2 lethal checks if the author wants more personal danger.
 
-## Chapter 3 frame (draft, 2026-10-02, for approval)
-**Working title:** Ormel.
+## Chapter 3 frame (approved in principle, 2026-10-02)
+**Working title:** The Manor.
 **Span:** spring of year 26 to spring of year 32. Ages 25 to 31. About 24 seasons.
 **Size:** 75+ scenes, about 90k words written; a single run sees perhaps 35-40.
 
-### Premise
-He holds land at last: a marsh manor in conquered country, behind Sauvemer.
-- **The manor:** a village, a mill, a church, salt pans, three hundred acres that flood every winter.
-- **The people:** two hundred, who watched him besiege their town.
-- **The plague:** the Mottle reaches Ormel the day he does.
+### Which manor (decided by the author: three grants)
+At the end of Ch2 the King pays men with land near where they earned it. Ch2 deeds feed two fame counters at the grants: `counter.fame_sauvemer` and `counter.fame_armance`. Renown sets the bar.
 
-Ch3 is about holding land and people through the great mortality, and choosing a wife. The war is in the background. When the truce runs out in year 27, it comes back as border raiding, not campaigns.
+| Grant | Earned by | Character |
+|---|---|---|
+| **Ormel** | Renown under 10, or no strong fame anywhere: "not known for much" | Poor marsh manor behind Sauvemer. About 200 people, floods every winter, watched him besiege their town. |
+| **Marsalin** | Sauvemer fame 5+ and at least equal to Armance fame. Built from the fireships, boom, gallery, sortie, sluices, turning the garrison, the banner, Thibaut, the terms, the Iron Company and the breach | The salt manor at Les Salines: rich pans, a stone house, the causeway. The salt-boilers remember him, and half of them buried kin out of those pans. |
+| **Kerval** | Armance fame 4+. Built from Corbie, Vaudrey, the Duchess's notice, the Grisolles rearguard, baggage, ford, master, wounded, the ambush, the Duchess's message and holding the Armance castles | Good farmland in the hills behind Lannec, granted with the Duchess's assent. Friendly people, the best land, and the most exposed: a day from any Adalian garrison, inside the Duchess's politics. |
+
+- **Ask for more:** succeeding adds a rider to the grant (Ormel's salt rights and fishery; the Marsalin causeway toll; the Saint-Méen hamlet at Kerval). Sets `c2_granted_more`.
+- **Bot spread (400 runs per policy):**
+  - martial play gets Marsalin or Kerval about half and half;
+  - cunning play mostly Marsalin;
+  - diplomacy and wealth play mostly Ormel;
+  - random play is spread across all three.
+- **Ch3 is written once, with the manor as a variable.** Each manor has its own people, its own threats and its own variant scenes.
+
+### Answers recorded
+1. **Setting:** the granted manor is primary. Marriage may add an Adalian holding.
+2. **Plague:** about a third of the manor dies whatever he does. Preparations move that by about 10 points. In most runs, someone he cares about dies. (Agreed.)
+3. **War:** a chapter of rough peace. The truce expires in year 27 into border raiding, not campaigns. The next great campaign is in Ch4. (Agreed.)
+4. **Unrest:** a rising in Adalia reaches him through his family and Wat, plus unrest on his own manor that he can head off. (Agreed.)
+5. **Children:** born in Ch3, three at most. They stay in the background until Ch4, which has their growth periods. (Agreed, with the cap.)
 
 ### Acts
-1. **The Mortality** (spring year 26 to spring year 27, about 4 seasons).
-   - **The arrival.** The bell is already tolling.
-   - **His plague choices:** shut the village in, flee to Sauvemer, stay and nurse, burn the sick houses, or bring in Sarenzan physicians.
-   - **Who dies:** named followers can die. Letters from home bring deaths there too, because the Mottle crosses the Narrow Sea.
-   - **Ch2 decides the death toll:** `c2_prepared_plague`, `c2_clean_water`, `c2_prayed_plague`, `c2_learned_town`, and how Ormel already sees him (`c2_fought_iron`, `c2_refused_villages`, `c2_terms_carried`).
-   - **Ends with:** empty houses, unharvested fields, a third of Ormel dead.
+1. **The Mortality** (spring year 26 to spring year 27).
+   - **Arrival:** the bell is already tolling.
+   - **His plague choices:** shut the village in, flee to the nearest town, stay and nurse, burn the sick houses, or bring in physicians.
+   - **What Ch2 decides:** preparations (`c2_prepared_plague`, `c2_clean_water`, `c2_prayed_plague`), standing with the locals (`c2_learned_town`, `c2_fought_iron`, `c2_refused_villages`, `c2_terms_carried`), and the grant itself.
+   - **Deaths:** named followers can die, and letters bring deaths at home.
 2. **The Lord** (years 27-29).
-   - **The estate cycle:** each season brings one estate decision and one event. Labour is short after the plague. Tenants want wages. The King's ordinance says wages must stay at pre-plague rates. He can hold to the ordinance, pay, or bring in settlers.
-   - **Cast:**
-     - the Valdrennish priest;
-     - the miller;
-     - the salt-boilers' headman;
-     - Adalian settlers sent by the Crown;
-     - the dead lord's kin, who still claim the land.
-   - **Threats:**
-     - remnants of the Iron Company turned bandit;
-     - the truce expiring in year 27, which brings border raids by Valdrennish march lords;
-     - Thibaut de Brésy as a neighbour, enemy or friend depending on Les Salines.
+   - **The estate cycle:** a decision and an event each season.
+   - **Labour:** the shortage, wages against the King's ordinance, settlers.
+   - **Claims:** the dead lord's kin (at Ormel or Marsalin) or the Duchess's rival claimant (at Kerval).
+   - **Raiders:** Iron Company remnants.
+   - **The truce expires:** border raiding by Valdrennish march lords. Thibaut de Brésy is a neighbour.
 3. **The Match** (years 28-30).
-   - **The marriage decision.** The candidates are the suits he has kept alive:
-     - the childhood sweetheart;
-     - Isabel, Maud, Cecily or Joan;
-     - Alys, Héloïse, Fiammetta or Clémence.
-   - **Two new candidates:** #10, a neighbouring march lord's daughter (an arranged offer), and #11, his liege's ward, given as a reward.
-   - **The process:** proposal, her family, the dowry, prejudice, the wedding.
-   - **Two homes:** a marriage can bring an Adalian holding (Wyck, Lisle, Fuller money), so he has a home on each side of the sea.
-   - **Heirs** arrive from here on.
-4. **The Reckoning** (years 30-32). The home threads converge:
-   - Black Ewan's vendetta (`c2_ewan_vendetta`, `c1_coll_hanged`);
-   - the Lanzi debt secured on his land;
-   - Ravell ruined by its ransom, and Aymer;
-   - the household secret, for the servant background;
-   - Wat Coker as leader of the settlers' unrest;
-   - Pryce, now a banneret, wanting him in the Carrow faction against the King's party;
-   - Prince Edwin coming of age;
-   - **the Vervais reveal:** the Queen bought Duke Lothaire with the staple. This sets up the Ch4 politics.
-
-   **Ends with** the opening to rise: a second grant, a barony, a summons to Council or Moot. Ending `ch3_complete`.
+   - **Candidates:** the suits he has kept alive, plus #10 (a neighbouring lord's daughter, arranged) and #11 (his liege's ward, as a reward). Kerval makes Héloïse and the Armance gentry closer. Marsalin makes Clémence and Fiammetta closer.
+   - **The process:** proposal, her family, the dowry, the wedding.
+   - **Children:** the first child is born; at most three in the chapter.
+4. **The Reckoning** (years 30-32).
+   - Black Ewan; the Lanzi lien; Ravell's ruin; the Adalian rising and Wat; Pryce and the Carrow faction; Prince Edwin; the Vervais reveal.
+   - **Ends with** the opening to rise: a second grant, a barony, a summons. Ending `ch3_complete`.
 
 ### Systems to build
-- **Estate (`estate.ts`, specced in Phase 1, built now).** Ormel tracks:
-  - people;
-  - labour;
-  - granary, in seasons of food;
-  - income;
-  - temper, the village's goodwill, from -5 to +5;
-  - church;
-  - defences;
-  - salt.
-
-  Each season ticks the numbers and draws events whose conditions read them. The UI gets an Estate panel.
-- **Plague.** A seasonal mortality draw, adjusted by preparations. Named deaths go through the existing `casualties` effect, extended to family and candidates.
-- **Marriage.** Suits are evaluated into available candidates. Then come the proposal, family and dowry checks, and the wedding. The spouse becomes an NPC with an agenda.
-- **Heirs.** Births are drawn with the seeded RNG. Each child is a small NPC record.
+- **Estate (`estate.ts`).** The manor tracks people, labour, granary, income, temper (-5 to +5), church, defences and its specialty: salt at Marsalin and Ormel, orchards and grain at Kerval. Each season ticks the numbers and draws events whose conditions read them. There is an Estate panel in the UI.
+- **Plague.** A seasonal mortality draw; named deaths through `casualties`, extended to family and candidates.
+- **Marriage.** Suits are evaluated into available candidates; then the proposal, family and dowry checks, the wedding, and the spouse as an NPC.
+- **Heirs.** Births drawn with the seeded RNG, at most three. Each is a small NPC record, with growth deferred to Ch4.
 
 ### Butterfly payoffs (examples)
 | Earlier choice | Ch3 consequence |
 |---|---|
-| `c2_breval_sacked`, `c2_raided_country`, the `burner` trait | Ormel's temper starts low. A burned village's daughter is among his tenants. |
-| `c2_terms_carried`, `c2_learned_town` | Ormel's temper starts higher. Clémence is a near neighbour. |
-| `c2_fought_iron` / `c2_refused_villages` | Ormel already knows what kind of lord he is. |
+| `c2_breval_sacked`, `c2_raided_country`, the `burner` trait | The manor's temper starts low. A burned village's daughter is among his tenants. |
+| `c2_terms_carried`, `c2_learned_town` | Temper starts higher. Clémence is a near neighbour (Ormel, Marsalin). |
+| `c2_jehanne_message`, `c2_armance_castles` | The Duchess's favour at Kerval. |
 | `c2_took_thibaut` / `c2_pryce_took_thibaut` | Who the Constable's son blames when the truce ends. |
-| `c2_lanzi_loan`, `c1_lanzi_debt` | Fiammetta's house holds a lien on Ormel's salt. |
+| `c2_lanzi_loan`, `c1_lanzi_debt` | The Lanzi hold a lien on the manor's income. |
 | `c1_coll_hanged` / `c1_coll_freed` / `c2_coll_repaid` | Black Ewan's vendetta, or Coll as an unlikely ally. |
 | `c2_saved_master` / `c2_master_taken` | His old master as a guest, a creditor, or a grave. |
-| `p_family_promise`, `c2_went_home` | What his family expects of a lord. |
+| `c1_learned_manor`, `c1_learned_valdrennish` | Better estate and village checks from the start. |
 
-### Open questions for the author
-1. **Where does Ch3 happen?** Recommendation: Ormel is primary, and marriage may add an Adalian holding, which creates a two-home tension.
-2. **How brutal is the plague?** Recommendation: about a third of Ormel dies whatever he does. Preparations move that by about 10 points either way. In most runs, someone he cares about dies.
-3. **Does the war resume when the truce ends?** Recommendation: yes, as border raiding only. Save the next great campaign for Ch4.
-4. **Post-plague labour unrest:** a revolt in Ormel, in Adalia, or both? Recommendation: a rising in Adalia, which reaches him through family and Wat, and unrest in Ormel that he can head off.
-5. **Children:** births and child deaths on screen? Recommendation: yes, sparingly, never sentimentalised.
+### Still open
+- **Ch2 personal danger for well-trained fighters:** raise the lethal checks by one step, or leave as is.
 
 ## Decisions log
 | Date | Decision |
@@ -780,6 +762,7 @@ Ch3 is about holding land and people through the great mortality, and choosing a
 | 2026-10-01 | Phase 2 built: prologue and Chapter 1. See Phase 2 notes. |
 | 2026-10-01 | Writing direction revised: tighter prose with Continue pages, branching over length, butterfly effect, approximate word goals, date header on change only, friends as semi-companions, partial = mixed win, People/World pages. Ch2 skeleton next, then deepen all. |
 | 2026-10-01 | Ch2 design decisions 1-11 recorded (see Chapter 2 decisions). Writing depth: target 400-500k words; prologue and Ch1 to be deepened before Ch2 (see Writing depth). |
+| 2026-10-02 | Three land grants by where his name was made (Ormel, Marsalin, Kerval). Ch3 answers: plague a third, rough peace, rising plus manor unrest, max three children deferred to Ch4. |
 | 2026-10-02 | House voice adopted from the author's sample chapters (style-guide). Ch3 frame drafted for approval. |
 | 2026-10-02 | Ch2 war revised twice: original campaign that swings back and forth (Vervais fails, Grisolles lost, Harlow Moss and the fireships won, the breach fails, Les Salines a costly gamble won, truce on Adalian terms); harder knighting; partials never deal serious wounds; debug Rewind added. |
 | 2026-10-01 | Phase 3 review decisions: 9a, 11c, 12c, 14b, 13a. Historical items kept, except champion (15, replaced) and the Sweat (17, renamed). See Phase 3 review changes. |

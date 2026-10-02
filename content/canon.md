@@ -36,7 +36,8 @@ Two kingdoms share a cold, wet island. Adalia, in the south, is rich in wool and
   - **The Armance**: a western peninsula, a duchy with its own disputed succession.
   - **Vervais**: a northeastern duchy of weaving towns. They live on Adalian wool.
   - **The Midi**: the rich south. Wine and salt.
-- **Sauvemer**: a walled port on a spit between the sea and the salt marshes, two days up the coast from the Armance. Adalian from year 23. **Ormel** is a marsh manor behind it.
+- **Sauvemer**: a walled port on a spit between the sea and the salt marshes, two days up the coast from the Armance. Adalian from year 23. **Ormel** is a poor marsh manor behind it. **Marsalin** is the salt manor on the edge of Les Salines, with a stone house on the dyke and the battle's sluice-gates.
+  - **Kerval**: a manor of orchards and good farmland in the Armance hills behind Lannec, held of the King with the Duchess's assent.
   - **The Lisonne** is the river between Amaury's lands and Vervais. **The Aube** crosses the road back west at **Grisolles**.
 - **Hroswald**: forest, mountains and mining towns east of Valdrenne. The **Ostmark** is its eastern frontier.
 - **Sarenza**: a league of ports on the southern sea. Sarenza is the chief city, with **Vellagio** and **Calvi Porto** beside it.

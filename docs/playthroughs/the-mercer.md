@@ -2103,20 +2103,26 @@ The ship back is full of men going to the war that is not, at the moment, a war.
 
 At Michaelmas the King's council sits in the great hall of Sauvemer castle to give out the conquered lands.
 
-It is not a generous business. The King wants loyal men holding the country around his new port, men who will defend it because it is theirs. He also wants it cheap. So the great lords get towns and castles, and the bannerets get manors, and men like you, if you are lucky, get a village in the marshes that nobody else wanted, and the duty to hold it.
+It is not a generous business. The King wants loyal men holding the country, men who will defend it because it is theirs, and he wants it cheap. So the great lords get towns and castles, and the bannerets get manors, and the rest get what is left, and the duty to hold it. "Men get paid where they bled," the old soldiers say. "If the King remembers where that was."
 
 *(Continue)*
 
 The great hall of Sauvemer castle is packed to the beams, and hot, and smells of wet wool and nerves. Men who have fought side by side for four years are not looking at each other.
 
-Then the clerk reads your name, and the name of a place: **Ormel**. A manor in the marsh country behind Sauvemer. A village, a mill, a church, some salt pans, three hundred acres that flood every winter, and two hundred people who watched you besiege their town.
+*(Continue)*
+
+Then the clerk reads your name, and the name of a place: Ormel. A manor in the marsh country behind Sauvemer. A village, a mill, a church, some salt pans, three hundred acres that flood every winter, and two hundred people who watched you besiege their town.
+
+Nobody else wanted it. You can see that on the faces around you. "Ormel," mutters a Carrow knight behind you, and laughs. "God help you. It's mostly water."
 
 - Kneel, and do homage for Ormel.
 - Kneel, and ask, respectfully, for more. *(Even)*
 
 **Chose:** Kneel, and do homage for Ormel.
 
-You put your hands between the King's hands and swear to be his man for the land of Ormel. It takes less time than a paternoster. Then you stand up, and you are a lord of somewhere. The clerk writes it in the roll. Two hundred people in a marsh do not know yet that they are yours.
+You put your hands between the King's hands and swear to be his man for the land of Ormel. It takes less time than a paternoster. His hands are dry and cold and he does not look at you; he has done this forty times today.
+
+Then you stand up, and you are a lord of somewhere. The clerk writes it in the roll. A few hundred people on the edge of the sea do not know yet that they are yours.
 
 *Station: Lord · Renown +1*
 
@@ -2150,8 +2156,12 @@ People laugh at you, gently. You buy grain anyway, and salt, and a Sarenzan phys
 
 In the spring you ride out of Sauvemer by the land gate, the one Dame Clémence carried the keys out of, with your banner and your following and the King's writ, along the dunes and across the marsh to Ormel.
 
-Behind you ride the few who are left. Davy carries your banner. He is a man now.
+Behind you ride the few who are left. Davy carries your banner. He is a man now. "Nearly there, sir," he says, every mile, as if you might have forgotten.
 
-The village sees you coming a mile off across the flat country. By the time you reach it, everyone is indoors, and the street is empty, and the church bell is ringing. Not for you. For a death. The first, in Ormel, of the great mortality.
+[break]
 
-End of Chapter 2. Ormel is next.
+The village sees you coming a mile off across the flat country. By the time you reach it, everyone is indoors, and the street is empty, and the church bell is ringing.
+
+Not for you. For a death. The first, in Ormel, of the great mortality.
+
+End of Chapter 2.

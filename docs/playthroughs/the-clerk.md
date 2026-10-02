@@ -2128,20 +2128,28 @@ She has turned down the knight from Hollesby, and two others since, and her fath
 
 At Michaelmas the King's council sits in the great hall of Sauvemer castle to give out the conquered lands.
 
-It is not a generous business. The King wants loyal men holding the country around his new port, men who will defend it because it is theirs. He also wants it cheap. So the great lords get towns and castles, and the bannerets get manors, and men like you, if you are lucky, get a village in the marshes that nobody else wanted, and the duty to hold it.
+It is not a generous business. The King wants loyal men holding the country, men who will defend it because it is theirs, and he wants it cheap. So the great lords get towns and castles, and the bannerets get manors, and the rest get what is left, and the duty to hold it. "Men get paid where they bled," the old soldiers say. "If the King remembers where that was."
 
 *(Continue)*
 
 The great hall of Sauvemer castle is packed to the beams, and hot, and smells of wet wool and nerves. Men who have fought side by side for four years are not looking at each other.
 
-Then the clerk reads your name, and the name of a place: **Ormel**. A manor in the marsh country behind Sauvemer. A village, a mill, a church, some salt pans, three hundred acres that flood every winter, and two hundred people who watched you besiege their town.
+*(Continue)*
 
-- Kneel, and do homage for Ormel.
+Then the clerk reads your name, and a place nobody else in the hall has heard of. "Kerval, in the Armance. By the King's grant, with the assent of the Duchess of Armance."
+
+The Duchess's steward, standing by the dais in her ermine, looks across the hall at you and inclines his head. Kerval is a manor of good farmland in the hills behind Lannec: orchards, a mill, a fortified farm on a ridge, two hundred and fifty people, and a stream that never floods. It is the best land anybody in this hall has been given today. It is also a day's ride from the nearest Adalian garrison, in a duchy with two claimants and enemies on three sides. "The Duchess asked for you," the steward says afterwards. "She has a long memory. It is her best quality, and her worst."
+
+The people of Kerval are the only Valdrennish you have met who are glad to see an Adalian. That may not last.
+
+- Kneel, and do homage for Kerval.
 - Kneel, and ask, respectfully, for more. *(Risky)*
 
-**Chose:** Kneel, and do homage for Ormel.
+**Chose:** Kneel, and do homage for Kerval.
 
-You put your hands between the King's hands and swear to be his man for the land of Ormel. It takes less time than a paternoster. Then you stand up, and you are a lord of somewhere. The clerk writes it in the roll. Two hundred people in a marsh do not know yet that they are yours.
+You put your hands between the King's hands and swear to be his man for the land of Kerval. It takes less time than a paternoster. His hands are dry and cold and he does not look at you; he has done this forty times today.
+
+Then you stand up, and you are a lord of somewhere. The clerk writes it in the roll. Two hundred and fifty people in the Armance hills do not know yet that they are yours.
 
 *Station: Lord · Renown +1*
 
@@ -2159,7 +2167,7 @@ In the east, they say, beyond the Midsea, there is a sickness that came off a ca
 
 Nobody believes it, quite. Sailors' stories always grow.
 
-In the spring you will go to Ormel.
+In the spring you will go to Kerval.
 
 - Begin to prepare. Grain, salt, a physician if you can find one.
 - Pray, and have Masses said, against it.
@@ -2171,12 +2179,16 @@ People laugh at you, gently. You buy grain anyway, and salt, and a Sarenzan phys
 
 *Coin −10s · Supplies +2*
 
-## Ormel
+## Kerval
 
-In the spring you ride out of Sauvemer by the land gate, the one Dame Clémence carried the keys out of, with your banner and your following and the King's writ, along the dunes and across the marsh to Ormel.
+In the spring you take ship down the coast to Port-Haudry, where all of this began, and ride inland through the Armance hills, with your banner and your following and the King's writ and the Duchess's letter, to Kerval.
 
-Behind you ride the few who are left. Davy carries your banner. He is a man now.
+Behind you ride the few who are left. Davy carries your banner. He is a man now. "Nearly there, sir," he says, every mile, as if you might have forgotten.
 
-The village sees you coming a mile off across the flat country. By the time you reach it, everyone is indoors, and the street is empty, and the church bell is ringing. Not for you. For a death. The first, in Ormel, of the great mortality.
+[break]
 
-End of Chapter 2. Ormel is next.
+The village sees you coming down the valley road between the orchards, and comes out. You see the people gathering at the edge of the green, and for a moment you think it is a welcome. Then you hear the bell.
+
+Not for you. For a death. The first, in Kerval, of the great mortality.
+
+End of Chapter 2.

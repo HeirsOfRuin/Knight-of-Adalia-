@@ -287,10 +287,43 @@
     - advance: { seasons: 2 }
     - if: station != knight
       then: [ { station: knight }, { set: flag.c2_ceremonial_knight } ]
+    # Where did he make his name? The King pays men with land near where they earned it.
+    - { if: flag.c2_fireship, then: [ { add: { counter.fame_sauvemer: 2, counter.fame_diff: 2 } } ] }
+    - { if: flag.c2_built_boom, then: [ { add: { counter.fame_sauvemer: 1, counter.fame_diff: 1 } } ] }
+    - { if: flag.c2_held_gallery, then: [ { add: { counter.fame_sauvemer: 1, counter.fame_diff: 1 } } ] }
+    - { if: flag.c2_sortie_hero, then: [ { add: { counter.fame_sauvemer: 1, counter.fame_diff: 1 } } ] }
+    - { if: flag.c2_opened_sluice, then: [ { add: { counter.fame_sauvemer: 2, counter.fame_diff: 2 } } ] }
+    - { if: flag.c2_turned_garrison, then: [ { add: { counter.fame_sauvemer: 1, counter.fame_diff: 1 } } ] }
+    - { if: flag.c2_saved_banner, then: [ { add: { counter.fame_sauvemer: 2, counter.fame_diff: 2 } } ] }
+    - { if: flag.c2_took_thibaut, then: [ { add: { counter.fame_sauvemer: 2, counter.fame_diff: 2 } } ] }
+    - { if: flag.c2_terms_carried, then: [ { add: { counter.fame_sauvemer: 2, counter.fame_diff: 2 } } ] }
+    - { if: flag.c2_fought_iron, then: [ { add: { counter.fame_sauvemer: 1, counter.fame_diff: 1 } } ] }
+    - { if: flag.c2_breach_survived, then: [ { add: { counter.fame_sauvemer: 1, counter.fame_diff: 1 } } ] }
+    - { if: flag.c2_took_corbie, then: [ { add: { counter.fame_armance: 1, counter.fame_diff: -1 } } ] }
+    - { if: flag.c2_vaudrey_held, then: [ { add: { counter.fame_armance: 1, counter.fame_diff: -1 } } ] }
+    - { if: flag.c2_jehanne_noticed, then: [ { add: { counter.fame_armance: 1, counter.fame_diff: -1 } } ] }
+    - { if: flag.c2_grisolles_held, then: [ { add: { counter.fame_armance: 2, counter.fame_diff: -2 } } ] }
+    - { if: flag.c2_saved_baggage, then: [ { add: { counter.fame_armance: 1, counter.fame_diff: -1 } } ] }
+    - { if: flag.c2_ford_saved, then: [ { add: { counter.fame_armance: 3, counter.fame_diff: -3 } } ] }
+    - { if: flag.c2_saved_master, then: [ { add: { counter.fame_armance: 2, counter.fame_diff: -2 } } ] }
+    - { if: flag.c2_carried_wounded, then: [ { add: { counter.fame_armance: 1, counter.fame_diff: -1 } } ] }
+    - { if: flag.c2_ambushed_iron, then: [ { add: { counter.fame_armance: 1, counter.fame_diff: -1 } } ] }
+    - { if: flag.c2_jehanne_message, then: [ { add: { counter.fame_armance: 2, counter.fame_diff: -2 } } ] }
+    - { if: flag.c2_armance_castles, then: [ { add: { counter.fame_armance: 2, counter.fame_diff: -2 } } ] }
+    - { if: flag.c2_knighted_grisolles, then: [ { add: { counter.fame_armance: 1, counter.fame_diff: -1 } } ] }
+    - if: [ res.renown >= 10, counter.fame_sauvemer >= 5, counter.fame_diff >= 0 ]
+      then: [ { set: flag.c2_grant_marsalin } ]
+      else:
+        - if: [ res.renown >= 10, counter.fame_armance >= 4 ]
+          then: [ { set: flag.c2_grant_kerval } ]
+          else:
+            - if: [ res.renown >= 10, counter.fame_sauvemer >= 5 ]
+              then: [ { set: flag.c2_grant_marsalin } ]
+              else: [ { set: flag.c2_grant_ormel } ]
   text: |
     At Michaelmas the King's council sits in the great hall of Sauvemer castle to give out the conquered lands.
 
-    It is not a generous business. The King wants loyal men holding the country around his new port, men who will defend it because it is theirs. He also wants it cheap. So the great lords get towns and castles, and the bannerets get manors, and men like you, if you are lucky, get a village in the marshes that nobody else wanted, and the duty to hold it.
+    It is not a generous business. The King wants loyal men holding the country, men who will defend it because it is theirs, and he wants it cheap. So the great lords get towns and castles, and the bannerets get manors, and the rest get what is left, and the duty to hold it. "Men get paid where they bled," the old soldiers say. "If the King remembers where that was."
 
     [break]
 
@@ -298,12 +331,35 @@
 
     The great hall of Sauvemer castle is packed to the beams, and hot, and smells of wet wool and nerves. Men who have fought side by side for four years are not looking at each other.
 
-    Then the clerk reads your name, and the name of a place: **Ormel**. A manor in the marsh country behind Sauvemer. A village, a mill, a church, some salt pans, three hundred acres that flood every winter, and two hundred people who watched you besiege their town. [if flag.c2_fought_iron]They have seen you since, in the marshes, fighting the Iron Company for them.[elif flag.c2_refused_villages]They have seen you since, sending their headmen away.[/if]
+    [break]
+
+    [if flag.c2_grant_marsalin]Then the clerk reads your name, and the King looks up from his cup, and smiles, which he does not do for many. "Marsalin," the clerk reads.
+
+    You know it. Everyone in the hall knows it. Marsalin is the salt manor on the edge of Les Salines: the pans where the Valdrennish drowned, the sluice-gates, the causeways, a stone house on the dyke, a village of salt-boilers, a chapel, three hundred souls and the best salt on the coast. [if flag.c2_opened_sluice]"The King thought," says the clerk, reading from his roll without expression, "that the man who opened the gates should own them."[elif flag.c2_saved_banner]"For the banner," says the King himself, quietly, before the clerk can go on.[else]"For services at Sauvemer," the clerk reads, "by sea and land."[/if]
+
+    The salt-boilers of Marsalin watched the battle from their roofs. They know your face. Half of them are glad of it. The other half buried kin out of those pans.[elif flag.c2_grant_kerval]Then the clerk reads your name, and a place nobody else in the hall has heard of. "Kerval, in the Armance. By the King's grant, with the assent of the Duchess of Armance."
+
+    The Duchess's steward, standing by the dais in her ermine, looks across the hall at you and inclines his head. Kerval is a manor of good farmland in the hills behind Lannec: orchards, a mill, a fortified farm on a ridge, two hundred and fifty people, and a stream that never floods. It is the best land anybody in this hall has been given today. It is also a day's ride from the nearest Adalian garrison, in a duchy with two claimants and enemies on three sides. [if flag.c2_ford_saved]"The Duchess asked for you by name," the steward tells you afterwards. "She said the man who found the ford at Grisolles brought three hundred of her allies home, and she would like him for a neighbour."[elif flag.c2_grisolles_held]"The Duchess asked for you by name," the steward tells you afterwards. "She said the rearguard at Grisolles was the only part of that day worth remembering."[else]"The Duchess asked for you," the steward says afterwards. "She has a long memory. It is her best quality, and her worst."[/if]
+
+    The people of Kerval are the only Valdrennish you have met who are glad to see an Adalian. That may not last.[else]Then the clerk reads your name, and the name of a place: Ormel. A manor in the marsh country behind Sauvemer. A village, a mill, a church, some salt pans, three hundred acres that flood every winter, and two hundred people who watched you besiege their town. [if flag.c2_fought_iron]They have seen you since, in the marshes, fighting the Iron Company for them.[elif flag.c2_refused_villages]They have seen you since, sending their headmen away.[/if]
+
+    Nobody else wanted it. You can see that on the faces around you. "Ormel," mutters a Carrow knight behind you, and laughs. "God help you. It's mostly water."[/if]
   choices:
     - id: accept
-      text: Kneel, and do homage for Ormel.
-      text_after: You put your hands between the King's hands and swear to be his man for the land of Ormel. It takes less time than a paternoster. Then you stand up, and you are a lord of somewhere. The clerk writes it in the roll. Two hundred people in a marsh do not know yet that they are yours.
-      effects: [ { set: flag.c2_granted_ormel }, { station: lord }, { add: { res.renown: 1 } } ]
+      text: "Kneel, and do homage for [if flag.c2_grant_marsalin]Marsalin[elif flag.c2_grant_kerval]Kerval[else]Ormel[/if]."
+      text_after: |
+        You put your hands between the King's hands and swear to be his man for the land of [if flag.c2_grant_marsalin]Marsalin[elif flag.c2_grant_kerval]Kerval[else]Ormel[/if]. It takes less time than a paternoster. His hands are dry and cold and he does not look at you; he has done this forty times today.
+
+        Then you stand up, and you are a lord of somewhere. The clerk writes it in the roll. [if flag.c2_grant_kerval]Two hundred and fifty people in the Armance hills[else]A few hundred people on the edge of the sea[/if] do not know yet that they are yours.
+      effects:
+        - station: lord
+        - add: { res.renown: 1 }
+        - if: flag.c2_grant_marsalin
+          then: [ { set: flag.c2_granted_marsalin } ]
+          else:
+            - if: flag.c2_grant_kerval
+              then: [ { set: flag.c2_granted_kerval } ]
+              else: [ { set: flag.c2_granted_ormel } ]
       next: c2_plague
     - id: ask_more
       text: Kneel, and ask, respectfully, for more.
@@ -323,12 +379,29 @@
           - { if: flag.c2_spoke_for_town || flag.c2_terms_carried, add: -1, label: the council thinks you soft on the Valdrennish }
           - { if: flag.c1_caught_spy, add: 1, label: the spy you caught }
       success:
-        text: The King's chamberlain looks at the King, and the King looks at you, and something in your record makes him smile. Ormel, and the salt rights of the whole marsh behind it, and the fishery. It doubles what Ormel is worth. Nobody else in the hall gets more than he was given. Several people notice.
-        effects: [ { set: flag.c2_granted_ormel }, { set: flag.c2_granted_salt }, { station: lord }, { add: { res.renown: 1, rep.nobles: -1 } } ]
+        text: "The King's chamberlain looks at the King, and the King looks at you, and something in your record makes him smile. [if flag.c2_grant_marsalin]Marsalin, and the toll of the causeway to Sauvemer, which every cart of salt must pay.[elif flag.c2_grant_kerval]Kerval, and the hamlet of Saint-Méen beside it, with its mill and its fishponds.[else]Ormel, and the salt rights of the whole marsh behind it, and the fishery.[/if] It near doubles what you were given. Nobody else in the hall gets more than he was first offered. Several people notice, and remember."
+        effects:
+          - station: lord
+          - set: flag.c2_granted_more
+          - add: { res.renown: 1, rep.nobles: -1 }
+          - if: flag.c2_grant_marsalin
+            then: [ { set: flag.c2_granted_marsalin } ]
+            else:
+              - if: flag.c2_grant_kerval
+                then: [ { set: flag.c2_granted_kerval } ]
+                else: [ { set: flag.c2_granted_ormel } ]
         next: c2_plague
       failure:
-        text: The King's face does not change. Ormel, the clerk reads again, and moves on. You have been noted as a man who asks.
-        effects: [ { set: flag.c2_granted_ormel }, { station: lord }, { add: { rep.crown: -1 } } ]
+        text: "The King's face does not change. [if flag.c2_grant_marsalin]Marsalin[elif flag.c2_grant_kerval]Kerval[else]Ormel[/if], the clerk reads again, louder, and moves on. You have been noted as a man who asks."
+        effects:
+          - station: lord
+          - add: { rep.crown: -1 }
+          - if: flag.c2_grant_marsalin
+            then: [ { set: flag.c2_granted_marsalin } ]
+            else:
+              - if: flag.c2_grant_kerval
+                then: [ { set: flag.c2_granted_kerval } ]
+                else: [ { set: flag.c2_granted_ormel } ]
         next: c2_plague
 
 - id: c2_plague
@@ -346,7 +419,7 @@
 
     Nobody believes it, quite. Sailors' stories always grow. [if npc.fiammetta_lanzi.met]Fiammetta Lanzi believes it. Her letters from Sarenza have stopped.[/if]
 
-    In the spring you will go to Ormel.
+    In the spring you will go to [if flag.c2_granted_marsalin]Marsalin[elif flag.c2_granted_kerval]Kerval[else]Ormel[/if].
   choices:
     - id: prepare
       text: Begin to prepare. Grain, salt, a physician if you can find one.
@@ -363,20 +436,24 @@
     - id: ignore
       text: It is a sailors' story.
       tags: [yield]
-      text_after: It is a sailors' story. You go to Ormel in the spring with your men and your grant and a great many plans.
+      text_after: It is a sailors' story. You go to your manor in the spring with your men and your grant and a great many plans.
       next: c2_end
 
 - id: c2_end
   chapter: ch2
   kind: ending
   ending: ch2_complete
-  title: Ormel
+  title: "[if flag.c2_granted_marsalin]Marsalin[elif flag.c2_granted_kerval]Kerval[else]Ormel[/if]"
   on_enter: [ { advance: { seasons: 1 } } ]
   text: |
-    In the spring you ride out of Sauvemer by the land gate, the one Dame Clémence carried the keys out of, with your banner and your following and the King's writ, along the dunes and across the marsh to Ormel.
+    [if flag.c2_granted_kerval]In the spring you take ship down the coast to Port-Haudry, where all of this began, and ride inland through the Armance hills, with your banner and your following and the King's writ and the Duchess's letter, to Kerval.[else]In the spring you ride out of Sauvemer by the land gate, the one Dame Clémence carried the keys out of, with your banner and your following and the King's writ, [if flag.c2_granted_marsalin]along the dyke where the line held, past the sluice-gates and the pans, to Marsalin.[else]along the dunes and across the marsh to Ormel.[/if][/if]
 
-    [if retinue >= 4]Behind you ride the men who have followed you through the war, or the ones who are left.[elif retinue >= 1]Behind you ride the few who are left.[else]You ride alone, with Davy, if Davy is still with you.[/if] [if npc.davy_ludd.alive && npc.davy_ludd.follower]Davy carries your banner. He is a man now.[/if]
+    [if retinue >= 4]Behind you ride the men who have followed you through the war, or the ones who are left.[elif retinue >= 1]Behind you ride the few who are left.[else]You ride alone, with Davy, if Davy is still with you.[/if] [if npc.davy_ludd.alive && npc.davy_ludd.follower]Davy carries your banner. He is a man now. "Nearly there, sir," he says, every mile, as if you might have forgotten.[/if]
 
-    The village sees you coming a mile off across the flat country. By the time you reach it, everyone is indoors, and the street is empty, and the church bell is ringing. Not for you. For a death. The first, in Ormel, of the great mortality.
+    [break]
 
-    End of Chapter 2. Ormel is next.
+    [if flag.c2_granted_kerval]The village sees you coming down the valley road between the orchards, and comes out. You see the people gathering at the edge of the green, and for a moment you think it is a welcome. Then you hear the bell.[elif flag.c2_granted_marsalin]The salt-boilers see you coming along the dyke a mile off. By the time you reach the stone house, every door in the village is shut, and the chapel bell is ringing.[else]The village sees you coming a mile off across the flat country. By the time you reach it, everyone is indoors, and the street is empty, and the church bell is ringing.[/if]
+
+    Not for you. For a death. The first, in [if flag.c2_granted_marsalin]Marsalin[elif flag.c2_granted_kerval]Kerval[else]Ormel[/if], of the great mortality.
+
+    End of Chapter 2.

@@ -134,14 +134,22 @@
           - { if: flag.c1_giles_enemy, add: -1, label: Giles has had a word with the marshal of the lists }
           - { if: background == archer, add: -1, label: "a bowman's son in the knights' lists" }
       success:
-        text: Three courses. You break two lances on Giles Marrick's shield and he breaks one on yours. On the third he is out of his saddle and in the mud before the King. The prize harness is old, Valdrennish, beautifully kept, and yours. The King laughs and throws you a ring off his own hand. It is too big for your finger.
+        text: |
+          "Squires' course! Hold your lances!" The herald's voice cracks with excitement.
+
+          Three courses. The first, you both miss, and the crowd groans. The second, your lance breaks on Giles Marrick's shield with a crack like a dropped beam, and his breaks on yours, and your teeth rattle in your head. The third, you see him look at you instead of your shield, the way the bad riders do at the ring, and you put the point square on his boss, and he is out of his saddle and flat in the mud in front of the King.
+
+          The stands roar. The prize harness is old, Valdrennish, beautifully kept, and yours. The King laughs out loud and tosses you a ring off his own hand. It is far too big for your finger. You wear it on a thong round your neck and do not take it off for a year.
         effects:
           - set: flag.c1_tourney_won
           - item: +prize_harness
           - add: { res.renown: 2, rep.knights: 1, rep.crown: 1, rel.giles_marrick.respect: 2, rel.giles_marrick.affection: -2 }
         next: { pool: c1_hall, count: 1, then: c1_long_winter }
       failure:
-        text: Giles's lance takes you square in the helm and the next thing you know is the barber-surgeon's tent. The King did not see it, you are told. The King saw it.
+        text: |
+          Giles's lance takes you square in the helm, and the world goes white and then black, and the next thing you know is the barber-surgeon's tent and somebody being sick, which turns out to be you.
+
+          "The King didn't see," Aymer tells you, sitting on the end of the cot. "Honestly. He was looking at a falcon." The King saw.
         effects: [ { injury: cracked_skull }, { add: { rel.giles_marrick.respect: 1 } } ]
         next: { pool: c1_hall, count: 1, then: c1_long_winter }
     - id: melee
@@ -156,11 +164,15 @@
           - { if: flag.c1_giles_enemy, add: -1, label: Giles's friends single you out }
           - { if: background == archer, add: -1, label: "nobody wants to be beaten by a bowman's son" }
       success:
-        text: Forty men with blunted swords in a roped field. It is uglier than war, because everyone is showing off. You are one of the last six standing. The heralds cry your name, which they have to be told how to say. Lord Ravell's steward gives you five shillings from the purse.
+        text: |
+          Forty men with blunted swords in a roped field, and every one of them showing off for the stands. It is uglier than war, you will think later, when you know what war is like.
+
+          You keep your back to the rope and your feet under you, the way Sir Bertram taught you, and let the show-offs knock each other down. "Six left!" the herald bellows, and you are one of them, blowing like a bellows, blood in your mouth. The heralds cry your name, which they have to be told twice how to say. Lord Ravell's steward counts five shillings into your filthy hand from the purse, holding it at arm's length.
         effects: [ { add: { res.renown: 2, res.coin: 60, rep.knights: 1 } } ]
         next: { pool: c1_hall, count: 1, then: c1_long_winter }
       failure:
-        text: Three of Giles's friends find you in the first rush and take you down together. Blunted swords still break things.
+        text: |
+          Three of Giles's friends find you in the first rush and take you down together, laughing. "Sorry, sorry, didn't see you there." Blunted swords still break things. You leave the field on two of the grooms' shoulders, and the cooks cheer you anyway, because you are theirs.
         effects: [ { injury: bruised_ribs }, { add: { rel.giles_marrick.respect: 1 } } ]
         next: { pool: c1_hall, count: 1, then: c1_long_winter }
     - id: serve
@@ -185,7 +197,8 @@
             then: [ { set: flag.ravell_favor } ]
         next: { pool: c1_hall, count: 1, then: c1_long_winter }
       failure:
-        text: A girth you checked twice breaks anyway. Your master goes into the sand in front of the King. Nobody says it was your fault. Nobody needs to.
+        text: |
+          A girth you checked twice breaks anyway. Your master goes into the sand in front of the King, with a noise like a dropped pot, and gets up slowly. "Nobody's fault," he says, loud, to everyone, and puts his hand on your shoulder while he says it. You will check every girth three times for the rest of your life.
         effects: [ { add: { rel.@master.respect: -2 } } ]
         next: { pool: c1_hall, count: 1, then: c1_long_winter }
     - id: bet

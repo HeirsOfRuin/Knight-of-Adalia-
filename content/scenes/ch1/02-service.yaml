@@ -6,22 +6,32 @@
   title: Winter at the Pell
   on_enter: [ { advance: { seasons: 1 } } ]
   text: |
-    Snow on the moat, ice on the trough, and the hall full of smoke from Martinmas to Candlemas.
+    Snow on the moat, ice in the horse-trough, and the hall so full of smoke from Martinmas to Candlemas that everyone at Ravell coughs like Master Gervase.
 
-    Winter is when a household learns. Sir Bertram Oakes takes the young men to the pell every morning before Mass, whatever the weather. Master Ranulf breaks the new horses in the covered ride. Father Benet keeps the lord's accounts and letters in a cold room over the chapel, and will let a boy sit in if he holds his tongue. [if track == levy]Will Cobb drills the archers in the barn and the yard and the snow.[else]Lady Ravell keeps her own hall, where young men learn to be tolerable company or are not invited back.[/if]
+    "Winter," Sir Bertram says, blowing on his two-fingered hand, "is when boys turn into something or don't."
+
+    [break]
+
+    It is the first winter, and you are learning that a household in winter is a school with no master and forty teachers. Sir Bertram takes the young men to the pell every morning before Mass, whatever the weather, and shouts "You're dead!" until the rooks leave. Master Ranulf breaks the new horses in the covered ride. Father Benet keeps the lord's accounts in a cold room over the chapel, and will let a boy sit in if he holds his tongue and brings his own candle. [if track == levy]Will Cobb drills the archers in the barn, and the yard, and the snow, and calls it a holiday.[else]Lady Ravell keeps her own hall in the evenings, with music, where the young men learn to be tolerable company or are not asked back.[/if]
 
     You have the winter. You cannot be everywhere.
   choices:
     - id: pell
       text: Sir Bertram's pell, every morning, until your arms stop shaking.
       tags: [martial]
-      text_after: He teaches you to fight in harness, which is a different thing from fighting. You learn that a man in plate is slow, and that it does not matter, because he cannot be hurt. You learn where he can be hurt.
+      text_after: |
+        "Harness," Sir Bertram says on the first morning, and buckles you into a rusty old suit that smells of a dead man. "Fighting in harness is a different trade from fighting. Forget the dancing. In plate you are slow and you don't care, because nobody can hurt you." He hits you across the breastplate with a waster, hard. You stagger. "See? Didn't hurt." He hits you in the armpit, where there is no plate, and you yell. "That did. Remember where."
+
+        By Candlemas you know every gap in a harness: armpit, groin, the back of the knee, the slot of the visor. You know them because he has hit you in every one.
       effects: [ { add: { skill.arms: 2, rel.bertram_oakes.respect: 1 } }, { meet: bertram_oakes } ]
       next: { switch: [ { if: alias.master == hamon_darrell, go: c1_trouble_hamon } ], default: c1_trouble_ancel }
     - id: ride
       text: The covered ride with Master Ranulf and the young horses.
       tags: [martial]
-      text_after: You are thrown nine times before Candlemas. By Lady Day you can sit a horse that does not want you, and turn it with your knees while your hands do something else.
+      text_after: |
+        "Again," says Master Ranulf, without looking up from the young horse he is soothing. "And this time stay on."
+
+        You are thrown nine times before Candlemas, once into the water-trough, through the ice. The grooms keep count on the stable door in chalk. By Lady Day the count stops, because you can sit a horse that does not want you and turn it with your knees while your hands do something else. Ranulf rubs the count off the door with his sleeve and says nothing. You know what it means.
       effects: [ { add: { skill.riding: 2, rel.ranulf_marshal.affection: 1 } }, { meet: ranulf_marshal } ]
       next: { switch: [ { if: alias.master == hamon_darrell, go: c1_trouble_hamon } ], default: c1_trouble_ancel }
     - id: letters
@@ -38,7 +48,8 @@
     - id: hall
       text: "[if track == levy]Will Cobb's barn, and learning how to make sixty men do one thing.[else]Lady Ravell's hall, where the young men learn to be company.[/if]"
       tags: [diplomacy]
-      text_after: "[if track == levy]Cobb teaches you to count arrows, call the volleys, and tell which man is drunk before he knows it himself.[else]You learn to sing, badly, to play at tables, and to say a great deal without saying anything. Isabel Sayer laughs at your singing, then helps you with it.[/if]"
+      text_after: |
+        [if track == levy]"Sixty men," Cobb says. "Sixty idiots, and one mouth. Yours. Make 'em hear it." He teaches you to count arrows, call the volleys so the back rank hears them over the wind, and tell which man is drunk before the man knows it himself. By spring your voice is hoarse and the archers jump when you call.[else]You learn to sing, badly, to play at tables, badly, and to say a great deal without saying anything, rather well. Isabel Sayer, one of Lady Ravell's waiting-women, laughs at your singing out loud, in front of everyone. "Don't stop," she says, when you do. "I haven't laughed like that since Advent." Then she helps you with it, under her breath, until you can hold a tune.[/if]
       effects:
         - if: track == levy
           then: [ { add: { skill.command: 2, rel.will_cobb.respect: 1 } } ]
@@ -50,12 +61,17 @@
   title: Sir Hamon's Debts
   on_enter: [ { advance: { seasons: 2 } } ]
   text: |
-    
-    Sir Hamon owes money. Everyone in the household knows it except Sir Hamon, who knows it the way a man knows he will die: in principle, not today.
+    Sir Hamon owes money. Everyone in the household knows it except Sir Hamon, who knows it the way a man knows he will die: in principle, but not today.
 
-    This summer it becomes today. Master {npc.bertuccio_lanzi} of the Lanzi bank rides in from Wendham with a clerk and a letter. Forty pounds, borrowed against Ashby's wool. And there is the King's subsidy: Sir Hamon was named collector for the hundred last year. He collected it. He has not yet paid it over. When he looks for it, it is not all there.
+    This summer, it becomes today.
 
-    He calls you in. He is not angry. He is frightened, and he is trying to hide it under a laugh that does not come off. "You can count," he says. "Count this."
+    [break]
+
+    Master {npc.bertuccio_lanzi} of the Lanzi bank rides in from Wendham with a clerk and a letter, and bows beautifully, and declines wine. Forty pounds, borrowed against Ashby's wool. And then there is the King's subsidy. Sir Hamon was named collector for the hundred last year. He collected it. He has not yet paid it over. And when he goes to the chest to look, it is not all there.
+
+    He calls you into the chamber afterwards, with the hounds asleep on his feet and the letter in his fist. He is not angry. He is frightened, and trying to hide it under a laugh that does not come off.
+
+    "You can count," he says. "God help me. Count this."
   choices:
     - id: accounts
       text: Sit down with the subsidy rolls and the Ashby accounts, and find where it went.
@@ -103,7 +119,10 @@
     - id: ravell
       text: Tell Lord Ravell, quietly, before somebody less friendly does.
       tags: [allies, cunning]
-      text_after: Lord Ravell hears you out in the chapel porch and thanks you, coldly. Then he sends for Sir Hamon. Whatever is said, Sir Hamon comes out of it grey and does not look at you for a week. But Lord Ravell now knows your name, and what you are willing to do.
+      text_after: |
+        Lord Ravell hears you out in the chapel porch, with his hands behind his back, looking at the rain. "Thank you," he says, coldly, when you have finished. Then: "Send Sir Hamon to me."
+
+        Whatever is said in that chamber, Sir Hamon comes out of it grey to the lips and does not look at you for a week. "You might have come to me first, lad," he says at last, quietly, at the kennels. "You might have." Then he goes back to his hounds. But Lord Ravell knows your name now, and what you will do, and so do you.
       effects:
         - set: flag.c1_told_ravell
         - meet: thurstan_ravell
@@ -121,12 +140,15 @@
   title: Sir Ancel's Cattle
   on_enter: [ { advance: { seasons: 2 } } ]
   text: |
-    
-    Brome Tower is three days north of Ravell, on the March, where the King's peace is a rumour. In June forty of Sir Ancel's cattle are driven off in the night, and his herdsman is found in the burn with his head stove in.
+    Brome Tower is three days north of Ravell, on the March, where the King's peace is a rumour and every man sleeps with a knife.
 
-    Everyone knows who did it. Sir Godric Thorne holds the next manor down the valley and has been at law with Sir Ancel for eleven years over a mill. Sir Ancel says he will ride to Thorne's mill tonight and burn it with Thorne's miller inside.
+    In June forty of Sir Ancel's cattle are driven off in the night, and his herdsman, an old man called Alun who used to give you cheese, is found face down in the burn with his head stove in.
 
-    Lord Ravell has written that there will be no private war on the March this year, by the King's order. Sir Ancel has used the letter to light the fire.
+    [break]
+
+    "Thorne," say the men in the hall, all at once, and spit. Sir Godric Thorne holds the next manor down the valley and has been at law with Sir Ancel for eleven years over a mill. Sir Ancel says nothing at all for an hour. Then he says, to the fire, that he will ride to Thorne's mill tonight and burn it with Thorne's miller inside.
+
+    Lord Ravell has written that there will be no private war on the March this year, by the King's order. Sir Ancel reads the letter twice and uses it to light the fire.
   choices:
     - id: track
       text: Ride out at first light and follow the cattle yourself.
@@ -188,7 +210,8 @@
     - id: stay_out
       text: Hold the horses and keep your own counsel.
       tags: [yield]
-      text_after: Sir Ancel rides without you and comes back at dawn smelling of smoke, with nothing to say. The mill is gone. So is any hope of settling the thing by law.
+      text_after: |
+        You hold the horses. Sir Ancel rides without you, with twelve men and two torches, and comes back at dawn smelling of smoke, with nothing to say and a burn on his hand he has not noticed. The mill is gone. So is any chance of settling it by law. "Hm," he says, giving you his reins, and you cannot tell whether it is approval.
       effects: [ { set: flag.c1_rode_reprisal } ]
       next: { pool: c1_hall, count: 1, then: c1_harvest_home }
 

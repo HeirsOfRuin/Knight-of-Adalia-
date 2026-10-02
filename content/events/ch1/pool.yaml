@@ -7,14 +7,23 @@
   pool: c1_hall
   title: The Lord's Hunt
   text: |
-    Lord Ravell hunts the hart in the chase on Holy Cross day, with forty riders and twice as many hounds. Squires and grooms ride behind with the spare horses. The hart goes away north through the deep wood, and the field strings out behind it, and for a while nobody is in charge of anything.
+    Holy Cross day, and Lord Ravell hunts the hart in the chase with forty riders and twice as many hounds, and the whole of Ravell turns out to watch them go.
+
+    "Stay with the spare horses," your master tells you, mounting. "And try not to get any of them killed."
+
+    [break]
+
+    The lymerer finds a great hart in the deep wood by the Hollin brook, and the horns go, and the hounds give tongue all at once, a noise like a church full of bells falling downstairs. The hart goes away north. The field strings out behind it over the brook and the banks and the fallen oaks, knights shouting, horses blowing, somebody's hat in a bramble, and for a long, glorious stretch nobody is in charge of anything at all.
   choices:
     - id: ride
       text: Ride hard and be in at the kill, at Lord Ravell's side.
       tags: [martial]
       check: { attr: agility, skill: riding, difficulty: 4 }
       success:
-        text: You are the third rider to the bay, behind the huntsman and Lord Ravell. He gives you the honour of the hart's right foot. In front of his knights.
+        text: |
+          You ride like a madman, low on the neck, branches whipping your face, and come out into the clearing third to the bay, behind the huntsman and Lord Ravell, with the hart standing in the stream at the end of its strength and the hounds baying round it.
+
+          Lord Ravell looks round, sees who it is, and does something nobody expected: he gives you the honour of the hart's right foot, in front of his knights. "You ride like your life depends on it," he says. "One day it will."
         effects:
           - add: { rel.thurstan_ravell.respect: 2, res.renown: 1 }
           - meet: thurstan_ravell
@@ -22,7 +31,8 @@
             then: [ { set: flag.ravell_favor } ]
         next: "@return"
       failure:
-        text: A low branch. You come to in a bramble with the hunt gone and your horse eating grass. It takes you till dark to walk home.
+        text: |
+          A low branch, which you never see. You come to lying in a bramble with a head like a split log, the hunt long gone, and your borrowed horse peacefully eating grass and looking at you as if you were a fool. It takes you till dark to walk home. The grooms have already heard. "Fell off, did you?" "Branch," you say. "Course it was," they say.
         effects: [ { injury: bruised_ribs } ]
         next: "@return"
     - id: track
@@ -53,9 +63,15 @@
   title: The Herb Garden
   requires: [ suit.isabel_sayer.status >= known ]
   text: |
-    Isabel Sayer is in Lady Ravell's herb garden cutting lavender, alone, which she is not supposed to be. She tells you that Lady Ravell is at prayers and will be for an hour, and that you should not be here, and makes room for you on the bench.
+    Lady Ravell's herb garden smells of lavender and hot stone, and Isabel Sayer is in it, alone, cutting lavender into a basket, which she is not supposed to be, at all.
 
-    Her father, she says, is a knight with a hundred acres and seven daughters. She is the fourth. He is looking for husbands for all of them, and is not fussy.
+    "Oh, it's you," she says, without turning round. "Lady Ravell's at prayers. She'll be an hour, she always is when she's angry with God." She shifts along the bench. "You shouldn't be here. Sit down."
+
+    [break]
+
+    She has ink on her forefinger and lavender on her sleeves and a narrow, clever face that is funnier the unhappier she gets. Today she is hilarious.
+
+    "My father," she says, snipping, "is a knight with a hundred acres and seven daughters. I am the fourth. He is looking for husbands for all seven, and he is not fussy." Snip. "There's a widower at Hollesby with gout and five children. Father says he has a lovely mill." Snip. "I have told Father that if he likes the mill so much, he can marry it."
   choices:
     - id: talk
       text: Sit and talk, and keep your hands to yourself.
@@ -93,7 +109,15 @@
   title: A Letter for Ambry
   requires: [ suit.maud_delisle.status >= known, suit.maud_delisle.status != lost, "!flag.c1_maud_saved" ]
   text: |
-    Lady Maud de Lisle stops you on the solar stair with a folded letter. It is for her aunt, the abbess of Ambry, and it must not go through Lord Ravell's clerks. She does not say what is in it. She says she will not forget who carried it.
+    Lady Maud de Lisle stops you on the solar stair, quick and quiet, with a folded letter in her hand and her eyes on the door above.
+
+    "You. You're [if alias.master == hamon_darrell]Sir Hamon's[else]Sir Ancel's[/if]." She does not wait for an answer. "This is for my aunt, the abbess at Ambry. It must not go through Lord Ravell's clerks. Do you understand me? Not his clerks, not his steward, not his chaplain."
+
+    [break]
+
+    She is fifteen and speaks like a woman of forty who has been waiting all her life to be listened to. She does not say what is in the letter. She holds it out between two fingers.
+
+    "I won't forget who carried it," she says. "One way or the other."
   choices:
     - id: carry
       text: Carry it, and tell no one.
@@ -121,7 +145,11 @@
   pool: c1_hall
   title: Father Benet
   text: |
-    Father Benet keeps the lord's books, writes the lord's letters, and knows more about the household than God does, he says, because God does not read the accounts. He has a backlog this month and a cold.
+    Father Benet keeps the lord's books, writes the lord's letters, and knows more about the household than God does, he says, "because God, in His wisdom, does not read the accounts."
+
+    This month he has a backlog of forty letters and a cold that has turned his nose the colour of a radish. You find him in the cold room over the chapel, wrapped in a blanket, glaring at a stack of parchment as if it had insulted his mother.
+
+    "If you have come to confess," he says thickly, "be quick. If you have come to help, be quicker. If neither, go away and be young somewhere else."
   choices:
     - id: help
       text: Offer to help him with the letters in the evenings.
@@ -150,14 +178,21 @@
   pool: c1_hall
   title: Dice in the Guardroom
   text: |
-    Saturday night in the guardroom over the gate. A blanket on the floor, a candle, three bone dice, and men who have been paid. The game is hazard. The stakes are pennies, then shillings, then whatever anyone has.
+    Saturday night in the guardroom over the gate. A blanket on the floor, one candle, three bone dice, and six men who were paid this morning and mean not to be by Sunday.
+
+    "Seven's the main! Seven! Come on, you bitch!" The dice rattle off the wall. Somebody groans. Somebody laughs. The serjeant, a scarred old Marcher called Long Tom, has a pile of pennies in front of him like a little cairn.
+
+    "Sit in, squire?" he says, without looking up. "We don't bite. Much."
+
+    The game is hazard. The stakes are pennies, then shillings, then whatever anyone has left, including, last month, a groom's boots.
   choices:
     - id: play
       text: Play, honestly.
       tags: [wealth]
       check: { attr: wits, skill: trade, difficulty: 3 }
       success:
-        text: You win steadily and stop while you are ahead, which nobody else in the room has ever done. Three shillings.
+        text: |
+          You win, and win, and then, while the whole room is watching you to see how long it lasts, you pick up your coins and stand up. "That's me," you say. Long Tom stares at you as if you had sprouted wings. "Nobody does that," he says. "Nobody in the history of the world has ever done that." Three shillings. You sleep like a lord.
         effects: [ { add: { res.coin: 36 } } ]
         next: "@return"
       failure:
@@ -188,7 +223,11 @@
   pool: c1_hall
   title: Wendham Horse Fair
   text: |
-    Saint Luke's horse fair at Wendham: a thousand horses, ten thousand liars. Your master sends you to buy a pack-horse and tells you not to come back with a donkey.
+    Saint Luke's horse fair at Wendham: a thousand horses and ten thousand liars, as the saying goes, and the liars are the louder.
+
+    "Sound as a bell, young sir, sound as a bell! Ride him yourself! No? Well, I'll ride him then!" Dealers trot old nags up and down the street with ginger under their tails to make them lively. Gypsy horse-copers, Sarenzan buyers, farmers selling the plough-horse because the wet year finished them. The whole town smells of dung and roasting chestnuts.
+
+    Your master has sent you with money for a pack-horse. "And don't come back with a donkey," he called after you. "Or a dead one."
   choices:
     - id: buy
       text: Buy a riding horse for yourself while you are there. A pound.
@@ -217,7 +256,8 @@
         next: "@return"
     - id: honest
       text: Buy the pack-horse at a fair price and bring back the change.
-      text_after: Your master counts the change, twice, and looks at you oddly.
+      text_after: |
+        A sturdy brown cob at a fair price, and you bring back the change to the last farthing. Your master counts it, twice, and looks at you oddly. "Well," he says. "Well, well. An honest squire. I'll have to have you stuffed."
       effects: [ { add: { rel.@master.respect: 1, rep.honor: 1 } } ]
       next: "@return"
 
@@ -227,9 +267,15 @@
   pool: c1_hall
   title: The Flux
   text: |
-    The bloody flux comes to Ravell in August, out of the moat and the midden. It takes a man a week to die of it, and he knows the whole week. Six in the village. A cook. Two grooms. Then Edmund Penn, your master's other squire, who was sixteen.
+    The bloody flux comes to Ravell in August, out of the moat and the midden and the heat.
 
-    Lady Ravell shuts herself in the solar with her women and burns juniper. Father Benet goes from bed to bed with the oils. Your master needs someone to do Edmund Penn's work and to carry Edmund Penn's body.
+    It takes a man a week to die of it, and he knows the whole week. Six go in the village. Then a cook. Then two grooms. Then Edmund Penn, your master's other squire, sixteen, freckled, who could never hold his drink and used to sing hymns in his sleep. He lasts five days.
+
+    [break]
+
+    Lady Ravell shuts herself in the solar with her women and burns juniper until the whole keep smells like a church on fire. Father Benet goes from bed to bed with the oils, grey with tiredness. "I need hands," he says, to anyone in the passage who will listen. "Strong stomachs, God help us. Anyone."
+
+    And your master needs someone to do Edmund Penn's work, and someone to carry Edmund Penn's body down to the churchyard.
   choices:
     - id: nurse
       text: Help Father Benet with the sick.
@@ -277,7 +323,11 @@
   pool: c1_hall
   title: The Cunning Woman
   text: |
-    Old Mother Rook lives in the last house in Ravell village, past the pound. She sells charms against fever, love-philtres, and lead flasks of water from Saint Ebba's well that turn blades, she says. The chaplain calls her a fraud. The chaplain's own groom buys from her.
+    Old Mother Rook lives in the last house in Ravell village, past the pound, with a goat, three cats and a smell you can taste. She sells charms against fever, love-philtres for maids, and lead flasks of water from Saint Ebba's well that will turn a blade, she says, "if you've the faith for it, and fourpence."
+
+    "Fraud," says Father Benet, from the pulpit, every Lent. His own groom buys from her every Michaelmas.
+
+    She is sitting on her doorstep in the sun when you pass, shelling peas, and she looks you up and down with eyes like two currants. "Ah," she says. "There's a face that's going somewhere. Come here, my duck. Come and let Mother see."
   choices:
     - id: flask
       text: Buy a flask of Saint Ebba's water. Fourpence.
@@ -289,7 +339,10 @@
     - id: fortune
       text: Let her read your hand.
       tags: [cunning]
-      text_after: She holds your hand a long time. "Higher than your father," she says. "Lower than you want. And a woman with a crown on her, or near her." Then she asks for twopence. Everybody gets the woman with the crown, you find out later. It still sits in your mind like a stone in a shoe.
+      text_after: |
+        She holds your hand a long time, turning it to the light, clicking her tongue. "Higher than your father," she says at last. "Lower than you'd like. And a woman with a crown on her." She squints. "Or near her. Near enough to burn." Then she lets go and holds out her own hand. "Twopence."
+
+        Everybody gets the woman with the crown, the grooms tell you later, laughing. Wat Haines got her. Hob Crane got her, forty years ago. It still sits in your mind like a stone in a shoe.
       effects: [ { set: flag.c1_omen_crown }, { add: { res.coin: -2 } } ]
       next: "@return"
     - id: leave
@@ -302,7 +355,11 @@
   pool: c1_hall
   title: Sharp Steel
   text: |
-    Sir Bertram Oakes says the squires have learned to fight with wasters and will die like it. Today, sharp swords, half speed, in the tilt-yard, before Lady Ravell's women. He points at you first.
+    "Wasters," says Sir Bertram Oakes, with contempt, kicking a pile of wooden practice swords. "You lot have learned to fight with sticks, and you'll die like it."
+
+    Today it is sharp swords, at half speed, in the tilt-yard, in front of Lady Ravell's women, who have come down with cushions to watch. A real edge on a real blade, catching the sun. The squires look at each other. Nobody laughs.
+
+    "You," says Sir Bertram, and points his two-fingered hand at you. "First."
   choices:
     - id: fight
       text: Take the sword.
@@ -381,7 +438,9 @@
   pool: c1_hall
   title: Errand to Wendham
   text: |
-    Your master sends you to Wendham with a list: wax, pepper, a bolt of russet, horseshoe nails, and a letter for the guild warden, Master Osbert Fuller, about a debt. It will take all day if you are quick and two if you are not.
+    "Wax, pepper, a bolt of russet, two hundred horseshoe nails, and this," your master says, handing you a sealed letter, "for Master Osbert Fuller at the guild hall. About a debt. Don't read it. Don't lose it. Don't come back drunk."
+
+    Wendham on market day is a din of carts and hawkers and pigs loose in the street, and girls with baskets, and Sarenzan sailors with gold in their ears, and the smell of the tan-pits over everything. It will take all day if you are quick, and two if you are not, and there is a great deal in Wendham to make a young man not quick.
   choices:
     - id: fuller
       text: Deliver the letter to Master Fuller in person, and stay to dinner if asked.
@@ -417,7 +476,11 @@
   pool: c1_hall
   title: Aymer's Debts
   text: |
-    Aymer Ravell, the lord's second son, has lost eight pounds at dice to Giles Marrick and two Carrow squires. He cannot ask his father. He is asking you, in the stable, quietly, with his face red.
+    "Don't look at me like that. I know. I know."
+
+    Aymer Ravell is in the end stall of the stable, in the dark, with his face red to the ears. He has lost eight pounds at dice to Giles Marrick and two Carrow squires. Eight pounds is more than a ploughman earns in four years. He cannot ask his father. His father would have him whipped, and then do something worse, which is be disappointed.
+
+    "So I'm asking you," he says. "God help me. You're the only one I know who wouldn't tell."
 
     [if background == servant]He has known you since you were both eight. He has never asked you for anything before, except to saddle Bayard.[/if]
   choices:

@@ -7,11 +7,15 @@
   text: |
     The word comes at the end of May, on a lathered horse, while [if alias.master == hamon_darrell]Sir Hamon is still talking about the hounds[else]Sir Ancel is still riding his walls[/if].
 
-    Black Ewan of Glenhallow has come over the border with eighty men. Steadings burning along the Leven, cattle driven north, a priest hanged from his own lychgate. Lord Ravell sends Sir Ancel north with forty horse and Will Cobb's sixty archers, and Sir Hamon with the Ravell banner, because a banner must be carried by somebody.
+    "Ewan," the rider gasps, sliding off. "Black Ewan's over the Leven. Eighty men. They've burned Coldstream and Aikbank, and they've hanged Father Malcolm from his own lychgate."
 
     [break]
 
-    You are going. Everyone is going. The armourer in the outer ward has a queue at his door and has put his prices up by half.
+    By noon the whole of Ravell knows. Lord Ravell sends Sir Ancel north with forty horse and Will Cobb's sixty archers, and Sir Hamon with the Ravell banner, "because a banner must be carried by somebody," as Father Benet says, not quite quietly enough.
+
+    You are going. Everyone is going. The armourer in the outer ward has a queue round the well and has put his prices up by half, and the grooms are betting on who comes back.
+
+    "Not you," says one of them, a cheerful lout called Wat Haines, poking you in the chest. "You're too skinny to stop anything. You'll be fine."
 
     [if armour < 1]You own a shirt, a cloak, and whatever your master lends you. A Caldmoor spear does not care which.[/if]
   choices:
@@ -19,7 +23,8 @@
       text: Buy a padded jack and a kettle hat from the armourer. Three shillings.
       tags: [wealth, martial]
       requires: [ res.coin >= 36 ]
-      text_after: The jack is second-hand, stiff with someone else's sweat. The hat has a dent in it you try not to think about. Both fit, more or less.
+      text_after: |
+        "Three shillings," the armourer says. "And that's me being kind, mind. Look at this. Stitched by nuns." It was not stitched by nuns. It is a padded jack, second-hand, stiff with someone else's sweat, and a kettle hat with a dent in it you try hard not to think about. Both fit, more or less. You walk about the yard in them feeling ten feet tall, until Giles Marrick says you look like a stuffed goose, and the grooms laugh, and you keep them on anyway.
       effects: [ { add: { res.coin: -36 } }, { item: +padded_jack }, { item: +kettle_hat } ]
       next: c1_raid
     - id: borrow
@@ -33,13 +38,15 @@
     - id: pray
       text: Spend the night before in the chapel, instead.
       tags: [piety]
-      text_after: Father Benet hears your confession and gives you a candle-end and a blessing. You sleep on the chapel floor and wake stiff. You go north in your shirt.
+      text_after: |
+        Father Benet hears your confession in the cold chapel, yawning. "Murder, theft, lust, pride?" he asks, ticking them off. "No? A dull boy. Go with God." He gives you a candle-end and a blessing, and you sleep on the chapel floor and wake so stiff you can barely mount. You go north in your shirt, with a blessing for armour. It weighs nothing at all.
       effects: [ { add: { rep.piety: 1, rep.church: 1 } } ]
       next: c1_raid
     - id: go
       text: Go as you are.
       tags: [yield]
-      text_after: You go as you are.
+      text_after: |
+        You go as you are, in your shirt and your good boots. "Brave lad," says Wat Haines, grinning, "or daft." On the road north, every time it rains, you decide it was daft.
       next: c1_raid
 
 - id: c1_raid
@@ -77,7 +84,12 @@
           - { if: skill.riding >= 3, add: 1, label: you sit a horse well }
           - { if: item.holy_ampulla, add: 1, label: "Saint Ebba's water, or your faith in it" }
       success:
-        text: "The horse hits them in the middle of the river and the river does the rest. You put your spear into a man's back, lose it, draw, and find yourself on the far bank with a boy your age under your horse's hooves, his hands up. He is somebody: good boots, a jet brooch. You take him. Behind you, in the ford, Sir Hugh Wyck is face down in the water, and his horse is standing over him."
+        text: |
+          "With me!" Sir Hugh Wyck yells, laughing, and goes in early, and you go in after him because he told you to stay by him.
+
+          The horses hit them in the middle of the river and the river does the rest. Water up to the saddle-flaps, cattle bellowing, men screaming in a language you don't know. You put your spear into a man's back and lose it there. You draw, and swing at something, and all at once you are on the far bank with a boy your own age under your horse's hooves, his hands up, shouting the only Adalian word he knows, which is "Mercy!" He has good boots and a jet brooch. He is somebody. You take him.
+
+          Behind you in the ford, Sir Hugh Wyck is face down in the water, and his horse is standing over him, nosing at his back.
         effects:
           - set: flag.c1_raid_distinguished
           - set: flag.c1_has_prisoner
@@ -87,7 +99,10 @@
           - meet: coll_glenhallow
         next: c1_prisoner
       partial:
-        text: The horse goes in and so do you. An arrow from the far bank takes you through the shoulder before you reach the middle. You stay in the saddle, which is all anyone remembers afterwards. You are carried home with Sir Hugh Wyck, who was not so lucky.
+        text: |
+          The horse goes in and so do you, roaring, and an arrow from the far bank takes you through the meat of the shoulder before you reach the middle. It does not hurt. That is the strange thing. It just knocks you sideways, as if someone had shoved you.
+
+          You stay in the saddle. That is all anyone remembers afterwards, and it is enough. You are carried home in the cart with Sir Hugh Wyck, who was not so lucky, and you look at his face under the cloak for three days.
         effects:
           - set: flag.c1_raid_distinguished
           - injury: arrow_wound
@@ -109,7 +124,12 @@
         difficulty: 4
         mods: [ { if: flag.c1_found_cattle_trail, add: 2, label: you have walked this valley before } ]
       success:
-        text: The second ford is waist-deep and colder than anything you have known. You come out of the alders behind the drovers, shouting, and the cattle turn back into the river on top of Ewan's own men. In the confusion you find a boy holding the raiders' horses, and he gives himself up rather than be trampled. Sir Ancel says, after, that it was the cattle that won the fight, and that someone put them there.
+        text: |
+          The second ford is waist-deep and colder than anything you have ever known. "Christ's bones," one of Cobb's men keeps whispering, all the way across. "Christ's bones, Christ's bones."
+
+          You come out of the alders behind the drovers, shouting like madmen, waving your arms, and the cattle panic and turn back into the river, right on top of Ewan's own men. It is the funniest and most terrible thing you have ever seen. In the confusion you find a boy holding the raiders' horses, and he gives himself up rather than be trampled.
+
+          "It was the cows that won it," Sir Ancel says afterwards, to the fire. "Hm. Somebody put them there." He does not look at you. He does not need to.
         effects:
           - set: flag.c1_raid_distinguished
           - set: flag.c1_has_prisoner
@@ -133,7 +153,10 @@
           - { if: skill.archery >= 4, add: 1, label: your own shooting }
           - { if: flag.p_fletched, add: 1, label: you know arrows from the feather up }
       success:
-        text: Six volleys instead of two. The far bank is a mess of screaming horses before the knights even move. When the horse goes in, there is not much left to fight. Will Cobb tells Sir Ancel whose voice was calling the volleys. Only one knight dies at the ford, Sir Hugh Wyck, and he dies because he went in early.
+        text: |
+          "Loose! LOOSE! Nock, draw, LOOSE!" You do not recognise your own voice. Cobb is grinning at you through the mist like a wolf.
+
+          Six volleys instead of two. By the time the knights go in, the far bank is a mess of screaming horses and running men, and there is not much left to fight. Will Cobb tells Sir Ancel whose voice was calling the volleys, at supper, loudly, so everyone hears. Only one knight dies at the ford: Sir Hugh Wyck, who went in early, laughing.
         effects:
           - set: flag.c1_raid_distinguished
           - add: { res.renown: 2, rel.will_cobb.respect: 2, rel.ancel_brome.respect: 1, skill.command: 1 }
@@ -169,7 +192,10 @@
     - id: horses
       text: Stay with the horses, as you were told.
       tags: [yield]
-      text_after: You stay with the horses. From the fold of ground you see the archers loose, and the knights go in, and Sir Hugh Wyck's horse come back out of the river without him. You are the one who goes down into the water afterwards and brings him out. His sword is still in his hand. Nobody else wants to take it from him.
+      text_after: |
+        "Hold them," your master said, and you hold them. Twenty horses in a hollow, stamping and blowing at the noise from the river.
+
+        From the fold of ground you see the archers loose, and the knights go in, and Sir Hugh Wyck's horse come back out of the river without him, reins trailing. When it is over you are the one who goes down into the water and brings him out. He is heavier than you thought a man could be. His sword is still in his hand, and his eyes are open, and he still looks a little surprised. Nobody else wants to take the sword from him. You do it.
       effects:
         - set: flag.c1_carried_wyck_sword
         - item: +hugh_wyck_sword
@@ -193,7 +219,10 @@
     - id: ransom
       text: Hold him for ransom, properly, through Lord Ravell.
       tags: [wealth]
-      text_after: The ransom is set at twenty pounds, an absurd sum for a cattle-thief's nephew and a fair one for Black Ewan's heir. Most of it goes to Lord Ravell and your master, by right. Your share is two pounds, more money than your father has seen in a year. Coll goes home in the autumn and does not say goodbye.
+      text_after: |
+        "Twenty pounds," says Lord Ravell, when you bring the boy in, and you nearly drop the rope. An absurd sum for a cattle-thief's nephew, and a fair one for Black Ewan's heir.
+
+        Most of it goes to Lord Ravell and your master, by right. Your share is two pounds: more money than your father has seen in a year. You keep it in your boot for a month, and touch it at night. Coll goes home in the autumn, thinner, on a borrowed pony. He does not say goodbye. At the gate he looks back once, and nods, and you cannot tell what it means.
       effects:
         - set: flag.c1_coll_ransomed
         - add: { res.coin: 480, rep.caldmoor: 1, rel.thurstan_ravell.respect: 1, rel.coll_glenhallow.respect: 1 }
@@ -209,7 +238,12 @@
     - id: hang
       text: Let the men hang him, for the priest at the lychgate.
       tags: [martial]
-      text_after: They hang him from an alder by the ford and leave him for Ewan to find. The men cheer you. Lord Ravell, who wanted the twenty pounds, does not. Somewhere north of the Leven a man with a voice like a cart on stones learns your name.
+      text_after: |
+        "Do it," you say. Your voice does not sound like yours.
+
+        They hang him from an alder by the ford, with a horse's halter, because nobody brought rope, and they leave him there for Ewan to find. He kicks for longer than you thought anyone could. The men cheer you all the way back to Ravell. Lord Ravell, who wanted the twenty pounds, does not.
+
+        And somewhere north of the Leven, a man with a voice like a cart on stones learns your name, and says it once, slowly, so he will not forget it.
       effects:
         - set: flag.c1_coll_hanged
         - kill: coll_glenhallow
@@ -257,7 +291,8 @@
       visible_if: [ track != squire_track ]
       requires: [ flag.c1_raid_distinguished ]
       label: "Requires: distinguished at the ford"
-      text_after: "[if alias.master == hamon_darrell]\"I need a squire who can do something besides count,\" Sir Hamon says, which is unfair to squires who count. He names you before the household that night.[else]\"You'll do,\" Sir Ancel says. That is the whole ceremony.[/if] Grooms and archers do not become squires. You just did."
+      text_after: |
+        [if alias.master == hamon_darrell]"I need a squire who can do something besides count," Sir Hamon says, which is unfair to squires who can count, and then laughs at his own joke for some time. That night he names you before the household. The cooks bang their ladles on the tables. Giles Marrick does not.[else]"You'll do," Sir Ancel says, and gives you his gauntlets to carry. That is the whole ceremony. Will Cobb thumps you on the back hard enough to loosen a tooth.[/if] Grooms and archers do not become squires. You just did.
       effects:
         - station: squire
           track: squire_track
@@ -312,7 +347,10 @@
     - id: leave
       text: Give her the sword, say what must be said, and go.
       tags: [yield]
-      text_after: She thanks you. You ride back to Ravell in the rain. It was a duty, and you did it.
+      text_after: |
+        "Thank you," she says, looking at the sword and not at you. "You've had a long ride."
+
+        You ride back to Ravell in the rain. It was a duty, and you did it, and you think about her running her thumb along that guard all the way home.
       effects:
         - meet: joan_wyck
         - assign: { suit.joan_wyck.status: known }

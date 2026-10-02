@@ -186,7 +186,12 @@
     - id: expose
       text: Tell the commissioners everything, your father's part included.
       tags: [piety]
-      text_after: Your father is taken from Ashby in a cart and held at Wendham for the assizes. He is fined everything he owns and loses the reeveship. He does not hang, because Sir Hamon speaks for him, for your sake. Your mother writes to say you are no son of hers. The commissioners write your name in their report as a young man of rare honesty.
+      text_after: |
+        You tell them. All of it. Sir Walter's clerk writes it down without looking up, and the scratch of his pen is the loudest thing you have ever heard.
+
+        They take your father from Ashby in a cart, with his hands tied in front of him, and the whole village standing in the lane not saying anything. "Is that Piers? Piers the reeve?" "His own boy told on him, they say." "Never." He is held at Wendham for the assizes, and fined everything he owns, and loses the reeveship. He does not hang, because Sir Hamon speaks for him, for your sake.
+
+        Your mother writes, in Father Anselm's hand, to say you are no son of hers. The commissioners write your name in their report as a young man of rare honesty. You read both letters many times, and they never quite add up.
       effects:
         - set: flag.c1_father_exposed
         - add: { rep.honor: 3, rel.piers_reeve.affection: -8, rep.crown: 1, rel.walter_pryce.respect: 2 }
@@ -409,7 +414,8 @@
       tags: [allies]
       requires: [ flag.ravell_favor ]
       label: "Requires: Lord Ravell's favour"
-      text_after: Lord Ravell takes you into his own household as a squire of the body. It is a step up and a step into the light, where everything you do is seen. Aymer Ravell, his son, is not entirely pleased.
+      text_after: |
+        Lord Ravell looks at you for the space of three breaths, which from him is a long interview. "Squire of the body," he says. "You'll carve, pour, carry, ride at my stirrup, and keep your mouth shut. Can you do that?" "Yes, my lord." "We shall see." It is a step up, and a step into the light, where everything you do is seen. Aymer Ravell, his son, raises his cup to you across the hall and does not smile.
       effects:
         - alias: { master: thurstan_ravell }
         - add: { rel.aymer_ravell.affection: -1 }
@@ -419,20 +425,23 @@
       text: Go to Sir Ancel Brome.
       tags: [martial]
       visible_if: [ alias.master == hamon_darrell, npc.ancel_brome.alive ]
-      text_after: Sir Ancel looks at you the way he looks at horses. "Hamon's boy," he says. "Can you do anything he didn't teach you?" You can. He takes you.
+      text_after: |
+        Sir Ancel looks you over the way he looks over horses at a fair. "Hamon's boy," he says. "Can you do anything he didn't teach you?" "I can learn, sir." "Hm." A long pause. "Stables. Then find Cobb. Then find me." He takes you.
       effects: [ { alias: { master: ancel_brome } } ]
       next: c1_war_comes
     - id: hamon
       text: Go to Sir Hamon Darrell.
       tags: [allies]
       visible_if: [ alias.master != hamon_darrell, npc.hamon_darrell.alive, "!flag.c1_hamon_fell" ]
-      text_after: Sir Hamon takes you in as if you had always been his. He has no money to keep you. He keeps you anyway.
+      text_after: |
+        "Well, well, well!" Sir Hamon heaves himself up out of his chair, scattering hounds. "Look what the wind's brought. Sit, sit. Have you eaten? You haven't." He has no money to keep you. He keeps you anyway, and feeds you, and tells everyone at Ravell you came back to him because you couldn't stand the others, which is nearly true.
       effects: [ { alias: { master: hamon_darrell } } ]
       next: c1_war_comes
     - id: pryce
       text: Go to Sir Walter Pryce, and the Earl of Carrow's company.
       tags: [cunning]
-      text_after: Sir Walter takes you on before you have finished asking. The Earl's company pays on time, he says again. It is the only thing he ever says about it.
+      text_after: |
+        "Excellent," says Sir Walter, before you have finished asking, and pushes an indenture across the inn table with one finger. "The Earl's company pays on time." He watches you sign. "Most men in your boots would've begged at Ravell for another month. You came to me. That tells me something." He does not say what.
       effects:
         - alias: { master: walter_pryce }
         - set: flag.c1_pryce_man

@@ -541,9 +541,9 @@
 
     [if flag.c3_wife_died_childbed]The baby lives. A [if heirs.last == son]boy[else]girl[/if], red, angry, perfect.
 
-    {npc.@spouse} does not. The bleeding will not stop. The women do everything that can be done, and it is not enough, and by the time they let you in she knows it. She is white as linen, and calm. She says your name, and something about the baby, and something else you do not catch, and then nothing, and you are holding her hand and it is only a hand.
+    {npc.@spouse.first} does not. The bleeding will not stop. The women do everything that can be done, and it is not enough, and by the time they let you in she knows it. She is white as linen, and calm. She says your name, and something about the baby, and something else you do not catch, and then nothing, and you are holding her hand and it is only a hand.
 
-    They bury her in the chancel. The whole manor comes. You do not remember any of it except the sound of the baby crying, somewhere at the back of the church, all the way through the Mass.[else]A [if heirs.last == son]boy[else]girl[/if]. Red, furious, perfect, with a fist like a walnut. They put it in your arms, and you hold it the way you would hold a hawk, or a lit fuse, and everyone laughs at you, and {npc.@spouse}, white and wrecked and grinning in the bed, laughs hardest of all.
+    They bury her in the chancel. The whole manor comes. You do not remember any of it except the sound of the baby crying, somewhere at the back of the church, all the way through the Mass.[else]A [if heirs.last == son]boy[else]girl[/if]. Red, furious, perfect, with a fist like a walnut. They put it in your arms, and you hold it the way you would hold a hawk, or a lit fuse, and everyone laughs at you, and {npc.@spouse.first}, white and wrecked and grinning in the bed, laughs hardest of all.
 
     "Well," she says. "Go on, then. Give it a name."[/if]
   choices:

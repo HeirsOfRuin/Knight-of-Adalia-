@@ -1,0 +1,344 @@
+# Chapter 4, Act II: the Lord of Many Places. Summer year 35 to spring year 38. Age 34-37.
+# Stewards and holdings, the boyhood rival come back, the eldest child's first
+# growth period, the King's last good Christmas, a possible third child, the salt
+# guilds of the West, and Mahaut d'Armance's wardship after Jehanne dies.
+# Pool events (c4_lord) are drawn between spine scenes.
+
+- id: c4_stewards
+  chapter: ch4
+  title: Stewards
+  checkpoint: true
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    A man with one manor knows every field in it. A man with several knows his stewards, and what his stewards tell him, and that is a different thing.
+
+    [if holdings.count >= 2]The accounts come in at midsummer from every place you hold, by carrier, in four different hands and two languages, and you sit up three nights with them in the hall with a candle and a jug.[else]The accounts come in at midsummer, by carrier, and you sit up with them in the hall with a candle and a jug.[/if] [if background == reeve]You were reading tallies before you could ride. Your father's voice is in your head the whole time: "Count it twice. Then count who counted it."[elif background == burgess]You were reading ledgers before you could ride. Something in them smells, and you know the smell.[else]You are not a clerk, and never wanted to be one, and the figures swim.[/if]
+
+    [break]
+
+    [if holding.vaudrey.held]The rents of Vaudrey are down a fifth on last year, and the steward's letter blames the weather, the war and the Valdrennish.[elif holding.lisle.held]Lisle's receipts are down a fifth, and the steward blames the lawsuit, the leaking castle and the Mottle.[elif holding.ashdown.held]Ashdown's receipts are down a fifth, and the steward blames empty holdings and the wages the labourers now ask.[else]Your own manor's receipts are down a fifth, and the reeve blames the weather and the war.[/if] The weather was good. You were there for some of it.
+  choices:
+    - id: audit
+      text: Ride there yourself and go through the books in front of him.
+      tags: [learning, wealth]
+      check: { attr: wits, skill: stewardship, difficulty: 4, mods: [ { if: flag.c1_learned_manor, add: 1, label: "Master Clement's lessons" }, { if: background == reeve || background == burgess, add: 1, label: you grew up with accounts }, { if: alias.spouse == cecily_fuller || alias.spouse == fiammetta_lanzi, add: 1, label: your wife checks your sums } ] }
+      success:
+        text: |
+          You ride in unannounced and ask for the books, and the steward goes the colour of tallow, and you know before you open them. It takes you a day. Two sets of tallies, one for you and one for himself; a mill that grinds for him on Fridays; a tenant who pays twice. [if background == reeve][if flag.c1_father_confessed]You think about your father, who confessed, and you give the man the same chance.[elif flag.c1_father_shielded || flag.c1_burned_copy]You think about the tallies you burned for your father, years ago, and you are not proud of how angry you are.[/if][/if] You turn him off, and put an honest man in, and the receipts come back up by Michaelmas.
+        effects: [ { set: flag.c4_caught_steward }, { add: { holding.vaudrey.income: 120, holding.lisle.income: 120, holding.ashdown.income: 120, holding.vaudrey.temper: 1, holding.lisle.temper: 1, holding.ashdown.temper: 1, estate.temper: 1 } } ]
+        next: { pool: c4_lord, count: 1, then: c4_rival }
+      failure:
+        text: |
+          You ride in and go through the books in front of him, and cannot find it, though you know it is there. He is better at this than you are. He bows you out with great courtesy, and the receipts stay down.
+        effects: [ { add: { holding.vaudrey.income: -60, holding.lisle.income: -60, holding.ashdown.income: -60 } } ]
+        next: { pool: c4_lord, count: 1, then: c4_rival }
+    - id: clerk
+      text: Hire a Sarenzan clerk to audit every holding, every year.
+      tags: [wealth, cunning]
+      requires: [ res.coin >= 480 ]
+      label: "Requires Coin £2"
+      text_after: |
+        Master Benedetto Arbusti comes up from Sauvemer with an abacus, a mule and no sense of humour, and goes round your holdings like a ferret. Two stewards resign before he reaches them. The receipts come back up, and stay up, and every steward you have hates you a little, which is the price.
+      effects: [ { set: flag.c4_sarenzan_clerk }, { add: { res.coin: -480, holding.vaudrey.income: 120, holding.lisle.income: 120, holding.ashdown.income: 120, holding.vaudrey.temper: -1, holding.lisle.temper: -1, holding.ashdown.temper: -1 } } ]
+      next: { pool: c4_lord, count: 1, then: c4_rival }
+    - id: trust
+      text: Trust your stewards. You chose them.
+      tags: [allies, yield]
+      text_after: |
+        You write back that you are sure the weather was dreadful, and put the accounts in the chest. Perhaps the steward is honest. Perhaps he is not. You have a war behind you and a court in front of you, and you cannot be everywhere. The receipts stay down.
+      effects: [ { add: { holding.vaudrey.income: -120, holding.lisle.income: -120, holding.ashdown.income: -120 } } ]
+      next: { pool: c4_lord, count: 1, then: c4_rival }
+
+- id: c4_rival
+  chapter: ch4
+  title: An Old Face
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    [if npc.@rival.follower && npc.@rival.alive]{npc.@rival} has been in your following since the first war. He has stood behind you at Grisolles, at Les Salines and at Mortefontaine. And now, at Michaelmas, in your hall, with his cap in his hands, he asks you for land.
+
+    "Not much," he says. "A holding. Something with my name on it." He does not look at you. "You had a start I never had. I'm not complaining. I'm asking."[elif alias.rival == wat_coker && npc.wat_coker.alive]Wat Coker is in the forest. After the Hythe Fields there is a price on his head in three shires, and he lives in the Ravell chase with a dozen men, and takes from the King's tax-collectors, and gives some of it away. The ballads have started. In the autumn, a boy brings you a message, cut on a stick: a meeting, at the old Coker holding at Ashby, at dusk.[elif alias.rival == wat_coker]Wat Coker is dead, cut down at the Hythe Fields. In the autumn you ride through Ashby, and stop at the churchyard, where somebody has carved a W on a stone by the wall, with no name, and kept flowers on it.[elif alias.rival == jocelin_tanner]Jocelin Tanner is an alderman of Wendham now, fat and careful, with the King's commission to collect the new customs on wool. He has done well out of the rising: he lent the King money to hang it. At Michaelmas he writes to you, civil as a clerk, about a matter of the Mercer debts that he has bought up from the Lanzi, and would like to discuss.[elif alias.rival == gib_shawe && npc.gib_shawe.alive]Gib Shawe is the bailiff of Hollin now, for the Wendmere wool merchant who bought it from Ravell[if holding.hollin.held]: or he was, until you bought it, and now he is your bailiff, and you have to decide what to do with him[/if]. He has grown into a big, careful man who still cannot draw a war bow, and has made sure nobody ever finds out.[elif alias.rival == aymer_ravell && npc.aymer_ravell.alive]Aymer Ravell is at court, the Prince's man now, with no land and a great many debts and a talent for being liked. At Michaelmas he comes to stay, uninvited, for a week, and on the last night he tells you why.[else]An old face comes back at Michaelmas, the way they do.[/if]
+
+    [break]
+
+    [if flag.c1_rival_broken]You broke him once, as a boy. You both remember it.[elif flag.c1_rival_cowed]You faced him down once, as a boy, and he has not forgotten.[elif flag.p_rival_outwitted]You outwitted him once, as a boy. He has had a long time to think about it.[elif flag.p_rival_endured]You let him have the better of you once, as a boy. He has never been sure whether that was weakness.[else]There was always something between you, from boyhood.[/if]
+  choices:
+    - id: give
+      text: "[if npc.@rival.follower && npc.@rival.alive]Give him the holding.[elif alias.rival == wat_coker && npc.wat_coker.alive]Go to the meeting, alone.[elif alias.rival == jocelin_tanner]Meet Jocelin, and settle the Mercer debts on his terms.[elif alias.rival == gib_shawe && npc.gib_shawe.alive]Keep Gib on, and say nothing about the bow.[elif alias.rival == aymer_ravell && npc.aymer_ravell.alive]Hear Aymer out.[else]Let the past be past.[/if]"
+      tags: [allies]
+      text_after: |
+        [if npc.@rival.follower && npc.@rival.alive]You give him the holding by the mill, with a deed in his own name, and he reads it twice, and then folds it into his shirt, and cannot speak. The next day he is back in the yard as if nothing had happened, shouting at the grooms. That is how you know what it meant.[elif alias.rival == wat_coker && npc.wat_coker.alive]You go to the old Coker holding at dusk, alone. Wat is there, thin and grey and dangerous, sitting on the hearthstone of a house that is not there any more. "Your father took this off us," he says. "You're a lord now. I want it back. For my mother." [if holding.ashby.held]You hold Ashby. You can do it, and you do. Wat turns the deed over and over in his hands, and then laughs, and the laugh turns into something else.[else]You do not hold Ashby. You promise to buy the holding from whoever does, and you do, and send him the deed by the boy with the stick.[/if] He never thanks you. He stops taking from the tax-collectors in your country.[elif alias.rival == jocelin_tanner]You meet him in his own counting-house and let him win. It costs you, and he enjoys it, and when it is done he is a little ashamed of enjoying it, which is more than you expected. "We were boys," he says at the door. "Boys are pigs." It is as near an apology as Jocelin Tanner will ever come.[elif alias.rival == gib_shawe && npc.gib_shawe.alive]You keep him on and never mention the bow. He knows you know. He becomes, over the years, the most loyal bailiff any man ever had, and the most frightened.[elif alias.rival == aymer_ravell && npc.aymer_ravell.alive]Aymer wants you in the Prince's party. Not for himself: for Edwin, who he says is the only man in Adalia who will ever give men like you what they are worth. "My brother will be Lord Ravell," he says. "I will be Edwin's man, or nothing. Come with me." He means it, which is rare.[else]You let it be. Some things are better buried.[/if]
+      effects:
+        - set: flag.c4_rival_settled
+        - if: alias.rival == jocelin_tanner
+          then: [ { add: { res.coin: -480, rep.merchants: 1 } } ]
+        - if: [ npc.@rival.follower, npc.@rival.alive ]
+          then: [ { add: { rel.@rival.loyalty: 4, rel.@rival.affection: 3, estate.people: 3 } } ]
+        - if: [ alias.rival == wat_coker, npc.wat_coker.alive ]
+          then: [ { set: flag.c4_wat_land }, { add: { rep.commons: 2, counter.court_king: -1 } } ]
+        - if: [ alias.rival == aymer_ravell, npc.aymer_ravell.alive ]
+          then: [ { add: { counter.court_prince: 2 } } ]
+      next: { switch: [ { if: heir.eldest.alive, go: c4_eldest } ], default: c4_christmas }
+    - id: hard
+      text: "[if npc.@rival.follower && npc.@rival.alive]Tell him no. Land is earned.[elif alias.rival == wat_coker && npc.wat_coker.alive]Send word to the sheriff instead.[elif alias.rival == jocelin_tanner]Fight him for every penny.[elif alias.rival == gib_shawe && npc.gib_shawe.alive]Turn him off.[elif alias.rival == aymer_ravell && npc.aymer_ravell.alive]Tell Aymer you are nobody's man but the King's.[else]Do nothing.[/if]"
+      tags: [cunning]
+      text_after: |
+        [if npc.@rival.follower && npc.@rival.alive]"Land is earned," you say. He looks at you, and you can see him adding up Grisolles and Les Salines and Mortefontaine, and coming to a different sum. "Yes, my lord," he says. He serves you as well as ever. He never asks you for anything again.[elif alias.rival == wat_coker && npc.wat_coker.alive]You send word to the sheriff. The sheriff's men find the old Coker holding empty, with a hare hung over the hearth, gutted. Wat has always known what you are.[elif alias.rival == jocelin_tanner]You fight him through two courts and a year of letters, and win, and it costs you more in lawyers than the debt. Jocelin sends you a note when it is over: "Worth it?" You do not answer.[elif alias.rival == gib_shawe && npc.gib_shawe.alive]You turn him off, and he goes, and in a month the whole of Hollin knows why, because he tells them himself, drunk, at the alehouse: that he was turned off for a thing he could not help, by a man who could draw a bow.[elif alias.rival == aymer_ravell && npc.aymer_ravell.alive]Aymer laughs and says, "The King's. God help you," and goes back to court in the morning, and you hear he says nothing worse of you than that.[else]You do nothing.[/if]
+      effects:
+        - if: [ npc.@rival.follower, npc.@rival.alive ]
+          then: [ { add: { rel.@rival.loyalty: -2, rel.@rival.affection: -2 } } ]
+        - if: alias.rival == jocelin_tanner
+          then: [ { add: { res.coin: -240 } } ]
+        - if: [ alias.rival == wat_coker, npc.wat_coker.alive ]
+          then: [ { add: { counter.court_king: 1, rep.commons: -1 } } ]
+        - if: [ alias.rival == gib_shawe, npc.gib_shawe.alive ]
+          then: [ { add: { rep.commons: -1 } } ]
+      next: { switch: [ { if: heir.eldest.alive, go: c4_eldest } ], default: c4_christmas }
+
+- id: c4_eldest
+  chapter: ch4
+  title: The Eldest
+  checkpoint: true
+  on_enter: [ { advance: { seasons: 2 } } ]
+  text: |
+    [if heir.eldest.alive]{heir.eldest.name} is {heir.eldest.ageword}.
+
+    [if heir.eldest.temperament == bold]{heir.eldest.name} has broken an arm falling off the stable roof, and a tooth fighting the miller's boy, and a window. Everyone on the manor loves {heir.eldest.name}, and nobody can catch {heir.eldest.name}.[elif heir.eldest.temperament == bookish]{heir.eldest.name} can read, nobody is sure how: the priest says he only showed the letters once. {heir.eldest.name} reads everything, including your letters, including the ones you would rather nobody read.[elif heir.eldest.temperament == merry]{heir.eldest.name} has made friends with every child on the manor, every dog, and both the Valdrennish grooms, and speaks their tongue better than you do, mostly the rude parts.[else]{heir.eldest.name} watches. Says little. Remembers everything. Once, at dinner, repeats to a guest something you said about him in private a month before, word for word, in your voice.[/if]
+
+    [break]
+
+    In a family like yours, children of this age go away: to a great house as a page, to learn manners and make friends who will matter; or to the Church, to learn letters; or they stay at home and learn what their father can teach them, which depends on the father. [if flag.c3_married && npc.@spouse.alive]Your wife has an opinion about it. She has made sure you know what it is.[/if][else]You have no children living. The question that other lords are asking each other this year, about pages and fostering, is not your question.[/if]
+  choices:
+    - id: prince
+      text: Send {heir.eldest.name} to the Prince's household, as a page.
+      tags: [diplomacy, cunning]
+      visible_if: [ heir.eldest.alive, heir.eldest.sex == son ]
+      requires: [ { any: [ counter.court_prince >= 2, counter.court_king >= 3 ] } ]
+      label: "Requires: standing at court"
+      text_after: |
+        {heir.eldest.name} goes to the Prince's household at Saltmarsh in a new coat with a bundle and a dog, which is sent back. [if heir.eldest.temperament == bold]The first letter from the Prince's master of pages says that your son has fought two boys, won both fights, and been beaten for it, and asks you to send a warmer cloak.[elif heir.eldest.temperament == bookish]The first letter says your son has found the Prince's library, and is hard to get out of it.[elif heir.eldest.temperament == merry]The first letter says your son has made the Prince laugh, which is valued in that household.[else]The first letter says your son is quiet, and watches, and that the master of pages is not sure what to make of him.[/if] The house is quieter. You did not expect to mind so much.
+      effects: [ { heir_set: { which: eldest, upbringing: page } }, { set: flag.c4_page_prince }, { add: { counter.court_prince: 1, heir.eldest.bond: -1 } } ]
+      next: c4_christmas
+    - id: armance
+      text: Send {heir.eldest.name} to the Duchess's household at Lannec.
+      tags: [diplomacy, allies]
+      visible_if: [ heir.eldest.alive ]
+      requires: [ { any: [ flag.c4_armance_favour, counter.west_estates >= 2, flag.c2_granted_kerval ] } ]
+      label: "Requires: favour in the Armance"
+      text_after: |
+        {heir.eldest.name} goes to Lannec, to old Jehanne's household, where the Armance gentry send their children, and comes home at Christmas speaking Valdrennish with a Lannec accent and bowing like a little courtier. [if heir.eldest.sex == daughter]Mahaut d'Armance, who is seventeen now, has taken a fancy to your daughter and keeps her by her as a sort of pet, and teaches her to ride astride, which Jehanne does not know.[else]Mahaut d'Armance, who is seventeen now, uses your son as her page at table, and teaches him to throw dice, which Jehanne does not know.[/if] Your child will grow up a creature of the West.
+      effects: [ { heir_set: { which: eldest, upbringing: court } }, { set: flag.c4_page_armance }, { add: { counter.west_estates: 2, heir.eldest.bond: -1 } } ]
+      next: c4_christmas
+    - id: church
+      text: Send {heir.eldest.name} to the abbey to learn letters.
+      tags: [piety, learning]
+      text_after: |
+        {heir.eldest.name} goes to the abbey [if flag.c2_granted_kerval]of the Duchess's monks above Kerval[else]at Saint-Aubin across the marsh[/if], to the novice-master, to learn Latin and the psalms and how to sit still. [if heir.eldest.temperament == bookish]It is the happiest you have ever seen your child.[elif heir.eldest.temperament == bold]The novice-master writes within the month to ask whether you are certain about this.[else]The letters home are short, and dutiful, and in a beautiful hand.[/if]
+      effects: [ { heir_set: { which: eldest, upbringing: church } }, { set: flag.c4_child_church }, { add: { rep.church: 1, rep.piety: 1 } } ]
+      next: c4_christmas
+    - id: home
+      text: Keep {heir.eldest.name} at home, and teach what you know.
+      tags: [allies]
+      text_after: |
+        You keep {heir.eldest.name} at home. Other lords think you are soft, or poor, or both. [if heir.eldest.temperament == bold]You teach the child to ride, and to fall, and to get up, and to throw a stone straighter than any boy on the manor, and you are more proud of that stone than of Mortefontaine.[elif heir.eldest.temperament == bookish]You teach the child what you know, which is not books, and find out that the child is teaching you as much: the names of the stars, what the Latin over the church door says.[elif heir.eldest.temperament == merry]You take the child everywhere: the manor court, the salt-pans, the mill. By the end of the year half the manor calls the child by a nickname and the other half by yours.[else]You take the child everywhere, and the child watches, and says nothing, and one evening asks you why you let the reeve lie to you at the manor court. You had not noticed that he had.[/if]
+      effects: [ { heir_set: { which: eldest, upbringing: home } }, { set: flag.c4_kept_home }, { add: { heir.eldest.bond: 3 } } ]
+      next: c4_christmas
+
+- id: c4_christmas
+  chapter: ch4
+  title: The King's Christmas
+  checkpoint: true
+  on_enter: [ { advance: { seasons: 3 } } ]
+  text: |
+    The King keeps Christmas at Wendmere in the thirty-sixth year of his reign, and everyone who matters is there, and everyone who matters notices that the King is ill.
+
+    He is fifty-one. He was a big man and is not any more. He sits through the feast with his food untouched and his hand on the arm of his chair, and laughs at the mummers a moment late, and twice the Queen leans over to him and says something, and he does not answer. On the third day he does not come down at all.
+
+    [break]
+
+    The court breaks into pieces like ice in a thaw. The Prince's young men walk the galleries in a crowd and laugh too loudly. The Earl of Carrow is at Mass every morning, praying, he says, for the King's health, with forty of his people at his back. The Chancellor sends for every lord whose loyalty he is not sure of, one by one, and asks after their families.
+
+    [if flag.c4_chamber_knight]You sleep in the next room to the King, as a knight of his chamber, and hear him through the wall at night, coughing, and talking to his mother, who has been dead for nine years.[elif counter.court_king >= 4]The King sends for you on the fourth day. He is sitting up, grey, in a furred gown. "They are counting the days," he says. "Do not let them hurry me."[elif counter.court_prince >= 4]Prince Edwin finds you in a gallery and takes your arm. "When it comes," he says, low, "I will need men who are mine already. Not men who decide afterwards."[elif counter.court_carrow >= 4]The Earl of Carrow's steward finds you at your lodging. The Earl would like you to dine with him privately, on Twelfth Night, with a few friends.[/if]
+  choices:
+    - id: king
+      text: Stand by the King. Be seen to.
+      tags: [allies, martial]
+      text_after: |
+        You stand by the King: at Mass, at his door, in the hall when he comes down again on Twelfth Night, thinner, on the Queen's arm. You say nothing about the succession to anyone. The Chancellor notices. So, from his bed, does the King.
+      effects: [ { set: flag.c4_stood_by_king }, { add: { counter.court_king: 2, counter.court_prince: -1 } } ]
+      next: c4_third_router
+    - id: prince
+      text: Go to the Prince, and make your promise plain.
+      tags: [cunning, allies]
+      text_after: |
+        You go to Edwin's rooms on the fourth night and tell him plainly that when the time comes, your banner will be his. He takes your hand in both of his. "I will not forget it," he says. Princes always say that. The difference is that Edwin writes your name down, in a little book he keeps, and you see him do it.
+      effects: [ { set: flag.c4_sworn_prince }, { add: { counter.court_prince: 3, counter.court_king: -1 } } ]
+      next: c4_third_router
+    - id: carrow
+      text: Dine with the Earl of Carrow on Twelfth Night.
+      tags: [cunning, wealth]
+      text_after: |
+        The dinner is small, and good, and nobody mentions the King. Everybody mentions the Prince: his youth, his new men, his debts, his temper. The Earl says almost nothing. At the end he takes you to the door himself, and says, "When the old man dies, there will be a council of regency or there will be a war. I would rather a council. Wouldn't you?" You say you would. He smiles. You have said something, and you are not sure what.
+      effects: [ { set: flag.c4_dined_carrow }, { add: { counter.court_carrow: 3, counter.court_prince: -2 } } ]
+      next: c4_third_router
+    - id: spend
+      text: Use the Vervais secret, now, while it can still buy something.
+      tags: [cunning]
+      visible_if: [ { any: [ flag.c3_kept_vervais, flag.c4_carrow_pinned ] } ]
+      text_after: |
+        You write it all down, the payment and the date and the word "avviso," and seal it, and leave it with the Chancellor under your own seal, to be opened if anything happens to you, and you tell the Earl of Carrow that you have done so. You watch him understand. From that night the Earl of Carrow is the most courteous man in Adalia, to you, and you never eat anything at his table again.
+      effects: [ { set: flag.c4_vervais_deposited }, { add: { counter.court_carrow: -3, counter.court_king: 1, rep.ruthlessness: 1 } } ]
+      next: c4_third_router
+
+- id: c4_third_router
+  chapter: ch4
+  title: Spring
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    [if flag.c3_married && npc.@spouse.alive && heirs.born < 3]In the spring your wife tells you, in the orchard, the way she told you the first time, and laughs at your face.[else]Spring comes to the West, late and wet.[/if]
+  choices:
+    - id: on
+      text: Go on.
+      next: { switch: [ { if: [ flag.c3_married, npc.@spouse.alive, heirs.born < 3 ], go: c4_third_child } ], default: c4_salt }
+
+- id: c4_third_child
+  chapter: ch4
+  title: The Third Child
+  on_enter:
+    - advance: { seasons: 2 }
+    - birth: random
+    - chance: 3
+      then: [ { set: flag.c4_wife_died_third }, { kill: "@spouse" } ]
+  text: |
+    [if flag.c4_wife_died_third]The third time is the one that kills her.
+
+    Not long, and not even hard, the midwife says afterwards, as if that made it better. The child comes, a [if heirs.last == son]boy[else]girl[/if], red and loud and whole, and the bleeding starts, and does not stop. {npc.@spouse.first} knows before anyone tells her. She asks for the children. They bring them in, all of them. You are there. You will be there for the rest of your life, in that room.[else]The third time you do not walk up and down the yard. You sit in the hall with [if heirs.count >= 3]the other two[else]the child[/if] on your knee and tell stories about the war that are mostly lies, and when the women call you up, you go up the stairs two at a time anyway.
+
+    A [if heirs.last == son]boy[else]girl[/if]. {npc.@spouse.first}, propped up on the bolster, looks at you over the baby's head and says, "That's the last. I mean it." She does.[/if]
+  choices:
+    - id: name_a
+      text: "[if heirs.last == son]Edwin, for the Prince.[else]Jehanne, for the old Duchess.[/if]"
+      tags: [diplomacy]
+      effects:
+        - if: heirs.last == son
+          then: [ { name_heir: Edwin }, { add: { counter.court_prince: 1 } } ]
+          else: [ { name_heir: Jehanne }, { add: { counter.west_estates: 1 } } ]
+      text_after: "{heirs.lastname}, the priest writes, at the bottom of the page.[if flag.c4_wife_died_third] And her name, under it.[/if]"
+      next: c4_salt
+    - id: name_b
+      text: "[if heirs.last == son]Aldred, for the King.[else]Margaret, for the saint who keeps women in childbed.[/if]"
+      tags: [piety]
+      effects:
+        - if: heirs.last == son
+          then: [ { name_heir: Aldred }, { add: { counter.court_king: 1 } } ]
+          else: [ { name_heir: Margaret }, { add: { rep.piety: 1 } } ]
+      text_after: "{heirs.lastname}, the priest writes, at the bottom of the page.[if flag.c4_wife_died_third] And her name, under it.[/if]"
+      next: c4_salt
+    - id: name_c
+      text: "[if heirs.last == son]Will, for an old friend.[else]Joan. A plain name, and a strong one.[/if]"
+      tags: [allies]
+      effects:
+        - if: heirs.last == son
+          then: [ { name_heir: Will } ]
+          else: [ { name_heir: Joan } ]
+      text_after: "{heirs.lastname}, the priest writes, at the bottom of the page.[if flag.c4_wife_died_third] And her name, under it.[/if]"
+      next: c4_salt
+
+- id: c4_salt
+  chapter: ch4
+  title: The Salt Guilds
+  checkpoint: true
+  on_enter: [ { if: calendar.season == spring, then: [ { advance: { seasons: 2 } } ] } ]
+  text: |
+    In the autumn of the thirty-seventh year, the King's Chancellor, needing money for a King who cannot stop spending it on physicians, puts a tax on salt in the West: a penny on the bushel at every pan from Sauvemer to the Armance. It is called the Adalian salt penny. Everybody in the West calls it the salt tithe, which is what the Valdrennish kings called theirs, and which the West rose against forty years ago.
+
+    [break]
+
+    The salt-guilds of Sauvemer refuse it. Then the pans at Les Salines refuse it. Then [if flag.c2_granted_marsalin]your own salt-boilers at Marsalin, with Margot at their head, come to your gate and refuse it to your face[elif flag.c2_granted_kerval]the Kerval carters who carry the salt inland stop carrying it, and Gwenaël comes to tell you, apologetically, that he is one of them[else]the eel-men and salt-diggers of Ormel, who have never agreed with anyone about anything, send Bastien to tell you they agree with the guilds[/if].
+
+    The King's officer in Sauvemer, a Wendmere man called Master Thomas Hales, writes to every Adalian lord in the West to send men to make the pans pay.
+  choices:
+    - id: enforce
+      text: Send men. A King's tax is a King's tax.
+      tags: [martial]
+      text_after: |
+        You send twenty men to stand at the pans with the King's officer while the salt is weighed. Nobody fights. Nobody needs to. The salt-boilers pay, and look at your men, and at your badge on their sleeves, and remember it. At Michaelmas Master Hales writes to the Chancellor that you are a loyal lord. At Michaelmas, too, somebody burns your barn at [if flag.c2_granted_kerval]Kerval[elif flag.c2_granted_marsalin]Marsalin[else]Ormel[/if], and nobody saw anything.
+      effects: [ { set: flag.c4_enforced_salt }, { add: { counter.court_king: 2, counter.west_estates: -3, estate.temper: -2 } } ]
+      next: c4_mahaut
+    - id: guilds
+      text: Stand with the guilds. Write to the King that the West will not bear it.
+      tags: [allies, diplomacy]
+      text_after: |
+        You write to the King, and to the Chancellor, and to the Prince, that the West will not bear the salt penny, that it will cost more to collect than it raises, and that the King's enemies in Cordelle will thank him for it. You sign it with your name and your banneret's style. Two other western lords sign under you. The guildmasters of Sauvemer come to your gate in a body to thank you, in their gowns, and [if flag.c2_granted_marsalin]Margot[elif flag.c2_granted_kerval]Gwenaël[else]Bastien[/if] stands at the back, and nods at you once.
+      effects: [ { set: flag.c4_stood_with_salt }, { add: { counter.west_estates: 3, counter.court_king: -2, estate.temper: 2 } } ]
+      next: c4_mahaut
+    - id: broker
+      text: Ride to Sauvemer and broker a bargain between the officer and the guilds.
+      tags: [diplomacy, cunning]
+      check: { attr: presence, skill: diplomacy, difficulty: 5, mods: [ { if: flag.c2_learned_town, add: 1, label: Sauvemer knows you }, { if: flag.c2_terms_carried, add: 1, label: you carried the terms once before }, { if: counter.west_estates >= 2, add: 1, label: your standing in the West } ] }
+      success:
+        text: |
+          It takes eleven days in a hot room in the guildhall at Sauvemer with Master Hales on one side and the guildmasters on the other and you in the middle with a jug. At the end there is no salt penny. There is a "gift" from the guilds to the King, once, of a sum that is less than the tax and more than nothing, and a charter confirming the guilds' old liberties, sealed by the King's officer, who does not entirely understand what he has sealed. Everyone goes home thinking they have won. The guildmasters know who did it.
+        effects: [ { set: flag.c4_salt_bargain }, { add: { counter.west_estates: 3, counter.court_king: 1, res.renown: 1 } } ]
+        next: c4_mahaut
+      failure:
+        text: |
+          Eleven days in a hot room, and at the end of it Master Hales walks out, and the guildmasters walk out the other door, and the salt penny stands, and nobody pays it. Both sides think you were working for the other.
+        effects: [ { add: { counter.west_estates: -1, counter.court_king: -1 } } ]
+        next: c4_mahaut
+
+- id: c4_mahaut
+  chapter: ch4
+  title: The Duchess Is Dead
+  checkpoint: true
+  on_enter: [ { advance: { seasons: 1 } }, { kill: jehanne_armance } ]
+  text: |
+    Duchess Jehanne of Armance dies at Lannec in the winter of the thirty-seventh year, at seventy-four, in her chair, with her stick across her knees and her granddaughter holding her hand. The last thing she says, they tell you, is "Not to Wendmere." Nobody is sure whether she meant her body or the girl.
+
+    [break]
+
+    Mahaut is eighteen, and Duchess of Armance, and unmarried, and her marriage is in the King's gift, because the King made himself her guardian in the treaty that brought the Adalians back. Every lord in Adalia with a younger son is writing to the Chancellor. The Earl of Carrow wants her for his grandson. The Prince wants her for one of his young men. [if flag.c4_page_armance]Your own child, who has been her page for two years, writes home: "She says she will not be sold to an Adalian. She says she would rather marry a Valdrennish pig-man. She says I may tell you."[/if]
+
+    And the West watches to see what Adalia will do with the girl who is the Armance.
+  choices:
+    - id: suit
+      text: Ask for her yourself.
+      tags: [diplomacy, cunning]
+      visible_if: [ { any: [ "!flag.c3_married", "!npc.@spouse.alive" ] } ]
+      text_after: |
+        You are thirty-seven and a banneret, [if flag.c3_married]a widower[else]unmarried[/if], with land in the West and a name from Mortefontaine. That counts for something. Not enough, by itself, and you know it, and so does the Chancellor, who reads your letter twice and puts it at the bottom of the pile. But you have also asked Mahaut. By letter, in Valdrennish, without asking anyone's leave. She writes back, two lines: "You are the first who asked me and not my grandmother's grave. I have not said yes."
+      effects: [ { set: flag.c4_asked_mahaut }, { assign: { suit.mahaut_armance.status: courted } }, { add: { suit.mahaut_armance.regard: 3, counter.west_estates: 1, counter.court_carrow: -1 } } ]
+      next: c4_act2_end
+    - id: free
+      text: Speak for her right to choose her own husband.
+      tags: [allies, diplomacy]
+      text_after: |
+        You stand up in the King's council when the matter comes, which it does at Candlemas, and say that the Armance will be held by love or by an army, and that a girl sold to an Adalian will be the second kind. Nobody claps. Everybody remembers. Mahaut hears of it within the week. So does the West.
+      effects: [ { set: flag.c4_spoke_for_mahaut }, { assign: { suit.mahaut_armance.status: known } }, { add: { suit.mahaut_armance.regard: 2, counter.west_estates: 2, counter.court_king: -1 } } ]
+      next: c4_act2_end
+    - id: edwin
+      text: Back the Prince's candidate.
+      tags: [cunning]
+      text_after: |
+        You back the Prince's man for Mahaut: young Sir Robert Lacy, handsome, brave and a fool. The Prince is grateful. Mahaut is not consulted, and the match is not made that year, because the King is too ill to decide anything, and the girl sits in Lannec and waits, and remembers names.
+      effects: [ { set: flag.c4_backed_lacy }, { add: { counter.court_prince: 2, counter.west_estates: -1 } } ]
+      next: c4_act2_end
+    - id: carrow
+      text: Back the Earl of Carrow's grandson.
+      tags: [wealth, cunning]
+      text_after: |
+        You back Carrow's grandson, a quiet boy of twenty who collects hawks. The Earl is grateful, and shows it in coin. Mahaut is not consulted, and the match is not made that year, because the King is too ill to decide anything. In Lannec, they say, the girl has a list.
+      effects: [ { set: flag.c4_backed_carrow_match }, { add: { counter.court_carrow: 2, counter.west_estates: -2, res.coin: 1200 } } ]
+      next: c4_act2_end
+
+- id: c4_act2_end
+  chapter: ch4
+  kind: ending
+  ending: story_so_far
+  title: Spring, Year Thirty-Eight
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    You are thirty-seven. [if holdings.count >= 2]Your name is on the rent-rolls of more places than you have slept in.[else]You hold your manor and your tower and your name.[/if] [if heirs.count >= 1]{heirs.names}: [if heirs.count >= 2]growing, quarrelling, away and home again[else]growing, away and home again[/if].[/if]
+
+    The King is dying. Everyone knows it, and nobody says it, and everyone is counting.
+
+    End of the chapters written so far. Chapter 4 continues with the Fracture.

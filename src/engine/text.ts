@@ -71,6 +71,7 @@ function varValue(name: string, state: GameState, content: ContentBundle): strin
     const def = reg.npcs[id];
     if (!def) return name;
     if (field === 'title') return def.title ? `${def.title} ${def.name}` : def.name;
+    if (field === 'first') return def.name.split(' ')[0]!;
     return def.name;
   }
   const v = getValue(state, content, name);
@@ -119,7 +120,7 @@ export function validateText(src: string, content: ContentBundle): { errors: str
           if (id?.startsWith('@')) {
             if (!content.config.aliases.includes(id.slice(1))) errors.push(`unknown alias in {${n.name}}`);
           } else if (!id || !content.registry.npcs[id]) errors.push(`unknown npc in {${n.name}}`);
-          else if (field && field !== 'title') errors.push(`unknown npc field in {${n.name}}`);
+          else if (field && field !== 'title' && field !== 'first') errors.push(`unknown npc field in {${n.name}}`);
           continue;
         }
         const pe = checkPath(content, n.name);

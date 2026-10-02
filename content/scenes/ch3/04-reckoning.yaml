@@ -445,9 +445,9 @@
   text: |
     It is easier the second time, everyone says. [if flag.c3_wife_died_second]It is not.
 
-    The child lives. A [if heirs.last == son]boy[else]girl[/if]. {npc.@spouse} does not. It is quick, at the end, quicker than the first time would have been, the midwife says, as if that were a comfort. You stand at the door of the solar with the baby in your arms, and the women go past you with their eyes down, and nobody tells you anything, because there is nothing to tell.[else]It is, mostly. Eleven hours instead of a day and a night, and you spend them in the yard again, and this time [if heirs.count >= 2]{heirs.eldest} spends them with you, on your knee, asking questions you cannot answer.[else]you spend them alone, thinking about the small grave in the chancel.[/if]
+    The child lives. A [if heirs.last == son]boy[else]girl[/if]. {npc.@spouse.first} does not. It is quick, at the end, quicker than the first time would have been, the midwife says, as if that were a comfort. You stand at the door of the solar with the baby in your arms, and the women go past you with their eyes down, and nobody tells you anything, because there is nothing to tell.[else]It is, mostly. Eleven hours instead of a day and a night, and you spend them in the yard again, and this time [if heirs.count >= 2]{heirs.eldest} spends them with you, on your knee, asking questions you cannot answer.[else]you spend them alone, thinking about the small grave in the chancel.[/if]
 
-    A [if heirs.last == son]boy[else]girl[/if]. Smaller than the first, and louder. {npc.@spouse}, sitting up in bed with her hair everywhere, looks at it and says, "Well. That's that, then," and laughs, and holds out her arms.[/if]
+    A [if heirs.last == son]boy[else]girl[/if]. Smaller than the first, and louder. {npc.@spouse.first}, sitting up in bed with her hair everywhere, looks at it and says, "Well. That's that, then," and laughs, and holds out her arms.[/if]
   choices:
     - id: father
       visible_if: [ { not: { any: [ heirs.eldest_id == piers, heirs.eldest_id == ralf, heirs.eldest_id == hugh, heirs.eldest_id == hob, heirs.eldest_id == edith, heirs.eldest_id == margery, heirs.eldest_id == alison, heirs.eldest_id == agnes ] } } ]

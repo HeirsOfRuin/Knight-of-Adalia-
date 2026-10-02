@@ -1,0 +1,92 @@
+# Chapter 4 pool events (pool c4_lord): a lord's life between the great matters.
+
+- id: c4p_pony
+  chapter: ch4
+  kind: pool
+  pool: c4_lord
+  title: The Pony
+  once: true
+  requires: [ heir.eldest.alive ]
+  text: |
+    {heir.eldest.name} wants a pony. Not a pony: a horse, a real one, like yours. {heir.eldest.name} has wanted a horse for a year, and has asked every day, at breakfast, in the same words, and has started asking the grooms instead, who are weakening.
+
+    The horse-fair at [if flag.c2_granted_kerval]Lannec[else]Sauvemer[/if] is on Saturday.
+  choices:
+    - id: buy
+      text: Take {heir.eldest.name} to the fair, and let the child choose.
+      tags: [allies, wealth]
+      text_after: |
+        You let the child choose. [if heir.eldest.temperament == bold]{heir.eldest.name} chooses the worst-tempered animal in the fair, a dun mare with a white eye who bites the horse-coper, and falls off her four times on the way home, and will not hear a word against her.[elif heir.eldest.temperament == bookish]{heir.eldest.name} spends an hour looking at teeth and hooves, the way the grooms do, and chooses a plain brown gelding the horse-coper was not even trying to sell, and is right.[elif heir.eldest.temperament == merry]{heir.eldest.name} chooses a fat grey pony because it looks happy, and names it after the Chancellor, which you do not forbid.[else]{heir.eldest.name} watches the whole fair without choosing anything, and on the way home says, "The black one. The one nobody bought," and you go back for it.[/if]
+      effects: [ { add: { res.coin: -120, heir.eldest.bond: 2 } } ]
+      next: "@return"
+    - id: wait
+      text: Not yet. Next year.
+      tags: [yield]
+      text_after: "\"Next year,\" you say. {heir.eldest.name} looks at you the way you used to look at your own father, and says nothing, and goes back to asking the grooms."
+      effects: [ { add: { heir.eldest.bond: -1 } } ]
+      next: "@return"
+
+- id: c4p_boundary
+  chapter: ch4
+  kind: pool
+  pool: c4_lord
+  title: The Boundary Stone
+  once: true
+  requires: [ holdings.count >= 1 ]
+  text: |
+    Two of your own villages have fallen out over a boundary stone. It has been moved, by somebody, at night, about forty paces, and there is a meadow on the wrong side of it now. Both villages are yours. Both send a deputation. Both deputations are in your hall at the same time, and have brought their grandfathers.
+  choices:
+    - id: walk
+      text: Walk the bounds with the oldest men of both villages.
+      tags: [allies, learning]
+      text_after: You walk the bounds all day with six old men who disagree about everything, and at the end of it you find the old hole where the stone stood, by the yew, exactly where the oldest of them said. You put the stone back with your own hands. Both villages grumble. Both villages are satisfied.
+      effects: [ { add: { estate.temper: 1, rep.commons: 1 } } ]
+      next: "@return"
+    - id: split
+      text: Split the meadow down the middle.
+      tags: [cunning]
+      text_after: You split it down the middle. Both villages hate the judgement, which your old master always said was the sign of a fair one. You are not sure he was right.
+      next: "@return"
+
+- id: c4p_old_friend
+  chapter: ch4
+  kind: pool
+  pool: c4_lord
+  title: An Old Friend
+  once: true
+  requires: [ { any: [ npc.davy_ludd.alive, npc.will_cobb.alive, npc.roger_tallis.alive ] } ]
+  text: |
+    [if npc.davy_ludd.alive]Davy Ludd rides in at dusk, unannounced, [if flag.c3_davy_knighted]with a knight's spurs on his heels that he still walks oddly in,[else]with Aude and three children on the cart behind him,[/if] and stays three days.[elif npc.will_cobb.alive]Will Cobb rides in at dusk, unannounced, grey as a badger and fat as a friar, and stays three days.[else]Roger Tallis rides in at dusk, unannounced, older and slower and exactly as rude, and stays three days.[/if] You drink too much. You talk about the dead. On the third night you laugh so hard at something about a goat at Grisolles that you have to go outside.
+  choices:
+    - id: stay
+      text: Ask him to stay on, in your household.
+      tags: [allies]
+      text_after: He thinks about it for a whole evening, and says yes, for a year. He stays eleven.
+      effects: [ { add: { rel.davy_ludd.affection: 2, rel.will_cobb.affection: 2, rel.roger_tallis.affection: 2, estate.defence: 1 } } ]
+      next: "@return"
+    - id: go
+      text: See him off at the gate, and stand there till he is out of sight.
+      tags: [yield]
+      text_after: You stand at the gate till he is out of sight. Then you go back in, and the hall is too large.
+      next: "@return"
+
+- id: c4p_petition
+  chapter: ch4
+  kind: pool
+  pool: c4_lord
+  title: The Widow's Petition
+  once: true
+  text: |
+    A woman comes to the manor court with a petition written for her by the priest: her husband was one of the men you took to Mortefontaine, and did not come back, and the holding is in his name, and the reeve says it must go to a man.
+  choices:
+    - id: keep
+      text: Let her keep the holding in her own name.
+      tags: [allies, piety]
+      text_after: You let her keep it, in her own name, for her life and her son's. The reeve says it is against custom. You say you are the custom. That evening, from the hall, you hear singing from her end of the village, and are not sure whether it is for you.
+      effects: [ { add: { estate.temper: 1, rep.commons: 1, rep.honor: 1 } } ]
+      next: "@return"
+    - id: custom
+      text: Custom is custom. Find her a husband among the tenants.
+      tags: [cunning]
+      text_after: "You find her a husband: a decent man, a widower with a good plough-team. She marries him. She does not look at you at the church door."
+      next: "@return"

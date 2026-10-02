@@ -512,12 +512,12 @@
 
 - id: c4_act1_end
   chapter: ch4
-  kind: ending
-  ending: story_so_far
   title: Spring, Year Thirty-Five
   text: |
     You are thirty-four. You carry a square banner now, and lead other men's knights under it, and [if holdings.count >= 2]hold land in more places than you can ride to in a week[elif holdings.count == 1]hold land in two countries[else]hold the King's ear, which is a kind of land[/if].
 
     [if heirs.count >= 1]At home, {heirs.names} [if heirs.count >= 2]are[else]is[/if] growing, without you, the way children do.[/if] [if flag.c3_married && npc.@spouse.alive]Your wife's last letter says the dyke held, the salt is good, and that she has had the hall whitewashed, and you are not to complain about it.[/if]
-
-    End of the chapters written so far. Chapter 4 continues with the Lord of Many Places.
+  choices:
+    - id: on
+      text: Go home.
+      next: c4_stewards

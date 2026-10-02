@@ -391,3 +391,23 @@ c4_mf_bloody: { description: "Mortefontaine was a bloody draw", later: ch5 }
 c4_mf_lost: { description: "Mortefontaine was a defeat", later: ch5 }
 c4_banneret: { description: "Made a banneret after Mortefontaine", later: ch5 }
 c4_chamber_knight: { description: "Knight of the King's chamber", later: ch5 }
+c4_asked_mahaut: { description: "Asked for Mahaut d'Armance himself", later: ch5 }
+c4_backed_carrow_match: { description: "Backed Carrow's grandson for Mahaut", later: ch5 }
+c4_backed_lacy: { description: "Backed the Prince's candidate for Mahaut", later: ch5 }
+c4_caught_steward: { description: "Caught a thieving steward", hidden: true, later: ch5 }
+c4_child_church: { description: "Sent his eldest to the Church", later: ch5 }
+c4_dined_carrow: { description: "Dined with Carrow on Twelfth Night as the King lay ill", later: ch5 }
+c4_enforced_salt: { description: "Enforced the salt penny on the West", later: ch5 }
+c4_kept_home: { description: "Kept his eldest at home", later: ch5 }
+c4_page_armance: { description: "Sent his eldest to the Duchess's household at Lannec", later: ch5 }
+c4_page_prince: { description: "Sent his eldest son as a page to the Prince", later: ch5 }
+c4_rival_settled: { description: "Settled with his boyhood rival", hidden: true, later: ch5 }
+c4_salt_bargain: { description: "Brokered the salt bargain at Sauvemer", later: ch5 }
+c4_sarenzan_clerk: { description: "Keeps a Sarenzan clerk auditing his holdings", hidden: true, later: ch5 }
+c4_spoke_for_mahaut: { description: "Spoke in council for Mahaut's right to choose", later: ch5 }
+c4_stood_by_king: { description: "Stood by the dying King at Christmas", later: ch5 }
+c4_stood_with_salt: { description: "Stood with the salt guilds against the King's tax", later: ch5 }
+c4_sworn_prince: { description: "Promised his banner to Prince Edwin", later: ch5 }
+c4_vervais_deposited: { description: "Deposited the Vervais proof with the Chancellor", later: ch5 }
+c4_wat_land: { description: "Gave Wat Coker his family's holding back", later: ch5 }
+c4_wife_died_third: { description: "His wife died at the birth of their third child", later: ch5 }

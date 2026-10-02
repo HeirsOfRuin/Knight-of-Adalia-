@@ -986,6 +986,41 @@ Approved 2026-10-02 (`docs/FRAME-CH4-CH5.md`): the Western Crown, the Ch5 ending
 - the battle splits roughly 35-55% bloody draw, 20-40% victory and 7-57% defeat, by policy;
 - most runs now hold 1-3 other holdings by the end of Act I.
 
+**Act II, the Lord of Many Places** (summer year 35 to spring year 38). Eight spine scenes in `ch4/02-many-places.yaml`, plus four events in pool `c4_lord`.
+1. **Stewards.** A holding's receipts are down a fifth. He can:
+   - audit it himself (a Stewardship check; reeve and burgess backgrounds get a bonus, and the reeve gets an echo of his father's tallies);
+   - hire a Sarenzan clerk (income up, temper down);
+   - trust his stewards.
+2. **An Old Face.** The boyhood rival, read through `@rival` and the prologue and Ch1 rival flags:
+   - a follower asks for land;
+   - Wat Coker is an outlaw in the chase, wanting his family's holding back, or he is a grave;
+   - Jocelin Tanner has bought the Mercer debts;
+   - Gib Shawe is bailiff of Hollin;
+   - Aymer recruits for the Prince.
+3. **The Eldest** (the first growth period, about age 5-6). Text varies by temperament. He can send the child:
+   - to the Prince as a page (a son, with court standing);
+   - to the Duchess's household at Lannec, near Mahaut;
+   - to the abbey;
+   - or keep the child at home (bond +3).
+4. **The King's Christmas.** Aldred, 51, is visibly dying. He can stand by the King, swear to the Prince, dine with Carrow, or spend the Vervais secret by leaving it with the Chancellor.
+5. **The Third Child** (only if his wife is alive and fewer than three children were born). A 3% risk to the mother. Names for the Prince, the old Duchess, the King, a saint, or an old friend.
+6. **The Salt Guilds.** Adalia's salt penny in the West. He can enforce it (King +2, West −3), stand with the guilds (West +3, King −2), or broker a bargain (a Diplomacy check against difficulty 5).
+7. **The Duchess Is Dead.** Jehanne dies, and Mahaut (18) is the King's ward. He can:
+   - ask for her himself (only if a widower or unmarried; candidate #12, `mahaut_armance`);
+   - speak for her right to choose;
+   - back the Prince's man, Sir Robert Lacy;
+   - back Carrow's grandson.
+8. **End of build:** `c4_act2_end`.
+
+**Pool events:** the eldest's first horse, a boundary stone between two of his villages, an old friend's visit, and a widow's petition.
+
+**Engine:** `{npc.<id>.first}` gives a first name in prose ("Mariot, propped up on the bolster").
+
+**Bot results** (100 runs per background per policy):
+- married runs nearly all reach three children by year 37;
+- Mahaut is courted in 2-7% of runs (widowers and the unmarried), consistent with Crowned at 5-7% having several routes;
+- top standing by policy: martial play with the King, cunning with the Prince, diplomacy in the West, wealth with Carrow.
+
 ## Decisions log
 | Date | Decision |
 |---|---|
@@ -1008,3 +1043,4 @@ Approved 2026-10-02 (`docs/FRAME-CH4-CH5.md`): the Western Crown, the Ch5 ending
 | 2026-10-02 | Stabilisation: compressed save codes, downloads through the viewer, render scan. Ch4-5 frame drafted for approval (docs/FRAME-CH4-CH5.md). |
 | 2026-10-02 | Ch4-5 frame approved as recommended: the West (Armance and the Salt Coast) is the new crown; Aldred dies about year 40, Edwin succeeds, Carrow rises; candidate #12 is Jehanne's granddaughter; heirs may die in Ch4 only through his choices; his death ends the game; Vervais stays a third party. |
 | 2026-10-02 | Ch4 engine (holdings, heirs growth, court standing) and Act I, the Second War, built. Validator enforces the death rule. Harvest base raised to people/40. Ending ch3_complete renamed story_so_far. |
+| 2026-10-02 | Ch4 Act II, the Lord of Many Places, built. |

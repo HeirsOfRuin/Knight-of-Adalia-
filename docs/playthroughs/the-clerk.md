@@ -2829,7 +2829,7 @@ And then, in the middle of the afternoon, a thin furious wail, and the women lau
 
 *(Continue)*
 
-A boy. Red, furious, perfect, with a fist like a walnut. They put it in your arms, and you hold it the way you would hold a hawk, or a lit fuse, and everyone laughs at you, and Isabel Sayer, white and wrecked and grinning in the bed, laughs hardest of all.
+A boy. Red, furious, perfect, with a fist like a walnut. They put it in your arms, and you hold it the way you would hold a hawk, or a lit fuse, and everyone laughs at you, and Isabel, white and wrecked and grinning in the bed, laughs hardest of all.
 
 "Well," she says. "Go on, then. Give it a name."
 
@@ -3032,7 +3032,7 @@ In the summer your wife is brought to bed again.
 
 It is easier the second time, everyone says. It is, mostly. Eleven hours instead of a day and a night, and you spend them in the yard again, and this time Piers spends them with you, on your knee, asking questions you cannot answer.
 
-A girl. Smaller than the first, and louder. Isabel Sayer, sitting up in bed with her hair everywhere, looks at it and says, "Well. That's that, then," and laughs, and holds out her arms.
+A girl. Smaller than the first, and louder. Isabel, sitting up in bed with her hair everywhere, looks at it and says, "Well. That's that, then," and laughs, and holds out her arms.
 
 - Anne, for the saint whose day it is.
 - Aude, for Davy's wife, who sat up with yours.
@@ -3321,4 +3321,177 @@ You are thirty-four. You carry a square banner now, and lead other men's knights
 
 At home, Piers and Anne are growing, without you, the way children do. Your wife's last letter says the dyke held, the salt is good, and that she has had the hall whitewashed, and you are not to complain about it.
 
-End of the chapters written so far. Chapter 4 continues with the Lord of Many Places.
+- Go home.
+
+**Chose:** Go home.
+
+## Stewards
+
+*Summer, year 35 of King Aldred*
+
+A man with one manor knows every field in it. A man with several knows his stewards, and what his stewards tell him, and that is a different thing.
+
+The accounts come in at midsummer from every place you hold, by carrier, in four different hands and two languages, and you sit up three nights with them in the hall with a candle and a jug. You were reading tallies before you could ride. Your father's voice is in your head the whole time: "Count it twice. Then count who counted it."
+
+*(Continue)*
+
+Your own manor's receipts are down a fifth, and the reeve blames the weather and the war. The weather was good. You were there for some of it.
+
+- Ride there yourself and go through the books in front of him. *(Favorable)*
+- Hire a Sarenzan clerk to audit every holding, every year.
+- Trust your stewards. You chose them.
+
+**Chose:** Ride there yourself and go through the books in front of him. (Favorable: success)
+
+You ride in unannounced and ask for the books, and the steward goes the colour of tallow, and you know before you open them. It takes you a day. Two sets of tallies, one for you and one for himself; a mill that grinds for him on Fridays; a tenant who pays twice. You turn him off, and put an honest man in, and the receipts come back up by Michaelmas.
+
+## The Boundary Stone
+
+Two of your own villages have fallen out over a boundary stone. It has been moved, by somebody, at night, about forty paces, and there is a meadow on the wrong side of it now. Both villages are yours. Both send a deputation. Both deputations are in your hall at the same time, and have brought their grandfathers.
+
+- Walk the bounds with the oldest men of both villages.
+- Split the meadow down the middle.
+
+**Chose:** Walk the bounds with the oldest men of both villages.
+
+You walk the bounds all day with six old men who disagree about everything, and at the end of it you find the old hole where the stone stood, by the yew, exactly where the oldest of them said. You put the stone back with your own hands. Both villages grumble. Both villages are satisfied.
+
+*Common Folk standing +1 · Harvest in: 7 seasons of grain · Michaelmas rents: £3 1s 9d · Rents from your other holdings: £3*
+
+## An Old Face
+
+*Autumn, year 35 of King Aldred*
+
+Wat Coker is dead, cut down at the Hythe Fields. In the autumn you ride through Ashby, and stop at the churchyard, where somebody has carved a W on a stone by the wall, with no name, and kept flowers on it.
+
+*(Continue)*
+
+There was always something between you, from boyhood.
+
+- Let the past be past.
+- Do nothing.
+
+**Chose:** Let the past be past.
+
+You let it be. Some things are better buried.
+
+## The Eldest
+
+*Spring, year 36 of King Aldred*
+
+Piers is five.
+
+Piers can read, nobody is sure how: the priest says he only showed the letters once. Piers reads everything, including your letters, including the ones you would rather nobody read.
+
+*(Continue)*
+
+In a family like yours, children of this age go away: to a great house as a page, to learn manners and make friends who will matter; or to the Church, to learn letters; or they stay at home and learn what their father can teach them, which depends on the father. Your wife has an opinion about it. She has made sure you know what it is.
+
+- Send Piers to the Prince's household, as a page.
+- Send Piers to the Duchess's household at Lannec.
+- Send Piers to the abbey to learn letters.
+- Keep Piers at home, and teach what you know.
+
+**Chose:** Send Piers to the Prince's household, as a page.
+
+Piers goes to the Prince's household at Saltmarsh in a new coat with a bundle and a dog, which is sent back. The first letter says your son has found the Prince's library, and is hard to get out of it. The house is quieter. You did not expect to mind so much.
+
+*Harvest in: 7 seasons of grain · Michaelmas rents: £3 1s 9d · Rents from your other holdings: £3*
+
+## The King's Christmas
+
+*Winter, year 36 of King Aldred*
+
+The King keeps Christmas at Wendmere in the thirty-sixth year of his reign, and everyone who matters is there, and everyone who matters notices that the King is ill.
+
+He is fifty-one. He was a big man and is not any more. He sits through the feast with his food untouched and his hand on the arm of his chair, and laughs at the mummers a moment late, and twice the Queen leans over to him and says something, and he does not answer. On the third day he does not come down at all.
+
+*(Continue)*
+
+The court breaks into pieces like ice in a thaw. The Prince's young men walk the galleries in a crowd and laugh too loudly. The Earl of Carrow is at Mass every morning, praying, he says, for the King's health, with forty of his people at his back. The Chancellor sends for every lord whose loyalty he is not sure of, one by one, and asks after their families.
+
+The King sends for you on the fourth day. He is sitting up, grey, in a furred gown. "They are counting the days," he says. "Do not let them hurry me."
+
+- Stand by the King. Be seen to.
+- Go to the Prince, and make your promise plain.
+- Dine with the Earl of Carrow on Twelfth Night.
+
+**Chose:** Stand by the King. Be seen to.
+
+You stand by the King: at Mass, at his door, in the hall when he comes down again on Twelfth Night, thinner, on the Queen's arm. You say nothing about the succession to anyone. The Chancellor notices. So, from his bed, does the King.
+
+## Spring
+
+*Spring, year 37 of King Aldred*
+
+In the spring your wife tells you, in the orchard, the way she told you the first time, and laughs at your face.
+
+- Go on.
+
+**Chose:** Go on.
+
+*Harvest in: 7 seasons of grain · Michaelmas rents: £3 1s 9d · Rents from your other holdings: £3 · A daughter*
+
+## The Third Child
+
+*Autumn, year 37 of King Aldred*
+
+The third time you do not walk up and down the yard. You sit in the hall with the other two on your knee and tell stories about the war that are mostly lies, and when the women call you up, you go up the stairs two at a time anyway.
+
+A girl. Isabel, propped up on the bolster, looks at you over the baby's head and says, "That's the last. I mean it." She does.
+
+- Jehanne, for the old Duchess.
+- Margaret, for the saint who keeps women in childbed.
+- Joan. A plain name, and a strong one.
+
+**Chose:** Jehanne, for the old Duchess.
+
+Jehanne, the priest writes, at the bottom of the page.
+
+## The Salt Guilds
+
+In the autumn of the thirty-seventh year, the King's Chancellor, needing money for a King who cannot stop spending it on physicians, puts a tax on salt in the West: a penny on the bushel at every pan from Sauvemer to the Armance. It is called the Adalian salt penny. Everybody in the West calls it the salt tithe, which is what the Valdrennish kings called theirs, and which the West rose against forty years ago.
+
+*(Continue)*
+
+The salt-guilds of Sauvemer refuse it. Then the pans at Les Salines refuse it. Then the Kerval carters who carry the salt inland stop carrying it, and Gwenaël comes to tell you, apologetically, that he is one of them.
+
+The King's officer in Sauvemer, a Wendmere man called Master Thomas Hales, writes to every Adalian lord in the West to send men to make the pans pay.
+
+- Send men. A King's tax is a King's tax.
+- Stand with the guilds. Write to the King that the West will not bear it.
+- Ride to Sauvemer and broker a bargain between the officer and the guilds. *(Favorable)*
+
+**Chose:** Send men. A King's tax is a King's tax.
+
+You send twenty men to stand at the pans with the King's officer while the salt is weighed. Nobody fights. Nobody needs to. The salt-boilers pay, and look at your men, and at your badge on their sleeves, and remember it. At Michaelmas Master Hales writes to the Chancellor that you are a loyal lord. At Michaelmas, too, somebody burns your barn at Kerval, and nobody saw anything.
+
+*Temper of the village −2 · Jehanne is dead*
+
+## The Duchess Is Dead
+
+*Winter, year 37 of King Aldred*
+
+Duchess Jehanne of Armance dies at Lannec in the winter of the thirty-seventh year, at seventy-four, in her chair, with her stick across her knees and her granddaughter holding her hand. The last thing she says, they tell you, is "Not to Wendmere." Nobody is sure whether she meant her body or the girl.
+
+*(Continue)*
+
+Mahaut is eighteen, and Duchess of Armance, and unmarried, and her marriage is in the King's gift, because the King made himself her guardian in the treaty that brought the Adalians back. Every lord in Adalia with a younger son is writing to the Chancellor. The Earl of Carrow wants her for his grandson. The Prince wants her for one of his young men.
+
+And the West watches to see what Adalia will do with the girl who is the Armance.
+
+- Speak for her right to choose her own husband.
+- Back the Prince's candidate.
+- Back the Earl of Carrow's grandson.
+
+**Chose:** Speak for her right to choose her own husband.
+
+You stand up in the King's council when the matter comes, which it does at Candlemas, and say that the Armance will be held by love or by an army, and that a girl sold to an Adalian will be the second kind. Nobody claps. Everybody remembers. Mahaut hears of it within the week. So does the West.
+
+## Spring, Year Thirty-Eight
+
+You are thirty-seven. Your name is on the rent-rolls of more places than you have slept in. Piers, Anne and Jehanne: growing, quarrelling, away and home again.
+
+The King is dying. Everyone knows it, and nobody says it, and everyone is counting.
+
+End of the chapters written so far. Chapter 4 continues with the Fracture.

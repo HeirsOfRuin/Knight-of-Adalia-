@@ -34,7 +34,7 @@ export function PeoplePanel({ content, state }: { content: ContentBundle; state:
           {!n.alive && <span class="tag">dead</span>}
           {state.aliases.master === id && <span class="tag">your master</span>}
         </p>
-        {n.alive && <p class="muted">{capitalise(feeling(n.affection))}{r ? `; ${r}` : ''}.{suit && suit.status !== 'lost' && suit.status !== 'hidden' ? ` You are ${suit.status === 'courted' ? 'courting her' : 'acquainted'}${suit.pledge !== 'none' ? `, ${suit.pledge} exchanged` : ''}.` : ''}</p>}
+        {n.alive && <p class="muted">{capitalise(feeling(n.affection))}{r ? `; ${r}` : ''}.{suit && suit.status !== 'lost' && suit.status !== 'hidden' ? ` You are ${suit.status === 'married' ? 'married' : suit.status === 'courted' ? 'courting her' : 'acquainted'}${suit.pledge !== 'none' ? `, ${suit.pledge} exchanged` : ''}.` : ''}</p>}
         {lines.length ? lines.map((l, i) => <p key={i}>{l}</p>) : def.notes ? <p>{def.notes}</p> : null}
       </li>
     );

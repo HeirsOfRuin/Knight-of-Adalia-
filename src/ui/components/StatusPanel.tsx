@@ -53,6 +53,23 @@ export function StatusPanel({ content, state }: { content: ContentBundle; state:
         </Section>
       )}
 
+      {(state.flags.c3_married || (state.heirs?.length ?? 0) > 0) && (
+        <Section title="Your family">
+          <dl class="kv">
+            {state.flags.c3_married && state.aliases.spouse && (
+              <>
+                <dt>{state.npcs[state.aliases.spouse]?.alive === false ? 'Your late wife' : 'Your wife'}</dt>
+                <dd>{npcLabel(content, state.aliases.spouse)}{state.npcs[state.aliases.spouse]?.alive === false ? '' : `, ${feeling(state.npcs[state.aliases.spouse]?.affection ?? 0)}`}</dd>
+              </>
+            )}
+            {(state.heirs ?? []).map((h, i) => [
+              <dt key={`h${i}t`}>{h.sex === 'son' ? 'Son' : 'Daughter'}</dt>,
+              <dd key={`h${i}d`}>{h.name || 'not yet named'}{h.alive ? `, ${Math.floor((state.time - h.born) / 4)}` : ', dead'}</dd>,
+            ])}
+          </dl>
+        </Section>
+      )}
+
       <Section title="Body and mind">
         <dl class="kv">
           {content.config.attributes.map((a) => {

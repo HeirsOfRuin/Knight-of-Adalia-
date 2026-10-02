@@ -80,7 +80,7 @@ export function newGame(content: ContentBundle, opts: NewGameOptions): GameState
   };
   const start = content.scenes[bg.start_scene];
   if (!start) throw new EngineError(`background ${bg.id}: unknown start scene ${bg.start_scene}`);
-  enterScene(state, content, start, []);
+  enterScene(state, content, start, [], rng);
   state.rng = rng.state;
   return state;
 }

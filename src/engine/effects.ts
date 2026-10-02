@@ -170,6 +170,12 @@ export function applyEffects(state: GameState, content: ContentBundle, effects: 
       if (applyEffects(state, content, branch, ctx)) return true;
       continue;
     }
+    if ('chance' in e) {
+      // without a cursor (never expected in play) the unlucky branch is not taken
+      const hit = ctx.rng ? ctx.rng.float() * 100 < e.chance : false;
+      if (applyEffects(state, content, hit ? e.then : (e.else ?? []), ctx)) return true;
+      continue;
+    }
     if ('set' in e) state.flags[e.set.replace(/^flag\./, '')] = true;
     else if ('clear' in e) delete state.flags[e.clear.replace(/^flag\./, '')];
     else if ('add' in e) for (const [p, d] of Object.entries(e.add)) addNumber(state, content, p, d, ctx.changes);
@@ -265,6 +271,16 @@ export function applyEffects(state: GameState, content: ContentBundle, effects: 
         const d = state.estate[f]! - before;
         if (d) ctx.changes.push(`${labelFor(content, raw)} ${d}`);
       }
+    } else if ('birth' in e) {
+      const sex = e.birth === 'random' ? (ctx.rng && ctx.rng.float() < 0.5 ? 'daughter' : 'son') : e.birth;
+      (state.heirs ??= []).push({ name: '', sex, born: state.time, alive: true });
+      ctx.changes.push(sex === 'son' ? 'A son' : 'A daughter');
+    } else if ('name_heir' in e) {
+      const h = state.heirs?.find((x) => !x.name);
+      if (h) h.name = e.name_heir === '@self' ? state.name : e.name_heir;
+    } else if ('heir_dies' in e) {
+      const h = state.heirs?.filter((x) => x.alive).at(-1);
+      if (h) { h.alive = false; ctx.changes.push(`${h.name || 'The child'} dies`); }
     } else if ('train' in e) {
       train(state, content, e.train, ctx.changes);
     } else if ('found_estate' in e) {

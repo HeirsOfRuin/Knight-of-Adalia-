@@ -88,15 +88,15 @@ export function transition(state: GameState, content: ContentBundle, rawNext: Ne
 
   const scene = content.scenes[target!];
   if (!scene) throw new DirectorError(`transition to unknown scene "${target}" from ${state.scene}`);
-  enterScene(state, content, scene, changes);
+  enterScene(state, content, scene, changes, rng);
 }
 
-export function enterScene(state: GameState, content: ContentBundle, scene: Scene, changes: string[]): void {
+export function enterScene(state: GameState, content: ContentBundle, scene: Scene, changes: string[], rng?: RngCursor): void {
   state.scene = scene.id;
   if (scene.kind === 'spine' || scene.kind === 'ending') state.chapter = scene.chapter; // interludes keep the current chapter
   state.seen[scene.id] = state.time;
   if (scene.checkpoint) state.checkpoint = scene.id;
   const title = scene.title ? renderText(scene.title, state, content) : scene.id;
-  applyEffects(state, content, scene.on_enter, { scene: scene.id, choice: '(enter)', choiceText: title, changes });
+  applyEffects(state, content, scene.on_enter, { scene: scene.id, choice: '(enter)', choiceText: title, changes, rng });
   if (scene.kind === 'ending' && !state.ended) state.ended = { ending: scene.ending ?? 'unknown' };
 }

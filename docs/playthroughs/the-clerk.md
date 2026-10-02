@@ -2282,7 +2282,7 @@ Water. Broth. Clean straw. Sitting up with the dying so they do not die alone. C
 
 "God has a use for you," the priest says, one grey morning, in the churchyard, leaning on his spade. "I'd like to know what it is." By midsummer the whole manor knows who carried their mothers.
 
-*Temper of the village +2 · Piety +2*
+*Temper of the village +2 · Piety +2 · Jankin Rooke is dead*
 
 ## Your Own House
 
@@ -2292,7 +2292,7 @@ It comes in at midsummer. One of the men who came with you from the war, who wal
 
 *(Continue)*
 
-The others look at him, and then at each other, and then at you.
+There is nobody else to look at but you.
 
 "I'm all right, sir," he says. "It's nothing. I'm all right."
 
@@ -2470,23 +2470,23 @@ There is a fight at the well within a week, and another at the alehouse, and a V
 
 *People +35 · Temper of the village −2*
 
-## The Poacher
+## The Manor Court
 
-Your men catch a boy of fourteen with a buck from the hill woods across his shoulders, at dawn, and bring him up to the house by the ear.
+Manor court, in the hall, on a wet Thursday, with the whole village crammed in to watch, because it is better than work.
 
-He is thin as a rake and plague-orphaned and furious, and he looks at you the way you once looked at anybody who had what you did not.
+A widow called Guillemette says that Pierre the carter's pigs have been in her barley three times since Easter, and she has lost half her strip, and she wants paying. Pierre the carter says his pigs are honest pigs and her fence is a disgrace. Pierre the carter is also Gwenaël's cousin, and everyone in the hall knows it, and is watching to see whether you know it too.
 
-"Hang him," says somebody. "That's the law." It is.
+"Well, monseigneur?" says the steward, pen ready.
 
-- Put him to work in your stables, where you can keep an eye on him.
-- Have him flogged at the church door, and let it be known.
-- Hang him. The law is the law.
+- Find for the widow. Pierre pays for the barley and mends her fence.
+- Find for Pierre. Keep the headman sweet; you need him.
+- Split it. Half the barley, and both of them mend the fence together.
 
-**Chose:** Put him to work in your stables, where you can keep an eye on him.
+**Chose:** Find for the widow. Pierre pays for the barley and mends her fence.
 
-He bolts twice in the first month. The third time he comes back on his own, at dark, wet through, and sleeps in the hay without a word. By the spring he is the best hand with a horse in the place. He never says thank you. He never takes so much as a turnip again.
+"Two bushels, and the fence mended by Sunday." The hall breathes out. Pierre the carter goes red, and looks at his cousin, and his cousin looks at the ceiling. Guillemette cries. On the way out an old man you have never spoken to touches his cap to you. "Fair," he says. "That was fair."
 
-*Temper of the village +1 · Men +1*
+*Temper of the village +1*
 
 ## The Old Lord's Kin
 
@@ -2507,25 +2507,27 @@ The Duchess's court at Lannec finds that Kerval was taken lawfully in war by her
 
 *Crown standing +1 · Temper of the village −1*
 
-## The Late Frost
+## The Poacher
 
-A frost comes in the first week of May, when the apple trees are in full blossom, and in one night turns the whole valley brown.
+Your men catch a boy of fourteen with a buck from the hill woods across his shoulders, at dawn, and bring him up to the house by the ear.
 
-Gwenaël walks through the orchards in the morning, touching the dead blossoms, with tears running into his beard. "No apples," he says. "No cider. No money. Is a bad year coming, monseigneur." Dom Hervé says the frost is a judgement. Nobody asks him on whom.
+He is thin as a rake and plague-orphaned and furious, and he looks at you the way you once looked at anybody who had what you did not.
 
-- Buy grain in Lannec to see them through.
-- Halve the year's rents.
-- It is a bad year. Everyone has bad years.
+"Hang him," says somebody. "That's the law." It is.
 
-**Chose:** Buy grain in Lannec to see them through.
+- Put him to work in your stables, where you can keep an eye on him.
+- Have him flogged at the church door, and let it be known.
+- Hang him. The law is the law.
 
-You buy it before the price goes up, which is the only clever thing anyone does that year. Kerval is hungry but nobody starves. Gwenaël tells everyone it was his idea.
+**Chose:** Put him to work in your stables, where you can keep an eye on him.
 
-*Coin −6s 8d · Grain in store (seasons) +2 · Temper of the village +1 · Harvest in: 6 seasons of grain · Michaelmas rents: £3 1s 6d*
+He bolts twice in the first month. The third time he comes back on his own, at dark, wet through, and sleeps in the hay without a word. By the spring he is the best hand with a horse in the place. He never says thank you. He never takes so much as a turnip again.
+
+*Temper of the village +1 · Men +1 · Harvest in: 6 seasons of grain · Michaelmas rents: £3 1s 6d*
 
 ## Lady Day
 
-*Winter, year 27 of King Aldred*
+*Spring, year 28 of King Aldred*
 
 The truce of Saint-Lys runs out at Lady Day, three years to the day after the bankers made it, and nobody renews it, and nobody declares war either.
 
@@ -2569,7 +2571,7 @@ The carpenter comes, and the oak, and the wheel turns again by Whitsun. The mill
 
 ## Fire in the Night
 
-*Spring, year 28 of King Aldred*
+*Summer, year 28 of King Aldred*
 
 They come on a night at the end of June, with no moon, the way raiders always do.
 
@@ -2591,25 +2593,25 @@ Every soul you can find, children and grandmothers and the settlers' pigs, insid
 
 *Grain in store (seasons) −2 · Temper of the village +1*
 
-## The Church Roof
+## The Late Frost
 
-The church roof leaks. It leaked before the Mottle, and the old lord never mended it, and now it leaks onto the new cross and the names on it.
+A frost comes in the first week of May, when the apple trees are in full blossom, and in one night turns the whole valley brown.
 
-"The abbey," says Dom Hervé delicately, "would of course consider it a great kindness."
+Gwenaël walks through the orchards in the morning, touching the dead blossoms, with tears running into his beard. "No apples," he says. "No cider. No money. Is a bad year coming, monseigneur." Dom Hervé says the frost is a judgement. Nobody asks him on whom.
 
-- Pay for new lead and a new roof.
-- Give the timber, and let the village give the labour.
-- Next year.
+- Buy grain in Lannec to see them through.
+- Halve the year's rents.
+- It is a bad year. Everyone has bad years.
 
-**Chose:** Pay for new lead and a new roof.
+**Chose:** Buy grain in Lannec to see them through.
 
-The roofers come from the town, and the lead goes up, and the drip stops. On the first Sunday the priest preaches about the lord who mended the house of God. It is a long sermon. You sleep through most of it, and so does everyone else, contentedly.
+You buy it before the price goes up, which is the only clever thing anyone does that year. Kerval is hungry but nobody starves. Gwenaël tells everyone it was his idea.
 
-*Coin −4s 2d · Church and priest +2 · Church standing +1*
+*Coin −6s 8d · Grain in store (seasons) +2 · Harvest in: 6 seasons of grain · Michaelmas rents: £3 1s 6d*
 
 ## The Masterless Men
 
-*Summer, year 28 of King Aldred*
+*Autumn, year 28 of King Aldred*
 
 In the autumn the Iron Company comes back, or what is left of it.
 
@@ -2629,11 +2631,11 @@ And then one evening their captain rides up to your gate, alone, with his hands 
 
 Sixty Hroswald mercenaries in your barns and your alehouse. The village is terrified of them. Hodge Brewster's settlers start a fight with them in the first week and lose it. By Christmas the bandits on the road have stopped, because the worst of them are eating your bread, and the Duchess's steward writes you a nervous little letter asking what you intend to do with an army.
 
-*Coin −10s · Defences +3 · Temper of the village −2 · Ulric Rotbart's respect +2 · Harvest in: 6 seasons of grain · Michaelmas rents: £3 1s 6d*
+*Coin −10s · Defences +3 · Temper of the village −2 · Ulric Rotbart's respect +2*
 
 ## Winter in the Hall
 
-*Autumn, year 28 of King Aldred*
+*Winter, year 28 of King Aldred*
 
 The second winter on the manor is quiet. You had forgotten what that was like.
 
@@ -2657,10 +2659,192 @@ Davy Ludd is twenty-two, and broad in the shoulder, and has a beard he is proud 
 
 ## The Second Spring
 
+*Spring, year 29 of King Aldred*
+
 Two years. The manor has filled up again, mostly, with strangers and children, and the barns are full, and the village is yours, as much as any village is any man's.
 
-[break]
+*(Continue)*
 
 In Lent a letter comes from home, and another from the Duchess, and a third from someone you have not heard from in a long time. They are all, one way or another, about the same thing. You are twenty-eight. You hold land. People have started asking, at dinner, in letters, in the street, when you mean to marry.
 
-End of the chapters written so far. Chapter 3 continues with the Match and the Reckoning.
+*(Continue)*
+
+Some of the letters are about other people's weddings.
+
+Mag Coker married a thatcher from the far end of Ashby the year you went to the war. Your mother writes that she has three boys and a temper, and that she asked after you once, at the well, and then said she did not care to know.
+
+Cecily Fuller married the Sarenzan factor who asked for her years ago. She keeps his books in Wendham now, and the word is that the Fullers' trade has doubled.
+
+Héloïse de Corbie has gone into the convent at Saint-Lys, now her brother's ransom is paid and there is nothing left for a dowry. She writes that it is quieter than she expected, and less quiet than she hoped.
+
+- Sit down with the letters, and think about it properly.
+
+**Chose:** Sit down with the letters, and think about it properly.
+
+## A Wife for the Manor
+
+"A lord wants a lady," says Gwenaël the reeve, loudly, in his terrible Adalian, at the manor court. "A hall wants a woman in it. Look at the state of it. Rushes from Martinmas. Dogs on the table." Nobody laughs, quite.
+
+Dom Hervé says it more politely, and more often. Without an heir the manor goes back to the Crown when you die, and everyone on it goes back with it, to whoever the King feels like rewarding next. They have had one new lord. They do not want another.
+
+*(Continue)*
+
+So you sit down in the empty hall one evening, with a candle and the letters, and think it through.
+
+Isabel Sayer is still at Ravell, in Lady Ravell's household, the last of her father's seven daughters left unmarried. She writes at Christmas: a page of gossip, funny as ever, and one line at the bottom about you that is not funny at all.
+
+Dame Joan Wyck still holds Wyck, and her stepson Ralph still wants it. She writes twice a year, short practical letters about apples and lawsuits. The last one ends: "Ralph says a widow cannot hold a manor against a man. I begin to think he may be right, and it makes me angry."
+
+Lady Alys Fane is still unmarried, which at court is beginning to be remarked on. Her father the Earl of Westry wants a rich man with a great name. Alys, in her letters, wants something else, and is careful never to write down what.
+
+Dame Clémence de Vaux is in Sauvemer still, a widow in black, keeping her husband's house in a town that is Adalian now. Her own people in the south want her home. She has not gone. When you meet her in the market she says "Monseigneur," and nothing else, and you both stand there in the fish-smell much longer than the word needs.
+
+And from across the border comes an offer nobody expected. Sire Gautier de Brésy, the Constable's younger brother, who holds Montbrun on the other side of the march, sends his chaplain with a letter. His nephew Thibaut burned your country, and you are still here. He has a daughter, Aliénor, twenty and unmarried, and he is tired of a border that burns every spring. "Peace is a marriage," the chaplain says, "or it is nothing."
+
+And a letter comes under the King's own seal. The King has in his wardship Lady Philippa Ashdown, nineteen, the heiress of Ashdown in the south of Adalia, whose father and brothers died in the Mottle. The King is minded, the letter says, to reward a loyal servant. It does not say "refuse at your peril." It does not need to.
+
+You are twenty-eight. Your father married at twenty. Half the men you went to war with are dead and the other half have children walking.
+
+- Go to Ravell, and ask Isabel Sayer.
+- Go to Wyck, and ask Dame Joan.
+- Go to Westry, and ask the Earl for Lady Alys.
+- Go to the Rue des Saulniers, and ask Dame Clémence.
+- Accept Sire Gautier's invitation to Montbrun, and meet Aliénor.
+- Go to court, and thank the King for Lady Philippa.
+- Marry nobody. Not yet.
+
+**Chose:** Go to Ravell, and ask Isabel Sayer.
+
+## Her People
+
+*Summer, year 29 of King Aldred*
+
+Ravell Hall, the front way this time, with your own men behind you. Isabel is waiting in Lady Ravell's solar with her hands folded and ink on her forefinger, exactly as she was, and she says, "You took your time," in a voice that is not quite steady.
+
+Her father, Sir John Sayer, has six other daughters married and one dowry left to find, and would give her to you with both hands and a blessing. The difficulty is Lady Ravell, who has kept Isabel for eleven years and is not used to giving things up.
+
+- Make your case yourself. *(Favorable)*
+- Make Lady Ravell a gift for the loss of her waiting-woman. Six pounds.
+- Let her settle it herself.
+
+**Chose:** Make your case yourself. (Favorable: success)
+
+You go down on one knee to Lady Ravell, which is not usual, and she knows it. She looks at you for a while, and then at Isabel, and then she says, "Get up, you'll ruin the hose," and you know you have won.
+
+## The Contract
+
+Sir John Sayer can find five pounds, a horse, and his blessing, and he is ashamed that it is not more. Isabel is ashamed that he is ashamed. There is the question of what you settle on her in return.
+
+- Drive a hard bargain. *(Even)*
+- Settle it fairly, as her people ask.
+- Ask for nothing but her.
+
+**Chose:** Drive a hard bargain. (Even: success)
+
+You haggle like your life depends on it, and come away with more than anyone expected, including you. Isabel Sayer watches you do it, and you cannot tell what she thinks of it.
+
+*Isabel Sayer's affection +4 · Isabel Sayer's respect +2 · Harvest in: 6 seasons of grain · Michaelmas rents: £3 1s 9d · Coin +£5 · Coin +£1 5s · Knights standing +1*
+
+## The Wedding
+
+*Autumn, year 29 of King Aldred*
+
+You are married at Ravell, in the chapel where you used to serve Mass, with Lady Ravell in the front pew and Father Benet officiating, pleased as a cat. Isabel's six sisters fill two benches and cry in turns.
+
+*(Continue)*
+
+At the feast an old knight you do not know leans over to you and says, "New man, eh? Married well, though. That's the way. That's how my grandfather did it." He means it kindly. You decide to take it so.
+
+- Feast the whole manor, whatever it costs.
+- A plain wedding, and the money to the church and the poor.
+- Let her have the wedding she wants.
+
+**Chose:** Feast the whole manor, whatever it costs.
+
+You roast two oxen and broach every cask in the cellar, and the manor eats and drinks and dances for two days, and at the end of it Gwenaël makes a speech that nobody can hear and everybody cheers. For a while afterwards people smile at you in the lane.
+
+*Coin −£3 · Temper of the village +1 · Common Folk standing +1 · Isabel Sayer's affection +1*
+
+## Husband and Wife
+
+*Winter, year 29 of King Aldred*
+
+The first winter you are married, you discover that you know nothing whatever about anything.
+
+She knows how a gentle house is run, and yours is not one. She says so, kindly, the first week, and then less kindly the third week, when nothing has changed.
+
+*(Continue)*
+
+It comes to a head at Candlemas, in the hall, in front of the household, the way these things always do.
+
+- Give her the keys and the books, and let her run the house.
+- Stand with her in public, whatever it costs you with the neighbours.
+- It is your manor. Keep your own counsel.
+
+**Chose:** Give her the keys and the books, and let her run the house.
+
+You give her the keys. All of them. The household watches you do it, and then watches her, and within a week the hall is swept, the steward is accounting for every penny and sweating, and the dogs are off the table. You find you have time to think. You find you do not much like what you think about, which is that you should have done it sooner.
+
+*Isabel Sayer's affection +2 · Isabel Sayer's respect +2 · Grain in store (seasons) +1*
+
+## Lying-In
+
+*Spring, year 30 of King Aldred*
+
+In the spring she takes your hand in the orchard and puts it on her belly, and waits for you to understand. She is with child. The baby will come at harvest, she thinks, or a little after.
+
+*(Continue)*
+
+The manor is delighted. Old women stop her in the lane to feel her belly and tell her it is a boy, from the way she carries, or a girl, from the way she walks. Gwenaël's wife brings an eagle-stone to tie to her arm. The priest says a Mass.
+
+You are not delighted. You are frightened, all the time, in a way the war never managed. You have seen what fever does in a closed room. Everybody knows a woman who died in childbed. Everybody knows several. Sir Hamon's Alice did, eleven years before you knew him, and he still talks to her at night.
+
+*(Continue)*
+
+There are choices to make about who will be in the room, and you, being a man, will not be.
+
+- Send to Sauvemer for the Sarenzan physician, the best money can buy.
+- Get the best midwife in the country, and let her do as she thinks fit.
+- Borrow the girdle of Saint Margaret from the abbey, and trust to God.
+
+**Chose:** Send to Sauvemer for the Sarenzan physician, the best money can buy.
+
+Maestro Orsini comes up from Sauvemer with two boys carrying his books and a box of instruments that the midwife looks at as if they were snakes. He casts her horoscope, and bleeds her twice for balance, and is confident of everything. Your wife does not like him. Neither do the women. They do as he says anyway, because he cost two pounds.
+
+*Coin −£2 · Harvest in: 6 seasons of grain · Michaelmas rents: £3 1s 9d · A son*
+
+## Childbed
+
+*Autumn, year 30 of King Aldred*
+
+It starts in the night, the way they always do, and they send you out.
+
+You stand in the yard. Then you walk up and down the yard. Then you sit on the mounting-block, and get up, and walk up and down again. Davy brings you a cup of something and stands with you, and does not try to talk. From the solar there are sounds you have heard before, on battlefields, and did not expect to hear in your own house.
+
+*(Continue)*
+
+It goes on all night, and into the morning, and past noon. Twice Maestro Orsini comes down for more hot water and a different powder, looking less confident each time.
+
+And then, in the middle of the afternoon, a thin furious wail, and the women laughing.
+
+*(Continue)*
+
+A boy. Red, furious, perfect, with a fist like a walnut. They put it in your arms, and you hold it the way you would hold a hawk, or a lit fuse, and everyone laughs at you, and Isabel Sayer, white and wrecked and grinning in the bed, laughs hardest of all.
+
+"Well," she says. "Go on, then. Give it a name."
+
+- Piers, for your father.
+- Hal, for yourself.
+- Hamon, for your old master.
+- Aldred, for the King.
+- Let her choose.
+
+**Chose:** Piers, for your father.
+
+Piers, the priest writes in the book, and the date, and your name, and hers. The manor drinks the child's health for three days, and Gwenaël makes another speech.
+
+## The Harvest of Year Thirty
+
+The harvest is in. The baby sleeps in a basket by the hall fire, and the dogs, who have been put off the table, lie round it like a guard.
+
+End of the chapters written so far. Chapter 3 continues with the Reckoning.

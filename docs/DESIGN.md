@@ -794,6 +794,63 @@ At the end of Ch2 the King pays men with land near where they earned it. Ch2 dee
 - no Ch3 deaths so far;
 - coin at the end averages £9-16.
 
+**Act III, the Match** (spring year 29 to harvest year 30). Eight scenes in `ch3/03-match.yaml`.
+- **The Second Spring** now evaluates every suit:
+  - a suit kept alive becomes `available`;
+  - every other suit that was still open is `lost`, with a line about whom she married instead. Candidates do not wait.
+- **Who is available:**
+
+  | Candidate | Condition |
+  |---|---|
+  | Childhood girl | Courted, regard 5+, and a token or the leaving promise |
+  | Isabel, Cecily, Joan | Courted, regard 5+ |
+  | Alys | Courted, regard 3+ |
+  | Maud, Héloïse, Fiammetta, Clémence | Known, regard 5+ |
+  | **#10 Aliénor de Brésy** (Sire Gautier's daughter, across the march) | Always offered: peace on the border is the dowry |
+  | **#11 Lady Philippa Ashdown** (the King's ward) | Crown 3+ or renown 15+ |
+
+- **A Wife for the Manor.** The village and the priest press him; each available woman gets a paragraph; marrying nobody is allowed.
+- **Her People / The Offer.**
+  - **Make your case:** a Presence + Diplomacy check against difficulty 2. Each candidate carries her own obstacle modifier: the Crown's price for Maud, the Earl's pride for Alys, the merchet for Mariot, Lady Ravell, Ralph Wyck, and so on.
+  - **Pay:** £2 to £30.
+  - **The King's word:** Crown 3+, costs Crown standing.
+  - **Let her settle it:** regard 7+; her kin hold it against you.
+  - **The meadows:** Aliénor only.
+  - **Failure** loses her and returns to the list. A widow or heiress who gives herself marries you against her kin instead. An arranged bride comes on hard terms.
+- **The Contract.** Hard bargain (a Trade check), fair terms, or nothing but her.
+  - Dowries run from a cow to £60.
+  - Land comes as flags for the Ch4 holdings system: `c3_holds_lisle`, `c3_holds_wyck`, `c3_holds_ashdown`, plus Héloïse's vineyard and Clémence's Sauvemer house.
+- **The Wedding.** Four set pieces: village, merchant, gentry or court, Valdrennish. Feast, plain wedding, or hers.
+  - **Standing:** a commoner wife gives Commons standing and costs some with the gentry. Every other wife sets `noble_marriage`, which lowers prejudice.
+  - **Kin flags:** Lanzi, Westry, Corbie, Brésy.
+- **Husband and Wife.** Her agenda by kind:
+  - a commoner is snubbed by the county;
+  - a merchant's daughter wants the books;
+  - a gentlewoman has her own idea of the house, and Philippa resents being given;
+  - the Adalians distrust a Valdrennish wife.
+
+  He can give her the keys, stand with her, or keep his own counsel.
+- **Lying-In and Childbed.**
+  - **Who attends:** the Sarenzan physician (5% maternal death), the country midwife (2%) or Saint Margaret's girdle (3%).
+  - **The child:** a son or daughter drawn with the seeded RNG, then named by the player for his father, mother, master, the King, the Queen Mother, a saint, himself, or her mother.
+  - If she dies, the scene says so and the child lives.
+- **End of build:** `c3_match_end`.
+
+**Engine additions:**
+- **Heirs:** `state.heirs` (name, sex, born, alive). Effects `birth`, `name_heir` (`@self` = his name), `heir_dies`. Paths `heirs.count / born / sons / daughters / last / lastname / eldest / names`.
+- **`chance`:** a seeded percentage branch. Scene-entry effects now get the RNG cursor. This also fixed a silent bug: the plague's "one of your household dies" in `c3_household` never killed anyone.
+- **Spouse alias:** `@spouse` works in `suit.*` paths.
+- **UI:** a "Your family" section in the status panel.
+- **Calendar fix:** Lady Day had drifted to winter, so Act II now runs one season later. The raid is in June, the bandits in autumn, and the hall in winter, as the text says.
+
+**Bot results** (100 runs per background per policy):
+- **Options at the match:** usually 2-4; about 10% of random runs see only Aliénor.
+- **Who they marry:**
+  - martial play marries Aliénor almost every time, because the tags pull it there;
+  - wealth play marries Philippa 50% of the time and Cecily 22%;
+  - diplomacy play spreads across nine candidates.
+- **Childbed:** the wife dies 1-4% of the time. About 1 run in 30 overall.
+
 ## Training ceilings and learning by doing (2026-10-02)
 
 From a playtest save: a focused archer entered Ch2 with Arms 7 and won every fighting check at the 95% cap, while almost nobody could lead men (Command 0-1 for every bot policy) or talk (Diplomacy had one source before the war).
@@ -837,3 +894,4 @@ Result (bot, 100 runs per background, entering Ch2; median / top 10%):
 | 2026-10-02 | Ch2 war revised twice: original campaign that swings back and forth (Vervais fails, Grisolles lost, Harlow Moss and the fireships won, the breach fails, Les Salines a costly gamble won, truce on Adalian terms); harder knighting; partials never deal serious wounds; debug Rewind added. |
 | 2026-10-01 | Phase 3 review decisions: 9a, 11c, 12c, 14b, 13a. Historical items kept, except champion (15, replaced) and the Sweat (17, renamed). See Phase 3 review changes. |
 | 2026-10-02 | Training ceilings with overflow into attributes; Command and Diplomacy learned by doing; Aikbank watch scene. Ch4-5 direction: new independent crown (from an invaded kingdom or a civil war), Crowned 5-7%, Ch4 in 3-4 acts with skips, heirs mixed into the main story. Frame Ch5 first, after Ch3 and stabilisation. |
+| 2026-10-02 | Ch3 Act III built: suits resolve at the second spring, two arranged offers (Aliénor de Brésy, Philippa Ashdown), family obstacle, contract, wedding, first year, childbed with a small seeded risk to the mother, heirs system. |

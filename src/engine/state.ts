@@ -23,6 +23,13 @@ export interface SuitState {
   pledge: 'none' | 'token' | 'understanding';
 }
 
+export interface Heir {
+  name: string; // '' until named
+  sex: 'son' | 'daughter';
+  born: number; // absolute season index
+  alive: boolean;
+}
+
 export interface ActiveInjury {
   id: string;
   since: number; // absolute season index
@@ -79,6 +86,8 @@ export interface GameState {
   suits: Record<string, SuitState>;
   /** the manor he holds, from Ch3 (see estate.ts) */
   estate?: Record<string, number>;
+  /** his children, eldest first (Ch3+) */
+  heirs?: Heir[];
   queue: QueuedEvent[];
   /** scene id -> last time played (for once/cooldown) */
   seen: Record<string, number>;

@@ -119,6 +119,7 @@ export function validateCond(input: CondInput, content: ContentBundle): string[]
           : c.path === 'track' ? [...content.config.tracks, 'none']
           : c.path === 'role' ? ['none', ...Object.values(content.backgrounds).flatMap((b) => Object.keys(b.roles ?? {}))]
           : c.path.startsWith('alias.') ? ['none', ...Object.keys(content.registry.npcs)]
+          : c.path === 'heirs.last' ? ['none', 'son', 'daughter']
           : undefined);
         if (!known) errs.push(`"${c.src}": path does not take a named value`);
         else if (!known.includes(c.value)) errs.push(`"${c.src}": unknown value "${c.value}"`);

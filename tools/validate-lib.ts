@@ -51,7 +51,9 @@ function nextTargets(n: SimpleNext): string[] {
 export function flatEffects(effects: Effect[], bg?: string): Effect[] {
   const out: Effect[] = [];
   for (const e of effects) {
-    if ('if' in e) {
+    if ('chance' in e) {
+      out.push(...flatEffects(e.then, bg), ...flatEffects(e.else ?? [], bg));
+    } else if ('if' in e) {
       const cond = compileCond(e.if);
       const thenOk = !bg || backgroundsAllowed(cond, [bg]).length > 0;
       const pureBgEq = cond.t === 'cmp' && cond.path === 'background' && cond.op === '==';
@@ -136,8 +138,8 @@ export function validate(content: ContentBundle): ValidationReport {
   };
   const checkEffects = (where: string, effects: Effect[], lethalOk: boolean): void => {
     for (const e of effects) {
-      if ('if' in e) {
-        checkCond(where, e.if);
+      if ('if' in e || 'chance' in e) {
+        if ('if' in e) checkCond(where, e.if);
         checkEffects(where, e.then, lethalOk);
         checkEffects(where, e.else ?? [], lethalOk);
         continue;

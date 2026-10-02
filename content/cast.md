@@ -130,3 +130,14 @@ The working reference for every recurring character: how they look and talk, wha
 - **Bonifacio,** Sarenzan master engineer at Sauvemer.
 - **Treloar,** captain of the tin miners at Sauvemer.
 - **Thibaut de Brésy,** the Constable's son, nineteen; taken at Les Salines by the player or by Pryce.
+
+## Added in Chapter 3, Act III (the Match)
+- **Aliénor de Brésy.** Twenty, Sire Gautier's daughter. Dark, straight-backed, watches everything. Speaks good Adalian and does not admit it at first. Remembers every bargain made over her head.
+- **Sire Gautier de Brésy of Montbrun.** The Constable's younger brother, across the march. Heavy, tired, has buried two sons. Plain talk and good wine. Wants the border quiet more than he wants to win.
+- **Lady Philippa Ashdown.** Nineteen, the King's ward, heiress of Ashdown (three manors in the south of Adalia). Small, fair, in black for her father and brothers, dead in the Mottle. Perfectly polite and furious at being given away.
+- **Sir John Sayer.** Isabel's father, a poor shire knight with seven daughters. Ashamed of the size of every dowry.
+- **Ralph Wyck.** Joan's stepson, twenty-one by Ch3, with a lawyer and a grievance.
+- **Sire Aimery de Vaux.** Clémence's brother-in-law in the south. Blames the Adalians for his brother's death.
+- **Piero Lanzi.** Fiammetta's cousin in Sarenza, the house's choice for her. "Has never once in his life surprised anybody."
+- **Maestro Orsini.** Sarenzan physician in Sauvemer. Horoscopes, bleeding, great confidence.
+

@@ -47,17 +47,24 @@ const BaseEffectSchema = z.union([
   // quiet: 1 suppresses the 'no further' note, for learning on the job).
   // Past the ceiling a physical skill's effort goes into the body instead (once per attribute).
   z.object({ train: z.record(z.string(), z.number().int()) }).strict(),
+  // heirs (Ch3+): a birth draws son or daughter with the seeded RNG unless given; name_heir names the newest unnamed child
+  z.object({ birth: z.enum(['random', 'son', 'daughter']) }).strict(),
+  z.object({ name_heir: z.string().min(1) }).strict(),
+  z.object({ heir_dies: z.literal('last') }).strict(),
   z.object({ journal: z.string() }).strict(),
   z.object({ die: z.string() }).strict(), // only legal inside lethal choices (validator)
 ]);
 export type BaseEffect = z.infer<typeof BaseEffectSchema>;
 /** Conditional effect: { if: cond, then: [...], else: [...] } */
 export type CondEffect = { if: CondInput; then: Effect[]; else?: Effect[] };
-export type Effect = BaseEffect | CondEffect;
+/** Seeded chance: { chance: 30, then: [...], else: [...] } (percent; for births, infant deaths and other luck the player cannot see) */
+export type ChanceEffect = { chance: number; then: Effect[]; else?: Effect[] };
+export type Effect = BaseEffect | CondEffect | ChanceEffect;
 export const EffectSchema: z.ZodType<Effect> = z.lazy(() =>
   z.union([
     BaseEffectSchema,
     z.object({ if: CondInputSchema, then: z.array(EffectSchema), else: z.array(EffectSchema).optional() }).strict(),
+    z.object({ chance: z.number().int().min(1).max(99), then: z.array(EffectSchema), else: z.array(EffectSchema).optional() }).strict(),
   ]),
 );
 

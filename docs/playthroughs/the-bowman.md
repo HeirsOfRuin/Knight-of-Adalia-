@@ -2251,7 +2251,7 @@ Your men stand at the causeway with spears, and turn back everyone: carters, pil
 
 It is hard. The neighbours call you a monster. Then the neighbours start to die, and some of them stop calling you anything.
 
-*Temper of the village −1 · Valdrenne standing +1*
+*Temper of the village −1 · Valdrenne standing +1 · Simkin Barre is dead*
 
 ## Your Own House
 
@@ -2271,11 +2271,9 @@ He is dead in four days. The journal of your life will say his name. You will no
 - Keep the rest of your men away from him. You need them alive.
 - Get drunk, and stay drunk, until it is over.
 
-**Chose:** Sit with him to the end. (Favorable: failure)
+**Chose:** Sit with him to the end. (Favorable: success)
 
-You sit with him to the end, and the end is bad, and on the last night you find you are coughing too. Not the Mottle, as it turns out: grief and no sleep and the damp. But for three days nobody comes near you, and you understand, a little, what the village has been living with since spring.
-
-*Injury: Fever-weak · Fever-weak has healed*
+Four days. You hold the cup. You talk about the war, and home, and the girl he meant to marry, and when he cannot talk any more you keep talking for him. At the end he says, quite clearly, "Not so bad, sir," and then nothing. You bury him yourself. The rest of your men stand round the grave with their hats in their hands and do not look at you, because you are weeping, and it is not done.
 
 ## News from Home
 
@@ -2395,23 +2393,22 @@ Two families leave in the night, walking east toward lords who pay. You send men
 
 *Temper of the village −2 · People −8 · Crown standing +1 · Common Folk standing −1*
 
-## The Poacher
+## The Marriage Fine
 
-Your men catch a boy of fourteen with a sack of your eels from the lord's weirs, at dawn, and bring him up to the house by the ear.
+A plague widow and a plague widower, both with children, both with empty houses and fields too big to work alone, come to the manor court together to ask leave to marry. They are not young. They hold hands under the table where they think nobody can see.
 
-He is thin as a rake and plague-orphaned and furious, and he looks at you the way you once looked at the forester who caught you.
+By the custom of the manor, a villein's daughter or widow who marries pays the lord a fine. The steward has the sum written down. It is more than either of them has.
 
-"Hang him," says somebody. "That's the law." It is.
+"It's the custom, monseigneur," the steward murmurs.
 
-- Put him to work in your stables, where you can keep an eye on him.
-- Have him flogged at the church door, and let it be known.
-- Hang him. The law is the law.
+- Waive the fine, and come to the wedding.
+- Take the fine. The custom is the custom.
 
-**Chose:** Put him to work in your stables, where you can keep an eye on him.
+**Chose:** Waive the fine, and come to the wedding.
 
-He bolts twice in the first month. The third time he comes back on his own, at dark, wet through, and sleeps in the hay without a word. By the spring he is the best hand with a horse in the place. He never says thank you. He never takes so much as a turnip again.
+You come to the wedding. They are so astonished they forget their words. You dance with the bride, badly, and she laughs, and the whole village sees you do it.
 
-*Temper of the village +1 · Men +1*
+*Temper of the village +2 · People +2*
 
 ## The Settlers
 
@@ -2438,22 +2435,21 @@ There is a fight at the well within a week, and another at the alehouse, and a V
 
 *People +35 · Temper of the village −2*
 
-## The Marriage Fine
+## The Sea Comes In
 
-A plague widow and a plague widower, both with children, both with empty houses and fields too big to work alone, come to the manor court together to ask leave to marry. They are not young. They hold hands under the table where they think nobody can see.
+In February a gale and a spring tide come together, and the sea comes over the dyke at the low end of the marsh, and does not go out again.
 
-By the custom of the manor, a villein's daughter or widow who marries pays the lord a fine. The steward has the sum written down. It is more than either of them has.
+You stand on the dyke in the rain with the headman and watch salt water creep across your best fields, inch by inch, white with foam. "Three days to close it," Bastien shouts over the wind. "If every soul on the manor carries clay. Every soul. Including you."
 
-"It's the custom, monseigneur," the steward murmurs.
+- Pick up a basket and carry clay with them.
+- Hire labourers from Sauvemer to close it.
+- Let the low fields go. Save the village end.
 
-- Waive the fine, and come to the wedding.
-- Take the fine. The custom is the custom.
+**Chose:** Pick up a basket and carry clay with them.
 
-**Chose:** Waive the fine, and come to the wedding.
+Three days and two nights in the wind and the mud, everyone, lord and settlers and grandmothers, a chain of baskets from the clay pit to the breach. On the third night it holds. You have never been so cold or so filthy or so proud of anything. The fields are spoiled for a year. The manor is saved.
 
-You come to the wedding. They are so astonished they forget their words. You dance with the bride, badly, and she laughs, and the whole village sees you do it.
-
-*Temper of the village +2 · People +2*
+*Temper of the village +2 · Grain in store (seasons) −1*
 
 ## The Old Lord's Kin
 
@@ -2474,25 +2470,24 @@ The justices find for you. It takes eighteen months and costs you more than Orme
 
 *Coin −10s · Temper of the village −1*
 
-## The Church Roof
+## The Salt Merchants
 
-The church roof leaks. It leaked before the Mottle, and the old lord never mended it, and now it leaks onto the new cross and the names on it.
+A Sarenzan salt-buyer comes up the dyke on a mule, with a clerk, an abacus and a smile, and offers to buy the whole of this year's salt, in advance, at a price that seems handsome until you think about it.
 
-"IT LEAKS!" Père Guérin shouts, pointing at the drip as if you might have missed it. "ON THE ALTAR!"
+"The Varesco house pays on the nail, my lord," he says. "No waiting for the Sauvemer market. No haggling with Adalian fishmongers." His smile widens. "The Lanzi, I hear, are short of cash this year. Desperately short."
 
-- Pay for new lead and a new roof.
-- Give the timber, and let the village give the labour.
-- Next year.
+- Sell him the year's salt.
+- Take it to the Sauvemer market yourself. *(Risky)*
 
-**Chose:** Pay for new lead and a new roof.
+**Chose:** Sell him the year's salt.
 
-The roofers come from the town, and the lead goes up, and the drip stops. On the first Sunday the priest preaches about the lord who mended the house of God. It is a long sermon. You sleep through most of it, and so does everyone else, contentedly.
+Coin in your hand before the pans are even drawn. Three months later the price of salt in Sauvemer doubles, because half the coast sold to the Varesco, and the Varesco are holding it. The salt-boilers say nothing to you. They do not need to.
 
-*Coin −4s 2d · Church and priest +2 · Temper of the village +1 · Church standing +1 · Harvest in: 4 seasons of grain · Michaelmas rents: £2 11s 5d*
+*Coin +12s 6d · Temper of the village −1 · Sarenza standing +1 · Harvest in: 4 seasons of grain · Michaelmas rents: £2 11s 5d*
 
 ## Lady Day
 
-*Winter, year 27 of King Aldred*
+*Spring, year 28 of King Aldred*
 
 The truce of Saint-Lys runs out at Lady Day, three years to the day after the bankers made it, and nobody renews it, and nobody declares war either.
 
@@ -2516,24 +2511,27 @@ All spring, every spare hand digs. You dig a ditch round the church and the tith
 
 *Defences +2 · Temper of the village −1*
 
-## The Salt Merchants
+## The Mill
 
-A Sarenzan salt-buyer comes up the dyke on a mule, with a clerk, an abacus and a smile, and offers to buy the whole of this year's salt, in advance, at a price that seems handsome until you think about it.
+The great wheel of the mill cracks in the spring flood, a split right through the shaft, and the miller comes up to the house with his cap in his hands and flour still in his eyebrows.
 
-"The Varesco house pays on the nail, my lord," he says. "No waiting for the Sauvemer market. No haggling with Adalian fishmongers." His smile widens. "The Lanzi, I hear, are short of cash this year. Desperately short."
+"No grinding, monseigneur," he says. "Not till it's mended. And it's the lord's mill." He coughs, delicately. "So it's the lord's shaft."
 
-- Sell him the year's salt.
-- Take it to the Sauvemer market yourself. *(Risky)*
+A new shaft is oak, and oak means a carpenter from the town, and a carpenter from the town means money. Until then, everyone on the manor grinds their grain by hand in querns, which is the custom forbidden by the lord, because the lord takes a toll at the mill.
 
-**Chose:** Sell him the year's salt.
+- Pay for the carpenter and the oak.
+- Let them grind by hand until it is mended. No toll, no fines.
+- Make the miller pay for it. He takes a toll too.
 
-Coin in your hand before the pans are even drawn. Three months later the price of salt in Sauvemer doubles, because half the coast sold to the Varesco, and the Varesco are holding it. The salt-boilers say nothing to you. They do not need to.
+**Chose:** Pay for the carpenter and the oak.
 
-*Coin +12s 6d · Temper of the village −1 · Sarenza standing +1*
+The carpenter comes, and the oak, and the wheel turns again by Whitsun. The miller gives you a bag of the first flour, as if you had baked it.
+
+*Coin −5s · Temper of the village +1*
 
 ## Fire in the Night
 
-*Spring, year 28 of King Aldred*
+*Summer, year 28 of King Aldred*
 
 They come on a night at the end of June, with no moon, the way raiders always do.
 
@@ -2555,25 +2553,27 @@ Every soul you can find, children and grandmothers and the settlers' pigs, insid
 
 *Grain in store (seasons) −2 · Temper of the village +1*
 
-## The Sea Comes In
+## The Manor Court
 
-In February a gale and a spring tide come together, and the sea comes over the dyke at the low end of the marsh, and does not go out again.
+Manor court, in the hall, on a wet Thursday, with the whole village crammed in to watch, because it is better than work.
 
-You stand on the dyke in the rain with the headman and watch salt water creep across your best fields, inch by inch, white with foam. "Three days to close it," Bastien shouts over the wind. "If every soul on the manor carries clay. Every soul. Including you."
+A widow called Guillemette says that Pierre the carter's pigs have been in her barley three times since Easter, and she has lost half her strip, and she wants paying. Pierre the carter says his pigs are honest pigs and her fence is a disgrace. Pierre the carter is also Bastien's cousin, and everyone in the hall knows it, and is watching to see whether you know it too.
 
-- Pick up a basket and carry clay with them.
-- Hire labourers from Sauvemer to close it.
-- Let the low fields go. Save the village end.
+"Well, monseigneur?" says the steward, pen ready.
 
-**Chose:** Pick up a basket and carry clay with them.
+- Find for the widow. Pierre pays for the barley and mends her fence.
+- Find for Pierre. Keep the headman sweet; you need him.
+- Split it. Half the barley, and both of them mend the fence together.
 
-Three days and two nights in the wind and the mud, everyone, lord and settlers and grandmothers, a chain of baskets from the clay pit to the breach. On the third night it holds. You have never been so cold or so filthy or so proud of anything. The fields are spoiled for a year. The manor is saved.
+**Chose:** Find for the widow. Pierre pays for the barley and mends her fence.
 
-*Temper of the village +2 · Grain in store (seasons) −1*
+"Two bushels, and the fence mended by Sunday." The hall breathes out. Pierre the carter goes red, and looks at his cousin, and his cousin looks at the ceiling. Guillemette cries. On the way out an old man you have never spoken to touches his cap to you. "Fair," he says. "That was fair."
+
+*Temper of the village +1 · Honor +1 · Harvest in: 4 seasons of grain · Michaelmas rents: £2 11s 5d*
 
 ## The Masterless Men
 
-*Summer, year 28 of King Aldred*
+*Autumn, year 28 of King Aldred*
 
 In the autumn the Iron Company comes back, or what is left of it.
 
@@ -2593,11 +2593,11 @@ And then one evening their captain rides up to your gate, alone, with his hands 
 
 Sixty Hroswald mercenaries in your barns and your alehouse. The village is terrified of them. Hodge Brewster's settlers start a fight with them in the first week and lose it. By Christmas the bandits on the road have stopped, because the worst of them are eating your bread, and the Sauvemer captain writes you a nervous little letter asking what you intend to do with an army.
 
-*Coin −10s · Defences +3 · Temper of the village −2 · Ulric Rotbart's respect +2 · Harvest in: 4 seasons of grain · Michaelmas rents: £2 11s 5d*
+*Coin −10s · Defences +3 · Temper of the village −2 · Ulric Rotbart's respect +2*
 
 ## Winter in the Hall
 
-*Autumn, year 28 of King Aldred*
+*Winter, year 28 of King Aldred*
 
 The second winter on the manor is quiet. You had forgotten what that was like.
 
@@ -2621,10 +2621,186 @@ Davy Ludd is twenty-two, and broad in the shoulder, and has a beard he is proud 
 
 ## The Second Spring
 
-Two years. The manor has filled up again, mostly, with strangers and children, and the barns are full, and the village is used to you, which is something.
+*Spring, year 29 of King Aldred*
 
-[break]
+Two years. The manor has filled up again, mostly, with strangers and children, and the barns are not empty, and the village is used to you, which is something.
+
+*(Continue)*
 
 In Lent a letter comes from home, and another from Sauvemer, and a third from someone you have not heard from in a long time. They are all, one way or another, about the same thing. You are twenty-eight. You hold land. People have started asking, at dinner, in letters, in the street, when you mean to marry.
 
-End of the chapters written so far. Chapter 3 continues with the Match and the Reckoning.
+*(Continue)*
+
+Some of the letters are about other people's weddings.
+
+Lady Alys Fane is to marry the Earl of Hythe's heir at Michaelmas. The whole court is going. You are not invited, which is a kind of compliment: somebody thought about it.
+
+Héloïse de Corbie has gone into the convent at Saint-Lys, now her brother's ransom is paid and there is nothing left for a dowry. She writes that it is quieter than she expected, and less quiet than she hoped.
+
+Fiammetta Lanzi has married her cousin from Sarenza, as the house required. The letter that announces it is on bank paper, and has a postscript in her own hand that you read more than once.
+
+Dame Clémence de Vaux has gone home to her own people in the south, beyond the truce line, and taken her husband's bones with her.
+
+- Sit down with the letters, and think about it properly.
+
+**Chose:** Sit down with the letters, and think about it properly.
+
+## A Wife for the Manor
+
+"A lord wants a lady," says Bastien the eel-man, with his one eye on you, at the church door. "A hall wants a woman in it. Look at the state of it. Rushes from Martinmas. Dogs on the table." Nobody laughs, quite.
+
+Père Guérin says it more politely, and more often. Without an heir the manor goes back to the Crown when you die, and everyone on it goes back with it, to whoever the King feels like rewarding next. They have had one new lord. They do not want another.
+
+*(Continue)*
+
+So you sit down in the empty hall one evening, with a candle and the letters, and think it through.
+
+Mariot Wood is still in the forester's cottage at Hollin, nursing her father and doing his work, and has not married. Kit writes that she walks the chase every evening, and stops at the edge of it where the road goes south, and that everyone in Hollin knows why and nobody says.
+
+And from across the border comes an offer nobody expected. Sire Gautier de Brésy, the Constable's younger brother, who holds Montbrun on the other side of the march, sends his chaplain with a letter. His nephew Thibaut burned your country, and you are still here. He has a daughter, Aliénor, twenty and unmarried, and he is tired of a border that burns every spring. "Peace is a marriage," the chaplain says, "or it is nothing."
+
+And a letter comes under the King's own seal. The King has in his wardship Lady Philippa Ashdown, nineteen, the heiress of Ashdown in the south of Adalia, whose father and brothers died in the Mottle. The King is minded, the letter says, to reward a loyal servant. It does not say "refuse at your peril." It does not need to.
+
+You are twenty-eight. Your father married at twenty. Half the men you went to war with are dead and the other half have children walking.
+
+- Go to Hollin, and ask Mariot Wood.
+- Accept Sire Gautier's invitation to Montbrun, and meet Aliénor.
+- Go to court, and thank the King for Lady Philippa.
+- Marry nobody. Not yet.
+
+**Chose:** Go to Hollin, and ask Mariot Wood.
+
+## Her People
+
+*Summer, year 29 of King Aldred*
+
+Hollin. The cottages, the butts, the edge of the chase. Mariot is splitting kindling outside the forester's cottage, and she sets the axe down when she sees you, and wipes her hands on her apron, and waits.
+
+The trouble is not Mariot. The trouble is that the Woods are Ravell's people, bound to the manor, and a Ravell woman may not marry off the manor without her lord's licence and the merchet paid. Lord Ravell's steward has heard who is asking. The price, he says, has gone up.
+
+- Make your case yourself. *(Favorable)*
+- Pay Ravell's steward his merchet, and a bit over. Three pounds.
+- Let her settle it herself.
+
+**Chose:** Let her settle it herself.
+
+She settles it. Her people do not like it, and they say so, and she does it anyway. You find you are a little afraid of her, and you like it. Her family will remember. They will not forgive it quickly.
+
+## The Contract
+
+There is not much to put in a contract. The Woods have nothing at all but the forester's bow and Mariot. But Père Guérin says it must be written down properly anyway, what she brings and what you settle on her if you die. "Lords die," he says, "and widows starve. Write it down."
+
+- Drive a hard bargain. *(Risky)*
+- Settle it fairly, as her people ask.
+- Ask for nothing but her.
+
+**Chose:** Drive a hard bargain. (Risky: failure)
+
+You haggle, and they haggle back, and somewhere in the middle of it you say a thing about her family's means that cannot be unsaid. The contract is signed. Nobody at the table enjoys it.
+
+*Mariot Wood's affection +4 · Mariot Wood's respect +2 · Harvest in: 4 seasons of grain · Michaelmas rents: £2 11s 8d · Common Folk standing +2 · Knights standing −1 · Great Nobles standing −1*
+
+## The Wedding
+
+*Autumn, year 29 of King Aldred*
+
+You are married at the church door on a wet Hollin morning, in front of everyone you ever knew as a boy and a good many people who have walked over from the next parish to see a lord marry a forester's girl.
+
+Mariot has a sprig of yew in her hair from the chase, and her father in a chair carried by four of the archers, and Kit has cried since dawn.
+
+*(Continue)*
+
+"Never thought I'd see it," an old woman says, close behind you, not quietly. "The Fletcher boy. Look at the cloak on him."
+
+- Feast the whole manor, whatever it costs.
+- A plain wedding, and the money to the church and the poor.
+- Let her have the wedding she wants.
+
+**Chose:** Feast the whole manor, whatever it costs.
+
+You roast two oxen and broach every cask in the cellar, and the manor eats and drinks and dances for two days, and at the end of it Bastien makes a speech that nobody can hear and everybody cheers. For a while afterwards people smile at you in the lane.
+
+*Coin −£3 · Temper of the village +2 · Common Folk standing +1 · Mariot Wood's affection +1*
+
+## Husband and Wife
+
+*Winter, year 29 of King Aldred*
+
+The first winter you are married, you discover that you know nothing whatever about anything.
+
+She is not a lady, and the county will not let either of you forget it. The wives of the neighbouring knights do not call. When you dine at the governor's table in Sauvemer, she is seated below the salt, by accident, twice. She says nothing about it at the time. On the ride home she says, "I can milk a cow, keep a garden, salt a pig and knock a man down. I can't eat an orange with a knife. Is that what they want?"
+
+*(Continue)*
+
+It comes to a head at Candlemas, in the hall, in front of the household, the way these things always do.
+
+- Give her the keys and the books, and let her run the house.
+- Stand with her in public, whatever it costs you with the neighbours.
+- It is your manor. Keep your own counsel.
+
+**Chose:** Give her the keys and the books, and let her run the house.
+
+You give her the keys. All of them. The household watches you do it, and then watches her, and within a week the hall is swept, the steward is accounting for every penny and sweating, and the dogs are off the table. You find you have time to think. You find you do not much like what you think about, which is that you should have done it sooner.
+
+*Mariot Wood's affection +2 · Mariot Wood's respect +2 · Grain in store (seasons) +1 · Temper of the village +1*
+
+## Lying-In
+
+*Spring, year 30 of King Aldred*
+
+In the spring she takes your hand in the orchard, such as it is, and puts it on her belly, and waits for you to understand. She is with child. The baby will come at harvest, she thinks, or a little after.
+
+*(Continue)*
+
+The manor is delighted. Old women stop her in the lane to feel her belly and tell her it is a boy, from the way she carries, or a girl, from the way she walks. Bastien's sister brings an eagle-stone to tie to her arm. The priest says a Mass.
+
+You are not delighted. You are frightened, all the time, in a way the war never managed. You have seen what fever does in a closed room. Everybody knows a woman who died in childbed. Everybody knows several.
+
+*(Continue)*
+
+There are choices to make about who will be in the room, and you, being a man, will not be.
+
+- Send to Sauvemer for the Sarenzan physician, the best money can buy.
+- Get the best midwife in the country, and let her do as she thinks fit.
+- Borrow the girdle of Saint Margaret from the abbey, and trust to God.
+
+**Chose:** Send to Sauvemer for the Sarenzan physician, the best money can buy.
+
+Maestro Orsini comes up from Sauvemer with two boys carrying his books and a box of instruments that the midwife looks at as if they were snakes. He casts her horoscope, and bleeds her twice for balance, and is confident of everything. Your wife does not like him. Neither do the women. They do as he says anyway, because he cost two pounds.
+
+*Coin −£2 · Harvest in: 4 seasons of grain · Michaelmas rents: £2 11s 8d · A daughter*
+
+## Childbed
+
+*Autumn, year 30 of King Aldred*
+
+It starts in the night, the way they always do, and they send you out.
+
+You stand in the yard. Then you walk up and down the yard. Then you sit on the mounting-block, and get up, and walk up and down again. Davy brings you a cup of something and stands with you, and does not try to talk. From the solar there are sounds you have heard before, on battlefields, and did not expect to hear in your own house.
+
+*(Continue)*
+
+It goes on all night, and into the morning, and past noon. Twice Maestro Orsini comes down for more hot water and a different powder, looking less confident each time.
+
+And then, in the middle of the afternoon, a thin furious wail, and the women laughing.
+
+*(Continue)*
+
+A girl. Red, furious, perfect, with a fist like a walnut. They put it in your arms, and you hold it the way you would hold a hawk, or a lit fuse, and everyone laughs at you, and Mariot Wood, white and wrecked and grinning in the bed, laughs hardest of all.
+
+"Well," she says. "Go on, then. Give it a name."
+
+- Alison, for your mother.
+- For her mother.
+- Let her choose.
+- Ysolde, for the Queen Mother.
+
+**Chose:** Alison, for your mother.
+
+Alison, the priest writes in the book, and the date, and your name, and hers. The manor drinks the child's health for three days, and Bastien makes another speech.
+
+## The Harvest of Year Thirty
+
+The harvest is in. The baby sleeps in a basket by the hall fire, and the dogs, who have been put off the table, lie round it like a guard.
+
+End of the chapters written so far. Chapter 3 continues with the Reckoning.

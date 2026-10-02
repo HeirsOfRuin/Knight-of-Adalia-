@@ -73,6 +73,25 @@ export function getValue(state: GameState, content: ContentBundle, rawPath: stri
       if (!s) return b === 'status' ? 'hidden' : b === 'pledge' ? 'none' : 0;
       return s[b as keyof typeof s];
     }
+    case 'heirs': {
+      const all = state.heirs ?? [];
+      const living = all.filter((h) => h.alive);
+      const last = all.at(-1);
+      switch (a) {
+        case 'count': return living.length;
+        case 'born': return all.length;
+        case 'sons': return living.filter((h) => h.sex === 'son').length;
+        case 'daughters': return living.filter((h) => h.sex === 'daughter').length;
+        case 'last': return last?.sex ?? 'none';
+        case 'lastname': return last?.name || 'the baby';
+        case 'eldest': return living[0]?.name || 'none';
+        case 'names': {
+          const n = living.map((h) => h.name).filter(Boolean);
+          return n.length <= 1 ? (n[0] ?? '') : `${n.slice(0, -1).join(', ')} and ${n.at(-1)}`;
+        }
+      }
+      return undefined;
+    }
     case 'calendar':
       if (a === 'season') return seasonName(state, content);
       if (a === 'year') return regnalYear(state, content);
@@ -105,9 +124,10 @@ export function checkPath(content: ContentBundle, path: string): string | null {
   if (single.includes(ns!)) return a === undefined ? null : `"${ns}" takes no sub-path ("${path}")`;
   if (a === undefined) return `incomplete path "${path}"`;
   if (a.startsWith('@')) {
-    if (!['rel', 'npc', 'favor'].includes(ns!)) return `alias not allowed in "${path}"`;
+    if (!['rel', 'npc', 'favor', 'suit'].includes(ns!)) return `alias not allowed in "${path}"`;
     if (!content.config.aliases.includes(a.slice(1))) return `unknown alias in "${path}"`;
     if (ns === 'favor') return null;
+    if (ns === 'suit') return need(['status', 'regard', 'family', 'discretion', 'pledge'].includes(b ?? ''), 'suit field');
     return ns === 'rel'
       ? need(['affection', 'respect', 'loyalty'].includes(b ?? ''), 'relationship field')
       : need(['met', 'alive', 'follower', 'friend'].includes(b ?? ''), 'npc field');
@@ -129,6 +149,7 @@ export function checkPath(content: ContentBundle, path: string): string | null {
     case 'npc': return need(a in reg.npcs, 'npc') ?? need(['met', 'alive', 'follower', 'friend'].includes(b ?? ''), 'npc field');
     case 'suit': return need(a in reg.romances, 'romance') ?? need(['status', 'regard', 'family', 'discretion', 'pledge'].includes(b ?? ''), 'suit field');
     case 'calendar': return need(['season', 'year'].includes(a), 'calendar field');
+    case 'heirs': return need(['count', 'born', 'sons', 'daughters', 'last', 'lastname', 'eldest', 'names'].includes(a), 'heirs field');
     default: return `unknown namespace "${ns}" in "${path}"`;
   }
 }

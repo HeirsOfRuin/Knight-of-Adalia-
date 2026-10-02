@@ -5,7 +5,7 @@ steward_skims: { description: "The steward skims and has been blaming the reeve'
 family_debt_sarenza: { description: "The burgess family owes a Sarenzan banking house", later: ch3, hidden: true }
 father_war_secret: { description: "The archer's father did something in the last war he does not speak of", later: ch2, hidden: true }
 knows_household_secret: { description: "Knows the truth of the heir's paternity", hidden: true }
-noble_marriage: { description: "Married into a gentle or noble family" }
+noble_marriage: { description: "Married into a gentle or noble family (read by the prejudice formula in station.ts)", later: ch4 }
 strong_patron: { description: "Enjoys the open favor of a powerful patron", later: ch2 }
 ravell_favor: { description: "Lord Ravell's favour" }
 
@@ -303,3 +303,32 @@ c3_davy_married: { description: "Gave Davy Ludd leave to marry on the manor", la
 c3_davy_knighted: { description: "Knighted Davy Ludd, as he once promised", later: ch4 }
 c3_unrest_met: { description: "Faced the manor's unrest in the second year", hidden: true, later: ch4 }
 c3_neighbours_pact: { description: "Swore with his neighbours to ride to each other's bells", hidden: true, later: ch4 }
+c3_match_refused: { description: "A family refused his suit in the year of the match", hidden: true, later: ch4 }
+c3_kin_against: { description: "Married a widow or heiress against her kin's will", later: ch4 }
+c3_hard_terms: { description: "Took an arranged bride on hard terms", hidden: true, later: ch4 }
+c3_gave_meadows: { description: "Gave Sire Gautier the meadows at the Pont-aux-Moines", hidden: true, later: ch4 }
+c3_owes_king_marriage: { description: "Owes the King for his word in the marriage", later: ch4 }
+c3_married_against_kin: { description: "His bride settled her family's refusal herself", later: ch4 }
+c3_hard_bargain: { description: "Drove a hard bargain over the marriage contract", hidden: true, later: ch4 }
+c3_asked_nothing: { description: "Asked for nothing in the marriage contract but the bride", later: ch4 }
+c3_married: { description: "Married in Chapter 3", later: ch4 }
+c3_holds_lisle: { description: "Holds Lisle in right of his wife", later: ch4 }
+c3_holds_wyck: { description: "Holds Wyck in right of his wife", later: ch4 }
+c3_holds_ashdown: { description: "Holds Ashdown in right of his wife", later: ch4 }
+c3_corbie_vineyard: { description: "His wife brought a Corbie vineyard", hidden: true, later: ch4 }
+c3_sauvemer_house: { description: "His wife brought the Vaux house and customs share in Sauvemer", hidden: true, later: ch4 }
+c3_lanzi_kin: { description: "Married into the house of Lanzi", later: ch4 }
+c3_westry_kin: { description: "Married into the house of Westry", later: ch4 }
+c3_corbie_kin: { description: "Married into the house of Corbie", later: ch4 }
+c3_brese_kin: { description: "Married into the house of Brésy", later: ch4 }
+c3_border_peace: { description: "Peace on the border by his marriage to Aliénor de Brésy", later: ch4 }
+c3_wife_keys: { description: "Gave his wife the keys and books of the manor", hidden: true, later: ch4 }
+c3_stood_by_wife: { description: "Stood by his wife in public against the neighbours", hidden: true, later: ch4 }
+c3_kept_counsel: { description: "Kept his own counsel against his wife in the first year", hidden: true, later: ch4 }
+c3_birth_physician: { description: "Brought a Sarenzan physician to his wife's lying-in", hidden: true, later: ch4 }
+c3_birth_midwife: { description: "Trusted the country midwife at his wife's lying-in", hidden: true, later: ch4 }
+c3_birth_relic: { description: "Borrowed Saint Margaret's girdle for his wife's lying-in", hidden: true, later: ch4 }
+c3_wife_died_childbed: { description: "His wife died in childbed", later: ch4 }
+c3_stayed_unwed: { description: "Did not marry in Chapter 3", later: ch4 }
+c3_refused_king_ward: { description: "Refused the King's ward, Lady Philippa", later: ch4 }
+c3_refused_brese: { description: "Refused the Brésy match", hidden: true, later: ch4 }

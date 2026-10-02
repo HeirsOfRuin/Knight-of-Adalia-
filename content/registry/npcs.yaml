@@ -74,3 +74,7 @@ peronnelle_marsalin: { name: Péronnelle de Salines, title: Dame, faction: valdr
 yann_penhoet: { name: Yann de Penhoët, title: Messire, faction: valdrenne, notes: "Armance knight of the rival claimant's party. Claims Kerval was his grandfather's." }
 thibaut_brese: { name: Thibaut de Brésy, title: Messire, faction: valdrenne, notes: "The Constable's son, taken at Les Salines, ransomed home. Rides with the march lords." }
 hodge_brewster: { name: Hodge Brewster, notes: "Leader of the Adalian settlers. A Saltcombe brewer's son with big hands and bigger opinions." }
+# Ch3 Act III: arranged offers
+alienor_brese: { name: Aliénor de Brésy, faction: valdrenne, tags: [romance], notes: "Sire Gautier's daughter, twenty. Dark, straight-backed, watches everything. Good Adalian, which she does not admit to at first." }
+gautier_brese: { name: Gautier de Brésy, title: Sire, faction: valdrenne, station: lord, notes: "The Constable's younger brother, lord of Montbrun across the march. Heavy, tired, has buried two sons. Wants the border quiet." }
+philippa_ashdown: { name: Philippa Ashdown, title: Lady, faction: nobles, tags: [romance], notes: "The King's ward, nineteen, heiress of Ashdown in the south of Adalia. Her father and brothers died in the Mottle." }

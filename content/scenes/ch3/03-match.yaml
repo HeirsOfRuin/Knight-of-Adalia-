@@ -1,0 +1,642 @@
+# Chapter 3, Act III: the Match. Summer year 29 to harvest year 30. Age 28-29.
+# Candidates are evaluated in c3_second_spring (02-lord.yaml): suits kept alive become
+# available, the rest are lost. Arranged offers: Aliénor de Brésy (always), Lady Philippa
+# Ashdown (the King's favour). @spouse names the woman he courts. Per-candidate text
+# uses [if alias.spouse == x] chains; the long lines are deliberate.
+
+- id: c3_match
+  chapter: ch3
+  title: "A Wife for the Manor"
+  checkpoint: true
+  text: |
+    [if flag.c3_match_refused]So that is that. You ride home with your answer in your mouth like a bad tooth, and the manor, which knew where you had gone and why, is kind to you for a week, and that is the worst of it.
+
+    [break]
+
+    There are still letters on the table.[else]"A lord wants a lady," says [if flag.c2_granted_marsalin]Margot of the salt-boilers, to your face, in front of the whole pan-yard[elif flag.c2_granted_kerval]Gwenaël the reeve, loudly, in his terrible Adalian, at the manor court[else]Bastien the eel-man, with his one eye on you, at the church door[/if]. "A hall wants a woman in it. Look at the state of it. Rushes from Martinmas. Dogs on the table." Nobody laughs, quite.
+
+    [if flag.c2_granted_marsalin]Père Yves[elif flag.c2_granted_kerval]Dom Hervé[else]Père Guérin[/if] says it more politely, and more often. Without an heir the manor goes back to the Crown when you die, and everyone on it goes back with it, to whoever the King feels like rewarding next. They have had one new lord. They do not want another.
+
+    [break]
+
+    So you sit down in the empty hall one evening, with a candle and the letters, and think it through.[/if]
+
+    [if suit.mag_coker.status == available]Mag Coker has not married. [if npc.wat_coker.follower]Wat says, when you ask, that she has turned down two men and a widower, and that he has stopped asking her why, because she throws things.[else]Your mother writes that she has turned down two men and a widower, and that nobody in Ashby asks her why any more, because she throws things.[/if] She is twenty-seven, and the reeve's girl's promise was a long time ago.[/if]
+
+    [if suit.annot_dyer.status == available]Annot Dyer is still in Wendham, still unmarried, still blue to the wrist. Your mother writes, in a tone you can hear across the sea, that Annot's father has refused three matches on her behalf, and that "the girl seems to be waiting for something, God knows what."[/if]
+
+    [if suit.mariot_wood.status == available]Mariot Wood is still in the forester's cottage at Hollin, nursing her father and doing his work, and has not married. Kit writes that she walks the chase every evening, and stops at the edge of it where the road goes south, and that everyone in Hollin knows why and nobody says.[/if]
+
+    [if suit.nell_laundress.status == available]Nell is still in the laundry at Ravell Hall, with her arms red to the elbow, and Father Benet writes, carefully, that she has refused a carter and a groom, and laughed at both of them, and that Lady Ravell has noticed.[/if]
+
+    [if suit.isabel_sayer.status == available]Isabel Sayer is still at Ravell, in Lady Ravell's household, the last of her father's seven daughters left unmarried. She writes at Christmas: a page of gossip, funny as ever, and one line at the bottom about you that is not funny at all.[/if]
+
+    [if suit.maud_delisle.status == available]Lady Maud de Lisle is in the King's wardship still. Her marriage is the Crown's to sell, and the Crown is short of money, as always. Her letters come by way of the Queen's household, quick and blotted. "They are pricing me again," the last one says. "Like a horse. Do you have any money?"[/if]
+
+    [if suit.cecily_fuller.status == available]Cecily Fuller has turned down the Sarenzan factor, to her father's despair. She writes to you about the price of wool, the Lanzi bank's latest rates, and the state of Wendham's drains, and at the end, "My father says you are a lord now. He says it as if it were my doing. Is it?"[/if]
+
+    [if suit.joan_wyck.status == available]Dame Joan Wyck still holds Wyck, and her stepson Ralph still wants it. She writes twice a year, short practical letters about apples and lawsuits. The last one ends: "Ralph says a widow cannot hold a manor against a man. I begin to think he may be right, and it makes me angry."[/if]
+
+    [if suit.alys_fane.status == available]Lady Alys Fane is still unmarried, which at court is beginning to be remarked on. Her father the Earl of Westry wants a rich man with a great name. Alys, in her letters, wants something else, and is careful never to write down what.[/if]
+
+    [if suit.heloise_corbie.status == available]Héloïse de Corbie writes from her brother's lands across the truce line. Raoul's ransom is paid at last, every crown of it, and there is nothing left for her dowry but a vineyard and her name. "My brother says I must take the veil or a fool," she writes. "I have told him I have not yet decided which."[/if]
+
+    [if suit.fiammetta_lanzi.status == available]Fiammetta Lanzi heads the house of Lanzi in Sauvemer now. Her father died in the Mottle, and her uncles in Sarenza want her married to a cousin and the house brought home. She writes to you about salt and money, in a hand like a clerk's, and once, without explanation, sends you a Sarenzan orange.[/if]
+
+    [if suit.clemence_vaux.status == available]Dame Clémence de Vaux is in Sauvemer still, a widow in black, keeping her husband's house in a town that is Adalian now. Her own people in the south want her home. She has not gone. When you meet her in the market she says "Monseigneur," and nothing else, and you both stand there in the fish-smell much longer than the word needs.[/if]
+
+    [if suit.alienor_brese.status == available]And from across the border comes an offer nobody expected. Sire Gautier de Brésy, the Constable's younger brother, who holds Montbrun on the other side of the march, sends his chaplain with a letter. [if flag.c3_thibaut_spared]You spared his nephew Thibaut.[elif flag.c3_raid_held]You beat his nephew Thibaut at your own gate.[else]His nephew Thibaut burned your country, and you are still here.[/if] He has a daughter, Aliénor, twenty and unmarried, and he is tired of a border that burns every spring. "Peace is a marriage," the chaplain says, "or it is nothing."[/if]
+
+    [if suit.philippa_ashdown.status == available]And a letter comes under the King's own seal. The King has in his wardship Lady Philippa Ashdown, nineteen, the heiress of Ashdown in the south of Adalia, whose father and brothers died in the Mottle. The King is minded, the letter says, to reward a loyal servant. It does not say "refuse at your peril." It does not need to.[/if]
+
+    [if flag.c3_match_refused][else]You are twenty-eight. Your father married at twenty. Half the men you went to war with are dead and the other half have children walking.[/if]
+  choices:
+    - id: mag_coker
+      text: "Go home to Ashby, and ask Mag Coker."
+      tags: ["allies"]
+      visible_if: ["suit.mag_coker.status == available"]
+      effects: [{"alias": {"spouse": "mag_coker"}}]
+      next: "c3_suitor"
+    - id: annot_dyer
+      text: "Go to Wendham, and ask Annot Dyer."
+      tags: ["allies"]
+      visible_if: ["suit.annot_dyer.status == available"]
+      effects: [{"alias": {"spouse": "annot_dyer"}}]
+      next: "c3_suitor"
+    - id: mariot_wood
+      text: "Go to Hollin, and ask Mariot Wood."
+      tags: ["allies"]
+      visible_if: ["suit.mariot_wood.status == available"]
+      effects: [{"alias": {"spouse": "mariot_wood"}}]
+      next: "c3_suitor"
+    - id: nell_laundress
+      text: "Go to Ravell, and ask Nell."
+      tags: ["allies"]
+      visible_if: ["suit.nell_laundress.status == available"]
+      effects: [{"alias": {"spouse": "nell_laundress"}}]
+      next: "c3_suitor"
+    - id: isabel_sayer
+      text: "Go to Ravell, and ask Isabel Sayer."
+      tags: ["diplomacy"]
+      visible_if: ["suit.isabel_sayer.status == available"]
+      effects: [{"alias": {"spouse": "isabel_sayer"}}]
+      next: "c3_suitor"
+    - id: maud_delisle
+      text: "Go to court, and try to buy Lady Maud's marriage."
+      tags: ["diplomacy", "cunning"]
+      visible_if: ["suit.maud_delisle.status == available"]
+      effects: [{"alias": {"spouse": "maud_delisle"}}]
+      next: "c3_suitor"
+    - id: cecily_fuller
+      text: "Go to Wendham, and ask Cecily Fuller."
+      tags: ["wealth"]
+      visible_if: ["suit.cecily_fuller.status == available"]
+      effects: [{"alias": {"spouse": "cecily_fuller"}}]
+      next: "c3_suitor"
+    - id: joan_wyck
+      text: "Go to Wyck, and ask Dame Joan."
+      tags: ["allies"]
+      visible_if: ["suit.joan_wyck.status == available"]
+      effects: [{"alias": {"spouse": "joan_wyck"}}]
+      next: "c3_suitor"
+    - id: alys_fane
+      text: "Go to Westry, and ask the Earl for Lady Alys."
+      tags: ["diplomacy"]
+      visible_if: ["suit.alys_fane.status == available"]
+      effects: [{"alias": {"spouse": "alys_fane"}}]
+      next: "c3_suitor"
+    - id: heloise_corbie
+      text: "Get a safe-conduct, and go to Corbie for Héloïse."
+      tags: ["diplomacy"]
+      visible_if: ["suit.heloise_corbie.status == available"]
+      effects: [{"alias": {"spouse": "heloise_corbie"}}]
+      next: "c3_suitor"
+    - id: fiammetta_lanzi
+      text: "Go to the Lanzi house, and ask Fiammetta."
+      tags: ["wealth", "cunning"]
+      visible_if: ["suit.fiammetta_lanzi.status == available"]
+      effects: [{"alias": {"spouse": "fiammetta_lanzi"}}]
+      next: "c3_suitor"
+    - id: clemence_vaux
+      text: "Go to the Rue des Saulniers, and ask Dame Clémence."
+      tags: ["diplomacy"]
+      visible_if: ["suit.clemence_vaux.status == available"]
+      effects: [{"alias": {"spouse": "clemence_vaux"}}]
+      next: "c3_suitor"
+    - id: alienor_brese
+      text: "Accept Sire Gautier's invitation to Montbrun, and meet Aliénor."
+      tags: ["diplomacy", "martial"]
+      visible_if: ["suit.alienor_brese.status == available"]
+      effects: [{"alias": {"spouse": "alienor_brese"}}]
+      next: "c3_suitor"
+    - id: philippa_ashdown
+      text: "Go to court, and thank the King for Lady Philippa."
+      tags: ["diplomacy", "wealth"]
+      visible_if: ["suit.philippa_ashdown.status == available"]
+      effects: [{"alias": {"spouse": "philippa_ashdown"}}]
+      next: "c3_suitor"
+    - id: none
+      text: "Marry nobody. Not yet."
+      tags: ["yield"]
+      next: "c3_unwed"
+
+- id: c3_suitor
+  chapter: ch3
+  title: "[if alias.spouse == alienor_brese || alias.spouse == philippa_ashdown]The Offer[else]Her People[/if]"
+  on_enter:
+    - {"advance": {"seasons": 1}}
+  text: |
+    [if alias.spouse == mag_coker]Ashby, in the rain. [if npc.piers_reeve.alive]Your father[else]Your mother[/if] meets you at the gate and does not say a word. You would rather he shouted. Everyone in the village knows why you have come. The children follow you down the lane in a pack, and old women come to their doors with their arms folded.
+
+    Mag is at the Cokers' door, with her sleeves rolled and flour to the elbow. She looks you up and down: the good cloak, the sword, the horse. "Well," she says. "Look what the war's brought home." Behind her, her mother is crying already, and you cannot tell which way.
+
+    [if npc.wat_coker.follower]Wat, who came with you, stands in the lane and grins like a fool.[else]Wat Coker is not there. He is off somewhere with the men who talk about the Ordinance in alehouses, and when he hears of it, he will have something to say.[/if] The rest of the family is a widowed mother, two uncles, and the whole of Ashby. Your own people, back on the manor, will have something to say too. A lord marries a lady. Everybody knows that.[elif alias.spouse == annot_dyer]Wendham, on market day. The dyers' lane runs blue into the river, the way it always did, and the smell of it takes you straight back to being eleven.
+
+    Annot's father looks at you as if you were a bolt of cloth with a flaw in it somewhere that he has not found yet. "A lord," he says. "Of somewhere in Valdrenne. With salt, is it, or marsh?" Annot, behind him, has her blue hands on her hips. "I'm not a lady," she says, before you have said anything. "I'd be a laughing-stock. You'd be a laughing-stock. They'd laugh at us in two languages." She does not say no.[elif alias.spouse == mariot_wood]Hollin. The cottages, the butts, the edge of the chase. Mariot is splitting kindling outside the forester's cottage, and she sets the axe down when she sees you, and wipes her hands on her apron, and waits.
+
+    The trouble is not Mariot. The trouble is that the Woods are Ravell's people, bound to the manor, and a Ravell woman may not marry off the manor without her lord's licence and the merchet paid. Lord Ravell's steward has heard who is asking. The price, he says, has gone up.[elif alias.spouse == nell_laundress]Ravell Hall, by the back way, the way you came in as a boy. Nell is in the drying-yard among the sheets, and she sees you, and laughs out loud, and does not stop.
+
+    "Look at you," she says. "Look at the boots on you."
+
+    Then Lady Ravell sends for you. She does not sit, and does not ask you to. Nell is her laundress, and her servant, and [if background == servant]so was your mother, God rest her, as she reminds you[else]a girl of her household[/if], and she does not care, she says, to have her household made a joke of in the shire.[elif alias.spouse == isabel_sayer]Ravell Hall, the front way this time, with your own men behind you. Isabel is waiting in Lady Ravell's solar with her hands folded and ink on her forefinger, exactly as she was, and she says, "You took your time," in a voice that is not quite steady.
+
+    Her father, Sir John Sayer, has six other daughters married and one dowry left to find, and would give her to you with both hands and a blessing. The difficulty is Lady Ravell, who has kept Isabel for eleven years and is not used to giving things up.[elif alias.spouse == maud_delisle]Wendmere, the King's hall by the river: clerks, petitioners, dogs, rain. Lady Maud's marriage belongs to the Crown, and the Crown has an officer for selling such things, a soft-voiced clerk of the wardrobe who has a list and a price against every name on it.
+
+    Maud's price is high. Lisle is a good inheritance, and two greater men than you have bid. "You may of course," the clerk says, "petition the King's grace." He makes it sound like a disease.
+
+    Maud herself you see for a quarter of an hour, in a gallery, with the Queen's women all round. She says, fast and low, "Do whatever it takes. I will not be sold to Carrow's nephew. I will go into a nunnery first, and burn it down."[elif alias.spouse == cecily_fuller]Wendham, the Fullers' counting-house. Master Osbert Fuller is fatter than ever and greets you with "Well now," which means the bargaining has started.
+
+    Cecily sits at the end of the table with the ledger open. "My father," she says, "wants to know what you are worth. I have told him. He does not believe me." Osbert wants a lord for his girl. He has one now. What he wants next is to be sure he is not paying too much for it.[elif alias.spouse == joan_wyck]Wyck, at apple harvest. Joan is in the orchard on a ladder, with her skirts kilted up, and she comes down when she sees you and says, "If you've come about the cider, it isn't ready."
+
+    She is a widow, and her own woman: nobody can give her or refuse her but herself. The difficulty is Ralph, her stepson, who is twenty-one now, and has a lawyer, and says that Wyck is his and that if his stepmother marries a Valdrennish adventurer he will have the law on both of them.[elif alias.spouse == alys_fane]Westry, the Earl's great house, with the river below it and a hundred servants. Lady Alys receives you in a garden that cost more than your manor.
+
+    The Earl of Westry receives you in his closet, for the length of time it takes to drink one cup of wine. He is courteous. He wants, he says, a husband for his daughter who will add to the house of Westry, not take from it. He asks, pleasantly, what you have. You tell him. He nods, pleasantly, and says he will think about it, in a voice that has already finished thinking.[elif alias.spouse == heloise_corbie]Corbie, across the truce line, under a safe-conduct that took three months to get. The house is half ruined still, from the war and the ransom both. Raoul de Corbie meets you at the gate. He has not forgotten whose prisoner he was.
+
+    "You want my sister," he says. "An Adalian. After everything." And behind him, at the window, Héloïse, who has not decided between the veil and a fool, and who looks at you as if she were deciding now.
+
+    On the Adalian side there is the King's licence to think of, for a lord to marry a woman of the enemy's country. The King's clerks do not like the Corbie name. It is on too many of their lists.[elif alias.spouse == fiammetta_lanzi]The Lanzi house in Sauvemer: cool, dark, smelling of oranges and ink. Fiammetta receives you at the counting-table, in black, with her father's ring on her thumb.
+
+    "My uncles want me married to my cousin Piero," she says. "Piero is a good man. He has never once in his life surprised anybody." She turns the ring. "The bishop of Sauvemer will say a Sarenzan banker's daughter is next door to a Jew. My uncles will say an Adalian lord is next door to a debtor. They are both right. What do you propose to do about it?"[elif alias.spouse == clemence_vaux]Sauvemer, the house in the Rue des Saulniers, with the shutters half-closed against the summer. Clémence de Vaux is a widow and of age, and gives herself.
+
+    The difficulty is everyone else. Her husband's brother, Sire Aimery, writes from the south that a Vaux widow will not marry the man who besieged her. The town, which still remembers the siege, does not care for the idea either. And you are not sure, when she looks at you across her husband's table, that she does not agree with them.[elif alias.spouse == alienor_brese]Montbrun, across the border, under a flag of truce. Sire Gautier de Brésy is a heavy, tired man in his fifties who has buried two sons. He gives you good wine and plain talk.
+
+    "The meadows at the Pont-aux-Moines," he says. "The mill on the Sèvre. My nephew burns your barns, your men burn mine. I would like to stop. My daughter would like, I think, to be asked." Aliénor is at the end of the table, dark and straight-backed, and has not taken her eyes off you since you came in. Her cousin Thibaut [if flag.c3_thibaut_spared]is at the table too, and raises his cup to you an inch[else]is not at the table, and everyone looks at his empty place[/if].[elif alias.spouse == philippa_ashdown]Wendmere, the King's hall. You are presented to Lady Philippa Ashdown in a gallery full of courtiers who have all heard what the King intends, and are watching to see how it goes.
+
+    She is small and fair and nineteen, and in black for her father and her brothers. She gives you her hand to kiss with the expression of a girl being handed to a stranger as a reward for something she had nothing to do with. "My lord," she says. "They tell me you are brave." She says it the way you might say a horse is sound in the wind.[/if]
+  choices:
+    - id: speak
+      text: "Make your case yourself."
+      tags: ["diplomacy"]
+      check: {"attr": "presence", "skill": "diplomacy", "difficulty": 2, "mods": [{"if": "alias.spouse == maud_delisle", "add": -3, "label": "the Crown's price"}, {"if": "alias.spouse == alys_fane", "add": -3, "label": "the Earl's pride"}, {"if": "alias.spouse == heloise_corbie", "add": -2, "label": "Corbie and the King's clerks"}, {"if": "alias.spouse == mariot_wood", "add": -1, "label": "the merchet"}, {"if": "alias.spouse == nell_laundress", "add": -1, "label": "Lady Ravell"}, {"if": "alias.spouse == isabel_sayer", "add": -1, "label": "Lady Ravell"}, {"if": "alias.spouse == joan_wyck", "add": -1, "label": "Ralph and his lawyer"}, {"if": "alias.spouse == fiammetta_lanzi", "add": -1, "label": "the uncles and the bishop"}, {"if": "alias.spouse == clemence_vaux", "add": -1, "label": "the siege"}, {"if": "alias.spouse == alienor_brese", "add": -1, "label": "the border"}, {"if": "alias.spouse == philippa_ashdown", "add": -1, "label": "a girl given away"}, {"if": "suit.@spouse.regard >= 7", "add": 1, "label": "she speaks for you"}, {"if": "res.renown >= 14", "add": 1, "label": "your name"}, {"if": "suit.@spouse.family >= 2", "add": 1, "label": "her family likes you"}]}
+      success:
+        text: |
+          [if alias.spouse == mag_coker || alias.spouse == annot_dyer || alias.spouse == mariot_wood || alias.spouse == nell_laundress]You do it in the kitchen, in front of everybody, because there is no other way to do anything in a cottage. You say what you have, and what you have not, and what you mean to do. [if alias.spouse == mag_coker]Mag's mother stops crying halfway through and starts asking about the size of the hall.[elif alias.spouse == annot_dyer]Annot's father asks four questions about rents and one about salt, and then holds out his blue hand.[elif alias.spouse == mariot_wood]Ravell's steward, in the end, takes the ordinary merchet and a cup of your wine, and says he never meant anything by it.[else]Lady Ravell listens to the end, and says, "She will have to learn to sit still," which from Lady Ravell is a blessing.[/if] Then everybody is talking at once.[elif alias.spouse == cecily_fuller || alias.spouse == fiammetta_lanzi][if alias.spouse == cecily_fuller]You lay it all out on Master Osbert's own counting-table: the manor, the rents, the salt, the debts. Cecily checks your sums while you talk and finds one wrong, in your favour, and corrects it against you, and her father laughs till he wheezes. "Well now," he says. "Well now. She's met her match, or near enough."[else]You make your case to Fiammetta's uncles by letter, in your best Sarenzan, with her correcting the grammar over your shoulder. It is a merchant's case: what an Adalian lord in Sauvemer is worth to a Sarenzan house in Sauvemer. They take three months to answer. The answer is a contract with forty clauses, and Fiammetta reads it, and says, "Yes. They have given up. Look, they have spelled your name right."[/if][elif alias.spouse == isabel_sayer || alias.spouse == joan_wyck][if alias.spouse == isabel_sayer]You go down on one knee to Lady Ravell, which is not usual, and she knows it. She looks at you for a while, and then at Isabel, and then she says, "Get up, you'll ruin the hose," and you know you have won.[else]You ride over to Ralph Wyck's lawyer with your own, and put the matter so plainly, and so courteously, that the lawyer advises his client to take a settlement and be thankful. Ralph takes it. He is not thankful.[/if][elif alias.spouse == maud_delisle || alias.spouse == alys_fane][if alias.spouse == maud_delisle]It takes the whole of the summer: petitions, gifts to the right clerks, an hour on your knees in front of the King, who is amused, and remembers your name. In the end the Crown takes less than it asked, and more than you have, and gives you Maud.[else]You talk to the Earl of Westry about the salt trade, the Sauvemer customs, and the King's debts, for two hours, until he forgets to finish his wine. At the end he says, "My daughter tells me you are honest. I had hoped she was wrong. Well. She usually isn't."[/if][elif alias.spouse == heloise_corbie || alias.spouse == clemence_vaux][if alias.spouse == heloise_corbie]Raoul de Corbie hears you out in his half-ruined hall, and then says, "You were fair to me when you did not have to be." He holds out his hand. The King's clerks are harder, and slower, and in the end the licence comes, sealed and grudging, with a fine attached.[else]You go to Sire Aimery de Vaux yourself, under a safe-conduct, and stand in his hall in the south and tell him the truth about the siege, all of it. He listens with his jaw set. At the end he says, "My brother said you were the only Adalian who asked about the dead." You decide to take it as a yes.[/if][elif alias.spouse == alienor_brese || alias.spouse == philippa_ashdown][if alias.spouse == alienor_brese]You and Sire Gautier talk till the candles gutter: meadows, mill-rights, who rides where and when. At the end you have a truce on paper, and he has a son-in-law, and Aliénor, who has listened to all of it without a word, says, in good Adalian, "You drive a hard bargain, my lord. I shall remember."[else]You do not try to charm her. You tell her plainly what the manor is, and the marsh, and the plague, and what she would be to it. Somewhere in the middle she stops looking past you. At the end she says, "Nobody has told me anything for a year. They just move me." That is a beginning.[/if][/if]
+        effects: [{"add": {"suit.@spouse.family": 2}}]
+        next: "c3_contract"
+      partial:
+        text: |
+          It is not pretty, and it costs you. [if alias.spouse == maud_delisle || alias.spouse == alys_fane || alias.spouse == philippa_ashdown]Gifts in the right places, a promise of service you will have to keep, and a great deal of kneeling.[else]Promises to her family you will have to keep, and a gift you cannot really afford.[/if] But in the end they say yes.
+        effects: [{"add": {"res.coin": -480}}]
+        next: "c3_contract"
+      failure:
+        text: |
+          [if alias.spouse == joan_wyck || alias.spouse == clemence_vaux || alias.spouse == fiammetta_lanzi][if alias.spouse == joan_wyck]Ralph's lawyer sends a writ. Joan reads it in the orchard, and tears it in half, and says, "I am a widow and of age, and I will marry whom I please." She does. Ralph will not forgive either of you, and the shire takes sides.[elif alias.spouse == fiammetta_lanzi]Her uncles refuse, and cut her off from the house in Sarenza. Fiammetta reads the letter twice, folds it small, and says, "Well. I keep the Sauvemer books. They will find that inconvenient." She marries you anyway.[else]Sire Aimery writes that no Vaux will stand at the church door with the man who starved Sauvemer, and that his brother's widow is dead to him. Clémence reads it standing, and puts it in the fire, and says, "Then I am free of him too." She marries you anyway.[/if][elif alias.spouse == alienor_brese || alias.spouse == philippa_ashdown][if alias.spouse == alienor_brese]Gautier wants more than you can give: the meadows, the mill and the ford. You give the meadows. Aliénor watches the bargaining with a face like a shut door, and you are not sure she will forgive either of you for it.[else]You make a poor fist of it. She answers your courtesies with her own, perfect and cold. The King's mind is made up, and so is hers. The wedding goes ahead.[/if][elif alias.spouse == mag_coker || alias.spouse == annot_dyer || alias.spouse == mariot_wood || alias.spouse == nell_laundress || alias.spouse == isabel_sayer || alias.spouse == maud_delisle || alias.spouse == cecily_fuller || alias.spouse == joan_wyck || alias.spouse == alys_fane || alias.spouse == heloise_corbie || alias.spouse == fiammetta_lanzi || alias.spouse == clemence_vaux || alias.spouse == alienor_brese || alias.spouse == philippa_ashdown]It goes wrong. [if alias.spouse == mag_coker || alias.spouse == annot_dyer || alias.spouse == mariot_wood || alias.spouse == nell_laundress]The village laughs, and her people close round her like a fist. "Go back to your Valdrennish, my lord," somebody calls, and the door shuts.[elif alias.spouse == maud_delisle || alias.spouse == alys_fane]The price goes up while you are still talking, and a greater man pays it.[elif alias.spouse == heloise_corbie]The King's clerks lose the petition, find it, lose it again. By the time it is found for good, Raoul has given his sister to a cousin.[else]Her family says no, politely, finally, and with a little relief.[/if] {npc.@spouse} sends you a letter afterwards. You keep it.[/if]
+        effects: [{"if": {"any": ["alias.spouse == joan_wyck", "alias.spouse == clemence_vaux", "alias.spouse == fiammetta_lanzi"]}, "then": [{"set": "flag.c3_kin_against"}, {"add": {"suit.@spouse.family": -3}}], "else": [{"if": {"any": ["alias.spouse == alienor_brese", "alias.spouse == philippa_ashdown"]}, "then": [{"set": "flag.c3_hard_terms"}, {"add": {"suit.@spouse.regard": -2}}], "else": [{"assign": {"suit.@spouse.status": "lost"}}, {"set": "flag.c3_match_refused"}]}]}]
+        next: {"switch": [{"if": "flag.c3_match_refused", "go": "c3_match"}], "default": "c3_contract"}
+    - id: pay_mag_coker
+      text: "Settle it the Ashby way: a new roof for her mother, and drink for the village. Two pounds."
+      tags: ["wealth"]
+      visible_if: ["alias.spouse == mag_coker"]
+      requires: ["res.coin >= 480"]
+      text_after: |
+        Silver talks in every language, and it talks to everybody. [if alias.spouse == maud_delisle]The clerk of the wardrobe counts it twice, and smiles for the first time, and the Crown gives you Maud as if it were doing you a kindness.[elif alias.spouse == alys_fane]The Earl looks at your bankers' letters for a long while, and then at you, and says, "Well. You are not what I wanted. But you are more than I thought."[else]It is done in an afternoon, with a handshake and a cup, and everybody pretends that it was not about the money.[/if]
+      effects: [{"add": {"res.coin": -480}}]
+      next: "c3_contract"
+    - id: pay_annot_dyer
+      text: "Buy her father a share in a dye-house. Two pounds."
+      tags: ["wealth"]
+      visible_if: ["alias.spouse == annot_dyer"]
+      requires: ["res.coin >= 480"]
+      text_after: |
+        Silver talks in every language, and it talks to everybody. [if alias.spouse == maud_delisle]The clerk of the wardrobe counts it twice, and smiles for the first time, and the Crown gives you Maud as if it were doing you a kindness.[elif alias.spouse == alys_fane]The Earl looks at your bankers' letters for a long while, and then at you, and says, "Well. You are not what I wanted. But you are more than I thought."[else]It is done in an afternoon, with a handshake and a cup, and everybody pretends that it was not about the money.[/if]
+      effects: [{"add": {"res.coin": -480}}]
+      next: "c3_contract"
+    - id: pay_mariot_wood
+      text: "Pay Ravell's steward his merchet, and a bit over. Three pounds."
+      tags: ["wealth"]
+      visible_if: ["alias.spouse == mariot_wood"]
+      requires: ["res.coin >= 720"]
+      text_after: |
+        Silver talks in every language, and it talks to everybody. [if alias.spouse == maud_delisle]The clerk of the wardrobe counts it twice, and smiles for the first time, and the Crown gives you Maud as if it were doing you a kindness.[elif alias.spouse == alys_fane]The Earl looks at your bankers' letters for a long while, and then at you, and says, "Well. You are not what I wanted. But you are more than I thought."[else]It is done in an afternoon, with a handshake and a cup, and everybody pretends that it was not about the money.[/if]
+      effects: [{"add": {"res.coin": -720}}]
+      next: "c3_contract"
+    - id: pay_nell_laundress
+      text: "Make Lady Ravell a gift for the loss of her laundress. Three pounds."
+      tags: ["wealth"]
+      visible_if: ["alias.spouse == nell_laundress"]
+      requires: ["res.coin >= 720"]
+      text_after: |
+        Silver talks in every language, and it talks to everybody. [if alias.spouse == maud_delisle]The clerk of the wardrobe counts it twice, and smiles for the first time, and the Crown gives you Maud as if it were doing you a kindness.[elif alias.spouse == alys_fane]The Earl looks at your bankers' letters for a long while, and then at you, and says, "Well. You are not what I wanted. But you are more than I thought."[else]It is done in an afternoon, with a handshake and a cup, and everybody pretends that it was not about the money.[/if]
+      effects: [{"add": {"res.coin": -720}}]
+      next: "c3_contract"
+    - id: pay_isabel_sayer
+      text: "Make Lady Ravell a gift for the loss of her waiting-woman. Six pounds."
+      tags: ["wealth"]
+      visible_if: ["alias.spouse == isabel_sayer"]
+      requires: ["res.coin >= 1440"]
+      text_after: |
+        Silver talks in every language, and it talks to everybody. [if alias.spouse == maud_delisle]The clerk of the wardrobe counts it twice, and smiles for the first time, and the Crown gives you Maud as if it were doing you a kindness.[elif alias.spouse == alys_fane]The Earl looks at your bankers' letters for a long while, and then at you, and says, "Well. You are not what I wanted. But you are more than I thought."[else]It is done in an afternoon, with a handshake and a cup, and everybody pretends that it was not about the money.[/if]
+      effects: [{"add": {"res.coin": -1440}}]
+      next: "c3_contract"
+    - id: pay_maud_delisle
+      text: "Pay the Crown's price for Lady Maud's marriage. Thirty pounds."
+      tags: ["wealth"]
+      visible_if: ["alias.spouse == maud_delisle"]
+      requires: ["res.coin >= 7200"]
+      text_after: |
+        Silver talks in every language, and it talks to everybody. [if alias.spouse == maud_delisle]The clerk of the wardrobe counts it twice, and smiles for the first time, and the Crown gives you Maud as if it were doing you a kindness.[elif alias.spouse == alys_fane]The Earl looks at your bankers' letters for a long while, and then at you, and says, "Well. You are not what I wanted. But you are more than I thought."[else]It is done in an afternoon, with a handshake and a cup, and everybody pretends that it was not about the money.[/if]
+      effects: [{"add": {"res.coin": -7200}}]
+      next: "c3_contract"
+    - id: pay_cecily_fuller
+      text: "Show Master Osbert your accounts, and a purse to match. Six pounds."
+      tags: ["wealth"]
+      visible_if: ["alias.spouse == cecily_fuller"]
+      requires: ["res.coin >= 1440"]
+      text_after: |
+        Silver talks in every language, and it talks to everybody. [if alias.spouse == maud_delisle]The clerk of the wardrobe counts it twice, and smiles for the first time, and the Crown gives you Maud as if it were doing you a kindness.[elif alias.spouse == alys_fane]The Earl looks at your bankers' letters for a long while, and then at you, and says, "Well. You are not what I wanted. But you are more than I thought."[else]It is done in an afternoon, with a handshake and a cup, and everybody pretends that it was not about the money.[/if]
+      effects: [{"add": {"res.coin": -1440}}]
+      next: "c3_contract"
+    - id: pay_joan_wyck
+      text: "Buy off Ralph Wyck with a sum in hand. Eight pounds."
+      tags: ["wealth"]
+      visible_if: ["alias.spouse == joan_wyck"]
+      requires: ["res.coin >= 1920"]
+      text_after: |
+        Silver talks in every language, and it talks to everybody. [if alias.spouse == maud_delisle]The clerk of the wardrobe counts it twice, and smiles for the first time, and the Crown gives you Maud as if it were doing you a kindness.[elif alias.spouse == alys_fane]The Earl looks at your bankers' letters for a long while, and then at you, and says, "Well. You are not what I wanted. But you are more than I thought."[else]It is done in an afternoon, with a handshake and a cup, and everybody pretends that it was not about the money.[/if]
+      effects: [{"add": {"res.coin": -1920}}]
+      next: "c3_contract"
+    - id: pay_alys_fane
+      text: "Show the Earl you are worth more than he thinks. Thirty pounds."
+      tags: ["wealth"]
+      visible_if: ["alias.spouse == alys_fane"]
+      requires: ["res.coin >= 7200"]
+      text_after: |
+        Silver talks in every language, and it talks to everybody. [if alias.spouse == maud_delisle]The clerk of the wardrobe counts it twice, and smiles for the first time, and the Crown gives you Maud as if it were doing you a kindness.[elif alias.spouse == alys_fane]The Earl looks at your bankers' letters for a long while, and then at you, and says, "Well. You are not what I wanted. But you are more than I thought."[else]It is done in an afternoon, with a handshake and a cup, and everybody pretends that it was not about the money.[/if]
+      effects: [{"add": {"res.coin": -7200}}]
+      next: "c3_contract"
+    - id: pay_heloise_corbie
+      text: "Pay for the King's licence, and Raoul's goodwill. Ten pounds."
+      tags: ["wealth"]
+      visible_if: ["alias.spouse == heloise_corbie"]
+      requires: ["res.coin >= 2400"]
+      text_after: |
+        Silver talks in every language, and it talks to everybody. [if alias.spouse == maud_delisle]The clerk of the wardrobe counts it twice, and smiles for the first time, and the Crown gives you Maud as if it were doing you a kindness.[elif alias.spouse == alys_fane]The Earl looks at your bankers' letters for a long while, and then at you, and says, "Well. You are not what I wanted. But you are more than I thought."[else]It is done in an afternoon, with a handshake and a cup, and everybody pretends that it was not about the money.[/if]
+      effects: [{"add": {"res.coin": -2400}}]
+      next: "c3_contract"
+    - id: pay_fiammetta_lanzi
+      text: "Buy out her uncles' interest in her marriage. Ten pounds."
+      tags: ["wealth"]
+      visible_if: ["alias.spouse == fiammetta_lanzi"]
+      requires: ["res.coin >= 2400"]
+      text_after: |
+        Silver talks in every language, and it talks to everybody. [if alias.spouse == maud_delisle]The clerk of the wardrobe counts it twice, and smiles for the first time, and the Crown gives you Maud as if it were doing you a kindness.[elif alias.spouse == alys_fane]The Earl looks at your bankers' letters for a long while, and then at you, and says, "Well. You are not what I wanted. But you are more than I thought."[else]It is done in an afternoon, with a handshake and a cup, and everybody pretends that it was not about the money.[/if]
+      effects: [{"add": {"res.coin": -2400}}]
+      next: "c3_contract"
+    - id: pay_clemence_vaux
+      text: "Pay Sire Aimery her dower back, so the Vaux lose nothing. Eight pounds."
+      tags: ["wealth"]
+      visible_if: ["alias.spouse == clemence_vaux"]
+      requires: ["res.coin >= 1920"]
+      text_after: |
+        Silver talks in every language, and it talks to everybody. [if alias.spouse == maud_delisle]The clerk of the wardrobe counts it twice, and smiles for the first time, and the Crown gives you Maud as if it were doing you a kindness.[elif alias.spouse == alys_fane]The Earl looks at your bankers' letters for a long while, and then at you, and says, "Well. You are not what I wanted. But you are more than I thought."[else]It is done in an afternoon, with a handshake and a cup, and everybody pretends that it was not about the money.[/if]
+      effects: [{"add": {"res.coin": -1920}}]
+      next: "c3_contract"
+    - id: meadows
+      text: "Give Sire Gautier the meadows at the Pont-aux-Moines."
+      tags: ["allies"]
+      visible_if: ["alias.spouse == alienor_brese"]
+      text_after: |
+        You give him the meadows. They were never really yours: half the hay there has been cut by Brésy men every summer since the old King's time. Gautier knows it, and you know it, and he is grateful anyway. Aliénor says nothing, but at dinner she passes you the salt before you ask for it.
+      effects: [{"add": {"estate.food": -1}}, {"set": "flag.c3_gave_meadows"}]
+      next: "c3_contract"
+    - id: king
+      text: "Ask for the King's word."
+      tags: ["cunning"]
+      visible_if: [{"any": ["alias.spouse == maud_delisle", "alias.spouse == alys_fane", "alias.spouse == heloise_corbie", "alias.spouse == clemence_vaux"]}]
+      requires: ["rep.crown >= 3"]
+      label: "Requires: the King's favour"
+      text_after: |
+        You go to the King. It is the kind of thing a man can do perhaps twice in his life, and you spend one of them now. Aldred hears you out at the end of a long day, and laughs, and says, "God's teeth. All right. But you'll owe me." The word goes out, and doors that were locked stand open.
+      effects: [{"add": {"rep.crown": -2, "suit.@spouse.family": 1}}, {"set": "flag.c3_owes_king_marriage"}]
+      next: "c3_contract"
+    - id: herself
+      text: "Let her settle it herself."
+      tags: ["allies"]
+      visible_if: [{"not": {"any": ["alias.spouse == alienor_brese", "alias.spouse == philippa_ashdown"]}}]
+      requires: ["suit.@spouse.regard >= 7"]
+      label: "Requires: that she wants you as much as you want her"
+      text_after: |
+        [if alias.spouse == mag_coker]Mag settles it. She tells her mother, the uncles and the whole of Ashby where to put their opinions, at the well, at the top of her voice, and then she goes in and packs.[elif alias.spouse == maud_delisle]Maud settles it. She tells the clerk of the wardrobe, in front of witnesses, that she will marry you or nobody, and that if the Crown sells her elsewhere she will say so at the church door. The clerk goes pale. The price comes down.[elif alias.spouse == alys_fane]Alys settles it. She tells her father she will marry you or take the veil, and her father, who has met her, believes her.[else]She settles it. Her people do not like it, and they say so, and she does it anyway. You find you are a little afraid of her, and you like it.[/if] Her family will remember. They will not forgive it quickly.
+      effects: [{"set": "flag.c3_married_against_kin"}, {"add": {"suit.@spouse.family": -3, "suit.@spouse.regard": 1}}]
+      next: "c3_contract"
+
+- id: c3_contract
+  chapter: ch3
+  title: "The Contract"
+  text: |
+    [if alias.spouse == mag_coker || alias.spouse == annot_dyer || alias.spouse == mariot_wood || alias.spouse == nell_laundress]There is not much to put in a contract. [if alias.spouse == mag_coker]The Cokers have a cow, a bed, a chest of linen and a grudge.[elif alias.spouse == annot_dyer]The Dyers have a few pounds put by, a dye-vat's worth of credit, and opinions.[elif alias.spouse == mariot_wood]The Woods have nothing at all but the forester's bow and Mariot.[else]Nell has a box with two shifts, a comb and a little pewter cross, and that is everything.[/if] But [if flag.c2_granted_marsalin]Père Yves[elif flag.c2_granted_kerval]Dom Hervé[else]Père Guérin[/if] says it must be written down properly anyway, what she brings and what you settle on her if you die. "Lords die," he says, "and widows starve. Write it down."[elif alias.spouse == cecily_fuller || alias.spouse == fiammetta_lanzi]The contract is the longest document you have ever seen that was not a treaty. [if alias.spouse == cecily_fuller]Master Osbert has had it drawn up by a Wendham attorney, with Cecily's notes in the margin in a smaller, sharper hand: forty pounds in coin, the Fuller interest in two ships, and a clause about who keeps the books that is underlined twice.[else]The Lanzi notary has drawn it in Sarenzan and Adalian side by side: forty pounds in coin, the house in Sauvemer, and a clause about the lien on your manor's rents that you have to read three times before you see what it does.[/if] There is a space at the bottom for what you settle on her in return.[elif alias.spouse == isabel_sayer || alias.spouse == joan_wyck][if alias.spouse == isabel_sayer]Sir John Sayer can find five pounds, a horse, and his blessing, and he is ashamed that it is not more. Isabel is ashamed that he is ashamed.[else]Joan brings Wyck. Not the title, which is the Crown's to grant, but the keeping of it while she lives, and its rents, and its orchards, and its quarrels. Ralph's lawyer reads every line of the contract twice.[/if] There is the question of what you settle on her in return.[elif alias.spouse == maud_delisle || alias.spouse == alys_fane || alias.spouse == philippa_ashdown][if alias.spouse == maud_delisle]Maud brings Lisle: a manor and a half in the west of Adalia, with a castle that leaks and a lawsuit that has been running since her grandfather's time.[elif alias.spouse == alys_fane]The Earl of Westry's daughter brings sixty pounds in coin, a household of nine, and the house of Westry at your back, which is worth a great deal more, and costs a great deal more, than sixty pounds.[else]Philippa brings Ashdown: three manors in the south of Adalia, half-empty since the Mottle, and the King's goodwill, which you will be expected to earn.[/if] Her people want a jointure settled on her, and they want it generous.[elif alias.spouse == heloise_corbie || alias.spouse == clemence_vaux || alias.spouse == alienor_brese][if alias.spouse == heloise_corbie]Héloïse brings a vineyard on the Corbie hills and her name, and her brother gives both with a face like a man having a tooth drawn.[elif alias.spouse == clemence_vaux]Clémence brings her dower: the house in the Rue des Saulniers, a share of the Sauvemer customs, and twenty pounds she has kept back from everybody, including her late husband.[else]Aliénor brings ten pounds, a household of Valdrennish servants who look at your hall as if it had fleas, and peace on the border. The peace is the dowry. Everyone at the table knows it.[/if] The contract is drawn in both tongues, and the Valdrennish version is longer.[/if]
+  choices:
+    - id: bargain
+      text: "Drive a hard bargain."
+      tags: ["wealth"]
+      check: {"attr": "wits", "skill": "trade", "difficulty": 3}
+      success:
+        text: |
+          You haggle like your life depends on it, and come away with more than anyone expected, including you. [if alias.spouse == cecily_fuller]Cecily says, afterwards, that it was the most romantic afternoon of her life.[else]{npc.@spouse} watches you do it, and you cannot tell what she thinks of it.[/if]
+        effects: [{"set": "flag.c3_hard_bargain"}, {"add": {"counter.dowry_bonus": 1}}]
+        next: "c3_wedding"
+      failure:
+        text: |
+          You haggle, and they haggle back, and somewhere in the middle of it you say a thing about her family's means that cannot be unsaid. The contract is signed. Nobody at the table enjoys it.
+        effects: [{"add": {"suit.@spouse.family": -2, "suit.@spouse.regard": -1}}]
+        next: "c3_wedding"
+    - id: fair
+      text: "Settle it fairly, as her people ask."
+      tags: ["diplomacy"]
+      text_after: |
+        You settle a fair jointure on her, a third of the manor's rents if you die, which is the custom. Her people are satisfied. [if flag.c2_granted_marsalin]Père Yves[elif flag.c2_granted_kerval]Dom Hervé[else]Père Guérin[/if] writes it out in his best hand, and blots it, and says, "There. Now die whenever you like."
+      effects: [{"add": {"suit.@spouse.family": 1}}]
+      next: "c3_wedding"
+    - id: nothing
+      text: "Ask for nothing but her."
+      tags: ["allies", "piety"]
+      text_after: |
+        You tell them to keep it. [if alias.spouse == mag_coker || alias.spouse == mariot_wood || alias.spouse == nell_laundress]There is nothing to keep, as it happens, and everybody laughs, and that is a good start to anything.[else]They look at you as if you had taken leave of your wits, and then, slowly, as if you had done something they will be telling their grandchildren about.[/if] [if alias.spouse == maud_delisle || alias.spouse == joan_wyck || alias.spouse == philippa_ashdown]The land comes with her anyway: it is hers, not theirs to give. But the coin stays with her people, and they do not forget it.[/if]
+      effects: [{"set": "flag.c3_asked_nothing"}, {"add": {"suit.@spouse.regard": 2, "suit.@spouse.family": 2, "rep.honor": 1}}]
+      next: "c3_wedding"
+
+- id: c3_wedding
+  chapter: ch3
+  title: "The Wedding"
+  on_enter:
+    - {"assign": {"suit.@spouse.status": "married"}}
+    - {"set": "flag.c3_married"}
+    - {"meet": "@spouse"}
+    - {"add": {"rel.@spouse.affection": 4, "rel.@spouse.respect": 2}}
+    - {"advance": {"seasons": 1}}
+    - {"if": "alias.spouse == mag_coker", "then": [{"add": {"rep.commons": 2, "rep.knights": -1, "rep.nobles": -1}}]}
+    - {"if": "alias.spouse == annot_dyer", "then": [{"if": "flag.c3_asked_nothing", "then": [], "else": [{"add": {"res.coin": 600}}, {"if": "counter.dowry_bonus >= 1", "then": [{"add": {"res.coin": 150}}]}]}, {"add": {"rep.commons": 2, "rep.knights": -1, "rep.nobles": -1}}]}
+    - {"if": "alias.spouse == mariot_wood", "then": [{"add": {"rep.commons": 2, "rep.knights": -1, "rep.nobles": -1}}]}
+    - {"if": "alias.spouse == nell_laundress", "then": [{"add": {"rep.commons": 2, "rep.knights": -1, "rep.nobles": -1}}]}
+    - {"if": "alias.spouse == isabel_sayer", "then": [{"if": "flag.c3_asked_nothing", "then": [], "else": [{"add": {"res.coin": 1200}}, {"if": "counter.dowry_bonus >= 1", "then": [{"add": {"res.coin": 300}}]}]}, {"set": "flag.noble_marriage"}, {"add": {"rep.knights": 1}}]}
+    - {"if": "alias.spouse == maud_delisle", "then": [{"if": "flag.c3_asked_nothing", "then": [], "else": [{"add": {"res.coin": 2400}}, {"if": "counter.dowry_bonus >= 1", "then": [{"add": {"res.coin": 600}}]}]}, {"set": "flag.c3_holds_lisle"}, {"set": "flag.noble_marriage"}, {"add": {"rep.nobles": 2}}]}
+    - {"if": "alias.spouse == cecily_fuller", "then": [{"if": "flag.c3_asked_nothing", "then": [], "else": [{"add": {"res.coin": 9600}}, {"if": "counter.dowry_bonus >= 1", "then": [{"add": {"res.coin": 2400}}]}]}, {"set": "flag.noble_marriage"}, {"add": {"rep.merchants": 2}}]}
+    - {"if": "alias.spouse == joan_wyck", "then": [{"if": "flag.c3_asked_nothing", "then": [], "else": [{"add": {"res.coin": 1200}}, {"if": "counter.dowry_bonus >= 1", "then": [{"add": {"res.coin": 300}}]}]}, {"set": "flag.c3_holds_wyck"}, {"set": "flag.noble_marriage"}, {"add": {"rep.knights": 1}}]}
+    - {"if": "alias.spouse == alys_fane", "then": [{"if": "flag.c3_asked_nothing", "then": [], "else": [{"add": {"res.coin": 14400}}, {"if": "counter.dowry_bonus >= 1", "then": [{"add": {"res.coin": 3600}}]}]}, {"set": "flag.noble_marriage"}, {"add": {"rep.nobles": 2, "rep.crown": 1}}, {"set": "flag.c3_westry_kin"}]}
+    - {"if": "alias.spouse == heloise_corbie", "then": [{"if": "flag.c3_asked_nothing", "then": [], "else": [{"add": {"res.coin": 600}}, {"if": "counter.dowry_bonus >= 1", "then": [{"add": {"res.coin": 150}}]}]}, {"set": "flag.c3_corbie_vineyard"}, {"set": "flag.noble_marriage"}, {"add": {"rep.valdrenne": 2, "rep.crown": -1}}, {"set": "flag.c3_corbie_kin"}]}
+    - {"if": "alias.spouse == fiammetta_lanzi", "then": [{"if": "flag.c3_asked_nothing", "then": [], "else": [{"add": {"res.coin": 9600}}, {"if": "counter.dowry_bonus >= 1", "then": [{"add": {"res.coin": 2400}}]}]}, {"set": "flag.noble_marriage"}, {"add": {"rep.sarenza": 2, "rep.merchants": 1, "rep.church": -1}}, {"set": "flag.c3_lanzi_kin"}]}
+    - {"if": "alias.spouse == clemence_vaux", "then": [{"if": "flag.c3_asked_nothing", "then": [], "else": [{"add": {"res.coin": 4800}}, {"if": "counter.dowry_bonus >= 1", "then": [{"add": {"res.coin": 1200}}]}]}, {"set": "flag.c3_sauvemer_house"}, {"set": "flag.noble_marriage"}, {"add": {"rep.valdrenne": 2, "estate.temper": 2}}]}
+    - {"if": "alias.spouse == alienor_brese", "then": [{"if": "flag.c3_asked_nothing", "then": [], "else": [{"add": {"res.coin": 2400}}, {"if": "counter.dowry_bonus >= 1", "then": [{"add": {"res.coin": 600}}]}]}, {"set": "flag.noble_marriage"}, {"add": {"rep.valdrenne": 3, "estate.temper": 1}}, {"set": "flag.c3_brese_kin"}, {"set": "flag.c3_border_peace"}]}
+    - {"if": "alias.spouse == philippa_ashdown", "then": [{"if": "flag.c3_asked_nothing", "then": [], "else": [{"add": {"res.coin": 2400}}, {"if": "counter.dowry_bonus >= 1", "then": [{"add": {"res.coin": 600}}]}]}, {"set": "flag.c3_holds_ashdown"}, {"set": "flag.noble_marriage"}, {"add": {"rep.crown": 2, "rep.nobles": 1}}]}
+  text: |
+    [if alias.spouse == mag_coker || alias.spouse == annot_dyer || alias.spouse == mariot_wood || alias.spouse == nell_laundress]You are married at the church door on a wet [if alias.spouse == mag_coker]Ashby[elif alias.spouse == annot_dyer]Wendham[elif alias.spouse == mariot_wood]Hollin[else]Ravell[/if] morning, in front of everyone you ever knew as a boy and a good many people who have walked over from the next parish to see a lord marry a [if alias.spouse == mag_coker]Coker[elif alias.spouse == annot_dyer]dyer's girl[elif alias.spouse == mariot_wood]forester's girl[else]laundry girl[/if].
+
+    [if alias.spouse == mag_coker]Mag wears blue, and her mother's ring, and a look that dares anyone to say a word. Nobody does.[elif alias.spouse == annot_dyer]Annot has scrubbed her hands for three days, and they are still faintly blue, and she has given up and is holding them out in front of her like a prize.[elif alias.spouse == mariot_wood]Mariot has a sprig of yew in her hair from the chase, and her father in a chair carried by four of the archers, and Kit has cried since dawn.[else]Nell laughs all the way through the vows, and the priest has to stop twice, and by the end the whole church is laughing with her, even Lady Ravell, almost.[/if]
+
+    [break]
+
+    "Never thought I'd see it," an old woman says, close behind you, not quietly. "The [if background == reeve]reeve's[elif background == burgess]Mercer[elif background == archer]Fletcher[else]tirewoman's[/if] boy. Look at the cloak on him."[elif alias.spouse == cecily_fuller || alias.spouse == fiammetta_lanzi][if alias.spouse == cecily_fuller]You are married in Saint Mary's, Wendham, the guild church, with the whole council in their furs and Master Osbert weeping openly into a handkerchief the size of a sail. Cecily, in green, checks the priest's Latin under her breath.[else]You are married in Sauvemer cathedral, which the bishop resents, by the bishop, who resents it more. The Lanzi house pays for everything, and makes sure the town knows it: the street is hung with cloth from the harbour to the door, and there are oranges for the children.[/if]
+
+    [break]
+
+    At the feast an old merchant with a gold chain leans over to you and says, "Mind her accounts, my lord. She'll mind yours." Everyone at the table laughs, except the bride, who is busy minding them already.[elif alias.spouse == isabel_sayer || alias.spouse == joan_wyck || alias.spouse == maud_delisle || alias.spouse == alys_fane || alias.spouse == philippa_ashdown][if alias.spouse == philippa_ashdown]You are married in the King's chapel at Wendmere, with the King himself at the door, which is an honour, and is meant to be seen to be one. Philippa says the words clearly, looking at the altar.[elif alias.spouse == maud_delisle]You are married in the Queen's chapel at Wendmere, quickly, before anybody can change their mind. Maud says the vows as if she were signing a treaty, and then, at the door, kisses you hard enough to knock your hat off, in front of the court.[elif alias.spouse == alys_fane]You are married at Westry, in the Earl's chapel, with three hundred guests, eleven of whom you have met. The Earl gives his daughter away with a face like a man selling a good horse for a poor price. Alys, in cloth of silver, catches your eye halfway through the Mass and nearly laughs.[elif alias.spouse == isabel_sayer]You are married at Ravell, in the chapel where you used to serve Mass, with Lady Ravell in the front pew and Father Benet officiating, pleased as a cat. Isabel's six sisters fill two benches and cry in turns.[else]You are married at Wyck, in the little church by the orchard, with the cider-press going in the yard because it is the season and Joan will not stop it for anybody. Ralph Wyck does not come.[/if]
+
+    [break]
+
+    At the feast an old knight you do not know leans over to you and says, "New man, eh? Married well, though. That's the way. That's how my grandfather did it." He means it kindly. You decide to take it so.[elif alias.spouse == heloise_corbie || alias.spouse == clemence_vaux || alias.spouse == alienor_brese][if alias.spouse == alienor_brese]You are married on the bridge at the Pont-aux-Moines, in the middle, with the border running under your feet: your men at one end, Brésy's at the other, both with their swords left in the carts by order. Two priests, two languages, one Mass.[elif alias.spouse == heloise_corbie]You are married at Corbie, in the chapel with the roof still half-mended, under a safe-conduct and the King's grudging licence. Raoul gives his sister away with his jaw set, and then gets drunk, and makes a speech in two languages about Les Salines that nobody understands and everyone applauds.[else]You are married in the church of Saint-Nicolas in Sauvemer, which has a cannon-ball from the siege set into its wall. Half the town comes to see it, and half of them came to jeer and stayed to drink.[/if]
+
+    [break]
+
+    "An Adalian," an old woman says, close behind you, in Valdrennish, not quietly. "Well. At least he's a tall one."[/if]
+  choices:
+    - id: feast
+      text: "Feast the whole manor, whatever it costs."
+      tags: ["allies", "wealth"]
+      text_after: |
+        You roast two oxen and broach every cask in the cellar, and the manor eats and drinks and dances for two days, and at the end of it [if flag.c2_granted_marsalin]Margot of the salt-boilers[elif flag.c2_granted_kerval]Gwenaël[else]Bastien[/if] makes a speech that nobody can hear and everybody cheers. [if estate.temper <= -1]It does not buy back everything. But it buys back something.[else]For a while afterwards people smile at you in the lane.[/if]
+      effects: [{"add": {"res.coin": -720, "estate.temper": 2, "rep.commons": 1, "rel.@spouse.affection": 1}}]
+      next: "c3_first_year"
+    - id: church
+      text: "A plain wedding, and the money to the church and the poor."
+      tags: ["piety"]
+      text_after: |
+        You keep it plain: the vows, the Mass, a dinner for the household. The money you would have spent goes to the church roof and the plague widows. [if flag.c2_granted_marsalin]Père Yves[elif flag.c2_granted_kerval]Dom Hervé[else]Père Guérin[/if] says it is the most sensible wedding he has seen in thirty years. Some of the village say you are mean. The widows do not.
+      effects: [{"add": {"res.coin": -240, "estate.church": 1, "estate.temper": 1, "rep.piety": 1}}]
+      next: "c3_first_year"
+    - id: hers
+      text: "Let her have the wedding she wants."
+      tags: ["allies"]
+      text_after: |
+        You let her have it her way, all of it, and it costs more than you meant and is better than you would have made it. [if alias.spouse == mag_coker || alias.spouse == nell_laundress]She wants dancing, so there is dancing, all night, and she dances with every man in the parish and then with you, last, and longest.[elif alias.spouse == cecily_fuller || alias.spouse == fiammetta_lanzi]She wants it done properly, and it is: every guest placed exactly, every gift recorded. She shows you the list afterwards, in bed, and explains who will want what in return.[else]She wants musicians from the town, and there are musicians, and she makes you dance though you cannot, and laughs at you, and does not let go of your hand.[/if]
+      effects: [{"add": {"res.coin": -480, "rel.@spouse.affection": 3, "suit.@spouse.regard": 1}}]
+      next: "c3_first_year"
+
+- id: c3_first_year
+  chapter: ch3
+  title: "Husband and Wife"
+  on_enter:
+    - {"advance": {"seasons": 1}}
+  text: |
+    The first winter you are married, you discover that you know nothing whatever about anything.
+
+    [if alias.spouse == mag_coker || alias.spouse == annot_dyer || alias.spouse == mariot_wood || alias.spouse == nell_laundress]She is not a lady, and the county will not let either of you forget it. The wives of the neighbouring knights do not call. When you dine at [if flag.c2_granted_kerval]the Duchess's court[else]the governor's table in Sauvemer[/if], she is seated below the salt, by accident, twice. She says nothing about it at the time. On the ride home she says, "I can milk a cow, keep a garden, salt a pig and knock a man down. I can't eat an orange with a knife. Is that what they want?"[elif alias.spouse == cecily_fuller || alias.spouse == fiammetta_lanzi]She wants the books. Not some of them: all of them. The manor's rents, the salt, the debts, the lien, your own purse. [if alias.spouse == cecily_fuller]"I married you," Cecily says, "not your steward. Your steward is a thief."[else]"In Sarenza," Fiammetta says, "a wife who does not keep the books is a wife who does not know her husband is ruined until the bailiffs come."[/if] Your steward, who has been listening at the door, goes white.[elif alias.spouse == isabel_sayer || alias.spouse == joan_wyck || alias.spouse == maud_delisle || alias.spouse == alys_fane || alias.spouse == philippa_ashdown][if alias.spouse == philippa_ashdown]She is polite to you, always. She manages the household well, and her women adore her, and at night she turns her face to the wall. It is the King's marriage, not hers, and she has not forgiven anybody for it, and you are the only one in reach.[elif alias.spouse == maud_delisle]She has her own ideas of how a lord's house is run, learned at Ravell and at court, and none of them include you deciding anything. Lisle is hers, she says, and she will run it, and she would like you to stop interfering with the reeves.[else]She knows how a gentle house is run, and yours is not one. She says so, kindly, the first week, and then less kindly the third week, when nothing has changed.[/if][elif alias.spouse == heloise_corbie || alias.spouse == clemence_vaux || alias.spouse == alienor_brese]Your Adalians do not trust her. [if npc.hodge_brewster.met]Hodge Brewster's settlers call her "the Valdrennish woman" in the alehouse, and worse in the fields.[else]Your own men call her "madame" to her face and other things behind it.[/if] The village loves her, which makes it worse. When there is a quarrel between an Adalian and a local, she takes the local's side every time, in front of everybody, and you have to decide whether to back her.[/if]
+
+    [break]
+
+    It comes to a head at Candlemas, in the hall, in front of the household, the way these things always do.
+  choices:
+    - id: keys
+      text: "Give her the keys and the books, and let her run the house."
+      tags: ["allies", "wealth"]
+      text_after: |
+        You give her the keys. All of them. The household watches you do it, and then watches her, and within a week the hall is swept, the steward is accounting for every penny and sweating, [if alias.spouse == alienor_brese || alias.spouse == heloise_corbie || alias.spouse == clemence_vaux]and the village comes to the hall with its quarrels instead of to the priest[else]and the dogs are off the table[/if]. You find you have time to think. You find you do not much like what you think about, which is that you should have done it sooner.
+      effects: [{"set": "flag.c3_wife_keys"}, {"add": {"rel.@spouse.affection": 2, "rel.@spouse.respect": 2, "estate.food": 1, "estate.temper": 1}}]
+      next: "c3_lying_in"
+    - id: stand
+      text: "Stand with her in public, whatever it costs you with the neighbours."
+      tags: ["allies"]
+      text_after: |
+        You stand with her. [if alias.spouse == mag_coker || alias.spouse == annot_dyer || alias.spouse == mariot_wood || alias.spouse == nell_laundress]The next time she is seated below the salt, you get up and go and sit beside her, and the governor's whole table watches you do it. You are not asked back. You find you do not care.[elif alias.spouse == alienor_brese || alias.spouse == heloise_corbie || alias.spouse == clemence_vaux]The next time she takes a local's side against one of your Adalians, you back her, in front of everyone, and the Adalian is fined. Your own men are slow to forgive it. The village is not.[else]You take her part in front of the household, plainly, and anybody who has a quarrel with her has a quarrel with you. Nobody has a quarrel with her after that, or not out loud.[/if]
+      effects: [{"set": "flag.c3_stood_by_wife"}, {"add": {"rel.@spouse.affection": 3, "rel.@spouse.respect": 1}}, {"if": {"any": ["alias.spouse == mag_coker", "alias.spouse == annot_dyer", "alias.spouse == mariot_wood", "alias.spouse == nell_laundress"]}, "then": [{"add": {"rep.nobles": -1, "rep.commons": 1}}]}, {"if": {"any": ["alias.spouse == heloise_corbie", "alias.spouse == clemence_vaux", "alias.spouse == alienor_brese"]}, "then": [{"add": {"estate.temper": 1, "rep.valdrenne": 1}}]}]
+      next: "c3_lying_in"
+    - id: own
+      text: "It is your manor. Keep your own counsel."
+      tags: ["cunning"]
+      text_after: |
+        You tell her, kindly, in private, that the manor is yours and you will run it. She hears you out. She says, "Yes, my lord," in a voice you have never heard her use, and goes out. You win. It is the loneliest winter of your life, and the household, which knows everything, walks round the two of you on tiptoe until spring.
+      effects: [{"set": "flag.c3_kept_counsel"}, {"add": {"rel.@spouse.affection": -2, "rel.@spouse.respect": -1}}]
+      next: "c3_lying_in"
+
+- id: c3_lying_in
+  chapter: ch3
+  title: "Lying-In"
+  on_enter:
+    - {"advance": {"seasons": 1}}
+  text: |
+    [if flag.c3_kept_counsel]In the spring, things thaw a little, as things do.[else]In the spring she takes your hand in the orchard[if flag.c2_granted_kerval][else], such as it is,[/if] and puts it on her belly, and waits for you to understand.[/if] She is with child. The baby will come at harvest, she thinks, or a little after.
+
+    [break]
+
+    The manor is delighted. Old women stop her in the lane to feel her belly and tell her it is a boy, from the way she carries, or a girl, from the way she walks. [if flag.c2_granted_marsalin]Margot[elif flag.c2_granted_kerval]Gwenaël's wife[else]Bastien's sister[/if] brings an eagle-stone to tie to her arm. The priest says a Mass.
+
+    You are not delighted. You are frightened, all the time, in a way the war never managed. [if flag.c3_sat_with_man || flag.c3_nursed]You have seen what fever does in a closed room.[/if] Everybody knows a woman who died in childbed. Everybody knows several. [if alias.master == hamon_darrell]Sir Hamon's Alice did, eleven years before you knew him, and he still talks to her at night.[/if]
+
+    [break]
+
+    There are choices to make about who will be in the room, and you, being a man, will not be.
+  choices:
+    - id: physician
+      text: "Send to Sauvemer for the Sarenzan physician, the best money can buy."
+      tags: ["wealth", "learning"]
+      requires: ["res.coin >= 480"]
+      text_after: |
+        Maestro Orsini comes up from Sauvemer with two boys carrying his books and a box of instruments that the midwife looks at as if they were snakes. He casts her horoscope, and bleeds her twice for balance, and is confident of everything. Your wife does not like him. Neither do the women. They do as he says anyway, because he cost two pounds.
+      effects: [{"set": "flag.c3_birth_physician"}, {"add": {"res.coin": -480}}]
+      next: "c3_childbed"
+    - id: midwife
+      text: "Get the best midwife in the country, and let her do as she thinks fit."
+      tags: ["allies"]
+      text_after: |
+        [if flag.c2_granted_marsalin]Old Mère Fanchon from the salt-town[elif flag.c2_granted_kerval]Mère Soizic from the abbey village, who has delivered half the Armance[else]The midwife from Saint-Aubin across the marsh, a little bent woman with enormous hands[/if] comes to the manor in the last month and moves into the solar, and from that moment it is her house, not yours. She sends you out of every room you go into. She has delivered, she says, more babies than you have killed men, and lost fewer.
+      effects: [{"set": "flag.c3_birth_midwife"}, {"add": {"estate.temper": 1}}]
+      next: "c3_childbed"
+    - id: relic
+      text: "Borrow the girdle of Saint Margaret from the abbey, and trust to God."
+      tags: ["piety"]
+      text_after: |
+        The abbey lends you the girdle of Saint Margaret, which is a strip of old red silk, brown at the edges, in a silver case and has been tied round the bellies of half the gentlewomen in the country. It costs a donation. [if flag.c2_granted_marsalin]Père Yves[elif flag.c2_granted_kerval]Dom Hervé[else]Père Guérin[/if] carries it up from the abbey himself, in procession, with candles. Whether it does anything, nobody can say. Your wife holds it in both hands every night, and sleeps better.
+      effects: [{"set": "flag.c3_birth_relic"}, {"add": {"res.coin": -120, "rep.piety": 1, "rep.church": 1}}]
+      next: "c3_childbed"
+
+- id: c3_childbed
+  chapter: ch3
+  title: "Childbed"
+  on_enter:
+    - {"advance": {"seasons": 2}}
+    - {"birth": "random"}
+    - {"if": "flag.c3_birth_physician", "then": [{"chance": 5, "then": [{"set": "flag.c3_wife_died_childbed"}]}], "else": [{"if": "flag.c3_birth_relic", "then": [{"chance": 3, "then": [{"set": "flag.c3_wife_died_childbed"}]}], "else": [{"chance": 2, "then": [{"set": "flag.c3_wife_died_childbed"}]}]}]}
+    - {"if": "flag.c3_wife_died_childbed", "then": [{"kill": "@spouse"}]}
+  text: |
+    It starts in the night, the way they always do, and they send you out.
+
+    You stand in the yard. Then you walk up and down the yard. Then you sit on the mounting-block, and get up, and walk up and down again. [if npc.davy_ludd.alive]Davy brings you a cup of something and stands with you, and does not try to talk.[elif retinue >= 1]One of your men brings you a cup of something and stands with you, and does not try to talk.[else]Nobody comes. It is the middle of the night.[/if] From the solar there are sounds you have heard before, on battlefields, and did not expect to hear in your own house.
+
+    [break]
+
+    It goes on all night, and into the morning, and past noon. [if flag.c3_birth_physician]Twice Maestro Orsini comes down for more hot water and a different powder, looking less confident each time.[elif flag.c3_birth_midwife]Once the midwife comes to the door and looks out at you, and shakes her head, not at the baby, at you, and goes back in.[else]Twice they send down for the priest, and twice they send him away again.[/if]
+
+    And then, in the middle of the afternoon, a thin furious wail, and the women laughing.
+
+    [break]
+
+    [if flag.c3_wife_died_childbed]The baby lives. A [if heirs.last == son]boy[else]girl[/if], red, angry, perfect.
+
+    {npc.@spouse} does not. The bleeding will not stop. The women do everything that can be done, and it is not enough, and by the time they let you in she knows it. She is white as linen, and calm. She says your name, and something about the baby, and something else you do not catch, and then nothing, and you are holding her hand and it is only a hand.
+
+    They bury her in the chancel. The whole manor comes. You do not remember any of it except the sound of the baby crying, somewhere at the back of the church, all the way through the Mass.[else]A [if heirs.last == son]boy[else]girl[/if]. Red, furious, perfect, with a fist like a walnut. They put it in your arms, and you hold it the way you would hold a hawk, or a lit fuse, and everyone laughs at you, and {npc.@spouse}, white and wrecked and grinning in the bed, laughs hardest of all.
+
+    "Well," she says. "Go on, then. Give it a name."[/if]
+  choices:
+    - id: son_father
+      text: "[if background == reeve]Piers[elif background == burgess]Ralf[else]Hugh[/if], for your father."
+      tags: ["allies"]
+      visible_if: ["heirs.last == son", "background != servant"]
+      text_after: |
+        [if flag.c3_wife_died_childbed]The priest writes it in the book, under her name, on the same page.[else]{heirs.lastname}, the priest writes in the book, and the date, and your name, and hers. The manor drinks the child's health for three days, and [if flag.c2_granted_marsalin]Margot[elif flag.c2_granted_kerval]Gwenaël[else]Bastien[/if] makes another speech.[/if]
+      effects: [{"if": "background == reeve", "then": [{"name_heir": "Piers"}]}, {"if": "background == burgess", "then": [{"name_heir": "Ralf"}]}, {"if": "background == archer", "then": [{"name_heir": "Hugh"}]}]
+      next: "c3_match_end"
+    - id: son_self
+      text: "{name}, for yourself."
+      tags: ["cunning"]
+      visible_if: ["heirs.last == son"]
+      text_after: |
+        [if flag.c3_wife_died_childbed]The priest writes it in the book, under her name, on the same page.[else]{heirs.lastname}, the priest writes in the book, and the date, and your name, and hers. The manor drinks the child's health for three days, and [if flag.c2_granted_marsalin]Margot[elif flag.c2_granted_kerval]Gwenaël[else]Bastien[/if] makes another speech.[/if]
+      effects: [{"name_heir": "@self"}]
+      next: "c3_match_end"
+    - id: son_master
+      text: "[if alias.master == hamon_darrell]Hamon[elif alias.master == ancel_brome]Ancel[elif alias.master == walter_pryce]Walter[else]Thurstan[/if], for your old master."
+      tags: ["allies"]
+      visible_if: ["heirs.last == son"]
+      text_after: |
+        [if flag.c3_wife_died_childbed]The priest writes it in the book, under her name, on the same page.[else]{heirs.lastname}, the priest writes in the book, and the date, and your name, and hers. The manor drinks the child's health for three days, and [if flag.c2_granted_marsalin]Margot[elif flag.c2_granted_kerval]Gwenaël[else]Bastien[/if] makes another speech.[/if]
+      effects: [{"if": "alias.master == hamon_darrell", "then": [{"name_heir": "Hamon"}]}, {"if": "alias.master == ancel_brome", "then": [{"name_heir": "Ancel"}]}, {"if": "alias.master == walter_pryce", "then": [{"name_heir": "Walter"}]}, {"if": "alias.master == thurstan_ravell", "then": [{"name_heir": "Thurstan"}]}]
+      next: "c3_match_end"
+    - id: son_king
+      text: "Aldred, for the King."
+      tags: ["diplomacy"]
+      visible_if: ["heirs.last == son"]
+      text_after: |
+        [if flag.c3_wife_died_childbed]The priest writes it in the book, under her name, on the same page.[else]{heirs.lastname}, the priest writes in the book, and the date, and your name, and hers. The manor drinks the child's health for three days, and [if flag.c2_granted_marsalin]Margot[elif flag.c2_granted_kerval]Gwenaël[else]Bastien[/if] makes another speech.[/if]
+      effects: [{"name_heir": "Aldred"}, {"add": {"rep.crown": 1}}]
+      next: "c3_match_end"
+    - id: dau_mother
+      text: "[if background == reeve]Edith[elif background == burgess]Margery[elif background == archer]Alison[else]Agnes[/if], for your mother."
+      tags: ["allies"]
+      visible_if: ["heirs.last == daughter"]
+      text_after: |
+        [if flag.c3_wife_died_childbed]The priest writes it in the book, under her name, on the same page.[else]{heirs.lastname}, the priest writes in the book, and the date, and your name, and hers. The manor drinks the child's health for three days, and [if flag.c2_granted_marsalin]Margot[elif flag.c2_granted_kerval]Gwenaël[else]Bastien[/if] makes another speech.[/if]
+      effects: [{"if": "background == reeve", "then": [{"name_heir": "Edith"}]}, {"if": "background == burgess", "then": [{"name_heir": "Margery"}]}, {"if": "background == archer", "then": [{"name_heir": "Alison"}]}, {"if": "background == servant", "then": [{"name_heir": "Agnes"}]}]
+      next: "c3_match_end"
+    - id: dau_wife
+      text: "For her mother."
+      tags: ["allies"]
+      visible_if: ["heirs.last == daughter"]
+      text_after: |
+        [if flag.c3_wife_died_childbed]The priest writes it in the book, under her name, on the same page.[else]{heirs.lastname}, the priest writes in the book, and the date, and your name, and hers. The manor drinks the child's health for three days, and [if flag.c2_granted_marsalin]Margot[elif flag.c2_granted_kerval]Gwenaël[else]Bastien[/if] makes another speech.[/if]
+      effects: [{"if": "alias.spouse == mag_coker", "then": [{"name_heir": "Margaret"}]}, {"if": "alias.spouse == annot_dyer", "then": [{"name_heir": "Annot"}]}, {"if": "alias.spouse == mariot_wood", "then": [{"name_heir": "Mariot"}]}, {"if": "alias.spouse == nell_laundress", "then": [{"name_heir": "Eleanor"}]}, {"if": "alias.spouse == isabel_sayer", "then": [{"name_heir": "Isabel"}]}, {"if": "alias.spouse == maud_delisle", "then": [{"name_heir": "Maud"}]}, {"if": "alias.spouse == cecily_fuller", "then": [{"name_heir": "Cecily"}]}, {"if": "alias.spouse == joan_wyck", "then": [{"name_heir": "Joan"}]}, {"if": "alias.spouse == alys_fane", "then": [{"name_heir": "Alys"}]}, {"if": "alias.spouse == heloise_corbie", "then": [{"name_heir": "Héloïse"}]}, {"if": "alias.spouse == fiammetta_lanzi", "then": [{"name_heir": "Fiammetta"}]}, {"if": "alias.spouse == clemence_vaux", "then": [{"name_heir": "Clémence"}]}, {"if": "alias.spouse == alienor_brese", "then": [{"name_heir": "Aliénor"}]}, {"if": "alias.spouse == philippa_ashdown", "then": [{"name_heir": "Philippa"}]}, {"add": {"rel.@spouse.affection": 1}}]
+      next: "c3_match_end"
+    - id: saint
+      text: "[if flag.c3_wife_died_childbed]Let the priest choose a saint's name.[else]Let her choose.[/if]"
+      tags: ["piety"]
+      text_after: |
+        [if flag.c3_wife_died_childbed]The priest chooses {heirs.lastname}, for the saint, and you nod, because you cannot speak.[else]She does not even have to think. "{heirs.lastname}," she says, "for the saint who brought us through." Then she goes to sleep, in the middle of the word.[/if]
+      effects: [{"if": "heirs.last == son", "then": [{"name_heir": "John"}], "else": [{"name_heir": "Margaret"}]}, {"add": {"rep.piety": 1}}]
+      next: "c3_match_end"
+    - id: dau_queen
+      text: "Ysolde, for the Queen Mother."
+      tags: ["diplomacy"]
+      visible_if: ["heirs.last == daughter"]
+      text_after: |
+        [if flag.c3_wife_died_childbed]The priest writes it in the book, under her name, on the same page.[else]{heirs.lastname}, the priest writes in the book, and the date, and your name, and hers. The manor drinks the child's health for three days, and [if flag.c2_granted_marsalin]Margot[elif flag.c2_granted_kerval]Gwenaël[else]Bastien[/if] makes another speech.[/if]
+      effects: [{"name_heir": "Ysolde"}, {"add": {"rep.crown": 1}}]
+      next: "c3_match_end"
+
+- id: c3_unwed
+  chapter: ch3
+  title: "No Wife Yet"
+  on_enter:
+    - {"advance": {"seasons": 1}}
+  text: |
+    You write the letters you have to write, and put the rest in the fire.
+
+    [if suit.philippa_ashdown.status == available]The letter to the King is the hardest. You thank him for his great kindness and plead the manor, the border, the plague, your unworthiness. It is a good letter. Father Benet would have been proud of it. The King, you hear, reads it, and says nothing, and gives Lady Philippa to somebody else within the month, and does not forget.[/if] [if suit.alienor_brese.status == available]Sire Gautier's chaplain goes back across the border with a polite refusal, and next spring the Brésy men cut the hay at the Pont-aux-Moines again, and burn the barn when your people object.[/if]
+
+    The manor does not understand. [if flag.c2_granted_marsalin]Margot[elif flag.c2_granted_kerval]Gwenaël[else]Bastien[/if] says so, to your face, in the lane. The priest says so, more politely, from the pulpit. You are a young lord with land and no heir, and every year that goes by without one is a year the manor lives on borrowed time.
+  choices:
+    - id: go_on
+      text: "There is time yet."
+      tags: ["yield"]
+      text_after: |
+        Perhaps. Other men have married at forty. Other men have died at thirty with nobody to come after them. You know which list is longer.
+      effects: [{"set": "flag.c3_stayed_unwed"}, {"add": {"estate.temper": -1}}, {"if": "suit.philippa_ashdown.status == available", "then": [{"add": {"rep.crown": -2}}, {"set": "flag.c3_refused_king_ward"}]}, {"if": "suit.alienor_brese.status == available", "then": [{"add": {"rep.valdrenne": -1}}, {"set": "flag.c3_refused_brese"}]}]
+      next: "c3_match_end"
+
+- id: c3_match_end
+  chapter: ch3
+  kind: ending
+  ending: ch3_complete
+  title: "The Harvest of Year Thirty"
+  text: |
+    [if flag.c3_married && npc.@spouse.alive]The harvest is in. The baby sleeps in a basket by the hall fire, and the dogs, who have been put off the table, lie round it like a guard.[elif flag.c3_married]The harvest is in. The baby sleeps in a basket by the hall fire, and a wet-nurse from the village sits beside it, and you sit up late, most nights, not reading the accounts.[else]The harvest is in. The hall is quiet. The dogs are on the table again.[/if]
+
+    End of the chapters written so far. Chapter 3 continues with the Reckoning.

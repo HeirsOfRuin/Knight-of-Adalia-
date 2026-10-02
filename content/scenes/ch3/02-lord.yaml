@@ -206,7 +206,7 @@
 - id: c3_truce_ends
   chapter: ch3
   title: Lady Day
-  on_enter: [ { advance: { seasons: 2 } } ]
+  on_enter: [ { advance: { seasons: 3 } } ]
   text: |
     The truce of Saint-Lys runs out at Lady Day, three years to the day after the bankers made it, and nobody renews it, and nobody declares war either.
 
@@ -486,10 +486,23 @@
 
 - id: c3_second_spring
   chapter: ch3
-  kind: ending
-  ending: ch3_complete
   title: The Second Spring
-  on_enter: [ { advance: { seasons: 1 } } ]
+  on_enter:
+    - {"advance": {"seasons": 1}}
+    - {"if": ["background == reeve", "suit.mag_coker.status >= courted", "suit.mag_coker.regard >= 5", {"any": ["suit.mag_coker.pledge >= token", "flag.p_promised_girl"]}], "then": [{"assign": {"suit.mag_coker.status": "available"}}]}
+    - {"if": ["background == burgess", "suit.annot_dyer.status >= courted", "suit.annot_dyer.regard >= 5", {"any": ["suit.annot_dyer.pledge >= token", "flag.p_promised_girl"]}], "then": [{"assign": {"suit.annot_dyer.status": "available"}}]}
+    - {"if": ["background == archer", "suit.mariot_wood.status >= courted", "suit.mariot_wood.regard >= 5", {"any": ["suit.mariot_wood.pledge >= token", "flag.p_promised_girl"]}], "then": [{"assign": {"suit.mariot_wood.status": "available"}}]}
+    - {"if": ["background == servant", "suit.nell_laundress.status >= courted", "suit.nell_laundress.regard >= 5", {"any": ["suit.nell_laundress.pledge >= token", "flag.p_promised_girl"]}], "then": [{"assign": {"suit.nell_laundress.status": "available"}}]}
+    - {"if": ["suit.isabel_sayer.status >= courted", "suit.isabel_sayer.regard >= 5"], "then": [{"assign": {"suit.isabel_sayer.status": "available"}}]}
+    - {"if": ["suit.maud_delisle.status >= known", "suit.maud_delisle.regard >= 5"], "then": [{"assign": {"suit.maud_delisle.status": "available"}}]}
+    - {"if": ["suit.cecily_fuller.status >= courted", "suit.cecily_fuller.regard >= 5"], "then": [{"assign": {"suit.cecily_fuller.status": "available"}}]}
+    - {"if": ["suit.joan_wyck.status >= courted", "suit.joan_wyck.regard >= 5"], "then": [{"assign": {"suit.joan_wyck.status": "available"}}]}
+    - {"if": ["suit.alys_fane.status >= courted", "suit.alys_fane.regard >= 3"], "then": [{"assign": {"suit.alys_fane.status": "available"}}]}
+    - {"if": ["suit.heloise_corbie.status >= known", "suit.heloise_corbie.regard >= 5"], "then": [{"assign": {"suit.heloise_corbie.status": "available"}}]}
+    - {"if": ["suit.fiammetta_lanzi.status >= known", "suit.fiammetta_lanzi.regard >= 5"], "then": [{"assign": {"suit.fiammetta_lanzi.status": "available"}}]}
+    - {"if": ["suit.clemence_vaux.status >= known", "suit.clemence_vaux.regard >= 5"], "then": [{"assign": {"suit.clemence_vaux.status": "available"}}]}
+    - {"assign": {"suit.alienor_brese.status": "available"}}
+    - {"if": [{"any": ["rep.crown >= 3", "res.renown >= 15"]}], "then": [{"assign": {"suit.philippa_ashdown.status": "available"}}]}
   text: |
     Two years. The manor has [if estate.people >= 250]more people than the day you came, near enough[elif estate.people >= 180]filled up again, mostly, with strangers and children[else]never quite filled up again[/if], and [if estate.food >= 3]the barns are full[elif estate.food >= 1]the barns are not empty[else]the barns are bare, and everyone knows it[/if], and the village is [if estate.temper >= 3]yours, as much as any village is any man's[elif estate.temper >= 0]used to you, which is something[else]waiting for you to fail[/if].
 
@@ -497,4 +510,37 @@
 
     In Lent a letter comes from home, and another from [if flag.c2_granted_kerval]the Duchess[else]Sauvemer[/if], and a third from someone you have not heard from in a long time. They are all, one way or another, about the same thing. You are twenty-eight. You hold land. People have started asking, at dinner, in letters, in the street, when you mean to marry.
 
-    End of the chapters written so far. Chapter 3 continues with the Match and the Reckoning.
+    [if suit.mag_coker.status == known || suit.mag_coker.status == courted || suit.annot_dyer.status == known || suit.annot_dyer.status == courted || suit.mariot_wood.status == known || suit.mariot_wood.status == courted || suit.nell_laundress.status == known || suit.nell_laundress.status == courted || suit.isabel_sayer.status == known || suit.isabel_sayer.status == courted || suit.maud_delisle.status == known || suit.maud_delisle.status == courted || suit.cecily_fuller.status == known || suit.cecily_fuller.status == courted || suit.joan_wyck.status == known || suit.joan_wyck.status == courted || suit.alys_fane.status == known || suit.alys_fane.status == courted || suit.heloise_corbie.status == known || suit.heloise_corbie.status == courted || suit.fiammetta_lanzi.status == known || suit.fiammetta_lanzi.status == courted || suit.clemence_vaux.status == known || suit.clemence_vaux.status == courted]
+
+    [break]
+
+    Some of the letters are about other people's weddings.
+
+    [if suit.mag_coker.status == known || suit.mag_coker.status == courted]Mag Coker married a thatcher from the far end of Ashby the year you went to the war. Your mother writes that she has three boys and a temper, and that she asked after you once, at the well, and then said she did not care to know.[/if]
+
+    [if suit.annot_dyer.status == known || suit.annot_dyer.status == courted]Annot Dyer married a fuller's journeyman two Michaelmases back. Your mother writes it among the prices of wool, as news of trade, which is how Wendham writes everything.[/if]
+
+    [if suit.mariot_wood.status == known || suit.mariot_wood.status == courted]Mariot Wood married the new under-forester when her father's chest went bad, so the place would stay in the family. It was sense, Kit writes. Mariot always had sense.[/if]
+
+    [if suit.nell_laundress.status == known || suit.nell_laundress.status == courted]Nell from the laundry married a carter and went to Wendham. Father Benet writes that the laundry is quiet now, and that he does not miss the noise, and then crosses it out.[/if]
+
+    [if suit.isabel_sayer.status == known || suit.isabel_sayer.status == courted]Isabel Sayer's father found her a husband at last: a widowed knight in Hollesby, old enough to be her father. She writes that he is kind, and deaf, and that both are blessings.[/if]
+
+    [if suit.maud_delisle.status == known || suit.maud_delisle.status == courted]Lady Maud's marriage was sold by the Crown last winter to the Earl of Carrow's nephew, for a sum the heralds still argue about. You hear she did not argue. You hear she did not speak at all, at the church door, except to say the words.[/if]
+
+    [if suit.cecily_fuller.status == known || suit.cecily_fuller.status == courted]Cecily Fuller married the Sarenzan factor who asked for her years ago. She keeps his books in Wendham now, and the word is that the Fullers' trade has doubled.[/if]
+
+    [if suit.joan_wyck.status == known || suit.joan_wyck.status == courted]Dame Joan Wyck has married again, a neighbour's younger son with no land of his own, and holds Wyck against her stepson with both hands. She sends you a cask of Wyck cider at Christmas with no letter, which is like her.[/if]
+
+    [if suit.alys_fane.status == known || suit.alys_fane.status == courted]Lady Alys Fane is to marry the Earl of Hythe's heir at Michaelmas. The whole court is going. You are not invited, which is a kind of compliment: somebody thought about it.[/if]
+
+    [if suit.heloise_corbie.status == known || suit.heloise_corbie.status == courted]Héloïse de Corbie has gone into the convent at Saint-Lys, now her brother's ransom is paid and there is nothing left for a dowry. She writes that it is quieter than she expected, and less quiet than she hoped.[/if]
+
+    [if suit.fiammetta_lanzi.status == known || suit.fiammetta_lanzi.status == courted]Fiammetta Lanzi has married her cousin from Sarenza, as the house required. The letter that announces it is on bank paper, and has a postscript in her own hand that you read more than once.[/if]
+
+    [if suit.clemence_vaux.status == known || suit.clemence_vaux.status == courted]Dame Clémence de Vaux has gone home to her own people in the south, beyond the truce line, and taken her husband's bones with her.[/if][/if]
+  choices:
+    - id: think
+      text: "Sit down with the letters, and think about it properly."
+      effects: [{"if": {"any": ["suit.mag_coker.status == known", "suit.mag_coker.status == courted"]}, "then": [{"assign": {"suit.mag_coker.status": "lost"}}]}, {"if": {"any": ["suit.annot_dyer.status == known", "suit.annot_dyer.status == courted"]}, "then": [{"assign": {"suit.annot_dyer.status": "lost"}}]}, {"if": {"any": ["suit.mariot_wood.status == known", "suit.mariot_wood.status == courted"]}, "then": [{"assign": {"suit.mariot_wood.status": "lost"}}]}, {"if": {"any": ["suit.nell_laundress.status == known", "suit.nell_laundress.status == courted"]}, "then": [{"assign": {"suit.nell_laundress.status": "lost"}}]}, {"if": {"any": ["suit.isabel_sayer.status == known", "suit.isabel_sayer.status == courted"]}, "then": [{"assign": {"suit.isabel_sayer.status": "lost"}}]}, {"if": {"any": ["suit.maud_delisle.status == known", "suit.maud_delisle.status == courted"]}, "then": [{"assign": {"suit.maud_delisle.status": "lost"}}]}, {"if": {"any": ["suit.cecily_fuller.status == known", "suit.cecily_fuller.status == courted"]}, "then": [{"assign": {"suit.cecily_fuller.status": "lost"}}]}, {"if": {"any": ["suit.joan_wyck.status == known", "suit.joan_wyck.status == courted"]}, "then": [{"assign": {"suit.joan_wyck.status": "lost"}}]}, {"if": {"any": ["suit.alys_fane.status == known", "suit.alys_fane.status == courted"]}, "then": [{"assign": {"suit.alys_fane.status": "lost"}}]}, {"if": {"any": ["suit.heloise_corbie.status == known", "suit.heloise_corbie.status == courted"]}, "then": [{"assign": {"suit.heloise_corbie.status": "lost"}}]}, {"if": {"any": ["suit.fiammetta_lanzi.status == known", "suit.fiammetta_lanzi.status == courted"]}, "then": [{"assign": {"suit.fiammetta_lanzi.status": "lost"}}]}, {"if": {"any": ["suit.clemence_vaux.status == known", "suit.clemence_vaux.status == courted"]}, "then": [{"assign": {"suit.clemence_vaux.status": "lost"}}]}]
+      next: c3_match

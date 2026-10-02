@@ -1,5 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { applyEffects } from '../../src/engine/effects';
+import { getValue } from '../../src/engine/paths';
+import { RngCursor, seedRng } from '../../src/engine/rng';
 import { EffectSchema } from '../../src/content/schema';
 import { content, game } from '../helpers';
 
@@ -120,5 +122,30 @@ describe('train', () => {
     applyEffects(s, c, fx({ train: { command: 1, ceiling: 5, quiet: 1 } }), cx);
     expect(s.skills.command).toBe(5);
     expect(cx.changes).toEqual([]);
+  });
+});
+
+describe('heirs and chance', () => {
+  const c = content();
+  const fx = (...e: unknown[]) => e.map((x) => EffectSchema.parse(x));
+  it('records a birth, names the newest child, and reads the heirs paths', () => {
+    const s = game();
+    s.name = 'Wat';
+    applyEffects(s, c, fx({ birth: 'son' }, { name_heir: '@self' }, { birth: 'daughter' }, { name_heir: 'Alison' }), ctx());
+    expect(s.heirs!.map((h) => h.name)).toEqual(['Wat', 'Alison']);
+    expect(getValue(s, c, 'heirs.count')).toBe(2);
+    expect(getValue(s, c, 'heirs.last')).toBe('daughter');
+    expect(getValue(s, c, 'heirs.names')).toBe('Wat and Alison');
+    applyEffects(s, c, fx({ heir_dies: 'last' }), ctx());
+    expect(getValue(s, c, 'heirs.count')).toBe(1);
+    expect(getValue(s, c, 'heirs.born')).toBe(2);
+  });
+  it('takes a chance branch from the seeded cursor, and never without one', () => {
+    const s = game();
+    applyEffects(s, c, fx({ chance: 99, then: [{ set: 'flag.noble_marriage' }] }), ctx());
+    expect(s.flags.noble_marriage).toBeUndefined();
+    const rng = new RngCursor(seedRng(1));
+    applyEffects(s, c, fx({ chance: 99, then: [{ set: 'flag.noble_marriage' }] }), { ...ctx(), rng });
+    expect(s.flags.noble_marriage).toBe(true);
   });
 });

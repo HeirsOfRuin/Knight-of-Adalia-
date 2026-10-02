@@ -247,7 +247,7 @@
       text_after: |
         Short and plain: nobody wanders off alone, nobody drinks on watch, nobody takes anything from the Duchess's people, and every man gets his share of whatever comes, the same share, yours included. [if npc.roger_tallis.follower]Tallis grunts, which you take for approval.[/if] [if npc.simkin_barre.follower]Barre asks what counts as taking. You tell him. He looks disappointed and impressed.[/if]
 
-        "Hard but fair," Barre says later, rubbing his ear. "Like a schoolmaster with a sword." In the weeks to come, nobody in your following can say they did not know the rules.
+        [if npc.simkin_barre.follower]"Hard but fair," Barre says later, rubbing his ear. "Like a schoolmaster with a sword." [/if]In the weeks to come, nobody in your following can say they did not know the rules.
       effects: [ { set: flag.c2_laid_down_rules }, { add: { skill.command: 1, rel.roger_tallis.respect: 1 } } ]
       next: c2_armance
     - id: walk

@@ -199,6 +199,8 @@
   chapter: prologue
   title: The Butts
   checkpoint: true
+  on_enter:
+    - meet: will_cobb
   text: |
     "Arrows, boy! Are you deaf, or just slow?"
 

@@ -5,6 +5,9 @@
   chapter: ch1
   title: Ravell Hall
   checkpoint: true
+  on_enter:
+    - if: alias.master != hamon_darrell
+      then: [ { meet: will_cobb } ]
   text: |
     [if background == servant]You have lived at Ravell Hall all your life without ever once coming in by the front.
 

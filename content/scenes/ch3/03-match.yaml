@@ -150,7 +150,7 @@
 
     Mag is at the Cokers' door, with her sleeves rolled and flour to the elbow. She looks you up and down: the good cloak, the sword, the horse. "Well," she says. "Look what the war's brought home." Behind her, her mother is crying already, and you cannot tell which way.
 
-    [if npc.wat_coker.follower]Wat, who came with you, stands in the lane and grins like a fool.[else]Wat Coker is not there. He is off somewhere with the men who talk about the Ordinance in alehouses, and when he hears of it, he will have something to say.[/if] The rest of the family is a widowed mother, two uncles, and the whole of Ashby. Your own people, back on the manor, will have something to say too. A lord marries a lady. Everybody knows that.[elif alias.spouse == annot_dyer]Wendham, on market day. The dyers' lane runs blue into the river, the way it always did, and the smell of it takes you straight back to being eleven.
+    [if npc.wat_coker.follower]Wat, who came with you, stands in the lane and grins like a fool.[else]Wat Coker is not there. He is off somewhere with the men who talk about the Ordinance in alehouses, and when he hears of it, he will have something to say.[/if] The rest of the family is a widowed mother, two uncles, and the whole of Ashby. Your own people, back on the manor, will have something to say too.[if flag.c1_maud_letter_kept] And somewhere at Ravell, in Lady Ravell's chest, is a foolish note you once wrote to Lady Maud, which Lady Ravell has kept, because she keeps everything.[/if] A lord marries a lady. Everybody knows that.[elif alias.spouse == annot_dyer]Wendham, on market day. The dyers' lane runs blue into the river, the way it always did, and the smell of it takes you straight back to being eleven.
 
     Annot's father looks at you as if you were a bolt of cloth with a flaw in it somewhere that he has not found yet. "A lord," he says. "Of somewhere in Valdrenne. With salt, is it, or marsh?" Annot, behind him, has her blue hands on her hips. "I'm not a lady," she says, before you have said anything. "I'd be a laughing-stock. You'd be a laughing-stock. They'd laugh at us in two languages." She does not say no.[elif alias.spouse == mariot_wood]Hollin. The cottages, the butts, the edge of the chase. Mariot is splitting kindling outside the forester's cottage, and she sets the axe down when she sees you, and wipes her hands on her apron, and waits.
 
@@ -160,7 +160,7 @@
 
     Then Lady Ravell sends for you. She does not sit, and does not ask you to. Nell is her laundress, and her servant, and [if background == servant]so was your mother, God rest her, as she reminds you[else]a girl of her household[/if], and she does not care, she says, to have her household made a joke of in the shire.[elif alias.spouse == isabel_sayer]Ravell Hall, the front way this time, with your own men behind you. Isabel is waiting in Lady Ravell's solar with her hands folded and ink on her forefinger, exactly as she was, and she says, "You took your time," in a voice that is not quite steady.
 
-    Her father, Sir John Sayer, has six other daughters married and one dowry left to find, and would give her to you with both hands and a blessing. The difficulty is Lady Ravell, who has kept Isabel for eleven years and is not used to giving things up.[elif alias.spouse == maud_delisle]Wendmere, the King's hall by the river: clerks, petitioners, dogs, rain. Lady Maud's marriage belongs to the Crown, and the Crown has an officer for selling such things, a soft-voiced clerk of the wardrobe who has a list and a price against every name on it.
+    Her father, Sir John Sayer, has six other daughters married and one dowry left to find, and would give her to you with both hands and a blessing. The difficulty is Lady Ravell, who has kept Isabel for eleven years and is not used to giving things up.[if flag.c2q_isabel_waits] Sir John agreed to wait a year for you, once. It has been five.[/if][elif alias.spouse == maud_delisle]Wendmere, the King's hall by the river: clerks, petitioners, dogs, rain. Lady Maud's marriage belongs to the Crown, and the Crown has an officer for selling such things, a soft-voiced clerk of the wardrobe who has a list and a price against every name on it.
 
     Maud's price is high. Lisle is a good inheritance, and two greater men than you have bid. "You may of course," the clerk says, "petition the King's grace." He makes it sound like a disease.
 
@@ -170,7 +170,7 @@
 
     She is a widow, and her own woman: nobody can give her or refuse her but herself. The difficulty is Ralph, her stepson, who is twenty-one now, and has a lawyer, and says that Wyck is his and that if his stepmother marries a Valdrennish adventurer he will have the law on both of them.[elif alias.spouse == alys_fane]Westry, the Earl's great house, with the river below it and a hundred servants. Lady Alys receives you in a garden that cost more than your manor.
 
-    The Earl of Westry receives you in his closet, for the length of time it takes to drink one cup of wine. He is courteous. He wants, he says, a husband for his daughter who will add to the house of Westry, not take from it. He asks, pleasantly, what you have. You tell him. He nods, pleasantly, and says he will think about it, in a voice that has already finished thinking.[elif alias.spouse == heloise_corbie]Corbie, across the truce line, under a safe-conduct that took three months to get. The house is half ruined still, from the war and the ransom both. Raoul de Corbie meets you at the gate. He has not forgotten whose prisoner he was.
+    The Earl of Westry receives you in his closet, for the length of time it takes to drink one cup of wine. He is courteous. He wants, he says, a husband for his daughter who will add to the house of Westry, not take from it. He asks, pleasantly, what you have. You tell him. He nods, pleasantly, and says he will think about it, in a voice that has already finished thinking.[elif alias.spouse == heloise_corbie]Corbie, across the truce line, under a safe-conduct that took three months to get. The house is half ruined still, from the war and the ransom both. Raoul de Corbie meets you at the gate. He has not forgotten whose prisoner he was.[if flag.c2_corbie_squeezed] Nor what you made his family pay.[elif flag.c2_corbie_ransom_due] Nor that the ransom went into your purse.[/if]
 
     "You want my sister," he says. "An Adalian. After everything." And behind him, at the window, Héloïse, who has not decided between the veil and a fool, and who looks at you as if she were deciding now.
 
@@ -633,10 +633,10 @@
 
 - id: c3_match_end
   chapter: ch3
-  kind: ending
-  ending: ch3_complete
   title: "The Harvest of Year Thirty"
   text: |
     [if flag.c3_married && npc.@spouse.alive]The harvest is in. The baby sleeps in a basket by the hall fire, and the dogs, who have been put off the table, lie round it like a guard.[elif flag.c3_married]The harvest is in. The baby sleeps in a basket by the hall fire, and a wet-nurse from the village sits beside it, and you sit up late, most nights, not reading the accounts.[else]The harvest is in. The hall is quiet. The dogs are on the table again.[/if]
-
-    End of the chapters written so far. Chapter 3 continues with the Reckoning.
+  choices:
+    - id: on
+      text: Go on.
+      next: { switch: [ { if: [ flag.c2_lanzi_against_land, "!flag.c3_lanzi_kin" ], go: c3_paper } ], default: c3_rising_news }

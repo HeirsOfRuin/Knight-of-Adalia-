@@ -141,3 +141,10 @@ The working reference for every recurring character: how they look and talk, wha
 - **Piero Lanzi.** Fiammetta's cousin in Sarenza, the house's choice for her. "Has never once in his life surprised anybody."
 - **Maestro Orsini.** Sarenzan physician in Sauvemer. Horoscopes, bleeding, great confidence.
 
+## Added in Chapter 3, Act IV (the Reckoning)
+- **Will Coker.** Wat's cousin, nineteen. Led the rising under Wat's name when Wat was abroad in the player's following.
+- **Sir Hugh Malet.** The Earl of Carrow's marshal. Big, obedient. Cut down the Coker captain at the Hythe Fields.
+- **Prince Edwin.** Twenty-one by year 32. Given his own household, council and the duchy of Saltmarsh. Impatient, ambitious, gathers new men. "My father's lords are old. Mine will not be."
+- **Osmund, Earl of Carrow.** Sold the Vervais rising to Duke Lothaire in year 21, to keep the war long and the Crown poor. Bought the Lanzi debts after the Mottle. Receives guests in a room full of hounds.
+- **Hob Crane** writes letters now, "in a hand like a hen walking."
+

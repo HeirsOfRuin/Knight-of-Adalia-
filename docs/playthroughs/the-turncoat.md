@@ -2713,7 +2713,7 @@ You are twenty-eight. Your father married at twenty. Half the men you went to wa
 
 Ravell Hall, the front way this time, with your own men behind you. Isabel is waiting in Lady Ravell's solar with her hands folded and ink on her forefinger, exactly as she was, and she says, "You took your time," in a voice that is not quite steady.
 
-Her father, Sir John Sayer, has six other daughters married and one dowry left to find, and would give her to you with both hands and a blessing. The difficulty is Lady Ravell, who has kept Isabel for eleven years and is not used to giving things up.
+Her father, Sir John Sayer, has six other daughters married and one dowry left to find, and would give her to you with both hands and a blessing. The difficulty is Lady Ravell, who has kept Isabel for eleven years and is not used to giving things up. Sir John agreed to wait a year for you, once. It has been five.
 
 - Make your case yourself. *(Favorable)*
 - Make Lady Ravell a gift for the loss of her waiting-woman. Six pounds.
@@ -2838,4 +2838,255 @@ Hal, the priest writes in the book, and the date, and your name, and hers. The m
 
 The harvest is in. The baby sleeps in a basket by the hall fire, and the dogs, who have been put off the table, lie round it like a guard.
 
-End of the chapters written so far. Chapter 3 continues with the Reckoning.
+- Go on.
+
+**Chose:** Go on.
+
+*Hunger on the manor: 6 dead or gone*
+
+## The Commons Rise
+
+*Summer, year 31 of King Aldred*
+
+It starts in a village in the west of Adalia, where a bailiff tried to put the whole parish in the stocks for taking plague wages, and the parish put the bailiff in the stocks instead, and left him there for a week, and fed him. By Whitsun the whole of the west is up, and the south, and the towns. They have burned the manor rolls, the Ordinance, and the Treasurer's barns outside Wendmere. They say they want the King, and no lords, and wages for a man's work.
+
+*(Continue)*
+
+The letters come one after another, all spring, and every one is worse.
+
+Ravell Hall has been sacked. Hob Crane writes, in a hand like a hen walking, that the rebels came up the hill with torches and the household opened the gates, and Lady Ravell met them on the steps, and they did not touch her. The man at their head was called Wat Coker.
+
+*(Continue)*
+
+And then the King's letter: every lord who holds of the Crown is to come with every man he can raise, to put down the rebels, at the King's charge. It is not a request.
+
+- Raise your men, cross, and ride for the King.
+- Cross with a few men, and try to talk to them before the King's army does.
+- Send the King money and a few men, and stay to hold your manor.
+- Stay where you are, and send nothing. You will not hunt your own people.
+
+**Chose:** Raise your men, cross, and ride for the King.
+
+You take every man who can sit a horse and draw a bow, and leave your wife holding the manor. At Saltcombe the quays are full of lords and their men, all looking at each other sideways, all thinking the same thing: that the men they are going to fight are the men who stood behind them at Les Salines.
+
+*Crown standing +2 · Great Nobles standing +1 · Temper of the village −1 · Harvest in: 3 seasons of grain · Michaelmas rents: £1 8d*
+
+## The Hythe Fields
+
+*Autumn, year 31 of King Aldred*
+
+The Hythe Fields, across the river from Wendmere, on a hot morning in June. Forty thousand of them, the heralds say, and you believe it. They stand in the fields east of the city in their parishes, under their parish banners, with their scythes and their bows and their bread in their shirts, and they are quiet, which is the most frightening thing about them.
+
+*(Continue)*
+
+The King rides out to them with a hundred lords and knights, and you are one. Aldred is forty-four now, grey in the beard, and sits his horse as if he were going hunting. The Earl of Carrow rides at his left hand, with his black boar and forty of his own men. "My people," the King says, in a voice that carries, and forty thousand men take their caps off.
+
+They want the end of villeinage. They want a fourpenny rent. They want pardons. They want the Ordinance burned and the Chancellor hanged. The lords round you shift in their saddles. The King says yes. Yes to all of it. Charters will be written tonight, sealed tomorrow. They should go home.
+
+*(Continue)*
+
+And then the captain of the Ravell men comes forward to kneel to the King, and it is a big grey-headed man called Wat Coker, with a bow over his back and a face like a slammed door. He does not kneel quite low enough. The Earl of Carrow leans over to the King and says something, and the King does not answer, and does not look round. Then the Earl lifts one finger, and his marshal, a big man called Sir Hugh Malet, puts his horse forward with his sword already out. A lord's villein, in arms against his lord. A lord's justice. The King is looking at the sky.
+
+- Stay where you are. This is the King's business.
+- Shout a warning.
+- Put your horse between them. *(Favorable)*
+
+**Chose:** Stay where you are. This is the King's business.
+
+Malet cuts him down from the saddle. It takes two blows. The field goes still, forty thousand men at once, and for a breath you think it will all go up, the lords and the commons and the King together. Then the King lifts his hand and says, quite calmly, "The charters will be sealed tonight. Go home." And they go. They pick up their captain and carry him off between four men, and go home, with their charters, which will be revoked by Michaelmas.
+
+By August the hangings start. They go on until Michaelmas. You ride home through the west of Adalia past gallows at every crossroads, and you do not look up, and you do not look away.
+
+*Wat Coker is dead · Crown standing +1 · Common Folk standing −2*
+
+## Word from the March
+
+A letter comes from the March, from a man you did not expect to hear from again.
+
+- Read on.
+
+**Chose:** Read on.
+
+## A Letter from Glenhallow
+
+The letter is in Latin, which Coll of Glenhallow must have had a priest write for him, and it says that while the March men were away at the rising his uncle meant to come over the Leven, and that Coll told him not to, and that his uncle listened, this once.
+
+It says also that Coll is to be married, to a Caldmoor chief's daughter, at Lammas, and that he would be honoured if the man who let him go at the Leven would stand with him. The safe-conduct is enclosed. It is signed by the King of Caldmoor.
+
+- Go to Caldmoor for Coll's wedding.
+- Send a gift, and your regrets.
+
+**Chose:** Go to Caldmoor for Coll's wedding.
+
+You ride north into Caldmoor under the safe-conduct with four men, through glens you only ever saw over a bowstring, and every man you pass looks at you as if you were a ghost. At the wedding you drink a great deal of something that is not ale, and dance something that is not a dance, and Black Ewan of Glenhallow sits at the high table and looks at you all evening without blinking. At the end of the night he comes over, and puts his hand on your shoulder, and says, in Adalian, "He says you were fair. I hated you for it. I'm old now." And goes to bed.
+
+*Caldmoor standing +3 · Crown standing −1 · Coll's affection +4*
+
+## The House of Ravell
+
+*Winter, year 31 of King Aldred*
+
+Lord Ravell's ransom broke him. Three years in a Valdrennish castle, and a price that the whole shire had to help pay, and then the Mottle, which took the tenants who paid the rents that paid the interest on the loans that paid the ransom. And then the rising, and the burning of the manor rolls, and the hangings, and the fines.
+
+Now he is selling.
+
+*(Continue)*
+
+It is Aymer who comes to tell you. He is thirty, and handsome still, and has the look of a man who has been drinking steadily for a year and has decided to stop for one afternoon.
+
+"My father is selling everything that isn't nailed down," he says. "My brother is letting him, because my brother would rather have money in Wendmere than land in the shire. The home farm at Underhill is on the list. Where your mother was born. I thought you should hear it from me before you heard it from a Lanzi clerk."
+
+He looks round your hall. "You've done well," he says. He does not quite manage not to mind.
+
+- ~~Buy Underhill. Thirty pounds.~~ *(Requires Coin £30)*
+- Buy it with half down, and half from the rents over five years.
+- Lend Aymer what you can spare, for his own sake.
+- Let it go. It is not your house.
+
+**Chose:** Buy it with half down, and half from the rents over five years.
+
+Fifteen pounds now and the rest from the rents. Lord Ravell's steward, who has no choice, agrees. You hold Underhill in mortgage, which is to say, as long as you pay. It is yours, mostly. You will be paying for it until your eldest is grown.
+
+*Coin −£15*
+
+## The Winter Fever
+
+*Spring, year 32 of King Aldred*
+
+In the winter a fever goes through the children of the manor. Not the Mottle: the ordinary kind, that comes every few years and takes the weakest. Three children in the village are dead by Candlemas.
+
+- Go home.
+
+**Chose:** Go home.
+
+## The Fever in the House
+
+Then Hal wakes up hot.
+
+By noon the child is burning, and will not drink, and does not know you. Your wife has not left the cradle since dawn. The whole house goes quiet, the way houses do.
+
+- Send for the physician.
+- Sit up with the child yourself, with cold cloths and small beer, the way your mother did.
+- Have the priest say Masses, and go on with the manor's business.
+
+**Chose:** Send for the physician.
+
+Maestro Orsini comes, and bleeds the child, which seems to you a strange thing to do to something so small, and casts a horoscope, and leaves powders. The fever breaks on the fourth day, whether because of him or in spite of him nobody can say. Orsini takes the credit, and the fee.
+
+*Coin −£1*
+
+## Candlemas
+
+The fever goes as it came. By Lent Hal is running about the yard after the geese again, and getting kicked by a goose, and roaring about it, and the whole manor hears and is glad.
+
+- Go on.
+
+**Chose:** Go on.
+
+## The Mill
+
+The great wheel of the mill cracks in the spring flood, a split right through the shaft, and the miller comes up to the house with his cap in his hands and flour still in his eyebrows.
+
+"No grinding, monseigneur," he says. "Not till it's mended. And it's the lord's mill." He coughs, delicately. "So it's the lord's shaft."
+
+A new shaft is oak, and oak means a carpenter from the town, and a carpenter from the town means money. Until then, everyone on the manor grinds their grain by hand in querns, which is the custom forbidden by the lord, because the lord takes a toll at the mill.
+
+- Pay for the carpenter and the oak.
+- Let them grind by hand until it is mended. No toll, no fines.
+- Make the miller pay for it. He takes a toll too.
+
+**Chose:** Pay for the carpenter and the oak.
+
+The carpenter comes, and the oak, and the wheel turns again by Whitsun. The miller gives you a bag of the first flour, as if you had baked it.
+
+*Coin −5s · Temper of the village +1 · Hunger on the manor: 6 dead or gone*
+
+## What the Weavers Knew
+
+*Summer, year 32 of King Aldred*
+
+It is Aymer Ravell who tells you, drunk, in your hall, the night before he goes back to Adalia. "You know what my father heard," he says, "in three years in a Valdrennish castle? The truth about Vervais. The guild masters were betrayed. By one of ours. An earl. My father has known for six years and never said, because the earl is the man who lent him the ransom." He drinks. "Carrow," he says. "The black boar. Of course it was."
+
+*(Continue)*
+
+You sit up with it until the candle is out. The guild masters of Vervais were hanged because the Earl of Carrow did not want the war won quickly. A quick war would have made the King rich, and a rich King does not need the Moot, or the Old Baronage, or the Earl of Carrow. So the weavers died, and the army went into Valdrenne without its ally, and turned back at the Lisonne, and was caught at Grisolles. You remember Grisolles. Everybody remembers Grisolles.
+
+And Sir Walter Pryce was the Earl's captain then, and is the Earl's man still, and you do not know whether he knew.
+
+- Take it to the King.
+- Take it to the Prince.
+- Take it to the Earl of Carrow, privately.
+- Say nothing. Keep it.
+
+**Chose:** Take it to the King.
+
+You take it to Wendmere yourself, and wait four days for an audience, and give it to the King in a window of the long gallery with nobody near. Aldred reads it twice. His face does not change at all. At the end he folds it, and puts it inside his gown, and says, "Thank you. You will say nothing of this to anyone." Then, after a moment: "Grisolles cost me eight thousand men." He does not say anything else. He does not need to. Something has begun, and you have begun it.
+
+*Crown standing +3 · Great Nobles standing −1 · Harvest in: 3 seasons of grain · Michaelmas rents: 19s 11d*
+
+## Summer
+
+*Autumn, year 32 of King Aldred*
+
+In the summer your wife is brought to bed again.
+
+- Go on.
+
+**Chose:** Go on.
+
+*A son*
+
+## The Second Child
+
+It is easier the second time, everyone says. It is, mostly. Eleven hours instead of a day and a night, and you spend them in the yard again, and this time Hal spends them with you, on your knee, asking questions you cannot answer.
+
+A boy. Smaller than the first, and louder. Isabel Sayer, sitting up in bed with her hair everywhere, looks at it and says, "Well. That's that, then," and laughs, and holds out her arms.
+
+- Hob, for old Hob Crane, who was as near a father as you had.
+- Thomas, for the saint whose day it is.
+- Will, for Will Cobb.
+
+**Chose:** Hob, for old Hob Crane, who was as near a father as you had.
+
+Hob, the priest writes, under the first.
+
+## The Summons
+
+*Winter, year 32 of King Aldred*
+
+In the autumn of the thirty-second year of King Aldred, the peace ends. Not with a war. With letters.
+
+*(Continue)*
+
+The truce of Saint-Lys runs out at Lady Day. King Amaury of Valdrenne is dead, of a fever, and his son is fourteen, and the Constable of Valdrenne rules in his name. Everyone in both kingdoms knows what that means. The King is calling a great council at Wendmere for Martinmas, and every lord who holds of the Crown is summoned to it.
+
+The King's summons to you has a line at the bottom in his own hand: "Come early. Speak to no one."
+
+*(Continue)*
+
+Sir Walter Pryce comes to see you in October. He is a banneret now, grey and heavy, with a company of three hundred and a manor in Carrow, and he rides into your yard as if he owned it, which is how Pryce rides into everything. You have worn the black boar before, under him, and he has not forgotten it. "Rising men," he says, over your wine, "need friends at a council. The Earl has friends. I could put your name to him." He looks at you over the cup. "Or not. Your choice. It always is, with you."
+
+Your wife says, that night, "You're going, then." It is not a question. "Go. But come back. And come back with something."
+
+- Go to the council as the King's man.
+- Let Pryce put your name to the Earl.
+- Go to the Prince's household at Christmas.
+- Go to the council as your own man, beholden to nobody.
+
+**Chose:** Go to the council as the King's man.
+
+You go to Wendmere as the King's man, and nobody else's, and say so to anyone who asks. Pryce laughs, and shakes your hand, and says, "God help you, then." The King's chamberlain finds you a lodging in the palace itself, in a room over the kitchens. It is cold, and loud, and the best room you have ever slept in.
+
+*Crown standing +1*
+
+## The End of the Peace
+
+You ride out of the manor gate in November, with your men behind you, and your wife at the gate with the children, and the village watching from its doorways, saying nothing.
+
+Six years ago you came to Ormel, the grant nobody wanted, with the bell tolling and the dead in the street. Some nights you still walk the salt pans in your sleep, among the dead. The manor never quite filled up again. And there is another place on the list of what you hold, across the sea, where you were born.
+
+[break]
+
+You are thirty-one years old. You were a tirewoman's son. You are a lord, with land, and heirs, and enemies, and a war coming.
+
+End of Chapter 3. Chapter 4 begins with the great council at Wendmere.

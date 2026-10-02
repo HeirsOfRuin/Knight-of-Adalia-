@@ -85,6 +85,7 @@ export function getValue(state: GameState, content: ContentBundle, rawPath: stri
         case 'last': return last?.sex ?? 'none';
         case 'lastname': return last?.name || 'the baby';
         case 'eldest': return living[0]?.name || 'none';
+        case 'eldest_id': return (living[0]?.name || 'none').toLowerCase(); // for conditions: heirs.eldest_id == piers
         case 'names': {
           const n = living.map((h) => h.name).filter(Boolean);
           return n.length <= 1 ? (n[0] ?? '') : `${n.slice(0, -1).join(', ')} and ${n.at(-1)}`;
@@ -149,7 +150,7 @@ export function checkPath(content: ContentBundle, path: string): string | null {
     case 'npc': return need(a in reg.npcs, 'npc') ?? need(['met', 'alive', 'follower', 'friend'].includes(b ?? ''), 'npc field');
     case 'suit': return need(a in reg.romances, 'romance') ?? need(['status', 'regard', 'family', 'discretion', 'pledge'].includes(b ?? ''), 'suit field');
     case 'calendar': return need(['season', 'year'].includes(a), 'calendar field');
-    case 'heirs': return need(['count', 'born', 'sons', 'daughters', 'last', 'lastname', 'eldest', 'names'].includes(a), 'heirs field');
+    case 'heirs': return need(['count', 'born', 'sons', 'daughters', 'last', 'lastname', 'eldest', 'eldest_id', 'names'].includes(a), 'heirs field');
     default: return `unknown namespace "${ns}" in "${path}"`;
   }
 }

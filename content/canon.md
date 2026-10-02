@@ -234,3 +234,14 @@ A single Church across all realms, under **the Pontiff**. For two generations th
 | A warhorse | £10-50 |
 | Full harness (armour) for a knight | £10-20 |
 | A great lord's ransom | Thousands of pounds |
+
+## Chapter 3 events (years 26-32)
+- **Year 26:** the Mottle. About a third of the people die.
+- **Year 28, Lady Day:** the truce lapses into border raiding.
+- **Year 31, Whitsun to Michaelmas:** the rising of the commons over the Ordinance.
+  - At the Hythe Fields, across the river from Wendmere, the King grants charters.
+  - Carrow's marshal cuts down the Coker captain while the King looks away.
+  - The charters are revoked by Michaelmas, and the hangings run through August.
+- **Year 32:** King Amaury of Valdrenne dies. His son is fourteen, and the Constable, Gaucelin de Brésy, rules in his name. The truce of Saint-Lys runs out the next Lady Day. The King calls a great council at Wendmere for Martinmas.
+- **The Vervais betrayal (secret):** in year 21 the Earl of Carrow warned Duke Lothaire, by way of the Lanzi house, that the weaving towns would rise.
+

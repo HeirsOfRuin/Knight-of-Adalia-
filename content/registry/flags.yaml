@@ -14,38 +14,38 @@ p_spoke_up: { description: "Spoke up about the tallies at the Lady Day reckoning
 p_kept_quiet: { description: "Kept quiet about the tallies and told his father", hidden: true }
 p_kept_copy: { description: "Copied the Ashby tallies as a boy", hidden: true }
 p_knows_debt: { description: "Overheard the size of the family's debt to the Lanzi bank", later: ch2, hidden: true }
-p_wharf_gang: { description: "Ran with the tanners' boys at the wharf", later: ch3, hidden: true }
+p_wharf_gang: { description: "Ran with the tanners' boys at the wharf", later: ch4, hidden: true }
 p_counting_house: { description: "Learned reckoning in his father's counting-house", hidden: true }
 p_knows_war_secret: { description: "Knows what his father did at Carn Dubh", hidden: true }
 p_bloody_hands: { description: "Shot at the butts until his fingers bled", hidden: true }
 p_cobb_friend: { description: "Befriended Will Cobb as a boy", hidden: true }
-p_saddled_destrier: { description: "Saddled Bayard for Aymer", later: ch3, hidden: true }
+p_saddled_destrier: { description: "Saddled Bayard for Aymer", later: ch4, hidden: true }
 p_told_ranulf: { description: "Fetched Master Ranulf instead of saddling Bayard", hidden: true }
 p_took_blame: { description: "Took the blame for Aymer", hidden: true }
 p_shared_bread: { description: "Shared bread in the wet year", hidden: true }
 p_poached: { description: "Poached in the Ravell chase and was not caught", hidden: true }
 p_poacher_caught: { description: "Caught poaching in the Ravell chase", hidden: true }
 p_worked_hungry: { description: "Worked for the powerful in the wet year", hidden: true }
-p_stole_tithe: { description: "Stole from the tithe barn and was not caught", later: ch3, hidden: true }
+p_stole_tithe: { description: "Stole from the tithe barn and was not caught", later: ch4, hidden: true }
 p_thief_caught: { description: "Did public penance for stealing from the tithe barn", hidden: true }
 p_trained_letters: { description: "Spent his boyhood on letters", hidden: true }
 p_trained_arms: { description: "Spent his boyhood on sword and buckler", hidden: true }
 p_trained_courtesy: { description: "Spent his boyhood serving at gentle tables", hidden: true }
 p_trained_field: { description: "Spent his boyhood on horses and the chase", hidden: true }
 p_rival_beaten: { description: "Beat his boyhood rival", hidden: true }
-p_rival_outwitted: { description: "Outwitted his boyhood rival", later: ch3, hidden: true }
+p_rival_outwitted: { description: "Outwitted his boyhood rival", later: ch4, hidden: true }
 p_rival_peace: { description: "Made peace with his boyhood rival", hidden: true }
-p_rival_endured: { description: "Let his boyhood rival have the better of him", later: ch3, hidden: true }
-p_gate_competence: { description: "Taken into service for his competence", later: ch3, hidden: true }
-p_gate_debt: { description: "Taken into service by a debt called in", later: ch3, hidden: true }
-p_gate_deed: { description: "Taken into service for a deed", later: ch3, hidden: true }
-p_gate_purchase: { description: "Bought his place in a knight's household", later: ch3, hidden: true }
-p_gate_connection: { description: "Taken into service through a connection", later: ch3, hidden: true }
+p_rival_endured: { description: "Let his boyhood rival have the better of him", later: ch4, hidden: true }
+p_gate_competence: { description: "Taken into service for his competence", later: ch4, hidden: true }
+p_gate_debt: { description: "Taken into service by a debt called in", later: ch4, hidden: true }
+p_gate_deed: { description: "Taken into service for a deed", later: ch4, hidden: true }
+p_gate_purchase: { description: "Bought his place in a knight's household", later: ch4, hidden: true }
+p_gate_connection: { description: "Taken into service through a connection", later: ch4, hidden: true }
 p_used_secret: { description: "Used the household secret against Lady Ravell", hidden: true }
 p_mother_dismissed: { description: "His mother was dismissed because of him", hidden: true }
 p_lower_track: { description: "Entered service on the lower track", later: ch2, hidden: true }
 p_promised_girl: { description: "Promised his childhood sweetheart he would come back", later: ch2, hidden: true }
-p_family_promise: { description: "Made his family a promise when he left", later: ch3, hidden: true }
+p_family_promise: { description: "Made his family a promise when he left", later: ch4, hidden: true }
 p_mag_buttermilk: { description: "Carried buttermilk home for Mag Coker as a boy", hidden: true }
 p_asked_brother: { description: "Asked his mother about his dead brother", hidden: true }
 p_ploughing_tally: { description: "Kept the ploughing tally for his father from age nine", hidden: true }
@@ -82,7 +82,7 @@ c1_rode_reprisal: { description: "Sir Ancel burned Thorne's mill", hidden: true 
 c1_maud_confided: { description: "Lady Maud has confided in him", hidden: true }
 c1_raid_distinguished: { description: "Distinguished himself at the Leven ford" }
 c1_raid_late: { description: "Was too late to matter at the Leven ford", hidden: true }
-c1_has_prisoner: { description: "Took Coll of Glenhallow at the Leven ford", later: ch3, hidden: true }
+c1_has_prisoner: { description: "Took Coll of Glenhallow at the Leven ford", later: ch4, hidden: true }
 c1_carried_wyck_sword: { description: "Brought Sir Hugh Wyck's sword out of the river", hidden: true }
 c1_parley: { description: "Won the Leven ford by parley", later: ch2, hidden: true }
 c1_coll_ransomed: { description: "Ransomed Coll of Glenhallow", later: ch2, hidden: true }
@@ -90,8 +90,8 @@ c1_coll_given: { description: "Gave Coll of Glenhallow to his master", later: ch
 c1_coll_hanged: { description: "Let Coll of Glenhallow be hanged. Black Ewan knows his name.", hidden: true }
 c1_coll_freed: { description: "Set Coll of Glenhallow free", hidden: true }
 c1_raised_at_ford: { description: "Raised from the lower track to squire for the Leven ford", later: ch2, hidden: true }
-c1_raised_at_tourney: { description: "Raised from the lower track to squire at the tourney", later: ch3, hidden: true }
-c1_raised_by_fever: { description: "Raised from the lower track to squire after the flux", later: ch3, hidden: true }
+c1_raised_at_tourney: { description: "Raised from the lower track to squire at the tourney", later: ch4, hidden: true }
+c1_raised_by_fever: { description: "Raised from the lower track to squire after the flux", later: ch4, hidden: true }
 c1_joan_owed: { description: "Stood up for Dame Joan against her stepson", later: ch2, hidden: true }
 c1_king_noticed: { description: "The King knows his name" }
 c1_pryce_contact: { description: "Known to Sir Walter Pryce", later: ch2, hidden: true }
@@ -99,12 +99,12 @@ c1_maud_saved: { description: "Got Lady Maud's petition to the King", hidden: tr
 c1_maud_scandal: { description: "Caught helping Lady Maud behind Lord Ravell's back", later: ch2, hidden: true }
 c1_tourney_won: { description: "Won the squires' course at the Ravell tourney", later: ch2 }
 c1_served_well: { description: "Served in the lists with distinction", later: ch2, hidden: true }
-c1_master_cleared: { description: "His master came through the crisis", later: ch3, hidden: true }
+c1_master_cleared: { description: "His master came through the crisis", later: ch4, hidden: true }
 c1_hamon_lanzi: { description: "Sir Hamon's debts are owed to the Lanzi bank", later: ch2, hidden: true }
 c1_ravell_owed: { description: "Owes Lord Ravell for intervening with Carrow", later: ch2, hidden: true }
 c1_won_combat: { description: "Won a trial by combat as Sir Hamon's champion", later: ch2 }
-c1_left_master: { description: "Abandoned his master in his crisis", later: ch3, hidden: true }
-c1_lost_master: { description: "Lost his first master", later: ch3, hidden: true }
+c1_left_master: { description: "Abandoned his master in his crisis", later: ch4, hidden: true }
+c1_lost_master: { description: "Lost his first master", later: ch4, hidden: true }
 c1_hamon_fell: { description: "Sir Hamon lost Ashby and went to the canons", hidden: true }
 c1_pryce_man: { description: "Serves in the Earl of Carrow's company under Sir Walter Pryce", later: ch2, hidden: true }
 c1_father_exposed: { description: "Exposed his father's part in the theft", hidden: true }
@@ -112,13 +112,13 @@ c1_father_shielded: { description: "Destroyed the evidence of his father's part"
 c1_father_confessed: { description: "Made his father confess", later: ch3, hidden: true }
 c1_pryce_knows: { description: "Sir Walter Pryce knows he destroyed evidence", later: ch2, hidden: true }
 c1_thorne_taken: { description: "Sir Godric Thorne arrested for treason", later: ch3, hidden: true }
-c1_ancel_pardon: { description: "Pardoned with Sir Ancel for the attack on Thorne Hall", later: ch3, hidden: true }
-c1_has_means: { description: "Has the horse and harness to be a knight", later: ch3 }
+c1_ancel_pardon: { description: "Pardoned with Sir Ancel for the attack on Thorne Hall", later: ch4, hidden: true }
+c1_has_means: { description: "Has the horse and harness to be a knight", later: ch4 }
 c1_ravell_fee: { description: "Holds a fee of ten pounds a year from Lord Ravell", later: ch2 }
 c1_lanzi_debt: { description: "Owes the Lanzi bank twenty pounds" }
 c1_joan_harness: { description: "Rides in Sir Hugh Wyck's harness", later: ch2, hidden: true }
-c1_dubbed_by_master: { description: "Knighted by his master", later: ch3, hidden: true }
-c1_dubbed_by_ravell: { description: "Knighted by Lord Ravell", later: ch3, hidden: true }
+c1_dubbed_by_master: { description: "Knighted by his master", later: ch4, hidden: true }
+c1_dubbed_by_ravell: { description: "Knighted by Lord Ravell", later: ch4, hidden: true }
 c1_dubbed_by_king: { description: "Knighted by the King at Saltcombe", later: ch2 }
 c1_sponsor_promise: { description: "Holds his captain's promise of knighthood in the field", later: ch2 }
 c1_better_terms: { description: "Haggled better terms in his indenture", later: ch2, hidden: true }
@@ -126,8 +126,8 @@ c1_sworn_promise: { description: "His captain swore the promise on relics before
 c1_two_tokens: { description: "Gave tokens to two women", hidden: true }
 c1_omen_crown: { description: "Told by a cunning woman of a woman with a crown", later: ch2, hidden: true }
 c1_rival_ally: { description: "Made his boyhood rival into something like an ally", later: ch2, hidden: true }
-c1_rival_cowed: { description: "Faced down his boyhood rival", later: ch3, hidden: true }
-c1_rival_broken: { description: "Ruined his boyhood rival", later: ch3, hidden: true }
+c1_rival_cowed: { description: "Faced down his boyhood rival", later: ch4, hidden: true }
+c1_rival_broken: { description: "Ruined his boyhood rival", later: ch4, hidden: true }
 c1_burned_copy: { description: "Burned the old tally copy for his father", later: ch3, hidden: true }
 c1_family_refused: { description: "Refused his father money", later: ch2, hidden: true }
 c1_bought_off: { description: "Took Lady Ravell's money to stay away", later: ch2, hidden: true }
@@ -137,7 +137,7 @@ c1_caught_spy: { description: "Caught a Valdrennish spy in the King's train", la
 c1_carrow_livery: { description: "Wears the Earl of Carrow's livery, the black boar" }
 c1_dubbed_by_pryce: { description: "Knighted by Sir Walter Pryce in Carrow's colours", hidden: true, later: ch3 }
 c1_carrow_indenture: { description: "Bound to three years' service to the Earl of Carrow", later: ch3 }
-c1_hired_champion: { description: "Hired a champion to clear Sir Hamon", hidden: true, later: ch3 }
+c1_hired_champion: { description: "Hired a champion to clear Sir Hamon", hidden: true, later: ch4 }
 c1_ancel_lamed: { description: "Sir Ancel was lamed at the gate of Thorne Hall", hidden: true, later: ch3 }
 c1_aymer_pie: { description: "Aymer shared a stolen pie with him on his first night", hidden: true }
 c1_first_night_friend: { description: "Made a friend on his first night in service", hidden: true, later: ch3 }
@@ -146,7 +146,7 @@ c1_harvest_girl: { description: "Spent his harvest leave with his childhood swee
 c1_master_confided: { description: "His master told him something private on the Lent ride", hidden: true, later: ch2 }
 c1_master_taught: { description: "His master taught him the one thing he knows best", hidden: true, later: ch2 }
 c1_shared_the_ford: { description: "Talked to a friend about the Leven ford", hidden: true, later: ch2 }
-c1_confessed_ford: { description: "Confessed the Leven ford to Father Benet", hidden: true, later: ch3 }
+c1_confessed_ford: { description: "Confessed the Leven ford to Father Benet", hidden: true, later: ch4 }
 c1_rode_quintain: { description: "Mastered the quintain in his second spring", hidden: true, later: ch2 }
 c1_bertram_sword: { description: "Trained sword and buckler with Sir Bertram every morning for a month", hidden: true }
 c1_shot_with_cobb: { description: "Shot at the long butts with Cobb's archers", hidden: true, later: ch2 }
@@ -161,23 +161,23 @@ c1_learned_manor: { description: "Learned the business of a manor from the stewa
 c1_learned_valdrennish: { description: "Learned Valdrennish from the Queen's snowed-in clerk", hidden: true, later: ch2 }
 
 # ---- Chapter 2 -------------------------------------------------------------
-c2_men_from_master: { description: "His first followers were lent by his master", hidden: true, later: ch3 }
-c2_men_from_home: { description: "Brought a man from home into his following", hidden: true, later: ch3 }
-c2_hired_tallis: { description: "Hired Roger Tallis and his men at Saltcombe", hidden: true, later: ch3 }
+c2_men_from_master: { description: "His first followers were lent by his master", hidden: true, later: ch4 }
+c2_men_from_home: { description: "Brought a man from home into his following", hidden: true, later: ch4 }
+c2_hired_tallis: { description: "Hired Roger Tallis and his men at Saltcombe", hidden: true, later: ch4 }
 c2_jehanne_noticed: { description: "The Duchess of Armance noticed him", hidden: true, later: ch3 }
 c2_knows_country: { description: "Learned the lie of the Valdrennish country", hidden: true, later: ch3 }
 c2_armance_friends: { description: "Has friends among the Armance knights", hidden: true, later: ch3 }
-c2_stance_orders: { description: "Told his men he would burn only as ordered", hidden: true, later: ch3 }
+c2_stance_orders: { description: "Told his men he would burn only as ordered", hidden: true, later: ch4 }
 c2_stance_spare: { description: "Told his men he would burn nothing he did not have to", hidden: true, later: ch3 }
 c2_stance_loose: { description: "Told his men what they took, they kept", hidden: true, later: ch3 }
-c2_breval_burned: { description: "Bréval was burned", hidden: true, later: ch3 }
+c2_breval_burned: { description: "Bréval was burned", hidden: true, later: ch4 }
 c2_breval_ransomed: { description: "Bought Bréval's safety for a ransom", hidden: true, later: ch3 }
 c2_breval_sacked: { description: "Let his men sack Bréval", hidden: true, later: ch3 }
-c2_breval_stopped: { description: "Stopped what was happening behind the church at Bréval", hidden: true, later: ch3 }
+c2_breval_stopped: { description: "Stopped what was happening behind the church at Bréval", hidden: true, later: ch4 }
 c2_took_corbie: { description: "Took Raoul de Corbie prisoner at Vaudrey", hidden: true, later: ch3 }
 c2_giles_took_corbie: { description: "Giles Marrick took Corbie before him", hidden: true, later: ch3 }
 c2_vaudrey_held: { description: "Kept his men in hand during the sack of Vaudrey", hidden: true, later: ch3 }
-c2_vaudrey_looted: { description: "Took his share of Vaudrey", hidden: true, later: ch3 }
+c2_vaudrey_looted: { description: "Took his share of Vaudrey", hidden: true, later: ch4 }
 c2_corbie_ransom_due: { description: "Corbie's ransom is owed to him", hidden: true, later: ch3 }
 c2_corbie_squeezed: { description: "Squeezed the Corbies for a larger ransom", hidden: true, later: ch3 }
 c2_knew_men: { description: "Got his men talking about home on the first night ashore", hidden: true }
@@ -198,31 +198,31 @@ c2_saved_cobb: { description: "Saved Will Cobb in battle", hidden: true, later: 
 c2_master_taken: { description: "His master was taken prisoner at Grisolles", later: ch3 }
 c2_ravell_taken: { description: "Lord Ravell was taken prisoner at Grisolles", later: ch3 }
 c2_knighted_grisolles: { description: "Knighted by the Earl of Carrow after the rearguard at Grisolles", later: ch3 }
-c2_made_list: { description: "Helped the heralds list the prisoners of Grisolles", hidden: true, later: ch3 }
+c2_made_list: { description: "Helped the heralds list the prisoners of Grisolles", hidden: true, later: ch4 }
 c2_carried_wounded: { description: "Carried his wounded all the way back to the Armance", hidden: true, later: ch3 }
 c2_ambushed_iron: { description: "Ambushed the Iron Company's riders on the retreat", hidden: true, later: ch3 }
-c2_stripped_road: { description: "Stripped the villages along the road back to feed his men", hidden: true, later: ch3 }
-c2_paid_men: { description: "Paid his men from his own purse in the winter at Lannec", hidden: true, later: ch3 }
+c2_stripped_road: { description: "Stripped the villages along the road back to feed his men", hidden: true, later: ch4 }
+c2_paid_men: { description: "Paid his men from his own purse in the winter at Lannec", hidden: true, later: ch4 }
 c2_lanzi_loan: { description: "Borrowed from the Lanzi house to pay his men", hidden: true, later: ch3 }
 c2_raided_country: { description: "Raided the Constable's lands to pay his men", hidden: true, later: ch3 }
 c2_shelter: { description: "Built his men a proper shelter on the dunes before Sauvemer", hidden: true }
 c2_engineers: { description: "Worked with the siege engineers at Sauvemer", hidden: true, later: ch3 }
 c2_fireship: { description: "Steered a fireship into Sauvemer harbour", later: ch3 }
-c2_cut_out_ship: { description: "Cut out a Valdrennish ship from Sauvemer harbour", hidden: true, later: ch3 }
+c2_cut_out_ship: { description: "Cut out a Valdrennish ship from Sauvemer harbour", hidden: true, later: ch4 }
 c2_breach_survived: { description: "Went up the breach at the Tanners' Tower and came back", later: ch3 }
 c2_held_ditch: { description: "Held the ditch below the breach to bring the storming party back", hidden: true, later: ch3 }
-c2_kept_out_of_breach: { description: "Talked his company out of the storm of the breach", hidden: true, later: ch3 }
+c2_kept_out_of_breach: { description: "Talked his company out of the storm of the breach", hidden: true, later: ch4 }
 c2_clemence_talked: { description: "Spoke with Dame Clémence during the burial truce", hidden: true }
 c2_saw_retrenchment: { description: "Saw the new wall behind the breach during the burial truce", hidden: true }
 c2_clean_water: { description: "Kept his men on clean water through the second winter", hidden: true, later: ch3 }
 c2_built_boom: { description: "Helped build the harbour boom that stopped the galleys", hidden: true, later: ch3 }
 c2_held_gallery: { description: "Held the mine gallery under the Water Tower", hidden: true, later: ch3 }
-c2_found_countermine: { description: "Found the Valdrennish countermine with bowls of water", hidden: true, later: ch3 }
+c2_found_countermine: { description: "Found the Valdrennish countermine with bowls of water", hidden: true, later: ch4 }
 c2_guarded_minehead: { description: "Guarded the mine-head above ground", hidden: true }
 c2_sortie_hero: { description: "Broke the night sortie at Sauvemer", hidden: true, later: ch3 }
 c2_sluice_known: { description: "Told his captain about the sluice-gates on the salt pans", hidden: true }
 c2_knighted_eve: { description: "Knighted by the King on the eve of Les Salines", later: ch3 }
-c2_eve_letter: { description: "Wrote home the night before Les Salines", hidden: true, later: ch3 }
+c2_eve_letter: { description: "Wrote home the night before Les Salines", hidden: true, later: ch4 }
 c2_opened_sluice: { description: "Opened the sluice-gates at Les Salines", later: ch3 }
 c2_turned_garrison: { description: "Turned his men to meet the Sauvemer garrison at Les Salines", hidden: true, later: ch3 }
 c2_saved_banner: { description: "Was among those who raised the King's fallen banner at Les Salines", later: ch3 }
@@ -235,7 +235,7 @@ c2_terms_carried: { description: "Carried the surrender terms between the King a
 c2_spoke_for_town: { description: "Spoke for gentle terms for Sauvemer", hidden: true }
 c2_took_house: { description: "Took a merchant's house in Sauvemer for his company", hidden: true }
 c2_feast_known: { description: "Made his name known to the great lords at the Christmas feast", hidden: true, later: ch3 }
-c2_garrison: { description: "Stayed in the Sauvemer garrison through the truce", hidden: true, later: ch3 }
+c2_garrison: { description: "Stayed in the Sauvemer garrison through the truce", hidden: true, later: ch4 }
 c2_armance_castles: { description: "Held an Armance castle through the truce", hidden: true, later: ch3 }
 c2_pryce_company: { description: "Rode with Pryce's company through the truce", hidden: true, later: ch3 }
 c2_drilled: { description: "Drilled his men hard through the truce", hidden: true, later: ch3 }
@@ -244,14 +244,14 @@ c2_fought_iron: { description: "Fought off the Iron Company", hidden: true, late
 c2_bought_iron: { description: "Bought off the Iron Company", hidden: true, later: ch3 }
 c2_refused_villages: { description: "Refused the marsh villages' plea for protection", hidden: true, later: ch3 }
 c2_went_home: { description: "Went home to Adalia in the truce", hidden: true, later: ch3 }
-c2_stayed_for_grants: { description: "Stayed in Sauvemer for the grants", hidden: true, later: ch3 }
-c2_saw_ewan_work: { description: "Saw what Black Ewan did in the March", hidden: true, later: ch3 }
+c2_stayed_for_grants: { description: "Stayed in Sauvemer for the grants", hidden: true, later: ch4 }
+c2_saw_ewan_work: { description: "Saw what Black Ewan did in the March", hidden: true, later: ch4 }
 c2_ceremonial_knight: { description: "Knighted with the others at the grants, for long service", hidden: true, later: ch3 }
 c2_granted_ormel: { description: "Granted the manor of Ormel", later: ch3 }
 c2_granted_more: { description: "Asked the King for more land at the grants, and got it", later: ch3 }
 c2_granted_marsalin: { description: "Granted Marsalin, the salt manor at Les Salines", later: ch3 }
 c2_granted_kerval: { description: "Granted Kerval in the Armance, with the Duchess's assent", later: ch3 }
-c2_grant_ormel: { description: "Earned the poor grant (Ormel): not known for much", hidden: true, later: ch3 }
+c2_grant_ormel: { description: "Earned the poor grant (Ormel): not known for much", hidden: true, later: ch4 }
 c2_grant_marsalin: { description: "Earned the Sauvemer grant (Marsalin)", hidden: true }
 c2_grant_kerval: { description: "Earned the Armance grant (Kerval)", hidden: true }
 c2_prepared_plague: { description: "Laid in grain, salt and a physician's book against the mortality", hidden: true, later: ch3 }
@@ -332,3 +332,35 @@ c3_wife_died_childbed: { description: "His wife died in childbed", later: ch4 }
 c3_stayed_unwed: { description: "Did not marry in Chapter 3", later: ch4 }
 c3_refused_king_ward: { description: "Refused the King's ward, Lady Philippa", later: ch4 }
 c3_refused_brese: { description: "Refused the Brésy match", hidden: true, later: ch4 }
+c3_beat_carrow_lawyers: { description: "Beat the Earl of Carrow's claim on his Lanzi debt at law", hidden: true, later: ch4 }
+c3_carrow_paper: { description: "The Earl of Carrow holds his debt", later: ch4 }
+c3_coll_ended_feud: { description: "Coll of Glenhallow ended Black Ewan's feud at his asking", later: ch4 }
+c3_coll_wedding: { description: "Stood with Coll of Glenhallow at his wedding in Caldmoor", later: ch4 }
+c3_ewan_beaten: { description: "Beat Black Ewan in his own hills and took his word", later: ch4 }
+c3_holds_home: { description: "Bought the place he was born from the ruined house of Ravell", later: ch4 }
+c3_home_mortgaged: { description: "Still paying Ravell for his home place", hidden: true, later: ch4 }
+c3_kept_vervais: { description: "Keeps the proof that Carrow betrayed the Vervais rising", hidden: true, later: ch4 }
+c3_lent_aymer: { description: "Lent Aymer Ravell money in his house's ruin", hidden: true, later: ch4 }
+c3_lost_child: { description: "Lost a child to the winter fever", later: ch4 }
+c3_nursed_child: { description: "Nursed his child through the winter fever himself", hidden: true, later: ch4 }
+c3_paid_carrow: { description: "Paid off the debt the Earl of Carrow bought", hidden: true, later: ch4 }
+c3_party_carrow: { description: "Went to the great council as Carrow's man", later: ch4 }
+c3_party_king: { description: "Went to the great council as the King's man", later: ch4 }
+c3_party_own: { description: "Went to the great council as his own man", later: ch4 }
+c3_party_prince: { description: "Joined Prince Edwin's household", later: ch4 }
+c3_ravell_sold_away: { description: "Let Ravell's land go to a stranger", hidden: true, later: ch4 }
+c3_refused_rising: { description: "Refused the King's summons against the rising", later: ch4 }
+c3_rode_for_king: { description: "Rode for the King against the rising", later: ch4 }
+c3_saved_wat: { description: "Rode between the Coker captain and Carrow's marshal at the Hythe Fields", later: ch4 }
+c3_sold_vervais: { description: "Sold the Vervais proof back to the Earl of Carrow", later: ch4 }
+c3_stayed_home: { description: "Sent money instead of going against the rising", hidden: true, later: ch4 }
+c3_told_king_vervais: { description: "Told the King that Carrow betrayed Vervais", later: ch4 }
+c3_told_prince_vervais: { description: "Told Prince Edwin that Carrow betrayed Vervais", later: ch4 }
+c3_walled_home: { description: "Paid for a wall and tower at home against Black Ewan", hidden: true, later: ch4 }
+c3_warned_wat: { description: "Shouted a warning at the Hythe Fields", later: ch4 }
+c3_wat_cut_down: { description: "The Coker captain was cut down at the Hythe Fields", later: ch4 }
+c3_wat_went_home: { description: "Wat Coker left his following for the rising", hidden: true, later: ch4 }
+c3_wat_with_you: { description: "Wat Coker went with him to talk to the rebels", hidden: true, later: ch4 }
+c3_went_to_talk: { description: "Went to talk to the rebels before the King's army did", hidden: true, later: ch4 }
+c3_wife_died_second: { description: "His wife died at the birth of their second child", later: ch4 }
+c3_will_leads: { description: "Will Coker led the rising in his cousin Wat's name", hidden: true, later: ch4 }

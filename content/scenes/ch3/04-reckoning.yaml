@@ -1,0 +1,568 @@
+# Chapter 3, Act IV: the Reckoning. Winter year 30 to autumn year 32. Age 29-31.
+# The debts of the war come due: the Lanzi paper (sold to Carrow), the rising in
+# Adalia (Wat Coker), Black Ewan or Coll on the March, the ruin of Ravell, a child's
+# fever, the truth about Vervais, a second child, and the summons that ends the
+# peace. Conditional scenes are reached by switches and skipped when they do not apply.
+
+- id: c3_paper
+  chapter: ch3
+  title: The Paper
+  checkpoint: true
+  text: |
+    The letter comes in Advent, on good parchment, under a seal you know: a black boar.
+
+    [if npc.osmund_carrow.met]The Earl of Carrow[else]Osmund, Earl of Carrow, whom you have seen twice in your life, both times at a distance,[/if] begs to inform you that the house of Lanzi, in its difficulties after the Mottle, has sold a number of its Adalian debts to his steward at Carrow, at a fair discount. Your lien is among them. The Earl assures you of his friendship. He will not, he writes, think of pressing a gallant knight of Les Salines for repayment. He hopes that you, in your turn, will think of him as a friend.
+
+    [break]
+
+    [if alias.spouse == cecily_fuller && npc.cecily_fuller.alive]Cecily reads it twice, and puts it down, and says, "That isn't a letter. That's a leash."[elif flag.c3_married && npc.@spouse.alive]Your wife reads it over your shoulder, and says nothing, and goes on standing there.[else]You read it twice by the fire, and then a third time, and then you put it face down on the table.[/if] A debt to a bank is money. A debt to an earl is something else.
+  choices:
+    - id: pay
+      text: Find the money and pay it, whatever it takes.
+      tags: [wealth]
+      requires: [ res.coin >= 960 ]
+      label: "Requires Coin £4"
+      text_after: |
+        You pay it in full, in coin, by your own messenger, and ask for the quittance under the Earl's seal. It comes back in a month with a letter regretting that you should have troubled yourself. The steward at Carrow, you hear later, was told off for selling you the paper so cheap. You are free of it. You are also, now, a man the Earl of Carrow has noticed.
+      effects: [ { add: { res.coin: -960 } }, { clear: flag.c2_lanzi_against_land }, { set: flag.c3_paid_carrow } ]
+      next: c3_rising_news
+    - id: friend
+      text: Write back, warmly, as the Earl's friend.
+      tags: [cunning, diplomacy]
+      text_after: |
+        You write back as warmly as you know how. The Earl writes back more warmly still, and sends a hawk. Nobody mentions the debt again. It sits in a chest at Carrow, and you know it is there, and the Earl knows you know.
+      effects: [ { set: flag.c3_carrow_paper }, { add: { rep.nobles: 1 } } ]
+      next: c3_rising_news
+    - id: law
+      text: Have the sale looked at by a lawyer. Lanzi had no right to sell it.
+      tags: [learning]
+      check: { attr: wits, skill: learning, difficulty: 4, mods: [ { if: flag.c1_learned_manor, add: 1, label: "Master Clement's lessons" }, { if: alias.spouse == fiammetta_lanzi, add: 2, label: your wife knows the bank's contracts } ] }
+      success:
+        text: |
+          The lawyer is a dry little man from [if flag.c2_granted_kerval]Lannec[else]Sauvemer[/if] who charges by the line. He finds it on the ninth page: the lien was made to the house of Lanzi and its heirs, not its assigns. The Earl's steward bought nothing. The Earl, informed of this, sends you a note saying he is glad the matter is settled. It is three lines long.
+        effects: [ { clear: flag.c2_lanzi_against_land }, { set: flag.c3_beat_carrow_lawyers }, { add: { res.coin: -120 } } ]
+        next: c3_rising_news
+      failure:
+        text: |
+          The lawyer finds nothing, charges you for it, and the Earl's steward hears that you went looking. The next letter from Carrow is shorter than the first.
+        effects: [ { set: flag.c3_carrow_paper }, { add: { res.coin: -120, rep.nobles: -1 } } ]
+        next: c3_rising_news
+
+- id: c3_rising_news
+  chapter: ch3
+  title: The Commons Rise
+  checkpoint: true
+  on_enter: [ { advance: { seasons: 2 } }, { if: npc.wat_coker.follower, then: [ { set: flag.c3_will_leads } ] } ]
+  text: |
+    It starts in a village in the west of Adalia, where a bailiff tried to put the whole parish in the stocks for taking plague wages, and the parish put the bailiff in the stocks instead, and left him there for a week, and fed him. By Whitsun the whole of the west is up, and the south, and the towns. They have burned the manor rolls, the Ordinance, and the Treasurer's barns outside Wendmere. They say they want the King, and no lords, and wages for a man's work.
+
+    [break]
+
+    The letters come one after another, all spring, and every one is worse.
+
+    [if background == reeve]Ashby is up. Your mother writes that the manor court rolls were burned on the green, and that the men who burned them came to the reeve's house next, and stood outside, and did not know what to do when they found it was only her.[if flag.c1_burned_copy || flag.c1_father_shielded] They went through the reeve's chest for the old tallies, she writes, and did not find them, because you burned them years ago.[elif flag.c1_father_confessed] Nobody touched the house, she writes. They remembered that your father confessed, when other reeves did not.[/if] And the man leading them, she writes, the man everybody in the shire is talking about, is Wat Coker.[elif background == burgess]Wendham has opened its gates to the rebels, and the guild council, your father's council, has fed them. Your mother writes that the town is full of men with scythes, and that Master Osbert has hidden the guild chest under his floor,[if flag.family_debt_sarenza] and that the rebels burned the Lanzi factor's books in the market square, your father's old debt among them, and she is not sorry,[/if] and that the rebel captain who came into the town at their head was a man from Ashby called Wat Coker.[elif background == archer]Hollin is up, and half the Ravell chase with it. Kit writes that the foresters have gone with the rebels, and the bowmen of the March, the men who stood at Harrow Ford and at Les Salines, and that the Ravell men are following a man from Ashby called Wat Coker.[else]Ravell Hall has been sacked. Hob Crane writes, in a hand like a hen walking, that the rebels came up the hill with torches and the household opened the gates, and Lady Ravell met them on the steps, and they did not touch her. The man at their head was called Wat Coker.[/if]
+
+    [if npc.wat_coker.follower && npc.wat_coker.alive]Wat himself is not in Adalia. He is in your yard, white as a sheet, with the letter in his hand that tells him his name is on every gallows-list in the kingdom. It is his cousin, Will Coker, who is leading them under the name, and Will is nineteen, and a fool. "Sir," Wat says. "I have to go home."[/if]
+
+    [break]
+
+    And then the King's letter: every lord who holds of the Crown is to come with every man he can raise, to put down the rebels, at the King's charge. It is not a request.
+  choices:
+    - id: arms
+      text: Raise your men, cross, and ride for the King.
+      tags: [martial]
+      text_after: |
+        You take every man who can sit a horse and draw a bow, and leave [if flag.c3_married && npc.@spouse.alive]your wife[else]your steward[/if] holding the manor. At Saltcombe the quays are full of lords and their men, all looking at each other sideways, all thinking the same thing: that the men they are going to fight are the men who stood behind them at Les Salines.
+      effects: [ { set: flag.c3_rode_for_king }, { add: { rep.crown: 2, rep.nobles: 1, estate.temper: -1 } }, { if: npc.wat_coker.follower, then: [ { leave: wat_coker }, { set: flag.c3_wat_went_home } ] } ]
+      next: c3_rising
+    - id: talk
+      text: Cross with a few men, and try to talk to them before the King's army does.
+      tags: [diplomacy, allies]
+      text_after: |
+        You take six men and cross on the first ship. [if flag.c2_granted_marsalin]Père Yves[elif flag.c2_granted_kerval]Dom Hervé[else]Père Guérin[/if] blesses you on the quay, and says that a lord who goes to talk to rebels had better be sure of them or sure of God. You are not sure of either. You go.
+      effects: [ { set: flag.c3_went_to_talk }, { if: npc.wat_coker.follower, then: [ { set: flag.c3_wat_with_you } ] } ]
+      next: c3_rising
+    - id: money
+      text: Send the King money and a few men, and stay to hold your manor.
+      tags: [wealth, cunning]
+      requires: [ res.coin >= 480 ]
+      label: "Requires Coin £2"
+      text_after: |
+        You send twenty pounds' worth of silver and four men, which is a respectable showing for a lord of your size, and a letter about the dangers of the border with the truce so new. The King's clerks enter it in their book. The King, you hear, does not read it.
+      effects: [ { set: flag.c3_stayed_home }, { add: { res.coin: -480 } }, { if: npc.wat_coker.follower, then: [ { leave: wat_coker }, { set: flag.c3_wat_went_home } ] } ]
+      next: c3_rising_far
+    - id: refuse
+      text: Stay where you are, and send nothing. You will not hunt your own people.
+      tags: [allies]
+      text_after: |
+        You write to the King that the border will not hold without you, which is half true. You do not write the other half. [if npc.wat_coker.follower]Wat goes home anyway, on the next ship, without leave. You let him.[/if] [if flag.c2_granted_marsalin]Margot[elif flag.c2_granted_kerval]Gwenaël[else]Bastien[/if] hears what you have done, and for the first time since you came, takes his cap off to you in the lane.
+      effects: [ { set: flag.c3_refused_rising }, { add: { rep.crown: -3, rep.commons: 2, estate.temper: 2 } }, { if: npc.wat_coker.follower, then: [ { leave: wat_coker }, { set: flag.c3_wat_went_home } ] } ]
+      next: c3_rising_far
+
+- id: c3_rising
+  chapter: ch3
+  title: The Hythe Fields
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    The Hythe Fields, across the river from Wendmere, on a hot morning in June. Forty thousand of them, the heralds say, and you believe it. They stand in the fields east of the city in their parishes, under their parish banners, with their scythes and their bows and their bread in their shirts, and they are quiet, which is the most frightening thing about them.
+
+    [break]
+
+    The King rides out to them with a hundred lords and knights, and you are one. Aldred is forty-four now, grey in the beard, and sits his horse as if he were going hunting. The Earl of Carrow rides at his left hand, with his black boar and forty of his own men. "My people," the King says, in a voice that carries, and forty thousand men take their caps off.
+
+    They want the end of villeinage. They want a fourpenny rent. They want pardons. They want the Ordinance burned and the Chancellor hanged. [if flag.c3_rode_for_king]The lords round you shift in their saddles.[else]You can see the lords round the King shifting in their saddles.[/if] The King says yes. Yes to all of it. Charters will be written tonight, sealed tomorrow. They should go home.
+
+    [break]
+
+    And then the captain of the Ravell men comes forward to kneel to the King, and it is [if flag.c3_will_leads]Will Coker, nineteen, with Wat's face and none of Wat's sense[elif background == reeve]Wat Coker, older, thinner, grey at the temples, and the same set to his jaw that he had at ten, throwing stones at the reeve's boy[else]a big grey-headed man called Wat Coker, with a bow over his back and a face like a slammed door[/if]. He does not kneel quite low enough. The Earl of Carrow leans over to the King and says something, and the King does not answer, and does not look round. Then the Earl lifts one finger, and his marshal, a big man called Sir Hugh Malet, puts his horse forward with his sword already out. A lord's villein, in arms against his lord. A lord's justice. The King is looking at the sky.
+  choices:
+    - id: stand
+      text: Stay where you are. This is the King's business.
+      tags: [yield]
+      text_after: |
+        Malet cuts him down from the saddle. It takes two blows. The field goes still, forty thousand men at once, and for a breath you think it will all go up, the lords and the commons and the King together. Then the King lifts his hand and says, quite calmly, "The charters will be sealed tonight. Go home." And they go. They pick up their captain and carry him off between four men, and go home, with their charters, which will be revoked by Michaelmas.
+
+        By August the hangings start. They go on until Michaelmas. You ride home through the west of Adalia past gallows at every crossroads, and you do not look up, and you do not look away.
+      effects: [ { set: flag.c3_wat_cut_down }, { if: flag.c3_will_leads, then: [], else: [ { kill: wat_coker } ] }, { add: { rep.crown: 1, rep.commons: -2 } } ]
+      next: c3_march_router
+    - id: shout
+      text: Shout a warning.
+      tags: [allies]
+      text_after: |
+        "Ware Malet!" you shout, and it comes out louder than you meant, and two hundred heads turn, and [if flag.c3_will_leads]Will Coker[else]Wat Coker[/if] looks up and sees the sword, and throws himself sideways. The blade takes him in the shoulder instead of the neck. He goes down, and his own men drag him back into the crowd, and the moment passes, and the King, who has seen all of it, looks at you for the space of a breath.
+
+        [if flag.c3_will_leads]Will Coker[else]Wat Coker[/if] lives, and hides, and is not hanged with the others in August. The Earl of Carrow does not forgive you. Neither, quite, does the King, who wanted it done and wanted not to be seen wanting it.
+      effects: [ { set: flag.c3_warned_wat }, { add: { rep.crown: -2, rep.commons: 3, rep.honor: 1 } }, { if: background == reeve, then: [ { add: { rel.wat_coker.respect: 3, rel.wat_coker.affection: 3 } } ] } ]
+      next: c3_march_router
+    - id: ride
+      text: Put your horse between them.
+      tags: [martial]
+      check: { attr: agility, skill: riding, difficulty: 4, mods: [ { if: flag.c3_went_to_talk, add: 1, label: you are already in front with the parish captains } ] }
+      success:
+        text: |
+          You put your horse between them so fast that Malet's blow goes into empty air and he nearly comes out of the saddle. For a moment nobody knows what has happened. Forty thousand men have seen it. So has the King, and the King is not a fool: he laughs, out loud, and says, "Well ridden, sir," and takes [if flag.c3_will_leads]Will Coker's[else]Wat Coker's[/if] hand, and raises him, in front of everyone, as if he had meant to all along.
+
+          The charters are still revoked, in the end. The hangings still come in August. But not that one. [if flag.c3_will_leads]Will Coker's[else]Wat Coker's[/if] name is on the first pardon roll, and you know whose doing it was, and so does he. So does the Earl of Carrow.
+        effects: [ { set: flag.c3_saved_wat }, { add: { rep.crown: 1, rep.commons: 3, res.renown: 2 } }, { if: background == reeve, then: [ { add: { rel.wat_coker.respect: 4, rel.wat_coker.affection: 4 } } ] } ]
+        next: c3_march_router
+      failure:
+        text: |
+          Your horse shies at the noise and the crowd, and you get there a moment too late, and Malet's sword goes past your arm into [if flag.c3_will_leads]Will Coker[else]Wat Coker[/if], and you are spattered with it. You sit there with his blood on your sleeve while the King tells forty thousand men to go home, and they go, and men look at you, on both sides, and you do not know what they see.
+        effects: [ { set: flag.c3_wat_cut_down }, { if: flag.c3_will_leads, then: [], else: [ { kill: wat_coker } ] }, { add: { rep.commons: 1 } } ]
+        next: c3_march_router
+
+- id: c3_rising_far
+  chapter: ch3
+  title: News from the Hythe Fields
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    The news comes over in pieces, all summer, each piece worse than the last.
+
+    The King rode out to the rebels at the Hythe Fields, across the river from Wendmere, with a hundred lords, and promised them everything. Then the Earl of Carrow's marshal cut down their captain, [if flag.c3_will_leads]Will Coker, who had taken his cousin Wat's name,[else]Wat Coker,[/if] from the saddle, in front of forty thousand men, and the King told them to go home, and they went.
+
+    [break]
+
+    By August the hangings started. [if flag.c3_refused_rising]The King's clerks have made a list of the lords who did not come. You are on it.[else]The King's clerks have made a list of the lords who sent money instead of coming. You are on it, lower down.[/if]
+
+    [if background == reeve]Your mother writes that they hanged eleven men from Ashby on the green, from the big elm, and that [if suit.mag_coker.status == married]two of Mag's uncles were among them[else]Mag Coker's husband was one of them[/if], and that she has not stopped hearing it.[elif background == burgess]Your mother writes that Wendham paid a fine of two hundred pounds to the Crown for opening its gates, and that the council has put it on the guilds, and that the guilds have put it on the journeymen, who were the ones that wanted to open the gates in the first place.[elif background == archer]Kit writes that they hanged the March bowmen at Brome, nine of them, men who stood at Harrow Ford, and that Sir Ancel would not watch.[else]Hob Crane writes that they hanged the grooms who opened the gate at Ravell, and that Lady Ravell went to the King and asked for their lives, and did not get them, and has not come out of her chapel since.[/if]
+  choices:
+    - id: on
+      text: There is nothing to be done from here.
+      tags: [yield]
+      text_after: There is nothing to be done from here. You go back to the manor, and to the harvest, and to the border, and you try not to think about the big elm.
+      effects: [ { set: flag.c3_wat_cut_down }, { if: flag.c3_will_leads, then: [], else: [ { kill: wat_coker } ] } ]
+      next: c3_march_router
+    - id: alms
+      text: Send money home for the widows.
+      tags: [piety, allies]
+      requires: [ res.coin >= 240 ]
+      label: "Requires Coin £1"
+      text_after: You send a pound for the widows, by [if background == reeve || background == archer]Father Anselm[else]Father Benet[/if], with no name on it. Everybody at home knows who sent it within the week.
+      effects: [ { set: flag.c3_wat_cut_down }, { if: flag.c3_will_leads, then: [], else: [ { kill: wat_coker } ] }, { add: { res.coin: -240, rep.commons: 2, rep.piety: 1 } } ]
+      next: c3_march_router
+
+- id: c3_march_router
+  chapter: ch3
+  title: Word from the March
+  text: |
+    [if flag.c2_ewan_vendetta]The March has been waiting for this.[elif flag.c2_coll_repaid]A letter comes from the March, from a man you did not expect to hear from again.[else]On the March, while the commons rose, the Caldmoor border stayed quiet. Sir Ancel, you hear, rode his walls every night anyway[if flag.c1_ancel_lamed], on his bad leg, the one Thorne's gate gave him[/if].[if flag.c1_thorne_taken] Thorne Hall stands empty still, since Sir Godric went to the block.[/if][/if]
+  choices:
+    - id: on
+      text: Read on.
+      next: { switch: [ { if: flag.c2_ewan_vendetta, go: c3_ewan }, { if: flag.c2_coll_repaid, go: c3_coll } ], default: c3_ravell }
+
+- id: c3_ewan
+  chapter: ch3
+  title: Black Ewan's Debt
+  text: |
+    While the March bowmen were away at the rising, or hanging from the gallows at Brome after it, Black Ewan of Glenhallow came over the Leven with two hundred men.
+
+    He did not burn steadings this time. He went straight down the Ravell chase to [if background == archer]Hollin[elif background == reeve]Ashby[elif background == burgess]the Wendham road[else]Ravell Hall[/if], and asked at every door for one family. Yours.
+
+    [break]
+
+    [if background == archer]Kit was at the butts. The whole of Hollin went into the church and barred the door, and Ewan's men stood outside and shouted your name and Coll's, for an hour, and then set fire to the forester's cottage and went home. Nobody was killed. Kit writes that she has never been so frightened in her life, and that she is not frightened any more, she is angry.[elif background == reeve]Your mother was in the dairy. The village hid her in the tithe barn under the straw, and Ewan's men turned the reeve's house inside out and took your father's tally-sticks and burned them in the yard, which nobody can understand. Then they went home.[elif background == burgess]They took two Wendham wool-wagons on the road and asked the carters about the Mercers, and when the carters said there were no Mercers on the wagons they cut the horses loose and went home. Your mother writes that she has had the gate of the yard barred ever since.[else]Your mother is dead, but Ewan did not know it. He asked at the gate of Ravell Hall for the tirewoman's son, and Lady Ravell came down to him herself and told him to go to the devil, in Caldmoor, and he laughed, and went.[/if]
+
+    He left a message on the church door, the way he did before: Coll's name, and yours.
+  choices:
+    - id: hunt
+      text: Cross the Leven next spring with your own men, and finish it.
+      tags: [martial]
+      lethal: true
+      warn: A fight in Black Ewan's own hills, across the Leven. Without armour, or carrying a serious wound, you could die there.
+      check: { attr: strength, skill: arms, difficulty: 5, mods: [ { if: flag.c1_watch_rode, add: 1, label: you know the Leven fords }, { if: retinue >= 4, add: 1, label: your following }, { if: npc.will_cobb.alive, add: 1, label: Will Cobb and the March bowmen } ] }
+      success:
+        text: |
+          You cross at a ford you remember from the birch-bark map, in the dark, with your men and twenty March bowmen who have their own reasons.[if flag.c2_saved_cobb && npc.will_cobb.alive] Will Cobb leads them. "You pulled me out at Grisolles," he says. "Call it square after this."[/if] You find Ewan at a shieling in the hills, with a dozen men and a fire. It is short. At the end of it Black Ewan of Glenhallow is on his back in the heather with your sword at his throat, and he looks up at you and laughs, the way he laughs at everything except his family.
+
+          You do not kill him. You take his sword, and his horse, and his word, in front of his own men, that the feud is done. Caldmoor men keep that kind of word. It is the only kind they do keep.
+        effects: [ { set: flag.c3_ewan_beaten }, { clear: flag.c2_ewan_vendetta }, { add: { res.renown: 2, rep.caldmoor: -1 } } ]
+        next: c3_ravell
+      partial:
+        text: |
+          You find him, and fight him, and neither of you wins. You come back over the Leven with two men dead and a cut across your ribs, and Ewan goes back into the hills with a hole in his arm. The March says you did well. The feud is not over.
+        effects: [ { injury: bruised_ribs }, { casualties: { men: 2, named: 0 } }, { add: { res.renown: 1 } } ]
+        next: c3_ravell
+      failure:
+        text: |
+          The ford is watched. They are waiting for you on the far bank, in the mist, and you never see Black Ewan at all, only his men, and the river, and your own horse going down under you in the shallows.
+        effects: [ { die: "Killed at the Leven, in Black Ewan's feud" } ]
+        next: c3_ravell
+    - id: wall
+      text: Pay for a stone wall and a tower at home, and a watch on the fords.
+      tags: [wealth, allies]
+      requires: [ res.coin >= 720 ]
+      label: "Requires Coin £3"
+      text_after: You pay for a wall round the church and the houses nearest it, and a tower with a bell, and four men to watch the fords. It is the most money you have ever spent on a place you do not live. The next time Ewan comes, the bell rings, and the village goes behind the wall, and he goes home again with nothing. He does not come back after that. He is getting old.
+      effects: [ { set: flag.c3_walled_home }, { add: { res.coin: -720, rep.commons: 1 } } ]
+      next: c3_ravell
+    - id: coll
+      text: Write to Coll of Glenhallow.
+      tags: [diplomacy]
+      visible_if: [ { any: [ flag.c1_coll_ransomed, flag.c1_coll_given, flag.c1_coll_freed ] } ]
+      text_after: |
+        You write to Coll, who is a grown man now, and his uncle's heir. You do not ask him for anything. You tell him what Ewan did at your home, and who lives there. Coll writes back in Latin, which he must have had a priest do for him. His uncle, he writes, is a fool about some things. He will see to it. The feud goes quiet after that, and stays quiet.
+      effects: [ { set: flag.c3_coll_ended_feud }, { clear: flag.c2_ewan_vendetta }, { add: { rep.caldmoor: 1 } } ]
+      next: c3_ravell
+
+- id: c3_coll
+  chapter: ch3
+  title: A Letter from Glenhallow
+  text: |
+    The letter is in Latin, which Coll of Glenhallow must have had a priest write for him, and it says that while the March men were away at the rising his uncle meant to come over the Leven, and that Coll told him not to, and that his uncle listened, this once.
+
+    It says also that Coll is to be married, to a Caldmoor chief's daughter, at Lammas, and that he would be honoured if the man who let him go at the Leven would stand with him. The safe-conduct is enclosed. It is signed by the King of Caldmoor.
+  choices:
+    - id: go
+      text: Go to Caldmoor for Coll's wedding.
+      tags: [diplomacy, allies]
+      text_after: |
+        You ride north into Caldmoor under the safe-conduct with four men, through glens you only ever saw over a bowstring, and every man you pass looks at you as if you were a ghost. At the wedding you drink a great deal of something that is not ale, and dance something that is not a dance, and Black Ewan of Glenhallow sits at the high table and looks at you all evening without blinking. At the end of the night he comes over, and puts his hand on your shoulder, and says, in Adalian, "He says you were fair. I hated you for it. I'm old now." And goes to bed.
+      effects: [ { set: flag.c3_coll_wedding }, { add: { rep.caldmoor: 3, rep.crown: -1, rel.coll_glenhallow.affection: 4 } }, { meet: ewan_dubh } ]
+      next: c3_ravell
+    - id: gift
+      text: Send a gift, and your regrets.
+      tags: [wealth]
+      text_after: You send a good horse and a letter in your best Latin. Coll sends back a Caldmoor dirk with a silver hilt, and no letter. You hang it over the hall fire, and everyone who comes in asks about it.
+      effects: [ { add: { res.horses: -1, rep.caldmoor: 1, rel.coll_glenhallow.affection: 2 } }, { item: +caldmoor_dirk } ]
+      next: c3_ravell
+
+- id: c3_ravell
+  chapter: ch3
+  title: The House of Ravell
+  checkpoint: true
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    [if flag.c2_ravell_taken]Lord Ravell's ransom broke him. Three years in a Valdrennish castle, and a price that the whole shire had to help pay, and then the Mottle, which took the tenants who paid the rents that paid the interest on the loans that paid the ransom.[else]The war was hard on Ravell, and the Mottle was harder. Half the tenants dead, the rents gone, the loans from the war still owing, and Lord Ravell too proud to sell anything until it was too late.[/if] [if flag.c3_wat_cut_down]And then the rising, and the burning of the manor rolls, and the hangings, and the fines.[/if]
+
+    Now he is selling.
+
+    [break]
+
+    It is Aymer who comes to tell you. [if flag.c2_saved_aymer]He has not forgotten that you carried him out of the press at Grisolles, and he says so, which is unlike him.[/if] He is thirty, and handsome still, and has the look of a man who has been drinking steadily for a year and has decided to stop for one afternoon.
+
+    "My father is selling everything that isn't nailed down," he says. "My brother is letting him, because my brother would rather have money in Wendmere than land in the shire. [if background == reeve]Ashby's on the list.[elif background == archer]Hollin's on the list, and the chase.[elif background == burgess]The Ravell rents in Wendham are on the list. Your father's street.[else]The home farm at Underhill is on the list. Where your mother was born.[/if] I thought you should hear it from me before you heard it from a Lanzi clerk."
+
+    He looks round your hall. "You've done well," he says. He does not quite manage not to mind.
+  choices:
+    - id: buy
+      text: "[if background == reeve]Buy Ashby.[elif background == archer]Buy Hollin and the chase.[elif background == burgess]Buy the Wendham rents.[else]Buy Underhill.[/if] Thirty pounds."
+      tags: [wealth]
+      requires: [ res.coin >= 7200 ]
+      label: "Requires Coin £30"
+      text_after: |
+        You buy it. The deed comes under Lord Ravell's seal, and the old man does not come down to sign it in person. [if background == reeve]You ride into Ashby as its lord on a wet day in October. Your mother is at the door of the end cottage. The whole village is out, and nobody says anything, and then old Father Anselm starts to laugh, and cannot stop, and then everyone is laughing, and you are too.[elif background == archer]You ride into Hollin as its lord, past the butts where you ran for arrows at a farthing a dozen. Kit is at the door. "Lord of Hollin," she says. "Our dad would've laughed himself sick."[elif background == burgess]You are the landlord of your father's street. The first rent-day, half the street comes to pay in person, to see your face.[else]You walk round Underhill as its lord, and stand at the door of the cottage where your mother was born, and nobody in the world but you knows why.[/if]
+      effects: [ { add: { res.coin: -7200 } }, { set: flag.c3_holds_home } ]
+      next: c3_fever_router
+    - id: half
+      text: Buy it with half down, and half from the rents over five years.
+      tags: [wealth, cunning]
+      requires: [ res.coin >= 3600 ]
+      label: "Requires Coin £15"
+      text_after: |
+        Fifteen pounds now and the rest from the rents. Lord Ravell's steward, who has no choice, agrees. You hold [if background == reeve]Ashby[elif background == archer]Hollin[elif background == burgess]the Wendham rents[else]Underhill[/if] in mortgage, which is to say, as long as you pay. It is yours, mostly. You will be paying for it until your eldest is grown.
+      effects: [ { add: { res.coin: -3600 } }, { set: flag.c3_holds_home }, { set: flag.c3_home_mortgaged } ]
+      next: c3_fever_router
+    - id: lend
+      text: Lend Aymer what you can spare, for his own sake.
+      tags: [allies]
+      requires: [ res.coin >= 960 ]
+      label: "Requires Coin £4"
+      text_after: |
+        You lend Aymer four pounds, which is not enough to save anything, and you both know it. He takes it anyway, and puts it away in his purse as if it might break, and says, "I'll pay you back," and means it. He will pay you back, in the end, in something other than money.
+      effects: [ { add: { res.coin: -960, favor.aymer_ravell: 1, rel.aymer_ravell.affection: 3 } }, { set: flag.c3_lent_aymer } ]
+      next: c3_fever_router
+    - id: pass
+      text: Let it go. It is not your house.
+      tags: [yield]
+      text_after: |
+        You let it go. A wool merchant from Wendmere buys it, a man nobody in the shire has ever seen, who sends a bailiff and never comes himself. Aymer, when he hears, says nothing. He was not expecting anything. That is what you find hardest.
+      effects: [ { set: flag.c3_ravell_sold_away } ]
+      next: c3_fever_router
+
+- id: c3_fever_router
+  chapter: ch3
+  title: The Winter Fever
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    In the winter a fever goes through the children of the manor. Not the Mottle: the ordinary kind, that comes every few years and takes the weakest. Three children in the village are dead by Candlemas.[if heirs.count == 0] You stand at the graves with their fathers, and say what a lord says, and go home to a quiet hall.[/if]
+  choices:
+    - id: on
+      text: "[if heirs.count >= 1]Go home.[else]Go on.[/if]"
+      next: { switch: [ { if: heirs.count >= 1, go: c3_fever } ], default: c3_fever_after }
+
+- id: c3_fever
+  chapter: ch3
+  title: The Fever in the House
+  text: |
+    Then {heirs.eldest} wakes up hot.
+
+    By noon the child is burning, and will not drink, and does not know you. [if flag.c3_married && npc.@spouse.alive]Your wife has not left the cradle since dawn.[else]The wet-nurse has not left the cradle since dawn.[/if] The whole house goes quiet, the way houses do.
+  choices:
+    - id: physician
+      text: Send for the physician.
+      tags: [wealth, learning]
+      requires: [ res.coin >= 240 ]
+      label: "Requires Coin £1"
+      text_after: |
+        Maestro Orsini comes, and bleeds the child, which seems to you a strange thing to do to something so small, and casts a horoscope, and leaves powders. [if flag.c3_lost_child]For three days you think it will be all right. On the fourth, it is not.[else]The fever breaks on the fourth day, whether because of him or in spite of him nobody can say. Orsini takes the credit, and the fee.[/if]
+      effects: [ { add: { res.coin: -240 } }, { chance: 15, then: [ { heir_dies: last }, { set: flag.c3_lost_child } ] } ]
+      next: c3_fever_after
+    - id: nurse
+      text: Sit up with the child yourself, with cold cloths and small beer, the way your mother did.
+      tags: [allies]
+      text_after: |
+        You sit up four nights with cold cloths and small beer and the child's hot little hand in yours, [if flag.c3_married && npc.@spouse.alive]taking turns with your wife, who will not leave[else]with a wet-nurse from the village dozing in the corner[/if]. [if flag.c3_lost_child]On the fourth night the breathing changes. You know the sound from the plague year. You do not let go.[else]On the fourth night the fever breaks in a great sweat, and the child sleeps, and you sleep too, sitting up, and wake with a stiff neck and the child pulling your nose.[/if]
+      effects: [ { set: flag.c3_nursed_child }, { chance: 7, then: [ { heir_dies: last }, { set: flag.c3_lost_child } ] } ]
+      next: c3_fever_after
+    - id: pray
+      text: Have the priest say Masses, and go on with the manor's business.
+      tags: [piety]
+      text_after: |
+        Masses are said, every morning, and candles burn day and night in front of the Virgin. You go on with the manor's business because somebody must, and come home each evening afraid to open the door. [if flag.c3_lost_child]On the fifth evening the women are waiting for you in the hall, and you know before anyone speaks.[else]On the fifth evening the child is sitting up, demanding bread and dripping, and the priest says the candles did it, and you are not going to argue.[/if]
+      effects: [ { add: { rep.piety: 1 } }, { chance: 10, then: [ { heir_dies: last }, { set: flag.c3_lost_child } ] } ]
+      next: c3_fever_after
+
+- id: c3_fever_after
+  chapter: ch3
+  title: Candlemas
+  text: |
+    [if flag.c3_lost_child]They bury {heirs.lastname} in the chancel, in a box you could carry under one arm. [if flag.c3_married && npc.@spouse.alive]Your wife does not cry at the grave. She cries afterwards, for a month, at night, when she thinks you are asleep.[else]You carry it yourself.[/if] Every child in the village comes to the funeral, because the priest tells them to, and stands in rows, and stares.
+
+    You go back to the manor's business, because somebody must.[elif heirs.count >= 1]The fever goes as it came. By Lent {heirs.eldest} is running about the yard after the geese again, and getting kicked by a goose, and roaring about it, and the whole manor hears and is glad.[else]The fever goes as it came. The village buries its children and goes back to work, because there is nothing else to do with grief in the spring.[/if]
+  choices:
+    - id: on
+      text: Go on.
+      next: { pool: c3_manor, count: 1, then: c3_vervais }
+
+- id: c3_vervais
+  chapter: ch3
+  title: What the Weavers Knew
+  checkpoint: true
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    [if flag.c3_lanzi_kin]Fiammetta finds it in her father's ledgers, in the spring, going through the old Sarenzan accounts that her uncles never asked for: a payment, ten years old, from the steward of Carrow, through the Lanzi house, to a clerk at the court of Duke Lothaire of Vervais. The sum is large. The date is three weeks before the guild masters were hanged. Against it, in her father's hand, one word: "avviso." A warning.[elif flag.c3_brese_kin || flag.c3_thibaut_spared]Thibaut de Brésy tells you, in the spring, at your own table, with his cousin's wine in him. "You know why the weavers never rose?" he says. "My father knew they were going to. Weeks before. An Adalian earl sent word to Duke Lothaire. My father laughed for a day." He looks at you. "The black boar. You didn't know? God's wounds. You really didn't know."[elif flag.c2_cut_down_weavers]A woman comes to the manor gate in the spring, a widow from the Lisonne, with a letter she has carried for ten years. Her husband was one of the guild masters you cut down from the ferry gallows. The letter is the one that hanged him: the warning, in a clerk's Valdrennish, to Duke Lothaire, from the household of an Adalian earl. It has a black boar on the seal. She has come all this way, she says, because you were the only Adalian who ever did anything for the dead.[else]It is Aymer Ravell who tells you, drunk, in your hall, the night before he goes back to Adalia. "You know what my father heard," he says, "in three years in a Valdrennish castle? The truth about Vervais. The guild masters were betrayed. By one of ours. An earl. My father has known for six years and never said, because the earl is the man who lent him the ransom." He drinks. "Carrow," he says. "The black boar. Of course it was."[/if]
+
+    [break]
+
+    You sit up with it until the candle is out. The guild masters of Vervais were hanged because the Earl of Carrow did not want the war won quickly. A quick war would have made the King rich, and a rich King does not need the Moot, or the Old Baronage, or the Earl of Carrow. So the weavers died, and the army went into Valdrenne without its ally, and turned back at the Lisonne, and was caught at Grisolles. [if flag.c2_saved_master || flag.c2_master_taken || flag.c2_ravell_taken]You remember Grisolles.[/if] Everybody remembers Grisolles.
+
+    [if npc.walter_pryce.met]And Sir Walter Pryce was the Earl's captain then, and is the Earl's man still, and you do not know whether he knew.[/if]
+  choices:
+    - id: king
+      text: Take it to the King.
+      tags: [diplomacy, allies]
+      text_after: |
+        You take it to Wendmere yourself, and wait four days for an audience, and give it to the King in a window of the long gallery with nobody near. Aldred reads it twice. His face does not change at all. At the end he folds it, and puts it inside his gown, and says, "Thank you. You will say nothing of this to anyone." Then, after a moment: "Grisolles cost me eight thousand men." He does not say anything else. He does not need to. Something has begun, and you have begun it.
+      effects: [ { set: flag.c3_told_king_vervais }, { add: { rep.crown: 3, rep.nobles: -1 } } ]
+      next: c3_second_child_router
+    - id: prince
+      text: Take it to the Prince.
+      tags: [cunning, diplomacy]
+      text_after: |
+        Prince Edwin is twenty-one, and has just been given his own household, his own council, and the duchy of Saltmarsh, and is impatient with all three. He reads it in his garden, walking, and stops walking. "My father would bury this," he says. "He needs Carrow. I don't." He looks at you properly for the first time. "Who else knows?" You tell him. "Good," he says. "Keep it that way. Come to me at Christmas."
+      effects: [ { set: flag.c3_told_prince_vervais }, { add: { rep.crown: 1 } } ]
+      next: c3_second_child_router
+    - id: carrow
+      text: Take it to the Earl of Carrow, privately.
+      tags: [cunning, wealth]
+      text_after: |
+        The Earl of Carrow receives you at Carrow, alone, in a room full of hounds. He reads it, and looks at you over it for a long moment, and smiles. "What do you want?" he says. Not "how dare you." Not "this is a lie." [if flag.c3_carrow_paper]You want your paper back. He puts it in the fire himself.[else]You name a sum. He pays it without blinking.[/if] Then he burns the letter too. "You'll go far," he says, as he shows you out. "I shall see to it." You ride home feeling as if you need to wash.
+      effects: [ { set: flag.c3_sold_vervais }, { add: { rep.ruthlessness: 2, rep.honor: -2 } }, { if: flag.c3_carrow_paper, then: [ { clear: flag.c3_carrow_paper }, { clear: flag.c2_lanzi_against_land } ], else: [ { add: { res.coin: 4800 } } ] } ]
+      next: c3_second_child_router
+    - id: keep
+      text: Say nothing. Keep it.
+      tags: [cunning]
+      text_after: |
+        You put it in the chest with your deeds, under the false bottom, and say nothing to anyone. It is a knife. You do not know yet whose throat it is for. But a man without great friends had better keep a knife.
+      effects: [ { set: flag.c3_kept_vervais }, { add: { skill.intrigue: 1 } } ]
+      next: c3_second_child_router
+
+- id: c3_second_child_router
+  chapter: ch3
+  title: Summer
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    [if flag.c3_married && npc.@spouse.alive]In the summer your wife is brought to bed again.[else]The summer is long, and dry, and the harvest comes in early.[/if]
+  choices:
+    - id: on
+      text: Go on.
+      next: { switch: [ { if: [ flag.c3_married, npc.@spouse.alive ], go: c3_second_child } ], default: c3_summons }
+
+- id: c3_second_child
+  chapter: ch3
+  title: The Second Child
+  on_enter:
+    - birth: random
+    - if: flag.c3_birth_physician
+      then: [ { chance: 4, then: [ { set: flag.c3_wife_died_second } ] } ]
+      else: [ { chance: 2, then: [ { set: flag.c3_wife_died_second } ] } ]
+    - if: flag.c3_wife_died_second
+      then: [ { kill: "@spouse" } ]
+  text: |
+    It is easier the second time, everyone says. [if flag.c3_wife_died_second]It is not.
+
+    The child lives. A [if heirs.last == son]boy[else]girl[/if]. {npc.@spouse} does not. It is quick, at the end, quicker than the first time would have been, the midwife says, as if that were a comfort. You stand at the door of the solar with the baby in your arms, and the women go past you with their eyes down, and nobody tells you anything, because there is nothing to tell.[else]It is, mostly. Eleven hours instead of a day and a night, and you spend them in the yard again, and this time [if heirs.count >= 2]{heirs.eldest} spends them with you, on your knee, asking questions you cannot answer.[else]you spend them alone, thinking about the small grave in the chancel.[/if]
+
+    A [if heirs.last == son]boy[else]girl[/if]. Smaller than the first, and louder. {npc.@spouse}, sitting up in bed with her hair everywhere, looks at it and says, "Well. That's that, then," and laughs, and holds out her arms.[/if]
+  choices:
+    - id: father
+      visible_if: [ { not: { any: [ heirs.eldest_id == piers, heirs.eldest_id == ralf, heirs.eldest_id == hugh, heirs.eldest_id == hob, heirs.eldest_id == edith, heirs.eldest_id == margery, heirs.eldest_id == alison, heirs.eldest_id == agnes ] } } ]
+      text: "[if heirs.last == son][if background == reeve]Piers, for your father[elif background == burgess]Ralf, for your father[elif background == archer]Hugh, for your father[else]Hob, for old Hob Crane, who was as near a father as you had[/if][else][if background == reeve]Edith[elif background == burgess]Margery[elif background == archer]Alison[else]Agnes[/if], for your mother[/if]."
+      tags: [allies]
+      effects:
+        - if: heirs.last == son
+          then:
+            - if: background == reeve
+              then: [ { name_heir: Piers } ]
+            - if: background == burgess
+              then: [ { name_heir: Ralf } ]
+            - if: background == archer
+              then: [ { name_heir: Hugh } ]
+            - if: background == servant
+              then: [ { name_heir: Hob } ]
+          else:
+            - if: background == reeve
+              then: [ { name_heir: Edith } ]
+            - if: background == burgess
+              then: [ { name_heir: Margery } ]
+            - if: background == archer
+              then: [ { name_heir: Alison } ]
+            - if: background == servant
+              then: [ { name_heir: Agnes } ]
+      text_after: "{heirs.lastname}, the priest writes, under the first. [if flag.c3_wife_died_second]And under that, her name, and the date, which is the same date.[/if]"
+      next: c3_summons
+    - id: saint
+      text: "[if heirs.last == son]Thomas[else]Anne[/if], for the saint whose day it is."
+      tags: [piety]
+      effects:
+        - if: heirs.last == son
+          then: [ { name_heir: Thomas } ]
+          else: [ { name_heir: Anne } ]
+      text_after: "{heirs.lastname}, the priest writes, under the first. [if flag.c3_wife_died_second]And under that, her name, and the date, which is the same date.[/if]"
+      next: c3_summons
+    - id: friend
+      text: "[if heirs.last == son][if npc.davy_ludd.alive]Davy, for Davy Ludd[elif npc.will_cobb.alive]Will, for Will Cobb[else]Roger, for the men who did not come home[/if][elif flag.c3_davy_married]Aude, for Davy's wife, who sat up with yours[else]Mabel, for the song your mother sang[/if]."
+      tags: [allies]
+      effects:
+        - if: heirs.last == son
+          then:
+            - if: npc.davy_ludd.alive
+              then: [ { name_heir: Davy }, { add: { rel.davy_ludd.affection: 3 } } ]
+              else:
+                - if: npc.will_cobb.alive
+                  then: [ { name_heir: Will }, { add: { rel.will_cobb.affection: 3 } } ]
+                  else: [ { name_heir: Roger } ]
+          else:
+            - if: flag.c3_davy_married
+              then: [ { name_heir: Aude }, { add: { rel.davy_ludd.affection: 2 } } ]
+              else: [ { name_heir: Mabel } ]
+      text_after: "{heirs.lastname}, the priest writes, under the first. [if flag.c3_wife_died_second]And under that, her name, and the date, which is the same date.[/if]"
+      next: c3_summons
+
+- id: c3_summons
+  chapter: ch3
+  title: The Summons
+  checkpoint: true
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    In the autumn of the thirty-second year of King Aldred, the peace ends. Not with a war. With letters.
+
+    [break]
+
+    [if flag.c2_feast_known]Lords who remember your name from the Christmas feast at Sauvemer write to you now as if you were old friends.[/if]
+
+    The truce of Saint-Lys runs out at Lady Day. King Amaury of Valdrenne is dead, of a fever, and his son is fourteen, and the Constable of Valdrenne rules in his name. Everyone in both kingdoms knows what that means. The King is calling a great council at Wendmere for Martinmas, and every lord who holds of the Crown is summoned to it.
+
+    [if flag.c3_told_king_vervais]The King's summons to you has a line at the bottom in his own hand: "Come early. Speak to no one."[elif flag.c3_told_prince_vervais]Under the King's summons is another letter, on the Prince's paper: "Christmas. As we said."[elif flag.c3_sold_vervais]Under the King's summons is another letter, with a black boar on the seal, inviting you to lodge at Carrow House in Wendmere for the council.[elif flag.c3_refused_rising]The King's summons to you is the same as everyone's. Somebody has underlined your name.[/if]
+
+    [break]
+
+    [if npc.walter_pryce.alive && npc.walter_pryce.met]Sir Walter Pryce comes to see you in October. He is a banneret now, grey and heavy, with a company of three hundred and a manor in Carrow, and he rides into your yard as if he owned it, which is how Pryce rides into everything.[if flag.c1_dubbed_by_pryce || flag.c1_carrow_indenture || flag.c2_pryce_company] You have worn the black boar before, under him, and he has not forgotten it.[/if] "Rising men," he says, over your wine, "need friends at a council. The Earl has friends. I could put your name to him." He looks at you over the cup. "Or not. Your choice. It always is, with you."[else]The Earl of Carrow's people are going round the new lords like men buying horses at a fair. One of them comes to you in October.[/if]
+
+    [if flag.c3_married && npc.@spouse.alive]Your wife says, that night, "You're going, then." It is not a question. "Go. But come back. And come back with something."[elif flag.c3_married]You stand in the chancel, by her stone, the night before you go, and tell her about it. It is a habit. You see no reason to break it.[/if]
+  choices:
+    - id: crown
+      text: Go to the council as the King's man.
+      tags: [diplomacy, martial]
+      text_after: |
+        You go to Wendmere as the King's man, and nobody else's, and say so to anyone who asks. Pryce laughs, and shakes your hand, and says, "God help you, then." The King's chamberlain finds you a lodging in the palace itself, in a room over the kitchens. It is cold, and loud, and the best room you have ever slept in.
+      effects: [ { set: flag.c3_party_king }, { add: { rep.crown: 1 } } ]
+      next: c3_end
+    - id: carrow
+      text: Let Pryce put your name to the Earl.
+      tags: [cunning, wealth]
+      text_after: |
+        Pryce puts your name to the Earl. You lodge at Carrow House in Wendmere, and eat at the Earl's table, and are introduced to men whose names you have known all your life as names on banners. They are polite to you. They are polite in the way men are polite to a good horse they have just bought.
+      effects: [ { set: flag.c3_party_carrow }, { add: { rep.nobles: 2, favor.walter_pryce: -1 } } ]
+      next: c3_end
+    - id: prince
+      text: Go to the Prince's household at Christmas.
+      tags: [allies, cunning]
+      text_after: |
+        You go to the Prince's household at Saltmarsh for Christmas. It is full of young men like you: new men, second sons, knights with good swords and no fathers worth mentioning. Edwin is twenty-one and in a hurry. He says, at the feast, with his cup in his hand, "My father's lords are old. Mine will not be." Everyone cheers. You cheer too. You are thirty-one, and there is grey in your beard.
+      effects: [ { set: flag.c3_party_prince }, { add: { rep.crown: 1 } } ]
+      next: c3_end
+    - id: own
+      text: Go to the council as your own man, beholden to nobody.
+      tags: [yield, allies]
+      text_after: |
+        You go to Wendmere as your own man. You lodge at an inn by the river, and pay for it yourself, and sit at the back of the council, and say nothing for three days, and listen. Pryce finds you there on the fourth day and sits down beside you. "Nobody's man," he says. "I was that once. It's cold." He gets up. "It's also the only way anybody ever gets to be a lord in his own right. Good luck to you."
+      effects: [ { set: flag.c3_party_own }, { add: { rep.honor: 1 } } ]
+      next: c3_end
+
+- id: c3_end
+  chapter: ch3
+  kind: ending
+  ending: ch3_complete
+  title: The End of the Peace
+  text: |
+    You ride out of the manor gate in November, with your men behind you, and [if flag.c3_married && npc.@spouse.alive]your wife at the gate with [if heirs.count >= 2]the children[elif heirs.count == 1]{heirs.eldest} on her hip[else]her arms folded[/if][elif heirs.count >= 1]{heirs.names} at the gate with the nurse[else]nobody at the gate but the steward[/if], and [if estate.temper >= 2]half the village in the lane, waving caps[elif estate.temper >= 0]the village going about its business[else]the village watching from its doorways, saying nothing[/if].
+
+    Six years ago you came [if flag.c2_granted_ormel]to Ormel, the grant nobody wanted,[else]here[/if] with the bell tolling and the dead in the street.[if flag.c2_salines_field] Some nights you still walk the salt pans in your sleep, among the dead.[/if] [if estate.people >= 220]Now there are more people on the manor than there were before the Mottle.[elif estate.people >= 160]Now the manor is full again, nearly.[else]The manor never quite filled up again.[/if] [if flag.c3_holds_home]And there is another place on the list of what you hold, across the sea, where you were born.[/if]
+
+    [break]
+
+    You are thirty-one years old. You were [if background == reeve]a reeve's son[elif background == burgess]a wool merchant's son[elif background == archer]an archer's son[else]a tirewoman's son[/if]. You are a lord, with land, [if heirs.count >= 1]and heirs, [/if]and enemies, and a war coming.
+
+    End of Chapter 3. Chapter 4 begins with the great council at Wendmere.

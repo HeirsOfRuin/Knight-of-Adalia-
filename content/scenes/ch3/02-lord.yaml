@@ -502,7 +502,7 @@
     - {"if": ["suit.fiammetta_lanzi.status >= known", "suit.fiammetta_lanzi.regard >= 5"], "then": [{"assign": {"suit.fiammetta_lanzi.status": "available"}}]}
     - {"if": ["suit.clemence_vaux.status >= known", "suit.clemence_vaux.regard >= 5"], "then": [{"assign": {"suit.clemence_vaux.status": "available"}}]}
     - {"assign": {"suit.alienor_brese.status": "available"}}
-    - {"if": [{"any": ["rep.crown >= 3", "res.renown >= 15"]}], "then": [{"assign": {"suit.philippa_ashdown.status": "available"}}]}
+    - {"if": [{"any": ["rep.crown >= 2", "res.renown >= 12", {"not": {"any": ["suit.mag_coker.status == available", "suit.annot_dyer.status == available", "suit.mariot_wood.status == available", "suit.nell_laundress.status == available", "suit.isabel_sayer.status == available", "suit.maud_delisle.status == available", "suit.cecily_fuller.status == available", "suit.joan_wyck.status == available", "suit.alys_fane.status == available", "suit.heloise_corbie.status == available", "suit.fiammetta_lanzi.status == available", "suit.clemence_vaux.status == available"]}}]}], "then": [{"assign": {"suit.philippa_ashdown.status": "available"}}]}
   text: |
     Two years. The manor has [if estate.people >= 250]more people than the day you came, near enough[elif estate.people >= 180]filled up again, mostly, with strangers and children[else]never quite filled up again[/if], and [if estate.food >= 3]the barns are full[elif estate.food >= 1]the barns are not empty[else]the barns are bare, and everyone knows it[/if], and the village is [if estate.temper >= 3]yours, as much as any village is any man's[elif estate.temper >= 0]used to you, which is something[else]waiting for you to fail[/if].
 

@@ -807,7 +807,7 @@ At the end of Ch2 the King pays men with land near where they earned it. Ch2 dee
   | Alys | Courted, regard 3+ |
   | Maud, Héloïse, Fiammetta, Clémence | Known, regard 5+ |
   | **#10 Aliénor de Brésy** (Sire Gautier's daughter, across the march) | Always offered: peace on the border is the dowry |
-  | **#11 Lady Philippa Ashdown** (the King's ward) | Crown 3+ or renown 15+ |
+  | **#11 Lady Philippa Ashdown** (the King's ward) | Crown 2+, renown 12+, or no personal suit survived (the King rewards an unmarried lord) |
 
 - **A Wife for the Manor.** The village and the priest press him; each available woman gets a paragraph; marrying nobody is allowed.
 - **Her People / The Offer.**
@@ -850,6 +850,69 @@ At the end of Ch2 the King pays men with land near where they earned it. Ch2 dee
   - wealth play marries Philippa 50% of the time and Cecily 22%;
   - diplomacy play spreads across nine candidates.
 - **Childbed:** the wife dies 1-4% of the time. About 1 run in 30 overall.
+
+**Act IV, the Reckoning** (winter year 30 to autumn year 32). Eleven scenes in `ch3/04-reckoning.yaml`. Chapter 3 is now complete and is no longer listed as in progress.
+
+**The Paper** (only if the Lanzi lien still stands and he did not marry Fiammetta). The Lanzi have sold his debt to the Earl of Carrow. He can:
+- pay £4;
+- keep the Earl's friendship, and the Earl keeps the paper;
+- fight the sale at law (a Learning check; the lien was not assignable).
+
+**The Commons Rise.** The rising over the Ordinance reaches his home through letters, in a version per background. If Wat Coker is in his following, Wat's cousin Will leads the rising under Wat's name and Wat goes home. He can:
+- ride for the King;
+- cross to talk to the rebels;
+- send money and stay;
+- refuse outright: Crown −3, Commons +2.
+
+**The Hythe Fields** (if he went). The King grants the charters. Then the Earl of Carrow's marshal, Sir Hugh Malet, cuts down the Coker captain while the King looks away. He can:
+- stand by;
+- shout a warning;
+- ride between them (a Riding check). The King turns it into his own mercy.
+
+The charters are revoked by Michaelmas either way. If he stayed away, **News from the Hythe Fields** covers it, and the hangings at home are written per background.
+
+**The March.**
+- **If Ewan's vendetta stands:** Ewan raids his family's home. He can:
+  - cross the Leven to finish it (lethal);
+  - pay for a wall and a tower at home;
+  - write to Coll, if Coll lived.
+- **If Coll repaid his freedom:** he is invited to Coll's wedding in Caldmoor.
+- **Otherwise:** a quiet line about Sir Ancel.
+
+**The House of Ravell.** Ravell is ruined by the ransom, the plague and the rising, and is selling. Aymer brings the news. He can:
+- buy his own birthplace for £30 (Ashby, Hollin, the Wendham rents, or Underhill), setting `c3_holds_home`, an Adalian holding for Ch4;
+- buy it with £15 down and the rest owed;
+- lend Aymer money;
+- let it go.
+
+**The Winter Fever.** If he has a child, the eldest falls ill. The child dies 15% of the time with the physician, 7% if he nurses it himself, and 10% with Masses.
+
+**What the Weavers Knew.** The proof that the Earl of Carrow sold the Vervais rising to Duke Lothaire, to keep the war long and the Crown poor. The source depends on his past: Fiammetta's ledgers, Thibaut, the weaver's widow, or a drunk Aymer. He can:
+- take it to the King;
+- take it to Prince Edwin, now 21 with his own household at Saltmarsh;
+- sell it back to Carrow;
+- keep it.
+
+**The Second Child** (if married and his wife is alive). Same risk to the mother: 4% with the physician, otherwise 2%. Names for his family, a saint, or a friend.
+
+**The Summons.** King Amaury is dead and the truce runs out at Lady Day. Pryce comes recruiting for Carrow. He goes to the great council as:
+- the King's man;
+- Carrow's man;
+- Prince Edwin's man;
+- his own man.
+
+**End:** `c3_end`, The End of the Peace. Ending `ch3_complete`.
+
+**Old hooks.**
+- **Paid off in Act IV:** the reeve's burned tallies or his confession, the burgess family's Sarenzan debt, Ancel's lameness, Thorne, Cobb's debt from Grisolles, Pryce's old service, the Christmas feast, the Corbie ransom, Isabel's year of waiting, Maud's kept letter, the Ormel grant, the salt-pan dead.
+- **Moved to Ch4:** 43 flags marked `later: ch3` are now `later: ch4`. They are mostly about the masters, the rivals, how he got through the Patronage Gate, and Ch2 conduct. Ch4 owes them a reading.
+
+**Bot results** (100 runs per background per policy):
+- deaths in Ch3 are 0-4%, from the lethal Ewan fight;
+- a child dies in the fever 5-15% of the time, highest for wealth play because it buys the physician;
+- the wife dies in childbirth 3-8% of the time over two births;
+- he buys his home place in 17% of random runs and 90% of wealth runs;
+- party choices and the Vervais choice are spread fairly evenly in random play.
 
 ## Training ceilings and learning by doing (2026-10-02)
 
@@ -895,3 +958,4 @@ Result (bot, 100 runs per background, entering Ch2; median / top 10%):
 | 2026-10-01 | Phase 3 review decisions: 9a, 11c, 12c, 14b, 13a. Historical items kept, except champion (15, replaced) and the Sweat (17, renamed). See Phase 3 review changes. |
 | 2026-10-02 | Training ceilings with overflow into attributes; Command and Diplomacy learned by doing; Aikbank watch scene. Ch4-5 direction: new independent crown (from an invaded kingdom or a civil war), Crowned 5-7%, Ch4 in 3-4 acts with skips, heirs mixed into the main story. Frame Ch5 first, after Ch3 and stabilisation. |
 | 2026-10-02 | Ch3 Act III built: suits resolve at the second spring, two arranged offers (Aliénor de Brésy, Philippa Ashdown), family obstacle, contract, wedding, first year, childbed with a small seeded risk to the mother, heirs system. |
+| 2026-10-02 | Childbirth risk kept. Philippa offered more easily (Crown 2+, renown 12+, or no personal suit). Ch3 Act IV built; Chapter 3 complete. Vervais betrayal: the Earl of Carrow. The rising is original (the Hythe Fields), not a copy of 1381. |

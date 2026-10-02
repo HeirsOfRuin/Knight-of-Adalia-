@@ -12,3 +12,4 @@ valdrennish_sword: { label: Valdrennish sword, description: "A good blade taken 
 corbie_ring: { label: Corbie signet, description: "Raoul de Corbie's ring, given as pledge for his ransom." }
 harness: { label: Harness of plate, description: "A knight's harness: breastplate, limbs, bascinet. Heavy, hot, and the reason knights live.", armour: 2 }
 mail_shirt: { label: Mail shirt, description: "A captain's issue: a mail shirt and a kettle hat, mended many times.", armour: 1 }
+caldmoor_dirk: { label: Caldmoor dirk, description: "Coll of Glenhallow's wedding gift: a silver-hilted dirk. Hangs over the hall fire." }

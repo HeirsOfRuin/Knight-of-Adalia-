@@ -940,6 +940,9 @@ Result (bot, 100 runs per background, entering Ch2; median / top 10%):
 - **Heirs.** A mix: moments of mentorship, management, drama and pride, woven into the diplomatic gains and life decisions. Not a separate story arc for each child.
 - **Scope guard.** Cut any Ch4 thread that no ending reads.
 
+## Chapters 4 and 5 frame
+Drafted 2026-10-02 in `docs/FRAME-CH4-CH5.md`, for approval: the Western Crown, the Ch5 endings matrix, the Ch4 acts and systems, the hooks owed, and open decisions.
+
 ## Decisions log
 | Date | Decision |
 |---|---|
@@ -959,3 +962,4 @@ Result (bot, 100 runs per background, entering Ch2; median / top 10%):
 | 2026-10-02 | Training ceilings with overflow into attributes; Command and Diplomacy learned by doing; Aikbank watch scene. Ch4-5 direction: new independent crown (from an invaded kingdom or a civil war), Crowned 5-7%, Ch4 in 3-4 acts with skips, heirs mixed into the main story. Frame Ch5 first, after Ch3 and stabilisation. |
 | 2026-10-02 | Ch3 Act III built: suits resolve at the second spring, two arranged offers (Aliénor de Brésy, Philippa Ashdown), family obstacle, contract, wedding, first year, childbed with a small seeded risk to the mother, heirs system. |
 | 2026-10-02 | Childbirth risk kept. Philippa offered more easily (Crown 2+, renown 12+, or no personal suit). Ch3 Act IV built; Chapter 3 complete. Vervais betrayal: the Earl of Carrow. The rising is original (the Hythe Fields), not a copy of 1381. |
+| 2026-10-02 | Stabilisation: compressed save codes, downloads through the viewer, render scan. Ch4-5 frame drafted for approval (docs/FRAME-CH4-CH5.md). |

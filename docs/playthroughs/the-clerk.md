@@ -2886,7 +2886,7 @@ The Hythe Fields, across the river from Wendmere, on a hot morning in June. Fort
 
 *(Continue)*
 
-The King rides out to them with a hundred lords and knights, and you are one. Aldred is forty-four now, grey in the beard, and sits his horse as if he were going hunting. The Earl of Carrow rides at his left hand, with his black boar and forty of his own men. "My people," the King says, in a voice that carries, and forty thousand men take their caps off.
+The King rides out to them with a hundred lords and knights, and you are one. Aldred is forty-six now, grey in the beard, and sits his horse as if he were going hunting. The Earl of Carrow rides at his left hand, with his black boar and forty of his own men. "My people," the King says, in a voice that carries, and forty thousand men take their caps off.
 
 They want the end of villeinage. They want a fourpenny rent. They want pardons. They want the Ordinance burned and the Chancellor hanged. The lords round you shift in their saddles. The King says yes. Yes to all of it. Charters will be written tonight, sealed tomorrow. They should go home.
 

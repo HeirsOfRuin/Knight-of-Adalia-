@@ -441,8 +441,6 @@
 
 - id: c2_end
   chapter: ch2
-  kind: ending
-  ending: ch2_complete
   title: "[if flag.c2_granted_marsalin]Marsalin[elif flag.c2_granted_kerval]Kerval[else]Ormel[/if]"
   on_enter: [ { advance: { seasons: 1 } } ]
   text: |
@@ -455,5 +453,7 @@
     [if flag.c2_granted_kerval]The village sees you coming down the valley road between the orchards, and comes out. You see the people gathering at the edge of the green, and for a moment you think it is a welcome. Then you hear the bell.[elif flag.c2_granted_marsalin]The salt-boilers see you coming along the dyke a mile off. By the time you reach the stone house, every door in the village is shut, and the chapel bell is ringing.[else]The village sees you coming a mile off across the flat country. By the time you reach it, everyone is indoors, and the street is empty, and the church bell is ringing.[/if]
 
     Not for you. For a death. The first, in [if flag.c2_granted_marsalin]Marsalin[elif flag.c2_granted_kerval]Kerval[else]Ormel[/if], of the great mortality.
-
-    End of Chapter 2.
+  choices:
+    - id: ride_in
+      text: Ride in.
+      next: c3_arrival

@@ -1,0 +1,424 @@
+# Chapter 3, Act I: the Mortality. Spring of year 26 to spring of year 27. Age 25.
+# He reaches his manor (Ormel, Marsalin or Kerval: see c2_grants) the day the
+# Mottle does. counter.plague is the share of the people who will die, in
+# percent; Ch2 preparations and his choices here move it, and c3_reckoning
+# takes it off estate.people in three bands.
+#
+# Manor cast: Ormel - Pere Guerin (priest), Bastien the eel-man (headman).
+# Marsalin - Pere Yves, Margot of the salt-boilers. Kerval - Dom Herve, Gwenael the reeve.
+
+- id: c3_arrival
+  chapter: ch3
+  title: The Bell
+  checkpoint: true
+  on_enter:
+    - if: flag.c2_granted_marsalin
+      then:
+        - found_estate: { people: 300, food: 3, temper: -1, salt: 6, defence: 3, church: 3 }
+        - meet: yves_marsalin
+        - meet: margot_marsalin
+      else:
+        - if: flag.c2_granted_kerval
+          then:
+            - found_estate: { people: 250, food: 4, temper: 1, orchard: 5, defence: 3, church: 3 }
+            - meet: herve_kerval
+            - meet: gwenael_kerval
+          else:
+            - found_estate: { people: 200, food: 2, temper: -2, salt: 2, defence: 1, church: 2 }
+            - meet: guerin_ormel
+            - meet: bastien_ormel
+    - add: { counter.plague: 37 }
+    # What they already know of him.
+    - if: { any: [ flag.c2_breval_sacked, flag.c2_raided_country, trait.burner ] }
+      then: [ { add: { estate.temper: -1 } } ]
+    - if: [ flag.c2_terms_carried, "!flag.c2_granted_kerval" ]
+      then: [ { add: { estate.temper: 2 } } ]
+    - if: [ flag.c2_learned_town, "!flag.c2_granted_kerval" ]
+      then: [ { add: { estate.temper: 1 } } ]
+    - if: [ flag.c2_fought_iron, "!flag.c2_granted_kerval" ]
+      then: [ { add: { estate.temper: 2 } } ]
+    - if: [ flag.c2_refused_villages, "!flag.c2_granted_kerval" ]
+      then: [ { add: { estate.temper: -2 } } ]
+    - if: [ flag.c2_granted_kerval, { any: [ flag.c2_jehanne_message, flag.c2_armance_castles ] } ]
+      then: [ { add: { estate.temper: 1 } } ]
+    - if: flag.c1_learned_valdrennish
+      then: [ { add: { estate.temper: 1 } } ]
+    # What he brought against the sickness.
+    - if: flag.c2_prepared_plague
+      then: [ { add: { counter.plague: -5, estate.food: 2 } } ]
+    - if: flag.c2_prayed_plague
+      then: [ { add: { estate.church: 1 } } ]
+    - if: flag.c2_clean_water
+      then: [ { add: { counter.plague: -2 } } ]
+  text: |
+    The dead woman is [if flag.c2_granted_marsalin]a salt-boiler's wife called Jehannette[elif flag.c2_granted_kerval]the miller's mother, old Maheut[else]Rousse the netmaker, who was a widow[/if], and she died this morning, after three days of coughing, with her skin gone the grey-dark of a bad bruise from her throat to her belly.
+
+    The priest meets you in the street outside the church, still in his stole. [if flag.c2_granted_marsalin]Père Yves is perhaps twenty-five, thin, earnest, with the shaking hands of a man who has not slept. "Monseigneur," he says. "You came. I did not think anyone would come."[elif flag.c2_granted_kerval]Dom Hervé is a fat, rosy Benedictine with a shrewd eye, lent to Kerval by the Duchess's abbey. "Monseigneur," he says, and bows as well as his belly lets him. "Welcome to Kerval. I am sorry it is today."[else]Père Guérin is seventy if he is a day, bent like a hook, deaf in the left ear, and he shouts everything. "So you're the Adalian! WELL! You've picked a fine day for it!"[/if]
+
+    [break]
+
+    The village has come out, in spite of everything, to look at its new lord. They stand in their doorways and at the corners, keeping their distance from each other, and from you.
+
+    "It came with them," somebody says, not quietly. "With the Adalians. On the ships."
+
+    "Shut your mouth, Jacquot."
+
+    "Well, it did. Everyone knows it did."
+
+    [if flag.c2_granted_marsalin]A big woman with forearms like hams pushes to the front, wiping her hands on her apron. "Margot," she says. "I keep the salt-boilers. I saw you on the dyke, the day of the battle." She looks at you without love and without hate. "My man's still out there in the pans somewhere. Well. You're here now. What are you going to do?"[elif flag.c2_granted_kerval]A huge cheerful man shoves through, beaming, with his hat in his hands. "Gwenaël! I am the reeve! Welcome, welcome!" His smile falters. "Is a bad day. Very bad. But welcome!"[else]A one-eyed man in a leather apron that smells of eels leans on the churchyard wall, chewing a straw. "Bastien," he says. "Headman, for my sins. You'll be wanting to know who's sick." He spits. "Ask who isn't. Quicker."[/if]
+  choices:
+    - id: house
+      text: Go into the dead woman's house yourself, and see.
+      tags: [piety, martial]
+      text_after: |
+        "Monseigneur, no!" the priest says. You go in anyway.
+
+        It is dark and small and smells of tallow and something sweeter and worse underneath. She is lying on a straw mattress with a cloth over her face. Her daughter is sitting beside her, holding her hand, and does not look up. You take your cap off. You kneel, and say a paternoster, the only prayer you are sure of, and the daughter starts to cry.
+
+        When you come out, the whole street is watching you. Nobody says anything about Adalians after that, not that day.
+      effects: [ { set: flag.c3_saw_it }, { add: { estate.temper: 1, rep.piety: 1 } } ]
+      next: c3_measures
+    - id: steps
+      text: Climb the church steps and speak to them, in their own tongue.
+      tags: [diplomacy]
+      check:
+        attr: presence
+        skill: diplomacy
+        difficulty: 3
+        mods:
+          - { if: flag.c1_learned_valdrennish || flag.c2_learned_town, add: 1, label: you speak it well }
+          - { if: flag.c2_granted_kerval, add: 1, label: Kerval is glad of you }
+      success:
+        text: |
+          You do not make a speech. You tell them what you know, which is little, and what you will do, which is stay. You tell them nobody will be put out of a house for being sick, and that the manor's grain will feed the houses that cannot work. "And if I take it," you say, "you'll bury me with the rest of you, and I'll thank you not to be glad."
+
+          Somebody laughs, startled. Then somebody else. It is not much. In a plague, it is a great deal.
+        effects: [ { set: flag.c3_spoke_steps }, { add: { estate.temper: 2 } } ]
+        next: c3_measures
+      failure:
+        text: Your Valdrennish deserts you halfway through. You hear yourself say something about bread that comes out as something about bones, and a child giggles, and is slapped. They go back into their houses. They have heard lords make speeches before.
+        effects: [ { add: { estate.temper: -1 } } ]
+        next: c3_measures
+    - id: apart
+      text: Keep your men apart from the village, and send for the priest to tell you what is needed.
+      tags: [cunning]
+      text_after: |
+        You camp your men in the [if flag.c2_granted_marsalin]stone house on the dyke[elif flag.c2_granted_kerval]fortified farm on the ridge[else]old tithe barn at the edge of the marsh[/if], and nobody goes down into the village without your leave. The priest comes up to you each evening and stands at the gate and shouts the day's dead across the yard.
+
+        It is sensible. It may save your men. The village sees exactly what it is.
+      effects: [ { set: flag.c3_kept_apart }, { add: { counter.plague: -2, estate.temper: -1 } } ]
+      next: c3_measures
+    - id: flee
+      text: Turn round and ride back to the town until it has passed.
+      tags: [yield]
+      text_after: |
+        "Monseigneur?" says the priest, as you turn your horse. Then, a little louder, as you ride away: "Monseigneur!"
+
+        You do not look back. [if npc.davy_ludd.follower]Davy rides beside you with your banner furled and his face like stone.[/if]
+      effects: [ { set: flag.c3_fled }, { add: { counter.plague: 8, estate.temper: -3, rep.honor: -2 } } ]
+      next: c3_fled_town
+
+- id: c3_fled_town
+  chapter: ch3
+  title: Behind the Walls
+  text: |
+    [if flag.c2_granted_kerval]Lannec[else]Sauvemer[/if] has shut its gates against the country too, but it opens them for a lord with a writ, and you take rooms over a tavern by the harbour and wait.
+
+    The town is no safer. The Mottle is in the lower town by Whitsun, and the dead-carts go round at night, and the bells ring so often that the Bishop forbids them. Every week a boy comes in from your manor with a list of names, in the priest's hand, and you read them by the window and do not know any of them.
+
+    [break]
+
+    "You did right, my lord," says the tavern-keeper, who is paid to say so. "Nothing to be done out there. Nothing to be done anywhere."
+
+    [if npc.roger_tallis.follower]"There's a thing old soldiers say," Tallis says one night, not looking at you. "About the captain who isn't there. They say he's always braver than the one who is." He drinks. "Because nobody saw him."[/if]
+  choices:
+    - id: wait
+      text: Wait it out.
+      text_after: You wait it out. It takes all summer. The lists get shorter in the autumn, and then stop, and then a boy comes with a different message, from the headman, which is that you may as well come home now, because there is nobody left to catch it from.
+      effects: [ { advance: { seasons: 1 } } ]
+      next: c3_household
+    - id: back
+      text: Go back after all, before it is over.
+      tags: [piety]
+      text_after: |
+        You last a fortnight in the town. Then you get up one morning and saddle your own horse and ride back, alone if you have to.
+
+        The priest sees you coming up the road and stands in it, and waits, and when you reach him, he says nothing about the day you rode away. He just says, "Good. There's a great deal to do." He does not forget. Neither does anyone else. But they see you come back.
+      effects: [ { add: { counter.plague: -4, estate.temper: 2, rep.honor: 1 } } ]
+      next: c3_household
+
+- id: c3_measures
+  chapter: ch3
+  title: What the Lord Decides
+  text: |
+    By the end of the first week there are nine dead. By the end of the second, twenty.
+
+    It goes through a house the way fire goes through thatch: the mother, then the children, then the grandmother who was nursing them. Sometimes it passes over one house in a row and nobody can say why. Men who were well at Prime are coughing at Vespers and dead before the next Sabbath.
+
+    [break]
+
+    They come to you, because you are the lord, and that is what lords are for.
+
+    [if flag.c2_granted_marsalin]"Shut the dyke," says Margot. "Nobody in from Sauvemer, nobody out. It's coming off the ships." "Burn the houses," says somebody else. "Burn it out." Père Yves just wants someone to help him carry the dying to the church.[elif flag.c2_granted_kerval]"Shut the valley road," Gwenaël says, not smiling now. "Nobody comes in. Is what my grandfather did, for the flux." Dom Hervé wants a procession, with the abbey's relics, round every field. "The Duchess has a Sarenzan physician at Lannec," he adds, mildly. "If one were to ask her."[else]"Shut the causeway," says Bastien. "Nobody in from Sauvemer. Nobody out." "BURN IT!" Père Guérin bellows. "BURN THE HOUSES! It's in the straw! I saw it in the year of the great flux!" A woman at the back is weeping and nobody tells her to stop.[/if]
+
+    Everybody has a cure. Nobody has a cure. Whatever you choose, people will die, and they will remember what you chose.
+  choices:
+    - id: shut
+      text: Shut the manor. Nobody in, nobody out, by your order and your men's spears.
+      tags: [martial]
+      text_after: |
+        Your men stand at the [if flag.c2_granted_kerval]valley road[else]causeway[/if] with spears, and turn back everyone: carters, pilgrims, a family from the next village with a sick child in a barrow, who beg, and then curse you, and then go away. One of your men lets a girl through at night. You do not ask which one.
+
+        It is hard. The neighbours call you a monster. Then the neighbours start to die, and some of them stop calling you anything.
+      effects: [ { set: flag.c3_shut }, { add: { counter.plague: -5, estate.temper: -1, rep.valdrenne: 1 } } ]
+      next: c3_household
+    - id: burn
+      text: Burn the houses of the dead, and the bedding, and the straw.
+      tags: [martial, cunning]
+      text_after: |
+        "No! No, monseigneur, that's my mother's house! Where will we go?"
+
+        You burn them. You put the families who are left in the [if flag.c2_granted_marsalin]salt-sheds[elif flag.c2_granted_kerval]great barn on the ridge[else]tithe barn[/if], on clean straw, and you burn the rest: thatch, beds, clothes, a cradle. The smoke hangs over the manor for a month. Whether it helps, nobody can say. It feels like doing something. The people who lost their houses will not forget whose men held the torches.
+      effects: [ { set: flag.c3_burned_houses }, { add: { counter.plague: -4, estate.temper: -2, rep.ruthlessness: 1 } } ]
+      next: c3_household
+    - id: nurse
+      text: Go down among the sick with the priest, and nurse them with your own hands.
+      tags: [piety, allies]
+      lethal: true
+      warn: The Mottle takes the strong as easily as the weak. If you are already sick or badly wounded, it will take you.
+      check:
+        attr: endurance
+        skill: learning
+        difficulty: 3
+        mods:
+          - { if: flag.c2_clean_water, add: 1, label: you kept men alive through the siege flux }
+          - { if: item.holy_ampulla, add: 1, label: "Saint Ebba's water, or your faith in it" }
+      success:
+        text: |
+          Water. Broth. Clean straw. Sitting up with the dying so they do not die alone. Carrying the dead to the church on a hurdle with the priest at the other end. You do it for six weeks, and you do not take it, and nobody can say why.
+
+          "God has a use for you," the priest says, one grey morning, in the churchyard, leaning on his spade. "I'd like to know what it is." By midsummer the whole manor knows who carried their mothers.
+        effects: [ { set: flag.c3_nursed }, { add: { counter.plague: -2, estate.temper: 3, rep.piety: 2, rep.honor: 1 } } ]
+        next: c3_household
+      failure:
+        text: "[if injured]You were not strong enough to begin with. The cough comes in the fourth week, and the fever after it, and the grey under the skin, and on the third day you stop being afraid. You die in the house of a salt-boiler's widow, who sits with you to the end, because you sat with hers.[else]In the fourth week the cough comes, and then the fever, and the grey-dark marks across your chest. For eight days you know nothing at all. On the ninth you wake, as weak as a newborn, with the priest snoring in a chair beside you. 'Well,' he says, waking. 'There's a thing.'[/if]"
+        effects:
+          - if: injured
+            then: [ { die: "Died of the Mottle, nursing his own people, aged {age}." } ]
+            else: [ { set: flag.c3_nursed }, { injury: mottle_fever }, { add: { estate.temper: 3, rep.piety: 2 } } ]
+        next: c3_household
+    - id: physician
+      text: Send for a Sarenzan physician, whatever he costs.
+      tags: [wealth, learning]
+      requires: [ res.coin >= 120 ]
+      text_after: |
+        [if npc.fiammetta_lanzi.met]Fiammetta Lanzi finds you one, though her letters are short now and there are fewer of them.[elif flag.c2_granted_kerval]The Duchess lends you hers, for a price, and a favour owed.[else]You find one in Sauvemer, for a price that would buy a warhorse.[/if] Maestro Ruggero arrives in a waxed cloak with a sponge of vinegar held to his face, and does not take it away for a month.
+
+        He has fires lit at every crossroads, and the wells covered, and the sick kept in houses marked with a white cross. He bleeds people, which does no good, and makes them boil their water, which might. He will not touch anybody. He leaves at Lammas, with your money, and the deaths are slowing. Nobody knows if it was him.
+      effects: [ { set: flag.c3_physician }, { add: { res.coin: -120, counter.plague: -3 } } ]
+      next: c3_household
+    - id: procession
+      text: Order Masses and a procession round every field, with the relics and the whole manor walking.
+      tags: [piety]
+      text_after: |
+        The whole manor walks the bounds behind the priest and the cross, singing the litany, barefoot, with the [if flag.c2_granted_kerval]abbey's relics[else]church's one relic, a finger-bone of a saint nobody can name,[/if] carried in front. It is the most beautiful thing you have seen since you came. People weep, and hold each other, and pray out loud.
+
+        The next week the deaths double. "It's the crowding," Père [if flag.c2_granted_marsalin]Yves[elif flag.c2_granted_kerval]Dom Hervé[else]Guérin[/if] says, white. "God forgive me, it's the crowding." The people do not blame you. They blame God. That is hard on the priest, and easier on you.
+      effects: [ { set: flag.c3_procession }, { add: { counter.plague: 3, estate.temper: 1, estate.church: 2, rep.piety: 1 } } ]
+      next: c3_household
+
+- id: c3_household
+  chapter: ch3
+  title: Your Own House
+  on_enter:
+    - casualties: { men: 1, named: 1, spare: [] }
+  text: |
+    You thought, without ever quite thinking it, that it would not come into your own house. Everyone thinks that, Père [if flag.c2_granted_marsalin]Yves[elif flag.c2_granted_kerval]Dom Hervé[else]Guérin[/if] says afterwards. Lords most of all.
+
+    It comes in at midsummer. One of the men who came with you from the war, who walked out of Grisolles and stood on the dyke at Les Salines and lived through all of it, starts coughing at supper, and looks at his hand, and goes quiet.
+
+    [break]
+
+    [if retinue >= 2]The others look at him, and then at each other, and then at you.[else]There is nobody else to look at but you.[/if]
+
+    "I'm all right, sir," he says. "It's nothing. I'm all right."
+
+    He is dead in four days. The journal of your life will say his name. You will not need it to.
+  choices:
+    - id: sit
+      text: Sit with him to the end.
+      tags: [allies, piety]
+      check: { attr: endurance, skill: learning, difficulty: 2, mods: [ { if: flag.c3_nursed, add: 1, label: you have nursed the sick all summer } ] }
+      success:
+        text: Four days. You hold the cup. You talk about the war, and home, and the girl he meant to marry, and when he cannot talk any more you keep talking for him. At the end he says, quite clearly, "Not so bad, sir," and then nothing. You bury him yourself. The rest of your men stand round the grave with their hats in their hands and do not look at you, because you are weeping, and it is not done.
+        effects: [ { set: flag.c3_sat_with_man }, { add: { rel.davy_ludd.loyalty: 2, rel.jankin_rooke.loyalty: 2, rel.simkin_barre.loyalty: 2, rel.roger_tallis.loyalty: 2, rel.wat_coker.loyalty: 2, rel.perkin_dyer.loyalty: 2, rel.gib_shawe.loyalty: 2, rel.dickon_laund.loyalty: 2 } } ]
+        next: c3_letters
+      failure:
+        text: "You sit with him to the end, and the end is bad, and on the last night you find you are coughing too. Not the Mottle, as it turns out: grief and no sleep and the damp. But for three days nobody comes near you, and you understand, a little, what the village has been living with since spring."
+        effects: [ { set: flag.c3_sat_with_man }, { injury: fever_weak }, { add: { rel.davy_ludd.loyalty: 2, rel.jankin_rooke.loyalty: 2, rel.simkin_barre.loyalty: 2, rel.roger_tallis.loyalty: 2, rel.wat_coker.loyalty: 2, rel.perkin_dyer.loyalty: 2, rel.gib_shawe.loyalty: 2, rel.dickon_laund.loyalty: 2 } } ]
+        next: c3_letters
+    - id: apart
+      text: Keep the rest of your men away from him. You need them alive.
+      tags: [cunning]
+      text_after: |
+        The priest sits with him. Your men stay in the yard, and hear him through the shutter, and drink, and do not talk. Nobody else in your following takes it. It was the right thing to do. They will never quite look at you the same way, and you will never quite be sure they are wrong.
+      effects: [ { add: { rel.davy_ludd.loyalty: -1, rel.jankin_rooke.loyalty: -1, rel.simkin_barre.loyalty: -1, rel.roger_tallis.respect: 1, rel.wat_coker.loyalty: -1, rel.perkin_dyer.loyalty: -1, rel.gib_shawe.loyalty: -1, rel.dickon_laund.loyalty: -1 } } ]
+      next: c3_letters
+    - id: drink
+      text: Get drunk, and stay drunk, until it is over.
+      tags: [yield]
+      text_after: You stay drunk for most of a week. You do not remember the funeral. Your men do. "He loved the lad," you hear one of them say, in the yard, defending you. "It takes some men that way." It is kinder than you deserve.
+      effects: [ { add: { rel.roger_tallis.respect: -1 } } ]
+      next: c3_letters
+
+- id: c3_letters
+  chapter: ch3
+  title: News from Home
+  on_enter:
+    - advance: { seasons: 1 }
+    - if: background == reeve
+      then: [ { kill: piers_reeve } ]
+    - if: background == burgess
+      then: [ { kill: ralf_mercer } ]
+    - if: background == servant
+      then: [ { kill: agnes_tirewoman } ]
+  text: |
+    The Mottle crosses the Narrow Sea in the summer. Of course it does. It crosses everything.
+
+    The letters come late and few, by ships that are turned away from half the ports on the coast. Wendmere has shut its gates. Saltcombe is burning its dead on the beach. In Ravell country, they say, every third house is empty, and the corn is standing in the fields with nobody to cut it.
+
+    [break]
+
+    [if background == reeve]The letter is from your mother, in Father Anselm's hand, and Father Anselm has added a line of his own at the bottom, crooked, as if written in a hurry. Your father died at Lammas. "He kept the tallies to the last day," your mother says. "He was cutting the oats tally when it took him. He said, tell the boy the count was right." [if flag.c1_father_exposed]He never wrote to you, after the commissioners. He asked for you, at the end. Father Anselm thought you should know that.[/if] Cis and Avice are alive. Ashby has lost eleven households of thirty-one.[elif background == burgess]The letter is from your mother, in her careful knight's-daughter hand. Your father died in July, at his counting-house desk, with the window open and the account book in front of him, which is how he would have wanted it, she says, if he had wanted anything as foolish as dying. The Lanzi debt dies with him, she thinks, or the bank does; nobody in Wendham has heard from the Lanzi since Easter. She is alone in the tall house on Sheep Street with the wool and the lavender.[elif background == archer]The letter is from the priest at Hollin. Your mother died at the wheel, he writes, with the thread still running through her fingers. Your sister Kit nursed her, and did not take it, and is alone now in the cottage at the end of the village nearest the trees. She is nineteen. She has asked the priest to write to you. She has asked him to ask you whether she might come.[else]The letter is from Lady Ravell, in her own hand, which she has never once used to write to a servant. Your mother is dead. Agnes died nursing Lady Ravell's own children through it, and saved two of them, and took it herself in the third week. "She was the best of my women," Lady Ravell writes. "I have buried her in the chapel. I find that I miss her." She does not sign it with love. She does not sign it at all.[/if]
+  choices:
+    - id: money
+      text: Send home what money you can spare.
+      tags: [allies, wealth]
+      requires: [ res.coin >= 60 ]
+      text_after: You send it by a Sarenzan who swears it will reach them, and charges a quarter for swearing. [if background == archer]Kit writes back, months later, that the money came, and that she has mended the roof with it, because it was what your father would have done.[else]A letter comes back at Christmas. The money arrived. It is the only thing anyone at home has had from anyone in months.[/if]
+      effects: [ { set: flag.c3_sent_money }, { add: { res.coin: -60, rep.commons: 1 } } ]
+      next: c3_harvest
+    - id: kin
+      text: "Send for [if background == reeve]your sisters[elif background == burgess]your mother[elif background == archer]Kit[else]Nell, if she is alive, or anyone of your mother's who is left[/if] to come to you, when the seas are open."
+      tags: [allies]
+      text_after: |
+        You write it four times before it is right. It is a long way, and a foreign country, and a manor that has just lost a third of its people. You promise them a house and a place and your protection, which is more than anyone at home can promise them now.
+
+        [if background == archer]Kit's answer comes back in the spring, in the priest's hand, two words long: "I'm coming."[else]The answer, when it comes, is yes.[/if]
+      effects: [ { set: flag.c3_sent_for_kin } ]
+      next: c3_harvest
+    - id: mass
+      text: Have Masses said for the dead, here and at home.
+      tags: [piety]
+      text_after: The priest says them himself, in an empty church, with you and your men and a handful of widows. He says your [if background == archer]mother's[elif background == servant]mother's[else]father's[/if] name in the clerks' tongue, slow as a carter, so that God, who is busy this year, will not miss it.
+      effects: [ { add: { estate.church: 1, rep.piety: 1 } } ]
+      next: c3_harvest
+
+- id: c3_harvest
+  chapter: ch3
+  title: The Empty Fields
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    The harvest stands in the fields, ripe and golden and enormous, the best harvest anyone can remember, and there is nobody to bring it in.
+
+    [if flag.c2_granted_kerval]The orchards are heavy with apples rotting on the branch. The barley is down in the low fields, and the hill fields are standing, and Gwenaël walks along the headlands every morning with his hat in his hand, counting what he cannot reap.[elif flag.c2_granted_marsalin]The salt pans are untended and silting. The little barley fields on the dyke are standing. Margot has her surviving boilers working the pans by moonlight, because the pans are the money and the money is the winter.[else]The barley is standing in the strips along the marsh edge, and the hay is still uncut in the water meadows, and Bastien sits on the churchyard wall and looks at it all and swears, steadily, in a voice like a man praying.[/if]
+
+    [break]
+
+    "Them that's left want paying," the headman tells you. "Paying proper. Day-wages. Thruppence a day, they're asking, and a dinner, where it was a penny and nothing in the old lord's time." [if flag.c2_granted_kerval]Gwenaël shrugs his giant shoulders. "And they will get it, monseigneur. From you or from the next valley."[else]A long pause. "The old lord would have made them do it for nothing. By custom. Boon-work, it's called. Owed to the lord."[/if]
+  choices:
+    - id: reap
+      text: Take off your coat and reap with your own men and your own hands.
+      tags: [allies, martial]
+      text_after: |
+        "Monseigneur's reaping," the word goes round, and half the manor comes out to see it, and then, because it is shaming to stand and watch a lord cut barley, they pick up sickles and come and help.
+
+        Your back is broken by the third day. Your hands are a mass of blisters. [if npc.davy_ludd.follower]Davy is better at it than you, and says so.[/if] It is the best fortnight you have had since you came. The people do not love you for it. They do talk about it, at night, the way people talk about a thing they did not expect.
+      effects: [ { set: flag.c3_reaped }, { add: { estate.temper: 2, estate.food: 2 } } ]
+      next: c3_reckoning
+    - id: wages
+      text: Pay the wages they are asking. Bring it in, whatever it costs.
+      tags: [wealth]
+      requires: [ res.coin >= 180 ]
+      text_after: |
+        Thruppence a day and a dinner, to every man and woman who can hold a sickle, and some who cannot. It costs you most of your purse. The harvest comes in, all of it, and the ricks stand round the barns like loaves.
+
+        It also means that every lord within twenty miles hears what you paid, and hates you for it, because his own people want the same now. [if flag.c2_granted_kerval]The Duchess's steward writes you a sharp little letter about it.[else]The Sauvemer captain writes you a sharp little letter about it.[/if]
+      effects: [ { set: flag.c3_paid_wages }, { add: { res.coin: -180, estate.food: 3, estate.temper: 1, rep.commons: 1, rep.nobles: -1 } } ]
+      next: c3_reckoning
+    - id: compel
+      text: Order the boon-work by custom. They owe it to the lord.
+      tags: [martial, cunning]
+      text_after: |
+        They owe it. It is written down. You have the steward read it out at the church door, the old custom of the manor, so many days of reaping for so many acres, and your men stand behind him with staves.
+
+        They come. They reap. The harvest comes in. Nobody sings in the fields, and on the last day somebody sets fire to a rick of your barley, and nobody saw who. "It's the custom," you hear a woman say, at the well, flatly. "Aye. And so's dying."
+      effects: [ { set: flag.c3_compelled }, { add: { estate.food: 3, estate.temper: -2, rep.ruthlessness: 1 } } ]
+      next: c3_reckoning
+    - id: let_go
+      text: Bring in what can be brought in, and let the far fields go.
+      tags: [yield]
+      text_after: The far fields rot standing. The geese get fat on them, and so do the rats. It is a hungry winter coming, and everyone can count.
+      effects: [ { set: flag.c3_lost_fields }, { add: { estate.food: -1 } } ]
+      next: c3_reckoning
+
+- id: c3_reckoning
+  chapter: ch3
+  title: The Reckoning of the Dead
+  checkpoint: true
+  on_enter:
+    - advance: { seasons: 1 }
+    - if: counter.plague <= 25
+      then: [ { lose_share: { estate.people: 25 } } ]
+      else:
+        - if: counter.plague <= 34
+          then: [ { lose_share: { estate.people: 33 } } ]
+          else: [ { lose_share: { estate.people: 42 } } ]
+  text: |
+    The frost comes at Martinmas, and with the frost, the Mottle goes, the way a tide goes out. Nobody can say why. The coughing stops. The bells stop. People come out of their houses and look at each other in the street as if they had not seen each other for years, which in a way they have not.
+
+    [break]
+
+    You count the dead with the priest, in the cold church, from his list. It takes all afternoon.
+
+    [if counter.plague <= 25]A quarter of the manor. One in four. "It's less than [if flag.c2_granted_kerval]Lannec[else]Sauvemer[/if]," the priest says. "It's less than anywhere I've heard of." He does not sound glad. Nobody does.[elif counter.plague <= 34]A third of the manor. One in three. Whole families gone, houses standing empty with the doors open and the hens walking in and out.[else]More than a third. Nearly half. There are houses in the [if flag.c2_granted_kerval]valley[else]marsh[/if] where nobody is left to say who lived there. The priest has stopped writing names and started writing "a man," "a child," "a woman, I think her name was Alis."[/if] [if estate.people > 0]There are {estate.people} souls left on your manor.[/if]
+
+    [if flag.c2_granted_marsalin]Margot comes to the church at the end and stands at the back with her arms folded. "Well," she says. "We're still here. Some of us."[elif flag.c2_granted_kerval]Gwenaël comes to the church at the end, and sits on the back bench, and cries like a child, quite openly, and nobody tells him to stop.[else]Bastien comes to the church at the end and leans in the doorway. "Lost my brother," he says. "Lost my brother's wife. Lost the eel-traps, nobody to set 'em." He spits. "Still here." He looks at you. "So are you. I'll give you that."[/if]
+  choices:
+    - id: cross
+      text: Raise a stone cross in the churchyard, with the names cut into it.
+      tags: [piety]
+      requires: [ res.coin >= 60 ]
+      text_after: A mason from the town cuts them all, every name the priest wrote down, and for the ones with no names he cuts a cross. It takes him till Lent. When it is done, people come and stand in front of it and run their fingers over the letters they cannot read, finding the ones they know by the shape.
+      effects: [ { set: flag.c3_raised_cross }, { add: { res.coin: -60, estate.church: 2, estate.temper: 2 } } ]
+      next: c3_spring
+    - id: rents
+      text: Give the widows back their Michaelmas rents.
+      tags: [allies, wealth]
+      requires: [ res.coin >= 80 ]
+      text_after: You have the steward go round with a purse and a list. Not a great deal of money, house by house. More than any lord here has ever given back. "Huh," says the headman, when he hears. "That's new."
+      effects: [ { set: flag.c3_gave_back_rents }, { add: { res.coin: -80, estate.temper: 2, rep.commons: 1 } } ]
+      next: c3_spring
+    - id: on
+      text: Get on with it. There is a manor to run.
+      text_after: You go home and sleep for two days. Then you get up and start on the list of everything that needs doing, which is everything.
+      next: c3_spring
+
+- id: c3_spring
+  chapter: ch3
+  kind: ending
+  ending: ch3_complete
+  title: The First Spring
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    In the spring the swallows come back, as if nothing had happened.
+
+    The manor is quieter. There are empty houses on every lane, and strips of land with nobody to work them, and a great many children living with aunts and grandmothers. The people who are left look at you differently from the way they looked at you on the day of the bell. [if estate.temper >= 2]Most of them nod when you pass. A few of them smile.[elif estate.temper >= 0]They nod when you pass. It is a start.[else]They look away when you pass, and talk when you have gone.[/if]
+
+    [break]
+
+    There is a letter on your table, under the King's seal, about the wages of labourers. There is another from [if flag.c2_granted_kerval]the Duchess[else]the captain at Sauvemer[/if], about the truce, which runs out at Lady Day next year. There is a third, unopened, from home.
+
+    You are a lord of a manor that has lived through the end of the world. Now you have to find out how to live in what comes after.
+
+    End of the chapters written so far. Chapter 3 continues with the Lord, the Match and the Reckoning.

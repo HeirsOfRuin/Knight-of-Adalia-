@@ -2,6 +2,7 @@
 // configured regnal year). Age advances with it.
 import type { ContentBundle } from '../content/schema';
 import type { GameState } from './state';
+import { estateTick } from './estate';
 
 export function seasonName(state: GameState, content: ContentBundle): string {
   return content.config.seasons[state.time % 4]!;
@@ -23,7 +24,10 @@ export function describeDate(state: GameState, content: ContentBundle): string {
 /** Advance time; heals injuries whose time has run out. Mutates the given (already cloned) state. */
 export function advanceSeasons(state: GameState, content: ContentBundle, n: number, changes: string[]): void {
   if (n <= 0) return;
-  state.time += n;
+  for (let i = 0; i < n; i++) {
+    state.time += 1;
+    estateTick(state, changes);
+  }
   const reg = content.registry.injuries;
   const healed = state.injuries.filter((i) => {
     const d = reg[i.id]?.heals_after;

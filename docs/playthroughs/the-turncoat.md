@@ -2169,14 +2169,179 @@ People laugh at you, gently. You buy grain anyway, and salt, and a Sarenzan phys
 
 ## Ormel
 
+*Winter, year 25 of King Aldred*
+
 In the spring you ride out of Sauvemer by the land gate, the one Dame Clémence carried the keys out of, with your banner and your following and the King's writ, along the dunes and across the marsh to Ormel.
 
 Behind you ride the few who are left. Davy carries your banner. He is a man now. "Nearly there, sir," he says, every mile, as if you might have forgotten.
 
-[break]
+*(Continue)*
 
 The village sees you coming a mile off across the flat country. By the time you reach it, everyone is indoors, and the street is empty, and the church bell is ringing.
 
 Not for you. For a death. The first, in Ormel, of the great mortality.
 
-End of Chapter 2.
+- Ride in.
+
+**Chose:** Ride in.
+
+*Temper of the village −1 · Grain in store (seasons) +2*
+
+## The Bell
+
+The dead woman is Rousse the netmaker, who was a widow, and she died this morning, after three days of coughing, with her skin gone the grey-dark of a bad bruise from her throat to her belly.
+
+The priest meets you in the street outside the church, still in his stole. Père Guérin is seventy if he is a day, bent like a hook, deaf in the left ear, and he shouts everything. "So you're the Adalian! WELL! You've picked a fine day for it!"
+
+*(Continue)*
+
+The village has come out, in spite of everything, to look at its new lord. They stand in their doorways and at the corners, keeping their distance from each other, and from you.
+
+"It came with them," somebody says, not quietly. "With the Adalians. On the ships."
+
+"Shut your mouth, Jacquot."
+
+"Well, it did. Everyone knows it did."
+
+A one-eyed man in a leather apron that smells of eels leans on the churchyard wall, chewing a straw. "Bastien," he says. "Headman, for my sins. You'll be wanting to know who's sick." He spits. "Ask who isn't. Quicker."
+
+- Go into the dead woman's house yourself, and see.
+- Climb the church steps and speak to them, in their own tongue. *(Even)*
+- Keep your men apart from the village, and send for the priest to tell you what is needed.
+- Turn round and ride back to the town until it has passed.
+
+**Chose:** Turn round and ride back to the town until it has passed.
+
+"Monseigneur?" says the priest, as you turn your horse. Then, a little louder, as you ride away: "Monseigneur!"
+
+You do not look back. Davy rides beside you with your banner furled and his face like stone.
+
+*Temper of the village −2 · Honor −2*
+
+## Behind the Walls
+
+Sauvemer has shut its gates against the country too, but it opens them for a lord with a writ, and you take rooms over a tavern by the harbour and wait.
+
+The town is no safer. The Mottle is in the lower town by Whitsun, and the dead-carts go round at night, and the bells ring so often that the Bishop forbids them. Every week a boy comes in from your manor with a list of names, in the priest's hand, and you read them by the window and do not know any of them.
+
+*(Continue)*
+
+"You did right, my lord," says the tavern-keeper, who is paid to say so. "Nothing to be done out there. Nothing to be done anywhere."
+
+- Wait it out.
+- Go back after all, before it is over.
+
+**Chose:** Wait it out.
+
+You wait it out. It takes all summer. The lists get shorter in the autumn, and then stop, and then a boy comes with a different message, from the headman, which is that you may as well come home now, because there is nobody left to catch it from.
+
+## Your Own House
+
+*Spring, year 26 of King Aldred*
+
+You thought, without ever quite thinking it, that it would not come into your own house. Everyone thinks that, Père Guérin says afterwards. Lords most of all.
+
+It comes in at midsummer. One of the men who came with you from the war, who walked out of Grisolles and stood on the dyke at Les Salines and lived through all of it, starts coughing at supper, and looks at his hand, and goes quiet.
+
+*(Continue)*
+
+There is nobody else to look at but you.
+
+"I'm all right, sir," he says. "It's nothing. I'm all right."
+
+He is dead in four days. The journal of your life will say his name. You will not need it to.
+
+- Sit with him to the end. *(Even)*
+- Keep the rest of your men away from him. You need them alive.
+- Get drunk, and stay drunk, until it is over.
+
+**Chose:** Sit with him to the end. (Even: failure)
+
+You sit with him to the end, and the end is bad, and on the last night you find you are coughing too. Not the Mottle, as it turns out: grief and no sleep and the damp. But for three days nobody comes near you, and you understand, a little, what the village has been living with since spring.
+
+*Injury: Fever-weak · Fever-weak has healed · Agnes is dead*
+
+## News from Home
+
+*Summer, year 26 of King Aldred*
+
+The Mottle crosses the Narrow Sea in the summer. Of course it does. It crosses everything.
+
+The letters come late and few, by ships that are turned away from half the ports on the coast. Wendmere has shut its gates. Saltcombe is burning its dead on the beach. In Ravell country, they say, every third house is empty, and the corn is standing in the fields with nobody to cut it.
+
+*(Continue)*
+
+The letter is from Lady Ravell, in her own hand, which she has never once used to write to a servant. Your mother is dead. Agnes died nursing Lady Ravell's own children through it, and saved two of them, and took it herself in the third week. "She was the best of my women," Lady Ravell writes. "I have buried her in the chapel. I find that I miss her." She does not sign it with love. She does not sign it at all.
+
+- Send home what money you can spare.
+- Send for Nell, if she is alive, or anyone of your mother's who is left to come to you, when the seas are open.
+- Have Masses said for the dead, here and at home.
+
+**Chose:** Send home what money you can spare.
+
+You send it by a Sarenzan who swears it will reach them, and charges a quarter for swearing. A letter comes back at Christmas. The money arrived. It is the only thing anyone at home has had from anyone in months.
+
+*Coin −5s · Common Folk standing +1 · Harvest in: 4 seasons of grain · Michaelmas rents: £1 8s 4d*
+
+## The Empty Fields
+
+*Autumn, year 26 of King Aldred*
+
+The harvest stands in the fields, ripe and golden and enormous, the best harvest anyone can remember, and there is nobody to bring it in.
+
+The barley is standing in the strips along the marsh edge, and the hay is still uncut in the water meadows, and Bastien sits on the churchyard wall and looks at it all and swears, steadily, in a voice like a man praying.
+
+*(Continue)*
+
+"Them that's left want paying," the headman tells you. "Paying proper. Day-wages. Thruppence a day, they're asking, and a dinner, where it was a penny and nothing in the old lord's time." A long pause. "The old lord would have made them do it for nothing. By custom. Boon-work, it's called. Owed to the lord."
+
+- Take off your coat and reap with your own men and your own hands.
+- Pay the wages they are asking. Bring it in, whatever it costs.
+- Order the boon-work by custom. They owe it to the lord.
+- Bring in what can be brought in, and let the far fields go.
+
+**Chose:** Order the boon-work by custom. They owe it to the lord.
+
+They owe it. It is written down. You have the steward read it out at the church door, the old custom of the manor, so many days of reaping for so many acres, and your men stand behind him with staves.
+
+They come. They reap. The harvest comes in. Nobody sings in the fields, and on the last day somebody sets fire to a rick of your barley, and nobody saw who. "It's the custom," you hear a woman say, at the well, flatly. "Aye. And so's dying."
+
+*Grain in store (seasons) +3 · People -84*
+
+## The Reckoning of the Dead
+
+*Winter, year 26 of King Aldred*
+
+The frost comes at Martinmas, and with the frost, the Mottle goes, the way a tide goes out. Nobody can say why. The coughing stops. The bells stop. People come out of their houses and look at each other in the street as if they had not seen each other for years, which in a way they have not.
+
+*(Continue)*
+
+You count the dead with the priest, in the cold church, from his list. It takes all afternoon.
+
+More than a third. Nearly half. There are houses in the marsh where nobody is left to say who lived there. The priest has stopped writing names and started writing "a man," "a child," "a woman, I think her name was Alis." There are 116 souls left on your manor.
+
+Bastien comes to the church at the end and leans in the doorway. "Lost my brother," he says. "Lost my brother's wife. Lost the eel-traps, nobody to set 'em." He spits. "Still here." He looks at you. "So are you. I'll give you that."
+
+- Raise a stone cross in the churchyard, with the names cut into it.
+- Give the widows back their Michaelmas rents.
+- Get on with it. There is a manor to run.
+
+**Chose:** Raise a stone cross in the churchyard, with the names cut into it.
+
+A mason from the town cuts them all, every name the priest wrote down, and for the ones with no names he cuts a cross. It takes him till Lent. When it is done, people come and stand in front of it and run their fingers over the letters they cannot read, finding the ones they know by the shape.
+
+*Coin −5s · Church and priest +2 · Temper of the village +2*
+
+## The First Spring
+
+In the spring the swallows come back, as if nothing had happened.
+
+The manor is quieter. There are empty houses on every lane, and strips of land with nobody to work them, and a great many children living with aunts and grandmothers. The people who are left look at you differently from the way they looked at you on the day of the bell. They look away when you pass, and talk when you have gone.
+
+[break]
+
+There is a letter on your table, under the King's seal, about the wages of labourers. There is another from the captain at Sauvemer, about the truce, which runs out at Lady Day next year. There is a third, unopened, from home.
+
+You are a lord of a manor that has lived through the end of the world. Now you have to find out how to live in what comes after.
+
+End of the chapters written so far. Chapter 3 continues with the Lord, the Match and the Reckoning.

@@ -748,7 +748,29 @@ At the end of Ch2 the King pays men with land near where they earned it. Ch2 dee
 | `c1_learned_manor`, `c1_learned_valdrennish` | Better estate and village checks from the start. |
 
 ### Still open
-- **Ch2 personal danger for well-trained fighters:** raise the lethal checks by one step, or leave as is.
+- **Ch2 personal danger for well-trained fighters:** left as is. The author expects most players to spread their training over two or three areas.
+
+### Built so far (2026-10-02)
+**Engine.**
+- **`estate.ts`:** fields `people`, `food` (seasons of grain), `temper` (-5 to +5), `defence`, `church`, `salt`, `orchard`.
+- **Effects:** `found_estate` creates the manor; `add: { estate.x }` changes it; `lose_share: { estate.people: 33 }` takes a percentage.
+- **Seasonal tick:**
+  - every season eats one season of grain;
+  - at Michaelmas the harvest comes in (people / 50 + orchard / 2) and rents are paid (people × 3d + salt × 40d + orchard × 30d, halved if temper is -3 or below);
+  - an empty granary costs 4% of the people and 1 temper.
+- **UI:** a "Your manor" section on the Status page.
+- **Validator:** checks estate paths, and supports `in_progress` chapters, so flags held for later acts stay quiet.
+
+**Act I, the Mortality.** Nine scenes; each manor has its own priest, headman and variants.
+- **The scenes:** arrival on the day of the first death; fleeing to the town (optional); the lord's measures; the plague in his own household; letters from home; the empty harvest; the reckoning; the first spring.
+- **Starting temper:** set by the grant and by Ch2 conduct (burning and raiding, carrying the terms, fighting the Iron Company, Valdrennish lessons).
+- **The death toll:** `counter.plague` starts at 37. Ch2 preparations and Act I choices move it, and `c3_reckoning` takes 25%, 33% or 42% of the people.
+- **Personal losses:**
+  - one of his household always dies, chosen at random from his named followers;
+  - one parent dies at home (Piers, Ralf or Agnes; the archer's mother Alison, since Hugh died in Ch2).
+- **Bot results:** most runs lose a third. Fleeing or the processions push it towards 42%. Preparations plus a physician or a shut manor bring it to 25%.
+
+**Current end of build:** `c3_spring` uses ending `ch3_complete` as a placeholder ("the story so far") until Acts II to IV exist.
 
 ## Decisions log
 | Date | Decision |

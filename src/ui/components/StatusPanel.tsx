@@ -4,6 +4,7 @@ import { effectiveAttr, effectiveSkill, npcLabel } from '../../engine/paths';
 import { computePrejudice } from '../../engine/station';
 import { ageOf, describeDate } from '../../engine/calendar';
 import { formatCoin, capitalise, signed } from '../../engine/format';
+import { ESTATE_LABELS, temperWord } from '../../engine/estate';
 
 const feeling = (n: number) =>
   n <= -6 ? 'hates you' : n <= -3 ? 'dislikes you' : n < 0 ? 'cool' : n === 0 ? 'indifferent' : n <= 2 ? 'warm' : n <= 5 ? 'fond' : 'devoted';
@@ -40,6 +41,17 @@ export function StatusPanel({ content, state }: { content: ContentBundle; state:
         <dt>Renown</dt><dd>{state.res.renown ?? 0}</dd>
         <dt>His birth, to the gentry</dt><dd>{prejudiceWord(computePrejudice(state, content, 'nobles'))}</dd>
       </dl>
+
+      {state.estate && (
+        <Section title={`Your manor${state.flags.c2_granted_marsalin ? ': Marsalin' : state.flags.c2_granted_kerval ? ': Kerval' : state.flags.c2_granted_ormel ? ': Ormel' : ''}`}>
+          <dl class="kv">
+            <dt>{ESTATE_LABELS.people}</dt><dd>{state.estate.people ?? 0}</dd>
+            <dt>{ESTATE_LABELS.food}</dt><dd>{state.estate.food ?? 0}</dd>
+            <dt>{ESTATE_LABELS.temper}</dt><dd>{temperWord(state.estate.temper ?? 0)}</dd>
+            {(['defence', 'church', 'salt', 'orchard'] as const).filter((f) => (state.estate![f] ?? 0) > 0).map((f) => [<dt key={`${f}t`}>{ESTATE_LABELS[f]}</dt>, <dd key={`${f}d`}>{state.estate![f]}/10</dd>])}
+          </dl>
+        </Section>
+      )}
 
       <Section title="Body and mind">
         <dl class="kv">

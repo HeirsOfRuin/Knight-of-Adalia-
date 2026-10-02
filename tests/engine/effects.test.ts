@@ -65,3 +65,31 @@ describe('effects', () => {
     expect(s.track).toBe('levy');
   });
 });
+
+describe('estate', () => {
+  const c = content();
+  it('founds a manor, ticks rents and harvest at Michaelmas, and starves when the grain runs out', () => {
+    const s = game('reeve');
+    applyEffects(s, c, fx({ found_estate: { people: 200, food: 1, temper: 0, salt: 2 } }), ctx());
+    expect(s.estate!.people).toBe(200);
+    s.time = 0; // spring
+    const coin = s.res.coin ?? 0;
+    const x = ctx();
+    applyEffects(s, c, fx({ advance: { seasons: 2 } }), x); // summer (food 0), then autumn (harvest, rent, eat)
+    expect(s.res.coin).toBe(coin + 200 * 3 + 2 * 40);
+    expect(s.estate!.food).toBe(0 + 4 - 1);
+    expect(x.changes.join('|')).toMatch(/Michaelmas rents/);
+    s.estate!.food = 0;
+    const y = ctx();
+    applyEffects(s, c, fx({ advance: { seasons: 1 } }), y);
+    expect(s.estate!.people).toBe(192);
+    expect(s.estate!.temper).toBe(-1);
+  });
+  it('loses a share of the people, and estate paths read and clamp', () => {
+    const s = game('reeve');
+    applyEffects(s, c, fx({ found_estate: { people: 300, temper: 4 } }), ctx());
+    applyEffects(s, c, fx({ lose_share: { 'estate.people': 33 } }, { add: { 'estate.temper': 5 } }), ctx());
+    expect(s.estate!.people).toBe(201);
+    expect(s.estate!.temper).toBe(5);
+  });
+});

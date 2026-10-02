@@ -7,4 +7,4 @@ diminished: { chapter: ch5, label: Diminished Lord, description: "Keeps some lan
 exile: { chapter: ch5, label: Exile, description: "Lives abroad in Sarenza, Hroswald or Valdrenne, on sufferance." }
 ruin: { chapter: ch5, label: Ruin, description: "Attainted, landless, his name struck from the rolls." }
 death: { chapter: prologue, label: Death, description: "Dead before his time. The manner of it is recorded." }
-ch2_complete: { chapter: ch2, label: End of Chapter 2, description: "The war is over, for now. Chapter 3 continues from here." }
+ch3_complete: { chapter: ch3, label: The Story So Far, description: "The end of the chapters written so far. Chapter 3 continues from here." }

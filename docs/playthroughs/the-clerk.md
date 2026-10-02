@@ -2181,14 +2181,188 @@ People laugh at you, gently. You buy grain anyway, and salt, and a Sarenzan phys
 
 ## Kerval
 
+*Winter, year 25 of King Aldred*
+
 In the spring you take ship down the coast to Port-Haudry, where all of this began, and ride inland through the Armance hills, with your banner and your following and the King's writ and the Duchess's letter, to Kerval.
 
 Behind you ride the few who are left. Davy carries your banner. He is a man now. "Nearly there, sir," he says, every mile, as if you might have forgotten.
 
-[break]
+*(Continue)*
 
 The village sees you coming down the valley road between the orchards, and comes out. You see the people gathering at the edge of the green, and for a moment you think it is a welcome. Then you hear the bell.
 
 Not for you. For a death. The first, in Kerval, of the great mortality.
 
-End of Chapter 2.
+- Ride in.
+
+**Chose:** Ride in.
+
+*Grain in store (seasons) +2*
+
+## The Bell
+
+The dead woman is the miller's mother, old Maheut, and she died this morning, after three days of coughing, with her skin gone the grey-dark of a bad bruise from her throat to her belly.
+
+The priest meets you in the street outside the church, still in his stole. Dom Hervé is a fat, rosy Benedictine with a shrewd eye, lent to Kerval by the Duchess's abbey. "Monseigneur," he says, and bows as well as his belly lets him. "Welcome to Kerval. I am sorry it is today."
+
+*(Continue)*
+
+The village has come out, in spite of everything, to look at its new lord. They stand in their doorways and at the corners, keeping their distance from each other, and from you.
+
+"It came with them," somebody says, not quietly. "With the Adalians. On the ships."
+
+"Shut your mouth, Jacquot."
+
+"Well, it did. Everyone knows it did."
+
+A huge cheerful man shoves through, beaming, with his hat in his hands. "Gwenaël! I am the reeve! Welcome, welcome!" His smile falters. "Is a bad day. Very bad. But welcome!"
+
+- Go into the dead woman's house yourself, and see.
+- Climb the church steps and speak to them, in their own tongue. *(Even)*
+- Keep your men apart from the village, and send for the priest to tell you what is needed.
+- Turn round and ride back to the town until it has passed.
+
+**Chose:** Climb the church steps and speak to them, in their own tongue. (Even: success)
+
+You do not make a speech. You tell them what you know, which is little, and what you will do, which is stay. You tell them nobody will be put out of a house for being sick, and that the manor's grain will feed the houses that cannot work. "And if I take it," you say, "you'll bury me with the rest of you, and I'll thank you not to be glad."
+
+Somebody laughs, startled. Then somebody else. It is not much. In a plague, it is a great deal.
+
+*Temper of the village +2*
+
+## What the Lord Decides
+
+By the end of the first week there are nine dead. By the end of the second, twenty.
+
+It goes through a house the way fire goes through thatch: the mother, then the children, then the grandmother who was nursing them. Sometimes it passes over one house in a row and nobody can say why. Men who were well at Prime are coughing at Vespers and dead before the next Sabbath.
+
+*(Continue)*
+
+They come to you, because you are the lord, and that is what lords are for.
+
+"Shut the valley road," Gwenaël says, not smiling now. "Nobody comes in. Is what my grandfather did, for the flux." Dom Hervé wants a procession, with the abbey's relics, round every field. "The Duchess has a Sarenzan physician at Lannec," he adds, mildly. "If one were to ask her."
+
+Everybody has a cure. Nobody has a cure. Whatever you choose, people will die, and they will remember what you chose.
+
+- Shut the manor. Nobody in, nobody out, by your order and your men's spears.
+- Burn the houses of the dead, and the bedding, and the straw.
+- Go down among the sick with the priest, and nurse them with your own hands. *(Favorable, MORTAL DANGER)*
+- Send for a Sarenzan physician, whatever he costs.
+- Order Masses and a procession round every field, with the relics and the whole manor walking.
+
+**Chose:** Go down among the sick with the priest, and nurse them with your own hands. (Favorable: success)
+
+Water. Broth. Clean straw. Sitting up with the dying so they do not die alone. Carrying the dead to the church on a hurdle with the priest at the other end. You do it for six weeks, and you do not take it, and nobody can say why.
+
+"God has a use for you," the priest says, one grey morning, in the churchyard, leaning on his spade. "I'd like to know what it is." By midsummer the whole manor knows who carried their mothers.
+
+*Temper of the village +2 · Piety +2*
+
+## Your Own House
+
+You thought, without ever quite thinking it, that it would not come into your own house. Everyone thinks that, Père Dom Hervé says afterwards. Lords most of all.
+
+It comes in at midsummer. One of the men who came with you from the war, who walked out of Grisolles and stood on the dyke at Les Salines and lived through all of it, starts coughing at supper, and looks at his hand, and goes quiet.
+
+*(Continue)*
+
+The others look at him, and then at each other, and then at you.
+
+"I'm all right, sir," he says. "It's nothing. I'm all right."
+
+He is dead in four days. The journal of your life will say his name. You will not need it to.
+
+- Sit with him to the end. *(Favorable)*
+- Keep the rest of your men away from him. You need them alive.
+- Get drunk, and stay drunk, until it is over.
+
+**Chose:** Sit with him to the end. (Favorable: success)
+
+Four days. You hold the cup. You talk about the war, and home, and the girl he meant to marry, and when he cannot talk any more you keep talking for him. At the end he says, quite clearly, "Not so bad, sir," and then nothing. You bury him yourself. The rest of your men stand round the grave with their hats in their hands and do not look at you, because you are weeping, and it is not done.
+
+*Piers is dead*
+
+## News from Home
+
+*Spring, year 26 of King Aldred*
+
+The Mottle crosses the Narrow Sea in the summer. Of course it does. It crosses everything.
+
+The letters come late and few, by ships that are turned away from half the ports on the coast. Wendmere has shut its gates. Saltcombe is burning its dead on the beach. In Ravell country, they say, every third house is empty, and the corn is standing in the fields with nobody to cut it.
+
+*(Continue)*
+
+The letter is from your mother, in Father Anselm's hand, and Father Anselm has added a line of his own at the bottom, crooked, as if written in a hurry. Your father died at Lammas. "He kept the tallies to the last day," your mother says. "He was cutting the oats tally when it took him. He said, tell the boy the count was right." Cis and Avice are alive. Ashby has lost eleven households of thirty-one.
+
+- Send home what money you can spare.
+- Send for your sisters to come to you, when the seas are open.
+- Have Masses said for the dead, here and at home.
+
+**Chose:** Send home what money you can spare.
+
+You send it by a Sarenzan who swears it will reach them, and charges a quarter for swearing. A letter comes back at Christmas. The money arrived. It is the only thing anyone at home has had from anyone in months.
+
+*Coin −5s · Common Folk standing +1*
+
+## The Empty Fields
+
+*Summer, year 26 of King Aldred*
+
+The harvest stands in the fields, ripe and golden and enormous, the best harvest anyone can remember, and there is nobody to bring it in.
+
+The orchards are heavy with apples rotting on the branch. The barley is down in the low fields, and the hill fields are standing, and Gwenaël walks along the headlands every morning with his hat in his hand, counting what he cannot reap.
+
+*(Continue)*
+
+"Them that's left want paying," the headman tells you. "Paying proper. Day-wages. Thruppence a day, they're asking, and a dinner, where it was a penny and nothing in the old lord's time." Gwenaël shrugs his giant shoulders. "And they will get it, monseigneur. From you or from the next valley."
+
+- Take off your coat and reap with your own men and your own hands.
+- Pay the wages they are asking. Bring it in, whatever it costs.
+- Order the boon-work by custom. They owe it to the lord.
+- Bring in what can be brought in, and let the far fields go.
+
+**Chose:** Take off your coat and reap with your own men and your own hands.
+
+"Monseigneur's reaping," the word goes round, and half the manor comes out to see it, and then, because it is shaming to stand and watch a lord cut barley, they pick up sickles and come and help.
+
+Your back is broken by the third day. Your hands are a mass of blisters. Davy is better at it than you, and says so. It is the best fortnight you have had since you came. The people do not love you for it. They do talk about it, at night, the way people talk about a thing they did not expect.
+
+*Grain in store (seasons) +2 · Harvest in: 7 seasons of grain · Michaelmas rents: £3 15s · People -83*
+
+## The Reckoning of the Dead
+
+*Autumn, year 26 of King Aldred*
+
+The frost comes at Martinmas, and with the frost, the Mottle goes, the way a tide goes out. Nobody can say why. The coughing stops. The bells stop. People come out of their houses and look at each other in the street as if they had not seen each other for years, which in a way they have not.
+
+*(Continue)*
+
+You count the dead with the priest, in the cold church, from his list. It takes all afternoon.
+
+A third of the manor. One in three. Whole families gone, houses standing empty with the doors open and the hens walking in and out. There are 167 souls left on your manor.
+
+Gwenaël comes to the church at the end, and sits on the back bench, and cries like a child, quite openly, and nobody tells him to stop.
+
+- Raise a stone cross in the churchyard, with the names cut into it.
+- Give the widows back their Michaelmas rents.
+- Get on with it. There is a manor to run.
+
+**Chose:** Raise a stone cross in the churchyard, with the names cut into it.
+
+A mason from the town cuts them all, every name the priest wrote down, and for the ones with no names he cuts a cross. It takes him till Lent. When it is done, people come and stand in front of it and run their fingers over the letters they cannot read, finding the ones they know by the shape.
+
+*Coin −5s · Church and priest +2*
+
+## The First Spring
+
+In the spring the swallows come back, as if nothing had happened.
+
+The manor is quieter. There are empty houses on every lane, and strips of land with nobody to work them, and a great many children living with aunts and grandmothers. The people who are left look at you differently from the way they looked at you on the day of the bell. Most of them nod when you pass. A few of them smile.
+
+[break]
+
+There is a letter on your table, under the King's seal, about the wages of labourers. There is another from the Duchess, about the truce, which runs out at Lady Day next year. There is a third, unopened, from home.
+
+You are a lord of a manor that has lived through the end of the world. Now you have to find out how to live in what comes after.
+
+End of the chapters written so far. Chapter 3 continues with the Lord, the Match and the Reckoning.

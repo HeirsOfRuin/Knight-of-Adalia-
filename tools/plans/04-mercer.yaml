@@ -35,8 +35,12 @@ steps:
   c2_vaudrey: house!success
   c2_corbie: kind
   c2_lannec_winter: borrow
-ending: ch2_complete
+  c3_arrival: apart
+  c3_measures: burn
+  c3_harvest: let_go
+ending: ch3_complete
 expect:
+  - flag.c3_burned_houses
   - station == lord
   - flag.c2_ceremonial_knight || flag.c2_knighted_eve || flag.c2_knighted_field || flag.c2_knighted_grisolles
   - flag.c2_took_corbie

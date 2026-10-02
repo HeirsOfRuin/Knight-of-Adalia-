@@ -1,3 +1,4 @@
+import { ESTATE_FIELDS, clampEstate, type EstateField } from './estate';
 // Effect application. Operates on a state that the caller has already cloned.
 import type { ContentBundle, Effect } from '../content/schema';
 import type { GameState, NpcState, SuitState } from './state';
@@ -92,6 +93,14 @@ function addNumber(state: GameState, content: ContentBundle, rawPath: string, de
     case 'counter':
       state.counters[a] = (state.counters[a] ?? 0) + delta;
       return;
+    case 'estate': {
+      if (!state.estate) state.estate = {};
+      const f = a as EstateField;
+      const before = state.estate[f] ?? 0;
+      state.estate[f] = clampEstate(f, before + delta);
+      note(labelFor(content, path), state.estate[f]! - before);
+      return;
+    }
     case 'health': {
       const before = state.health;
       state.health = clamp(before + delta, 1, 10); // death only through `die`
@@ -221,6 +230,18 @@ export function applyEffects(state: GameState, content: ContentBundle, effects: 
         earliestChapter: e.queue.earliest_chapter,
         origin: { scene: ctx.scene, choice: ctx.choice, at: state.time, text: ctx.choiceText },
       });
+    } else if ('lose_share' in e) {
+      for (const [raw, pct] of Object.entries(e.lose_share)) {
+        const [, f] = raw.split('.') as [string, EstateField];
+        if (!state.estate) continue;
+        const before = state.estate[f] ?? 0;
+        state.estate[f] = clampEstate(f, before - Math.round((before * pct) / 100));
+        const d = state.estate[f]! - before;
+        if (d) ctx.changes.push(`${labelFor(content, raw)} ${d}`);
+      }
+    } else if ('found_estate' in e) {
+      state.estate = {};
+      for (const f of ESTATE_FIELDS) state.estate[f] = clampEstate(f, e.found_estate[f] ?? 0);
     } else if ('advance' in e) {
       advanceSeasons(state, content, e.advance.seasons, ctx.changes);
     } else if ('journal' in e) {

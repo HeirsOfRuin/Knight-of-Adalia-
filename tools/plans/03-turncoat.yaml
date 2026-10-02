@@ -38,8 +38,13 @@ steps:
   c2_vaudrey: loot
   c2_retreat: take
   c2_lannec_winter: raid
-ending: ch2_complete
+  c3_arrival: flee
+  c3_fled_town: wait
+  c3_harvest: compel
+ending: ch3_complete
 expect:
+  - flag.c3_fled
+  - estate.temper < 0
   - station == lord
   - flag.c2_breval_sacked
   - trait.burner

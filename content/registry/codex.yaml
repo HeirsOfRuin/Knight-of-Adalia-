@@ -90,3 +90,15 @@ king_aldred:
   - text: Aldred, second of the name, King of Adalia. Thin, quick, with his mother's dark Valdrennish eyes. Claims Valdrenne through her.
   - if: flag.c1_king_noticed
     text: He has heard your name, and repeated it as if to keep it.
+guerin_ormel:
+  - text: The priest of Ormel. Seventy, bent like a hook, deaf in the left ear, and he shouts everything. He has buried three generations of Ormel and expects to bury a fourth.
+bastien_ormel:
+  - text: Headman of Ormel, the eel-man. One eye, a leather apron that smells of the marsh, and no love for Adalians. Spits before he says anything important.
+yves_marsalin:
+  - text: The priest of Marsalin. Young, thin, earnest, frightened, and brave about it. Did not think anyone would come.
+margot_marsalin:
+  - text: Forewoman of the Marsalin salt-boilers. Forearms like hams. Her husband drowned in the pans at Les Salines, and she says so to your face.
+herve_kerval:
+  - text: Dom Hervé, the Benedictine the Duchess's abbey lent to Kerval. Fat, rosy, kind, and a great deal shrewder than he lets on.
+gwenael_kerval:
+  - text: The reeve of Kerval. A cheerful giant who speaks Adalian badly and loudly, and cries in church without shame.

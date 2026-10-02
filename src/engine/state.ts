@@ -77,6 +77,8 @@ export interface GameState {
   /** alias -> npc id, e.g. master -> hamon_darrell */
   aliases: Record<string, string>;
   suits: Record<string, SuitState>;
+  /** the manor he holds, from Ch3 (see estate.ts) */
+  estate?: Record<string, number>;
   queue: QueuedEvent[];
   /** scene id -> last time played (for once/cooldown) */
   seen: Record<string, number>;

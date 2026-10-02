@@ -61,3 +61,11 @@ clemence_vaux: { name: Clémence de Vaux, title: Dame, faction: valdrenne, tags:
 orsino_brancale: { name: Orsino Brancale, title: Cardinal, faction: church, notes: "Papal legate, Sarenzan by birth. Brokers the truce." }
 ulric_rotbart: { name: Ulric Rotbart, faction: hroswald, notes: "Captain of the Iron Company, a free company of eight hundred." }
 queen_mathilde: { name: Mathilde, title: Queen, faction: crown, notes: "Aldred's queen. Comes to the camp at Sauvemer." }
+
+# Chapter 3: the manors
+guerin_ormel: { name: Guérin, title: Père, faction: church, notes: "Priest of Ormel. Seventy, deaf in the left ear, shouts. Has buried three generations." }
+bastien_ormel: { name: Bastien, notes: "Headman of Ormel. The eel-man. One eye, a wry tongue, no love for Adalians." }
+yves_marsalin: { name: Yves, title: Père, faction: church, notes: "Priest of Marsalin. Young, earnest, frightened, brave about it." }
+margot_marsalin: { name: Margot, notes: "Forewoman of the Marsalin salt-boilers. Big-armed. Her husband drowned in the pans at Les Salines." }
+herve_kerval: { name: Hervé, title: Dom, faction: church, notes: "Benedictine from the Duchess's abbey, priest at Kerval. Fat, kind, shrewd." }
+gwenael_kerval: { name: Gwenaël, notes: "Reeve of Kerval. A cheerful giant who speaks Adalian badly and loudly." }

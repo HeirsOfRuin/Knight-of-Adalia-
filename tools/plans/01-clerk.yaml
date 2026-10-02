@@ -37,8 +37,12 @@ steps:
   c2_grisolles_rout: master!success
   c2_burial_truce: talk!success
   c2_surrender: between!success
-ending: ch2_complete
+  c3_arrival: steps!success
+  c3_measures: nurse!success
+  c3_harvest: reap
+ending: ch3_complete
 expect:
+  - flag.c3_nursed
   - station == lord
   - flag.c2_breval_ransomed
   - flag.c2_terms_carried

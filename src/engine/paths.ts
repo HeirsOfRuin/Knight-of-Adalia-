@@ -1,3 +1,4 @@
+import { ESTATE_FIELDS, ESTATE_LABELS, type EstateField } from './estate';
 // State paths: the shared vocabulary of conditions, effects and text.
 // One resolver for everything, so displayed values and resolved values cannot
 // drift apart.
@@ -50,6 +51,7 @@ export function getValue(state: GameState, content: ContentBundle, rawPath: stri
     case 'skill': return effectiveSkill(state, content, a!);
     case 'rep': return state.rep[a!] ?? 0;
     case 'res': return state.res[a!] ?? 0;
+    case 'estate': return state.estate?.[a!] ?? 0;
     case 'favor': return state.favors[a!] ?? 0;
     case 'trait': return state.traits.includes(a!);
     case 'injury': return state.injuries.some((i) => i.id === a);
@@ -118,6 +120,7 @@ export function checkPath(content: ContentBundle, path: string): string | null {
     case 'skill': return need(content.config.skills.includes(a), 'skill');
     case 'rep': return need(a in reg.factions, 'faction');
     case 'res': return need(['coin', 'supplies', 'horses', 'renown', 'men'].includes(a), 'resource');
+    case 'estate': return need((ESTATE_FIELDS as readonly string[]).includes(a), 'estate field');
     case 'favor': return need(a in reg.npcs, 'npc');
     case 'trait': return need(a in reg.traits, 'trait');
     case 'injury': return need(a in reg.injuries, 'injury');
@@ -162,6 +165,7 @@ export function labelFor(content: ContentBundle, path: string): string {
     case 'injury': return reg.injuries[a!]?.label ?? cap(a!);
     case 'suit': return `${reg.npcs[reg.romances[a!]?.npc ?? a!]?.name ?? a}: ${b}`;
     case 'station': return 'Station';
+    case 'estate': return ESTATE_LABELS[a as EstateField] ?? cap(a!);
     default: return cap(path);
   }
 }

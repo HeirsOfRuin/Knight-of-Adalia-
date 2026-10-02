@@ -259,3 +259,23 @@ c2_coll_repaid: { description: "Coll of Glenhallow repaid his freedom", hidden: 
 c2_lanzi_against_land: { description: "His Lanzi debt is secured on his land", later: ch3 }
 c2q_isabel_married: { description: "Isabel Sayer married the knight from Hollesby", later: ch3 }
 c2q_isabel_waits: { description: "Isabel Sayer's father agreed to wait a year for him", later: ch3 }
+
+# Chapter 3
+c3_saw_it: { description: "Went into the first plague house himself", hidden: true, later: ch4 }
+c3_spoke_steps: { description: "Spoke to the manor from the church steps when the plague came", hidden: true, later: ch4 }
+c3_kept_apart: { description: "Kept his men apart from the village when the plague came", hidden: true, later: ch4 }
+c3_fled: { description: "Fled to the town when the plague reached his manor", later: ch4 }
+c3_shut: { description: "Shut his manor: nobody in or out during the plague", hidden: true, later: ch4 }
+c3_burned_houses: { description: "Burned the houses of the plague dead", hidden: true, later: ch4 }
+c3_nursed: { description: "Nursed the plague sick with his own hands", later: ch4 }
+c3_physician: { description: "Brought a Sarenzan physician to the manor", hidden: true, later: ch4 }
+c3_procession: { description: "Held processions and Masses against the plague", hidden: true, later: ch4 }
+c3_sat_with_man: { description: "Sat with his own man to the end in the plague", hidden: true, later: ch4 }
+c3_sent_money: { description: "Sent money home in the plague year", hidden: true, later: ch4 }
+c3_sent_for_kin: { description: "Sent for his surviving kin to come to the manor", later: ch4 }
+c3_reaped: { description: "Reaped the plague harvest with his own hands", hidden: true, later: ch4 }
+c3_paid_wages: { description: "Paid plague wages to bring the harvest in", later: ch4 }
+c3_compelled: { description: "Compelled boon-work by the old custom after the plague", later: ch4 }
+c3_lost_fields: { description: "Let the far fields go unreaped in the plague year", hidden: true, later: ch4 }
+c3_raised_cross: { description: "Raised a cross for the plague dead", hidden: true, later: ch4 }
+c3_gave_back_rents: { description: "Gave back the widows' rents after the plague", hidden: true, later: ch4 }

@@ -35,8 +35,12 @@ steps:
   c2_grisolles_rout: men!success
   c2_salines_1: shoot!success
   c2_salines_2: hold!success
-ending: ch2_complete
+  c3_arrival: house
+  c3_measures: shut
+  c3_letters: kin
+ending: ch3_complete
 expect:
+  - flag.c3_shut
   - station == lord
   - npc.jankin_rooke.follower
   - flag.p_lower_track

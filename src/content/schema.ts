@@ -41,6 +41,8 @@ const BaseEffectSchema = z.union([
     queue: z.object({ event: Id, delay: Delay, earliest_chapter: z.string().optional() }).strict(), // chapter id
   }).strict(),
   z.object({ advance: Delay }).strict(),
+  z.object({ found_estate: z.record(z.string(), z.number()) }).strict(), // creates state.estate (Ch3)
+  z.object({ lose_share: z.record(z.string(), z.number()) }).strict(), // estate.<field>: percent lost (plague, famine)
   z.object({ journal: z.string() }).strict(),
   z.object({ die: z.string() }).strict(), // only legal inside lethal choices (validator)
 ]);
@@ -243,6 +245,7 @@ export const ConfigSchema = z.object({
   tracks: z.array(Id),
   seasons: z.array(Id).length(4),
   chapters: z.array(z.string()),
+  in_progress: z.array(z.string()).default([]), // chapters still being written: 'later' flags for them stay quiet
   // named NPC slots ("@master") whose occupant is decided during play
   aliases: z.array(Id).default([]),
 }).strict();

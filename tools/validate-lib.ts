@@ -17,7 +17,7 @@ export type CheckStatus = 'PASS' | 'FAIL' | 'PENDING';
 export interface StructuralCheck { background: string; name: string; status: CheckStatus; detail: string }
 export interface ValidationReport { issues: Issue[]; structural: StructuralCheck[]; reachableBy: Record<string, Set<string>> }
 
-const ADDABLE = ['attr', 'skill', 'rep', 'res', 'rel', 'favor', 'suit', 'counter', 'health'];
+const ADDABLE = ['attr', 'skill', 'rep', 'res', 'rel', 'favor', 'suit', 'counter', 'health', 'estate'];
 const ASSIGNABLE = ['chapter', 'track', 'counter', 'flag', 'suit', 'rel'];
 
 function outcomesOf(c: Choice): { label: string; o: Outcome }[] {
@@ -154,6 +154,10 @@ export function validate(content: ContentBundle): ValidationReport {
           if (!ADDABLE.includes(ns)) err(where, `add: cannot add to "${p}"`);
           else if (ns !== 'health') { const pe = checkPath(content, p); if (pe) err(where, `add: ${pe}`); }
         }
+      } else if ('found_estate' in e) {
+        for (const f of Object.keys(e.found_estate)) { const pe = checkPath(content, `estate.${f}`); if (pe) err(where, `found_estate: ${pe}`); }
+      } else if ('lose_share' in e) {
+        for (const p of Object.keys(e.lose_share)) { const pe = p.startsWith('estate.') ? checkPath(content, p) : `lose_share only takes estate.<field>, got "${p}"`; if (pe) err(where, `lose_share: ${pe}`); }
       } else if ('assign' in e) {
         for (const [p, v] of Object.entries(e.assign)) {
           if (!ASSIGNABLE.includes(p.split('.')[0]!)) err(where, `assign: cannot assign "${p}"`);
@@ -247,7 +251,7 @@ export function validate(content: ContentBundle): ValidationReport {
   // Flags
   for (const f of flagsRead) if (!(f in reg.flags)) err('flags', `flag "${f}" is read but not declared`);
   for (const f of flagsRead) if (f in reg.flags && !flagsSet.has(f) && !['noble_marriage', 'strong_patron'].includes(f)) warn('flags', `flag "${f}" is read but never set`);
-  const chapterHasContent = (ch: string) => Object.values(scenes).some((sc) => sc.chapter === ch);
+  const chapterHasContent = (ch: string) => !content.config.in_progress.includes(ch) && Object.values(scenes).some((sc) => sc.chapter === ch);
   for (const f of Object.keys(reg.flags)) {
     if (flagsRead.has(f) || !flagsSet.has(f)) continue;
     const later = reg.flags[f]!.later;

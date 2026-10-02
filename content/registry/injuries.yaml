@@ -8,3 +8,4 @@ arrow_wound: { label: Arrow wound, description: "A Caldmoor arrow went through t
 fever_weak: { label: Fever-weak, description: "The flux left you thin and short of breath.", mods: { attr.endurance: -1, attr.strength: -1 }, heals_after: 1, serious: true }
 crushed_ribs: { label: Crushed ribs, description: "A horse fell on you. Breathing hurts, and so does not breathing.", mods: { attr.endurance: -2, skill.arms: -1 }, heals_after: 2, serious: true }
 camp_flux: { label: Camp flux, description: "The bloody flux that runs through every siege camp.", mods: { attr.strength: -1, attr.endurance: -1 }, heals_after: 1, serious: true }
+mottle_fever: { label: The Mottle, description: "Grey-dark blotches, a cough that brings blood, a fever like a furnace. Some live.", mods: { attr.endurance: -2, attr.strength: -2 }, heals_after: 2, serious: true }

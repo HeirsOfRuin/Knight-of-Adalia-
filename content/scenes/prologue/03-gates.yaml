@@ -31,7 +31,12 @@
           - { if: flag.p_kept_copy, add: 1, label: your careful habits }
           - { if: flag.p_thief_caught, add: -2, label: the white sheet at the church door }
       success:
-        text: Sir Hamon makes you do it again, slowly, with the clerk checking. Then he laughs until he coughs and says he has been robbed by stewards for thirty years and it is time he had a boy who could count. Master Gervase smiles with his mouth only.
+        text: |
+          "Begging your pardon, Sir Hamon." Your voice comes out a croak, and the whole hall turns to look at the boy on the bench by the door. "The horses. Master Gervase has forgotten Lord Ravell's horses. Thirty mouths is forty horses, sir, and forty horses is..." You tell him what forty horses is, in oats and hay and straw, for a week.
+
+          Sir Hamon makes you do it again, slowly, with the clerk checking on his fingers. Then he leans back in his chair and laughs until he coughs, and wipes his eyes, and points at you. "Thirty years," he says, "I've been robbed by stewards for thirty years. Time I had a boy who could count." He laughs again. "God's teeth, Gervase, your face!"
+
+          Master Gervase smiles. With his mouth.
         effects:
           - station: retainer
             track: squire_track
@@ -125,7 +130,10 @@
       text: Pay Sir Hamon's price yourself, a pound down and the rest from your father.
       tags: [wealth]
       requires: [ res.coin >= 240 ]
-      text_after: Sir Hamon takes the money the way gentlemen take money, without looking at it. Your father finds the other five pounds from somewhere. Later you learn where. It was the Lanzi bank, against next year's clip.
+      text_after: |
+        Sir Hamon takes the money the way gentlemen take money: without looking at it, as if it might be catching. "Well, well," he says. "A merchant's boy. You'll keep my accounts, I suppose? Ha! Somebody should."
+
+        Your father finds the other five pounds from somewhere. He will not say where. Months later, reading a letter you were not meant to see, you learn that it was the Lanzi bank, against next year's clip, and you sit for a while with the letter in your lap.
       effects:
         - station: retainer
           track: squire_track
@@ -218,7 +226,16 @@
           - { if: flag.p_bloody_hands, add: 1, label: years at the butts }
           - { if: injury.bruised_ribs, add: -1, label: your ribs }
       success:
-        text: Twelve arrows at two hundred paces. Ten in the clout. Sir Ancel rides over and asks whose boy you are. When you tell him, he looks across at your father for a long moment. "Hugh Fletcher's," he says. "Then you'll do."
+        text: |
+          Twelve arrows at two hundred paces. You do not think. You do what your father taught you on Sundays for six years: breathe, draw, hold, let the string roll off your fingers. Ten in the clout.
+
+          The muster goes quiet. Then somebody whistles, long and low.
+
+          Sir Ancel rides over, slowly, and looks down at you. "Whose boy?"
+
+          "Hugh Fletcher's, sir."
+
+          He looks across the common at your father, leaning on his stick by the clerks' table, and your father looks back, and something passes between the two men that you do not understand and will not for years. "Hugh Fletcher's," Sir Ancel says. "Hm. Then you'll do."
         effects:
           - station: retainer
             track: squire_track
@@ -244,7 +261,12 @@
           - { if: flag.p_trained_courtesy, add: 1, label: you know how to stand before a knight }
           - { if: flag.p_knows_war_secret, add: 1, label: you know what lies between them }
       success:
-        text: Sir Ancel gets down from his horse to speak to your father, which knights do not do. Whatever passed between them at Harrow Ford, it is still there. He looks you over like a horse he did not want to buy and says you start Monday.
+        text: |
+          Your father limps across the common on his stick, slow, with everyone watching, and stands at Sir Ancel's stirrup. You cannot hear what he says. You see Sir Ancel's face change.
+
+          Then Sir Ancel gets down from his horse to speak to him, which knights do not do, not for archers, not in front of three hundred men. They talk for a long time, heads close. At the end Sir Ancel puts his hand on your father's shoulder, briefly, as if it hurt him to do it, and then looks over at you like a horse he did not want to buy.
+
+          "Monday," he says. "Don't be late."
         effects:
           - station: retainer
             track: squire_track
@@ -353,7 +375,12 @@
           - { if: flag.p_took_blame, add: 2, label: Aymer owes you }
           - { if: flag.p_trained_courtesy, add: 1, label: your manners }
       success:
-        text: Lord Ravell looks at you as if he has never seen you before, though you have poured his wine for four years. "The tirewoman's boy," he says. "Well. Hamon needs two, and Aymer needs someone who will tell him no." So it is done, between one course and the next.
+        text: |
+          Aymer catches his father at the high table between the fish and the venison, which is either brave or stupid, and he is Aymer, so it is both.
+
+          Lord Ravell looks at you down the length of the hall, as if he has never seen you before, though you have poured his wine for four years. "The tirewoman's boy," he says. A long pause. "Well. Hamon needs two, and Aymer needs someone who will tell him no." He turns back to his venison. "See to it."
+
+          So it is done, between one course and the next, and your whole life turns over like a cart in a ditch. Aymer winks at you across the hall. Your mother, at the screens, has to go out.
         effects:
           - station: retainer
             track: squire_track
@@ -436,11 +463,15 @@
   chapter: prologue
   title: The Lower Road
   text: |
-    No knight has taken you. That is the end of one road.
+    No knight has taken you.
 
-    It is not the end of service. A great household needs grooms and kitchen boys and men to carry things. Lord Ravell's levy needs archers, and pays sixpence a day when it marches, which is never. Both are roads that sometimes lead up, if a boy is useful and lucky and not too proud.
+    You stand in the yard while the others are named, and listen, and your name is not among them, and your face burns all the way to your ears, and you look at the ground so nobody will see it.
 
-    [if background == archer]Your father says the levy made him what he was. He does not say what that was.[elif background == servant]You are already a servant. The question is only whose.[elif background == burgess]Your father says no son of his will carry slops for a knight. Your mother says better that than nothing.[else]Your father says a reeve's son should not have to start in the stables. He says it as if it were not his fault.[/if]
+    [break]
+
+    It is not the end of service. A great household needs grooms and kitchen boys and men to carry things. Lord Ravell's levy needs archers, and pays sixpence a day when it marches, which is never. Both are roads that sometimes lead up, if a boy is useful, and lucky, and not too proud.
+
+    [if background == archer]"The levy made me," your father says, gruffly, and does not say what it made him.[elif background == servant]"You're already a servant," your mother says, straightening your collar. "The only question is whose."[elif background == burgess]"No son of mine," your father says, white about the mouth, "carries slops for a knight." "Better than nothing," says your mother. They do not speak to each other for a week.[else]"A reeve's son shouldn't have to start in the stables," your father says, as if it were not his fault, and does not meet your eye.[/if]
   choices:
     - id: household
       text: Take service in Sir Hamon Darrell's household, as a groom.

@@ -104,11 +104,17 @@
   text: |
     It takes eleven days to get the army aboard and nine to cross, because the wind turns on the second night and blows half the fleet back toward Adalia, and a quarter of it somewhere else entirely. Ships are still straggling into the Armance a fortnight later. Some never come. One of them was carrying the King's siege timber.
 
-    Your ship is a Saltcombe cog called the Marie, fat and slow, with forty horses slung in her belly and sixty men on her deck. On the second night the storm comes. The horses scream below in the dark. Men are sick over the side, and then over each other. [if npc.aymer_ravell.friend]Aymer Ravell is on the Marie too, by his own arrangement. He is greener than anyone, and still making jokes.[/if]
+    Your ship is a Saltcombe cog called the Marie, fat and slow, with forty horses slung in canvas in her belly and sixty men on her deck, and a shipmaster with one eye who has crossed the Narrow Sea two hundred times and hates every soldier who has ever lived.
+
+    "Puke over the LEE side, you clods! The LEE side! God's teeth, the other one!"
 
     [break]
 
-    The shipmaster says the horses must be quieted or they will kick the planks out of her. Davy is too sick to stand. [if retinue >= 3]Your men are looking at you, the way men look at whoever is supposed to know what to do.[/if]
+    On the second night the storm comes. The Marie climbs every wave like an old woman climbing a stair, and drops off the top of it like a stone. The horses scream below in the dark, a noise you did not know horses could make. Men are sick over the side, then over each other, then over nothing. [if npc.aymer_ravell.friend]Aymer Ravell is on the Marie too, by his own arrangement, greener than anyone aboard. "Ah, the glory of war," he croaks, and is sick on your boots.[/if]
+
+    The shipmaster comes aft along the rail, hand over hand, streaming water. "Those horses!" he bawls at you, because you are the nearest thing to an officer he can find. "Quiet them, or they'll kick the planks out of her and we'll all be fish!"
+
+    Davy is too sick to stand. [if retinue >= 3]Your men are looking at you, the way men look at whoever is supposed to know what to do.[/if]
   choices:
     - id: horses
       text: Go down into the hold with the horses.
@@ -144,13 +150,19 @@
   chapter: ch2
   title: Port-Haudry
   text: |
-    The Armance coast at dawn: grey dunes, a grey sea, a small grey town with a church tower, and along the dunes a line of men who have been waiting for you.
+    "Land!"
 
-    The town of Port-Haudry is the Duchess of Armance's, and its gates are open. The Tour de Haudry above it is not. It belongs to King Amaury, and its garrison has come down to the dunes: two hundred men, perhaps, crossbowmen in red behind big painted shields, and a knight on a white horse riding up and down behind them shouting. They cannot stop an army landing. They can make it pay for every boat.
+    The Armance coast at dawn: grey dunes, a grey sea, a small grey town with a church tower, and along the top of the dunes a line of men who have been waiting for you.
+
+    "Oh, lovely," says somebody behind you. "A welcome."
 
     [break]
 
-    The boats go in. The first wave is already in the water to the waist, wading, holding their bows over their heads. The crossbows begin.
+    The town of Port-Haudry is the Duchess of Armance's, and its gates are open. The Tour de Haudry above it is not. It belongs to King Amaury, and its garrison has come down to the dunes: two hundred men, perhaps, crossbowmen in red behind big painted shields, and a knight on a white horse riding up and down behind them, shouting and waving his sword. They cannot stop an army landing. They can make it pay for every boat.
+
+    The boats go in. The first wave is already over the side and wading, chest-deep, cold as the grave, holding their bows over their heads.
+
+    Then the crossbows begin, with a noise like a flock of birds getting up, and the first man near you goes under the water and does not come up.
   choices:
     - id: lead
       text: Lead your men up the beach, straight at them.
@@ -292,13 +304,17 @@
   chapter: ch2
   title: The Long Burning
   text: |
-    The Tour de Haudry is left under siege with five hundred men, and the rest of the army marches east, and the orders are read out at the head of every company.
+    The Tour de Haudry is left under siege with five hundred men, and the rest of the army marches east, and the orders are read out at the head of every company by sweating clerks.
 
-    The lands of the Duchess are to be spared. The lands of Vervais are to be spared, because Vervais is a friend who does not know it yet. Everything between, which is King Amaury's own country, is to be made to feed the army and to pay for it. What cannot be carried is to be burned. Amaury will learn what it costs to keep a crown that is not his.
+    "The lands of the Duchess are to be spared. The lands of Vervais are to be spared." The clerk wipes his face. "Everything between, being King Amaury's own country, is to be made to feed the army and to pay for it. What cannot be carried is to be burned."
+
+    "Now you're talking," says a voice from the ranks, and somebody laughs.
 
     [break]
 
-    The old men in the army have done this before, on the March, and say it is the only way an army lives off a country that hates it. The young men have not, and are about to.
+    The old men in the army have done this before, on the March, and say it is the only way an army lives off a country that hates it. "It's them or us, lad," an old archer tells you, sharpening his knife on his boot. "Always is. Best it's them."
+
+    The young men have not done it, and are about to.
 
     Your men are looking at you again.
   choices:
@@ -328,13 +344,17 @@
   chapter: ch2
   title: Bréval
   text: |
-    The village is called Bréval. Thirty houses, a church, a mill on a stream, cherry trees in the gardens. The people did not run in time. They are in the church, most of them, with the doors barred, and the priest in the porch with his arms spread.
+    The village is called Bréval. Thirty houses, a church, a mill on a stream, cherry trees heavy with fruit in the gardens, and washing still on the hedges. Somebody's dinner is still cooking. You can smell it.
 
-    Your company is the first to reach it. Your master has gone on ahead with the van. For the next hour, what happens in Bréval is your decision, whatever the orders say.
+    The people did not run in time. They are in the church, most of them, with the doors barred. The priest is in the porch with his arms spread across the door like a scarecrow, shouting at you in Valdrennish, and you do not need to know the words.
 
     [break]
 
-    [if flag.c2_stance_loose]Your men are already going through the houses. Some of them are looking at the church.[elif flag.c2_stance_spare]Your men are waiting to see whether you meant it.[else]Your men are waiting for the order.[/if] Somewhere behind the church a woman is screaming, and it is not one of yours who is making her scream, and it may soon be.
+    Your company is the first to reach it. Your master has gone on with the van. For the next hour, what happens in Bréval is your decision, whatever the orders say.
+
+    [if flag.c2_stance_loose]Your men are already going through the houses, shouting, laughing, coming out with their arms full. Some of them are looking at the church.[elif flag.c2_stance_spare]Your men are waiting, watching you, to see whether you meant it.[else]Your men are waiting for the order.[/if]
+
+    Somewhere behind the church a woman is screaming. It is not one of yours who is making her scream. It may soon be.
   choices:
     - id: burn
       text: Get the people out of the church and onto the road. Then burn Bréval, as ordered.
@@ -564,13 +584,21 @@
   title: The Three Crows
   on_enter: [ { meet: heloise_corbie } ]
   text: |
-    Raoul de Corbie's ransom is set at two thousand marks, a sum so large it has to be written down twice to be believed. Ransoms like that take months to raise and years to pay.
+    Raoul de Corbie's ransom is set at two thousand marks. The clerk writes it down twice, because the first time he does not believe it either.
 
-    His sister comes to treat for it four days later, riding after the army under a safe-conduct with an old priest and two servants, and catches it up at its night's camp on the road east. Héloïse de Corbie. She is twenty-two, dark, and furious, and holds herself as if the camp were her own hall and the Adalians her servants.
+    His sister comes to treat for it four days later, riding after the army under a safe-conduct, with an old priest and two servants, and catches it up at its night's camp on the road east.
 
     [break]
 
-    [if flag.c2_took_corbie]She is brought to you, because her brother is yours.[else]She is brought to Giles Marrick, because her brother is his. Giles does not speak Valdrennish well. Someone has to translate. Somebody remembers that you were at the house with the crows.[/if]
+    The whole camp turns out to look at her. Héloïse de Corbie is twenty-two, dark, furious, and dressed for a funeral, and she sits her horse through the lines of staring soldiers as if they were pigs in a yard she happened to be crossing.
+
+    "Cor," says someone. "Look at that."
+
+    "She'd eat you alive, Tom."
+
+    "I'd let her."
+
+    She does not look at any of them. [if flag.c2_took_corbie]She is brought to you, because her brother is yours, and she looks at you for the first time as if she had found the one pig that could talk.[else]She is brought to Giles Marrick, because her brother is his. Giles does not speak Valdrennish well. Somebody has to translate. Somebody remembers that you were at the house with the crows.[/if]
   choices:
     - id: honest
       text: Deal with her honestly. Tell her what the ransom is, what it will cost, and how it can be paid.

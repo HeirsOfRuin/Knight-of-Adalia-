@@ -651,10 +651,34 @@ The 33 not yet read are marked `later: ch3`.
 
 **Ch2:** the first night ashore added, to build the men before the war starts killing them.
 
-**Still to do:**
-- deepen the Ch1 side events and delayed consequences;
-- deepen the Ch2 camp events;
-- second-pass prose on the Ch2 opening scenes.
+**Training (added 2026-10-02 at the author's request).** Ch1 covers about five years, so it now marks the stages of the trade:
+- **Winter at the Pell** (first winter).
+- **The Quintain** (second spring): riding, sword with Sir Bertram, the long butts, or the rolls of arms.
+- **Sir Bertram's Lady Day test in harness** (the spring after the Leven).
+- **The Long Winter** (after the tourney): drilling men, the old campaigns, running a manor, or learning Valdrennish.
+- **Two practice side events:** wrestling on the green and running at the ring.
+
+Most training choices give +1 to a skill and +1 to `counter.training`. The training flags pay off as modifiers in Ch2.
+
+**Voice pass complete, prologue to the end of Ch2.**
+- Every main scene, side event and delayed consequence has been through the House voice pass: spoken lines, bodily reaction, the village or camp chorus, and narrator tics removed.
+- The style lint reports none of the tracked tics.
+
+**Content now:** prologue 20 scenes, Ch1 55, Ch2 64. About 95k words of scene YAML.
+
+**Balance after training (bot, 200 runs per cell):**
+
+| Play style | Knighted | Dead |
+|---|---|---|
+| Martial | 96-100% | 0-2% |
+| Cunning | 83-94% | 0-3% |
+| Diplomacy | 48-59% | 0-5% |
+| Wealth | 58-66% | 6-10% |
+| Random | 46-56% | 4-12% |
+
+- Ch1 peacetime knighthood averages about 35% across goal-directed play (the master now needs respect 7).
+- Deaths are concentrated in the Ch1 crises and the Grisolles rout.
+- A trained, martial player now rarely dies in Ch2. War costs land on his men, his master and his friends rather than on him. Raise the Ch2 lethal checks if the author wants more personal danger.
 
 ## Chapter 3 frame (draft, 2026-10-02, for approval)
 **Working title:** Ormel.

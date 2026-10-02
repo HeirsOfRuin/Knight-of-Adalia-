@@ -1,6 +1,6 @@
 # The Mercer
 
-Background: Burgess's son. Seed 9.
+Background: Burgess's son. Seed 3.
 
 ## The Counting-House
 
@@ -230,7 +230,9 @@ Your mother says you are too good for knights. Your father tells her that is the
 
 **Chose:** Pay Sir Hamon's price yourself, a pound down and the rest from your father.
 
-Sir Hamon takes the money the way gentlemen take money, without looking at it. Your father finds the other five pounds from somewhere. Later you learn where. It was the Lanzi bank, against next year's clip.
+Sir Hamon takes the money the way gentlemen take money: without looking at it, as if it might be catching. "Well, well," he says. "A merchant's boy. You'll keep my accounts, I suppose? Ha! Somebody should."
+
+Your father finds the other five pounds from somewhere. He will not say where. Months later, reading a letter you were not meant to see, you learn that it was the Lanzi bank, against next year's clip, and you sit for a while with the letter in your lap.
 
 *Station: Retainer · Coin −£1 · Sir Hamon Darrell's respect −1*
 
@@ -362,11 +364,11 @@ The other squires watch to see what you do.
 - ~~Stand the whole loft a cask of Gascon wine on Saint Michael's night.~~ *(Requires Coin 5s)*
 - Take it. Do your duties better than he does his, and let that be your answer.
 
-**Chose:** Challenge him at the pell, in front of Sir Bertram Oakes. (Risky: success)
+**Chose:** Challenge him at the pell, in front of Sir Bertram Oakes. (Risky: failure)
 
-Wasters, not swords, but a waster breaks fingers. You break two of his. Sir Bertram Oakes stops it and says, to the yard in general, that birth is a fine thing and so is keeping your guard up. Giles does not speak to you for a month. When he does, it is with care.
+He has had a sword master since he was six. You have not. He puts you on your back in the mud four times, and the fourth time he takes his time getting off. Sir Bertram says nothing, but he watches you get up.
 
-*Renown +1 · Giles Marrick's respect +2 · Giles Marrick's affection −4 · Sir Bertram Oakes's respect +2 · Knights standing +1*
+*Injury: Bruised ribs · Sir Bertram Oakes's respect +1 · Giles Marrick's respect −1*
 
 ## Jocelin Tanner Again
 
@@ -379,33 +381,41 @@ Jocelin Tanner has come to Ravell. His father supplies the household with leathe
 - Show the steward where Jocelin's figures are wrong.
 - Leave it. You have work to do.
 
-**Chose:** Make it right with him, once and for all. (Even: failure)
+**Chose:** Make it right with him, once and for all. (Even: success)
 
-He hears you out and laughs. Some things do not get made right.
+It takes a jug of ale and an evening, and some things you would rather not have said. At the end of it you are not friends. You are the next thing to it, which is two men who know the worst of each other and have decided not to use it.
 
-*Jocelin Tanner's affection −1*
+*Jocelin Tanner's affection +4 · Jocelin Tanner's respect +1*
 
-## Aymer's Debts
+## Wendham Horse Fair
 
-Aymer Ravell, the lord's second son, has lost eight pounds at dice to Giles Marrick and two Carrow squires. He cannot ask his father. He is asking you, in the stable, quietly, with his face red.
+Saint Luke's horse fair at Wendham: a thousand horses and ten thousand liars, as the saying goes, and the liars are the louder.
 
-- ~~Lend him what you can. Five shillings.~~ *(Requires Coin 5s)*
-- Tell him he must go to his father, and offer to stand beside him when he does. *(Even)*
-- Tell him you have nothing to lend.
+"Sound as a bell, young sir, sound as a bell! Ride him yourself! No? Well, I'll ride him then!" Dealers trot old nags up and down the street with ginger under their tails to make them lively. Gypsy horse-copers, Sarenzan buyers, farmers selling the plough-horse because the wet year finished them. The whole town smells of dung and roasting chestnuts.
 
-**Chose:** Tell him he must go to his father, and offer to stand beside him when he does. (Even: failure)
+Your master has sent you with money for a pack-horse. "And don't come back with a donkey," he called after you. "Or a dead one."
 
-He calls you a coward and a servant and goes to a Wendham moneylender instead.
+- ~~Buy a riding horse for yourself while you are there. A pound.~~ *(Even, Requires Coin £1)*
+- Buy the pack-horse, haggle hard, and pocket the difference. *(Favorable)*
+- Buy the pack-horse at a fair price and bring back the change.
 
-*Aymer Ravell's affection −2*
+**Chose:** Buy the pack-horse, haggle hard, and pocket the difference. (Favorable: success)
+
+A good pack-horse at two shillings under your master's price. You keep the two shillings. That is what squires do.
+
+*Coin +2s · Bruised ribs has healed*
 
 ## Winter at the Pell
 
 *Winter, year 16 of King Aldred*
 
-Snow on the moat, ice on the trough, and the hall full of smoke from Martinmas to Candlemas.
+Snow on the moat, ice in the horse-trough, and the hall so full of smoke from Martinmas to Candlemas that everyone at Ravell coughs like Master Gervase.
 
-Winter is when a household learns. Sir Bertram Oakes takes the young men to the pell every morning before Mass, whatever the weather. Master Ranulf breaks the new horses in the covered ride. Father Benet keeps the lord's accounts and letters in a cold room over the chapel, and will let a boy sit in if he holds his tongue. Lady Ravell keeps her own hall, where young men learn to be tolerable company or are not invited back.
+"Winter," Sir Bertram says, blowing on his two-fingered hand, "is when boys turn into something or don't."
+
+*(Continue)*
+
+It is the first winter, and you are learning that a household in winter is a school with no master and forty teachers. Sir Bertram takes the young men to the pell every morning before Mass, whatever the weather, and shouts "You're dead!" until the rooks leave. Master Ranulf breaks the new horses in the covered ride. Father Benet keeps the lord's accounts in a cold room over the chapel, and will let a boy sit in if he holds his tongue and brings his own candle. Lady Ravell keeps her own hall in the evenings, with music, where the young men learn to be tolerable company or are not asked back.
 
 You have the winter. You cannot be everywhere.
 
@@ -424,11 +434,17 @@ You learn how a great household is really run: by debt, by delay, and by a clerk
 
 *Summer, year 17 of King Aldred*
 
-Sir Hamon owes money. Everyone in the household knows it except Sir Hamon, who knows it the way a man knows he will die: in principle, not today.
+Sir Hamon owes money. Everyone in the household knows it except Sir Hamon, who knows it the way a man knows he will die: in principle, but not today.
 
-This summer it becomes today. Master Bertuccio Lanzi of the Lanzi bank rides in from Wendham with a clerk and a letter. Forty pounds, borrowed against Ashby's wool. And there is the King's subsidy: Sir Hamon was named collector for the hundred last year. He collected it. He has not yet paid it over. When he looks for it, it is not all there.
+This summer, it becomes today.
 
-He calls you in. He is not angry. He is frightened, and he is trying to hide it under a laugh that does not come off. "You can count," he says. "Count this."
+*(Continue)*
+
+Master Bertuccio Lanzi of the Lanzi bank rides in from Wendham with a clerk and a letter, and bows beautifully, and declines wine. Forty pounds, borrowed against Ashby's wool. And then there is the King's subsidy. Sir Hamon was named collector for the hundred last year. He collected it. He has not yet paid it over. And when he goes to the chest to look, it is not all there.
+
+He calls you into the chamber afterwards, with the hounds asleep on his feet and the letter in his fist. He is not angry. He is frightened, and trying to hide it under a laugh that does not come off.
+
+"You can count," he says. "God help me. Count this."
 
 - Sit down with the subsidy rolls and the Ashby accounts, and find where it went. *(Even)*
 - Go down to Master Lanzi yourself and talk him into waiting. *(Favorable)*
@@ -439,19 +455,25 @@ He calls you in. He is not angry. He is frightened, and he is trying to hide it 
 
 Master Lanzi listens politely and says that he is sure Sir Hamon is a man of honour, and that the bank's lawyers are sure of it too.
 
-## A Letter from Home
+## Dice in the Guardroom
 
-A carrier brings a letter. Somebody has paid a clerk to write it.
+Saturday night in the guardroom over the gate. A blanket on the floor, one candle, three bone dice, and six men who were paid this morning and mean not to be by Sunday.
 
-It is from Annot Dyer. Her father has had an offer for her from a dyer in Wendmere, a widower with four children. She says she has asked him to wait. She does not say for what.
+"Seven's the main! Seven! Come on, you bitch!" The dice rattle off the wall. Somebody groans. Somebody laughs. The serjeant, a scarred old Marcher called Long Tom, has a pile of pennies in front of him like a little cairn.
 
-- Write back and tell her to wait.
-- Write back and tell her not to wait for you.
-- Put it away. You will answer it later.
+"Sit in, squire?" he says, without looking up. "We don't bite. Much."
 
-**Chose:** Write back and tell her to wait.
+The game is hazard. The stakes are pennies, then shillings, then whatever anyone has left, including, last month, a groom's boots.
 
-You write it three times before it is right. It costs you a penny to send and a good deal more not to say anything you cannot keep.
+- Play, honestly. *(Favorable)*
+- Play with a die you have shaved on one corner. *(Even)*
+- Watch, and keep your money.
+
+**Chose:** Play, honestly. (Favorable: success)
+
+You win, and win, and then, while the whole room is watching you to see how long it lasts, you pick up your coins and stand up. "That's me," you say. Long Tom stares at you as if you had sprouted wings. "Nobody does that," he says. "Nobody in the history of the world has ever done that." Three shillings. You sleep like a lord.
+
+*Coin +3s*
 
 ## Harvest Home
 
@@ -526,28 +548,59 @@ Her name was Alice. She laughed at him, which nobody else dared. She kept the ac
 
 *Sir Hamon Darrell's affection +2 · Sir Hamon Darrell's respect +1*
 
+## The Quintain
+
+"Again!"
+
+Sir Bertram Oakes has had the quintain set up in the tilt-yard for the spring: a post, a swinging arm, a shield nailed on one end and a sack of wet sand on the other. Hit the shield square with a lance at the gallop and the arm swings round and you are past it. Hit it badly and the sandbag comes round and takes you out of the saddle like the hand of God.
+
+"Again! You, the burgess's son. Sit up. You ride like a sack of turnips. AGAIN!"
+
+*(Continue)*
+
+It is the second spring. The household has stopped noticing you, which is a kind of acceptance. Every morning after Mass the young men go down to the yard and the meadows and the butts, and every evening they come back black and blue, and boast about it at supper.
+
+Will Cobb's archers are down from the March for the season, shooting at the long butts in the water meadow, and making bets on the squires' falls. Father Benet has the rolls of arms out in the chapel chamber, and is trying, without much hope, to get anyone to look at them.
+
+"You've got a month before the March gets lively," Sir Bertram says, wiping his face with a two-fingered hand. "Use it, or don't. It's your neck."
+
+- Ride at the quintain until it stops knocking you down. *(Even)*
+- Ask Sir Bertram for sword and buckler, every morning, until he is sick of you.
+- Go down to the long butts and shoot with Cobb's archers.
+- Sit with Father Benet and the rolls of arms.
+
+**Chose:** Ride at the quintain until it stops knocking you down. (Even: failure)
+
+The bag takes you off so many times you lose count, and on the last one you land on your shoulder and hear something creak. You learn a great deal about falling. "Better than nothing," Sir Bertram says, standing over you. "Falling's half of it. Up you get."
+
+*Riding +1 · Injury: Bruised ribs · Bruised ribs has healed*
+
 ## The Word from the March
 
 *Summer, year 18 of King Aldred*
 
 The word comes at the end of May, on a lathered horse, while Sir Hamon is still talking about the hounds.
 
-Black Ewan of Glenhallow has come over the border with eighty men. Steadings burning along the Leven, cattle driven north, a priest hanged from his own lychgate. Lord Ravell sends Sir Ancel north with forty horse and Will Cobb's sixty archers, and Sir Hamon with the Ravell banner, because a banner must be carried by somebody.
+"Ewan," the rider gasps, sliding off. "Black Ewan's over the Leven. Eighty men. They've burned Coldstream and Aikbank, and they've hanged Father Malcolm from his own lychgate."
 
 *(Continue)*
 
-You are going. Everyone is going. The armourer in the outer ward has a queue at his door and has put his prices up by half.
+By noon the whole of Ravell knows. Lord Ravell sends Sir Ancel north with forty horse and Will Cobb's sixty archers, and Sir Hamon with the Ravell banner, "because a banner must be carried by somebody," as Father Benet says, not quite quietly enough.
+
+You are going. Everyone is going. The armourer in the outer ward has a queue round the well and has put his prices up by half, and the grooms are betting on who comes back.
+
+"Not you," says one of them, a cheerful lout called Wat Haines, poking you in the chest. "You're too skinny to stop anything. You'll be fine."
 
 You own a shirt, a cloak, and whatever your master lends you. A Caldmoor spear does not care which.
 
-- ~~Buy a padded jack and a kettle hat from the armourer. Three shillings.~~ *(Requires Coin 3s)*
+- Buy a padded jack and a kettle hat from the armourer. Three shillings.
 - Ask your master for the loan of his old jack.
 - Spend the night before in the chapel, instead.
 - Go as you are.
 
 **Chose:** Go as you are.
 
-You go as you are.
+You go as you are, in your shirt and your good boots. "Brave lad," says Wat Haines, grinning, "or daft." On the road north, every time it rains, you decide it was daft.
 
 ## The Leven Ford
 
@@ -575,7 +628,9 @@ You have no armour. A ford fight is a lottery for a man without it.
 
 **Chose:** Take a spear and go into the ford with the horse. (Even: partial)
 
-The horse goes in and so do you. An arrow from the far bank takes you through the shoulder before you reach the middle. You stay in the saddle, which is all anyone remembers afterwards. You are carried home with Sir Hugh Wyck, who was not so lucky.
+The horse goes in and so do you, roaring, and an arrow from the far bank takes you through the meat of the shoulder before you reach the middle. It does not hurt. That is the strange thing. It just knocks you sideways, as if someone had shoved you.
+
+You stay in the saddle. That is all anyone remembers afterwards, and it is enough. You are carried home in the cart with Sir Hugh Wyck, who was not so lucky, and you look at his face under the cloak for three days.
 
 *Injury: Arrow wound · Renown +2 · Sir Hamon Darrell's respect +1 · Lord Thurstan Ravell's respect +2*
 
@@ -597,37 +652,41 @@ Somebody has to take Sir Hugh Wyck's sword home to his widow.
 
 There is harness to mend and horses to doctor and a ford to stop dreaming about. You do all three, slowly.
 
-## Dice in the Guardroom
+## Sharp Steel
 
-Saturday night in the guardroom over the gate. A blanket on the floor, a candle, three bone dice, and men who have been paid. The game is hazard. The stakes are pennies, then shillings, then whatever anyone has.
+"Wasters," says Sir Bertram Oakes, with contempt, kicking a pile of wooden practice swords. "You lot have learned to fight with sticks, and you'll die like it."
 
-- Play, honestly. *(Favorable)*
-- Play with a die you have shaved on one corner. *(Even)*
-- Watch, and keep your money.
+Today it is sharp swords, at half speed, in the tilt-yard, in front of Lady Ravell's women, who have come down with cushions to watch. A real edge on a real blade, catching the sun. The squires look at each other. Nobody laughs.
 
-**Chose:** Play, honestly. (Favorable: success)
+"You," says Sir Bertram, and points his two-fingered hand at you. "First."
 
-You win steadily and stop while you are ahead, which nobody else in the room has ever done. Three shillings.
+- Take the sword. *(Even)*
+- Let one of the gentlemen's sons go first.
 
-*Coin +3s*
+**Chose:** Take the sword. (Even: failure)
 
-## The Lord's Hunt
+His blade comes over yours and opens your brow before you have seen it move. "That," he says, "is the difference." The women look away.
 
-Lord Ravell hunts the hart in the chase on Holy Cross day, with forty riders and twice as many hounds. Squires and grooms ride behind with the spare horses. The hart goes away north through the deep wood, and the field strings out behind it, and for a while nobody is in charge of anything.
+*Injury: Cut brow · Sir Bertram Oakes's respect +1*
 
-- Ride hard and be in at the kill, at Lord Ravell's side. *(Risky)*
-- Leave the field and follow the hart where you think it will go. *(Even)*
-- Stay back with the spare horses, as you were told.
+## Running at the Ring
 
-**Chose:** Ride hard and be in at the kill, at Lord Ravell's side. (Risky: failure)
+The squires have a game on summer evenings, after the knights have gone in: a brass ring the size of a bracelet hung from a gallows-post on a thread, and a lance, and a horse at the gallop. Take the ring on your lance-point and you keep it till someone takes it off you. Miss, and you buy the ale.
 
-A low branch. You come to in a bramble with the hunt gone and your horse eating grass. It takes you till dark to walk home.
+Giles Marrick has the ring tonight, on a string round his neck, and is making a show of it. "Well?" he calls across the meadow. "Anyone?"
 
-*Injury: Bruised ribs · Arrow wound has healed · Bruised ribs has healed*
+- Borrow a horse and a lance, and go for the ring. *(Even)*
+- Hold the horses, and watch how the good ones do it.
+
+**Chose:** Borrow a horse and a lance, and go for the ring. (Even: failure)
+
+Three passes and three misses, the last one so wide you nearly spear the gallows-post and yourself with it. You buy the ale. It is expensive ale. But you ride better for it by the end of the summer, because you go out every evening after that, alone, until you can do it.
+
+*Coin −3d · Riding +1 · Cut brow has healed · Gained: Scarred face*
 
 ## The Winter After
 
-*Winter, year 18 of King Aldred*
+*Autumn, year 18 of King Aldred*
 
 The Leven ford stays with you longer than you expect.
 
@@ -648,7 +707,39 @@ By Candlemas, other men have noticed that you are not sleeping.
 
 Aymer was at the ford, at the back, with the Ravell banner, and saw less than you and dreamed more. He has been waiting for someone to say it first. You sit up in the hayloft with a stolen jug, the two of you, and say almost nothing, and it helps more than it has any right to. At the end he says, "Don't tell my father," and you say, "Tell him what," and he laughs for the first time in a month.
 
-*Aymer Ravell's affection +2 · Aymer Ravell's respect +1*
+*Aymer Ravell's affection +2 · Aymer Ravell's respect +1 · Arrow wound has healed*
+
+## Sir Bertram's Test
+
+*Winter, year 18 of King Aldred*
+
+Every Lady Day, Sir Bertram tests the young men of the household in harness, on foot, with blunted swords, in the tilt-yard, in front of everybody. It has been the custom at Ravell for thirty years. Nobody remembers who started it. Everyone remembers who failed.
+
+"It's not a tourney," he tells you, on the morning, buckling you into borrowed plate that smells of somebody else's sweat. "Nobody's winning anything. I want to see what you do when you're tired and frightened and can't see, because that's what a fight is." He thumps your breastplate. "And don't fall over. Gets in the ballads."
+
+*(Continue)*
+
+The whole household is on the wall and round the rails: the grooms, the cooks, the laundresses, Lady Ravell's women under an awning. Aymer is on the rail, shouting your name and a great deal of advice, all of it wrong. Giles Marrick has already been tested, and passed, and is watching you with his arms folded.
+
+Inside the helm, the world is a slot of light and the sound of your own breath, enormous. Sir Bertram is a grey shape at the other end of the yard. He lifts his sword.
+
+"When you're ready," he says. "Or not. Up to you."
+
+- Go at him, and keep going. *(Even)*
+- Make him come to you. Let him tire himself. *(Risky)*
+- Tell him you are not ready, and take your test next year.
+
+**Chose:** Go at him, and keep going. (Even: success)
+
+You have no idea how long it lasts. Long enough that your arms go to lead and your breath roars in the helm like a forge. You take a blow on the shoulder that turns you half round and come back, and take another, and come back, and on the third time you get inside his sword and put yours against the side of his helm, and hold it there.
+
+The yard goes quiet. Sir Bertram lowers his sword.
+
+"Well," he says, a little short of breath himself. "Well, now." He pulls off his helm. He is grinning, which nobody at Ravell has ever seen. "Somebody get this boy a drink before he falls over and gets in the ballads."
+
+The grooms cheer.
+
+*Arms +1 · Renown +1 · Knights standing +1 · Sir Bertram Oakes's respect +2*
 
 ## A Letter from Wendham
 
@@ -671,7 +762,7 @@ The steward wants a little something for himself. You arrange it. Mercer and Ful
 
 ## The King at Ravell
 
-*Summer, year 19 of King Aldred*
+*Spring, year 19 of King Aldred*
 
 In the summer the King comes, and the winter's dreams go wherever such things go when there is no time for them.
 
@@ -694,7 +785,7 @@ There are forty squires trying to hold the King's stirrup and thirty-nine of the
 
 ## The Ravell Tourney
 
-*Autumn, year 19 of King Aldred*
+*Summer, year 19 of King Aldred*
 
 For the King's leaving, Lord Ravell holds a tourney in the water meadows below the hall, and spends on it, Father Benet says, what the manor of Ashby brings in for two years.
 
@@ -715,25 +806,56 @@ You know which horses are lame and which squires are hungover, because you looke
 
 *Coin +10s · Merchants standing +1*
 
-## The Cunning Woman
+## Father Benet
 
-Old Mother Rook lives in the last house in Ravell village, past the pound. She sells charms against fever, love-philtres, and lead flasks of water from Saint Ebba's well that turn blades, she says. The chaplain calls her a fraud. The chaplain's own groom buys from her.
+Father Benet keeps the lord's books, writes the lord's letters, and knows more about the household than God does, he says, "because God, in His wisdom, does not read the accounts."
 
-- Buy a flask of Saint Ebba's water. Fourpence.
-- Let her read your hand.
-- Leave her to her charms.
+This month he has a backlog of forty letters and a cold that has turned his nose the colour of a radish. You find him in the cold room over the chapel, wrapped in a blanket, glaring at a stack of parchment as if it had insulted his mother.
 
-**Chose:** Buy a flask of Saint Ebba's water. Fourpence.
+"If you have come to confess," he says thickly, "be quick. If you have come to help, be quicker. If neither, go away and be young somewhere else."
 
-It is cold in your hand and heavier than water should be. You carry it on a cord round your neck after that. You never quite decide whether you believe in it. You never take it off.
+- Offer to help him with the letters in the evenings.
+- Ask him to hear your confession.
+- Leave him to his cold.
 
-*Coin −4d · Gained: Lead ampulla · Gained: Carries a saint's token*
+**Chose:** Offer to help him with the letters in the evenings.
+
+You copy out Lord Ravell's letters to half the knights of the shire. By the end of the month you know who owes whom, who hates whom, and who is about to marry whom. Father Benet watches you learn it and says nothing.
+
+*Learning +1 · Father Benet's affection +2 · Intrigue +1*
+
+## The Long Winter
+
+*Winter, year 19 of King Aldred*
+
+The winter after the tourney is the longest anyone can remember. Snow from Martinmas to Lady Day, the moat frozen so hard the boys play at camp-ball on it, and the roads shut to everything but rumour.
+
+The rumour is war. The King has gone south to argue with the Moot. Every man in the household who can count is counting horses, and every man who can't is sharpening something.
+
+*(Continue)*
+
+"You'll be twenty soon," Sir Hamon says one evening, with his feet on a hound. "A squire learns to fight. A knight has to know a great deal more, God help him, or he ends up like me." He laughs. It does not quite come off. "Choose something to learn this winter. Something useful."
+
+There is not time for everything. There never is.
+
+- Ask for a file of men, and learn to drill them.
+- Sit with your master over the old campaigns, and learn how wars are fought.
+- Learn the business of a manor, from the steward's books.
+- Learn Valdrennish from the Queen's Valdrennish clerk who is snowed in at Ravell.
+
+**Chose:** Ask for a file of men, and learn to drill them.
+
+Your master gives you a dozen of the household grooms and serving-men who will be going to the war as foot. They are cold, bored, and certain they know better than you. For the first week they are right.
+
+By Candlemas they will form a line when you shout, and hold it when someone runs at them with a broom, and come to you when they have a quarrel instead of settling it with knives. One of them, a big slow lad called Hodge, tells you at Lent that you are "a hard bastard, but fair, sir," and you will hear that "sir" in your head for a week.
+
+*Command +1*
 
 ## The Commission
 
-*Summer, year 20 of King Aldred*
+*Spring, year 20 of King Aldred*
 
-The tourney's pavilions come down, and the King's three hundred go south, and Ravell is quiet for the first time in a month, and then for a whole winter. The quiet does not last.
+The snow goes at last, all in a week, in a roar of meltwater, and the roads open, and the world comes back in along them.
 
 The King has gone south to Wendmere to ask the Moot for money. Rumour says he will get it, and that it will be spent across the Narrow Sea. Every knight in the shire is counting his horses. Every creditor in the shire is counting his knights.
 
@@ -760,8 +882,8 @@ Afterwards, in the passage, Sir Hamon leans against the wall with his hand on hi
 - Go through the rolls in front of the commissioners and show where the money went. *(Risky)*
 - Broker a loan from the Lanzi bank to pay the shortfall, before Lammas. *(Favorable)*
 - Ask Lord Ravell to speak for Sir Hamon to the Earl. *(Even)*
-- ~~Find Sir Hamon a hired champion, a man who fights in the lists for pay.~~ *(Even, Requires: a pound, or someone who owes you)*
-- Sir Hamon's heart fails him the week before the trial. The law lets his sworn man fight for him. Fight. *(Even, MORTAL DANGER)*
+- Find Sir Hamon a hired champion, a man who fights in the lists for pay. *(Favorable)*
+- Sir Hamon's heart fails him the week before the trial. The law lets his sworn man fight for him. Fight. *(Risky, MORTAL DANGER)*
 - Go to Sir Walter Pryce and offer him your service, before the roof falls in.
 - Stand by him, and hope that is enough.
 
@@ -795,17 +917,31 @@ Lord Ravell has not forgotten you. He has not said so, either. Sir Ancel Brome n
 
 **Chose:** Go to Sir Walter Pryce, and the Earl of Carrow's company.
 
-Sir Walter takes you on before you have finished asking. The Earl's company pays on time, he says again. It is the only thing he ever says about it.
+"Excellent," says Sir Walter, before you have finished asking, and pushes an indenture across the inn table with one finger. "The Earl's company pays on time." He watches you sign. "Most men in your boots would've begged at Ravell for another month. You came to me. That tells me something." He does not say what.
 
 *Sir Walter Pryce's affection +1*
 
 ## The Claim
 
-*Winter, year 20 of King Aldred*
+*Autumn, year 20 of King Aldred*
 
-The summer's trouble ends one way or another, as trouble does, and leaves its marks. Then, at Christmas, the heralds ride through every shire town in Adalia with the King's letters. Aldred, by the grace of God King of Adalia, is by right of his mother the true King of Valdrenne, and will take what is his. The Moot has granted a tenth and a fifteenth. Writs of array go out for archers. The great lords are to bring their companies to Saltcombe by Saint George's Day.
+The summer's trouble ends one way or another, as trouble does, and leaves its marks. Then, at Christmas, the heralds come.
 
-Lord Ravell will take forty lances and two hundred archers. Every knight of his is going. Every squire is going. The Earl of Carrow's company will be twice that, and Sir Walter Pryce means to come home from it a banneret.
+They ride into every shire town in Adalia in the King's colours with trumpets, and stand on the market cross, and read the King's letters to whoever will listen, which is everybody.
+
+*(Continue)*
+
+"Aldred, by the grace of God King of Adalia, by right of his lady mother the true King of Valdrenne..."
+
+"About time!" somebody yells, at Wendham. "Let's have their wine!"
+
+"...will take what is his. The Moot has granted a tenth and a fifteenth..."
+
+"There's our wool money gone, then," mutters a burgess.
+
+"...and the great lords are to bring their companies to Saltcombe by Saint George's Day."
+
+Lord Ravell will take forty lances and two hundred archers. Every knight of his is going. Every squire is going. The Earl of Carrow's company will be twice that, and Sir Walter Pryce means to come home from it a banneret, and says so, cheerfully, to anybody who will listen.
 
 For a squire, there is one question now. Whether you cross the Narrow Sea with spurs on your heels, or without them.
 
@@ -817,7 +953,7 @@ For a squire, there is one question now. Whether you cross the Narrow Sea with s
 
 A knight must have a warhorse, a riding horse, a harness of plate, a squire of his own, and the means to keep all of them for a summer's campaign. A squire with none of those things can be knighted, in law. In practice, nobody will dub a man who cannot afford to be one. It shames the man who dubs him.
 
-You have 13s 9d.
+You have 15s 10d.
 
 - ~~Accept what your master offers: his spare harness and a horse from his string.~~ *(Requires: your master's affection)*
 - ~~Accept a fee from Lord Ravell, ten pounds a year for life, for your service.~~ *(Requires: Lord Ravell's favour and high regard)*
@@ -856,7 +992,7 @@ Half your ransoms instead of two-thirds to your captain. He agrees, because the 
 
 ## Before the Ships
 
-*Spring, year 21 of King Aldred*
+*Winter, year 20 of King Aldred*
 
 Spring comes early that year, which the old men say is a bad sign, and the young men say is a good one. The army musters at Saltcombe in a week.
 
@@ -873,7 +1009,7 @@ Cecily Fuller is in Wendham, keeping her father's books.
 
 **Chose:** Go to Wendham and see Cecily Fuller.
 
-She gives you a purse she has embroidered herself, with a pound in it, and says it is a loan. Then she says it is not a loan. Then she says her father has been asked for her hand by a Sarenzan factor and has not said no.
+Cecily Fuller gives you a purse she has embroidered herself, with a pound in it. "It's a loan," she says briskly. "Ten per cent, payable at Michaelmas." Then, before you can answer: "It isn't a loan." Then, looking at the floor: "Father has been asked for me by a Sarenzan factor. He hasn't said no." She looks up. "He hasn't said yes either. I'm keeping the books on that one myself."
 
 *Coin +£1 · Gained: A keepsake*
 
@@ -924,33 +1060,47 @@ His three men do not give their names. You learn them later.
 
 ## The Narrow Sea
 
-*Summer, year 21 of King Aldred*
+*Spring, year 21 of King Aldred*
 
 It takes eleven days to get the army aboard and nine to cross, because the wind turns on the second night and blows half the fleet back toward Adalia, and a quarter of it somewhere else entirely. Ships are still straggling into the Armance a fortnight later. Some never come. One of them was carrying the King's siege timber.
 
-Your ship is a Saltcombe cog called the Marie, fat and slow, with forty horses slung in her belly and sixty men on her deck. On the second night the storm comes. The horses scream below in the dark. Men are sick over the side, and then over each other.
+Your ship is a Saltcombe cog called the Marie, fat and slow, with forty horses slung in canvas in her belly and sixty men on her deck, and a shipmaster with one eye who has crossed the Narrow Sea two hundred times and hates every soldier who has ever lived.
+
+"Puke over the LEE side, you clods! The LEE side! God's teeth, the other one!"
 
 *(Continue)*
 
-The shipmaster says the horses must be quieted or they will kick the planks out of her. Davy is too sick to stand. Your men are looking at you, the way men look at whoever is supposed to know what to do.
+On the second night the storm comes. The Marie climbs every wave like an old woman climbing a stair, and drops off the top of it like a stone. The horses scream below in the dark, a noise you did not know horses could make. Men are sick over the side, then over each other, then over nothing.
+
+The shipmaster comes aft along the rail, hand over hand, streaming water. "Those horses!" he bawls at you, because you are the nearest thing to an officer he can find. "Quiet them, or they'll kick the planks out of her and we'll all be fish!"
+
+Davy is too sick to stand. Your men are looking at you, the way men look at whoever is supposed to know what to do.
 
 - Go down into the hold with the horses. *(Even)*
-- Stay on deck with your men and keep them together. *(Even)*
+- Stay on deck with your men and keep them together. *(Favorable)*
 - Pray. There is nothing else to be done in a storm.
 
-**Chose:** Go down into the hold with the horses. (Even: failure)
+**Chose:** Go down into the hold with the horses. (Even: success)
 
-You do what you can. Three horses break their legs in the slings before dawn and have to be killed where they hang. One of them is yours.
+Six hours in the stinking dark, with a lantern and your own voice, going from head to head. When the Marie comes into the lee of the Valdrennish coast at dawn, not one horse in her hold is dead. The shipmaster calls you a lunatic and gives you his own breakfast.
+
+*Renown +1 · Sir Walter Pryce's respect +1 · Riding +1*
 
 ## Port-Haudry
 
-The Armance coast at dawn: grey dunes, a grey sea, a small grey town with a church tower, and along the dunes a line of men who have been waiting for you.
+"Land!"
 
-The town of Port-Haudry is the Duchess of Armance's, and its gates are open. The Tour de Haudry above it is not. It belongs to King Amaury, and its garrison has come down to the dunes: two hundred men, perhaps, crossbowmen in red behind big painted shields, and a knight on a white horse riding up and down behind them shouting. They cannot stop an army landing. They can make it pay for every boat.
+The Armance coast at dawn: grey dunes, a grey sea, a small grey town with a church tower, and along the top of the dunes a line of men who have been waiting for you.
+
+"Oh, lovely," says somebody behind you. "A welcome."
 
 *(Continue)*
 
-The boats go in. The first wave is already in the water to the waist, wading, holding their bows over their heads. The crossbows begin.
+The town of Port-Haudry is the Duchess of Armance's, and its gates are open. The Tour de Haudry above it is not. It belongs to King Amaury, and its garrison has come down to the dunes: two hundred men, perhaps, crossbowmen in red behind big painted shields, and a knight on a white horse riding up and down behind them, shouting and waving his sword. They cannot stop an army landing. They can make it pay for every boat.
+
+The boats go in. The first wave is already over the side and wading, chest-deep, cold as the grave, holding their bows over their heads.
+
+Then the crossbows begin, with a noise like a flock of birds getting up, and the first man near you goes under the water and does not come up.
 
 - Lead your men up the beach, straight at them. *(Favorable, MORTAL DANGER)*
 - Get your archers onto the dunes on the flank, and shoot them off the beach. *(Even)*
@@ -1000,19 +1150,25 @@ There is a council in her pavilion. There is also wine in the Armance knights' t
 - Sit by the fire and learn the country from someone who knows it.
 - Drink in the Armance knights' tents. *(Even)*
 
-**Chose:** Get yourself into the Duchess's pavilion, carrying something for your master. (Even: failure)
+**Chose:** Get yourself into the Duchess's pavilion, carrying something for your master. (Even: success)
 
-The Duchess's steward takes the message from your hand at the door and shuts the flap in your face.
+You stand against the canvas wall for two hours holding your master's cup. The Duchess speaks Adalian badly and Valdrennish beautifully, and she does not plead. She tells the King exactly what she can give him, which is the roads and the ports of the Armance, and exactly what she wants, which is her husband back. At the end she looks along the wall of squires and pages and stops at you. "That one did not yawn," she says. "Who is he?"
+
+*Valdrenne standing +1 · Duchess Jehanne's respect +2*
 
 ## The Long Burning
 
-The Tour de Haudry is left under siege with five hundred men, and the rest of the army marches east, and the orders are read out at the head of every company.
+The Tour de Haudry is left under siege with five hundred men, and the rest of the army marches east, and the orders are read out at the head of every company by sweating clerks.
 
-The lands of the Duchess are to be spared. The lands of Vervais are to be spared, because Vervais is a friend who does not know it yet. Everything between, which is King Amaury's own country, is to be made to feed the army and to pay for it. What cannot be carried is to be burned. Amaury will learn what it costs to keep a crown that is not his.
+"The lands of the Duchess are to be spared. The lands of Vervais are to be spared." The clerk wipes his face. "Everything between, being King Amaury's own country, is to be made to feed the army and to pay for it. What cannot be carried is to be burned."
+
+"Now you're talking," says a voice from the ranks, and somebody laughs.
 
 *(Continue)*
 
-The old men in the army have done this before, on the March, and say it is the only way an army lives off a country that hates it. The young men have not, and are about to.
+The old men in the army have done this before, on the March, and say it is the only way an army lives off a country that hates it. "It's them or us, lad," an old archer tells you, sharpening his knife on his boot. "Always is. Best it's them."
+
+The young men have not done it, and are about to.
 
 Your men are looking at you again.
 
@@ -1026,28 +1182,40 @@ It is clear and it is legal and nobody can say afterwards that you did anything 
 
 *Crown standing +1 · Ruthlessness +1*
 
-## The Herald
+## The Child in the Barn
 
-A Valdrennish herald, in his tabard with the lilies, rides into the column under a white wand, lost, looking for the King. Herald's persons are sacred. He is also alone, and frightened, and carrying letters.
+The farm has been burned, by Adalians, not long ago. The thatch is still smoking. There are bodies in the yard you do not look at closely.
 
-- Escort him to the King yourself, honourably.
-- Delay him long enough to have someone read his letters.
-
-**Chose:** Escort him to the King yourself, honourably.
-
-He thanks you in three languages and tells you, on the way, which of the Valdrennish lords will fight and which will not. It is more than he meant to tell. You pass it on.
-
-*Honor +1 · Tactics +1 · Sir Walter Pryce's respect +1*
-
-## Bréval
-
-The village is called Bréval. Thirty houses, a church, a mill on a stream, cherry trees in the gardens. The people did not run in time. They are in the church, most of them, with the doors barred, and the priest in the porch with his arms spread.
-
-Your company is the first to reach it. Your master has gone on ahead with the van. For the next hour, what happens in Bréval is your decision, whatever the orders say.
+In the barn, under the straw, something moves, and Davy goes in with a drawn knife and comes straight out again, white. "Sir. Sir, you'd better come."
 
 *(Continue)*
 
-Your men are waiting for the order. Somewhere behind the church a woman is screaming, and it is not one of yours who is making her scream, and it may soon be.
+A girl of six or seven, in a shift that was once blue, sitting in the straw with her knees drawn up. She does not cry. She does not run. She just looks at you, with eyes that have seen everything there is to see in that yard.
+
+There is nobody else alive on the farm.
+
+- Take her to the nearest village that is still standing, and pay someone to keep her.
+- Leave her. You cannot help every child in Valdrenne.
+
+**Chose:** Take her to the nearest village that is still standing, and pay someone to keep her.
+
+The nearest village is two hours out of your way. You leave her with the priest and a shilling. You never learn her name. You think about her more than you would expect.
+
+*Piety +1 · Honor +1 · Coin −1s · Valdrenne standing +1*
+
+## Bréval
+
+The village is called Bréval. Thirty houses, a church, a mill on a stream, cherry trees heavy with fruit in the gardens, and washing still on the hedges. Somebody's dinner is still cooking. You can smell it.
+
+The people did not run in time. They are in the church, most of them, with the doors barred. The priest is in the porch with his arms spread across the door like a scarecrow, shouting at you in Valdrennish, and you do not need to know the words.
+
+*(Continue)*
+
+Your company is the first to reach it. Your master has gone on with the van. For the next hour, what happens in Bréval is your decision, whatever the orders say.
+
+Your men are waiting for the order.
+
+Somewhere behind the church a woman is screaming. It is not one of yours who is making her scream. It may soon be.
 
 - Get the people out of the church and onto the road. Then burn Bréval, as ordered.
 - Offer the village a bargain. Pay, and Bréval stands. *(Favorable)*
@@ -1074,7 +1242,7 @@ You find the grange. You find its granary full, and its people gone, so recently
 
 That should have told you something. It is when you come out of the granary with the first sacks that you see it: the lane back to the army is full of Valdrennish horsemen, twenty of them, perhaps, knights and serjeants with lances, the morning sun behind them, sitting their horses quite still, waiting for you to notice.
 
-- Form your men across the lane and fight it out from the wagons. *(Even, MORTAL DANGER)*
+- Form your men across the lane and fight it out from the wagons. *(Favorable, MORTAL DANGER)*
 - Get everyone into the stone granary and let the archers shoot from the doors. *(Even)*
 - Send Davy back for help on the fastest horse, and hold until it comes. *(Even)*
 - Leave the wagons and get your men away while you can.
@@ -1097,11 +1265,11 @@ It is not a sack. There is no time for a sack. The Constable of Valdrenne's van 
 
 In the market square there is a great stone house with a coat of arms over the door, three black crows on gold. The house of a lord. Giles Marrick, a knight now, in his father's colours, is already riding toward it.
 
-- Get to the house with the crows before anyone else does. *(Risky)*
-- Keep your men together and stop them going wild in the town. *(Even)*
+- Get to the house with the crows before anyone else does. *(Even)*
+- Keep your men together and stop them going wild in the town. *(Favorable)*
 - Take your share of Vaudrey.
 
-**Chose:** Get to the house with the crows before anyone else does. (Risky: success)
+**Chose:** Get to the house with the crows before anyone else does. (Even: success)
 
 You go in by the kitchen while Giles is still beating on the front door. In the hall, with his sword across his knees and his household behind him, sits a man of thirty in good mail with the three crows on his surcoat. Messire Raoul de Corbie. He looks at you, and at your men, and at the noise from the front of the house, and he offers you his sword hilt first. "I would rather be taken by a man who came in by the kitchen," he says, in excellent Adalian.
 
@@ -1111,13 +1279,21 @@ Giles Marrick arrives a moment later and sees whose prisoner Corbie is. He does 
 
 ## The Three Crows
 
-Raoul de Corbie's ransom is set at two thousand marks, a sum so large it has to be written down twice to be believed. Ransoms like that take months to raise and years to pay.
+Raoul de Corbie's ransom is set at two thousand marks. The clerk writes it down twice, because the first time he does not believe it either.
 
-His sister comes to treat for it four days later, riding after the army under a safe-conduct with an old priest and two servants, and catches it up at its night's camp on the road east. Héloïse de Corbie. She is twenty-two, dark, and furious, and holds herself as if the camp were her own hall and the Adalians her servants.
+His sister comes to treat for it four days later, riding after the army under a safe-conduct, with an old priest and two servants, and catches it up at its night's camp on the road east.
 
 *(Continue)*
 
-She is brought to you, because her brother is yours.
+The whole camp turns out to look at her. Héloïse de Corbie is twenty-two, dark, furious, and dressed for a funeral, and she sits her horse through the lines of staring soldiers as if they were pigs in a yard she happened to be crossing.
+
+"Cor," says someone. "Look at that."
+
+"She'd eat you alive, Tom."
+
+"I'd let her."
+
+She does not look at any of them. She is brought to you, because her brother is yours, and she looks at you for the first time as if she had found the one pig that could talk.
 
 - Deal with her honestly. Tell her what the ransom is, what it will cost, and how it can be paid. *(Favorable)*
 - Squeeze her. Two thousand marks, and a thousand more for your trouble.
@@ -1149,9 +1325,13 @@ The Constable of Valdrenne, Gaucelin de Brésy, has twenty thousand men a day's 
 - Take the ferry across, and cut the hanged men down.
 - Tell your men the truth. The road back will be harder than the road here.
 
-**Chose:** Go with your master to the edge of the King's council, and listen. (Even: failure)
+**Chose:** Go with your master to the edge of the King's council, and listen. (Even: success)
 
-A household knight with a white staff moves you back out of earshot, and then further. You learn what the council decided the next morning, with everyone else, when the army turns round.
+You hold a horse outside the King's pavilion for three hours, close enough to hear. The Earl of Carrow wants to cross into Vervais anyway and take the towns by force. The Marshal wants to go back to the Armance while there is an army left to take. The King lets them shout until they run out of breath. Then he asks how many days of bread there are. Somebody tells him. "Then we go back," he says. "By the Aube. Quickly."
+
+You know the road before the army does. That will matter.
+
+*Tactics +1*
 
 ## The Aube
 
@@ -1162,6 +1342,8 @@ The Aube is not wide, but it is deep and fast and runs between marshes, and at G
 *(Continue)*
 
 The King's orders are to cross at first light: the van, then the King, then the baggage, then the rearguard. The Earl of Carrow's company has the rearguard. So you will be among the last across, with the Constable behind you somewhere in the dark.
+
+"Rearguard," says an old man-at-arms by your fire, spitting into it. "Last over the bridge. Last to eat, last to sleep, first to get it in the arse. Always the same."
 
 There is a mist coming up off the marshes. By midnight you cannot see the river from the road.
 
@@ -1181,22 +1363,24 @@ Then the mist lifts, the way a curtain lifts, all at once.
 
 *(Continue)*
 
+"Christ," says the man next to you, quite softly. "Christ, look."
+
 They are three hundred paces away, and they are on foot. That is the first thing anyone notices, because nobody has ever seen the Valdrennish chivalry on foot. Thousands of men-at-arms in plate, in a block as deep as a church is long, coming on at a walk. In front of them, Sarenzan crossbowmen behind great painted shields as tall as a man, set down and lifted and set down again.
 
 Away on the right, along the river, their horse is going at a canter for the bridge and the baggage.
 
 The archers start shooting. You hear the arrows hit the painted shields like hail on a roof. The block does not stop.
 
-- Take your place in the line of men-at-arms and meet them. *(Even, MORTAL DANGER)*
+- Take your place in the line of men-at-arms and meet them. *(Favorable, MORTAL DANGER)*
 - Get your archers shooting over the shields, at the crossbowmen as they wind. *(Even)*
-- Mount up and ride for the bridge, where their horse is going for the baggage. *(Risky)*
+- Mount up and ride for the bridge, where their horse is going for the baggage. *(Even)*
 - Stay at your master's side, wherever he goes.
 
-**Chose:** Get your archers shooting over the shields, at the crossbowmen as they wind. (Even: success)
+**Chose:** Get your archers shooting over the shields, at the crossbowmen as they wind. (Even: failure)
 
-High, so they drop. The crossbowmen have to stand up from behind their shields to wind, and when they stand up, your archers are waiting. For as long as the arrows last, the crossbows on your front go quiet. It buys the line a little time. It costs the archers every arrow they have.
+The crossbowmen know this trick better than you do. They wind behind the shields and come up shooting, and your archers lose three men in the first flight and the rest fall back to the river.
 
-*Renown +1 · Common Folk standing +1*
+*1 of your men is dead*
 
 ## The Bridge
 
@@ -1225,6 +1409,8 @@ The Valdrennish dead, the heralds think, are fewer than three hundred.
 
 *(Continue)*
 
+"Eighteen hundred," someone says, by your fire, flatly, as if it were a price. "Eighteen hundred, and the plate." "Bugger the plate," says someone else, and that is the end of the talking.
+
 Nobody sings anything that night. The King walks among the fires bareheaded, and stops at some of them, and says nothing much, and goes on.
 
 - Count your men, and name the missing.
@@ -1239,7 +1425,7 @@ You go round them in the dark, twice. You remember the winter after the Leven, a
 
 ## The Road to the Sea
 
-*Autumn, year 21 of King Aldred*
+*Summer, year 21 of King Aldred*
 
 It is two hundred miles to the Armance, and it rains for most of them.
 
@@ -1248,6 +1434,8 @@ There is no baggage, so there is no bread except what men carry, and no tents, a
 *(Continue)*
 
 Behind it and on its flanks ride the Iron Company, eight hundred Hroswald horse in Valdrennish pay, under a captain called Ulric Rotbart. They do not attack the column. They wait for men to fall behind it.
+
+"How far now?" "Ask me again and I'll drown you in that ditch." "How far now?" "...Far."
 
 Every morning there are fewer men in the column than there were the night before. Some of them were caught. Some of them are walking home on their own. Some of them are lying in ditches with their boots off, too tired to get up.
 
@@ -1264,13 +1452,15 @@ You make litters of spears and cloaks. Your company falls back through the colum
 
 ## Winter at Lannec
 
-*Winter, year 21 of King Aldred*
+*Autumn, year 21 of King Aldred*
 
 The army winters in the Armance, in and around the Duchess's town of Lannec, because there is nowhere else it can go. The Duchess feeds it as long as she can. She cannot for long.
 
 The pay chest is in a Valdrennish castle with the King's plate. By midwinter no company in the army has been paid since Lammas, and men are selling their armour to Armance farmers for bread.
 
 *(Continue)*
+
+"Three months," says a Carrow archer to nobody, in the market square, holding up three fingers. "Three months I've not had a penny. My wife'll have sold the bed."
 
 The news from home is worse. Caldmoor has crossed the March under the Old Bond, the moment the King's back was turned: the boy king's regent with six thousand spears, and Black Ewan of Glenhallow riding ahead of them, burning. The King sails for Saltcombe at Christmas with a third of the army, to save his own kingdom and to beg the Moot for money. The rest stay, under the Earl of Carrow, to hold the Armance and wait.
 
@@ -1293,7 +1483,7 @@ She lends against your future ransoms at a rate she calls friendly. "Friendly to
 
 ## Sauvemer
 
-*Summer, year 22 of King Aldred*
+*Spring, year 22 of King Aldred*
 
 The King comes back in the summer with four thousand fresh men, a new pay chest, a face that has aged five years in six months, and a victory.
 
@@ -1317,18 +1507,20 @@ It takes a week of everybody's labour and some of your coin. Turf walls, a sailc
 
 *Coin −2s · Davy Ludd's loyalty +1 · Roger Tallis's loyalty +1*
 
-## Hazard
+## Tallis's Story
 
-The camp on the dunes has a street of taverns now, turf and driftwood, and every tavern has a dice game, and every dice game has men who have been paid.
+Late one night, drunk for the first time since you have known him, Roger Tallis tells you why he left the free companies.
 
-- Play. *(Favorable)*
-- Watch your men instead, and make sure none of them loses his boots.
+It was a town in Hroswald, he says. The company had been paid to take it and the town would not pay to be spared. So the company took it. He does not say what happened then. He says that afterwards he walked for nine days and did not stop until he reached the sea, and he has never been drunk since, until tonight.
 
-**Chose:** Play. (Favorable: success)
+- Listen, and say nothing.
+- Ask him what happened in the town.
 
-You win steadily, and leave while you are winning, which makes you no friends.
+**Chose:** Listen, and say nothing.
 
-*Coin +5s*
+You listen. He falls asleep by the fire. In the morning neither of you mentions it, and he treats you, from then on, as a man who knows something about him. That is a kind of loyalty.
+
+*Roger Tallis's loyalty +2 · Roger Tallis's affection +2*
 
 ## Fire in the Harbour
 
@@ -1343,19 +1535,19 @@ Behind them go the boats: every ship's boat in the fleet, full of men with axes 
 The admiral wants volunteers for all three. He is honest about the fireships. "Some of you will not come back," he says. "The ones who do will drink free in Saltcombe for the rest of their lives."
 
 - Volunteer to steer a fireship in. *(Even, MORTAL DANGER)*
-- Take your men in the boats, to cut out the ships that do not burn. *(Even)*
+- Take your men in the boats, to cut out the ships that do not burn. *(Favorable)*
 - Take your archers onto the mole and keep the sea tower's crossbows busy. *(Even)*
 - Watch from the dunes.
 
-**Chose:** Take your men in the boats, to cut out the ships that do not burn. (Even: failure)
+**Chose:** Take your men in the boats, to cut out the ships that do not burn. (Favorable: success)
 
-The ship you pick has her crew aboard. You get back to the boat with two men fewer than you went with, and nothing to show for it but the light of the others burning.
+A fat Valdrennish hulk at the inner moorings, with her crew ashore and six boys aboard her, who surrender to your men with their hands up and are glad to. You cut her cable and the tide carries her out past the burning ones, with you on her deck, past the sea tower, into the fleet. She is full of wine. Prize money is paid on wine.
 
-*1 of your men is dead · Roger Tallis is dead*
+*Renown +1 · Coin +£1 10s*
 
 ## The Breach
 
-*Autumn, year 22 of King Aldred*
+*Summer, year 22 of King Aldred*
 
 With the harbour burned, the King's council thinks the town is beaten and only needs to be told. By Michaelmas the Tanners' Tower is a heap of rubble with a ramp up the middle of it, and the King orders the storm.
 
@@ -1363,7 +1555,9 @@ It is to go in at dawn, at low tide, when the ditch is mud and not water. Five h
 
 *(Continue)*
 
-There are rumours that the defenders have been working behind the breach every night. There are always rumours.
+You hear the Marshal arguing with the King again, outside the pavilion, after dark. The Marshal loses.
+
+At first light a Carrow captain walks along the storming party, slapping backs. "Up and over, lads! There's wine in that town, and women, and a bed for every man of you tonight!" Nobody cheers. An old man-at-arms crosses himself and spits.
 
 At dawn the trumpets go.
 
@@ -1372,11 +1566,11 @@ At dawn the trumpets go.
 - Hold the ditch below the breach, to bring back whoever comes down.
 - Tell your captain the breach is a trap, and keep your men out of it. *(Even)*
 
-**Chose:** Take your men to the ladders on the curtain wall, to draw the defenders off. (Even: success)
+**Chose:** Take your men to the ladders on the curtain wall, to draw the defenders off. (Even: failure)
 
-You get two ladders up and keep them up long enough that the defenders have to send men from the breach to throw them down. It is all a feint is for. It does not save the storm. Your men come back from the wall with burns and bruises and every one of them alive, which is more than any other company on the ladders can say.
+The ladders go up and come straight down again. Boiling sand. Stones. One of your men falls from the top of a ladder and lies at the foot of the wall all day, and you cannot get to him until dark.
 
-*Renown +1 · Sir Walter Pryce's respect +1*
+*1 of your men is dead · Roger Tallis is dead*
 
 ## The Dead in the Ditch
 
@@ -1405,7 +1599,7 @@ At dusk, Dame Clémence passes you on her way back to the gate and stops. She sa
 
 ## The Second Winter
 
-*Winter, year 22 of King Aldred*
+*Autumn, year 22 of King Aldred*
 
 There is no second storm. There are not the men for one.
 
@@ -1414,6 +1608,8 @@ So the King settles down to do what he did not mean to do: sit in front of Sauve
 *(Continue)*
 
 The town is not starving. Its own ships are ash, but on dark nights, Sarenzan galleys hired by King Amaury slip in under the sea wall with flour and salt pork, and slip out again before dawn, and the King's ships cannot catch them. Everyone knows whose galleys they are. The Varesco bank lends to Amaury. The Lanzi bank lends to Aldred. "It is not personal," Fiammetta Lanzi tells you. "It is business. Ugolino Varesco would sell flour to the Devil, if the Devil could post a bond."
+
+"Two years' bread," says one of your men, looking at the walls. "That's what their castellan said. I thought he was lying." He blows on his hands. "I'm starting to think he was being modest."
 
 Your men are dry, at least.
 
@@ -1428,26 +1624,32 @@ It means a longer walk to the lines and a quarrel with the company that had the 
 
 *Stewardship +1 · Davy Ludd's loyalty +1*
 
-## A Letter Brought by Hand
+## Davy
 
-A letter, brought by a man from home who has come over to the garrison: Annot Dyer writes in a big round hand, as if she were shouting.
+Davy Ludd is seventeen now, and has stopped talking quite so much, and has started looking at you in a particular way when you give orders, as if learning how it is done.
 
-- Send something back with the same man.
-- Keep it. You do not know what to say.
+One evening he asks you, formally, whether he might ever hope to be more than a squire. He means: could a groom's grandson be knighted, as you were, or will be. He has clearly been chewing on it for weeks.
 
-**Chose:** Send something back with the same man.
+- Tell him yes, and that you will see to it if you can.
+- Tell him the truth. It is hard, and rare, and it cost you everything you had.
 
-A Valdrennish ribbon, a silver penny with the lilies on it, a few lines. The man swears he will deliver it. He does.
+**Chose:** Tell him yes, and that you will see to it if you can.
+
+He goes red to the ears and says nothing for a whole day. Then he starts asking the old men-at-arms in the camp to teach him the sword properly, every morning, in the cold.
+
+*Davy Ludd's affection +3*
 
 ## The Mine
 
-*Spring, year 23 of King Aldred*
+*Winter, year 22 of King Aldred*
 
 In the spring the King sends for miners from the tin country in the west of Adalia, and they come: small, quiet, pale men who do not like the light much and like soldiers less.
 
 They dig from a pit behind the siege lines toward the Water Tower at the corner of the town wall, under the ditch, through the sand and the clay, propping the gallery with timbers as they go. When they are under the tower they will fill the end of the gallery with brushwood and pig fat, and fire it, and the timbers will burn, and the tower will come down.
 
 *(Continue)*
+
+"You'll want to keep your voice down, sir," Treloar says, the first time you go down, holding the lamp low. His voice is soft and burred, the voice of the tin country. "The earth carries. They hear us, we hear them. Down here, sir, you whisper, or you die."
 
 The Valdrennish know it. They have dug a countermine from inside the walls, and on still nights both sides can hear each other through the earth: picks, voices, a cough. The miners' captain, a man called Treloar, wants soldiers in the gallery for when the two tunnels meet.
 
@@ -1483,7 +1685,7 @@ You drag men out from under burning timber all night, with wet sacking over your
 
 ## The Host on the Heights
 
-*Summer, year 23 of King Aldred*
+*Spring, year 23 of King Aldred*
 
 In May the castellan of Sauvemer, Sire Enguerrand de Vaux, dies of the flux in his own castle. The town does not open its gates. His wife holds the keys, and his lieutenant holds the walls, and they wait.
 
@@ -1497,18 +1699,20 @@ The Adalian army in front of Sauvemer is eleven thousand men, after two years of
 
 *(Continue)*
 
+"Twenty-five thousand," says an archer on the dyke near you, counting fires as the dark comes. "Twenty-six. Twenty-seven. Ah, sod it. Lots."
+
 The King holds a council in the ruins of a salt-boiler's house. Half the captains want to break the siege and get the army onto the ships while there are ships. The King listens, and then walks them out to look at the ground in front of the lines: the salt pans, square shallow ponds by the hundred, cut by dykes and causeways and sluices, with the sea behind. "They will have to come to us along the causeways," he says. "On foot. Let them come."
 
 If he is wrong, there will be no army to put on the ships. Every man in the army knows it. Most of them think he is wrong.
 
-- Ride out with the young men who go skirmishing under the heights. *(Even)*
+- Ride out with the young men who go skirmishing under the heights. *(Favorable)*
 - Have Father Benet or a camp priest write your men's wills.
 
-**Chose:** Ride out with the young men who go skirmishing under the heights. (Even: success)
+**Chose:** Ride out with the young men who go skirmishing under the heights. (Favorable: failure)
 
-A Valdrennish squire on a bay horse, just as eager as you. You break a lance on each other, and then another, and on the third pass his horse goes down in the soft ground and he gives you his sword. He is worth sixty marks. He is also, it turns out, a cousin of the Corbies, and knows your name already.
+The Valdrennish squire is better mounted and better taught, and you come back without your lance, your helm and some of your pride.
 
-*Renown +1 · Coin +£1 10s*
+*Injury: Bruised ribs*
 
 ## A Letter from Wendham
 
@@ -1554,16 +1758,22 @@ They come down off the heights at dawn and out across the salt pans in long colu
 
 *(Continue)*
 
+"Here they come," says somebody, unnecessarily, and somebody else laughs, high and strange, and stops.
+
 The archers shoot. The shields take it. The columns come on at a walk, and the walk does not change.
 
 - Run for the sluice-gates, and open them yourself. *(Even)*
-- Steady the men around you. Nobody here has seen anything like this. *(Even)*
+- Steady the men around you. Nobody here has seen anything like this. *(Favorable)*
 - Take a bow and pick off the shield-bearers at the heads of the columns. *(Risky)*
 - Kneel with the line when the priests go along it.
 
-**Chose:** Run for the sluice-gates, and open them yourself. (Even: failure)
+**Chose:** Run for the sluice-gates, and open them yourself. (Even: success)
 
-You reach the gates. The bars are swollen into the frames with salt, and by the time you have them moving the columns are past the pans and onto the dyke. The water floods in behind them instead of in front.
+The axemen are waiting for an order. You give them one. The first gate goes with a crack like a tree falling, and the sea comes through it brown and fast, and then the second. In the time it takes to say a paternoster the pans in front of the left of the line are knee-deep, then thigh-deep, and the columns on those causeways are men on a narrow bank with water on both sides and archers in front.
+
+It does not stop them. It slows them on the left, and bunches them, and the archers do not waste it. The heralds will not write your name for it. The men on the left of the line know who opened the gates.
+
+*Renown +2*
 
 ## The Dyke
 
@@ -1613,7 +1823,7 @@ You get there third. Sir Walter Pryce gets there first, and has Thibaut de Brés
 
 In the middle of the afternoon, three hundred lances come along the beach at the gallop from the west, under the ermine of Armance, and go into the Valdrennish flank where the causeways are crowded. The Duchess has come. She has brought everything she has left.
 
-For the space of a Mass it makes no difference. Then it does. The weight comes off the dyke, a little at a time, and the columns behind the front ranks start to look over their shoulders at the causeways, and the tide coming up over the pans on either side of them.
+For the space of a Mass it makes no difference. Then it does. The weight comes off the dyke, a little at a time, and the columns behind the front ranks start to look over their shoulders at the causeways, and the tide coming up over the pans on either side of them, and the water you let in at the sluices.
 
 Then they are going back. Not in order. The causeways are a man and a half wide, and the whole host is trying to use them at once, and the water is at their waists and rising. Men in plate who step off a causeway into a salt pan at high tide do not come out again.
 
@@ -1654,15 +1864,19 @@ It is a victory. Two years ago, it is the victory everyone in the army thought t
 
 **Chose:** Bury your dead, and go on.
 
+*Bruised ribs has healed*
+
 ## The Keys of Sauvemer
 
-*Autumn, year 23 of King Aldred*
+*Summer, year 23 of King Aldred*
 
 Sauvemer treats within the month. There is nobody left to wait for, and the people on the walls watched the salt pans fill up with their relief.
 
 The King cannot afford to storm it and cannot afford to sit in front of it another winter. The town cannot afford to be stormed. So for three weeks heralds go back and forth across the ditch with terms, and the terms change every time they cross, and nobody is happy with any of them.
 
 *(Continue)*
+
+"Hang the lot," says a Carrow knight at the King's table, loud, over his wine. "After the breach? After the flux? Hang the lot and give the houses to honest men." "Name me an honest man in this army," says the Marshal, "and I'll give him a house."
 
 The keys are held by Dame Clémence de Vaux, who has held them since her husband died in May. The King's council wants the town emptied of everyone who will not swear to him, and their houses given to Adalians. The town wants its people to keep their homes and its garrison to march out with its arms. Somewhere between the two there is a bargain. Somebody has to find it.
 
@@ -1679,7 +1893,7 @@ Your captain hears you out and tells you, tiredly, to leave the town to men who 
 
 ## Christmas at Sauvemer
 
-*Winter, year 23 of King Aldred*
+*Autumn, year 23 of King Aldred*
 
 The Queen comes over from Adalia with her household for Christmas, and there is a feast in the great hall of Sauvemer castle, which a year ago belonged to a man who died of the flux.
 
@@ -1704,7 +1918,7 @@ She looks at your hands, which are not a gentleman's, and at your face, and says
 
 ## The Truce of Saint-Lys
 
-*Spring, year 24 of King Aldred*
+*Winter, year 23 of King Aldred*
 
 King Aldred would fight on, if he could pay for it. He cannot. Nor can King Amaury, who has lost an army on the salt pans and needs ten years and a great deal of borrowed money to raise another.
 
@@ -1739,43 +1953,49 @@ A clerk from the Lanzi house in Sauvemer, polite, with a ledger. Your loan is du
 - ~~Pay it, all of it.~~ *(Requires Coin £5)*
 - Ask to roll it over, against your grant. *(Favorable)*
 
-**Chose:** Ask to roll it over, against your grant. (Favorable: success)
+**Chose:** Ask to roll it over, against your grant. (Favorable: failure)
 
-The Lanzi will lend against land. They always will. Your debt rolls over against whatever the King gives you, at a slightly worse rate. You will be paying the Lanzi from Ormel for years.
+The Lanzi will not roll it over. They will, however, take your second-best horse and your Valdrennish sword as part payment, and the rest by Easter.
 
-## Davy
+## The Flux
 
-Davy Ludd is seventeen now, and has stopped talking quite so much, and has started looking at you in a particular way when you give orders, as if learning how it is done.
+The flux comes through the camp again in the heat. It always does.
 
-One evening he asks you, formally, whether he might ever hope to be more than a squire. He means: could a groom's grandson be knighted, as you were, or will be. He has clearly been chewing on it for weeks.
+You hear it before you see it: men groaning in the night, men running for the ditches, men who do not get there. Men who came through Grisolles without a scratch die of it in a week, squatting in the ditches, too weak to stand, and are buried in the ditches by men who will be in them next.
 
-- Tell him yes, and that you will see to it if you can.
-- Tell him the truth. It is hard, and rare, and it cost you everything you had.
+"Don't drink the water," the old soldiers say. "Drink the wine." There is no wine.
 
-**Chose:** Tell him yes, and that you will see to it if you can.
+- Make your men boil everything they drink, and dig their latrines away from the well.
+- There is nothing to be done. Trust to luck. *(Even)*
 
-He goes red to the ears and says nothing for a whole day. Then he starts asking the old men-at-arms in the camp to teach him the sword properly, every morning, in the cold.
+**Chose:** Make your men boil everything they drink, and dig their latrines away from the well.
 
-*Davy Ludd's affection +3*
+They think you are mad, and do it anyway, because you are watching. Your company loses nobody to the flux that summer. The company next door loses nine.
 
-## A Letter from Wendham
+*Stewardship +1*
 
-Cecily Fuller does not write letters, she writes accounts. This one has a column for the price of wool in Wendham, a column for the price of Valdrennish wine in Saltcombe, and a column headed "You", with a note: "Alive, I assume. A merchant in Saltcombe says the Sauvemer garrison is short of salt. Buy it in the Armance. Sell it to them. Write when you have done it."
+## Sir Giles
 
-There is a bill of exchange folded inside, for five pounds, on the Lanzi house before Sauvemer, "as capital".
+Sir Giles Marrick is in the camp with the Earl of Carrow's company, richer than he was, and drunker, and fatter in the face.
 
-- Do it. Buy salt in the Armance, sell it to the garrison. *(Favorable)*
-- Send the money back with your thanks. You are a soldier, not a salt merchant.
+He finds you one night in the Drowned Man, and stands in the doorway with two friends behind him, and smiles at the side of your head the way he did in the squires' loft, as if no time had passed at all.
 
-**Chose:** Do it. Buy salt in the Armance, sell it to the garrison. (Favorable: success)
+"Well, well," he says, loud enough for the whole tavern. "If it isn't the burgess's son." He turns to his friends. "Did I ever tell you about this one? Used to clean my boots."
 
-She was right. You send her back her five pounds and five more, and a letter in columns, which is the only kind she will respect.
+The room goes quiet, the way rooms do when they can smell a fight.
 
-*Coin +£1 · Merchants standing +1*
+- Take him outside. *(Even)*
+- Finish your drink and leave.
+
+**Chose:** Take him outside. (Even: failure)
+
+He has kept up his sword, and you have been digging trenches. The room enjoys it.
+
+*Injury: Cut brow · Giles Marrick's respect +1 · Cut brow has healed*
 
 ## The Garrison
 
-*Summer, year 24 of King Aldred*
+*Spring, year 24 of King Aldred*
 
 A truce is a strange thing to live in. You are a conqueror in a conquered country, which sounds grand. In fact it is boredom, cold, short pay, and the feeling of being watched.
 
@@ -1783,7 +2003,9 @@ The Sauvemer people have not forgiven the siege and will not, in your lifetime. 
 
 *(Continue)*
 
-Your following has changed since Saltcombe. Some faces are new. Some are gone. Davy Ludd is seventeen and taller than you.
+Your following has changed since Saltcombe. It is smaller: the war and the flux have seen to that. Davy Ludd is seventeen and taller than you.
+
+"Boring," says Davy, sitting on the well-head, kicking his heels. "I never thought I'd say it. I'd give a month's pay for a Valdrennish army to come over the hill." "You haven't had a month's pay since Lent," says somebody. "That's why I can afford to give it."
 
 You have time, for the first time in years, to choose what to do with it.
 
@@ -1800,7 +2022,7 @@ It will start again. Everyone knows the truce will end. When it does, your men w
 
 ## The Iron Company
 
-*Winter, year 24 of King Aldred*
+*Autumn, year 24 of King Aldred*
 
 In the first winter of the truce the Iron Company comes west: eight hundred Hroswald mercenaries under Ulric Rotbart, who rode behind the army all the way back from Grisolles and stood on the heights at Les Salines, and whom King Amaury has stopped paying now that he has no war to pay them for.
 
@@ -1809,6 +2031,8 @@ A free company without a war is a plague with a banner. It takes a village a wee
 *(Continue)*
 
 It comes into the march country behind Sauvemer, and the villages there, which were stripped once by the siege, are stripped again by them. A delegation of their headmen comes to the garrison to ask the Adalians for protection, since the Adalians are now their lords. The garrison captain laughs at them.
+
+Their spokesman is an old salt-boiler with burned forearms and no front teeth. "You took our town," he says, through a Valdrennish priest who translates as if every word hurt him. "So you're our lords now. Fine. Then lord."
 
 They come to you next.
 
@@ -1825,7 +2049,7 @@ Rotbart is a big, courteous, tired man, who would rather be paid than fight and 
 
 ## A Ship for Saltcombe
 
-*Spring, year 25 of King Aldred*
+*Winter, year 24 of King Aldred*
 
 In the spring of the second year of the truce, a ship sails from Sauvemer for Saltcombe with the garrison's letters, and a few places for men on leave.
 
@@ -1875,13 +2099,15 @@ The ship back is full of men going to the war that is not, at the moment, a war.
 
 ## The King's Grants
 
-*Autumn, year 25 of King Aldred*
+*Summer, year 25 of King Aldred*
 
 At Michaelmas the King's council sits in the great hall of Sauvemer castle to give out the conquered lands.
 
 It is not a generous business. The King wants loyal men holding the country around his new port, men who will defend it because it is theirs. He also wants it cheap. So the great lords get towns and castles, and the bannerets get manors, and men like you, if you are lucky, get a village in the marshes that nobody else wanted, and the duty to hold it.
 
 *(Continue)*
+
+The great hall of Sauvemer castle is packed to the beams, and hot, and smells of wet wool and nerves. Men who have fought side by side for four years are not looking at each other.
 
 Then the clerk reads your name, and the name of a place: **Ormel**. A manor in the marsh country behind Sauvemer. A village, a mill, a church, some salt pans, three hundred acres that flood every winter, and two hundred people who watched you besiege their town.
 
@@ -1896,13 +2122,15 @@ You put your hands between the King's hands and swear to be his man for the land
 
 ## News from the South
 
-*Winter, year 25 of King Aldred*
+*Autumn, year 25 of King Aldred*
 
 That winter the Sarenzan galleys come into Sauvemer harbour late, and fewer of them, and the sailors bring a story.
 
 In the east, they say, beyond the Midsea, there is a sickness that came off a caravan. Now it is in the Midsea ports. It begins with a cough and a fever, and then the skin goes mottled, grey and dark like a bruise that spreads, and then the cough brings up blood. Three days. Sometimes one. The sailors call it the Mottle. In Vellagio, they say, the Signory has shut the gates and nobody goes in or out, and the bells have stopped because there is nobody left to ring them.
 
 *(Continue)*
+
+"Fairy tales," says the harbour-master, laughing. "Last year it was a sea-serpent off Vellagio. Year before, a mermaid." The sailor who told it does not laugh. He has stopped drinking, and keeps looking at his own hands.
 
 Nobody believes it, quite. Sailors' stories always grow. Fiammetta Lanzi believes it. Her letters from Sarenza have stopped.
 
@@ -1916,7 +2144,7 @@ In the spring you will go to Ormel.
 
 People laugh at you, gently. You buy grain anyway, and salt, and a Sarenzan physician's book that you cannot read and have read to you. If the sailors are wrong, you have wasted some money. You do not think they are wrong.
 
-*Coin −10s · Supplies +2*
+*Coin −2s 10d · Supplies +2*
 
 ## Ormel
 

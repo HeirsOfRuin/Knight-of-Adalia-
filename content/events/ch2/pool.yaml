@@ -7,7 +7,15 @@
   pool: c2_road
   title: The Deserter
   text: |
-    On the third day of the march, the provost's men catch a deserter from your company's part of the column: a Ravell boy of sixteen, trying to walk home to Adalia across a country that wants him dead. The provost means to hang him by the road as an example. The boy looks at you. He knows your face.
+    On the third day of the march the provost's men drag a boy back down the column on a rope. He is sixteen, from Ravell village, with his boots in his hand because they hurt, and he was trying to walk home to Adalia across a country that wants him dead.
+
+    "Deserter!" the provost bawls, a red-faced bully with a white staff. "Watch this, lads, and learn! Find me a tree!"
+
+    [break]
+
+    The column slows to watch, the way columns do. Somebody laughs. Somebody else says, "Leave off, he's only a kid," and is told to shut his mouth.
+
+    The boy looks along the faces, wild, and stops at yours. He knows you. Everyone in Ravell village knows you. "Sir," he says. His voice cracks. "Sir, please. I only wanted to go home."
   choices:
     - id: speak
       text: Speak for him. Say he is yours, and you will answer for him.
@@ -33,7 +41,15 @@
   pool: c2_road
   title: The Child in the Barn
   text: |
-    In a burned farm, in the barn, under the straw, there is a girl of six or seven. She does not cry. She just looks at you. There is nobody else alive on the farm.
+    The farm has been burned, by Adalians, not long ago. The thatch is still smoking. There are bodies in the yard you do not look at closely.
+
+    In the barn, under the straw, something moves, and [if npc.davy_ludd.follower]Davy[else]one of your men[/if] goes in with a drawn knife and comes straight out again, white. "Sir. Sir, you'd better come."
+
+    [break]
+
+    A girl of six or seven, in a shift that was once blue, sitting in the straw with her knees drawn up. She does not cry. She does not run. She just looks at you, with eyes that have seen everything there is to see in that yard.
+
+    There is nobody else alive on the farm.
   choices:
     - id: take
       text: Take her to the nearest village that is still standing, and pay someone to keep her.
@@ -53,7 +69,11 @@
   pool: c2_road
   title: The Herald
   text: |
-    A Valdrennish herald, in his tabard with the lilies, rides into the column under a white wand, lost, looking for the King. Herald's persons are sacred. He is also alone, and frightened, and carrying letters.
+    "Herald! Herald! Make way, there!"
+
+    A Valdrennish herald in his tabard of lilies rides into the column under a white wand, bolt upright on a horse ready to drop, and plainly lost. He is looking for the King. A herald's person is sacred; every man in the army knows it, and several of them are looking at his horse, and his purse, and the leather satchel of letters at his hip, and doing sums.
+
+    He sees your face, which is the least hungry one he can find, and comes to you. "Monseigneur," he says, in careful Adalian, "of your courtesy. The King of Adalia. Where?"
   choices:
     - id: escort
       text: Escort him to the King yourself, honourably.
@@ -74,7 +94,11 @@
   pool: c2_camp
   title: Hazard
   text: |
-    The camp on the dunes has a street of taverns now, turf and driftwood, and every tavern has a dice game, and every dice game has men who have been paid.
+    The camp on the dunes has a street of taverns now, built of turf and driftwood and stolen doors, and every tavern has a dice game, and every dice game has men who were paid this week and mean not to be by Sunday.
+
+    "Seven's the main! SEVEN! Ah, Christ's wounds!"
+
+    The best game is in a tavern called the Drowned Man, under a sail roof that leaks, with a Sarenzan holding the bank. [if npc.simkin_barre.follower]Simkin Barre is already at the table, already losing, already cheerful about it.[/if]
   choices:
     - id: play
       text: Play.
@@ -253,7 +277,11 @@
   pool: c2_camp
   title: The Flux
   text: |
-    The flux comes through the camp again in the heat. It always does. Men who survived Grisolles die of it in a week, squatting in the ditches, and are buried in the ditches.
+    The flux comes through the camp again in the heat. It always does.
+
+    You hear it before you see it: men groaning in the night, men running for the ditches, men who do not get there. Men who came through Grisolles without a scratch die of it in a week, squatting in the ditches, too weak to stand, and are buried in the ditches by men who will be in them next.
+
+    "Don't drink the water," the old soldiers say. "Drink the wine." There is no wine.
   choices:
     - id: water
       text: Make your men boil everything they drink, and dig their latrines away from the well.
@@ -280,7 +308,13 @@
   title: Sir Giles
   requires: [ flag.c1_giles_enemy ]
   text: |
-    Sir Giles Marrick is in the camp with the Earl of Carrow's company, richer than he was, [if flag.c2_giles_took_corbie]because of Corbie's ransom,[/if] and drunker. He finds you in a tavern one night and calls you, in front of the room, by what he called you in the squires' loft.
+    Sir Giles Marrick is in the camp with the Earl of Carrow's company, richer than he was, [if flag.c2_giles_took_corbie]because of Corbie's ransom,[/if] and drunker, and fatter in the face.
+
+    He finds you one night in the Drowned Man, and stands in the doorway with two friends behind him, and smiles at the side of your head the way he did in the squires' loft, as if no time had passed at all.
+
+    "Well, well," he says, loud enough for the whole tavern. "If it isn't the {origin}." He turns to his friends. "Did I ever tell you about this one? Used to clean my boots."
+
+    The room goes quiet, the way rooms do when they can smell a fight.
   choices:
     - id: fight
       text: Take him outside.

@@ -19,6 +19,8 @@
 
     [break]
 
+    "Three months," says a Carrow archer to nobody, in the market square, holding up three fingers. "Three months I've not had a penny. My wife'll have sold the bed."
+
     The news from home is worse. Caldmoor has crossed the March under the Old Bond, the moment the King's back was turned: the boy king's regent with six thousand spears, and Black Ewan of Glenhallow riding ahead of them, burning. The King sails for Saltcombe at Christmas with a third of the army, to save his own kingdom and to beg the Moot for money. The rest stay, under the Earl of Carrow, to hold the Armance and wait.
 
     [if flag.c2_master_taken && alias.master == hamon_darrell]A letter comes through the heralds in Lent. Sir Hamon Darrell died at Candlemas, a prisoner in the castle of Brésy, of a flux that took a dozen Adalian knights there. They buried him decently, the letter says, and his ransom is cancelled. It is the kind of thing heralds write.[elif flag.c2_master_taken]Your master is a prisoner in the castle of Brésy, with a ransom on his head that his household cannot pay this year, or next.[/if]
@@ -235,6 +237,8 @@
 
     [if flag.c2_engineers]Bonifacio finds you the night before, white in the face. "They have built a wall behind it," he says. "Behind the breach. A new wall, earth and timber, with a ditch. I saw it from the mast of a ship. Nobody will listen to me." You believe him.[elif flag.c2_heard_council]You hear the Marshal arguing with the King again, outside the pavilion, after dark. The Marshal loses.[else]There are rumours that the defenders have been working behind the breach every night. There are always rumours.[/if]
 
+    At first light a Carrow captain walks along the storming party, slapping backs. "Up and over, lads! There's wine in that town, and women, and a bed for every man of you tonight!" Nobody cheers. An old man-at-arms crosses himself and spits.
+
     At dawn the trumpets go.
   choices:
     - id: breach
@@ -393,6 +397,8 @@
 
     The town is not starving. Its own ships are ash, but on dark nights, Sarenzan galleys hired by King Amaury slip in under the sea wall with flour and salt pork, and slip out again before dawn, and the King's ships cannot catch them. Everyone knows whose galleys they are. The Varesco bank lends to Amaury. The Lanzi bank lends to Aldred. [if suit.fiammetta_lanzi.status >= known]"It is not personal," Fiammetta Lanzi tells you. "It is business. Ugolino Varesco would sell flour to the Devil, if the Devil could post a bond."[/if]
 
+    "Two years' bread," says [if npc.roger_tallis.follower]Tallis[else]one of your men[/if], looking at the walls. "That's what their castellan said. I thought he was lying." He blows on his hands. "I'm starting to think he was being modest."
+
     [if flag.c2_shelter]Your men are dry, at least.[else]Your men are wet through, and have been since November.[/if]
   choices:
     - id: water
@@ -461,6 +467,8 @@
     They dig from a pit behind the siege lines toward the Water Tower at the corner of the town wall, under the ditch, through the sand and the clay, propping the gallery with timbers as they go. When they are under the tower they will fill the end of the gallery with brushwood and pig fat, and fire it, and the timbers will burn, and the tower will come down.
 
     [break]
+
+    "You'll want to keep your voice down, sir," Treloar says, the first time you go down, holding the lamp low. His voice is soft and burred, the voice of the tin country. "The earth carries. They hear us, we hear them. Down here, sir, you whisper, or you die."
 
     The Valdrennish know it. They have dug a countermine from inside the walls, and on still nights both sides can hear each other through the earth: picks, voices, a cough. The miners' captain, a man called Treloar, wants soldiers in the gallery for when the two tunnels meet.
   choices:

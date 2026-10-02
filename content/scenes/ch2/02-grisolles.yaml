@@ -65,6 +65,8 @@
 
     The King's orders are to cross at first light: the van, then the King, then the baggage, then the rearguard. [if alias.master == walter_pryce]The Earl of Carrow's company has the rearguard.[else]The rearguard is the Earl of Carrow's men and Lord Ravell's.[/if] So you will be among the last across, with the Constable behind you somewhere in the dark.
 
+    "Rearguard," says an old man-at-arms by your fire, spitting into it. "Last over the bridge. Last to eat, last to sleep, first to get it in the arse. Always the same."
+
     There is a mist coming up off the marshes. By midnight you cannot see the river from the road.
   choices:
     - id: sleep
@@ -104,6 +106,8 @@
     Then the mist lifts, the way a curtain lifts, all at once.
 
     [break]
+
+    "Christ," says the man next to you, quite softly. "Christ, look."
 
     They are three hundred paces away, and they are on foot. That is the first thing anyone notices, because nobody has ever seen the Valdrennish chivalry on foot. Thousands of men-at-arms in plate, in a block as deep as a church is long, coming on at a walk. In front of them, Sarenzan crossbowmen behind great painted shields as tall as a man, set down and lifted and set down again.
 
@@ -346,6 +350,8 @@
 
     [if flag.c2_knighted_grisolles]The Earl of Carrow comes along the line of fires at dusk, still in his harness, looking for the men who held the rearguard. He finds you. He has no ceremony and no time. He draws his sword in the rain and taps you on the shoulder with it and says, "Sir. You'll be needed." A knight made in a defeat, by a man in a foul temper. It counts the same.[/if]
 
+    "Eighteen hundred," someone says, by your fire, flatly, as if it were a price. "Eighteen hundred, and the plate." "Bugger the plate," says someone else, and that is the end of the talking.
+
     Nobody sings anything that night. The King walks among the fires bareheaded, and stops at some of them, and says nothing much, and goes on.
   choices:
     - id: count
@@ -378,6 +384,8 @@
     [break]
 
     Behind it and on its flanks ride the Iron Company, eight hundred Hroswald horse in Valdrennish pay, under a captain called Ulric Rotbart. They do not attack the column. They wait for men to fall behind it.
+
+    "How far now?" "Ask me again and I'll drown you in that ditch." "How far now?" "...Far."
 
     Every morning there are fewer men in the column than there were the night before. Some of them were caught. Some of them are walking home on their own. Some of them are lying in ditches with their boots off, too tired to get up.
   choices:

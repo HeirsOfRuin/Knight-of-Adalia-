@@ -6,53 +6,69 @@
   title: Lady Day Reckoning
   checkpoint: true
   text: |
-    You have been awake since before the cock, because today the steward comes, and you are eight, and nothing this important has ever happened to you.
+    "Stand still. Stand STILL, or I'll scrub the other ear as well."
 
-    Your mother has had you scrubbed at the trough with a handful of ash, ears and all, and dressed you in your brother's old tunic, the blue one, which was your brother's until the winter fever took him at four and has been waiting in the chest for you to grow into it. It is still too long in the sleeve. She turns the cuffs back twice, looks at you, turns them back again, and says you will do. Your sisters, Cis and Avice, are under orders to stay in the house and not be seen. They are at the shutter now, watching the lane.
+    Your mother has had you at the trough since before the cock, with a handful of wood-ash and no mercy, and now she is wrestling you into your brother's old tunic: the blue one, which was his until the winter fever took him at four, and has waited in the chest ever since for you to grow into it. You have not grown into it. She turns the cuffs back twice, looks at you, turns them back again.
 
-    Ashby is thirty-one households, a church, a mill, and a cold manor house that its lord, Sir Hamon Darrell, avoids. The land is Sir Hamon's. The running of it is your father's. Piers the reeve: chosen by the village eleven years running, which no reeve in memory has managed, because a reeve takes the lord's due from his neighbours, and neighbours remember.
+    "You'll do," she says, which from Edith the reeve's wife is nearly a blessing.
 
-    Your father keeps the account on hazel tallies: a notch for a quarter of grain, the stick split down its length, one half for him and one for the barn, so nobody can add a notch without the halves disagreeing. He showed you how when you were six. You took to it the way other boys take to slings. Numbers stay where you put them. People do not.
+    Cis and Avice are at the shutter, under orders to stay out of sight, and are failing. "He looks like a sack of meal," Cis tells the lane, loudly. Avice, who is four, laughs because Cis laughed.
+
+    You are eight, and you have never been so important in your life. Today the steward comes.
 
     [break]
 
-    Master Gervase Holt rides in at Terce on a grey cob, with a clerk on a mule behind him. He is a thin man in a good brown gown with a fur collar gone bald at the neck, and he has a cough that he carries about with him like a dog. He does not get down from the cob until your father has come out to hold its head. He looks at you over your father's shoulder.
+    Ashby is thirty-one households, a church, a mill, and a cold manor house its lord, Sir Hamon Darrell, avoids whenever he can. The land is Sir Hamon's. The running of it is your father's. Piers the reeve, chosen by the village eleven years running, which no reeve in memory has managed, because a reeve takes the lord's due from his neighbours, and neighbours remember.
 
-    "This is the boy?"
+    Your father keeps the account on hazel tallies: a notch for every quarter of grain, the stick split down its length, one half for him and one for the barn, so nobody can cut a notch without the halves disagreeing. He showed you how when you were six. You took to it the way other boys take to slings. Numbers stay where you put them. People do not.
+
+    [break]
+
+    Master Gervase Holt rides in at Terce on a grey cob, with a clerk on a mule behind him. He is a thin man in a good brown gown with a fur collar gone bald at the neck, and a cough he carries about with him like a dog. He does not get down until your father has come out to hold the cob's head.
+
+    He looks at you over your father's shoulder. "This is the boy?"
 
     "My son, Master Gervase. The one who reckons."
 
     "We shall see," says the steward, and coughs.
 
+    Behind the hedge, somebody snorts. Half the village has found a reason to be in the lane this morning.
+
     [break]
 
-    In the tithe barn the air is cold and sweet with old straw. The clerk, a young man called Walter who sniffs constantly and wipes his nose on his wrist, sets up a trestle and a stool and unrolls the steward's roll. It is written in the clerks' tongue, which you cannot read yet, with the numbers in the old letters that your father taught you on the hearthstone with a burnt stick. Your father lays out his halves of the tallies, notch side up, in rows: barley, oats, beans and peas, maslin. You stand at his elbow, as you have been told, and say nothing.
+    The tithe barn is cold and smells sweetly of old straw. The clerk, a young man called Walter who sniffs like a wet dog and wipes his nose on his wrist, sets up a trestle and unrolls the steward's roll. It is written in the clerks' tongue, which you cannot read yet, with the numbers in the old letters your father taught you on the hearthstone with a burnt stick. Your father lays out his halves of the tallies, notch side up, in rows: barley, oats, beans and peas, maslin. You stand at his elbow and say nothing, as you were told, with your heart going like a hammer in a smithy.
 
-    They read the barley. It agrees. They read the beans. They agree. They read the oats.
+    They read the barley. It agrees. They read the beans. They agree.
 
-    "Oats, into the grange at Michaelmas," says the clerk, through his nose. "Forty quarters."
+    "Oats," Walter says, through his nose. "Into the grange at Michaelmas, forty quarters."
 
     The steward nods and looks at the roof.
 
-    You count the sticks under your breath, the way you always do, without meaning to. [if flag.father_skims]Forty. They say forty. But you sat by the fire in Advent while your father split two oat tallies and fed one half of each into the flames, and cut two new ones, a little shorter, and you saw his face while he did it, which was the face of a man counting coin in a bad market. Before Advent, the oat sticks said forty-two.[else]Forty-two. The sticks say forty-two. You count again. Forty-two quarters went into the barn, and the roll says forty, and Master Gervase is looking at the roof, and the two missing quarters are worth, at this year's price, more than your father is paid in a year.[/if]
+    You count the sticks under your breath. You cannot help it; you never can. [if flag.father_skims]Forty. They say forty. But you sat by the fire in Advent while your father split two oat tallies and fed one half of each into the flames, and cut two new ones a little shorter, and you saw his face while he did it, a face like a man counting coin in a bad market. Before Advent the oat sticks said forty-two.[else]Forty-two. The sticks say forty-two. You count again, and your face goes hot. Forty-two quarters went into that barn, and the roll says forty, and Master Gervase is looking at the roof, and two quarters of oats at this year's price is more than your father is paid in a year.[/if]
 
-    Your father does not look at you. His hands are flat on the trestle and do not move. He knows you can count. He taught you.
+    Your father does not look at you. His hands are flat on the trestle and very still. He knows you can count. He taught you.
   choices:
     - id: speak
       text: Say what you counted, out loud, in front of the clerk.
       tags: [learning]
       text_after: |
-        "Forty-two," you say. Your voice comes out higher than you meant. "The oats. There were forty-two."
+        "Forty-two," you say. It comes out higher than you meant, like a girl's. "The oats. There were forty-two."
 
-        Everything in the barn stops. Walter the clerk stops sniffing.
+        The barn goes quiet. Walter stops sniffing.
 
-        [if flag.father_skims]Master Gervase looks at you for the first time as if you were a person rather than a piece of your father's furniture. Then he has the woodpile searched. It takes the reeve's own men half an hour, standing in the cold, to find the charred end of a split oat tally that did not quite burn. Nobody says anything to your father in the barn. Nobody needs to.
+        [if flag.father_skims]Master Gervase looks at you properly for the first time, the way you'd look at a dog that has started to talk. "Is that so," he says softly, and has the woodpile searched. It takes the reeve's own men half the morning, standing about in the cold not looking at your father, to find the charred end of a split oat tally that did not quite burn.
 
-        At the manor court on Saint Mark's day he is fined four shillings for false account, which is a great deal, and is not chosen to carry the lord's candle at Easter, which is worse. He does not beat you. He has never beaten you. He stops speaking to you, which is worse than any beating, and it lasts until Whitsun, and when it ends it does not end properly. Your mother tells you that you did right. She tells you in a whisper, in the dairy, where he cannot hear.
+        At the manor court on Saint Mark's day your father is fined four shillings for false account, and is not chosen to carry the lord's candle at Easter, which is worse. He does not beat you. He has never beaten you. He stops speaking to you, and that lasts until Whitsun, and when it ends it does not end properly.
 
-        Master Gervase, leaving, pats your head and says that honest boys are rare and valuable and that he will remember your name.[else]Master Gervase stops looking at the roof. For a long moment he looks at you, and then he laughs, a short dry laugh that turns into his cough. "Sharp eyes," he says. "Walter, you have miscopied. Again." Walter goes red to the ears and alters the roll.
+        "You did right," your mother tells you, in the dairy, in a whisper, where he cannot hear. "God help us, you did right."
 
-        Nobody says anything else about it in the barn. On the ride home the steward asks your father, quietly, whether the boy spends much time around the accounts. Your father says no. That night your father sits up late with the tallies, counting them again, all of them, and you lie awake listening to the click of the sticks. In the morning he says, "Next time, tell me first." It is the closest he comes to saying that you have made an enemy, and that the enemy is not the clerk.[/if]
+        Master Gervase, leaving, pats your head with a dry hand. "Honest boys are rare," he says, "and valuable." He coughs. "I'll remember your name."[else]Master Gervase stops looking at the roof. He looks at you a long moment, and then he laughs, a short dry bark that turns into his cough. "Sharp eyes," he says. "Walter. You've miscopied. Again."
+
+        Walter goes red to the ears and scratches at the roll.
+
+        Nobody says anything else about it in the barn. On the ride home the steward asks your father, quite casually, whether the boy spends much time around the accounts. "No, master," says your father. That night he sits up late with every tally in the house, counting, and you lie awake listening to the click of the sticks. In the morning he says, "Next time, tell me first."
+
+        It is the closest he comes to telling you that you have made an enemy, and that it is not the clerk.[/if]
       effects:
         - set: flag.p_spoke_up
         - if: flag.father_skims
@@ -63,15 +79,17 @@
       text: Keep your mouth shut and tell your father afterwards.
       tags: [allies]
       text_after: |
-        You say nothing. The reckoning goes on. The steward eats your mother's best hen and drinks the ale she has been saving since Candlemas and rides away before Vespers, coughing.
+        You keep your mouth shut. It nearly kills you.
 
-        That night, when your sisters are asleep, your father sits you on the bench by the fire, where the light is, and asks you what you saw in the barn. Not whether you saw anything. What.
+        The reckoning goes on. The steward eats your mother's best hen, drinks the ale she has been saving since Candlemas, and rides off before Vespers, coughing. "Good riddance to his collar," Cis says, and gets her ear clipped.
+
+        That night, when your sisters are asleep, your father sits you on the bench by the fire where the light is. "What did you see in the barn?" Not whether. What.
 
         You tell him.
 
-        He nods. He keeps nodding for a long time, looking at the fire, the way he does when the weather is turning.
+        He nods, and keeps nodding, looking at the fire, the way he does when the weather is turning.
 
-        [if flag.father_skims]"Two quarters," he says at last. "Two quarters, in a winter when the Cokers were put out. A man has to eat, boy. So does his son. So do his daughters." He gets up, goes to the chest, and comes back with a silver penny, which he puts in your hand and closes your fingers over. You have never held a whole penny before. You understand exactly what it is for. You keep it for a year before you can bring yourself to spend it.[else]"Two quarters," he says at last. "And the roll says forty, and Gervase Holt has signed the roll." He is quiet a while. "Then we both know, you and I. And the steward knows we know, or he will soon, because he is not a fool, whatever else he is." He puts his hand on your head, which he does not often do. "Keep that close. Close as your shirt. A thing like that is worth more kept than spent."[/if]
+        [if flag.father_skims]"Two quarters," he says at last. "Two quarters, the winter the Cokers were put out. A man has to eat, boy. So does his son. So do his daughters." He gets up, goes to the chest, and comes back with a silver penny, which he puts in your palm and closes your fingers over. You have never held a whole penny before. You know exactly what it is for. You keep it a year before you can bring yourself to spend it.[else]"Two quarters," he says at last. "And the roll says forty, and Gervase Holt has signed the roll." He rubs his face. "Well. Now we both know, you and I. And the steward knows we know, or he will soon, because whatever else he is, he's no fool." He puts his hand on your head, which he hardly ever does. "Keep it close, son. Close as your shirt. A thing like that's worth more kept than spent."[/if]
       effects:
         - set: flag.p_kept_quiet
         - add: { rel.piers_reeve.affection: 2, rel.piers_reeve.respect: 1 }
@@ -84,15 +102,15 @@
       text_after: |
         You say nothing in the barn. But the numbers will not leave you alone, and that night you go to Father Anselm.
 
-        The priest of Ashby is a big soft man with a farmer's hands, the son of a smallholder from over the hill, who reads the gospel badly and the weather very well. He keeps bees behind the church, teaches letters to any boy who will bring him firewood, and has a habit of humming the psalms when he thinks no one is listening. He has a box of parchment scraps, cut from the margins of old service books, that he uses for his own sums.
+        The priest of Ashby is a big soft farmer's son from over the hill, who reads the gospel badly and the weather well. He keeps bees behind the church, teaches letters to any boy who brings him firewood, and hums psalms when he thinks nobody is listening. He has a box of parchment scraps, cut from the margins of old service books, for his own sums.
 
-        "A page of figures," he says, when you ask. "At this hour. For a boy of eight." He gives you one anyway, and an ink-horn, and a candle-end, and goes back to his bees.
+        "A page of figures," he says, when you ask, peering at you over the candle. "At this hour. For a boy of eight." He sighs like a bellows. "Go on, then. Mind the ink, it's dear."
 
-        It takes you three candle-ends and you burn your thumb on the last. You copy every tally: barley, oats, beans and peas, maslin, each in your father's way of reckoning, with the notches drawn as little strokes. At the bottom you write the date as Father Anselm has shown you, the feast and the year of the King, so that anyone reading it will know when it was made.
+        It takes three candle-ends, and you burn your thumb on the last. You copy every tally: barley, oats, beans and peas, maslin, the notches as little strokes, the way your father reckons. At the bottom you write the date as Father Anselm showed you, the feast and the year of the King.
 
-        You do not know yet why you are doing it. You only know that the numbers in the barn and the numbers on the roll were not the same, and that tomorrow the sticks may be different, and that the parchment will not.
+        You do not know yet why you are doing it. You only know the numbers in the barn and the numbers on the roll were not the same, and tomorrow the sticks might be different, and the parchment will not.
 
-        Father Anselm reads it over your shoulder when you are done. He does not ask any questions. He folds it twice and tucks it inside the back board of his psalter, between the leather and the wood. "It will keep there," he says. "Nobody reads my psalter but me, and I only read it on Sundays."
+        Father Anselm reads it over your shoulder, humming. He asks no questions. He folds it twice and slips it inside the back board of his psalter, between the leather and the wood. "It'll keep there," he says. "Nobody reads my psalter but me, and God knows I only manage it on Sundays."
       effects:
         - set: flag.p_kept_copy
         - item: +tally_copy
@@ -105,35 +123,43 @@
   title: The Counting-House
   checkpoint: true
   text: |
-    Easter week in Wendham, and the whole house smells of wet wool.
+    Easter week in Wendham, and the whole house stinks of wet sheep.
 
-    The fleeces came down from the hill farms before the feast, and now they are everywhere: stacked to the rafters of the wool loft, heaped in the passage, laid out in rows on the counting-house floor for grading, so that you have to step over them to reach the stair. Your father says it is the smell of money. Your mother says it is the smell of sheep, and keeps dried lavender on every sill, which does nothing.
+    The fleeces came down from the hill farms before the feast, and now they are everywhere: stacked to the rafters of the wool loft, heaped in the passage, laid out in rows on the counting-house floor for grading, so you have to hop over them to reach the stair. "That," your father says, breathing it in, "is the smell of money." Your mother keeps dried lavender on every sill. It does not help.
 
-    Ralf Mercer is a tidy man in a tidy house: three storeys on Sheep Street, a hall with glass in one window, a counting-house at the front where he can see who comes to the door. He sits on the town council. He writes everything down. When he talks to you, he uses the voice he uses for customers: patient, pleasant, a little careful, as if you might yet decide to buy elsewhere.
+    Ralf Mercer is a tidy man in a tidy house: three storeys on Sheep Street, a hall with glass in one window, a counting-house at the front where he can see who comes to the door. He sits on the town council. He writes everything down. When he talks to you he uses the voice he uses for customers, patient and pleasant and careful, as if you might yet take your custom elsewhere.
 
     [break]
 
     On the Wednesday a man in a black gown comes to the counting-house door with a clerk and a locked box.
 
-    It is the Sarenzan factor, Master {npc.bertuccio_lanzi}. You have seen him before, at Mass, in the merchants' pew, where he kneels bolt upright and never sings. Close to, he is younger than you thought, with clever eyes and beautiful gloves. He bows to your mother as if she were a countess. He bows to you too, a smaller bow, which no grown man has ever done. "The son," he says, in careful Adalian. "Good. A house needs a son."
+    The Sarenzan factor, Master {npc.bertuccio_lanzi}. You have seen him at Mass, kneeling bolt upright in the merchants' pew and never singing. Close to he is younger than you thought, with clever eyes and gloves so fine you could see through them. He bows to your mother as if she were a countess. Then, to your astonishment, he bows to you.
 
-    Your father sends you out before the door is shut.
+    "The son," he says, in careful Adalian. "Good. A house needs a son."
+
+    "Out," says your father, pleasantly, and shuts the door on you.
 
     [break]
 
-    The door does not quite shut. It never has; the damp from the wool swells the frame. Through the gap you hear your father's voice and the Sarenzan's, and figures, a great many of them, in a reckoning you half understand. And one word you understand completely, because your father says it the way other men swear: owed.
+    The door does not quite shut. It never has; the wool damp swells the frame. Through the crack come your father's voice and the Sarenzan's, and figures, a great many figures, and one word you understand completely, because your father says it the way other men swear.
 
-    Out in the yard, Jocelin Tanner is at the gate with the tanners' boys from the alley behind, stones in their fists, on their way to the wharf to throw them at the Sarenzan ship. Jocelin is your age and lives forty yards and a whole world away, in a house that stinks of the pits. He sees you and jerks his head: come on, wool-boy.
+    Owed.
 
-    In the passage, old Thomas Penny, your father's clerk, sits at his desk by the stair with the abacus, doing sums for nobody, the way he does when the door is shut and he has been told to be elsewhere.
+    In the yard, Jocelin Tanner is hanging off the gate with the tanners' boys, stones in their fists, on their way to the wharf to pelt the Sarenzan ship. "Oi! Wool-boy!" He jerks his head. "Coming, or are you scared you'll muss your hose?"
+
+    And in the passage, old Thomas Penny, your father's clerk, sits at his desk by the stair clicking the abacus, doing sums for nobody, the way he does whenever the door is shut and he has been told to be elsewhere.
   choices:
     - id: listen
       text: Stay by the door and listen.
       tags: [cunning]
       text_after: |
-        Three hundred marks, borrowed in your grandfather's time against the wool of years not yet shorn. The Lanzi bank wants the next payment by Michaelmas. Your father promises it in a voice you have never heard him use, the voice of a man asking.
+        You put your eye to the crack and your ear to the jamb and stop breathing.
 
-        When the Sarenzan has gone, your father comes out into the passage and finds you on the stair. He looks at you for a long moment. He says nothing at all. That night he is pleasant to everyone at supper, and you understand that you have learned two things today, and that the second is how a man looks when his son has seen him afraid.
+        Three hundred marks. Borrowed in your grandfather's time against the wool of years not yet shorn. The Lanzi bank wants the next payment by Michaelmas. "It will be paid," your father says, in a voice you have never heard out of him: the voice of a man asking.
+
+        The latch lifts. You are halfway up the stair before the Sarenzan's gloves are out of the door, and not far enough. Your father comes into the passage and finds you on the fourth step, and looks at you, and you feel the heat climb right up your neck to your ears.
+
+        He says nothing at all. At supper he is pleasant to everyone. You lie awake afterwards understanding that you learned two things today, and that the second was what your father's face looks like when he is afraid.
       effects:
         - set: flag.p_knows_debt
         - add: { skill.intrigue: 1, rel.ralf_mercer.respect: -1 }
@@ -142,9 +168,15 @@
       text: Go to the wharf with Jocelin and the tanners' boys.
       tags: [martial]
       text_after: |
-        The Sarenzan ship is a tall, fat thing with a painted eye on the bow, and the sailors on her deck are mending sail and paying no attention to boys. Jocelin throws first and hits one on the ear.
+        "Coming!" And you are over the gate before you have thought about it.
 
-        The sailors come down the gangplank with ropes' ends. Everybody runs. You are the slowest, because your shoes are the best, and you take the beating for the lot of them, face down on the wet planks of the wharf. Jocelin laughs about it for a month. But the other boys stop calling you the wool-boy, and when the tanners' alley plays at war, you are allowed to be on a side.
+        The Sarenzan ship is a tall, fat thing with a painted eye on her bow, and the sailors on deck are mending sail and ignoring boys. Jocelin throws first. It takes a sailor clean on the ear.
+
+        "Porco Dio!"
+
+        The sailors come down the gangplank with ropes' ends, and everybody runs, and you are the slowest, because your shoes are the best. They catch you on the wet planks of the wharf and give you the beating meant for all of you, while Jocelin howls with laughter from behind a bale.
+
+        You limp home with a split lip and a torn sleeve and a feeling in your chest you cannot name. Jocelin laughs about it for a month. But the tanners' boys stop calling you wool-boy, and when the alley plays at war, you are allowed on a side.
       effects:
         - set: flag.p_wharf_gang
         - add: { attr.endurance: 1, rep.commons: 1, rel.jocelin_tanner.respect: 2 }
@@ -153,9 +185,11 @@
       text: Sit with old Thomas and learn his sums.
       tags: [learning, wealth]
       text_after: |
-        He shows you the abacus, and the way to reckon a sack of wool in Sarenzan money and in Adalian, and the difference between the two, which is where the profit lives. "Every coin is two coins," he says, "the one it is, and the one the other man thinks it is." By evening you can do it faster than he can.
+        "Sit, then, if you're sitting," old Thomas says. "And don't breathe on the beads."
 
-        He does not like that much. But he tells your father, who comes and stands in the doorway and watches you work the beads, and does not say anything, and goes away again with a look on his face you will remember for a long time.
+        He shows you the abacus, and how to reckon a sack of wool in Sarenzan money and in Adalian, and the difference between the two, which is where the profit lives. "Every coin's two coins," he says, tapping his nose. "What it is, and what the other fellow thinks it is."
+
+        By evening you can do it faster than he can, and he does not like that one bit. But he tells your father, grumbling. Your father comes and stands in the doorway with his arms folded and watches your fingers on the beads, and says nothing, and goes away again. You catch his face as he turns, and it is pride, and you have not seen it pointed at you before.
       effects:
         - set: flag.p_counting_house
         - add: { skill.trade: 1, rel.ralf_mercer.affection: 1 }
@@ -166,29 +200,39 @@
   title: The Butts
   checkpoint: true
   text: |
-    Sunday after Mass, at the butts behind the church at Hollin, where the parish ends and the Ravell chase begins.
+    "Arrows, boy! Are you deaf, or just slow?"
 
-    By the King's law every man between sixteen and sixty is meant to shoot on Sundays. Most of them drink, and some of them shoot, badly, between drinks. The targets are two banks of turf at either end of the long meadow, with a white clout pegged to each, and boys like you run up and down between them all afternoon fetching arrows for a farthing a dozen.
+    Sunday after Mass, at the butts behind the church at Hollin, where the parish ends and the Ravell chase begins. By the King's law every man between sixteen and sixty is meant to shoot on Sundays. Most of them drink, and shoot between drinks, and miss. Boys like you run up and down the long meadow between the two turf banks all afternoon, fetching arrows at a farthing a dozen and dodging the ones that come in late.
 
-    Your father shoots alone, at the far end, from one leg. The other knee will not bear him; a Caldmoor spear saw to that at Harrow Ford, before you were born. He leans on his stick, sets it aside, draws, looses, and picks the stick up again before the arrow lands. He still puts six in the clout from two hundred paces. Nobody watches him any more. You watch him every week.
+    "Watch yourself, Fletcher's lad! Tom's had three jugs, he couldn't hit a barn from inside it!"
 
     [break]
 
-    This Sunday a man from his old company has walked over from the next parish. {npc.will_cobb}: grey beard, new shirt, a voice like a millrace and hands like tree roots. He and your father sit on the bank with a jug between them and do not talk about the war, carefully, for a long time.
+    Your father shoots alone, at the far end, from one leg. The other knee will not bear him; a Caldmoor spear saw to that at Harrow Ford, before you were born. He leans on his stick, sets it aside, draws, looses, and has the stick back in his hand before the arrow lands. Six in the clout from two hundred paces. Nobody watches him any more. You watch him every week, and every week your chest goes tight with it.
 
-    Then Cobb says something you do not catch, and then, clearly, "the mill at Carn Dubh."
+    This Sunday a man from his old company has walked over from the next parish: {npc.will_cobb}. Grey beard, new shirt, a voice like a millrace and hands like the roots of an oak. He thumps your father on the back hard enough to knock a smaller man over, and the two of them sit on the bank with a jug between them, and do not talk about the war. They do it carefully, for an hour, like men walking round a bog.
 
-    Your father puts the jug down. He does not look at Cobb. He looks at you, and says, quite gently, "Fetch the arrows, boy," though there are no arrows to fetch.
+    [break]
+
+    Then Cobb, deep in the jug, laughs at something and says, clear as a bell, "...like the mill at Carn Dubh."
+
+    Your father sets the jug down. He does not look at Cobb. He looks at you, and says, quite gently, "Fetch the arrows, son."
+
+    There are no arrows to fetch. You both know it.
   choices:
     - id: ask
       text: Ask your father what happened at Carn Dubh.
       tags: [cunning]
       text_after: |
-        Not that day. He does not answer, and he does not shout, which is worse. Not that week either.
+        "What happened at Carn Dubh?"
 
-        Then one night, when the jug is empty and your mother and your little sister are asleep, he tells you. A mill in Caldmoor, at the end of the war, full of people. The captain said they were fighting men and ordered it fired. Your father was one of the archers on the door. "Some were fighting men," he says. "Some were." He makes you swear on your mother's cross never to say the name to anyone, and you swear.
+        Cobb goes red and finds something interesting in the bottom of the jug. Your father does not answer, and does not shout, and that frightens you more than shouting would.
 
-        He is ashamed that you know, and glad that someone does. You can see both, in the firelight, on his face at once.
+        Not that day. Not that week. Then one night, when the jug is empty and your mother and little Kit are asleep, he tells you, staring at the embers. A mill in Caldmoor, at the end of the war, full of people. The captain said they were fighting men and ordered it fired. Your father was one of the archers on the door.
+
+        "Some were fighting men," he says. His voice cracks. "Some were."
+
+        He makes you swear on your mother's cross never to say the name to a living soul, and you swear, with your hand shaking. In the firelight you can see two things on his face at once: shame that you know, and relief that somebody finally does.
       effects:
         - set: flag.p_knows_war_secret
         - add: { rel.hugh_fletcher.affection: 1, rel.hugh_fletcher.respect: -1 }
@@ -197,9 +241,15 @@
       text: Fetch the arrows, then shoot until your fingers bleed.
       tags: [martial]
       text_after: |
-        Your father's old war bow is too heavy for you by half. You draw it anyway, a hand's breadth, then two, with Cobb and your father pretending not to watch.
+        You fetch the arrows. Then you pick up your father's old war bow, which is taller than you and twice as stubborn, and try to draw it.
 
-        By dark the string has cut your fingers to the meat and your back is on fire from neck to belt. Your father binds your fingers with linen torn from his own shirt and says you will be crooked like him by twenty, with one shoulder higher than the other and arms like a smith. He sounds pleased. Cobb says nothing, and on the way home he tells you that he has seen grown men give up sooner.
+        "Ha! Look at him!" Cobb crows. "Hugh, he's got your daft face on him and all."
+
+        A hand's breadth. Two. Your arms shake like a wet dog. You loose, and the arrow goes six feet and buries itself in a cowpat, and the drunks on the bank cheer you like a champion.
+
+        You keep at it until dark. The string cuts your fingers to the meat and your back burns from your neck to your belt. Your father binds your fingers with linen torn from his own shirt. "You'll be crooked as me by twenty," he says. "One shoulder up by your ear and arms like a smith." He tries to sound stern. He sounds pleased as a dog with two tails.
+
+        On the walk home Cobb leans down and mutters, "I've seen grown men quit sooner, lad," and you carry that home warmer than the linen.
       effects:
         - set: flag.p_bloody_hands
         - add: { skill.archery: 1, rel.hugh_fletcher.affection: 2 }
@@ -208,11 +258,13 @@
       text: Follow Will Cobb to the alehouse and listen to his stories.
       tags: [allies]
       text_after: |
-        Cobb tells stories for anyone who buys him ale, and you have no money, so he tells them for free, which he says he has never done before and will never do again.
+        "No ale money? Ah, you're a hard bargain." Cobb ruffles your hair with a hand like a shovel. "Go on, then. One story, gratis, and don't tell a soul I'm going soft."
 
-        Harrow Ford: the Caldmoor spears coming on like a hedge in a gale, and the arrows going into them like rain into a pond. Your father, before his knee, the best shot in the company, who once put an arrow through a Caldmoor chief's mouth while he was shouting. Where the serjeants drink. Which captains pay. Which lords keep their word to archers, and which do not, by name.
+        It is not one story. It is all of them, at the alehouse table, until the alewife throws you both out.
 
-        He leaves out Carn Dubh. You notice that he leaves it out.
+        Harrow Ford: the Caldmoor spears coming on "like a hedge in a gale, lad, a whole hedge walking," and the arrows going into them like hail into a pond. Your father, before his knee, the best shot in the company, who once put an arrow through a Caldmoor chief's mouth while he was shouting. "Clean through. Never finished his sentence." Where the serjeants drink. Which captains pay. Which lords keep faith with archers and which don't, by name, with spitting.
+
+        He leaves out Carn Dubh. You notice the gap in the stories, the way you'd notice a missing tooth.
       effects:
         - set: flag.p_cobb_friend
         - meet: will_cobb
@@ -224,21 +276,25 @@
   title: The Destrier
   checkpoint: true
   text: |
-    Ravell Hall, the stable yard, a raw spring morning, with the mist still lying in the moat and the jackdaws going up and down the keep.
+    Ravell Hall, the stable yard, a raw spring morning, with mist lying in the moat and the jackdaws squabbling up and down the keep.
 
-    [if role == horse_master]You have mucked out the great horses since you could carry a fork, and you know each of them by the sound of its feet.[elif role == huntsman]You sleep in the kennels with the lymers, curled against the warm one with the torn ear, and you smell like them, and do not mind.[else]You keep the mews clean and the hawks' jesses greased, and you can tell a hawk's temper from across the yard by how she holds her feathers.[/if]
+    [if role == horse_master]You have mucked out the great horses since you could carry a fork, and you know each of them by the sound of its feet on the cobbles.[elif role == huntsman]You sleep in the kennels with the lymers, curled against the warm one with the torn ear, and you smell like them, and do not care who knows it.[else]You keep the mews clean and the hawks' jesses greased, and you can tell a hawk's temper from across the yard by how she holds her feathers.[/if]
 
-    Your mother, Agnes, dresses Lady Ravell. You eat in the kitchen with the scullions, at the end of the long table nearest the door, and you know more about the family than the family thinks. You know, for one thing, who the heir's real father is. You heard it through a privy wall two winters ago, in Lady Ravell's own voice, and you have told no one, not even your mother, and you think about it more than you would like.
+    Your mother, Agnes, dresses Lady Ravell. You eat in the kitchen at the end of the long table nearest the draught, and you know more about the family than the family thinks. You know, for one thing, who the heir's real father is. You heard it through a privy wall two winters ago, in Lady Ravell's own voice, and you have told no one, not even your mother, and some nights it sits on your chest like a cat.
 
     [break]
 
-    Aymer Ravell is nine, a year older than you, and the lord's second son. He is fair and quick and bored, and he has decided this morning that he wants to sit on his father's destrier.
+    "Psst. You. Horse-boy."
 
-    Bayard is a grey stallion seventeen hands high who has killed one groom and crippled another. He is standing in the end stall with his ears back, listening to you both.
+    Aymer Ravell is nine, a year older than you, the lord's second son: fair, quick, and bored out of his wits. He is leaning in the stable door with his hands behind his back, which means he wants something.
 
-    "Saddle him," says Aymer. "I only want to sit on him. Nobody will know." He smiles at you, the smile that gets him whatever he wants from everyone in the hall except his father.
+    "I want to sit on Bayard," he says.
 
-    Master Ranulf, the marshal, is at the far end of the yard with his back to you, arguing with the farrier.
+    Bayard is his father's destrier, a grey stallion seventeen hands high who has killed one groom and crippled another. He is standing in the end stall with his ears pinned back, listening to every word.
+
+    "Just sit. That's all. Nobody'll know." Aymer gives you the smile that gets him anything he wants from anyone in the hall except his father. "Go on. You're not scared of him. Not you."
+
+    Master Ranulf, the marshal, is at the far end of the yard with his back to you, roaring at the farrier.
   choices:
     - id: saddle
       text: Saddle Bayard for him and hold the head.
@@ -262,9 +318,15 @@
       text: Refuse him, and fetch Master Ranulf.
       tags: [diplomacy]
       text_after: |
-        Master Ranulf leads Aymer back to the house by the ear, which only a man of thirty years' service could do to a lord's son and live.
+        "No."
 
-        Aymer does not forget it, and does not speak to you for a month. Ranulf does not forget it either. From that week he starts teaching you properly, the way he never taught the other boys: how to read a horse's eye, where the heat sits in a bad hoof, why you never stand where a frightened animal can see you and not reach you.
+        Aymer's smile falls off his face like a dropped plate. "What did you say?"
+
+        "Master Ranulf!" you yell, before you can lose your nerve. "Master RANULF!"
+
+        Ranulf leads Aymer back to the house by the ear, which only a man of thirty years' service could do to a lord's son and keep his place. Aymer kicks and swears the whole way, and does not speak to you for a month.
+
+        Ranulf does not forget it either. From that week he starts teaching you properly, the way he never bothered with the other boys: how to read a horse's eye, where the heat sits in a bad hoof, why you never stand where a frightened animal can see you and not reach you. "You've got sense," he says, gruff as a dog's bark. "Don't waste it."
       effects:
         - set: flag.p_told_ranulf
         - add: { rel.ranulf_marshal.respect: 2, rel.ranulf_marshal.affection: 1, rel.aymer_ravell.affection: -2 }

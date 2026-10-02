@@ -31,8 +31,10 @@ steps:
   c1_dubbing: friends
   c1_farewell: home
   c2_following: master
-  c2_sorre: archers!success
-  c2_hautbois_2: hold!success
+  c2_grisolles: archers!success
+  c2_grisolles_rout: men!success
+  c2_salines_1: shoot!success
+  c2_salines_2: hold!success
 ending: ch2_complete
 expect:
   - station == lord

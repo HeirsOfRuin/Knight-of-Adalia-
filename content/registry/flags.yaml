@@ -142,32 +142,57 @@ c2_vaudrey_held: { description: "Kept his men in hand during the sack of Vaudrey
 c2_vaudrey_looted: { description: "Took his share of Vaudrey", hidden: true, later: ch3 }
 c2_corbie_ransom_due: { description: "Corbie's ransom is owed to him", hidden: true, later: ch3 }
 c2_corbie_squeezed: { description: "Squeezed the Corbies for a larger ransom", hidden: true, later: ch3 }
-c2_sorre_ready: { description: "Saw to his men the night before the Sorre", hidden: true, later: ch3 }
-c2_sorre_scouted: { description: "Scouted the stakes at the Sorre ford", hidden: true, later: ch3 }
-c2_sorre_hero: { description: "Among the first through the stakes at the Sorre", hidden: true, later: ch3 }
-c2_sorre_prisoner: { description: "Took a prisoner in the reeds of the Sorre", hidden: true, later: ch3 }
-c2_knighted_eve: { description: "Knighted by the King on the eve of Hautbois", later: ch3 }
-c2_eve_letter: { description: "Wrote home the night before Hautbois", hidden: true, later: ch3 }
-c2_took_duke: { description: "Took the Duke of Orbec at Hautbois", later: ch3 }
-c2_pryce_took_duke: { description: "Sir Walter Pryce took the Duke of Orbec", hidden: true, later: ch3 }
-c2_saved_aymer: { description: "Saved Aymer Ravell at Hautbois", hidden: true, later: ch3 }
-c2_saved_cobb: { description: "Saved Will Cobb at Hautbois", hidden: true, later: ch3 }
-c2_hautbois_field: { description: "Went among the dead and dying on the field of Hautbois", hidden: true, later: ch3 }
-c2_knighted_field: { description: "Knighted by the King on the field of Hautbois", later: ch3 }
-c2_feast_known: { description: "Made his name known to the great lords at the victory feast", hidden: true, later: ch3 }
-c2_shelter: { description: "Built his men a proper winter shelter at Sauvemer", hidden: true, later: ch3 }
+c2_heard_council: { description: "Heard the King decide to turn back at the Lisonne", hidden: true, later: ch3 }
+c2_cut_down_weavers: { description: "Cut down the hanged weavers of Vervais at the Lisonne ferry", hidden: true, later: ch3 }
+c2_men_warned: { description: "Told his men the truth at the Lisonne and made them carry bread", hidden: true }
+c2_grisolles_ready: { description: "Had his men ready to move the night before Grisolles", hidden: true }
+c2_found_ford: { description: "Found the ford below Grisolles in the dark", hidden: true }
+c2_grisolles_held: { description: "Held his piece of the rearguard line at Grisolles", hidden: true, later: ch3 }
+c2_saved_baggage: { description: "Saved some of the baggage at the bridge of Grisolles", hidden: true, later: ch3 }
+c2_grisolles_with_master: { description: "Stayed at his master's side at Grisolles", hidden: true }
+c2_men_brought_out: { description: "Brought his men out of the rout at Grisolles", hidden: true, later: ch3 }
+c2_ford_saved: { description: "Led three hundred men out of Grisolles by the ford", later: ch3 }
+c2_saved_master: { description: "Went back into the rout at Grisolles for his master", later: ch3 }
+c2_saved_aymer: { description: "Saved Aymer Ravell in battle", hidden: true, later: ch3 }
+c2_saved_cobb: { description: "Saved Will Cobb in battle", hidden: true, later: ch3 }
+c2_master_taken: { description: "His master was taken prisoner at Grisolles", later: ch3 }
+c2_ravell_taken: { description: "Lord Ravell was taken prisoner at Grisolles", later: ch3 }
+c2_knighted_grisolles: { description: "Knighted by the Earl of Carrow after the rearguard at Grisolles", later: ch3 }
+c2_made_list: { description: "Helped the heralds list the prisoners of Grisolles", hidden: true, later: ch3 }
+c2_carried_wounded: { description: "Carried his wounded all the way back to the Armance", hidden: true, later: ch3 }
+c2_ambushed_iron: { description: "Ambushed the Iron Company's riders on the retreat", hidden: true, later: ch3 }
+c2_stripped_road: { description: "Stripped the villages along the road back to feed his men", hidden: true, later: ch3 }
+c2_paid_men: { description: "Paid his men from his own purse in the winter at Lannec", hidden: true, later: ch3 }
+c2_lanzi_loan: { description: "Borrowed from the Lanzi house to pay his men", hidden: true, later: ch3 }
+c2_raided_country: { description: "Raided the Constable's lands to pay his men", hidden: true, later: ch3 }
+c2_shelter: { description: "Built his men a proper shelter on the dunes before Sauvemer", hidden: true }
 c2_engineers: { description: "Worked with the siege engineers at Sauvemer", hidden: true, later: ch3 }
-c2_paid_men: { description: "Paid his men from his own purse in the winter camp", hidden: true, later: ch3 }
-c2_lanzi_loan: { description: "Borrowed from the Lanzi house in Newtown", hidden: true, later: ch3 }
-c2_raided_country: { description: "Raided the country behind Sauvemer to pay his men", hidden: true, later: ch3 }
+c2_breach_survived: { description: "Went up the breach at the Tanners' Tower and came back", later: ch3 }
+c2_held_ditch: { description: "Held the ditch below the breach to bring the storming party back", hidden: true, later: ch3 }
+c2_kept_out_of_breach: { description: "Talked his company out of the storm of the breach", hidden: true, later: ch3 }
+c2_clemence_talked: { description: "Spoke with Dame Clémence during the burial truce", hidden: true }
+c2_saw_retrenchment: { description: "Saw the new wall behind the breach during the burial truce", hidden: true }
+c2_clean_water: { description: "Kept his men on clean water through the second winter", hidden: true, later: ch3 }
+c2_built_boom: { description: "Helped build the harbour boom that stopped the galleys", hidden: true, later: ch3 }
+c2_held_gallery: { description: "Held the mine gallery under the Water Tower", hidden: true, later: ch3 }
+c2_found_countermine: { description: "Found the Valdrennish countermine with bowls of water", hidden: true, later: ch3 }
+c2_guarded_minehead: { description: "Guarded the mine-head above ground", hidden: true }
 c2_sortie_hero: { description: "Broke the night sortie at Sauvemer", hidden: true, later: ch3 }
-c2_mouths_passed: { description: "Let the useless mouths through his post", hidden: true, later: ch3 }
-c2_mouths_tried: { description: "Tried to let the useless mouths through, and was stopped", hidden: true, later: ch3 }
-c2_mouths_queen: { description: "Took Dame Clémence's petition to the Queen", hidden: true, later: ch3 }
-c2_mouths_kept: { description: "Kept the useless mouths out, as ordered", hidden: true, later: ch3 }
-c2_knighted_siege: { description: "Knighted for his service at the siege of Sauvemer", later: ch3 }
-c2_saved_burghers: { description: "Asked the King for the six burghers' lives", hidden: true, later: ch3 }
-c2_guarded_clemence: { description: "Put his own men on Dame Clémence's door", hidden: true, later: ch3 }
+c2_sluice_known: { description: "Told his captain about the sluice-gates on the salt pans", hidden: true }
+c2_knighted_eve: { description: "Knighted by the King on the eve of Les Salines", later: ch3 }
+c2_eve_letter: { description: "Wrote home the night before Les Salines", hidden: true, later: ch3 }
+c2_opened_sluice: { description: "Opened the sluice-gates at Les Salines", later: ch3 }
+c2_turned_garrison: { description: "Turned his men to meet the Sauvemer garrison at Les Salines", hidden: true, later: ch3 }
+c2_saved_banner: { description: "Was among those who raised the King's fallen banner at Les Salines", later: ch3 }
+c2_took_thibaut: { description: "Took Thibaut de Brésy, the Constable's son, at Les Salines", later: ch3 }
+c2_pryce_took_thibaut: { description: "Sir Walter Pryce took Thibaut de Brésy", hidden: true, later: ch3 }
+c2_salines_field: { description: "Went among the dead and dying on the salt pans", hidden: true, later: ch3 }
+c2_jehanne_message: { description: "Carries the Duchess of Armance's message for the King", hidden: true, later: ch3 }
+c2_knighted_field: { description: "Knighted by the King on the field of Les Salines", later: ch3 }
+c2_terms_carried: { description: "Carried the surrender terms between the King and Dame Clémence", later: ch3 }
+c2_spoke_for_town: { description: "Spoke for gentle terms for Sauvemer", hidden: true }
+c2_took_house: { description: "Took a merchant's house in Sauvemer for his company", hidden: true }
+c2_feast_known: { description: "Made his name known to the great lords at the Christmas feast", hidden: true, later: ch3 }
 c2_garrison: { description: "Stayed in the Sauvemer garrison through the truce", hidden: true, later: ch3 }
 c2_armance_castles: { description: "Held an Armance castle through the truce", hidden: true, later: ch3 }
 c2_pryce_company: { description: "Rode with Pryce's company through the truce", hidden: true, later: ch3 }

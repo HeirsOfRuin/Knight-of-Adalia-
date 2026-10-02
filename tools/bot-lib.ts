@@ -36,7 +36,7 @@ export function policyName(p: Policy): string {
   return p.kind === 'tags' ? `tags:${p.prefer.join('+')}` : p.kind;
 }
 
-export function playOnce(content: ContentBundle, background: string, seed: number, policy: Policy, maxSteps = 2000): RunResult {
+export function playOnce(content: ContentBundle, background: string, seed: number, policy: Policy, maxSteps = 2000, observe?: (s: GameState) => void): RunResult {
   const pick = new RngCursor(seedRng(seed ^ 0x5bd1e995));
   const res: RunResult = { background, seed, policy: policyName(policy), outcome: 'max_steps', steps: 0, seasons: 0, scenes: [], path: [] };
   let state: GameState;
@@ -51,6 +51,7 @@ export function playOnce(content: ContentBundle, background: string, seed: numbe
   let script = policy.kind === 'script' ? [...policy.choices] : [];
 
   for (let step = 0; step < maxSteps; step++) {
+    observe?.(state);
     const v = view(content, state);
     if (v.ended) {
       res.outcome = 'ending';
@@ -116,7 +117,7 @@ export function describeFinal(s: GameState): Record<string, string> {
     'lost first master': s.flags.c1_lost_master ? 'yes' : 'no',
     'courtships open': String(suits.length),
     renown: s.res.renown! >= 12 ? '12+' : s.res.renown! >= 6 ? '6-11' : '0-5',
-    'knighted by': s.flags.c1_dubbed_by_master ? 'master (ch1)' : s.flags.c1_dubbed_by_ravell ? 'Ravell (ch1)' : s.flags.c1_dubbed_by_king ? 'King (ch1)' : s.flags.c1_dubbed_by_pryce ? 'Pryce (ch1)' : s.flags.c2_knighted_eve ? 'eve of Hautbois' : s.flags.c2_knighted_field ? 'field of Hautbois' : s.flags.c2_knighted_siege ? 'siege' : s.flags.c2_ceremonial_knight ? 'ceremonial' : 'not knighted',
+    'knighted by': s.flags.c1_dubbed_by_master ? 'master (ch1)' : s.flags.c1_dubbed_by_ravell ? 'Ravell (ch1)' : s.flags.c1_dubbed_by_king ? 'King (ch1)' : s.flags.c1_dubbed_by_pryce ? 'Pryce (ch1)' : s.flags.c2_knighted_grisolles ? 'Grisolles' : s.flags.c2_knighted_eve ? 'eve of Les Salines' : s.flags.c2_knighted_field ? 'field of Les Salines' : s.flags.c2_ceremonial_knight ? 'ceremonial' : 'not knighted',
     'following at end': String(Object.values(s.npcs).filter((n) => n.follower && n.alive).length + (s.res.men ?? 0)),
   };
 }

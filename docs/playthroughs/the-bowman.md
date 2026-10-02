@@ -667,7 +667,7 @@ They are your master's men lent to you, and they know it. So does your master.
 
 *Summer, year 21 of King Aldred*
 
-It takes eleven days to get the army aboard and four to cross, because the wind turns in the night and blows half the fleet back toward Adalia.
+It takes eleven days to get the army aboard and nine to cross, because the wind turns on the second night and blows half the fleet back toward Adalia, and a quarter of it somewhere else entirely. Ships are still straggling into the Armance a fortnight later. Some never come. One of them was carrying the King's siege timber.
 
 Your ship is a Saltcombe cog called the Marie, fat and slow, with forty horses slung in her belly and sixty men on her deck. On the second night the storm comes. The horses scream below in the dark. Men are sick over the side, and then over each other.
 
@@ -689,7 +689,7 @@ Six hours in the stinking dark, with a lantern and your own voice, going from he
 
 The Armance coast at dawn: grey dunes, a grey sea, a small grey town with a church tower, and along the dunes a line of men who have been waiting for you.
 
-Not many. Two hundred, perhaps: townsmen with spears, a few crossbowmen in red, a knight on a white horse riding up and down behind them shouting. The Valdrennish crown's men in the Armance, who have heard the Adalians were coming and decided to make a stand on the beach.
+The town of Port-Haudry is the Duchess of Armance's, and its gates are open. The Tour de Haudry above it is not. It belongs to King Amaury, and its garrison has come down to the dunes: two hundred men, perhaps, crossbowmen in red behind big painted shields, and a knight on a white horse riding up and down behind them shouting. They cannot stop an army landing. They can make it pay for every boat.
 
 *(Continue)*
 
@@ -701,7 +701,7 @@ The boats go in. The first wave is already in the water to the waist, wading, ho
 
 **Chose:** Get your archers onto the dunes on the flank, and shoot them off the beach. (Favorable: success)
 
-From the top of the dune you can see the whole line of them. The arrows go in from the side, where their pavises do not cover them, and after the third flight they break. The King steps ashore on a beach that cost him eleven men.
+From the top of the dune you can see the whole line of them. The arrows go in from the side, where their big shields do not cover them, and after the third flight they break back toward the Tour. The King steps ashore on a beach that cost him thirty men, most of them in the first boats.
 
 *Renown +1 · Sir Ancel Brome's respect +1 · Gained: Veteran*
 
@@ -713,7 +713,7 @@ Jehanne of Armance is thirty, plain, sunburned, and wears her husband's sword be
 
 *(Continue)*
 
-There is a council in her pavilion. There is also wine in the Armance knights' tents, and in Roger Tallis's head a great deal of knowledge about this country that nobody has asked him for. Somebody in the camp will know the roads.
+There is a council in her pavilion. There is also wine in the Armance knights' tents. Somebody in the camp will know the roads.
 
 - Get yourself into the Duchess's pavilion, carrying something for your master. *(Risky)*
 - Sit by the fire and learn the country from someone who knows it.
@@ -725,13 +725,13 @@ The Duchess's steward takes the message from your hand at the door and shuts the
 
 ## The Long Burning
 
-Three days later the army marches inland, and the orders are read out at the head of every company.
+The Tour de Haudry is left under siege with five hundred men, and the rest of the army marches east, and the orders are read out at the head of every company.
 
-The King's war is a war on Amaury's purse. Everything between Port-Haudry and the river Sorre that can be carried is to be carried. Everything that cannot is to be burned: mills, barns, granges, villages. The country will be made to pay for the war, and Amaury will be made to come out and defend it, or be seen not to.
+The lands of the Duchess are to be spared. The lands of Vervais are to be spared, because Vervais is a friend who does not know it yet. Everything between, which is King Amaury's own country, is to be made to feed the army and to pay for it. What cannot be carried is to be burned. Amaury will learn what it costs to keep a crown that is not his.
 
 *(Continue)*
 
-It is not a new kind of war. It is the kind Will Cobb tells stories about. The old men in the army have done it before, on the March, and say it is the only way. The young men have not, and are about to.
+The old men in the army have done this before, on the March, and say it is the only way an army lives off a country that hates it. The young men have not, and are about to.
 
 Your men are looking at you again.
 
@@ -741,7 +741,7 @@ Your men are looking at you again.
 
 **Chose:** Tell your men you will follow the orders to the letter. Burn what you are told, take what you are told, nothing more.
 
-It is clear and it is legal and nobody can say afterwards that you did anything you were not told to do. Roger Tallis, if he is with you, says nothing at all, which from him means he has heard this before.
+It is clear and it is legal and nobody can say afterwards that you did anything you were not told to do. Your men nod. They would have done it anyway.
 
 *Crown standing +1 · Ruthlessness +1*
 
@@ -800,11 +800,13 @@ They set the thatch alight to smoke you out. You get out the back with the men a
 
 ## Vaudrey
 
-Vaudrey is a walled town on the river, rich from cloth, with a stone bridge and a castle on an island in the middle of the stream. The townsmen think the walls will hold. They hold for one afternoon.
+Vaudrey is a walled cloth town on a river, with a stone bridge and a castle on an island in the stream, and the King cannot afford to sit down in front of it for a month. So he does not. A Vaudrey dyer whose brother was hanged for a weaver's riot in Vervais comes out of the town by night and says he can open the water gate.
 
-The Adalian archers clear the walls. The men-at-arms go over them with ladders. The bridge gate is the last thing to fall, and when it falls the town is open, and the army goes into it like water into a breached dyke.
+He does. Three hundred men go in behind him in the dark, along the dyers' quay, with their boots wrapped in rags. By the time the bells start, the bridge gate is open from the inside.
 
 *(Continue)*
+
+It is not a sack. There is no time for a sack. The Constable of Valdrenne's van is two days away, and everyone knows it, so Vaudrey is stripped in one night by men in a hurry, which is worse for the town in some ways and better in others.
 
 In the market square there is a great stone house with a coat of arms over the door, three black crows on gold. The house of a lord. Giles Marrick, a knight now, in his father's colours, is already riding toward it.
 
@@ -822,7 +824,7 @@ By the time you get there, Giles Marrick is in the hall, and a Valdrennish lord 
 
 Raoul de Corbie's ransom is set at two thousand marks, a sum so large it has to be written down twice to be believed. Ransoms like that take months to raise and years to pay.
 
-His sister comes to treat for it four days later, riding into the Adalian camp under a safe-conduct with an old priest and two servants. Héloïse de Corbie. She is twenty-two, dark, and furious, and holds herself as if the camp were her own hall and the Adalians her servants.
+His sister comes to treat for it four days later, riding after the army under a safe-conduct with an old priest and two servants, and catches it up at its night's camp on the road east. Héloïse de Corbie. She is twenty-two, dark, and furious, and holds herself as if the camp were her own hall and the Adalians her servants.
 
 *(Continue)*
 
@@ -836,395 +838,192 @@ She is brought to Giles Marrick, because her brother is his. Giles does not spea
 
 She does not believe a word, and says so, beautifully, in two languages.
 
-## The River
+## The Lisonne
 
-The army reaches the Sorre on a hot evening and finds every bridge broken.
+The army reaches the Lisonne at Lammas, three weeks out of Port-Haudry, footsore and rich and hungry, and looks across the river at Vervais.
 
-The river is wide here and brown and slow, with marsh on both banks. On the far side, in the evening light, you can see the Valdrennish: a long line of tents, banners, the glint of a great many men. Amaury has come at last. He means to hold the river and let the Adalians starve on this side of it.
+Nobody is waiting for it. The far bank is meadow, and a road, and on the road, where it comes down to the ferry, a row of gibbets. There are eleven men hanging on them. The crows have been at them a while.
 
 *(Continue)*
 
-That night a prisoner, a Valdrennish carter, is brought to the King. He knows a ford, he says, downstream, where the tide goes out far enough at dawn for men to cross knee-deep. It is guarded. Everyone knows it will be guarded.
+The news comes over with a ferryman that evening, and goes through the camp faster than the flux. The guild masters of the weaving towns swore to rise for King Aldred. Their Duke, Lothaire of Vervais, learned of it. King Amaury has remitted the salt tithe on Vervais for ten years and promised the Duke's son a royal bride, and the Duke has hanged the guild masters to show he can be trusted. The looms of Vervais will wait for their wool a while longer.
 
-The King gives the van the ford. Lord Ravell's company is in the van. So are you.
+The Margrave of the Ostmark, who took Sarenzan money to march on Valdrenne from the east, has not marched.
+
+The Constable of Valdrenne, Gaucelin de Brésy, has twenty thousand men a day's march to the south, between the army and the Armance.
+
+- Go with your master to the edge of the King's council, and listen. *(Risky)*
+- Take the ferry across, and cut the hanged men down.
+- Tell your men the truth. The road back will be harder than the road here.
+
+**Chose:** Go with your master to the edge of the King's council, and listen. (Risky: failure)
+
+A household knight with a white staff moves you back out of earshot, and then further. You learn what the council decided the next morning, with everyone else, when the army turns round.
+
+## The Aube
+
+It takes the army nine days to march back the way it came, through country it has already eaten bare, with the Constable's horsemen on every hill. On the ninth evening it reaches the river Aube at Grisolles.
+
+The Aube is not wide, but it is deep and fast and runs between marshes, and at Grisolles there is one stone bridge, eight arches long and wide enough for a single cart. Below it, the villagers say, there is a ford for men on foot, when the river is low. The river is not low.
+
+*(Continue)*
+
+The King's orders are to cross at first light: the van, then the King, then the baggage, then the rearguard. The rearguard is the Earl of Carrow's men and Lord Ravell's. So you will be among the last across, with the Constable behind you somewhere in the dark.
+
+There is a mist coming up off the marshes. By midnight you cannot see the river from the road.
 
 - Sleep, if you can.
-- Go round your men and see they have eaten, and that their strings are dry.
-- Go down to the river in the dark and look at the ford yourself. *(Even)*
+- Go round your men and see they are ready to move in the dark.
+- Go down the river in the dark and find the ford for yourself. *(Even)*
 
 **Chose:** Sleep, if you can.
 
-You lie in the long grass by the horses and do not sleep. Nobody near you sleeps. Davy talks until you tell him to stop, and then lies awake in silence, which is worse.
+You lie in the wet grass by the horses and do not sleep. Nobody near you sleeps. Davy talks until you tell him to stop, and then lies awake in silence, which is worse. Somewhere out in the mist, far off, a horse whinnies, and is answered.
 
-## The Ford of the Sorre
+## The Mist at Grisolles
 
-Dawn. The tide goes out across the ford like a cloth being pulled off a table, and there it is: a quarter mile of grey mud and shallow water, and on the far side, behind a line of stakes, three thousand Valdrennish under the banner of a duke.
+By Terce the van and the King are across. By Sext the baggage is on the bridge, one cart at a time, with the drivers screaming at the oxen. The rearguard stands on the near bank in the mist, waiting its turn.
 
-The Adalian archers go in first, up to their knees, and shoot as they wade. The Valdrennish crossbowmen shoot back. Men fall in the water and do not get up because the water is only a foot deep and they are drowning in it anyway, in their armour, face down.
+Then the mist lifts, the way a curtain lifts, all at once.
 
 *(Continue)*
 
-Then the trumpets go for the van, and the van goes in.
+They are three hundred paces away, and they are on foot. That is the first thing anyone notices, because nobody has ever seen the Valdrennish chivalry on foot. Thousands of men-at-arms in plate, in a block as deep as a church is long, coming on at a walk. In front of them, Sarenzan crossbowmen behind great painted shields as tall as a man, set down and lifted and set down again.
 
-- Go in at the front, for the stakes. *(Favorable, MORTAL DANGER)*
-- Wade in with the archers, and keep the crossbowmen's heads down. *(Favorable)*
+Away on the right, along the river, their horse is going at a canter for the bridge and the baggage.
+
+The archers start shooting. You hear the arrows hit the painted shields like hail on a roof. The block does not stop.
+
+- Take your place in the line of men-at-arms and meet them. *(Favorable, MORTAL DANGER)*
+- Get your archers shooting over the shields, at the crossbowmen as they wind. *(Favorable)*
+- Mount up and ride for the bridge, where their horse is going for the baggage. *(Even)*
 - Stay at your master's side, wherever he goes.
 
-**Chose:** Wade in with the archers, and keep the crossbowmen's heads down. (Favorable: success)
+**Chose:** Get your archers shooting over the shields, at the crossbowmen as they wind. (Favorable: success)
 
-Knee-deep in the Sorre, shooting into the crossbowmen until your fingers bleed, you watch the men-at-arms go past you through the stakes. The crossbows have stopped. That is your doing, yours and three hundred others'. Nobody will sing about it. The men-at-arms who got through alive know whom to thank.
+High, so they drop. The crossbowmen have to stand up from behind their shields to wind, and when they stand up, your archers are waiting. For as long as the arrows last, the crossbows on your front go quiet. It buys the line a little time. It costs the archers every arrow they have.
 
 *Renown +1 · Common Folk standing +1*
 
+## The Bridge
+
+The rearguard begins to break from the ends inward, the way a rope frays.
+
+Word comes down the line, shouted from man to man: the King's engineers are at the bridge with picks and a barrel of pitch. When the last of the baggage is over, or when the Valdrennish get too close, whichever is first, they will break the middle arch. Anyone on the near bank after that is on the near bank for good.
+
+*(Continue)*
+
+You cannot see your master's banner. The last you saw of it, it was going down into the press.
+
+- Keep your own men together and get them over the bridge in order. *(Favorable)*
+- Go back into the press for your master. *(Favorable, MORTAL DANGER)*
+- Get yourself over the bridge. Your men can follow or not.
+
+**Chose:** Keep your own men together and get them over the bridge in order. (Favorable: success)
+
+You walk them back. You do not let them run, because men who run get ridden down. Step, turn, step, shields to the enemy, with the archers in the middle. It takes forever. You are on the bridge when the engineers start swinging their picks, and across it, every one of you, when the arch goes into the Aube with a noise like a church bell falling.
+
+*Renown +1 · Davy Ludd's loyalty +2 · Jankin Rooke's loyalty +2 · Simkin Barre's loyalty +2*
+
 ## The Far Bank
 
-By noon the whole army is across the Sorre and the duke's men are gone up the road, leaving their dead in the water and their wounded in the reeds.
+The Constable does not try to cross. He does not need to. He has the near bank, the baggage, a thousand prisoners, and the day.
 
-The King rides along the bank and looks at the stakes and says nothing. Then he says something to the Earl of Carrow that makes the Earl laugh.
+The Adalian army camps in the rain a mile west of the broken bridge with no tents, because the tents were in the baggage, and counts itself. Eighteen hundred men dead, drowned or taken, nearly all from the rearguard. Six hundred horses. The King's plate. The pay chest. Lord Ravell, taken alive under his own banner, and half his household knights with him.
 
-*(Continue)*
-
-There are Valdrennish in the reeds who will die if no one helps them, and Valdrennish in the reeds who are worth money, and there is little time before the army moves again.
-
-- Search the reeds for men worth ransoming. *(Risky)*
-- Get the wounded out of the reeds, ours and theirs, before the tide comes back.
-- Count your own men, and see to them first.
-
-**Chose:** Search the reeds for men worth ransoming. (Risky: failure)
-
-Every man in the reeds who was worth anything has been found by someone else.
-
-## The Night Before Hautbois
-
-Two days north of the Sorre, Amaury catches up.
-
-The King chooses his ground: a long slope above the village of Hautbois, with a wood on one flank and a stream on the other, and a windmill on the crest where he will stand. The army is drawn up on the slope in three battles, the men-at-arms on foot in the centre, the archers on the wings. Below, across the valley, the Valdrennish keep arriving all evening: more banners than anyone has ever seen in one place. Somebody says forty thousand. Somebody else says that is nonsense, it is only thirty.
+The Valdrennish dead, the heralds think, are fewer than three hundred.
 
 *(Continue)*
 
-It is the custom, the night before a battle, for knights to be made. A man may fight better with spurs on his heels, and may die a knight, which is something to die as. The King walks along the line at dusk with his sword drawn.
+Nobody sings anything that night. The King walks among the fires bareheaded, and stops at some of them, and says nothing much, and goes on.
 
-You are a knight already. You watch the others kneel.
+- Count your men, and name the missing.
+- Go to the heralds and help them make the list of the taken.
+- Find somebody with drink, and drink it.
 
-- Spend the night with your men instead.
-- Write to someone at home, in case.
-- Stand at the edge of the camp and watch the Valdrennish fires across the valley.
+**Chose:** Count your men, and name the missing.
 
-**Chose:** Spend the night with your men instead.
+You go round them in the dark, twice. You know the faces that are here. It is the faces that are not that you keep seeing. Davy sits beside you afterwards with his knees drawn up and asks whether it is always like this. You say no. You do not know if that is true.
 
-Nobody sleeps. Simkin Barre tells filthy stories. Jankin Rooke prays. Davy cleans your harness three times. When the light comes they are still there, all of them.
+*Davy Ludd's loyalty +1 · Jankin Rooke's loyalty +1 · Simkin Barre's loyalty +1*
 
-*Davy Ludd's loyalty +2 · Jankin Rooke's loyalty +2 · Simkin Barre's loyalty +2 · Roger Tallis's loyalty +1 · Wat Coker's loyalty +2 · Perkin Dyer's loyalty +2 · Gib Shawe's loyalty +2 · Dickon's loyalty +2*
-
-## Hautbois
-
-It rains in the morning, a short summer storm that soaks everyone to the skin and passes. Then the sun comes out behind the Adalian line, low, into the Valdrennish eyes.
-
-You are on foot in the centre with the men-at-arms, your horse sent to the rear with the others. Lord Ravell's banner is over you. On either side the archers are drawn up in wedges, with stakes driven in front of them.
-
-*(Continue)*
-
-Down in the valley the Sarenzan crossbowmen come forward first, six thousand of them, hired for the day. They shout as they come, three great shouts. Their strings are wet from the storm.
-
-Every Adalian archer on the hill takes his string out from under his hat.
-
-- Check that your own men kept their strings dry.
-- Steady the men around you. They have never seen anything like this. *(Favorable)*
-- Kneel with the rest of the line when the priests go along it.
-
-**Chose:** Check that your own men kept their strings dry.
-
-They did. You look along the line and see that everyone did. Nobody told them to. They have done this before. The crossbows loose, and fall short, wet strings slapping. Then the sky over your head goes dark with arrows going the other way.
-
-## The First Charge
-
-The Sarenzan crossbowmen break and run back down the slope. And the Valdrennish knights, behind them, impatient, furious at being made to wait behind hired foot, ride them down.
-
-Then they come up the hill. Not in order: in a flood, banners everywhere, every lord racing every other for the honour of reaching the Adalian line first. The archers shoot them to pieces on the slope. Horses go down screaming, men fall under them, the ones behind ride over the ones in front.
-
-Some of them reach the line anyway.
-
-*(Continue)*
-
-They reach it in front of you.
-
-- Hold the line. Shoulder to shoulder, and let them come onto the points. *(Favorable, MORTAL DANGER)*
-- Stand in the second rank, behind your men, and let the front rank take the shock.
-- Get the stakes moved forward where the archers' wedge meets the line, to close the gap the horses are making for. *(Even)*
-
-**Chose:** Hold the line. Shoulder to shoulder, and let them come onto the points. (Favorable: success)
-
-The horse in front of you takes three spear-points in the chest and goes down kicking. Its rider rolls clear into your feet, and you hit him until he stops trying to get up. The line holds. The next wave comes, and it holds again.
-
-*Renown +1*
-
-## The Long Afternoon
-
-They come fifteen times. Nobody can believe it afterwards, but men count, and it is fifteen. Each time the archers break them on the slope, and the ones who reach the line die on it, and each time there are more bodies on the hill for the next charge to ride over.
-
-By the eleventh charge you can barely lift your arms. By the thirteenth the archers are running out of arrows and going out in front of the stakes to pull them from the dead.
-
-*(Continue)*
-
-In the fourteenth, a great lord's banner reaches the line fifty paces to your left. A duke, by the lilies on his coat. His horse is killed under him and he goes down in a heap of his own men, alive, and worth more than everything you will ever own.
-
-At the same moment the line to your right begins to give, and if it goes, the whole centre goes.
-
-- Go for the duke. A prisoner like that is a fortune. *(Even)*
-- Go right, where the line is breaking. *(Favorable, MORTAL DANGER)*
-- Stay in your place in the line. The line is everything.
-
-**Chose:** Go for the duke. A prisoner like that is a fortune. (Even: success)
-
-You get to him first, through his own men, and he gives you his gauntlet with the lilies on it before anyone else can reach him. The Duke of Orbec. His ransom will be set by the King himself. Your share of it will be more money than your family has seen in four generations. It is the luck of a lifetime, and it was luck. The man who should have had him, a knight of the Earl of Carrow's, is lying dead a yard short.
-
-*Renown +4 · Coin +£10 · Knights standing +1*
-
-## Dusk
-
-The fifteenth charge is the last. When it breaks there is nobody left behind it.
-
-The sun goes down on the slope at Hautbois and on the dead on it, more dead than anyone has words for. The Valdrennish army is gone: fled, scattered, or lying in the valley. King Amaury left the field at dusk with a handful of men, they say, and knocked on the gate of a castle in the dark, and called out, "Open, it is the unfortunate King of Valdrenne."
-
-*(Continue)*
-
-The King forbids pursuit in the dark. The army stands on its hill all night in its ranks. Some men sleep standing up.
-
-There are still things to be done before morning.
-
-- Go down onto the field with a lantern, among the dead and the dying.
-- Go down onto the field for what the dead no longer need.
-- Stand with your men in the line, as the King ordered, until dawn.
-
-**Chose:** Go down onto the field with a lantern, among the dead and the dying.
-
-The heralds are going over the field already, counting the coats of arms. Fifteen hundred knights and lords, they say, and nobody counts the others. You find a boy younger than Davy under a horse, alive, and get him out, and give him water, and the next morning he is gone and so is your second-best knife. You find the dead of your own company and close their eyes.
-
-*Piety +1 · Honor +1*
-
-## After Hautbois
-
-In the morning the King rides along the line and thanks the army, company by company. He is grey in the face and quiet. He thanks the archers first, which nobody has ever seen a king do.
-
-*(Continue)*
-
-The count comes in during the day. On the Valdrennish side: eleven princes and dukes, eighty bannerets, fifteen hundred knights, and nobody counts the rest. On the Adalian side, by the heralds' list: forty men.
-
-It does not feel like forty men.
-
-- Bury your dead, and go on.
-
-**Chose:** Bury your dead, and go on.
-
-*Davy Ludd's loyalty +1 · Jankin Rooke's loyalty +1*
-
-## The Victory Feast
+## The Road to the Sea
 
 *Autumn, year 21 of King Aldred*
 
-The army marches north to the coast, and the Queen comes over from Adalia with her household to meet the King at the abbey of Saint-Riquier, and there is a feast for Hautbois.
+It is two hundred miles to the Armance, and it rains for most of them.
 
-It is the strangest night of your life. A month ago you were in the mud at the Sorre. Tonight you are in an abbey refectory hung with captured banners, eating peacock, with the Queen's ladies at the high table in silk the colour of the sea.
-
-*(Continue)*
-
-One of them is Lady Alys Fane, the Earl of Westry's daughter. She is nineteen, tall, fair, and bored to death by the Earl of Carrow's son, who has been telling her about his horse for an hour. When the dancing starts, she looks down the hall for someone, anyone, who is not him.
-
-Héloïse de Corbie is at the feast too, at the far end of a lower table with the other Valdrennish women of rank who are guests of the King until their kinsmen's ransoms are paid. She is watching the Adalians celebrate. She is not smiling.
-
-- Ask Lady Alys to dance, before the Earl of Carrow's son can. *(Risky)*
-- Go down to the lower table and sit with Héloïse de Corbie.
-- Work the room. Every great lord in Adalia is here tonight, and they are all drunk and generous. *(Risky)*
-- Slip out and drink with your own men in the abbey barn.
-
-**Chose:** Ask Lady Alys to dance, before the Earl of Carrow's son can. (Risky: success)
-
-She looks at your hands, which are not a gentleman's, and at your face, and says yes before the Earl of Carrow's son has finished getting up. She dances well and talks badly, which she says is a family failing. At the end she asks what you did at Hautbois, and listens to the answer.
-
-*Lady Alys Fane's affection +2*
-
-## Sauvemer
-
-Hautbois won the King a battle. It did not win him a port, and without a port on this coast the army goes home and Valdrenne forgets it was ever here.
-
-So in the autumn the army comes to Sauvemer: a walled town on a spit of land between the sea and the marshes, with a double wall, a castle, a harbour full of Valdrennish ships, and a castellan, Sire Enguerrand de Vaux, who sends out a herald to say he has bread for two years and the King of Valdrenne's promise of relief.
+There is no baggage, so there is no bread except what men carry, and no tents, and no pay. The country on either side of the road was burned by the army on its way east. Now the army has to walk back through what it did.
 
 *(Continue)*
 
-The King does not storm it. He builds a town of his own outside it, of timber and turf: streets, a market, a church, a hall for himself. The men call it Newtown. He means to sit in it until Sauvemer starves.
+Behind it and on its flanks ride the Iron Company, eight hundred Hroswald horse in Valdrennish pay, under a captain called Ulric Rotbart. They do not attack the column. They wait for men to fall behind it.
 
-It is going to be a long winter, and you have men to keep alive through it.
+Every morning there are fewer men in the column than there were the night before. Some of them were caught. Some of them are walking home on their own. Some of them are lying in ditches with their boots off, too tired to get up.
 
-- Build your men a proper shelter before the weather turns, turf walls and a good roof.
-- Offer yourself to the siege engineers, who need men who can count.
-- Rest. You have earned it.
+- Carry your wounded with you, all of them, whatever it costs in pace. *(Favorable)*
+- Lay an ambush at a stream crossing for the Hroswald riders who follow the column. *(Risky)*
+- Take what you need from the villages along the road. Your men come first.
+- Keep your head down and keep marching.
 
-**Chose:** Build your men a proper shelter before the weather turns, turf walls and a good roof.
+**Chose:** Carry your wounded with you, all of them, whatever it costs in pace. (Favorable: success)
 
-It takes a week of everybody's labour and some of your coin. When the gales come in November, half the army is living in sodden tents. Yours are dry. Men notice who thought ahead.
+You make litters of spears and cloaks. Your company falls back through the column, day by day, until it is the last company in it, with the Hroswald riders watching from the hills. They never come down. You bring every man you had into the Armance, and you nearly do not bring yourself.
 
-*Coin −2s · Davy Ludd's loyalty +1 · Jankin Rooke's loyalty +1 · Simkin Barre's loyalty +1 · Roger Tallis's loyalty +1 · Wat Coker's loyalty +1 · Perkin Dyer's loyalty +1 · Gib Shawe's loyalty +1 · Dickon's loyalty +1*
+*Honor +1 · Common Folk standing +1 · Davy Ludd's loyalty +2 · Jankin Rooke's loyalty +2 · Simkin Barre's loyalty +1*
 
-## Rooke's Vow
-
-Jankin Rooke, who prays before he looses and has never missed, comes to you after Mass one Sunday and asks leave to go on pilgrimage to Saint-Lys when the truce allows. He has killed, he says, a great many men he could see clearly, and he would like to be forgiven for it, or at least to ask.
-
-- Give him leave, and money for the road.
-- Tell him you cannot spare him.
-
-**Chose:** Give him leave, and money for the road.
-
-He goes in the spring and comes back in the autumn, thinner, quieter, and better at shooting, which he says is God's sense of humour.
-
-*Jankin Rooke's loyalty +3 · Jankin Rooke's affection +2 · Piety +1 · Coin −2s*
-
-## The Winter Camp
+## Winter at Lannec
 
 *Winter, year 21 of King Aldred*
 
-By midwinter the pay is three months behind.
+The army winters in the Armance, in and around the Duchess's town of Lannec, because there is nowhere else it can go. The Duchess feeds it as long as she can. She cannot for long.
 
-It is behind in every company. The King's money comes over from Adalia slowly and goes to the great lords first, and they pay their men when they feel like it, and their men pay theirs when they can. At the bottom of the heap, a man in your following has had nothing since Hautbois except what he took there, and most of that he has drunk.
-
-*(Continue)*
-
-Your men come to you in a body, one cold morning, with Roger Tallis or the oldest of them doing the talking. They are not angry yet. They are counting.
-
-The flux is in the camp too. It always is.
-
-- Pay them out of your own purse, everything that is owed.
-- ~~Borrow from the Lanzi house to pay them.~~ *(Requires: someone at the Lanzi bank)*
-- Take them out raiding the country behind the town. Let them pay themselves.
-- Tell them the truth, and promise them a share of whatever Sauvemer brings. *(Favorable)*
-
-**Chose:** Pay them out of your own purse, everything that is owed.
-
-It takes a great deal of what you have. They are paid, all of them, to the penny, and they know which lords in this camp have not paid their own men. Your following becomes something it was not before. Men from other companies start asking whether you need anyone.
-
-*Coin −10s · Coin −10s · Davy Ludd's loyalty +2 · Jankin Rooke's loyalty +2 · Simkin Barre's loyalty +2 · Roger Tallis's loyalty +2 · Wat Coker's loyalty +2 · Perkin Dyer's loyalty +2 · Gib Shawe's loyalty +2 · Dickon's loyalty +2 · Men +1*
-
-## The Sortie
-
-*Spring, year 22 of King Aldred*
-
-In the spring the castellan of Sauvemer does what castellans do when they are starving slowly. He comes out.
-
-On a moonless night two hundred of his men come out of the sea gate at low tide and along the beach to where the King's siege engines stand, with fire-pots. The first anyone knows of it is the great trebuchet going up like a torch, and the screaming of the men asleep under it.
+The pay chest is in a Valdrennish castle with the King's plate. By midwinter no company in the army has been paid since Lammas, and men are selling their armour to Armance farmers for bread.
 
 *(Continue)*
 
-Your company is the nearest.
+The news from home is worse. Caldmoor has crossed the March under the Old Bond, the moment the King's back was turned: the boy king's regent with six thousand spears, and Black Ewan of Glenhallow riding ahead of them, burning. The King sails for Saltcombe at Christmas with a third of the army, to save his own kingdom and to beg the Moot for money. The rest stay, under the Earl of Carrow, to hold the Armance and wait.
 
-- Get your men up and go straight at them. *(Favorable, MORTAL DANGER)*
-- Save what can be saved of the engines and the men under them.
-- Go for the sea gate behind them and cut them off from the town. *(Risky)*
+Your men come to you one cold morning in a body, with the oldest of them doing the talking. They are not angry yet. They are counting.
 
-**Chose:** Save what can be saved of the engines and the men under them.
+The Lanzi bank has a house in Lannec. Everybody knows it. It is the only house in the town with a fire in every room.
 
-You drag men out from under burning timber all night. Most of the great trebuchet is lost. Its crew mostly is not. Bonifacio the engineer embraces you in the morning, weeping, smelling of smoke.
+- ~~Pay them out of your own purse, everything that is owed.~~ *(Requires Coin 10s)*
+- Go to the Lanzi house, and borrow to pay them.
+- Take them raiding over the border into the Constable's own lands. Let them pay themselves.
+- Tell them the truth, and promise them a share of whatever the spring brings. *(Favorable)*
 
-*Honor +1 · Renown +1 · Injury: Burned hands*
+**Chose:** Go to the Lanzi house, and borrow to pay them.
 
-## The Useless Mouths
+The person who runs the Lanzi house in Lannec is not a factor. It is Matteo Lanzi's daughter, Fiammetta: twenty-four, sharp as a quill, in black like a widow though she is not one. She knows your name before you give it. "You are one of Carrow's," she says. "Sit down. Tell me what an army costs. I have been trying to work it out since Grisolles, and nobody here can count."
+
+She lends against your future ransoms at a rate she calls friendly. It is not friendly. It is cheaper than losing your men. "You see?" she says. "This is what a war costs. Somebody always pays, and it is never the King."
+
+*Davy Ludd's loyalty +2 · Jankin Rooke's loyalty +2 · Simkin Barre's loyalty +2*
+
+## Sauvemer
 
 *Summer, year 22 of King Aldred*
 
-By summer Sauvemer is eating its horses.
+The King comes back in the summer with four thousand fresh men, a new pay chest, and a face that has aged five years in six months.
 
-One morning the land gate opens and five hundred people come out: old men, women, children, the sick. The castellan has put out everyone who cannot fight, to save the bread for those who can. They come across the ditch toward the Adalian lines with their hands up.
-
-The King's order comes down at once. Nobody is to pass. If the town wants to feed them, it can take them back. If not, they can stay where they are, between the walls and the lines, and the town can watch.
+The Moot gave him the money. It made him pay for it. He has sworn before the lords and the shire knights and the burgesses that the wool will go back to Vervais on their terms, not his, the day the war ends. Every man in the army knows it. It means the King has a year, perhaps two, to win something worth the price.
 
 *(Continue)*
 
-The town does not take them back. They stay in the ditch, in the open, for days. You can hear them at night.
+What he chooses is Sauvemer: a walled port on a spit of land between the sea and the salt marshes, two days up the coast from the Armance. Its ships burned the suburbs of Saltcombe in the spring. Its harbour could take a whole fleet. Its castellan, Sire Enguerrand de Vaux, sends a herald out to say he has bread for two years and King Amaury's promise of relief.
 
-On the third day a woman comes out of the land gate alone, under a white cloth, with a basket: the castellan's wife, Dame Clémence de Vaux, with what bread she can carry. She walks among them handing it out. Then she walks to the Adalian line, to your post, and asks in careful Adalian whether there is any officer here with a Christian heart.
+The King does not mean to wait two years. He means to batter a breach and take it by storm before the winter. Everyone has an opinion about whether he can. The engineers say yes. The old soldiers say nothing.
 
-- Let them through your post, the children and the old at least, whatever the King ordered. *(Favorable)*
-- Take Dame Clémence's petition to the Queen. The Queen has a reputation for mercy. *(Risky)*
-- Send out what bread your company can spare, quietly, at night.
-- Obey the order. Keep them out.
+- Build your men a proper shelter on the dunes before the weather turns.
+- Offer yourself to the siege engineers, who need men who can count.
+- Rest. You have earned it.
 
-**Chose:** Let them through your post, the children and the old at least, whatever the King ordered. (Favorable: failure)
+**Chose:** Build your men a proper shelter on the dunes before the weather turns.
 
-You let the first of them through. Your captain comes down the line at dawn with the provost and stops it, and you are confined to your tent for a week, and the ones still in the ditch stay in the ditch.
+It takes a week of everybody's labour and some of your coin. Turf walls, a sailcloth roof, a drain. Other companies laugh. When the autumn gales come, half the army is living in sodden tents. Yours are dry. Men notice who thought ahead.
 
-*Honor +1 · Sir Ancel Brome's respect −2*
-
-## The Relief That Did Not Come
-
-At the end of July, King Amaury comes at last. His army appears on the heights above the marshes: banners, tents, the whole great host of Valdrenne, rebuilt since Hautbois.
-
-And sits there. The only road to Sauvemer runs along the dunes, between the sea and the marsh, and the King has fortified it, and there is no other way. For four days the two armies look at each other. Amaury sends heralds to offer battle on any field of the King's choosing. The King replies that he is quite comfortable where he is.
-
-*(Continue)*
-
-On the fifth morning the Valdrennish heights are empty. Amaury has gone home. In Sauvemer, on the walls, you can see the people who were watching for him, still watching.
-
-In the meantime there have been skirmishes along the dunes, every day, between young men on both sides who want a name.
-
-- Ride out along the dunes with the young men, looking for a fight. *(Even)*
-- Watch the walls instead. Sauvemer is close to the end.
-
-**Chose:** Ride out along the dunes with the young men, looking for a fight. (Even: success)
-
-A Valdrennish squire on a bay horse, just as eager as you. You break a lance on each other, and then another, and on the third pass his horse goes down in the sand and he gives you his sword. He is worth sixty marks. He is also, it turns out, a cousin of the Corbies, and he knows your name already.
-
-*Renown +1 · Coin +£1 10s · Enguerrand de Vaux is dead*
-
-## The Keys of Sauvemer
-
-Sauvemer surrenders in August, after eleven months. Sire Enguerrand de Vaux does not live to give up his keys. He dies of a fever the night before, and his wife, Dame Clémence, carries them out of the land gate in his place.
-
-The King has been made to wait eleven months and has lost more men to the flux than to the Valdrennish. He demands six burghers of the town, barefoot, in their shirts, with halters round their necks, to give up the keys and to be hanged for the rest.
-
-*(Continue)*
-
-The six come out. They are old men, mostly, and one young one who volunteered in his father's place. The Queen is there. So are you.
-
-- Kneel and ask the King for their lives, before anyone else does. *(Risky)*
-- Stand in the ranks and say nothing. It is the King's business.
-- Find Dame Clémence afterwards, and offer her your protection while the town is taken over.
-
-**Chose:** Kneel and ask the King for their lives, before anyone else does. (Risky: failure)
-
-The King tells you to get up, in a voice that freezes the square. Then the Queen kneels, and he gives the burghers to her anyway. You have done no harm. You have not been forgiven for it either.
-
-*Honor +1 · Crown standing −2 · Burned hands has healed · Gained: Burn-scarred hands*
-
-## The Truce of Saint-Lys
-
-*Autumn, year 22 of King Aldred*
-
-The Pontiff's legate, Cardinal Orsino Brancale, a soft-spoken Sarenzan with a merchant's eyes, has been riding between the two kings since Hautbois. In the autumn he gets what he wants: a truce, for three years, sealed at Saint-Lys. Sauvemer stays Adalian. Everything else is to be argued about later.
-
-Half the army goes home. The rest stays, to garrison Sauvemer and the castles the King has taken in the Armance, and to be paid even more slowly than before.
-
-*(Continue)*
-
-Your master's choice is made for him. Yours is not, quite.
-
-- Stay with the garrison in Sauvemer. That is where the King's grants will be given, when they are given.
-- Go with the companies sent to hold the castles of the Armance.
-- Take service with Sir Walter Pryce, who is keeping a company in the field through the truce, for pay.
-
-**Chose:** Stay with the garrison in Sauvemer. That is where the King's grants will be given, when they are given.
-
-You take a house in the Rue des Tanneurs with your men: two rooms, a yard, a well, and neighbours who will not look you in the eye. Sauvemer is yours now, in a sense. It does not feel like it.
-
-## Hazard in Newtown
-
-Newtown has a street of taverns now, and every tavern has a dice game, and every dice game has men who have been paid.
-
-- Play. *(Risky)*
-- Watch your men instead, and make sure none of them loses his boots.
-
-**Chose:** Play. (Risky: failure)
-
-You lose steadily, and stay, which makes you several.
-
-*Coin −5s*
+*Davy Ludd's loyalty +1 · Jankin Rooke's loyalty +1 · Simkin Barre's loyalty +1*
 
 ## Davy
 
@@ -1237,13 +1036,401 @@ One evening he asks you, formally, whether he might ever hope to be more than a 
 
 **Chose:** Tell him yes, and that you will see to it if you can.
 
-He goes red to the ears and says nothing for a whole day. Then he starts asking Tallis to teach him the sword properly, every morning, in the cold.
+He goes red to the ears and says nothing for a whole day. Then he starts asking the old men-at-arms in the camp to teach him the sword properly, every morning, in the cold.
 
-*Davy Ludd's loyalty +3 · Davy Ludd's affection +3*
+*Davy Ludd's loyalty +2 · Davy Ludd's affection +3*
+
+## The Breach
+
+*Autumn, year 22 of King Aldred*
+
+By Michaelmas the Tanners' Tower is a heap of rubble with a ramp up the middle of it, and the King orders the storm.
+
+It is to go in at dawn, at low tide, when the ditch is mud and not water. Five hundred men-at-arms up the rubble, with the archers shooting over their heads to keep the defenders down, and ladders at the curtain wall on either side to draw men away from the breach.
+
+*(Continue)*
+
+There are rumours that the defenders have been working behind the breach every night. There are always rumours.
+
+At dawn the trumpets go.
+
+- Go up the rubble with the storming party. *(Favorable, MORTAL DANGER)*
+- Take your men to the ladders on the curtain wall, to draw the defenders off. *(Favorable)*
+- Hold the ditch below the breach, to bring back whoever comes down.
+- Tell your captain the breach is a trap, and keep your men out of it. *(Risky)*
+
+**Chose:** Take your men to the ladders on the curtain wall, to draw the defenders off. (Favorable: success)
+
+You get two ladders up and keep them up long enough that the defenders have to send men from the breach to throw them down. It is all a feint is for. It does not save the storm. Your men come back from the wall with burns and bruises and every one of them alive, which is more than any other company on the ladders can say.
+
+*Renown +1*
+
+## The Dead in the Ditch
+
+The next morning a herald comes out of the town with a white wand and asks for a day's truce to clear the dead. The King gives it. There is nothing else to do.
+
+For a day, Adalians and Valdrennish work side by side in the ditch below the breach, not looking at each other, with handcarts and ropes and sacking. The town's priests come out with the cross. So do the town's women, some of them, with water and bread for whoever is doing the work.
+
+*(Continue)*
+
+The one in charge of the townswomen is the castellan's wife: Dame Clémence de Vaux, thirty, tall, in a plain grey gown, with a list of names. She is looking for the town's dead and counting them. She knows every one by name. She does it in a voice that does not shake, and once, when she finds a boy she knew, she stops for the space of an Ave and then goes on.
+
+Sire Enguerrand watches from the wall above the breach with his arms folded. He does not come down.
+
+- Take off your sword and work in the ditch with the rest.
+- Speak to Dame Clémence, in what Valdrennish you have. *(Risky)*
+- Use the truce to get a good look at the new wall behind the breach. *(Risky)*
+- Stay in the lines. You have seen enough of that ditch.
+
+**Chose:** Take off your sword and work in the ditch with the rest.
+
+It is the worst day's work you have ever done. By evening you have carried forty men out of the mud, Adalian and Valdrennish, and you can no longer tell the difference from the colour of their coats.
+
+At dusk, Dame Clémence passes you on her way back to the gate and stops. She says something in Valdrennish to the priest beside her, and he says, in Adalian, "My lady asks your name. She says you carried two of hers who were not yours to carry." You tell him.
+
+*Piety +1 · Valdrenne standing +1*
+
+## The Second Winter
+
+*Winter, year 22 of King Aldred*
+
+There is no second storm. There are not the men for one.
+
+So the King settles down to do what he did not mean to do: sit in front of Sauvemer through the winter. The camp on the dunes becomes a town of turf and driftwood. The gales come in off the sea. The flux comes with them, as it always does, and goes through the camp like a scythe.
+
+*(Continue)*
+
+The town is not starving. On dark nights, Sarenzan galleys hired by King Amaury slip in under the sea wall with flour and salt pork, and slip out again before dawn, and the King's ships cannot catch them. Everyone knows whose galleys they are. The Varesco bank lends to Amaury. The Lanzi bank lends to Aldred. "It is not personal," Fiammetta Lanzi tells you. "It is business. Ugolino Varesco would sell flour to the Devil, if the Devil could post a bond."
+
+Your men are dry, at least.
+
+- Move your men's camp up to the chapel spring, away from the latrine ditches. *(Even)*
+- Nurse your sick men yourself, with your own hands. *(Even)*
+- Help the engineers build a boom across the harbour mouth to stop the galleys. *(Risky)*
+- Keep your head down and get through it.
+
+**Chose:** Move your men's camp up to the chapel spring, away from the latrine ditches. (Even: failure)
+
+You move them. The company at the spring has friends in the Earl's household, and you are moved back. The flux finds your men in Lent.
+
+*1 of your men is dead*
+
+## The Flux
+
+The flux comes through the camp again in the heat. It always does. Men who survived Grisolles die of it in a week, squatting in the ditches, and are buried in the ditches.
+
+- Make your men boil everything they drink, and dig their latrines away from the well.
+- There is nothing to be done. Trust to luck. *(Even)*
+
+**Chose:** Make your men boil everything they drink, and dig their latrines away from the well.
+
+They think you are mad, and do it anyway, because you are watching. Your company loses nobody to the flux that summer. The company next door loses nine.
+
+*Stewardship +1 · Jankin Rooke's loyalty +1 · Simkin Barre's loyalty +1*
+
+## The Mine
+
+*Spring, year 23 of King Aldred*
+
+In the spring the King sends for miners from the tin country in the west of Adalia, and they come: small, quiet, pale men who do not like the light much and like soldiers less.
+
+They dig from a pit behind the siege lines toward the Water Tower at the corner of the town wall, under the ditch, through the sand and the clay, propping the gallery with timbers as they go. When they are under the tower they will fill the end of the gallery with brushwood and pig fat, and fire it, and the timbers will burn, and the tower will come down.
+
+*(Continue)*
+
+The Valdrennish know it. They have dug a countermine from inside the walls, and on still nights both sides can hear each other through the earth: picks, voices, a cough. The miners' captain, a man called Treloar, wants soldiers in the gallery for when the two tunnels meet.
+
+- Go down into the gallery with Treloar's miners. *(Favorable, MORTAL DANGER)*
+- Set bowls of water along the gallery to find where they are digging. *(Risky)*
+- Guard the mouth of the mine with your men, above ground.
+
+**Chose:** Set bowls of water along the gallery to find where they are digging. (Risky: success)
+
+An old trick Treloar has heard of and never tried. Where the water in the bowl trembles, they are close. You find the countermine three days before it reaches you, and break into it from above while its diggers are asleep. Nobody on either side is killed. The Water Tower comes down a week later, on schedule. Treloar shakes your hand and says, in his own tongue, something nobody translates.
+
+*Renown +1 · Tactics +1*
+
+## The Sortie
+
+Three nights after the Water Tower falls, the castellan of Sauvemer does what castellans do when the walls are coming down. He comes out.
+
+Two hundred of his men come out of the sea gate at low tide and along the beach to where the King's engines stand and the mine-head is, with fire-pots. The first anyone knows of it is the great trebuchet going up like a torch, and the screaming of the men asleep under it.
+
+*(Continue)*
+
+Your company is the nearest.
+
+- Get your men up and go straight at them. *(Favorable, MORTAL DANGER)*
+- Save what can be saved of the engines and the men under them.
+- Go for the sea gate behind them and cut them off from the town. *(Risky)*
+
+**Chose:** Save what can be saved of the engines and the men under them.
+
+You drag men out from under burning timber all night, with wet sacking over your head and hands. The great trebuchet is lost. Its crew mostly is not. Bonifacio the engineer embraces you in the morning, weeping, smelling of smoke. Your eyebrows grow back by Lammas.
+
+*Honor +1 · Renown +1 · Injury: Bruised ribs · Bruised ribs has healed · Enguerrand de Vaux is dead*
+
+## The Host on the Heights
+
+*Summer, year 23 of King Aldred*
+
+In May the castellan of Sauvemer, Sire Enguerrand de Vaux, dies of the flux in his own castle. The town does not open its gates. His wife holds the keys, and his lieutenant holds the walls, and they wait.
+
+At midsummer they are proved right. King Amaury comes.
+
+*(Continue)*
+
+The whole host of Valdrenne comes over the heights above the salt marshes in a single afternoon, and goes on coming until dark: the Constable's banner, the King's lilies, the dukes, the Sarenzan crossbowmen in red, the Iron Company's black eagle. And on the left, apart from the rest, under the gold shuttle of Vervais, Duke Lothaire with three thousand of his own.
+
+The Adalian army in front of Sauvemer is eleven thousand men, after two years of war and two winters of flux. The heralds put the host on the heights at better than twenty-five.
+
+*(Continue)*
+
+The King holds a council in the ruins of a salt-boiler's house. Half the captains want to break the siege and get the army onto the ships while there are ships. The King listens, and then walks them out to look at the ground in front of the lines: the salt pans, square shallow ponds by the hundred, cut by dykes and causeways and sluices, with the sea behind. "They will have to come to us along the causeways," he says. "On foot. Let them come."
+
+- Ride out with the young men who go skirmishing under the heights. *(Even)*
+- Have Father Benet or a camp priest write your men's wills.
+
+**Chose:** Ride out with the young men who go skirmishing under the heights. (Even: success)
+
+A Valdrennish squire on a bay horse, just as eager as you. You break a lance on each other, and then another, and on the third pass his horse goes down in the soft ground and he gives you his sword. He is worth sixty marks. He is also, it turns out, a cousin of the Corbies, and knows your name already.
+
+*Renown +1 · Coin +£1 10s*
+
+## The Night Before Les Salines
+
+The Valdrennish heralds come down in the evening with the formal challenge: battle, tomorrow, on the ground in front of Sauvemer. The King accepts it. Nobody had expected anything else.
+
+It is the custom, the night before a battle, for knights to be made. A man may fight better with spurs on his heels, and may die a knight, which is something to die as. The King walks along the lines at dusk with his sword drawn. He limps a little. Grisolles is in his face, and the breach, and two winters.
+
+You are a knight already. You watch the others kneel.
+
+- Spend the night with your men instead.
+- Write to someone at home, in case.
+- Stand at the edge of the lines and watch the Valdrennish fires on the heights.
+
+**Chose:** Spend the night with your men instead.
+
+Nobody sleeps. Simkin Barre tells filthy stories. Jankin Rooke prays. Davy cleans your harness three times. When the light comes they are still there, all of them.
+
+*Simkin Barre's loyalty +1*
+
+## Les Salines
+
+They come on foot, as they came at Grisolles. The Constable has learned what works.
+
+They come down off the heights at dawn and out across the salt pans in long columns, along the causeways between the ponds, eight and ten men abreast, with the crossbowmen's great shields at the head of each column like the prow of a ship. Where the causeways meet the dyke in front of the Adalian line, they mean to spread out and come on together.
+
+*(Continue)*
+
+The archers shoot. The shields take it. The columns come on at a walk, and the walk does not change.
+
+- Run for the sluice-gates, and open them yourself. *(Risky)*
+- Steady the men around you. Nobody here has seen anything like this. *(Favorable)*
+- Take a bow and pick off the shield-bearers at the heads of the columns. *(Favorable)*
+- Kneel with the line when the priests go along it.
+
+**Chose:** Take a bow and pick off the shield-bearers at the heads of the columns. (Favorable: success)
+
+A man carrying a shield as tall as a door has to show his feet, and sometimes his hand. You wait for it. Three columns lose their shields in front of you, and for a few dozen paces the archers have them naked on the causeways.
+
+*Common Folk standing +1*
+
+## The Dyke
+
+They reach the dyke and spread out along it and come on together, and the two lines meet with a noise you will hear in your sleep for years.
+
+It is not like Grisolles. The Adalian line does not break. It bends. All along the dyke it is pushed back, a step and then another, onto the siege lines behind, by the sheer weight of men in plate leaning on it.
+
+*(Continue)*
+
+And then, behind you, the bells of Sauvemer begin to ring, and the land gate opens, and the garrison comes out, every man in the town who can hold a spear, into the back of the Adalian siege lines.
+
+The line you are standing in has enemies in front and enemies behind.
+
+- Hold the line. Shoulder to shoulder, and do not step back. *(Favorable, MORTAL DANGER)*
+- Stand in the second rank, behind your men, and let the front rank take the weight.
+- Turn your men round and meet the garrison coming out of the town. *(Risky)*
+
+**Chose:** Hold the line. Shoulder to shoulder, and do not step back. (Favorable: success)
+
+You do not step back. You do not remember deciding not to. The man in front of you is replaced by another, and another, and at some point the weight eases, and you find that the line around you has stopped moving. Behind you, the archers have turned round and are shooting into the garrison at twenty paces.
+
+*Renown +1*
+
+## The King's Banner
+
+Past noon. Nobody has eaten. The tide has turned and is coming in over the pans.
+
+Two hundred paces to your right, where the line is thinnest, the Valdrennish break through. You see the King's banner sway, and lean, and go down into the press. A great howl goes up from the Valdrennish all along the dyke. Men around you stop fighting to look.
+
+*(Continue)*
+
+In the same moment, in front of you, a knot of Valdrennish knights in the Constable's colours, black and silver, comes over the dyke after a young man with a gold circlet on his helm. Thibaut de Brésy, the Constable's son. Worth more than everything you will ever own.
+
+Away on the far left, on their own causeway, the gold shuttle banners of Vervais have not moved since dawn.
+
+- Go right, for the King's banner. *(Favorable, MORTAL DANGER)*
+- Go for the Constable's son. *(Even)*
+- Stay in your place in the line. The line is everything.
+
+**Chose:** Go for the Constable's son. (Even: success)
+
+You get to him first, through his own men, and he gives you his gauntlet before anyone else can reach him. Thibaut de Brésy, nineteen, furious, weeping with rage inside his helm. His ransom will be set by the King himself, and the King will take most of it. Your share will still be more money than your family has seen in four generations. It was luck. The man who should have had him is lying dead a yard short.
+
+*Renown +3 · Coin +£10 · Knights standing +1*
+
+## Evening on the Salt
+
+In the middle of the afternoon, three hundred lances come along the beach at the gallop from the west, under the ermine of Armance, and go into the Valdrennish flank where the causeways are crowded. The Duchess has come. She has brought everything she has left.
+
+It is not a rout. Nothing that day is a rout. But the weight comes off the dyke, a little at a time, and toward evening the Valdrennish columns begin to go back along the causeways the way they came, in good order, with their wounded, walking. The water is up to their knees. Nobody follows them.
+
+*(Continue)*
+
+The gold shuttle banners of Vervais go back up the heights with the rest. They never came down. Nobody on the Adalian side knows why, and nobody on the Valdrennish side will say.
+
+The sun goes down on the salt pans and on the dead in them, and the water is red where it is not grey.
+
+- Go out onto the pans with a lantern, among the dead and the dying.
+- Go out onto the pans for what the dead no longer need.
+- Go to where the Armance lances are, and find the Duchess.
+- Stand with your men on the dyke until the King releases the line.
+
+**Chose:** Go out onto the pans with a lantern, among the dead and the dying.
+
+The heralds are already out, wading, counting coats of arms. You find a Valdrennish boy younger than Davy face down on a causeway with the water rising, alive, and turn him over, and get him to the dyke. You find the dead of your own company and close their eyes, and say their names to the priest so they will be written down.
+
+*Piety +1 · Honor +1*
+
+## After Les Salines
+
+In the morning the King rides along the dyke with his leg bound up and thanks the army, company by company. He does it slowly, because it takes him a long time to get on and off his horse.
+
+*(Continue)*
+
+The count comes in during the day. Two thousand Adalians dead or dying, a fifth of the army. The Valdrennish dead are no more than that, the heralds think, and perhaps fewer. Among the Adalian dead are two earls and a bishop's nephew. Among the wounded is the King.
+
+It is a victory, because the host on the heights is going away. It does not feel like one. On the walls of Sauvemer, the people who were watching the heights watch them empty.
+
+- Bury your dead, and go on.
+
+**Chose:** Bury your dead, and go on.
+
+## The Keys of Sauvemer
+
+*Autumn, year 23 of King Aldred*
+
+Sauvemer treats within the month. There is nobody left to wait for.
+
+The King cannot afford to storm it and cannot afford to sit in front of it another winter. The town cannot afford to be stormed. So for three weeks heralds go back and forth across the ditch with terms, and the terms change every time they cross, and nobody is happy with any of them.
+
+*(Continue)*
+
+The keys are held by Dame Clémence de Vaux, who has held them since her husband died in May. The King's council wants the town emptied of everyone who will not swear to him, and their houses given to Adalians. The town wants its people to keep their homes and its garrison to march out with its arms. Somewhere between the two there is a bargain. Somebody has to find it.
+
+- ~~Offer to carry the terms between the King's council and Dame Clémence.~~ *(Risky, Requires: Dame Clémence's trust)*
+- Speak for gentle terms in your captain's ear, and hope it reaches the council. *(Risky)*
+- Make sure your company gets a good house in the town before the others do.
+- Leave it to the heralds. It is the King's business.
+
+**Chose:** Speak for gentle terms in your captain's ear, and hope it reaches the council. (Risky: failure)
+
+Your captain hears you out and tells you, not unkindly, to leave the town to men who were not born in a village. The King's terms stand.
+
+*Honor +1*
+
+## Christmas at Sauvemer
+
+*Winter, year 23 of King Aldred*
+
+The Queen comes over from Adalia with her household for Christmas, and there is a feast in the great hall of Sauvemer castle, which a year ago belonged to a man who died of the flux.
+
+It is the strangest night of your life. Six months ago you were on the dyke at Les Salines with the water rising. Tonight you are in a hall hung with Valdrennish banners turned upside down, eating swan, with the Queen's ladies at the high table in silk the colour of the sea.
+
+*(Continue)*
+
+One of the ladies is Lady Alys Fane, the Earl of Westry's daughter. She is nineteen, tall, fair, and bored to death by a young lord who has been telling her about his horse for an hour. When the dancing starts, she looks down the hall for someone, anyone, who is not him.
+
+Héloïse de Corbie is at the feast too, at the far end of a lower table with the other Valdrennish women of rank who are the King's guests until their kinsmen's ransoms are paid. She is watching the Adalians celebrate. She is not smiling.
+
+- Ask Lady Alys to dance, before the young lord can. *(Risky)*
+- Go down to the lower table and sit with Héloïse de Corbie.
+- Work the room. Every great lord in the army is here tonight, drunk and generous. *(Risky)*
+- Slip out and drink with your own men in the castle stables.
+
+**Chose:** Ask Lady Alys to dance, before the young lord can. (Risky: failure)
+
+She says, politely, that she has promised this dance. She has not promised it. She looks at you again later, once, from across the hall, as if she were reconsidering something.
+
+## The Lenders' Truce
+
+*Spring, year 24 of King Aldred*
+
+The war does not end because anyone wins it. It ends because the money stops.
+
+In Lent, the Lanzi house tells King Aldred that it will lend him nothing more until he treats. In the same week, the Varesco house tells King Amaury the same thing, in almost the same words. Neither king can pay his army for another summer without them. The Signory of Sarenza has lent too much to both to let either one win, or lose.
+
+*(Continue)*
+
+The Pontiff's legate, Cardinal Orsino Brancale, a soft-spoken Sarenzan with a merchant's eyes, rides between the two courts with the bankers' letters in his saddlebag. At Saint-Lys, at Lady Day, he gets his truce: three years. Sauvemer and its marshes stay Adalian. The prisoners of Grisolles and Les Salines are to be ransomed at rates the bankers will fix. The wool goes back to Vervais, as the Moot was promised.
+
+And the Armance is not mentioned at all. The Duke of Armance stays in his Valdrennish prison. The Duchess, who came along the beach at Les Salines with everything she had left, is left to make her own peace with King Amaury, or not.
+
+*(Continue)*
+
+Half the army goes home. The rest stays, to garrison Sauvemer and its march, and to be paid even more slowly than before.
+
+- Stay with the garrison in Sauvemer. That is where the King's grants will be given, when they are given.
+- Go with the few companies the King leaves to help the Duchess hold the Armance.
+- Take service with Sir Walter Pryce, who is keeping a company in the field through the truce, for pay.
+
+**Chose:** Stay with the garrison in Sauvemer. That is where the King's grants will be given, when they are given.
+
+You take a house in the Rue des Tanneurs with your men: two rooms, a yard, a well, and neighbours who will not look you in the eye. Sauvemer is the King's now, and in a sense yours. It does not feel like it.
+
+## The Lanzi Book
+
+> Consequence of: Your Following
+
+A clerk from the Lanzi house in Sauvemer, polite, with a ledger. Your loan is due. The principal and the interest, which is more than you remember agreeing to.
+
+- Pay it, all of it.
+- Ask to roll it over, against your grant. *(Even)*
+
+**Chose:** Pay it, all of it.
+
+It hurts. When it is done the clerk crosses your name out of the book with a single neat line, and bows, and you are free of the Lanzi for the first time since Saltcombe.
+
+*Coin −£5 · Sarenza standing +1*
+
+## Rooke's Vow
+
+Jankin Rooke, who prays before he looses and has never missed, comes to you after Mass one Sunday and asks leave to go on pilgrimage to Saint-Lys when the truce allows. He has killed, he says, a great many men he could see clearly, and he would like to be forgiven for it, or at least to ask.
+
+- Give him leave, and money for the road.
+- Tell him you cannot spare him.
+
+**Chose:** Give him leave, and money for the road.
+
+He goes in the spring and comes back in the autumn, thinner, quieter, and better at shooting, which he says is God's sense of humour.
+
+*Jankin Rooke's affection +2 · Piety +1 · Coin −2s*
+
+## A Letter Brought by Hand
+
+A letter, brought by a man from home who has come over to the garrison: Mariot Wood has sent no letter, only a horn button and a sprig of something from the chase, dried flat.
+
+- Send something back with the same man.
+- Keep it. You do not know what to say.
+
+**Chose:** Send something back with the same man.
+
+A Valdrennish ribbon, a silver penny with the lilies on it, a few lines. The man swears he will deliver it. He does.
 
 ## The Garrison
 
-*Autumn, year 23 of King Aldred*
+*Summer, year 24 of King Aldred*
 
 A truce is a strange thing to live in. You are a conqueror in a conquered country, which sounds grand. In fact it is boredom, cold, short pay, and the feeling of being watched.
 
@@ -1251,32 +1438,32 @@ The Sauvemer people have not forgiven the siege and will not, in your lifetime. 
 
 *(Continue)*
 
-Your following has changed since Saltcombe. It is bigger: men drift to a captain who pays. Davy Ludd is nearly eighteen and taller than you.
+Your following has changed since Saltcombe. Some faces are new. Some are gone. Davy Ludd is seventeen and taller than you.
 
 You have time, for the first time in years, to choose what to do with it.
 
 - Train your men properly, every day, as if the war will start again tomorrow.
 - Learn the town. The language, the people, who owes whom.
 - Spend your evenings where the women of rank are.
-- Put your money to work. Cloth, wine, ransoms: there is money to be made in a garrison town by a man who can count. *(Risky)*
+- Put your money to work. Cloth, wine, ransoms: there is money to be made in a garrison town by a man who can count. *(Even)*
 
 **Chose:** Train your men properly, every day, as if the war will start again tomorrow.
 
 It will start again. Everyone knows the truce will end. When it does, your men will be the best-drilled company in Sauvemer, and they will know it, and so will the men who give out grants.
 
-*Command +1 · Tactics +1 · Sir Ancel Brome's respect +1*
+*Command +1 · Tactics +1*
 
 ## The Iron Company
 
-*Summer, year 24 of King Aldred*
+*Winter, year 24 of King Aldred*
 
-In the second summer of the truce the Iron Company comes over the eastern border: eight hundred Hroswald mercenaries under a captain called Ulric Rotbart, whom both kings paid during the war and neither king is paying now.
+In the first winter of the truce the Iron Company comes west: eight hundred Hroswald mercenaries under Ulric Rotbart, who rode behind the army all the way back from Grisolles and stood on the heights at Les Salines, and whom King Amaury has stopped paying now that he has no war to pay them for.
 
 A free company without a war is a plague with a banner. It takes a village a week and a town a month. The Valdrennish crown will not fight it, because it might be useful later. The Adalian garrison will not fight it, because there is a truce.
 
 *(Continue)*
 
-It comes into the march country behind Sauvemer, and the villages there, which were burned once by you, are burned again by them. A delegation of their headmen comes to the garrison to ask the Adalians for protection, since the Adalians are now their lords. The garrison captain laughs at them.
+It comes into the march country behind Sauvemer, and the villages there, which were stripped once by the siege, are stripped again by them. A delegation of their headmen comes to the garrison to ask the Adalians for protection, since the Adalians are now their lords. The garrison captain laughs at them.
 
 They come to you next.
 
@@ -1285,19 +1472,19 @@ They come to you next.
 - You cannot stop them. But you can warn the villages in their path, and get the people out.
 - Send them away. There is a truce, and it is not your affair.
 
-**Chose:** Ride out to Ulric Rotbart and buy him off. (Risky: success)
+**Chose:** Ride out to Ulric Rotbart and buy him off. (Risky: failure)
 
-Rotbart is a big, courteous, tired man, who would rather be paid than fight and says so. Forty pounds, half from the villages and half from you, and the Iron Company goes east. The villages pay their half. They remember who paid the other.
+Rotbart takes your money and stays a month anyway.
 
-*Coin −£1 · Valdrenne standing +2 · Ulric Rotbart's respect +2*
+*Coin −10s*
 
 ## A Ship for Saltcombe
 
 *Spring, year 25 of King Aldred*
 
-In the spring of the third year of the truce, a ship sails from Sauvemer for Saltcombe with the garrison's letters, and a few places for men on leave.
+In the spring of the second year of the truce, a ship sails from Sauvemer for Saltcombe with the garrison's letters, and a few places for men on leave.
 
-You have been away for three years. You have letters from home that are a year old. Your men will keep, if Tallis or someone you trust is in charge. The passage costs a pound. The journey home and back will take the whole summer.
+You have been away for four years. You have letters from home that are a year old. Your men will keep, if Tallis or someone you trust is in charge. The passage costs a pound. The journey home and back will take the whole summer.
 
 The King's grants for the conquered lands are to be decided at Michaelmas, in Sauvemer. A man who is away when grants are decided is easy to forget.
 
@@ -1314,9 +1501,11 @@ You are on the ship with the letters three days later. The Narrow Sea is calm th
 
 Everything at home is smaller than you remember it.
 
-Your father's cottage has a new roof, which you paid for with Hautbois money and did not know he had used for that. He is thinner. He can barely walk to the butts now. He goes anyway, every Sunday, and makes you shoot with him. Mariot Wood comes to watch.
+Your father's cottage has a new roof, which you paid for with money sent home from Sauvemer and did not know he had used for that. He is thinner. He can barely walk to the butts now. He goes anyway, every Sunday, and makes you shoot with him. Mariot Wood comes to watch.
 
-[break]
+*(Continue)*
+
+The March is quiet now, the way a burned field is quiet. When the Caldmoor host crossed in the first winter of the war, the Marcher lords held the towers and the King came north with what he had brought home from Valdrenne, and in the spring the regent went back over the Leven with his cattle and his plunder and nothing else. Everyone at home calls it a victory. Nobody in the March does.
 
 - Spend the summer with your family.
 - Find Mariot.
@@ -1331,7 +1520,9 @@ It is a quiet summer, and the best one you have had in years. You mend things. Y
 
 On the way back to Saltcombe you stop at Ravell, because everyone stops at Ravell.
 
-Sir Hamon is there, too old for the war now, living on what is left of Ashby. He feeds you until you cannot move and asks about Hautbois four times, and each time listens as if it were the first.
+Lord Ravell came home at Lady Day, after nearly three years in a Valdrennish castle. The ransom has stripped the household to the walls: the plate, the best horses, two manors mortgaged to the Lanzi, half the hangings in the hall. He is thinner and greyer and does not ride out any more. Lady Ravell runs everything now, as she always did, but openly.
+
+Sir Hamon is there, home from the war, living on what is left of Ashby. He feeds you until you cannot move and asks about Les Salines four times, and each time listens as if it were the first.
 
 - Go on to Saltcombe.
 
@@ -1381,11 +1572,11 @@ The garrison chapel is empty in the afternoons. You sit there until it is dark. 
 
 That winter the Sarenzan galleys come into Sauvemer harbour late, and fewer of them, and the sailors bring a story.
 
-In the south, they say, in the ports of the Midsea, there is a sickness. It begins with a swelling under the arm or in the groin, black, the size of an egg. Then fever, then blood, then death, in three days, sometimes in one. In Sarenza itself, they say, the dead are being buried in trenches because there are no more graves. In one city a third of the people are dead. In another, half.
+In the east, they say, beyond the Midsea, there is a sickness that came off a caravan. Now it is in the Midsea ports. It begins with a cough and a fever, and then the skin goes mottled, grey and dark like a bruise that spreads, and then the cough brings up blood. Three days. Sometimes one. The sailors call it the Mottle. In Vellagio, they say, the Signory has shut the gates and nobody goes in or out, and the bells have stopped because there is nobody left to ring them.
 
 *(Continue)*
 
-Nobody believes it, quite. Sailors' stories always grow.
+Nobody believes it, quite. Sailors' stories always grow. Fiammetta Lanzi believes it. Her letters from Sarenza have stopped.
 
 In the spring you will go to Ormel.
 
@@ -1401,9 +1592,9 @@ People laugh at you, gently. You buy grain anyway, and salt, and a Sarenzan phys
 
 ## Ormel
 
-In the spring you ride out of Sauvemer by the land gate, the one the useless mouths came out of, with your banner and your following and the King's writ, along the dunes and across the marsh to Ormel.
+In the spring you ride out of Sauvemer by the land gate, the one Dame Clémence carried the keys out of, with your banner and your following and the King's writ, along the dunes and across the marsh to Ormel.
 
-Behind you ride the men who have followed you through the war, or the ones who are left. Davy carries your banner. He is a man now.
+Behind you ride the few who are left. Davy carries your banner. He is a man now.
 
 The village sees you coming a mile off across the flat country. By the time you reach it, everyone is indoors, and the street is empty, and the church bell is ringing. Not for you. For a death. The first, in Ormel, of the great mortality.
 

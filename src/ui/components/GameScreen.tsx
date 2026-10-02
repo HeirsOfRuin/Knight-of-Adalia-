@@ -22,6 +22,8 @@ interface Props {
   saveOk: boolean;
   onChoose: (id: string, force?: CheckResult) => void;
   onReplace: (s: GameState) => void;
+  history: GameState[];
+  onRewind: (index: number) => void;
   onImport: (f: File) => void;
   onImportText: (t: string) => void;
   onNewGame: () => void;
@@ -167,7 +169,7 @@ export function GameScreen(p: Props) {
         )}
       </div>
 
-      {p.debug && <DebugDrawer content={content} state={state} force={force} setForce={setForce} onReplace={p.onReplace} />}
+      {p.debug && <DebugDrawer content={content} state={state} force={force} setForce={setForce} onReplace={p.onReplace} history={p.history} onRewind={p.onRewind} />}
     </div>
   );
 }

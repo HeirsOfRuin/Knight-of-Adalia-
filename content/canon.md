@@ -15,7 +15,12 @@ Two kingdoms share a cold, wet island. Adalia, in the south, is rich in wool and
 | **9** | **Game start.** The protagonist is 8. |
 | 9-15 | Prologue spans these years. |
 | ~16-21 | Chapter 1. Border trouble with Caldmoor. The quarrel over the Vervais wool staple comes to a head. Aldred formally claims the crown of Valdrenne. |
-| ~22 | Chapter 2. The invasion crosses the Narrow Sea. |
+| 21 | Chapter 2 opens. Spring: the invasion lands in the Armance. Lammas: Vervais does not rise. Late summer: **defeat at Grisolles**. Winter: Caldmoor crosses the March under the Old Bond; the King goes home. |
+| 22 | Summer: the siege of Sauvemer begins. Michaelmas: the storm of the breach fails. |
+| 23 | Spring: the Water Tower mined. Midsummer: **Les Salines**, held at great cost. Michaelmas: Sauvemer surrenders on terms. |
+| 24 | Lady Day: **the Lenders' Truce** of Saint-Lys. The Armance is abandoned. The Iron Company unpaid in the Sauvemer march. |
+| 25 | Michaelmas: the King's grants at Sauvemer. Winter: news of the Mottle from the Midsea. |
+| 26 | Spring: Chapter 2 ends at Ormel. |
 
 ## Geography
 - **The island** (Adalians just call it "the island"). Adalia covers the southern two-thirds, Caldmoor the highland north. **The March** is the disputed border country between them: tower houses, cattle raids, divided families.
@@ -31,6 +36,8 @@ Two kingdoms share a cold, wet island. Adalia, in the south, is rich in wool and
   - **The Armance**: a western peninsula, a duchy with its own disputed succession.
   - **Vervais**: a northeastern duchy of weaving towns. They live on Adalian wool.
   - **The Midi**: the rich south. Wine and salt.
+- **Sauvemer**: a walled port on a spit between the sea and the salt marshes, two days up the coast from the Armance. Adalian from year 23. **Ormel** is a marsh manor behind it.
+  - **The Lisonne** is the river between Amaury's lands and Vervais. **The Aube** crosses the road back west at **Grisolles**.
 - **Hroswald**: forest, mountains and mining towns east of Valdrenne. The **Ostmark** is its eastern frontier.
 - **Sarenza**: a league of ports on the southern sea. Sarenza is the chief city, with **Vellagio** and **Calvi Porto** beside it.
 

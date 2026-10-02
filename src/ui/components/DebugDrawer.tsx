@@ -12,11 +12,14 @@ interface Props {
   force?: CheckResult;
   setForce: (f?: CheckResult) => void;
   onReplace: (s: GameState) => void;
+  history: GameState[];
+  onRewind: (index: number) => void;
 }
 
-export function DebugDrawer({ content, state, force, setForce, onReplace }: Props) {
+export function DebugDrawer({ content, state, force, setForce, onReplace, history, onRewind }: Props) {
   const [open, setOpen] = useState(true);
   const [jump, setJump] = useState(state.scene);
+  const [rewind, setRewind] = useState(-1);
   const [filter, setFilter] = useState('');
   const scene = content.scenes[state.scene];
 
@@ -69,7 +72,20 @@ export function DebugDrawer({ content, state, force, setForce, onReplace }: Prop
             })}
           </ul>
 
+          <h3>Rewind</h3>
+          <p class="muted">Goes back to a scene you passed this session, as you were when you reached it. Everything since is undone.</p>
+          {history.length === 0 ? <p class="muted">Nothing to rewind to yet.</p> : (
+            <div class="row">
+              <select value={rewind} onChange={(e) => setRewind(Number((e.currentTarget as HTMLSelectElement).value))}>
+                <option value={-1}>Choose a scene</option>
+                {history.map((h, i) => <option key={i} value={i}>{content.scenes[h.scene]?.title ?? h.scene} ({h.scene})</option>).reverse()}
+              </select>
+              <button class="btn" disabled={rewind < 0} onClick={() => { onRewind(rewind); setRewind(-1); }}>Rewind</button>
+            </div>
+          )}
+
           <h3>Jump to scene</h3>
+          <p class="muted">Keeps everything you have now, including followers and flags. To redo a choice, use Rewind.</p>
           <div class="row">
             <select value={jump} onChange={(e) => setJump((e.currentTarget as HTMLSelectElement).value)}>
               {Object.values(content.scenes).map((s) => <option key={s.id} value={s.id}>{s.chapter} / {s.id} ({s.kind})</option>)}

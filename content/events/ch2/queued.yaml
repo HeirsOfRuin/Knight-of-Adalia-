@@ -43,7 +43,7 @@
   title: News of Lady Maud
   requires: [ suit.maud_delisle.regard >= 3 ]
   text: |
-    Among the dead at Hautbois, the heralds found Gerard of Carrow, the Earl's younger son, who was betrothed to Lady Maud de Lisle. He was killed in the eleventh charge by a Valdrennish knight he had insulted at dinner the year before.
+    Among the dead at Grisolles, the heralds found Gerard of Carrow, the Earl's younger son, who was betrothed to Lady Maud de Lisle. He was killed in the rearguard, on foot, by men who did not know or care who he was.
 
     Three weeks later a letter reaches you, by way of [if flag.c1_maud_scandal]the nuns at Ambry, where her guardian sent her after the business of the petition[else]the Queen's household[/if], in a quick, low hand. Lady Maud is in the King's wardship and her betrothal is dissolved by death. She is sorry for Gerard, who was a fool, and sorrier for his mother. "Betrothals have been broken before," she writes. "This one broke itself." Nothing else. It does not need anything else.
   choices:
@@ -104,7 +104,7 @@
   title: A Letter from Wendham
   requires: [ background == burgess ]
   text: |
-    A letter from your father. The war has been good for wool, he writes, and the Lanzi debt is half paid for the first time in three generations. [if flag.p_knows_debt]You have known about that debt since you were eight and listening at the counting-house door. He has never known that you knew.[/if] [if flag.c1_family_refused]He does not mention the pound you did not send. He mentions it by not mentioning it.[/if] He has heard you did well at Hautbois. Everyone in Wendham has heard. He has told them.
+    A letter from your father. The staple has been shut for two years, he writes, and the wool is rotting in the barns waiting for Vervais, and the Lanzi debt has grown by a third. He writes it the way he writes a price, without complaint. [if flag.p_knows_debt]You have known about that debt since you were eight and listening at the counting-house door. He has never known that you knew.[/if] [if flag.c1_family_refused]He does not mention the pound you did not send. He mentions it by not mentioning it.[/if] He has heard you came back from Grisolles. Everyone in Wendham has heard. He has told them.
   choices:
     - id: write
       text: Write back, and tell him something he can tell the council.
@@ -166,7 +166,7 @@
   requires: [ { any: [ flag.c1_lanzi_debt, flag.c2_lanzi_loan ] } ]
   # Sir Hamon's Lanzi debt (c1_hamon_lanzi) is his, not yours, but the bank remembers who brokered it.
   text: |
-    A clerk from the Lanzi house in Newtown, polite, with a ledger. [if flag.c1_hamon_lanzi]He mentions, in passing, that Sir Hamon Darrell's loan, which you brokered, is also in arrears.[/if] Your loan is due. [if counter.lanzi_debt >= 20]Twenty pounds and the interest, which is another eight.[else]The principal and the interest, which is more than you remember agreeing to.[/if]
+    A clerk from the Lanzi house in Sauvemer, polite, with a ledger. [if flag.c1_hamon_lanzi]He mentions, in passing, that Sir Hamon Darrell's loan, which you brokered, is also in arrears.[/if] Your loan is due. [if counter.lanzi_debt >= 20]Twenty pounds and the interest, which is another eight.[else]The principal and the interest, which is more than you remember agreeing to.[/if]
   choices:
     - id: pay
       text: Pay it, all of it.

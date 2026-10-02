@@ -560,37 +560,70 @@ The user's verdict on the calibration scenes: too long-winded. The revised direc
 
 **Span:** spring of year 21 to spring of year 26, ages 20 to 25.
 
-### Shape
-1. **Saltcombe.** Form the following:
-   - master's archers, a man from home, hired veterans, or go alone;
-   - Davy Ludd is always there as squire or page.
-2. **The crossing.** Storm.
-3. **Port-Haudry.** An opposed landing, the first fight.
-4. **The Duchess of Armance's camp.**
-5. **The burning march.**
-   - Set your stance: orders, spare, or let the men keep what they take.
-   - Bréval, the first war-crime decision: burn as ordered, ransom, stop the assault behind the church, or let the men sack it.
-   - The foragers' fight.
-   - Vaudrey: storm and sack. Raoul de Corbie is taken by you or by Giles. His sister Héloïse comes to treat (romance #7).
-6. **Battle 1: forcing the ford of the Sorre** at low tide.
-7. **The eve of Hautbois.** The King knights men in the line.
-8. **Battle 2: Hautbois.** Four rounds:
-   - the rain and the wet crossbows;
-   - the first charge;
-   - the long afternoon: the duke's ransom, or saving a friend, or holding the line;
-   - dusk.
+### Shape (revised 2026-10-02: the war of the staple)
+The first skeleton was a string of Adalian victories modelled too closely on 1346-47. The revised war is original to this world and costly for Adalia. **The King's plan has three legs, and two of them fail:**
+- **The Armance:** land in the Armance as the Duchess's ally. This one holds.
+- **Vervais:** the weaving towns, starved of wool by the King's embargo at the Saltcombe staple, have sworn to rise. This leg fails.
+- **The Ostmark:** the Margrave, bought with Sarenzan money, is to invade from the east. This leg fails.
 
-   Then the field and the count, field knighting for a deed, and the victory feast (Lady Alys Fane, romance #6).
-9. **The siege of Sauvemer**, about eleven months:
-   - Newtown;
-   - the Lanzi house (Fiammetta, romance #8);
-   - unpaid men in winter;
-   - the night sortie;
-   - the useless mouths: let them through, petition the Queen, share bread, or obey (Dame Clémence, romance #9);
-   - the relief army that does not fight;
-   - the surrender and the six burghers.
-10. **The truce.** Garrison, the Armance castles, or Pryce's company. Then garrison life, the Iron Company, the one trip home, and Ravell in passing.
-11. **The King's grants** at Michaelmas: the manor of **Ormel**, with ceremonial knighting if he is not yet knighted. Then news of the great mortality, and the end: arrival at Ormel as its bell tolls for the first death.
+**The war, in order:**
+1. **Saltcombe.** Form the following: master's archers, a man from home, hired veterans, or go alone. Davy Ludd is always there.
+2. **The crossing.** A storm scatters the fleet; the siege timber is lost.
+3. **Port-Haudry.** The town is the Duchess's, but the castle above it is not. The landing is contested and costs men.
+4. **The Duchess of Armance's camp.** The three-legged plan is explained.
+5. **The march east** through King Amaury's own lands, sparing the Duchess's and Vervais:
+   - set your stance;
+   - Bréval;
+   - the foragers' fight;
+   - Vaudrey, taken by night through a gate a dyer opens and stripped in one night. Corbie is taken; Héloïse treats for him (romance #7).
+6. **The Lisonne.** Vervais has not risen. Duke Lothaire hanged the guild masters after King Amaury bought him with ten years of salt-tithe remission. The Margrave has not marched. The army turns back.
+7. **Battle 1: Grisolles, a defeat.** The Constable catches the army crossing the Aube by one bridge in a mist, with men-at-arms on foot and crossbows behind pavises.
+   - The rearguard is overrun and the bridge is broken behind it.
+   - Losses: 1,800 men, the baggage, the pay chest, the King's plate.
+   - Lord Ravell is taken. The master is taken unless saved (Hamon dies in captivity).
+   - His choices decide what he saves: his men, the baggage, his master, a friend, three hundred men by the ford.
+   - A rare knighting by the Earl of Carrow in the rain.
+8. **The retreat** to the Armance, harried by the Iron Company in Valdrennish pay.
+9. **Winter at Lannec.**
+   - No pay, because the chest was lost.
+   - Caldmoor crosses the March under the Old Bond. The King goes home with a third of the army.
+   - The Lanzi house (Fiammetta, romance #8).
+10. **Sauvemer**, from summer year 22 to autumn year 23:
+    - the King returns with Moot money bought with a promise on the wool;
+    - **the storm of the breach fails** against a retrenchment;
+    - the burial truce (Dame Clémence, romance #9);
+    - a second winter of flux, with Varesco galleys running the blockade;
+    - the mine and the countermine;
+    - the night sortie.
+11. **Battle 2 (major): Les Salines.** The relief host is better than twice the Adalian strength. The King fights on the salt pans in front of the town.
+    - The Valdrennish come along the causeways on foot. The garrison sallies into the Adalian rear. The King's banner falls.
+    - The Duchess's lances save the day.
+    - Vervais stands aside and never says why. The reason is seeded for Ch3.
+    - The Valdrennish withdraw in good order. Adalia holds the field, losing a fifth of its army.
+12. **The surrender of Sauvemer on terms.** He can carry the terms between the council and Dame Clémence. Nobody is hanged.
+13. **Christmas at Sauvemer.** Lady Alys Fane, romance #6.
+14. **The Lenders' Truce.**
+    - The Lanzi and Varesco stop lending to both kings in the same week, and Cardinal Brancale brokers the truce.
+    - Adalia keeps Sauvemer. The wool goes back to Vervais.
+    - **The Armance is abandoned.**
+15. **The truce years.** Garrison, the Iron Company, the one trip home, and Ravell ruined by its lord's ransom.
+16. **The grants.** Ormel, with ceremonial knighting.
+17. **The Mottle**, the great mortality, arriving from the east. The end.
+
+**Pacing:** 20 seasons in all. The date changes at almost every main beat, so the five years read as five years.
+
+**Removed as too close to the Hundred Years' War:**
+- the tidal ford;
+- the windmill hill;
+- the wet crossbow strings;
+- the fifteen charges;
+- "the unfortunate King";
+- the useless mouths;
+- the six burghers and the Queen's mercy;
+- Newtown;
+- the bubo description of the plague.
+
+**Partials are mixed wins.** No partial outcome in the new Ch2 battles gives a serious wound, so a partial never sets up a death in the next scene.
 
 ### Systems added
 - **Retinue:** `join`/`leave`, loyalty, and the `retinue` count. The `casualties` effect kills unnamed men and random named followers, and can spare named people such as Davy.
@@ -612,17 +645,18 @@ Ch2 reads 28 more Ch1 and prologue flags. Examples:
 
 The 33 not yet read are marked `later: ch3`.
 
-### Balance through the end of Ch2 (bot, 200 runs per cell)
+### Balance through the end of Ch2 (bot, 200 runs per cell, after the revision)
 | Policy | Knighted in Ch1/Ch2, not ceremonially | Dead |
 |---|---|---|
-| Martial | 83-96% | 5-17% |
-| Cunning | 86-91% | 2-7% |
-| Diplomacy | 72-89% | 3-7% |
-| Wealth | 75-85% | 6-17% |
-| Random | 65-84% | 7-17% |
+| Martial | 79-96% | 4-18% |
+| Cunning | 69-84% | 0-7% |
+| Diplomacy | 42-53% | 3-8% |
+| Wealth | 32-49% | 8-13% |
+| Random | 29-39% | 8-18% |
 
-- Deaths cluster at the first charge at Hautbois, Thorne Hall and the trial by combat.
-- Every death follows a marked mortal-danger choice taken unarmoured or seriously wounded.
+- Knighthood in the war needs a deed plus a large name. The thresholds are renown 10 at Grisolles, 11 for the eve route without a sponsor, and 12 in the field at Les Salines.
+- Cautious and diplomatic players mostly reach the ceremonial knighting at the grants.
+- Deaths cluster at the Ch1 crises, the rout at Grisolles, and the King's banner at Les Salines.
 
 ## Decisions log
 | Date | Decision |
@@ -636,4 +670,5 @@ The 33 not yet read are marked `later: ch3`.
 | 2026-10-01 | Phase 2 built: prologue and Chapter 1. See Phase 2 notes. |
 | 2026-10-01 | Writing direction revised: tighter prose with Continue pages, branching over length, butterfly effect, approximate word goals, date header on change only, friends as semi-companions, partial = mixed win, People/World pages. Ch2 skeleton next, then deepen all. |
 | 2026-10-01 | Ch2 design decisions 1-11 recorded (see Chapter 2 decisions). Writing depth: target 400-500k words; prologue and Ch1 to be deepened before Ch2 (see Writing depth). |
+| 2026-10-02 | Ch2 war revised: original campaign (staple, Vervais, Grisolles defeat, failed breach, Les Salines held not won, Lenders' Truce, Armance abandoned); harder knighting; partials never deal serious wounds; debug Rewind added. |
 | 2026-10-01 | Phase 3 review decisions: 9a, 11c, 12c, 14b, 13a. Historical items kept, except champion (15, replaced) and the Sweat (17, renamed). See Phase 3 review changes. |

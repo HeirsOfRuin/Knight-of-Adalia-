@@ -37,6 +37,14 @@ describe('effects', () => {
     expect(s.traits).toContain('scarred_face');
     expect(x.changes.join('|')).toMatch(/healed/);
   });
+  it('loyalty only touches men in the following', () => {
+    const s = game('reeve');
+    const x = ctx();
+    applyEffects(s, c, fx({ join: 'jankin_rooke' }, { add: { 'rel.jankin_rooke.loyalty': 2, 'rel.perkin_dyer.loyalty': 2 } }), x);
+    expect(s.npcs.jankin_rooke!.loyalty).toBe(2);
+    expect(s.npcs.perkin_dyer?.loyalty ?? 0).toBe(0);
+    expect(x.changes.join('|')).not.toMatch(/Perkin/);
+  });
   it('queues events with their origin', () => {
     const s = game();
     applyEffects(s, c, fx({ queue: { event: 't_q_odo', delay: { seasons: 2 } } }), ctx());

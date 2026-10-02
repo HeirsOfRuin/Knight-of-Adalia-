@@ -1,52 +1,61 @@
-# Chapter 2, part 4: the truce, Sauvemer garrison, home, and the grants.
-# Autumn year 22 to spring year 25. Ages 21-24.
+# Chapter 2, part 5: the Lenders' Truce, the Sauvemer garrison, home, and the grants.
+# Spring year 24 to spring year 26. Ages 23-25.
+# Neither king won. The banks stopped lending, and the war stopped with them.
 
 - id: c2_truce
   chapter: ch2
-  title: The Truce of Saint-Lys
+  title: The Lenders' Truce
   checkpoint: true
   on_enter: [ { advance: { seasons: 1 } }, { meet: orsino_brancale } ]
   text: |
-    The Pontiff's legate, Cardinal Orsino Brancale, a soft-spoken Sarenzan with a merchant's eyes, has been riding between the two kings since Hautbois. In the autumn he gets what he wants: a truce, for three years, sealed at Saint-Lys. Sauvemer stays Adalian. Everything else is to be argued about later.
+    The war does not end because anyone wins it. It ends because the money stops.
 
-    Half the army goes home. The rest stays, to garrison Sauvemer and the castles the King has taken in the Armance, and to be paid even more slowly than before.
+    In Lent, the Lanzi house tells King Aldred that it will lend him nothing more until he treats. In the same week, the Varesco house tells King Amaury the same thing, in almost the same words. Neither king can pay his army for another summer without them. The Signory of Sarenza has lent too much to both to let either one win, or lose.
 
     [break]
 
-    Your master's choice is made for him. Yours is not, quite.
+    The Pontiff's legate, Cardinal Orsino Brancale, a soft-spoken Sarenzan with a merchant's eyes, rides between the two courts with the bankers' letters in his saddlebag. At Saint-Lys, at Lady Day, he gets his truce: three years. Sauvemer and its marshes stay Adalian. The prisoners of Grisolles and Les Salines are to be ransomed at rates the bankers will fix. The wool goes back to Vervais, as the Moot was promised.
+
+    And the Armance is not mentioned at all. The Duke of Armance stays in his Valdrennish prison. The Duchess, who came along the beach at Les Salines with everything she had left, is left to make her own peace with King Amaury, or not.
+
+    [if flag.c2_jehanne_message]You never did get the chance to give the King her message. It would not have mattered.[/if]
+
+    [break]
+
+    Half the army goes home. The rest stays, to garrison Sauvemer and its march, and to be paid even more slowly than before.
   choices:
     - id: garrison
       text: Stay with the garrison in Sauvemer. That is where the King's grants will be given, when they are given.
       tags: [cunning]
-      text_after: "You take a house in the Rue des Tanneurs with your men: two rooms, a yard, a well, and neighbours who will not look you in the eye. Sauvemer is yours now, in a sense. It does not feel like it."
+      text_after: "[if flag.c2_took_house]You keep the merchant's house in the Rue des Tanneurs, with its yard and its well and the last of its wine.[else]You take a house in the Rue des Tanneurs with your men: two rooms, a yard, a well, and neighbours who will not look you in the eye.[/if] Sauvemer is the King's now, and in a sense yours. It does not feel like it."
       effects: [ { set: flag.c2_garrison } ]
       next: { pool: c2_camp, count: 2, then: c2_garrison_life }
     - id: march
-      text: Go with the companies sent to hold the castles of the Armance.
-      tags: [martial]
-      text_after: The Armance castles are small, cold and surrounded by people who hate you less than the Sauvemer people do, because the Duchess is on your side. The Duchess remembers you, or says she does.
+      text: Go with the few companies the King leaves to help the Duchess hold the Armance.
+      tags: [martial, piety]
+      text_after: It is not the King's war any more, and everyone knows it. The King sends two hundred men to the Armance so that he can say he sent someone. The castles are small, cold, and short of everything, and the Duchess's people look at the Adalians the way you look at a friend who has lied to you. The Duchess remembers you, or says she does. She does not mention the truce. She does not have to.
       effects: [ { set: flag.c2_armance_castles }, { add: { rel.jehanne_armance.respect: 1, rep.valdrenne: 1 } } ]
       next: { pool: c2_camp, count: 2, then: c2_garrison_life }
     - id: pryce
       text: Take service with Sir Walter Pryce, who is keeping a company in the field through the truce, for pay.
       tags: [wealth]
       text_after: |
-        [if flag.c1_pryce_knows]Sir Walter mentions, pleasantly, the night you burned a page of the commissioners' roll. He does not mention it again. He does not have to.[/if] A truce is only a truce for kings. Sir Walter's company rides the border country all through it, collecting protection money from villages that cannot say no. The pay is good. The work is not work you will tell anyone about.
+        [if flag.c1_pryce_knows]Sir Walter mentions, pleasantly, the night you burned a page of the commissioners' roll. He does not mention it again. He does not have to.[/if] [if flag.c2_took_thibaut]Sir Walter does not mention Thibaut de Brésy either, whose ransom went to you and not to him.[elif flag.c2_pryce_took_thibaut]Sir Walter is rich now, on Thibaut de Brésy's ransom, and has used the money the way he uses everything: to make more.[/if] A truce is only a truce for kings. Sir Walter's company rides the border country all through it, collecting protection money from villages that cannot say no. The pay is good. The work is not work you will tell anyone about.
       effects: [ { set: flag.c2_pryce_company }, { add: { res.coin: 360, rep.ruthlessness: 2, rel.walter_pryce.affection: 2 } } ]
       next: { pool: c2_camp, count: 2, then: c2_garrison_life }
 
 - id: c2_garrison_life
   chapter: ch2
   title: The Garrison
-  on_enter: [ { advance: { seasons: 4 } } ]
+  on_enter: [ { advance: { seasons: 1 } } ]
   text: |
     A truce is a strange thing to live in. You are a conqueror in a conquered country, which sounds grand. In fact it is boredom, cold, short pay, and the feeling of being watched.
 
-    The Sauvemer people have not forgiven the siege and will not, in your lifetime. The Adalian garrison drinks, gambles, marries local girls who would rather not, quarrels with the townsmen, and sometimes kills one. The townsmen sometimes kill one back. Every month there is a hanging.
+    The Sauvemer people have not forgiven the siege and will not, in your lifetime. [if flag.c2_terms_carried]They have not forgotten the terms either, or who carried them across the ditch.[/if] The Adalian garrison drinks, gambles, marries local girls who would rather not, quarrels with the townsmen, and sometimes kills one. The townsmen sometimes kill one back. Every month there is a hanging.
 
     [break]
 
-    Your following has changed since Saltcombe. [if retinue >= 4]It is bigger: men drift to a captain who pays.[elif retinue <= 1]It is smaller: men drift away from a captain who does not.[else]Some faces are new. Some are gone.[/if] Davy Ludd is nearly eighteen and taller than you. [if npc.roger_tallis.follower]Tallis has found a Valdrennish widow in the Rue des Tanneurs and is talking about staying for good.[/if]
+    Your following has changed since Saltcombe. [if retinue >= 4]It is bigger: men drift to a captain who pays.[elif retinue <= 1]It is smaller: the war and the flux have seen to that.[else]Some faces are new. Some are gone.[/if] Davy Ludd is seventeen and taller than you. [if npc.roger_tallis.follower]Tallis has found a Valdrennish widow in the Rue des Tanneurs and is talking about staying for good.[/if]
 
     You have time, for the first time in years, to choose what to do with it.
   choices:
@@ -92,15 +101,15 @@
 - id: c2_iron_company
   chapter: ch2
   title: The Iron Company
-  on_enter: [ { advance: { seasons: 3 } }, { meet: ulric_rotbart } ]
+  on_enter: [ { advance: { seasons: 2 } }, { meet: ulric_rotbart } ]
   text: |
-    In the second summer of the truce the Iron Company comes over the eastern border: eight hundred Hroswald mercenaries under a captain called Ulric Rotbart, whom both kings paid during the war and neither king is paying now.
+    In the first winter of the truce the Iron Company comes west: eight hundred Hroswald mercenaries under Ulric Rotbart, who rode behind the army all the way back from Grisolles and stood on the heights at Les Salines, and whom King Amaury has stopped paying now that he has no war to pay them for.
 
     A free company without a war is a plague with a banner. It takes a village a week and a town a month. The Valdrennish crown will not fight it, because it might be useful later. The Adalian garrison will not fight it, because there is a truce.
 
     [break]
 
-    It comes into the march country behind Sauvemer, and the villages there, which were burned once by you, are burned again by them. A delegation of their headmen comes to the garrison to ask the Adalians for protection, since the Adalians are now their lords. The garrison captain laughs at them.
+    It comes into the march country behind Sauvemer, and the villages there, which were stripped once by the siege, are stripped again by them. A delegation of their headmen comes to the garrison to ask the Adalians for protection, since the Adalians are now their lords. The garrison captain laughs at them.
 
     They come to you next.
   choices:
@@ -165,11 +174,11 @@
 - id: c2_home_choice
   chapter: ch2
   title: A Ship for Saltcombe
-  on_enter: [ { advance: { seasons: 3 } } ]
+  on_enter: [ { advance: { seasons: 1 } } ]
   text: |
-    In the spring of the third year of the truce, a ship sails from Sauvemer for Saltcombe with the garrison's letters, and a few places for men on leave.
+    In the spring of the second year of the truce, a ship sails from Sauvemer for Saltcombe with the garrison's letters, and a few places for men on leave.
 
-    You have been away for three years. You have letters from home that are a year old. [if retinue >= 3]Your men will keep, if Tallis or someone you trust is in charge.[/if] The passage costs a pound. The journey home and back will take the whole summer.
+    You have been away for four years. You have letters from home that are a year old. [if retinue >= 3]Your men will keep, if Tallis or someone you trust is in charge.[/if] The passage costs a pound. The journey home and back will take the whole summer.
 
     The King's grants for the conquered lands are to be decided at Michaelmas, in Sauvemer. A man who is away when grants are decided is easy to forget.
   choices:
@@ -193,11 +202,13 @@
   text: |
     Everything at home is smaller than you remember it.
 
-    [if background == reeve]Ashby is the same thirty-one households, the same church, the same mill. [if flag.c1_father_exposed]Your father is not reeve any more. He lives with your mother in the end cottage by the common, the one that used to be the Cokers'.[else]Your father is greyer and slower and still reeve. He stands in the lane when you ride in and does not move until you have dismounted, and then he holds you by both shoulders and looks at you for a long time.[/if] [if suit.mag_coker.status != lost]Mag Coker is still at the well. She is not married.[/if][elif background == burgess]Wendham is louder and dirtier and richer: the war has been good for wool. Your father has a new gown and a new seat on the council. He introduces you to everyone as "my son the soldier", and you discover that you do not mind. [if suit.annot_dyer.status != lost]Annot Dyer is still at the vats.[/if][elif background == archer]Your father's cottage has a new roof, which you paid for with Hautbois money and did not know he had used for that. He is thinner. He can barely walk to the butts now. He goes anyway, every Sunday, and makes you shoot with him. [if suit.mariot_wood.status != lost]Mariot Wood comes to watch.[/if][else]Ravell Hall is the same, and the faces are not. Hob Crane is dead. Master Ranulf is half blind. [if flag.p_mother_dismissed]Your mother is in Wendham, in a room you are paying for.[else]Your mother is still Lady Ravell's tirewoman, and still straightens your collar.[/if] [if suit.nell_laundress.status != lost]Nell is in the dairy now, and has a child that is not yours, and is not married.[/if][/if]
+    [if background == reeve]Ashby is the same thirty-one households, the same church, the same mill. [if flag.c1_father_exposed]Your father is not reeve any more. He lives with your mother in the end cottage by the common, the one that used to be the Cokers'.[else]Your father is greyer and slower and still reeve. He stands in the lane when you ride in and does not move until you have dismounted, and then he holds you by both shoulders and looks at you for a long time.[/if] [if suit.mag_coker.status != lost]Mag Coker is still at the well. She is not married.[/if][elif background == burgess]Wendham is quieter and shabbier: the staple was shut for three years, and the wool sat in the barns waiting for Vervais. It is moving again now, and the town is drunk with relief. Your father has an old gown and a new seat on the council, because half the old council went bankrupt. He introduces you to everyone as "my son the soldier", and you discover that you do not mind. [if suit.annot_dyer.status != lost]Annot Dyer is still at the vats.[/if][elif background == archer]Your father's cottage has a new roof, which you paid for with money sent home from Sauvemer and did not know he had used for that. He is thinner. He can barely walk to the butts now. He goes anyway, every Sunday, and makes you shoot with him. [if suit.mariot_wood.status != lost]Mariot Wood comes to watch.[/if][else]Ravell Hall is the same, and the faces are not. Hob Crane is dead. Master Ranulf is half blind. [if flag.p_mother_dismissed]Your mother is in Wendham, in a room you are paying for.[else]Your mother is still Lady Ravell's tirewoman, and still straightens your collar.[/if] [if suit.nell_laundress.status != lost]Nell is in the dairy now, and has a child that is not yours, and is not married.[/if][/if]
 
     [break]
 
-    [if flag.c1_coll_hanged]There is other news. In the second winter of the war, Black Ewan came over the border while the army was in Valdrenne. He burned four steadings in the March and asked, at every one, for a man with your name.[/if]
+    The March is quiet now, the way a burned field is quiet. When the Caldmoor host crossed in the first winter of the war, the Marcher lords held the towers and the King came north with what he had brought home from Valdrenne, and in the spring the regent went back over the Leven with his cattle and his plunder and nothing else. Everyone at home calls it a victory. Nobody in the March does.
+
+    [if flag.c1_coll_hanged]Black Ewan rode ahead of the Caldmoor host that winter. He burned four steadings in the March and asked, at every one, for a man with your name.[/if]
   choices:
     - id: family
       text: Spend the summer with your family.
@@ -243,7 +254,9 @@
   text: |
     On the way back to Saltcombe you stop at Ravell, because everyone stops at Ravell.
 
-    [if npc.hamon_darrell.alive && !flag.c1_hamon_fell]Sir Hamon is there, too old for the war now, living on what is left of Ashby. He feeds you until you cannot move and asks about Hautbois four times, and each time listens as if it were the first.[elif flag.c1_hamon_fell]Sir Hamon is dead. He died at Ambry in the second winter, among the canons, and left you his hounds in a will nobody could find. The canons kept the hounds.[/if]
+    [if flag.c2_ravell_taken]Lord Ravell came home at Lady Day, after nearly three years in a Valdrennish castle. The ransom has stripped the household to the walls: the plate, the best horses, two manors mortgaged to the Lanzi, half the hangings in the hall. He is thinner and greyer and does not ride out any more. Lady Ravell runs everything now, as she always did, but openly.[/if]
+
+    [if npc.hamon_darrell.alive && !flag.c1_hamon_fell]Sir Hamon is there, home from the war, living on what is left of Ashby. He feeds you until you cannot move and asks about Les Salines four times, and each time listens as if it were the first.[elif flag.c1_hamon_fell]Sir Hamon is dead. He died at Ambry in the second winter of the war, among the canons, and left you his hounds in a will nobody could find. The canons kept the hounds.[elif flag.c2_master_taken]Sir Hamon is dead, in a Valdrennish prison, in the first winter. They sent his sword home. It hangs in Ashby church, over a grave with nobody in it.[/if]
 
     [if suit.isabel_sayer.status >= courted][if flag.c2q_isabel_married]Isabel Sayer is not at Ravell any more. She married the widowed knight from Hollesby, as her father wanted.[else]Isabel Sayer is still with Lady Ravell. She sees you across the inner ward and stops walking.[/if][/if]
   choices:
@@ -274,9 +287,9 @@
 
     [break]
 
-    [if flag.c2_ceremonial_knight]Before the grants are read, the King knights eleven men for their service in the war, all at once, quickly, in the hall. You are one. You have not won your spurs in any single moment. You have won them by being there, all of it, for four years. Some knights will say that is not the same. Some will say it is the only kind that counts.[/if]
+    [if flag.c2_ceremonial_knight]Before the grants are read, the King knights eleven men for their service in the war, all at once, quickly, in the hall. You are one. You have not won your spurs in any single moment. You have won them by being there, all of it, for four years: Grisolles, the breach, the salt. Some knights will say that is not the same. Some will say it is the only kind that counts.[/if]
 
-    Then the clerk reads your name, and the name of a place: **Ormel**. A manor in the marsh country behind Sauvemer. A village, a mill, a church, some salt pans, three hundred acres that flood every winter, and two hundred people who watched you besiege their town.
+    Then the clerk reads your name, and the name of a place: **Ormel**. A manor in the marsh country behind Sauvemer. A village, a mill, a church, some salt pans, three hundred acres that flood every winter, and two hundred people who watched you besiege their town. [if flag.c2_fought_iron]They have seen you since, in the marshes, fighting the Iron Company for them.[elif flag.c2_refused_villages]They have seen you since, sending their headmen away.[/if]
   choices:
     - id: accept
       text: Kneel, and do homage for Ormel.
@@ -293,10 +306,11 @@
         audience: nobles
         mods:
           - { if: res.renown >= 10, add: 2, label: your name }
-          - { if: flag.c2_took_duke, add: 2, label: the Duke of Orbec }
+          - { if: flag.c2_took_thibaut, add: 2, label: the Constable's son }
+          - { if: flag.c2_saved_banner, add: 2, label: the King's banner at Les Salines }
           - { if: flag.strong_patron, add: 1, label: your patron speaks for you }
           - { if: flag.c1_ravell_owed, add: -1, label: Lord Ravell reminds the council you are in his debt }
-          - { if: flag.c2_saved_burghers, add: -1, label: the King has not forgotten the six burghers }
+          - { if: flag.c2_spoke_for_town || flag.c2_terms_carried, add: -1, label: the council thinks you soft on the Valdrennish }
           - { if: flag.c1_caught_spy, add: 1, label: the spy you caught }
       success:
         text: The King's chamberlain looks at the King, and the King looks at you, and something in your record makes him smile. Ormel, and the salt rights of the whole marsh behind it, and the fishery. It doubles what Ormel is worth. Nobody else in the hall gets more than he was given. Several people notice.
@@ -314,7 +328,7 @@
   text: |
     That winter the Sarenzan galleys come into Sauvemer harbour late, and fewer of them, and the sailors bring a story.
 
-    In the south, they say, in the ports of the Midsea, there is a sickness. It begins with a swelling under the arm or in the groin, black, the size of an egg. Then fever, then blood, then death, in three days, sometimes in one. In Sarenza itself, they say, the dead are being buried in trenches because there are no more graves. In one city a third of the people are dead. In another, half.
+    In the east, they say, beyond the Midsea, there is a sickness that came off a caravan. Now it is in the Midsea ports. It begins with a cough and a fever, and then the skin goes mottled, grey and dark like a bruise that spreads, and then the cough brings up blood. Three days. Sometimes one. The sailors call it the Mottle. In Vellagio, they say, the Signory has shut the gates and nobody goes in or out, and the bells have stopped because there is nobody left to ring them.
 
     [break]
 
@@ -347,7 +361,7 @@
   title: Ormel
   on_enter: [ { advance: { seasons: 1 } } ]
   text: |
-    In the spring you ride out of Sauvemer by the land gate, the one the useless mouths came out of, with your banner and your following and the King's writ, along the dunes and across the marsh to Ormel.
+    In the spring you ride out of Sauvemer by the land gate, the one Dame Clémence carried the keys out of, with your banner and your following and the King's writ, along the dunes and across the marsh to Ormel.
 
     [if retinue >= 4]Behind you ride the men who have followed you through the war, or the ones who are left.[elif retinue >= 1]Behind you ride the few who are left.[else]You ride alone, with Davy, if Davy is still with you.[/if] [if npc.davy_ludd.alive && npc.davy_ludd.follower]Davy carries your banner. He is a man now.[/if]
 

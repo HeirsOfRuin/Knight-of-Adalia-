@@ -36,6 +36,8 @@ steps:
   c2_march: loose
   c2_village: loot
   c2_vaudrey: loot
+  c2_retreat: take
+  c2_lannec_winter: raid
 ending: ch2_complete
 expect:
   - station == lord

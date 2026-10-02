@@ -34,10 +34,11 @@ steps:
   c2_landing: lead!success
   c2_vaudrey: house!success
   c2_corbie: kind
+  c2_lannec_winter: borrow
 ending: ch2_complete
 expect:
   - station == lord
-  - flag.c2_ceremonial_knight || flag.c2_knighted_eve || flag.c2_knighted_field || flag.c2_knighted_siege
+  - flag.c2_ceremonial_knight || flag.c2_knighted_eve || flag.c2_knighted_field || flag.c2_knighted_grisolles
   - flag.c2_took_corbie
   - npc.roger_tallis.follower || !npc.roger_tallis.alive
   - flag.c1_sponsor_promise

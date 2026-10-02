@@ -1,132 +1,437 @@
-# Chapter 2, part 3: the siege of Sauvemer. Autumn year 21 to summer year 22.
+# Chapter 2, part 3: the winter at Lannec and the siege of Sauvemer.
+# Winter year 21 to spring year 23. Ages 20-22.
+# The pay chest was lost at Grisolles. Caldmoor crosses the March. The King
+# comes back with the Moot's money and besieges Sauvemer, and the storm of the
+# breach fails.
 
-- id: c2_sauvemer
+- id: c2_lannec_winter
   chapter: ch2
-  title: Sauvemer
+  title: Winter at Lannec
   checkpoint: true
-  on_enter: [ { meet: enguerrand_vaux } ]
+  on_enter:
+    - advance: { seasons: 1 }
+    - if: [ flag.c2_master_taken, alias.master == hamon_darrell ]
+      then: [ { kill: hamon_darrell } ]
   text: |
-    Hautbois won the King a battle. It did not win him a port, and without a port on this coast the army goes home and Valdrenne forgets it was ever here.
+    The army winters in the Armance, in and around the Duchess's town of Lannec, because there is nowhere else it can go. The Duchess feeds it as long as she can. She cannot for long.
 
-    So in the autumn the army comes to Sauvemer: a walled town on a spit of land between the sea and the marshes, with a double wall, a castle, a harbour full of Valdrennish ships, and a castellan, Sire Enguerrand de Vaux, who sends out a herald to say he has bread for two years and the King of Valdrenne's promise of relief.
+    The pay chest is in a Valdrennish castle with the King's plate. By midwinter no company in the army has been paid since Lammas, and men are selling their armour to Armance farmers for bread.
 
     [break]
 
-    The King does not storm it. He builds a town of his own outside it, of timber and turf: streets, a market, a church, a hall for himself. The men call it Newtown. He means to sit in it until Sauvemer starves.
+    The news from home is worse. Caldmoor has crossed the March under the Old Bond, the moment the King's back was turned: the boy king's regent with six thousand spears, and Black Ewan of Glenhallow riding ahead of them, burning. The King sails for Saltcombe at Christmas with a third of the army, to save his own kingdom and to beg the Moot for money. The rest stay, under the Earl of Carrow, to hold the Armance and wait.
 
-    It is going to be a long winter, and you have men to keep alive through it.
-  choices:
-    - id: dig
-      text: Build your men a proper shelter before the weather turns, turf walls and a good roof.
-      tags: [allies]
-      text_after: It takes a week of everybody's labour and some of your coin. When the gales come in November, half the army is living in sodden tents. Yours are dry. Men notice who thought ahead.
-      effects: [ { set: flag.c2_shelter }, { add: { res.coin: -24, rel.davy_ludd.loyalty: 1, rel.jankin_rooke.loyalty: 1, rel.simkin_barre.loyalty: 1, rel.roger_tallis.loyalty: 1, rel.wat_coker.loyalty: 1, rel.perkin_dyer.loyalty: 1, rel.gib_shawe.loyalty: 1, rel.dickon_laund.loyalty: 1 } } ]
-      next: { pool: c2_camp, count: 1, then: c2_siege_winter }
-    - id: engineers
-      text: Offer yourself to the siege engineers, who need men who can count.
-      tags: [learning]
-      requires: [ trait.literate_vernacular ]
-      label: "Requires: can read"
-      text_after: The King's master engineer, a Sarenzan named Bonifacio, needs someone to reckon timber, stone and men. You learn more about walls in a month than most knights learn in a life. You also learn where Sauvemer's walls are weakest. So does he.
-      effects: [ { set: flag.c2_engineers }, { add: { skill.tactics: 1, skill.stewardship: 1 } } ]
-      next: { pool: c2_camp, count: 1, then: c2_siege_winter }
-    - id: lanzi
-      text: Find the Lanzi bank's house in Newtown. Every army has a banker, and you may need one.
-      tags: [wealth]
-      visible_if: [ { any: [ npc.bertuccio_lanzi.met, background == burgess, flag.c1_lanzi_debt ] } ]
-      text_after: |
-        The Lanzi have taken a timber house on the main street of Newtown, with a strongroom dug under it. The person who runs it is not Bertuccio. It is Matteo Lanzi's daughter, Fiammetta: twenty-four, sharp as a quill, in black like a widow though she is not one. She knows your name before you give it. "[if flag.c1_lanzi_debt]You owe us twenty pounds,[else]You are the one Bertuccio writes about,[/if]" she says. "Sit down. Tell me what an army costs. I have been trying to work it out for a month, and nobody here can count."
-      effects: [ { meet: fiammetta_lanzi }, { assign: { suit.fiammetta_lanzi.status: known } }, { add: { suit.fiammetta_lanzi.regard: 2 } } ]
-      next: { pool: c2_camp, count: 1, then: c2_siege_winter }
-    - id: rest
-      text: Rest. You have earned it.
-      tags: [yield]
-      text_after: You sleep for two days. When you wake up the camp has organised itself without you, and the best places are taken.
-      next: { pool: c2_camp, count: 1, then: c2_siege_winter }
+    [if flag.c2_master_taken && alias.master == hamon_darrell]A letter comes through the heralds in Lent. Sir Hamon Darrell died at Candlemas, a prisoner in the castle of Brésy, of a flux that took a dozen Adalian knights there. They buried him decently, the letter says, and his ransom is cancelled. It is the kind of thing heralds write.[elif flag.c2_master_taken]Your master is a prisoner in the castle of Brésy, with a ransom on his head that his household cannot pay this year, or next.[/if]
 
-- id: c2_siege_winter
-  chapter: ch2
-  title: The Winter Camp
-  on_enter: [ { advance: { seasons: 1 } } ]
-  text: |
-    By midwinter the pay is three months behind.
+    [if retinue >= 3]Your men come to you one cold morning in a body, with [if npc.roger_tallis.follower]Roger Tallis[else]the oldest of them[/if] doing the talking. They are not angry yet. They are counting.[else]Davy asks you, carefully, whether there will be any money this month. His boots have come apart.[/if]
 
-    It is behind in every company. The King's money comes over from Adalia slowly and goes to the great lords first, and they pay their men when they feel like it, and their men pay theirs when they can. At the bottom of the heap, a man in your following has had nothing since Hautbois except what he took there, and most of that he has drunk.
-
-    [break]
-
-    [if retinue >= 3]Your men come to you in a body, one cold morning, with Roger Tallis or the oldest of them doing the talking. They are not angry yet. They are counting.[else]Davy asks you, carefully, whether there will be any money this month. His boots have come apart.[/if]
-
-    The flux is in the camp too. It always is.
+    The Lanzi bank has a house in Lannec. Everybody knows it. It is the only house in the town with a fire in every room.
   choices:
     - id: pay
       text: Pay them out of your own purse, everything that is owed.
       tags: [wealth]
       requires: [ res.coin >= 120 ]
-      text_after: It takes a great deal of what you have. They are paid, all of them, to the penny, and they know which lords in this camp have not paid their own men. Your following becomes something it was not before. Men from other companies start asking whether you need anyone.
+      text_after: It takes a great deal of what you have. They are paid, all of them, to the penny, and they know which lords in Lannec have not paid their own men. Your following becomes something it was not before. Men from other companies start asking whether you need anyone.
       effects:
         - set: flag.c2_paid_men
         - add: { res.coin: -120 }
         - if: retinue >= 4
           then: [ { add: { res.coin: -120 } } ]
         - add: { rel.davy_ludd.loyalty: 2, rel.jankin_rooke.loyalty: 2, rel.simkin_barre.loyalty: 2, rel.roger_tallis.loyalty: 2, rel.wat_coker.loyalty: 2, rel.perkin_dyer.loyalty: 2, rel.gib_shawe.loyalty: 2, rel.dickon_laund.loyalty: 2, res.men: 1 }
-      next: c2_sortie
+      next: c2_sauvemer
     - id: borrow
-      text: Borrow from the Lanzi house to pay them.
+      text: Go to the Lanzi house, and borrow to pay them.
       tags: [wealth, cunning]
-      requires: [ npc.fiammetta_lanzi.met ]
-      label: "Requires: someone at the Lanzi bank"
-      text_after: Fiammetta Lanzi lends against your future ransoms at a rate she calls friendly. It is not friendly. It is cheaper than losing your men. "You see?" she says. "This is what an army costs. Somebody always pays, and it is never the King."
+      text_after: |
+        The person who runs the Lanzi house in Lannec is not a factor. It is Matteo Lanzi's daughter, Fiammetta: twenty-four, sharp as a quill, in black like a widow though she is not one. She knows your name before you give it. "[if flag.c1_lanzi_debt]You owe us twenty pounds already,[elif npc.bertuccio_lanzi.met]You are the one my cousin Bertuccio writes about,[else]You are one of Carrow's,[/if]" she says. "Sit down. Tell me what an army costs. I have been trying to work it out since Grisolles, and nobody here can count."
+
+        She lends against your future ransoms at a rate she calls friendly. It is not friendly. It is cheaper than losing your men. "You see?" she says. "This is what a war costs. Somebody always pays, and it is never the King."
       effects:
         - set: flag.c2_lanzi_loan
-        - add: { counter.lanzi_debt: 10, suit.fiammetta_lanzi.regard: 1, rel.davy_ludd.loyalty: 2, rel.jankin_rooke.loyalty: 2, rel.simkin_barre.loyalty: 2, rel.roger_tallis.loyalty: 2, rel.wat_coker.loyalty: 2, rel.perkin_dyer.loyalty: 2, rel.gib_shawe.loyalty: 2, rel.dickon_laund.loyalty: 2 }
-      next: c2_sortie
+        - meet: fiammetta_lanzi
+        - assign: { suit.fiammetta_lanzi.status: known }
+        - add: { counter.lanzi_debt: 10, suit.fiammetta_lanzi.regard: 3, rel.davy_ludd.loyalty: 2, rel.jankin_rooke.loyalty: 2, rel.simkin_barre.loyalty: 2, rel.roger_tallis.loyalty: 2, rel.wat_coker.loyalty: 2, rel.perkin_dyer.loyalty: 2, rel.gib_shawe.loyalty: 2, rel.dickon_laund.loyalty: 2 }
+      next: c2_sauvemer
     - id: fee
       text: Draw on your fee from Lord Ravell, a year in advance, and pay them from that.
       tags: [allies]
       visible_if: [ flag.c1_ravell_fee ]
-      text_after: Lord Ravell's steward in the camp pays out the year's fee against your seal, with a look that says this is noted. Your men are paid. You will be poorer next year and more Ravell's than ever.
+      text_after: "[if flag.c2_ravell_taken]Lord Ravell's steward in Lannec pays out the year's fee against your seal, with his lord in a Valdrennish prison and eight thousand marks to find. He does not say anything. He does not have to.[else]Lord Ravell's steward pays out the year's fee against your seal, with a look that says this is noted.[/if] Your men are paid. You will be poorer next year and more Ravell's than ever."
       effects:
         - set: flag.c2_paid_men
         - add: { favor.thurstan_ravell: -1, rel.davy_ludd.loyalty: 2, rel.jankin_rooke.loyalty: 2, rel.simkin_barre.loyalty: 2, rel.roger_tallis.loyalty: 2, rel.wat_coker.loyalty: 2, rel.perkin_dyer.loyalty: 2, rel.gib_shawe.loyalty: 2, rel.dickon_laund.loyalty: 2 }
-      next: c2_sortie
+        - if: flag.c2_ravell_taken
+          then: [ { add: { rel.eleanor_ravell.respect: -1 } } ]
+      next: c2_sauvemer
     - id: raid
-      text: Take them out raiding the country behind the town. Let them pay themselves.
+      text: Take them raiding over the border into the Constable's own lands. Let them pay themselves.
       tags: [martial, cunning]
-      text_after: The marsh villages behind Sauvemer have nothing left, so you go further, to the abbeys and granges inland. Your men come back with sheep and silver and a priest's horse. They are paid. The country behind Sauvemer will remember your banner for a generation.
+      text_after: The country east of the Armance belongs to Gaucelin de Brésy, who has your King's plate. It seems fair. You go three times that winter, by night, to granges and mills and a small priory. Your men come back with sheep and silver and a prior's horse. They are paid. The Constable's tenants will remember your banner for a generation.
       effects: [ { set: flag.c2_raided_country }, { trait: +burner }, { add: { rep.ruthlessness: 2, rep.valdrenne: -2, rel.simkin_barre.loyalty: 2, rel.roger_tallis.loyalty: 1, rel.jankin_rooke.loyalty: -1, res.coin: 60 } } ]
-      next: c2_sortie
+      next: c2_sauvemer
     - id: promise
-      text: Tell them the truth, and promise them a share of whatever Sauvemer brings.
+      text: Tell them the truth, and promise them a share of whatever the spring brings.
       tags: [diplomacy]
       check:
         attr: presence
         skill: command
         difficulty: 4
         mods:
-          - { if: flag.c2_shelter, add: 1, label: you kept them dry }
+          - { if: flag.c2_men_brought_out || flag.c2_carried_wounded, add: 1, label: you brought them back from Grisolles }
           - { if: trait.veteran, add: 1, label: they have seen you in a line }
       success:
-        text: They grumble. They stay. A promise from a man who stood with them at Hautbois is worth something, for a while.
+        text: They grumble. They stay. A promise from a man who brought them out of Grisolles is worth something, for a while.
         effects: [ { add: { rel.roger_tallis.respect: 1 } } ]
-        next: c2_sortie
+        next: c2_sauvemer
       failure:
         text: They hear you out. In the morning, two of them are gone, and so is a horse.
         effects: [ { casualties: { men: 1, named: 0 } }, { add: { res.horses: -1 } } ]
+        next: c2_sauvemer
+
+- id: c2_sauvemer
+  chapter: ch2
+  title: Sauvemer
+  on_enter: [ { advance: { seasons: 2 } }, { meet: enguerrand_vaux } ]
+  text: |
+    The King comes back in the summer with four thousand fresh men, a new pay chest, and a face that has aged five years in six months.
+
+    The Moot gave him the money. It made him pay for it. He has sworn before the lords and the shire knights and the burgesses that the wool will go back to Vervais on their terms, not his, the day the war ends. Every man in the army knows it. It means the King has a year, perhaps two, to win something worth the price.
+
+    [break]
+
+    What he chooses is Sauvemer: a walled port on a spit of land between the sea and the salt marshes, two days up the coast from the Armance. Its ships burned the suburbs of Saltcombe in the spring. Its harbour could take a whole fleet. Its castellan, Sire Enguerrand de Vaux, sends a herald out to say he has bread for two years and King Amaury's promise of relief.
+
+    The King does not mean to wait two years. He means to batter a breach and take it by storm before the winter. Everyone has an opinion about whether he can. The engineers say yes. The old soldiers say nothing.
+  choices:
+    - id: dig
+      text: Build your men a proper shelter on the dunes before the weather turns.
+      tags: [allies]
+      text_after: It takes a week of everybody's labour and some of your coin. Turf walls, a sailcloth roof, a drain. Other companies laugh. When the autumn gales come, half the army is living in sodden tents. Yours are dry. Men notice who thought ahead.
+      effects: [ { set: flag.c2_shelter }, { add: { res.coin: -24, rel.davy_ludd.loyalty: 1, rel.jankin_rooke.loyalty: 1, rel.simkin_barre.loyalty: 1, rel.roger_tallis.loyalty: 1, rel.wat_coker.loyalty: 1, rel.perkin_dyer.loyalty: 1, rel.gib_shawe.loyalty: 1, rel.dickon_laund.loyalty: 1 } } ]
+      next: { pool: c2_camp, count: 1, then: c2_assault }
+    - id: engineers
+      text: Offer yourself to the siege engineers, who need men who can count.
+      tags: [learning]
+      requires: [ trait.literate_vernacular ]
+      label: "Requires: can read"
+      text_after: The King's master engineer, a Sarenzan named Bonifacio, needs someone to reckon timber, stone and men. You learn more about walls in a month than most knights learn in a life. You learn where Sauvemer's walls are weakest. You also learn that Bonifacio does not think the breach at the Tanners' Tower will be ready by Michaelmas, and that the King has told him it will be.
+      effects: [ { set: flag.c2_engineers }, { add: { skill.tactics: 1, skill.stewardship: 1 } } ]
+      next: { pool: c2_camp, count: 1, then: c2_assault }
+    - id: lanzi
+      text: Find the Lanzi house in the siege camp. Every army has a banker.
+      tags: [wealth]
+      visible_if: [ { not: suit.fiammetta_lanzi.status >= known } ]
+      text_after: |
+        The Lanzi have followed the army up the coast and taken a timber house in the siege camp with a strongroom dug under it. The person who runs it is Matteo Lanzi's daughter, Fiammetta: twenty-four, sharp as a quill, in black like a widow though she is not one. "[if flag.c1_lanzi_debt]You owe us twenty pounds,[elif npc.bertuccio_lanzi.met]You are the one Bertuccio writes about,[else]You are one of Carrow's,[/if]" she says. "Sit down. Tell me what an army costs. I have been trying to work it out since Grisolles, and nobody here can count."
+      effects: [ { meet: fiammetta_lanzi }, { assign: { suit.fiammetta_lanzi.status: known } }, { add: { suit.fiammetta_lanzi.regard: 2 } } ]
+      next: { pool: c2_camp, count: 1, then: c2_assault }
+    - id: rest
+      text: Rest. You have earned it.
+      tags: [yield]
+      text_after: You sleep for two days. When you wake up the camp has organised itself without you, and the best places on the dunes are taken.
+      next: { pool: c2_camp, count: 1, then: c2_assault }
+
+- id: c2_assault
+  chapter: ch2
+  title: The Breach
+  checkpoint: true
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    By Michaelmas the Tanners' Tower is a heap of rubble with a ramp up the middle of it, and the King orders the storm.
+
+    It is to go in at dawn, at low tide, when the ditch is mud and not water. Five hundred men-at-arms up the rubble, with the archers shooting over their heads to keep the defenders down, and ladders at the curtain wall on either side to draw men away from the breach.
+
+    [break]
+
+    [if flag.c2_engineers]Bonifacio finds you the night before, white in the face. "They have built a wall behind it," he says. "Behind the breach. A new wall, earth and timber, with a ditch. I saw it from the mast of a ship. Nobody will listen to me." You believe him.[elif flag.c2_heard_council]You hear the Marshal arguing with the King again, outside the pavilion, after dark. The Marshal loses.[else]There are rumours that the defenders have been working behind the breach every night. There are always rumours.[/if]
+
+    At dawn the trumpets go.
+  choices:
+    - id: breach
+      text: Go up the rubble with the storming party.
+      tags: [martial]
+      lethal: true
+      warn: The first men up a breach mostly die there. Without armour, or carrying a wound, you will be one of them.
+      check:
+        attr: strength
+        skill: arms
+        difficulty: 5
+        mods:
+          - { if: armour >= 2, add: 2, label: your harness }
+          - { if: armour == 1, add: 1, label: your jack }
+          - { if: trait.veteran, add: 1, label: you have done hard things before }
+          - { if: flag.c2_engineers, add: 1, label: you know what is behind it }
+      success:
+        text: |
+          You get to the top of the rubble. You see it: the new wall, twenty paces back, with a ditch in front and crossbowmen along the top, and the whole space between a killing ground. The men in front of you go down into the ditch and do not come up.
+
+          You do not go down into the ditch. You get the men around you down the rubble again, alive, carrying two who cannot walk. It is the only thing anyone does right that morning. The heralds put your name in the roll of the storming party who came back. It is a short roll.
+        effects: [ { set: flag.c2_breach_survived }, { add: { res.renown: 2, rep.knights: 1 } }, { trait: +veteran } ]
+        next: c2_burial_truce
+      partial:
+        text: You get to the top, and see the new wall behind the breach, and a crossbow bolt takes you through the meat of the shoulder while you are looking at it. Your men drag you down the rubble. Not all of them come back down it.
+        effects: [ { set: flag.c2_breach_survived }, { injury: arrow_wound }, { casualties: { men: 1, named: 1, spare: [ davy_ludd ] } }, { add: { res.renown: 1 } } ]
+        next: c2_burial_truce
+      failure:
+        text: "[if armour >= 1 && !injured]Something falls on you from the top of the rubble, a beam or a stone or a man, and the next thing you know you are in the mud of the ditch, under the dead, and it is afternoon.[else]You go up the rubble at Sauvemer with the storming party, and you do not come down.[/if]"
+        effects:
+          - if: [ armour >= 1, "!injured" ]
+            then: [ { injury: cracked_skull } ]
+            else: [ { die: "Killed in the breach at the Tanners' Tower of Sauvemer, in the failed storm, aged {age}." } ]
+        next: c2_burial_truce
+    - id: ladders
+      text: Take your men to the ladders on the curtain wall, to draw the defenders off.
+      tags: [martial, allies]
+      check:
+        attr: agility
+        skill: command
+        difficulty: 4
+        mods:
+          - { if: retinue >= 4, add: 1, label: your following }
+          - { if: npc.jankin_rooke.follower, add: 1, label: Rooke keeps the wall clear }
+      success:
+        text: You get two ladders up and keep them up long enough that the defenders have to send men from the breach to throw them down. It is all a feint is for. It does not save the storm. Your men come back from the wall with burns and bruises and every one of them alive, which is more than any other company on the ladders can say.
+        effects: [ { add: { res.renown: 1, rel.@master.respect: 1 } }, { trait: +veteran } ]
+        next: c2_burial_truce
+      failure:
+        text: The ladders go up and come straight down again. Boiling sand. Stones. One of your men falls from the top of a ladder and lies at the foot of the wall all day, and you cannot get to him until dark.
+        effects: [ { casualties: { men: 1, named: 1, spare: [ davy_ludd ] } } ]
+        next: c2_burial_truce
+    - id: ditch
+      text: Hold the ditch below the breach, to bring back whoever comes down.
+      tags: [allies, piety]
+      text_after: |
+        You stand in the mud at the foot of the rubble with your shields up while bolts come down like sleet, and you pull men out of the ditch as they come back down. Some of them are alive. You do it until the tide starts coming in, and then you go on doing it in the water.
+
+        You save nine men that morning. The storm fails. Four hundred are dead in and below the breach, and nobody in the camp is talking about anything else.
+      effects: [ { set: flag.c2_held_ditch }, { add: { rep.honor: 1, rep.commons: 1, res.renown: 1 } } ]
+      next: c2_burial_truce
+    - id: refuse
+      text: Tell your captain the breach is a trap, and keep your men out of it.
+      tags: [cunning]
+      check:
+        attr: wits
+        skill: tactics
+        difficulty: 4
+        mods:
+          - { if: flag.c2_engineers, add: 2, label: you have seen the new wall }
+          - { if: rel.@master.respect >= 5, add: 1, label: your master listens to you }
+      success:
+        text: Your captain hears you out, swears, and puts your company in the reserve. He does not say why. When the storm comes back down the rubble, broken, your men are standing in the reserve unhurt, watching. Some of the other captains look at you afterwards as if you had cheated at dice.
+        effects: [ { set: flag.c2_kept_out_of_breach }, { add: { rel.@master.respect: 1, rep.knights: -1 } } ]
+        next: c2_burial_truce
+      failure:
+        text: Your captain tells you that if you are frightened you may say so. You are sent to the ladders, as everyone is. It goes as you said it would.
+        effects: [ { add: { rel.@master.respect: -1 } }, { casualties: { men: 1, named: 0 } } ]
+        next: c2_burial_truce
+
+- id: c2_burial_truce
+  chapter: ch2
+  title: The Dead in the Ditch
+  on_enter: [ { meet: clemence_vaux } ]
+  text: |
+    The next morning a herald comes out of the town with a white wand and asks for a day's truce to clear the dead. The King gives it. There is nothing else to do.
+
+    For a day, Adalians and Valdrennish work side by side in the ditch below the breach, not looking at each other, with handcarts and ropes and sacking. The town's priests come out with the cross. So do the town's women, some of them, with water and bread for whoever is doing the work.
+
+    [break]
+
+    The one in charge of the townswomen is the castellan's wife: Dame Clémence de Vaux, thirty, tall, in a plain grey gown, with a list of names. She is looking for the town's dead and counting them. She knows every one by name. She does it in a voice that does not shake, and once, when she finds a boy she knew, she stops for the space of an Ave and then goes on.
+
+    Sire Enguerrand watches from the wall above the breach with his arms folded. He does not come down.
+  choices:
+    - id: work
+      text: Take off your sword and work in the ditch with the rest.
+      tags: [piety]
+      text_after: |
+        It is the worst day's work you have ever done. By evening you have carried forty men out of the mud, Adalian and Valdrennish, and you can no longer tell the difference from the colour of their coats.
+
+        At dusk, Dame Clémence passes you on her way back to the gate and stops. She says something in Valdrennish to the priest beside her, and he says, in Adalian, "My lady asks your name. She says you carried two of hers who were not yours to carry." You tell him.
+      effects: [ { assign: { suit.clemence_vaux.status: known } }, { add: { suit.clemence_vaux.regard: 2, rep.piety: 1, rep.valdrenne: 1 } } ]
+      next: c2_siege_winter
+    - id: talk
+      text: Speak to Dame Clémence, in what Valdrennish you have.
+      tags: [diplomacy]
+      check:
+        attr: presence
+        skill: diplomacy
+        difficulty: 4
+        mods:
+          - { if: npc.roger_tallis.follower, add: 1, label: Tallis translates }
+          - { if: flag.c2_knows_country || flag.c2_armance_friends, add: 1, label: you have learned the tongue }
+          - { if: flag.c2_held_ditch, add: 1, label: she saw you in the ditch yesterday }
+      success:
+        text: |
+          She does not want to talk to an Adalian, and says so, and then talks to you anyway, because you ask about the dead and not about the walls. The town is not starving, she says, whatever your King thinks. The galleys bring flour on dark nights. But there is flux in the lower town, and the people there are afraid, and her husband will not give up a town that has bread in it, because he gave his word to his King.
+
+          "And what will you do," she asks, "when you have the town? Will you hang my husband over the gate?" You say you do not know. She looks at you for a long moment, as if that were the first true thing an Adalian had said to her.
+        effects: [ { set: flag.c2_clemence_talked }, { assign: { suit.clemence_vaux.status: known } }, { add: { suit.clemence_vaux.regard: 3, rep.valdrenne: 1 } } ]
+        next: c2_siege_winter
+      failure:
+        text: She answers you politely in Valdrennish far too fast for you to follow, and goes on with her list.
+        effects: [ { assign: { suit.clemence_vaux.status: known } } ]
+        next: c2_siege_winter
+    - id: look
+      text: Use the truce to get a good look at the new wall behind the breach.
+      tags: [cunning]
+      check: { attr: wits, skill: tactics, difficulty: 3 }
+      success:
+        text: You carry a body up to the top of the rubble and stand there longer than you need to, getting your breath. The new wall is earth faced with timber, the ditch in front of it waist-deep, and the left end of it, where it meets the old curtain, is not finished. You draw it in the sand that night for your captain. He keeps the drawing.
+        effects: [ { set: flag.c2_saw_retrenchment }, { add: { rel.@master.respect: 1, rep.honor: -1 } } ]
+        next: c2_siege_winter
+      failure:
+        text: A Valdrennish serjeant sees what you are doing, and walks over, and stands in front of you with his arms folded until you go back down.
+        next: c2_siege_winter
+    - id: stay
+      text: Stay in the lines. You have seen enough of that ditch.
+      tags: [yield]
+      text_after: You stay in the lines and watch the carts go back and forth all day. At dusk the bells ring in the town for a long time.
+      next: c2_siege_winter
+
+- id: c2_siege_winter
+  chapter: ch2
+  title: The Second Winter
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    There is no second storm. There are not the men for one.
+
+    So the King settles down to do what he did not mean to do: sit in front of Sauvemer through the winter. The camp on the dunes becomes a town of turf and driftwood. The gales come in off the sea. The flux comes with them, as it always does, and goes through the camp like a scythe.
+
+    [break]
+
+    The town is not starving. On dark nights, Sarenzan galleys hired by King Amaury slip in under the sea wall with flour and salt pork, and slip out again before dawn, and the King's ships cannot catch them. Everyone knows whose galleys they are. The Varesco bank lends to Amaury. The Lanzi bank lends to Aldred. [if suit.fiammetta_lanzi.status >= known]"It is not personal," Fiammetta Lanzi tells you. "It is business. Ugolino Varesco would sell flour to the Devil, if the Devil could post a bond."[/if]
+
+    [if flag.c2_shelter]Your men are dry, at least.[else]Your men are wet through, and have been since November.[/if]
+  choices:
+    - id: water
+      text: Move your men's camp up to the chapel spring, away from the latrine ditches.
+      tags: [learning, allies]
+      check:
+        attr: wits
+        skill: stewardship
+        difficulty: 3
+        mods:
+          - { if: flag.c2_shelter, add: 1, label: they are dry already }
+          - { if: flag.p_counting_house || background == reeve, add: 1, label: you were raised to run things }
+      success:
+        text: It means a longer walk to the lines and a quarrel with the company that had the spring first. You win the quarrel. Your men drink clean water all winter, and dig their latrines downhill, and laugh at you for it. Your company loses nobody to the flux that winter. You are the only one in the camp that can say so.
+        effects: [ { set: flag.c2_clean_water }, { add: { skill.stewardship: 1, rel.davy_ludd.loyalty: 1, rel.jankin_rooke.loyalty: 1, rel.simkin_barre.loyalty: 1, rel.roger_tallis.loyalty: 1, rel.wat_coker.loyalty: 1, rel.perkin_dyer.loyalty: 1, rel.gib_shawe.loyalty: 1, rel.dickon_laund.loyalty: 1 } } ]
+        next: { pool: c2_camp, count: 1, then: c2_mine }
+      failure:
+        text: You move them. The company at the spring has friends in the Earl's household, and you are moved back. The flux finds your men in Lent.
+        effects: [ { casualties: { men: 1, named: 0 } } ]
+        next: { pool: c2_camp, count: 1, then: c2_mine }
+    - id: nurse
+      text: Nurse your sick men yourself, with your own hands.
+      tags: [piety, allies]
+      check:
+        attr: endurance
+        skill: learning
+        difficulty: 3
+        mods: [ { if: item.holy_ampulla, add: 1, label: "Saint Ebba's water, or your faith in it" } ]
+      success:
+        text: Water, broth, clean straw, and sitting up with them at night when the fever is bad. It is not medicine. It is all the medicine there is. Every one of them lives. You are not sure it was you. They are.
+        effects: [ { add: { rep.piety: 1, rel.davy_ludd.loyalty: 2, rel.jankin_rooke.loyalty: 2, rel.simkin_barre.loyalty: 2, rel.roger_tallis.loyalty: 2, rel.wat_coker.loyalty: 2, rel.perkin_dyer.loyalty: 2, rel.gib_shawe.loyalty: 2, rel.dickon_laund.loyalty: 2 } } ]
+        next: { pool: c2_camp, count: 1, then: c2_mine }
+      failure:
+        text: You nurse them through it. Then it is your turn, and there is nobody to nurse you except Davy, who does his best.
+        effects: [ { injury: camp_flux } ]
+        next: { pool: c2_camp, count: 1, then: c2_mine }
+    - id: boom
+      text: Help the engineers build a boom across the harbour mouth to stop the galleys.
+      tags: [cunning, learning]
+      check:
+        attr: wits
+        skill: tactics
+        difficulty: 4
+        mods: [ { if: flag.c2_engineers, add: 2, label: you know Bonifacio's work } ]
+      success:
+        text: Masts chained end to end, floated on empty barrels, anchored at both ends under the guns of a timber fort on the spit. It takes six weeks in freezing water. The first galley that tries the harbour after that runs onto it in the dark and is taken, flour and all. The others stop coming. By spring, Sauvemer is eating its horses.
+        effects: [ { set: flag.c2_built_boom }, { add: { res.renown: 2, rel.@master.respect: 1 } } ]
+        next: { pool: c2_camp, count: 1, then: c2_mine }
+      failure:
+        text: The first gale of February breaks the chain and carries half the boom out to sea. The galleys go on coming.
+        next: { pool: c2_camp, count: 1, then: c2_mine }
+    - id: endure
+      text: Keep your head down and get through it.
+      tags: [yield]
+      text_after: You get through it. Not everyone does. You bury one of your own in the dunes in Lent, in the rain, with a priest who does not know his name.
+      effects: [ { casualties: { men: 1, named: 0 } } ]
+      next: { pool: c2_camp, count: 1, then: c2_mine }
+
+- id: c2_mine
+  chapter: ch2
+  title: The Mine
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    In the spring the King sends for miners from the tin country in the west of Adalia, and they come: small, quiet, pale men who do not like the light much and like soldiers less.
+
+    They dig from a pit behind the siege lines toward the Water Tower at the corner of the town wall, under the ditch, through the sand and the clay, propping the gallery with timbers as they go. When they are under the tower they will fill the end of the gallery with brushwood and pig fat, and fire it, and the timbers will burn, and the tower will come down.
+
+    [break]
+
+    The Valdrennish know it. They have dug a countermine from inside the walls, and on still nights both sides can hear each other through the earth: picks, voices, a cough. The miners' captain, a man called Treloar, wants soldiers in the gallery for when the two tunnels meet.
+  choices:
+    - id: down
+      text: Go down into the gallery with Treloar's miners.
+      tags: [martial]
+      lethal: true
+      warn: A fight in a tunnel with knives, in the dark. Armour helps less than you would think. Without it, or carrying a wound, one mistake will be enough.
+      check:
+        attr: agility
+        skill: arms
+        difficulty: 4
+        mods:
+          - { if: trait.veteran, add: 1, label: you keep your head }
+          - { if: flag.c2_saw_retrenchment, add: 1, label: you know where the tower stands }
+          - { if: armour >= 1, add: 1, label: something between you and a knife }
+      success:
+        text: |
+          On the fourth night a pick comes through the wall of the gallery a yard from your head, and a lamp behind it, and a face. Then it is knives, in the dark, with the lamps knocked over. You hold the gallery. The Valdrennish go back up their own tunnel, and Treloar's men fill it with brushwood and smoke them out of it.
+
+          Two days later the Water Tower goes down in a cloud of dust that takes an hour to settle. It does not open the town. It opens a second breach, and Sauvemer's defenders have to man two of them now, with fewer men every week.
+        effects: [ { set: flag.c2_held_gallery }, { add: { res.renown: 2, rep.commons: 1 } }, { trait: +veteran } ]
         next: c2_sortie
+      partial:
+        text: You hold the gallery. Something in the dark opens your arm from wrist to elbow. Treloar binds it with his own shirt.
+        effects: [ { set: flag.c2_held_gallery }, { injury: arrow_wound }, { add: { res.renown: 1 } } ]
+        next: c2_sortie
+      failure:
+        text: "[if armour >= 1 && !injured]The tunnels meet, and the lamps go out, and something heavy hits you in the dark. You wake in the open air with Treloar's men looking down at you.[else]The tunnels meet, and the lamps go out, and you die under the walls of Sauvemer without seeing who killed you.[/if]"
+        effects:
+          - if: [ armour >= 1, "!injured" ]
+            then: [ { injury: cracked_skull } ]
+            else: [ { die: "Killed in the dark of a mine gallery under the walls of Sauvemer, aged {age}." } ]
+        next: c2_sortie
+    - id: listen
+      text: Set bowls of water along the gallery to find where they are digging.
+      tags: [cunning, learning]
+      check: { attr: wits, skill: learning, difficulty: 4 }
+      success:
+        text: An old trick Treloar has heard of and never tried. Where the water in the bowl trembles, they are close. You find the countermine three days before it reaches you, and break into it from above while its diggers are asleep. Nobody on either side is killed. The Water Tower comes down a week later, on schedule. Treloar shakes your hand and says, in his own tongue, something nobody translates.
+        effects: [ { set: flag.c2_found_countermine }, { add: { res.renown: 1, skill.tactics: 1 } } ]
+        next: c2_sortie
+      failure:
+        text: The water trembles everywhere, all the time, with the sea. You learn nothing that helps.
+        next: c2_sortie
+    - id: guard
+      text: Guard the mouth of the mine with your men, above ground.
+      tags: [allies]
+      text_after: Someone has to. The mine-head is the obvious place for the town to strike. You sit at it with your men night after night, and nothing happens, and you begin to believe nothing will.
+      effects: [ { set: flag.c2_guarded_minehead } ]
+      next: c2_sortie
 
 - id: c2_sortie
   chapter: ch2
   title: The Sortie
-  on_enter: [ { advance: { seasons: 1 } } ]
   text: |
-    In the spring the castellan of Sauvemer does what castellans do when they are starving slowly. He comes out.
+    Three nights after the Water Tower falls, the castellan of Sauvemer does what castellans do when the walls are coming down. He comes out.
 
-    On a moonless night two hundred of his men come out of the sea gate at low tide and along the beach to where the King's siege engines stand, with fire-pots. The first anyone knows of it is the great trebuchet going up like a torch, and the screaming of the men asleep under it.
+    Two hundred of his men come out of the sea gate at low tide and along the beach to where the King's engines stand and the mine-head is, with fire-pots. The first anyone knows of it is the great trebuchet going up like a torch, and the screaming of the men asleep under it.
 
     [break]
 
-    Your company is the nearest. [if flag.c2_engineers]Some of the men asleep under that trebuchet are men you have been working with all winter.[/if]
+    [if flag.c2_guarded_minehead]Your company is at the mine-head, and the mine-head is where they are coming.[else]Your company is the nearest.[/if] [if flag.c2_engineers]Some of the men asleep under that trebuchet are men you have worked beside for a year.[/if]
   choices:
     - id: charge
       text: Get your men up and go straight at them.
@@ -142,27 +447,28 @@
           - { if: armour >= 2, add: 2, label: your harness }
           - { if: armour == 1, add: 1, label: your jack }
           - { if: retinue >= 4, add: 1, label: your following }
+          - { if: flag.c2_guarded_minehead, add: 1, label: you were ready for them }
       success:
-        text: They are on the beach with the tide coming in behind them, and you are between them and the sea gate. It is short and ugly. When it is done you have forty prisoners, the castellan's own nephew among them, and the sea gate is shut on the rest. The King hears your name again.
+        text: They are on the beach with the tide coming in behind them, and you are between them and the sea gate. It is short and ugly. When it is done you have forty prisoners, the castellan's nephew among them, and the sea gate is shut on the rest. The engines are half burned. The mine is safe.
         effects: [ { set: flag.c2_sortie_hero }, { add: { res.renown: 2, res.coin: 240 } } ]
-        next: c2_mouths
+        next: c2_relief
       partial:
         text: You drive them back to the sea gate. It costs.
         effects: [ { add: { res.renown: 1 } }, { casualties: { men: 1, named: 1, spare: [ davy_ludd ] } } ]
-        next: c2_mouths
+        next: c2_relief
       failure:
         text: "[if armour >= 1 && !injured]You go into the dark and a fire-pot breaks against your shield and you are on fire, briefly, and then in the sea, and then on the beach being sick. They get back inside.[else]You go into the dark, and someone in the dark is waiting.[/if]"
         effects:
           - if: [ armour >= 1, "!injured" ]
             then: [ { injury: burned_hands } ]
             else: [ { die: "Killed in a night sortie on the beach at Sauvemer, aged {age}." } ]
-        next: c2_mouths
+        next: c2_relief
     - id: engines
       text: Save what can be saved of the engines and the men under them.
       tags: [piety, learning]
-      text_after: You drag men out from under burning timber all night. Most of the great trebuchet is lost. Its crew mostly is not. Bonifacio the engineer embraces you in the morning, weeping, smelling of smoke.
-      effects: [ { add: { rep.honor: 1, res.renown: 1 } }, { injury: burned_hands } ]
-      next: c2_mouths
+      text_after: You drag men out from under burning timber all night, with wet sacking over your head and hands. The great trebuchet is lost. Its crew mostly is not. Bonifacio the engineer embraces you in the morning, weeping, smelling of smoke. Your eyebrows grow back by Lammas.
+      effects: [ { add: { rep.honor: 1, res.renown: 1 } }, { injury: bruised_ribs } ]
+      next: c2_relief
     - id: gate
       text: Go for the sea gate behind them and cut them off from the town.
       tags: [cunning, martial]
@@ -172,176 +478,9 @@
         difficulty: 4
         mods: [ { if: flag.c2_engineers, add: 1, label: you know the ground } ]
       success:
-        text: The tide is your ally. You get your men across the causeway to the sea gate before the raiders can get back, and they find themselves on a beach with the sea rising, the King's men in front and you behind. Half of them surrender on the spot. It is the cheapest victory of the siege.
+        text: The tide is your ally. You get your men across the causeway to the sea gate before the raiders can get back, and they find themselves on a beach with the sea rising, the King's men in front and you behind. Half of them surrender on the spot. It is the cheapest victory of the siege. There have not been many.
         effects: [ { set: flag.c2_sortie_hero }, { add: { res.renown: 2, rel.@master.respect: 2 } } ]
-        next: c2_mouths
-      failure:
-        text: The causeway is under water before you are halfway. You get back soaked and empty-handed.
-        next: c2_mouths
-
-- id: c2_mouths
-  chapter: ch2
-  title: The Useless Mouths
-  on_enter: [ { advance: { seasons: 1 } }, { meet: clemence_vaux } ]
-  text: |
-    By summer Sauvemer is eating its horses.
-
-    One morning the land gate opens and five hundred people come out: old men, women, children, the sick. The castellan has put out everyone who cannot fight, to save the bread for those who can. They come across the ditch toward the Adalian lines with their hands up.
-
-    The King's order comes down at once. Nobody is to pass. If the town wants to feed them, it can take them back. If not, they can stay where they are, between the walls and the lines, and the town can watch.
-
-    [break]
-
-    The town does not take them back. They stay in the ditch, in the open, for days. You can hear them at night.
-
-    On the third day a woman comes out of the land gate alone, under a white cloth, with a basket: the castellan's wife, Dame Clémence de Vaux, with what bread she can carry. She walks among them handing it out. Then she walks to the Adalian line, to your post, and asks in careful Adalian whether there is any officer here with a Christian heart.
-  choices:
-    - id: pass
-      text: Let them through your post, the children and the old at least, whatever the King ordered.
-      tags: [piety]
-      check:
-        attr: presence
-        skill: command
-        difficulty: 4
-        mods: [ { if: retinue >= 3, add: 1, label: your own men hold the post } ]
-      success:
-        text: You let them through at night, a few dozen at a time, and your men give them what bread they have, and they disappear into the marsh villages behind the lines. Nobody reports it. Or somebody does, and your captain decides not to hear it. Dame Clémence watches from the ditch, and the last night she comes through with the last of them, and thanks you, and goes back into the town.
-        effects:
-          - set: flag.c2_mouths_passed
-          - assign: { suit.clemence_vaux.status: known }
-          - add: { suit.clemence_vaux.regard: 4, rep.honor: 2, rep.piety: 2, rep.valdrenne: 2, rep.crown: -1 }
         next: c2_relief
       failure:
-        text: You let the first of them through. Your captain comes down the line at dawn with the provost and stops it, and you are confined to your tent for a week, and the ones still in the ditch stay in the ditch.
-        effects: [ { set: flag.c2_mouths_tried }, { assign: { suit.clemence_vaux.status: known } }, { add: { suit.clemence_vaux.regard: 2, rep.honor: 1, rel.@master.respect: -2 } } ]
+        text: The causeway is under water before you are halfway. You get back soaked and empty-handed, to find the engines burning.
         next: c2_relief
-    - id: queen
-      text: Take Dame Clémence's petition to the Queen. The Queen has a reputation for mercy.
-      tags: [diplomacy]
-      check:
-        attr: presence
-        skill: courtesy
-        difficulty: 4
-        audience: nobles
-        mods:
-          - { if: station == knight, add: 1, label: your spurs }
-          - { if: flag.c2_feast_known || flag.c2_jehanne_noticed, add: 1, label: you are known at court }
-      success:
-        text: Queen Mathilde hears you out in her pavilion, with her ladies and her needlework, and then goes to the King. Nobody knows what she says. The next morning the order is changed. The mouths are let through and given two pence each and bread, by the King's charity, and the King is praised for it all over Christendom. Nobody mentions you. Dame Clémence knows.
-        effects:
-          - set: flag.c2_mouths_queen
-          - meet: queen_mathilde
-          - assign: { suit.clemence_vaux.status: known }
-          - add: { suit.clemence_vaux.regard: 4, rep.honor: 2, rep.crown: 1, rep.valdrenne: 2, rel.queen_mathilde.respect: 2 }
-        next: c2_relief
-      failure:
-        text: You do not get past the Queen's chamberlain. Dame Clémence goes back into the town with her empty basket.
-        effects: [ { assign: { suit.clemence_vaux.status: known } }, { add: { suit.clemence_vaux.regard: 1 } } ]
-        next: c2_relief
-    - id: bread
-      text: Send out what bread your company can spare, quietly, at night.
-      tags: [piety, allies]
-      text_after: It is not much. It is some. Your men grumble and give it anyway. [if npc.jankin_rooke.follower]Rooke gives all of his.[/if] Dame Clémence comes for it each night, and on the last night she asks your name.
-      effects: [ { assign: { suit.clemence_vaux.status: known } }, { add: { suit.clemence_vaux.regard: 2, rep.piety: 1, rep.honor: 1, rel.jankin_rooke.loyalty: 1, rel.simkin_barre.loyalty: -1 } } ]
-      next: c2_relief
-    - id: obey
-      text: Obey the order. Keep them out.
-      tags: [martial]
-      text_after: |
-        You keep them out. Most of the army does. After six days the King relents and lets them through and feeds them, and is praised for it all over Christendom. By then a good many of them are dead in the ditch.
-
-        Dame Clémence looks at you from the ditch, the last day, as if memorising your face.
-      effects: [ { set: flag.c2_mouths_kept }, { assign: { suit.clemence_vaux.status: known } }, { add: { suit.clemence_vaux.regard: -3, rep.ruthlessness: 1, rep.crown: 1 } } ]
-      next: c2_relief
-
-- id: c2_relief
-  chapter: ch2
-  title: The Relief That Did Not Come
-  text: |
-    At the end of July, King Amaury comes at last. His army appears on the heights above the marshes: banners, tents, the whole great host of Valdrenne, rebuilt since Hautbois.
-
-    And sits there. The only road to Sauvemer runs along the dunes, between the sea and the marsh, and the King has fortified it, and there is no other way. For four days the two armies look at each other. Amaury sends heralds to offer battle on any field of the King's choosing. The King replies that he is quite comfortable where he is.
-
-    [break]
-
-    On the fifth morning the Valdrennish heights are empty. Amaury has gone home. In Sauvemer, on the walls, you can see the people who were watching for him, still watching.
-
-    In the meantime there have been skirmishes along the dunes, every day, between young men on both sides who want a name.
-  choices:
-    - id: skirmish
-      text: Ride out along the dunes with the young men, looking for a fight.
-      tags: [martial]
-      check:
-        attr: agility
-        skill: riding
-        difficulty: 4
-        mods: [ { if: trait.veteran, add: 1, label: veteran } ]
-      success:
-        text: A Valdrennish squire on a bay horse, just as eager as you. You break a lance on each other, and then another, and on the third pass his horse goes down in the sand and he gives you his sword. He is worth sixty marks. He is also, it turns out, a cousin of the Corbies, and he knows your name already.
-        effects: [ { add: { res.renown: 1, res.coin: 360 } }, { if: suit.heloise_corbie.status >= known, then: [ { add: { suit.heloise_corbie.regard: 1 } } ] } ]
-        next: c2_surrender
-      failure:
-        text: The Valdrennish squire is better mounted and better taught, and you come back without your lance, your helm and some of your pride.
-        effects: [ { injury: bruised_ribs } ]
-        next: c2_surrender
-    - id: walls
-      text: Watch the walls instead. Sauvemer is close to the end.
-      tags: [cunning]
-      text_after: You watch the people on the walls watch the empty heights. You watch the castellan's banner come down from the castle tower, slowly, and go back up again. You know before anyone tells you that the town will treat within the week.
-      effects: [ { add: { skill.tactics: 1 } } ]
-      next: c2_surrender
-
-- id: c2_surrender
-  chapter: ch2
-  title: The Keys of Sauvemer
-  on_enter:
-    - kill: enguerrand_vaux
-    - if: [ station != knight, res.renown >= 6 ]
-      then: [ { station: knight }, { set: flag.c2_knighted_siege } ]
-  text: |
-    Sauvemer surrenders in August, after eleven months. Sire Enguerrand de Vaux does not live to give up his keys. He dies of a fever the night before, and his wife, Dame Clémence, carries them out of the land gate in his place.
-
-    The King has been made to wait eleven months and has lost more men to the flux than to the Valdrennish. He demands six burghers of the town, barefoot, in their shirts, with halters round their necks, to give up the keys and to be hanged for the rest.
-
-    [break]
-
-    [if flag.c2_knighted_siege]That same morning, before the burghers come out, the King knights a score of men for their service in the siege. You are one of them. It is quick and wet and done in a muddy street in Newtown, and it is real.[/if]
-
-    The six come out. They are old men, mostly, and one young one who volunteered in his father's place. The Queen is there. So are you.
-  choices:
-    - id: speak
-      text: Kneel and ask the King for their lives, before anyone else does.
-      tags: [piety, diplomacy]
-      check:
-        attr: presence
-        skill: courtesy
-        difficulty: 5
-        audience: nobles
-        mods:
-          - { if: station == knight, add: 1, label: your spurs }
-          - { if: rel.queen_mathilde.respect >= 2, add: 2, label: the Queen knows you }
-          - { if: res.renown >= 8, add: 1, label: your name }
-      success:
-        text: The King looks down at you for a long moment, and the whole square is silent. Then the Queen kneels beside you, and the King's face changes, and he gives the six burghers to her, to do as she likes with. She sends them home with a new shirt each and six nobles. It will be told as the Queen's mercy. That is how it should be told. Six men in Sauvemer, and Dame Clémence, know how it began.
-        effects: [ { set: flag.c2_saved_burghers }, { add: { rep.honor: 3, rep.valdrenne: 3, rep.crown: -1, rel.queen_mathilde.respect: 2, suit.clemence_vaux.regard: 3, res.renown: 1 } } ]
-        next: c2_truce
-      failure:
-        text: The King tells you to get up, in a voice that freezes the square. Then the Queen kneels, and he gives the burghers to her anyway. You have done no harm. You have not been forgiven for it either.
-        effects: [ { add: { rep.honor: 1, rep.crown: -2, suit.clemence_vaux.regard: 1 } } ]
-        next: c2_truce
-    - id: silent
-      text: Stand in the ranks and say nothing. It is the King's business.
-      tags: [yield]
-      text_after: The Queen kneels. The King gives her the six burghers, and she sends them home with new shirts. It will be told all over Christendom as the Queen's mercy. You were there. That is all.
-      next: c2_truce
-    - id: clemence
-      text: Find Dame Clémence afterwards, and offer her your protection while the town is taken over.
-      tags: [diplomacy]
-      requires: [ suit.clemence_vaux.regard >= 2 ]
-      label: "Requires: Dame Clémence's regard"
-      text_after: |
-        The Adalian garrison will take every good house in Sauvemer. Hers is the best. You post your own men on her door before anyone else can, and for a week nobody touches it.
-
-        She thanks you, coolly, as a widow of four days must. Then she says, "My husband was a hard man and a brave one, and you starved him. I will not forget either." And she gives you her hand.
-      effects: [ { set: flag.c2_guarded_clemence }, { assign: { suit.clemence_vaux.status: courted } }, { add: { suit.clemence_vaux.regard: 2, suit.clemence_vaux.discretion: -2 } } ]
-      next: c2_truce

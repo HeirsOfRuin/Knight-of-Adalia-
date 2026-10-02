@@ -111,3 +111,39 @@ carn_dubh:
   if: flag.p_knows_war_secret
   text: |
     A Caldmoor mill burned with people inside, in the old King's war. The archers on the door were ordered to keep it shut. Your father was one of them.
+the_staple:
+  title: The staple and the wool
+  category: money
+  if: chapter >= ch2
+  text: |
+    All Adalian wool leaves the island through the staple at Saltcombe, where the Crown takes its custom. Two years before the war the King shut the staple to Vervais, so that the weaving towns, which live on Adalian fleece, would be hungry enough to change kings. Wendham's wool sat in the barns waiting.
+vervais_betrayal:
+  title: Vervais
+  category: powers
+  if: { any: [ npc.gaucelin_brese.met, chapter >= ch3 ] }
+  text: |
+    The weaving duchy in the north-east of Valdrenne. Its guilds swore to open their gates to King Aldred. Duke Lothaire hanged their masters instead, after King Amaury remitted the salt tithe on Vervais for ten years. At Les Salines his banners stood on their causeway all day and never came down.
+grisolles:
+  title: Grisolles
+  category: war
+  if: { any: [ npc.fiammetta_lanzi.met, npc.enguerrand_vaux.met, chapter >= ch3 ] }
+  text: |
+    The crossing of the Aube where the Constable of Valdrenne caught the army in a mist, on foot, and broke the rearguard against its own bridge. Eighteen hundred Adalians dead or taken, with the baggage, the pay chest and the King's plate. The Valdrennish lost fewer than three hundred.
+les_salines:
+  title: Les Salines
+  category: war
+  if: { any: [ npc.alys_fane.met, chapter >= ch3 ] }
+  text: |
+    The battle on the salt pans before Sauvemer, in the third summer of the war. The Valdrennish came along the causeways on foot, the garrison came out behind, and the King's banner went down. The Duchess of Armance's lances turned it. Adalia held the field and lost a fifth of the army doing it.
+lenders_truce:
+  title: The Lenders' Truce
+  category: war
+  if: { any: [ npc.orsino_brancale.met, chapter >= ch3 ] }
+  text: |
+    The truce of Saint-Lys, made when the Lanzi and Varesco banks stopped lending to both kings in the same week. Adalia kept Sauvemer and its marshes. The wool went back to Vervais. The Armance was not mentioned.
+the_mottle:
+  title: The Mottle
+  category: faith
+  if: chapter >= ch3
+  text: |
+    The great mortality, as the sailors named it: a cough, a fever, skin gone grey and dark like a spreading bruise, blood. It came west through the Midsea ports in the last winter of the truce.

@@ -67,8 +67,10 @@ function addNumber(state: GameState, content: ContentBundle, rawPath: string, de
       return;
     }
     case 'rel': {
-      const n = npc(state, content, a);
       const f = b as 'affection' | 'respect' | 'loyalty';
+      // loyalty is a follower's bond; content rewards "your men" in bulk, so men not in the following are skipped
+      if (f === 'loyalty' && !state.npcs[a]?.follower) return;
+      const n = npc(state, content, a);
       const before = n[f];
       n[f] = clamp(before + delta, -10, 10);
       note(labelFor(content, path), n[f] - before);

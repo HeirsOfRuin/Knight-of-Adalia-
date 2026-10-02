@@ -1,0 +1,583 @@
+# Chapter 2, part 4: the relief army and the battle of Les Salines (battle 2,
+# major), the surrender of Sauvemer on terms, and Christmas in the castle.
+# Summer to winter, year 23. Age 22.
+# Les Salines is held, not won. Vervais stands aside; nobody tells the army why.
+
+- id: c2_relief
+  chapter: ch2
+  title: The Host on the Heights
+  checkpoint: true
+  on_enter:
+    - advance: { seasons: 1 }
+    - kill: enguerrand_vaux
+    - meet: ulric_rotbart
+  text: |
+    In May the castellan of Sauvemer, Sire Enguerrand de Vaux, dies of the flux in his own castle. The town does not open its gates. His wife holds the keys, and his lieutenant holds the walls, and they wait.
+
+    At midsummer they are proved right. King Amaury comes.
+
+    [break]
+
+    The whole host of Valdrenne comes over the heights above the salt marshes in a single afternoon, and goes on coming until dark: the Constable's banner, the King's lilies, the dukes, the Sarenzan crossbowmen in red, the Iron Company's black eagle. And on the left, apart from the rest, under the gold shuttle of Vervais, Duke Lothaire with three thousand of his own.
+
+    The Adalian army in front of Sauvemer is eleven thousand men, after two years of war and two winters of flux. The heralds put the host on the heights at better than twenty-five.
+
+    [break]
+
+    The King holds a council in the ruins of a salt-boiler's house. Half the captains want to break the siege and get the army onto the ships while there are ships. The King listens, and then walks them out to look at the ground in front of the lines: the salt pans, square shallow ponds by the hundred, cut by dykes and causeways and sluices, with the sea behind. "They will have to come to us along the causeways," he says. "On foot. Let them come."
+  choices:
+    - id: sluice
+      text: Tell your captain what you know of the sluices on the salt pans.
+      tags: [cunning]
+      visible_if: [ { any: [ flag.c2_knows_country, flag.c2_engineers ] } ]
+      text_after: |
+        The pans are fed from the sea through wooden sluice-gates on the main dyke. Open them at the flood, and the pans in front of the line fill knee-deep in the time it takes to say a Mass, and every causeway between them becomes a bridge with water on both sides. [if flag.c2_engineers]Bonifacio confirms it, drawing in the sand.[/if]
+
+        Your captain takes it to the Marshal. The Marshal takes it to the King. You hear nothing more about it. In the morning a dozen men with axes are posted at the sluice-gates.
+      effects: [ { set: flag.c2_sluice_known }, { add: { rel.@master.respect: 2 } } ]
+      next: c2_salines_eve
+    - id: skirmish
+      text: Ride out with the young men who go skirmishing under the heights.
+      tags: [martial]
+      check:
+        attr: agility
+        skill: riding
+        difficulty: 4
+        mods: [ { if: trait.veteran, add: 1, label: veteran } ]
+      success:
+        text: A Valdrennish squire on a bay horse, just as eager as you. You break a lance on each other, and then another, and on the third pass his horse goes down in the soft ground and he gives you his sword. He is worth sixty marks. He is also, it turns out, a cousin of the Corbies, and knows your name already.
+        effects: [ { add: { res.renown: 1, res.coin: 360 } }, { if: suit.heloise_corbie.status >= known, then: [ { add: { suit.heloise_corbie.regard: 1 } } ] } ]
+        next: c2_salines_eve
+      failure:
+        text: The Valdrennish squire is better mounted and better taught, and you come back without your lance, your helm and some of your pride.
+        effects: [ { injury: bruised_ribs } ]
+        next: c2_salines_eve
+    - id: wills
+      text: Have Father Benet or a camp priest write your men's wills.
+      tags: [allies, piety]
+      text_after: It costs you a shilling and an afternoon. Men who have never owned anything worth leaving dictate their wills with great seriousness. [if npc.simkin_barre.follower]Simkin Barre leaves his dice to Davy and his debts to the Earl of Carrow.[/if] [if npc.jankin_rooke.follower]Rooke leaves everything he has to the church at Ravell, for Masses.[/if] Afterwards they are quieter, and steadier.
+      effects: [ { add: { res.coin: -12, counter.sl_edge: 1, rel.davy_ludd.loyalty: 1, rel.jankin_rooke.loyalty: 1, rel.simkin_barre.loyalty: 1, rel.roger_tallis.loyalty: 1, rel.wat_coker.loyalty: 1, rel.perkin_dyer.loyalty: 1, rel.gib_shawe.loyalty: 1, rel.dickon_laund.loyalty: 1 } } ]
+      next: c2_salines_eve
+
+- id: c2_salines_eve
+  chapter: ch2
+  title: The Night Before Les Salines
+  text: |
+    The Valdrennish heralds come down in the evening with the formal challenge: battle, tomorrow, on the ground in front of Sauvemer. The King accepts it. Nobody had expected anything else.
+
+    It is the custom, the night before a battle, for knights to be made. A man may fight better with spurs on his heels, and may die a knight, which is something to die as. The King walks along the lines at dusk with his sword drawn. He limps a little. Grisolles is in his face, and the breach, and two winters.
+
+    [if station == knight]You are a knight already. You watch the others kneel.[elif flag.c2_master_taken]Your master is in a Valdrennish prison. Nobody here owes you a word.[elif flag.c1_sponsor_promise]Your master is looking at you. You remember the promise.[else]Squires and men-at-arms kneel in the grass, some of them shaking.[/if]
+  choices:
+    - id: kneel
+      text: Kneel in the line when the King comes.
+      tags: [diplomacy]
+      visible_if: [ station != knight ]
+      requires: [ { any: [ [ flag.c1_sponsor_promise, npc.@master.alive, "!flag.c2_master_taken" ], res.renown >= 11, [ flag.c1_king_noticed, res.renown >= 4 ], [ flag.c2_saved_master, res.renown >= 4 ], [ flag.c1_served_well, npc.@master.alive, "!flag.c2_master_taken", res.renown >= 4 ] ] } ]
+      label: "Requires: someone to put you forward (your sponsor's promise, a great name, or the King's notice)"
+      text_after: |
+        [if flag.c2_saved_master]Your master steps forward before the King has reached you. "He came back for me at Grisolles," he says, which is all he says, and all that is needed.[elif flag.c1_sworn_promise && npc.@master.alive]Your master steps forward before the King has reached you, because six men heard him swear on relics that he would, and he is not a man to be called forsworn.[elif flag.c1_sponsor_promise && npc.@master.alive]Your master steps forward and says your name to the King, and that you have earned it, and that he swore he would.[elif flag.c1_served_well && npc.@master.alive]Your master steps forward and tells the King who kept his lances sound at Ravell and his men alive at Grisolles. The King looks at you for the space of a breath.[elif flag.c1_king_noticed]The King stops in front of you and frowns, and then remembers. "The stirrup," he says. "Ravell." Or he says something like it. You will never be sure.[else]Your name is known in the army after two years. The Earl of Carrow says it to the King.[/if]
+
+        The flat of a sword on your shoulder, once, light as a hand. "Be a good knight." Then he is gone down the line, and you are kneeling in the grass with your heart going like a drum: Sir {name}, on the eve of a battle nobody expects to win.
+      effects:
+        - station: knight
+        - set: flag.c2_knighted_eve
+        - add: { rep.crown: 1, rep.knights: 1 }
+      next: c2_salines_1
+    - id: men
+      text: Spend the night with your men instead.
+      tags: [allies]
+      text_after: |
+        Nobody sleeps. [if npc.simkin_barre.follower]Simkin Barre tells filthy stories.[/if] [if npc.jankin_rooke.follower]Jankin Rooke prays.[/if] [if npc.davy_ludd.follower]Davy cleans your harness three times.[/if] [if npc.wat_coker.follower]Wat Coker sits a little apart and sharpens a knife and once, near dawn, says, "If I die, tell Mag it was quick. Whether it was or not."[/if][if npc.perkin_dyer.follower]Perkin Dyer eats everything anyone will give him and says, "No sense dying hungry."[/if][if npc.gib_shawe.follower]Gib Shawe fletches arrows by the fire until his fingers bleed, because it is the thing he can do.[/if][if npc.dickon_laund.follower]Dickon whittles a little horse for Nell's child and asks you to keep it, in case.[/if] When the light comes they are still there, all of them.
+      effects: [ { add: { counter.sl_edge: 1, rel.davy_ludd.loyalty: 2, rel.jankin_rooke.loyalty: 2, rel.simkin_barre.loyalty: 2, rel.roger_tallis.loyalty: 1, rel.wat_coker.loyalty: 2, rel.perkin_dyer.loyalty: 2, rel.gib_shawe.loyalty: 2, rel.dickon_laund.loyalty: 2 } } ]
+      next: c2_salines_1
+    - id: letter
+      text: Write to someone at home, in case.
+      tags: [learning]
+      text_after: |
+        [if trait.literate_vernacular]You write by the light of someone else's fire. It is a short letter. It says less than you mean and more than you would in daylight. You give it to Davy to carry if you do not come back.[else]A camp priest writes it for you, and does not charge, and does not read it back.[/if]
+      effects:
+        - set: flag.c2_eve_letter
+        - if: suit.isabel_sayer.status >= courted
+          then: [ { add: { suit.isabel_sayer.regard: 1 } } ]
+        - if: suit.cecily_fuller.status >= courted
+          then: [ { add: { suit.cecily_fuller.regard: 1 } } ]
+        - if: suit.maud_delisle.status >= courted
+          then: [ { add: { suit.maud_delisle.regard: 1 } } ]
+        - if: suit.joan_wyck.status >= courted
+          then: [ { add: { suit.joan_wyck.regard: 1 } } ]
+      next: c2_salines_1
+    - id: watch
+      text: Stand at the edge of the lines and watch the Valdrennish fires on the heights.
+      text_after: There are so many fires that the heights look like a city. Somewhere up there are men doing exactly what you are doing. Behind you, on the walls of Sauvemer, people are watching the same fires, and for them every one is a promise. At some point you stop being afraid, or you get so tired of it that it feels the same.
+      next: c2_salines_1
+
+- id: c2_salines_1
+  chapter: ch2
+  title: Les Salines
+  checkpoint: true
+  text: |
+    They come on foot, as they came at Grisolles. The Constable has learned what works.
+
+    They come down off the heights at dawn and out across the salt pans in long columns, along the causeways between the ponds, eight and ten men abreast, with the crossbowmen's great shields at the head of each column like the prow of a ship. Where the causeways meet the dyke in front of the Adalian line, they mean to spread out and come on together.
+
+    [break]
+
+    The archers shoot. The shields take it. The columns come on at a walk, and the walk does not change.
+
+    [if flag.c2_sluice_known]Down the dyke to your left, the men with axes are standing by the sluice-gates, looking back toward the King's banner for a signal that does not come.[/if]
+  choices:
+    - id: sluice
+      text: Run for the sluice-gates, and open them yourself.
+      tags: [cunning, martial]
+      check:
+        attr: wits
+        skill: tactics
+        difficulty: 4
+        mods:
+          - { if: flag.c2_sluice_known, add: 2, label: you know how the gates work }
+          - { if: flag.c2_knows_country, add: 1, label: you know this coast }
+      success:
+        text: |
+          The axemen are waiting for an order. You give them one. The first gate goes with a crack like a tree falling, and the sea comes through it brown and fast, and then the second. In the time it takes to say a paternoster the pans in front of the left of the line are knee-deep, then thigh-deep, and the columns on those causeways are men on a narrow bank with water on both sides and archers in front.
+
+          It does not stop them. It slows them on the left, and bunches them, and the archers do not waste it. The heralds will not write your name for it. The men on the left of the line know who opened the gates.
+        effects: [ { set: flag.c2_opened_sluice }, { add: { counter.sl_edge: 2, res.renown: 2 } } ]
+        next: c2_salines_2
+      failure:
+        text: You reach the gates. The bars are swollen into the frames with salt, and by the time you have them moving the columns are past the pans and onto the dyke. The water floods in behind them instead of in front.
+        effects: [ { add: { counter.sl_edge: -1 } } ]
+        next: c2_salines_2
+    - id: steady
+      text: Steady the men around you. Nobody here has seen anything like this.
+      tags: [allies]
+      check: { attr: presence, skill: command, difficulty: 4, mods: [ { if: trait.veteran, add: 1, label: you have stood in a line before }, { if: flag.c2_grisolles_held, add: 1, label: you held at Grisolles } ] }
+      success:
+        text: "You talk to them the way Will Cobb talks to his archers: low, plain, about nothing in particular. The weather. Supper. Who owes whom money. Men who were at Grisolles are looking at the columns coming and remembering. You keep talking. By the time the first column reaches the dyke, the men around you are steady as posts."
+        effects: [ { add: { counter.sl_edge: 2, skill.command: 1 } } ]
+        next: c2_salines_2
+      failure:
+        text: You try. Your own voice shakes. The man next to you is sick on his feet. Further down the line somebody shouts "Grisolles!" and it is not a battle-cry.
+        next: c2_salines_2
+    - id: shoot
+      text: Take a bow and pick off the shield-bearers at the heads of the columns.
+      tags: [martial]
+      check:
+        attr: agility
+        skill: archery
+        difficulty: 4
+        mods: [ { if: background == archer, add: 1, label: your father's bow } ]
+      success:
+        text: A man carrying a shield as tall as a door has to show his feet, and sometimes his hand. You wait for it. Three columns lose their shields in front of you, and for a few dozen paces the archers have them naked on the causeways.
+        effects: [ { add: { counter.sl_edge: 1, rep.commons: 1 } } ]
+        next: c2_salines_2
+      failure:
+        text: The shield-bearers are better at this than you are. You empty a quiver into painted wood.
+        next: c2_salines_2
+    - id: pray
+      text: Kneel with the line when the priests go along it.
+      tags: [piety]
+      text_after: The priests go along the line with the Host in a pyx, and the whole army kneels on the dyke at once, with the enemy coming, and is blessed in a hurry. When you stand up the columns are three hundred paces off and you feel no different and you are glad you did it.
+      effects: [ { add: { counter.sl_edge: 1, rep.piety: 1 } } ]
+      next: c2_salines_2
+
+- id: c2_salines_2
+  chapter: ch2
+  title: The Dyke
+  text: |
+    They reach the dyke and spread out along it and come on together, and the two lines meet with a noise you will hear in your sleep for years.
+
+    It is not like Grisolles. The Adalian line does not break. It bends. All along the dyke it is pushed back, a step and then another, onto the siege lines behind, by the sheer weight of men in plate leaning on it.
+
+    [break]
+
+    And then, behind you, the bells of Sauvemer begin to ring, and the land gate opens, and the garrison comes out, every man in the town who can hold a spear, into the back of the Adalian siege lines.
+
+    The line you are standing in has enemies in front and enemies behind.
+  choices:
+    - id: hold
+      text: Hold the line. Shoulder to shoulder, and do not step back.
+      tags: [martial]
+      lethal: true
+      warn: Plate in front, the garrison behind, and no room to fall back. Without armour, or carrying a wound, you will not live through it.
+      check:
+        attr: endurance
+        skill: arms
+        difficulty: 5
+        mods:
+          - { if: counter.sl_edge >= 2, add: 1, label: your men are steady }
+          - { if: counter.sl_edge >= 4, add: 1, label: the water on the left }
+          - { if: armour >= 2, add: 2, label: your harness }
+          - { if: armour == 1, add: 1, label: your jack }
+          - { if: trait.veteran, add: 1, label: you have stood in a line before }
+          - { if: retinue >= 4, add: 1, label: your following at your shoulder }
+          - { if: flag.c1_joan_harness, add: 1, label: Sir Hugh Wyck's harness }
+          - { if: flag.c1_won_combat || flag.c1_tourney_won, add: 1, label: you have beaten trained men before }
+      success:
+        text: You do not step back. You do not remember deciding not to. The man in front of you is replaced by another, and another, and at some point the weight eases, and you find that the line around you has stopped moving. Behind you, the archers have turned round and are shooting into the garrison at twenty paces.
+        effects: [ { add: { counter.sl_held: 1, res.renown: 1 } }, { trait: +veteran } ]
+        next: c2_salines_3
+      partial:
+        text: The line holds. A poleaxe comes over a shield and the edge of it opens your face from brow to cheek, and when you can see again you are on your knees with your own men standing over you. Around you, not everyone is standing.
+        effects: [ { add: { counter.sl_held: 1 } }, { injury: cut_brow }, { casualties: { men: 1, named: 1, spare: [ davy_ludd ] } }, { trait: +veteran } ]
+        next: c2_salines_3
+      failure:
+        text: "[if armour >= 1 && !injured]The line goes back where you are standing, and you go down under it, and are trodden on by both sides. Your harness is the only reason you are still there when they pull you out.[else]The line goes back where you are standing, and you go down under it, and do not get up.[/if]"
+        effects:
+          - if: [ armour >= 1, "!injured" ]
+            then: [ { injury: crushed_ribs }, { casualties: { men: 1, named: 1, spare: [ davy_ludd ] } } ]
+            else: [ { die: "Killed in the line on the dyke at Les Salines, aged {age}." } ]
+        next: c2_salines_3
+    - id: second
+      text: Stand in the second rank, behind your men, and let the front rank take the weight.
+      tags: [yield]
+      text_after: It is where a captain is supposed to stand, some say. Others say different. The front rank takes the weight and holds, mostly. You lose men you put in front of you. You keep your own skin, and you know exactly what it cost.
+      effects: [ { add: { counter.sl_held: 1 } }, { casualties: { men: 1, named: 1, spare: [ davy_ludd ] } } ]
+      next: c2_salines_3
+    - id: rear
+      text: Turn your men round and meet the garrison coming out of the town.
+      tags: [cunning, allies]
+      check:
+        attr: wits
+        skill: tactics
+        difficulty: 5
+        mods:
+          - { if: counter.sl_edge >= 1, add: 1, label: the line in front is steady }
+          - { if: flag.c2_saw_retrenchment || flag.c2_held_gallery, add: 1, label: you know the ground under the walls }
+          - { if: retinue >= 4, add: 1, label: enough men to turn }
+      success:
+        text: |
+          The garrison are townsmen mostly, tanners and coopers with spears, and they have been starved for a year. They come into the siege lines expecting to find the backs of men who are fighting the other way. They find your men facing them. It is short, and you are not proud of all of it. They go back to the land gate faster than they came out, and the gate shuts, and the bells stop.
+
+          [if suit.clemence_vaux.status >= known]You think of a woman with a list of names. You hope none of these are on it.[/if]
+        effects: [ { set: flag.c2_turned_garrison }, { add: { counter.sl_held: 1, res.renown: 2, rel.@master.respect: 1 } } ]
+        next: c2_salines_3
+      failure:
+        text: You turn your men round, and the line in front of you sags into the gap where they were standing, and for a terrible stretch you are fighting both ways at once. Others come to stop the garrison. Nobody comes to help you.
+        effects: [ { injury: bruised_ribs }, { casualties: { men: 1, named: 0 } } ]
+        next: c2_salines_3
+
+- id: c2_salines_3
+  chapter: ch2
+  title: The King's Banner
+  text: |
+    Past noon. Nobody has eaten. The tide has turned and is coming in over the pans.
+
+    Two hundred paces to your right, where the line is thinnest, the Valdrennish break through. You see the King's banner sway, and lean, and go down into the press. A great howl goes up from the Valdrennish all along the dyke. Men around you stop fighting to look.
+
+    [break]
+
+    In the same moment, in front of you, a knot of Valdrennish knights in the Constable's colours, black and silver, comes over the dyke after a young man with a gold circlet on his helm. Thibaut de Brésy, the Constable's son. Worth more than everything you will ever own.
+
+    [if npc.aymer_ravell.friend && npc.aymer_ravell.alive]And to your left, Aymer Ravell is down, under a Valdrennish knight with an axe.[elif npc.will_cobb.friend && npc.will_cobb.alive]And to your left, out in front of the line gathering arrows from the dead, Will Cobb is cut off by three men-at-arms.[/if]
+
+    Away on the far left, on their own causeway, the gold shuttle banners of Vervais have not moved since dawn.
+  choices:
+    - id: banner
+      text: Go right, for the King's banner.
+      tags: [martial]
+      lethal: true
+      warn: Into the worst of it, where the enemy is thickest. Without armour, or carrying a wound, you will not get there.
+      check:
+        attr: strength
+        skill: arms
+        difficulty: 5
+        mods:
+          - { if: armour >= 2, add: 2, label: your harness }
+          - { if: armour == 1, add: 1, label: your jack }
+          - { if: counter.sl_held >= 1, add: 1, label: your part of the line held }
+          - { if: npc.roger_tallis.follower, add: 1, label: Tallis comes with you }
+          - { if: retinue >= 4, add: 1, label: your men go with you }
+      success:
+        text: |
+          You are one of thirty men who get there, from all along the line, and the thirty are enough. The banner comes up out of the mud on its broken staff with three men holding it. The King is under it, unhorsed, blood all down one leg, alive. The howl on the dyke stops.
+
+          He looks at the men round him, one face after another, as if counting them. He looks at yours.
+        effects: [ { set: flag.c2_saved_banner }, { add: { res.renown: 3, rep.crown: 2, rep.knights: 1 } } ]
+        next: c2_salines_4
+      partial:
+        text: You get there, one of thirty, and the banner comes up again. A sword-cut across the forearm on the way in, and a mace on the way out, and one of your men who followed you is not with you when you get back to your place in the line.
+        effects: [ { set: flag.c2_saved_banner }, { injury: arrow_wound }, { casualties: { men: 1, named: 1, spare: [ davy_ludd ] } }, { add: { res.renown: 2, rep.crown: 1 } } ]
+        next: c2_salines_4
+      failure:
+        text: "[if armour >= 1 && !injured]You never get there. Someone hits you in the press and you go down, and your men drag you back to your place. Other men raise the banner.[else]You never get there. You go down in the press on the dyke at Les Salines, two hundred paces from the King.[/if]"
+        effects:
+          - if: [ armour >= 1, "!injured" ]
+            then: [ { injury: crushed_ribs } ]
+            else: [ { die: "Killed at Les Salines going to the King's fallen banner, aged {age}." } ]
+        next: c2_salines_4
+    - id: prize
+      text: Go for the Constable's son.
+      tags: [wealth, martial]
+      check:
+        attr: strength
+        skill: arms
+        difficulty: 6
+        mods: [ { if: retinue >= 4, add: 1, label: your men go with you }, { if: counter.sl_held >= 1, add: 1, label: you are where he is going } ]
+      success:
+        text: You get to him first, through his own men, and he gives you his gauntlet before anyone else can reach him. Thibaut de Brésy, nineteen, furious, weeping with rage inside his helm. His ransom will be set by the King himself, and the King will take most of it. Your share will still be more money than your family has seen in four generations. It was luck. The man who should have had him is lying dead a yard short.
+        effects:
+          - set: flag.c2_took_thibaut
+          - add: { res.renown: 3, res.coin: 2400, rep.knights: 1 }
+          - if: flag.c1_better_terms
+            then: [ { add: { res.coin: 1200 } } ]
+        next: c2_salines_4
+      failure:
+        text: You get there third. Sir Walter Pryce gets there first, and has Thibaut de Brésy's gauntlet in his fist before you are close enough to see the circlet. It will make him rich. It was always going to be someone.
+        effects: [ { set: flag.c2_pryce_took_thibaut }, { add: { rel.walter_pryce.respect: 1 } } ]
+        next: c2_salines_4
+    - id: friend
+      text: "[if npc.aymer_ravell.friend && npc.aymer_ravell.alive]Go for Aymer.[else]Go for Cobb.[/if]"
+      tags: [allies]
+      visible_if: [ { any: [ [ npc.aymer_ravell.friend, npc.aymer_ravell.alive ], [ npc.will_cobb.friend, npc.will_cobb.alive ] ] } ]
+      lethal: true
+      warn: You will be out of the line and alone for a moment. Without armour, or carrying a wound, a moment is enough.
+      check:
+        attr: strength
+        skill: arms
+        difficulty: 4
+        mods:
+          - { if: armour >= 2, add: 2, label: your harness }
+          - { if: armour == 1, add: 1, label: your jack }
+          - { if: npc.roger_tallis.follower, add: 1, label: Tallis comes with you }
+      success:
+        text: "[if npc.aymer_ravell.friend && npc.aymer_ravell.alive]You reach Aymer as the axe comes up the second time and take it on your own shield, and then your men are there, and the Valdrennish knight is on the ground. Aymer gets up covered in someone else's blood and laughs like a madman.[if flag.c2_saved_aymer] \"Twice,\" he says. \"I shall have to stop counting.\"[/if][else]You reach Cobb with your men as the third man-at-arms comes round, and drag him back behind the line with an arrow-bundle still under his arm. He curses you for a fool all the way.[/if] Somewhere to your right, someone else is taking the Constable's son."
+        effects:
+          - add: { res.renown: 1, rep.honor: 1 }
+          - if: [ npc.aymer_ravell.friend, npc.aymer_ravell.alive ]
+            then: [ { add: { rel.aymer_ravell.affection: 3, rel.aymer_ravell.respect: 3 } }, { set: flag.c2_saved_aymer } ]
+            else: [ { add: { rel.will_cobb.affection: 3, rel.will_cobb.respect: 2 } }, { set: flag.c2_saved_cobb } ]
+        next: c2_salines_4
+      partial:
+        text: "[if npc.aymer_ravell.friend && npc.aymer_ravell.alive]You save Aymer. The axe that was for him takes you across the arm instead.[else]You save Cobb. A mace takes you on the shoulder on the way back.[/if]"
+        effects:
+          - injury: arrow_wound
+          - add: { rep.honor: 1 }
+          - if: [ npc.aymer_ravell.friend, npc.aymer_ravell.alive ]
+            then: [ { add: { rel.aymer_ravell.affection: 3, rel.aymer_ravell.respect: 2 } }, { set: flag.c2_saved_aymer } ]
+            else: [ { add: { rel.will_cobb.affection: 3 } }, { set: flag.c2_saved_cobb } ]
+        next: c2_salines_4
+      failure:
+        text: "[if armour >= 1 && !injured]You are too late, and you go down yourself on the way back, and your men carry you behind the line. [if npc.aymer_ravell.friend && npc.aymer_ravell.alive]Aymer Ravell is dead.[else]Will Cobb is dead.[/if][else]You are too late, and alone, and out of the line, and that is how you die at Les Salines.[/if]"
+        effects:
+          - if: [ armour >= 1, "!injured" ]
+            then:
+              - injury: crushed_ribs
+              - if: [ npc.aymer_ravell.friend, npc.aymer_ravell.alive ]
+                then: [ { kill: aymer_ravell } ]
+                else: [ { kill: will_cobb } ]
+            else: [ { die: "Killed at Les Salines going out of the line for a friend, aged {age}." } ]
+        next: c2_salines_4
+    - id: hold
+      text: Stay in your place in the line. The line is everything.
+      tags: [yield]
+      text_after: You stay. The banner goes up again without you; you see it rise. [if npc.aymer_ravell.friend && npc.aymer_ravell.alive]Aymer Ravell is pulled out from under the axe by his father's men, alive, his arm broken. He does not see that you stayed in the line. You do.[elif npc.will_cobb.friend && npc.will_cobb.alive]Will Cobb is dragged back by his own archers, bleeding, alive. He does not ask where you were.[else]The line holds.[/if]
+      effects: [ { add: { rel.@master.respect: 1, counter.sl_held: 1 } } ]
+      next: c2_salines_4
+
+- id: c2_salines_4
+  chapter: ch2
+  title: Evening on the Salt
+  on_enter: [ { meet: jehanne_armance } ]
+  text: |
+    In the middle of the afternoon, three hundred lances come along the beach at the gallop from the west, under the ermine of Armance, and go into the Valdrennish flank where the causeways are crowded. The Duchess has come. She has brought everything she has left.
+
+    It is not a rout. Nothing that day is a rout. But the weight comes off the dyke, a little at a time, and toward evening the Valdrennish columns begin to go back along the causeways the way they came, in good order, with their wounded, walking. The water is up to their knees. Nobody follows them.
+
+    [break]
+
+    The gold shuttle banners of Vervais go back up the heights with the rest. They never came down. Nobody on the Adalian side knows why, and nobody on the Valdrennish side will say.
+
+    The sun goes down on the salt pans and on the dead in them, and the water is red where it is not grey.
+  choices:
+    - id: field
+      text: Go out onto the pans with a lantern, among the dead and the dying.
+      tags: [piety]
+      text_after: The heralds are already out, wading, counting coats of arms. You find a Valdrennish boy younger than Davy face down on a causeway with the water rising, alive, and turn him over, and get him to the dyke. You find the dead of your own company and close their eyes, and say their names to the priest so they will be written down.
+      effects: [ { add: { rep.piety: 1, rep.honor: 1 } }, { set: flag.c2_salines_field } ]
+      next: c2_salines_after
+    - id: loot
+      text: Go out onto the pans for what the dead no longer need.
+      tags: [wealth]
+      text_after: Everyone is doing it. You come back with a Valdrennish sword better than your own, a purse, two rings, and a feeling you do not have a name for.
+      effects: [ { item: +valdrennish_sword }, { add: { res.coin: 240, rep.ruthlessness: 1 } } ]
+      next: c2_salines_after
+    - id: duchess
+      text: Go to where the Armance lances are, and find the Duchess.
+      tags: [diplomacy]
+      text_after: |
+        She is sitting on a dead horse on the beach with her helm off, letting a surgeon sew her scalp. A third of her lances did not come back from the charge. "[if flag.c2_jehanne_noticed]The one who did not yawn,[else]An Adalian,[/if]" she says, when she sees you. "Tell your King I came. Tell him I want my husband. Tell him that before he forgets."
+
+        You will tell him, if you ever get the chance. You suspect she knows how likely that is.
+      effects: [ { set: flag.c2_jehanne_message }, { add: { rel.jehanne_armance.respect: 1, rep.valdrenne: 1 } } ]
+      next: c2_salines_after
+    - id: stand
+      text: Stand with your men on the dyke until the King releases the line.
+      tags: [allies]
+      text_after: You stand. Your men stand around you. Toward dark somebody starts singing quietly, and stops, and somebody else picks it up. When the King's trumpets finally sound the release nobody moves for a while.
+      effects: [ { add: { rel.davy_ludd.loyalty: 1, rel.jankin_rooke.loyalty: 1, rel.simkin_barre.loyalty: 1, rel.roger_tallis.loyalty: 1, rel.wat_coker.loyalty: 1, rel.perkin_dyer.loyalty: 1, rel.gib_shawe.loyalty: 1, rel.dickon_laund.loyalty: 1 } } ]
+      next: c2_salines_after
+
+- id: c2_salines_after
+  chapter: ch2
+  title: After Les Salines
+  on_enter:
+    - if: [ station != knight, { any: [ flag.c2_took_thibaut, flag.c2_saved_banner, flag.c2_turned_garrison, flag.c2_opened_sluice ] }, res.renown >= 12 ]
+      then: [ { station: knight }, { set: flag.c2_knighted_field } ]
+  text: |
+    In the morning the King rides along the dyke with his leg bound up and thanks the army, company by company. He does it slowly, because it takes him a long time to get on and off his horse.
+
+    [if flag.c2_knighted_field]When he reaches your company he stops. Somebody has said something to him: your captain, or a herald, or a man you pulled out of the water. He gets down from his horse, in the mud, which costs him, in front of everyone, and draws his sword. "For yesterday," he says. You kneel, and he knights you there on the dyke, among the dead, with salt crusted white on your boots. There are men who will tell their grandsons that they saw it.[elif flag.c2_knighted_eve]You stand in the line with your new spurs, a knight of one day, and the King looks along the faces and nods.[/if]
+
+    [break]
+
+    The count comes in during the day. Two thousand Adalians dead or dying, a fifth of the army. The Valdrennish dead are no more than that, the heralds think, and perhaps fewer. Among the Adalian dead are two earls and a bishop's nephew. Among the wounded is the King.
+
+    It is a victory, because the host on the heights is going away. It does not feel like one. [if flag.c2_turned_garrison]On the walls of Sauvemer, nobody is watching the heights any more.[else]On the walls of Sauvemer, the people who were watching the heights watch them empty.[/if]
+  choices:
+    - id: on
+      text: Bury your dead, and go on.
+      effects:
+        - if: { any: [ [ npc.davy_ludd.follower ], [ npc.jankin_rooke.follower ] ] }
+          then: [ { add: { rel.davy_ludd.loyalty: 1, rel.jankin_rooke.loyalty: 1 } } ]
+      next: c2_surrender
+
+- id: c2_surrender
+  chapter: ch2
+  title: The Keys of Sauvemer
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    Sauvemer treats within the month. There is nobody left to wait for.
+
+    The King cannot afford to storm it and cannot afford to sit in front of it another winter. The town cannot afford to be stormed. So for three weeks heralds go back and forth across the ditch with terms, and the terms change every time they cross, and nobody is happy with any of them.
+
+    [break]
+
+    The keys are held by Dame Clémence de Vaux, who has held them since her husband died in May. The King's council wants the town emptied of everyone who will not swear to him, and their houses given to Adalians. The town wants its people to keep their homes and its garrison to march out with its arms. Somewhere between the two there is a bargain. Somebody has to find it.
+  choices:
+    - id: between
+      text: Offer to carry the terms between the King's council and Dame Clémence.
+      tags: [diplomacy]
+      visible_if: [ suit.clemence_vaux.status >= known ]
+      requires: [ { any: [ flag.c2_clemence_talked, suit.clemence_vaux.regard >= 3 ] } ]
+      label: "Requires: Dame Clémence's trust"
+      check:
+        attr: presence
+        skill: diplomacy
+        difficulty: 4
+        mods:
+          - { if: flag.c2_clemence_talked, add: 1, label: she has spoken with you before }
+          - { if: station == knight, add: 1, label: your spurs }
+          - { if: rep.valdrenne >= 3, add: 1, label: the town has heard of you }
+          - { if: flag.c2_turned_garrison, add: -1, label: you fought her townsmen at the land gate }
+      success:
+        text: |
+          Nine crossings of the ditch in eleven days, sometimes twice in a night. She is harder than any merchant you have ever bargained with. So is the King's council. In the end: the garrison marches out with its arms and its banners furled. Those townsmen who swear to King Aldred keep their houses and their trades. Those who will not may sell and go, and are given a month to do it. Nobody is hanged.
+
+          On the last night, when it is settled, she gives you her hand across the ditch, and holds yours a moment longer than the bargain needs. "My husband would have hated you," she says. "I find that I do not."
+        effects:
+          - set: flag.c2_terms_carried
+          - assign: { suit.clemence_vaux.status: courted }
+          - add: { suit.clemence_vaux.regard: 4, rep.valdrenne: 3, rep.honor: 2, res.renown: 1 }
+        next: c2_feast
+      failure:
+        text: You carry the first terms across, and the second. The council finds you too soft and sends a herald instead, and the terms the town gets in the end are the King's. Half the town leaves by the land gate with what it can carry. Dame Clémence walks out with them as far as the bridge, and turns round, and goes back to her house, because it is hers.
+        effects: [ { add: { suit.clemence_vaux.regard: 1, rep.valdrenne: 1 } } ]
+        next: c2_feast
+    - id: speak
+      text: Speak for gentle terms in your captain's ear, and hope it reaches the council.
+      tags: [diplomacy, piety]
+      check:
+        attr: presence
+        skill: courtesy
+        difficulty: 5
+        audience: nobles
+        mods:
+          - { if: station == knight, add: 1, label: your spurs }
+          - { if: flag.c2_saved_banner, add: 2, label: the King knows your face now }
+          - { if: res.renown >= 8, add: 1, label: your name }
+      success:
+        text: Your captain carries it to the Marshal, who carries it to the King. Nobody tells you whether it mattered. The terms, when they come, are kinder than anyone expected, and the King is praised for them. That is how it should be told.
+        effects: [ { set: flag.c2_spoke_for_town }, { add: { rep.honor: 1, rep.valdrenne: 2, suit.clemence_vaux.regard: 1 } } ]
+        next: c2_feast
+      failure:
+        text: Your captain hears you out and tells you, not unkindly, to leave the town to men who were not born in a village. The King's terms stand.
+        effects: [ { add: { rep.honor: 1 } } ]
+        next: c2_feast
+    - id: house
+      text: Make sure your company gets a good house in the town before the others do.
+      tags: [wealth, cunning]
+      text_after: The day the gates open you are through them with your men, and by Vespers you have a merchant's house in the Rue des Tanneurs with a yard, a well and a cellar half full of wine. Its owner has gone to Cordelle. He did not have time to take the wine.
+      effects: [ { set: flag.c2_took_house }, { add: { res.coin: 120, rep.valdrenne: -1, rel.simkin_barre.loyalty: 1, rel.roger_tallis.loyalty: 1 } } ]
+      next: c2_feast
+    - id: silent
+      text: Leave it to the heralds. It is the King's business.
+      tags: [yield]
+      text_after: The heralds settle it. The gates open on the Feast of Saint Michael, and Dame Clémence carries the keys out across the bridge in a silver dish and kneels to the King with them, and you are there in the ranks to see it. That is all.
+      next: c2_feast
+
+- id: c2_feast
+  chapter: ch2
+  title: Christmas at Sauvemer
+  on_enter: [ { advance: { seasons: 1 } }, { meet: alys_fane } ]
+  text: |
+    The Queen comes over from Adalia with her household for Christmas, and there is a feast in the great hall of Sauvemer castle, which a year ago belonged to a man who died of the flux.
+
+    It is the strangest night of your life. Six months ago you were on the dyke at Les Salines with the water rising. Tonight you are in a hall hung with Valdrennish banners turned upside down, eating swan, with the Queen's ladies at the high table in silk the colour of the sea.
+
+    [break]
+
+    [if flag.c1_omen_crown]The Queen wears a circlet of gold. You think of Mother Rook, and a woman with a crown on her, or near her, and you feel foolish, and you go on thinking it.[/if]
+
+    One of the ladies is Lady Alys Fane, the Earl of Westry's daughter. She is nineteen, tall, fair, and bored to death by a young lord who has been telling her about his horse for an hour. When the dancing starts, she looks down the hall for someone, anyone, who is not him.
+
+    [if suit.heloise_corbie.status >= known]Héloïse de Corbie is at the feast too, at the far end of a lower table with the other Valdrennish women of rank who are the King's guests until their kinsmen's ransoms are paid. She is watching the Adalians celebrate. She is not smiling.[/if]
+  choices:
+    - id: alys
+      text: Ask Lady Alys to dance, before the young lord can.
+      tags: [diplomacy]
+      check:
+        attr: presence
+        skill: courtesy
+        difficulty: 4
+        audience: nobles
+        mods:
+          - { if: station == knight, add: 1, label: your spurs }
+          - { if: res.renown >= 8, add: 1, label: your name from Les Salines }
+          - { if: flag.c1_dubbed_by_king || flag.c2_knighted_eve || flag.c2_knighted_field, add: 1, label: the King made you himself }
+      success:
+        text: She looks at your hands, which are not a gentleman's, and at your face, and says yes before the young lord has finished getting up. She dances well and talks badly, which she says is a family failing. At the end she asks what you did at Les Salines, and listens to the answer, and asks about Grisolles, which nobody at court ever does.
+        effects:
+          - assign: { suit.alys_fane.status: courted }
+          - add: { suit.alys_fane.regard: 3, suit.alys_fane.discretion: -1, rel.alys_fane.affection: 2 }
+        next: c2_truce
+      failure:
+        text: She says, politely, that she has promised this dance. She has not promised it. She looks at you again later, once, from across the hall, as if she were reconsidering something.
+        effects: [ { assign: { suit.alys_fane.status: known } }, { add: { suit.alys_fane.regard: 1 } } ]
+        next: c2_truce
+    - id: heloise
+      text: Go down to the lower table and sit with Héloïse de Corbie.
+      tags: [diplomacy, piety]
+      visible_if: [ suit.heloise_corbie.status >= known ]
+      text_after: She does not want company, and says so, and does not tell you to leave. You sit there for an hour while the Adalians sing, and neither of you says much. At the end she says, "My cousin died on the salt. And two of my father's tenants. I do not know where they are buried." You find out, later. It takes a week. You write to tell her.
+      effects:
+        - add: { suit.heloise_corbie.regard: 3, rep.valdrenne: 1 }
+        - assign: { suit.heloise_corbie.status: courted }
+      next: c2_truce
+    - id: lords
+      text: Work the room. Every great lord in the army is here tonight, drunk and generous.
+      tags: [cunning]
+      check: { attr: presence, skill: diplomacy, difficulty: 4, audience: nobles, mods: [ { if: res.renown >= 8, add: 2, label: your name from Les Salines } ] }
+      success:
+        text: By midnight the Earl of Westry has heard your name, the Earl of Carrow has offered you wine and talked about his dead son at Grisolles, and two bannerets have asked whose man you are. A name made on a battlefield fades fast. Tonight you have made sure the right people heard it while it was loud.
+        effects: [ { set: flag.c2_feast_known }, { add: { rep.nobles: 2, rel.baldwin_westry.respect: 1 } }, { meet: baldwin_westry } ]
+        next: c2_truce
+      failure:
+        text: Great lords at a Christmas feast want to talk to each other, about themselves.
+        next: c2_truce
+    - id: men
+      text: Slip out and drink with your own men in the castle stables.
+      tags: [allies]
+      text_after: It is a better party. [if npc.simkin_barre.follower]Simkin Barre has stolen a whole cask from the castle cellar.[/if] [if npc.davy_ludd.follower]Davy is sick.[/if] Somebody sings the Harrow Ford song and then someone makes up a verse about the salt pans, which is filthy, and everyone learns it.
+      effects: [ { add: { rel.davy_ludd.loyalty: 2, rel.simkin_barre.loyalty: 2, rel.jankin_rooke.loyalty: 1, rel.roger_tallis.loyalty: 1, rel.wat_coker.loyalty: 1, rel.perkin_dyer.loyalty: 1, rel.gib_shawe.loyalty: 1, rel.dickon_laund.loyalty: 1, rep.commons: 1 } } ]
+      next: c2_truce

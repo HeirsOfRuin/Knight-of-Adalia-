@@ -26,6 +26,8 @@ export function App({ content }: { content: ContentBundle }) {
   const [debug, setDebug] = useState(initialDebug);
   const [saveOk, setSaveOk] = useState(true);
   const [autosave] = useState(() => readAutosave(content));
+  // states before each choice this session, newest last, for the debug rewind
+  const [history, setHistory] = useState<GameState[]>([]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -45,6 +47,7 @@ export function App({ content }: { content: ContentBundle }) {
 
   const start = (opts: NewGameOptions) => {
     update(newGame(content, opts));
+    setHistory([]);
     setNotice([]);
     setScreen('game');
   };
@@ -52,7 +55,9 @@ export function App({ content }: { content: ContentBundle }) {
   const onChoose = (id: string, force?: CheckResult) => {
     if (!state) return;
     try {
-      update(choose(content, state, id, { force }).state);
+      const next = choose(content, state, id, { force }).state;
+      if (next.scene !== state.scene || next.time !== state.time) setHistory((h) => [...h.slice(-299), state]);
+      update(next);
       setError(undefined);
       window.scrollTo({ top: 0 });
     } catch (e) {
@@ -94,6 +99,8 @@ export function App({ content }: { content: ContentBundle }) {
         saveOk={saveOk}
         onChoose={onChoose}
         onReplace={update}
+        history={history}
+        onRewind={(i) => { update(history[i]!); setHistory(history.slice(0, i)); }}
         onImport={onImport}
         onImportText={onImportText}
         onNewGame={() => setScreen('new')}

@@ -33,12 +33,16 @@ steps:
   c2_following: home
   c2_march: spare
   c2_village: ransom!success
-  c2_mouths: queen!success
+  c2_grisolles_rout: master!success
+  c2_burial_truce: talk!success
+  c2_surrender: between!success
 ending: ch2_complete
 expect:
   - station == lord
   - flag.c2_breval_ransomed
-  - flag.c2_mouths_queen
+  - flag.c2_terms_carried
+  - flag.c2_saved_master
+  - suit.clemence_vaux.status >= courted
   - flag.c1_dubbed_by_master
   - alias.master == hamon_darrell
   - flag.c1_master_cleared

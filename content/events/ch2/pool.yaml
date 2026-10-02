@@ -72,9 +72,9 @@
   chapter: ch2
   kind: pool
   pool: c2_camp
-  title: Hazard in Newtown
+  title: Hazard
   text: |
-    Newtown has a street of taverns now, and every tavern has a dice game, and every dice game has men who have been paid.
+    The camp on the dunes has a street of taverns now, turf and driftwood, and every tavern has a dice game, and every dice game has men who have been paid.
   choices:
     - id: play
       text: Play.
@@ -91,7 +91,7 @@
     - id: watch
       text: Watch your men instead, and make sure none of them loses his boots.
       tags: [allies]
-      text_after: Simkin Barre loses his boots. You buy them back. He swears it will not happen again. It happens again.
+      text_after: "[if npc.simkin_barre.follower]Simkin Barre loses his boots. You buy them back. He swears it will not happen again. It happens again.[else]You win a little and lose a little more. Davy watches the dice with an interest you do not like.[/if]"
       effects: [ { add: { rel.simkin_barre.loyalty: 1, res.coin: -6 } } ]
       next: "@return"
 
@@ -109,7 +109,7 @@
     - id: write
       text: Write back, properly, whatever it costs to send.
       tags: [diplomacy]
-      text_after: It costs fourpence and three drafts. You tell her about Hautbois, some of it. You tell her you are alive. You do not say anything you cannot keep. She will read what is not there.
+      text_after: It costs fourpence and three drafts. You tell her about Grisolles, some of it. You tell her you are alive. You do not say anything you cannot keep. She will read what is not there.
       effects: [ { add: { suit.isabel_sayer.regard: 2 } } ]
       next: "@return"
     - id: short
@@ -127,7 +127,7 @@
   text: |
     Cecily Fuller does not write letters, she writes accounts. This one has a column for the price of wool in Wendham, a column for the price of Valdrennish wine in Saltcombe, and a column headed "You", with a note: "Alive, I assume. A merchant in Saltcombe says the Sauvemer garrison is short of salt. Buy it in the Armance. Sell it to them. Write when you have done it."
 
-    There is a bill of exchange folded inside, for five pounds, on the Lanzi house in Newtown, "as capital".
+    There is a bill of exchange folded inside, for five pounds, on the Lanzi house before Sauvemer, "as capital".
   choices:
     - id: do
       text: Do it. Buy salt in the Armance, sell it to the garrison.
@@ -237,7 +237,7 @@
     - id: yes
       text: Tell him yes, and that you will see to it if you can.
       tags: [allies]
-      text_after: He goes red to the ears and says nothing for a whole day. Then he starts asking Tallis to teach him the sword properly, every morning, in the cold.
+      text_after: He goes red to the ears and says nothing for a whole day. Then he starts asking [if npc.roger_tallis.follower]Tallis[else]the old men-at-arms in the camp[/if] to teach him the sword properly, every morning, in the cold.
       effects: [ { set: flag.c2_promised_davy }, { add: { rel.davy_ludd.loyalty: 3, rel.davy_ludd.affection: 3 } } ]
       next: "@return"
     - id: truth
@@ -253,7 +253,7 @@
   pool: c2_camp
   title: The Flux
   text: |
-    The flux comes through the camp again in the heat. It always does. Men who survived Hautbois die of it in a week, squatting in the ditches, and are buried in the ditches.
+    The flux comes through the camp again in the heat. It always does. Men who survived Grisolles die of it in a week, squatting in the ditches, and are buried in the ditches.
   choices:
     - id: water
       text: Make your men boil everything they drink, and dig their latrines away from the well.
@@ -280,7 +280,7 @@
   title: Sir Giles
   requires: [ flag.c1_giles_enemy ]
   text: |
-    Sir Giles Marrick is in Newtown with the Earl of Carrow's company, richer than he was, [if flag.c2_giles_took_corbie]because of Corbie's ransom,[/if] and drunker. He finds you in a tavern one night and calls you, in front of the room, by what he called you in the squires' loft.
+    Sir Giles Marrick is in the camp with the Earl of Carrow's company, richer than he was, [if flag.c2_giles_took_corbie]because of Corbie's ransom,[/if] and drunker. He finds you in a tavern one night and calls you, in front of the room, by what he called you in the squires' loft.
   choices:
     - id: fight
       text: Take him outside.
@@ -297,7 +297,7 @@
     - id: ignore
       text: Finish your drink and leave.
       tags: [yield]
-      text_after: The room watches you go. A year ago, it would have cost you. Tonight it costs you nothing, because everyone in the room knows what you did at Hautbois, and nobody remembers what Giles did there.
+      text_after: The room watches you go. A year ago, it would have cost you. Tonight it costs you nothing, because everyone in the room knows what you did at Grisolles, and nobody remembers what Giles did there.
       effects: [ { add: { rep.honor: 1 } } ]
       next: "@return"
 

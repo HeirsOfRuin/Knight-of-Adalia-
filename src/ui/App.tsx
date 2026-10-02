@@ -65,9 +65,9 @@ export function App({ content }: { content: ContentBundle }) {
     }
   };
 
-  const onImportText = (text: string) => {
+  const onImportText = async (text: string) => {
     try {
-      const r = importSaveText(text.trim(), content);
+      const r = await importSaveText(text.trim(), content);
       update(r.state);
       setNotice(r.warnings);
       setError(undefined);

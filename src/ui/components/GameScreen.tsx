@@ -41,6 +41,7 @@ export function GameScreen(p: Props) {
   const { content, state } = p;
   const [panel, setPanel] = useState<Panel>('none');
   const [force, setForce] = useState<CheckResult | undefined>();
+  const [saveMsg, setSaveMsg] = useState<string | undefined>();
   const v = view(content, state);
   // A scene can be split into pages with a [break] line; the player reads them with Continue.
   const pages = v.text.split(/\n\s*\[break\]\s*(?:\n|$)/).map((t) => t.trim()).filter(Boolean);
@@ -150,8 +151,8 @@ export function GameScreen(p: Props) {
               <div class="menu">
                 <h2>Menu</h2>
                 <p class="muted">The game saves itself after every choice, in this browser only.</p>
-                <button class="btn wide" onClick={() => exportSave(state, content)}>Download save file</button>
-                <p class="fineprint">If the download does nothing (some hosted pages block downloads), use Save as text instead.</p>
+                <button class="btn wide" onClick={() => exportSave(state, content).then(setSaveMsg)}>Download save file</button>
+                <p class="fineprint">{saveMsg ?? 'If the download does nothing, use Save as text instead.'}</p>
                 <label class="btn wide file-btn">
                   Import save file
                   <input type="file" accept="application/json,.json" onChange={(e) => {

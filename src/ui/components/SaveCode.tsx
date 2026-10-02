@@ -1,14 +1,22 @@
-import { useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import type { ContentBundle } from '../../content/schema';
 import type { GameState } from '../../engine/state';
 import { toSave } from '../../engine/save';
+import { encodeSaveCode } from '../../engine/savecode';
 
 /** Save as copyable text. Works where file downloads are blocked. */
 export function SaveCode({ state, content, onLoadText }: { state: GameState; content: ContentBundle; onLoadText: (text: string) => void }) {
   const [mode, setMode] = useState<'none' | 'copy' | 'paste'>('none');
   const [pasted, setPasted] = useState('');
   const [copied, setCopied] = useState('');
-  const code = mode === 'copy' ? JSON.stringify(toSave(state, content)) : '';
+  const [code, setCode] = useState('');
+  useEffect(() => {
+    if (mode !== 'copy') return;
+    let live = true;
+    setCode('');
+    encodeSaveCode(toSave(state, content)).then((c) => live && setCode(c), () => live && setCode(JSON.stringify(toSave(state, content))));
+    return () => { live = false; };
+  }, [mode, state, content]);
   const copy = (e: Event) => {
     const area = (e.currentTarget as HTMLElement).parentElement?.querySelector('textarea');
     navigator.clipboard?.writeText(code).then(
@@ -24,9 +32,9 @@ export function SaveCode({ state, content, onLoadText }: { state: GameState; con
       </div>
       {mode === 'copy' && (
         <div class="savecode-box">
-          <label for="save-code-out">Your save. Keep this text to restore this life later, on any device.</label>
-          <textarea id="save-code-out" readOnly rows={4} value={code} onFocus={(e) => (e.currentTarget as HTMLTextAreaElement).select()} />
-          <button class="btn primary" onClick={copy}>Copy</button>
+          <label for="save-code-out">Your save. Keep this text to restore this life later, on any device. Older journal entries are kept as headlines only.</label>
+          <textarea id="save-code-out" readOnly rows={4} value={code || 'Preparing...'} onFocus={(e) => (e.currentTarget as HTMLTextAreaElement).select()} />
+          <button class="btn primary" disabled={!code} onClick={copy}>Copy</button>
           {copied && <p class="fineprint">{copied}</p>}
         </div>
       )}

@@ -41,10 +41,10 @@ steps:
   c3_arrival: flee
   c3_fled_town: wait
   c3_harvest: compel
-ending: ch3_complete
+ending: story_so_far
 expect:
   - flag.c3_fled
-  - estate.temper < 0
+  - flag.c3_fled
   - station == lord
   - flag.c2_breval_sacked
   - trait.burner

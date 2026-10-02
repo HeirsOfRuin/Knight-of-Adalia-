@@ -2,6 +2,7 @@ import { ESTATE_FIELDS, clampEstate, type EstateField } from './estate';
 // Effect application. Operates on a state that the caller has already cloned.
 import type { ContentBundle, Effect } from '../content/schema';
 import type { GameState, NpcState, SuitState } from './state';
+import { pickHeirs, TEMPERAMENTS } from './heirs';
 import { advanceSeasons } from './calendar';
 import { labelFor, deref } from './paths';
 import { test } from './conditions';
@@ -125,6 +126,21 @@ function addNumber(state: GameState, content: ContentBundle, rawPath: string, de
       const before = state.estate[f] ?? 0;
       state.estate[f] = clampEstate(f, before + delta);
       note(labelFor(content, path), state.estate[f]! - before);
+      return;
+    }
+    case 'heir': {
+      for (const h of pickHeirs(state, a)) {
+        if (b !== 'bond') throw new Error(`add: only heir.<which>.bond can change, not ${path}`);
+        h.bond = clamp((h.bond ?? 0) + delta, -5, 5);
+      }
+      return;
+    }
+    case 'holding': {
+      const h = state.holdings?.[a];
+      if (!h) return; // nothing to change on a holding he does not hold
+      if (b === 'income') h.income = Math.max(0, h.income + delta);
+      else h.temper = clamp(h.temper + delta, -5, 5);
+      note(labelFor(content, path), delta);
       return;
     }
     case 'health': {
@@ -273,7 +289,8 @@ export function applyEffects(state: GameState, content: ContentBundle, effects: 
       }
     } else if ('birth' in e) {
       const sex = e.birth === 'random' ? (ctx.rng && ctx.rng.float() < 0.5 ? 'daughter' : 'son') : e.birth;
-      (state.heirs ??= []).push({ name: '', sex, born: state.time, alive: true });
+      const temperament = ctx.rng ? TEMPERAMENTS[ctx.rng.int(TEMPERAMENTS.length)] : 'merry';
+      (state.heirs ??= []).push({ name: '', sex, born: state.time, alive: true, temperament, bond: 0 });
       ctx.changes.push(sex === 'son' ? 'A son' : 'A daughter');
     } else if ('name_heir' in e) {
       const h = state.heirs?.find((x) => !x.name);
@@ -281,6 +298,22 @@ export function applyEffects(state: GameState, content: ContentBundle, effects: 
     } else if ('heir_dies' in e) {
       const h = state.heirs?.filter((x) => x.alive).at(-1);
       if (h) { h.alive = false; ctx.changes.push(`${h.name || 'The child'} dies`); }
+    } else if ('heir_set' in e) {
+      for (const h of pickHeirs(state, e.heir_set.which)) {
+        const t = e.heir_set.temperament;
+        if (t === 'random') { if (!h.temperament) h.temperament = ctx.rng ? TEMPERAMENTS[ctx.rng.int(TEMPERAMENTS.length)] : 'merry'; }
+        else if (t) h.temperament = t;
+        if (e.heir_set.upbringing) h.upbringing = e.heir_set.upbringing;
+        h.bond ??= 0;
+      }
+    } else if ('hold' in e) {
+      (state.holdings ??= {})[e.hold.id] = { income: e.hold.income, temper: clamp(e.hold.temper, -5, 5) };
+      ctx.changes.push(`You hold ${reg.holdings[e.hold.id]?.label ?? e.hold.id}`);
+    } else if ('release' in e) {
+      if (state.holdings?.[e.release]) {
+        delete state.holdings[e.release];
+        ctx.changes.push(`Lost: ${reg.holdings[e.release]?.label ?? e.release}`);
+      }
     } else if ('train' in e) {
       train(state, content, e.train, ctx.changes);
     } else if ('found_estate' in e) {

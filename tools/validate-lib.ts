@@ -10,6 +10,7 @@ function compileCond(c: CondInput): Cond {
 }
 import { validateText } from '../src/engine/text';
 import { checkPath } from '../src/engine/paths';
+import { TEMPERAMENTS, UPBRINGINGS } from '../src/engine/heirs';
 
 export type Severity = 'error' | 'warning';
 export interface Issue { severity: Severity; where: string; message: string }
@@ -17,7 +18,7 @@ export type CheckStatus = 'PASS' | 'FAIL' | 'PENDING';
 export interface StructuralCheck { background: string; name: string; status: CheckStatus; detail: string }
 export interface ValidationReport { issues: Issue[]; structural: StructuralCheck[]; reachableBy: Record<string, Set<string>> }
 
-const ADDABLE = ['attr', 'skill', 'rep', 'res', 'rel', 'favor', 'suit', 'counter', 'health', 'estate'];
+const ADDABLE = ['attr', 'skill', 'rep', 'res', 'rel', 'favor', 'suit', 'counter', 'health', 'estate', 'heir', 'holding'];
 const ASSIGNABLE = ['chapter', 'track', 'counter', 'flag', 'suit', 'rel'];
 
 function outcomesOf(c: Choice): { label: string; o: Outcome }[] {
@@ -136,12 +137,15 @@ export function validate(content: ContentBundle): ValidationReport {
       if (scene.kind === 'spine') err(where, '"@return" used in a spine scene');
     } else if (!scenes[n]) err(where, `next: unknown scene "${n}"`);
   };
-  const checkEffects = (where: string, effects: Effect[], lethalOk: boolean): void => {
+  // Death rule: a death must sit under a condition that reads armour or injured, so a
+  // harnessed, unhurt man is badly hurt instead (DESIGN, Phase 3 review changes).
+  const checkEffects = (where: string, effects: Effect[], lethalOk: boolean, deathGuarded = false): void => {
     for (const e of effects) {
       if ('if' in e || 'chance' in e) {
+        const guards = 'if' in e && /armour|injured/.test(JSON.stringify(e.if));
         if ('if' in e) checkCond(where, e.if);
-        checkEffects(where, e.then, lethalOk);
-        checkEffects(where, e.else ?? [], lethalOk);
+        checkEffects(where, e.then, lethalOk, deathGuarded || guards);
+        checkEffects(where, e.else ?? [], lethalOk, deathGuarded || guards);
         continue;
       }
       if ('set' in e || 'clear' in e) {
@@ -156,6 +160,13 @@ export function validate(content: ContentBundle): ValidationReport {
           if (!ADDABLE.includes(ns)) err(where, `add: cannot add to "${p}"`);
           else if (ns !== 'health') { const pe = checkPath(content, p); if (pe) err(where, `add: ${pe}`); }
         }
+      } else if ('heir_set' in e) {
+        const { temperament: t, upbringing: u } = e.heir_set;
+        if (t && t !== 'random' && !(TEMPERAMENTS as readonly string[]).includes(t)) err(where, `heir_set: unknown temperament "${t}"`);
+        if (u && !(UPBRINGINGS as readonly string[]).includes(u)) err(where, `heir_set: unknown upbringing "${u}"`);
+      } else if ('hold' in e || 'release' in e) {
+        const id = 'hold' in e ? e.hold.id : e.release;
+        if (!(id in reg.holdings)) err(where, `unknown holding "${id}"`);
       } else if ('train' in e) {
         for (const k of Object.keys(e.train)) { if (k === 'ceiling' || k === 'quiet') continue; const pe = checkPath(content, `skill.${k}`); if (pe) err(where, `train: ${pe}`); }
       } else if ('found_estate' in e) {
@@ -197,6 +208,7 @@ export function validate(content: ContentBundle): ValidationReport {
         else if (q.kind !== 'queued') err(where, `queue: "${e.queue.event}" is not kind: queued`);
       } else if ('die' in e) {
         if (!lethalOk) err(where, '"die" outside a lethal choice: death needs a clear risk signal');
+        else if (!deathGuarded) err(where, '"die" not guarded by the death rule: put it under an if on armour or injured, with a serious wound otherwise');
         checkText(where, e.die);
       } else if ('journal' in e) checkText(where, e.journal);
     }

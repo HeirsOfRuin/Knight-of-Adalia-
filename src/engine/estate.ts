@@ -47,12 +47,19 @@ export function estateTick(state: GameState, changes: string[]): void {
   const season = state.time % 4;
   if (season === 2) {
     // Michaelmas: harvest in, rents due. Both scale with the people left to do the work.
-    const harvest = Math.max(1, Math.round((e.people ?? 0) / 50) + Math.floor((e.orchard ?? 0) / 2));
+    const harvest = Math.max(1, Math.round((e.people ?? 0) / 40) + Math.floor((e.orchard ?? 0) / 2));
     e.food = clampEstate('food', (e.food ?? 0) + harvest);
     let rent = (e.people ?? 0) * 3 + (e.salt ?? 0) * 40 + (e.orchard ?? 0) * 30;
     if ((e.temper ?? 0) <= -3) rent = Math.floor(rent / 2);
     state.res.coin = (state.res.coin ?? 0) + rent;
     changes.push(`Harvest in: ${harvest} seasons of grain`, `Michaelmas rents: ${formatCoin(rent)}`);
+    // other holdings pay their year's income at the same time
+    let other = 0;
+    for (const h of Object.values(state.holdings ?? {})) other += h.temper <= -3 ? Math.floor(h.income / 2) : h.income;
+    if (other > 0) {
+      state.res.coin += other;
+      changes.push(`Rents from your other holdings: ${formatCoin(other)}`);
+    }
   }
   // Every season eats one season of grain.
   e.food = (e.food ?? 0) - 1;

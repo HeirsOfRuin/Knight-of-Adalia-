@@ -1,3 +1,4 @@
+import { pickHeirs } from './heirs';
 import { ESTATE_FIELDS, ESTATE_LABELS, type EstateField } from './estate';
 // State paths: the shared vocabulary of conditions, effects and text.
 // One resolver for everything, so displayed values and resolved values cannot
@@ -39,6 +40,12 @@ export function isFriend(state: GameState, content: ContentBundle, id: string): 
   const n = state.npcs[id];
   if (content.registry.npcs[id]?.tags.includes('family')) return false; // family are family, not friends
   return !!n && n.alive && n.affection >= FRIEND_AFFECTION && n.respect >= FRIEND_RESPECT;
+}
+
+const NUMBER_WORDS = ['nought', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty'];
+/** Small numbers as words, for prose ("Ralf is two"). */
+export function numberWord(n: number): string {
+  return NUMBER_WORDS[n] ?? String(n);
 }
 
 export function getValue(state: GameState, content: ContentBundle, rawPath: string): Value {
@@ -91,6 +98,32 @@ export function getValue(state: GameState, content: ContentBundle, rawPath: stri
           return n.length <= 1 ? (n[0] ?? '') : `${n.slice(0, -1).join(', ')} and ${n.at(-1)}`;
         }
       }
+      return undefined;
+    }
+    case 'heir': {
+      const h = pickHeirs(state, a!)[0];
+      if (b === 'alive') return !!h;
+      if (!h) return b === 'age' || b === 'bond' ? 0 : 'none';
+      switch (b) {
+        case 'name': return h.name || 'the baby';
+        case 'sex': return h.sex;
+        case 'age': return Math.floor((state.time - h.born) / 4);
+        case 'ageword': return numberWord(Math.floor((state.time - h.born) / 4));
+        case 'temperament': return h.temperament ?? 'none';
+        case 'upbringing': return h.upbringing ?? 'none';
+        case 'bond': return h.bond ?? 0;
+      }
+      return undefined;
+    }
+    case 'holding': {
+      const h = state.holdings?.[a!];
+      if (b === 'held') return !!h;
+      return h ? h[b as 'income' | 'temper'] : 0;
+    }
+    case 'holdings': {
+      const all = Object.values(state.holdings ?? {});
+      if (a === 'count') return all.length;
+      if (a === 'income') return all.reduce((s, h) => s + h.income, 0);
       return undefined;
     }
     case 'calendar':
@@ -150,6 +183,9 @@ export function checkPath(content: ContentBundle, path: string): string | null {
     case 'npc': return need(a in reg.npcs, 'npc') ?? need(['met', 'alive', 'follower', 'friend'].includes(b ?? ''), 'npc field');
     case 'suit': return need(a in reg.romances, 'romance') ?? need(['status', 'regard', 'family', 'discretion', 'pledge'].includes(b ?? ''), 'suit field');
     case 'calendar': return need(['season', 'year'].includes(a), 'calendar field');
+    case 'heir': return need(['eldest', 'second', 'third', 'last'].includes(a), 'heir selector') ?? need(['alive', 'name', 'sex', 'age', 'ageword', 'temperament', 'upbringing', 'bond'].includes(b ?? ''), 'heir field');
+    case 'holding': return need(a in reg.holdings, 'holding') ?? need(['held', 'income', 'temper'].includes(b ?? ''), 'holding field');
+    case 'holdings': return need(['count', 'income'].includes(a), 'holdings field');
     case 'heirs': return need(['count', 'born', 'sons', 'daughters', 'last', 'lastname', 'eldest', 'eldest_id', 'names'].includes(a), 'heirs field');
     default: return `unknown namespace "${ns}" in "${path}"`;
   }
@@ -187,6 +223,7 @@ export function labelFor(content: ContentBundle, path: string): string {
     case 'injury': return reg.injuries[a!]?.label ?? cap(a!);
     case 'suit': return `${reg.npcs[reg.romances[a!]?.npc ?? a!]?.name ?? a}: ${b}`;
     case 'station': return 'Station';
+    case 'holding': return `${reg.holdings[a!]?.label ?? cap(a!)}: ${b === 'temper' ? 'temper' : 'income'}`;
     case 'estate': return ESTATE_LABELS[a as EstateField] ?? cap(a!);
     default: return cap(path);
   }

@@ -38,7 +38,7 @@ steps:
   c3_arrival: apart
   c3_measures: burn
   c3_harvest: let_go
-ending: ch3_complete
+ending: story_so_far
 expect:
   - flag.c3_burned_houses
   - station == lord

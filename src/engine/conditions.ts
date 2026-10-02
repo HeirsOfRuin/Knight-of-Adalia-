@@ -121,6 +121,9 @@ export function validateCond(input: CondInput, content: ContentBundle): string[]
           : c.path.startsWith('alias.') ? ['none', ...Object.keys(content.registry.npcs)]
           : c.path === 'heirs.last' ? ['none', 'son', 'daughter']
           : c.path === 'heirs.eldest_id' ? [String(c.value)] // a child's given name, lower-cased: any word
+          : /^heir\.[a-z]+\.sex$/.test(c.path) ? ['none', 'son', 'daughter']
+          : /^heir\.[a-z]+\.temperament$/.test(c.path) ? ['none', 'bold', 'bookish', 'merry', 'grave']
+          : /^heir\.[a-z]+\.upbringing$/.test(c.path) ? ['none', 'home', 'page', 'church', 'arms', 'letters', 'court']
           : undefined);
         if (!known) errs.push(`"${c.src}": path does not take a named value`);
         else if (!known.includes(c.value)) errs.push(`"${c.src}": unknown value "${c.value}"`);

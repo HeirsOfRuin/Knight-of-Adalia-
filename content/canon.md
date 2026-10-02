@@ -245,3 +245,9 @@ A single Church across all realms, under **the Pontiff**. For two generations th
 - **Year 32:** King Amaury of Valdrenne dies. His son is fourteen, and the Constable, Gaucelin de Brésy, rules in his name. The truce of Saint-Lys runs out the next Lady Day. The King calls a great council at Wendmere for Martinmas.
 - **The Vervais betrayal (secret):** in year 21 the Earl of Carrow warned Duke Lothaire, by way of the Lanzi house, that the weaving towns would rise.
 
+## Chapter 4 events (years 33-)
+- **Year 32, Martinmas:** the great council at Wendmere votes money for a war in the West.
+- **Year 33:** the truce lapses at Lady Day. The King lands at Lannec in June. Duchess Jehanne, 70, has an heir: her granddaughter Mahaut, 14, whose father died in Cordelle's prison. The army takes the Armance towns through the autumn, including Saint-Ferréol.
+- **Year 34, May: Mortefontaine.** The Constable's men-at-arms attack the King's ridge on foot. The Earl of Carrow's battle stands still, or is made to move. The Constable's horse is broken in the dry stream. The outcome depends on the player's run, but the Constable always escapes to Cordelle, where he fights his own boy-king.
+- **Year 35, Lent:** the King's grants. The player becomes a banneret.
+

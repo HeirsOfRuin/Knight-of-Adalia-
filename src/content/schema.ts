@@ -51,6 +51,11 @@ const BaseEffectSchema = z.union([
   z.object({ birth: z.enum(['random', 'son', 'daughter']) }).strict(),
   z.object({ name_heir: z.string().min(1) }).strict(),
   z.object({ heir_dies: z.literal('last') }).strict(),
+  // heirs' growth (Ch4): which child, and what to set. temperament 'random' fills only an unset temperament.
+  z.object({ heir_set: z.object({ which: z.enum(['eldest', 'second', 'third', 'last', 'all']), temperament: z.string().optional(), upbringing: z.string().optional() }).strict() }).strict(),
+  // other holdings (Ch4): a manor beyond the first, kept as income (pence a year) and temper (-5..5)
+  z.object({ hold: z.object({ id: Id, income: z.number().int(), temper: z.number().int().default(0) }).strict() }).strict(),
+  z.object({ release: Id }).strict(),
   z.object({ journal: z.string() }).strict(),
   z.object({ die: z.string() }).strict(), // only legal inside lethal choices (validator)
 ]);
@@ -207,6 +212,12 @@ export const RomanceDefSchema = z.object({
   obstacle: z.string(),
 }).strict();
 
+export const HoldingDefSchema = z.object({
+  label: z.string(),
+  region: z.enum(['adalia', 'west']),
+  description: z.string(),
+}).strict();
+
 export const RegistrySchema = z.object({
   flags: z.record(Id, FlagDefSchema),
   npcs: z.record(Id, NpcDefSchema),
@@ -217,6 +228,7 @@ export const RegistrySchema = z.object({
   endings: z.record(Id, EndingDefSchema),
   romances: z.record(Id, RomanceDefSchema).default({}),
   lore: z.record(Id, LoreDefSchema).default({}),
+  holdings: z.record(Id, HoldingDefSchema).default({}),
 });
 export type Registry = z.infer<typeof RegistrySchema>;
 

@@ -40,7 +40,7 @@ steps:
   c3_letters: kin
   c3_match: mariot_wood
   c3_suitor: herself
-ending: ch3_complete
+ending: story_so_far
 expect:
   - flag.c3_shut
   - station == lord

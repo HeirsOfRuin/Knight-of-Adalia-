@@ -79,7 +79,7 @@ describe('estate', () => {
     const x = ctx();
     applyEffects(s, c, fx({ advance: { seasons: 2 } }), x); // summer (food 0), then autumn (harvest, rent, eat)
     expect(s.res.coin).toBe(coin + 200 * 3 + 2 * 40);
-    expect(s.estate!.food).toBe(0 + 4 - 1);
+    expect(s.estate!.food).toBe(0 + 5 - 1); // 200 people / 40
     expect(x.changes.join('|')).toMatch(/Michaelmas rents/);
     s.estate!.food = 0;
     const y = ctx();
@@ -147,5 +147,32 @@ describe('heirs and chance', () => {
     const rng = new RngCursor(seedRng(1));
     applyEffects(s, c, fx({ chance: 99, then: [{ set: 'flag.noble_marriage' }] }), { ...ctx(), rng });
     expect(s.flags.noble_marriage).toBe(true);
+  });
+});
+
+describe('holdings and heirs growth', () => {
+  const c = content();
+  const fx = (...e: unknown[]) => e.map((x) => EffectSchema.parse(x));
+  it('holds, changes, pays at Michaelmas, and releases another holding', () => {
+    const s = game('reeve');
+    applyEffects(s, c, fx({ found_estate: { people: 100, food: 4 } }, { hold: { id: 'lisle', income: 1200 } }, { add: { 'holding.lisle.temper': -4 } }), ctx());
+    expect(getValue(s, c, 'holding.lisle.held')).toBe(true);
+    expect(getValue(s, c, 'holdings.count')).toBe(1);
+    const before = s.res.coin ?? 0;
+    while (s.time % 4 !== 1) s.time += 1; // next season is Michaelmas
+    applyEffects(s, c, fx({ advance: { seasons: 1 } }), ctx());
+    expect((s.res.coin ?? 0) - before).toBe(300 + 600); // manor rent (100 people x 3) + Lisle halved for a sullen temper
+    applyEffects(s, c, fx({ release: 'lisle' }), ctx());
+    expect(getValue(s, c, 'holdings.count')).toBe(0);
+  });
+  it('sets temperament and upbringing by selector, and moves the bond', () => {
+    const s = game();
+    applyEffects(s, c, fx({ birth: 'son' }, { name_heir: 'Hugh' }, { birth: 'daughter' }, { name_heir: 'Kit' }), ctx());
+    applyEffects(s, c, fx({ heir_set: { which: 'eldest', temperament: 'bold', upbringing: 'page' } }, { add: { 'heir.second.bond': 3 } }), ctx());
+    expect(getValue(s, c, 'heir.eldest.temperament')).toBe('bold');
+    expect(getValue(s, c, 'heir.eldest.upbringing')).toBe('page');
+    expect(getValue(s, c, 'heir.second.bond')).toBe(3);
+    expect(getValue(s, c, 'heir.second.name')).toBe('Kit');
+    expect(getValue(s, c, 'heir.third.alive')).toBe(false);
   });
 });

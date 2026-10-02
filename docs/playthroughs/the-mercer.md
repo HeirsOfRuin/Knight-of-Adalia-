@@ -2323,7 +2323,7 @@ The barley is standing in the strips along the marsh edge, and the hay is still 
 
 The far fields rot standing. The geese get fat on them, and so do the rats. It is a hungry winter coming, and everyone can count.
 
-*Grain in store (seasons) −1 · Harvest in: 4 seasons of grain · Michaelmas rents: £1 8s 4d · People -66*
+*Grain in store (seasons) −1 · Harvest in: 5 seasons of grain · Michaelmas rents: £1 8s 4d · People -66*
 
 ## The Reckoning of the Dead
 
@@ -2487,7 +2487,7 @@ The church roof leaks. It leaked before the Mottle, and the old lord never mende
 
 The roofers come from the town, and the lead goes up, and the drip stops. On the first Sunday the priest preaches about the lord who mended the house of God. It is a long sermon. You sleep through most of it, and so does everyone else, contentedly.
 
-*Coin −4s 2d · Church and priest +2 · Temper of the village +1 · Church standing +1 · Harvest in: 3 seasons of grain · Michaelmas rents: £1 3s 5d*
+*Coin −4s 2d · Church and priest +2 · Temper of the village +1 · Church standing +1 · Harvest in: 4 seasons of grain · Michaelmas rents: £1 3s 5d*
 
 ## Lady Day
 
@@ -2555,7 +2555,7 @@ At the head of the horsemen, under a black-and-silver banner, a young knight wit
 
 Every soul you can find, children and grandmothers and the settlers' pigs, inside the walls before the raiders have finished with the first barn. They ride round you twice, shouting, and loose a few arrows, and take the cattle and the hay and go. You lose the cattle. You lose nobody.
 
-*Temper of the village +1*
+*Grain in store (seasons) −2 · Temper of the village +1*
 
 ## The Marriage Fine
 
@@ -2572,7 +2572,7 @@ By the custom of the manor, a villein's daughter or widow who marries pays the l
 
 You come to the wedding. They are so astonished they forget their words. You dance with the bride, badly, and she laughs, and the whole village sees you do it.
 
-*Temper of the village +2 · People +2 · Harvest in: 3 seasons of grain · Michaelmas rents: £2 7s 5d*
+*Temper of the village +2 · People +2 · Harvest in: 4 seasons of grain · Michaelmas rents: £2 7s 5d*
 
 ## The Masterless Men
 
@@ -2643,7 +2643,7 @@ You sit up with the fire until it is ash. Then you go to bed.
 
 *Spring, year 29 of King Aldred*
 
-Two years. The manor has never quite filled up again, and the barns are bare, and everyone knows it, and the village is waiting for you to fail.
+Two years. The manor has never quite filled up again, and the barns are not empty, and the village is waiting for you to fail.
 
 *(Continue)*
 
@@ -2693,8 +2693,6 @@ You are twenty-eight. Your father married at twenty. Half the men you went to wa
 
 **Chose:** Go to Wendham, and ask Cecily Fuller.
 
-*Hunger on the manor: 7 dead or gone*
-
 ## Her People
 
 *Summer, year 29 of King Aldred*
@@ -2723,7 +2721,7 @@ The contract is the longest document you have ever seen that was not a treaty. M
 
 You haggle like your life depends on it, and come away with more than anyone expected, including you. Cecily says, afterwards, that it was the most romantic afternoon of her life.
 
-*Cecily Fuller's affection +4 · Cecily Fuller's respect +2 · Harvest in: 3 seasons of grain · Michaelmas rents: £1 2s 10d · Coin +£40 · Coin +£10 · Merchants standing +2*
+*Cecily Fuller's affection +4 · Cecily Fuller's respect +2 · Harvest in: 4 seasons of grain · Michaelmas rents: £2 7s 5d · Coin +£40 · Coin +£10 · Merchants standing +2*
 
 ## The Wedding
 
@@ -2741,7 +2739,7 @@ At the feast an old merchant with a gold chain leans over to you and says, "Mind
 
 **Chose:** Feast the whole manor, whatever it costs.
 
-You roast two oxen and broach every cask in the cellar, and the manor eats and drinks and dances for two days, and at the end of it Bastien makes a speech that nobody can hear and everybody cheers. It does not buy back everything. But it buys back something.
+You roast two oxen and broach every cask in the cellar, and the manor eats and drinks and dances for two days, and at the end of it Bastien makes a speech that nobody can hear and everybody cheers. For a while afterwards people smile at you in the lane.
 
 *Coin −£3 · Temper of the village +2 · Common Folk standing +1 · Cecily Fuller's affection +1*
 
@@ -2791,7 +2789,7 @@ There are choices to make about who will be in the room, and you, being a man, w
 
 Maestro Orsini comes up from Sauvemer with two boys carrying his books and a box of instruments that the midwife looks at as if they were snakes. He casts her horoscope, and bleeds her twice for balance, and is confident of everything. Your wife does not like him. Neither do the women. They do as he says anyway, because he cost two pounds.
 
-*Coin −£2 · Harvest in: 3 seasons of grain · Michaelmas rents: £2 5s 8d · A son*
+*Coin −£2 · Harvest in: 4 seasons of grain · Michaelmas rents: £2 7s 5d · A son*
 
 ## Childbed
 
@@ -2856,7 +2854,7 @@ And then the King's letter: every lord who holds of the Crown is to come with ev
 
 You take every man who can sit a horse and draw a bow, and leave your wife holding the manor. At Saltcombe the quays are full of lords and their men, all looking at each other sideways, all thinking the same thing: that the men they are going to fight are the men who stood behind them at Les Salines.
 
-*Crown standing +2 · Great Nobles standing +1 · Temper of the village −1 · Hunger on the manor: 7 dead or gone*
+*Crown standing +2 · Great Nobles standing +1 · Temper of the village −1*
 
 ## The Hythe Fields
 
@@ -2894,7 +2892,7 @@ On the March, while the commons rose, the Caldmoor border stayed quiet. Sir Ance
 
 **Chose:** Read on.
 
-*Harvest in: 3 seasons of grain · Michaelmas rents: £2 3s 11d*
+*Harvest in: 4 seasons of grain · Michaelmas rents: £2 7s 5d*
 
 ## The House of Ravell
 
@@ -2996,7 +2994,7 @@ And Sir Walter Pryce was the Earl's captain then, and is the Earl's man still, a
 
 You take it to Wendmere yourself, and wait four days for an audience, and give it to the King in a window of the long gallery with nobody near. Aldred reads it twice. His face does not change at all. At the end he folds it, and puts it inside his gown, and says, "Thank you. You will say nothing of this to anyone." Then, after a moment: "Grisolles cost me eight thousand men." He does not say anything else. He does not need to. Something has begun, and you have begun it.
 
-*Crown standing +3 · Great Nobles standing −1 · Hunger on the manor: 6 dead or gone*
+*Crown standing +3 · Great Nobles standing −1*
 
 ## Summer
 
@@ -3008,22 +3006,22 @@ In the summer your wife is brought to bed again.
 
 **Chose:** Go on.
 
-*A son*
+*A daughter*
 
 ## The Second Child
 
 It is easier the second time, everyone says. It is, mostly. Eleven hours instead of a day and a night, and you spend them in the yard again, and this time Ralf spends them with you, on your knee, asking questions you cannot answer.
 
-A boy. Smaller than the first, and louder. Cecily Fuller, sitting up in bed with her hair everywhere, looks at it and says, "Well. That's that, then," and laughs, and holds out her arms.
+A girl. Smaller than the first, and louder. Cecily Fuller, sitting up in bed with her hair everywhere, looks at it and says, "Well. That's that, then," and laughs, and holds out her arms.
 
-- Thomas, for the saint whose day it is.
-- Will, for Will Cobb.
+- Anne, for the saint whose day it is.
+- Mabel, for the song your mother sang.
 
-**Chose:** Thomas, for the saint whose day it is.
+**Chose:** Anne, for the saint whose day it is.
 
-Thomas, the priest writes, under the first.
+Anne, the priest writes, under the first.
 
-*Harvest in: 3 seasons of grain · Michaelmas rents: £2 2s 5d*
+*Harvest in: 4 seasons of grain · Michaelmas rents: £2 7s 5d*
 
 ## The Summons
 
@@ -3054,12 +3052,256 @@ You go to Wendmere as the King's man, and nobody else's, and say so to anyone wh
 
 ## The End of the Peace
 
-You ride out of the manor gate in November, with your men behind you, and your wife at the gate with the children, and the village watching from its doorways, saying nothing.
+You ride out of the manor gate in November, with your men behind you, and your wife at the gate with the children, and the village going about its business.
 
-Six years ago you came to Ormel, the grant nobody wanted, with the bell tolling and the dead in the street. Some nights you still walk the salt pans in your sleep, among the dead. The manor never quite filled up again. And there is another place on the list of what you hold, across the sea, where you were born.
+Six years ago you came to Ormel, the grant nobody wanted, with the bell tolling and the dead in the street. Some nights you still walk the salt pans in your sleep, among the dead. Now the manor is full again, nearly. And there is another place on the list of what you hold, across the sea, where you were born.
 
-[break]
+*(Continue)*
 
 You are thirty-one years old. You were a wool merchant's son. You are a lord, with land, and heirs, and enemies, and a war coming.
 
-End of Chapter 3. Chapter 4 begins with the great council at Wendmere.
+- Ride for Wendmere.
+
+**Chose:** Ride for Wendmere.
+
+*You hold The Wendham rents*
+
+## The Great Council
+
+*Winter, year 32 of King Aldred*
+
+The great hall at Wendmere has a roof like the hull of a ship turned over, and on the morning of the council it holds four hundred men in furs who have all been told the same thing, in confidence, by different people.
+
+You stand near the dais, with the King's household knights. Your boots are new. Your cloak is the best you own. You feel like a groom at a wedding.
+
+*(Continue)*
+
+A herald points you out to a young lord: "Knighted by the King's own hand at Les Salines." The young lord looks at you the way boys look at a horse they want.
+
+The Chancellor reads the King's mind in a voice like a cart on cobbles. The truce runs out at Lady Day. Valdrenne has a boy for a king and a soldier for a regent, and the soldier has more enemies at home than in Adalia. The King means to go back into the Armance, all of it this time, to the sea, and hold it, and make the Duchess's house his for good. He asks the council for the money.
+
+*(Continue)*
+
+The Earl of Carrow rises. He is old now, white-haired and ruddy, and speaks well and slowly, about the cost of the last war, the debts to Sarenza, the Mottle, the rising, the empty villages. He does not say no. He says, not yet. Half the hall murmurs with him.
+
+The King, on the dais, watches the Earl the whole time he speaks, without any expression at all. You know what he is thinking. You put it there.
+
+- Speak for the war in the West. You know that country. *(Favorable)*
+- Go to the Prince's rooms that night, where the young men are.
+- Say nothing. Listen, and count who stands with whom.
+
+**Chose:** Speak for the war in the West. You know that country. (Favorable: success)
+
+You have never spoken in a hall this size. You speak anyway: about the Armance, which you have walked over twice; about the Duchess's people, who hate Cordelle more than they fear Adalia; about salt, and what it pays. You keep it short, which nobody else has. When you sit down the hall is quiet for a breath, and then the knights of the shires bang the benches. The money is voted by the end of the week. The King sends you a cup of wine from his own table, which everyone sees.
+
+*Renown +1*
+
+## Before the War
+
+You come home over the winter sea to a manor that has learned to run without you for a month, and will have to learn to run without you for years.
+
+Ralf is two, and walking, and talking, mostly to the dogs, and Anne is in the cradle. Ralf watches everyone, and says little, and misses nothing.
+
+*(Continue)*
+
+The question is who holds the manor while you are gone. And the other places too, with their own reeves and their own complaints, which come by every carrier now.
+
+- Leave it in your wife's hands.
+- Leave it with the priest and the reeve between them.
+
+**Chose:** Leave it in your wife's hands.
+
+She has had the keys for three years already. "Go," she says. "I'll write. You won't like all of it." The manor knows her. It will do as she says, mostly, which is more than it does for you.
+
+*Cecily Fuller's respect +2 · Temper of the village +1*
+
+## The Company
+
+*Spring, year 33 of King Aldred*
+
+A lord of your standing owes the King a company: so many lances, so many bows, for so many days at the King's wage, which comes late, and in the end your own purse makes up the difference. The indenture arrives in Lent with the King's seal on it. It says thirty lances and sixty archers. You have a manor, and a name, and not much else.
+
+*(Continue)*
+
+Your steward reads the indenture, and then reads it again, and then goes and sits down. Ulric Rotbart's men, the remnant you hired as a garrison, are already sharpening things in the yard, and watching you to see what you will offer.
+
+- Raise the whole company properly, on credit if you must.
+- Raise fewer men, and only good ones.
+- Raise the company from your own manor.
+- Make Rotbart's men the core of it.
+
+**Chose:** Raise the whole company properly, on credit if you must.
+
+You raise the whole company: thirty lances and sixty bows, horsed and harnessed and paid a quarter in advance, which is what it takes to get men worth having. It costs every penny you have and a loan from a Sarenzan house in Sauvemer. You ride to the muster at the head of a hundred men with your own badge on their sleeves, and other lords look at your company before they look at you.
+
+*Men +90 · Coin −£10 · Renown +1*
+
+## The Armance Again
+
+*Summer, year 33 of King Aldred*
+
+The fleet comes into Lannec on a June morning with the whole Armance shore lit up with bonfires, and for a moment you think it is war already, and it is: it is the Duchess's people burning the Valdrennish customs houses to welcome you.
+
+*(Continue)*
+
+Duchess Jehanne meets the King on the quay. She is seventy, and uses a stick, and walks without it when people are watching. Beside her is a girl of fourteen in black, with a face like a closed door: Mahaut, her granddaughter, whose father died in Cordelle's prison. Everyone on the quay knows what she is. The Armance does not pass to Adalia. It passes to Mahaut.
+
+The Duchess sees you in the King's train, and stops, and says, "The one who carried my message." She does not smile. From Jehanne that is better.
+
+- Pay your respects to the Duchess and her granddaughter. *(Favorable)*
+- Stay at the King's side. That is where this war will be decided.
+- Ride out and look at the country before anyone else does.
+
+**Chose:** Pay your respects to the Duchess and her granddaughter. (Favorable: success)
+
+You kneel to the Duchess in her own hall at Lannec, which the King's lords do not, and speak to her in her own tongue, which the King's lords cannot. She gives you two fingers to kiss and a long look. Mahaut, behind her, says nothing at all. But at the end, as you rise, the girl says, low, in Adalian, "They say you held a castle for my grandmother when nobody else would." You did not, quite. You do not correct her.
+
+*Valdrenne standing +1 · Harvest in: 4 seasons of grain · Michaelmas rents: £2 7s 5d · Rents from your other holdings: £2 10s*
+
+## The Towns Remember
+
+*Autumn, year 33 of King Aldred*
+
+The army goes east up the Armance in the autumn, taking back the towns the truce gave away. Some open their gates. Some do not. Every one of them remembers the first war, and some of them remember you.
+
+At Vaudrey the gates open after a day's talking, the way gates do when the town has been sacked once and does not want to be sacked again.
+
+At Bréval they have built the church again, out of the stones of the burned houses, and you can see the black marks on the stones from the road.
+
+*(Continue)*
+
+At Saint-Ferréol, a little walled town on a hill with the Constable's garrison in it, the King's marshal gives your company the job of opening the gate.
+
+- Talk them out. Offer the garrison their lives and their horses. *(Even)*
+- Storm it at dawn, before they expect it. *(Favorable)*
+- Sit down in front of it and wait.
+
+**Chose:** Talk them out. Offer the garrison their lives and their horses. (Even: success)
+
+You go up to the gate with a white rod and no helmet, and talk to the garrison captain through the grille for an hour. He is a tired man with a family in Cordelle and no orders. In the morning the garrison marches out with their horses and their swords, and the town opens, and nobody dies. The King's marshal says it was well done. Some of the King's knights say it was a waste of a good sack.
+
+*Honor +1 · Valdrenne standing +1*
+
+## Winter Quarters
+
+*Winter, year 33 of King Aldred*
+
+The army winters in the Armance, in the towns it has taken, and the Constable winters in Cordelle, and everyone knows what the spring will bring.
+
+Your wife's letters come every fortnight, by the Lannec boats, in a quick hand: the price of salt, the state of the dyke, what the children said. At the bottom, in a different hand, enormous: a word or two from Ralf, and a drawing of a horse, or possibly a dog.
+
+*(Continue)*
+
+It is a long winter. Your company is bored, and when men are bored they drink.
+
+- Keep them working. Drill every day, march every week.
+- Keep them happy. Pay them on time and feed them well.
+- Leave the company to your lieutenants, and go home for the winter.
+
+**Chose:** Keep them working. Drill every day, march every week.
+
+You drill them every day the weather allows and march them every week whether it does or not. They curse you in four languages. By Lady Day they can form line in the dark, wheel on the march, and stand still when the horses come, which is the only thing that matters.
+
+*Command +1*
+
+## The Black Boar
+
+*Spring, year 34 of King Aldred*
+
+In May the Constable comes over the hills from Cordelle with the whole power of the regency, and the King goes to meet him, and the two armies find each other at Mortefontaine, the abbey of the dead spring, on a ridge above a dry stream.
+
+The King draws up on the ridge in three battles. The centre is his own. The right is the Prince's, all young men and bright harness. The left is the Earl of Carrow's, under the black boar, with Sir Hugh Malet as marshal. Your company is in the King's battle, near the banner.
+
+*(Continue)*
+
+On the eve of the battle the King sends for you, alone. "If Carrow's battle does not move tomorrow when the trumpet goes," he says, "you will ride to the Earl and tell him from me that I know about Vervais. In those words." He does not wait for an answer.
+
+- Arm, hear Mass, and take your place.
+
+**Chose:** Arm, hear Mass, and take your place.
+
+## Mortefontaine
+
+The Constable does not wait. He has learned from Les Salines: he dismounts his men-at-arms, all of them, and sends them up the slope on foot, in close order, under their banners, with the crossbowmen behind and the horse held back for the end. It takes them half an hour to climb the ridge. It is the longest half hour of your life.
+
+*(Continue)*
+
+The archers shoot until their fingers bleed. The Valdrennish come on anyway, leaning into it like men in a gale, and hit the King's battle with a noise like a smithy falling down a stair.
+
+And on the left, under the black boar, nothing happens. The trumpet goes. The Earl's battle stands where it is.
+
+- Ride to the Earl of Carrow. *(Favorable)*
+- Take your company into the gap where Carrow's battle should be. *(Favorable, MORTAL DANGER)*
+- Hold your place and keep your men in hand.
+
+**Chose:** Ride to the Earl of Carrow. (Favorable: success)
+
+You ride along the back of the line to the black boar, through spent arrows and screaming horses, and find the Earl sitting his horse with his hands crossed on the pommel, watching. "The King says he knows about Vervais," you tell him. "In those words." He looks at you. Something goes out of his face. Then he lifts his hand, and Malet blows the trumpet, and the black boar goes forward into the Constable's flank.
+
+*Renown +2*
+
+## The Dead Spring
+
+The Constable's attack breaks on the ridge. Not all at once: in pieces, a banner here, a company there, men who have climbed a hill in harness under arrows and fought for an hour and have nothing left. They start to go back down the slope. Then they start to run.
+
+*(Continue)*
+
+Then the Constable's horse comes: two thousand lances held back all morning, coming up the dry stream at the trot.
+
+- Get your lances mounted and go down into them. *(Favorable, MORTAL DANGER)*
+- Bring your archers to the lip of the ridge and shoot them into the stream. *(Even)*
+- Pull back and see to your wounded.
+
+**Chose:** Bring your archers to the lip of the ridge and shoot them into the stream. (Even: success)
+
+You run your archers to the lip of the ridge where it falls steepest over the stream, and they shoot down into the Constable's horse as it comes up the bed, at fifty paces, into the backs of the horses' necks. It is butchery. The charge never reaches the top.
+
+*Renown +2*
+
+## After Mortefontaine
+
+Mortefontaine is a victory. The heralds will call it a great one, and in a sense it is: the Constable's army broken on the ridge, his horse drowned in the stream, the regency of Valdrenne shown to the whole world as a soldier who cannot win. The Constable himself escapes, wounded, back over the hills to Cordelle.
+
+*(Continue)*
+
+Everyone saw the black boar move, late, and hit the Constable in the flank. The heralds will say the Earl of Carrow won the day. The King, who knows what moved it, sends you a ring from his own hand that night, without a word.
+
+You walk your company's lines in the dark with a lantern, and count.
+
+- Count them.
+
+**Chose:** Count them.
+
+It could have been worse. That is what you tell the men, and it is true, and it does not help.
+
+*Renown +2 · Harvest in: 4 seasons of grain · Michaelmas rents: £2 7s 5d · Rents from your other holdings: £2 10s*
+
+## The Second Grant
+
+*Spring, year 35 of King Aldred*
+
+The war goes on through the winter and the next summer, town by town. By the spring of the thirty-fifth year the King holds the Armance to the hills, the Constable is fighting his own boy-king in Cordelle, and the Sarenzan banks are pressing both sides for a truce.
+
+In Lent the King rewards his captains.
+
+*(Continue)*
+
+Your name is read third, after two earls. The King makes you a banneret, with the right to carry a square banner and lead other knights under it, and grants you lands in the West, and asks you which.
+
+- La Garde, the tower on the Sauvemer march. A border, and a fortress.
+- The rents of Vaudrey, the town you took in the first war.
+- Ask instead for an office at court, and the King's ear.
+
+**Chose:** La Garde, the tower on the Sauvemer march. A border, and a fortress.
+
+La Garde is a square tower on a rock above the Sauvemer road, with two villages under it and a view of half the march. It has been taken and retaken four times in your lifetime. It will cost you more to hold than it will ever pay. Nobody will come at your other lands except past it.
+
+*You hold La Garde · Defences +2*
+
+## Spring, Year Thirty-Five
+
+You are thirty-four. You carry a square banner now, and lead other men's knights under it, and hold land in more places than you can ride to in a week.
+
+At home, Ralf and Anne are growing, without you, the way children do. Your wife's last letter says the dyke held, the salt is good, and that she has had the hall whitewashed, and you are not to complain about it.
+
+End of the chapters written so far. Chapter 4 continues with the Lord of Many Places.

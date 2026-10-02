@@ -10,6 +10,9 @@ const feeling = (n: number) =>
   n <= -6 ? 'hates you' : n <= -3 ? 'dislikes you' : n < 0 ? 'cool' : n === 0 ? 'indifferent' : n <= 2 ? 'warm' : n <= 5 ? 'fond' : 'devoted';
 const regard = (n: number) => (n <= -3 ? 'contempt' : n < 0 ? 'low regard' : n === 0 ? '' : n <= 3 ? 'some respect' : 'high respect');
 const standing = (n: number) => (n <= -6 ? 'hated' : n <= -3 ? 'distrusted' : n < 0 ? 'poor' : n === 0 ? 'unknown' : n <= 3 ? 'fair' : n <= 6 ? 'good' : 'renowned');
+const COURT: [string, string][] = [['court_king', 'With the King'], ['court_prince', 'With the Prince'], ['court_carrow', 'With the Earl of Carrow'], ['west_estates', 'In the West']];
+const standingWord = (n: number) => (n <= -3 ? 'an enemy' : n < 0 ? 'cool' : n <= 2 ? 'known' : n <= 5 ? 'trusted' : 'one of the inner circle');
+const UPBRINGING_WORD: Record<string, string> = { page: 'a page in a great house', church: 'with the Church', arms: 'training at arms', letters: 'at letters', court: 'at court' };
 const prejudiceWord = (n: number) => (n >= 5 ? 'heavy' : n >= 3 ? 'marked' : n >= 2 ? 'noticeable' : 'slight');
 
 function Section({ title, children }: { title: string; children: preact.ComponentChildren }) {
@@ -64,7 +67,34 @@ export function StatusPanel({ content, state }: { content: ContentBundle; state:
             )}
             {(state.heirs ?? []).map((h, i) => [
               <dt key={`h${i}t`}>{h.sex === 'son' ? 'Son' : 'Daughter'}</dt>,
-              <dd key={`h${i}d`}>{h.name || 'not yet named'}{h.alive ? `, ${Math.floor((state.time - h.born) / 4)}` : ', dead'}</dd>,
+              <dd key={`h${i}d`}>
+                {h.name || 'not yet named'}
+                {h.alive ? `, ${Math.floor((state.time - h.born) / 4)}` : ', dead'}
+                {h.alive && h.temperament ? `; ${h.temperament}` : ''}
+                {h.alive && h.upbringing && h.upbringing !== 'home' ? `; ${UPBRINGING_WORD[h.upbringing] ?? h.upbringing}` : ''}
+              </dd>,
+            ])}
+          </dl>
+        </Section>
+      )}
+
+      {Object.keys(state.holdings ?? {}).length > 0 && (
+        <Section title="Your other holdings">
+          <dl class="kv">
+            {Object.entries(state.holdings ?? {}).map(([id, h]) => [
+              <dt key={`${id}t`}>{content.registry.holdings[id]?.label ?? id}</dt>,
+              <dd key={`${id}d`}>{formatCoin(h.income)} a year; {temperWord(h.temper)}</dd>,
+            ])}
+          </dl>
+        </Section>
+      )}
+
+      {COURT.some(([k]) => (state.counters[k] ?? 0) !== 0) && (
+        <Section title="Standing">
+          <dl class="kv">
+            {COURT.filter(([k]) => (state.counters[k] ?? 0) !== 0).map(([k, label]) => [
+              <dt key={`${k}t`}>{label}</dt>,
+              <dd key={`${k}d`}>{standingWord(state.counters[k] ?? 0)}</dd>,
             ])}
           </dl>
         </Section>

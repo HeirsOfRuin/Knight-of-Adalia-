@@ -225,8 +225,11 @@
         next: c3_ravell
       failure:
         text: |
-          The ford is watched. They are waiting for you on the far bank, in the mist, and you never see Black Ewan at all, only his men, and the river, and your own horse going down under you in the shallows.
-        effects: [ { die: "Killed at the Leven, in Black Ewan's feud" } ]
+          The ford is watched. They are waiting for you on the far bank, in the mist, and you never see Black Ewan at all, only his men, and the river, and your own horse going down under you in the shallows. [if armour >= 1 && !injured]Your harness takes the spears that should have killed you. Your men drag you back across the Leven by the arms, half drowned, with your ribs stove in, and Ewan's laughter comes after you over the water.[else]Nobody drags you out.[/if]
+        effects:
+          - if: [ armour >= 1, "!injured" ]
+            then: [ { injury: crushed_ribs }, { casualties: { men: 3, named: 1 } } ]
+            else: [ { die: "Killed at the Leven, in Black Ewan's feud" } ]
         next: c3_ravell
     - id: wall
       text: Pay for a stone wall and a tower at home, and a watch on the fords.
@@ -553,8 +556,7 @@
 
 - id: c3_end
   chapter: ch3
-  kind: ending
-  ending: ch3_complete
+  checkpoint: true
   title: The End of the Peace
   text: |
     You ride out of the manor gate in November, with your men behind you, and [if flag.c3_married && npc.@spouse.alive]your wife at the gate with [if heirs.count >= 2]the children[elif heirs.count == 1]{heirs.eldest} on her hip[else]her arms folded[/if][elif heirs.count >= 1]{heirs.names} at the gate with the nurse[else]nobody at the gate but the steward[/if], and [if estate.temper >= 2]half the village in the lane, waving caps[elif estate.temper >= 0]the village going about its business[else]the village watching from its doorways, saying nothing[/if].
@@ -564,5 +566,7 @@
     [break]
 
     You are thirty-one years old. You were [if background == reeve]a reeve's son[elif background == burgess]a wool merchant's son[elif background == archer]an archer's son[else]a tirewoman's son[/if]. You are a lord, with land, [if heirs.count >= 1]and heirs, [/if]and enemies, and a war coming.
-
-    End of Chapter 3. Chapter 4 begins with the great council at Wendmere.
+  choices:
+    - id: ride
+      text: Ride for Wendmere.
+      next: c4_council

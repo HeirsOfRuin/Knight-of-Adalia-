@@ -78,3 +78,8 @@ hodge_brewster: { name: Hodge Brewster, notes: "Leader of the Adalian settlers. 
 alienor_brese: { name: Aliénor de Brésy, faction: valdrenne, tags: [romance], notes: "Sire Gautier's daughter, twenty. Dark, straight-backed, watches everything. Good Adalian, which she does not admit to at first." }
 gautier_brese: { name: Gautier de Brésy, title: Sire, faction: valdrenne, station: lord, notes: "The Constable's younger brother, lord of Montbrun across the march. Heavy, tired, has buried two sons. Wants the border quiet." }
 philippa_ashdown: { name: Philippa Ashdown, title: Lady, faction: nobles, tags: [romance], notes: "The King's ward, nineteen, heiress of Ashdown in the south of Adalia. Her father and brothers died in the Mottle." }
+# Chapter 4
+prince_edwin: { name: Edwin, title: Prince, faction: crown, station: royal, notes: "The King's son, twenty-two in year 33. Has his own household at Saltmarsh. Impatient, clever, gathers new men." }
+mahaut_armance: { name: Mahaut d'Armance, faction: valdrenne, notes: "Duchess Jehanne's granddaughter and heir after her father. Fourteen in year 33. The Armance claim walks in her." }
+hugh_malet: { name: Hugh Malet, title: Sir, faction: nobles, notes: "The Earl of Carrow's marshal. Cut down the Coker captain at the Hythe Fields." }
+

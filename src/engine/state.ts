@@ -28,6 +28,17 @@ export interface Heir {
   sex: 'son' | 'daughter';
   born: number; // absolute season index
   alive: boolean;
+  /** drawn at birth (Ch4 growth): bold, bookish, merry, grave */
+  temperament?: string;
+  /** set at the growth periods: home, page, church, arms, letters, court */
+  upbringing?: string;
+  /** his bond with the child, -5..5 */
+  bond?: number;
+}
+
+export interface Holding {
+  income: number; // pence a year, paid at Michaelmas
+  temper: number; // -5..5
 }
 
 export interface ActiveInjury {
@@ -88,6 +99,8 @@ export interface GameState {
   estate?: Record<string, number>;
   /** his children, eldest first (Ch3+) */
   heirs?: Heir[];
+  /** other holdings beyond the first manor (Ch4+), by registry id */
+  holdings?: Record<string, Holding>;
   queue: QueuedEvent[];
   /** scene id -> last time played (for once/cooldown) */
   seen: Record<string, number>;

@@ -941,7 +941,50 @@ Result (bot, 100 runs per background, entering Ch2; median / top 10%):
 - **Scope guard.** Cut any Ch4 thread that no ending reads.
 
 ## Chapters 4 and 5 frame
-Drafted 2026-10-02 in `docs/FRAME-CH4-CH5.md`, for approval: the Western Crown, the Ch5 endings matrix, the Ch4 acts and systems, the hooks owed, and open decisions.
+Approved 2026-10-02 (`docs/FRAME-CH4-CH5.md`): the Western Crown, the Ch5 endings matrix, the Ch4 acts and systems, the hooks owed, and open decisions.
+
+## Chapter 4 as built
+**Engine (Ch4 systems):**
+- **Other holdings.** `state.holdings`, with the ids registered in `registry/holdings.yaml`.
+  - Effects: `hold` and `release`. Paths `holding.<id>.held / income / temper`, plus `holdings.count` and `holdings.income`.
+  - Each holding pays its yearly income at Michaelmas, halved if its temper is -3 or below.
+  - Ch3's land flags (home place, Lisle, Wyck, Ashdown, vineyard, Sauvemer house) become holdings at the great council.
+- **Heirs' growth.**
+  - Every child gets a temperament (bold, bookish, merry, grave), drawn at birth. Existing children are given one at the council.
+  - Upbringing (home, page, church, arms, letters, court) and a bond with him (-5 to 5).
+  - Effect `heir_set` with selectors eldest, second, third, last or all. Paths `heir.<sel>.name / sex / age / ageword / temperament / upbringing / bond / alive`. `add: { heir.<sel>.bond }`.
+- **Court standing.** Counters `court_king`, `court_prince`, `court_carrow` and `west_estates`, shown on the status page as a word.
+- **Death-rule validator.** A `die` must sit under a condition on armour or injured, so that a harnessed, unhurt man is badly hurt instead. Three new lethal failures broke the rule and were fixed: Ewan in Ch3, the gap and the charge at Mortefontaine.
+- **Harvest.** Changed from people/50 to people/40. After the plague, manors were slowly starving in the background through the chapters that have no estate scenes.
+- **Ending renamed.** The placeholder ending `ch3_complete` is now `story_so_far`. Ch4 is in progress.
+
+**Act I, the Second War** (Martinmas year 32 to spring year 35; 12 scenes in `ch4/01-second-war.yaml`):
+1. **The Great Council.** Who vouches for him (how he was knighted, his rival), Carrow's "not yet", and the Vervais secret as a live knife. He can:
+   - speak for the war (a Diplomacy check);
+   - pin Carrow with the secret (if he kept it);
+   - go to Edwin's rooms;
+   - watch and count.
+2. **Before the War.** The children, with their temperaments shown. Who holds the manor: his wife, the priest and reeve, or one of his men.
+3. **The Company.** The indenture for 30 lances and 60 archers. He can raise it:
+   - in full on credit (`c4_war_debt`);
+   - small and veteran;
+   - from the manor (people and temper cost);
+   - around Rotbart's Iron Company men.
+4. **The Armance Again.** The landing at Lannec. Duchess Jehanne, 70, and **Mahaut**, her granddaughter, 14: the seed of candidate #12. He can pay his respects (`west_estates`), stay at the King's side, or scout the road to Mortefontaine.
+5. **The Towns Remember.** Vaudrey and Bréval answer to his Ch2 conduct. At Saint-Ferréol he can talk the garrison out, storm it, or starve it.
+6. **Winter Quarters.** Drill, keep the men happy, or go home (a bond with the eldest).
+7. **The Black Boar, and Mortefontaine** (three scenes).
+   - The Constable sends his men-at-arms up the ridge on foot. Carrow's battle does not move.
+   - He can ride to Carrow (an Intrigue check, helped by the King's words or his own bargain), hold the gap (lethal), or hold his place.
+   - Then the Constable's horse comes up the stream: charge them (lethal), shoot them in the stream-bed, or tend the wounded.
+   - **Outcome:** counter `mf` gives victory (6+), a bloody draw (3-5) or a defeat.
+8. **The Second Grant.** He is made a banneret. He chooses La Garde (a border tower), the rents of Vaudrey (its temper set by his Ch2 conduct there), or a place as knight of the King's chamber.
+9. **End of build:** `c4_act1_end`.
+
+**Bot results** (100 runs per background per policy):
+- deaths at Mortefontaine are close to 0 now, since bots arrive harnessed and the death rule holds;
+- the battle splits roughly 35-55% bloody draw, 20-40% victory and 7-57% defeat, by policy;
+- most runs now hold 1-3 other holdings by the end of Act I.
 
 ## Decisions log
 | Date | Decision |
@@ -963,3 +1006,5 @@ Drafted 2026-10-02 in `docs/FRAME-CH4-CH5.md`, for approval: the Western Crown, 
 | 2026-10-02 | Ch3 Act III built: suits resolve at the second spring, two arranged offers (Aliénor de Brésy, Philippa Ashdown), family obstacle, contract, wedding, first year, childbed with a small seeded risk to the mother, heirs system. |
 | 2026-10-02 | Childbirth risk kept. Philippa offered more easily (Crown 2+, renown 12+, or no personal suit). Ch3 Act IV built; Chapter 3 complete. Vervais betrayal: the Earl of Carrow. The rising is original (the Hythe Fields), not a copy of 1381. |
 | 2026-10-02 | Stabilisation: compressed save codes, downloads through the viewer, render scan. Ch4-5 frame drafted for approval (docs/FRAME-CH4-CH5.md). |
+| 2026-10-02 | Ch4-5 frame approved as recommended: the West (Armance and the Salt Coast) is the new crown; Aldred dies about year 40, Edwin succeeds, Carrow rises; candidate #12 is Jehanne's granddaughter; heirs may die in Ch4 only through his choices; his death ends the game; Vervais stays a third party. |
+| 2026-10-02 | Ch4 engine (holdings, heirs growth, court standing) and Act I, the Second War, built. Validator enforces the death rule. Harvest base raised to people/40. Ending ch3_complete renamed story_so_far. |

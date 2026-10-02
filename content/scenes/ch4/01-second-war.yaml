@@ -1,0 +1,523 @@
+# Chapter 4, Act I: the Second War. Martinmas year 32 to spring year 35. Age 31-34.
+# The great council, home and the company, the landing in the Armance, the towns
+# that remember the first war, Mahaut d'Armance, the Black Boar at Mortefontaine,
+# and the second grant. Court standing lives in counters: court_king,
+# court_prince, court_carrow; standing in the West in west_estates.
+
+- id: c4_council
+  chapter: ch4
+  title: The Great Council
+  checkpoint: true
+  on_enter:
+    - advance: { seasons: 1 }
+    - meet: prince_edwin
+    - heir_set: { which: all, temperament: random }
+    - if: flag.c3_holds_home
+      then:
+        - if: background == reeve
+          then: [ { hold: { id: ashby, income: 480 } } ]
+        - if: background == archer
+          then: [ { hold: { id: hollin, income: 420 } } ]
+        - if: background == burgess
+          then: [ { hold: { id: wendham_rents, income: 600 } } ]
+        - if: background == servant
+          then: [ { hold: { id: underhill, income: 420 } } ]
+        - if: flag.c3_home_mortgaged
+          then: [ { add: { holding.ashby.income: -240, holding.hollin.income: -210, holding.wendham_rents.income: -300, holding.underhill.income: -210 } } ]
+    - if: flag.c3_holds_lisle
+      then: [ { hold: { id: lisle, income: 1200, temper: -1 } } ]
+    - if: flag.c3_holds_wyck
+      then: [ { hold: { id: wyck, income: 720 } } ]
+    - if: flag.c3_holds_ashdown
+      then: [ { hold: { id: ashdown, income: 1440, temper: -1 } } ]
+    - if: flag.c3_corbie_vineyard
+      then: [ { hold: { id: corbie_vineyard, income: 240 } } ]
+    - if: flag.c3_sauvemer_house
+      then: [ { hold: { id: sauvemer_house, income: 480 } } ]
+    - if: flag.c3_party_king
+      then: [ { add: { counter.court_king: 2 } } ]
+    - if: flag.c3_party_prince
+      then: [ { add: { counter.court_prince: 2 } } ]
+    - if: flag.c3_party_carrow
+      then: [ { add: { counter.court_carrow: 2 } } ]
+    - if: flag.c3_told_king_vervais
+      then: [ { add: { counter.court_king: 2 } } ]
+    - if: flag.c3_told_prince_vervais
+      then: [ { add: { counter.court_prince: 2 } } ]
+    - if: flag.c3_sold_vervais
+      then: [ { add: { counter.court_carrow: 2 } } ]
+  text: |
+    The great hall at Wendmere has a roof like the hull of a ship turned over, and on the morning of the council it holds four hundred men in furs who have all been told the same thing, in confidence, by different people.
+
+    You stand [if flag.c3_party_king]near the dais, with the King's household knights[elif flag.c3_party_prince]at the back with the Prince's young men, who stand together and make a noise about it[elif flag.c3_party_carrow]in the Earl of Carrow's following, under the black boar, among men whose names you have known all your life[else]where you can find room, which is by a pillar, among the knights of the shires[/if]. Your boots are new. Your cloak is the best you own. You feel like a groom at a wedding.
+
+    [break]
+
+    [if flag.c1_dubbed_by_master || flag.c1_dubbed_by_ravell]An old knight from the Ravell country nods to you across the hall, and says to the man beside him, loud enough, "That's the one Ravell's people knighted. Came up from nothing." He seems proud of it, as if he had done it himself.[elif flag.c1_dubbed_by_pryce]Sir Walter Pryce, across the hall, catches your eye and lifts two fingers to his brow, the way he did the day he knighted you in Carrow's colours.[elif flag.c2_knighted_field || flag.c2_knighted_eve]A herald points you out to a young lord: "Knighted by the King's own hand at Les Salines." The young lord looks at you the way boys look at a horse they want.[else]Nobody points you out. You came up the long way, and the long way does not have heralds.[/if] [if flag.c1_rival_broken || flag.c1_rival_cowed]Somewhere at the back of the hall is a man you broke as a boy, and you can feel him there without looking.[/if]
+
+    The Chancellor reads the King's mind in a voice like a cart on cobbles. The truce runs out at Lady Day. Valdrenne has a boy for a king and a soldier for a regent, and the soldier has more enemies at home than in Adalia. The King means to go back into the Armance, all of it this time, to the sea, and hold it, and make the Duchess's house his for good. He asks the council for the money.
+
+    [break]
+
+    The Earl of Carrow rises. He is old now, white-haired and ruddy, and speaks well and slowly, about the cost of the last war, the debts to Sarenza, the Mottle, the rising, the empty villages. He does not say no. He says, not yet. Half the hall murmurs with him.
+
+    [if flag.c3_told_king_vervais]The King, on the dais, watches the Earl the whole time he speaks, without any expression at all. You know what he is thinking. You put it there.[elif flag.c3_kept_vervais]You stand there with the Earl's treason in a chest at home, under the false bottom, and watch him talk about cost.[elif flag.c3_sold_vervais]The Earl's eye passes over you as he speaks, and rests, and moves on. A man does not look twice at a horse he owns.[/if]
+  choices:
+    - id: for_war
+      text: Speak for the war in the West. You know that country.
+      tags: [diplomacy, martial]
+      check: { attr: presence, skill: diplomacy, difficulty: 4, mods: [ { if: flag.c2_granted_kerval, add: 1, label: you hold land in the Armance }, { if: flag.c2_learned_town, add: 1, label: you speak their tongue }, { if: res.renown >= 15, add: 1, label: your name } ] }
+      success:
+        text: |
+          You have never spoken in a hall this size. You speak anyway: about the Armance, which you have walked over twice; about the Duchess's people, who hate Cordelle more than they fear Adalia; about salt, and what it pays. You keep it short, which nobody else has. When you sit down the hall is quiet for a breath, and then the knights of the shires bang the benches. The money is voted by the end of the week. The King sends you a cup of wine from his own table, which everyone sees.
+        effects: [ { set: flag.c4_spoke_council }, { add: { counter.court_king: 2, counter.court_carrow: -1, res.renown: 1 } } ]
+        next: c4_home
+      failure:
+        text: |
+          You stand up and say what you meant to say, and it comes out in the wrong order, and somebody laughs at "salt." The money is voted anyway, at the end of the week, by men who did not need you. The King does not send you anything.
+        effects: [ { add: { counter.court_carrow: -1 } } ]
+        next: c4_home
+    - id: pin
+      text: Find the Earl after the session, alone, and tell him what you know.
+      tags: [cunning]
+      visible_if: [ flag.c3_kept_vervais ]
+      text_after: |
+        You find him in a gallery afterwards with his hounds and two secretaries, and ask for a word, and get it. You tell him about Vervais. Not all of it. Enough. He listens with his head on one side, like a man listening to music he does not care for.
+
+        "What do you want?" he says.
+
+        "The war," you say. "And your men in it, when the day comes, where the King puts them."
+
+        He looks at you until the hounds get bored and lie down. Then he laughs, a short bark, and says, "God's teeth. A patriot." The next morning the Earl rises in council and says that on reflection, the war is necessary. Nobody knows why. You do.
+      effects: [ { set: flag.c4_carrow_pinned }, { add: { counter.court_carrow: -2, counter.court_king: 1, rep.ruthlessness: 1 } } ]
+      next: c4_home
+    - id: edwin
+      text: Go to the Prince's rooms that night, where the young men are.
+      tags: [allies, cunning]
+      text_after: |
+        Prince Edwin's rooms are full of candles and noise and young men with more courage than land. Edwin himself is twenty-two, quick, fair, with his father's nose and none of his father's patience. He asks you about Les Salines, and listens to the answer, which is rarer than it should be in a prince. "My father will win this war slowly," he says. "I would like to win it." He gives you his hand. It is a soldier's hand, which surprises you.
+      effects: [ { set: flag.c4_met_edwin }, { add: { counter.court_prince: 2 } } ]
+      next: c4_home
+    - id: quiet
+      text: Say nothing. Listen, and count who stands with whom.
+      tags: [cunning, learning]
+      text_after: |
+        You say nothing for six days and listen to everything. By the end you know which lords owe the Lanzi, which owe Carrow, which owe both; which bishop is the Chancellor's creature and which is the Prince's; who will go to the war and who will send his son. You write none of it down. You do not need to.
+      effects: [ { set: flag.c4_counted_council }, { add: { skill.intrigue: 1 } } ]
+      next: c4_home
+
+- id: c4_home
+  chapter: ch4
+  title: Before the War
+  text: |
+    You come home over the winter sea to a manor that has learned to run without you for a month, and will have to learn to run without you for years.
+
+    [if heirs.count >= 2]{heir.eldest.name} is [if heir.eldest.age <= 1]barely walking[else]{heir.eldest.ageword}, and walking, and talking, mostly to the dogs[/if], and {heir.second.name} is in the cradle. [if heir.eldest.temperament == bold]{heir.eldest.name} has already fallen out of the hay-loft once and gone straight back up the ladder.[elif heir.eldest.temperament == bookish]{heir.eldest.name} sits by the priest at Mass and watches his hands turn the pages.[elif heir.eldest.temperament == merry]{heir.eldest.name} laughs at everything, including you, especially you.[else]{heir.eldest.name} watches everyone, and says little, and misses nothing.[/if][elif heirs.count == 1]{heir.eldest.name} is [if heir.eldest.age <= 1]barely walking[else]{heir.eldest.ageword}, and into everything[/if]. [if heir.eldest.temperament == bold]Already falls out of things and climbs back in.[elif heir.eldest.temperament == bookish]Already sits still, which nobody else in your family has ever managed.[elif heir.eldest.temperament == merry]Already laughs at you, which is fair.[else]Already watches, the way you used to.[/if][else]The hall is quiet. The dogs are on the table.[/if]
+
+    [break]
+
+    The question is who holds the manor while you are gone.[if holdings.count >= 1] And the other places too, with their own reeves and their own complaints, which come by every carrier now.[/if]
+  choices:
+    - id: wife
+      text: Leave it in your wife's hands.
+      tags: [allies]
+      visible_if: [ flag.c3_married, npc.@spouse.alive ]
+      text_after: |
+        [if flag.c3_wife_keys]She has had the keys for three years already. "Go," she says. "I'll write. You won't like all of it."[elif flag.c3_kept_counsel]She looks at you for a long moment when you tell her. "Now?" she says. "Now, when you need me?" But she takes the keys.[else]She takes the keys and weighs them in her hand and says, "Good," and that is all, and it is enough.[/if] The manor knows her. It will do as she says, mostly, which is more than it does for you.
+      effects: [ { set: flag.c4_wife_holds }, { add: { rel.@spouse.respect: 2, estate.temper: 1 } } ]
+      next: c4_company
+    - id: priest
+      text: Leave it with the priest and the reeve between them.
+      tags: [piety]
+      text_after: |
+        [if flag.c2_granted_marsalin]Père Yves and Margot[elif flag.c2_granted_kerval]Dom Hervé and Gwenaël[else]Père Guérin and Bastien[/if] will hold it between them, which means they will argue about everything and agree about what matters. You leave them a list. They read it in front of you and then put it in the fire, politely.
+      effects: [ { set: flag.c4_priest_holds } ]
+      next: c4_company
+    - id: man
+      text: Leave one of your own men as castellan.
+      tags: [martial]
+      visible_if: [ retinue >= 2 ]
+      text_after: |
+        [if npc.davy_ludd.alive && npc.davy_ludd.follower]You leave Davy, who wants to come and does not argue. He understands, then. "Keep it," you say. "I will," he says. He does.[else]You leave the steadiest of your men, who wanted to come and does not argue. He walks the walls every night you are gone. The village calls him "the Adalian" to his face and something worse behind it, and he keeps the manor anyway.[/if]
+      effects: [ { set: flag.c4_man_holds }, { add: { estate.defence: 1, estate.temper: -1 } } ]
+      next: c4_company
+
+- id: c4_company
+  chapter: ch4
+  title: The Company
+  checkpoint: true
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    A lord of your standing owes the King a company: so many lances, so many bows, for so many days at the King's wage, which comes late, and in the end your own purse makes up the difference. The indenture arrives in Lent with the King's seal on it. It says thirty lances and sixty archers. You have [if retinue >= 4]a good following, and a manor, and the beginnings of a name[elif retinue >= 2]a handful of men who stood with you before, and a manor[else]a manor, and a name, and not much else[/if].
+
+    [break]
+
+    [if npc.roger_tallis.alive && npc.roger_tallis.follower]Roger Tallis, grey now, comes in from the yard with the muster roll in his fist. "Thirty lances," he says. "I can find you twenty that will stand. The other ten will cost you, and they'll run."[elif npc.jankin_rooke.alive && npc.jankin_rooke.follower]Jankin Rooke, who has a belly now and a wife at the mill, reads the indenture over your shoulder and whistles. "Thirty lances," he says. "Where are we getting thirty lances?"[else]Your steward reads the indenture, and then reads it again, and then goes and sits down.[/if] [if flag.c3_hired_bandits && npc.ulric_rotbart.alive]Ulric Rotbart's men, the remnant you hired as a garrison, are already sharpening things in the yard, and watching you to see what you will offer.[/if]
+  choices:
+    - id: credit
+      text: Raise the whole company properly, on credit if you must.
+      tags: [martial, wealth]
+      text_after: |
+        You raise the whole company: thirty lances and sixty bows, horsed and harnessed and paid a quarter in advance, which is what it takes to get men worth having. It costs every penny you have and a loan from [if flag.c3_lanzi_kin]your wife's house, at a rate your wife says is an insult to the family[elif flag.c3_carrow_paper || flag.c3_party_carrow]the Earl of Carrow's steward, who is delighted to oblige[else]a Sarenzan house in Sauvemer[/if]. You ride to the muster at the head of a hundred men with your own badge on their sleeves, and other lords look at your company before they look at you.
+      effects: [ { set: flag.c4_full_company }, { add: { res.men: 90, res.coin: -2400, counter.company: 3, res.renown: 1 } }, { if: { not: flag.c3_lanzi_kin }, then: [ { set: flag.c4_war_debt } ] } ]
+      next: c4_landing
+    - id: good
+      text: Raise fewer men, and only good ones.
+      tags: [martial, cunning]
+      text_after: |
+        You write to the King's clerks that you will bring twenty lances and forty bows, all of them men who have done it before, and you will pay the difference in the fine. The clerks grumble. The marshal, when he sees your company at the muster, stops grumbling. Small, hard, and quiet: men who stand.
+      effects: [ { set: flag.c4_good_company }, { add: { res.men: 60, res.coin: -960, counter.company: 2 } } ]
+      next: c4_landing
+    - id: manor
+      text: Raise the company from your own manor.
+      tags: [allies, wealth]
+      text_after: |
+        You raise it from the manor and the villages round: the young men, the second sons, the salt-boilers' boys who want to see the world, the Adalian settlers' sons who want to show the locals something. They are cheap and brave and know nothing. [if flag.c2_granted_marsalin]Margot[elif flag.c2_granted_kerval]Gwenaël[else]Bastien[/if] stands at the gate as they march out and counts them, aloud, and you know she will count them again when they come back.
+      effects: [ { set: flag.c4_manor_company }, { add: { res.men: 70, res.coin: -480, counter.company: 1, estate.people: -40, estate.temper: -1 } } ]
+      next: c4_landing
+    - id: rotbart
+      text: Make Rotbart's men the core of it.
+      tags: [martial, cunning]
+      visible_if: [ flag.c3_hired_bandits, npc.ulric_rotbart.alive ]
+      text_after: |
+        Rotbart's remnant are the best soldiers you will ever pay for and the worst men you will ever command. They want a share of everything, in writing. You give it to them in writing. At the muster the King's marshal looks at the black eagle sewn under your badge and says, "Iron Company?" and you say, "Mine," and he lets it go.
+      effects: [ { set: flag.c4_iron_core }, { add: { res.men: 80, res.coin: -1200, counter.company: 3, rep.knights: -1 } } ]
+      next: c4_landing
+
+- id: c4_landing
+  chapter: ch4
+  title: The Armance Again
+  on_enter: [ { advance: { seasons: 1 } }, { meet: mahaut_armance }, { meet: jehanne_armance } ]
+  text: |
+    The fleet comes into Lannec on a June morning with the whole Armance shore lit up with bonfires, and for a moment you think it is war already, and it is: it is the Duchess's people burning the Valdrennish customs houses to welcome you.
+
+    [break]
+
+    Duchess Jehanne meets the King on the quay. She is seventy, and uses a stick, and walks without it when people are watching. Beside her is a girl of fourteen in black, with a face like a closed door: Mahaut, her granddaughter, whose father died in Cordelle's prison. Everyone on the quay knows what she is. The Armance does not pass to Adalia. It passes to Mahaut.
+
+    [if flag.c2_jehanne_noticed || flag.c2_jehanne_message]The Duchess sees you in the King's train, and stops, and says, "The one who carried my message." She does not smile. From Jehanne that is better.[else]The Duchess's eyes go over the King's train without stopping, and over you.[/if] [if flag.c2_granted_kerval]Your own people from Kerval have walked down to the coast to see the fleet. Gwenaël is waving his hat on a pole.[/if]
+  choices:
+    - id: court
+      text: Pay your respects to the Duchess and her granddaughter.
+      tags: [diplomacy]
+      check: { attr: presence, skill: courtesy, difficulty: 3, mods: [ { if: flag.c2_jehanne_noticed || flag.c2_jehanne_message, add: 1, label: she remembers you }, { if: flag.c1_learned_valdrennish || flag.c2_learned_town, add: 1, label: you speak their tongue } ] }
+      success:
+        text: |
+          You kneel to the Duchess in her own hall at Lannec, which the King's lords do not, and speak to her in her own tongue, which the King's lords cannot. She gives you two fingers to kiss and a long look. Mahaut, behind her, says nothing at all. But at the end, as you rise, the girl says, low, in Adalian, "They say you held a castle for my grandmother when nobody else would." You did not, quite. You do not correct her.
+        effects: [ { set: flag.c4_armance_favour }, { add: { counter.west_estates: 2, rep.valdrenne: 1 } } ]
+        next: c4_towns
+      failure:
+        text: |
+          The Duchess receives you with the rest of the King's lords, in a line, and gives you the same two words she gives all of them. Mahaut looks through you as if you were a window.
+        next: c4_towns
+    - id: king
+      text: Stay at the King's side. That is where this war will be decided.
+      tags: [martial, allies]
+      text_after: |
+        You stay with the King's household through the landing and the first council of war. The King says nothing to you directly. But when the captains are told off to their commands, your company is given the van, the post of most danger and most honour, and a herald says your name aloud.
+      effects: [ { add: { counter.court_king: 1, res.renown: 1 } } ]
+      next: c4_towns
+    - id: country
+      text: Ride out and look at the country before anyone else does.
+      tags: [learning, martial]
+      text_after: |
+        You ride out with six men the first evening, inland, up the valley toward the hills, and spend a week looking at fords and roads and where the Constable's people have been. A shepherd tells you, for a penny, that the Constable is gathering at Mortefontaine, the abbey of the dead spring, where the road from Cordelle comes over the hills. Nobody else in the army knows yet.
+      effects: [ { set: flag.c4_scouted }, { add: { skill.tactics: 1, counter.mf: 1 } } ]
+      next: c4_towns
+
+- id: c4_towns
+  chapter: ch4
+  title: The Towns Remember
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    The army goes east up the Armance in the autumn, taking back the towns the truce gave away. Some open their gates. Some do not. Every one of them remembers the first war, and some of them remember you.
+
+    [if flag.c2_vaudrey_held]At Vaudrey the gates open before the heralds reach them, and the old burgomaster comes out on foot and asks for you by name. "You kept your men out of the lower town," he says. "We remember." The King's marshal looks at you sidelong.[elif flag.c2_vaudrey_looted]At Vaudrey the gates stay shut, and from the walls a woman shouts your badge at you, and spits, and the marshal looks at you sidelong.[else]At Vaudrey the gates open after a day's talking, the way gates do when the town has been sacked once and does not want to be sacked again.[/if]
+
+    [if flag.c2_breval_stopped]At Bréval, an old priest comes out to your company's lines with bread, and asks if you are the one who stopped what was happening behind the church. You say you are. He gives you the bread and says a blessing and goes back in, and nobody in Bréval steals so much as a nail from your men all the time you are there.[elif flag.c2_breval_sacked || flag.c2_breval_burned]At Bréval they have built the church again, out of the stones of the burned houses, and you can see the black marks on the stones from the road.[/if]
+
+    [break]
+
+    At Saint-Ferréol, a little walled town on a hill with the Constable's garrison in it, the King's marshal gives your company the job of opening the gate.
+  choices:
+    - id: talk
+      text: Talk them out. Offer the garrison their lives and their horses.
+      tags: [diplomacy]
+      check: { attr: presence, skill: diplomacy, difficulty: 4, mods: [ { if: flag.c2_vaudrey_held || flag.c2_breval_stopped, add: 1, label: they have heard of you }, { if: flag.c2_terms_carried, add: 1, label: you carried the terms at Sauvemer } ] }
+      success:
+        text: |
+          You go up to the gate with a white rod and no helmet, and talk to the garrison captain through the grille for an hour. He is a tired man with a family in Cordelle and no orders. In the morning the garrison marches out with their horses and their swords, and the town opens, and nobody dies. The King's marshal says it was well done. Some of the King's knights say it was a waste of a good sack.
+        effects: [ { set: flag.c4_ferreol_talked }, { add: { counter.west_estates: 2, rep.honor: 1, rep.valdrenne: 1 } } ]
+        next: c4_winter
+      failure:
+        text: |
+          The captain hears you out and says no, politely, and shoots a crossbow bolt into your shield to make the point. In the end you take the gate with a ram, the hard way, and it costs you eleven men.
+        effects: [ { casualties: { men: 11, named: 0 } } ]
+        next: c4_winter
+    - id: storm
+      text: Storm it at dawn, before they expect it.
+      tags: [martial]
+      check: { attr: strength, skill: command, difficulty: 4, mods: [ { if: counter.company >= 3, add: 1, label: your company is strong }, { if: flag.c2_breach_survived, add: 1, label: you have been up a breach before } ] }
+      success:
+        text: |
+          You go over the wall at the low place by the mill in the grey before dawn, with ladders and no trumpets, and you are in the square before the garrison is out of its blankets. It is short and ugly. By sunrise the town is yours, and the King's.
+        effects: [ { set: flag.c4_ferreol_stormed }, { add: { res.renown: 2, counter.west_estates: -1 } }, { casualties: { men: 6, named: 0 } } ]
+        next: c4_winter
+      failure:
+        text: |
+          They are awake. They are always awake, the ones who know the place is not worth holding. You get men onto the wall and lose them there, and in the end it takes three days and the King's engines. Your company comes out of Saint-Ferréol with fewer men and a bad name in the town.
+        effects: [ { casualties: { men: 14, named: 1 } }, { add: { counter.west_estates: -1 } } ]
+        next: c4_winter
+    - id: starve
+      text: Sit down in front of it and wait.
+      tags: [cunning, yield]
+      text_after: |
+        You sit down in front of Saint-Ferréol and wait. It takes five weeks, and the King's marshal writes you two angry letters, and in the end the garrison comes out thin and sullen and alive. You lose nobody. The King's marshal does not thank you.
+      effects: [ { add: { counter.court_king: -1 } } ]
+      next: c4_winter
+
+- id: c4_winter
+  chapter: ch4
+  title: Winter Quarters
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    The army winters in the Armance, in the towns it has taken, and the Constable winters in Cordelle, and everyone knows what the spring will bring.
+
+    [if flag.c4_wife_holds]Your wife's letters come every fortnight, by the Lannec boats, in a quick hand: the price of salt, the state of the dyke, what the children said. [if heirs.count >= 1]At the bottom, in a different hand, enormous: a word or two from {heir.eldest.name}, and a drawing of a horse, or possibly a dog.[/if][elif heirs.count >= 1]The letters from home come by the Lannec boats. At the bottom of one, in a huge hand guided by somebody else's: {heir.eldest.name}.[else]No letters come from home that matter. You find you mind.[/if]
+
+    [break]
+
+    It is a long winter. [if flag.c4_iron_core]Rotbart's men are bored, and when they are bored they steal.[elif flag.c4_manor_company]The boys from the manor are homesick, and two of them go home over the hills without leave.[else]Your company is bored, and when men are bored they drink.[/if]
+  choices:
+    - id: drill
+      text: Keep them working. Drill every day, march every week.
+      tags: [martial]
+      text_after: |
+        You drill them every day the weather allows and march them every week whether it does or not. They curse you in four languages. By Lady Day they can form line in the dark, wheel on the march, and stand still when the horses come, which is the only thing that matters.
+      effects: [ { train: { command: 1, ceiling: 7, quiet: 1 } }, { add: { counter.mf: 1 } } ]
+      next: c4_carrow
+    - id: feast
+      text: Keep them happy. Pay them on time and feed them well.
+      tags: [allies, wealth]
+      requires: [ res.coin >= 480 ]
+      label: "Requires Coin £2"
+      text_after: |
+        You pay them on time, every quarter, from your own purse when the King's money is late, which is always. You feed them beef at Christmas. By spring they would follow you into the sea, and some of them say so, drunk, and mean it.
+      effects: [ { add: { res.coin: -480, counter.mf: 1 } }, { add: { rel.davy_ludd.loyalty: 2, rel.roger_tallis.loyalty: 2, rel.jankin_rooke.loyalty: 2, rel.simkin_barre.loyalty: 2 } } ]
+      next: c4_carrow
+    - id: home
+      text: Leave the company to your lieutenants, and go home for the winter.
+      tags: [allies]
+      text_after: |
+        You take a boat home at Martinmas and come back at Lady Day. [if heirs.count >= 1]{heir.eldest.name} does not know you at first, and hides behind [if flag.c3_married && npc.@spouse.alive]a skirt[else]the nurse[/if], and then knows you, and will not let go of your leg for a week.[else]The manor is glad to see you, more than you expected.[/if] When you get back to the army, the company is thinner, and drunker, and three men have been hanged for theft by the King's marshal without anyone asking you.
+      effects: [ { add: { heir.eldest.bond: 2, estate.temper: 1 } }, { casualties: { men: 3, named: 0 } } ]
+      next: c4_carrow
+
+- id: c4_carrow
+  chapter: ch4
+  title: The Black Boar
+  checkpoint: true
+  on_enter: [ { advance: { seasons: 1 } }, { meet: hugh_malet } ]
+  text: |
+    In May the Constable comes over the hills from Cordelle with the whole power of the regency, and the King goes to meet him, and the two armies find each other at Mortefontaine, the abbey of the dead spring, on a ridge above a dry stream[if flag.c4_scouted], exactly where the shepherd said[/if].
+
+    The King draws up on the ridge in three battles. The centre is his own. The right is the Prince's, all young men and bright harness. The left is the Earl of Carrow's, under the black boar, with Sir Hugh Malet as marshal. Your company is [if counter.court_king >= 3]in the King's battle, near the banner[elif counter.court_prince >= 3]on the Prince's wing[elif counter.court_carrow >= 3]on Carrow's wing, under the boar[else]at the join between the King's battle and Carrow's, where the companies nobody has a use for are put[/if].
+
+    [break]
+
+    [if flag.c3_told_king_vervais]On the eve of the battle the King sends for you, alone. "If Carrow's battle does not move tomorrow when the trumpet goes," he says, "you will ride to the Earl and tell him from me that I know about Vervais. In those words." He does not wait for an answer.[elif flag.c4_carrow_pinned]On the eve of the battle the Earl of Carrow passes your fire, and stops, and looks at you. "I keep my bargains," he says. "See that you keep yours." He goes on.[elif flag.c3_told_prince_vervais]On the eve of the battle the Prince comes to your fire, alone, with his cloak over his head. "Watch the left tomorrow," he says. "Watch Carrow. If he holds back, I'll want a witness."[elif flag.c3_kept_vervais]You lie awake on the eve of the battle with the Earl's treason in your head, and the Earl's battle on the left of the line, and you wonder.[else]On the eve of the battle there is the usual talk at the fires: whose battle is strongest, who will hold, who will run. Nobody mentions the Earl of Carrow. Nobody has to.[/if]
+  choices:
+    - id: on
+      text: Arm, hear Mass, and take your place.
+      tags: [martial]
+      effects: [ { if: { any: [ flag.c4_carrow_pinned, flag.c3_told_king_vervais ] }, then: [ { add: { counter.mf: 1 } } ] } ]
+      next: c4_mf_1
+
+- id: c4_mf_1
+  chapter: ch4
+  title: Mortefontaine
+  text: |
+    The Constable does not wait. He has learned from Les Salines: he dismounts his men-at-arms, all of them, and sends them up the slope on foot, in close order, under their banners, with the crossbowmen behind and the horse held back for the end. It takes them half an hour to climb the ridge. It is the longest half hour of your life.
+
+    [break]
+
+    The archers shoot until their fingers bleed. The Valdrennish come on anyway, leaning into it like men in a gale, and hit the King's battle with a noise like a smithy falling down a stair.
+
+    [if counter.court_carrow >= 3]You are on the left, under the boar, and you feel it before you understand it: the battle is not moving. The trumpet has gone. The Earl's banner has not.[else]And on the left, under the black boar, nothing happens. The trumpet goes. The Earl's battle stands where it is.[/if]
+  choices:
+    - id: ride
+      text: Ride to the Earl of Carrow.
+      tags: [cunning, diplomacy]
+      check: { attr: presence, skill: intrigue, difficulty: 4, mods: [ { if: flag.c3_told_king_vervais, add: 2, label: "the King's words" }, { if: flag.c4_carrow_pinned, add: 2, label: your bargain }, { if: flag.c3_kept_vervais, add: 1, label: what you know } ] }
+      success:
+        text: |
+          You ride along the back of the line to the black boar, through spent arrows and screaming horses, and find the Earl sitting his horse with his hands crossed on the pommel, watching. [if flag.c3_told_king_vervais]"The King says he knows about Vervais," you tell him. "In those words."[elif flag.c4_carrow_pinned]"Our bargain," you say. That is all.[else]You lean close and say one word in his ear: "Vervais."[/if] He looks at you. Something goes out of his face. Then he lifts his hand, and Malet blows the trumpet, and the black boar goes forward into the Constable's flank.
+        effects: [ { set: flag.c4_moved_carrow }, { add: { counter.mf: 2, res.renown: 2, counter.court_carrow: -2, counter.court_king: 2 } } ]
+        next: c4_mf_2
+      failure:
+        text: |
+          You ride to the black boar, and Malet's men will not let you near the Earl. "My lord is waiting for his moment," Malet says, with a hand on your bridle, and smiles. You ride back to your own company through the arrows with nothing.
+        effects: [ { set: flag.c4_carrow_held } ]
+        next: c4_mf_2
+    - id: gap
+      text: Take your company into the gap where Carrow's battle should be.
+      tags: [martial]
+      lethal: true
+      warn: The gap is where the Constable is aiming. Without armour, or carrying a serious wound, you could die in it.
+      check: { attr: strength, skill: command, difficulty: 5, mods: [ { if: counter.company >= 3, add: 1, label: your company is strong }, { if: counter.mf >= 2, add: 1, label: your men are ready }, { if: flag.c4_iron_core, add: 1, label: the Iron Company }, { if: armour >= 2, add: 1, label: good harness } ] }
+      success:
+        text: |
+          You take the whole company into the gap at a run and stop there, and the Constable's left comes into you instead of round the King's flank. After that there is nothing but the press, and the noise, and your own breath roaring in your helm. [if npc.davy_ludd.alive && npc.davy_ludd.follower]Davy is at your shoulder the whole time, shouting something you never hear.[/if] You hold. God knows how. You hold.
+        effects: [ { set: flag.c4_held_gap }, { add: { counter.mf: 3, res.renown: 3, counter.court_king: 2 } }, { casualties: { men: 18, named: 1 } } ]
+        next: c4_mf_2
+      partial:
+        text: |
+          You get into the gap and hold it for a while, and then cannot, and give ground step by step to the foot of the King's banner, where the King's household comes in beside you and the line steadies. It costs you.
+        effects: [ { add: { counter.mf: 1, res.renown: 1 } }, { casualties: { men: 24, named: 1 } }, { injury: cut_brow } ]
+        next: c4_mf_2
+      failure:
+        text: |
+          You go into the gap and the Constable's foot go into you, and there is no holding it. [if armour >= 1 && !injured]A Valdrennish banner comes over you like a wave, and you go down under it, and your harness holds, and your men come back for you when the King's household closes the gap. You remember none of it after the banner.[else]The last thing you see is a Valdrennish banner coming over you like a wave.[/if]
+        effects:
+          - if: [ armour >= 1, "!injured" ]
+            then: [ { injury: cracked_skull }, { casualties: { men: 26, named: 1 } } ]
+            else: [ { die: "Killed at Mortefontaine, holding the gap left by the Earl of Carrow" } ]
+        next: c4_mf_2
+    - id: hold
+      text: Hold your place and keep your men in hand.
+      tags: [yield, martial]
+      text_after: |
+        You hold your place, and keep your men in hand, and watch the King's battle buckle and straighten and buckle again, and do not move, because nobody has told you to and the whole line depends on everyone staying where they were put. It is the hardest thing you have ever done.
+      effects: [ { set: flag.c4_held_place } ]
+      next: c4_mf_2
+
+- id: c4_mf_2
+  chapter: ch4
+  title: The Dead Spring
+  text: |
+    [if counter.mf >= 4]The Constable's attack breaks on the ridge. Not all at once: in pieces, a banner here, a company there, men who have climbed a hill in harness under arrows and fought for an hour and have nothing left. They start to go back down the slope. Then they start to run.[elif counter.mf >= 2]The Constable's attack stalls on the ridge, and stays there, and the two lines grind against each other for an hour like millstones, and nobody wins, and everybody bleeds.[else]The Constable's attack comes over the ridge on the left, where the Earl's battle never moved, and rolls up the King's flank like a carpet. For a terrible quarter of an hour you think it is Grisolles again.[/if]
+
+    [break]
+
+    Then the Constable's horse comes: two thousand lances held back all morning, coming up the dry stream at the trot.
+  choices:
+    - id: charge
+      text: Get your lances mounted and go down into them.
+      tags: [martial]
+      lethal: true
+      warn: A charge into fresh horse at the end of a long day. Without armour, or carrying a serious wound, you could die.
+      check: { attr: agility, skill: riding, difficulty: 5, mods: [ { if: counter.mf >= 4, add: 1, label: the battle is going your way }, { if: armour >= 2, add: 1, label: good harness }, { if: counter.company >= 2, add: 1, label: your lances } ] }
+      success:
+        text: |
+          You go down the slope into the Constable's horse with forty lances behind you and the King's household on your flank, and hit them in the stream-bed where they cannot spread, and they break. You see the Constable's banner go down in the water. You do not see what happens to the Constable.
+        effects: [ { set: flag.c4_charged }, { add: { counter.mf: 3, res.renown: 3 } }, { casualties: { men: 8, named: 0 } } ]
+        next: c4_mf_after
+      partial:
+        text: |
+          You go down into them and it is a brawl in a stream-bed, horses screaming, men drowning in a foot of water. You come back up the slope with half your lances and a broken lance-arm. The Constable's horse does not come again.
+        effects: [ { add: { counter.mf: 1, res.renown: 1 } }, { casualties: { men: 12, named: 0 } }, { injury: bruised_ribs } ]
+        next: c4_mf_after
+      failure:
+        text: |
+          Your horse goes down in the stream-bed with a lance through its chest, and you go under it, in a foot of water, in harness. [if armour >= 1 && !injured]Two of your men get the horse off you and your face out of the water, and you lie on the bank coughing up the dead spring with your leg bent the wrong way.[else]Nobody reaches you in time.[/if]
+        effects:
+          - if: [ armour >= 1, "!injured" ]
+            then: [ { injury: crushed_ribs }, { casualties: { men: 10, named: 0 } } ]
+            else: [ { die: "Drowned in a foot of water under his horse at Mortefontaine" } ]
+        next: c4_mf_after
+    - id: archers
+      text: Bring your archers to the lip of the ridge and shoot them into the stream.
+      tags: [martial, cunning]
+      check: { attr: wits, skill: tactics, difficulty: 4, mods: [ { if: flag.c4_scouted, add: 1, label: you know the ground }, { if: background == archer, add: 1, label: "your father's trade" } ] }
+      success:
+        text: |
+          You run your archers to the lip of the ridge where it falls steepest over the stream, and they shoot down into the Constable's horse as it comes up the bed, at fifty paces, into the backs of the horses' necks. It is butchery. The charge never reaches the top.
+        effects: [ { set: flag.c4_archers_stream }, { add: { counter.mf: 2, res.renown: 2 } } ]
+        next: c4_mf_after
+      failure:
+        text: |
+          Your archers get to the lip too late, and shoot into the tail of the charge, and the head of it comes over the ridge into the King's battle, and it is only the King's household knights, fighting on foot around the banner, that stop it.
+        effects: [ { add: { counter.mf: -1 } } ]
+        next: c4_mf_after
+    - id: wounded
+      text: Pull back and see to your wounded.
+      tags: [allies]
+      text_after: |
+        You pull your company back behind the ridge and see to your wounded while the King's household meets the Constable's horse. Some men think less of you for it. The ones you carried down the hill do not.
+      effects: [ { add: { rep.commons: 1, rel.davy_ludd.loyalty: 1, rel.roger_tallis.loyalty: 1 } } ]
+      next: c4_mf_after
+
+- id: c4_mf_after
+  chapter: ch4
+  title: After Mortefontaine
+  on_enter:
+    - if: counter.mf >= 6
+      then: [ { set: flag.c4_mf_victory }, { add: { counter.court_king: 1 } } ]
+      else:
+        - if: counter.mf >= 3
+          then: [ { set: flag.c4_mf_bloody } ]
+          else: [ { set: flag.c4_mf_lost } ]
+  text: |
+    [if flag.c4_mf_victory]Mortefontaine is a victory. The heralds will call it a great one, and in a sense it is: the Constable's army broken on the ridge, his horse drowned in the stream, the regency of Valdrenne shown to the whole world as a soldier who cannot win. The Constable himself escapes, wounded, back over the hills to Cordelle.[elif flag.c4_mf_bloody]Mortefontaine is a victory, the heralds say, because the King held the field. It does not look like one. Both armies lie on the ridge in heaps, and in the morning the Constable is gone over the hills to Cordelle, and the King has not enough men left whole to follow him.[else]Mortefontaine is a defeat, though the King will not call it one. The left gave way, and the Constable's men were in the baggage before the King's household turned them, and the army goes back down the valley to Lannec in the rain, and the Armance is no more the King's than it was in the spring.[/if]
+
+    [break]
+
+    [if flag.c4_carrow_held]Everyone saw the black boar stand still. Nobody says it aloud. In the King's tent that night the Earl of Carrow is the first to congratulate the King, and the King thanks him, and looks at him a little too long.[elif flag.c4_moved_carrow]Everyone saw the black boar move, late, and hit the Constable in the flank. The heralds will say the Earl of Carrow won the day. The King, who knows what moved it, sends you a ring from his own hand that night, without a word.[else]The black boar moved late, and hit nothing much, and nobody can say whether it would have moved at all if the battle had gone the other way.[/if]
+
+    [if retinue >= 1]You walk your company's lines in the dark with a lantern, and count.[else]You walk among the dead in the dark with a lantern, looking for faces.[/if]
+  choices:
+    - id: on
+      text: Count them.
+      tags: [allies]
+      text_after: |
+        [if flag.c4_held_gap]The gap cost you more than anything you have ever done. You count them twice. Then you sit down on the ground among them, in your harness, and stay there till morning.[else]It could have been worse. That is what you tell the men, and it is true, and it does not help.[/if]
+      effects: [ { if: flag.c4_mf_victory, then: [ { add: { res.renown: 2 } } ] } ]
+      next: c4_grant
+
+- id: c4_grant
+  chapter: ch4
+  title: The Second Grant
+  checkpoint: true
+  on_enter: [ { advance: { seasons: 4 } } ]
+  text: |
+    [if flag.c4_mf_lost]The war goes on through the winter and the next summer, siege by siege, without another battle, and by the spring of the thirty-fifth year the King holds the Armance coast and the Constable holds the hills, and both of them are out of money.[else]The war goes on through the winter and the next summer, town by town. By the spring of the thirty-fifth year the King holds the Armance to the hills, the Constable is fighting his own boy-king in Cordelle, and the Sarenzan banks are pressing both sides for a truce.[/if]
+
+    In Lent the King rewards his captains.
+
+    [break]
+
+    [if flag.c4_held_gap || flag.c4_moved_carrow || flag.c4_charged || res.renown >= 20]Your name is read third, after two earls. The King makes you a banneret, with the right to carry a square banner and lead other knights under it, and grants you lands in the West, and asks you which.[elif res.renown >= 14 || flag.c4_archers_stream || flag.c4_ferreol_talked || flag.c4_ferreol_stormed]Your name is read in the second rank. The King makes you a banneret, and grants you lands in the West, and asks you which.[else]Your name is read near the end. The King thanks you for your service and grants you lands in the West, smaller than some, and asks you which.[/if]
+  choices:
+    - id: la_garde
+      text: La Garde, the tower on the Sauvemer march. A border, and a fortress.
+      tags: [martial]
+      text_after: |
+        La Garde is a square tower on a rock above the Sauvemer road, with two villages under it and a view of half the march. It has been taken and retaken four times in your lifetime. It will cost you more to hold than it will ever pay. Nobody will come at your other lands except past it.
+      effects: [ { hold: { id: la_garde, income: 480, temper: 0 } }, { set: flag.c4_banneret }, { add: { estate.defence: 2, counter.west_estates: 1 } } ]
+      next: c4_act1_end
+    - id: vaudrey
+      text: The rents of Vaudrey, the town you took in the first war.
+      tags: [wealth]
+      text_after: |
+        [if flag.c2_vaudrey_held]Vaudrey's burgomaster sends you a barrel of wine and a letter of welcome in his own hand. "You kept your men out of the lower town," he writes again, as if you might have forgotten.[elif flag.c2_vaudrey_looted]Vaudrey sends its rents on time and nothing else. When you ride through the town for the first time as its lord, the shutters close in front of you, street by street, like a wave.[else]Vaudrey accepts you the way towns accept a new lord: politely, warily, and with a petition about the bridge tolls on the first day.[/if]
+      effects: [ { hold: { id: vaudrey, income: 1200, temper: 0 } }, { set: flag.c4_banneret }, { if: flag.c2_vaudrey_looted, then: [ { add: { holding.vaudrey.temper: -3 } } ] }, { if: flag.c2_vaudrey_held, then: [ { add: { holding.vaudrey.temper: 2, counter.west_estates: 1 } } ] } ]
+      next: c4_act1_end
+    - id: office
+      text: Ask instead for an office at court, and the King's ear.
+      tags: [cunning, diplomacy]
+      text_after: |
+        You ask for no land. You ask to be made one of the King's knights of the chamber, which pays a little and means a great deal: you sleep in the next room to the King when the court travels, and you hear things. The King looks at you for a moment as if he were seeing you properly for the first time. "Granted," he says. "God help you."
+      effects: [ { set: flag.c4_chamber_knight }, { set: flag.c4_banneret }, { add: { counter.court_king: 3 } } ]
+      next: c4_act1_end
+
+- id: c4_act1_end
+  chapter: ch4
+  kind: ending
+  ending: story_so_far
+  title: Spring, Year Thirty-Five
+  text: |
+    You are thirty-four. You carry a square banner now, and lead other men's knights under it, and [if holdings.count >= 2]hold land in more places than you can ride to in a week[elif holdings.count == 1]hold land in two countries[else]hold the King's ear, which is a kind of land[/if].
+
+    [if heirs.count >= 1]At home, {heirs.names} [if heirs.count >= 2]are[else]is[/if] growing, without you, the way children do.[/if] [if flag.c3_married && npc.@spouse.alive]Your wife's last letter says the dyke held, the salt is good, and that she has had the hall whitewashed, and you are not to complain about it.[/if]
+
+    End of the chapters written so far. Chapter 4 continues with the Lord of Many Places.

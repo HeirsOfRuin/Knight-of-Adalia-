@@ -1,0 +1,13 @@
+# Holdings beyond the first manor (Ch4+). The first manor keeps the full estate
+# simulation; these are income (pence a year, paid at Michaelmas) and temper.
+ashby: { label: Ashby, region: adalia, description: "The manor where he was the reeve's son. Bought from the ruin of Ravell." }
+hollin: { label: Hollin and the chase, region: adalia, description: "The archers' village on the edge of the Ravell chase. Bought from the ruin of Ravell." }
+wendham_rents: { label: The Wendham rents, region: adalia, description: "Ravell's rents in Wendham, his father's street among them." }
+underhill: { label: Underhill, region: adalia, description: "Ravell's home farm, where his mother was born." }
+lisle: { label: Lisle, region: adalia, description: "A manor and a half in the west of Adalia, with a leaking castle and an old lawsuit. His wife's inheritance." }
+wyck: { label: Wyck, region: adalia, description: "Orchards and a quarrelsome stepson. His wife's for her life." }
+ashdown: { label: Ashdown, region: adalia, description: "Three manors in the south of Adalia, half-empty since the Mottle. His wife's inheritance." }
+corbie_vineyard: { label: The Corbie vineyard, region: west, description: "A vineyard on the Corbie hills, his wife's dowry." }
+sauvemer_house: { label: The house in the Rue des Saulniers, region: west, description: "Clémence's dower: a town house and a share of the Sauvemer customs." }
+la_garde: { label: La Garde, region: west, description: "A square tower and two villages on the Sauvemer march, granted after Mortefontaine." }
+vaudrey: { label: The rents of Vaudrey, region: west, description: "The town he took in the first war, granted to him in the second." }

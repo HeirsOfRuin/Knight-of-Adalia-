@@ -364,3 +364,30 @@ c3_wat_with_you: { description: "Wat Coker went with him to talk to the rebels",
 c3_went_to_talk: { description: "Went to talk to the rebels before the King's army did", hidden: true, later: ch4 }
 c3_wife_died_second: { description: "His wife died at the birth of their second child", later: ch4 }
 c3_will_leads: { description: "Will Coker led the rising in his cousin Wat's name", hidden: true, later: ch4 }
+c4_spoke_council: { description: "Spoke for the war in the West at the great council", later: ch5 }
+c4_carrow_pinned: { description: "Bargained with the Earl of Carrow over the Vervais secret", hidden: true, later: ch5 }
+c4_met_edwin: { description: "Went to Prince Edwin's rooms at the great council", later: ch5 }
+c4_counted_council: { description: "Watched and counted the great council in silence", hidden: true, later: ch5 }
+c4_wife_holds: { description: "Left his wife holding the manor through the Second War", later: ch5 }
+c4_priest_holds: { description: "Left the priest and the reeve holding the manor", hidden: true, later: ch5 }
+c4_man_holds: { description: "Left one of his own men as castellan", hidden: true, later: ch5 }
+c4_full_company: { description: "Raised a full company for the Second War", later: ch5 }
+c4_war_debt: { description: "Borrowed to raise his company", later: ch5 }
+c4_good_company: { description: "Raised a small company of veterans", hidden: true, later: ch5 }
+c4_manor_company: { description: "Raised his company from his own manor", later: ch5 }
+c4_iron_core: { description: "Made Rotbart's Iron Company men the core of his company", later: ch5 }
+c4_armance_favour: { description: "Won the favour of the Duchess of Armance and her granddaughter", later: ch5 }
+c4_scouted: { description: "Scouted the road to Mortefontaine before anyone else", hidden: true, later: ch5 }
+c4_ferreol_talked: { description: "Talked the garrison of Saint-Ferréol out", later: ch5 }
+c4_ferreol_stormed: { description: "Stormed Saint-Ferréol", later: ch5 }
+c4_moved_carrow: { description: "Made the Earl of Carrow's battle move at Mortefontaine", later: ch5 }
+c4_carrow_held: { description: "Saw Carrow's battle stand still at Mortefontaine", later: ch5 }
+c4_held_gap: { description: "Held the gap Carrow left at Mortefontaine", later: ch5 }
+c4_held_place: { description: "Held his place in the line at Mortefontaine", hidden: true, later: ch5 }
+c4_charged: { description: "Charged the Constable's horse in the dead spring", later: ch5 }
+c4_archers_stream: { description: "Shot the Constable's horse in the stream-bed", later: ch5 }
+c4_mf_victory: { description: "Mortefontaine was a victory", later: ch5 }
+c4_mf_bloody: { description: "Mortefontaine was a bloody draw", later: ch5 }
+c4_mf_lost: { description: "Mortefontaine was a defeat", later: ch5 }
+c4_banneret: { description: "Made a banneret after Mortefontaine", later: ch5 }
+c4_chamber_knight: { description: "Knight of the King's chamber", later: ch5 }

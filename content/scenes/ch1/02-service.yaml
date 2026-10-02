@@ -55,7 +55,7 @@
 
     This summer it becomes today. Master {npc.bertuccio_lanzi} of the Lanzi bank rides in from Wendham with a clerk and a letter. Forty pounds, borrowed against Ashby's wool. And there is the King's subsidy: Sir Hamon was named collector for the hundred last year. He collected it. He has not yet paid it over. When he looks for it, it is not all there.
 
-    He calls you in. He is not angry. He is frightened, which is worse. "You can count," he says. "Count this."
+    He calls you in. He is not angry. He is frightened, and he is trying to hide it under a laugh that does not come off. "You can count," he says. "Count this."
   choices:
     - id: accounts
       text: Sit down with the subsidy rolls and the Ashby accounts, and find where it went.
@@ -278,7 +278,7 @@
     - id: letter
       text: "Slip out to the chapel and write to [if background == reeve]Mag[elif background == burgess]Annot[elif background == archer]Mariot[else]Nell[/if] at home."
       tags: [learning]
-      text_after: "[if trait.literate_vernacular]You write by one candle, slowly. It is not a good letter. It is the first letter she has ever had.[else]Father Benet writes it for you, for twopence, and reads it back. You hope he will forget it.[/if] You miss the boar's head and the lord's toast. Nobody notices you went."
+      text_after: "[if trait.literate_vernacular]You write by one candle, slowly. It is a bad letter, all blots and crossings-out. It is also the first letter she has ever had.[else]Father Benet writes it for you, for twopence, and reads it back. You hope he will forget it.[/if] You miss the boar's head and the lord's toast. Nobody notices you went."
       effects:
         - if: { not: trait.literate_vernacular }
           then: [ { add: { res.coin: -2 } } ]

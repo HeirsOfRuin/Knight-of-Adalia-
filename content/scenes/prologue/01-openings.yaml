@@ -46,7 +46,7 @@
 
     You count the sticks under your breath. You cannot help it; you never can. [if flag.father_skims]Forty. They say forty. But you sat by the fire in Advent while your father split two oat tallies and fed one half of each into the flames, and cut two new ones a little shorter, and you saw his face while he did it, a face like a man counting coin in a bad market. Before Advent the oat sticks said forty-two.[else]Forty-two. The sticks say forty-two. You count again, and your face goes hot. Forty-two quarters went into that barn, and the roll says forty, and Master Gervase is looking at the roof, and two quarters of oats at this year's price is more than your father is paid in a year.[/if]
 
-    Your father does not look at you. His hands are flat on the trestle and very still. He knows you can count. He taught you.
+    Your father does not look at you. His hands are flat on the trestle and still as stones. He knows you can count. He taught you.
   choices:
     - id: speak
       text: Say what you counted, out loud, in front of the clerk.
@@ -58,7 +58,7 @@
 
         [if flag.father_skims]Master Gervase looks at you properly for the first time, the way you'd look at a dog that has started to talk. "Is that so," he says softly, and has the woodpile searched. It takes the reeve's own men half the morning, standing about in the cold not looking at your father, to find the charred end of a split oat tally that did not quite burn.
 
-        At the manor court on Saint Mark's day your father is fined four shillings for false account, and is not chosen to carry the lord's candle at Easter, which is worse. He does not beat you. He has never beaten you. He stops speaking to you, and that lasts until Whitsun, and when it ends it does not end properly.
+        At the manor court on Saint Mark's day your father is fined four shillings for false account, and is not chosen to carry the lord's candle at Easter, which stings him worse than the fine. He does not beat you. He has never beaten you. He stops speaking to you, and that lasts until Whitsun, and when it ends it does not end properly.
 
         "You did right," your mother tells you, in the dairy, in a whisper, where he cannot hear. "God help us, you did right."
 
@@ -260,7 +260,7 @@
       text_after: |
         "No ale money? Ah, you're a hard bargain." Cobb ruffles your hair with a hand like a shovel. "Go on, then. One story, gratis, and don't tell a soul I'm going soft."
 
-        It is not one story. It is all of them, at the alehouse table, until the alewife throws you both out.
+        It isn't one story. It's all of them, at the alehouse table, until the alewife throws you both out.
 
         Harrow Ford: the Caldmoor spears coming on "like a hedge in a gale, lad, a whole hedge walking," and the arrows going into them like hail into a pond. Your father, before his knee, the best shot in the company, who once put an arrow through a Caldmoor chief's mouth while he was shouting. "Clean through. Never finished his sentence." Where the serjeants drink. Which captains pay. Which lords keep faith with archers and which don't, by name, with spitting.
 
@@ -304,7 +304,7 @@
         text: |
           You talk to Bayard the whole time, low, the way Master Ranulf does, and he lets you. Then he stands like a church while Aymer sits on him, white-faced and grinning, for a count of fifty.
 
-          Aymer slides off and punches your arm and calls you his man, as if he had been granting you a manor. Master Ranulf has turned round. He has seen all of it, and says nothing, which is how you know exactly how angry he is.
+          Aymer slides off and punches your arm and calls you his man, as if he had been granting you a manor. Master Ranulf has turned round. He has seen all of it, and says nothing at all, and the back of your neck goes cold.
         effects: [ { set: flag.p_saddled_destrier }, { add: { rel.aymer_ravell.affection: 3, rel.ranulf_marshal.respect: -1 } } ]
         next: p_servant_home
       failure:

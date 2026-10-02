@@ -28,7 +28,7 @@
       check: { attr: presence, skill: courtesy, difficulty: 3, audience: nobles }
       success:
         text: |
-          You hold a horse outside the King's pavilion for three hours, close enough to hear. The Earl of Carrow wants to cross into Vervais anyway and take the towns by force. The Marshal wants to go back to the Armance while there is an army left to take. The King listens to them both for a long time. Then he asks how many days of bread there are. Somebody tells him. "Then we go back," he says. "By the Aube. Quickly."
+          You hold a horse outside the King's pavilion for three hours, close enough to hear. The Earl of Carrow wants to cross into Vervais anyway and take the towns by force. The Marshal wants to go back to the Armance while there is an army left to take. The King lets them shout until they run out of breath. Then he asks how many days of bread there are. Somebody tells him. "Then we go back," he says. "By the Aube. Quickly."
 
           You know the road before the army does. That will matter.
         effects: [ { set: flag.c2_heard_council }, { add: { skill.tactics: 1 } } ]
@@ -69,7 +69,7 @@
   choices:
     - id: sleep
       text: Sleep, if you can.
-      text_after: You lie in the wet grass by the horses and do not sleep. Nobody near you sleeps. [if npc.davy_ludd.follower]Davy talks until you tell him to stop, and then lies awake in silence, which is worse.[/if] Somewhere out in the mist, far off, a horse whinnies, and is answered.
+      text_after: You lie in the wet grass by the horses and do not sleep. Nobody near you sleeps. [if npc.davy_ludd.follower]Davy talks until you tell him to stop, and then lies awake in silence, sniffing, pretending he has a cold.[/if] Somewhere out in the mist, far off, a horse whinnies, and is answered.
       next: c2_grisolles
     - id: men
       text: Go round your men and see they are ready to move in the dark.
@@ -129,7 +129,7 @@
           - { if: item.holy_ampulla, add: 1, label: "Saint Ebba's water, or your faith in it" }
       success:
         text: |
-          They hit the line like a falling wall. You do not remember most of it: the weight of them, the noise, a face behind a visor close enough to smell. You remember that the bit of line you are standing in does not break, for a long time, while the bits on either side of it give ground. Long enough for half the carts to get over the bridge.
+          They hit the line like a falling wall. You do not remember most of it: the weight of them, the noise, a face behind a visor close enough to smell. You remember that the bit of line you are standing in does not break, not for a long stretch of the worst morning of your life, while the bits on either side of it give ground. Long enough for half the carts to get over the bridge.
 
           It is not a victory. Nothing at Grisolles is. But the Earl of Carrow, who saw it from his horse, asks your name afterwards.
         effects: [ { set: flag.c2_grisolles_held }, { add: { res.renown: 2, rep.knights: 1 } }, { trait: +veteran } ]
@@ -288,7 +288,7 @@
           - { if: armour == 1, add: 1, label: your jack }
           - { if: npc.roger_tallis.follower, add: 1, label: Tallis comes with you }
       success:
-        text: "[if npc.aymer_ravell.friend]You reach the burning cart as the knot round Aymer breaks. He is laughing, which is how you know how frightened he is. You get him over the bridge with his arm round your neck and his father's banner, which he would not leave, dragging in the mud behind him. He will never mention this. He will never forget it either.[else]You and your men cut a way to the river, and Cobb's archers come along it to you, and you all go back to the bridge together at a run. Cobb curses you for a fool the whole way. On the far bank he sits down in the mud and does not say anything for a long time.[/if]"
+        text: "[if npc.aymer_ravell.friend]You reach the burning cart as the knot round Aymer breaks. He is laughing like a lunatic. 'Took your time!' he yells. You have never seen anyone so frightened. You get him over the bridge with his arm round your neck and his father's banner, which he would not leave, dragging in the mud behind him. He will never mention this. He will never forget it either.[else]You and your men cut a way to the river, and Cobb's archers come along it to you, and you all go back to the bridge together at a run. Cobb curses you for a fool the whole way. On the far bank he sits down in the mud and shakes, and swears quietly at the mud, until the shaking stops.[/if]"
         effects:
           - add: { res.renown: 1, rep.honor: 1 }
           - if: npc.aymer_ravell.friend

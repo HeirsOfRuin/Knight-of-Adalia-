@@ -384,7 +384,7 @@
   text: |
     In the middle of the afternoon, three hundred lances come along the beach at the gallop from the west, under the ermine of Armance, and go into the Valdrennish flank where the causeways are crowded. The Duchess has come. She has brought everything she has left.
 
-    For a long time it makes no difference. Then it does. The weight comes off the dyke, a little at a time, and the columns behind the front ranks start to look over their shoulders at the causeways, and the tide coming up over the pans on either side of them[if flag.c2_opened_sluice], and the water you let in at the sluices[/if].
+    For the space of a Mass it makes no difference. Then it does. The weight comes off the dyke, a little at a time, and the columns behind the front ranks start to look over their shoulders at the causeways, and the tide coming up over the pans on either side of them[if flag.c2_opened_sluice], and the water you let in at the sluices[/if].
 
     Then they are going back. Not in order. The causeways are a man and a half wide, and the whole host is trying to use them at once, and the water is at their waists and rising. Men in plate who step off a causeway into a salt pan at high tide do not come out again.
 
@@ -509,7 +509,7 @@
         effects: [ { set: flag.c2_spoke_for_town }, { add: { rep.honor: 1, rep.valdrenne: 2, suit.clemence_vaux.regard: 1 } } ]
         next: c2_feast
       failure:
-        text: Your captain hears you out and tells you, not unkindly, to leave the town to men who were not born in a village. The King's terms stand.
+        text: Your captain hears you out and tells you, tiredly, to leave the town to men who were not born in a village. The King's terms stand.
         effects: [ { add: { rep.honor: 1 } } ]
         next: c2_feast
     - id: house

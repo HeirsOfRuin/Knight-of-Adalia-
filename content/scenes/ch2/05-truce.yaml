@@ -164,7 +164,7 @@
     - id: warn
       text: You cannot stop them. But you can warn the villages in their path, and get the people out.
       tags: [piety, cunning]
-      text_after: It is not enough. It is something. Four villages are empty when the Iron Company comes. The people come back afterwards to ashes, but they come back.
+      text_after: Not enough. Something. Four villages are empty when the Iron Company comes. The people come back afterwards to ashes, but they come back.
       effects: [ { add: { rep.valdrenne: 1, rep.honor: 1 } } ]
       next: c2_home_choice
     - id: refuse

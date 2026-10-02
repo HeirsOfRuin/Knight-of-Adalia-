@@ -45,7 +45,7 @@
       text_after: |
         The person who runs the Lanzi house in Lannec is not a factor. It is Matteo Lanzi's daughter, Fiammetta: twenty-four, sharp as a quill, in black like a widow though she is not one. She knows your name before you give it. "[if flag.c1_lanzi_debt]You owe us twenty pounds already,[elif npc.bertuccio_lanzi.met]You are the one my cousin Bertuccio writes about,[else]You are one of Carrow's,[/if]" she says. "Sit down. Tell me what an army costs. I have been trying to work it out since Grisolles, and nobody here can count."
 
-        She lends against your future ransoms at a rate she calls friendly. It is not friendly. It is cheaper than losing your men. "You see?" she says. "This is what a war costs. Somebody always pays, and it is never the King."
+        She lends against your future ransoms at a rate she calls friendly. "Friendly to whom?" you ask. She smiles. It is still cheaper than losing your men. "You see?" she says. "This is what a war costs. Somebody always pays, and it is never the King."
       effects:
         - set: flag.c2_lanzi_loan
         - meet: fiammetta_lanzi
@@ -374,7 +374,7 @@
     - id: stay
       text: Stay in the lines. You have seen enough of that ditch.
       tags: [yield]
-      text_after: You stay in the lines and watch the carts go back and forth all day. At dusk the bells ring in the town for a long time.
+      text_after: You stay in the lines and watch the carts go back and forth all day. At dusk the bells ring in the town until full dark.
       next: c2_siege_winter
 
 - id: c2_siege_winter
@@ -419,7 +419,7 @@
         difficulty: 3
         mods: [ { if: item.holy_ampulla, add: 1, label: "Saint Ebba's water, or your faith in it" } ]
       success:
-        text: Water, broth, clean straw, and sitting up with them at night when the fever is bad. It is not medicine. It is all the medicine there is. Every one of them lives. You are not sure it was you. They are.
+        text: Water, broth, clean straw, and sitting up with them at night when the fever is bad. "Not much of a physician, are you, sir," one of them croaks. It's all the medicine there is. Every one of them lives. You are not sure it was you. They are.
         effects: [ { add: { rep.piety: 1, rel.davy_ludd.loyalty: 2, rel.jankin_rooke.loyalty: 2, rel.simkin_barre.loyalty: 2, rel.roger_tallis.loyalty: 2, rel.wat_coker.loyalty: 2, rel.perkin_dyer.loyalty: 2, rel.gib_shawe.loyalty: 2, rel.dickon_laund.loyalty: 2 } } ]
         next: { pool: c2_camp, count: 1, then: c2_mine }
       failure:

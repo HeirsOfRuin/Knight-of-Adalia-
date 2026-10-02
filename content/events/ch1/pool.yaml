@@ -42,7 +42,7 @@
         next: "@return"
     - id: spare
       text: Stay back with the spare horses, as you were told.
-      text_after: Three riders come off in the deep wood and need fresh horses. You are there. It is not glorious. It is noticed by the people who notice such things.
+      text_after: Three riders come off in the deep wood and need fresh horses. You are there. Nobody sings about it. It is noticed by the people who notice such things.
       effects: [ { add: { rel.@master.respect: 1 } } ]
       next: "@return"
 
@@ -425,7 +425,7 @@
       text: Lend him what you can. Five shillings.
       tags: [allies, wealth]
       requires: [ res.coin >= 60 ]
-      text_after: It is not eight pounds. It is enough to keep Giles off him for a month, and it is all you have. He says he will pay it back. He means it. He has never paid anything back in his life.
+      text_after: Not eight pounds. Enough to keep Giles off him for a month, and it is all you have. He says he will pay it back. He means it. He has never paid anything back in his life.
       effects: [ { add: { res.coin: -60, rel.aymer_ravell.affection: 3, favor.aymer_ravell: 1 } }, { meet: aymer_ravell } ]
       next: "@return"
     - id: father

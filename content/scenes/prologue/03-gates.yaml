@@ -40,7 +40,7 @@
           - set: flag.p_gate_competence
         next: p_leaving
       failure:
-        text: You get the oats wrong in front of everyone. Sir Hamon is kind about it, which is worse than if he had laughed. The steward does not need to say anything.
+        text: You get the oats wrong in front of everyone. "There, there, lad, happens to us all," says Sir Hamon kindly, and you would give a year of your life for him to have laughed instead. The steward does not need to say anything.
         effects: [ { add: { rel.gervase_holt.affection: -1 } } ]
         next: p_gate_failed
     - id: debt
@@ -56,7 +56,7 @@
           - { if: [ flag.steward_skims, { any: [ flag.p_kept_quiet, flag.p_kept_copy ] } ], add: 2, label: the steward knows what you know }
           - { if: flag.p_spoke_up, add: -1, label: the steward has not forgotten the barn }
       success:
-        text: Your father and the steward walk in the orchard for a long time. That evening Master Gervase tells Sir Hamon there is a likely boy at the reeve's house. Whatever your father traded for it, he does not say. He never mentions it again.
+        text: Your father and the steward walk in the orchard until the light goes. That evening Master Gervase tells Sir Hamon there is a likely boy at the reeve's house. Whatever your father traded for it, he does not say. He never mentions it again.
         effects:
           - station: retainer
             track: squire_track

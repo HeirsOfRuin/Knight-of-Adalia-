@@ -51,7 +51,7 @@
       text: Write back.
       tags: [diplomacy]
       text_after: |
-        [if flag.c1_maud_word]She has kept your note from the church door, she says. She has kept it in her psalter.[/if] You write back carefully. She writes back carelessly, which is how you know she means it. The letters go on all through the truce.
+        [if flag.c1_maud_word]She has kept your note from the church door, she says. She has kept it in her psalter.[/if] You write back carefully. She writes back carelessly, scrawled and blotted, and you know she means every word. The letters go on all through the truce.
       effects: [ { assign: { suit.maud_delisle.status: courted } }, { add: { suit.maud_delisle.regard: 2 } } ]
       next: "@return"
     - id: wait
@@ -83,7 +83,7 @@
   title: A Letter from Ashby
   requires: [ background == reeve ]
   text: |
-    [if flag.c1_father_exposed]A letter from your mother, written by Father Anselm. Your father is not well. He does not ask for you. She does.[elif flag.father_skims]A letter from your father. The new steward at Ashby is honest, which is worse than Gervase. He looks at every tally twice. Your father is tired, he writes, and would like to stop being reeve, and cannot afford to.[else]A letter from your father. Ashby has a new steward, an honest one. Your father is reeve for the twelfth year running. He is proud of you, he writes, in a sentence he has clearly rewritten several times.[/if]
+    [if flag.c1_father_exposed]A letter from your mother, written by Father Anselm. Your father is not well. He does not ask for you. She does.[elif flag.father_skims]A letter from your father. The new steward at Ashby is honest, and honest is worse than Gervase, because honest cannot be bargained with. He looks at every tally twice. Your father is tired, he writes, and would like to stop being reeve, and cannot afford to.[else]A letter from your father. Ashby has a new steward, an honest one. Your father is reeve for the twelfth year running. He is proud of you, he writes, in a sentence he has clearly rewritten several times.[/if]
   choices:
     - id: money
       text: Send money home.

@@ -29,7 +29,7 @@
           - { if: flag.ravell_favor, add: 1, label: Lord Ravell puts you forward }
           - { if: flag.c1_schemer, add: -1, label: the steward has a long memory }
       success:
-        text: On the third morning you hold the King's stirrup while he mounts for the hunt. He looks down and asks your name. [if flag.c1_raid_distinguished]Lord Ravell, beside him, adds something about the Leven ford.[else]Lord Ravell, beside him, has to be reminded whose squire you are.[/if] The King repeats your name, as if to keep it. Then he is gone, in a crowd of horses. It lasted the time it takes to say a paternoster. You will remember it all your life.
+        text: On the third morning you hold the King's stirrup while he mounts for the hunt. He looks down and asks your name. [if flag.c1_raid_distinguished]Lord Ravell, beside him, adds something about the Leven ford.[else]Lord Ravell, beside him, has to be reminded whose squire you are.[/if] The King repeats your name, as if to keep it. Then he is gone, in a crowd of horses. It lasted the time it takes to say a paternoster. You carry it with you all your life.
         effects:
           - set: flag.c1_king_noticed
           - add: { rep.crown: 2, res.renown: 1 }
@@ -83,7 +83,7 @@
         audience: nobles
         mods: [ { if: background == servant, add: 2, label: you know every back stair in this house } ]
       success:
-        text: The petition goes in among the King's letters by way of a clerk who owes Father Benet money. It asks the King to take her wardship into his own hand. On the last morning, at Mass, the King announces that he will do exactly that. Lord Ravell smiles and loses a thousand marks. He does not know how. Lady Maud does, and looks at you across the chapel once, for a long time.
+        text: The petition goes in among the King's letters by way of a clerk who owes Father Benet money. It asks the King to take her wardship into his own hand. On the last morning, at Mass, the King announces that he will do exactly that. Lord Ravell smiles and loses a thousand marks. He does not know how. Lady Maud does, and looks at you across the chapel once, and holds it, until someone coughs.
         effects:
           - set: flag.c1_maud_saved
           - add: { suit.maud_delisle.regard: 4, suit.maud_delisle.discretion: -2, rep.crown: 1 }

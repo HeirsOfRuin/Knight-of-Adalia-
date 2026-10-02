@@ -193,7 +193,7 @@
     - id: friends
       text: Let your friends smuggle in a flask and keep you company.
       tags: [allies]
-      text_after: Aymer and two of the younger squires come in after Compline with a flask of brandywine and stay until the chaplain throws them out. It is not holy. It is the vigil you will remember.
+      text_after: Aymer and two of the younger squires come in after Compline with a flask of brandywine and stay until the chaplain throws them out. It isn't holy, and it's the vigil you'll remember.
       effects: [ { add: { rep.knights: 1, rel.aymer_ravell.affection: 2 } } ]
       next: c1_farewell
     - id: think
@@ -213,7 +213,7 @@
         - if: { any: [ "!npc.@master.alive", flag.c1_hamon_fell ] }
           then: [ { alias: { master: walter_pryce } }, { set: flag.c1_pryce_man } ]
   text: |
-    You will cross as a man-at-arms: a mounted soldier in harness, paid a shilling a day, a long step below a knight and a long step above an archer. It is not what you hoped for. It is more than anyone in your family has ever had.
+    You will cross as a man-at-arms: a mounted soldier in harness, paid a shilling a day, a long step below a knight and a long step above an archer. Not what you hoped for, but more than anyone in your family has ever had.
 
     [break]
 

@@ -154,7 +154,7 @@
           - { if: flag.p_knows_war_secret, add: 1, label: your father taught you a few words of their tongue }
           - { if: rep.caldmoor >= 1, add: 1, label: your name is known over the border }
       success:
-        text: "Black Ewan himself comes down to the water's edge: a tall man with grey in his beard and a voice like a cart on stones. He laughs at you for a long time. Then he takes the bargain, because a cattle raid is a business and he has lost enough. He leaves his sister's boy Coll as a pledge. Sir Ancel calls it a merchant's victory. Lord Ravell calls it forty cattle and no widows. Only Sir Hugh Wyck, who went in before the parley was done, is dead."
+        text: "Black Ewan himself comes down to the water's edge: a tall man with grey in his beard and a voice like a cart on stones. He laughs until he has to wipe his eyes. Then he takes the bargain, because a cattle raid is a business and he has lost enough. He leaves his sister's boy Coll as a pledge. Sir Ancel calls it a merchant's victory. Lord Ravell calls it forty cattle and no widows. Only Sir Hugh Wyck, who went in before the parley was done, is dead."
         effects:
           - set: flag.c1_parley
           - set: flag.c1_has_prisoner
@@ -245,7 +245,7 @@
 
     [break]
 
-    [if flag.c1_raid_distinguished]He stops his horse beside you. "The ford," he says. "That was you." It is not a question. Afterwards, in the hall, he sends you a cup of his own wine from the high table, which every man in the hall sees, and which you cannot drink, because your hands will not stay still.[elif flag.c1_raid_late]Nobody speaks to you about the ford. That is its own kind of speech.[else]Nobody singles you out. You are alive and in one piece, more or less, and that is not nothing.[/if]
+    [if flag.c1_raid_distinguished]He stops his horse beside you. "The ford," he says. "That was you." It is not a question. Afterwards, in the hall, he sends you a cup of his own wine from the high table, which every man in the hall sees, and which you cannot drink, because your hands will not stay still.[elif flag.c1_raid_late]Nobody speaks to you about the ford. You hear them not speaking about it all the way to the hall.[else]Nobody singles you out. You are alive and in one piece, more or less, and that is not nothing.[/if]
 
     [if track != squire_track][if flag.c1_raid_distinguished]Your master is looking at you as if he were seeing you for the first time.[/if][/if]
 
@@ -284,7 +284,7 @@
 
     [break]
 
-    You tell her anyway. You give her the sword. She holds it across her knees for a long time, not crying, running her thumb along the guard where his hand wore it smooth, and asks how he died. [if flag.c1_raid_distinguished]You tell her the truth: he went in early, and bravely, and alone, and he told you to stay by him, and you did not get the chance.[else]You tell her he died well. It is not quite a lie.[/if]
+    You tell her anyway. You give her the sword. She holds it across her knees, not crying, running her thumb along the guard where his hand wore it smooth, and asks how he died. [if flag.c1_raid_distinguished]You tell her the truth: he went in early, and bravely, and alone, and he told you to stay by him, and you did not get the chance.[else]You tell her he died well. It is not quite a lie.[/if]
 
     Her stepson Ralph, nineteen and Sir Hugh's son by his first wife, comes in while you are still talking, with mud to the knee, and asks whether the sword is his now. She does not answer him. She does not look at him. She looks at you.
   choices:

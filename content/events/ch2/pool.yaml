@@ -219,7 +219,7 @@
     - id: ask
       text: Ask him what happened in the town.
       tags: [cunning]
-      text_after: He looks at you for a long time. "The same thing that happened at Bréval," he says. "Only more of it." Then he goes to bed.
+      text_after: He looks at you a while, chewing his lip. "The same thing that happened at Bréval," he says. "Only more of it." Then he goes to bed.
       effects: [ { add: { rel.roger_tallis.respect: 1 } } ]
       next: "@return"
 
@@ -232,7 +232,7 @@
   text: |
     Davy Ludd is seventeen now, and has stopped talking quite so much, and has started looking at you in a particular way when you give orders, as if learning how it is done.
 
-    One evening he asks you, formally, whether he might ever hope to be more than a squire. He means: could a groom's grandson be knighted, as you were, or will be. He has clearly been thinking about it for a long time.
+    One evening he asks you, formally, whether he might ever hope to be more than a squire. He means: could a groom's grandson be knighted, as you were, or will be. He has clearly been chewing on it for weeks.
   choices:
     - id: yes
       text: Tell him yes, and that you will see to it if you can.

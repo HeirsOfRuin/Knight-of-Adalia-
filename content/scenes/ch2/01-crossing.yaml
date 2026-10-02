@@ -235,7 +235,7 @@
       text_after: |
         Short and plain: nobody wanders off alone, nobody drinks on watch, nobody takes anything from the Duchess's people, and every man gets his share of whatever comes, the same share, yours included. [if npc.roger_tallis.follower]Tallis grunts, which you take for approval.[/if] [if npc.simkin_barre.follower]Barre asks what counts as taking. You tell him. He looks disappointed and impressed.[/if]
 
-        It is not friendly. It is clear. In the weeks to come, nobody in your following can say they did not know the rules.
+        "Hard but fair," Barre says later, rubbing his ear. "Like a schoolmaster with a sword." In the weeks to come, nobody in your following can say they did not know the rules.
       effects: [ { set: flag.c2_laid_down_rules }, { add: { skill.command: 1, rel.roger_tallis.respect: 1 } } ]
       next: c2_armance
     - id: walk
@@ -506,7 +506,7 @@
 
     [break]
 
-    It is not a sack. There is no time for a sack. The Constable of Valdrenne's van is two days away, and everyone knows it, so Vaudrey is stripped in one night by men in a hurry, which is worse for the town in some ways and better in others.
+    It is not a sack. There is no time for a sack. The Constable of Valdrenne's van is two days away, and everyone knows it, so Vaudrey is stripped in one night by men in a hurry, worse for the town in some ways and better in others.
 
     In the market square there is a great stone house with a coat of arms over the door, three black crows on gold. The house of a lord. [if flag.c1_giles_enemy]Giles Marrick, a knight now, in his father's colours, is already riding toward it.[else]Other men have seen it too.[/if]
   choices:

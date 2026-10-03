@@ -22,9 +22,8 @@ Items where I chose plausible and internally consistent over precise. Decided it
 | 15 | Squire as champion | Replaced. He hires a champion (coin or a favour), or fights himself only when Sir Hamon is physically unable. |
 | 16 | Lady Day accounts | Keep, as a spring stores check. |
 | 17 | The Sweat | Renamed to the bloody flux. |
+| 18 | Archer, martial play | Accepted as the shape of a fighter's background: knighted 77% of the time played purely as a fighter, 27% on average, in band. |
+| 19 | Random-play death rate | Accepted. Random play died about 10% of the time in Ch1-2; across the whole game the bots now die about 3%. Real players read the warnings. |
 
 ## Open
-| # | Topic | Current choice | Question |
-|---|---|---|---|
-| 18 | Archer, martial play | Still knighted 77% of the time when played purely as a fighter. Every other style is 4-17%. His average is 27%, in band. | Accept as the shape of a fighter's background? |
-| 19 | Random-play death rate | About 10%, almost all from a random player charging unarmoured into lethal choices | No action proposed; real players read the warnings. |
+None.

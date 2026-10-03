@@ -288,7 +288,7 @@ It reports:
    - a static graph check that some path links to each ending scene;
    - an empirical check in which goal-seeking bot runs must reach every ending for every background.
 
-   This check only becomes meaningful in Phase 4+. Until Ch5 exists it reports "pending".
+   This check only becomes meaningful in Phase 4+. Until Ch5 exists it reports "pending". (Ch5 is built: it now reports 0 pending.)
 2. **The prose is the bottleneck, not the code.** At full scope that is roughly 250+ scenes. For Phase 2, the prologue will use background-specific openings plus shared middle scenes that have variant text and options, as you anticipated. Ch1 will target the low end of the range: about 30 scenes plus about 10 pool events.
 3. **Retinue, Estate, War and Politics** are interfaces only in Phase 1. Each gets implemented in the chapter that first needs it. Building all of them up front would mean tuning systems before any content exists to test them against.
 4. **"Knight-in-waiting"** — resolved: see §7, "Entering the Ch2 war".
@@ -1175,6 +1175,19 @@ The author reported that some choices did not feel as if they made a difference,
 - **Hollow choices:** 18 of 663, nearly all deliberate "do nothing" options. Some of those, such as going to the muster without armour or ignoring the plague warning, matter by what they leave undone.
 - **Flags (remembered choices):** 402 are set. 187 change later mechanics, 95 change only later prose, and 120 are not read yet. Those 120 are owed to Ch4-5: 57 from Ch3 and 28 from Ch4.
 
+## Continuity (2026-10-03, after playtest feedback)
+Josh found text that assumed choices he had not made. A survey found 47 such places, and the force panel and a Ch3 population line had the same fault: the story said one thing and the state another.
+
+- **Checker.** `tools/continuity.ts` (`npm run continuity`) plays 120 seeded runs plus the scripted plans, renders every view, and fails on:
+  - a phrase from `content/continuity.yaml` shown when its condition does not hold;
+  - a named NPC appearing after his death, outside a sentence about his death or memory.
+
+  It runs in `npm run check` and in CI. A deeper pass (`--runs 400`) takes about 4 minutes and is worth running after large content changes.
+- **Fixed:** all 47 survey items, plus four found by the deeper pass. The list is in the commit history.
+- **Force.** `res.men` is the company that marches; `res.garrison` holds the manor (Rotbart's sixty); `res.levy` is the trained village levy. Save version 2 counts older saves' hires.
+- **Population.** `found_estate` records `estate.founded`, and `estate.recovery` gives today's people as a percentage of it. Comparisons with the past read the percentage. Save version 3 fills `founded` for older saves.
+- **Writers' reference:** `docs/BRANCHES.md`, with the spine, the identity state, the kill table and the "must not assume" checklist.
+
 ## Decisions log
 | Date | Decision |
 |---|---|
@@ -1203,3 +1216,4 @@ The author reported that some choices did not feel as if they made a difference,
 | 2026-10-03 | Ch4 Act IV, the Summons to Lannec, built; Chapter 4 complete. Dates now follow the reign (config reigns: Edwin from year 40). Next: Ch5 engine (endings evaluation, epilogue builder) and acts. |
 | 2026-10-03 | Ch5 built; the game is complete from the prologue to the endings. Every ending is reachable for every background; 0 warnings, 0 pending. |
 | 2026-10-03 | Installable app: PWA (manifest, icons, network-first service worker that updates on launch) published to GitHub Pages by a workflow on every push. Force size shown in the top bar and on the Status page. |
+| 2026-10-03 | Continuity: the checker, 51 fixes, force split into company, garrison and levy, population compared by ratio, docs/BRANCHES.md. |

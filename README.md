@@ -2,7 +2,7 @@
 
 A text-based, choice-driven life simulation set in a low-fantasy, 14th-century analog world. It follows one commoner's life from boyhood to whatever station he can reach.
 
-**Status:** Phase 2: the prologue for all four backgrounds and Chapter 1 are playable end to end. Readable playthroughs of four routes are in `docs/playthroughs/`. Design in `docs/DESIGN.md`. Authoring reference in `docs/CONTENT.md`. World in `content/canon.md`.
+**Status:** complete from the prologue to Chapter 5, with seven endings, for all four backgrounds. Readable playthroughs of four routes are in `docs/playthroughs/`. Design in `docs/DESIGN.md`. The branch map, kill table and continuity rules for writers are in `docs/BRANCHES.md`. Authoring reference in `docs/CONTENT.md`. World in `content/canon.md`.
 
 ## Play as an app
 The game is published to GitHub Pages as an installable app: https://heirsofruin.github.io/Knight-of-Adalia-/

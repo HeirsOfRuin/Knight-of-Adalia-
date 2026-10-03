@@ -1,0 +1,188 @@
+# Chapter 5, Act I: the Estates of the West. Whitsun year 42 (Edwin 3). Age 41.
+# The hall at Lannec, working the votes (counter estates), Mahaut's declaration if
+# he is betrothed to her, and the question put to the Estates. The vote decides
+# whether the West stays Adalian, becomes a free duchy, or takes a crown, and
+# whose: Mahaut's, Thibaut's, his and Mahaut's together, or his alone.
+
+- id: c5_estates
+  chapter: ch5
+  title: The Estates of the West
+  checkpoint: true
+  text: |
+    The hall at Lannec was built for the dukes of Armance to feast in, and has never held so many people who disagree.
+
+    Along the north wall, under the swan, sit the Armance lords: Penhoët, Kerguen, Rohan-Lesneven, old men and young, who remember Jehanne and look to Mahaut. Along the south wall, the lords of the Salt: Sauvemer, Les Salines, the march, half of them Adalian-born, all of them grown rich on salt and tired of being taxed for it. At the foot of the hall, on benches, the burgesses of the towns and the masters of the salt-guilds in their gowns, who have the money and know it. [if flag.c4_sheltered_brese]And by the door, where everyone can see them, forty knights in the colours of Brésy, with Thibaut at their head, who are not members of the Estates of anything and have come anyway.[/if]
+
+    Master Thomas Hales, the King's officer in Sauvemer, sits by himself at the end of a bench with a clerk, writing down names.
+
+    [break]
+
+    Mahaut opens the Estates from the ducal chair, in black, with her grandmother's stick across her knees. She says that two kings are at war with themselves and a third has murdered his Constable; that the West has paid three salt taxes in ten years and been protected by none of them; and that the Estates are met to decide, before God and each other, to whom the West belongs. Then she sits down, and the hall erupts.
+
+    You have three days before the question is put. [if counter.estates >= 8]Men come to you before you have taken your seat.[elif counter.estates >= 5]Men watch to see where you sit.[else]Most men are watching someone else.[/if]
+  choices:
+    - id: speak
+      text: Speak to the whole hall, on the first day, before the factions harden.
+      tags: [diplomacy]
+      check: { attr: presence, skill: diplomacy, difficulty: 5, mods: [ { if: res.renown >= 25, add: 1, label: your name }, { if: flag.c2_learned_town || flag.c1_learned_valdrennish, add: 1, label: you speak to them in their own tongue }, { if: flag.c4_spoke_for_west, add: 1, label: you spoke in the garden }, { if: flag.c3_saw_it || flag.c3_nursed || flag.c3_spoke_steps, add: 1, label: the plague year } ] }
+      success:
+        text: |
+          You speak without notes, in Valdrennish and then in Adalian, about the dyke at Les Salines, and the plague year, and the salt penny; about what the West has paid and what it has been given for it. You do not tell them what to do. You tell them what they already know, in a voice they can hear at the back. When you sit down, the guildmasters at the foot of the hall bang the benches with their fists, and the Armance lords look at each other, and Master Hales writes for a long while.
+        effects: [ { set: flag.c5_spoke_estates }, { add: { counter.estates: 3 } } ]
+        next: c5_estates_2
+      failure:
+        text: |
+          You speak, and it is a good speech, and it is the eleventh good speech of the day, and the hall has stopped listening by the second sentence. A few men nod. Master Hales writes down your name.
+        effects: [ { add: { counter.estates: 1 } } ]
+        next: c5_estates_2
+    - id: guilds
+      text: Go to the salt-guilds' hall at night, and talk money.
+      tags: [wealth, cunning]
+      check: { attr: wits, skill: trade, difficulty: 4, mods: [ { if: flag.c4_stood_with_salt || flag.c4_salt_bargain, add: 2, label: they remember the salt penny }, { if: flag.c4_enforced_salt, add: -2, label: they remember the salt penny }, { if: flag.c4_brought_silver, add: 1, label: your silver }, { if: alias.spouse == fiammetta_lanzi || alias.spouse == cecily_fuller, add: 1, label: your wife knows their books } ] }
+      success:
+        text: |
+          You sit in the guildhall till the candles gutter, with the masters of the salt in their gowns, and talk about tolls and tithes and what a free West would charge on salt going out, and to whom. They are not sentimental men. By midnight they are sure of one thing: that you understand what they want, and will not cost them more than anyone else. That is worth more than a speech.
+        effects: [ { set: flag.c5_guilds_with_you }, { add: { counter.estates: 3 } } ]
+        next: c5_estates_2
+      failure:
+        text: |
+          The guildmasters give you supper and listen politely and promise nothing. [if flag.c4_enforced_salt]At the door one of them says, without malice, "You sent men to the pans, my lord. We have long memories for weights and measures."[/if]
+        next: c5_estates_2
+    - id: armance
+      text: Spend the days with the Armance lords, who will follow Mahaut.
+      tags: [allies, diplomacy]
+      check: { attr: presence, skill: courtesy, difficulty: 4, mods: [ { if: flag.c4_armance_favour, add: 1, label: the Duchess's favour }, { if: flag.c4_page_armance, add: 1, label: your child was her page }, { if: flag.c2_granted_kerval, add: 1, label: you hold in the Armance }, { if: flag.c4_mahaut_betrothed, add: 1, label: Mahaut speaks for you } ] }
+      success:
+        text: |
+          You hunt with Penhoët, drink with Kerguen, and sit through an entire genealogy of the house of Rohan-Lesneven without yawning, which old Rohan says afterwards no Adalian has ever managed. By the third day, when the Armance lords talk among themselves about what is to be done, they talk about you as if you were one of them.
+        effects: [ { set: flag.c5_armance_with_you }, { add: { counter.estates: 2 } } ]
+        next: c5_estates_2
+      failure:
+        text: |
+          The Armance lords are courteous and closed. They will follow Mahaut. They are not yet sure they will follow anyone she follows.
+        next: c5_estates_2
+    - id: knife
+      text: Use the Vervais letter. Half the Adalian lords here took Carrow's money once.
+      tags: [cunning]
+      visible_if: [ flag.c4_brought_secret ]
+      text_after: |
+        You do not show it to anyone. You only let it be known, by the right man in the right ear, that you have it, and what is in it, and that some of the names on the Carrow ledgers are sitting in this hall. By the second day, six Adalian lords of the Salt who were going to vote with Master Hales find that they have changed their minds, and cannot quite say why. It is the ugliest thing you have ever done. It works.
+      effects: [ { set: flag.c5_used_knife }, { add: { counter.estates: 4, rep.ruthlessness: 2, rep.honor: -2 } } ]
+      next: c5_estates_2
+
+- id: c5_estates_2
+  chapter: ch5
+  title: The Third Day
+  text: |
+    On the third day, before the question is put, the factions have their shape.
+
+    [if flag.c4_sheltered_brese]Thibaut de Brésy comes to you at dawn. "Forty knights," he says, "and the Brésy name in the west of Valdrenne. They will vote as I ask. I will ask as you ask." He does not say what he wants in return. He does not need to: a home, a name, and the King who murdered his father dead.[/if] [if flag.c4_mahaut_betrothed]Mahaut sends for you before Mass, to her own chamber, with only her old nurse present. "Today," she says, "or never. If we tell them before the vote, they will vote on us. If we tell them after, they will say we tricked them."[/if] [if counter.court_prince >= 6]Master Hales finds you after Mass and walks with you along the cloister. King Edwin, he says, would be glad to know that his Baron of the March will speak for the King's peace today. And would remember it.[/if]
+
+    [if counter.estates >= 8]When you come into the hall, the benches go quiet.[elif counter.estates >= 5]When you come into the hall, men make room.[else]When you come into the hall, nobody much notices.[/if]
+  choices:
+    - id: declare
+      text: Stand up with Mahaut before the vote, and declare your marriage to the Estates.
+      tags: [diplomacy, allies]
+      visible_if: [ flag.c4_mahaut_betrothed ]
+      text_after: |
+        You stand up together before the question is put, she from the ducal chair and you from your bench, and she says, in a clear voice, that she has chosen her husband herself, as her grandmother wished, and that he is a lord of the West. The hall is silent for the space of a breath. Then old Penhoët stands, and then Kerguen, and then the guildmasters, and then all of them. Master Hales's clerk drops his pen. You are married that afternoon, in the chapel at Lannec, by the Bishop of Saint-Lys, who has come uninvited and stays for the wine.
+      effects:
+        - set: flag.c5_married_mahaut
+        - alias: { spouse: mahaut_armance }
+        - assign: { suit.mahaut_armance.status: married }
+        - set: flag.c3_married
+        - add: { counter.estates: 3, rel.mahaut_armance.affection: 4 }
+      next: c5_vote
+    - id: thibaut
+      text: Take Thibaut's forty knights and his vote, and promise him his father's justice.
+      tags: [cunning, martial]
+      visible_if: [ flag.c4_sheltered_brese ]
+      text_after: |
+        You take his hand. "His justice," Thibaut says, "not the King's." You know what he means, and you let him mean it. The Brésy knights are in the hall by noon, standing along the wall, and the Valdrennish-born lords of the West look at them, and remember who used to be Constable, and count.
+      effects: [ { set: flag.c5_brese_pact }, { add: { counter.estates: 2, rep.valdrenne: 1 } } ]
+      next: c5_vote
+    - id: hales
+      text: Tell Master Hales you will speak for the King's peace.
+      tags: [allies]
+      visible_if: [ counter.court_prince >= 4 ]
+      text_after: |
+        You tell him you will. He presses your hand, and writes it down. When you go into the hall, men who were watching you look away.
+      effects: [ { set: flag.c5_promised_hales }, { add: { counter.court_prince: 2, counter.estates: -2 } } ]
+      next: c5_vote
+    - id: wait
+      text: Keep your own counsel until the question is put.
+      tags: [cunning]
+      text_after: You keep your counsel, and go into the hall with your face giving nothing away, and sit, and wait.
+      next: c5_vote
+
+- id: c5_vote
+  chapter: ch5
+  title: The Question
+  checkpoint: true
+  text: |
+    At noon on the third day, the Bishop of Saint-Lys, who is ninety and has crowned one king and buried two, stands up in the middle of the hall and puts the question in Latin, and then, because half the hall has no Latin, in both tongues.
+
+    "To whom," he says, "does the West belong?"
+
+    [break]
+
+    The hall answers in pieces. Master Hales stands for King Edwin and the King's peace, and some of the Salt lords stand with him. Old Penhoët stands for a free duchy under Mahaut, owing nothing to anyone, and the Armance stands with him. A guildmaster stands and says that a duchy is a thing a king can take back, and a crown is not, and sits down again into a silence like a held breath. [if flag.c5_married_mahaut]Everyone in the hall is looking at you and your wife.[elif flag.c5_brese_pact]Thibaut de Brésy, by the door, is looking at you.[/if]
+
+    Then the Bishop turns, slowly, on his stick, and looks at you too. [if counter.estates >= 8]So does everyone else. You understand that whatever you say now, the hall will most likely do.[elif counter.estates >= 5]Many of them do. What you say will move the hall, though perhaps not all of it.[else]A few of them do. What you say will be heard, and weighed with everyone else's.[/if]
+  choices:
+    - id: adalia
+      text: Stand for King Edwin and the King's peace. The West is Adalian.
+      tags: [allies, yield]
+      text_after: |
+        You stand for the King. [if counter.estates >= 5]The Salt follows you, and enough of the towns, and the vote goes the King's way by a handful of voices. Penhoët walks out. Mahaut does not look at you again that day.[else]The vote goes the King's way, narrowly, and you are one voice among many in it.[/if] Master Hales writes to Wendmere that night, and the West stays in Adalia's hand. For now.
+      effects: [ { set: flag.c5_west_adalian }, { add: { counter.court_prince: 3, counter.west_estates: -3 } } ]
+      next: c5_war_opens
+    - id: duchy
+      text: Stand for a free duchy under Mahaut, owing nothing to anyone.
+      tags: [diplomacy, allies]
+      requires: [ counter.estates >= 3 ]
+      label: "Requires: votes at Lannec (3)"
+      text_after: |
+        You stand for the free duchy. The Armance roars, and the Salt follows, and the towns follow the Salt, and when the Bishop calls the voices it is carried by more than two to one. Mahaut, in the ducal chair, sits straight as a lance and does not smile. Master Hales gathers his papers and leaves the hall without a word, which is the most eloquent thing he has done in ten years in the West.
+      effects: [ { set: flag.c5_west_free }, { set: flag.c5_free_duchy }, { add: { counter.west_estates: 2, counter.court_prince: -4 } } ]
+      next: c5_war_opens
+    - id: mahaut_queen
+      text: Say what the guildmaster would not. Crown her. A queen of the West, not a duchess.
+      tags: [diplomacy, cunning]
+      visible_if: [ "!flag.c5_married_mahaut" ]
+      requires: [ counter.estates >= 5 ]
+      label: "Requires: votes at Lannec (5)"
+      text_after: |
+        You say it. A crown, not a coronet. A queen of the West, owing nothing to Wendmere or Cordelle, because a duchy is a thing a king can take back. For a moment nobody breathes. Then the guildmaster who said it first stands up and cheers, and the hall comes with him. Mahaut is crowned in the chapel at Lannec at Whitsun's end, by the Bishop, with a circlet made overnight from her grandmother's coronet and a salt-merchant's gold chain. When it is over she looks at you across the chapel. She knows who did it.
+      effects: [ { set: flag.c5_west_free }, { set: flag.c5_crowned_other }, { set: flag.c5_mahaut_queen }, { add: { counter.west_estates: 3, counter.court_prince: -5, rel.mahaut_armance.respect: 4 } } ]
+      next: c5_war_opens
+    - id: together
+      text: Ask the Estates to crown Mahaut and you together.
+      tags: [diplomacy, allies]
+      visible_if: [ flag.c5_married_mahaut ]
+      requires: [ counter.estates >= 5 ]
+      label: "Requires: votes at Lannec (5)"
+      text_after: |
+        You do not ask for yourself. You ask for both of you, the Armance blood and the Salt sword, and Mahaut stands beside you while you do it. The hall does not cheer. It does something better: it goes quiet, and then the Bishop of Saint-Lys, ninety years old, says "Fiat," in a voice like a dry branch breaking, and the whole hall says it after him. You are crowned the next morning in the chapel at Lannec, the two of you, with circlets made overnight, by an old man who has crowned a king before and seems to think nothing of doing it again.
+      effects: [ { set: flag.c5_west_free }, { set: flag.c5_acclaimed }, { set: flag.c5_claim }, { set: flag.c5_crowned_self }, { add: { counter.west_estates: 4, counter.court_prince: -6, res.renown: 3 } }, { station: royal } ]
+      next: c5_war_opens
+    - id: thibaut_crown
+      text: Crown Thibaut de Brésy, the Constable's son. The West needs a soldier.
+      tags: [cunning, martial]
+      visible_if: [ flag.c5_brese_pact ]
+      requires: [ counter.estates >= 5 ]
+      label: "Requires: votes at Lannec (5)"
+      text_after: |
+        You stand for Thibaut: the Constable's son, a soldier, a Valdrennish name the Valdrennish-born will follow and a man who owes his life to the West. The Armance lords are appalled. The Salt is divided. The Brésy knights along the wall draw their swords and hold them up, hilts first, like crosses, and the vote goes his way by eleven voices. Mahaut walks out of her own hall. You have made a king. You have also made an enemy you did not have this morning.
+      effects: [ { set: flag.c5_west_free }, { set: flag.c5_crowned_other }, { set: flag.c5_thibaut_king }, { add: { counter.west_estates: -2, counter.court_prince: -5, rep.valdrenne: 2, rel.mahaut_armance.affection: -6 } } ]
+      next: c5_war_opens
+    - id: self
+      text: Let them say your name.
+      tags: [cunning, martial]
+      visible_if: [ "!flag.c5_married_mahaut" ]
+      requires: [ counter.estates >= 8 ]
+      label: "Requires: votes at Lannec (8)"
+      text_after: |
+        You do not say it. You do not need to. You stand up, and the guildmaster who spoke of crowns says your name, and then the Salt says it, and then, after a long moment in which everybody looks at Mahaut, Mahaut says it too, clearly, from the ducal chair, because she has counted the hall the same as you have and would rather give it than have it taken. The Bishop of Saint-Lys looks at you a long while, and says "Fiat." You are crowned the next morning, by an old man, with a circlet made overnight. [if background == reeve]A reeve's son.[elif background == burgess]A wool merchant's son.[elif background == archer]An archer's son.[else]A tirewoman's son.[/if] Nobody in the chapel says it aloud. Everybody thinks it.
+      effects: [ { set: flag.c5_west_free }, { set: flag.c5_acclaimed }, { set: flag.c5_crowned_self }, { add: { counter.west_estates: 2, counter.court_prince: -6, res.renown: 3, rel.mahaut_armance.respect: 2 } }, { station: royal } ]
+      next: c5_war_opens

@@ -2491,9 +2491,9 @@ The village has come out, in spite of everything, to look at its new lord. They 
 A one-eyed man in a leather apron that smells of eels leans on the churchyard wall, chewing a straw. "Bastien," he says. "Headman, for my sins. You'll be wanting to know who's sick." He spits. "Ask who isn't. Quicker."
 
 - Go into the dead woman's house yourself, and see.  
-  <small>At stake: Piety + · Your manor</small>
+  <small>At stake: Piety + · Your manor · Remembered later</small>
 - Climb the church steps and speak to them, in their own tongue. *(Even)*  
-  <small>At stake: Your manor</small>
+  <small>At stake: Your manor · Remembered later</small>
 - Keep your men apart from the village, and send for the priest to tell you what is needed.  
   <small>At stake: Plague deaths − · Your manor</small>
 - Turn round and ride back to the town until it has passed.  
@@ -2532,7 +2532,7 @@ Everybody has a cure. Nobody has a cure. Whatever you choose, people will die, a
 - Send for a Sarenzan physician, whatever he costs.  
   <small>At stake: Plague deaths − · Coin −</small>
 - Order Masses and a procession round every field, with the relics and the whole manor walking.  
-  <small>At stake: Plague deaths + · Piety + · Your manor</small>
+  <small>At stake: Plague deaths + · Piety + · Your manor · Remembered later</small>
 
 **Chose:** Shut the manor. Nobody in, nobody out, by your order and your men's spears.
 
@@ -2638,7 +2638,7 @@ A quarter of the manor. One in four. "It's less than Sauvemer," the priest says.
 Bastien comes to the church at the end and leans in the doorway. "Lost my brother," he says. "Lost my brother's wife. Lost the eel-traps, nobody to set 'em." He spits. "Still here." He looks at you. "So are you. I'll give you that."
 
 - Raise a stone cross in the churchyard, with the names cut into it.  
-  <small>At stake: Your manor · Coin −</small>
+  <small>At stake: Your manor · Coin − · Remembered later</small>
 - Give the widows back their Michaelmas rents.  
   <small>At stake: Common Folk + · Your manor · Coin − · Remembered later</small>
 - Get on with it. There is a manor to run.  
@@ -3448,7 +3448,7 @@ The King, on the dais, watches the Earl the whole time he speaks, without any ex
 - Go to the Prince's rooms that night, where the young men are.  
   <small>At stake: The Prince's favour +</small>
 - Say nothing. Listen, and count who stands with whom.  
-  <small>At stake: Intrigue +</small>
+  <small>At stake: Intrigue + · Remembered later</small>
 
 **Chose:** Speak for the war in the West. You know that country. (Even: failure)
 
@@ -3760,7 +3760,7 @@ In a family like yours, children of this age go away: to a great house as a page
 - Send Alison to the Duchess's household at Lannec.  
   <small>At stake: Standing in the West + · Your children − · Remembered later</small>
 - Send Alison to the abbey to learn letters.  
-  <small>At stake: Church + · Piety + · Your children</small>
+  <small>At stake: Church + · Piety + · Your children · Remembered later</small>
 - Keep Alison at home, and teach what you know.  
   <small>At stake: Your children +</small>
 
@@ -4005,7 +4005,7 @@ The King has the larger army and the younger. The Earl has the old lords, their 
 Your company is given the King's right. Across the heath, under the black boar, Sir Hugh Malet's banner is in the line facing you.
 
 - Go over the ground before the fighting starts, and find what the heralds missed. *(Even)*  
-  <small>At stake: The battle +</small>
+  <small>At stake: The battle + · Remembered later</small>
 - Walk your company's line and speak to every man by name.  
   <small>At stake: The battle + · Your men's loyalty +</small>
 - Ride out under a white rod, and try to stop it. *(Risky)*  
@@ -4060,7 +4060,7 @@ In November, Thibaut de Brésy rides into your yard with twenty men and his cous
 - Shelter them, all of them, and let both kings think what they like.  
   <small>At stake: Standing in the West + · Valdrenne + · The Prince's favour − · Remembered later</small>
 - Feed them, give them horses, and send them on to Sarenza.  
-  <small>At stake: Honor + · Coin −</small>
+  <small>At stake: Honor + · Coin − · Remembered later</small>
 - Hand them over to the Valdrennish King's officers.  
   <small>At stake: Honor − · Ruthlessness + · Standing in the West − · Mariot Wood −</small>
 
@@ -4106,7 +4106,7 @@ After dinner Mahaut walks in the garden with the lords she trusts, and says the 
 - Say the West's place is with Adalia, whatever Adalia is now.  
   <small>At stake: Standing in the West − · The Prince's favour +</small>
 - Say nothing. Listen, and count who nods.  
-  <small>At stake: Standing in the West + · Intrigue +</small>
+  <small>At stake: Standing in the West + · Intrigue + · Remembered later</small>
 
 **Chose:** Say it with her. The West should stand on its own feet.
 
@@ -4166,7 +4166,7 @@ What you bring to Lannec matters as much as what you say there.
 - Bring your company, armed. Let the Estates see you can hold what they decide.  
   <small>At stake: Votes at Lannec +</small>
 - Bring silver. Votes in an assembly are bought like anything else.  
-  <small>At stake: Votes at Lannec + · Coin −</small>
+  <small>At stake: Votes at Lannec + · Coin − · Remembered later</small>
 - Bring nothing but your name and what you have done.  
   <small>At stake: Votes at Lannec +</small>
 
@@ -4176,10 +4176,251 @@ You ride into Lannec at the head of a hundred men in your colours, with your ban
 
 ## Whitsun at Lannec
 
+*Spring, year 3 of King Edwin*
+
 You come to Lannec at Whitsun in the third year of King Edwin, at forty-one, a baron of the West, with grey in your beard and your wife beside you, and Alison, Anne and Edwin at home, waiting to hear what you will make of them.
 
 When you walk into the hall, men stand. Two kings are at war with themselves. A third murdered his Constable. And the lords of the West are sitting down together, in a hall full of banners, to decide whether they belong to anyone at all.
 
 You were an archer's son.
 
-End of Chapter 4. Chapter 5, the Crown, begins in that hall.
+- Take your seat.
+
+**Chose:** Take your seat.
+
+## The Estates of the West
+
+The hall at Lannec was built for the dukes of Armance to feast in, and has never held so many people who disagree.
+
+Along the north wall, under the swan, sit the Armance lords: Penhoët, Kerguen, Rohan-Lesneven, old men and young, who remember Jehanne and look to Mahaut. Along the south wall, the lords of the Salt: Sauvemer, Les Salines, the march, half of them Adalian-born, all of them grown rich on salt and tired of being taxed for it. At the foot of the hall, on benches, the burgesses of the towns and the masters of the salt-guilds in their gowns, who have the money and know it. And by the door, where everyone can see them, forty knights in the colours of Brésy, with Thibaut at their head, who are not members of the Estates of anything and have come anyway.
+
+Master Thomas Hales, the King's officer in Sauvemer, sits by himself at the end of a bench with a clerk, writing down names.
+
+*(Continue)*
+
+Mahaut opens the Estates from the ducal chair, in black, with her grandmother's stick across her knees. She says that two kings are at war with themselves and a third has murdered his Constable; that the West has paid three salt taxes in ten years and been protected by none of them; and that the Estates are met to decide, before God and each other, to whom the West belongs. Then she sits down, and the hall erupts.
+
+You have three days before the question is put. Men come to you before you have taken your seat.
+
+- Speak to the whole hall, on the first day, before the factions harden. *(Even)*  
+  <small>At stake: Votes at Lannec +</small>
+- Go to the salt-guilds' hall at night, and talk money. *(Risky)*  
+  <small>At stake: Votes at Lannec +</small>
+- Spend the days with the Armance lords, who will follow Mahaut. *(Even)*  
+  <small>At stake: Votes at Lannec + · Remembered later</small>
+
+**Chose:** Speak to the whole hall, on the first day, before the factions harden. (Even: success)
+
+You speak without notes, in Valdrennish and then in Adalian, about the dyke at Les Salines, and the plague year, and the salt penny; about what the West has paid and what it has been given for it. You do not tell them what to do. You tell them what they already know, in a voice they can hear at the back. When you sit down, the guildmasters at the foot of the hall bang the benches with their fists, and the Armance lords look at each other, and Master Hales writes for a long while.
+
+## The Third Day
+
+On the third day, before the question is put, the factions have their shape.
+
+Thibaut de Brésy comes to you at dawn. "Forty knights," he says, "and the Brésy name in the west of Valdrenne. They will vote as I ask. I will ask as you ask." He does not say what he wants in return. He does not need to: a home, a name, and the King who murdered his father dead.
+
+When you come into the hall, the benches go quiet.
+
+- Take Thibaut's forty knights and his vote, and promise him his father's justice.  
+  <small>At stake: Votes at Lannec + · Valdrenne + · Remembered later</small>
+- Tell Master Hales you will speak for the King's peace.  
+  <small>At stake: Votes at Lannec − · The Prince's favour +</small>
+- Keep your own counsel until the question is put.
+
+**Chose:** Take Thibaut's forty knights and his vote, and promise him his father's justice.
+
+You take his hand. "His justice," Thibaut says, "not the King's." You know what he means, and you let him mean it. The Brésy knights are in the hall by noon, standing along the wall, and the Valdrennish-born lords of the West look at them, and remember who used to be Constable, and count.
+
+*Valdrenne standing +1*
+
+## The Question
+
+At noon on the third day, the Bishop of Saint-Lys, who is ninety and has crowned one king and buried two, stands up in the middle of the hall and puts the question in Latin, and then, because half the hall has no Latin, in both tongues.
+
+"To whom," he says, "does the West belong?"
+
+*(Continue)*
+
+The hall answers in pieces. Master Hales stands for King Edwin and the King's peace, and some of the Salt lords stand with him. Old Penhoët stands for a free duchy under Mahaut, owing nothing to anyone, and the Armance stands with him. A guildmaster stands and says that a duchy is a thing a king can take back, and a crown is not, and sits down again into a silence like a held breath. Thibaut de Brésy, by the door, is looking at you.
+
+Then the Bishop turns, slowly, on his stick, and looks at you too. So does everyone else. You understand that whatever you say now, the hall will most likely do.
+
+- Stand for King Edwin and the King's peace. The West is Adalian.  
+  <small>At stake: The Prince's favour + · Standing in the West − · Remembered later</small>
+- Stand for a free duchy under Mahaut, owing nothing to anyone.  
+  <small>At stake: Standing in the West + · The Prince's favour − · Remembered later</small>
+- Say what the guildmaster would not. Crown her. A queen of the West, not a duchess.  
+  <small>At stake: Standing in the West + · The Prince's favour − · Mahaut d'Armance + · Remembered later</small>
+- Crown Thibaut de Brésy, the Constable's son. The West needs a soldier.  
+  <small>At stake: Standing in the West − · The Prince's favour − · Valdrenne + · Mahaut d'Armance −</small>
+- Let them say your name.  
+  <small>At stake: Your station + · Renown + · Standing in the West + · The Prince's favour −</small>
+
+**Chose:** Stand for King Edwin and the King's peace. The West is Adalian.
+
+You stand for the King. The Salt follows you, and enough of the towns, and the vote goes the King's way by a handful of voices. Penhoët walks out. Mahaut does not look at you again that day. Master Hales writes to Wendmere that night, and the West stays in Adalia's hand. For now.
+
+*Harvest in: 5 seasons of grain · Michaelmas rents: £2 12s 2d · Rents from your other holdings: £2*
+
+## Who Comes for the West
+
+*Spring, year 4 of King Edwin*
+
+The West stays Adalian, and King Amaury the Younger of Valdrenne, nineteen and furious, comes over the hills with the royal host to take back the provinces his great-grandfather lost. King Edwin, with Adalia still split, sends letters, and a few hundred men, and his confidence in his loyal lords of the West.
+
+*(Continue)*
+
+The Estates give you the command of the West's host, because there is nobody else they trust with it. You have the winter to get ready.
+
+- Fortify the march. Make them break their teeth on walls before they reach the open country.  
+  <small>At stake: The war + · Coin −</small>
+- Raise the salt towns. Every boiler, carter and fisherman who can hold a pike.  
+  <small>At stake: The war + · Your men +</small>
+- Divide them. Write to each king that the other is the real enemy. *(Risky)*  
+  <small>At stake: The war + · Remembered later</small>
+
+**Chose:** Fortify the march. Make them break their teeth on walls before they reach the open country.
+
+You spend the winter on walls: La Garde first, re-roofed and provisioned for a year, then the fords, then the bridges, with every mason in the West and every penny you can find. When the spring comes, the enemy will have to take three castles before they can reach a single field.
+
+*Coin −£4*
+
+## The Muster
+
+In the spring the West mustered on the meadows below Lannec: more men than anyone expected, under more banners than anyone could name. Thibaut's Brésy knights are there, in their own colours, by the hundred now.
+
+Your wife has come to Lannec to see you off, and stands at the edge of the meadow with the other women, and does not wave.
+
+What the West lacks is not courage. It is something else.
+
+- Crossbowmen. Hire every Sarenzan crossbow the Lanzi can ship.  
+  <small>At stake: The war + · Coin −</small>
+- Horse. Put the Armance knights and the Brésy together, under one banner. *(Favorable)*  
+  <small>At stake: The war +</small>
+- Ground. Choose where the battle will be, and make them come to you. *(Even)*  
+  <small>At stake: The war + · Remembered later</small>
+
+**Chose:** Crossbowmen. Hire every Sarenzan crossbow the Lanzi can ship.
+
+You pay the Lanzi in Sauvemer what they ask, which is a great deal, and six galleys come round the cape in April with eight hundred crossbowmen in red. Nobody in the West has ever seen so many. Nobody on the other side will have, either.
+
+*Coin −£10*
+
+## The Pont-aux-Moines
+
+*Summer, year 4 of King Edwin*
+
+They come at midsummer, as everyone always does. King Amaury's host comes over the hills alone, twelve thousand strong.
+
+*(Continue)*
+
+It is a long day. You will remember all of it and be able to describe almost none. For most of it the West holds: the bridge, the meadows, the line of the river. And in the late afternoon, the thing that decides it: Amaury's household knights, the best in Valdrenne, come over the bridge on foot, in close order, straight at the banner of the West.
+
+- Lead the counter-charge yourself, at the head of everything you have. *(Favorable, MORTAL DANGER)*  
+  <small>At stake: A wound · Your life · The war + · Your men −</small>
+- Send the reserve into their flank. *(Even)*  
+  <small>At stake: The war ± · Your men − · Renown + · Your children +</small>
+- Hold the bank. Let them break themselves on it. *(Favorable)*  
+  <small>At stake: The war ± · Your men − · Renown +</small>
+
+**Chose:** Send the reserve into their flank. (Even: failure)
+
+The reserve goes too soon, and the household knights see it coming and turn, and you watch it break against them from the other side of the river.
+
+*20 of your men are dead*
+
+## After the Bridge
+
+The Pont-aux-Moines is not a victory. It is a stopping. Amaury goes back over the hills because he cannot get over the bridge, and the West is still the West at the end of it, bled white, and free of Valdrenne.
+
+[break]
+
+- Go on.
+
+**Chose:** Go on.
+
+*Harvest in: 5 seasons of grain · Michaelmas rents: £2 12s 2d · Rents from your other holdings: £2*
+
+## The King's Reward
+
+*Winter, year 4 of King Edwin*
+
+The West stayed Adalian, and held at the Pont-aux-Moines, and King Edwin, who needs every friend he can find, means to reward the man who held it.
+
+The letter offers you the earldom of the March: Sauvemer, its salt and its castles, in your name and your heirs' for ever, and a seat at the King's council. It is everything a reeve's son in a ditch at Grisolles could have dreamed of. It is also, every lord in the West understands, the end of the West as anything but an Adalian march.
+
+- Accept the earldom.  
+  <small>At stake: Your station + · The Prince's favour + · Standing in the West − · Your holdings +</small>
+- Accept it, and ask that it go to your eldest after you, with the West's liberties written in. *(Even)*  
+  <small>At stake: Your station + · Standing in the West +</small>
+- Refuse it. The West is not yours to take.  
+  <small>At stake: Standing in the West + · The Prince's favour − · Honor +</small>
+
+**Chose:** Accept the earldom.
+
+You accept. The patent comes under the great seal, with your arms on it, and a herald reads it in the market square at Sauvemer to a crowd that listens in silence and goes home.
+
+*You hold La Garde · Harvest in: 5 seasons of grain · Michaelmas rents: £2 12s 2d · Rents from your other holdings: £2*
+
+## The Reckoning of a Life
+
+*Autumn, year 5 of King Edwin*
+
+The hall is full of autumn: rushes, smoke, dogs, the smell of apples. You are forty-five. Your knees hurt in the mornings, and you cannot read the accounts without holding them at arm's length, and there are more people you remember than people you see.
+
+*(Continue)*
+
+Alison is fourteen, and comes to you one evening in the hall and sits down across the fire, and you see your own face, younger, and someone else's, and both of them waiting.
+
+"What do you want me to be?" Alison says.
+
+- Tell Alison: what you were not allowed to be. Your own.  
+  <small>At stake: Your children +</small>
+- Tell Alison: a lord. Keep what we have. It cost enough.  
+  <small>At stake: Your children +</small>
+
+**Chose:** Tell Alison: what you were not allowed to be. Your own.
+
+"Your own," you say. "Not mine. I was what everyone else needed me to be, from the day I fetched arrows for a farthing a dozen. Be what you need." Alison looks at you a long while, and then laughs, and says, "That's the worst advice anyone has ever given me," and goes out, and you hear the laugh go down the yard, and it is your father's laugh, or your mother's, and you sit there with it.
+
+## What Became of Them
+
+Mariot outlives you by eleven years, and never once in all those years lets a lady at any table forget where she came from, or that she was proud of it.
+
+Alison spends a life at courts, and is good at it, and is never quite trusted by anyone, which Alison says is the point. Alison, Anne and Edwin: all of them grow up, which in that age was not a thing to take for granted.
+
+*(Continue)*
+
+Davy Ludd dies at the mill-holding you gave him, at seventy, with Aude and nine grandchildren round him. Will Cobb dies in his chair at a hundred, or near it, still telling the story about the goat at Grisolles, wrongly. Thibaut de Brésy goes home to the west of Valdrenne when the young King dies, and builds a chapel, and has your arms carved over the door. Mahaut d'Armance marries, in the end, a lord of the Armance, whom she chooses herself, and writes to you every Christmas until one of you dies.
+
+On the manor where you began, they keep your feast-day for two hundred years, without anybody remembering quite why.
+
+- Read what the chroniclers wrote.
+
+**Chose:** Read what the chroniclers wrote.
+
+## The Chronicle
+
+The chroniclers of the West, who were not there, wrote down what they could find out. Some of it is true.
+
+Of his youth: He had his own horse and harness before he was knighted, which few new men can say.
+
+Of the first war: His first followers were lent him by his master. He cut out a Valdrennish ship from Sauvemer harbour under the guns. He kept the Sauvemer garrison through the truce. He was given the poorest grant in the West, Ormel, because nobody knew his name yet.
+
+Of the manor: When the Mottle came, he shut his manor, and nobody came in or went out. After the plague he sent for his kin to live on his manor. He fought the old lord's kin at law. In the border raid he got every soul on the manor to shelter. His bride settled her family's refusal herself.
+
+Of the great lord: He raised a full company for the Second War. He borrowed to raise it. He caught a thieving steward. He settled with his boyhood rival. He spoke in council for Mahaut's right to choose. He stood by King Aldred while he was dying. He reached his old master's deathbed in time. He let his daughter choose her own husband. The West called him baron before any king did. He came to the Estates at Lannec with his company armed.
+
+Of the crown: He spoke to the whole hall at the Estates, in both tongues.
+
+- Close the book.
+
+**Chose:** Close the book.
+
+## The Founder of a House
+
+Your arms hang in the King's chapel at Wendmere, among the earls. Alison holds what you held after you, and the house you founded holds it for two hundred years, through four kings and two plagues and a civil war, and marries into half the great houses of Adalia.
+
+The heralds give your family a pedigree that begins with a crusader. Your great-grandchildren believe it. None of it is true. All of it is better than true.
+
+You were an archer's son.

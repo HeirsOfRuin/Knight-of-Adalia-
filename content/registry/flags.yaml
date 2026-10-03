@@ -449,3 +449,40 @@ c4_brought_men: { description: "Brought his company armed to Lannec", later: ch5
 c4_brought_silver: { description: "Brought silver to buy votes at Lannec", later: ch5 }
 c4_brought_name: { description: "Came to Lannec with only his name", later: ch5 }
 c4_brought_secret: { description: "Brought the Vervais letter to Lannec", later: ch5 }
+c5_acclaimed: { description: "Acclaimed king by the Estates of the West" }
+c5_armance_with_you: { description: "Won the Armance lords at the Estates" }
+c5_attainted: { description: "Attainted: condemned and stripped of everything" }
+c5_brese_pact: { description: "Bound the Brésy knights to him at Lannec" }
+c5_chose_ground: { description: "Chose the ground at the Pont-aux-Moines" }
+c5_claim: { description: "Holds a claim to the West's crown through Mahaut" }
+c5_commands: { description: "Commands the West's host" }
+c5_crowned_other: { description: "Crowned someone else at Lannec" }
+c5_crowned_self: { description: "Crowned at Lannec" }
+c5_divided_kings: { description: "Set the two kings against each other before the war" }
+c5_earl: { description: "Earl of the March by the King's patent" }
+c5_exiled: { description: "Went into exile" }
+c5_free_duchy: { description: "The Estates declared a free duchy" }
+c5_gave_sauvemer: { description: "Gave Adalia the Sauvemer march for recognition" }
+c5_guilds_with_you: { description: "Won the salt guilds at the Estates" }
+c5_heir_killed: { description: "His eldest son was killed at the Pont-aux-Moines" }
+c5_host_decisive: { description: "His host decided the War of the West" }
+c5_led_charge: { description: "Led the charge over the Pont-aux-Moines" }
+c5_liberties: { description: "Wrote the West's liberties into his earldom" }
+c5_mahaut_queen: { description: "Mahaut crowned Queen of the West" }
+c5_married_mahaut: { description: "Married Mahaut before the Estates" }
+c5_on_losing_side: { description: "On the losing side of the War of the West" }
+c5_paid_valdrenne: { description: "Paid Valdrenne's price for recognition" }
+c5_promised_hales: { description: "Promised Master Hales to speak for the King's peace" }
+c5_rec_church: { description: "The Church recognised the West" }
+c5_rec_king: { description: "A king recognised the West" }
+c5_rec_sarenza: { description: "Sarenza recognised the West" }
+c5_reserve_won: { description: "The reserve's charge won the Pont-aux-Moines" }
+c5_spoke_estates: { description: "Spoke to the whole hall at the Estates" }
+c5_submitted: { description: "Submitted to the victor after the War of the West" }
+c5_thibaut_king: { description: "Thibaut de Brésy crowned King of the West" }
+c5_used_knife: { description: "Used the Vervais letter at the Estates" }
+c5_war_held: { description: "The War of the West was held to a stop" }
+c5_war_lost: { description: "The War of the West was lost" }
+c5_war_won: { description: "The War of the West was won" }
+c5_west_adalian: { description: "The West stayed Adalian" }
+c5_west_free: { description: "The West declared itself free" }

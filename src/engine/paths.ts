@@ -92,6 +92,7 @@ export function getValue(state: GameState, content: ContentBundle, rawPath: stri
         case 'last': return last?.sex ?? 'none';
         case 'lastname': return last?.name || 'the baby';
         case 'eldest': return living[0]?.name || 'none';
+        case 'dead': return all.length - living.length;
         case 'lastdead': return all.filter((h) => !h.alive).at(-1)?.name || 'the child';
         case 'eldest_id': return (living[0]?.name || 'none').toLowerCase(); // for conditions: heirs.eldest_id == piers
         case 'names': {
@@ -187,7 +188,7 @@ export function checkPath(content: ContentBundle, path: string): string | null {
     case 'heir': return need(['eldest', 'second', 'third', 'last'].includes(a), 'heir selector') ?? need(['alive', 'name', 'sex', 'age', 'ageword', 'temperament', 'upbringing', 'bond'].includes(b ?? ''), 'heir field');
     case 'holding': return need(a in reg.holdings, 'holding') ?? need(['held', 'income', 'temper'].includes(b ?? ''), 'holding field');
     case 'holdings': return need(['count', 'income'].includes(a), 'holdings field');
-    case 'heirs': return need(['count', 'born', 'sons', 'daughters', 'last', 'lastname', 'eldest', 'eldest_id', 'lastdead', 'names'].includes(a), 'heirs field');
+    case 'heirs': return need(['count', 'born', 'sons', 'daughters', 'last', 'lastname', 'eldest', 'eldest_id', 'lastdead', 'dead', 'names'].includes(a), 'heirs field');
     default: return `unknown namespace "${ns}" in "${path}"`;
   }
 }

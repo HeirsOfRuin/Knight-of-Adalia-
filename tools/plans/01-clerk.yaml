@@ -40,7 +40,7 @@ steps:
   c3_arrival: steps!success
   c3_measures: nurse!success
   c3_harvest: reap
-ending: story_so_far
+ending: founder
 expect:
   - flag.c3_nursed
   - station >= lord

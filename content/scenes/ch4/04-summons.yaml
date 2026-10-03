@@ -139,8 +139,6 @@
 
 - id: c4_end
   chapter: ch4
-  kind: ending
-  ending: story_so_far
   title: Whitsun at Lannec
   on_enter: [ { advance: { seasons: 1 } } ]
   text: |
@@ -149,5 +147,7 @@
     [if counter.estates >= 8]When you walk into the hall, men stand.[elif counter.estates >= 5]When you walk into the hall, men nod, and make room.[else]When you walk into the hall, a few men nod. Most are watching someone else.[/if] Two kings are at war with themselves. A third murdered his Constable. And the lords of the West are sitting down together, in a hall full of banners, to decide whether they belong to anyone at all.
 
     You were [if background == reeve]a reeve's son[elif background == burgess]a wool merchant's son[elif background == archer]an archer's son[else]a tirewoman's son[/if].
-
-    End of Chapter 4. Chapter 5, the Crown, begins in that hall.
+  choices:
+    - id: on
+      text: Take your seat.
+      next: c5_estates

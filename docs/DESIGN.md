@@ -1080,6 +1080,68 @@ Approved 2026-10-02 (`docs/FRAME-CH4-CH5.md`): the Western Crown, the Ch5 ending
 - **Votes at Lannec:** spread over under 5, 5-7 and 8+.
 - **Betrothed to Mahaut:** 1-3% of runs.
 
+## Chapter 5 as built (2026-10-03): the Crown
+The game is complete from the prologue to the endings. Twenty scenes in `ch5/01-estates.yaml`, `02-war.yaml` and `03-crown.yaml`. The validator reports 0 errors, 0 warnings and 0 pending, and every ending is reachable for every background.
+
+**Act I, the Estates of the West** (Whitsun year 42).
+- **The hall.** He can work the votes (`estates`) by:
+  - speaking (Diplomacy, difficulty 5; helped by the plague year, speaking in the garden, his tongue and his renown);
+  - the salt guilds (Trade; helped or hurt by his salt stance);
+  - the Armance lords (Courtesy);
+  - the Vervais knife (+4 votes, at a cost in Honor).
+- **Day three:** declare the marriage to Mahaut before the vote (`c5_married_mahaut`, the claim), take Thibaut's forty Brésy knights, promise Hales the King's peace, or wait.
+- **The question**, gated by votes:
+
+  | Answer | Votes needed | Result |
+  |---|---|---|
+  | Adalia | any | `c5_west_adalian` |
+  | A free duchy | 3+ | |
+  | Crown Mahaut | 5+ | `c5_crowned_other` |
+  | Crown Thibaut | 5+, with the Brésy pact | `c5_crowned_other` |
+  | Crown Mahaut and him together | 5+, if married to her | acclaimed + claim, station royal |
+  | Let them say his name | 8+ | acclaimed, station royal |
+
+**Act II, the War of the West** (years 43-44). Counter `ww`.
+- **The plan:** fortify the march, raise the salt towns, or divide the kings (Intrigue, difficulty 5).
+- **The muster:** Sarenzan crossbows (free for a Lanzi wife), the Armance and Brésy horse as one, or choose the ground.
+- **A free West not dividing the kings** fights both: `ww` −2.
+- **The Pont-aux-Moines:**
+  - lead the charge (lethal, difficulty 6);
+  - send the reserve with his eldest son (a Tactics check; on failure, a 25% chance the son dies, and only by this choice);
+  - hold the bank.
+- **Outcome:** won (6+), held (3-5) or lost. The host is decisive if he commanded and his charge or reserve won.
+- **The Losing Side:**
+  - flee into exile (Sarenza or Caldmoor if he has friends there);
+  - submit (a Diplomacy check: diminished, or attainted if it fails);
+  - hold Lannec to the last (lethal: submit with honours, attainted, or death).
+
+**Act III, Recognition** (a free West). Two rounds of three doors:
+- the Bishop of Saint-Lys (piety, church, plague-year mercy, a child in the Church);
+- the Signory of Sarenza (a Lanzi wife +3);
+- a king's price: Adalia takes the Sauvemer march; Valdrenne takes the Brésy, or the hill valleys and the Bishop.
+
+A West that stayed Adalian gets **the King's Reward** instead: the earldom of the March, optionally with the West's liberties written into the patent for his heir.
+
+**Act IV, the Reckoning of a Life** (year 46).
+- **The eldest asks what to be.** Then **What Became of Them:** the wife, the children by upbringing and temperament, the dead child's stone, Davy, Cobb, Wat, Thibaut, Mahaut, and the manor's memory.
+- **The Chronicle** reads 97 deeds that no other scene reads, from childhood to the crown, grouped by life stage, each shown only if it happened.
+- **The ending**, chosen by switch in priority order:
+
+  | Ending | Gate |
+  |---|---|
+  | Exile | fled |
+  | Ruin | attainted |
+  | Crowned | crowned himself, with 2+ pillars (claim, acclamation, decisive host in a war won), 1+ recognition, war not lost, and an heir or a living wife |
+  | Kingmaker | crowned someone else (or himself, unrecognised), war not lost, and decisive (8+ votes or a decisive host) |
+  | Founder of a House | great lord, eldest alive and 14+, war not lost |
+  | Diminished Lord | everything else |
+
+**Bot results** (40 runs per background per policy; bots do not plan, so a player aiming for the crown will do better):
+- **All endings:** diminished 36%, founder 28%, kingmaker 22%, ruin 6%, crowned 3% (cunning play 14%), exile 1%, deaths about 3.4%.
+- **The war:** held 30-69%, won 3-53%, lost 18-29%, by policy.
+
+**Other:** the placeholder ending `story_so_far` is retired. The scripted plans now play to the end and expect Founder of a House.
+
 ## Choices that matter (2026-10-03, after playtest feedback)
 The author reported that some choices did not feel as if they made a difference, especially in the Ch2 battles. Spying on the new wall during the burial truce, for example, cost Honour and seemed to do nothing.
 
@@ -1139,3 +1201,4 @@ The author reported that some choices did not feel as if they made a difference,
 | 2026-10-03 | Choices that matter: At stake hints, Ch2 battle outcomes driven by player performance (rearguard, siege, Les Salines), burial-truce honour made explicit, hollow choices fixed, choice audit tool. |
 | 2026-10-03 | Ch4 Act III, the Fracture, built: the master's death, Aldred's death and Edwin's crowning, Carrow's rising and Wythen Heath (player-driven), the eldest at ten, the Constable's fall, Lannec. |
 | 2026-10-03 | Ch4 Act IV, the Summons to Lannec, built; Chapter 4 complete. Dates now follow the reign (config reigns: Edwin from year 40). Next: Ch5 engine (endings evaluation, epilogue builder) and acts. |
+| 2026-10-03 | Ch5 built; the game is complete from the prologue to the endings. Every ending is reachable for every background; 0 warnings, 0 pending. |

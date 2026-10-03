@@ -1,0 +1,310 @@
+# Chapter 5, Acts III and IV: Recognition, and the Reckoning of a Life.
+# Spring year 45 to autumn year 46 (Edwin 6-7). Age 44-45.
+# A free West seeks recognition (two rounds: the Church, Sarenza, a king). A West
+# that stayed Adalian gets the King's reward instead. Then the eldest's future,
+# the reckoning, a shared epilogue, and the ending, chosen by c5_epilogue's switch:
+#   exile (fled) > ruin (attainted) > crowned > kingmaker > founder > diminished.
+# Death endings come from lethal choices anywhere.
+
+- id: c5_recognition
+  chapter: ch5
+  title: Recognition
+  checkpoint: true
+  on_enter: [ { advance: { seasons: 2 } }, { meet: evrard_saint_lys } ]
+  text: |
+    A crown nobody recognises is a rebellion with a hat on. [if flag.c5_crowned_self]Yours[elif flag.c5_mahaut_queen]Mahaut's[elif flag.c5_thibaut_king]Thibaut's[else]The free duchy's[/if] needs someone outside the West to say it is real, in writing, under a seal, before the next army comes over the hills.
+
+    There are three doors to knock on, and you have time to knock on two.
+
+    The Bishop of Saint-Lys, ninety-one, who crowned you all at Lannec, is a peer of Valdrenne, and his word is the Church's word in the West; but he is old, and the Pontiff is far away, and both kings have written to him. The Signory of Sarenza, which lends to everyone, recognises whoever repays. And the kings: [if flag.c5_war_won]both of them beaten, both of them in need of peace, both of them with a price.[else]both of them bled, both of them watching, both of them with a price.[/if]
+  choices:
+    - id: church
+      text: Go to the Bishop of Saint-Lys.
+      tags: [piety, diplomacy]
+      check: { attr: presence, skill: diplomacy, difficulty: 5, mods: [ { if: rep.piety >= 5, add: 1, label: your piety is known }, { if: rep.church >= 3, add: 1, label: the Church owes you }, { if: flag.c3_raised_cross || flag.c3_procession || flag.c3_nursed, add: 1, label: the plague year }, { if: flag.c4_child_church, add: 1, label: your child is a son of the Church } ] }
+      success:
+        text: |
+          The Bishop receives you in his garden at Saint-Lys, under a vine older than both of you. He listens for an hour with his eyes shut, and you think he is asleep. Then he opens them and says, "The West has been Christian longer than either of those kings' families. I will write to the Pontiff. He will do as I say; he owes me eleven hundred crowns." He writes it in front of you, in a shaking hand, and seals it.
+        effects: [ { set: flag.c5_rec_church }, { add: { rep.church: 2 } } ]
+        next: c5_recognition_2
+      failure:
+        text: |
+          The Bishop receives you kindly, and talks about vines, and sends you away with a blessing and no letter. Two kings have written to him too. He is ninety-one. He would like to die in his bed.
+        next: c5_recognition_2
+    - id: sarenza
+      text: Go to Sarenza, to the Signory and the banks.
+      tags: [wealth, diplomacy]
+      check: { attr: wits, skill: trade, difficulty: 5, mods: [ { if: flag.c3_lanzi_kin, add: 3, label: your wife is a Lanzi }, { if: rep.sarenza >= 2, add: 1, label: Sarenza knows you }, { if: res.coin >= 4800, add: 1, label: you can pay your debts }, { if: flag.c4_sent_brese_on, add: 1, label: you sent Thibaut to them once } ] }
+      success:
+        text: |
+          The Signory of Sarenza meets in a room full of maps and receives you as it would receive any borrower with good security: politely, briefly, and with a contract. Recognition of the West, its crown and its ports, in exchange for the salt trade of Sauvemer at Sarenzan rates for twenty years. It is extortion. You sign it. Within a month every bank in the world is lending to the West, and the kings who meant to starve it out are writing to ask what happened.
+        effects: [ { set: flag.c5_rec_sarenza }, { add: { rep.sarenza: 2, rep.merchants: 1 } } ]
+        next: c5_recognition_2
+      failure:
+        text: |
+          The Signory listens, and thanks you, and says it will consider the matter. You know what that means in Sarenza. It means not until someone else has done it first.
+        next: c5_recognition_2
+    - id: king
+      text: Go to a king, and pay his price.
+      tags: [cunning, diplomacy]
+      next: c5_king_price
+
+- id: c5_recognition_2
+  chapter: ch5
+  title: The Second Door
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    [if flag.c5_rec_church || flag.c5_rec_sarenza]One door has opened. That is one more than the West had at Whitsun.[else]The first door stayed shut.[/if] There is time, before winter, for one more.
+  choices:
+    - id: church
+      text: The Bishop of Saint-Lys.
+      tags: [piety, diplomacy]
+      visible_if: [ "!flag.c5_rec_church" ]
+      check: { attr: presence, skill: diplomacy, difficulty: 5, mods: [ { if: rep.piety >= 5, add: 1, label: your piety is known }, { if: rep.church >= 3, add: 1, label: the Church owes you }, { if: flag.c5_rec_sarenza, add: 1, label: Sarenza has already spoken }, { if: flag.c4_child_church, add: 1, label: your child is a son of the Church } ] }
+      success:
+        text: The Bishop writes to the Pontiff in a shaking hand, and seals it, and asks you to stay for supper. "You will want to know," he says over the fish, "that I said the same thing to the last man who asked me to crown him. He is dead now. Eat."
+        effects: [ { set: flag.c5_rec_church }, { add: { rep.church: 2 } } ]
+        next: c5_reckoning
+      failure:
+        text: The Bishop sends you away with a blessing and no letter.
+        next: c5_reckoning
+    - id: sarenza
+      text: The Signory of Sarenza.
+      tags: [wealth, diplomacy]
+      visible_if: [ "!flag.c5_rec_sarenza" ]
+      check: { attr: wits, skill: trade, difficulty: 5, mods: [ { if: flag.c3_lanzi_kin, add: 3, label: your wife is a Lanzi }, { if: rep.sarenza >= 2, add: 1, label: Sarenza knows you }, { if: flag.c5_rec_church, add: 1, label: the Church has already spoken } ] }
+      success:
+        text: The Signory signs, at Sarenzan rates for twenty years. Every bank in the world starts lending to the West the next morning.
+        effects: [ { set: flag.c5_rec_sarenza }, { add: { rep.sarenza: 2 } } ]
+        next: c5_reckoning
+      failure:
+        text: The Signory will consider the matter, which in Sarenza means no.
+        next: c5_reckoning
+    - id: king
+      text: A king, and his price.
+      tags: [cunning, diplomacy]
+      visible_if: [ "!flag.c5_rec_king" ]
+      next: c5_king_price
+    - id: enough
+      text: Go home. What the West has will have to do.
+      tags: [yield]
+      next: c5_reckoning
+
+- id: c5_king_price
+  chapter: ch5
+  title: A King's Price
+  text: |
+    Kings sell recognition the way they sell everything else, for land, or marriages, or other men's heads.
+
+    [if flag.c4_carrow_won]The regency council in Wendmere, speaking for a king who is besieged in his own capital, will recognise the West for the Sauvemer march, its ports and its salt: the half of the West that was Adalian in the first place.[else]King Edwin will recognise the West, he writes, for the Sauvemer march, its ports and its salt: the half of the West that was Adalian in the first place.[/if] King Amaury the Younger will recognise it for something simpler. [if flag.c4_sheltered_brese || flag.c5_brese_pact || flag.c5_thibaut_king]He wants the Brésy: Thibaut and every knight of his name, in chains, at Cordelle.[else]He wants the hill valleys above Kerval, and the abbey of Saint-Lys, and the Bishop's head.[/if]
+  choices:
+    - id: adalia
+      text: Pay Adalia's price. Give up the Sauvemer march.
+      tags: [diplomacy, wealth]
+      text_after: |
+        You sign away the Sauvemer march: the salt, the port, the town you starved for two years and then lived beside for twenty. [if flag.c2_granted_marsalin || flag.c2_granted_ormel]Your own first manor is in it. You keep it, as a vassal of Adalia, across a border that did not exist when you were granted it.[/if] The West is smaller by a third. It is also, by the end of the month, recognised by Adalia under the great seal, and nothing Adalia recognises can be taken back without a war it cannot afford.
+      effects: [ { set: flag.c5_rec_king }, { set: flag.c5_gave_sauvemer }, { add: { counter.west_estates: -2 } } ]
+      next: c5_reckoning
+    - id: valdrenne
+      text: Pay Valdrenne's price.
+      tags: [cunning]
+      text_after: |
+        [if flag.c4_sheltered_brese || flag.c5_brese_pact || flag.c5_thibaut_king][if flag.c5_thibaut_king]You cannot give the King of the West to Cordelle in chains, and you do not. Instead you give them everything around him: forty Brésy knights, betrayed on the road to Lannec, and the Brésy lands, and Thibaut's own cousin. Thibaut never speaks to you again.[else]You give them Thibaut. He is taken on the road from your own hall, by men wearing your badge, and he looks at you as they put him in the cart and says nothing at all.[/if] The Valdrennish seal comes a month later. You keep it in the chest with the gold cup.[else]You give them the hill valleys and the abbey, and the Bishop of Saint-Lys is taken from his garden by Valdrennish men-at-arms, at ninety-one, and dies on the road to Cordelle. The seal comes a month later.[/if]
+      effects: [ { set: flag.c5_rec_king }, { set: flag.c5_paid_valdrenne }, { add: { rep.honor: -4, rep.ruthlessness: 3, counter.west_estates: -2 } } ]
+      next: c5_reckoning
+    - id: refuse
+      text: Refuse both. The West will not buy its name with its own flesh.
+      tags: [allies]
+      text_after: |
+        You refuse both, in writing, in the same words. The kings do not reply. The West, when it hears, cheers in every market square from Sauvemer to the sea, and you have never been so loved or felt so alone.
+      effects: [ { add: { counter.west_estates: 2, rep.honor: 1 } } ]
+      next: c5_reckoning
+
+- id: c5_kings_reward
+  chapter: ch5
+  title: The King's Reward
+  checkpoint: true
+  on_enter: [ { advance: { seasons: 2 } } ]
+  text: |
+    The West stayed Adalian, and held at the Pont-aux-Moines, and [if flag.c4_carrow_won]the council of regency in Wendmere, which needs every friend it can find,[else]King Edwin, who needs every friend he can find,[/if] means to reward the man who held it.
+
+    The letter offers you the earldom of the March: Sauvemer, its salt and its castles, in your name and your heirs' for ever, and a seat at the King's council. It is everything a reeve's son in a ditch at Grisolles could have dreamed of. It is also, every lord in the West understands, the end of the West as anything but an Adalian march.
+  choices:
+    - id: accept
+      text: Accept the earldom.
+      tags: [allies, wealth]
+      text_after: You accept. The patent comes under the great seal, with your arms on it, and a herald reads it in the market square at Sauvemer to a crowd that listens in silence and goes home.
+      effects: [ { set: flag.c5_earl }, { station: great_lord }, { add: { counter.court_prince: 2, counter.west_estates: -2 } }, { hold: { id: la_garde, income: 480 } } ]
+      next: c5_reckoning
+    - id: son
+      text: Accept it, and ask that it go to your eldest after you, with the West's liberties written in.
+      tags: [diplomacy, cunning]
+      visible_if: [ heir.eldest.alive ]
+      check: { attr: presence, skill: diplomacy, difficulty: 4, mods: [ { if: counter.court_prince >= 4, add: 1, label: the King knows you } ] }
+      success:
+        text: The King agrees, with a sigh you can hear across the sea. The patent comes with the salt-guilds' old liberties in it, word for word, and your eldest's name below yours.
+        effects: [ { set: flag.c5_earl }, { set: flag.c5_liberties }, { station: great_lord }, { add: { counter.west_estates: 1 } } ]
+        next: c5_reckoning
+      failure:
+        text: The King gives you the earldom and not the liberties. "One thing at a time," his letter says.
+        effects: [ { set: flag.c5_earl }, { station: great_lord } ]
+        next: c5_reckoning
+    - id: refuse
+      text: Refuse it. The West is not yours to take.
+      tags: [allies]
+      text_after: You refuse it, with thanks, and stay what you are. The King does not offer twice. The West does not forget.
+      effects: [ { add: { counter.west_estates: 3, counter.court_prince: -2, rep.honor: 1 } } ]
+      next: c5_reckoning
+
+- id: c5_reckoning
+  chapter: ch5
+  title: The Reckoning of a Life
+  checkpoint: true
+  on_enter:
+    - advance: { seasons: 3 }
+    - if: flag.c5_claim
+      then: [ { add: { counter.pillars: 1 } } ]
+    - if: flag.c5_acclaimed
+      then: [ { add: { counter.pillars: 1 } } ]
+    - if: [ flag.c5_host_decisive, flag.c5_war_won ]
+      then: [ { add: { counter.pillars: 1 } } ]
+  text: |
+    [if flag.c5_exiled]The house in [if flag.c3_lanzi_kin || flag.c4_sent_brese_on]Sarenza[elif flag.c3_coll_wedding || flag.c3_coll_ended_feud]Glenhallow[else]exile[/if] is small, and warm, and full of strangers' voices.[elif flag.c5_attainted]The room they let you keep is small, and has a window on a yard.[else]The hall is full of autumn: rushes, smoke, dogs, the smell of apples.[/if] You are forty-five. Your knees hurt in the mornings, and you cannot read the accounts without holding them at arm's length, and there are more people you remember than people you see.
+
+    [break]
+
+    [if heir.eldest.alive]{heir.eldest.name} is {heir.eldest.ageword}, and comes to you one evening in the hall and sits down across the fire, and you see your own face, younger, and someone else's, and both of them waiting.
+
+    "What do you want me to be?" {heir.eldest.name} says.[else]There is nobody, in the end, to ask you what comes after you. You sit by the fire and think about it anyway.[/if]
+  choices:
+    - id: heir
+      text: "[if heir.eldest.alive]Tell {heir.eldest.name}: what you were not allowed to be. Your own.[else]Think about the ones who came with you.[/if]"
+      tags: [allies]
+      text_after: |
+        [if heir.eldest.alive]"Your own," you say. "Not mine. I was what everyone else needed me to be, from the day I fetched arrows for a farthing a dozen. Be what you need." {heir.eldest.name} looks at you a long while, and then laughs, and says, "That's the worst advice anyone has ever given me," and goes out, and you hear the laugh go down the yard, and it is your father's laugh, or your mother's, and you sit there with it.[else]You think about them: the ones who came up from nothing with you, and the ones who did not come back. You are not alone in the hall. You never were.[/if]
+      effects: [ { add: { heir.eldest.bond: 2 } } ]
+      next: c5_epilogue
+    - id: lord
+      text: "[if heir.eldest.alive]Tell {heir.eldest.name}: a lord. Keep what we have. It cost enough.[else]Think about what you are leaving.[/if]"
+      tags: [cunning]
+      text_after: |
+        [if heir.eldest.alive]"A lord," you say. "Keep what we have. Hold it. It cost more than you know." {heir.eldest.name} nods, the way you nodded at your own father, and you know exactly what that nod means, because you meant it once too.[else]You think about the land, the names on the rolls, the people in the villages who will go on whatever becomes of you. It is something. It may be enough.[/if]
+      effects: [ { add: { heir.eldest.bond: 1 } } ]
+      next: c5_epilogue
+
+- id: c5_epilogue
+  chapter: ch5
+  title: What Became of Them
+  text: |
+    [if flag.c3_married && npc.@spouse.alive]{npc.@spouse.first} outlives you by eleven years, [if flag.c5_married_mahaut || flag.c5_mahaut_queen]and rules the Armance in her own name after you, and is remembered there as the last of Jehanne's line and the best[elif alias.spouse == cecily_fuller || alias.spouse == fiammetta_lanzi]and keeps the books to the end, and leaves the house richer than she found it, and says on her deathbed that you were the only man she ever met who could not be cheated, because you never tried to cheat anyone[elif alias.spouse == mag_coker || alias.spouse == mariot_wood || alias.spouse == nell_laundress || alias.spouse == annot_dyer]and never once in all those years lets a lady at any table forget where she came from, or that she was proud of it[else]and is remembered in the West as a sharp, kind, difficult woman who made the hall a home[/if].[elif flag.c3_married]{npc.@spouse.first} lies in the chancel where you buried her, and in the end you lie beside her.[else]You never married again, or never married at all, and the West, which likes a story, makes several up for you.[/if]
+
+    [if heirs.count >= 1][if heir.eldest.upbringing == church]{heir.eldest.name} becomes, in time, Bishop of Saint-Lys, the first born in the West.[elif heir.eldest.upbringing == arms]{heir.eldest.name} commands the West's horse in the next war, and the one after, and dies old.[elif heir.eldest.upbringing == court || heir.eldest.upbringing == page]{heir.eldest.name} spends a life at courts, and is good at it, and is never quite trusted by anyone, which {heir.eldest.name} says is the point.[elif heir.eldest.temperament == bookish]{heir.eldest.name} writes a chronicle of the West, in which you appear rather more often than strict history would require.[else]{heir.eldest.name} holds what you left, and holds it well, and is remembered as a fair lord, which is rarer than a famous one.[/if][if heirs.count >= 2] {heirs.names}: all of them grow up, which in that age was not a thing to take for granted.[/if][/if] [if heirs.dead >= 1]And {heirs.lastdead}, who did not, is remembered on a stone in the chancel, every year, on the day.[/if]
+
+    [break]
+
+    [if npc.davy_ludd.alive]Davy Ludd [if flag.c3_davy_knighted]dies a knight, as you promised him,[else]dies at the mill-holding you gave him,[/if] at seventy, with Aude and nine grandchildren round him.[/if] [if npc.will_cobb.alive]Will Cobb dies in his chair at a hundred, or near it, still telling the story about the goat at Grisolles, wrongly.[/if] [if npc.wat_coker.alive]Wat Coker dies on his own holding, free, and has carved over his door: "Nobody's man."[/if] [if flag.c4_sheltered_brese && !flag.c5_paid_valdrenne]Thibaut de Brésy [if flag.c5_thibaut_king]reigns eleven years and dies in the saddle, the way he wanted.[else]goes home to the west of Valdrenne when the young King dies, and builds a chapel, and has your arms carved over the door.[/if][/if] [if npc.mahaut_armance.alive && !flag.c5_married_mahaut && !flag.c5_mahaut_queen]Mahaut d'Armance marries, in the end, a lord of the Armance, whom she chooses herself, and writes to you every Christmas until one of you dies.[/if]
+
+    [if estate.temper >= 2]On the manor where you began, they keep your feast-day for two hundred years, without anybody remembering quite why.[elif estate.temper >= 0]On the manor where you began, they remember you as a lord who mostly did as he said.[else]On the manor where you began, they remember you, and say little.[/if]
+  choices:
+    - id: end
+      text: Read what the chroniclers wrote.
+      next: c5_chronicle
+
+- id: c5_chronicle
+  chapter: ch5
+  title: The Chronicle
+  text: |
+    The chroniclers of the West, who were not there, wrote down what they could find out. Some of it is true.
+
+    [if flag.p_wharf_gang || flag.p_saddled_destrier || flag.p_stole_tithe || flag.p_gate_competence || flag.p_gate_debt || flag.p_gate_deed || flag.p_gate_purchase || flag.p_gate_connection || flag.p_family_promise || flag.c1_has_prisoner || flag.c1_raised_at_tourney || flag.c1_raised_by_fever || flag.c1_ancel_pardon || flag.c1_has_means || flag.c1_hired_champion || flag.c1_confessed_ford]Of his youth: [if flag.p_wharf_gang]As a boy he ran with the tanners' boys on the wharf, and never quite stopped. [/if] [if flag.p_saddled_destrier]He saddled a lord's son's destrier when nobody else dared. [/if] [if flag.p_stole_tithe]He stole from a tithe barn once, and was never caught, and confessed it at the end. [/if] [if flag.p_gate_competence]He was taken into a knight's service because he was good at something. [/if] [if flag.p_gate_debt]He was taken into service on a debt called in, and repaid it many times over. [/if] [if flag.p_gate_deed]He was taken into service for a deed done in front of the right man. [/if] [if flag.p_gate_purchase]His father bought his place in a knight's household, and he spent years earning it. [/if] [if flag.p_gate_connection]He came into service through a friend, and never forgot whose. [/if] [if flag.p_family_promise]He made his family a promise when he left home, and kept it. [/if] [if flag.c1_has_prisoner]At the Leven ford he took Coll of Glenhallow prisoner, and that was the beginning of a long story. [/if] [if flag.c1_raised_at_tourney]He was raised to squire at a tourney, from nothing. [/if] [if flag.c1_raised_by_fever]He was raised to squire in a year of flux, when better-born boys were dying. [/if] [if flag.c1_ancel_pardon]He was pardoned with Sir Ancel for the attack on Thorne Hall. [/if] [if flag.c1_has_means]He had his own horse and harness before he was knighted, which few new men can say. [/if] [if flag.c1_hired_champion]He hired a champion to clear Sir Hamon's name. [/if] [if flag.c1_confessed_ford]He confessed the Leven ford to Father Benet, and Benet never told. [/if][/if]
+
+    [if flag.c2_men_from_master || flag.c2_men_from_home || flag.c2_made_list || flag.c2_stripped_road || flag.c2_cut_out_ship || flag.c2_kept_out_of_breach || flag.c2_eve_letter || flag.c2_garrison || flag.c2_stayed_for_grants || flag.c2_saw_ewan_work || flag.c2_grant_ormel]Of the first war: [if flag.c2_men_from_master]His first followers were lent him by his master. [/if] [if flag.c2_men_from_home]He brought a man from home to the war with him. [/if] [if flag.c2_made_list]After Grisolles he helped the heralds list the prisoners, and knew every name. [/if] [if flag.c2_stripped_road]On the road back from Grisolles he stripped the villages to feed his men, and the Armance remembered. [/if] [if flag.c2_cut_out_ship]He cut out a Valdrennish ship from Sauvemer harbour under the guns. [/if] [if flag.c2_kept_out_of_breach]He talked his company out of the storm of the breach, and they lived. [/if] [if flag.c2_eve_letter]He wrote home the night before Les Salines. [/if] [if flag.c2_garrison]He kept the Sauvemer garrison through the truce. [/if] [if flag.c2_stayed_for_grants]He stayed in Sauvemer for the King's grants. [/if] [if flag.c2_saw_ewan_work]He saw what Black Ewan did in the March, and did not forget. [/if] [if flag.c2_grant_ormel]He was given the poorest grant in the West, Ormel, because nobody knew his name yet. [/if][/if]
+
+    [if flag.c3_kept_apart || flag.c3_shut || flag.c3_burned_houses || flag.c3_physician || flag.c3_sent_money || flag.c3_sent_for_kin || flag.c3_lost_fields || flag.c3_refused_settlers || flag.c3_claim_law || flag.c3_claim_won || flag.c3_raid_sheltered || flag.c3_hunted_bandits || flag.c3_unrest_met || flag.noble_marriage || flag.c3_kin_against || flag.c3_married_against_kin || flag.c3_hard_terms || flag.c3_hard_bargain || flag.c3_gave_meadows || flag.c3_corbie_kin || flag.c3_border_peace || flag.c3_stood_by_wife || flag.c3_stayed_unwed || flag.c3_refused_brese || flag.c3_nursed_child || flag.c3_ravell_sold_away || flag.c3_walled_home || flag.c3_wat_went_home || flag.c3_wat_with_you]Of the manor: [if flag.c3_kept_apart]When the Mottle came, he kept his men apart from the village. [/if] [if flag.c3_shut]When the Mottle came, he shut his manor, and nobody came in or went out. [/if] [if flag.c3_burned_houses]When the Mottle came, he burned the houses of the dead. [/if] [if flag.c3_physician]When the Mottle came, he brought a Sarenzan physician at any cost. [/if] [if flag.c3_sent_money]In the plague year he sent money home. [/if] [if flag.c3_sent_for_kin]After the plague he sent for his kin to live on his manor. [/if] [if flag.c3_lost_fields]In the plague year he let the far fields go unreaped. [/if] [if flag.c3_refused_settlers]He refused the Crown's settlers. [/if] [if flag.c3_claim_law]He fought the old lord's kin at law. [/if] [if flag.c3_claim_won]He kept his manor against the old lord's kin. [/if] [if flag.c3_raid_sheltered]In the border raid he got every soul on the manor to shelter. [/if] [if flag.c3_hunted_bandits]He hunted down the last of the Iron Company in the marshes. [/if] [if flag.c3_unrest_met]He faced his own people when they rose at his gate. [/if] [if flag.noble_marriage]He married into a gentle house. [/if] [if flag.c3_kin_against]He married a widow against her own kin's will. [/if] [if flag.c3_married_against_kin]His bride settled her family's refusal herself. [/if] [if flag.c3_hard_terms]He took an arranged bride on hard terms. [/if] [if flag.c3_hard_bargain]He drove a hard bargain over his marriage contract. [/if] [if flag.c3_gave_meadows]He gave the meadows at the Pont-aux-Moines for his bride. [/if] [if flag.c3_corbie_kin]He married into the house of Corbie, whose son he had once held for ransom. [/if] [if flag.c3_border_peace]He made peace on the border by his marriage. [/if] [if flag.c3_stood_by_wife]He stood by his wife against the county, and was not asked back to dinner. [/if] [if flag.c3_stayed_unwed]He did not marry when other men did. [/if] [if flag.c3_refused_brese]He refused the Brésy match. [/if] [if flag.c3_nursed_child]He nursed his own child through a winter fever. [/if] [if flag.c3_ravell_sold_away]He let Ravell's land go to a stranger. [/if] [if flag.c3_walled_home]He paid for a wall and a tower at home against Black Ewan. [/if] [if flag.c3_wat_went_home]Wat Coker left his service for the rising, and he let him go. [/if] [if flag.c3_wat_with_you]He took Wat Coker with him to talk to the rebels. [/if][/if]
+
+    [if flag.c4_spoke_council || flag.c4_met_edwin || flag.c4_priest_holds || flag.c4_man_holds || flag.c4_full_company || flag.c4_war_debt || flag.c4_good_company || flag.c4_held_place || flag.c4_asked_mahaut || flag.c4_backed_carrow_match || flag.c4_backed_lacy || flag.c4_caught_steward || flag.c4_kept_home || flag.c4_page_prince || flag.c4_rival_settled || flag.c4_sarenzan_clerk || flag.c4_spoke_for_mahaut || flag.c4_stood_by_king || flag.c4_wat_land || flag.c4_at_deathbed || flag.c4_broke_malet || flag.c4_daughter_chose || flag.c4_daughter_matched || flag.c4_gave_up_brese || flag.c4_knelt_late || flag.c4_parleyed_wythen || flag.c4_spoke_for_adalia || flag.c4_wythen_bloody || flag.c4_baron_by_acclaim || flag.c4_brought_men || flag.c4_brought_name]Of the great lord: [if flag.c4_spoke_council]He spoke for the war in the West at the great council. [/if] [if flag.c4_met_edwin]He went to Prince Edwin's rooms when the Prince was nobody's king. [/if] [if flag.c4_priest_holds]He left his manor in the priest's hands through the Second War. [/if] [if flag.c4_man_holds]He left one of his own men to hold his manor through the Second War. [/if] [if flag.c4_full_company]He raised a full company for the Second War. [/if] [if flag.c4_war_debt]He borrowed to raise it. [/if] [if flag.c4_good_company]He raised a small company of veterans, and they stood. [/if] [if flag.c4_held_place]At Mortefontaine he held his place in the line when nobody told him to move. [/if] [if flag.c4_asked_mahaut]He asked for Mahaut d'Armance himself, when she was nobody's but the King's. [/if] [if flag.c4_backed_carrow_match]He backed Carrow's grandson for Mahaut, and Mahaut kept a list. [/if] [if flag.c4_backed_lacy]He backed the Prince's man for Mahaut, and Mahaut kept a list. [/if] [if flag.c4_caught_steward]He caught a thieving steward. [/if] [if flag.c4_kept_home]He kept his eldest at home and taught what he knew. [/if] [if flag.c4_page_prince]He sent his eldest son to the Prince as a page. [/if] [if flag.c4_rival_settled]He settled with his boyhood rival. [/if] [if flag.c4_sarenzan_clerk]He kept a Sarenzan clerk to audit his stewards. [/if] [if flag.c4_spoke_for_mahaut]He spoke in council for Mahaut's right to choose. [/if] [if flag.c4_stood_by_king]He stood by King Aldred while he was dying. [/if] [if flag.c4_wat_land]He gave Wat Coker his family's holding back. [/if] [if flag.c4_at_deathbed]He reached his old master's deathbed in time. [/if] [if flag.c4_broke_malet]At Wythen Heath he broke Malet's knights. [/if] [if flag.c4_daughter_chose]He let his daughter choose her own husband. [/if] [if flag.c4_daughter_matched]He made his daughter's match for her. [/if] [if flag.c4_gave_up_brese]He handed the Brésy fugitives to the Valdrennish King. [/if] [if flag.c4_knelt_late]He knelt late to King Edwin. [/if] [if flag.c4_parleyed_wythen]He rode out between two armies at Wythen Heath under a white rod. [/if] [if flag.c4_spoke_for_adalia]At Lannec he spoke for Adalia. [/if] [if flag.c4_wythen_bloody]He fought at Wythen Heath, which nobody won. [/if] [if flag.c4_baron_by_acclaim]The West called him baron before any king did. [/if] [if flag.c4_brought_men]He came to the Estates at Lannec with his company armed. [/if] [if flag.c4_brought_name]He came to the Estates at Lannec with nothing but his name. [/if][/if]
+
+    [if flag.c5_spoke_estates || flag.c5_guilds_with_you || flag.c5_used_knife || flag.c5_promised_hales || flag.c5_free_duchy || flag.c5_led_charge || flag.c5_reserve_won || flag.c5_gave_sauvemer || flag.c5_liberties || flag.c5_on_losing_side]Of the crown: [if flag.c5_spoke_estates]He spoke to the whole hall at the Estates, in both tongues. [/if] [if flag.c5_guilds_with_you]The salt guilds stood with him. [/if] [if flag.c5_used_knife]He used a dead man's treason to turn six votes. [/if] [if flag.c5_promised_hales]He promised the King's officer he would speak for the King's peace. [/if] [if flag.c5_free_duchy]He stood for a free duchy, owing nothing to anyone. [/if] [if flag.c5_led_charge]He led the charge over the Pont-aux-Moines. [/if] [if flag.c5_reserve_won]His reserve won the Pont-aux-Moines. [/if] [if flag.c5_gave_sauvemer]He gave the Sauvemer march to Adalia to buy the West its name. [/if] [if flag.c5_liberties]He had the West's liberties written into his own patent. [/if] [if flag.c5_on_losing_side]He was on the losing side, at the end. [/if][/if]
+  choices:
+    - id: end
+      text: Close the book.
+      next:
+        switch:
+          - { if: flag.c5_exiled, go: c5_end_exile }
+          - { if: flag.c5_attainted, go: c5_end_ruin }
+          - { if: [ flag.c5_crowned_self, counter.pillars >= 2, { any: [ flag.c5_rec_church, flag.c5_rec_sarenza, flag.c5_rec_king ] }, "!flag.c5_war_lost", { any: [ heirs.count >= 1, npc.@spouse.alive ] } ], go: c5_end_crowned }
+          - { if: [ { any: [ flag.c5_crowned_other, flag.c5_crowned_self ] }, "!flag.c5_war_lost", { any: [ counter.estates >= 8, flag.c5_host_decisive ] } ], go: c5_end_kingmaker }
+          - { if: [ station >= great_lord, heir.eldest.alive, heir.eldest.age >= 14, "!flag.c5_war_lost" ], go: c5_end_founder }
+        default: c5_end_diminished
+
+- id: c5_end_crowned
+  chapter: ch5
+  kind: ending
+  ending: crowned
+  title: The Crown of the West
+  text: |
+    You are crowned again at Saint-Lys, properly this time, with the Pontiff's letter read aloud and the ambassadors of [if flag.c5_rec_sarenza]Sarenza, [/if][if flag.c5_rec_king]a king who fought you, [/if]and every lord of the West in the nave. [if flag.c5_married_mahaut]Mahaut is crowned beside you, and the Armance blood and the Salt sword go into the chronicles together.[/if]
+
+    You reign [if heirs.count >= 1]nineteen years, and die in your bed, and {heir.eldest.name} is crowned after you without anyone thinking to object[else]nineteen years, and die in your bed, and the Estates choose your successor, as they chose you[/if]. The West is a kingdom for three hundred years. Its chroniclers, who like a story, make you a lost prince, a Valdrennish bastard, a son of the old dukes. None of them will write down what you were.
+
+    You were [if background == reeve]a reeve's son[elif background == burgess]a wool merchant's son[elif background == archer]an archer's son[else]a tirewoman's son[/if].
+
+- id: c5_end_kingmaker
+  chapter: ch5
+  kind: ending
+  ending: kingmaker
+  title: The Kingmaker
+  text: |
+    [if flag.c5_crowned_self]Your crown is never quite recognised, and never quite taken away. In the end you set it on the head of [if flag.c5_married_mahaut]Mahaut, who has the blood for it,[else]a younger man with a better claim,[/if] and keep the thing that matters, which is the hand behind the throne.[elif flag.c5_mahaut_queen]Queen Mahaut of the West reigns thirty-one years, and rules well, and listens to you, mostly. When she does not, the West notices.[else]King Thibaut of the West reigns eleven years, a soldier's reign, and you are the man who made him, and every man in the West knows it, including Thibaut.[/if]
+
+    You never wear a crown. You never needed one. Kings come to your hall for advice, and go away with orders, and think they were their own idea.
+
+    You were [if background == reeve]a reeve's son[elif background == burgess]a wool merchant's son[elif background == archer]an archer's son[else]a tirewoman's son[/if].
+
+- id: c5_end_founder
+  chapter: ch5
+  kind: ending
+  ending: founder
+  title: The Founder of a House
+  text: |
+    [if flag.c5_earl]Your arms hang in the King's chapel at Wendmere, among the earls.[elif flag.c5_west_free]Your arms hang in the hall at Lannec, among the great lords of the West.[else]Your arms hang in your own hall, over the fire.[/if] {heir.eldest.name} holds what you held after you, and the house you founded holds it for two hundred years, through four kings and two plagues and a civil war, and marries into half the great houses of [if flag.c5_west_free]the West[else]Adalia[/if].
+
+    The heralds give your family a pedigree that begins with a crusader. Your great-grandchildren believe it. None of it is true. All of it is better than true.
+
+    You were [if background == reeve]a reeve's son[elif background == burgess]a wool merchant's son[elif background == archer]an archer's son[else]a tirewoman's son[/if].
+
+- id: c5_end_diminished
+  chapter: ch5
+  kind: ending
+  ending: diminished
+  title: A Lord, Diminished
+  text: |
+    [if flag.c5_submitted]You keep your head, and your first manor, and little else.[elif flag.c5_war_lost]The war took most of what you had built.[else]Greater men decided the shape of the world, and you were not, in the end, among them.[/if] You live out your years on [if flag.c2_granted_kerval]Kerval[elif flag.c2_granted_marsalin]Marsalin[else]Ormel[/if], with the dogs on the table again, and go to the manor court, and judge pigs and boundary stones, and are a good lord to two hundred people who will remember you kindly.
+
+    It is not nothing. Some nights, by the fire, you think it may have been the best of it.
+
+    You were [if background == reeve]a reeve's son[elif background == burgess]a wool merchant's son[elif background == archer]an archer's son[else]a tirewoman's son[/if].
+
+- id: c5_end_exile
+  chapter: ch5
+  kind: ending
+  ending: exile
+  title: Exile
+  text: |
+    [if flag.c3_lanzi_kin || flag.c4_sent_brese_on]You live out your years in Sarenza, in a house above the harbour, as the guest of a bank, and are asked to dinners as a curiosity: the lord who nearly made a kingdom.[elif flag.c3_coll_wedding || flag.c3_coll_ended_feud]You live out your years in Caldmoor, at Glenhallow, as Coll's guest, among the people your father fought at Harrow Ford, and they treat you better than your own did.[else]You live out your years abroad, in rented rooms, among other men's wars.[/if] Letters come from the West, fewer every year.
+
+    On clear evenings you walk down to the harbour and look west, where you cannot see anything.
+
+    You were [if background == reeve]a reeve's son[elif background == burgess]a wool merchant's son[elif background == archer]an archer's son[else]a tirewoman's son[/if].
+
+- id: c5_end_ruin
+  chapter: ch5
+  kind: ending
+  ending: ruin
+  title: Ruin
+  text: |
+    Your name is struck from the rolls. Your arms are broken in the hall at [if flag.c5_west_adalian]Cordelle[else]Wendmere[/if] by a herald with a hammer, in front of the court. Your lands go to men who never saw them.
+
+    You live, which is a kind of mercy, and grow old in a small room with a window on a yard, and are visited by fewer people every year[if heirs.count >= 1], and {heirs.names} [if heirs.count >= 2]take[else]takes[/if] other names to get on in the world, and you tell them to[/if].
+
+    You were [if background == reeve]a reeve's son[elif background == burgess]a wool merchant's son[elif background == archer]an archer's son[else]a tirewoman's son[/if]. In the end, so you were again.

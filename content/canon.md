@@ -259,3 +259,9 @@ A single Church across all realms, under **the Pontiff**. For two generations th
 - **Year 40, autumn:** the Valdrennish king, now 18, arrests the Constable Gaucelin de Brésy, who dies in the Châtelet. The Brésy are put out of the King's peace, and Thibaut flees west.
 - **Year 41, spring:** the Sauvemer salt guilds refuse both salt taxes. At Mahaut's feast-day at Lannec, the western lords talk of a duke who answers to nobody, "or more than a duke."
 
+## Chapter 5 events (years 42-46)
+- **Whitsun year 42:** the Estates of the West at Lannec. The answer depends on the run: Adalian, a free duchy, Queen Mahaut, King Thibaut, or the player crowned, alone or with Mahaut. The Bishop Évrard of Saint-Lys, ninety, crowns whoever is chosen.
+- **Years 43-44:** the War of the West. King Amaury VII of Valdrenne, nineteen, comes over the hills; if the West declared itself free, Adalia comes up the Sauvemer road as well. Decided at the Pont-aux-Moines, the border bridge.
+- **Year 45:** recognition from the Church, the Signory of Sarenza, or a king's price. Or, for an Adalian West, the earldom of the March.
+- **Year 46:** the reckoning of a life, and the end.
+

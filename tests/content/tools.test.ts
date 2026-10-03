@@ -33,10 +33,10 @@ describe('validator', () => {
     ] }]);
     expect(validate(c).issues.some((i) => i.message.includes('without a warn'))).toBe(true);
   });
-  it('runs structural checks for written chapters and leaves later ones pending', () => {
+  it('runs structural checks for every chapter, with every ending reachable', () => {
     const r = validate(realContent());
     expect(r.structural.filter((s) => s.name.includes('squire')).every((s) => s.status === 'PASS')).toBe(true);
-    expect(r.structural.find((s) => s.name.includes('crowned'))!.status).toBe('PENDING');
+    expect(r.structural.filter((s) => s.name.includes('ending reachable')).every((s) => s.status === 'PASS')).toBe(true);
   });
 });
 

@@ -1,0 +1,248 @@
+# Chapter 5, Act II: the War of the West. Spring year 43 to autumn year 44 (Edwin 4-5). Age 42-43.
+# Whoever the West chose, someone comes for it. Counter ww (the war) is built by
+# the plan, the muster and the battle at the Pont-aux-Moines; at the end it is
+# won (with his host decisive if he commanded and turned it), held, or lost.
+# A lost war leads to the defeat scene: exile, submission (diminished or ruin),
+# or a last stand.
+
+- id: c5_war_opens
+  chapter: ch5
+  title: Who Comes for the West
+  checkpoint: true
+  on_enter:
+    - advance: { seasons: 4 }
+    - meet: amaury_younger
+    - if: { any: [ flag.c5_crowned_self, flag.c4_great_lord ] }
+      then: [ { set: flag.c5_commands } ]
+  text: |
+    [if flag.c5_west_free]Neither king lets it go.
+
+    [if flag.c4_carrow_won]From the north, the council of regency in Wendmere's name sends four thousand men under the black boar's heir.[else]From the north, King Edwin sends four thousand men under his new marshal, with orders to bring the West back to its allegiance and its rebels to Wendmere in chains.[/if] From the east, over the hills, King Amaury the Younger of Valdrenne comes in person with the royal host, nineteen and furious, to take back the provinces his great-grandfather lost and show the world he can win a battle. Between them is the West: the Armance, the Salt, the towns, [if flag.c5_brese_pact || flag.c4_sheltered_brese]Thibaut's Brésy knights,[/if] and whoever will stand.[else]The West stays Adalian, and King Amaury the Younger of Valdrenne, nineteen and furious, comes over the hills with the royal host to take back the provinces his great-grandfather lost. King Edwin, with Adalia still split, sends letters, and a few hundred men, and his confidence in his loyal lords of the West.[/if]
+
+    [break]
+
+    [if flag.c5_crowned_self]It is your war. You are the West's king, by the Estates' voice, and every lord in it looks to you for orders.[elif flag.c5_commands]The Estates give you the command of the West's host, because there is nobody else they trust with it.[else]You command your own company, under the lords the Estates choose.[/if] You have the winter to get ready.
+  choices:
+    - id: march
+      text: Fortify the march. Make them break their teeth on walls before they reach the open country.
+      tags: [martial, wealth]
+      text_after: |
+        You spend the winter on walls: [if holding.la_garde.held]La Garde first, re-roofed and provisioned for a year[else]the towers along the Sauvemer road[/if], then the fords, then the bridges, with every mason in the West and every penny you can find. When the spring comes, the enemy will have to take three castles before they can reach a single field.
+      effects: [ { add: { counter.ww: 1, res.coin: -960 } }, { if: { any: [ holding.la_garde.held, estate.defence >= 3, flag.c4_warden_march ] }, then: [ { add: { counter.ww: 1 } } ] } ]
+      next: c5_war_muster
+    - id: towns
+      text: Raise the salt towns. Every boiler, carter and fisherman who can hold a pike.
+      tags: [allies]
+      text_after: |
+        You ride from town to town through the winter and speak in every market square. [if counter.west_estates >= 5]They come: salt-boilers, eel-men, carters, fishermen, the sons of men who stood at Les Salines on the other side, five thousand of them with pikes and bills and a grudge against every tax-collector who ever lived.[else]Some of them come. Not as many as you hoped. The towns have long memories, and not all of them are kind to you.[/if]
+      effects: [ { add: { counter.ww: 1 } }, { if: counter.west_estates >= 5, then: [ { add: { counter.ww: 1, res.men: 60 } } ] } ]
+      next: c5_war_muster
+    - id: divide
+      text: Divide them. Write to each king that the other is the real enemy.
+      tags: [cunning, diplomacy]
+      check: { attr: wits, skill: intrigue, difficulty: 5, mods: [ { if: flag.c4_counted_council || flag.c4_counted_lannec, add: 1, label: you know who counts }, { if: flag.c5_west_adalian, add: 1, label: Adalia is on your side already } ] }
+      success:
+        text: |
+          You write all winter: to Wendmere, to Cordelle, to the Bishop, to the Lanzi. By spring, King Edwin's marshal is sure Amaury means to take Sauvemer for himself, and Amaury's council is sure Edwin means to take the Armance, and the two armies that were to crush the West between them are marching at different speeds, by different roads, watching each other as much as you.
+        effects: [ { set: flag.c5_divided_kings }, { add: { counter.ww: 2 } } ]
+        next: c5_war_muster
+      failure:
+        text: |
+          You write all winter, and some of it is believed, and most of it is not. A letter of yours turns up in Cordelle's council, read aloud, to laughter.
+        next: c5_war_muster
+
+- id: c5_war_muster
+  chapter: ch5
+  title: The Muster
+  text: |
+    In the spring the West mustered on the meadows below Lannec: [if counter.ww >= 2]more men than anyone expected[else]fewer men than anyone hoped[/if], under more banners than anyone could name. [if flag.c4_sheltered_brese || flag.c5_brese_pact]Thibaut's Brésy knights are there, in their own colours, by the hundred now.[/if] [if flag.c4_iron_core && npc.ulric_rotbart.alive]Rotbart's old Iron Company men are there too, grey and wicked and paid.[/if]
+
+    [if heir.eldest.alive && heir.eldest.sex == son]{heir.eldest.name} is {heir.eldest.ageword}, and [if heir.eldest.upbringing == arms || heir.eldest.upbringing == page]has been trained to this since he could walk[elif heir.eldest.upbringing == church]has left the abbey without asking anyone, and is here, in borrowed harness[else]is here, in harness that fits him for the first time[/if].[/if] [if flag.c3_married && npc.@spouse.alive]Your wife has come to Lannec to see you off, and stands at the edge of the meadow with the other women, and does not wave.[/if]
+
+    What the West lacks is not courage. It is something else.
+  choices:
+    - id: bows
+      text: Crossbowmen. Hire every Sarenzan crossbow the Lanzi can ship.
+      tags: [wealth]
+      requires: [ { any: [ res.coin >= 2400, flag.c3_lanzi_kin ] } ]
+      label: "Requires Coin £10, or the Lanzi in your family"
+      text_after: |
+        [if flag.c3_lanzi_kin]Your wife writes one letter to her cousins in Sarenza, in the bank's private cipher. Six galleys come round the cape in April with eight hundred crossbowmen in red, and a bill you are not to see until after the war.[else]You pay the Lanzi in Sauvemer what they ask, which is a great deal, and six galleys come round the cape in April with eight hundred crossbowmen in red.[/if] Nobody in the West has ever seen so many. Nobody on the other side will have, either.
+      effects: [ { add: { counter.ww: 2 } }, { if: { not: flag.c3_lanzi_kin }, then: [ { add: { res.coin: -2400 } } ] } ]
+      next: c5_bridge
+    - id: horse
+      text: Horse. Put the Armance knights and the Brésy together, under one banner.
+      tags: [martial, diplomacy]
+      check: { attr: presence, skill: command, difficulty: 4, mods: [ { if: flag.c5_armance_with_you, add: 1, label: the Armance trusts you }, { if: flag.c4_sheltered_brese || flag.c5_brese_pact, add: 1, label: the Brésy owe you }, { if: flag.c5_crowned_self, add: 1, label: you are their king } ] }
+      success:
+        text: |
+          The Armance knights and the Brésy have been killing each other for three generations. You put them in one line, under one banner, and make them ride together every day for a month, and by May they are cursing each other on the march like brothers. Eleven hundred lances. The West has never fielded a horse like it.
+        effects: [ { add: { counter.ww: 2 } } ]
+        next: c5_bridge
+      failure:
+        text: |
+          The Armance and the Brésy ride on the same field. They do not ride as one. You hope it will be enough.
+        effects: [ { add: { counter.ww: 1 } } ]
+        next: c5_bridge
+    - id: ground
+      text: Ground. Choose where the battle will be, and make them come to you.
+      tags: [cunning, learning]
+      check: { attr: wits, skill: tactics, difficulty: 4, mods: [ { if: flag.c4_scouted || flag.c4_found_bog, add: 1, label: you have done this before }, { if: flag.c1_watch_rode || flag.c2_found_ford, add: 1, label: you know fords } ] }
+      success:
+        text: |
+          You choose the Pont-aux-Moines: the old bridge on the border, the meadows either side of it, the river in front and the marsh on the left. [if flag.c3_brese_kin]You were married on that bridge once.[/if] Whoever comes for the West will have to come over it, or round it through the marsh. You spend a month making both as expensive as you can.
+        effects: [ { set: flag.c5_chose_ground }, { add: { counter.ww: 2 } } ]
+        next: c5_bridge
+      failure:
+        text: |
+          You choose the Pont-aux-Moines, and so, it turns out, does the enemy, who gets there first.
+        next: c5_bridge
+
+- id: c5_bridge
+  chapter: ch5
+  title: The Pont-aux-Moines
+  checkpoint: true
+  on_enter:
+    - advance: { seasons: 1 }
+    - if: [ flag.c5_west_free, "!flag.c5_divided_kings" ]
+      then: [ { add: { counter.ww: -2 } } ]
+  text: |
+    They come at midsummer, as everyone always does. [if flag.c5_divided_kings]Only one army comes, in the end: King Amaury's. The Adalians, two days behind, stop to watch.[elif flag.c5_west_adalian]King Amaury's host comes over the hills alone, twelve thousand strong.[else]Both come: King Amaury over the hills, and the Adalians up the Sauvemer road, a day apart, and the West between them at the Pont-aux-Moines.[/if]
+
+    [break]
+
+    It is a long day. You will remember all of it and be able to describe almost none. [if counter.ww >= 3]For most of it the West holds: the bridge, the meadows, the line of the river.[else]For most of it the West gives ground, slowly, fighting for every yard of meadow.[/if] And in the late afternoon, the thing that decides it: [if flag.c5_west_adalian]Amaury's household knights, the best in Valdrenne, come over the bridge on foot, in close order, straight at the banner of the West.[else]Amaury's household knights, the best in Valdrenne, come over the bridge on foot, straight at the banner of the West, while the Adalian van comes up the road behind you.[/if]
+
+    [if heir.eldest.alive && heir.eldest.sex == son]{heir.eldest.name} is with the reserve, behind the river-bank, with forty lances, waiting for your word.[/if]
+  choices:
+    - id: lead
+      text: Lead the counter-charge yourself, at the head of everything you have.
+      tags: [martial]
+      lethal: true
+      warn: Valdrenne's household knights, on a bridge. Without armour, or carrying a serious wound, you could die here.
+      check: { attr: strength, skill: command, difficulty: 6, mods: [ { if: counter.ww >= 3, add: 1, label: the day is going your way }, { if: counter.ww >= 5, add: 1, label: the West is ready }, { if: armour >= 2, add: 1, label: good harness }, { if: trait.veteran, add: 1, label: you have done this before }, { if: flag.c5_crowned_self, add: 1, label: they are following their king } ] }
+      success:
+        text: |
+          You go over the bridge at the head of everything you have, and the West comes with you, and Amaury's household knights, who have never once in their lives been charged by men on foot, break on the far bank and go back into the press of their own army and break that too. You see the royal banner of Valdrenne go down in the river. By dusk the Valdrennish host is a rout on the road to the hills, and you are standing on the Pont-aux-Moines with your sword broken and your voice gone, and the West is shouting your name.
+        effects: [ { set: flag.c5_led_charge }, { add: { counter.ww: 3, res.renown: 4 } }, { casualties: { men: 15, named: 1 } }, { if: flag.c5_commands, then: [ { set: flag.c5_host_decisive } ] } ]
+        next: c5_war_after
+      partial:
+        text: |
+          You go over the bridge, and they hold you, and you hold them, and in the end it is the reserve that tips it, and the Valdrennish go back over the hills in good order, beaten, not broken. You come off the bridge with your arm in a sling and twenty of your men in the river.
+        effects: [ { add: { counter.ww: 1, res.renown: 2 } }, { casualties: { men: 20, named: 1 } }, { injury: arrow_wound } ]
+        next: c5_war_after
+      failure:
+        text: |
+          [if armour >= 1 && !injured]You go over the bridge and the household knights meet you in the middle of it, and you go down, and they go over you, and your harness holds, and you wake in the evening in a fisherman's hut with your ribs strapped and the battle over.[else]You go over the bridge and the household knights meet you in the middle of it, and you go down on the old stones of the Pont-aux-Moines and do not get up.[/if]
+        effects:
+          - if: [ armour >= 1, "!injured" ]
+            then: [ { injury: crushed_ribs }, { casualties: { men: 25, named: 1 } } ]
+            else: [ { die: "Killed on the Pont-aux-Moines, leading the West against the King of Valdrenne" } ]
+        next: c5_war_after
+    - id: reserve
+      text: "[if heir.eldest.alive && heir.eldest.sex == son]Send {heir.eldest.name} and the reserve into their flank.[else]Send the reserve into their flank.[/if]"
+      tags: [cunning, martial]
+      check: { attr: wits, skill: tactics, difficulty: 5, mods: [ { if: flag.c5_chose_ground, add: 2, label: you chose this ground }, { if: counter.ww >= 3, add: 1, label: the day is going your way } ] }
+      success:
+        text: |
+          [if heir.eldest.alive && heir.eldest.sex == son]You send the word, and {heir.eldest.name} takes the reserve out of the river-bank at the gallop, forty lances in a wedge with your son at the point, and hits the household knights in the flank as they come off the bridge.[else]You send the reserve out of the river-bank at the gallop, and it hits the household knights in the flank as they come off the bridge.[/if] It is the best-timed charge you have ever seen. The bridge is choked with Valdrennish dead by nightfall, and the West holds the field.
+        effects: [ { set: flag.c5_reserve_won }, { add: { counter.ww: 3, res.renown: 2 } }, { if: heir.eldest.alive, then: [ { add: { heir.eldest.bond: 2 } } ] }, { if: flag.c5_commands, then: [ { set: flag.c5_host_decisive } ] } ]
+        next: c5_war_after
+      failure:
+        text: |
+          [if heir.eldest.alive && heir.eldest.sex == son]{heir.eldest.name} takes the reserve out too soon, and the household knights see it coming and turn, and you watch the wedge break against them from the other side of the river.[else]The reserve goes too soon, and the household knights see it coming and turn, and you watch it break against them from the other side of the river.[/if]
+        effects:
+          - add: { counter.ww: -1 }
+          - casualties: { men: 20, named: 0 }
+          - if: [ heir.eldest.alive, heir.eldest.sex == son ]
+            then: [ { chance: 25, then: [ { heir_dies: eldest }, { set: flag.c5_heir_killed } ] } ]
+        next: c5_war_after
+    - id: hold
+      text: Hold the bank. Let them break themselves on it.
+      tags: [allies, martial]
+      check: { attr: endurance, skill: command, difficulty: 4, mods: [ { if: counter.ww >= 3, add: 1, label: the day is going your way }, { if: flag.c5_chose_ground, add: 1, label: you chose this ground } ] }
+      success:
+        text: |
+          You hold the bank. They come over the bridge three times and three times the West throws them back into the river, and at dusk they stop coming. No rout: a wall, and they could not get over it.
+        effects: [ { add: { counter.ww: 2, res.renown: 1 } }, { casualties: { men: 12, named: 0 } } ]
+        next: c5_war_after
+      failure:
+        text: |
+          The bank does not hold. Not all at once: a yard, then another, then the meadow, then the road. By nightfall the West is falling back on Lannec, and the bridge is theirs.
+        effects: [ { add: { counter.ww: -1 } }, { casualties: { men: 18, named: 1 } } ]
+        next: c5_war_after
+
+- id: c5_war_after
+  chapter: ch5
+  title: After the Bridge
+  on_enter:
+    - if: counter.ww >= 6
+      then: [ { set: flag.c5_war_won } ]
+      else:
+        - if: counter.ww >= 3
+          then: [ { set: flag.c5_war_held } ]
+          else: [ { set: flag.c5_war_lost }, { set: flag.c5_on_losing_side } ]
+  text: |
+    [if flag.c5_war_won]The Pont-aux-Moines is a victory, and the kind that ends wars. King Amaury goes back over the hills with a third of his host and none of his reputation[if !flag.c5_west_adalian], and the Adalian van, seeing which way the river is running, turns round on the Sauvemer road and goes home[/if]. [if flag.c5_host_decisive]Men will say for a hundred years that it was your doing. Some of them will even be right.[/if][elif flag.c5_war_held]The Pont-aux-Moines is not a victory. It is a stopping. Amaury goes back over the hills because he cannot get over the bridge, and [if !flag.c5_west_adalian]the Adalians sit on the Sauvemer road all summer and do not attack, and [/if]the West is still the West at the end of it, bled white, and free [if flag.c5_west_adalian]of Valdrenne[else]for now[/if].[else]The Pont-aux-Moines is lost. The West falls back on Lannec and then past it, and by Michaelmas [if flag.c5_west_adalian]Valdrennish banners fly over half the Armance[else]Valdrennish banners fly over the Armance and Adalian ones over the Salt, and the two kings are arguing over the carcass[/if].[/if]
+
+    [break]
+
+    [if flag.c5_heir_killed]They bring {heirs.lastdead} back from the far bank in the evening, across a horse. You sent him. You will always have sent him.[elif heir.eldest.alive && heir.eldest.sex == son]{heir.eldest.name} finds you on the bank at dusk, filthy, alive, and shaking, and sits down beside you without a word, and you put your arm round him, and neither of you says anything until the fires are lit.[/if]
+  choices:
+    - id: on
+      text: "[if flag.c5_war_lost]Face what comes.[else]Go on.[/if]"
+      next: { switch: [ { if: flag.c5_war_lost, go: c5_defeat }, { if: flag.c5_west_free, go: c5_recognition } ], default: c5_kings_reward }
+
+- id: c5_defeat
+  chapter: ch5
+  title: The Losing Side
+  checkpoint: true
+  text: |
+    In the autumn the victors come for the men who led the West, and you are high on every list.
+
+    [if flag.c5_crowned_self]A crowned rebel is the worst kind. There will be no terms for you. There may be terms for your children, if you are not there to be hanged in front of them.[elif flag.c5_west_adalian]The Valdrennish want you for holding the West against them. They are offering a price for you in every port.[else]Both kings want you. Each has a gallows ready, and a list of your lands and who will have them.[/if]
+
+    [break]
+
+    [if flag.c3_lanzi_kin || flag.c4_sent_brese_on]A Lanzi galley is in the harbour at Sauvemer, and its master has orders to take you to Sarenza, from someone who remembers you.[/if] [if flag.c3_coll_wedding || flag.c3_coll_ended_feud]A letter in Latin comes from Glenhallow: there is a place in Caldmoor for a man who was fair to Coll.[/if]
+  choices:
+    - id: flee
+      text: Take ship, with your family, and go into exile.
+      tags: [yield]
+      text_after: |
+        You go at night, from [if flag.c2_granted_marsalin]the salt-wharf below Marsalin[else]a fishing-beach below Sauvemer[/if], with [if flag.c3_married && npc.@spouse.alive]your wife and [/if][if heirs.count >= 1]{heirs.names} and [/if]what you can carry, and stand at the stern and watch the West go grey and then go dark.
+      effects: [ { set: flag.c5_exiled } ]
+      next: c5_reckoning
+    - id: submit
+      text: Go to the victor's camp and submit, on your knees, and take what terms they give.
+      tags: [allies, diplomacy]
+      check: { attr: presence, skill: diplomacy, difficulty: 5, mods: [ { if: counter.court_prince >= 4 && !flag.c5_crowned_self, add: 2, label: the King remembers you }, { if: flag.c5_west_adalian, add: 1, label: you held the West for Adalia }, { if: res.coin >= 2400, add: 1, label: you can pay a fine }, { if: flag.c5_crowned_self, add: -3, label: you took a crown } ] }
+      success:
+        text: |
+          You go on your knees in the mud of the victor's camp, in front of the army, and ask for the King's mercy. You get it, at a price: [if holdings.count >= 1]every holding but your first manor[else]a fine that will take you ten years to pay[/if], your banner, your seat in any council, and your eldest as a hostage at court. You keep your head, and a roof, and your name, smaller.
+        effects: [ { set: flag.c5_submitted }, { release: la_garde }, { release: vaudrey }, { release: lisle }, { release: ashdown }, { release: wyck }, { release: ashby }, { release: hollin }, { release: wendham_rents }, { release: underhill }, { release: corbie_vineyard }, { release: sauvemer_house }, { add: { res.coin: -1200 } } ]
+        next: c5_reckoning
+      failure:
+        text: |
+          You go on your knees in the mud, and the victor looks at you over the top of his cup, and does not answer, and his marshal takes your sword. They try you at [if flag.c5_west_adalian]Cordelle[else]Wendmere[/if] for treason, and you are condemned, and the sentence is commuted, as a mercy, to the loss of everything you ever held.
+        effects: [ { set: flag.c5_attainted }, { release: la_garde }, { release: vaudrey }, { release: lisle }, { release: ashdown }, { release: wyck }, { release: ashby }, { release: hollin }, { release: wendham_rents }, { release: underhill }, { release: corbie_vineyard }, { release: sauvemer_house } ]
+        next: c5_reckoning
+    - id: stand
+      text: Hold Lannec to the last.
+      tags: [martial]
+      lethal: true
+      warn: A siege you cannot win. Without armour, or carrying a serious wound, you will die on the walls; with them, you may only be taken.
+      check: { attr: endurance, skill: command, difficulty: 6, mods: [ { if: counter.west_estates >= 5, add: 1, label: the town is with you } ] }
+      success:
+        text: |
+          You hold Lannec for eleven weeks, and at the end of them the besiegers are as hungry as you are, and offer terms to the garrison and not to you; and the garrison, to its credit, refuses to give you up. You march out with the honours of war, and lose everything else.
+        effects: [ { set: flag.c5_submitted }, { release: la_garde }, { release: vaudrey }, { release: lisle }, { release: ashdown }, { release: wyck }, { release: corbie_vineyard }, { release: sauvemer_house } ]
+        next: c5_reckoning
+      failure:
+        text: |
+          [if armour >= 1 && !injured]You hold Lannec for eleven weeks. When the walls go, you are taken alive on the breach, half-dead, and carried to the victor's tent, and kept alive, because a living rebel can be made an example of and a dead one only a song.[else]You hold Lannec for eleven weeks. When the walls go, you are on them.[/if]
+        effects:
+          - if: [ armour >= 1, "!injured" ]
+            then: [ { set: flag.c5_attainted }, { injury: crushed_ribs }, { release: la_garde }, { release: vaudrey }, { release: lisle }, { release: ashdown }, { release: wyck } ]
+            else: [ { die: "Killed on the walls of Lannec, holding the West to the last" } ]
+        next: c5_reckoning

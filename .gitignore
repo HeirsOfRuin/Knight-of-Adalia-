@@ -4,3 +4,4 @@ src/content/bundle.json
 *.log
 smoke-out
 dist-artifact
+*.tmp.ts

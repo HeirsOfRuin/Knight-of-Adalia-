@@ -54,9 +54,9 @@
   pool: c4_lord
   title: An Old Friend
   once: true
-  requires: [ { any: [ npc.davy_ludd.alive, npc.will_cobb.alive, npc.roger_tallis.alive ] } ]
+  requires: [ { any: [ { all: [ npc.davy_ludd.alive, "!npc.davy_ludd.follower" ] }, npc.will_cobb.alive, { all: [ npc.roger_tallis.alive, "!npc.roger_tallis.follower" ] } ] } ]
   text: |
-    [if npc.davy_ludd.alive]Davy Ludd rides in at dusk, unannounced, [if flag.c3_davy_knighted]with a knight's spurs on his heels that he still walks oddly in,[else]with Aude and three children on the cart behind him,[/if] and stays three days.[elif npc.will_cobb.alive]Will Cobb rides in at dusk, unannounced, grey as a badger and fat as a friar, and stays three days.[else]Roger Tallis rides in at dusk, unannounced, older and slower and exactly as rude, and stays three days.[/if] You drink too much. You talk about the dead. On the third night you laugh so hard at something about a goat at Grisolles that you have to go outside.
+    [if npc.davy_ludd.alive && !npc.davy_ludd.follower]Davy Ludd rides in at dusk, unannounced, [if flag.c3_davy_knighted]with a knight's spurs on his heels that he still walks oddly in,[elif flag.c3_davy_married]with Aude and three children on the cart behind him,[else]with a wife you have never met and three children on the cart behind him,[/if] and stays three days.[elif npc.will_cobb.alive]Will Cobb rides in at dusk, unannounced, grey as a badger and fat as a friar, and stays three days.[else]Roger Tallis rides in at dusk, unannounced, older and slower and exactly as rude, and stays three days.[/if] You drink too much. You talk about the dead. On the third night you laugh so hard at something about a goat at Grisolles that you have to go outside.
   choices:
     - id: stay
       text: Ask him to stay on, in your household.

@@ -18,7 +18,7 @@ interface RuleSrc { match: string; allow: string; chapters?: string[]; except?: 
 interface Rule { src: RuleSrc; re: RegExp; cond: Cond }
 export interface Hit { kind: string; scene: string; sentence: string; background: string; seed: number }
 
-const MEMORIAL = /\b(dead|died|dies|die|death|dying|grave|graves|buried|bury|burial|remember|remembers|remembered|memory|ghost|late|killed|kill|mourn|mourned|pray|prayers?|mass|soul|tomb|widow|widowed|was|were|had|used to|named|name|after him|after her|lost|gone|missing|fell|fallen|body|bones|corpse|hanged)\b|\bfor your (father|mother|old master)\b/i;
+const MEMORIAL = /\b(dead|died|dies|die|death|dying|grave|graves|buried|bury|burial|remember|remembers|remembered|memory|ghost|late|killed|kill|mourn|mourned|pray|prayers?|mass|soul|tomb|widow|widowed|was|were|had|used to|always did|would have|named|name|after him|after her|lost|gone|missing|fell|fallen|body|bones|corpse|hanged)\b|\bfor your (father|mother|old master)\b/i;
 
 export function loadRules(content: ContentBundle, dir = CONTENT_DIR): { rules: Rule[]; deadOk: Record<string, string[]>; errors: string[] } {
   const raw = YAML.parse(readFileSync(join(dir, 'continuity.yaml'), 'utf8')) as { rules: RuleSrc[]; dead_names_ok?: Record<string, string[]> };
@@ -53,24 +53,27 @@ function namePatterns(content: ContentBundle): NamePat[] {
 
 const sentences = (t: string) => t.split(/(?<=[.!?]["”’]?)\s+|\n+/).map((s) => s.trim()).filter(Boolean);
 
-export function checkState(content: ContentBundle, s: GameState, rules: Rule[], names: NamePat[], deadOk: Record<string, string[]>): { kind: string; sentence: string }[] {
+export function checkState(content: ContentBundle, s: GameState, rules: Rule[], names: NamePat[], deadOk: Record<string, string[]>): { kind: string; sentence: string; scene: string }[] {
   if (s.ended) return [];
   const v = view(content, s);
-  const texts = [v.text, v.outcome?.text ?? '', ...v.choices.map((c) => c.text)];
-  const out: { kind: string; sentence: string }[] = [];
+  // The outcome text belongs to the scene where the choice was made, and is rendered after its effects:
+  // a death it narrates has already happened in the state, so allow-lists name that scene.
+  const from = s.journal.at(-1)?.scene ?? s.scene;
+  const texts: [string, string][] = [[s.scene, v.text], [from, v.outcome?.text ?? ''], ...v.choices.map((c): [string, string] => [s.scene, c.text])];
+  const out: { kind: string; sentence: string; scene: string }[] = [];
   const heirNames = new Set((s.heirs ?? []).map((h) => h.name).filter(Boolean));
-  for (const t of texts) for (const sen of sentences(t)) {
+  for (const [scene, t] of texts) for (const sen of sentences(t)) {
     for (const r of rules) {
       if (r.src.chapters && !r.src.chapters.includes(s.chapter)) continue;
-      if (r.src.except?.includes(s.scene)) continue;
-      if (r.re.test(sen) && !evalCond(r.cond, s, content)) out.push({ kind: `rule: ${r.src.match} (needs ${r.src.allow})`, sentence: sen });
+      if (r.src.except?.includes(scene)) continue;
+      if (r.re.test(sen) && !evalCond(r.cond, s, content)) out.push({ kind: `rule: ${r.src.match} (needs ${r.src.allow})`, sentence: sen, scene });
     }
     for (const n of names) {
       const npc = s.npcs[n.id];
       if (!npc || npc.alive) continue;
-      if (deadOk[s.scene]?.includes(n.id) || deadOk[s.scene]?.includes('*')) continue;
+      if (deadOk[scene]?.includes(n.id) || deadOk[scene]?.includes('*')) continue;
       const named = n.strict.test(sen) || (!!n.bare && !heirNames.has(n.first) && n.bare.test(sen));
-      if (named && !MEMORIAL.test(sen)) out.push({ kind: `dead: ${n.id}`, sentence: sen });
+      if (named && !MEMORIAL.test(sen)) out.push({ kind: `dead: ${n.id}`, sentence: sen, scene });
     }
   }
   return out;
@@ -83,7 +86,7 @@ export function runContinuity(content: ContentBundle, runsPerBackground = 30): {
   let views = 0;
   const observe = (bg: string, seed: number) => (s: GameState) => {
     views++;
-    for (const h of checkState(content, s, rules, names, deadOk)) hits.push({ ...h, scene: s.scene, background: bg, seed });
+    for (const h of checkState(content, s, rules, names, deadOk)) hits.push({ ...h, background: bg, seed });
   };
   for (const bg of Object.keys(content.backgrounds)) {
     for (let i = 0; i < runsPerBackground; i++) {

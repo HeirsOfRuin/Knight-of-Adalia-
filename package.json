@@ -18,7 +18,7 @@
     "transcript": "tsx tools/transcript.ts",
     "balance": "tsx tools/balance.ts",
     "build:artifact": "npm run build && tsx tools/build-artifact.ts",
-    "check": "npm run typecheck && npm test && npm run validate && npm run lint:style && npm run bot -- --runs 200",
+    "check": "npm run typecheck && npm test && npm run validate && npm run lint:style && npm run continuity -- --strict && npm run bot -- --runs 200",
     "scan": "tsx tools/render-scan.ts",
     "audit": "tsx tools/audit-choices.ts",
     "build:pwa": "npm run content && tsc --noEmit && VITE_PWA=1 vite build"

@@ -29,6 +29,7 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run validate
+      - run: npm run continuity -- --strict
       - run: npm run build:pwa
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

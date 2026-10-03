@@ -43,9 +43,9 @@
   title: News of Lady Maud
   requires: [ suit.maud_delisle.regard >= 3 ]
   text: |
-    Among the dead at Grisolles, the heralds found Gerard of Carrow, the Earl's younger son, who was betrothed to Lady Maud de Lisle. He was killed in the rearguard, on foot, by men who did not know or care who he was.
+    Among the dead at Grisolles, the heralds found Gerard of Carrow, the Earl's younger son, [if flag.c1_maud_saved]to whom Lord Ravell had meant to sell Lady Maud de Lisle's marriage before the King took her wardship[else]who was betrothed to Lady Maud de Lisle[/if]. He was killed in the rearguard, on foot, by men who did not know or care who he was.
 
-    Three weeks later a letter reaches you, by way of [if flag.c1_maud_scandal]the nuns at Ambry, where her guardian sent her after the business of the petition[else]the Queen's household[/if], in a quick, low hand. Lady Maud is in the King's wardship and her betrothal is dissolved by death. She is sorry for Gerard, who was a fool, and sorrier for his mother. "Betrothals have been broken before," she writes. "This one broke itself." Nothing else. It does not need anything else.
+    Three weeks later a letter reaches you, by way of [if flag.c1_maud_scandal]the nuns at Ambry, where her guardian sent her after the business of the petition[else]the Queen's household[/if], in a quick, low hand. [if flag.c1_maud_saved]Lady Maud is safe in the King's wardship, and the match that was nearly made for her is buried at Grisolles. She is sorry for Gerard, who was a fool, and sorrier for his mother. "You saved me from him once," she writes. "God has made sure of it."[else]Lady Maud is in the King's wardship and her betrothal is dissolved by death. She is sorry for Gerard, who was a fool, and sorrier for his mother. "Betrothals have been broken before," she writes. "This one broke itself."[/if] Nothing else. It does not need anything else.
   choices:
     - id: write
       text: Write back.
@@ -144,7 +144,7 @@
   title: A Letter from Ravell Hall
   requires: [ background == servant ]
   text: |
-    [if flag.c1_bought_off]Lady Ravell writes, which she said she would never do. She has paid you once to stay away; she is not writing to pay you again. [/if][if flag.p_used_secret]A letter from Lady Ravell, in her own hand. Your mother is ill. Lady Ravell has had her nursed, at her own expense, because Agnes was a good servant for twenty years whatever her son is. She thought you should know. She does not sign it with love.[else]A letter from your mother, written by Father Benet. She is getting old, she writes, and her eyes are going, and Lady Ravell has been kind. She is proud of you. She has told everyone in the house. She hopes you are wearing your good shirt.[/if]
+    [if flag.c1_bought_off]Lady Ravell writes, which she said she would never do. She has paid you once to stay away; she is not writing to pay you again. [/if][if flag.p_used_secret]A letter from Lady Ravell, in her own hand. Your mother is ill. Lady Ravell has had her nursed, at her own expense, because Agnes was a good servant for twenty years whatever her son is. She thought you should know. She does not sign it with love.[else]A letter from your mother, written by Father Benet. She is getting old, she writes, and her eyes are going, [if flag.p_mother_dismissed]and the washing in Wendham is hard on her hands, but the work is honest. She is proud of you. She has told everyone in the street.[else]and Lady Ravell has been kind. She is proud of you. She has told everyone in the house.[/if] She hopes you are wearing your good shirt.[/if]
   choices:
     - id: money
       text: Send money for her care.
@@ -180,7 +180,7 @@
       tags: [diplomacy]
       check: { attr: presence, skill: trade, difficulty: 3, mods: [ { if: suit.fiammetta_lanzi.regard >= 3, add: 2, label: Fiammetta speaks for you } ] }
       success:
-        text: The Lanzi will lend against land. They always will. Your debt rolls over against whatever the King gives you, at a slightly worse rate. You will be paying the Lanzi from Ormel for years.
+        text: The Lanzi will lend against land. They always will. Your debt rolls over against whatever the King gives you, at a slightly worse rate. You will be paying the Lanzi out of that land, whatever it turns out to be, for years.
         effects: [ { set: flag.c2_lanzi_against_land }, { add: { counter.lanzi_debt: 5 } } ]
         next: "@return"
       failure:

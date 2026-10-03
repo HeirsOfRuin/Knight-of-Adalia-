@@ -36,7 +36,7 @@
     [if flag.p_lower_track]Some of the men on the quay knew you when you [if track == levy || flag.c1_raised_at_ford]drew a bow in Cobb's company[else]slept in a stable loft[/if]. They look at you now with something that is not quite envy. It might be hope.[/if]
   choices:
     - id: master
-      text: Take the two archers your master offers from Will Cobb's company.
+      text: Take the two archers your master offers[if alias.master == ancel_brome] from Will Cobb's company[/if].
       tags: [allies]
       text_after: |
         Jankin Rooke and Simkin Barre. Rooke is eighteen, quiet, crosses himself before he looses, and never misses. Barre is a Wendham carter's son who talks the whole time Rooke is silent, and who has stolen your knife and given it back before the first day is out, to show he could.

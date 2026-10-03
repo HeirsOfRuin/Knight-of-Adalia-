@@ -16,7 +16,7 @@
 
     [break]
 
-    [if flag.c1_left_master]You left your first master once, when he needed you. You have never been sure he forgave it.[elif flag.c1_master_cleared]You stood by him once, when the commissioners came. He has never once mentioned it. He has not forgotten it either.[elif flag.c1_lost_master]You lost your first master, years ago, and found another. This one took you in when you had nothing.[elif flag.c2_saved_master]You went back for him into the rout at Grisolles. He has told that story at every Christmas since, worse each time.[/if]
+    [if flag.c4_master_dying][if flag.c1_left_master]You left your first master once, when he needed you. You have never been sure he forgave it.[elif flag.c1_master_cleared]You stood by him once, when the commissioners came. He has never once mentioned it. He has not forgotten it either.[elif flag.c1_lost_master]You lost your first master, years ago, and found another. This one took you in when you had nothing.[elif flag.c2_saved_master]You went back for him into the rout at Grisolles. He has told that story at every Christmas since, worse each time.[/if][/if]
 
     It is three weeks' journey there and back, across the sea, with Carrow's men on the roads and the King dying and everything you hold needing you at once.
   choices:
@@ -24,7 +24,7 @@
       text: Go. Now. Whatever it costs.
       tags: [allies]
       text_after: |
-        You get there in time, just. [if flag.c4_master_dying][if alias.master == hamon_darrell]Sir Hamon is propped up in bed with a hound across his feet, and his face lights up, and he says, "There he is," the way he said it the day you came, and asks if you have eaten.[elif alias.master == ancel_brome]Sir Ancel is in a chair by the window where he can see the March. He looks at you a long while. "Hm," he says. And then, which you have never heard from him: "Well done, boy."[elif alias.master == walter_pryce]Pryce is thin as a lath, and courteous as ever, and makes you sit and drink his wine. "I put your name in a great many ears," he says. "I'm glad it was worth it." At the end, almost asleep, he says, "Mind Carrow. He liked me. He likes nobody."[else]Lord Ravell does not know you at first. Then he does, and weeps, and holds your hand, and calls you by his dead son's name, and you let him.[/if][else]Father Benet hears your confession for two hours, and laughs twice, and gives you a penance that is mostly prayer and partly carrying firewood for the almshouse, the same as thirty years ago. "Better for the soul than either alone," he says. Then he sleeps.[/if] He dies two days later, with you there.
+        You get there in time, just. [if flag.c4_master_dying][if alias.master == hamon_darrell]Sir Hamon is propped up in bed with a hound across his feet, and his face lights up, and he says, "There he is," the way he said it the day you came, and asks if you have eaten.[elif alias.master == ancel_brome]Sir Ancel is in a chair by the window where he can see the March. He looks at you a long while. "Hm," he says. And then, which you have never heard from him: "Well done, boy."[elif alias.master == walter_pryce]Pryce is thin as a lath, and courteous as ever, and makes you sit and drink his wine. "I put your name in a great many ears," he says. "I'm glad it was worth it." At the end, almost asleep, he says, "Mind Carrow. He liked me. He likes nobody."[else]Lord Ravell does not know you at first. Then he does, and weeps, and holds your hand, and calls you [if npc.aymer_ravell.alive]Aymer, the son who has not come[else]by his dead son's name[/if], and you let him.[/if][else]Father Benet hears your confession for two hours, and laughs twice, and gives you a penance that is mostly prayer and partly carrying firewood for the almshouse, the same as thirty years ago. "Better for the soul than either alone," he says. Then he sleeps.[/if] He dies two days later, with you there.
       effects:
         - set: flag.c4_at_deathbed
         - add: { estate.temper: -1, counter.court_king: -1, rep.honor: 1 }
@@ -67,7 +67,7 @@
 
     [break]
 
-    Edwin is crowned at Lady Day, at twenty-seven, in the abbey at Wendmere, with his new men around him in a crowd and the old lords at the back in their furs. [if flag.c3_saved_wat || flag.c3_warned_wat]At the coronation feast the new King stops by you, and says, low, "You're the one who rode between Malet and the Coker man at the Hythe Fields. My father hated that. I liked it."[/if] [if flag.c3_refused_king_ward]The new King's chamberlain does not forget, either, that you once refused his father's gift of a ward, and seats you accordingly.[/if] [if flag.c3_owes_king_marriage]Your debt to the old King for his word in your marriage dies with him, or ought to. Edwin's clerks have it in a book.[/if]
+    Edwin is crowned at Lady Day, at twenty-seven, in the abbey at Wendmere, with his new men around him in a crowd and the old lords at the back in their furs. [if flag.c3_saved_wat || flag.c3_warned_wat]At the coronation feast the new King stops by you, and says, low, "You're the one who [if flag.c3_saved_wat]rode between Malet and the Coker man[else]shouted the warning to the Coker man[/if] at the Hythe Fields. My father hated that. I liked it."[/if] [if flag.c3_refused_king_ward]The new King's chamberlain does not forget, either, that you once refused his father's gift of a ward, and seats you accordingly.[/if] [if flag.c3_owes_king_marriage]Your debt to the old King for his word in your marriage dies with him, or ought to. Edwin's clerks have it in a book.[/if]
 
     [if flag.c4_vervais_deposited]Three days after the coronation, the Chancellor opens a sealed letter under your seal in front of the new King, and the Earl of Carrow is not at the feast that night.[elif flag.c3_told_prince_vervais || flag.c3_told_king_vervais]Three days after the coronation, the new King calls the Earl of Carrow to account for Vervais, in council, in front of everyone. The Earl walks out of the hall without a word.[/if]
   choices:
@@ -265,7 +265,7 @@
         next: c4_wythen_after
       partial:
         text: |
-          You turn into their flank and it is a brawl, harness on harness, and you hold them, and then the reserve comes and finishes it. You come out of it with a broken sword and somebody else's blood to the elbow. [if flag.c4_heir_at_war]{heir.eldest.name} is behind the baggage wagons, where Davy carried him by the collar, unhurt and furious.[/if]
+          You turn into their flank and it is a brawl, harness on harness, and you hold them, and then the reserve comes and finishes it. You come out of it with a broken sword and somebody else's blood to the elbow. [if flag.c4_heir_at_war]{heir.eldest.name} is behind the baggage wagons, where [if npc.davy_ludd.alive && npc.davy_ludd.follower]Davy[else]your squire[/if] carried him by the collar, unhurt and furious.[/if]
         effects: [ { add: { counter.fr: 1, res.renown: 1 } }, { casualties: { men: 14, named: 1 } }, { injury: cut_brow } ]
         next: c4_wythen_after
       failure:
@@ -297,7 +297,7 @@
       tags: [allies]
       visible_if: [ flag.c4_heir_at_war ]
       text_after: |
-        You get {heir.eldest.name} out: you put him up behind Davy and send them back to the baggage at a gallop, and only then turn round. By then Malet's knights are past you, and other men stop them, and it is not your company that does it. Nobody blames you. Nobody who has a son.
+        You get {heir.eldest.name} out: you put him up behind [if npc.davy_ludd.alive && npc.davy_ludd.follower]Davy[else]your squire[/if] and send them back to the baggage at a gallop, and only then turn round. By then Malet's knights are past you, and other men stop them, and it is not your company that does it. Nobody blames you. Nobody who has a son.
       effects: [ { add: { counter.fr: -1, heir.eldest.bond: 2 } } ]
       next: c4_wythen_after
 

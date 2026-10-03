@@ -243,7 +243,7 @@
     - id: ask
       text: Ask him what happened in the town.
       tags: [cunning]
-      text_after: He looks at you a while, chewing his lip. "The same thing that happened at Bréval," he says. "Only more of it." Then he goes to bed.
+      text_after: He looks at you a while, chewing his lip. "The same thing that [if flag.c2_breval_burned]happened[else]nearly happened[/if] at Bréval," he says. "Only more of it." Then he goes to bed.
       effects: [ { add: { rel.roger_tallis.respect: 1 } } ]
       next: "@return"
 

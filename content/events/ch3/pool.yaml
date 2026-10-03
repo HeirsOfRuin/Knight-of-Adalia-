@@ -226,7 +226,7 @@
   pool: c3_manor
   title: The Bank's Clerk
   once: true
-  requires: [ { any: [ flag.c2_lanzi_loan, flag.c1_lanzi_debt, flag.c2_lanzi_against_land ] } ]
+  requires: [ { any: [ flag.c2_lanzi_loan, flag.c1_lanzi_debt, flag.c2_lanzi_against_land ] }, "!flag.c3_lanzi_kin" ]
   text: |
     A clerk from the Lanzi house rides out from [if flag.c2_granted_kerval]Lannec[else]Sauvemer[/if] with a ledger under his arm, a black band on his sleeve, and the look of a man who has had to make this journey to a great many manors this year.
 
@@ -265,7 +265,7 @@
   title: The Church Roof
   once: true
   text: |
-    The church roof leaks. It leaked before the Mottle, and the old lord never mended it, and now it leaks onto the new cross and the names on it.
+    The church roof leaks. It leaked before the Mottle, and the old lord never mended it, and now it leaks [if flag.c3_raised_cross]onto the new cross and the names on it[else]onto the place where the plague dead are remembered at Mass[/if].
 
     [if flag.c2_granted_marsalin]"God sees it, monseigneur," Père Yves says, earnestly, looking up at the drip. "God sees everything."[elif flag.c2_granted_kerval]"The abbey," says Dom Hervé delicately, "would of course consider it a great kindness."[else]"IT LEAKS!" Père Guérin shouts, pointing at the drip as if you might have missed it. "ON THE ALTAR!"[/if]
   choices:

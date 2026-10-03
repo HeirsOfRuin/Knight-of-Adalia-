@@ -77,7 +77,7 @@
 
     It is the custom, the night before a battle, for knights to be made. A man may fight better with spurs on his heels, and may die a knight, which is something to die as. The King walks along the lines at dusk with his sword drawn. He limps a little. Grisolles is in his face, and the breach, and two winters.
 
-    [if station == knight]You are a knight already. You watch the others kneel.[elif flag.c2_master_taken]Your master is in a Valdrennish prison. Nobody here owes you a word.[elif flag.c1_sponsor_promise]Your master is looking at you. You remember the promise.[else]Squires and men-at-arms kneel in the grass, some of them shaking.[/if]
+    [if station == knight]You are a knight already. You watch the others kneel.[elif flag.c2_master_taken]Your master [if npc.@master.alive]is in a Valdrennish prison[else]died in a Valdrennish prison at Candlemas[/if]. Nobody here owes you a word.[elif flag.c1_sponsor_promise]Your master is looking at you. You remember the promise.[else]Squires and men-at-arms kneel in the grass, some of them shaking.[/if]
   choices:
     - id: kneel
       text: Kneel in the line when the King comes.
@@ -166,7 +166,7 @@
       tags: [allies]
       check: { attr: presence, skill: command, difficulty: 4, mods: [ { if: trait.veteran, add: 1, label: you have stood in a line before }, { if: flag.c2_grisolles_held, add: 1, label: you held at Grisolles } ] }
       success:
-        text: "You talk to them the way Will Cobb talks to his archers: low, plain, about nothing in particular. The weather. Supper. Who owes whom money. Men who were at Grisolles are looking at the columns coming and remembering. You keep talking. By the time the first column reaches the dyke, the men around you are steady as posts."
+        text: "You talk to them the way Will Cobb [if npc.will_cobb.alive]talks[else]used to talk[/if] to his archers: low, plain, about nothing in particular. The weather. Supper. Who owes whom money. Men who were at Grisolles are looking at the columns coming and remembering. You keep talking. By the time the first column reaches the dyke, the men around you are steady as posts."
         effects: [ { add: { counter.sl_edge: 2, skill.command: 1 } } ]
         next: c2_salines_2
       failure:

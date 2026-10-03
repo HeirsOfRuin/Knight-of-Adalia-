@@ -83,11 +83,11 @@
   text: |
     In the summer the [if flag.c2_granted_kerval]Duchess's steward[else]Crown[/if] sends you people to fill your empty houses.
 
-    [if flag.c2_granted_kerval]They are not Adalians, at Kerval: the Duchess sends you nine families from her own burned villages on the eastern border, and three Adalian archers' widows from Lannec who want a roof, and a letter asking you to make them welcome.[else]They come over from Saltcombe in a hired cog: thirty-odd Adalian men and women, labourers and their wives and their children, from the plague-emptied villages of the south, promised land in the new march if they would cross the sea for it.[/if] They come up the road in a straggling line with their bundles, and stop in the street, and look at your village. Your village looks back.
+    [if flag.c2_granted_kerval]At Kerval they are mostly not Adalians. The Duchess sends you nine families from her own burned villages on the eastern border, with a letter asking you to make them welcome. And because the Crown insists that every manor in the West take some of its own, a cart comes up from Lannec behind them with a dozen discharged Adalian archers, their wives and their children, who were promised land for their service and mean to have it.[else]They come over from Saltcombe in a hired cog: thirty-odd Adalian men and women, labourers and their wives and their children, from the plague-emptied villages of the south, promised land in the new march if they would cross the sea for it.[/if] They come up the road in a straggling line with their bundles, and stop in the street, and look at your village. Your village looks back.
 
     [break]
 
-    Their leader is a big, red-faced Saltcombe brewer's son called Hodge Brewster, with hands like hams and opinions to match. "Your lordship," he says, pulling his forelock as if he had been told to and resented it. "We was promised houses. And land. And that the locals was tame." He looks at a Valdrennish woman glaring at him from a doorway. "I don't think they was told."
+    [if flag.c2_granted_kerval]The Adalians' leader[else]Their leader[/if] is a big, red-faced Saltcombe brewer's son called Hodge Brewster, with hands like hams and opinions to match. "Your lordship," he says, pulling his forelock as if he had been told to and resented it. "We was promised houses. And land. And that the locals was tame." He looks at a Valdrennish woman glaring at him from a doorway. "I don't think they was told."
 
     [if background == reeve]You notice one of the settlers is a Coker: a cousin of Wat's, with the family's jaw and the family's way of looking at a reeve's son.[/if]
   choices:
@@ -516,11 +516,11 @@
 
     Some of the letters are about other people's weddings.
 
-    [if suit.mag_coker.status == known || suit.mag_coker.status == courted]Mag Coker married a thatcher from the far end of Ashby the year you went to the war. Your mother writes that she has three boys and a temper, and that she asked after you once, at the well, and then said she did not care to know.[/if]
+    [if suit.mag_coker.status == known || suit.mag_coker.status == courted]Mag Coker married a thatcher from the far end of Ashby [if flag.c2_went_home]the winter after you came home and went away again[else]while you were at the war[/if]. Your mother [if flag.c3_sent_for_kin && background == burgess]has it from Wendham[else]writes[/if] that she has three boys and a temper, and that she asked after you once, at the well, and then said she did not care to know.[/if]
 
-    [if suit.annot_dyer.status == known || suit.annot_dyer.status == courted]Annot Dyer married a fuller's journeyman two Michaelmases back. Your mother writes it among the prices of wool, as news of trade, which is how Wendham writes everything.[/if]
+    [if suit.annot_dyer.status == known || suit.annot_dyer.status == courted]Annot Dyer married a fuller's journeyman two Michaelmases back. Your mother [if flag.c3_sent_for_kin && background == burgess]reads it out from a Wendham letter[else]writes it[/if] among the prices of wool, as news of trade, which is how Wendham writes everything.[/if]
 
-    [if suit.mariot_wood.status == known || suit.mariot_wood.status == courted]Mariot Wood married the new under-forester when her father's chest went bad, so the place would stay in the family. It was sense, Kit writes. Mariot always had sense.[/if]
+    [if suit.mariot_wood.status == known || suit.mariot_wood.status == courted]Mariot Wood married the new under-forester when her father's chest went bad, so the place would stay in the family. It was sense, Kit [if flag.c3_sent_for_kin]says[else]writes[/if]. Mariot always had sense.[/if]
 
     [if suit.nell_laundress.status == known || suit.nell_laundress.status == courted]Nell from the laundry married a carter and went to Wendham. Father Benet writes that the laundry is quiet now, and that he does not miss the noise, and then crosses it out.[/if]
 

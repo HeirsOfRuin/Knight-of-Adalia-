@@ -47,7 +47,7 @@
 
     [break]
 
-    "You asked me first," she says. "You asked me, not my grandmother's grave, and not my guardian. You spoke for my right to choose." [if flag.c4_spoke_for_west]"And you said it, in front of them all, in the spring, when the others only nodded."[/if] She looks at you properly. "You are older than I am. You have [if heirs.count >= 1]children[else]no heirs[/if], and land, and a name, and a temper, I'm told. If I say yes, it is a war. Every king who wanted me will want you dead." A pause. "Ask me again."
+    "You asked me first," she says. "You asked me, not my grandmother's grave, and not my guardian. You let me answer for myself." [if flag.c4_spoke_for_west]"And you said it, in front of them all, in the spring, when the others only nodded."[/if] She looks at you properly. "You are older than I am. You have [if heirs.count >= 1]children[else]no heirs[/if], and land, and a name, and a temper, I'm told. If I say yes, it is a war. Every king who wanted me will want you dead." A pause. "Ask me again."
   choices:
     - id: ask
       text: Ask her again.

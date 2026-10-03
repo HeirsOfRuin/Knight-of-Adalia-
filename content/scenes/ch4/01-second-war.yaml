@@ -172,7 +172,7 @@
       text: Raise the company from your own manor.
       tags: [allies, wealth]
       text_after: |
-        You raise it from the manor and the villages round: the young men, the second sons, the salt-boilers' boys who want to see the world, the Adalian settlers' sons who want to show the locals something. They are cheap and brave and know nothing. [if flag.c2_granted_marsalin]Margot[elif flag.c2_granted_kerval]Gwenaël[else]Bastien[/if] stands at the gate as they march out and counts them, aloud, and you know she will count them again when they come back.
+        You raise it from the manor and the villages round: the young men, the second sons, the salt-boilers' boys who want to see the world, the Adalian settlers' sons who want to show the locals something. They are cheap and brave and know nothing. [if flag.c2_granted_marsalin]Margot[elif flag.c2_granted_kerval]Gwenaël[else]Bastien[/if] stands at the gate as they march out and counts them, aloud, and you know [if flag.c2_granted_marsalin]she[else]he[/if] will count them again when they come back.
       effects: [ { set: flag.c4_manor_company }, { add: { res.men: 70, res.coin: -480, counter.company: 1, estate.people: -40, estate.temper: -1, res.levy: -30 } } ]
       next: c4_landing
     - id: rotbart
@@ -195,7 +195,7 @@
 
     Duchess Jehanne meets the King on the quay. She is seventy, and uses a stick, and walks without it when people are watching. Beside her is a girl of fourteen in black, with a face like a closed door: Mahaut, her granddaughter, whose father died in Cordelle's prison. Everyone on the quay knows what she is. The Armance does not pass to Adalia. It passes to Mahaut.
 
-    [if flag.c2_jehanne_noticed || flag.c2_jehanne_message]The Duchess sees you in the King's train, and stops, and says, "The one who carried my message." She does not smile. From Jehanne that is better.[else]The Duchess's eyes go over the King's train without stopping, and over you.[/if] [if flag.c2_granted_kerval]Your own people from Kerval have walked down to the coast to see the fleet. Gwenaël is waving his hat on a pole.[/if]
+    [if flag.c2_jehanne_noticed || flag.c2_jehanne_message]The Duchess sees you in the King's train, and stops, and says, "[if flag.c2_jehanne_message]The one who carried my message[else]The one from Grisolles[/if]." She does not smile. From Jehanne that is better.[else]The Duchess's eyes go over the King's train without stopping, and over you.[/if] [if flag.c2_granted_kerval]Your own people from Kerval have walked down to the coast to see the fleet. Gwenaël is waving his hat on a pole.[/if]
   choices:
     - id: court
       text: Pay your respects to the Duchess and her granddaughter.
@@ -203,7 +203,7 @@
       check: { attr: presence, skill: courtesy, difficulty: 3, mods: [ { if: flag.c2_jehanne_noticed || flag.c2_jehanne_message, add: 1, label: she remembers you }, { if: flag.c1_learned_valdrennish || flag.c2_learned_town, add: 1, label: you speak their tongue } ] }
       success:
         text: |
-          You kneel to the Duchess in her own hall at Lannec, which the King's lords do not, and speak to her in her own tongue, which the King's lords cannot. She gives you two fingers to kiss and a long look. Mahaut, behind her, says nothing at all. But at the end, as you rise, the girl says, low, in Adalian, "They say you held a castle for my grandmother when nobody else would." You did not, quite. You do not correct her.
+          You kneel to the Duchess in her own hall at Lannec, which the King's lords do not, and speak to her in her own tongue, which the King's lords cannot. She gives you two fingers to kiss and a long look. Mahaut, behind her, says nothing at all. But at the end, as you rise, the girl says, low, in Adalian, "They say you held a castle for my grandmother when nobody else would." [if flag.c2_armance_castles]You did, through a cold truce, with too few men. You find you are glad she knows.[else]You did not, quite. You do not correct her.[/if]
         effects: [ { set: flag.c4_armance_favour }, { add: { counter.west_estates: 2, rep.valdrenne: 1 } } ]
         next: c4_towns
       failure:
@@ -283,7 +283,7 @@
   text: |
     The army winters in the Armance, in the towns it has taken, and the Constable winters in Cordelle, and everyone knows what the spring will bring.
 
-    [if flag.c4_wife_holds]Your wife's letters come every fortnight, by the Lannec boats, in a quick hand: the price of salt, the state of the dyke, what the children said. [if heirs.count >= 1]At the bottom, in a different hand, enormous: a word or two from {heir.eldest.name}, and a drawing of a horse, or possibly a dog.[/if][elif heirs.count >= 1]The letters from home come by the Lannec boats. At the bottom of one, in a huge hand guided by somebody else's: {heir.eldest.name}.[else]No letters come from home that matter. You find you mind.[/if]
+    [if flag.c4_wife_holds]Your wife's letters come every fortnight, by the Lannec boats, in a quick hand: [if flag.c2_granted_kerval]the price of apples, the state of the mill-race[elif flag.c2_granted_marsalin]the price of salt, the state of the dyke[else]the price of salt, the state of the ditches[/if], what the children said. [if heirs.count >= 1]At the bottom, in a different hand, enormous: a word or two from {heir.eldest.name}, and a drawing of a horse, or possibly a dog.[/if][elif heirs.count >= 1]The letters from home come by the Lannec boats. At the bottom of one, in a huge hand guided by somebody else's: {heir.eldest.name}.[else]No letters come from home that matter. You find you mind.[/if]
 
     [break]
 
@@ -516,7 +516,7 @@
   text: |
     You are thirty-four. You carry a square banner now, and lead other men's knights under it, and [if holdings.count >= 2]hold land in more places than you can ride to in a week[elif holdings.count == 1]hold land in two countries[else]hold the King's ear, which is a kind of land[/if].
 
-    [if heirs.count >= 1]At home, {heirs.names} [if heirs.count >= 2]are[else]is[/if] growing, without you, the way children do.[/if] [if flag.c3_married && npc.@spouse.alive]Your wife's last letter says the dyke held, the salt is good, and that she has had the hall whitewashed, and you are not to complain about it.[/if]
+    [if heirs.count >= 1]At home, {heirs.names} [if heirs.count >= 2]are[else]is[/if] growing, without you, the way children do.[/if] [if flag.c3_married && npc.@spouse.alive]Your wife's last letter says [if flag.c2_granted_kerval]the orchards have set well and the mill-race is mended[elif flag.c2_granted_marsalin]the dyke held and the salt is good[else]the ditches held through the winter and the salt is poor but sells[/if], and that she has had the hall whitewashed, and you are not to complain about it.[/if]
   choices:
     - id: on
       text: Go home.

@@ -28,9 +28,6 @@ rules:
   # The grant
   - match: "from Ormel"
     allow: flag.c2_granted_ormel
-  - match: "Hodge Brewster"
-    allow: "!flag.c2_granted_kerval"
-    why: Kerval's settlers are the Duchess's people, not Adalians.
   - match: "the state of the dyke|the dyke held"
     allow: flag.c2_granted_marsalin
     chapters: [ch3, ch4, ch5]
@@ -45,15 +42,36 @@ rules:
   - match: "\\bAude\\b"
     allow: flag.c3_davy_married
     chapters: [ch4, ch5]
-  - match: "You spoke for my right to choose"
+  - match: "spoke for my right to choose"
     allow: flag.c4_spoke_for_mahaut
   - match: "Madonna Fiammetta sends her regards"
     allow: "alias.spouse != fiammetta_lanzi"
-  - match: "(Your mother|Kit) writes"
+  - match: "Kit writes"
     allow: "!flag.c3_sent_for_kin"
     chapters: [ch3, ch4]
+  - match: "Your mother writes"
+    allow: "!flag.c3_sent_for_kin || background != burgess"
+    chapters: [ch3, ch4]
+    why: The burgess's son can send for his mother; the reeve's son sends for his sisters.
   - match: "Your master is in a Valdrennish prison"
     allow: npc.@master.alive
+
+  - match: "who was betrothed to Lady Maud"
+    allow: "!flag.c1_maud_saved"
+  - match: "The one who carried my message"
+    allow: flag.c2_jehanne_message
+  - match: "rode between Malet"
+    allow: flag.c3_saved_wat
+  - match: "with his cousin's wine"
+    allow: flag.c3_brese_kin
+  - match: "Lend Aymer"
+    allow: npc.aymer_ravell.alive
+  - match: "same thing that happened at Bréval"
+    allow: flag.c2_breval_burned
+  - match: "the man who let him go at the Leven"
+    allow: flag.c1_coll_freed
+  - match: "kept the tallies to the last day"
+    allow: "!flag.c1_father_exposed"
 
 dead_names_ok:
   c5_chronicle: ['*']            # the chronicle of his life names the dead as they were
@@ -62,3 +80,5 @@ dead_names_ok:
   c3_second_child: ['*']
   c4_third_child: ['*']          # the wife's death in childbed is told as it happens
   c1_after_leven: [coll_glenhallow]  # what he dreams of
+  c4_master: ['*']               # the deathbed, told after the death is recorded
+  c1_crisis_ancel: [ancel_brome] # the Pryce choice tells how Ancel rode to his death

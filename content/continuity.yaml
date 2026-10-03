@@ -1,0 +1,64 @@
+# Continuity rules, checked by tools/continuity.ts (npm run continuity).
+#
+# Each rule names a phrase the prose may only use when a condition holds in
+# the state of the run that shows it. Write the condition in the same grammar
+# as scene conditions. `chapters` limits a rule to some chapters; `except`
+# lists scenes where the phrase means something else.
+#
+# Separately, the tool flags any named NPC who appears in text after he is
+# dead, unless the sentence is plainly about his death or memory. Allowed
+# exceptions go under `dead_names_ok` (scene id -> NPC ids).
+#
+# Comparisons with the past ("more people than before") must read a relative
+# path such as estate.recovery, never a raw count: see the population rule.
+
+rules:
+  # Origins
+  - match: "reeve's son in a ditch"
+    allow: background == reeve
+    why: The king's reward names the player's origin.
+  - match: "arrows for a farthing"
+    allow: background == archer
+    why: An archer's son's childhood.
+  - match: "your father fought at Harrow Ford"
+    allow: background == archer
+  - match: "Lady Ravell has been kind"
+    allow: "!flag.p_mother_dismissed"
+
+  # The grant
+  - match: "from Ormel"
+    allow: flag.c2_granted_ormel
+  - match: "Hodge Brewster"
+    allow: "!flag.c2_granted_kerval"
+    why: Kerval's settlers are the Duchess's people, not Adalians.
+  - match: "the state of the dyke|the dyke held"
+    allow: flag.c2_granted_marsalin
+    chapters: [ch3, ch4, ch5]
+
+  # The manor
+  - match: "more people than before the plague|more people on the manor than there were before"
+    allow: estate.recovery >= 100
+  - match: "onto the new cross"
+    allow: flag.c3_raised_cross
+
+  # People and what became of them
+  - match: "\\bAude\\b"
+    allow: flag.c3_davy_married
+    chapters: [ch4, ch5]
+  - match: "You spoke for my right to choose"
+    allow: flag.c4_spoke_for_mahaut
+  - match: "Madonna Fiammetta sends her regards"
+    allow: "alias.spouse != fiammetta_lanzi"
+  - match: "(Your mother|Kit) writes"
+    allow: "!flag.c3_sent_for_kin"
+    chapters: [ch3, ch4]
+  - match: "Your master is in a Valdrennish prison"
+    allow: npc.@master.alive
+
+dead_names_ok:
+  c5_chronicle: ['*']            # the chronicle of his life names the dead as they were
+  c2q_lanzi: [hamon_darrell]     # a dead man's debt is still owed
+  c3_childbed: ['*']             # "Philippa does not." is the death itself
+  c3_second_child: ['*']
+  c4_third_child: ['*']          # the wife's death in childbed is told as it happens
+  c1_after_leven: [coll_glenhallow]  # what he dreams of

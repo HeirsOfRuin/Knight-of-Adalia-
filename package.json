@@ -14,6 +14,7 @@
     "lint:style": "tsx tools/lint-style.ts",
     "bot": "tsx tools/bot.ts",
     "smoke": "tsx tools/smoke.ts",
+    "continuity": "tsx tools/continuity.ts",
     "transcript": "tsx tools/transcript.ts",
     "balance": "tsx tools/balance.ts",
     "build:artifact": "npm run build && tsx tools/build-artifact.ts",

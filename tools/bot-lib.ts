@@ -199,12 +199,13 @@ export interface PlanResult {
   state: GameState;
 }
 
-export function playPlan(content: ContentBundle, plan: Plan, maxSteps = 500): PlanResult {
+export function playPlan(content: ContentBundle, plan: Plan, maxSteps = 500, observe?: (s: GameState) => void): PlanResult {
   let state = newGame(content, { background: plan.background, seed: plan.seed, name: 'Plan', role: plan.role });
   const problems: string[] = [];
   const path: string[] = [];
   const used = new Set<string>();
   for (let i = 0; i < maxSteps && !state.ended; i++) {
+    observe?.(state);
     const v = view(content, state);
     const avail = v.choices.filter((c) => c.available);
     if (!avail.length) { problems.push(`dead end in ${state.scene}`); break; }

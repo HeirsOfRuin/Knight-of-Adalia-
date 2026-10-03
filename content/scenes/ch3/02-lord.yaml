@@ -508,7 +508,7 @@
 
     [break]
 
-    In Lent a letter comes from home, and another from [if flag.c2_granted_kerval]the Duchess[else]Sauvemer[/if], and a third from someone you have not heard from in a long time. They are all, one way or another, about the same thing. You are twenty-eight. You hold land. People have started asking, at dinner, in letters, in the street, when you mean to marry.
+    In Lent a letter comes from home, and another from [if flag.c2_granted_kerval]the Duchess[else]Sauvemer[/if], and a third from someone you have not heard from in a long time. They are all, one way or another, about the same thing. You are {age_words}. You hold land. People have started asking, at dinner, in letters, in the street, when you mean to marry.
 
     [if suit.mag_coker.status == known || suit.mag_coker.status == courted || suit.annot_dyer.status == known || suit.annot_dyer.status == courted || suit.mariot_wood.status == known || suit.mariot_wood.status == courted || suit.nell_laundress.status == known || suit.nell_laundress.status == courted || suit.isabel_sayer.status == known || suit.isabel_sayer.status == courted || suit.maud_delisle.status == known || suit.maud_delisle.status == courted || suit.cecily_fuller.status == known || suit.cecily_fuller.status == courted || suit.joan_wyck.status == known || suit.joan_wyck.status == courted || suit.alys_fane.status == known || suit.alys_fane.status == courted || suit.heloise_corbie.status == known || suit.heloise_corbie.status == courted || suit.fiammetta_lanzi.status == known || suit.fiammetta_lanzi.status == courted || suit.clemence_vaux.status == known || suit.clemence_vaux.status == courted]
 

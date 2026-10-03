@@ -135,7 +135,6 @@
     - id: wait
       text: Wait it out.
       text_after: You wait it out. It takes all summer. The lists get shorter in the autumn, and then stop, and then a boy comes with a different message, from the headman, which is that you may as well come home now, because there is nobody left to catch it from.
-      effects: [ { advance: { seasons: 1 } } ]
       next: c3_household
     - id: back
       text: Go back after all, before it is over.

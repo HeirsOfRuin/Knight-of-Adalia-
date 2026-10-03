@@ -17,9 +17,21 @@ export function ageOf(state: GameState): number {
 }
 
 /** The reign a date falls in, and the year of that reign (internal years stay continuous). */
+/** A reign tied to a scene (the old king's death) begins the year after that scene is played; until then it has not begun. */
+function reignStart(state: GameState, content: ContentBundle, r: { from_year: number; from_scene?: string }): number {
+  if (!r.from_scene) return r.from_year;
+  const at = state.seen[r.from_scene];
+  return at === undefined ? Infinity : content.config.start_year + Math.floor(at / 4) + 1;
+}
+
+/** Season count of a regnal date (years counted continuously from the game's first king). */
+export function timeOf(content: ContentBundle, year: number, season: string): number {
+  return (year - content.config.start_year) * 4 + Math.max(0, content.config.seasons.indexOf(season));
+}
+
 export function reignOf(state: GameState, content: ContentBundle): { king: string; year: number } {
   const y = regnalYear(state, content);
-  const r = [...content.config.reigns].reverse().find((x) => y >= x.from_year);
+  const r = [...content.config.reigns].map((x) => ({ ...x, from_year: reignStart(state, content, x) })).reverse().find((x) => y >= x.from_year);
   return r ? { king: r.king, year: y - r.from_year + 1 } : { king: content.config.regnal_king, year: y };
 }
 

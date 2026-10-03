@@ -508,9 +508,9 @@
   chapter: ch3
   title: The Summons
   checkpoint: true
-  on_enter: [ { advance: { seasons: 1 } } ]
+  on_enter: [ { advance: { seasons: 1 } }, { catch_up: { year: 32, season: autumn } } ]
   text: |
-    In the autumn of the thirty-second year of King Aldred, the peace ends. Not with a war. With letters.
+    In the {season} of the {reign_year} year of King {king}, the peace ends. Not with a war. With letters.
 
     [break]
 
@@ -544,7 +544,7 @@
       text: Go to the Prince's household at Christmas.
       tags: [allies, cunning]
       text_after: |
-        You go to the Prince's household at Saltmarsh for Christmas. It is full of young men like you: new men, second sons, knights with good swords and no fathers worth mentioning. Edwin is twenty-one and in a hurry. He says, at the feast, with his cup in his hand, "My father's lords are old. Mine will not be." Everyone cheers. You cheer too. You are thirty-one, and there is grey in your beard.
+        You go to the Prince's household at Saltmarsh for Christmas. It is full of young men like you: new men, second sons, knights with good swords and no fathers worth mentioning. Edwin is twenty-one and in a hurry. He says, at the feast, with his cup in his hand, "My father's lords are old. Mine will not be." Everyone cheers. You cheer too. You are {age_words}, and there is grey in your beard.
       effects: [ { set: flag.c3_party_prince }, { add: { rep.crown: 1 } } ]
       next: c3_end
     - id: own
@@ -566,7 +566,7 @@
 
     [break]
 
-    You are thirty-one years old. You were [if background == reeve]a reeve's son[elif background == burgess]a wool merchant's son[elif background == archer]an archer's son[else]a tirewoman's son[/if]. You are a lord, with land, [if heirs.count >= 1]and heirs, [/if]and enemies, and a war coming.
+    You are {age_words} years old. You were [if background == reeve]a reeve's son[elif background == burgess]a wool merchant's son[elif background == archer]an archer's son[else]a tirewoman's son[/if]. You are a lord, with land, [if heirs.count >= 1]and heirs, [/if]and enemies, and a war coming.
   choices:
     - id: ride
       text: Ride for Wendmere.

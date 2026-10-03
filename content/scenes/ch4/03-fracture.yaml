@@ -8,7 +8,7 @@
   chapter: ch4
   title: "[if flag.c4_master_dying]The Old Master[else]Father Benet[/if]"
   checkpoint: true
-  on_enter: [ { advance: { seasons: 1 } }, { if: npc.@master.alive, then: [ { set: flag.c4_master_dying } ] } ]
+  on_enter: [ { advance: { seasons: 1 } }, { if: npc.@master.alive, then: [ { set: flag.c4_master_dying } ] }, { catch_up: { year: 38, season: summer } } ]
   text: |
     [if flag.c4_master_dying]The letter comes at midsummer, in a hand you do not know, from [if alias.master == hamon_darrell]Ashby[elif alias.master == ancel_brome]Brome Tower[elif alias.master == walter_pryce]Pryce's manor in Carrow[else]Ravell Hall[/if]. {npc.@master} is dying. He has asked for you by name. He has asked, the letter says, for almost nobody else.
 
@@ -59,9 +59,9 @@
   chapter: ch4
   title: The King Is Dead
   checkpoint: true
-  on_enter: [ { advance: { seasons: 6 } } ]
+  on_enter: [ { advance: { seasons: 6 } }, { catch_up: { year: 39, season: winter } } ]
   text: |
-    King Aldred dies at Wendmere at Candlemas in the thirty-ninth year of his reign, at fifty-three, after two years of dying.
+    King Aldred dies at Wendmere at Candlemas in the {reign_year} year of his reign, at fifty-three, after two years of dying.
 
     [if flag.c4_chamber_knight]You are in the room. The Queen, the Chancellor, two physicians, a priest, the Prince, and you, by the door, because the knight of the chamber is always by the door. At the end the King opens his eyes and looks round the room, at every face, as if counting. He stops at his son. He says, "Don't," and nobody ever knows what. Then he is gone.[elif counter.court_king >= 5]You are at Wendmere when it happens, sent for by the King a week before. He did not ask you for anything when you came. He held your hand, and talked about Les Salines, and the dyke, and the water coming in, and said it was the best day of his life.[else]You hear it at [if flag.c2_granted_kerval]Kerval[elif flag.c2_granted_marsalin]Marsalin[else]Ormel[/if], from a rider who has killed two horses bringing it.[/if]
 
@@ -397,9 +397,9 @@
   chapter: ch4
   title: Lannec
   checkpoint: true
-  on_enter: [ { advance: { seasons: 2 } } ]
+  on_enter: [ { advance: { seasons: 2 } }, { catch_up: { year: 41, season: spring } } ]
   text: |
-    In the spring of the second year of King Edwin, the salt guilds of Sauvemer stop paying the salt penny, and the Valdrennish salt tithe, both, on the same day. They say they will pay the King who protects them, when they find out which one that is.
+    In the {season} of the {reign_year} year of King {king}, the salt guilds of Sauvemer stop paying the salt penny, and the Valdrennish salt tithe, both, on the same day. They say they will pay the King who protects them, when they find out which one that is.
 
     In the same week, Mahaut, Duchess of Armance, twenty-two and still unmarried, invites the western lords to Lannec for her feast-day. Nobody invites the King's officers, or the Valdrennish King's. Everybody understands.
 
@@ -435,7 +435,7 @@
   chapter: ch4
   title: The Second Spring of King Edwin
   text: |
-    You are forty. Adalia has two kings, or a king and an earl who says he is not one. Valdrenne has a king who murdered his Constable. And the West, where you hold your land and where your [if heirs.count >= 1]children are growing up speaking two languages[else]name is known[/if], is beginning to think about itself.
+    You are {age_words}. Adalia has two kings, or a king and an earl who says he is not one. Valdrenne has a king who murdered his Constable. And the West, where you hold your land and where your [if heirs.count >= 1]children are growing up speaking two languages[else]name is known[/if], is beginning to think about itself.
   choices:
     - id: on
       text: Go on.

@@ -19,6 +19,7 @@
       then: [ { queue: { event: c4q_carn_dubh, delay: { seasons: 2 } } } ]
     - if: [ background == servant, flag.knows_household_secret ]
       then: [ { queue: { event: c4q_ravell_heir, delay: { seasons: 2 } } } ]
+    - catch_up: { year: 35, season: summer }
   text: |
     A man with one manor knows every field in it. A man with several knows his stewards, and what his stewards tell him, and that is a different thing.
 
@@ -159,7 +160,7 @@
   checkpoint: true
   on_enter: [ { advance: { seasons: 3 } } ]
   text: |
-    The King keeps Christmas at Wendmere in the thirty-sixth year of his reign, and everyone who matters is there, and everyone who matters notices that the King is ill.
+    The King keeps Christmas at Wendmere in the {reign_year} year of his reign, and everyone who matters is there, and everyone who matters notices that the King is ill.
 
     He is fifty-one. He was a big man and is not any more. He sits through the feast with his food untouched and his hand on the arm of his chair, and laughs at the mummers a moment late, and twice the Queen leans over to him and says something, and he does not answer. On the third day he does not come down at all.
 
@@ -259,7 +260,7 @@
   checkpoint: true
   on_enter: [ { if: calendar.season == spring, then: [ { advance: { seasons: 2 } } ] } ]
   text: |
-    In the autumn of the thirty-seventh year, the King's Chancellor, needing money for a King who cannot stop spending it on physicians, puts a tax on salt in the West: a penny on the bushel at every pan from Sauvemer to the Armance. It is called the Adalian salt penny. Everybody in the West calls it the salt tithe, which is what the Valdrennish kings called theirs, and which the West rose against forty years ago.
+    In the {season} of the {reign_year} year, the King's Chancellor, needing money for a King who cannot stop spending it on physicians, puts a tax on salt in the West: a penny on the bushel at every pan from Sauvemer to the Armance. It is called the Adalian salt penny. Everybody in the West calls it the salt tithe, which is what the Valdrennish kings called theirs, and which the West rose against forty years ago.
 
     [break]
 
@@ -300,9 +301,9 @@
   chapter: ch4
   title: The Duchess Is Dead
   checkpoint: true
-  on_enter: [ { advance: { seasons: 1 } }, { kill: jehanne_armance } ]
+  on_enter: [ { advance: { seasons: 1 } }, { kill: jehanne_armance }, { catch_up: { year: 37, season: winter } } ]
   text: |
-    Duchess Jehanne of Armance dies at Lannec in the winter of the thirty-seventh year, at seventy-four, in her chair, with her stick across her knees and her granddaughter holding her hand. The last thing she says, they tell you, is "Not to Wendmere." Nobody is sure whether she meant her body or the girl.
+    Duchess Jehanne of Armance dies at Lannec in the {season} of the {reign_year} year, at seventy-four, in her chair, with her stick across her knees and her granddaughter holding her hand. The last thing she says, they tell you, is "Not to Wendmere." Nobody is sure whether she meant her body or the girl.
 
     [break]
 
@@ -394,7 +395,7 @@
   title: Spring, Year Thirty-Eight
   on_enter: [ { advance: { seasons: 1 } } ]
   text: |
-    You are thirty-seven. [if holdings.count >= 2]Your name is on the rent-rolls of more places than you have slept in.[else]You hold your manor and your tower and your name.[/if] [if heirs.count >= 1]{heirs.names}: [if heirs.count >= 2]growing, quarrelling, away and home again[else]growing, away and home again[/if].[/if]
+    You are {age_words}. [if holdings.count >= 2]Your name is on the rent-rolls of more places than you have slept in.[else]You hold your manor and your tower and your name.[/if] [if heirs.count >= 1]{heirs.names}: [if heirs.count >= 2]growing, quarrelling, away and home again[else]growing, away and home again[/if].[/if]
 
     The King is dying. Everyone knows it, and nobody says it, and everyone is counting.
   choices:

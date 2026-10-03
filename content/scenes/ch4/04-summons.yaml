@@ -10,7 +10,7 @@
   checkpoint: true
   on_enter: [ { advance: { seasons: 1 } } ]
   text: |
-    In the summer of King Edwin's second year, the question of what you are is settled, one way or another.
+    In the {season} of the {reign_year} year of King {king}, the question of what you are is settled, one way or another.
 
     [if flag.c4_edwin_won && counter.court_prince >= 6]A letter comes under King Edwin's great seal. For service at Wythen Heath[if flag.c4_swore_edwin_first], and for kneeling first[/if], the King creates you Baron of the March, with a seat in his council and the right to be summoned to it by name. "My father's lords are old," the letter does not say. You can hear it anyway.[elif flag.c4_carrow_won && counter.court_carrow >= 6]A letter comes from the council of regency at Carrow, under the black boar. For service at Wythen Heath, the council creates you Baron of the March. It is not the King's seal. In the north, they say that does not matter any more.[elif counter.west_estates >= 6]No king makes you anything. Instead, at Midsummer, the lords and guildmasters of the West meet at Sauvemer, and the oldest of them, the lord of Penhoët, stands up at the end of dinner and calls you "Monseigneur le baron," and the hall stands with him. It has no force in law. Everyone in the West knows exactly what it means.[elif holdings.count >= 3]Nobody makes you anything. But you hold land in more places than some earls, and men have begun to call you "my lord" in a voice they used to keep for barons.[else]Nobody makes you anything. You are a lord of the West, with your manor and your name, and in a year when kingdoms are breaking, that is not nothing.[/if]
   choices:
@@ -93,8 +93,9 @@
       then: [ { add: { counter.estates: 1 } } ]
     - if: { any: [ holding.la_garde.held, holding.vaudrey.held, holding.corbie_vineyard.held, holding.sauvemer_house.held ] }
       then: [ { add: { counter.estates: 1 } } ]
+    - catch_up: { year: 41, season: winter }
   text: |
-    The writ comes at Candlemas, in King Edwin's second winter, on Armance paper, under three seals: the Duchess's swan, the salt-guilds' measure, and the shell of the abbey of Saint-Lys.
+    The writ comes at Candlemas, in the {reign_year} winter of King {king}, on Armance paper, under three seals: the Duchess's swan, the salt-guilds' measure, and the shell of the abbey of Saint-Lys.
 
     It summons the lords, the towns and the guilds of the West to meet in Estates at Lannec at Whitsun, "to consider the peace and governance of the lands of the Armance and the Salt, in the present troubles of the realms." It does not say which realms. It does not name a king. It is addressed to you by your name and your style, [if flag.c4_great_lord]Baron of the March[elif flag.c4_banneret]banneret[else]lord of [if flag.c2_granted_kerval]Kerval[elif flag.c2_granted_marsalin]Marsalin[else]Ormel[/if][/if], and it is, in the eyes of two kings, treason to answer.
 
@@ -141,9 +142,9 @@
 - id: c4_end
   chapter: ch4
   title: Whitsun at Lannec
-  on_enter: [ { advance: { seasons: 1 } } ]
+  on_enter: [ { advance: { seasons: 1 } }, { catch_up: { year: 42, season: spring } } ]
   text: |
-    You come to Lannec at Whitsun in the third year of King Edwin, at forty-one, [if flag.c4_great_lord]a baron[elif flag.c4_banneret]a banneret[else]a lord[/if] of the West, with grey in your beard and [if flag.c3_married && npc.@spouse.alive]your wife beside you[elif flag.c4_mahaut_betrothed]a secret promise from the Duchess of Armance[elif flag.c3_married]a grave in your chancel[else]nobody beside you[/if][if heirs.count >= 1], and {heirs.names} at home, waiting to hear what you will make of them[/if].
+    You come to Lannec at Whitsun in the {reign_year} year of King {king}, at {age_words}, [if flag.c4_great_lord]a baron[elif flag.c4_banneret]a banneret[else]a lord[/if] of the West, with grey in your beard and [if flag.c3_married && npc.@spouse.alive]your wife beside you[elif flag.c4_mahaut_betrothed]a secret promise from the Duchess of Armance[elif flag.c3_married]a grave in your chancel[else]nobody beside you[/if][if heirs.count >= 1], and {heirs.names} at home, waiting to hear what you will make of them[/if].
 
     [if counter.estates >= 8]When you walk into the hall, men stand.[elif counter.estates >= 5]When you walk into the hall, men nod, and make room.[else]When you walk into the hall, a few men nod. Most are watching someone else.[/if] Two kings are at war with themselves. A third murdered his Constable. And the lords of the West are sitting down together, in a hall full of banners, to decide whether they belong to anyone at all.
 

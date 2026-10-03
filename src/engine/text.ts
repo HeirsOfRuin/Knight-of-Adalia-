@@ -3,8 +3,8 @@ import type { ContentBundle } from '../content/schema';
 import type { GameState } from './state';
 import { evalCond, parseInline, validateCond, type Cond } from './conditions';
 import { getValue, checkPath, deref } from './paths';
-import { formatCoin, capitalise } from './format';
-import { describeDate } from './calendar';
+import { formatCoin, capitalise, numberWords, ordinalWords } from './format';
+import { describeDate, ageOf, reignOf } from './calendar';
 
 type Node =
   | { t: 'text'; s: string }
@@ -51,7 +51,7 @@ export function parseText(src: string): Node[] {
   return root;
 }
 
-const SPECIAL_VARS = ['name', 'date', 'coin', 'station', 'background', 'origin', 'season', 'year', 'age'];
+const SPECIAL_VARS = ['name', 'date', 'coin', 'station', 'background', 'origin', 'season', 'year', 'age', 'age_words', 'reign_year', 'king'];
 
 function varValue(name: string, state: GameState, content: ContentBundle): string {
   const reg = content.registry;
@@ -65,6 +65,10 @@ function varValue(name: string, state: GameState, content: ContentBundle): strin
     case 'season': return String(getValue(state, content, 'calendar.season'));
     case 'year': return String(getValue(state, content, 'calendar.year'));
     case 'age': return String(getValue(state, content, 'age'));
+    // for prose that names the date or his age: always agrees with the date shown above the scene
+    case 'age_words': return numberWords(ageOf(state));
+    case 'reign_year': return ordinalWords(reignOf(state, content).year);
+    case 'king': return reignOf(state, content).king;
   }
   const [ns, id, field] = deref(state, name).split('.');
   if (ns === 'npc' && id) {

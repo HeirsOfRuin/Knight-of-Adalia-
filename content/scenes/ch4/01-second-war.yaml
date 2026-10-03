@@ -478,9 +478,9 @@
   chapter: ch4
   title: The Second Grant
   checkpoint: true
-  on_enter: [ { advance: { seasons: 4 } } ]
+  on_enter: [ { advance: { seasons: 4 } }, { catch_up: { year: 35, season: spring } } ]
   text: |
-    [if flag.c4_mf_lost]The war goes on through the winter and the next summer, siege by siege, without another battle, and by the spring of the thirty-fifth year the King holds the Armance coast and the Constable holds the hills, and both of them are out of money.[else]The war goes on through the winter and the next summer, town by town. By the spring of the thirty-fifth year the King holds the Armance to the hills, the Constable is fighting his own boy-king in Cordelle, and the Sarenzan banks are pressing both sides for a truce.[/if]
+    [if flag.c4_mf_lost]The war goes on through the winter and the next summer, siege by siege, without another battle, and by the {season} of the {reign_year} year the King holds the Armance coast and the Constable holds the hills, and both of them are out of money.[else]The war goes on through the winter and the next summer, town by town. By the spring of the thirty-fifth year the King holds the Armance to the hills, the Constable is fighting his own boy-king in Cordelle, and the Sarenzan banks are pressing both sides for a truce.[/if]
 
     In Lent the King rewards his captains.
 
@@ -514,7 +514,7 @@
   chapter: ch4
   title: Spring, Year Thirty-Five
   text: |
-    You are thirty-four. You carry a square banner now, and lead other men's knights under it, and [if holdings.count >= 2]hold land in more places than you can ride to in a week[elif holdings.count == 1]hold land in two countries[else]hold the King's ear, which is a kind of land[/if].
+    You are {age_words}. You carry a square banner now, and lead other men's knights under it, and [if holdings.count >= 2]hold land in more places than you can ride to in a week[elif holdings.count == 1]hold land in two countries[else]hold the King's ear, which is a kind of land[/if].
 
     [if heirs.count >= 1]At home, {heirs.names} [if heirs.count >= 2]are[else]is[/if] growing, without you, the way children do.[/if] [if flag.c3_married && npc.@spouse.alive]Your wife's last letter says [if flag.c2_granted_kerval]the orchards have set well and the mill-race is mended[elif flag.c2_granted_marsalin]the dyke held and the salt is good[else]the ditches held through the winter and the salt is poor but sells[/if], and that she has had the hall whitewashed, and you are not to complain about it.[/if]
   choices:

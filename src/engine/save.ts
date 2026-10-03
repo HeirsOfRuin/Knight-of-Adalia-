@@ -69,6 +69,9 @@ export function fromSave(raw: unknown, content: ContentBundle): LoadResult {
     const fallback = state.checkpoint && content.scenes[state.checkpoint] ? state.checkpoint : content.backgrounds[state.background]?.start_scene;
     if (!fallback) throw new SaveError(`scene ${state.scene} no longer exists and no checkpoint is available`);
     warnings.push(`The scene you saved in no longer exists. Resumed from ${fallback}.`);
+    // the calendar goes back with the story, or the replayed scenes would happen years late
+    const at = state.seen[fallback];
+    if (at !== undefined && at < state.time) state.time = at;
     state.scene = fallback;
     state.returnStack = [];
   }

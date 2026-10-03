@@ -41,6 +41,8 @@ const BaseEffectSchema = z.union([
     queue: z.object({ event: Id, delay: Delay, earliest_chapter: z.string().optional() }).strict(), // chapter id
   }).strict(),
   z.object({ advance: Delay }).strict(),
+  // moves the calendar forward to a date, if it is behind it (dated scenes stay true whatever path led there)
+  z.object({ catch_up: z.object({ year: z.number().int(), season: z.enum(['spring', 'summer', 'autumn', 'winter']) }).strict() }).strict(),
   z.object({ found_estate: z.record(z.string(), z.number()) }).strict(), // creates state.estate (Ch3)
   z.object({ lose_share: z.record(z.string(), z.number()) }).strict(), // estate.<field>: percent lost (plague, famine)
   // ordinary drill: { train: { arms: 1 } } raises a skill only up to a ceiling (default 4; a mentor sets a higher one;
@@ -263,7 +265,7 @@ export const ConfigSchema = z.object({
   start_year: z.number().int(),
   regnal_king: z.string(),
   // later reigns: dates count from 1 again from the first year of each (internal years stay continuous)
-  reigns: z.array(z.object({ king: z.string(), from_year: z.number().int() }).strict()).default([]),
+  reigns: z.array(z.object({ king: z.string(), from_year: z.number().int(), from_scene: z.string().optional() }).strict()).default([]),
   attributes: z.array(Id),
   skills: z.array(Id),
   stations: z.array(Id),

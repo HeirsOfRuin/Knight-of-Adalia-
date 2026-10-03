@@ -3,7 +3,7 @@ import { ESTATE_FIELDS, clampEstate, type EstateField } from './estate';
 import type { ContentBundle, Effect } from '../content/schema';
 import type { GameState, NpcState, SuitState } from './state';
 import { pickHeirs, TEMPERAMENTS } from './heirs';
-import { advanceSeasons } from './calendar';
+import { advanceSeasons, timeOf } from './calendar';
 import { labelFor, deref } from './paths';
 import { test } from './conditions';
 import type { RngCursor } from './rng';
@@ -326,6 +326,8 @@ export function applyEffects(state: GameState, content: ContentBundle, effects: 
       state.estate.founded = state.estate.people ?? 0; // what the manor held when he came, for estate.recovery
     } else if ('advance' in e) {
       advanceSeasons(state, content, e.advance.seasons, ctx.changes);
+    } else if ('catch_up' in e) {
+      advanceSeasons(state, content, timeOf(content, e.catch_up.year, e.catch_up.season) - state.time, ctx.changes);
     } else if ('journal' in e) {
       ctx.changes.push(e.journal);
     } else if ('die' in e) {

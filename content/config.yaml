@@ -2,7 +2,7 @@ title: Knight of Adalia
 start_year: 9          # regnal year at game start (prologue, age 8)
 regnal_king: Aldred
 reigns:
-  - { king: Edwin, from_year: 40 }   # Aldred dies at Candlemas year 39; Edwin crowned Lady Day year 40
+  - { king: Edwin, from_year: 40, from_scene: c4_king_dies }   # Edwin reigns from the year after Aldred dies in the story (nominally year 40)
 attributes: [strength, agility, endurance, wits, presence]
 skills: [arms, archery, riding, woodcraft, command, tactics, diplomacy, intrigue, courtesy, stewardship, trade, learning]
 stations: [commoner, retainer, squire, knight, lord, great_lord, royal]

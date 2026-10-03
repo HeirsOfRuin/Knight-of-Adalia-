@@ -47,6 +47,9 @@ Each line is one pattern. Plain lines match as case-insensitive whole words or p
 
 ### Banned (lint error)
 ```banned
+# authoring notes that leaked into prose instead of becoming [if] conditions
+/if you are [A-Z][a-z]+ [A-Z][a-z]+'s (son|daughter)/
+/if you are not\b[^.]{0,20}(son|background)/
 okay
 ok
 awesome

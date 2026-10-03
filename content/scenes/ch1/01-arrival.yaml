@@ -62,7 +62,7 @@
 
           Somebody in the squires' window above laughs, a high, delighted laugh. You do not look up. You know already whose it will be.
 
-          Your master tells you to get up. [if alias.master == hamon_darrell]Sir Hamon is kind about it, which makes it worse: he pats your shoulder and says that he knelt in a cowpat on the day he was knighted and it never did him any harm.[else]Sir Ancel says nothing at all, which is his way of being kind. You find out later that this is the kindest thing he does.[/if] You spend the evening scrubbing your hose.
+          [if alias.master == hamon_darrell]Sir Hamon tells you to get up, and is kind about it, which makes it worse: he pats your shoulder and says that he knelt in a cowpat on the day he was knighted and it never did him any harm.[else]Sir Ancel says nothing at all, not even "get up", which is his way of being kind. You find out later that this is the kindest thing he does.[/if] You spend the evening scrubbing your hose.
         effects: [ { add: { rel.giles_marrick.respect: -1 } }, { meet: giles_marrick } ]
         next: c1_first_night
     - id: work

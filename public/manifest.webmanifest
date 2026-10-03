@@ -2,6 +2,7 @@
   "name": "Knight of Adalia",
   "short_name": "Adalia",
   "description": "A low-fantasy medieval life: from a commoner's son to whatever you make of him.",
+  "id": "/Knight-of-Adalia-/",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

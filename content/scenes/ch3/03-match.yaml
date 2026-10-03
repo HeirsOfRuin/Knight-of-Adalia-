@@ -507,7 +507,7 @@
       text: "Get the best midwife in the country, and let her do as she thinks fit."
       tags: ["allies"]
       text_after: |
-        [if flag.c2_granted_marsalin]Old Mère Fanchon from the salt-town[elif flag.c2_granted_kerval]Mère Soizic from the abbey village, who has delivered half the Armance[else]The midwife from Saint-Aubin across the marsh, a little bent woman with enormous hands[/if] comes to the manor in the last month and moves into the solar, and from that moment it is her house, not yours. She sends you out of every room you go into. She has delivered, she says, more babies than you have killed men, and lost fewer.
+        [if flag.c2_granted_marsalin]Old Mère Fanchon from the salt-town[elif flag.c2_granted_kerval]Mère Soizic from the abbey village, who has delivered half the Armance,[else]The midwife from Saint-Aubin across the marsh, a little bent woman with enormous hands,[/if] comes to the manor in the last month and moves into the solar, and from that moment it is her house, not yours. She sends you out of every room you go into. She has delivered, she says, more babies than you have killed men, and lost fewer.
       effects: [{"set": "flag.c3_birth_midwife"}, {"add": {"estate.temper": 1}}]
       next: "c3_childbed"
     - id: relic

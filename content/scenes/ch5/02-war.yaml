@@ -124,19 +124,19 @@
       success:
         text: |
           You go over the bridge at the head of everything you have, and the West comes with you, and Amaury's household knights, who have never once in their lives been charged by men on foot, break on the far bank and go back into the press of their own army and break that too. You see the royal banner of Valdrenne go down in the river. By dusk the Valdrennish host is a rout on the road to the hills, and you are standing on the Pont-aux-Moines with your sword broken and your voice gone, and the West is shouting your name.
-        effects: [ { set: flag.c5_led_charge }, { add: { counter.ww: 3, res.renown: 4 } }, { casualties: { men: 15, named: 1 } }, { if: flag.c5_commands, then: [ { set: flag.c5_host_decisive } ] } ]
+        effects: [ { set: flag.c5_led_charge }, { add: { counter.ww: 3, res.renown: 4 } }, { casualties: { men: 15, named: 1, spare: [ davy_ludd ] } }, { if: flag.c5_commands, then: [ { set: flag.c5_host_decisive } ] } ]
         next: c5_war_after
       partial:
         text: |
           You go over the bridge, and they hold you, and you hold them, and in the end it is the reserve that tips it, and the Valdrennish go back over the hills in good order, beaten, not broken. You come off the bridge with your arm in a sling and twenty of your men in the river.
-        effects: [ { add: { counter.ww: 1, res.renown: 2 } }, { casualties: { men: 20, named: 1 } }, { injury: arrow_wound } ]
+        effects: [ { add: { counter.ww: 1, res.renown: 2 } }, { casualties: { men: 20, named: 1, spare: [ davy_ludd ] } }, { injury: arrow_wound } ]
         next: c5_war_after
       failure:
         text: |
           [if armour >= 1 && !injured]You go over the bridge and the household knights meet you in the middle of it, and you go down, and they go over you, and your harness holds, and you wake in the evening in a fisherman's hut with your ribs strapped and the battle over.[else]You go over the bridge and the household knights meet you in the middle of it, and you go down on the old stones of the Pont-aux-Moines and do not get up.[/if]
         effects:
           - if: [ armour >= 1, "!injured" ]
-            then: [ { injury: crushed_ribs }, { casualties: { men: 25, named: 1 } } ]
+            then: [ { injury: crushed_ribs }, { casualties: { men: 25, named: 1, spare: [ davy_ludd ] } } ]
             else: [ { die: "Killed on the Pont-aux-Moines, leading the West against the King of Valdrenne" } ]
         next: c5_war_after
     - id: reserve
@@ -169,7 +169,7 @@
       failure:
         text: |
           The bank does not hold. Not all at once: a yard, then another, then the meadow, then the road. By nightfall the West is falling back on Lannec, and the bridge is theirs.
-        effects: [ { add: { counter.ww: -1 } }, { casualties: { men: 18, named: 1 } } ]
+        effects: [ { add: { counter.ww: -1 } }, { casualties: { men: 18, named: 1, spare: [ davy_ludd ] } } ]
         next: c5_war_after
 
 - id: c5_war_after

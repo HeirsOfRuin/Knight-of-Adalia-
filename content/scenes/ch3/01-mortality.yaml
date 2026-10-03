@@ -223,7 +223,7 @@
       text_after: |
         The whole manor walks the bounds behind the priest and the cross, singing the litany, barefoot, with the [if flag.c2_granted_kerval]abbey's relics[else]church's one relic, a finger-bone of a saint nobody can name,[/if] carried in front. It is the most beautiful thing you have seen since you came. People weep, and hold each other, and pray out loud.
 
-        The next week the deaths double. "It's the crowding," Père [if flag.c2_granted_marsalin]Yves[elif flag.c2_granted_kerval]Dom Hervé[else]Guérin[/if] says, white. "God forgive me, it's the crowding." The people do not blame you. They blame God. That is hard on the priest, and easier on you.
+        The next week the deaths double. "It's the crowding," [if flag.c2_granted_marsalin]Père Yves[elif flag.c2_granted_kerval]Dom Hervé[else]Père Guérin[/if] says, white. "God forgive me, it's the crowding." The people do not blame you. They blame God. That is hard on the priest, and easier on you.
       effects: [ { set: flag.c3_procession }, { add: { counter.plague: 3, estate.temper: 1, estate.church: 2, rep.piety: 1 } } ]
       next: c3_household
 
@@ -231,9 +231,9 @@
   chapter: ch3
   title: Your Own House
   on_enter:
-    - casualties: { men: 1, named: 1, spare: [] }
+    - casualties: { men: 1, named: 1, spare: [ davy_ludd ] }
   text: |
-    You thought, without ever quite thinking it, that it would not come into your own house. Everyone thinks that, Père [if flag.c2_granted_marsalin]Yves[elif flag.c2_granted_kerval]Dom Hervé[else]Guérin[/if] says afterwards. Lords most of all.
+    You thought, without ever quite thinking it, that it would not come into your own house. Everyone thinks that, [if flag.c2_granted_marsalin]Père Yves[elif flag.c2_granted_kerval]Dom Hervé[else]Père Guérin[/if] says afterwards. Lords most of all.
 
     It comes in at midsummer. One of the men who came with you from the war, who walked out of Grisolles and stood on the dyke at Les Salines and lived through all of it, starts coughing at supper, and looks at his hand, and goes quiet.
 

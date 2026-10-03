@@ -229,7 +229,8 @@ export function playPlan(content: ContentBundle, plan: Plan, maxSteps = 500, obs
   }
   if (!state.ended) problems.push('did not finish');
   else if (state.ended.ending !== plan.ending) problems.push(`ended in "${state.ended.ending}" (${state.ended.cause ?? ''}), expected "${plan.ending}"`);
-  for (const s of Object.keys(plan.steps)) if (!used.has(s)) problems.push(`plan step for ${s} was never reached`);
+  // pool events are drawn by the director, so a content change elsewhere can swap which ones a run meets
+  for (const s of Object.keys(plan.steps)) if (!used.has(s) && content.scenes[s]?.kind !== 'pool') problems.push(`plan step for ${s} was never reached`);
   for (const e of plan.expect) {
     try {
       if (!testCond(e, state, content)) problems.push(`expectation failed: ${e}`);

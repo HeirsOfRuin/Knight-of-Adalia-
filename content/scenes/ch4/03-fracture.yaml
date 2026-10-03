@@ -266,14 +266,14 @@
       partial:
         text: |
           You turn into their flank and it is a brawl, harness on harness, and you hold them, and then the reserve comes and finishes it. You come out of it with a broken sword and somebody else's blood to the elbow. [if flag.c4_heir_at_war]{heir.eldest.name} is behind the baggage wagons, where [if npc.davy_ludd.alive && npc.davy_ludd.follower]Davy[else]your squire[/if] carried him by the collar, unhurt and furious.[/if]
-        effects: [ { add: { counter.fr: 1, res.renown: 1 } }, { casualties: { men: 14, named: 1 } }, { injury: cut_brow } ]
+        effects: [ { add: { counter.fr: 1, res.renown: 1 } }, { casualties: { men: 14, named: 1, spare: [ davy_ludd ] } }, { injury: cut_brow } ]
         next: c4_wythen_after
       failure:
         text: |
           [if armour >= 1 && !injured]You turn into their flank and they turn into you, and it goes against you. You go down under a poleaxe and your harness holds and your men drag you out by the heels.[else]You turn into their flank and they turn into you, and you go down under a poleaxe on Wythen Heath, in the heather, with the larks still going up.[/if] [if flag.c4_heir_at_war]You do not see what happens to {heir.eldest.name}.[/if]
         effects:
           - if: [ armour >= 1, "!injured" ]
-            then: [ { injury: cracked_skull }, { casualties: { men: 20, named: 1 } } ]
+            then: [ { injury: cracked_skull }, { casualties: { men: 20, named: 1, spare: [ davy_ludd ] } } ]
             else: [ { die: "Killed on Wythen Heath, under the black boar's knights" } ]
           - if: flag.c4_heir_at_war
             then: [ { chance: 30, then: [ { heir_dies: eldest }, { set: flag.c4_heir_killed } ] } ]
@@ -290,7 +290,7 @@
       failure:
         text: |
           The ring breaks. Not where you are, but near enough. You fight your way back to the banner and it is still up, just, when the rest of your side comes. [if flag.c4_heir_at_war]You find {heir.eldest.name} afterwards with a gash across the forehead that will scar, and he is so proud of it you cannot bear to look.[/if]
-        effects: [ { casualties: { men: 16, named: 1 } } ]
+        effects: [ { casualties: { men: 16, named: 1, spare: [ davy_ludd ] } } ]
         next: c4_wythen_after
     - id: boy
       text: Get {heir.eldest.name} out of it first, whatever it costs.

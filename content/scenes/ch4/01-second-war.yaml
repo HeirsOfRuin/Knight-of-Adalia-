@@ -172,7 +172,7 @@
       text: Raise the company from your own manor.
       tags: [allies, wealth]
       text_after: |
-        You raise it from the manor and the villages round: the young men, the second sons, the salt-boilers' boys who want to see the world, the Adalian settlers' sons who want to show the locals something. They are cheap and brave and know nothing. [if flag.c2_granted_marsalin]Margot[elif flag.c2_granted_kerval]Gwenaël[else]Bastien[/if] stands at the gate as they march out and counts them, aloud, and you know [if flag.c2_granted_marsalin]she[else]he[/if] will count them again when they come back.
+        You raise it from the manor and the villages round: the young men, the second sons, [if flag.c2_granted_kerval]the orchard men's boys[else]the salt-boilers' boys[/if] who want to see the world, the Adalian settlers' sons who want to show the locals something. They are cheap and brave and know nothing. [if flag.c2_granted_marsalin]Margot[elif flag.c2_granted_kerval]Gwenaël[else]Bastien[/if] stands at the gate as they march out and counts them, aloud, and you know [if flag.c2_granted_marsalin]she[else]he[/if] will count them again when they come back.
       effects: [ { set: flag.c4_manor_company }, { add: { res.men: 70, res.coin: -480, counter.company: 1, estate.people: -40, estate.temper: -1, res.levy: -30 } } ]
       next: c4_landing
     - id: rotbart
@@ -266,7 +266,7 @@
       failure:
         text: |
           They are awake. They are always awake, the ones who know the place is not worth holding. You get men onto the wall and lose them there, and in the end it takes three days and the King's engines. Your company comes out of Saint-Ferréol with fewer men and a bad name in the town.
-        effects: [ { casualties: { men: 14, named: 1 } }, { add: { counter.west_estates: -1 } } ]
+        effects: [ { casualties: { men: 14, named: 1, spare: [ davy_ludd ] } }, { add: { counter.west_estates: -1 } } ]
         next: c4_winter
     - id: starve
       text: Sit down in front of it and wait.
@@ -368,19 +368,19 @@
       success:
         text: |
           You take the whole company into the gap at a run and stop there, and the Constable's left comes into you instead of round the King's flank. After that there is nothing but the press, and the noise, and your own breath roaring in your helm. [if npc.davy_ludd.alive && npc.davy_ludd.follower]Davy is at your shoulder the whole time, shouting something you never hear.[/if] You hold. God knows how. You hold.
-        effects: [ { set: flag.c4_held_gap }, { add: { counter.mf: 3, res.renown: 3, counter.court_king: 2 } }, { casualties: { men: 18, named: 1 } } ]
+        effects: [ { set: flag.c4_held_gap }, { add: { counter.mf: 3, res.renown: 3, counter.court_king: 2 } }, { casualties: { men: 18, named: 1, spare: [ davy_ludd ] } } ]
         next: c4_mf_2
       partial:
         text: |
           You get into the gap and hold it for a while, and then cannot, and give ground step by step to the foot of the King's banner, where the King's household comes in beside you and the line steadies. It costs you.
-        effects: [ { add: { counter.mf: 1, res.renown: 1 } }, { casualties: { men: 24, named: 1 } }, { injury: cut_brow } ]
+        effects: [ { add: { counter.mf: 1, res.renown: 1 } }, { casualties: { men: 24, named: 1, spare: [ davy_ludd ] } }, { injury: cut_brow } ]
         next: c4_mf_2
       failure:
         text: |
           You go into the gap and the Constable's foot go into you, and there is no holding it. [if armour >= 1 && !injured]A Valdrennish banner comes over you like a wave, and you go down under it, and your harness holds, and your men come back for you when the King's household closes the gap. You remember none of it after the banner.[else]The last thing you see is a Valdrennish banner coming over you like a wave.[/if]
         effects:
           - if: [ armour >= 1, "!injured" ]
-            then: [ { injury: cracked_skull }, { casualties: { men: 26, named: 1 } } ]
+            then: [ { injury: cracked_skull }, { casualties: { men: 26, named: 1, spare: [ davy_ludd ] } } ]
             else: [ { die: "Killed at Mortefontaine, holding the gap left by the Earl of Carrow" } ]
         next: c4_mf_2
     - id: hold

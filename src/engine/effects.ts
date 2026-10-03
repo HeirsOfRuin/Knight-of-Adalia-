@@ -104,7 +104,8 @@ function addNumber(state: GameState, content: ContentBundle, rawPath: string, de
       const n = npc(state, content, a);
       const before = n[f];
       n[f] = clamp(before + delta, -10, 10);
-      note(labelFor(content, path), n[f] - before);
+      // feelings change in people he has not met yet (word travels), but the journal only names people he knows
+      if (n.met) note(labelFor(content, path), n[f] - before);
       return;
     }
     case 'favor': {

@@ -95,7 +95,8 @@ describe('scripted plans', () => {
   it('the plans end in genuinely different states', () => {
     const finals = plans.map((p) => {
       const s = playPlan(c, p).state;
-      return `${s.station}/${s.track}/${s.aliases.master}`;
+      const grant = ['marsalin', 'kerval', 'ormel'].find((g) => s.flags[`c2_granted_${g}`]);
+      return `${s.background}/${s.ended?.ending}/${s.station}/${s.track}/${s.aliases.master}/${s.aliases.spouse}/${grant}`;
     });
     expect(new Set(finals).size).toBe(plans.length);
   });

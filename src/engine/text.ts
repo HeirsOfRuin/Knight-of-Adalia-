@@ -58,7 +58,7 @@ function varValue(name: string, state: GameState, content: ContentBundle): strin
   switch (name) {
     case 'name': return state.name;
     case 'date': return describeDate(state, content);
-    case 'coin': return formatCoin(state.res.coin ?? 0);
+    case 'coin': return (state.res.coin ?? 0) > 0 ? formatCoin(state.res.coin!) : 'not a penny';
     case 'station': return capitalise(state.station);
     case 'background': return content.backgrounds[state.background]?.label ?? state.background;
     case 'origin': return (content.backgrounds[state.background]?.label ?? state.background).toLowerCase();

@@ -259,7 +259,7 @@
 
     Sir Ancel means to burn Thorne Hall over Thorne's head. Lord Ravell has forbidden it in writing: the King wants every knight on the March alive and quiet until the army sails. Sir Ancel reads the letter twice and says the King can come north and stop him.
 
-    [if flag.c1_found_cattle_trail]You still have the Thorne man's knife from the shieling by the drove road.[/if][if flag.c1_plaint_written] The plaint you wrote last year is still before Lord Ravell's court, unread.[/if][if flag.c1_rode_reprisal] Thorne has not forgotten his mill.[/if] [if flag.c1_master_confided]He told you about Harrow Ford, once, on the pass. He has never told you what he will do if anyone else he owes dies on his land. You think you are about to find out.[/if]
+    [if flag.c1_found_cattle_trail]You still have the Thorne man's knife from the shieling by the drove road.[/if][if flag.c1_plaint_written] The plaint you wrote last year is still before Lord Ravell's court, unread.[/if][if flag.c1_rode_reprisal] Thorne has not forgotten his mill.[/if] [if flag.c1_master_confided]Sir Ancel told you about Harrow Ford, once, on the pass. He has never told you what he will do if anyone else he owes dies on his land. You think you are about to find out.[/if]
   choices:
     - id: proof
       text: Lay the proof of Thorne's dealings with Black Ewan before Lord Ravell.

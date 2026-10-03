@@ -46,6 +46,8 @@ The map of the story: where it forks, what each fork remembers, and who can be d
 ### Chapter 4 (ages 32 to 42): four acts with time skips
 - **Act I, the second war:** council, home, the company (credit, good, manor or Rotbart), the landing, the towns, the winter, Carrow, Mortefontaine, the grant.
 - **Act II, many places:** stewards, the rival returns, the eldest child, Christmas, a third child (can kill the wife), salt, Mahaut's council.
+  - One background secret scene is queued at the stewards and fires a season or two later: `c4q_steward` (reeve with `steward_skims`), `c4q_old_note` (burgess), `c4q_carn_dubh` (archer), `c4q_ravell_heir` (servant).
+  - **Fork:** a widower who did not ask for Mahaut is offered Dame Blanche de Kerguen (`c4_widow`).
 - **Act III, fracture:** the old master's deathbed (or Father Benet's), the King's death, Carrow rises.
   - **Fork:** side with the West (`c4_west_war`), or fight at Wythen Heath for Edwin.
 
@@ -76,7 +78,7 @@ The map of the story: where it forks, what each fork remembers, and who can be d
 | Grant | `c2_grants` | `c2_granted_marsalin`, `_kerval`, `_ormel` |
 | Followers | Join at `c2_following` (Davy always; master's archers, or a man from home; Tallis if hired). Wat leaves at the rising. Random casualties after Ch2 | npc.*.follower and npc.*.alive |
 | Force | `res.men` (company), `res.garrison` (Rotbart's sixty), `res.levy` (trained villagers) | Status panel shows all three |
-| Spouse | `alias.spouse` at `c3_match`; Mahaut in Ch5 | Can die at childbed, the second child, or the third |
+| Spouse | `alias.spouse` at `c3_match`; Dame Blanche for a widower at `c4_widow`; Mahaut in Ch5 | Can die at childbed, the second child, or the third |
 | Heirs | Born in Ch3 and Ch4; named, often after the dead (Hamon, Piers, Agnes...) | Can die of the fever, at Wythen, or in Ch5 |
 | Kin at the manor | `c3_sent_for_kin` | Reeve: sisters. Burgess: mother. Archer: Kit. Servant: Nell or the mother's people |
 | Manor size | `estate.people`; `estate.founded` at the grant; `estate.recovery` is the percentage of the founding size | Use `estate.recovery` for any comparison with the past |

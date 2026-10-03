@@ -67,7 +67,7 @@
       requires: [ { any: [ res.coin >= 2400, flag.c3_lanzi_kin ] } ]
       label: "Requires Coin £10, or the Lanzi in your family"
       text_after: |
-        [if flag.c3_lanzi_kin]Your wife writes one letter to her cousins in Sarenza, in the bank's private cipher. Six galleys come round the cape in April with eight hundred crossbowmen in red, and a bill you are not to see until after the war.[else]You pay the Lanzi in Sauvemer what they ask, which is a great deal, and six galleys come round the cape in April with eight hundred crossbowmen in red.[/if] Nobody in the West has ever seen so many. Nobody on the other side will have, either.
+        [if flag.c3_lanzi_kin]You write one letter to the Lanzi in Sarenza, [if npc.fiammetta_lanzi.alive]in your wife's hand, [/if]in the bank's private cipher. Six galleys come round the cape in April with eight hundred crossbowmen in red, and a bill you are not to see until after the war.[else]You pay the Lanzi in Sauvemer what they ask, which is a great deal, and six galleys come round the cape in April with eight hundred crossbowmen in red.[/if] Nobody in the West has ever seen so many. Nobody on the other side will have, either.
       effects: [ { add: { counter.ww: 2 } }, { if: { not: flag.c3_lanzi_kin }, then: [ { add: { res.coin: -2400 } } ] } ]
       next: c5_bridge
     - id: horse

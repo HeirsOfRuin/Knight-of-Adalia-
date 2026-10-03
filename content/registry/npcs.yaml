@@ -87,3 +87,4 @@ hugh_malet: { name: Hugh Malet, title: Sir, faction: nobles, notes: "The Earl of
 thomas_hales: { name: Thomas Hales, title: Master, faction: crown, notes: "The King's officer in Sauvemer since the salt penny. A Wendmere man, careful, unloved." }
 evrard_saint_lys: { name: Évrard, title: Bishop, faction: church, notes: "Bishop of Saint-Lys, a peer of Valdrenne and confessor to two kings. Very old. Decides what God thinks of crowns." }
 amaury_younger: { name: Amaury, title: King, faction: valdrenne, station: royal, notes: "Amaury VII of Valdrenne, nineteen. Murdered his Constable. Wants the West back, and a victory." }
+blanche_kerguen: { name: Blanche de Kerguen, title: Dame, faction: valdrenne, tags: [romance], notes: "Widow of Sire Alain de Kerguen, killed at Mortefontaine. Thirty-one in year 37. A mill, two villages, a son of eight who is the Kerguen heir, and the best accounts in the Armance." }

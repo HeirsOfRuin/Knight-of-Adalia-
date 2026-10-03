@@ -8,7 +8,17 @@
   chapter: ch4
   title: Stewards
   checkpoint: true
-  on_enter: [ { advance: { seasons: 1 } } ]
+  on_enter:
+    - advance: { seasons: 1 }
+    # what each background carried out of the prologue comes back (events/ch4/queued.yaml)
+    - if: [ background == reeve, flag.steward_skims ]
+      then: [ { queue: { event: c4q_steward, delay: { seasons: 1 } } } ]
+    - if: [ background == burgess, flag.family_debt_sarenza ]
+      then: [ { queue: { event: c4q_old_note, delay: { seasons: 1 } } } ]
+    - if: [ background == archer, flag.father_war_secret ]
+      then: [ { queue: { event: c4q_carn_dubh, delay: { seasons: 2 } } } ]
+    - if: [ background == servant, flag.knows_household_secret ]
+      then: [ { queue: { event: c4q_ravell_heir, delay: { seasons: 2 } } } ]
   text: |
     A man with one manor knows every field in it. A man with several knows his stewards, and what his stewards tell him, and that is a different thing.
 
@@ -307,27 +317,76 @@
       text_after: |
         You are thirty-seven and a banneret, [if flag.c3_married]a widower[else]unmarried[/if], with land in the West and a name from Mortefontaine. That counts for something. Not enough, by itself, and you know it, and so does the Chancellor, who reads your letter twice and puts it at the bottom of the pile. But you have also asked Mahaut. By letter, in Valdrennish, without asking anyone's leave. She writes back, two lines: "You are the first who asked me and not my grandmother's grave. I have not said yes."
       effects: [ { set: flag.c4_asked_mahaut }, { assign: { suit.mahaut_armance.status: courted } }, { add: { suit.mahaut_armance.regard: 3, counter.west_estates: 1, counter.court_carrow: -1 } } ]
-      next: c4_act2_end
+      next: { switch: [ { if: [ flag.c3_married, "!npc.@spouse.alive", "!flag.c4_asked_mahaut" ], go: c4_widow } ], default: c4_act2_end }
     - id: free
       text: Speak for her right to choose her own husband.
       tags: [allies, diplomacy]
       text_after: |
         You stand up in the King's council when the matter comes, which it does at Candlemas, and say that the Armance will be held by love or by an army, and that a girl sold to an Adalian will be the second kind. Nobody claps. Everybody remembers. Mahaut hears of it within the week. So does the West.
       effects: [ { set: flag.c4_spoke_for_mahaut }, { assign: { suit.mahaut_armance.status: known } }, { add: { suit.mahaut_armance.regard: 2, counter.west_estates: 2, counter.court_king: -1 } } ]
-      next: c4_act2_end
+      next: { switch: [ { if: [ flag.c3_married, "!npc.@spouse.alive", "!flag.c4_asked_mahaut" ], go: c4_widow } ], default: c4_act2_end }
     - id: edwin
       text: Back the Prince's candidate.
       tags: [cunning]
       text_after: |
         You back the Prince's man for Mahaut: young Sir Robert Lacy, handsome, brave and a fool. The Prince is grateful. Mahaut is not consulted, and the match is not made that year, because the King is too ill to decide anything, and the girl sits in Lannec and waits, and remembers names.
       effects: [ { set: flag.c4_backed_lacy }, { add: { counter.court_prince: 2, counter.west_estates: -1 } } ]
-      next: c4_act2_end
+      next: { switch: [ { if: [ flag.c3_married, "!npc.@spouse.alive", "!flag.c4_asked_mahaut" ], go: c4_widow } ], default: c4_act2_end }
     - id: carrow
       text: Back the Earl of Carrow's grandson.
       tags: [wealth, cunning]
       text_after: |
         You back Carrow's grandson, a quiet boy of twenty who collects hawks. The Earl is grateful, and shows it in coin. Mahaut is not consulted, and the match is not made that year, because the King is too ill to decide anything. In Lannec, they say, the girl has a list.
       effects: [ { set: flag.c4_backed_carrow_match }, { add: { counter.court_carrow: 2, counter.west_estates: -2, res.coin: 1200 } } ]
+      next: { switch: [ { if: [ flag.c3_married, "!npc.@spouse.alive", "!flag.c4_asked_mahaut" ], go: c4_widow } ], default: c4_act2_end }
+
+- id: c4_widow
+  chapter: ch4
+  title: Dame Blanche
+  on_enter: [ { meet: blanche_kerguen } ]
+  text: |
+    A widower with land in the West is a problem the West likes to solve. In Lent a letter comes from Kerguen, in the hills above [if flag.c2_granted_kerval]your own valley[else]Lannec[/if], under the seal of old Penhoët, who is the Kerguens' kinsman and everyone's go-between.
+
+    Sire Alain de Kerguen was killed at Mortefontaine, in the Duchess's battle, the year you held [if flag.c4_held_gap]the gap[else]your place[/if] on the ridge. He left a widow, Dame Blanche, thirty-one, with a mill, two villages, a son of eight who is the Kerguen heir, and a reputation in the Armance for keeping accounts better than her husband ever did. The Kerguens want her married to someone who will protect the boy's land and not take it. Penhoët thinks you are the man. He says so in four pages, the way old men do.
+
+    [if heirs.count >= 2]You have {heirs.names} in the house, and nobody to mother them but the nurse and the priest.[elif heirs.count >= 1]You have {heirs.names} in the house, and nobody to mother the child but the nurse and the priest.[else]You have no heir, and a house that is too quiet.[/if] You also have a wife in the churchyard, and you have not stopped looking at the place.
+  choices:
+    - id: meet
+      text: Ride to Kerguen and meet her yourself, before anyone signs anything.
+      tags: [diplomacy, allies]
+      check: { attr: presence, skill: courtesy, difficulty: 3, mods: [ { if: flag.c1_learned_valdrennish || flag.c2_learned_town, add: 1, label: you speak her tongue }, { if: flag.c4_held_gap, add: 1, label: you stood on the ridge where her husband fell } ] }
+      success:
+        text: |
+          She meets you in the mill-yard, not the hall, in a working apron, with the boy hanging back behind her skirts and the miller pretending not to listen. She asks you three questions: what you will do with Kerguen if she dies, what you will do with her son if you die, and whether you drink. You answer all three truthfully, and she laughs at the third. You are married at Easter, in the Kerguen chapel, with Penhoët weeping into his beard, and the boy holds the ring and drops it, and nobody minds.
+        effects:
+          - alias: { spouse: blanche_kerguen }
+          - assign: { suit.blanche_kerguen.status: married }
+          - set: flag.c4_remarried
+          - hold: { id: kerguen_dower, income: 360 }
+          - add: { rel.blanche_kerguen.affection: 3, rel.blanche_kerguen.respect: 2, counter.west_estates: 1, rep.valdrenne: 1 }
+        next: c4_act2_end
+      failure:
+        text: |
+          She meets you in the hall, with her husband's brothers on either side of her, and is perfectly courteous for an hour, and you can see her decide. "You are still married, my lord," she says at the door, kindly. "To the one in the churchyard. I was, for a year. Come back when you are not." You do not go back.
+        effects: [ { set: flag.c4_widow_refused } ]
+        next: c4_act2_end
+    - id: letter
+      text: Accept the match by letter, on Penhoët's terms.
+      tags: [allies, wealth]
+      text_after: |
+        Penhoët draws the contract and you sign it, and you meet your second wife at the church door at Easter, in front of both families. She is civil, and capable, and watches you for a year the way a farmer watches a new bull. By the second Christmas she says, "Well. You'll do," and means more by it than she says.
+      effects:
+        - alias: { spouse: blanche_kerguen }
+        - assign: { suit.blanche_kerguen.status: married }
+        - set: flag.c4_remarried
+        - hold: { id: kerguen_dower, income: 360 }
+        - add: { rel.blanche_kerguen.respect: 2, counter.west_estates: 1 }
+      next: c4_act2_end
+    - id: no
+      text: Thank Penhoët, and say no. You have buried one wife.
+      tags: [yield]
+      text_after: You write to Penhoët that you are honoured, and that you will not marry again. He writes back that every widower says so, and that he will ask again in a year. He does not. Dame Blanche marries a Kerguen cousin at Michaelmas, and sends you, by Penhoët, a cask of her own cider, which is good, and no message.
+      effects: [ { set: flag.c4_stayed_widower } ]
       next: c4_act2_end
 
 - id: c4_act2_end

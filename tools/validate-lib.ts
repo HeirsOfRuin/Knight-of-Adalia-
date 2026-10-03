@@ -377,10 +377,37 @@ function structuralChecks(content: ContentBundle, reachableBy: Record<string, Se
     const maa = stationRoutes(content, reach, bg, 'retainer', 'man_at_arms');
     add('Ch2 entry as man-at-arms with patron', 'ch1', maa.length >= 1, maa.join(', ') || 'none');
 
+    // Brides on offer per background are counted by the bot at the Ch3 match (tools/bot.ts), where the conditions are live.
+
     for (const [id, def] of Object.entries(content.registry.endings)) {
       const scenesFor = [...reach].filter((s) => content.scenes[s]!.ending === id);
       const viaDeath = id === 'death' && [...reach].some((s) => content.scenes[s]!.choices.some((c) => outcomesOf(c).some(({ o }) => flatEffects(o.effects).some((e) => 'die' in e))));
       add(`ending reachable: ${id}`, def.chapter, scenesFor.length > 0 || viaDeath, scenesFor.join(', ') || (viaDeath ? 'via lethal choice' : 'not linked'));
+    }
+  }
+
+  // Every romance candidate can become a wife for some background, and Mahaut (the royal match) by remarriage or late marriage.
+  const anyBrides = new Set<string>();
+  for (const [bg, reach] of Object.entries(reachableBy)) for (const b of spouseRoutes(content, reach, bg)) anyBrides.add(b);
+  const hasCh3 = hasChapter('ch3');
+  for (const id of Object.keys(content.registry.romances)) {
+    out.push({ background: 'all', name: `candidate can marry: ${id}`, status: hasCh3 ? (anyBrides.has(id) ? 'PASS' : 'FAIL') : 'PENDING', detail: anyBrides.has(id) ? 'yes' : 'no scene sets her as spouse' });
+  }
+  return out;
+}
+
+/** Brides a background can marry: reachable effects that make someone alias.spouse (optionally only in one chapter). */
+function spouseRoutes(content: ContentBundle, reachable: Set<string>, bg: string, chapter?: string): Set<string> {
+  const out = new Set<string>();
+  for (const id of reachable) {
+    const s = content.scenes[id]!;
+    if (chapter && s.chapter !== chapter) continue;
+    for (const c of s.choices) {
+      for (const { o } of outcomesOf(c)) {
+        for (const e of flatEffects([...(s.on_enter ?? []), ...c.effects, ...o.effects], bg)) {
+          if ('alias' in e && (e.alias as Record<string, string>).spouse) out.add((e.alias as Record<string, string>).spouse!);
+        }
+      }
     }
   }
   return out;

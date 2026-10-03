@@ -369,7 +369,7 @@
 
     [break]
 
-    In November, Thibaut de Brésy rides into your yard with twenty men and his cousin's wife and two children on a cart. [if flag.c3_brese_kin]He is your wife's cousin. He does not need to say anything else.[elif flag.c3_thibaut_spared]You spared him once, at your own gate. He seems to think that means something.[elif flag.c2_took_thibaut]You took him prisoner on the salt pans, twenty years ago. "You treated me decently," he says. "I've come to see if you still do."[else]He has nowhere else to go, and you are the nearest Adalian lord who is not at war with himself.[/if] "I'm asking for a roof," he says. "And perhaps more than that, later."
+    In November, Thibaut de Brésy rides into your yard with twenty men and his cousin's wife and two children on a cart. [if flag.c3_brese_kin]He is your [if alias.spouse == alienor_brese]wife's[else]first wife's[/if] cousin. He does not need to say anything else.[elif flag.c3_thibaut_spared]You spared him once, at your own gate. He seems to think that means something.[elif flag.c2_took_thibaut]You took him prisoner on the salt pans, twenty years ago. "You treated me decently," he says. "I've come to see if you still do."[else]He has nowhere else to go, and you are the nearest Adalian lord who is not at war with himself.[/if] "I'm asking for a roof. And perhaps more than that, later."
   choices:
     - id: shelter
       text: Shelter them, all of them, and let both kings think what they like.
@@ -382,7 +382,7 @@
       text: Feed them, give them horses, and send them on to Sarenza.
       tags: [diplomacy, wealth]
       text_after: |
-        You feed them and give them horses and a letter to [if flag.c3_lanzi_kin]your wife's house[else]a banker you know[/if] in Sarenza, and see them off at the gate. Thibaut kisses your hand, which you do not expect. "I'll remember this," he says. Everyone says that. He might.
+        You feed them and give them horses and a letter to [if flag.c3_lanzi_kin && npc.fiammetta_lanzi.alive]your wife's house[elif flag.c3_lanzi_kin]your first wife's house[else]a banker you know[/if] in Sarenza, and see them off at the gate. Thibaut kisses your hand, which you do not expect. "I'll remember this," he says. Everyone says that. He might.
       effects: [ { set: flag.c4_sent_brese_on }, { add: { res.coin: -240, rep.honor: 1 } } ]
       next: { pool: c4_lord, count: 1, then: c4_lannec }
     - id: hand_over

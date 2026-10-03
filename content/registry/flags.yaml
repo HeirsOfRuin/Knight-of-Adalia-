@@ -486,3 +486,20 @@ c5_war_lost: { description: "The War of the West was lost" }
 c5_war_won: { description: "The War of the West was won" }
 c5_west_adalian: { description: "The West stayed Adalian" }
 c5_west_free: { description: "The West declared itself free" }
+# Ch4 queued: the backgrounds' secrets come back
+c4_cleared_father: { description: "Had Gervase Holt's confession read in Ashby church", later: ch5 }
+c4_holt_repaid: { description: "Made the old steward's heirs repay Ashby quietly", later: ch5 }
+c4_holt_burned: { description: "Burned the old steward's confession", later: ch5 }
+c4_note_lanzi_tore: { description: "His wife's house disproved his father's old note", later: ch5 }
+c4_note_paid: { description: "Paid his father's old Sarenzan note", later: ch5 }
+c4_note_fought: { description: "Beat the Earl of Carrow at law over his father's note", later: ch5 }
+c4_note_owed: { description: "Settled his father's note with Carrow in friendship", later: ch5 }
+c4_carn_dubh_chapel: { description: "Gave for the chapel at Carn Dubh", later: ch5 }
+c4_carn_dubh_went: { description: "Stood at Carn Dubh where his father stood", later: ch5 }
+c4_carn_dubh_refused: { description: "Sent the Carn Dubh monk away", later: ch5 }
+c4_ravell_sworn: { description: "Swore to the heir of Ravell that the secret dies with him", later: ch5 }
+c4_ravell_denied: { description: "Told the heir of Ravell he heard nothing", later: ch5 }
+c4_ravell_squeezed: { description: "Sold his silence to the heir of Ravell", later: ch5 }
+c4_remarried: { description: "Married Dame Blanche de Kerguen as a widower", later: ch5 }
+c4_widow_refused: { description: "Dame Blanche de Kerguen refused him", later: ch5 }
+c4_stayed_widower: { description: "Declined to marry again", later: ch5 }

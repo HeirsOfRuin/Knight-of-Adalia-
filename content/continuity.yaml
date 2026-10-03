@@ -90,3 +90,5 @@ dead_names_ok:
   c1_after_leven: [coll_glenhallow]  # what he dreams of
   c4_master: ['*']               # the deathbed, told after the death is recorded
   c1_crisis_ancel: [ancel_brome] # the Pryce choice tells how Ancel rode to his death
+  c4q_old_note: [ralf_mercer]     # the dead father's name on his old note
+  c4q_steward: [piers_reeve]      # the dead reeve, cleared in church

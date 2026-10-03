@@ -1,0 +1,174 @@
+# Chapter 4 queued events: what each background carried out of the prologue
+# comes back to the lord he has become. Queued at c4_stewards, one per background.
+
+# Reeve's son, steward_skims: Gervase Holt skimmed Ashby for twenty years and let
+# the reeve's tallies take the blame. (father_skims has its own thread in Ch1-2.)
+- id: c4q_steward
+  chapter: ch4
+  kind: queued
+  title: The Old Steward
+  requires: [ background == reeve, flag.steward_skims ]
+  text: |
+    The letter comes from Ashby in a hand that shakes so badly you have to hold it to the window. Gervase Holt, who was steward of Ashby for Sir Hamon for twenty-six years, is dying, and has had the priest write down what he could not say to your father's face.
+
+    He took from Ashby. Not much in any one year: a sack in ten, a fleece in twelve, the odd boon-day sold and never worked. Twenty years of it. And when the auditors came, he showed them the reeve's tallies, and let them think the reeve was a poor counter, or worse. [if npc.piers_reeve.alive]Your father has carried that for half his life.[else]Your father carried that to his grave, and the village carried it with him: the reeve who could not count.[/if]
+
+    [if flag.c3_holds_home]Ashby is yours now. The old man knows it, and knows that is why he is writing.[/if] At the bottom, in the priest's hand: "He asks what you will do with it. He asks it every hour."
+  choices:
+    - id: read
+      text: Have it read out in Ashby church, every word, on a Sunday.
+      tags: [allies]
+      text_after: |
+        Father Anselm reads it from the step, slowly, and the church is so quiet you can hear the rooks. When he has finished, nobody moves. Then an old woman at the back says, loudly, "I always said Piers could count," and somebody laughs, and then half the church is laughing and crying at once. Gervase Holt dies the next week. Nobody spits on his grave. Nobody visits it either.
+      effects: [ { set: flag.c4_cleared_father }, { add: { rep.commons: 2, rep.honor: 1, rel.gervase_holt.affection: -3 } } ]
+      next: "@return"
+    - id: repay
+      text: Make his heirs pay it back to the village, quietly, and say nothing.
+      tags: [cunning, wealth]
+      text_after: |
+        His son-in-law pays, because the alternative is your lawyers, and the money goes into the Ashby common box for the bad years. Nobody in Ashby knows where it came from. You know. It will have to be enough.
+      effects: [ { set: flag.c4_holt_repaid }, { add: { rep.commons: 1, rep.ruthlessness: 1 } } ]
+      next: "@return"
+    - id: burn
+      text: Burn the letter. Let the dead keep their quarrels.
+      tags: [piety]
+      text_after: |
+        You burn it in your own hearth and watch it go. It was always going to be your father's word against a steward's, and your father was never going to win. You find you do not need him to. You send the old man word that he is forgiven, which may even be true.
+      effects: [ { set: flag.c4_holt_burned }, { add: { rep.piety: 1 } } ]
+      next: "@return"
+
+# Burgess's son, family_debt_sarenza: the old Mercer note to the Lanzi. The rebels
+# burned the Wendham copy in year 31; the Sarenza copy went to Carrow with the
+# other Lanzi debts after the Mottle.
+- id: c4q_old_note
+  chapter: ch4
+  kind: queued
+  title: The Old Note
+  requires: [ background == burgess, flag.family_debt_sarenza ]
+  text: |
+    The Earl of Carrow's steward comes in person. The Earl does not send his steward about small things.
+
+    He lays a paper on your table: Sarenzan, thirty years old, the ink gone brown. Ralf Mercer of Wendham, wool merchant, acknowledges a debt to the house of Lanzi of three hundred pounds against the wool of four seasons. [if flag.p_knows_debt]You know this paper. You heard your father and Bertuccio Lanzi argue about it through the counting-house door when you were eight.[else]You have never seen it. You have heard of it all your life, the way children hear of a ghost in the house.[/if] The rebels burned the Wendham copy in the market square in the year of the rising. This is the copy from Sarenza.
+
+    "His lordship bought a great many Lanzi papers after the Mottle," the steward says pleasantly. "Most of them are worth nothing. This one is owed by a son who has done well. His lordship wonders whether you would rather settle it in silver, or in friendship."
+  choices:
+    - id: lanzi
+      text: Send it to your wife's house in Sarenza, and let them deal with their own old paper.
+      tags: [allies]
+      visible_if: [ flag.c3_lanzi_kin, npc.fiammetta_lanzi.alive ]
+      text_after: |
+        Fiammetta reads it, and laughs, and writes to her uncles in a hand like a knife. Within the season a Lanzi notary in Sarenza has found that the note was paid in the year of the great storm, with a receipt that nobody in Carrow can disprove because nobody in Carrow has ever seen a Lanzi ledger. The Earl's steward does not come again.
+      effects: [ { set: flag.c4_note_lanzi_tore }, { add: { counter.court_carrow: -1, rel.fiammetta_lanzi.affection: 2 } } ]
+      next: "@return"
+    - id: pay
+      text: Pay it. All of it. Your father's debt is your debt.
+      tags: [wealth]
+      requires: [ res.coin >= 2400 ]
+      label: "Requires Coin £10"
+      text_after: |
+        Ten pounds now and the rest from the wool rents of the West, over three years. The steward is surprised; he had expected you to bargain. You burn the note yourself when the last payment is made, in the same hearth, and you are sorry your father did not live to see it.
+      effects: [ { set: flag.c4_note_paid }, { add: { res.coin: -2400, rep.merchants: 2, rep.honor: 1 } } ]
+      next: "@return"
+    - id: fight
+      text: Fight it in law. A thirty-year-old note with no Wendham copy is worth what a court says.
+      tags: [cunning, learning]
+      check: { attr: wits, skill: trade, difficulty: 4, mods: [ { if: skill.learning >= 3, add: 1, label: you read the Sarenzan law yourself } ] }
+      success:
+        text: Two terms in the King's court of the Exchequer, and a Sarenzan lawyer who costs more than the debt, and at the end of it the judges find that a debt sold three times without the debtor's knowledge is a debt nobody can prove. The Earl does not appeal. He remembers.
+        effects: [ { set: flag.c4_note_fought }, { add: { res.coin: -360, counter.court_carrow: -1, rep.merchants: 1 } } ]
+        next: "@return"
+      failure:
+        text: The court finds for the Earl, with costs. You pay, and you pay the lawyers, and the Earl's steward sends you a civil letter of thanks, in his best hand.
+        effects: [ { set: flag.c4_note_paid }, { add: { res.coin: -3000, counter.court_carrow: -1 } } ]
+        next: "@return"
+    - id: owe
+      text: Settle it in friendship. Tell the steward the Earl may count on you.
+      tags: [allies, cunning]
+      text_after: |
+        The steward folds the note and puts it back in his sleeve, where it will stay, and you will know it is there. "His lordship will be glad," he says. "He likes to know who his friends are." So do you, now.
+      effects: [ { set: flag.c4_note_owed }, { add: { counter.court_carrow: 2, counter.court_prince: -1 } } ]
+      next: "@return"
+
+# Archer's son, father_war_secret: Carn Dubh, the Caldmoor mill burned with people
+# inside in the Marcher War; Hugh Fletcher was one of the archers on the door.
+- id: c4q_carn_dubh
+  chapter: ch4
+  kind: queued
+  title: Carn Dubh
+  requires: [ background == archer, flag.father_war_secret ]
+  text: |
+    A monk comes to your gate with the salt carts, on foot, in the black habit of the Caldmoor abbey at Kilbride, with a satchel and a wooden box for alms. He has walked from the March, he says, collecting for a chapel. He is polite in the careful way of a man who has been turned away from better gates. He has been sent to you in particular.
+
+    The chapel is to stand at Carn Dubh, where the mill was. He has a list of the dead, the ones anybody remembered, forty-one names, and at the bottom a shorter list in another hand: the Adalian archers who held the door while it burned. You read down it until you come to the third name, and stop.
+
+    [if npc.hugh_fletcher.alive]Your father is alive, and old, and still shoots on Sundays.[else]Your father is in Hollin churchyard, and took it with him, mostly.[/if] "We do not ask anyone to pay for what was done," the monk says. "We ask the sons of the men who did it whether they would like the chapel to pray for them too."
+  choices:
+    - id: give
+      text: Give for the chapel, generously, and ask them to pray for the archers as well as the dead.
+      tags: [piety, wealth]
+      requires: [ res.coin >= 480 ]
+      label: "Requires Coin £2"
+      text_after: |
+        Two pounds and a promise of the same every year. The monk writes your father's name on the second list again, in his own hand, and draws a small cross beside it. "Now he is on both," he says. Years later a Caldmoor drover tells you there is a chapel at Carn Dubh with a bell that rings at the hour the mill burned, and that the archers' names are cut into the lintel, under the others.
+      effects: [ { set: flag.c4_carn_dubh_chapel }, { add: { res.coin: -480, rep.piety: 2, rep.caldmoor: 2 } } ]
+      next: "@return"
+    - id: go
+      text: Go to Carn Dubh yourself, when the war allows, and stand where he stood.
+      tags: [allies]
+      text_after: |
+        It takes you two years to find the month. The mill is a heap of black stones under bracken, with a stream going round it as if nothing had happened. An old woman from the farm across the burn comes and stands with you, without asking who you are. When you tell her, she nods. "Aye," she says. "You've his look." That is all. It is a great deal.
+      effects: [ { set: flag.c4_carn_dubh_went }, { add: { rep.caldmoor: 3, rep.honor: 1, rep.piety: 1 } } ]
+      next: "@return"
+    - id: refuse
+      text: Send him away. It was a war. Everyone did something.
+      tags: [yield]
+      text_after: |
+        He bows, and thanks you for your time, and walks back down your road behind the salt carts with his box. You tell yourself it was a war, and everyone did something, and it is true, and it does not help as much as it should.
+      effects: [ { set: flag.c4_carn_dubh_refused }, { add: { rep.caldmoor: -1 } } ]
+      next: "@return"
+
+# Servant's son, knows_household_secret: Lady Ravell's eldest son, the heir of
+# Ravell, is not her husband's. The heir, Raymond, has found out that someone knows.
+- id: c4q_ravell_heir
+  chapter: ch4
+  kind: queued
+  title: The Heir of Ravell
+  requires: [ background == servant, flag.knows_household_secret ]
+  text: |
+    Raymond Ravell, Lord Thurstan's heir, rides into your yard with two men and no warning, in the colours of [if counter.court_carrow >= 3]the Earl of Carrow's affinity[else]the Prince's household[/if], and asks to speak to you alone.
+
+    He is forty, grey at the temples, with nothing of Lord Thurstan in his face, which everyone has always said, and nobody has ever said aloud. [if flag.p_used_secret]"My mother told me," he says, before he has sat down. "Before she lost her wits. That a boy from the stables made her give him a place, once, with a thing he had heard through a wall. I have come to see what kind of man that boy became."[else]"My mother is losing her wits," he says, before he has sat down. "She talks. In her talk there is a boy from the stables who heard something through a wall, years ago, and never said. I have come to find out whether he is going to."[/if]
+
+    He looks at you steadily. If the old lord's heir is not the old lord's son, Ravell goes [if npc.aymer_ravell.alive]to Aymer, or [/if]to the Crown, or to whoever can buy a court. He knows it. So do you.
+  choices:
+    - id: swear
+      text: Tell him the truth, and swear on your own children that it dies with you.
+      tags: [allies]
+      text_after: |
+        He listens without moving, the way his mother did. When you have sworn, he puts out his hand, and holds yours a moment too long. "I will not forget it," he says, and unlike most men who say that, he does not. Ravell's door is open to you for the rest of your life, and the rest of his.
+      effects: [ { set: flag.c4_ravell_sworn }, { add: { rel.eleanor_ravell.respect: 2, rep.honor: 1, rep.nobles: 1, counter.court_prince: 1 } } ]
+      next: "@return"
+    - id: deny
+      text: Tell him you heard nothing. You were a boy. Boys hear nothing.
+      tags: [cunning]
+      check: { attr: wits, skill: intrigue, difficulty: 4, audience: nobles }
+      success:
+        text: He watches you a long time. Then he laughs, short, and gets up. "Good," he says. "Nor did I." He rides away satisfied, or wanting to be, which in a lord comes to the same thing.
+        effects: [ { set: flag.c4_ravell_denied }, { add: { rep.nobles: 1 } } ]
+        next: "@return"
+      failure:
+        text: He does not believe you, and you can see him decide that a man who lies about a small thing will lie about a large one. He is civil at the door. After that he is civil to you everywhere, in front of everyone, and you are asked to nothing.
+        effects: [ { set: flag.c4_ravell_denied }, { add: { rep.nobles: -2, counter.court_prince: -1 } } ]
+        next: "@return"
+    - id: price
+      text: Name a price for your silence.
+      tags: [cunning, wealth]
+      text_after: |
+        You name it: [if flag.c3_home_mortgaged]what is still owed on Underhill, cancelled, and two hundred marks besides[elif flag.c3_holds_home]two hundred marks in coin, since Underhill is already yours[else]Underhill, where your mother was born, in fee, by charter, this year[/if]. He does not argue. He looks at you the way his mother looked at you in her solar when you were a boy, and says, "You are exactly what she said you were." [if flag.c3_holds_home]The money comes at Michaelmas.[else]The charter comes at Michaelmas.[/if] So does a man in Ravell colours who watches your gate for a month and then goes away, which tells you how close it was.
+      effects:
+        - set: flag.c4_ravell_squeezed
+        - if: flag.c3_holds_home
+          then: [ { add: { res.coin: 3200 } } ]
+          else: [ { hold: { id: underhill, income: 420 } } ]
+        - add: { rep.ruthlessness: 2, rep.nobles: -2, rel.eleanor_ravell.affection: -3 }
+      next: "@return"

@@ -11,3 +11,4 @@ corbie_vineyard: { label: The Corbie vineyard, region: west, description: "A vin
 sauvemer_house: { label: The house in the Rue des Saulniers, region: west, description: "Clémence's dower: a town house and a share of the Sauvemer customs." }
 la_garde: { label: La Garde, region: west, description: "A square tower and two villages on the Sauvemer march, granted after Mortefontaine." }
 vaudrey: { label: The rents of Vaudrey, region: west, description: "The town he took in the first war, granted to him in the second." }
+kerguen_dower: { label: Kerguen, region: west, description: "A mill and two villages in the Armance hills: his second wife's dower, held for her son." }

@@ -1217,3 +1217,4 @@ Josh found text that assumed choices he had not made. A survey found 47 such pla
 | 2026-10-03 | Ch5 built; the game is complete from the prologue to the endings. Every ending is reachable for every background; 0 warnings, 0 pending. |
 | 2026-10-03 | Installable app: PWA (manifest, icons, network-first service worker that updates on launch) published to GitHub Pages by a workflow on every push. Force size shown in the top bar and on the Status page. |
 | 2026-10-03 | Continuity: the checker, 51 fixes, force split into company, garrison and levy, population compared by ratio, docs/BRANCHES.md. |
+| 2026-10-03 | Crowned balance: a decisively commanded host is a pillar of the claim even when the war ends in stalemate (it needed outright victory). Crowned rises from 3% to 6% of 2,000 bot runs: burgess 10%, reeve 8%, servant 5%, archer 2%. |

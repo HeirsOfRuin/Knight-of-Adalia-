@@ -166,7 +166,8 @@
       then: [ { add: { counter.pillars: 1 } } ]
     - if: flag.c5_acclaimed
       then: [ { add: { counter.pillars: 1 } } ]
-    - if: [ flag.c5_host_decisive, flag.c5_war_won ]
+    # the West's host held under his command: a pillar even when the war ends in a stalemate rather than a rout
+    - if: flag.c5_host_decisive
       then: [ { add: { counter.pillars: 1 } } ]
   text: |
     [if flag.c5_exiled]The house in [if flag.c3_lanzi_kin || flag.c4_sent_brese_on]Sarenza[elif flag.c3_coll_wedding || flag.c3_coll_ended_feud]Glenhallow[else]exile[/if] is small, and warm, and full of strangers' voices.[elif flag.c5_attainted]The room they let you keep is small, and has a window on a yard.[else]The hall is full of autumn: rushes, smoke, dogs, the smell of apples.[/if] You are forty-five. Your knees hurt in the mornings, and you cannot read the accounts without holding them at arm's length, and there are more people you remember than people you see.

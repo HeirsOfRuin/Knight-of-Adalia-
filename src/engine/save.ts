@@ -4,7 +4,7 @@ import type { GameState } from './state';
 import { newNpcState } from './effects';
 
 export const SAVE_FORMAT = 'knight-of-adalia-save';
-export const SAVE_VERSION = 2;
+export const SAVE_VERSION = 3;
 
 export interface SaveFile {
   format: typeof SAVE_FORMAT;
@@ -19,7 +19,17 @@ export class SaveError extends Error {}
 export const migrations: Record<number, (save: SaveFile) => SaveFile> = {
   // 2 split the force into company, garrison and village levy. Older saves made those choices without the men being counted.
   1: (s) => ({ ...s, saveVersion: 2, state: countOldForce(structuredClone(s.state)) }),
+  // 3 remembers how many people the manor held when it was granted (estate.founded).
+  2: (s) => ({ ...s, saveVersion: 3, state: rememberFounding(structuredClone(s.state)) }),
 };
+
+/** The founding populations given by found_estate in c3_arrival (content/scenes/ch3/01-mortality.yaml). */
+function rememberFounding(state: GameState): GameState {
+  if (state.estate && state.estate.founded === undefined) {
+    state.estate.founded = state.flags.c2_granted_marsalin ? 300 : state.flags.c2_granted_kerval ? 250 : 200;
+  }
+  return state;
+}
 
 function countOldForce(state: GameState): GameState {
   const f = state.flags;

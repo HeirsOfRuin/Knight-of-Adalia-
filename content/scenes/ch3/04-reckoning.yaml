@@ -561,7 +561,7 @@
   text: |
     You ride out of the manor gate in November, with your men behind you, and [if flag.c3_married && npc.@spouse.alive]your wife at the gate with [if heirs.count >= 2]the children[elif heirs.count == 1]{heirs.eldest} on her hip[else]her arms folded[/if][elif heirs.count >= 1]{heirs.names} at the gate with the nurse[else]nobody at the gate but the steward[/if], and [if estate.temper >= 2]half the village in the lane, waving caps[elif estate.temper >= 0]the village going about its business[else]the village watching from its doorways, saying nothing[/if].
 
-    Six years ago you came [if flag.c2_granted_ormel]to Ormel, the grant nobody wanted,[else]here[/if] with the bell tolling and the dead in the street.[if flag.c2_salines_field] Some nights you still walk the salt pans in your sleep, among the dead.[/if] [if estate.people >= 220]Now there are more people on the manor than there were before the Mottle.[elif estate.people >= 160]Now the manor is full again, nearly.[else]The manor never quite filled up again.[/if] [if flag.c3_holds_home]And there is another place on the list of what you hold, across the sea, where you were born.[/if]
+    Six years ago you came [if flag.c2_granted_ormel]to Ormel, the grant nobody wanted,[else]here[/if] with the bell tolling and the dead in the street.[if flag.c2_salines_field] Some nights you still walk the salt pans in your sleep, among the dead.[/if] [if estate.recovery >= 100]Now there are more people on the manor than there were before the Mottle.[elif estate.recovery >= 85]Now the manor is full again, nearly.[else]The manor never quite filled up again.[/if] [if flag.c3_holds_home]And there is another place on the list of what you hold, across the sea, where you were born.[/if]
 
     [break]
 

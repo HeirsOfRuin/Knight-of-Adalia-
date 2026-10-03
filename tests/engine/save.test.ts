@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { toSave, fromSave, SaveError } from '../../src/engine/save';
+import { estateRecovery } from '../../src/engine/paths';
 import { choose } from '../../src/engine/index';
 import { content, game } from '../helpers';
 
@@ -39,5 +40,14 @@ describe('save', () => {
     expect(state.res.men).toBe((s.res.men ?? 0) + 2);
     expect(state.res.garrison).toBe(60);
     expect(state.res.levy).toBe(52);
+  });
+
+  it('remembers the founding population for older saves, so comparisons with the past are relative', () => {
+    const s = game();
+    s.flags.c2_granted_marsalin = true;
+    s.estate = { people: 228 };
+    const { state } = fromSave({ ...toSave(s, c), saveVersion: 2 }, c);
+    expect(state.estate?.founded).toBe(300);
+    expect(estateRecovery(state)).toBe(76);
   });
 });

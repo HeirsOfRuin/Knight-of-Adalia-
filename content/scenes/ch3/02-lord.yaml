@@ -97,7 +97,7 @@
       text_after: |
         The empty houses still have the dead's pots on the hearths. The settlers move in, and scrub them, and paint crosses on the doors, and the locals stand in the street and watch strangers sleep in their dead neighbours' beds.
 
-        There is a fight at the well within a week, and another at the alehouse, and a Valdrennish boy and an Adalian girl are found in a hayloft by Lammas. By Michaelmas you have more people than before the plague, and two villages in one street that do not speak to each other.
+        There is a fight at the well within a week, and another at the alehouse, and a Valdrennish boy and an Adalian girl are found in a hayloft by Lammas. By Michaelmas [if estate.recovery >= 100]you have more people than before the plague[elif estate.recovery >= 75]most of the empty houses have smoke coming out of them again[else]there is smoke in some of the empty houses again, though not most[/if], and two villages in one street that do not speak to each other.
       effects: [ { set: flag.c3_settlers_houses }, { add: { estate.people: 35, estate.temper: -2 } } ]
       next: { pool: c3_manor, count: 1, then: c3_claimant }
     - id: apart
@@ -504,7 +504,7 @@
     - {"assign": {"suit.alienor_brese.status": "available"}}
     - {"if": [{"any": ["rep.crown >= 2", "res.renown >= 12", {"not": {"any": ["suit.mag_coker.status == available", "suit.annot_dyer.status == available", "suit.mariot_wood.status == available", "suit.nell_laundress.status == available", "suit.isabel_sayer.status == available", "suit.maud_delisle.status == available", "suit.cecily_fuller.status == available", "suit.joan_wyck.status == available", "suit.alys_fane.status == available", "suit.heloise_corbie.status == available", "suit.fiammetta_lanzi.status == available", "suit.clemence_vaux.status == available"]}}]}], "then": [{"assign": {"suit.philippa_ashdown.status": "available"}}]}
   text: |
-    Two years. The manor has [if estate.people >= 250]more people than the day you came, near enough[elif estate.people >= 180]filled up again, mostly, with strangers and children[else]never quite filled up again[/if], and [if estate.food >= 3]the barns are full[elif estate.food >= 1]the barns are not empty[else]the barns are bare, and everyone knows it[/if], and the village is [if estate.temper >= 3]yours, as much as any village is any man's[elif estate.temper >= 0]used to you, which is something[else]waiting for you to fail[/if].
+    Two years. The manor has [if estate.recovery >= 95]as many people as the day you came, near enough[elif estate.recovery >= 75]filled up again, mostly, with strangers and children[else]never quite filled up again[/if], and [if estate.food >= 3]the barns are full[elif estate.food >= 1]the barns are not empty[else]the barns are bare, and everyone knows it[/if], and the village is [if estate.temper >= 3]yours, as much as any village is any man's[elif estate.temper >= 0]used to you, which is something[else]waiting for you to fail[/if].
 
     [break]
 

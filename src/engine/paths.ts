@@ -58,7 +58,7 @@ export function getValue(state: GameState, content: ContentBundle, rawPath: stri
     case 'skill': return effectiveSkill(state, content, a!);
     case 'rep': return state.rep[a!] ?? 0;
     case 'res': return state.res[a!] ?? 0;
-    case 'estate': return state.estate?.[a!] ?? 0;
+    case 'estate': return a === 'recovery' ? estateRecovery(state) : state.estate?.[a!] ?? 0;
     case 'favor': return state.favors[a!] ?? 0;
     case 'trait': return state.traits.includes(a!);
     case 'injury': return state.injuries.some((i) => i.id === a);
@@ -176,7 +176,7 @@ export function checkPath(content: ContentBundle, path: string): string | null {
     case 'skill': return need(content.config.skills.includes(a), 'skill');
     case 'rep': return need(a in reg.factions, 'faction');
     case 'res': return need(['coin', 'supplies', 'horses', 'renown', 'men', 'garrison', 'levy'].includes(a), 'resource');
-    case 'estate': return need((ESTATE_FIELDS as readonly string[]).includes(a), 'estate field');
+    case 'estate': return need((ESTATE_FIELDS as readonly string[]).includes(a) || a === 'founded' || a === 'recovery', 'estate field');
     case 'favor': return need(a in reg.npcs, 'npc');
     case 'trait': return need(a in reg.traits, 'trait');
     case 'injury': return need(a in reg.injuries, 'injury');
@@ -237,4 +237,10 @@ export function forceOf(state: GameState): { named: number; men: number; garriso
   const men = state.res.men ?? 0;
   const garrison = state.res.garrison ?? 0;
   return { named, men, garrison, levy: state.res.levy ?? 0, total: named + men + garrison };
+}
+
+/** People on the manor as a percentage of what it held when he came. Prose that compares the present with the past reads this, never a raw count. */
+export function estateRecovery(state: GameState): number {
+  const founded = state.estate?.founded ?? 0;
+  return founded > 0 ? Math.round(((state.estate?.people ?? 0) * 100) / founded) : 100;
 }

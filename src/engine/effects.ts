@@ -322,6 +322,7 @@ export function applyEffects(state: GameState, content: ContentBundle, effects: 
     } else if ('found_estate' in e) {
       state.estate = {};
       for (const f of ESTATE_FIELDS) state.estate[f] = clampEstate(f, e.found_estate[f] ?? 0);
+      state.estate.founded = state.estate.people ?? 0; // what the manor held when he came, for estate.recovery
     } else if ('advance' in e) {
       advanceSeasons(state, content, e.advance.seasons, ctx.changes);
     } else if ('journal' in e) {

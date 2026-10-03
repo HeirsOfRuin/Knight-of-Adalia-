@@ -255,6 +255,7 @@ export function applyEffects(state: GameState, content: ContentBundle, effects: 
         if (!pool.length || !ctx.rng) break;
         const id = pool[ctx.rng.int(pool.length)]!;
         state.npcs[id]!.alive = false;
+        state.npcs[id]!.diedAt = state.time;
         state.npcs[id]!.follower = false;
         ctx.changes.push(`${reg.npcs[id]?.name ?? id} is dead`);
       }
@@ -273,7 +274,7 @@ export function applyEffects(state: GameState, content: ContentBundle, effects: 
     } else if ('kill' in e) {
       const id = deref(state, e.kill);
       const n = npc(state, content, id);
-      if (n.alive) ctx.changes.push(`${reg.npcs[id]?.name ?? id} is dead`);
+      if (n.alive) { ctx.changes.push(`${reg.npcs[id]?.name ?? id} is dead`); n.diedAt = state.time; }
       n.alive = false;
     } else if ('queue' in e) {
       state.queue.push({
@@ -301,7 +302,7 @@ export function applyEffects(state: GameState, content: ContentBundle, effects: 
       if (h) h.name = e.name_heir === '@self' ? state.name : e.name_heir;
     } else if ('heir_dies' in e) {
       const h = pickHeirs(state, e.heir_dies)[0];
-      if (h) { h.alive = false; ctx.changes.push(`${h.name || 'The child'} dies`); }
+      if (h) { h.alive = false; h.died = state.time; ctx.changes.push(`${h.name || 'The child'} dies`); }
     } else if ('heir_set' in e) {
       for (const h of pickHeirs(state, e.heir_set.which)) {
         const t = e.heir_set.temperament;

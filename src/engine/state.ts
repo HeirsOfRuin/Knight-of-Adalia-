@@ -12,6 +12,8 @@ export interface NpcState {
   grudges: string[];
   /** serves in his retinue */
   follower?: boolean;
+  /** season index of his death (recorded from v3 saves on; older deaths have none) */
+  diedAt?: number;
 }
 
 export type SuitStatus = 'hidden' | 'known' | 'courted' | 'available' | 'married' | 'lost';
@@ -34,6 +36,8 @@ export interface Heir {
   upbringing?: string;
   /** his bond with the child, -5..5 */
   bond?: number;
+  /** season index of the child's death */
+  died?: number;
 }
 
 export interface Holding {

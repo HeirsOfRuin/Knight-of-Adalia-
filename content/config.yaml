@@ -26,3 +26,11 @@ counter_labels:
   estates: Votes at Lannec
   ww: The war
   pillars: Your claim to the crown
+# title pages before the first scene of each chapter (acts within a chapter set `card:` on their opening scene)
+chapter_cards:
+  prologue: { title: Prologue, subtitle: The Hungry Years, epigraph: "A lord's son is born to a horse. Everyone else has to walk to one." }
+  ch1: { title: Chapter One, subtitle: Service, epigraph: "Serve seven years, and if you live, someone may remember your name." }
+  ch2: { title: Chapter Two, subtitle: The First War, epigraph: "The King's war is paid for by the King, and fought by everyone else." }
+  ch3: { title: Chapter Three, subtitle: The Manor, epigraph: "Land is the only thing God makes no more of. Men will die for it, and on it." }
+  ch4: { title: Chapter Four, subtitle: The Second War, epigraph: "The second war is the one you go to knowing what the first one cost." }
+  ch5: { title: Chapter Five, subtitle: The Crown of the West, epigraph: "Every old house began with a man nobody had heard of." }

@@ -130,6 +130,10 @@ export const ChoiceSchema = z.object({
 }).strict();
 export type Choice = z.infer<typeof ChoiceSchema>;
 
+// a title page shown before a scene: every chapter's first scene (from config.chapter_cards) and the acts within one
+export const CardSchema = z.object({ title: z.string(), subtitle: z.string().optional(), epigraph: z.string().optional() }).strict();
+export type Card = z.infer<typeof CardSchema>;
+
 export const SceneSchema = z.object({
   id: Id,
   chapter: z.string(), // prologue | ch1..ch5 | test
@@ -143,6 +147,7 @@ export const SceneSchema = z.object({
   cooldown: Delay.optional(),
   checkpoint: z.boolean().default(false),
   ending: Id.optional(), // for kind: ending
+  card: CardSchema.optional(), // an act's title page (a chapter's comes from config.chapter_cards)
   text: z.string(),
   variants: z.record(Id, z.string()).optional(), // background id -> replacement text
   on_enter: z.array(EffectSchema).default([]),
@@ -277,6 +282,8 @@ export const ConfigSchema = z.object({
   counter_labels: z.record(z.string(), z.string()).default({}),
   // named NPC slots ("@master") whose occupant is decided during play
   aliases: z.array(Id).default([]),
+  // title pages shown before the first scene of each chapter
+  chapter_cards: z.record(z.string(), CardSchema).default({}),
 }).strict();
 export type Config = z.infer<typeof ConfigSchema>;
 

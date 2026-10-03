@@ -6,6 +6,7 @@
 
 - id: c4_stewards
   chapter: ch4
+  card: { title: "Chapter Four, Act Two", subtitle: Many Places, epigraph: "A lord with three manors is in none of them." }
   title: Stewards
   checkpoint: true
   on_enter:

@@ -38,6 +38,10 @@ try {
     await page.getByRole('radio', { name: /Reeve's son/ }).click();
     await page.screenshot({ path: join(OUT, `${label}-2-newgame.png`), fullPage: true });
     await page.getByRole('button', { name: 'Begin' }).click();
+    // the prologue opens with its chapter card
+    await page.getByRole('heading', { name: 'The Hungry Years' }).waitFor();
+    await page.screenshot({ path: join(OUT, `${label}-2b-card.png`), fullPage: true });
+    await page.getByRole('button', { name: 'Continue', exact: true }).click();
     await page.getByRole('heading', { name: 'Lady Day Reckoning' }).waitFor();
     await readAll(page);
     await page.screenshot({ path: join(OUT, `${label}-3-scene.png`), fullPage: true });

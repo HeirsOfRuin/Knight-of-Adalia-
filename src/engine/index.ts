@@ -10,6 +10,7 @@ import { applyEffects, newNpcState } from './effects';
 import { enterScene, transition } from './director';
 import { StaticNarrationProvider, type NarrationProvider } from './narration';
 import { describeDate } from './calendar';
+import { cardFor, cardView, type CardView } from './cards';
 
 export type { GameState } from './state';
 export { describeDate } from './calendar';
@@ -114,6 +115,8 @@ export interface SceneView {
   dateChanged: boolean;
   /** true when no choice is available: a content bug the UI must explain */
   deadEnd: boolean;
+  /** the chapter or act title page shown before this scene, if it opens one */
+  card?: CardView;
 }
 
 export function visibleChoices(content: ContentBundle, state: GameState): Choice[] {
@@ -130,6 +133,7 @@ export function view(content: ContentBundle, state: GameState, narrator: Narrati
   const scene = content.scenes[state.scene];
   if (!scene) throw new EngineError(`unknown scene ${state.scene}`);
   const src = scene.variants?.[state.background] ?? scene.text;
+  const card = state.ended ? undefined : cardFor(content, scene.id, state.journal.at(-1)?.scene);
   const choices: ChoiceView[] = state.ended
     ? []
     : visibleChoices(content, state).map((c) => {
@@ -157,6 +161,7 @@ export function view(content: ContentBundle, state: GameState, narrator: Narrati
     ended: state.ended,
     deadEnd: !state.ended && !choices.some((c) => c.available),
     dateChanged: state.journal.length === 0 || state.journal[state.journal.length - 1]!.at !== state.time,
+    card: card ? cardView(content, state, card) : undefined,
   };
 }
 

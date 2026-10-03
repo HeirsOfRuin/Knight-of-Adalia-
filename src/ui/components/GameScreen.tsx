@@ -50,7 +50,10 @@ export function GameScreen(p: Props) {
   const pageKey = `${v.sceneId}@${state.time}@${state.journal.length}`;
   const [pageState, setPageState] = useState({ key: pageKey, n: 1 });
   const shown = pageState.key === pageKey ? pageState.n : 1;
-  const morePages = shown < pages.length;
+  // a chapter or act card is its own first page, before the scene's own pages
+  const cardPage = v.card ? 1 : 0;
+  const onCard = cardPage === 1 && shown === 1;
+  const morePages = shown < pages.length + cardPage;
   const nextPage = () => setPageState({ key: pageKey, n: shown + 1 });
   const toggle = (x: Panel) => setPanel((cur) => (cur === x ? 'none' : x));
   const ending = v.ended ? content.registry.endings[v.ended.ending] : undefined;
@@ -92,14 +95,26 @@ export function GameScreen(p: Props) {
             </section>
           )}
 
-          <article class="scene">
-            {v.dateChanged && <p class="date">{describeDate(state, content)}</p>}
-            {v.title && <h1>{v.title}</h1>}
-            {v.cause && (
-              <p class="cause">This follows from {describeDate({ ...state, time: v.cause.at }, content).toLowerCase()}: <em>{v.cause.text}</em></p>
-            )}
-            {pages.slice(0, shown).map((t, i) => <Paragraphs key={i} text={t} />)}
-          </article>
+          {onCard && v.card ? (
+            <article class="card">
+              <p class="card-title">{v.card.title}</p>
+              {v.card.subtitle && <h1 class="card-subtitle">{v.card.subtitle}</h1>}
+              {v.card.epigraph && <p class="card-epigraph">{v.card.epigraph}</p>}
+              <dl class="card-rows">
+                {v.card.rows.map(([k, val]) => [<dt key={`${k}t`}>{k}</dt>, <dd key={`${k}d`}>{val}</dd>])}
+              </dl>
+              {v.card.since.length > 0 && <ul class="card-since">{v.card.since.map((x, i) => <li key={i}>{x}</li>)}</ul>}
+            </article>
+          ) : (
+            <article class="scene">
+              {v.dateChanged && <p class="date">{describeDate(state, content)}</p>}
+              {v.title && <h1>{v.title}</h1>}
+              {v.cause && (
+                <p class="cause">This follows from {describeDate({ ...state, time: v.cause.at }, content).toLowerCase()}: <em>{v.cause.text}</em></p>
+              )}
+              {pages.slice(0, shown - cardPage).map((t, i) => <Paragraphs key={i} text={t} />)}
+            </article>
+          )}
 
           {morePages ? (
             <section class="choices">

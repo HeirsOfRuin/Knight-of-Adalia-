@@ -6,6 +6,7 @@
 
 - id: c4_master
   chapter: ch4
+  card: { title: "Chapter Four, Act Three", subtitle: Fracture, epigraph: "When the old king dies, every man counts his friends, and then counts them again." }
   title: "[if flag.c4_master_dying]The Old Master[else]Father Benet[/if]"
   checkpoint: true
   on_enter: [ { advance: { seasons: 1 } }, { if: npc.@master.alive, then: [ { set: flag.c4_master_dying } ] }, { catch_up: { year: 38, season: summer } } ]

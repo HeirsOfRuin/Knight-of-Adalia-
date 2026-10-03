@@ -6,6 +6,7 @@
 
 - id: c4_barony
   chapter: ch4
+  card: { title: "Chapter Four, Act Four", subtitle: The Summons, epigraph: "A writ is a piece of parchment. What it costs to refuse one is not." }
   title: The Barony
   checkpoint: true
   on_enter: [ { advance: { seasons: 1 } } ]

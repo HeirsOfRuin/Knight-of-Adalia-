@@ -1,0 +1,102 @@
+# Chapter 4: the younger children. The eldest has c4_eldest and c4_eldest_two;
+# these give the second child a surety demand in the civil war (Act III) and an
+# upbringing in Act IV. The third is in Ch5 (ch5/05-children.yaml).
+
+- id: c4_surety
+  chapter: ch4
+  title: A Surety
+  text: |
+    A week before the muster a [if flag.c4_side_carrow]knight of the Earl's household[else]clerk of the King's chamber[/if] rides in with a letter and an escort of six, and is given wine, and waits until you have read it.
+
+    In a war like this, the letter says, a lord's word is worth what he will put behind it. [if flag.c4_side_carrow]The Earl of Carrow[else]The King[/if] asks for a surety of your faith: {heir.second.name}, who is {heir.second.ageword}, to be brought up in [if flag.c4_side_carrow]the Earl's household at Carrow[else]the old Queen's household at Wendmere[/if] until the realm is at peace, with every honour, as a child of the [if flag.c4_side_carrow]Earl's[else]King's[/if] own kin.
+
+    [break]
+
+    Everyone knows what it means. Every great lord in the kingdom has had this letter, or will. Some of them have sent their children. Some of them have sent their excuses, and are being watched.
+
+    [if heir.second.temperament == bold]{heir.second.name} has heard, from the grooms, and wants to go, and is already arguing about which horse to take.[elif heir.second.temperament == bookish]{heir.second.name} has heard, from the grooms, and asks you whether there are books at [if flag.c4_side_carrow]Carrow[else]Wendmere[/if], and whether you will write.[elif heir.second.temperament == merry]{heir.second.name} has heard, from the grooms, and makes a joke of it at supper, and then comes and sits by you in the dark afterwards without saying anything.[else]{heir.second.name} has heard, from the grooms, and says nothing, and watches you.[/if]
+  choices:
+    - id: send
+      text: Send {heir.second.name}. Your word is good, and this proves it.
+      tags: [diplomacy, allies]
+      text_after: |
+        You ride with {heir.second.name} as far as the crossroads, and the escort takes it from there. [if heir.second.temperament == bold]{heir.second.name} does not look back.[elif heir.second.temperament == grave]{heir.second.name} looks back once, at the top of the hill, and lifts a hand.[else]{heir.second.name} looks back all the way to the top of the hill.[/if] The [if flag.c4_side_carrow]Earl[else]King[/if] writes to thank you, in his own hand, and puts your name at the head of a list.
+      effects:
+        - set: flag.c4_surety_given
+        - heir_set: { which: second, upbringing: court }
+        - add: { heir.second.bond: -2 }
+        - if: flag.c4_side_carrow
+          then: [ { add: { counter.court_carrow: 2 } } ]
+          else: [ { add: { counter.court_prince: 2 } } ]
+      next: c4_eldest_two
+    - id: excuse
+      text: Plead the child's health, and send your thanks instead.
+      tags: [cunning]
+      check: { attr: wits, skill: courtesy, difficulty: 4, mods: [ { if: flag.c3_married && npc.@spouse.alive, add: 1, label: your wife writes the letter }, { if: rep.honor >= 3, add: 1, label: your word is known } ] }
+      success:
+        text: The letter you send back is a small masterpiece of regret, fever, physicians and loyalty, and the clerk who reads it at the other end sees no reason to doubt it. {heir.second.name} stays at home, and is told to cough when there are strangers in the house.
+        effects: [ { set: flag.c4_surety_excused }, { add: { heir.second.bond: 1 } } ]
+        next: c4_eldest_two
+      failure:
+        text: Your letter is polite, and nobody believes it. You are not punished for it. Your name is simply moved, quietly, from one list to another.
+        effects:
+          - set: flag.c4_surety_refused
+          - add: { heir.second.bond: 1 }
+          - if: flag.c4_side_carrow
+            then: [ { add: { counter.court_carrow: -2 } } ]
+            else: [ { add: { counter.court_prince: -2 } } ]
+        next: c4_eldest_two
+    - id: refuse
+      text: Refuse. No child of yours is anyone's surety.
+      tags: [martial]
+      text_after: |
+        You send the clerk back with your answer, which is that your sword is your surety and he may tell his master so. It is the kind of answer that gets told at dinners. {heir.second.name}, who has been listening at the door, comes in after he has gone and puts both arms round your neck, and holds on.
+      effects:
+        - set: flag.c4_surety_refused
+        - add: { heir.second.bond: 3, rep.honor: 1 }
+        - if: flag.c4_side_carrow
+          then: [ { add: { counter.court_carrow: -3 } } ]
+          else: [ { add: { counter.court_prince: -3 } } ]
+      next: c4_eldest_two
+
+- id: c4_second
+  chapter: ch4
+  title: "{heir.second.name}"
+  text: |
+    {heir.second.name} is {heir.second.ageword}, and [if heir.eldest.upbringing == page || heir.eldest.upbringing == court || heir.eldest.upbringing == church]has spent the years since {heir.eldest.name} went away being the only child in the hall, and has made the most of it[else]has spent all of it trailing {heir.eldest.name} round the manor, a step behind, and is tired of being a step behind[/if].
+
+    [if heir.second.temperament == bold]{heir.second.name} rides anything with four legs, and has been thrown by most of them, and fights boys older and bigger, and loses, and goes back.[elif heir.second.temperament == bookish]{heir.second.name} has read the priest's three books and the steward's rolls and has started on your letters, and asks you questions about the war you do not know how to answer.[elif heir.second.temperament == merry]{heir.second.name} can make anyone laugh, including the steward, which nobody has done in twenty years, and including you, on days when nothing else would.[else]{heir.second.name} is quiet, and watches, and remembers everything, and you sometimes find you are explaining yourself to a child who has not asked.[/if]
+
+    The question that came for {heir.eldest.name} has come again.
+  choices:
+    - id: west
+      text: Send {heir.second.name} to be brought up in a great house of the West.
+      tags: [diplomacy, allies]
+      requires: [ { any: [ counter.west_estates >= 3, flag.c4_great_lord ] } ]
+      label: "Requires: standing in the West"
+      text_after: |
+        The old lord of Kerguen takes {heir.second.name} into his household, where half the West's gentry learned their manners, and writes after a month that the child [if heir.second.temperament == bold]has been in four fights and won three, and he has not been so entertained in years[elif heir.second.temperament == bookish]has found his chronicles and corrected two of them[elif heir.second.temperament == merry]has made his wife laugh at Mass[else]says little and misses nothing, which is the best a man can say of anyone at court[/if]. The West takes note of whose child it is.
+      effects: [ { set: flag.c4_second_west }, { heir_set: { which: second, upbringing: court } }, { add: { counter.west_estates: 1, heir.second.bond: -1 } } ]
+      next: c4_mahaut_router
+    - id: church
+      text: Send {heir.second.name} to the abbey, to learn letters.
+      tags: [piety, learning]
+      text_after: |
+        {heir.second.name} goes to the abbey with a box of clothes and a psalter you had copied for the purpose. [if heir.second.temperament == bookish]The novice-master writes that he has never had a quicker pupil and does not know what to do with this one.[elif heir.second.temperament == bold]The novice-master writes, once a month, to tell you what has been broken.[else]The letters home come every month, in a hand that gets better every time.[/if]
+      effects: [ { set: flag.c4_second_church }, { heir_set: { which: second, upbringing: church } }, { add: { rep.church: 1, rep.piety: 1 } } ]
+      next: c4_mahaut_router
+    - id: sarenza
+      text: Send {heir.second.name} to Sarenza, to a banking house, to learn the trade of money.
+      tags: [wealth, cunning]
+      visible_if: [ { any: [ flag.c3_lanzi_kin, rep.sarenza >= 2, flag.inv_c2_factor ] } ]
+      text_after: |
+        {heir.second.name} goes south on a Lanzi galley to a counting-house above the harbour at Sarenza, where children of eight learn double entry before they learn Latin. The first letter home is in Sarenzan, and it is about the rate of exchange. Other lords think you have sold your child to merchants. In twenty years your child will be lending to theirs.
+      effects: [ { set: flag.c4_second_sarenza }, { heir_set: { which: second, upbringing: letters } }, { add: { rep.sarenza: 1, rep.merchants: 1, heir.second.bond: -1 } } ]
+      next: c4_mahaut_router
+    - id: home
+      text: Keep {heir.second.name} at home, and be there this time.
+      tags: [allies]
+      text_after: |
+        You keep {heir.second.name} at home, and this time you are there more than you are away. [if heir.second.temperament == bold]You teach the child to ride properly, and to fall properly, and to use a sword the way you learned it, the hard way, and on a good day you can see that it will be better at it than you were.[elif heir.second.temperament == bookish]You give the child the run of your letters and your accounts, and in a year the child is catching the steward's mistakes before you do.[elif heir.second.temperament == merry]You take the child with you to the manor court, and the market, and the guild dinners, and find that people are kinder to a lord with a laughing child beside him.[else]You talk to the child, more than you have talked to anyone in years, and are listened to, and find you have more to say than you knew.[/if]
+      effects: [ { set: flag.c4_second_home }, { heir_set: { which: second, upbringing: home } }, { add: { heir.second.bond: 3 } } ]
+      next: c4_mahaut_router

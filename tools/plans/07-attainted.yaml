@@ -3,208 +3,213 @@
 # Regenerate with: npx tsx tools/make-plan.ts --regen
 name: The Attainted
 background: archer
-seed: 1074
+seed: 1259
 generated:
   policy: tags:cunning+intrigue
-  seed: 1074
+  seed: 1259
   want:
     - "!npc.ancel_brome.alive"
     - alias.master != ancel_brome
 steps:
   p_archer_open: ask
-  p_archer_home: mother
-  p_hungry_year: poach!failure
+  p_archer_home: fletch
+  p_hungry_year: steal!failure
   p_knight: hold
-  p_learning: manners
-  p_midsummer: young_men
+  p_learning: field
+  p_midsummer: jump
   p_rival: outwit!failure
   p_gate_router: go
   p_gate_archer: hunt!failure
   p_gate_failed: levy
-  p_leaving: promise
+  p_leaving: family
   c1_arrival: kneel!failure
-  c1_first_night: friend
-  c1_duties: copy!failure
+  c1_first_night: home
+  c1_duties: copy!success
   c1_squires: scheme!failure
   c1q_rival: use
-  c1p_bout: fight!success
-  c1_winter: hall
+  c1p_ring: ride!success
+  c1_winter: pell
   c1_trouble_ancel: track!failure
-  c1p_chaplain: confess
-  c1_harvest_home: family
-  c1_christmas: maud!success
-  c1_master_ride: ask
+  c1p_fever: away
+  c1_harvest_home: girl
+  c1_christmas: maud!failure
+  c1_master_ride: learn
   c1_quintain: arms
   c1_muster: pray
   c1_raid: flank!success
-  c1_prisoner: free!failure
-  c1_raid_return: squire
+  c1_prisoner: free!success
+  c1_raid_return: duties
   c1p_letter_home: ignore
-  c1p_cunning_woman: fortune
-  c1_after_leven: friend
+  c1p_dice: cheat!failure
+  c1_after_leven: work
   c1_watch: names
-  c1_bertram_test: wait!success
-  c1_progress: maud!failure
-  c1_tourney: melee!failure
-  c1p_dice: cheat!success
+  c1_bertram_test: wait!failure
+  c1_progress: spy!failure
+  c1_tourney: serve!success
+  c1p_horse_fair: errand!failure
   c1_long_winter: steward
-  c1q_family_archer: own
+  c1q_family_archer: stop!failure
   c1_crisis_router: go
+  c1q_maud_sold: word!success
   c1_crisis_ancel: pryce
   c1_war_comes: ready
   c1_means: carrow
   c1_knighting: wait
-  c1_man_at_arms: oath
+  c1_man_at_arms: haggle!failure
   c1_farewell: alehouse
   c1_end: muster
-  c2_following: home
-  c2_crossing: pray
+  c2_following: master
+  c2_crossing: horses!success
   c2_landing: lead!success
-  c2_first_fire: talk
-  c2_armance: duchess!failure
+  c2_first_fire: walk
+  c2_armance: tallis
   c2_march: loose
-  c2r_child: take
+  c2r_herald: read
   c2_village: loot
   c2_foragers: archers!failure
   c2_vaudrey: house!failure
   c2_corbie: squeeze
-  c2_looms: men
-  c2_grisolles_eve: scout!failure
+  c2_looms: gibbets
+  c2_grisolles_eve: scout!success
   c2_grisolles: front!success
-  c2_grisolles_rout: men!success
-  c2_grisolles_after: drink
-  c2_retreat: ambush!failure
-  c2_lannec_winter: raid
+  c2_grisolles_rout: ford
+  c2_grisolles_after: count
+  c2_retreat: ambush!success
+  c2_lannec_winter: borrow
   c2_buy_lannec: done
-  c2_sauvemer: lanzi
+  c2_sauvemer: dig
   c2q_ewan: read
-  c2c_giles: fight!success
-  c2_fireships: fireship!success
+  c2c_rooke: no
+  c2_fireships: fireship!failure
   c2_assault: refuse!success
   c2_burial_truce: look!success
   c2_siege_winter: boom!success
-  c2c_dice: watch
+  c2c_barre: talk!failure
   c2_mine: listen!failure
   c2_sortie: gate!failure
-  c2_relief: skirmish!failure
-  c2_salines_eve: kneel
-  c2_salines_1: sluice!failure
-  c2_salines_2: rear!failure
-  c2_salines_3: banner!success
-  c2_salines_4: stand
+  c2_relief: sluice
+  c2_salines_eve: men
+  c2_salines_1: sluice!success
+  c2_salines_2: rear!success
+  c2_salines_3: prize!success
+  c2_salines_4: loot
   c2_salines_after: on
   c2_surrender: house
-  c2_feast: lords!success
+  c2_feast: lords!failure
   c2_truce: garrison
-  c2c_letter_home: answer
-  c2c_flux: water
-  c2_garrison_life: court
+  c2q_lanzi: pay
+  c2c_davy: yes
+  c2c_dice: play!failure
+  c2_garrison_life: trade!failure
   c2_buy_sauvemer: done
   c2_iron_company: warn
   c2_home_choice: stay
-  c2c_davy: yes
+  c2c_giles: fight!success
   c2_grants: ask_more!success
-  c2q_family_archer: grieve
-  c2_plague: pray
+  c2q_family_archer: shoot
+  c2_plague: prepare
   c2_end: ride_in
   c3_arrival: apart
   c3_measures: burn
   c3_household: apart
-  c3_letters: mass
+  c3_letters: kin
   c3_harvest: compel
-  c3_reckoning: rents
+  c3_reckoning: cross
   c3_spring: open
   c3_buy_spring: done
   c3_ordinance: pay
-  c3m_flood: carry
+  c3m_pigs: cousin
   c3_settlers: apart
-  c3m_mill: miller
+  c3m_poacher: flog
   c3_claimant: buy
-  c3m_poacher: hang
-  c3_truce_ends: walls
-  c3m_wedding: take
+  c3m_mill: miller
+  c3_truce_ends: drill!success
+  c3m_roof: mend
   c3_raid: shelter!success
-  c3m_salt: market!success
+  c3m_frost: rents
   c3_bandits: hire
-  c3_unrest: hang
-  c3_winter_hall: stories
+  c3_winter_hall: marry
   c3_second_spring: think
-  c3_buy_building: done
+  c3_buy_building:
+    - men
+    - done
   c3_match: alienor_brese
   c3_suitor: meadows
-  c3_contract: nothing
-  c3_wedding: feast
+  c3_contract: fair
+  c3_wedding: hers
   c3_first_year: own
-  c3_lying_in: physician
-  c3_childbed: son_self
+  c3_lying_in: relic
+  c3_childbed: dau_mother
   c3_match_end: on
   c3_rising_news: money
   c3_rising_far: alms
   c3_march_router: on
-  c3_coll: go
-  c3_ravell: pass
+  c3_coll: gift
+  c3_ravell: lend
   c3_fever_router: on
   c3_fever: nurse
   c3_fever_after: on
-  c3m_pigs: cousin
+  c3m_wedding: take
   c3_vervais: keep
   c3_second_child_router: on
   c3_second_child: saint
-  c3_summons: prince
+  c3_summons: carrow
   c3_end: ride
-  c4_council: edwin
+  c4_council: pin
   c4_home: wife
-  c4_company: good
-  c4_buy_fitting: done
-  c4_landing: king
+  c4_company: rotbart
+  c4_buy_fitting:
+    - wagons
+    - done
+  c4_landing: country
   c4_towns: starve
-  c4_winter: home
+  c4_winter: feast
   c4_carrow: on
   c4_mf_1: ride!failure
-  c4_mf_2: archers!failure
+  c4_mf_2: archers!success
   c4_mf_after: on
   c4_grant: office
   c4_act1_end: half
   c4_stewards: clerk
   c4_buy_estates: done
-  c4p_pony: buy
+  c4p_petition: custom
   c4_rival: hard
-  c4_eldest: prince
+  c4_eldest: church
   c4q_carn_dubh: give
-  c4_christmas: carrow
+  c4_christmas: spend
   c4_third_router: on
-  c4_third_child: name_a
+  c4_third_child: name_b
   c4_salt: broker!failure
-  c4_mahaut: suit
+  c4_mahaut: edwin
   c4_act2_end: on
   c4_master: child
-  c4p_old_friend: stay
-  c4_king_dies: ask!failure
+  c4p_pony: buy
+  c4_king_dies: ask!success
   c4_buy_war: done
   c4_carrow_rises: west
-  c4_eldest_two: on
+  c4_eldest_two: arrange
   c4_west_war: on
   c4_valdrenne: hand_over
-  c4p_petition: custom
+  c4p_old_friend: stay
   c4_lannec: listen
   c4_act3_end: on
   c4_barony: accept
+  c4_second: home
   c4_mahaut_router: on
-  c4_mahaut_answer: ask!success
-  c4_writ: secret
+  c4_writ: money
   c4_end: on
-  c5_estates: guilds!success
+  c5_estates: guilds!failure
   c5_estates_2: wait
-  c5_vote: self
+  c5_betrothal: lanzi
+  c5_vote: duchy
   c5_war_opens: divide!failure
-  c5_buy_war:
-    - arrears
-    - done
+  c5_buy_war: done
   c5_war_muster: ground!failure
   c5_bridge: reserve!failure
   c5_war_after: on
   c5_defeat: submit!failure
   c5_reckoning: lord
+  c5_younger: church
   c5_epilogue: end
   c5_chronicle: end
 ending: ruin

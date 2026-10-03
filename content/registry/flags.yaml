@@ -549,3 +549,22 @@ inv_walls: { description: "Raised the manor's walls before the civil war" }
 inv_war_chest: { description: "Lent the King's war chest a hundred marks" }
 inv_war_loan: { description: "Lent the salt towns their share of the war tax" }
 inv_warhorse: { description: "Bought a trained destrier" }
+
+# The younger children (Ch4 06-children, Ch5 05-children)
+c4_surety_given: { description: "Sent his second child to the other side of the civil war as a surety of his faith" }
+c4_surety_excused: { description: "Talked his way out of sending a child as a surety" }
+c4_surety_refused: { description: "Refused to send a child as a surety" }
+c4_second_west: { description: "Sent his second child to be raised in a great house of the West" }
+c4_second_church: { description: "Sent his second child to the abbey" }
+c4_second_sarenza: { description: "Sent his second child to a Sarenzan counting-house" }
+c4_second_home: { description: "Kept his second child at home" }
+c5_betrothed_penhoet: { description: "Promised his second child to the house of Penhoët for the West's votes" }
+c5_betrothed_brese: { description: "Promised his second child to the Brésy cousin, or to the Bishop's nephew" }
+c5_betrothed_lanzi: { description: "Promised his second child to the Lanzi for a dowry" }
+c5_betrothal_refused: { description: "Refused to promise his second child for votes" }
+c5_surety_ransomed: { description: "Bought back his child surety after the West broke away" }
+c5_surety_stolen: { description: "Had his child surety brought out at night" }
+c5_surety_kept: { description: "His child surety was held until the peace" }
+c5_younger_land: { description: "Settled land on his younger children" }
+c5_younger_church: { description: "Endowed places in the Church for his younger children" }
+c5_younger_time: { description: "Gave his younger children a year of his time" }

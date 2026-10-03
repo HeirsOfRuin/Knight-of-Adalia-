@@ -1,0 +1,119 @@
+# Chapter 5: the younger children. A betrothal offered at the Estates (an alliance
+# for votes, or refused); a surety given in the civil war, now on the wrong side of
+# the border; and, after the reckoning, what he leaves the younger ones.
+
+- id: c5_betrothal
+  chapter: ch5
+  title: A Match for {heir.second.name}
+  text: |
+    On the evening of the second day, three men ask to see you, one after another, and none of them wants to talk about the question.
+
+    They want to talk about {heir.second.name}, who is {heir.second.ageword}. The West marries its children early when there is a vote coming, and you have a vote coming, and a child of an age to be promised. [if flag.c4_second_west]Half the West has watched {heir.second.name} grow up at Kerguen.[elif flag.c4_second_sarenza]The Sarenzans know exactly what a child raised in a counting-house is worth.[/if]
+
+    The first is the steward of old Penhoët, for a grandson of the house. The second is [if flag.c4_sheltered_brese]Thibaut de Brésy himself, for his young cousin, the last of the Brésy line but him[else]a canon of the cathedral chapter, on behalf of the Bishop's nephew, who has expectations[/if]. The third is a Sarenzan in black, [if flag.c3_lanzi_kin]from your wife's own house[else]from the house of Lanzi[/if], who names a dowry before he names the young man.
+  choices:
+    - id: penhoet
+      text: Promise {heir.second.name} to the house of Penhoët. Their votes are the old West's votes.
+      tags: [diplomacy, allies]
+      text_after: |
+        You sign the betrothal in the morning, before the session, and old Penhoët embraces you in the doorway of the hall where everyone can see. [if heir.second.temperament == bold]{heir.second.name}, told that evening, asks if the boy can fight.[elif heir.second.temperament == bookish]{heir.second.name}, told that evening, asks for the Penhoët pedigree, and reads it, and says it is mostly invented.[elif heir.second.temperament == merry]{heir.second.name}, told that evening, laughs, and then stops laughing, and asks if it can be put off until later, and you say it can.[else]{heir.second.name}, told that evening, says, "If you think it right," and goes out, and you are not sure what that meant.[/if]
+      effects: [ { set: flag.c5_betrothed_penhoet }, { add: { counter.estates: 2, heir.second.bond: -1 } } ]
+      next: c5_vote
+    - id: brese
+      text: "[if flag.c4_sheltered_brese]Promise {heir.second.name} to the Brésy cousin. Thibaut's forty knights become family.[else]Promise {heir.second.name} to the Bishop's nephew. The Church remembers its friends.[/if]"
+      tags: [cunning, diplomacy]
+      text_after: |
+        [if flag.c4_sheltered_brese]Thibaut takes your hand in both of his. "Family," he says, in Valdrennish, as if the word were heavier in that tongue. The Brésy knights drink to the match in the tavern by the cathedral until the watch is called.[else]The canon carries the contract back to the Bishop's palace himself. The next morning the Bishop of Saint-Lys, who is ninety, nods to you from his chair before the session begins.[/if]
+      effects:
+        - set: flag.c5_betrothed_brese
+        - add: { heir.second.bond: -1 }
+        - if: flag.c4_sheltered_brese
+          then: [ { add: { counter.estates: 1, rep.valdrenne: 1 } } ]
+          else: [ { add: { counter.estates: 1, rep.church: 1 } } ]
+      next: c5_vote
+    - id: lanzi
+      text: Promise {heir.second.name} to the Lanzi, for a dowry of forty pounds and the house's credit.
+      tags: [wealth, cunning]
+      text_after: |
+        The Sarenzan counts out the first half of the dowry on your table in gold, and leaves a letter of credit for the rest. The Lanzi lend to the West's cause at half their usual rate from that week on, which is still a high rate. The old West, which marries land to land, thinks you have sold your child for money, and says so, in the hall.
+      effects: [ { set: flag.c5_betrothed_lanzi }, { add: { res.coin: 9600, rep.sarenza: 1, counter.estates: -1, heir.second.bond: -1 } } ]
+      next: c5_vote
+    - id: refuse
+      text: Thank all three, and refuse. {heir.second.name} will choose, when the time comes.
+      tags: [allies]
+      text_after: |
+        You send them away with thanks and wine. It costs you, in the hall, and you know it. When you tell {heir.second.name}, the child looks at you for a long moment as if you had done something nobody had ever done before, and perhaps, in that family, in that country, nobody had.
+      effects: [ { set: flag.c5_betrothal_refused }, { add: { heir.second.bond: 3 } } ]
+      next: c5_vote
+
+- id: c5_surety
+  chapter: ch5
+  title: "{heir.second.name} in [if flag.c4_side_carrow]Carrow[else]Wendmere[/if]"
+  text: |
+    The vote is a week old when the letter comes, addressed to {heir.second.name}, not to you, in [if flag.c4_side_carrow]the Earl's[else]the old Queen's[/if] household. It was opened, and copied, and the copy was sent to you, so that you would know it had been opened.
+
+    {heir.second.name} has been [if flag.c4_side_carrow]at Carrow[else]at Wendmere[/if] since the civil war, a surety for a lord who was loyal then. The lord is not loyal now. The surety is {heir.second.ageword}, and on the wrong side of a border that did not exist a month ago.
+
+    [break]
+
+    Nobody has threatened anything. Nobody needs to. [if heir.second.temperament == bold]The copy of the letter has a line at the bottom in a child's hand, which the clerk did not think to cut: "I am well. Do not do anything stupid."[elif heir.second.temperament == grave]The copy of the letter has a line at the bottom in a child's hand, which the clerk did not think to cut: "I understand. Do what you must."[else]The copy of the letter has a line at the bottom in a child's hand, which the clerk did not think to cut: "Will you come?"[/if]
+  choices:
+    - id: ransom
+      text: Offer to buy {heir.second.name} back, openly, at the price of a great lord's son. (£25)
+      tags: [wealth, diplomacy]
+      requires: [ res.coin >= 6000 ]
+      text_after: |
+        It takes two months of letters and a Sarenzan banker at each end. [if flag.c4_side_carrow]The Earl's steward[else]The King's chamberlain[/if] counts the money twice. {heir.second.name} comes home by sea in a new cloak, taller, and runs the length of the quay, and you do not care who sees.
+      effects: [ { set: flag.c5_surety_ransomed }, { add: { res.coin: -6000, heir.second.bond: 2 } } ]
+      next: c5_war_opens
+    - id: steal
+      text: Send men you trust to bring {heir.second.name} out at night.
+      tags: [cunning]
+      check: { attr: wits, skill: intrigue, difficulty: 5, mods: [ { if: npc.davy_ludd.alive, add: 1, label: Davy goes }, { if: flag.c4_counted_council || flag.c4_counted_lannec, add: 1, label: you know whose servants can be bought }, { if: res.coin >= 2400, add: 1, label: money for bribes } ] }
+      success:
+        text: Three men go, [if npc.davy_ludd.alive]Davy at their head, [/if]with a boat and a forged pass and a great deal of silver for a laundress. On the ninth night a boat comes into the Lannec river with {heir.second.name} asleep in the bottom of it under a sail. When the child wakes, the first words are, "I knew you would."
+        effects: [ { set: flag.c5_surety_stolen }, { add: { heir.second.bond: 3, res.coin: -480 } } ]
+        next: c5_war_opens
+      failure:
+        text: The laundress takes the silver and talks. Your men get out, two of them. {heir.second.name} is moved to a castle in the north with a guard on the door, and is kept there, honourably, and without visitors, until the peace.
+        effects: [ { set: flag.c5_surety_kept }, { add: { heir.second.bond: -1, res.coin: -480 } } ]
+        next: c5_war_opens
+    - id: leave
+      text: Leave {heir.second.name} there. Nobody harms a child surety. It would cost them every lord they have.
+      tags: [yield, cunning]
+      text_after: |
+        You are right. Nobody harms {heir.second.name}, who is kept with every honour and every courtesy until the peace, and comes home afterwards a stranger, with a [if flag.c4_side_carrow]northern[else]Wendmere[/if] accent and good manners and no particular wish to talk to you.
+      effects: [ { set: flag.c5_surety_kept }, { add: { heir.second.bond: -3 } } ]
+      next: c5_war_opens
+
+- id: c5_younger
+  chapter: ch5
+  title: "[if heir.third.alive]The Younger Ones[else]{heir.second.name}[/if]"
+  text: |
+    [if heir.eldest.alive]{heir.eldest.name} will have what you hold. That was settled long ago, by law and by custom and by every man in the hall knowing it.[else]What you hold will go where the law sends it.[/if] It is [if heir.third.alive]the younger ones[else]{heir.second.name}[/if] you think about, at night.
+
+    {heir.second.name} is {heir.second.ageword}[if flag.c5_betrothed_penhoet], and promised to Penhoët[elif flag.c5_betrothed_brese], and promised[elif flag.c5_betrothed_lanzi], and promised to the Lanzi[/if].[if heir.third.alive] {heir.third.name} is {heir.third.ageword}, and [if heir.third.temperament == bold]has been forbidden the stable roof, the mill-race and the bull, in that order, and has tried all three[elif heir.third.temperament == bookish]follows the priest about with questions he cannot answer[elif heir.third.temperament == merry]is the only person on the manor who is never afraid of you[else]watches everything and says little, which reminds you of someone you cannot place[/if].[/if] A younger child in a family like yours gets what the eldest does not need: a manor, if there is one spare; a dowry; a place in the Church; or a good word and a horse.
+  choices:
+    - id: land
+      text: Settle a manor on {heir.second.name}[if heir.third.alive], and rents on {heir.third.name}[/if], out of what you hold.
+      tags: [wealth, allies]
+      visible_if: [ holdings.count >= 1 ]
+      text_after: |
+        The lawyers take a season. When they are done, {heir.second.name} holds land in [if holding.la_garde.held]the Sauvemer march[else]the West[/if] in [if heir.second.sex == son]his[else]her[/if] own name[if heir.third.alive], and {heir.third.name} has the rents of a street in Lannec for life[/if]. Your eldest's share is smaller for it, and [if heir.eldest.alive]{heir.eldest.name} says nothing about it, which is to {heir.eldest.name}'s credit[else]nobody is left to complain[/if].
+      effects: [ { set: flag.c5_younger_land }, { add: { heir.second.bond: 2, heir.third.bond: 2 } } ]
+      next: c5_epilogue
+    - id: church
+      text: Endow a place in the Church for {heir.second.name}[if heir.third.alive], and one for {heir.third.name}[/if], with money enough to want for nothing.
+      tags: [piety, wealth]
+      requires: [ res.coin >= 2400 ]
+      text_after: |
+        You endow a prebend at the cathedral[if heir.third.alive] and a place in the Lannec convent[/if], with money enough that nobody there will ever give orders to a child of yours. [if heir.second.upbringing == church]{heir.second.name}, who learned letters at the abbey, is pleased.[elif heir.second.temperament == bold]{heir.second.name} is not pleased, and says so, at length, and in the end takes the prebend and never goes near the cathedral.[else]{heir.second.name} takes it, and thanks you, and you are never certain what lies behind the thanks.[/if]
+      effects: [ { set: flag.c5_younger_church }, { add: { res.coin: -2400, rep.church: 1, heir.second.bond: 1 } } ]
+      next: c5_epilogue
+    - id: time
+      text: Give [if heir.third.alive]the younger ones[else]{heir.second.name}[/if] what you did not give the eldest. A year of your time.
+      tags: [allies]
+      text_after: |
+        You stay home that year. You ride with {heir.second.name} to every manor you hold, and let [if heir.second.sex == son]him[else]her[/if] sit beside you at the courts and judge the small cases. [if heir.third.alive]You teach {heir.third.name} to ride, and to swim in the mill pool, which the priest calls dangerous. [/if]It is the best year you can remember. It does not feel like work. It may be the most useful thing you do.
+      effects: [ { set: flag.c5_younger_time }, { add: { heir.second.bond: 3, heir.third.bond: 3 } } ]
+      next: c5_epilogue

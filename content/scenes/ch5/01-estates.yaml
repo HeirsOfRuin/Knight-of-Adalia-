@@ -110,7 +110,7 @@
         - assign: { suit.mahaut_armance.status: married }
         - set: flag.c3_married
         - add: { counter.estates: 3, rel.mahaut_armance.affection: 4 }
-      next: c5_vote
+      next: { switch: [ { if: [ heir.second.alive, heir.second.age >= 8, "!flag.c4_surety_given" ], go: c5_betrothal } ], default: c5_vote }
     - id: thibaut
       text: Take Thibaut's forty knights and his vote, and promise him his father's justice.
       tags: [cunning, martial]
@@ -118,7 +118,7 @@
       text_after: |
         You take his hand. "His justice," Thibaut says, "not the King's." You know what he means, and you let him mean it. The Brésy knights are in the hall by noon, standing along the wall, and the Valdrennish-born lords of the West look at them, and remember who used to be Constable, and count.
       effects: [ { set: flag.c5_brese_pact }, { add: { counter.estates: 2, rep.valdrenne: 1 } } ]
-      next: c5_vote
+      next: { switch: [ { if: [ heir.second.alive, heir.second.age >= 8, "!flag.c4_surety_given" ], go: c5_betrothal } ], default: c5_vote }
     - id: hales
       text: Tell Master Hales you will speak for the King's peace.
       tags: [allies]
@@ -126,12 +126,12 @@
       text_after: |
         You tell him you will. He presses your hand, and writes it down. When you go into the hall, men who were watching you look away.
       effects: [ { set: flag.c5_promised_hales }, { add: { counter.court_prince: 2, counter.estates: -2 } } ]
-      next: c5_vote
+      next: { switch: [ { if: [ heir.second.alive, heir.second.age >= 8, "!flag.c4_surety_given" ], go: c5_betrothal } ], default: c5_vote }
     - id: wait
       text: Keep your own counsel until the question is put.
       tags: [cunning]
       text_after: You keep your counsel, and go into the hall with your face giving nothing away, and sit, and wait.
-      next: c5_vote
+      next: { switch: [ { if: [ heir.second.alive, heir.second.age >= 8, "!flag.c4_surety_given" ], go: c5_betrothal } ], default: c5_vote }
 
 - id: c5_vote
   chapter: ch5
@@ -154,7 +154,7 @@
       text_after: |
         You stand for the King. [if counter.estates >= 5]The Salt follows you, and enough of the towns, and the vote goes the King's way by a handful of voices. Penhoët walks out. Mahaut does not look at you again that day.[else]The vote goes the King's way, narrowly, and you are one voice among many in it.[/if] Master Hales writes to Wendmere that night, and the West stays in Adalia's hand. For now.
       effects: [ { set: flag.c5_west_adalian }, { add: { counter.court_prince: 3, counter.west_estates: -3 } } ]
-      next: c5_war_opens
+      next: { switch: [ { if: [ flag.c4_surety_given, heir.second.alive, flag.c5_west_free ], go: c5_surety } ], default: c5_war_opens }
     - id: duchy
       text: Stand for a free duchy under Mahaut, owing nothing to anyone.
       tags: [diplomacy, allies]
@@ -163,7 +163,7 @@
       text_after: |
         You stand for the free duchy. The Armance roars, and the Salt follows, and the towns follow the Salt, and when the Bishop calls the voices it is carried by more than two to one. Mahaut, in the ducal chair, sits straight as a lance and does not smile. Master Hales gathers his papers and leaves the hall without a word, which is the most eloquent thing he has done in ten years in the West.
       effects: [ { set: flag.c5_west_free }, { set: flag.c5_free_duchy }, { add: { counter.west_estates: 2, counter.court_prince: -4 } } ]
-      next: c5_war_opens
+      next: { switch: [ { if: [ flag.c4_surety_given, heir.second.alive, flag.c5_west_free ], go: c5_surety } ], default: c5_war_opens }
     - id: mahaut_queen
       text: Say what the guildmaster would not. Crown her. A queen of the West, not a duchess.
       tags: [diplomacy, cunning]
@@ -173,7 +173,7 @@
       text_after: |
         You say it. A crown, not a coronet. A queen of the West, owing nothing to Wendmere or Cordelle, because a duchy is a thing a king can take back. For a moment nobody breathes. Then the guildmaster who said it first stands up and cheers, and the hall comes with him. Mahaut is crowned in the chapel at Lannec at Whitsun's end, by the Bishop, with a circlet made overnight from her grandmother's coronet and a salt-merchant's gold chain. When it is over she looks at you across the chapel. She knows who did it.
       effects: [ { set: flag.c5_west_free }, { set: flag.c5_crowned_other }, { set: flag.c5_mahaut_queen }, { add: { counter.west_estates: 3, counter.court_prince: -5, rel.mahaut_armance.respect: 4 } } ]
-      next: c5_war_opens
+      next: { switch: [ { if: [ flag.c4_surety_given, heir.second.alive, flag.c5_west_free ], go: c5_surety } ], default: c5_war_opens }
     - id: together
       text: Ask the Estates to crown Mahaut and you together.
       tags: [diplomacy, allies]
@@ -183,7 +183,7 @@
       text_after: |
         You do not ask for yourself. You ask for both of you, the Armance blood and the Salt sword, and Mahaut stands beside you while you do it. The hall does not cheer. It does something better: it goes quiet, and then the Bishop of Saint-Lys, ninety years old, says "Fiat," in a voice like a dry branch breaking, and the whole hall says it after him. You are crowned the next morning in the chapel at Lannec, the two of you, with circlets made overnight, by an old man who has crowned a king before and seems to think nothing of doing it again.
       effects: [ { set: flag.c5_west_free }, { set: flag.c5_acclaimed }, { set: flag.c5_claim }, { set: flag.c5_crowned_self }, { add: { counter.west_estates: 4, counter.court_prince: -6, res.renown: 3 } }, { station: royal } ]
-      next: c5_war_opens
+      next: { switch: [ { if: [ flag.c4_surety_given, heir.second.alive, flag.c5_west_free ], go: c5_surety } ], default: c5_war_opens }
     - id: thibaut_crown
       text: Crown Thibaut de Brésy, the Constable's son. The West needs a soldier.
       tags: [cunning, martial]
@@ -193,7 +193,7 @@
       text_after: |
         You stand for Thibaut: the Constable's son, a soldier, a Valdrennish name the Valdrennish-born will follow and a man who owes his life to the West. The Armance lords are appalled. The Salt is divided. The Brésy knights along the wall draw their swords and hold them up, hilts first, like crosses, and the vote goes his way by eleven voices. Mahaut walks out of her own hall. You have made a king. You have also made an enemy you did not have this morning.
       effects: [ { set: flag.c5_west_free }, { set: flag.c5_crowned_other }, { set: flag.c5_thibaut_king }, { add: { counter.west_estates: -2, counter.court_prince: -5, rep.valdrenne: 2, rel.mahaut_armance.affection: -6 } } ]
-      next: c5_war_opens
+      next: { switch: [ { if: [ flag.c4_surety_given, heir.second.alive, flag.c5_west_free ], go: c5_surety } ], default: c5_war_opens }
     - id: self
       text: Let them say your name.
       tags: [cunning, martial]
@@ -203,4 +203,4 @@
       text_after: |
         You do not say it. You do not need to. You stand up, and the guildmaster who spoke of crowns says your name, and then the Salt says it, and then, after a long moment in which everybody looks at Mahaut, Mahaut says it too, clearly, from the ducal chair, because she has counted the hall the same as you have and would rather give it than have it taken. The Bishop of Saint-Lys looks at you a long while, and says "Fiat." You are crowned the next morning, by an old man, with a circlet made overnight. [if background == reeve]A reeve's son.[elif background == burgess]A wool merchant's son.[elif background == archer]An archer's son.[else]A tirewoman's son.[/if] Nobody in the chapel says it aloud. Everybody thinks it.
       effects: [ { set: flag.c5_west_free }, { set: flag.c5_acclaimed }, { set: flag.c5_crowned_self }, { add: { counter.west_estates: 2, counter.court_prince: -6, res.renown: 3, rel.mahaut_armance.respect: 2 } }, { station: royal } ]
-      next: c5_war_opens
+      next: { switch: [ { if: [ flag.c4_surety_given, heir.second.alive, flag.c5_west_free ], go: c5_surety } ], default: c5_war_opens }

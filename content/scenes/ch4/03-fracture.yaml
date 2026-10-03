@@ -129,7 +129,7 @@
           then: [ { add: { counter.fr: 1, res.men: 20 } } ]
         - if: { any: [ flag.c3_settlers_houses, flag.c3_settlers_mixed ] }
           then: [ { add: { counter.fr: 1, res.men: 15 } } ]
-      next: c4_eldest_two
+      next: { switch: [ { if: [ heir.second.alive, heir.second.age >= 4, "!flag.c4_side_west" ], go: c4_surety } ], default: c4_eldest_two }
     - id: carrow
       text: Ride for the Earl. The new men will ruin the kingdom.
       tags: [cunning, martial]
@@ -139,7 +139,7 @@
       effects:
         - set: flag.c4_side_carrow
         - add: { counter.court_carrow: 3, counter.court_prince: -4 }
-      next: c4_eldest_two
+      next: { switch: [ { if: [ heir.second.alive, heir.second.age >= 4, "!flag.c4_side_west" ], go: c4_surety } ], default: c4_eldest_two }
     - id: west
       text: Stay in the West. Hold your lands, and let Adalia settle its own quarrel.
       tags: [yield, cunning]
@@ -150,7 +150,7 @@
         - add: { counter.west_estates: 3, counter.court_prince: -2 }
         - if: flag.c4_warden_march
           then: [ { add: { counter.court_prince: -2 } } ]
-      next: c4_eldest_two
+      next: { switch: [ { if: [ heir.second.alive, heir.second.age >= 4, "!flag.c4_side_west" ], go: c4_surety } ], default: c4_eldest_two }
 
 - id: c4_eldest_two
   chapter: ch4

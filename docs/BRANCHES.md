@@ -52,10 +52,12 @@ The map of the story: where it forks, what each fork remembers, and who can be d
   - **Fork:** side with the West (`c4_west_war`), or fight at Wythen Heath for Edwin.
 
   Then Valdrenne, then Lannec.
+  - **Children:** after Carrow rises, a side other than the West asks for the second child as a surety (`c4_surety`). In Act IV, after the barony, the second child's upbringing (`c4_second`), unless given as a surety.
 - **Act IV, the summons:** the barony, Mahaut's answer (if courted), the writ.
 
 ### Chapter 5 (age 42 on): the crown
 - The Estates of the West, the vote, the war, the bridge.
+- **Children:** a betrothal for the second child before the vote (`c5_betrothal`); a surety held in Adalia after the West breaks away (`c5_surety`); after the reckoning, what he leaves the younger ones (`c5_younger`).
 - **Fork:** war lost leads to `c5_defeat`; the West free leads to `c5_recognition`; otherwise `c5_kings_reward`.
 - **The ending switch, `c5_chronicle`:**
   - exile;

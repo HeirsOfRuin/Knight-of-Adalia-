@@ -26,7 +26,7 @@
           then: [ { set: flag.c4_baron_by_acclaim } ]
       text_after: |
         [if flag.c4_great_lord]You have a banner of your own now, square, and a seat at the head of tables, and a herald who knows your arms without looking them up. It changes less than you thought. It changes everything about how other men speak to you.[else]You go back to the manor, and the accounts, and the harvest. Somewhere above you, greater men are deciding the shape of the world. You find you are not sure you want to be one of them.[/if]
-      next: c4_mahaut_router
+      next: { switch: [ { if: [ heir.second.alive, heir.second.age >= 5, "!flag.c4_surety_given" ], go: c4_second } ], default: c4_mahaut_router }
 
 - id: c4_mahaut_router
   chapter: ch4

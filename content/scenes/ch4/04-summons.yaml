@@ -20,7 +20,8 @@
       effects:
         - if: { any: [ [ flag.c4_edwin_won, counter.court_prince >= 6 ], [ flag.c4_carrow_won, counter.court_carrow >= 6 ], counter.west_estates >= 6, holdings.count >= 3 ] }
           then: [ { station: great_lord }, { set: flag.c4_great_lord } ]
-        - if: counter.west_estates >= 6
+        # only when it was the West, not a king or the council, that made him
+        - if: [ counter.west_estates >= 6, { not: { any: [ [ flag.c4_edwin_won, counter.court_prince >= 6 ], [ flag.c4_carrow_won, counter.court_carrow >= 6 ] ] } } ]
           then: [ { set: flag.c4_baron_by_acclaim } ]
       text_after: |
         [if flag.c4_great_lord]You have a banner of your own now, square, and a seat at the head of tables, and a herald who knows your arms without looking them up. It changes less than you thought. It changes everything about how other men speak to you.[else]You go back to the manor, and the accounts, and the harvest. Somewhere above you, greater men are deciding the shape of the world. You find you are not sure you want to be one of them.[/if]

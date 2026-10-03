@@ -73,6 +73,14 @@ rules:
   - match: "kept the tallies to the last day"
     allow: "!flag.c1_father_exposed"
 
+  - match: "crowned again at Saint-Lys"
+    allow: "!flag.c5_paid_valdrenne"
+  - match: "Keep what we have"
+    allow: "!flag.c5_exiled && !flag.c5_attainted"
+  - match: "the ambassadors of and"
+    allow: "age < 0"
+    why: A broken sentence; it should never render.
+
 dead_names_ok:
   c5_chronicle: ['*']            # the chronicle of his life names the dead as they were
   c2q_lanzi: [hamon_darrell]     # a dead man's debt is still owed

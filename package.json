@@ -16,6 +16,7 @@
     "smoke": "tsx tools/smoke.ts",
     "continuity": "tsx tools/continuity.ts",
     "transcript": "tsx tools/transcript.ts",
+    "plans:regen": "tsx tools/make-plan.ts --regen",
     "balance": "tsx tools/balance.ts",
     "build:artifact": "npm run build && tsx tools/build-artifact.ts",
     "check": "npm run typecheck && npm test && npm run validate && npm run lint:style && npm run continuity -- --strict && npm run bot -- --runs 200",

@@ -78,7 +78,7 @@
       text_after: |
         You are the third man to kneel and put your hands between the new King's, after two dukes, and before a hundred lords who were still deciding. Edwin sees it. So does the whole hall. [if flag.c4_sworn_prince]"You said you would," he says, quietly, with your hands in his. "I wrote it down."[/if]
       effects: [ { set: flag.c4_swore_edwin_first }, { add: { counter.court_prince: 3, counter.court_carrow: -2 } } ]
-      next: c4_carrow_rises
+      next: c4_buy_war
     - id: ask
       text: Swear, and ask the new King for something in return.
       tags: [cunning, wealth]
@@ -87,19 +87,19 @@
         text: |
           You swear, and then, still on your knees, ask for the wardenship of the Sauvemer march: the right to keep the King's castles there, and command the King's men in them. A hundred lords hold their breath. Edwin laughs. "Done," he says. "I like a man who knows what he wants." [if flag.c3_lent_aymer]Aymer Ravell, behind the King, catches your eye and winks. He has paid you back.[/if]
         effects: [ { set: flag.c4_warden_march }, { add: { counter.court_prince: 1, counter.west_estates: 2, estate.defence: 2 } } ]
-        next: c4_carrow_rises
+        next: c4_buy_war
       failure:
         text: |
           You swear, and ask for the wardenship of the Sauvemer march, and the new King's face closes like a door. "We will consider it," he says. Everyone in the hall heard you ask. Everyone heard the answer.
         effects: [ { add: { counter.court_prince: -1 } } ]
-        next: c4_carrow_rises
+        next: c4_buy_war
     - id: wait
       text: Wait at the back with the old lords, and watch who kneels.
       tags: [cunning]
       text_after: |
         You wait. You watch. The new men kneel in a rush, the old lords one by one and slowly, and some not at all. [if flag.c3_party_own || flag.c3_stayed_home]You have never been anybody's man. It seems late to start now.[/if] When you kneel, near the end, Edwin looks at you over your head with no expression whatever. He has a little book. You know you are in it.
       effects: [ { set: flag.c4_knelt_late }, { add: { counter.court_prince: -2, counter.west_estates: 1 } } ]
-      next: c4_carrow_rises
+      next: c4_buy_war
 
 - id: c4_carrow_rises
   chapter: ch4
@@ -282,7 +282,7 @@
     - id: guard
       text: Close round the banner and hold.
       tags: [allies, martial]
-      check: { attr: endurance, skill: arms, difficulty: 4, mods: [ { if: counter.fr >= 1, add: 1, label: your side is holding }, { if: armour >= 2, add: 1, label: good harness } ] }
+      check: { attr: endurance, skill: arms, difficulty: 4, mods: [ { if: counter.fr >= 1, add: 1, label: your side is holding }, { if: armour >= 2, add: 1, label: good harness }, { if: armour >= 3, add: 1, label: your new harness } ] }
       success:
         text: |
           You close round the banner with your company, shoulder to shoulder, and Malet's knights come into you like surf onto a rock, and break, and come again, and break. It is not glorious. It holds. [if flag.c4_heir_at_war]{heir.eldest.name} is in the middle of the ring, behind you, the whole time, and never once drops your helm.[/if]

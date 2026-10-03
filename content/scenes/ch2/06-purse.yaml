@@ -1,0 +1,117 @@
+# Chapter 2: places to spend money (DESIGN: Investments). Each shop loops on itself:
+# a purchase sets flag.inv_<id> (which hides it), pays, and returns to the shop;
+# the last choice goes on with the story.
+
+- id: c2_buy_lannec
+  chapter: ch2
+  title: The Horse Fair at Lannec
+  text: |
+    [if revisit]The fair goes on around you: harness, saddles, a crossbow with no string.[else]By Candlemas the horse fair at Lannec is selling everything but horses. Unpaid men sell what they carried across the Narrow Sea: harness, saddles, a crossbow with no string, a good cloak with a hole in the back of it that nobody mentions. Armance farmers buy with bread. Anyone with silver can buy what he likes.[/if]
+
+    You have {coin}.
+  choices:
+    - id: harness
+      text: Buy a dead knight's harness from his squire, who needs bread more than plate. (£3)
+      tags: [wealth, martial]
+      visible_if: [ "!flag.inv_c2_harness", armour < 2 ]
+      requires: [ res.coin >= 720 ]
+      text_after: The squire is fifteen and does not haggle. The harness fits well enough at the shoulders and badly at the knee, and the armourer by the bridge says he can fix the knee for another shilling, and does, mostly.
+      effects: [ { set: flag.inv_c2_harness }, { add: { res.coin: -732 } }, { item: +harness } ]
+      next: c2_buy_lannec
+    - id: horse
+      text: Buy a sound horse from a farmer who cannot feed two through the winter. (£1)
+      tags: [wealth]
+      visible_if: [ "!flag.inv_c2_horse" ]
+      requires: [ res.coin >= 240 ]
+      text_after: A bay gelding, nine years old, with a white sock and a calm eye. The farmer's boy cries when you lead it away. The farmer does not.
+      effects: [ { set: flag.inv_c2_horse }, { add: { res.coin: -240, res.horses: 1 } } ]
+      next: c2_buy_lannec
+    - id: feed
+      text: Feed your own men through the winter out of your own purse. (10s)
+      tags: [wealth, allies]
+      visible_if: [ "!flag.inv_c2_feed", retinue >= 1 ]
+      requires: [ res.coin >= 120 ]
+      text_after: Bread, beans, a barrel of small beer, and once a fortnight a pig. Your men eat when other companies do not, and every man in the army knows whose they are.
+      effects:
+        - set: flag.inv_c2_feed
+        - add: { res.coin: -120, rep.knights: 1, rel.davy_ludd.loyalty: 1, rel.jankin_rooke.loyalty: 1, rel.simkin_barre.loyalty: 1, rel.roger_tallis.loyalty: 1, rel.wat_coker.loyalty: 1, rel.perkin_dyer.loyalty: 1, rel.gib_shawe.loyalty: 1, rel.dickon_laund.loyalty: 1 }
+      next: c2_buy_lannec
+    - id: bowmen
+      text: Take on three Armance bowmen who have not been paid since Lammas. (15s)
+      tags: [wealth, martial]
+      visible_if: [ "!flag.inv_c2_bowmen" ]
+      requires: [ res.coin >= 180 ]
+      text_after: Three brothers from a village above the Lisonne, with their own bows and one pair of boots between them. You buy them two more pairs of boots. They follow you after that.
+      effects: [ { set: flag.inv_c2_bowmen }, { add: { res.coin: -180, res.men: 3 } } ]
+      next: c2_buy_lannec
+    - id: masses
+      text: Pay the priests of Lannec to say Masses for the dead of Grisolles. (5s)
+      tags: [wealth]
+      visible_if: [ "!flag.inv_c2_masses" ]
+      requires: [ res.coin >= 60 ]
+      text_after: The priest asks for the names. You give him the ones you know. He says God knows the rest, which is the kind of thing priests say, and on a cold morning in the nave you find you believe him.
+      effects: [ { set: flag.inv_c2_masses }, { add: { res.coin: -60, rep.piety: 1, rep.church: 1 } } ]
+      next: c2_buy_lannec
+    - id: alms
+      text: Send the Duchess's almoner a purse for the town's poor. (£1)
+      tags: [wealth, diplomacy]
+      visible_if: [ "!flag.inv_c2_alms" ]
+      requires: [ res.coin >= 240 ]
+      text_after: The almoner writes your name in a book. A week later the Duchess's steward bows to you in the street, which he has not done before.
+      effects: [ { set: flag.inv_c2_alms }, { add: { res.coin: -240, rep.nobles: 1, rep.commons: 1, rel.jehanne_armance.affection: 1 } } ]
+      next: c2_buy_lannec
+    - id: done
+      text: Keep the rest of your silver.
+      next: c2_sauvemer
+
+- id: c2_buy_sauvemer
+  chapter: ch2
+  title: The Arsenal and the Quay
+  text: |
+    [if revisit]The arsenal's clerk waits with his tally-stick, and the factors on the quay wait with their ledgers.[else]The garrison is paid at last, in Sauvemer silver with the old Count's head on it, and the town is open again for anyone with money. The arsenal sells off what the siege did not use. The quay is full of Sarenzan factors who will hold a man's money for him and pay him something for the privilege, which nobody in Adalia has ever offered to do.[/if]
+
+    You have {coin}.
+  choices:
+    - id: harness
+      text: Have the arsenal's armourer fit you a harness of plate. (£5)
+      tags: [wealth, martial]
+      visible_if: [ "!flag.inv_c2_harness", armour < 2 ]
+      requires: [ res.coin >= 1200 ]
+      text_after: It takes him a month, three fittings and a great deal of complaint about the shape of Adalian shoulders. It is the best thing you have ever owned.
+      effects: [ { set: flag.inv_c2_harness }, { add: { res.coin: -1200 } }, { item: +harness } ]
+      next: c2_buy_sauvemer
+    - id: mail
+      text: Put your men in mail and kettle hats from the arsenal. (£2)
+      tags: [wealth, martial]
+      visible_if: [ "!flag.inv_c2_mail", retinue >= 3 ]
+      requires: [ res.coin >= 480 ]
+      text_after: Old mail, Valdrennish, some of it with holes you would rather not think about, mended with Adalian rings. Your men look like a company now, and walk like one.
+      effects: [ { set: flag.inv_c2_mail }, { add: { res.coin: -480, counter.company: 1 } } ]
+      next: c2_buy_sauvemer
+    - id: serjeant
+      text: Hire an old serjeant of the garrison who has served in every war since the last King's. (30s)
+      tags: [wealth, martial]
+      visible_if: [ "!flag.inv_c2_serjeant" ]
+      requires: [ res.coin >= 360 ]
+      text_after: He is called Old Matthew, and he has opinions about everything you do, and he is right about most of them. You learn more about keeping men in order from him in a season than in all the war.
+      effects: [ { set: flag.inv_c2_serjeant }, { add: { res.coin: -360, res.men: 1 } }, { train: { command: 1, quiet: 1 } } ]
+      next: c2_buy_sauvemer
+    - id: factor
+      text: Leave money with a Sarenzan factor on the quay, at interest. (£3)
+      tags: [wealth, cunning]
+      visible_if: [ "!flag.inv_c2_factor" ]
+      requires: [ res.coin >= 720 ]
+      text_after: The factor writes you a paper in a beautiful hand, and explains that the money will go into salt and come back larger, every Michaelmas, for as long as the salt sells. Your chaplain says this is usury. The factor says it is a partnership, and smiles.
+      effects: [ { set: flag.inv_c2_factor }, { add: { res.coin: -720, rep.sarenza: 1, rep.merchants: 1 } }, { hold: { id: sauvemer_factor, income: 120 } } ]
+      next: c2_buy_sauvemer
+    - id: quarter
+      text: Give to the rebuilding of the harbour quarter that burned in the siege. (£1)
+      tags: [wealth, diplomacy]
+      visible_if: [ "!flag.inv_c2_quarter" ]
+      requires: [ res.coin >= 240 ]
+      text_after: The town council reads your name aloud in the square, in Valdrennish, and a few people clap. Dame Clémence sends a note of thanks in her own hand, two lines, and says nothing in it about whose guns started the fires.
+      effects: [ { set: flag.inv_c2_quarter }, { add: { res.coin: -240, rep.valdrenne: 1, rep.commons: 1, rel.clemence_vaux.affection: 2 } } ]
+      next: c2_buy_sauvemer
+    - id: done
+      text: Close your purse.
+      next: c2_iron_company

@@ -38,12 +38,12 @@
         text: |
           You ride in unannounced and ask for the books, and the steward goes the colour of tallow, and you know before you open them. It takes you a day. Two sets of tallies, one for you and one for himself; a mill that grinds for him on Fridays; a tenant who pays twice. [if background == reeve][if flag.c1_father_confessed]You think about your father, who confessed, and you give the man the same chance.[elif flag.c1_father_shielded || flag.c1_burned_copy]You think about the tallies you burned for your father, years ago, and you are not proud of how angry you are.[/if][/if] You turn him off, and put an honest man in, and the receipts come back up by Michaelmas.
         effects: [ { set: flag.c4_caught_steward }, { add: { holding.vaudrey.income: 120, holding.lisle.income: 120, holding.ashdown.income: 120, holding.vaudrey.temper: 1, holding.lisle.temper: 1, holding.ashdown.temper: 1, estate.temper: 1 } } ]
-        next: { pool: c4_lord, count: 1, then: c4_rival }
+        next: c4_buy_estates
       failure:
         text: |
           You ride in and go through the books in front of him, and cannot find it, though you know it is there. He is better at this than you are. He bows you out with great courtesy, and the receipts stay down.
         effects: [ { add: { holding.vaudrey.income: -60, holding.lisle.income: -60, holding.ashdown.income: -60 } } ]
-        next: { pool: c4_lord, count: 1, then: c4_rival }
+        next: c4_buy_estates
     - id: clerk
       text: Hire a Sarenzan clerk to audit every holding, every year.
       tags: [wealth, cunning]
@@ -52,14 +52,14 @@
       text_after: |
         Master Benedetto Arbusti comes up from Sauvemer with an abacus, a mule and no sense of humour, and goes round your holdings like a ferret. Two stewards resign before he reaches them. The receipts come back up, and stay up, and every steward you have hates you a little, which is the price.
       effects: [ { set: flag.c4_sarenzan_clerk }, { add: { res.coin: -480, holding.vaudrey.income: 120, holding.lisle.income: 120, holding.ashdown.income: 120, holding.vaudrey.temper: -1, holding.lisle.temper: -1, holding.ashdown.temper: -1 } } ]
-      next: { pool: c4_lord, count: 1, then: c4_rival }
+      next: c4_buy_estates
     - id: trust
       text: Trust your stewards. You chose them.
       tags: [allies, yield]
       text_after: |
         You write back that you are sure the weather was dreadful, and put the accounts in the chest. Perhaps the steward is honest. Perhaps he is not. You have a war behind you and a court in front of you, and you cannot be everywhere. The receipts stay down.
       effects: [ { add: { holding.vaudrey.income: -120, holding.lisle.income: -120, holding.ashdown.income: -120 } } ]
-      next: { pool: c4_lord, count: 1, then: c4_rival }
+      next: c4_buy_estates
 
 - id: c4_rival
   chapter: ch4

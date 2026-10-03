@@ -67,6 +67,17 @@ The map of the story: where it forks, what each fork remembers, and who can be d
 
 ---
 
+### Shops on the spine (DESIGN: Investments)
+Each shop loops on itself until the purse is closed, then continues where the story went before:
+- `c2_buy_lannec` (Lannec winter → Sauvemer) and `c2_buy_sauvemer` (garrison → the Iron Company);
+- `c3_buy_spring` (first spring → the ordinance) and `c3_buy_building` (second spring → the match);
+- `c4_buy_fitting` (company → landing), `c4_buy_estates` (stewards → the Act II pool) and `c4_buy_war` (the King's death → Carrow rises);
+- `c5_buy_war` (who comes for the West → the muster).
+
+Purchases set `flag.inv_*`. A building may be named in later prose only behind its flag.
+
+---
+
 ## 2. Identity state: what makes one run different from another
 
 | State | Set where | Values |
@@ -81,6 +92,7 @@ The map of the story: where it forks, what each fork remembers, and who can be d
 | Spouse | `alias.spouse` at `c3_match`; Dame Blanche for a widower at `c4_widow`; Mahaut in Ch5 | Can die at childbed, the second child, or the third |
 | Heirs | Born in Ch3 and Ch4; named, often after the dead (Hamon, Piers, Agnes...) | Can die of the fever, at Wythen, or in Ch5 |
 | Kin at the manor | `c3_sent_for_kin` | Reeve: sisters. Burgess: mother. Archer: Kit. Servant: Nell or the mother's people |
+| Bought | Shops (`flag.inv_*`), e.g. `inv_tower`, `inv_church`, `inv_market` | Items `full_harness` (armour 3), `warhorse`; holdings `sauvemer_factor`, `market_charter`, `road_tolls` |
 | Manor size | `estate.people`; `estate.founded` at the grant; `estate.recovery` is the percentage of the founding size | Use `estate.recovery` for any comparison with the past |
 
 ---

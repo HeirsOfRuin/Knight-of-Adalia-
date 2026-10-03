@@ -14,3 +14,5 @@ harness: { label: Harness of plate, description: "A knight's harness: breastplat
 mail_shirt: { label: Mail shirt, description: "A captain's issue: a mail shirt and a kettle hat, mended many times.", armour: 1 }
 caldmoor_dirk: { label: Caldmoor dirk, description: "Coll of Glenhallow's wedding gift: a silver-hilted dirk. Hangs over the hall fire." }
 masters_sword: { label: Your old master's sword, description: "Left to you at his death. Old-fashioned, well kept, too heavy." }
+full_harness: { label: Sarenzan harness, description: "Plate in the new style, fluted and made to his measure. Lighter than the old harness and harder to get through.", armour: 3 }
+warhorse: { label: Destrier, description: "A grey Armance stallion schooled for the charge. Bites grooms." }

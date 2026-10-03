@@ -371,6 +371,8 @@ c4_counted_council: { description: "Watched and counted the great council in sil
 c4_wife_holds: { description: "Left his wife holding the manor through the Second War", later: ch5 }
 c4_priest_holds: { description: "Left the priest and the reeve holding the manor", hidden: true, later: ch5 }
 c4_man_holds: { description: "Left one of his own men as castellan", hidden: true, later: ch5 }
+c5_war_tax: { description: "The Estates' war tax pays the West's host during the War of the West; Michaelmas pay is not due from the lord", hidden: true }
+c4_on_indenture: { description: "The company is on the King's indenture and his wage (Ch4 Act I); Michaelmas pay is not due from the lord", hidden: true }
 c4_full_company: { description: "Raised a full company for the Second War", later: ch5 }
 c4_war_debt: { description: "Borrowed to raise his company", later: ch5 }
 c4_good_company: { description: "Raised a small company of veterans", hidden: true, later: ch5 }
@@ -504,3 +506,46 @@ c4_remarried: { description: "Married Dame Blanche de Kerguen as a widower", lat
 c4_widow_refused: { description: "Dame Blanche de Kerguen refused him", later: ch5 }
 c4_stayed_widower: { description: "Declined to marry again", later: ch5 }
 c5_soldiers_with_you: { description: "The knights and captains of the West talked him up at the Estates" }
+
+# Investments (DESIGN: Investments): purchases at the shop scenes. Each hides its offer once bought.
+inv_c2_alms: { description: "Gave alms to the poor of Lannec through the Duchess's almoner" }
+inv_c2_bowmen: { description: "Hired three Armance bowmen at Lannec" }
+inv_c2_factor: { description: "Left money with a Sarenzan factor at Sauvemer" }
+inv_c2_feed: { description: "Fed his own men through the Lannec winter" }
+inv_c2_harness: { description: "Bought a harness of plate in the first war" }
+inv_c2_horse: { description: "Bought a horse at the Lannec fair" }
+inv_c2_mail: { description: "Put his men in mail from the Sauvemer arsenal" }
+inv_c2_masses: { description: "Paid for Masses for the dead of Grisolles" }
+inv_c2_quarter: { description: "Gave to the rebuilding of Sauvemer's harbour quarter" }
+inv_c2_serjeant: { description: "Hired Old Matthew, a serjeant of the Sauvemer garrison" }
+inv_c3_granary: { description: "Built a stone granary on the manor" }
+inv_c3_men: { description: "Took six men-at-arms into his pay" }
+inv_c3_school: { description: "Paid the priest to teach the village children" }
+inv_c3_seed: { description: "Bought seed and plough-teams and resettled empty holdings" }
+inv_c3_watch: { description: "Armed and paid a village watch" }
+inv_c3_works: { description: "Put the manor's salt pans, orchards or drained fields back to work" }
+inv_almshouse: { description: "Founded an almshouse on the manor" }
+inv_arrears: { description: "Paid the levy's arrears before the War of the West" }
+inv_bridge: { description: "Built a toll bridge and mended the road to market" }
+inv_bridge_works: { description: "Fortified the Pont-aux-Moines before the battle" }
+inv_chantry: { description: "Endowed a chantry at the Bishop's cathedral" }
+inv_church: { description: "Rebuilt the manor church in stone" }
+inv_crossbows: { description: "Hired Sarenzan crossbowmen for the War of the West" }
+inv_drill: { description: "Hired a drill-master for his company" }
+inv_feast: { description: "Kept open table for the West at Christmas" }
+inv_free_company: { description: "Hired a free company of forty before the civil war" }
+inv_full_harness: { description: "Bought a harness in the new Sarenzan style" }
+inv_gift_carrow: { description: "Sent the Earl of Carrow a gilt cup" }
+inv_gift_prince: { description: "Sent the Prince hawks and a saddle" }
+inv_guild: { description: "Became a patron of the Lannec salt-boilers' guild" }
+inv_hospital: { description: "Founded a hospital" }
+inv_levy_armed: { description: "Armed the village levy" }
+inv_market: { description: "Bought a market charter" }
+inv_mill: { description: "Built a new mill" }
+inv_tackle: { description: "Bought siege tackle for the second war" }
+inv_tower: { description: "Built a stone tower at the manor" }
+inv_wagons: { description: "Bought wagons, remounts and stores for the second war" }
+inv_walls: { description: "Raised the manor's walls before the civil war" }
+inv_war_chest: { description: "Lent the King's war chest a hundred marks" }
+inv_war_loan: { description: "Lent the salt towns their share of the war tax" }
+inv_warhorse: { description: "Bought a trained destrier" }

@@ -28,22 +28,23 @@ function finalState(content: ContentBundle, bg: string, seed: number, path: stri
   return s;
 }
 
-/** Replays a bot path and records "scene: choice!result". Returns null if a scene recurs with a different choice. */
-function record(content: ContentBundle, bg: string, seed: number, path: string[]): Record<string, string> | null {
+/**
+ * Replays a bot path and records "scene: choice!result". A scene visited more than once
+ * (a shop, which loops on itself) records the list of its choices in order.
+ */
+function record(content: ContentBundle, bg: string, seed: number, path: string[]): Record<string, string | string[]> | null {
   let s = newGame(content, { background: bg, seed, name: 'Plan' });
-  const steps: Record<string, string> = {};
+  const visits: Record<string, string[]> = {};
   for (const p of path) {
     const [scene, id] = p.split('/') as [string, string];
     const r = choose(content, s, id);
-    const step = r.check ? `${id}!${r.check.result}` : id;
-    if (steps[scene] && steps[scene] !== step) return null;
-    steps[scene] = step;
+    (visits[scene] ??= []).push(r.check ? `${id}!${r.check.result}` : id);
     s = r.state;
   }
-  return steps;
+  return Object.fromEntries(Object.entries(visits).map(([k, v]) => [k, v.length === 1 || v.every((x) => x === v[0]) ? v[0]! : v]));
 }
 
-function find(content: ContentBundle, spec: Spec, start = 1, limit = 4000): { policy: Policy; seed: number; steps: Record<string, string> } | null {
+function find(content: ContentBundle, spec: Spec, start = 1, limit = 4000): { policy: Policy; seed: number; steps: Record<string, string | string[]> } | null {
   for (let i = start; i < start + limit; i++) {
     const policy = DEFAULT_POLICIES[i % DEFAULT_POLICIES.length]!;
     const seed = 1000 + i * 37;
@@ -60,7 +61,7 @@ function find(content: ContentBundle, spec: Spec, start = 1, limit = 4000): { po
   return null;
 }
 
-function write(spec: Spec, found: { policy: Policy; seed: number; steps: Record<string, string> }) {
+function write(spec: Spec, found: { policy: Policy; seed: number; steps: Record<string, string | string[]> }) {
   const gen: Generated = { policy: policyName(found.policy), seed: found.seed, want: spec.want };
   const doc = {
     name: spec.name,

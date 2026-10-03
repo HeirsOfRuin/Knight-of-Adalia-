@@ -71,13 +71,13 @@
       tags: [martial]
       text_after: It will start again. Everyone knows the truce will end. When it does, your men will be the best-drilled company in Sauvemer, and they will know it, and so will the men who give out grants.
       effects: [ { set: flag.c2_drilled }, { add: { skill.command: 1, skill.tactics: 1, rel.@master.respect: 1 } } ]
-      next: c2_iron_company
+      next: c2_buy_sauvemer
     - id: town
       text: Learn the town. The language, the people, who owes whom.
       tags: [diplomacy, learning]
       text_after: It is slow. They do not want to be learned. But by spring you can bargain in Valdrennish, you know which of the burghers is a Valdrennish spy and which is an Adalian one, and the baker on the corner has started giving you yesterday's bread for nothing.
       effects: [ { set: flag.c2_learned_town }, { add: { rep.valdrenne: 2, skill.diplomacy: 1, skill.intrigue: 1 } } ]
-      next: c2_iron_company
+      next: c2_buy_sauvemer
     - id: court
       text: Spend your evenings where the women of rank are.
       tags: [diplomacy]
@@ -91,7 +91,7 @@
           then: [ { add: { suit.fiammetta_lanzi.regard: 2 } }, { assign: { suit.fiammetta_lanzi.status: courted } } ]
         - if: suit.heloise_corbie.status >= known
           then: [ { add: { suit.heloise_corbie.regard: 2 } } ]
-      next: c2_iron_company
+      next: c2_buy_sauvemer
     - id: trade
       text: "Put your money to work. Cloth, wine, ransoms: there is money to be made in a garrison town by a man who can count."
       tags: [wealth]
@@ -99,11 +99,11 @@
       success:
         text: Valdrennish wine bought cheap from people who need coin, sold dear to an Adalian garrison that needs drink. By spring you have doubled what you put in. You are not proud of it. You are richer.
         effects: [ { add: { res.coin: 480, rep.merchants: 1 } } ]
-        next: c2_iron_company
+        next: c2_buy_sauvemer
       failure:
         text: The wine is sour by the time it arrives. You learn something. It is expensive.
         effects: [ { add: { res.coin: -60 } } ]
-        next: c2_iron_company
+        next: c2_buy_sauvemer
 
 - id: c2_iron_company
   chapter: ch2

@@ -40,7 +40,7 @@
         - if: retinue >= 4
           then: [ { add: { res.coin: -120 } } ]
         - add: { rel.davy_ludd.loyalty: 2, rel.jankin_rooke.loyalty: 2, rel.simkin_barre.loyalty: 2, rel.roger_tallis.loyalty: 2, rel.wat_coker.loyalty: 2, rel.perkin_dyer.loyalty: 2, rel.gib_shawe.loyalty: 2, rel.dickon_laund.loyalty: 2, res.men: 3 }
-      next: c2_sauvemer
+      next: c2_buy_lannec
     - id: borrow
       text: Go to the Lanzi house, and borrow to pay them.
       tags: [wealth, cunning]
@@ -53,7 +53,7 @@
         - meet: fiammetta_lanzi
         - assign: { suit.fiammetta_lanzi.status: known }
         - add: { counter.lanzi_debt: 10, suit.fiammetta_lanzi.regard: 3, rel.davy_ludd.loyalty: 2, rel.jankin_rooke.loyalty: 2, rel.simkin_barre.loyalty: 2, rel.roger_tallis.loyalty: 2, rel.wat_coker.loyalty: 2, rel.perkin_dyer.loyalty: 2, rel.gib_shawe.loyalty: 2, rel.dickon_laund.loyalty: 2 }
-      next: c2_sauvemer
+      next: c2_buy_lannec
     - id: fee
       text: Draw on your fee from Lord Ravell, a year in advance, and pay them from that.
       tags: [allies]
@@ -64,13 +64,13 @@
         - add: { favor.thurstan_ravell: -1, rel.davy_ludd.loyalty: 2, rel.jankin_rooke.loyalty: 2, rel.simkin_barre.loyalty: 2, rel.roger_tallis.loyalty: 2, rel.wat_coker.loyalty: 2, rel.perkin_dyer.loyalty: 2, rel.gib_shawe.loyalty: 2, rel.dickon_laund.loyalty: 2 }
         - if: flag.c2_ravell_taken
           then: [ { add: { rel.eleanor_ravell.respect: -1 } } ]
-      next: c2_sauvemer
+      next: c2_buy_lannec
     - id: raid
       text: Take them raiding over the border into the Constable's own lands. Let them pay themselves.
       tags: [martial, cunning]
       text_after: The country east of the Armance belongs to Gaucelin de Brésy, who has your King's plate. It seems fair. You go three times that winter, by night, to granges and mills and a small priory. Your men come back with sheep and silver and a prior's horse. They are paid. The Constable's tenants will remember your banner for a generation.
       effects: [ { set: flag.c2_raided_country }, { trait: +burner }, { add: { rep.ruthlessness: 2, rep.valdrenne: -2, rel.simkin_barre.loyalty: 2, rel.roger_tallis.loyalty: 1, rel.jankin_rooke.loyalty: -1, res.coin: 60 } } ]
-      next: c2_sauvemer
+      next: c2_buy_lannec
     - id: promise
       text: Tell them the truth, and promise them a share of whatever the spring brings.
       tags: [diplomacy]
@@ -84,11 +84,11 @@
       success:
         text: They grumble. They stay. A promise from a man who brought them out of Grisolles is worth something, for a while.
         effects: [ { train: { command: 1, ceiling: 5, quiet: 1 } }, { add: { rel.roger_tallis.respect: 1 } } ]
-        next: c2_sauvemer
+        next: c2_buy_lannec
       failure:
         text: They hear you out. In the morning, two of them are gone, and so is a horse.
         effects: [ { casualties: { men: 1, named: 0 } }, { add: { res.horses: -1 } } ]
-        next: c2_sauvemer
+        next: c2_buy_lannec
 
 - id: c2_sauvemer
   chapter: ch2

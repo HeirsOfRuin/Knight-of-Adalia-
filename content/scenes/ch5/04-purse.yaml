@@ -1,0 +1,53 @@
+# Chapter 5: the war chest (DESIGN: Investments).
+
+- id: c5_buy_war
+  chapter: ch5
+  title: The War Chest
+  text: |
+    [if revisit]The clerks of the war chest read out what is left.[else]A war is fought with men, and men are bought with money, and the West has less of both than either king. What it has is salt, and Sarenzan credit, and men like you who came home from the last war richer than they went. Before the spring, the money has to become something that can fight.[/if]
+
+    You have {coin}.[if res.men >= 1 && !flag.c4_on_indenture && !flag.c5_war_tax || res.garrison >= 1 && !flag.c4_on_indenture && !flag.c5_war_tax] Your men's pay at Michaelmas will come to {pay_due}.[/if]
+  choices:
+    - id: crossbows
+      text: Hire three hundred Sarenzan crossbowmen for the season. (£25)
+      tags: [wealth, martial]
+      visible_if: [ "!flag.inv_crossbows" ]
+      requires: [ res.coin >= 6000 ]
+      text_after: They come up the coast in six galleys with their pavises painted in the Signory's colours, and their captain counts your money twice before he lets a man ashore. On the meadows below Lannec they drill with a precision that makes the West's levies stop and watch.
+      effects: [ { set: flag.inv_crossbows }, { add: { res.coin: -6000, counter.ww: 1 } } ]
+      next: c5_buy_war
+    - id: bridge_works
+      text: Fortify the Pont-aux-Moines, the one road south a host can use. (£12)
+      tags: [wealth, martial]
+      visible_if: [ "!flag.inv_bridge_works" ]
+      requires: [ res.coin >= 2880 ]
+      text_after: A barbican on the north end, a ditch across the causeway, stakes in the shallows on either side. The monks of the priory complain about the stakes, and then about the ditch, and then, when they see the army that is coming, stop complaining.
+      effects: [ { set: flag.inv_bridge_works }, { add: { res.coin: -2880 } } ]
+      next: c5_buy_war
+    - id: chantry
+      text: Endow a chantry at the Bishop's cathedral, for the souls of the West's dead. (£15)
+      tags: [wealth, diplomacy]
+      visible_if: [ "!flag.inv_chantry" ]
+      requires: [ res.coin >= 3600 ]
+      text_after: Two priests, paid forever, to sing for the dead of Les Salines and Grisolles and every war since. The Bishop says the first Mass himself, and afterwards, in his parlour, says some things about the Pontiff's view of the West that he does not say in public.
+      effects: [ { set: flag.inv_chantry }, { add: { res.coin: -3600, rep.church: 2, rep.piety: 1 } } ]
+      next: c5_buy_war
+    - id: guilds
+      text: Lend the salt towns the money for their share of the war tax. (£10)
+      tags: [wealth, allies]
+      visible_if: [ "!flag.inv_war_loan" ]
+      requires: [ res.coin >= 2400 ]
+      text_after: The towns pay their share on time, for the first time in anyone's memory, and their councils know whose money it was.
+      effects: [ { set: flag.inv_war_loan }, { add: { res.coin: -2400, counter.west_estates: 1, rep.merchants: 1, rep.commons: 1 } } ]
+      next: c5_buy_war
+    - id: arrears
+      text: Pay the levy's arrears before they have to ask. (£4)
+      tags: [wealth, allies]
+      visible_if: [ "!flag.inv_arrears" ]
+      requires: [ res.coin >= 960 ]
+      text_after: Every man of your levy gets his back pay in his hand, in silver, before he marches. Word goes round the other villages. More men come to your banner than were called.
+      effects: [ { set: flag.inv_arrears }, { add: { res.coin: -960, res.levy: 12, rep.commons: 1 } } ]
+      next: c5_buy_war
+    - id: done
+      text: Close the chest.
+      next: c5_war_muster

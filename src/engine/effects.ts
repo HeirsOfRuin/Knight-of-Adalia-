@@ -165,6 +165,7 @@ function assignValue(state: GameState, content: ContentBundle, rawPath: string, 
     case 'chapter': state.chapter = String(value); return;
     case 'track': state.track = String(value); return;
     case 'counter': state.counters[a] = Number(value); return;
+    case 'res': state.res[a] = Number(value); return; // e.g. keep a score of men: assign res.men 20
     case 'flag': if (value) state.flags[a] = true; else delete state.flags[a]; return;
     case 'suit': {
       const s = suit(state, a);

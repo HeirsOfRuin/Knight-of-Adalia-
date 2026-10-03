@@ -421,4 +421,4 @@
   choices:
     - id: open
       text: Break the King's seal.
-      next: c3_ordinance
+      next: c3_buy_spring

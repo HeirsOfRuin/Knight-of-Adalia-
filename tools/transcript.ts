@@ -3,7 +3,7 @@
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { loadContent } from './content-loader';
-import { loadPlans, type Plan } from './bot-lib';
+import { loadPlans, planStep, unplannedChoice, type Plan } from './bot-lib';
 import { newGame, view, choose } from '../src/engine/index';
 import type { CheckResult } from '../src/engine/checks';
 import type { ContentBundle } from '../src/content/schema';
@@ -11,6 +11,7 @@ import type { ContentBundle } from '../src/content/schema';
 export function transcript(content: ContentBundle, plan: Plan): string {
   let state = newGame(content, { background: plan.background, seed: plan.seed, name: 'Hal', role: plan.role });
   const out: string[] = [`# ${plan.name}`, '', `Background: ${content.backgrounds[plan.background]!.label}. Seed ${plan.seed}.`, ''];
+  const visits: Record<string, number> = {};
   for (let i = 0; i < 500 && !state.ended; i++) {
     const v = view(content, state);
     out.push(`## ${v.title ?? v.sceneId}`, '');
@@ -22,8 +23,8 @@ export function transcript(content: ContentBundle, plan: Plan): string {
       out.push(`- ${c.available ? '' : '~~'}${c.text}${c.available ? '' : '~~'}${meta ? ` *(${meta})*` : ''}${c.stakes.length ? `  \n  <small>At stake: ${c.stakes.join(' · ')}</small>` : ''}`);
     }
     const avail = v.choices.filter((c) => c.available);
-    const step = plan.steps[state.scene];
-    const [id, force] = step ? step.split('!') : [(avail.find((c) => !c.lethal) ?? avail[0])!.id];
+    const step = planStep(plan, state.scene, visits);
+    const [id, force] = step ? step.split('!') : [unplannedChoice(state.scene, avail)];
     const chosen = v.choices.find((c) => c.id === id)!;
     state = choose(content, state, id!, { force: force as CheckResult | undefined }).state;
     const o = state.lastOutcome!;

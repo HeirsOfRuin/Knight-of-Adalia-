@@ -9,6 +9,7 @@ import { newGame, view, choose, type GameState } from '../src/engine/index';
 import { RngCursor, seedRng } from '../src/engine/rng';
 import { test as testCond } from '../src/engine/conditions';
 import type { CheckResult } from '../src/engine/checks';
+import { payDue } from '../src/engine/estate';
 
 export type Policy =
   | { kind: 'random' }
@@ -34,6 +35,14 @@ const SOFTLOCK_STEPS = 60;
 
 export function policyName(p: Policy): string {
   return p.kind === 'tags' ? `tags:${p.prefer.join('+')}` : p.kind;
+}
+
+/** What a shop choice costs: the coin its effects take. */
+export function priceOf(content: ContentBundle, scene: string, choice: string): number {
+  const c = content.scenes[scene]?.choices.find((x) => x.id === choice);
+  let p = 0;
+  for (const e of c?.effects ?? []) if ('add' in e && typeof e.add['res.coin'] === 'number' && e.add['res.coin'] < 0) p -= e.add['res.coin'];
+  return p;
 }
 
 export function playOnce(content: ContentBundle, background: string, seed: number, policy: Policy, maxSteps = 2000, observe?: (s: GameState) => void): RunResult {
@@ -66,7 +75,16 @@ export function playOnce(content: ContentBundle, background: string, seed: numbe
       break;
     }
     let choice = avail[pick.int(avail.length)]!;
-    if (policy.kind === 'tags') {
+    if (state.scene.includes('_buy_') && policy.kind !== 'script') {
+      // shops: keep back the men's Michaelmas pay. A spender (wealth) buys what he can;
+      // anyone else buys one thing, half the time, and closes the purse.
+      const reserve = payDue(state);
+      const buys = avail.filter((c) => c.id !== 'done' && (state.res.coin ?? 0) - priceOf(content, state.scene, c.id) >= reserve);
+      const spender = policy.kind === 'tags' && policy.prefer.includes('wealth');
+      const boughtHere = res.path.at(-1)?.startsWith(`${state.scene}/`);
+      const buy = buys.length && (spender || (!boughtHere && pick.int(2) === 0));
+      choice = buy ? buys[pick.int(buys.length)]! : avail.find((c) => c.id === 'done') ?? choice;
+    } else if (policy.kind === 'tags') {
       // a goal-seeking player takes his preferred approach, and otherwise does not simply give up
       const preferred = avail.filter((c) => c.tags.some((t) => policy.prefer.includes(t)));
       const notYield = avail.filter((c) => !c.tags.includes('yield'));
@@ -186,7 +204,8 @@ export interface Plan {
   background: string;
   seed: number;
   role?: string;
-  steps: Record<string, string>;
+  /** choice per scene; a list for a scene visited more than once (shops), taken in order */
+  steps: Record<string, string | string[]>;
   ending: string;
   expect: string[];
 }
@@ -199,17 +218,30 @@ export interface PlanResult {
   state: GameState;
 }
 
+/** The planned choice for this visit to a scene (a list is taken in order, one per visit). */
+export function planStep(plan: Plan, scene: string, visits: Record<string, number>): string | undefined {
+  const planned = plan.steps[scene];
+  const visit = (visits[scene] = (visits[scene] ?? -1) + 1);
+  return Array.isArray(planned) ? planned[Math.min(visit, planned.length - 1)] : planned;
+}
+
+/** A scene the plan does not name: a shop (the purse files) closes its purse; anything else takes the first safe choice. */
+export function unplannedChoice(scene: string, avail: { id: string; lethal?: boolean }[]): string {
+  return (avail.find((c) => c.id === 'done' && scene.includes('_buy_')) ?? avail.find((c) => !c.lethal) ?? avail[0]!).id;
+}
+
 export function playPlan(content: ContentBundle, plan: Plan, maxSteps = 500, observe?: (s: GameState) => void): PlanResult {
   let state = newGame(content, { background: plan.background, seed: plan.seed, name: 'Plan', role: plan.role });
   const problems: string[] = [];
   const path: string[] = [];
   const used = new Set<string>();
+  const visits: Record<string, number> = {};
   for (let i = 0; i < maxSteps && !state.ended; i++) {
     observe?.(state);
     const v = view(content, state);
     const avail = v.choices.filter((c) => c.available);
     if (!avail.length) { problems.push(`dead end in ${state.scene}`); break; }
-    const step = plan.steps[state.scene];
+    const step = planStep(plan, state.scene, visits);
     let id: string;
     let force: CheckResult | undefined;
     if (step) {
@@ -222,7 +254,7 @@ export function playPlan(content: ContentBundle, plan: Plan, maxSteps = 500, obs
       }
       used.add(state.scene);
     } else {
-      id = (avail.find((c) => !c.lethal) ?? avail[0]!).id;
+      id = unplannedChoice(state.scene, avail);
     }
     path.push(`${state.scene}/${id}${force ? `!${force}` : ''}`);
     state = choose(content, state, id, { force }).state;

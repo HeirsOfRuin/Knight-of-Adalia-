@@ -75,34 +75,38 @@ steps:
   c2_grisolles_after: count
   c2_retreat: carry!success
   c2_lannec_winter: promise!success
+  c2_buy_lannec: done
   c2_sauvemer: dig
   c2q_isabel: write!failure
   c2c_flux: water
   c2_fireships: mole!failure
   c2_assault: ladders!success
   c2_burial_truce: talk!failure
-  c2_siege_winter: nurse!success
-  c2c_davy: truth
+  c2_siege_winter: water!success
+  c2c_davy: yes
   c2_mine: guard
-  c2_sortie: engines
+  c2_sortie: charge!success
   c2_relief: wills
   c2q_family_reeve: write
   c2_salines_eve: men
   c2_salines_1: steady!success
-  c2_salines_2: rear!success
-  c2_salines_3: friend!failure
+  c2_salines_2: rear!failure
+  c2_salines_3: friend!partial
   c2_salines_4: duchess
   c2_salines_after: on
-  c2_surrender: speak!success
+  c2_surrender: speak!failure
   c2_feast: heloise
-  c2_truce: march
+  c2_truce: pryce
   c2q_lanzi: roll!failure
-  c2c_rooke: yes
   c2c_dice: watch
+  c2c_rooke: yes
   c2_garrison_life: town
-  c2_iron_company: bargain!failure
-  c2_home_choice: stay
-  c2_grants: ask_more!success
+  c2_buy_sauvemer: done
+  c2_iron_company: bargain!success
+  c2_home_choice: go
+  c2_home: girl
+  c2_home_ravell: on
+  c2_grants: ask_more!failure
   c2_plague: pray
   c2_end: ride_in
   c3_arrival: steps!success
@@ -112,44 +116,53 @@ steps:
   c3_harvest: reap
   c3_reckoning: rents
   c3_spring: open
-  c3_ordinance: tenancies!success
+  c3_buy_spring:
+    - granary
+    - done
+  c3_ordinance: men
   c3m_mill: querns
-  c3_settlers: houses
+  c3_settlers: mixed!success
   c3m_wedding: waive
   c3_claimant: law!success
-  c3m_lanzi: lien
+  c3m_salt: sell
   c3_truce_ends: neighbours
-  c3m_frost: grain
-  c3_raid: parley!success
-  c3m_poacher: work
+  c3m_flood: carry
+  c3_raid: shelter!success
+  c3m_lanzi: lien
   c3_bandits: send
-  c3_winter_hall: marry
+  c3_winter_hall: stories
   c3_second_spring: think
-  c3_match: philippa_ashdown
+  c3_buy_building:
+    - mill
+    - done
+  c3_match: alienor_brese
   c3_suitor: speak!success
-  c3_contract: fair
-  c3_wedding: feast
+  c3_contract: nothing
+  c3_wedding: hers
   c3_first_year: keys
   c3_lying_in: midwife
-  c3_childbed: son_master
+  c3_childbed: dau_wife
   c3_match_end: on
   c3_paper: friend
   c3_rising_news: talk
   c3_rising: shout
   c3_march_router: on
-  c3_ravell: half
+  c3_ravell: lend
   c3_fever_router: on
   c3_fever: nurse
   c3_fever_after: on
-  c3m_pigs: split
-  c3_vervais: king
+  c3m_roof: village
+  c3_vervais: prince
   c3_second_child_router: on
   c3_second_child: father
-  c3_summons: own
+  c3_summons: prince
   c3_end: ride
-  c4_council: for_war!success
+  c4_council: edwin
   c4_home: wife
   c4_company: manor
+  c4_buy_fitting:
+    - wagons
+    - done
   c4_landing: court!success
   c4_towns: talk!success
   c4_winter: feast
@@ -158,29 +171,31 @@ steps:
   c4_mf_2: wounded
   c4_mf_after: on
   c4_grant: office
-  c4_act1_end: on
+  c4_act1_end: core
   c4_stewards: trust
+  c4_buy_estates: done
   c4p_petition: keep
   c4_rival: give
   c4q_steward: read
-  c4_eldest: armance
-  c4_christmas: prince
+  c4_eldest: home
+  c4_christmas: king
   c4_third_router: on
   c4_third_child: name_c
-  c4_salt: guilds
+  c4_salt: broker!success
   c4_mahaut: free
   c4_act2_end: on
-  c4_master: go
+  c4_master: child
   c4p_old_friend: stay
   c4_king_dies: swear
+  c4_buy_war: done
   c4_carrow_rises: edwin
-  c4_eldest_two: refuse
-  c4_wythen: parley!success
+  c4_eldest_two: match
+  c4_wythen: parley!failure
   c4_wythen_2: guard!failure
   c4_wythen_after: on
   c4_valdrenne: send
   c4p_pony: buy
-  c4_lannec: adalia
+  c4_lannec: west
   c4_act3_end: on
   c4_barony: accept
   c4_mahaut_router: on
@@ -188,13 +203,15 @@ steps:
   c4_end: on
   c5_estates: soldiers!success
   c5_estates_2: hales
-  c5_vote: mahaut_queen
-  c5_war_opens: divide!success
+  c5_vote: adalia
+  c5_war_opens: towns
+  c5_buy_war:
+    - arrears
+    - done
   c5_war_muster: horse!success
   c5_bridge: hold!failure
   c5_war_after: on
-  c5_recognition: king
-  c5_king_price: adalia
+  c5_kings_reward: accept
   c5_reckoning: heir
   c5_epilogue: end
   c5_chronicle: end

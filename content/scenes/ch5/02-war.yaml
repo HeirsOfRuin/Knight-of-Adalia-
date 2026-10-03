@@ -10,6 +10,7 @@
   title: Who Comes for the West
   checkpoint: true
   on_enter:
+    - set: flag.c5_war_tax
     - advance: { seasons: 4 }
     - meet: amaury_younger
     - if: { any: [ flag.c5_crowned_self, flag.c4_great_lord ] }
@@ -29,14 +30,14 @@
       text_after: |
         You spend the winter on walls: [if holding.la_garde.held]La Garde first, re-roofed and provisioned for a year[else]the towers along the Sauvemer road[/if], then the fords, then the bridges, with every mason in the West and every penny you can find. When the spring comes, the enemy will have to take three castles before they can reach a single field.
       effects: [ { add: { counter.ww: 1, res.coin: -960 } }, { if: { any: [ holding.la_garde.held, estate.defence >= 3, flag.c4_warden_march ] }, then: [ { add: { counter.ww: 1 } } ] } ]
-      next: c5_war_muster
+      next: c5_buy_war
     - id: towns
       text: Raise the salt towns. Every boiler, carter and fisherman who can hold a pike.
       tags: [allies]
       text_after: |
         You ride from town to town through the winter and speak in every market square. [if counter.west_estates >= 5]They come: salt-boilers, eel-men, carters, fishermen, the sons of men who stood at Les Salines on the other side, five thousand of them with pikes and bills and a grudge against every tax-collector who ever lived.[else]Some of them come. Not as many as you hoped. The towns have long memories, and not all of them are kind to you.[/if]
       effects: [ { add: { counter.ww: 1 } }, { if: counter.west_estates >= 5, then: [ { add: { counter.ww: 1, res.men: 60 } } ] } ]
-      next: c5_war_muster
+      next: c5_buy_war
     - id: divide
       text: Divide them. Write to each king that the other is the real enemy.
       tags: [cunning, diplomacy]
@@ -45,11 +46,11 @@
         text: |
           You write all winter: to Wendmere, to Cordelle, to the Bishop, to the Lanzi. By spring, King Edwin's marshal is sure Amaury means to take Sauvemer for himself, and Amaury's council is sure Edwin means to take the Armance, and the two armies that were to crush the West between them are marching at different speeds, by different roads, watching each other as much as you.
         effects: [ { set: flag.c5_divided_kings }, { add: { counter.ww: 2 } } ]
-        next: c5_war_muster
+        next: c5_buy_war
       failure:
         text: |
           You write all winter, and some of it is believed, and most of it is not. A letter of yours turns up in Cordelle's council, read aloud, to laughter.
-        next: c5_war_muster
+        next: c5_buy_war
 
 - id: c5_war_muster
   chapter: ch5
@@ -120,7 +121,7 @@
       tags: [martial]
       lethal: true
       warn: Valdrenne's household knights, on a bridge. Without armour, or carrying a serious wound, you could die here.
-      check: { attr: strength, skill: command, difficulty: 6, mods: [ { if: counter.ww >= 3, add: 1, label: the day is going your way }, { if: counter.ww >= 5, add: 1, label: the West is ready }, { if: armour >= 2, add: 1, label: good harness }, { if: trait.veteran, add: 1, label: you have done this before }, { if: flag.c5_crowned_self, add: 1, label: they are following their king } ] }
+      check: { attr: strength, skill: command, difficulty: 6, mods: [ { if: counter.ww >= 3, add: 1, label: the day is going your way }, { if: counter.ww >= 5, add: 1, label: the West is ready }, { if: armour >= 2, add: 1, label: good harness }, { if: trait.veteran, add: 1, label: you have done this before }, { if: flag.c5_crowned_self, add: 1, label: they are following their king }, { if: armour >= 3, add: 1, label: your new harness }, { if: item.warhorse, add: 1, label: your destrier }, { if: flag.inv_bridge_works, add: 1, label: the works on the bridge } ] }
       success:
         text: |
           You go over the bridge at the head of everything you have, and the West comes with you, and Amaury's household knights, who have never once in their lives been charged by men on foot, break on the far bank and go back into the press of their own army and break that too. You see the royal banner of Valdrenne go down in the river. By dusk the Valdrennish host is a rout on the road to the hills, and you are standing on the Pont-aux-Moines with your sword broken and your voice gone, and the West is shouting your name.
@@ -142,7 +143,7 @@
     - id: reserve
       text: "[if heir.eldest.alive && heir.eldest.sex == son]Send {heir.eldest.name} and the reserve into their flank.[else]Send the reserve into their flank.[/if]"
       tags: [cunning, martial]
-      check: { attr: wits, skill: tactics, difficulty: 5, mods: [ { if: flag.c5_chose_ground, add: 2, label: you chose this ground }, { if: counter.ww >= 3, add: 1, label: the day is going your way } ] }
+      check: { attr: wits, skill: tactics, difficulty: 5, mods: [ { if: flag.c5_chose_ground, add: 2, label: you chose this ground }, { if: counter.ww >= 3, add: 1, label: the day is going your way }, { if: flag.inv_bridge_works, add: 1, label: the works on the bridge } ] }
       success:
         text: |
           [if heir.eldest.alive && heir.eldest.sex == son]You send the word, and {heir.eldest.name} takes the reserve out of the river-bank at the gallop, forty lances in a wedge with your son at the point, and hits the household knights in the flank as they come off the bridge.[else]You send the reserve out of the river-bank at the gallop, and it hits the household knights in the flank as they come off the bridge.[/if] It is the best-timed charge you have ever seen. The bridge is choked with Valdrennish dead by nightfall, and the West holds the field.
@@ -160,7 +161,7 @@
     - id: hold
       text: Hold the bank. Let them break themselves on it.
       tags: [allies, martial]
-      check: { attr: endurance, skill: command, difficulty: 4, mods: [ { if: counter.ww >= 3, add: 1, label: the day is going your way }, { if: flag.c5_chose_ground, add: 1, label: you chose this ground } ] }
+      check: { attr: endurance, skill: command, difficulty: 4, mods: [ { if: counter.ww >= 3, add: 1, label: the day is going your way }, { if: flag.c5_chose_ground, add: 1, label: you chose this ground }, { if: flag.inv_bridge_works, add: 1, label: the works on the bridge } ] }
       success:
         text: |
           You hold the bank. They come over the bridge three times and three times the West throws them back into the river, and at dusk they stop coming. No rout: a wall, and they could not get over it.
@@ -176,6 +177,7 @@
   chapter: ch5
   title: After the Bridge
   on_enter:
+    - clear: flag.c5_war_tax
     - if: counter.ww >= 6
       then: [ { set: flag.c5_war_won } ]
       else:
@@ -197,6 +199,7 @@
   chapter: ch5
   title: The Losing Side
   checkpoint: true
+  on_enter: [ { clear: flag.c5_war_tax } ]
   text: |
     In the autumn the victors come for the men who led the West, and you are high on every list.
 

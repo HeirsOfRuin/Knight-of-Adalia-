@@ -12,3 +12,6 @@ sauvemer_house: { label: The house in the Rue des Saulniers, region: west, descr
 la_garde: { label: La Garde, region: west, description: "A square tower and two villages on the Sauvemer march, granted after Mortefontaine." }
 vaudrey: { label: The rents of Vaudrey, region: west, description: "The town he took in the first war, granted to him in the second." }
 kerguen_dower: { label: Kerguen, region: west, description: "A mill and two villages in the Armance hills: his second wife's dower, held for her son." }
+sauvemer_factor: { label: A factor's account at Sauvemer, region: west, description: "Money left with a Sarenzan factor on the quay, in salt, paying something every Michaelmas." }
+market_charter: { label: The market and fair, region: west, description: "A Thursday market and a Michaelmas fair on his manor, by royal charter, with the tolls." }
+road_tolls: { label: The bridge tolls, region: west, description: "A stone bridge on the road to market, and a farthing for every cart that crosses it." }

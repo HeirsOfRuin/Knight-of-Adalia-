@@ -1176,6 +1176,41 @@ The author reported that some choices did not feel as if they made a difference,
 - **Hollow choices:** 18 of 663, nearly all deliberate "do nothing" options. Some of those, such as going to the muster without armour or ignoring the plague warning, matter by what they leave undone.
 - **Flags (remembered choices):** 402 are set. 187 change later mechanics, 95 change only later prose, and 120 are not read yet. Those 120 are owed to Ch4-5: 57 from Ch3 and 28 from Ch4.
 
+## Investments (2026-10-03, after playtest feedback)
+A player finished with about £118 unspent. Eight shop scenes now sit on the spine; each loops on itself until the player closes the purse.
+
+| Shop | Where | Offers |
+|---|---|---|
+| `c2_buy_lannec` | After the Lannec winter | A dead knight's harness (£3), a horse, feeding the men, three bowmen, Masses for Grisolles, alms |
+| `c2_buy_sauvemer` | The truce garrison | Harness (£5), mail for the men (company +1), Old Matthew the serjeant, a Sarenzan factor (10s a year), the harbour quarter |
+| `c3_buy_spring` | The first spring after the Mottle | Salt pans, orchards or drains (+2), seed and plough-teams (+11 people), granary, village watch (garrison +6), the priest's school |
+| `c3_buy_building` | Before the match | Tower (£12, defence +3), market charter (£1 a year), almshouse, mill, six men-at-arms |
+| `c4_buy_fitting` | After the company is raised | Sarenzan harness (armour 3, £15), destrier (£10), drill-master, siege tackle, wagons, a loan to the war chest |
+| `c4_buy_estates` | Ch4 Act II, after the stewards | Stone church, toll bridge (£1 10s a year), hospital, tower, gifts to the Prince and to Carrow, the Lannec salt guild |
+| `c4_buy_war` | After the King dies | A free company of forty (£20), arming the levy, walls and a siege store, Christmas for the West |
+| `c5_buy_war` | Before the muster | Sarenzan crossbows (the war +1), works on the Pont-aux-Moines, a chantry, a loan for the war tax, the levy's arrears |
+
+**Payoffs.** Most buys move numbers the checks already read: armour, horses, men, `counter.company`, `counter.west_estates`, the court counters, reputations, estate fields, and income through holdings. New modifiers:
+- the destrier and armour 3 at Mortefontaine's charge and the bridge;
+- armour 3 at Wythen;
+- siege tackle at the towns;
+- the bridge works at the Pont-aux-Moines.
+
+"What Became of Them" names what he built.
+
+**Pay.** At Michaelmas a lord pays his company and garrison a shilling a man a year (`payMen` in src/engine/estate.ts).
+- The King's indenture pays the company in Ch4 Act I (`flag.c4_on_indenture`).
+- The Estates' war tax pays the host in the War of the West (`flag.c5_war_tax`).
+- Men wait one Michaelmas unpaid. Unpaid two years running, half the unpaid desert.
+- Shops and the status page show the pay due.
+- At the end of Ch4 Act I a lord can pay off half the company or keep a score.
+
+**Balance (bot, 800–2,000 runs):**
+- Desertion in 10% of runs, mostly when the host disbands after the war.
+- Median coin at the end of Ch5 falls from £89 to £22; the 90th percentile is £83.
+- Crowned 5.5%; deaths 4%.
+- Bots at a shop keep back the men's pay. A spender (the wealth policy) buys what he can; others buy one thing half the time.
+
 ## Continuity (2026-10-03, after playtest feedback)
 Josh found text that assumed choices he had not made. A survey found 47 such places, and the force panel and a Ch3 population line had the same fault: the story said one thing and the state another.
 
@@ -1223,3 +1258,4 @@ Josh found text that assumed choices he had not made. A survey found 47 such pla
 | 2026-10-03 | The road to the crown made visible and fairer. The status page shows the hall's mood at the Estates (most watch someone else / the hall listens / the hall will follow you, at 5 and 8 votes). A soldier's route at the Estates (the captains in the taverns: Presence and Command, with mods for Les Salines, Mortefontaine, Wythen, your company and the veteran trait, +3) gives fighters a way into the hall; the salt guilds give +2 instead of +3. Crowned over 2,000 runs: 6% (burgess 10%, reeve 7%, archer 4%, servant 4%). |
 | 2026-10-03 | Calendar fixes after a player's Ch4 date ran two years ahead of the prose. (1) A save resumed at a checkpoint after a content change now goes back to that checkpoint's date; before, the replayed scenes happened years late. (2) Dated scenes catch the calendar up (`catch_up` effect) so shorter paths do not run early; extra seasons on refused suits and the fled town were removed so no path runs late. Every bot run now reaches each landmark in the same year. (3) Edwin's reign begins the year after Aldred dies in the story (`reigns.from_scene`), not in a fixed year. (4) Prose that names the year or his age reads it from the calendar ({reign_year}, {king}, {age_words}). |
 | 2026-10-03 | Later-chapters plan after a full playtest (transitions thin, Ch4–5 shallow, younger children idle, money unspent, nothing after the crown). Order: chapter cards, investments, children, a reign act, a "to be continued" page with a dynasty export for a sequel, Ch4–5 depth. Step 1, chapter cards: a title page before each chapter (`config.chapter_cards`) and each Ch4 act (`scene.card`) with the date, age, station, wife, children and their ages, lands, men, purse, and the years, births and deaths since the last card (`src/engine/cards.ts`; deaths are dated by `diedAt` from now on). |
+| 2026-10-03 | Step 2, investments: eight shops, Michaelmas pay for the company and garrison, pay-off at the end of Ch4 Act I, payoffs in existing checks; plans record a list of choices for a scene visited more than once. See Investments. |

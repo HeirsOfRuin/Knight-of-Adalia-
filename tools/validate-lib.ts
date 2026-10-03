@@ -19,7 +19,7 @@ export interface StructuralCheck { background: string; name: string; status: Che
 export interface ValidationReport { issues: Issue[]; structural: StructuralCheck[]; reachableBy: Record<string, Set<string>> }
 
 const ADDABLE = ['attr', 'skill', 'rep', 'res', 'rel', 'favor', 'suit', 'counter', 'health', 'estate', 'heir', 'holding'];
-const ASSIGNABLE = ['chapter', 'track', 'counter', 'flag', 'suit', 'rel'];
+const ASSIGNABLE = ['res', 'chapter', 'track', 'counter', 'flag', 'suit', 'rel'];
 
 function outcomesOf(c: Choice): { label: string; o: Outcome }[] {
   if (!c.check) return [{ label: 'direct', o: { text: c.text_after, effects: [], next: c.next } }];

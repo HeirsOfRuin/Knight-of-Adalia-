@@ -1,4 +1,5 @@
 // Passage templating: {var} substitution and [if cond]...[elif cond]...[else]...[/if].
+import { payDue } from './estate';
 import type { ContentBundle } from '../content/schema';
 import type { GameState } from './state';
 import { evalCond, parseInline, validateCond, type Cond } from './conditions';
@@ -51,13 +52,14 @@ export function parseText(src: string): Node[] {
   return root;
 }
 
-const SPECIAL_VARS = ['name', 'date', 'coin', 'station', 'background', 'origin', 'season', 'year', 'age', 'age_words', 'reign_year', 'king'];
+const SPECIAL_VARS = ['name', 'date', 'coin', 'station', 'background', 'origin', 'season', 'year', 'age', 'age_words', 'reign_year', 'king', 'pay_due'];
 
 function varValue(name: string, state: GameState, content: ContentBundle): string {
   const reg = content.registry;
   switch (name) {
     case 'name': return state.name;
     case 'date': return describeDate(state, content);
+    case 'pay_due': return formatCoin(payDue(state));
     case 'coin': return (state.res.coin ?? 0) > 0 ? formatCoin(state.res.coin!) : 'not a penny';
     case 'station': return capitalise(state.station);
     case 'background': return content.backgrounds[state.background]?.label ?? state.background;

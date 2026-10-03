@@ -1,0 +1,110 @@
+# Chapter 3: places to spend money on the manor (DESIGN: Investments).
+
+- id: c3_buy_spring
+  chapter: ch3
+  title: The Manor's Accounts
+  text: |
+    [if revisit]The steward turns to the next page of the rolls.[else]The steward brings the rolls up to the solar and reads them out, holding by holding, and every third name is followed by the same word in Latin, which means vacant. The land is still there. The people to work it are not. What the manor will be in ten years depends on what you spend now, and you do not have much.[/if]
+
+    You have {coin}.[if res.men >= 1 && !flag.c4_on_indenture || res.garrison >= 1 && !flag.c4_on_indenture] Your men's pay at Michaelmas will come to {pay_due}.[/if]
+  choices:
+    - id: works
+      text: "[if flag.c2_granted_marsalin]Put the abandoned salt pans back to work.[elif flag.c2_granted_kerval]Replant the orchard rows the dead left to the brambles.[else]Cut new drains and put the drained ground under the plough.[/if] (£4)"
+      tags: [wealth]
+      visible_if: [ "!flag.inv_c3_works" ]
+      requires: [ res.coin >= 960 ]
+      text_after: "[if flag.c2_granted_marsalin]Two seasons of mending sluices and scraping pans, and in August the salt comes up white again on the eastern flats.[elif flag.c2_granted_kerval]You plant three hundred young trees in rows the old lord's grandfather laid out. Some of them will bear when you are old.[else]The drains take a year to cut. The ground they dry is the best in Ormel, which is not saying much, and it is yours.[/if] The rents will show it at Michaelmas."
+      effects:
+        - set: flag.inv_c3_works
+        - add: { res.coin: -960 }
+        - if: flag.c2_granted_marsalin
+          then: [ { add: { estate.salt: 2 } } ]
+          else: [ { add: { estate.orchard: 2 } } ]
+      next: c3_buy_spring
+    - id: seed
+      text: Buy seed corn and two plough-teams, and offer the empty holdings at a low rent. (£3)
+      tags: [wealth, allies]
+      visible_if: [ "!flag.inv_c3_seed" ]
+      requires: [ res.coin >= 720 ]
+      text_after: The word goes round the next valley that the new lord has oxen and seed and holdings going cheap. By midsummer eleven families have come over the hill with their goods in carts.
+      effects: [ { set: flag.inv_c3_seed }, { add: { res.coin: -720, estate.people: 11, estate.food: 1 } } ]
+      next: c3_buy_spring
+    - id: granary
+      text: Build a stone granary, so a bad year does not empty the manor. (£2)
+      tags: [wealth]
+      visible_if: [ "!flag.inv_c3_granary" ]
+      requires: [ res.coin >= 480 ]
+      text_after: Stone walls, a slate roof, a floor raised on staddle stones so the rats cannot climb. The village thinks it is the most foolish thing a lord ever built, until the next wet year.
+      effects: [ { set: flag.inv_c3_granary }, { add: { res.coin: -480, estate.food: 3 } } ]
+      next: c3_buy_spring
+    - id: watch
+      text: Arm six men of the village as a watch, and pay them. (30s)
+      tags: [wealth, martial]
+      visible_if: [ "!flag.inv_c3_watch" ]
+      requires: [ res.coin >= 360 ]
+      text_after: Six men with bills and jacks and a horn, a shilling a year each and their dinner on watch nights. The road is quieter. The alehouse is not.
+      effects: [ { set: flag.inv_c3_watch }, { add: { res.coin: -360, res.garrison: 6, estate.defence: 1 } } ]
+      next: c3_buy_spring
+    - id: school
+      text: Pay the priest to teach the village boys their letters. (£1)
+      tags: [wealth, learning]
+      visible_if: [ "!flag.inv_c3_school" ]
+      requires: [ res.coin >= 240 ]
+      text_after: Eight boys and, after a week, one girl, whose mother will not be told no. The priest complains about all nine of them and keeps the school going for twenty years.
+      effects: [ { set: flag.inv_c3_school }, { add: { res.coin: -240, estate.church: 1, estate.temper: 1, rep.piety: 1 } } ]
+      next: c3_buy_spring
+    - id: done
+      text: Leave the rest in the chest.
+      next: c3_ordinance
+
+- id: c3_buy_building
+  chapter: ch3
+  title: Stone and Timber
+  text: |
+    [if revisit]The master mason unrolls another drawing.[else]The manor has come through the worst of it. The masons who walked the roads looking for work after the Mottle are walking them still, and will build anything for a lord who pays in silver. The steward has a list. So does the reeve. So, it turns out, does the priest.[/if]
+
+    You have {coin}.[if res.men >= 1 && !flag.c4_on_indenture || res.garrison >= 1 && !flag.c4_on_indenture] Your men's pay at Michaelmas will come to {pay_due}.[/if]
+  choices:
+    - id: tower
+      text: Build a stone tower at the manor, with a gate and a well inside it. (£12)
+      tags: [wealth, martial]
+      visible_if: [ "!flag.inv_tower" ]
+      requires: [ res.coin >= 2880 ]
+      text_after: It takes the masons into the next year, with carts and argument the whole way. When it is done it is forty feet high and ugly, and nobody on this side of the border will try it without a siege train.
+      effects: [ { set: flag.inv_tower }, { add: { res.coin: -2880, estate.defence: 3, rep.knights: 1 } } ]
+      next: c3_buy_building
+    - id: market
+      text: Buy a market charter from the Chancery, for a Thursday market and a fair at Michaelmas. (£8)
+      tags: [wealth, cunning]
+      visible_if: [ "!flag.inv_market" ]
+      requires: [ res.coin >= 1920 ]
+      text_after: The charter costs eight pounds and a great deal of waiting in a corridor at Wendmere. The first market has four stalls. By the third year it has thirty, and you take a toll on every one.
+      effects: [ { set: flag.inv_market }, { add: { res.coin: -1920, rep.merchants: 1, estate.temper: 1 } }, { hold: { id: market_charter, income: 240 } } ]
+      next: c3_buy_building
+    - id: almshouse
+      text: Found an almshouse for the widows and the old the Mottle left with no one. (£4)
+      tags: [wealth, diplomacy]
+      visible_if: [ "!flag.inv_almshouse" ]
+      requires: [ res.coin >= 960 ]
+      text_after: Six rooms around a yard, a garden, a bell. The women in it pray for you twice a day, by the terms of the foundation, and they mean it more than the terms require.
+      effects: [ { set: flag.inv_almshouse }, { add: { res.coin: -960, estate.temper: 2, rep.commons: 1, rep.piety: 1 } } ]
+      next: c3_buy_building
+    - id: mill
+      text: Build a new mill on the stream, and a road to it. (£5)
+      tags: [wealth]
+      visible_if: [ "!flag.inv_mill" ]
+      requires: [ res.coin >= 1200 ]
+      text_after: The miller is a cousin of somebody's, and honest about as often as millers are. The village grinds at home now instead of carting its grain two days to someone else's mill, and pays you for it.
+      effects: [ { set: flag.inv_mill }, { add: { res.coin: -1200, estate.orchard: 1, estate.food: 2 } } ]
+      next: c3_buy_building
+    - id: men
+      text: Take six men-at-arms into your pay. (£2, and a shilling a man each Michaelmas)
+      tags: [wealth, martial]
+      visible_if: [ "!flag.inv_c3_men" ]
+      requires: [ res.coin >= 480 ]
+      text_after: Six men who came home from the war and found nothing to come home to. They have their own jacks, and two have swords. They eat a great deal.
+      effects: [ { set: flag.inv_c3_men }, { add: { res.coin: -480, res.men: 6 } } ]
+      next: c3_buy_building
+    - id: done
+      text: Enough building for now.
+      next: c3_match

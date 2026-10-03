@@ -4,7 +4,7 @@ import { effectiveAttr, effectiveSkill, npcLabel, forceOf } from '../../engine/p
 import { computePrejudice } from '../../engine/station';
 import { ageOf, describeDate } from '../../engine/calendar';
 import { formatCoin, capitalise, signed } from '../../engine/format';
-import { ESTATE_LABELS, temperWord } from '../../engine/estate';
+import { ESTATE_LABELS, temperWord, payDue } from '../../engine/estate';
 
 const feeling = (n: number) =>
   n <= -6 ? 'hates you' : n <= -3 ? 'dislikes you' : n < 0 ? 'cool' : n === 0 ? 'indifferent' : n <= 2 ? 'warm' : n <= 5 ? 'fond' : 'devoted';
@@ -53,6 +53,7 @@ export function StatusPanel({ content, state }: { content: ContentBundle; state:
         {state.aliases.master && <><dt>Master</dt><dd>{npcLabel(content, state.aliases.master)}</dd></>}
         <dt>Health</dt><dd>{state.health}/10</dd>
         <dt>Coin</dt><dd>{formatCoin(state.res.coin ?? 0)}</dd>
+        {state.estate && payDue(state) > 0 && <><dt>Pay due at Michaelmas</dt><dd>{formatCoin(payDue(state))}, a shilling a man{state.counters.pay_arrears ? '; last year\'s is still owed' : ''}</dd></>}
         <dt>Renown</dt><dd>{state.res.renown ?? 0}</dd>
         {force.total > 0 && <><dt>Men under your banner</dt><dd>{force.total}{forceBreakdown(force)}</dd></>}
         {force.levy > 0 && <><dt>Village levy</dt><dd>{force.levy}, trained to bow and bill, who can be called out</dd></>}

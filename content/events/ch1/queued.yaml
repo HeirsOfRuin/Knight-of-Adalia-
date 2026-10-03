@@ -173,6 +173,7 @@
       text: Get up and walk out.
       tags: [yield]
       text_after: The cold is better than the barn. You stand in the yard until the noise stops. In the morning nobody mentions it. Everybody remembers it.
+      effects: [ { add: { rel.hugh_fletcher.affection: -1 } } ]
       next: "@return"
 
 - id: c1q_family_servant

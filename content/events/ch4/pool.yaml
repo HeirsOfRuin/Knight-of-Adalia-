@@ -46,6 +46,7 @@
       text: Split the meadow down the middle.
       tags: [cunning]
       text_after: You split it down the middle. Both villages hate the judgement, which your old master always said was the sign of a fair one. You are not sure he was right.
+      effects: [ { add: { estate.temper: -1 } } ]
       next: "@return"
 
 - id: c4p_old_friend

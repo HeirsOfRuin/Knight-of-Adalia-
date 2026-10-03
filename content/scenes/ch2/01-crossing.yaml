@@ -253,6 +253,7 @@
     - id: walk
       text: Walk the edge of the camp alone, and look at the dark.
       text_after: Out past the last fire, the dark goes on for ever. Somewhere in it there are people who want you dead and have every reason to. You stand there a long time. When you come back, the fire is low and most of your men are asleep, except [if npc.roger_tallis.follower]Tallis, who nods to you as you sit down, as if you had done the right thing.[else]Davy, who has waited up.[/if]
+      effects: [ { add: { rel.roger_tallis.respect: 1, rel.davy_ludd.affection: 1 } } ]
       next: c2_armance
 
 - id: c2_armance

@@ -61,6 +61,7 @@
       text: Leave her. You cannot help every child in Valdrenne.
       tags: [yield]
       text_after: You cannot. That is true. You leave her some bread.
+      effects: [ { add: { rep.ruthlessness: 1 } } ]
       next: "@return"
 
 - id: c2r_herald
@@ -221,6 +222,15 @@
     - id: keep
       text: Keep it. You do not know what to say.
       text_after: You keep it in your shirt. You do not answer. She will understand, or she will not.
+      effects:
+        - if: suit.mag_coker.status >= courted
+          then: [ { add: { suit.mag_coker.regard: -1 } } ]
+        - if: suit.annot_dyer.status >= courted
+          then: [ { add: { suit.annot_dyer.regard: -1 } } ]
+        - if: suit.mariot_wood.status >= courted
+          then: [ { add: { suit.mariot_wood.regard: -1 } } ]
+        - if: suit.nell_laundress.status >= courted
+          then: [ { add: { suit.nell_laundress.regard: -1 } } ]
       next: "@return"
 
 - id: c2c_tallis

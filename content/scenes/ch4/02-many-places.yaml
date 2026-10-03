@@ -316,7 +316,7 @@
       tags: [diplomacy, cunning]
       visible_if: [ { any: [ "!flag.c3_married", "!npc.@spouse.alive" ] } ]
       text_after: |
-        You are thirty-seven and a banneret, [if flag.c3_married]a widower[else]unmarried[/if], with land in the West and a name from Mortefontaine. That counts for something. Not enough, by itself, and you know it, and so does the Chancellor, who reads your letter twice and puts it at the bottom of the pile. But you have also asked Mahaut. By letter, in Valdrennish, without asking anyone's leave. She writes back, two lines: "You are the first who asked me and not my grandmother's grave. I have not said yes."
+        You are {age_words} and a banneret, [if flag.c3_married]a widower[else]unmarried[/if], with land in the West and a name from Mortefontaine. That counts for something. Not enough, by itself, and you know it, and so does the Chancellor, who reads your letter twice and puts it at the bottom of the pile. But you have also asked Mahaut. By letter, in Valdrennish, without asking anyone's leave. She writes back, two lines: "You are the first who asked me and not my grandmother's grave. I have not said yes."
       effects: [ { set: flag.c4_asked_mahaut }, { assign: { suit.mahaut_armance.status: courted } }, { add: { suit.mahaut_armance.regard: 3, counter.west_estates: 1, counter.court_carrow: -1 } } ]
       next: { switch: [ { if: [ flag.c3_married, "!npc.@spouse.alive", "!flag.c4_asked_mahaut" ], go: c4_widow } ], default: c4_act2_end }
     - id: free

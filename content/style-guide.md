@@ -50,6 +50,8 @@ Each line is one pattern. Plain lines match as case-insensitive whole words or p
 # authoring notes that leaked into prose instead of becoming [if] conditions
 /if you are [A-Z][a-z]+ [A-Z][a-z]+'s (son|daughter)/
 /if you are not\b[^.]{0,20}(son|background)/
+# the player's own age is written {age_words}, never as a fixed number (play speed varies)
+/\byou are (twenty|thirty|forty|fifty)(-[a-z]+)?\b/
 okay
 ok
 awesome

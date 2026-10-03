@@ -3830,7 +3830,7 @@ In a family like yours, children of this age go away: to a great house as a page
 - Send Hal to the Prince's household, as a page.  
   <small>At stake: The Prince's favour + · Your children −</small>
 - Send Hal to the Duchess's household at Lannec.  
-  <small>At stake: Standing in the West + · Your children −</small>
+  <small>At stake: Standing in the West + · Your children − · Remembered later</small>
 - Send Hal to the abbey to learn letters.  
   <small>At stake: Church + · Piety + · Your children</small>
 - Keep Hal at home, and teach what you know.  
@@ -3908,11 +3908,11 @@ The salt-guilds of Sauvemer refuse it. Then the pans at Les Salines refuse it. T
 The King's officer in Sauvemer, a Wendmere man called Master Thomas Hales, writes to every Adalian lord in the West to send men to make the pans pay.
 
 - Send men. A King's tax is a King's tax.  
-  <small>At stake: The King's favour + · Standing in the West − · Your manor</small>
+  <small>At stake: The King's favour + · Standing in the West − · Your manor · Remembered later</small>
 - Stand with the guilds. Write to the King that the West will not bear it.  
-  <small>At stake: Standing in the West + · The King's favour − · Your manor</small>
+  <small>At stake: Standing in the West + · The King's favour − · Your manor · Remembered later</small>
 - Ride to Sauvemer and broker a bargain between the officer and the guilds. *(Even)*  
-  <small>At stake: Renown + · Standing in the West ± · The King's favour ±</small>
+  <small>At stake: Renown + · Standing in the West ± · The King's favour ± · Remembered later</small>
 
 **Chose:** Send men. A King's tax is a King's tax.
 
@@ -3999,7 +3999,7 @@ You walk the bounds all day with six old men who disagree about everything, and 
 
 ## The King Is Dead
 
-*Spring, year 40 of King Aldred*
+*Spring, year 1 of King Edwin*
 
 King Aldred dies at Wendmere at Candlemas in the thirty-ninth year of his reign, at fifty-three, after two years of dying.
 
@@ -4024,7 +4024,7 @@ You are the third man to kneel and put your hands between the new King's, after 
 
 ## The Black Boar Rises
 
-*Summer, year 40 of King Aldred*
+*Summer, year 1 of King Edwin*
 
 The Earl of Carrow does not rise against the King. He rises, he says, for the King: to free a young man from the evil counsellors who surround him, and to restore the old lords to their rightful place in his council, as in his father's time. Every rebellion in Adalian history has said the same thing.
 
@@ -4069,7 +4069,7 @@ You take him. He rides behind you all the way north with your helm on his saddle
 
 ## Wythen Heath
 
-*Autumn, year 40 of King Aldred*
+*Autumn, year 1 of King Edwin*
 
 The armies meet on Wythen Heath, north of Wendmere, at midsummer, on a hot still morning with larks going up from the heather and the smoke of burning farms on the skyline behind the Earl's lines.
 
@@ -4124,7 +4124,7 @@ Hal comes home with you, older than he went.
 
 ## The Boy King
 
-*Winter, year 40 of King Aldred*
+*Winter, year 1 of King Edwin*
 
 In the autumn the boy-king of Valdrenne, who is eighteen now and no longer a boy, does what everyone knew he would. He calls the Constable to Cordelle, to council, and the Constable goes, because he has always gone, and the King has him arrested at the door of the council chamber by his own guard. Gaucelin de Brésy dies in the Châtelet a month later. Of a fever, the court says.
 
@@ -4135,7 +4135,7 @@ The Brésy and all their kin are put out of the King's peace. Their lands in the
 In November, Thibaut de Brésy rides into your yard with twenty men and his cousin's wife and two children on a cart. You took him prisoner on the salt pans, twenty years ago. "You treated me decently," he says. "I've come to see if you still do." "I'm asking for a roof," he says. "And perhaps more than that, later."
 
 - Shelter them, all of them, and let both kings think what they like.  
-  <small>At stake: Standing in the West + · Valdrenne + · The Prince's favour −</small>
+  <small>At stake: Standing in the West + · Valdrenne + · The Prince's favour − · Remembered later</small>
 - Feed them, give them horses, and send them on to Sarenza.  
   <small>At stake: Honor + · Coin −</small>
 - Hand them over to the Valdrennish King's officers.  
@@ -4164,9 +4164,9 @@ You let her keep it, in her own name, for her life and her son's. The reeve says
 
 ## Lannec
 
-*Summer, year 41 of King Aldred*
+*Summer, year 2 of King Edwin*
 
-In the spring of the forty-first year, the salt guilds of Sauvemer stop paying the salt penny, and the Valdrennish salt tithe, both, on the same day. They say they will pay the King who protects them, when they find out which one that is.
+In the spring of the second year of King Edwin, the salt guilds of Sauvemer stop paying the salt penny, and the Valdrennish salt tithe, both, on the same day. They say they will pay the King who protects them, when they find out which one that is.
 
 In the same week, Mahaut, Duchess of Armance, twenty-two and still unmarried, invites the western lords to Lannec for her feast-day. Nobody invites the King's officers, or the Valdrennish King's. Everybody understands.
 
@@ -4177,7 +4177,7 @@ You are seated at her right hand. Some of the Sauvemer men have long memories. O
 After dinner Mahaut walks in the garden with the lords she trusts, and says the thing nobody has said aloud. "Adalia has two kings and Valdrenne has a madman. The West has salt, and ships, and the Armance. The West could have a duke who answers to nobody." She looks round at them. "Or more than a duke."
 
 - Say it with her. The West should stand on its own feet.  
-  <small>At stake: Standing in the West + · The Prince's favour − · Mahaut d'Armance +</small>
+  <small>At stake: Standing in the West + · The Prince's favour − · Mahaut d'Armance + · Remembered later</small>
 - Say the West's place is with Adalia, whatever Adalia is now.  
   <small>At stake: Standing in the West − · The Prince's favour +</small>
 - Say nothing. Listen, and count who nods.  
@@ -4187,8 +4187,76 @@ After dinner Mahaut walks in the garden with the lords she trusts, and says the 
 
 You say it with her, in front of them all: that the West has bled for two kings and been taxed by both, and owes neither of them anything it has not already paid. It is treason in two languages. Nobody leaves the garden. When you go in, Mahaut puts her hand on your arm for a moment, and says, "I knew you would."
 
-## Spring, Year Forty-One
+## The Second Spring of King Edwin
 
 You are forty. Adalia has two kings, or a king and an earl who says he is not one. Valdrenne has a king who murdered his Constable. And the West, where you hold your land and where your children are growing up speaking two languages, is beginning to think about itself.
 
-End of the chapters written so far. Chapter 4 continues with the Summons to Lannec.
+- Go on.
+
+**Chose:** Go on.
+
+*Harvest in: 4 seasons of grain · Michaelmas rents: £2 2s 11d · Rents from your other holdings: £2 17s 6d*
+
+## The Barony
+
+*Autumn, year 2 of King Edwin*
+
+In the summer of King Edwin's second year, the question of what you are is settled, one way or another.
+
+No king makes you anything. Instead, at Midsummer, the lords and guildmasters of the West meet at Sauvemer, and the oldest of them, the lord of Penhoët, stands up at the end of dinner and calls you "Monseigneur le baron," and the hall stands with him. It has no force in law. Everyone in the West knows exactly what it means.
+
+- Accept what the West calls you.  
+  <small>At stake: Your station + · Remembered later</small>
+
+**Chose:** Accept what the West calls you.
+
+You have a banner of your own now, square, and a seat at the head of tables, and a herald who knows your arms without looking them up. It changes less than you thought. It changes everything about how other men speak to you.
+
+*Station: Great lord*
+
+## Lannec, in Autumn
+
+*Winter, year 2 of King Edwin*
+
+In the autumn the West is quiet, the way the sea is quiet before weather.
+
+- Go on.
+
+**Chose:** Go on.
+
+## The Writ
+
+*Spring, year 3 of King Edwin*
+
+The writ comes at Candlemas, in King Edwin's second winter, on Armance paper, under three seals: the Duchess's swan, the salt-guilds' measure, and the shell of the abbey of Saint-Lys.
+
+It summons the lords, the towns and the guilds of the West to meet in Estates at Lannec at Whitsun, "to consider the peace and governance of the lands of the Armance and the Salt, in the present troubles of the realms." It does not say which realms. It does not name a king. It is addressed to you by your name and your style, Baron of the March, and it is, in the eyes of two kings, treason to answer.
+
+*(Continue)*
+
+King Edwin writes in the same month. He has heard of a meeting at Lannec. He trusts that his loyal Baron will attend it in order to report to him. He does not need to underline "loyal." Thibaut de Brésy, who has wintered under your roof, rides out the day the writ comes, and comes back a fortnight later with letters from forty Brésy knights in the west of Valdrenne, who have read the writ too.
+
+Your wife reads the writ twice and puts it down. "Well," she says. "You'd better go. Take the good cloak."
+
+What you bring to Lannec matters as much as what you say there.
+
+- Bring your company, armed. Let the Estates see you can hold what they decide.  
+  <small>At stake: Votes at Lannec +</small>
+- Bring silver. Votes in an assembly are bought like anything else.  
+  <small>At stake: Votes at Lannec + · Coin −</small>
+- Bring nothing but your name and what you have done.  
+  <small>At stake: Votes at Lannec +</small>
+
+**Chose:** Bring your company, armed. Let the Estates see you can hold what they decide.
+
+You ride into Lannec at the head of a hundred men in your colours, with your banner in front, and the town shuts its shutters as you pass, and opens them again when it sees whose badge it is. Some of the lords think it is a threat. Some of them think it is a promise. Both are right.
+
+## Whitsun at Lannec
+
+You come to Lannec at Whitsun in the third year of King Edwin, at forty-one, a baron of the West, with grey in your beard and your wife beside you, and Hal, Agnes and Jehanne at home, waiting to hear what you will make of them.
+
+When you walk into the hall, men stand. Two kings are at war with themselves. A third murdered his Constable. And the lords of the West are sitting down together, in a hall full of banners, to decide whether they belong to anyone at all.
+
+You were a tirewoman's son.
+
+End of Chapter 4. Chapter 5, the Crown, begins in that hall.

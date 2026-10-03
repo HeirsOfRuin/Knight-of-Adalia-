@@ -43,7 +43,7 @@ steps:
 ending: story_so_far
 expect:
   - flag.c3_nursed
-  - station == lord
+  - station >= lord
   - flag.c2_breval_ransomed
   - flag.c2_terms_carried
   - flag.c2_saved_master

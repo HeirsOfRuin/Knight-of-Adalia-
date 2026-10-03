@@ -1,0 +1,153 @@
+# Chapter 4, Act IV: the Summons to Lannec. Spring year 41 to spring year 42. Age 40-41.
+# Short by design: the barony (great lord station), Mahaut's answer for a widower
+# or unmarried lord who courted her (the claim), the writ calling the Estates of
+# the West, what he brings to Lannec, and the end of Chapter 4. Seeds counter
+# estates (votes he can count on in Ch5) from everything Ch4 built.
+
+- id: c4_barony
+  chapter: ch4
+  title: The Barony
+  checkpoint: true
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    In the summer of King Edwin's second year, the question of what you are is settled, one way or another.
+
+    [if flag.c4_edwin_won && counter.court_prince >= 6]A letter comes under King Edwin's great seal. For service at Wythen Heath[if flag.c4_swore_edwin_first], and for kneeling first[/if], the King creates you Baron of the March, with a seat in his council and the right to be summoned to it by name. "My father's lords are old," the letter does not say. You can hear it anyway.[elif flag.c4_carrow_won && counter.court_carrow >= 6]A letter comes from the council of regency at Carrow, under the black boar. For service at Wythen Heath, the council creates you Baron of the March. It is not the King's seal. In the north, they say that does not matter any more.[elif counter.west_estates >= 6]No king makes you anything. Instead, at Midsummer, the lords and guildmasters of the West meet at Sauvemer, and the oldest of them, the lord of Penhoët, stands up at the end of dinner and calls you "Monseigneur le baron," and the hall stands with him. It has no force in law. Everyone in the West knows exactly what it means.[elif holdings.count >= 3]Nobody makes you anything. But you hold land in more places than some earls, and men have begun to call you "my lord" in a voice they used to keep for barons.[else]Nobody makes you anything. You are a lord of the West, with your manor and your name, and in a year when kingdoms are breaking, that is not nothing.[/if]
+  choices:
+    - id: accept
+      text: "[if flag.c4_edwin_won && counter.court_prince >= 6]Accept the King's barony.[elif flag.c4_carrow_won && counter.court_carrow >= 6]Accept the council's barony.[elif counter.west_estates >= 6]Accept what the West calls you.[elif holdings.count >= 3]Let them call you what they like.[else]Go on.[/if]"
+      tags: [allies]
+      effects:
+        - if: { any: [ [ flag.c4_edwin_won, counter.court_prince >= 6 ], [ flag.c4_carrow_won, counter.court_carrow >= 6 ], counter.west_estates >= 6, holdings.count >= 3 ] }
+          then: [ { station: great_lord }, { set: flag.c4_great_lord } ]
+        - if: counter.west_estates >= 6
+          then: [ { set: flag.c4_baron_by_acclaim } ]
+      text_after: |
+        [if flag.c4_great_lord]You have a banner of your own now, square, and a seat at the head of tables, and a herald who knows your arms without looking them up. It changes less than you thought. It changes everything about how other men speak to you.[else]You go back to the manor, and the accounts, and the harvest. Somewhere above you, greater men are deciding the shape of the world. You find you are not sure you want to be one of them.[/if]
+      next: c4_mahaut_router
+
+- id: c4_mahaut_router
+  chapter: ch4
+  title: Lannec, in Autumn
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    [if suit.mahaut_armance.status >= courted]Mahaut writes to you in the autumn, in her own hand, and asks you to come to Lannec, alone.[else]In the autumn the West is quiet, the way the sea is quiet before weather.[/if]
+  choices:
+    - id: on
+      text: Go on.
+      next: { switch: [ { if: suit.mahaut_armance.status >= courted, go: c4_mahaut_answer } ], default: c4_writ }
+
+- id: c4_mahaut_answer
+  chapter: ch4
+  title: Mahaut
+  text: |
+    She meets you in the garden at Lannec, where the lords talked treason in the spring, with her women out of earshot and a hawk on her fist that she does not need.
+
+    "Every king in the world wants to marry me to someone," she says. "Edwin wants me for one of his young men. The regency council wants me for Carrow's grandson. The Valdrennish King wants me for his brother, who is eleven." She strokes the hawk. "If I marry any of them, the Armance is theirs, and the West is theirs, and everything we said in this garden was talk."
+
+    [break]
+
+    "You asked me first," she says. "You asked me, not my grandmother's grave, and not my guardian. You spoke for my right to choose." [if flag.c4_spoke_for_west]"And you said it, in front of them all, in the spring, when the others only nodded."[/if] She looks at you properly. "You are older than I am. You have [if heirs.count >= 1]children[else]no heirs[/if], and land, and a name, and a temper, I'm told. If I say yes, it is a war. Every king who wanted me will want you dead." A pause. "Ask me again."
+  choices:
+    - id: ask
+      text: Ask her again.
+      tags: [diplomacy, allies]
+      check: { attr: presence, skill: courtesy, difficulty: 4, mods: [ { if: suit.mahaut_armance.regard >= 5, add: 2, label: she wants to say yes }, { if: flag.c4_spoke_for_west, add: 1, label: you spoke for the West }, { if: flag.c4_page_armance, add: 1, label: your child was her page }, { if: flag.c4_great_lord, add: 1, label: you are a great lord now } ] }
+      success:
+        text: |
+          You ask her again, plainly, in her own tongue, without kneeling, because she would laugh at you if you knelt. She lets the hawk go up into the wind, and watches it, and says, "Yes." Then: "Not yet. Not in public. Not until the Estates meet. A duchess who marries in secret is a scandal. A duchess who marries before the Estates of the West is a declaration." She puts her hand in yours. "We will make the declaration together."
+        effects: [ { set: flag.c4_mahaut_betrothed }, { assign: { suit.mahaut_armance.pledge: understanding } }, { add: { suit.mahaut_armance.regard: 3, counter.estates: 2 } } ]
+        next: c4_writ
+      failure:
+        text: |
+          You ask her again, and it comes out wrong: too careful, too much like a treaty. She hears you out. "No," she says, kindly enough. "Not like that. Ask me like a man and not like an ambassador, one day, and we'll see." The hawk comes back to her fist. You do not know if one day will come.
+        effects: [ { add: { suit.mahaut_armance.regard: -1 } } ]
+        next: c4_writ
+    - id: refuse
+      text: Tell her no. You will not start a war for a marriage.
+      tags: [yield]
+      text_after: |
+        You tell her no. You say it gently, and explain, and she listens to the whole of it with her face quite still. "Then you are the only man in the West with sense," she says at last, "and I am sorry for it." She does not ask again. She does not stop writing to you, either.
+      effects: [ { assign: { suit.mahaut_armance.status: known } }, { add: { counter.estates: 1 } } ]
+      next: c4_writ
+
+- id: c4_writ
+  chapter: ch4
+  title: The Writ
+  checkpoint: true
+  on_enter:
+    - advance: { seasons: 1 }
+    - add: { counter.estates: 1 }
+    - if: counter.west_estates >= 3
+      then: [ { add: { counter.estates: 1 } } ]
+    - if: counter.west_estates >= 6
+      then: [ { add: { counter.estates: 2 } } ]
+    - if: { any: [ flag.c4_stood_with_salt, flag.c4_salt_bargain ] }
+      then: [ { add: { counter.estates: 1 } } ]
+    - if: flag.c4_enforced_salt
+      then: [ { add: { counter.estates: -1 } } ]
+    - if: flag.c4_sheltered_brese
+      then: [ { add: { counter.estates: 1 } } ]
+    - if: flag.c4_great_lord
+      then: [ { add: { counter.estates: 1 } } ]
+    - if: { any: [ holding.la_garde.held, holding.vaudrey.held, holding.corbie_vineyard.held, holding.sauvemer_house.held ] }
+      then: [ { add: { counter.estates: 1 } } ]
+  text: |
+    The writ comes at Candlemas, in King Edwin's second winter, on Armance paper, under three seals: the Duchess's swan, the salt-guilds' measure, and the shell of the abbey of Saint-Lys.
+
+    It summons the lords, the towns and the guilds of the West to meet in Estates at Lannec at Whitsun, "to consider the peace and governance of the lands of the Armance and the Salt, in the present troubles of the realms." It does not say which realms. It does not name a king. It is addressed to you by your name and your style, [if flag.c4_great_lord]Baron of the March[elif flag.c4_banneret]banneret[else]lord of [if flag.c2_granted_kerval]Kerval[elif flag.c2_granted_marsalin]Marsalin[else]Ormel[/if][/if], and it is, in the eyes of two kings, treason to answer.
+
+    [break]
+
+    [if flag.c4_side_edwin && !flag.c4_on_losing_side]King Edwin writes in the same month. He has heard of a meeting at Lannec. He trusts that his loyal Baron will attend it in order to report to him. He does not need to underline "loyal."[elif flag.c4_side_carrow && !flag.c4_on_losing_side]The council of regency writes in the same month. It has heard of a meeting at Lannec. It expects its friends to attend, and to remember who their friends are.[elif flag.c4_on_losing_side]Nobody in Adalia writes to you. You fought on the losing side at Wythen Heath, and the winners have a list.[else]Nobody in Adalia writes to you. Both halves of it have forgotten the West exists, or would like to.[/if] [if flag.c4_sheltered_brese]Thibaut de Brésy, who has wintered under your roof, rides out the day the writ comes, and comes back a fortnight later with letters from forty Brésy knights in the west of Valdrenne, who have read the writ too.[/if]
+
+    [if flag.c3_married && npc.@spouse.alive]Your wife reads the writ twice and puts it down. "Well," she says. "You'd better go. Take the good cloak."[elif heirs.count >= 1]{heir.eldest.name} reads the writ over your shoulder, at {heir.eldest.ageword}, and says, "Are we going to be traitors?" and you find you do not have a good answer.[/if]
+
+    What you bring to Lannec matters as much as what you say there.
+  choices:
+    - id: men
+      text: Bring your company, armed. Let the Estates see you can hold what they decide.
+      tags: [martial]
+      text_after: |
+        You ride into Lannec at the head of [if res.men >= 60]a hundred men in your colours[else]every man you can mount[/if], with your banner in front, and the town shuts its shutters as you pass, and opens them again when it sees whose badge it is. Some of the lords think it is a threat. Some of them think it is a promise. Both are right.
+      effects: [ { set: flag.c4_brought_men }, { add: { counter.estates: 1 } }, { if: res.men >= 60, then: [ { add: { counter.estates: 1 } } ] } ]
+      next: c4_end
+    - id: money
+      text: Bring silver. Votes in an assembly are bought like anything else.
+      tags: [wealth, cunning]
+      requires: [ res.coin >= 2400 ]
+      label: "Requires Coin £10"
+      text_after: |
+        You bring ten pounds in coin and letters of credit for more, and you spend the first week at Lannec dining with the poorer lords of the West, the ones with old names and leaking roofs, and paying for the dinners. Nobody mentions money. Everybody knows.
+      effects: [ { set: flag.c4_brought_silver }, { add: { res.coin: -2400, counter.estates: 2 } } ]
+      next: c4_end
+    - id: name
+      text: Bring nothing but your name and what you have done.
+      tags: [allies, diplomacy]
+      text_after: |
+        You ride into Lannec with six men and your banner, and nothing else. [if res.renown >= 25]It is enough: men point you out in the street. Mortefontaine. Les Salines. The salt bargain. The West has been keeping count.[else]Men look at your banner and try to remember whose it is.[/if]
+      effects: [ { set: flag.c4_brought_name }, { if: res.renown >= 25, then: [ { add: { counter.estates: 2 } } ] } ]
+      next: c4_end
+    - id: secret
+      text: Bring the thing you have kept. The Vervais letter still has an edge.
+      tags: [cunning]
+      visible_if: [ { any: [ flag.c3_kept_vervais, flag.c4_carrow_pinned ] }, "!flag.c4_vervais_deposited" ]
+      text_after: |
+        You bring the letter, the payment and the date and the word "avviso," sewn into the lining of your saddle-bag. Carrow is [if flag.c4_edwin_won]dead, but his heirs and his friends are not, and half the Adalian lords of the West took his money once[else]alive, and his friends in the West are many, and every one of them took his money once[/if]. A knife you have kept for twenty years. Lannec is where you find out whose throat it fits.
+      effects: [ { set: flag.c4_brought_secret }, { add: { counter.estates: 2, rep.ruthlessness: 1 } } ]
+      next: c4_end
+
+- id: c4_end
+  chapter: ch4
+  kind: ending
+  ending: story_so_far
+  title: Whitsun at Lannec
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    You come to Lannec at Whitsun in the third year of King Edwin, at forty-one, [if flag.c4_great_lord]a baron[elif flag.c4_banneret]a banneret[else]a lord[/if] of the West, with grey in your beard and [if flag.c3_married && npc.@spouse.alive]your wife beside you[elif flag.c4_mahaut_betrothed]a secret promise from the Duchess of Armance[elif flag.c3_married]a grave in your chancel[else]nobody beside you[/if][if heirs.count >= 1], and {heirs.names} at home, waiting to hear what you will make of them[/if].
+
+    [if counter.estates >= 8]When you walk into the hall, men stand.[elif counter.estates >= 5]When you walk into the hall, men nod, and make room.[else]When you walk into the hall, a few men nod. Most are watching someone else.[/if] Two kings are at war with themselves. A third murdered his Constable. And the lords of the West are sitting down together, in a hall full of banners, to decide whether they belong to anyone at all.
+
+    You were [if background == reeve]a reeve's son[elif background == burgess]a wool merchant's son[elif background == archer]an archer's son[else]a tirewoman's son[/if].
+
+    End of Chapter 4. Chapter 5, the Crown, begins in that hall.

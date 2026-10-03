@@ -45,7 +45,7 @@ ending: story_so_far
 expect:
   - flag.c3_fled
   - flag.c3_fled
-  - station == lord
+  - station >= lord
   - flag.c2_breval_sacked
   - trait.burner
   - trait.oathbreaker

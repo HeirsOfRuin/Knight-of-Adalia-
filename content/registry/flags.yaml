@@ -442,3 +442,10 @@ c4_warden_march: { description: "Warden of the Sauvemer march", later: ch5 }
 c4_wythen_bloody: { description: "Wythen Heath was a bloody draw", later: ch5 }
 c4_wythen_ours: { description: "His side won at Wythen Heath", hidden: true, later: ch5 }
 c4_wythen_theirs: { description: "His side lost at Wythen Heath", hidden: true, later: ch5 }
+c4_great_lord: { description: "Became a great lord (baron) in Ch4", later: ch5 }
+c4_baron_by_acclaim: { description: "Called baron by the acclaim of the West", later: ch5 }
+c4_mahaut_betrothed: { description: "Secretly betrothed to Mahaut, Duchess of Armance", later: ch5 }
+c4_brought_men: { description: "Brought his company armed to Lannec", later: ch5 }
+c4_brought_silver: { description: "Brought silver to buy votes at Lannec", later: ch5 }
+c4_brought_name: { description: "Came to Lannec with only his name", later: ch5 }
+c4_brought_secret: { description: "Brought the Vervais letter to Lannec", later: ch5 }

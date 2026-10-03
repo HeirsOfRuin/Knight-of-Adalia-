@@ -1059,6 +1059,27 @@ Approved 2026-10-02 (`docs/FRAME-CH4-CH5.md`): the Western Crown, the Ch5 ending
 - **Sides:** martial and diplomacy play ride for Edwin; cunning play stays in the West or rides for Carrow; wealth play splits.
 - **Heirs:** an heir is killed in well under 1% of runs, and only where he took the boy and the flank attack failed.
 
+**Act IV, the Summons to Lannec** (summer year 41 to Whitsun year 42). Five scenes in `ch4/04-summons.yaml`. Chapter 4 is complete.
+1. **The Barony.** He becomes a great lord through one of four routes:
+   - Edwin's barony (Edwin won, King's standing 6+);
+   - the regency council's barony (Carrow won, Carrow standing 6+);
+   - the West's acclaim (`west_estates` 6+, `c4_baron_by_acclaim`);
+   - three or more holdings.
+
+   Sets `c4_great_lord` and station `great_lord`.
+2. **Mahaut** (only if he courted her). She asks him to ask again (a Courtesy check helped by her regard, speaking for the West, a child who was her page, and great-lord station).
+   - **Yes:** a secret betrothal (`c4_mahaut_betrothed`), to be declared before the Estates. This is the marriage claim for Crowned.
+   - **No:** he can still be asked again in Ch5.
+3. **The Writ.** The Estates of the West are summoned under the swan, the salt measure and Saint-Lys.
+   - Counter `estates` (votes at Lannec) is seeded from: standing in the West, the salt stance, sheltering the Brésy, great-lord station, holdings in the West, and Mahaut.
+   - What he brings: his company armed, silver (£10), his name (counts at renown 25+), or the kept Vervais letter.
+4. **End:** `c4_end` (story_so_far): Whitsun at Lannec. Chapter 5 begins in that hall.
+
+**Bot results** (60 runs per background per policy):
+- **Great lord:** about half of runs (90% for diplomacy play, which builds standing in the West).
+- **Votes at Lannec:** spread over under 5, 5-7 and 8+.
+- **Betrothed to Mahaut:** 1-3% of runs.
+
 ## Choices that matter (2026-10-03, after playtest feedback)
 The author reported that some choices did not feel as if they made a difference, especially in the Ch2 battles. Spying on the new wall during the burial truce, for example, cost Honour and seemed to do nothing.
 
@@ -1117,3 +1138,4 @@ The author reported that some choices did not feel as if they made a difference,
 | 2026-10-02 | Ch4 Act II, the Lord of Many Places, built. |
 | 2026-10-03 | Choices that matter: At stake hints, Ch2 battle outcomes driven by player performance (rearguard, siege, Les Salines), burial-truce honour made explicit, hollow choices fixed, choice audit tool. |
 | 2026-10-03 | Ch4 Act III, the Fracture, built: the master's death, Aldred's death and Edwin's crowning, Carrow's rising and Wythen Heath (player-driven), the eldest at ten, the Constable's fall, Lannec. |
+| 2026-10-03 | Ch4 Act IV, the Summons to Lannec, built; Chapter 4 complete. Dates now follow the reign (config reigns: Edwin from year 40). Next: Ch5 engine (endings evaluation, epilogue builder) and acts. |

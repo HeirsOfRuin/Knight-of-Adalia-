@@ -262,6 +262,8 @@ export const ConfigSchema = z.object({
   title: z.string(),
   start_year: z.number().int(),
   regnal_king: z.string(),
+  // later reigns: dates count from 1 again from the first year of each (internal years stay continuous)
+  reigns: z.array(z.object({ king: z.string(), from_year: z.number().int() }).strict()).default([]),
   attributes: z.array(Id),
   skills: z.array(Id),
   stations: z.array(Id),

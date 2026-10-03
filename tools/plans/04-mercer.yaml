@@ -41,7 +41,7 @@ steps:
 ending: story_so_far
 expect:
   - flag.c3_burned_houses
-  - station == lord
+  - station >= lord
   - flag.c2_ceremonial_knight || flag.c2_knighted_eve || flag.c2_knighted_field || flag.c2_knighted_grisolles
   - flag.c2_took_corbie
   - npc.roger_tallis.follower || !npc.roger_tallis.alive

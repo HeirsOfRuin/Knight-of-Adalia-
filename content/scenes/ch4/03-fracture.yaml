@@ -399,7 +399,7 @@
   checkpoint: true
   on_enter: [ { advance: { seasons: 2 } } ]
   text: |
-    In the spring of the forty-first year, the salt guilds of Sauvemer stop paying the salt penny, and the Valdrennish salt tithe, both, on the same day. They say they will pay the King who protects them, when they find out which one that is.
+    In the spring of the second year of King Edwin, the salt guilds of Sauvemer stop paying the salt penny, and the Valdrennish salt tithe, both, on the same day. They say they will pay the King who protects them, when they find out which one that is.
 
     In the same week, Mahaut, Duchess of Armance, twenty-two and still unmarried, invites the western lords to Lannec for her feast-day. Nobody invites the King's officers, or the Valdrennish King's. Everybody understands.
 
@@ -433,10 +433,10 @@
 
 - id: c4_act3_end
   chapter: ch4
-  kind: ending
-  ending: story_so_far
-  title: Spring, Year Forty-One
+  title: The Second Spring of King Edwin
   text: |
     You are forty. Adalia has two kings, or a king and an earl who says he is not one. Valdrenne has a king who murdered his Constable. And the West, where you hold your land and where your [if heirs.count >= 1]children are growing up speaking two languages[else]name is known[/if], is beginning to think about itself.
-
-    End of the chapters written so far. Chapter 4 continues with the Summons to Lannec.
+  choices:
+    - id: on
+      text: Go on.
+      next: c4_barony

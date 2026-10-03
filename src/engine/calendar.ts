@@ -16,9 +16,17 @@ export function ageOf(state: GameState): number {
   return state.startAge + Math.floor(state.time / 4);
 }
 
+/** The reign a date falls in, and the year of that reign (internal years stay continuous). */
+export function reignOf(state: GameState, content: ContentBundle): { king: string; year: number } {
+  const y = regnalYear(state, content);
+  const r = [...content.config.reigns].reverse().find((x) => y >= x.from_year);
+  return r ? { king: r.king, year: y - r.from_year + 1 } : { king: content.config.regnal_king, year: y };
+}
+
 export function describeDate(state: GameState, content: ContentBundle): string {
   const s = seasonName(state, content);
-  return `${s.charAt(0).toUpperCase()}${s.slice(1)}, year ${regnalYear(state, content)} of King ${content.config.regnal_king}`;
+  const r = reignOf(state, content);
+  return `${s.charAt(0).toUpperCase()}${s.slice(1)}, year ${r.year} of King ${r.king}`;
 }
 
 /** Advance time; heals injuries whose time has run out. Mutates the given (already cloned) state. */

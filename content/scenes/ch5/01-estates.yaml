@@ -42,7 +42,7 @@
       success:
         text: |
           You sit in the guildhall till the candles gutter, with the masters of the salt in their gowns, and talk about tolls and tithes and what a free West would charge on salt going out, and to whom. They are not sentimental men. By midnight they are sure of one thing: that you understand what they want, and will not cost them more than anyone else. That is worth more than a speech.
-        effects: [ { set: flag.c5_guilds_with_you }, { add: { counter.estates: 3 } } ]
+        effects: [ { set: flag.c5_guilds_with_you }, { add: { counter.estates: 2 } } ]
         next: c5_estates_2
       failure:
         text: |
@@ -60,6 +60,24 @@
       failure:
         text: |
           The Armance lords are courteous and closed. They will follow Mahaut. They are not yet sure they will follow anyone she follows.
+        next: c5_estates_2
+    - id: soldiers
+      text: Go among the knights and captains who have fought beside you, and let them talk you up in the taverns.
+      tags: [martial, allies]
+      check: { attr: presence, skill: command, difficulty: 5, mods: [ { if: flag.c2_salines_decisive, add: 1, label: you were on the dyke at Les Salines }, { if: flag.c4_held_gap || flag.c4_charged, add: 1, label: they saw you at Mortefontaine }, { if: flag.c4_broke_malet, add: 1, label: you broke Malet's knights }, { if: flag.c4_brought_men, add: 1, label: your company is in the town }, { if: trait.veteran, add: 1, label: you have stood in the line } ] }
+      success:
+        text: |
+          You do not make speeches. You drink with the knights of the march and the captains of the salt towns, in the taverns along the quay, three nights running, and let them tell each other where they saw you. [if flag.c4_held_gap]At Mortefontaine, in the gap.[elif flag.c4_broke_malet]At Wythen, when Malet's knights broke.[elif flag.c2_salines_decisive]On the dyke at Les Salines, when the tide came in.[else]In the line, when it mattered.[/if] By the third day the lesser lords of the West, who vote like soldiers, are telling each other you are the only man in the hall they would follow into a fight. It is not the same as being trusted. In a year like this one, it is close.
+        effects: [ { set: flag.c5_soldiers_with_you }, { add: { counter.estates: 3 } } ]
+        next: c5_estates_2
+      partial:
+        text: |
+          The captains drink your wine and tell your stories, some of them right. A few of them will vote as you do. Most will vote as their lords do.
+        effects: [ { add: { counter.estates: 1 } } ]
+        next: c5_estates_2
+      failure:
+        text: |
+          The captains are glad to drink with you. In the morning they vote with their lords, as soldiers do.
         next: c5_estates_2
     - id: knife
       text: Use the Vervais letter. Half the Adalian lords here took Carrow's money once.

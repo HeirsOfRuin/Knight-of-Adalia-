@@ -161,20 +161,21 @@ steps:
   c4_stewards: clerk
   c4p_boundary: walk
   c4_rival: hard
+  c4q_steward: repay
   c4_eldest: church
   c4_christmas: carrow
   c4_third_router: on
   c4_third_child: name_b
-  c4_salt: guilds
+  c4_salt: broker!failure
   c4_mahaut: carrow
   c4_act2_end: on
   c4_master: go
-  c4p_old_friend: stay
+  c4p_pony: buy
   c4_king_dies: ask!success
-  c4_carrow_rises: carrow
+  c4_carrow_rises: edwin
   c4_eldest_two: arrange
-  c4_wythen: ground!success
-  c4_wythen_2: guard!failure
+  c4_wythen: ground!failure
+  c4_wythen_2: line!partial
   c4_wythen_after: on
   c4_valdrenne: send
   c4p_petition: keep
@@ -188,8 +189,8 @@ steps:
   c5_estates_2: wait
   c5_vote: duchy
   c5_war_opens: march
-  c5_war_muster: ground!success
-  c5_bridge: reserve!success
+  c5_war_muster: bows
+  c5_bridge: lead!success
   c5_war_after: on
   c5_recognition: sarenza!success
   c5_recognition_2: king

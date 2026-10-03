@@ -162,37 +162,39 @@ steps:
   c4_stewards: trust
   c4p_petition: keep
   c4_rival: give
+  c4q_steward: read
   c4_eldest: armance
   c4_christmas: prince
   c4_third_router: on
-  c4_third_child: name_a
-  c4_salt: broker!success
+  c4_third_child: name_c
+  c4_salt: guilds
   c4_mahaut: free
   c4_act2_end: on
-  c4_master: child
-  c4p_boundary: walk
+  c4_master: go
+  c4p_old_friend: stay
   c4_king_dies: swear
   c4_carrow_rises: edwin
   c4_eldest_two: refuse
-  c4_wythen: men
+  c4_wythen: parley!success
   c4_wythen_2: guard!failure
   c4_wythen_after: on
   c4_valdrenne: send
   c4p_pony: buy
-  c4_lannec: west
+  c4_lannec: adalia
   c4_act3_end: on
   c4_barony: accept
   c4_mahaut_router: on
   c4_writ: name
   c4_end: on
-  c5_estates: speak!success
+  c5_estates: soldiers!success
   c5_estates_2: hales
-  c5_vote: adalia
+  c5_vote: mahaut_queen
   c5_war_opens: divide!success
   c5_war_muster: horse!success
   c5_bridge: hold!failure
   c5_war_after: on
-  c5_kings_reward: refuse
+  c5_recognition: king
+  c5_king_price: adalia
   c5_reckoning: heir
   c5_epilogue: end
   c5_chronicle: end

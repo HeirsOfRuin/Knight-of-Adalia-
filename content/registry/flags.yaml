@@ -503,3 +503,4 @@ c4_ravell_squeezed: { description: "Sold his silence to the heir of Ravell", lat
 c4_remarried: { description: "Married Dame Blanche de Kerguen as a widower", later: ch5 }
 c4_widow_refused: { description: "Dame Blanche de Kerguen refused him", later: ch5 }
 c4_stayed_widower: { description: "Declined to marry again", later: ch5 }
+c5_soldiers_with_you: { description: "The knights and captains of the West talked him up at the Estates" }

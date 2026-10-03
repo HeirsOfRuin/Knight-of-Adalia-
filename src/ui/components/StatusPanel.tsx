@@ -11,6 +11,8 @@ const feeling = (n: number) =>
 const regard = (n: number) => (n <= -3 ? 'contempt' : n < 0 ? 'low regard' : n === 0 ? '' : n <= 3 ? 'some respect' : 'high respect');
 const standing = (n: number) => (n <= -6 ? 'hated' : n <= -3 ? 'distrusted' : n < 0 ? 'poor' : n === 0 ? 'unknown' : n <= 3 ? 'fair' : n <= 6 ? 'good' : 'renowned');
 const COURT: [string, string][] = [['court_king', 'With the King'], ['court_prince', 'With the Prince'], ['court_carrow', 'With the Earl of Carrow'], ['west_estates', 'In the West']];
+// The Estates at Lannec (Ch5): the hall follows a man at 8 votes and listens to him at 5 (content/scenes/ch5/01-estates.yaml)
+const hallWord = (n: number) => (n >= 8 ? 'the hall will follow you' : n >= 5 ? 'the hall listens' : 'most watch someone else');
 const standingWord = (n: number) => (n <= -3 ? 'an enemy' : n < 0 ? 'cool' : n <= 2 ? 'known' : n <= 5 ? 'trusted' : 'one of the inner circle');
 const UPBRINGING_WORD: Record<string, string> = { page: 'a page in a great house', church: 'with the Church', arms: 'training at arms', letters: 'at letters', court: 'at court' };
 const prejudiceWord = (n: number) => (n >= 5 ? 'heavy' : n >= 3 ? 'marked' : n >= 2 ? 'noticeable' : 'slight');
@@ -108,6 +110,7 @@ export function StatusPanel({ content, state }: { content: ContentBundle; state:
               <dt key={`${k}t`}>{label}</dt>,
               <dd key={`${k}d`}>{standingWord(state.counters[k] ?? 0)}</dd>,
             ])}
+            {state.counters.estates !== undefined && <><dt>At the Estates</dt><dd>{hallWord(state.counters.estates)}</dd></>}
           </dl>
         </Section>
       )}

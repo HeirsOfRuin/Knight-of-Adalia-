@@ -1,0 +1,380 @@
+# Chapter 5, after the reckoning: the first year of a reign (flag.c5_reigns, set at
+# c5_reckoning when the crowned ending's conditions hold), and short codas for the
+# kingmaker and the founder. counter.reign is how settled the new kingdom is; the
+# revolt reads it, and the crowned ending reports it.
+
+- id: c5r_oaths
+  chapter: ch5
+  card: { title: The Reign, subtitle: The First Year, epigraph: "A crown is a promise made by a great many men at once. The hard part is the second year." }
+  title: The Oaths
+  checkpoint: true
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    The lords of the West come to Lannec to swear to you in the great hall of the Armance dukes, one at a time, on their knees, with their hands between yours. It takes three days. [if counter.estates >= 8]Hardly a bench is empty.[elif counter.estates >= 5]Most of the benches are full, and the empty ones are counted.[else]There are more empty benches than anyone will say aloud.[/if]
+
+    [if flag.c5_brese_pact]Thibaut de Brésy kneels first, before the old lords can sort out their precedence, and says the words in Valdrennish, loud, so that nobody can mistake them.[/if] [if flag.c5_married_mahaut]Mahaut sits beside you on the second chair, and takes the oaths with you, and remembers the face of every man who looks at her and not at you.[/if]
+
+    [break]
+
+    On the third day the lord of Quérec comes in last, alone, a salt lord of the southern marsh who stood for the Adalian king at the vote and said things in the hall that everyone remembers. He stops in front of you and does not kneel.
+
+    "I will swear," he says, "when I know what you are."
+  choices:
+    - id: patience
+      text: Tell him to take a year, and come back, and swear then.
+      tags: [diplomacy]
+      text_after: |
+        "A year," you say. "Come back at Lady Day and tell me what I am." The hall does not know what to make of it. Quérec looks at you a long moment, and bows, which is not kneeling, and goes out. The old lords say you are soft. The younger ones say you are clever. You are not sure yourself.
+      effects: [ { set: flag.c5r_patience }, { add: { counter.reign: 1 } } ]
+      next: c5r_council
+    - id: kneel
+      text: Tell him he will kneel now, in front of the West, or leave it.
+      tags: [martial]
+      check: { attr: presence, skill: command, difficulty: 5, mods: [ { if: counter.estates >= 8, add: 1, label: the hall is with you }, { if: flag.c5_host_decisive, add: 1, label: they saw you at the bridge }, { if: res.men >= 60, add: 1, label: your men are in the yard } ] }
+      success:
+        text: The hall goes quiet. Quérec looks at you, and then round at the hall, and then at your men along the wall, and kneels, slowly, the way old men kneel, and puts his hands between yours, and swears. Nobody else in the West will make you ask twice.
+        effects: [ { set: flag.c5r_querec_knelt }, { add: { counter.reign: 2, rep.ruthlessness: 1 } } ]
+        next: c5r_council
+      failure:
+        text: Quérec turns on his heel and walks out of the hall, the length of it, past all the benches, and nobody stops him, because nobody is sure you want him stopped. He rides south that night.
+        effects: [ { set: flag.c5r_querec_left }, { add: { counter.reign: -1 } } ]
+        next: c5r_council
+    - id: largesse
+      text: Open the treasury instead. Gifts for every man who swears, and a feast for the town. (£20)
+      tags: [wealth, allies]
+      requires: [ res.coin >= 4800 ]
+      text_after: |
+        Every lord who swears goes home with a cup, a horse or a purse, and the town of Lannec eats at your cost for a week. Quérec swears on the fourth day, looking at his cup and not at you, and the old lords of the West, who do not change their minds, find that their minds have been changed.
+      effects: [ { set: flag.c5r_largesse }, { add: { res.coin: -4800, counter.reign: 2, rep.nobles: 1, rep.commons: 1 } } ]
+      next: c5r_council
+
+- id: c5r_council
+  chapter: ch5
+  title: The Council
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    A king needs a chancellor to write his letters, a marshal to keep his peace, and a treasurer to tell him he cannot afford either. Every lord who swore believes he has a claim to one of the three, and every one of them has a cousin with a better claim.
+
+    You can give the West the council it expects, of old names. You can bring in men who owe everything to you. Or you can give the purse to the people who fill it.
+  choices:
+    - id: old
+      text: Give the great offices to the old houses of the West.
+      tags: [diplomacy, allies]
+      text_after: |
+        Old Penhoët takes the seal as chancellor, in a chain older than the duchy, and the marshal's staff goes to a Kerguen. They are slow, and proud, and their letters are full of precedents, and nobody in the West can say they were passed over.
+      effects: [ { set: flag.c5r_council_old }, { add: { counter.reign: 1, rep.nobles: 1 } } ]
+      next: c5r_treaty
+    - id: own
+      text: "Give them to your own people: [if npc.davy_ludd.alive]Davy, [/if]your stewards, the men who came up with you."
+      tags: [allies, cunning]
+      text_after: |
+        [if npc.davy_ludd.alive]Davy Ludd becomes marshal of the West, and stands in the hall in a gold chain looking as though he expects someone to take it back.[else]Your oldest captain becomes marshal of the West.[/if] Your steward becomes treasurer, and counts the royal revenues the way he counted the barley. The old houses call it a council of grooms. It is the best-run council the West has ever had, and they know that too.
+      effects: [ { set: flag.c5r_council_own }, { add: { counter.reign: -1, rep.commons: 1 } } ]
+      next: c5r_treaty
+    - id: purse
+      text: Give the treasury to the salt guilds and the Sarenzans, and let the money run itself.
+      tags: [wealth, cunning]
+      text_after: |
+        A guildmaster of the Lannec salt-boilers becomes treasurer, with a Lanzi factor at his elbow. In a year the royal revenues are up by a third and every lord in the West is paying taxes he did not know existed. They pay them. They do not like it.
+      effects: [ { set: flag.c5r_council_purse }, { add: { rep.merchants: 2, rep.sarenza: 1 } }, { hold: { id: crown_revenues, income: 2400 } } ]
+      next: c5r_treaty
+    - id: mahaut
+      text: Let Mahaut choose the council, as Jehanne would have.
+      tags: [allies, diplomacy]
+      visible_if: [ flag.c5_married_mahaut ]
+      text_after: |
+        Mahaut chooses in an afternoon, from a list she has plainly been keeping for years. It is a better council than you would have made, and half of it is Armance, and the West notices both.
+      effects: [ { set: flag.c5r_council_mahaut }, { add: { counter.reign: 2, rel.mahaut_armance.affection: 2 } } ]
+      next: c5r_treaty
+
+- id: c5r_treaty
+  chapter: ch5
+  title: The Peace
+  on_enter:
+    - advance: { seasons: 1 }
+    - if: "!flag.c5r_council_purse"
+      then: [ { hold: { id: crown_revenues, income: 1200 } } ]
+  text: |
+    The war ended at the bridge. The peace has not been written yet. [if flag.c5_paid_valdrenne]Valdrenne has had its price, and holds Saint-Lys, and smiles.[/if] Ambassadors come to Lannec from Adalia and from Valdrenne in the same week, and are lodged at opposite ends of the town, and both ask for the same thing in different words: the West's march castles, and money, and a marriage.
+
+    Without a treaty there will be raids on the march every summer for a generation. With one, there will be a price.
+  choices:
+    - id: pay
+      text: Pay for the peace. Silver is cheaper than castles. (£30)
+      tags: [wealth, diplomacy]
+      requires: [ res.coin >= 7200 ]
+      text_after: |
+        You pay both, in instalments, through the Lanzi, and the ambassadors go home with treaties sealed in green wax. The money hurts. The march is quiet that summer, and the next, and the one after that.
+      effects: [ { set: flag.c5r_peace_bought }, { add: { res.coin: -7200, counter.reign: 2 } } ]
+      next: c5r_petition
+    - id: castle
+      text: Give back a march castle, and keep the treasury.
+      tags: [cunning]
+      text_after: |
+        You give back [if holding.la_garde.held]La Garde, your own, which costs you more than you say[else]two towers on the Sauvemer road[/if], and the treaty is sealed. Some in the West call it wisdom and some call it weakness, and the march lords who lived under those towers call it something else.
+      effects:
+        - set: flag.c5r_peace_castle
+        - add: { counter.reign: 1, rep.knights: -1 }
+        - if: holding.la_garde.held
+          then: [ { release: la_garde } ]
+      next: c5r_petition
+    - id: marriage
+      text: "[if heir.eldest.alive]Offer {heir.eldest.name} in marriage to the house of Valdrenne.[else]Offer a marriage between your house and Valdrenne's.[/if]"
+      tags: [diplomacy, allies]
+      visible_if: [ heir.eldest.alive ]
+      text_after: |
+        Valdrenne takes the match, a princess of the blood for {heir.eldest.name}, and with it signs a peace for the lifetime of both parties. Adalia, outmanoeuvred, signs a truce rather than be left out. {heir.eldest.name} [if heir.eldest.bond >= 3]trusts you, and agrees, and you hope you have earned it[elif heir.eldest.bond <= -2]agrees, coldly, and you know it will be held against you[else]agrees, after a week of not speaking to you[/if].
+      effects: [ { set: flag.c5r_peace_marriage }, { add: { counter.reign: 2, rep.valdrenne: 2, heir.eldest.bond: -1 } } ]
+      next: c5r_petition
+    - id: refuse
+      text: Refuse them both. The West paid in blood at the bridge. It will pay nothing more.
+      tags: [martial]
+      text_after: |
+        The ambassadors go home. The raids start in June, as everyone said they would, and go on all summer. The West's knights ride out to meet them and come back with stories. The West's farmers on the march do not come back with anything.
+      effects: [ { set: flag.c5r_no_peace }, { add: { counter.reign: -1, rep.honor: 1, rep.commons: -1 } } ]
+      next: c5r_petition
+
+- id: c5r_petition
+  chapter: ch5
+  title: The Salt Tax
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    The war tax was voted for the war. The war is over. At Midsummer a petition comes up from the salt towns with eleven hundred names and marks on it, asking, in the most respectful possible language, whether the tax is over too.
+
+    [if flag.c5r_council_purse]Your treasurer says the crown cannot live without it.[elif flag.c5r_council_own]Your steward, who is now your treasurer, says the crown can live without half of it, and shows you the figures.[else]Your chancellor says the crown has never in history given up a tax, and sees no reason to begin.[/if]
+  choices:
+    - id: end
+      text: End the tax. The West made you king to be free of exactly this.
+      tags: [allies]
+      text_after: |
+        You end it by proclamation, read in every market square in the West on the same Sunday. In the salt towns they ring the bells. The crown is poorer for it, and so, for a while, are you.
+      effects: [ { set: flag.c5r_tax_ended }, { add: { counter.reign: 2, rep.commons: 2, res.coin: -2400 } } ]
+      next: c5r_revolt
+    - id: half
+      text: Halve it, and spend the half you keep where the towns can see it.
+      tags: [diplomacy, cunning]
+      text_after: |
+        You halve the tax and spend what is left on the harbour at Sauvemer and the roads to the salt towns, and make sure everyone knows it. Nobody is delighted. Nobody marches on Lannec.
+      effects: [ { set: flag.c5r_tax_halved }, { add: { counter.reign: 1, rep.commons: 1 } } ]
+      next: c5r_revolt
+    - id: keep
+      text: Keep it. A kingdom without revenue is a kingdom for a year.
+      tags: [wealth, cunning]
+      text_after: |
+        You keep it, and explain why, at length, in a proclamation nobody reads. In the salt towns they do not ring the bells. Your treasury fills. So, in the alehouses of the marsh, does the talk.
+      effects: [ { set: flag.c5r_tax_kept }, { add: { counter.reign: -1, rep.commons: -2 } }, { hold: { id: crown_revenues, income: 3600 } } ]
+      next: c5r_revolt
+
+- id: c5r_revolt
+  chapter: ch5
+  title: Quérec
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    [if flag.c5r_querec_knelt]Quérec swore to you on his knees in front of the West, and kept it for nine months, which some men would call loyalty. At Michaelmas he breaks it.[elif flag.c5r_patience]Lady Day is a long way off, and Quérec does not wait for it.[elif flag.c5r_largesse]Quérec took your cup, and swore, and kept the cup.[elif flag.c5r_querec_left]Quérec walked out of the oaths and down the length of the hall, and has been writing letters ever since.[else]Quérec rode south from the oaths and has been writing letters ever since.[/if] [if flag.c5r_tax_kept]The salt towns of the southern marsh, who are paying your tax and do not see why, open their gates to him.[elif flag.c5r_no_peace]Raiders from over the march ride with him, and he does not ask whose.[else]He has his own men, and his cousins', and a claim that he is defending the West's old liberties against a new king.[/if]
+
+    [if counter.reign >= 5]Nobody else rises with him. The West, which made you king, watches to see what kind.[elif counter.reign >= 2]Two other salt lords send him money, and wait.[else]Two other salt lords join him, and the talk in every hall in the West is about who will be third.[/if]
+  choices:
+    - id: ride
+      text: Ride south yourself, with every man you have, before it spreads.
+      tags: [martial]
+      check: { attr: strength, skill: command, difficulty: 5, mods: [ { if: res.men >= 60, add: 1, label: your company }, { if: flag.c5r_council_own, add: 1, label: your own marshal }, { if: flag.inv_free_company || flag.inv_crossbows, add: 1, label: the men you hired }, { if: counter.reign >= 4, add: 1, label: the West is with you }, { if: counter.reign <= 0, add: -1, label: the West is uneasy } ] }
+      success:
+        text: You are at Quérec's gate in nine days, which nobody believed possible. His cousins go home. His own men open the postern on the third night. He is brought to you in the morning, in his shirt.
+        effects: [ { set: flag.c5r_revolt_crushed }, { add: { counter.reign: 2, rep.knights: 1 } } ]
+        next: c5r_judgement
+      failure:
+        text: It takes the whole autumn. Quérec's marsh is all dykes and ditches, and his men know every one. When it ends, it ends in a siege, and starvation, and a surrender that leaves both sides poorer. He is brought to you in chains, thinner than you remember.
+        effects: [ { set: flag.c5r_revolt_long }, { add: { counter.reign: -1, res.coin: -1440 } } ]
+        next: c5r_judgement
+    - id: talk
+      text: Go to him alone, under a flag, and ask him what he wants.
+      tags: [diplomacy]
+      check: { attr: presence, skill: diplomacy, difficulty: 5, mods: [ { if: flag.c5r_patience, add: 1, label: you gave him a year }, { if: flag.c5r_tax_ended || flag.c5r_tax_halved, add: 1, label: the towns are not with him }, { if: flag.c5_betrothed_penhoet, add: 1, label: the old houses are your kin }, { if: counter.reign >= 4, add: 1, label: the West is with you } ] }
+      success:
+        text: You ride into his camp with four men and a flag. Quérec gives you wine, and you talk until dark, about the marsh, and his grandfather's charters, and what a king of the West owes a salt lord. In the morning he kneels in the mud in front of his own men, and means it, this time.
+        effects: [ { set: flag.c5r_revolt_talked }, { add: { counter.reign: 3, rep.honor: 1 } } ]
+        next: c5r_year_end
+      failure:
+        text: He gives you wine, and listens, and sends you back with a list of demands that no king could grant. The fighting takes the autumn. When it is over he is brought to you in chains.
+        effects: [ { set: flag.c5r_revolt_long }, { add: { counter.reign: -1, res.coin: -1440 } } ]
+        next: c5r_judgement
+    - id: buy
+      text: Buy his cousins out from under him, and let him sit alone in his marsh. (£15)
+      tags: [wealth, cunning]
+      requires: [ res.coin >= 3600 ]
+      text_after: |
+        The Lanzi carry the money. By Martinmas Quérec's cousins are back in their own halls with new horses, and Quérec is alone behind his dykes with forty men and his grandfather's charters. He submits by letter at Christmas. You let him keep his land, and he lets you forget he ever rose, which is a bargain of a kind.
+      effects: [ { set: flag.c5r_revolt_bought }, { add: { res.coin: -3600, counter.reign: 1 } } ]
+      next: c5r_year_end
+
+- id: c5r_judgement
+  chapter: ch5
+  title: The Judgement
+  text: |
+    Quérec stands in front of you in the great hall at Lannec, where he would not kneel a year ago. The whole West is watching to see what you do with him, and so is every king in the world who wanted you to fail.
+  choices:
+    - id: mercy
+      text: Pardon him, and give him back his land, and let the West see it.
+      tags: [diplomacy, allies]
+      text_after: |
+        You pardon him. He kneels, the third time, and you raise him. Some of the West call it weakness. Quérec is your most loyal man in the south for the rest of his life, and his sons after him.
+      effects: [ { set: flag.c5r_querec_pardoned }, { add: { counter.reign: 1, rep.honor: 1 } } ]
+      next: c5r_year_end
+    - id: exile
+      text: Take his land, and send him over the march to whoever will have him.
+      tags: [cunning]
+      text_after: |
+        You take his land and give it to a man who owes you everything. Quérec goes into Valdrenne with his family and a cart, and writes letters for twenty years, and nobody answers them.
+      effects: [ { set: flag.c5r_querec_exiled }, { add: { counter.reign: 1, rep.ruthlessness: 1 } }, { hold: { id: querec, income: 480 } } ]
+      next: c5r_year_end
+    - id: execute
+      text: Try him for treason, and carry out the sentence.
+      tags: [martial]
+      text_after: |
+        He is tried by the lords of the West, who find him guilty in an afternoon, and beheaded in the square at Lannec on a grey morning in front of a silent crowd. Nobody rises against you again for eleven years. Nobody forgets it, either.
+      effects: [ { set: flag.c5r_querec_executed }, { add: { counter.reign: 2, rep.ruthlessness: 2, rep.honor: -1 } }, { hold: { id: querec, income: 480 } } ]
+      next: c5r_year_end
+
+- id: c5r_year_end
+  chapter: ch5
+  title: A Year and a Day
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    A year and a day after the oaths at Lannec, [if counter.reign >= 6]the West is quiet. Not content, because nowhere is content, but quiet, the way a field is quiet after the harvest is in.[elif counter.reign >= 3]the West is mostly quiet. There are lords who would not mind you dead, and you know their names, and they know you know.[else]the West is still deciding whether it made a mistake. You can feel it in every hall you ride into.[/if]
+
+    [if heir.eldest.alive]{heir.eldest.name} is {heir.eldest.ageword}, [if flag.c5r_peace_marriage]betrothed to a princess of Valdrenne, [/if]and the question of what comes after you is the one every man in the West is asking.[else]There is no child to come after you, and every man in the West is asking what does.[/if]
+  choices:
+    - id: crown_heir
+      text: Have {heir.eldest.name} crowned in your lifetime, so the Estates cannot choose otherwise.
+      tags: [cunning, allies]
+      visible_if: [ heir.eldest.alive ]
+      requires: [ { any: [ counter.reign >= 4, counter.estates >= 8 ] } ]
+      label: "Requires: a settled West"
+      text_after: |
+        The Estates are summoned, and asked, and agree, because they have seen the year you have had, and {heir.eldest.name} is crowned at Lannec as king in your lifetime, the way the old kings of Valdrenne did it. [if heir.eldest.bond >= 3]{heir.eldest.name} looks across at you during the anointing and nearly laughs, and you nearly do.[else]{heir.eldest.name} takes the oil and the crown and the oaths with a face you cannot read.[/if]
+      effects: [ { set: flag.c5r_heir_crowned }, { add: { heir.eldest.bond: 1 } } ]
+      next: c5_epilogue
+    - id: estates
+      text: Leave it to the Estates, as it was left to them when they chose you.
+      tags: [diplomacy]
+      text_after: |
+        You tell the Estates that the West chose its first king and will choose its second. The old houses approve. The young ones start counting votes, which will go on for the rest of your life.
+      effects: [ { set: flag.c5r_estates_choose } ]
+      next: c5_epilogue
+    - id: rule
+      text: Leave the question. There is a kingdom to rule.
+      tags: [allies]
+      text_after: |
+        You leave it. There are charters to seal and roads to mend and a war-tax to account for, and a new year starting, and you are not dead yet.
+      next: c5_epilogue
+
+# ---- Coda for the kingmaker ---------------------------------------------------
+
+- id: c5k_council
+  chapter: ch5
+  card: { title: The Reign, subtitle: The Hand Behind the Throne, epigraph: "Kings are made in halls, and unmade in them, and the men who do it seldom get a chair." }
+  title: The King's Council
+  checkpoint: true
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    [if flag.c5_mahaut_queen]Queen Mahaut[elif flag.c5_thibaut_king]King Thibaut[elif flag.c5_crowned_self]The crown you could not keep, and gave away,[else]The new reign[/if] holds its first council at Lannec at Martinmas. You are given the chair at the right hand, because everyone in the room knows whose chair it is, and you are offered a choice of offices, because nobody in the room can decide what to call you.
+  choices:
+    - id: chancellor
+      text: Take the seal. Be chancellor, and do the work.
+      tags: [diplomacy, learning]
+      text_after: |
+        You take the seal, and the work, which is endless: letters, petitions, envoys, the Estates. Within a year every clerk in the West knows your hand. You are the most powerful man in the kingdom who is not the king, and you are tired all the time, and you have never been so useful.
+      effects: [ { set: flag.c5k_chancellor }, { add: { rep.nobles: 1 } } ]
+      next: c5k_price
+    - id: marshal
+      text: Take the marshal's staff. Keep the peace with the sword.
+      tags: [martial]
+      text_after: |
+        You take the staff and the command of every castle on the march. The kingdom's enemies learn your name before they learn the monarch's.
+      effects: [ { set: flag.c5k_marshal }, { add: { rep.knights: 1 } } ]
+      next: c5k_price
+    - id: none
+      text: Take nothing. Go home, and be asked.
+      tags: [cunning]
+      text_after: |
+        You take nothing, and go home, and are asked. Every week a rider comes from Lannec with a letter that begins with a question and ends with a request, and you answer them all, from your own hall, by your own fire.
+      effects: [ { set: flag.c5k_home } ]
+      next: c5k_price
+
+- id: c5k_price
+  chapter: ch5
+  title: What the Throne Owes
+  on_enter: [ { advance: { seasons: 2 } } ]
+  text: |
+    At Easter the crown asks you, through its chancellor[if flag.c5k_chancellor], which is to say through yourself, which you find funny[/if], what reward you will take for the West. There is land going: Quérec's marsh, forfeit for treason by a lord who backed the wrong side. There is a marriage going. There is, if you want it, nothing at all, which is the most expensive gift of the three.
+  choices:
+    - id: land
+      text: Take the forfeit marsh, and its salt.
+      tags: [wealth]
+      text_after: You take the land. The salt of the southern marsh comes up white every August, and goes to market under your seal.
+      effects: [ { set: flag.c5k_land }, { hold: { id: querec, income: 480 } } ]
+      next: c5_epilogue
+    - id: marriage
+      text: "[if heir.eldest.alive]Take the marriage, for {heir.eldest.name}, into the royal house.[else]Take the marriage, for a kinsman.[/if]"
+      tags: [allies, cunning]
+      text_after: You take the marriage. Your blood and the crown's are joined by a contract forty pages long, and every lawyer in the West reads it, and your great-grandchildren will be princes, or claim to be.
+      effects: [ { set: flag.c5k_marriage } ]
+      next: c5_epilogue
+    - id: nothing
+      text: Take nothing. Let them owe you.
+      tags: [cunning]
+      text_after: You take nothing. The crown owes you, and knows it, and so does everyone else, and it is worth more than the marsh.
+      effects: [ { set: flag.c5k_owed }, { add: { rep.honor: 1 } } ]
+      next: c5_epilogue
+
+# ---- Coda for the founder of a house -------------------------------------------
+
+- id: c5f_court
+  chapter: ch5
+  card: { title: The House, subtitle: Your Own Court, epigraph: "A great lord is a man other men bring their quarrels to. The rest is clothes." }
+  title: Court Day
+  checkpoint: true
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    You hold your first great court at Michaelmas, as lord of all you hold, in a hall full of people who have walked for two days to be heard. Boundaries, debts, a disputed will, a widow's dower, a stolen pig, a killing on the march. Your steward reads them out. Your chair is the one in the middle.
+
+    The killing on the march is the last case, and the worst. A man of yours killed a man of a neighbour's in a quarrel over a ditch, and the neighbour has come himself, with thirty men in the yard, to see what your justice is worth.
+  choices:
+    - id: law
+      text: Judge it by the law, though the man is yours.
+      tags: [allies, diplomacy]
+      text_after: |
+        You judge it by the law, and the law says the man hangs, or pays the blood-price, which he cannot. You pay it for him, and banish him, and the neighbour rides home satisfied and tells everyone. After that the march brings its quarrels to you before it brings its swords.
+      effects: [ { set: flag.c5f_law }, { add: { rep.honor: 1, res.coin: -960 } } ]
+      next: c5f_heralds
+    - id: own
+      text: Protect your own man. A lord who will not is no lord.
+      tags: [martial]
+      text_after: |
+        You find for your man, and the neighbour rides home with his thirty men and his grievance, and the ditch is fought over for two generations. Your own people love you for it, and the march learns that your men are not to be touched.
+      effects: [ { set: flag.c5f_own }, { add: { rep.knights: 1 } } ]
+      next: c5f_heralds
+
+- id: c5f_heralds
+  chapter: ch5
+  title: The Heralds
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    A herald comes from [if flag.c5_west_free]Lannec[else]Wendmere[/if] to record your arms and your descent for the roll of great houses, with a box of pens and an expression of professional patience. He has done this before for new men. He knows what they want.
+
+    "And your father, my lord?" he says. "And his? It is customary to go back four generations. There is often a crusader."
+  choices:
+    - id: truth
+      text: "Tell him the truth. [if background == reeve]Your father was a reeve[elif background == burgess]Your father was a wool merchant[elif background == archer]Your father was an archer[else]Your mother was a tirewoman[/if]. Write it down."
+      tags: [allies]
+      text_after: |
+        The herald writes it down, slowly, and reads it back, and you make him write it again in a better hand. It goes into the roll of great houses between a count and a bishop. Your great-grandchildren will be embarrassed by it, and then, much later, proud.
+      effects: [ { set: flag.c5f_truth }, { add: { rep.honor: 1, rep.commons: 1 } } ]
+      next: c5_epilogue
+    - id: crusader
+      text: Let him find you a crusader.
+      tags: [cunning]
+      text_after: |
+        The herald finds you a crusader in an afternoon, with a name and a castle in a country nobody has ever been to, and a coat of arms that is almost yours. It goes into the roll. Within a generation your family believes it.
+      effects: [ { set: flag.c5f_crusader } ]
+      next: c5_epilogue

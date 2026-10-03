@@ -3,6 +3,7 @@ start_year: 9          # regnal year at game start (prologue, age 8)
 regnal_king: Aldred
 reigns:
   - { king: Edwin, from_year: 40, from_scene: c4_king_dies }   # Edwin reigns from the year after Aldred dies in the story (nominally year 40)
+  - { king: '@self', from_year: 99, from_scene: c5r_oaths }   # the player's own reign over the West, from the year of the oaths
 attributes: [strength, agility, endurance, wits, presence]
 skills: [arms, archery, riding, woodcraft, command, tactics, diplomacy, intrigue, courtesy, stewardship, trade, learning]
 stations: [commoner, retainer, squire, knight, lord, great_lord, royal]
@@ -26,6 +27,7 @@ counter_labels:
   estates: Votes at Lannec
   ww: The war
   pillars: Your claim to the crown
+  reign: The kingdom
 # title pages before the first scene of each chapter (acts within a chapter set `card:` on their opening scene)
 chapter_cards:
   prologue: { title: Prologue, subtitle: The Hungry Years, epigraph: "A lord's son is born to a horse. Everyone else has to walk to one." }

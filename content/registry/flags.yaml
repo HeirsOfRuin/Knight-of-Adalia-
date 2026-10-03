@@ -568,3 +568,42 @@ c5_surety_kept: { description: "His child surety was held until the peace" }
 c5_younger_land: { description: "Settled land on his younger children" }
 c5_younger_church: { description: "Endowed places in the Church for his younger children" }
 c5_younger_time: { description: "Gave his younger children a year of his time" }
+
+# The reign, and the codas (ch5/06-reign.yaml)
+c5_reigns: { description: "He reigns: the crowned ending's conditions held at the reckoning (the first year of a reign follows)" }
+c5_kingmaker_path: { description: "The kingmaker's coda follows the reckoning" }
+c5_founder_path: { description: "The founder's coda follows the reckoning" }
+c5r_patience: { description: "Gave Quérec a year to swear" }
+c5r_querec_knelt: { description: "Made Quérec kneel at the oaths" }
+c5r_querec_left: { description: "Quérec walked out of the oaths" }
+c5r_largesse: { description: "Opened the treasury at the oaths" }
+c5r_council_old: { description: "Gave the great offices to the old houses of the West" }
+c5r_council_own: { description: "Gave the great offices to his own people" }
+c5r_council_purse: { description: "Gave the treasury to the salt guilds and the Sarenzans" }
+c5r_council_mahaut: { description: "Let Mahaut choose the council" }
+c5r_peace_bought: { description: "Paid for peace with Adalia and Valdrenne" }
+c5r_peace_castle: { description: "Gave back a march castle for the peace" }
+c5r_peace_marriage: { description: "Made peace with a Valdrennish marriage for his heir" }
+c5r_no_peace: { description: "Refused the peace; the march raids go on" }
+c5r_tax_ended: { description: "Ended the war tax" }
+c5r_tax_halved: { description: "Halved the war tax" }
+c5r_tax_kept: { description: "Kept the war tax" }
+c5r_revolt_crushed: { description: "Crushed Quérec's revolt in nine days" }
+c5r_revolt_long: { description: "Quérec's revolt took the autumn" }
+c5r_revolt_talked: { description: "Talked Quérec out of his revolt" }
+c5r_revolt_bought: { description: "Bought Quérec's cousins out from under him" }
+c5r_querec_pardoned: { description: "Pardoned Quérec" }
+c5r_querec_exiled: { description: "Exiled Quérec and took his land" }
+c5r_querec_executed: { description: "Had Quérec tried and beheaded" }
+c5r_heir_crowned: { description: "Had his heir crowned in his own lifetime" }
+c5r_estates_choose: { description: "Left the succession to the Estates" }
+c5k_chancellor: { description: "Became chancellor of the West under the king he made" }
+c5k_marshal: { description: "Became marshal of the West under the king he made" }
+c5k_home: { description: "Took no office, and was asked" }
+c5k_land: { description: "Took Quérec's forfeit marsh as his reward" }
+c5k_marriage: { description: "Took a royal marriage as his reward" }
+c5k_owed: { description: "Took nothing; the crown owes him" }
+c5f_law: { description: "Judged his own man by the law at his first court" }
+c5f_own: { description: "Protected his own man at his first court" }
+c5f_truth: { description: "Had his true descent written in the roll of great houses" }
+c5f_crusader: { description: "Let the heralds find him a crusader" }

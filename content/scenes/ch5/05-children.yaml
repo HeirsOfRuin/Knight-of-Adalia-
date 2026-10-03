@@ -101,7 +101,7 @@
       text_after: |
         The lawyers take a season. When they are done, {heir.second.name} holds land in [if holding.la_garde.held]the Sauvemer march[else]the West[/if] in [if heir.second.sex == son]his[else]her[/if] own name[if heir.third.alive], and {heir.third.name} has the rents of a street in Lannec for life[/if]. Your eldest's share is smaller for it, and [if heir.eldest.alive]{heir.eldest.name} says nothing about it, which is to {heir.eldest.name}'s credit[else]nobody is left to complain[/if].
       effects: [ { set: flag.c5_younger_land }, { add: { heir.second.bond: 2, heir.third.bond: 2 } } ]
-      next: c5_epilogue
+      next: { switch: [ { if: flag.c5_reigns, go: c5r_oaths }, { if: flag.c5_kingmaker_path, go: c5k_council }, { if: flag.c5_founder_path, go: c5f_court } ], default: c5_epilogue }
     - id: church
       text: Endow a place in the Church for {heir.second.name}[if heir.third.alive], and one for {heir.third.name}[/if], with money enough to want for nothing.
       tags: [piety, wealth]
@@ -109,11 +109,11 @@
       text_after: |
         You endow a prebend at the cathedral[if heir.third.alive] and a place in the Lannec convent[/if], with money enough that nobody there will ever give orders to a child of yours. [if heir.second.upbringing == church]{heir.second.name}, who learned letters at the abbey, is pleased.[elif heir.second.temperament == bold]{heir.second.name} is not pleased, and says so, at length, and in the end takes the prebend and never goes near the cathedral.[else]{heir.second.name} takes it, and thanks you, and you are never certain what lies behind the thanks.[/if]
       effects: [ { set: flag.c5_younger_church }, { add: { res.coin: -2400, rep.church: 1, heir.second.bond: 1 } } ]
-      next: c5_epilogue
+      next: { switch: [ { if: flag.c5_reigns, go: c5r_oaths }, { if: flag.c5_kingmaker_path, go: c5k_council }, { if: flag.c5_founder_path, go: c5f_court } ], default: c5_epilogue }
     - id: time
       text: Give [if heir.third.alive]the younger ones[else]{heir.second.name}[/if] what you did not give the eldest. A year of your time.
       tags: [allies]
       text_after: |
         You stay home that year. You ride with {heir.second.name} to every manor you hold, and let [if heir.second.sex == son]him[else]her[/if] sit beside you at the courts and judge the small cases. [if heir.third.alive]You teach {heir.third.name} to ride, and to swim in the mill pool, which the priest calls dangerous. [/if]It is the best year you can remember. It does not feel like work. It may be the most useful thing you do.
       effects: [ { set: flag.c5_younger_time }, { add: { heir.second.bond: 3, heir.third.bond: 3 } } ]
-      next: c5_epilogue
+      next: { switch: [ { if: flag.c5_reigns, go: c5r_oaths }, { if: flag.c5_kingmaker_path, go: c5k_council }, { if: flag.c5_founder_path, go: c5f_court } ], default: c5_epilogue }

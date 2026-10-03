@@ -15,3 +15,5 @@ kerguen_dower: { label: Kerguen, region: west, description: "A mill and two vill
 sauvemer_factor: { label: A factor's account at Sauvemer, region: west, description: "Money left with a Sarenzan factor on the quay, in salt, paying something every Michaelmas." }
 market_charter: { label: The market and fair, region: west, description: "A Thursday market and a Michaelmas fair on his manor, by royal charter, with the tolls." }
 road_tolls: { label: The bridge tolls, region: west, description: "A stone bridge on the road to market, and a farthing for every cart that crosses it." }
+crown_revenues: { label: The revenues of the crown, region: west, description: "Tolls, salt dues, the forfeits of the courts and whatever the war tax has become." }
+querec: { label: Quérec, region: west, description: "A salt lordship in the southern marsh, forfeit for treason." }

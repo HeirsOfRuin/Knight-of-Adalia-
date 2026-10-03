@@ -37,6 +37,15 @@ describe('calendar', () => {
     expect(renderText('In the {season} of the {reign_year} year of King {king}', s, c)).toBe('In the spring of the second year of King Edwin');
   });
 
+  it("the player's own reign counts from the year of the oaths, in his name", () => {
+    const s = game();
+    s.name = 'Hal';
+    s.seen.c4_king_dies = timeOf(c, 39, 'winter');
+    s.seen.c5r_oaths = timeOf(c, 46, 'winter');
+    s.time = timeOf(c, 47, 'spring');
+    expect(reignOf(s, c)).toEqual({ king: 'Hal', year: 2 });
+  });
+
   it('a save resumed at a checkpoint goes back to the date of that checkpoint', () => {
     const s = game();
     s.seen[s.scene] = 10;

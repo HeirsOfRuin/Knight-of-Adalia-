@@ -169,6 +169,14 @@
     # the West's host held under his command: a pillar even when the war ends in a stalemate rather than a rout
     - if: flag.c5_host_decisive
       then: [ { add: { counter.pillars: 1 } } ]
+    # what comes after the reckoning: the first year of a reign, or a coda for the kingmaker or the founder
+    # (the same conditions as the chronicle's endings; the crowned ending reads flag.c5_reigns)
+    - if: [ flag.c5_crowned_self, counter.pillars >= 2, { any: [ flag.c5_rec_church, flag.c5_rec_sarenza, flag.c5_rec_king ] }, "!flag.c5_war_lost", { any: [ heirs.count >= 1, npc.@spouse.alive ] }, "!flag.c5_exiled", "!flag.c5_attainted" ]
+      then: [ { set: flag.c5_reigns } ]
+    - if: [ "!flag.c5_reigns", { any: [ flag.c5_crowned_other, flag.c5_crowned_self ] }, "!flag.c5_war_lost", { any: [ counter.estates >= 8, flag.c5_host_decisive ] }, "!flag.c5_exiled", "!flag.c5_attainted" ]
+      then: [ { set: flag.c5_kingmaker_path } ]
+    - if: [ "!flag.c5_reigns", "!flag.c5_kingmaker_path", station >= great_lord, heir.eldest.alive, heir.eldest.age >= 14, "!flag.c5_war_lost", "!flag.c5_exiled", "!flag.c5_attainted" ]
+      then: [ { set: flag.c5_founder_path } ]
   text: |
     [if flag.c5_exiled]The house in [if flag.c3_lanzi_kin || flag.c4_sent_brese_on]Sarenza[elif flag.c3_coll_wedding || flag.c3_coll_ended_feud]Glenhallow[else]exile[/if] is small, and warm, and full of strangers' voices.[elif flag.c5_attainted]The room they let you keep is small, and has a window on a yard.[else]The hall is full of autumn: rushes, smoke, dogs, the smell of apples.[/if] You are {age_words}. Your knees hurt in the mornings, and you cannot read the accounts without holding them at arm's length, and there are more people you remember than people you see.
 
@@ -184,14 +192,14 @@
       text_after: |
         [if heir.eldest.alive]"Your own," you say. "Not mine. I was what everyone else needed me to be, from the day I [if background == reeve]first read the barley tallies to the steward[elif background == burgess]first sat at my father's counting board[elif background == archer]fetched arrows for a farthing a dozen[else]first held a lord's stirrup in the Ravell yard[/if]. Be what you need." {heir.eldest.name} looks at you a long while, and then laughs, and says, "That's the worst advice anyone has ever given me," and goes out, and you hear the laugh go down the yard, and it is your father's laugh, or your mother's, and you sit there with it.[else]You think about them: the ones who came up from nothing with you, and the ones who did not come back. You are not alone in the hall. You never were.[/if]
       effects: [ { add: { heir.eldest.bond: 2 } } ]
-      next: { switch: [ { if: heirs.count >= 2, go: c5_younger } ], default: c5_epilogue }
+      next: { switch: [ { if: heirs.count >= 2, go: c5_younger }, { if: flag.c5_reigns, go: c5r_oaths }, { if: flag.c5_kingmaker_path, go: c5k_council }, { if: flag.c5_founder_path, go: c5f_court } ], default: c5_epilogue }
     - id: lord
       text: "[if heir.eldest.alive]Tell {heir.eldest.name}: [if flag.c5_exiled || flag.c5_attainted]a lord, one day. Get back what we lost.[else]a lord. Keep what we have. It cost enough.[/if][else]Think about what you are leaving.[/if]"
       tags: [cunning]
       text_after: |
         [if heir.eldest.alive][if flag.c5_exiled || flag.c5_attainted]"A lord," you say. "One day. Get back what they took. It cost more than you know."[else]"A lord," you say. "Keep what we have. Hold it. It cost more than you know."[/if] {heir.eldest.name} nods, the way you nodded at your own father, and you know exactly what that nod means, because you meant it once too.[else]You think about the land, the names on the rolls, the people in the villages who will go on whatever becomes of you. It is something. It may be enough.[/if]
       effects: [ { add: { heir.eldest.bond: 1 } } ]
-      next: { switch: [ { if: heirs.count >= 2, go: c5_younger } ], default: c5_epilogue }
+      next: { switch: [ { if: heirs.count >= 2, go: c5_younger }, { if: flag.c5_reigns, go: c5r_oaths }, { if: flag.c5_kingmaker_path, go: c5k_council }, { if: flag.c5_founder_path, go: c5f_court } ], default: c5_epilogue }
 
 - id: c5_epilogue
   chapter: ch5
@@ -237,7 +245,7 @@
         switch:
           - { if: flag.c5_exiled, go: c5_end_exile }
           - { if: flag.c5_attainted, go: c5_end_ruin }
-          - { if: [ flag.c5_crowned_self, counter.pillars >= 2, { any: [ flag.c5_rec_church, flag.c5_rec_sarenza, flag.c5_rec_king ] }, "!flag.c5_war_lost", { any: [ heirs.count >= 1, npc.@spouse.alive ] } ], go: c5_end_crowned }
+          - { if: flag.c5_reigns, go: c5_end_crowned }
           - { if: [ { any: [ flag.c5_crowned_other, flag.c5_crowned_self ] }, "!flag.c5_war_lost", { any: [ counter.estates >= 8, flag.c5_host_decisive ] } ], go: c5_end_kingmaker }
           - { if: [ station >= great_lord, heir.eldest.alive, heir.eldest.age >= 14, "!flag.c5_war_lost" ], go: c5_end_founder }
         default: c5_end_diminished
@@ -252,6 +260,8 @@
 
     You reign [if heirs.count >= 1]nineteen years, and die in your bed, and {heir.eldest.name} is crowned after you without anyone thinking to object[else]nineteen years, and die in your bed, and the Estates choose your successor, as they chose you[/if]. The West is a kingdom for three hundred years. Its chroniclers, who like a story, make you a lost prince, a Valdrennish bastard, a son of the old dukes. None of them will write down what you were.
 
+    [if flag.c5r_heir_crowned || flag.c5r_estates_choose || flag.c5r_tax_ended || flag.c5r_tax_halved || flag.c5r_tax_kept]The chroniclers remember the first year of your reign for [if flag.c5r_querec_executed]a head on the square at Lannec[elif flag.c5r_querec_pardoned]Quérec pardoned in the great hall, the third time he knelt[elif flag.c5r_querec_exiled]Quérec's cart on the road into Valdrenne[elif flag.c5r_revolt_talked]a king who rode into a rebel's camp under a flag[elif flag.c5r_revolt_bought]a rebellion bought out from under its leader[else]the oaths at Lannec[/if][if flag.c5r_revolt_crushed], after nine days' ride[elif flag.c5r_revolt_long], after a long autumn in the marsh[/if], and for [if flag.c5r_tax_ended]the Sunday the bells rang in every salt town in the West[elif flag.c5r_tax_halved]the new harbour at Sauvemer[else]a tax nobody forgave[/if]. [if flag.c5r_peace_bought]The peace you paid for holds for thirty years.[elif flag.c5r_peace_castle]The peace you bought with a castle holds, and the castle's people never forgive it.[elif flag.c5r_peace_marriage]The Valdrennish marriage keeps the peace for a generation.[elif flag.c5r_no_peace]The march burns every summer for ten years before anyone signs anything.[/if] [if flag.c5r_council_old]Your council of old names is slow, and proud, and loyal.[elif flag.c5r_council_own]Your council of grooms, as the old houses called it, runs the best-kept kingdom anyone can remember.[elif flag.c5r_council_purse]Your merchant treasury makes the West rich and its lords resentful.[elif flag.c5r_council_mahaut]Mahaut's council outlasts you both.[/if] [if counter.reign >= 6]It is a quiet reign, which is the best kind, and the hardest to write about.[elif counter.reign >= 3]It is a reign with enemies in it, and you outlive most of them.[else]It is a hard reign, and nobody who lived through it calls it anything else.[/if][/if]
+
     You were [if background == reeve]a reeve's son[elif background == burgess]a wool merchant's son[elif background == archer]an archer's son[else]a tirewoman's son[/if].
 
 - id: c5_end_kingmaker
@@ -264,6 +274,8 @@
 
     You never wear a crown. You never needed one. Kings come to your hall for advice, and go away with orders, and think they were their own idea.
 
+    [if flag.c5k_chancellor]You keep the seal for eleven years, and the West's letters are written in your hand.[elif flag.c5k_marshal]You keep the marshal's staff until your hands are too stiff to hold it.[elif flag.c5k_home]Riders come from Lannec every week with questions, and go back with answers.[/if] [if flag.c5k_land]The forfeit salt of the southern marsh comes up white every August under your seal.[elif flag.c5k_marriage]Your blood is joined to the crown's, and your great-grandchildren are princes, or say so.[elif flag.c5k_owed]The crown owes you, and never quite pays, and never forgets.[/if]
+
     You were [if background == reeve]a reeve's son[elif background == burgess]a wool merchant's son[elif background == archer]an archer's son[else]a tirewoman's son[/if].
 
 - id: c5_end_founder
@@ -274,7 +286,7 @@
   text: |
     [if flag.c5_earl]Your arms hang in the King's chapel at Wendmere, among the earls.[elif flag.c5_west_free]Your arms hang in the hall at Lannec, among the great lords of the West.[else]Your arms hang in your own hall, over the fire.[/if] {heir.eldest.name} holds what you held after you, and the house you founded holds it for two hundred years, through four kings and two plagues and a civil war, and marries into half the great houses of [if flag.c5_west_free]the West[else]Adalia[/if].
 
-    The heralds give your family a pedigree that begins with a crusader. Your great-grandchildren believe it. None of it is true. All of it is better than true.
+    [if flag.c5f_truth && !flag.c5f_crusader]The roll of great houses records your [if background == servant]mother[else]father[/if] as what [if background == servant]she[else]he[/if] was, between a count and a bishop. Your great-grandchildren are embarrassed by it, and then, much later, proud.[else]The heralds give your family a pedigree that begins with a crusader. Your great-grandchildren believe it. None of it is true. All of it is better than true.[/if][if flag.c5f_law] The march brings its quarrels to your court before it brings its swords.[elif flag.c5f_own] Nobody on the march touches a man of yours.[/if]
 
     You were [if background == reeve]a reeve's son[elif background == burgess]a wool merchant's son[elif background == archer]an archer's son[else]a tirewoman's son[/if].
 

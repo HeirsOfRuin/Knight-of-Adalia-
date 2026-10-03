@@ -4,6 +4,16 @@ A text-based, choice-driven life simulation set in a low-fantasy, 14th-century a
 
 **Status:** Phase 2: the prologue for all four backgrounds and Chapter 1 are playable end to end. Readable playthroughs of four routes are in `docs/playthroughs/`. Design in `docs/DESIGN.md`. Authoring reference in `docs/CONTENT.md`. World in `content/canon.md`.
 
+## Play as an app
+The game is published to GitHub Pages as an installable app: https://heirsofruin.github.io/Knight-of-Adalia-/
+
+- **Phone:** open the link, then Share > Add to Home Screen (iPhone) or the menu > Install app (Android).
+- **Computer:** open the link in Chrome or Edge and click the install icon in the address bar.
+
+It updates itself. Every push is built and published by `.github/workflows/pages.yml`, and the next time the app is opened with a connection it loads the new version. It also plays offline from the last version it saw. Saves live in the app itself, separately from any other copy of the game; move a life between copies with Menu > Save as text / Load from text.
+
+One-time setup: Settings > Pages > Build and deployment > Source: GitHub Actions.
+
 ## Run
 ```
 npm install

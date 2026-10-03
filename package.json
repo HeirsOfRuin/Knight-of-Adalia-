@@ -19,7 +19,8 @@
     "build:artifact": "npm run build && tsx tools/build-artifact.ts",
     "check": "npm run typecheck && npm test && npm run validate && npm run lint:style && npm run bot -- --runs 200",
     "scan": "tsx tools/render-scan.ts",
-    "audit": "tsx tools/audit-choices.ts"
+    "audit": "tsx tools/audit-choices.ts",
+    "build:pwa": "npm run content && tsc --noEmit && VITE_PWA=1 vite build"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.10.6",

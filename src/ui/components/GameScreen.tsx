@@ -53,13 +53,14 @@ export function GameScreen(p: Props) {
   const nextPage = () => setPageState({ key: pageKey, n: shown + 1 });
   const toggle = (x: Panel) => setPanel((cur) => (cur === x ? 'none' : x));
   const ending = v.ended ? content.registry.endings[v.ended.ending] : undefined;
+  const menCount = Object.values(state.npcs).filter((n) => n.follower && n.alive).length + (state.res.men ?? 0);
 
   return (
     <div class={`game ${p.debug ? 'has-debug' : ''}`}>
       <header class="topbar">
         <div class="topbar-info">
           <span class="who">{state.name}</span>
-          <span class="when">{capitalise(state.station)} &middot; age {ageOf(state)}</span>
+          <span class="when">{capitalise(state.station)} &middot; age {ageOf(state)}{menCount > 0 ? <> &middot; {menCount} {menCount === 1 ? 'man' : 'men'}</> : null}</span>
         </div>
         <nav class="topbar-nav">
           <button class={`tab ${panel === 'status' ? 'on' : ''}`} aria-expanded={panel === 'status'} onClick={() => toggle('status')}>Status</button>

@@ -1202,3 +1202,4 @@ The author reported that some choices did not feel as if they made a difference,
 | 2026-10-03 | Ch4 Act III, the Fracture, built: the master's death, Aldred's death and Edwin's crowning, Carrow's rising and Wythen Heath (player-driven), the eldest at ten, the Constable's fall, Lannec. |
 | 2026-10-03 | Ch4 Act IV, the Summons to Lannec, built; Chapter 4 complete. Dates now follow the reign (config reigns: Edwin from year 40). Next: Ch5 engine (endings evaluation, epilogue builder) and acts. |
 | 2026-10-03 | Ch5 built; the game is complete from the prologue to the endings. Every ending is reachable for every background; 0 warnings, 0 pending. |
+| 2026-10-03 | Installable app: PWA (manifest, icons, network-first service worker that updates on launch) published to GitHub Pages by a workflow on every push. Force size shown in the top bar and on the Status page. |

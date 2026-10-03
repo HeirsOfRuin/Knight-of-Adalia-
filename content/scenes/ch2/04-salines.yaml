@@ -11,7 +11,13 @@
     - advance: { seasons: 1 }
     - kill: enguerrand_vaux
     - meet: ulric_rotbart
+    - if: counter.siege >= 3
+      then: [ { add: { counter.sl_edge: 1 } } ]
+    - if: counter.siege >= 6
+      then: [ { add: { counter.sl_edge: 1 } } ]
   text: |
+    [if counter.siege >= 6]The siege has done its work, and you had a hand in it: the galleys burned, the mine-war won, the sortie broken. Sauvemer is hungry and short of men, and whatever comes over the heights, the garrison will not have much to throw at the King's back.[elif counter.siege >= 3]The siege has worn the town down, and you had some part in it. The garrison is hungry, and fewer than it was.[else]The siege has gone on two years and the town is still strong behind its walls, with a garrison that could still come out in force.[/if]
+
     In May the castellan of Sauvemer, Sire Enguerrand de Vaux, dies of the flux in his own castle. The town does not open its gates. His wife holds the keys, and his lieutenant holds the walls, and they wait.
 
     At midsummer they are proved right. King Amaury comes.
@@ -114,6 +120,7 @@
     - id: watch
       text: Stand at the edge of the lines and watch the Valdrennish fires on the heights.
       text_after: There are so many fires that the heights look like a city. Somewhere up there are men doing exactly what you are doing. Behind you, on the walls of Sauvemer, people are watching the same fires, and for them every one is a promise. At some point you stop being afraid, or you get so tired of it that it feels the same.
+      effects: [ { add: { health: 1 } } ]
       next: c2_salines_1
 
 - id: c2_salines_1
@@ -436,14 +443,22 @@
   on_enter:
     - if: [ station != knight, { any: [ flag.c2_took_thibaut, flag.c2_saved_banner, flag.c2_turned_garrison, flag.c2_opened_sluice ] }, res.renown >= 12 ]
       then: [ { station: knight }, { set: flag.c2_knighted_field } ]
+    - if: { any: [ counter.sl_edge >= 6, [ counter.sl_edge >= 4, counter.sl_held >= 1 ] ] }
+      then: [ { set: flag.c2_salines_decisive }, { add: { res.renown: 1, rep.crown: 1 } } ]
+      else:
+        - if: [ counter.sl_edge <= 2, counter.sl_held <= 0 ]
+          then: [ { set: flag.c2_salines_pyrrhic }, { casualties: { men: 1, named: 0 } } ]
   text: |
+    [if flag.c2_salines_decisive]What you did on the dyke mattered. The left held because men like yours held it, the water came where it was meant to, and when the Valdrennish broke they broke all at once, into the pans, and could not get out.[elif flag.c2_salines_pyrrhic]On your part of the dyke it went badly, and you know it. The line bent there and nearly broke, and other companies had to come and fill it, and paid for it.[else]Your part of the dyke held. Others held better, and some worse. It was enough.[/if]
+
+
     In the morning the King rides along the dyke with his leg bound up and thanks the army, company by company. He does it slowly, because it takes him a long time to get on and off his horse.
 
     [if flag.c2_knighted_field]When he reaches your company he stops. Somebody has said something to him: your captain, or a herald, or a man you pulled out of the water. He gets down from his horse, in the mud, which costs him, in front of everyone, and draws his sword. "For yesterday," he says. You kneel, and he knights you there on the dyke, among the dead, with salt crusted white on your boots. There are men who will tell their grandsons that they saw it.[elif flag.c2_knighted_eve]You stand in the line with your new spurs, a knight of one day, and the King looks along the faces and nods.[/if]
 
     [break]
 
-    The count comes in during the day. Two thousand Adalians dead or dying, a fifth of the army. The Valdrennish dead the heralds stop counting at five thousand, half of them drowned. Among the Adalian dead are two earls and a bishop's nephew. Among the wounded is the King. Among the prisoners, a duke, eleven counts, and more knights than there are Adalian knights left standing to guard them.
+    The count comes in during the day. [if flag.c2_salines_decisive]Fifteen hundred Adalians dead or dying, a seventh of the army.[elif flag.c2_salines_pyrrhic]Three thousand Adalians dead or dying, more than a quarter of the army.[else]Two thousand Adalians dead or dying, a fifth of the army.[/if] The Valdrennish dead the heralds stop counting at five thousand, half of them drowned. Among the Adalian dead are two earls and a bishop's nephew. Among the wounded is the King. Among the prisoners, a duke, eleven counts, and more knights than there are Adalian knights left standing to guard them.
 
     It is a victory. Two years ago, it is the victory everyone in the army thought they would have by Lammas. Now they know what it cost, and that they nearly did not have it at all. [if flag.c2_turned_garrison]On the walls of Sauvemer, nobody is watching the heights any more.[else]On the walls of Sauvemer, the people who were watching the heights watch them empty.[/if]
   choices:

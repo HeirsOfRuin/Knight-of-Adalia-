@@ -72,12 +72,13 @@
     - id: sleep
       text: Sleep, if you can.
       text_after: You lie in the wet grass by the horses and do not sleep. Nobody near you sleeps. [if npc.davy_ludd.follower]Davy talks until you tell him to stop, and then lies awake in silence, sniffing, pretending he has a cold.[/if] Somewhere out in the mist, far off, a horse whinnies, and is answered.
+      effects: [ { add: { health: 1 } } ]
       next: c2_grisolles
     - id: men
       text: Go round your men and see they are ready to move in the dark.
       tags: [allies]
       text_after: It is a small thing. Every man in your following eats, packs, and lies down in his boots with his gear on, knowing that you checked it. In the morning yours are the first in the rearguard on their feet.
-      effects: [ { set: flag.c2_grisolles_ready }, { add: { rel.jankin_rooke.loyalty: 1, rel.simkin_barre.loyalty: 1, rel.roger_tallis.loyalty: 1, rel.davy_ludd.loyalty: 1, rel.wat_coker.loyalty: 1, rel.perkin_dyer.loyalty: 1, rel.gib_shawe.loyalty: 1, rel.dickon_laund.loyalty: 1 } } ]
+      effects: [ { add: { counter.gr_line: 1 } }, { set: flag.c2_grisolles_ready }, { add: { rel.jankin_rooke.loyalty: 1, rel.simkin_barre.loyalty: 1, rel.roger_tallis.loyalty: 1, rel.davy_ludd.loyalty: 1, rel.wat_coker.loyalty: 1, rel.perkin_dyer.loyalty: 1, rel.gib_shawe.loyalty: 1, rel.dickon_laund.loyalty: 1 } } ]
       next: c2_grisolles
     - id: scout
       text: Go down the river in the dark and find the ford for yourself.
@@ -89,7 +90,7 @@
         mods: [ { if: flag.c2_knows_country, add: 1, label: you know this country } ]
       success:
         text: Half a mile down, where the marsh gives way to gravel, there are posts in the water marking a way across. Chest-deep, in this flood. Fast. But it is there. You wade it to the middle and back to be sure, and come back soaked and shaking and certain.
-        effects: [ { set: flag.c2_found_ford }, { add: { skill.woodcraft: 1 } } ]
+        effects: [ { add: { counter.gr_line: 1 } }, { set: flag.c2_found_ford }, { add: { skill.woodcraft: 1 } } ]
         next: c2_grisolles
       failure:
         text: You find a great deal of marsh, and a ditch that you fall into, and no ford. You come back soaked to the neck and no wiser.
@@ -137,11 +138,11 @@
           They hit the line like a falling wall. You do not remember most of it: the weight of them, the noise, a face behind a visor close enough to smell. You remember that the bit of line you are standing in does not break, not for a long stretch of the worst morning of your life, while the bits on either side of it give ground. Long enough for half the carts to get over the bridge.
 
           It is not a victory. Nothing at Grisolles is. But the Earl of Carrow, who saw it from his horse, asks your name afterwards.
-        effects: [ { set: flag.c2_grisolles_held }, { add: { res.renown: 2, rep.knights: 1 } }, { trait: +veteran } ]
+        effects: [ { add: { counter.gr_line: 2 } }, { set: flag.c2_grisolles_held }, { add: { res.renown: 2, rep.knights: 1 } }, { trait: +veteran } ]
         next: c2_grisolles_rout
       partial:
         text: The line holds where you are, for a while. A poleaxe glances off your shoulder and opens it to the bone, and the man to your left goes down and does not get up.
-        effects: [ { set: flag.c2_grisolles_held }, { add: { res.renown: 1 } }, { injury: arrow_wound }, { casualties: { men: 1, named: 1, spare: [ davy_ludd ] } }, { trait: +veteran } ]
+        effects: [ { add: { counter.gr_line: 1 } }, { set: flag.c2_grisolles_held }, { add: { res.renown: 1 } }, { injury: arrow_wound }, { casualties: { men: 1, named: 1, spare: [ davy_ludd ] } }, { trait: +veteran } ]
         next: c2_grisolles_rout
       failure:
         text: "[if armour >= 1 && !injured]The block hits you and goes over you. You are on your back in the mud with a man standing on your chest, and then he is gone, past you, and your men are dragging you backward by the arms.[else]The block hits you and goes over you, and you are under their feet in the mud at Grisolles, and nobody stops.[/if]"
@@ -163,7 +164,7 @@
           - { if: background == archer, add: 1, label: you were raised on this }
       success:
         text: High, so they drop. The crossbowmen have to stand up from behind their shields to wind, and when they stand up, your archers are waiting. For as long as the arrows last, the crossbows on your front go quiet. It buys the line a little time. It costs the archers every arrow they have.
-        effects: [ { train: { command: 1, ceiling: 5, quiet: 1 } }, { add: { res.renown: 1, rep.commons: 1 } }, { trait: +veteran } ]
+        effects: [ { add: { counter.gr_line: 2 } }, { train: { command: 1, ceiling: 5, quiet: 1 } }, { add: { res.renown: 1, rep.commons: 1 } }, { trait: +veteran } ]
         next: c2_grisolles_rout
       failure:
         text: The crossbowmen know this trick better than you do. They wind behind the shields and come up shooting, and your archers lose three men in the first flight and the rest fall back to the river.
@@ -185,7 +186,7 @@
           You get there with a handful of others as the Valdrennish riders reach the carts. It is a scramble of horses and oxen and screaming drivers in a lane between ditches. You hold the head of the bridge long enough for a dozen carts to get over, among them [if alias.master == walter_pryce]Sir Walter's[else]your master's[/if] and your own.
 
           The rest of the baggage is lost: the King's plate, the King's tents, and the iron-bound chest that holds the army's pay.
-        effects: [ { set: flag.c2_saved_baggage }, { add: { res.renown: 1, rel.@master.respect: 2, res.supplies: 1 } } ]
+        effects: [ { add: { counter.gr_line: 1 } }, { set: flag.c2_saved_baggage }, { add: { res.renown: 1, rel.@master.respect: 2, res.supplies: 1 } } ]
         next: c2_grisolles_rout
       failure:
         text: You are too late, and too few. The Valdrennish horse are among the carts before you reach them. You lose your own baggage, and nearly your horse.
@@ -227,7 +228,7 @@
           - { if: flag.c1_drilled_men, add: 1, label: you have drilled men before }
       success:
         text: You walk them back. You do not let them run, because men who run get ridden down. Step, turn, step, shields to the enemy, with the archers in the middle. It takes forever. You are on the bridge when the engineers start swinging their picks, and across it, every one of you, when the arch goes into the Aube with a noise like a church bell falling.
-        effects: [ { train: { command: 1, ceiling: 5, quiet: 1 } }, { set: flag.c2_men_brought_out }, { add: { res.renown: 1, rel.davy_ludd.loyalty: 2, rel.jankin_rooke.loyalty: 2, rel.simkin_barre.loyalty: 2, rel.roger_tallis.loyalty: 2, rel.wat_coker.loyalty: 2, rel.perkin_dyer.loyalty: 2, rel.gib_shawe.loyalty: 2, rel.dickon_laund.loyalty: 2 } } ]
+        effects: [ { add: { counter.gr_line: 1 } }, { train: { command: 1, ceiling: 5, quiet: 1 } }, { set: flag.c2_men_brought_out }, { add: { res.renown: 1, rel.davy_ludd.loyalty: 2, rel.jankin_rooke.loyalty: 2, rel.simkin_barre.loyalty: 2, rel.roger_tallis.loyalty: 2, rel.wat_coker.loyalty: 2, rel.perkin_dyer.loyalty: 2, rel.gib_shawe.loyalty: 2, rel.dickon_laund.loyalty: 2 } } ]
         next: c2_grisolles_after
       partial:
         text: You keep them together most of the way. The last hundred paces they run, because everyone is running, and not all of them reach the bridge before the arch goes down.
@@ -245,7 +246,7 @@
         Half a mile through the marsh, with the noise of the bridge behind you. The posts are where you left them. The water is up to your chest and pulling at your legs, and you go across in a chain, every man holding the belt of the man in front. [if npc.perkin_dyer.follower]Perkin Dyer carries Davy over on his shoulders.[/if] You lose two bows and a horse to the Aube, and nobody else.
 
         Other men see you go, and follow. By evening, the villagers' ford has brought three hundred men out of Grisolles who would otherwise be dead or captive.
-      effects: [ { set: flag.c2_men_brought_out }, { set: flag.c2_ford_saved }, { add: { res.renown: 2, rep.commons: 2, res.horses: -1 } } ]
+      effects: [ { add: { counter.gr_line: 2 } }, { set: flag.c2_men_brought_out }, { set: flag.c2_ford_saved }, { add: { res.renown: 2, rep.commons: 2, res.horses: -1 } } ]
       next: c2_grisolles_after
     - id: master
       text: Go back into the press for your master.
@@ -337,12 +338,18 @@
       then: [ { set: flag.c2_master_taken } ]
     - if: { not: [ alias.master == thurstan_ravell, flag.c2_saved_master ] }
       then: [ { set: flag.c2_ravell_taken } ]
-    - if: [ station != knight, { any: [ flag.c2_grisolles_held, flag.c2_saved_master ] }, res.renown >= 10 ]
+    - if: counter.gr_line >= 4
+      then: [ { set: flag.c2_rearguard_held_long }, { add: { res.renown: 2, rep.knights: 1 } } ]
+    - if: counter.gr_line <= 0
+      then: [ { set: flag.c2_rearguard_broke }, { add: { res.supplies: -1 } }, { casualties: { men: 1, named: 0 } } ]
+    - if: [ station != knight, { any: [ flag.c2_grisolles_held, flag.c2_saved_master, flag.c2_rearguard_held_long ] }, res.renown >= 10 ]
       then: [ { station: knight }, { set: flag.c2_knighted_grisolles } ]
   text: |
+    [if counter.gr_line >= 4]Your stretch of the rearguard held longest. Men will argue about it for years, but the heralds who count the columns know: because it held, two thousand men got over the Aube who would otherwise have been taken on the near bank, and they know whose banner stood last.[elif counter.gr_line >= 2]Your stretch of the line held as long as any of it. It was not enough to save the day. It was enough to save some of the men in it, and they know it.[else]Your part of the line went early, like most of it, and you saw it go, and there was nothing to be done.[/if]
+
     The Constable does not try to cross. He does not need to. He has the near bank, the baggage, a thousand prisoners, and the day.
 
-    The Adalian army camps in the rain a mile west of the broken bridge with no tents, because the tents were in the baggage, and counts itself. Eighteen hundred men dead, drowned or taken, nearly all from the rearguard. Six hundred horses. The King's plate. The pay chest. [if flag.c2_ravell_taken]Lord Ravell, taken alive under his own banner, and half his household knights with him.[/if] [if flag.c2_master_taken && alias.master == hamon_darrell]Sir Hamon Darrell, taken alive, if the heralds have it right.[/if]
+    The Adalian army camps in the rain a mile west of the broken bridge with no tents, because the tents were in the baggage, and counts itself. [if counter.gr_line >= 4]Twelve hundred[elif counter.gr_line >= 2]Eighteen hundred[else]Two thousand two hundred[/if] men dead, drowned or taken, nearly all from the rearguard. Six hundred horses. The King's plate. The pay chest. [if flag.c2_ravell_taken]Lord Ravell, taken alive under his own banner, and half his household knights with him.[/if] [if flag.c2_master_taken && alias.master == hamon_darrell]Sir Hamon Darrell, taken alive, if the heralds have it right.[/if]
 
     The Valdrennish dead, the heralds think, are fewer than three hundred.
 
@@ -350,7 +357,7 @@
 
     [if flag.c2_knighted_grisolles]The Earl of Carrow comes along the line of fires at dusk, still in his harness, looking for the men who held the rearguard. He finds you. He has no ceremony and no time. He draws his sword in the rain and taps you on the shoulder with it and says, "Sir. You'll be needed." A knight made in a defeat, by a man in a foul temper. It counts the same.[/if]
 
-    "Eighteen hundred," someone says, by your fire, flatly, as if it were a price. "Eighteen hundred, and the plate." "Bugger the plate," says someone else, and that is the end of the talking.
+    "[if counter.gr_line >= 4]Twelve hundred[elif counter.gr_line >= 2]Eighteen hundred[else]Two thousand[/if]," someone says, by your fire, flatly, as if it were a price. "And the plate." "Bugger the plate," says someone else, and that is the end of the talking.
 
     Nobody sings anything that night. The King walks among the fires bareheaded, and stops at some of them, and says nothing much, and goes on.
   choices:
@@ -387,7 +394,7 @@
 
     "How far now?" "Ask me again and I'll drown you in that ditch." "How far now?" "...Far."
 
-    Every morning there are fewer men in the column than there were the night before. Some of them were caught. Some of them are walking home on their own. Some of them are lying in ditches with their boots off, too tired to get up.
+    [if flag.c2_rearguard_held_long]Because the rearguard held, the column has its wounded with it, and more of its horses than it deserves.[elif flag.c2_rearguard_broke]Because the rearguard broke early, the column has lost half its horses, and its wounded are wherever they fell.[/if] Every morning there are fewer men in the column than there were the night before. Some of them were caught. Some of them are walking home on their own. Some of them are lying in ditches with their boots off, too tired to get up.
   choices:
     - id: carry
       text: Carry your wounded with you, all of them, whatever it costs in pace.

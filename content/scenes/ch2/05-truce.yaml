@@ -21,6 +21,8 @@
 
     It is not the crown of Valdrenne. Nobody in the army ever really thought it would be, after the Lisonne. It is a port, a march, an ally kept, and a King of Valdrenne who has learned what it costs to fight one. Men argue in the taverns of Sauvemer for months about whether that was worth Grisolles. Most decide it was. The ones who were in the rearguard are not so sure.
 
+    [if flag.c2_salines_decisive]The legate does not say so, but everyone at Saint-Lys knows why the terms lean Adalian: the host that drowned in the pans was the only army Amaury had. Men who were on the dyke walk a little taller in Sauvemer that spring.[elif flag.c2_salines_pyrrhic]The legate does not say so, but everyone at Saint-Lys knows the King could not have fought another summer. Les Salines bled both armies white, and the terms are what two exhausted men could agree.[/if]
+
     [if flag.c2_jehanne_message]You never did get the chance to give the King the Duchess's message. Someone did. Her husband rides into Lannec at Whitsun, thin and grey and blinking, and she meets him at the gate.[/if]
 
     [break]
@@ -31,7 +33,7 @@
       text: Stay with the garrison in Sauvemer. That is where the King's grants will be given, when they are given.
       tags: [cunning]
       text_after: "[if flag.c2_took_house]You keep the merchant's house in the Rue des Tanneurs, with its yard and its well and the last of its wine.[else]You take a house in the Rue des Tanneurs with your men: two rooms, a yard, a well, and neighbours who will not look you in the eye.[/if] Sauvemer is the King's now, and in a sense yours. It does not feel like it."
-      effects: [ { set: flag.c2_garrison } ]
+      effects: [ { add: { counter.fame_sauvemer: 1, counter.fame_diff: 1, rep.crown: 1 } }, { set: flag.c2_garrison } ]
       next: { pool: c2_camp, count: 2, then: c2_garrison_life }
     - id: march
       text: Go with the companies the King lends the Armance, to hold its castles through the truce.
@@ -300,6 +302,8 @@
     - { if: flag.c2_fought_iron, then: [ { add: { counter.fame_sauvemer: 1, counter.fame_diff: 1 } } ] }
     - { if: flag.c2_breach_survived, then: [ { add: { counter.fame_sauvemer: 1, counter.fame_diff: 1 } } ] }
     - { if: flag.c2_took_corbie, then: [ { add: { counter.fame_armance: 1, counter.fame_diff: -1 } } ] }
+    - { if: flag.c2_rearguard_held_long, then: [ { add: { counter.fame_armance: 1, counter.fame_diff: -1 } } ] }
+    - { if: counter.siege >= 5, then: [ { add: { counter.fame_sauvemer: 1, counter.fame_diff: 1 } } ] }
     - { if: flag.c2_vaudrey_held, then: [ { add: { counter.fame_armance: 1, counter.fame_diff: -1 } } ] }
     - { if: flag.c2_jehanne_noticed, then: [ { add: { counter.fame_armance: 1, counter.fame_diff: -1 } } ] }
     - { if: flag.c2_grisolles_held, then: [ { add: { counter.fame_armance: 2, counter.fame_diff: -2 } } ] }

@@ -19,7 +19,7 @@ export function transcript(content: ContentBundle, plan: Plan): string {
     out.push(v.text.replace(/\n\s*\[break\]\s*\n/g, '\n\n*(Continue)*\n\n'), '');
     for (const c of v.choices) {
       const meta = [c.band, c.lethal ? 'MORTAL DANGER' : '', c.lockReason ?? ''].filter(Boolean).join(', ');
-      out.push(`- ${c.available ? '' : '~~'}${c.text}${c.available ? '' : '~~'}${meta ? ` *(${meta})*` : ''}`);
+      out.push(`- ${c.available ? '' : '~~'}${c.text}${c.available ? '' : '~~'}${meta ? ` *(${meta})*` : ''}${c.stakes.length ? `  \n  <small>At stake: ${c.stakes.join(' · ')}</small>` : ''}`);
     }
     const avail = v.choices.filter((c) => c.available);
     const step = plan.steps[state.scene];

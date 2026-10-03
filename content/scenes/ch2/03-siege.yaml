@@ -133,6 +133,7 @@
       text: Rest. You have earned it.
       tags: [yield]
       text_after: You sleep for two days. When you wake up the camp has organised itself without you, and the best places on the dunes are taken.
+      effects: [ { add: { health: 1 } } ]
       next: { pool: c2_camp, count: 1, then: c2_fireships }
 
 - id: c2_fireships
@@ -167,11 +168,11 @@
           You are not a sailor. You do not need to be. A Saltcombe shipman does the steering and you do the rest: keeping the crew down behind the bulwark while the bolts come in, and then the flint and the torch, and then the cog goes up under you like a haystack in August and you are over the side in the black water.
 
           Four of the six fireships get in among the moorings. By dawn Sauvemer's harbour is a field of black hulks and floating ash, and the people on the walls are watching it in silence. You are in a ship's boat, wrapped in a sail, with your teeth going like a mill. The admiral comes to find you himself.
-        effects: [ { set: flag.c2_fireship }, { add: { res.renown: 3, rep.crown: 1 } }, { trait: +veteran } ]
+        effects: [ { add: { counter.siege: 2 } }, { set: flag.c2_fireship }, { add: { res.renown: 3, rep.crown: 1 } }, { trait: +veteran } ]
         next: c2_assault
       partial:
         text: You get her in among the moorings and lit. Getting off her is the part that goes wrong. The bulwark catches you across the ribs on the way over, and you come out of the water half-drowned, and one of the crew does not come out at all. The harbour burns behind you.
-        effects: [ { set: flag.c2_fireship }, { injury: bruised_ribs }, { add: { res.renown: 2 } } ]
+        effects: [ { add: { counter.siege: 1 } }, { set: flag.c2_fireship }, { injury: bruised_ribs }, { add: { res.renown: 2 } } ]
         next: c2_assault
       failure:
         text: "[if !injured]A bolt takes the shipman at the steering oar and the cog goes wide, onto the harbour chain, and burns there uselessly. You are in the sea a long time before a boat finds you. Other fireships get in.[else]A bolt takes the shipman at the steering oar and the cog goes wide, onto the harbour chain, and you go over the side into the black water at Sauvemer, and the water keeps you.[/if]"
@@ -192,7 +193,7 @@
           - { if: npc.roger_tallis.follower, add: 1, label: "Tallis has done this before, somewhere" }
       success:
         text: A fat Valdrennish hulk at the inner moorings, with her crew ashore and six boys aboard her, who surrender to your men with their hands up and are glad to. You cut her cable and the tide carries her out past the burning ones, with you on her deck, past the sea tower, into the fleet. She is full of wine. Prize money is paid on wine.
-        effects: [ { set: flag.c2_cut_out_ship }, { add: { res.renown: 1, res.coin: 360, rel.simkin_barre.loyalty: 1, rel.roger_tallis.loyalty: 1 } } ]
+        effects: [ { add: { counter.siege: 1 } }, { set: flag.c2_cut_out_ship }, { add: { res.renown: 1, res.coin: 360, rel.simkin_barre.loyalty: 1, rel.roger_tallis.loyalty: 1 } } ]
         next: c2_assault
       failure:
         text: The ship you pick has her crew aboard. You get back to the boat with two men fewer than you went with, and nothing to show for it but the light of the others burning.
@@ -211,7 +212,7 @@
           - { if: flag.c1_shot_with_cobb, add: 1, label: the long butts with Cobb }
       success:
         text: Lying flat on wet stone under the sea tower, shooting at the slits by the light of the burning harbour. Every bolt that comes at you is one that did not go at a fireship. You lose nobody. Afterwards the shipmen of the fireships come along the mole and shake your archers' hands one by one, without saying anything.
-        effects: [ { add: { res.renown: 1, rep.commons: 1 } } ]
+        effects: [ { add: { counter.siege: 1 } }, { add: { res.renown: 1, rep.commons: 1 } } ]
         next: c2_assault
       failure:
         text: The tower has the range of the mole to an inch. You are pinned behind a bollard all night, and you are no use to anyone.
@@ -260,7 +261,7 @@
           You get to the top of the rubble. You see it: the new wall, twenty paces back, with a ditch in front and crossbowmen along the top, and the whole space between a killing ground. The men in front of you go down into the ditch and do not come up.
 
           You do not go down into the ditch. You get the men around you down the rubble again, alive, carrying two who cannot walk. It is the only thing anyone does right that morning. The heralds put your name in the roll of the storming party who came back. It is a short roll.
-        effects: [ { set: flag.c2_breach_survived }, { add: { res.renown: 2, rep.knights: 1 } }, { trait: +veteran } ]
+        effects: [ { add: { counter.siege: 1 } }, { set: flag.c2_breach_survived }, { add: { res.renown: 2, rep.knights: 1 } }, { trait: +veteran } ]
         next: c2_burial_truce
       partial:
         text: You get to the top, and see the new wall behind the breach, and a crossbow bolt takes you through the meat of the shoulder while you are looking at it. Your men drag you down the rubble. Not all of them come back down it.
@@ -298,7 +299,7 @@
         You stand in the mud at the foot of the rubble with your shields up while bolts come down like sleet, and you pull men out of the ditch as they come back down. Some of them are alive. You do it until the tide starts coming in, and then you go on doing it in the water.
 
         You save nine men that morning. The storm fails. Four hundred are dead in and below the breach, and nobody in the camp is talking about anything else.
-      effects: [ { set: flag.c2_held_ditch }, { add: { rep.honor: 1, rep.commons: 1, res.renown: 1 } } ]
+      effects: [ { add: { counter.siege: 1 } }, { set: flag.c2_held_ditch }, { add: { rep.honor: 1, rep.commons: 1, res.renown: 1 } } ]
       next: c2_burial_truce
     - id: refuse
       text: Tell your captain the breach is a trap, and keep your men out of it.
@@ -368,12 +369,12 @@
         effects: [ { assign: { suit.clemence_vaux.status: known } } ]
         next: c2_siege_winter
     - id: look
-      text: Use the truce to get a good look at the new wall behind the breach.
+      text: Use the truce to get a good look at the new wall behind the breach. Spying under a burial truce is not honourable.
       tags: [cunning]
       check: { attr: wits, skill: tactics, difficulty: 3 }
       success:
-        text: You carry a body up to the top of the rubble and stand there longer than you need to, getting your breath. The new wall is earth faced with timber, the ditch in front of it waist-deep, and the left end of it, where it meets the old curtain, is not finished. You draw it in the sand that night for your captain. He keeps the drawing.
-        effects: [ { set: flag.c2_saw_retrenchment }, { add: { rel.@master.respect: 1, rep.honor: -1 } } ]
+        text: You carry a body up to the top of the rubble and stand there longer than you need to, getting your breath. The new wall is earth faced with timber, the ditch in front of it waist-deep, and the left end of it, where it meets the old curtain, is not finished. You draw it in the sand that night for your captain. He keeps the drawing. He also says, not looking at you, that a burial truce is a holy thing, and that some of the knights saw you up there counting timbers over the dead, and that they will not forget it. Neither, you find, will the miners, when it comes to digging under that corner.
+        effects: [ { add: { counter.siege: 1 } }, { set: flag.c2_saw_retrenchment }, { add: { rel.@master.respect: 1, rep.honor: -1 } } ]
         next: c2_siege_winter
       failure:
         text: A Valdrennish serjeant sees what you are doing, and walks over, and stands in front of you with his arms folded until you go back down.
@@ -490,11 +491,11 @@
           On the fourth night a pick comes through the wall of the gallery a yard from your head, and a lamp behind it, and a face. Then it is knives, in the dark, with the lamps knocked over. You hold the gallery. The Valdrennish go back up their own tunnel, and Treloar's men fill it with brushwood and smoke them out of it.
 
           Two days later the Water Tower goes down in a cloud of dust that takes an hour to settle. It does not open the town. It opens a second breach, and Sauvemer's defenders have to man two of them now, with fewer men every week.
-        effects: [ { set: flag.c2_held_gallery }, { add: { res.renown: 2, rep.commons: 1 } }, { trait: +veteran } ]
+        effects: [ { add: { counter.siege: 2 } }, { set: flag.c2_held_gallery }, { add: { res.renown: 2, rep.commons: 1 } }, { trait: +veteran } ]
         next: c2_sortie
       partial:
         text: You hold the gallery. Something in the dark opens your arm from wrist to elbow. Treloar binds it with his own shirt.
-        effects: [ { set: flag.c2_held_gallery }, { injury: arrow_wound }, { add: { res.renown: 1 } } ]
+        effects: [ { add: { counter.siege: 1 } }, { set: flag.c2_held_gallery }, { injury: arrow_wound }, { add: { res.renown: 1 } } ]
         next: c2_sortie
       failure:
         text: "[if armour >= 1 && !injured]The tunnels meet, and the lamps go out, and something heavy hits you in the dark. You wake in the open air with Treloar's men looking down at you.[else]The tunnels meet, and the lamps go out, and you die under the walls of Sauvemer without seeing who killed you.[/if]"
@@ -509,7 +510,7 @@
       check: { attr: wits, skill: learning, difficulty: 4 }
       success:
         text: An old trick Treloar has heard of and never tried. Where the water in the bowl trembles, they are close. You find the countermine three days before it reaches you, and break into it from above while its diggers are asleep. Nobody on either side is killed. The Water Tower comes down a week later, on schedule. Treloar shakes your hand and says, in his own tongue, something nobody translates.
-        effects: [ { set: flag.c2_found_countermine }, { add: { res.renown: 1, skill.tactics: 1 } } ]
+        effects: [ { add: { counter.siege: 2 } }, { set: flag.c2_found_countermine }, { add: { res.renown: 1, skill.tactics: 1 } } ]
         next: c2_sortie
       failure:
         text: The water trembles everywhere, all the time, with the sea. You learn nothing that helps.
@@ -518,7 +519,7 @@
       text: Guard the mouth of the mine with your men, above ground.
       tags: [allies]
       text_after: Someone has to. The mine-head is the obvious place for the town to strike. You sit at it with your men night after night, and nothing happens, and you begin to believe nothing will.
-      effects: [ { set: flag.c2_guarded_minehead } ]
+      effects: [ { add: { counter.siege: 1 } }, { set: flag.c2_guarded_minehead } ]
       next: c2_sortie
 
 - id: c2_sortie
@@ -550,7 +551,7 @@
           - { if: flag.c2_guarded_minehead, add: 1, label: you were ready for them }
       success:
         text: They are on the beach with the tide coming in behind them, and you are between them and the sea gate. It is short and ugly. When it is done you have forty prisoners, the castellan's nephew among them, and the sea gate is shut on the rest. The engines are half burned. The mine is safe.
-        effects: [ { set: flag.c2_sortie_hero }, { add: { res.renown: 2, res.coin: 240 } } ]
+        effects: [ { add: { counter.siege: 1 } }, { set: flag.c2_sortie_hero }, { add: { res.renown: 2, res.coin: 240 } } ]
         next: c2_relief
       partial:
         text: You drive them back to the sea gate. It costs.
@@ -567,7 +568,7 @@
       text: Save what can be saved of the engines and the men under them.
       tags: [piety, learning]
       text_after: You drag men out from under burning timber all night, with wet sacking over your head and hands. The great trebuchet is lost. Its crew mostly is not. Bonifacio the engineer embraces you in the morning, weeping, smelling of smoke. Your eyebrows grow back by Lammas.
-      effects: [ { add: { rep.honor: 1, res.renown: 1 } }, { injury: bruised_ribs } ]
+      effects: [ { add: { counter.siege: 1 } }, { add: { rep.honor: 1, res.renown: 1 } }, { injury: bruised_ribs } ]
       next: c2_relief
     - id: gate
       text: Go for the sea gate behind them and cut them off from the town.
@@ -579,7 +580,7 @@
         mods: [ { if: flag.c2_engineers, add: 1, label: you know the ground } ]
       success:
         text: The tide is your ally. You get your men across the causeway to the sea gate before the raiders can get back, and they find themselves on a beach with the sea rising, the King's men in front and you behind. Half of them surrender on the spot. It is the cheapest victory of the siege. There have not been many.
-        effects: [ { set: flag.c2_sortie_hero }, { add: { res.renown: 2, rel.@master.respect: 2 } } ]
+        effects: [ { add: { counter.siege: 2 } }, { set: flag.c2_sortie_hero }, { add: { res.renown: 2, rel.@master.respect: 2 } } ]
         next: c2_relief
       failure:
         text: The causeway is under water before you are halfway. You get back soaked and empty-handed, to find the engines burning.

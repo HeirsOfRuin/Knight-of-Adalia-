@@ -411,3 +411,7 @@ c4_sworn_prince: { description: "Promised his banner to Prince Edwin", later: ch
 c4_vervais_deposited: { description: "Deposited the Vervais proof with the Chancellor", later: ch5 }
 c4_wat_land: { description: "Gave Wat Coker his family's holding back", later: ch5 }
 c4_wife_died_third: { description: "His wife died at the birth of their third child", later: ch5 }
+c2_rearguard_held_long: { description: "His stretch of the Grisolles rearguard held longest", later: ch4 }
+c2_rearguard_broke: { description: "His part of the Grisolles rearguard broke early", hidden: true, later: ch4 }
+c2_salines_decisive: { description: "Les Salines was decisive, and his part of the dyke helped make it so", later: ch4 }
+c2_salines_pyrrhic: { description: "His part of the dyke at Les Salines bent and nearly broke", hidden: true, later: ch4 }

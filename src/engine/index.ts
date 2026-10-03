@@ -3,6 +3,7 @@
 import type { Choice, ContentBundle, Outcome } from '../content/schema';
 import type { GameState, JournalEntry } from './state';
 import { RngCursor, seedRng } from './rng';
+import { stakesFor } from './stakes';
 import { test, unmetLabel } from './conditions';
 import { computeOdds, resolveCheck, type Band, type CheckResult } from './checks';
 import { applyEffects, newNpcState } from './effects';
@@ -96,6 +97,8 @@ export interface ChoiceView {
   lethal: boolean;
   warn?: string;
   tags: string[];
+  /** what the choice can change, for the hint line */
+  stakes: string[];
 }
 
 export interface SceneView {
@@ -140,6 +143,7 @@ export function view(content: ContentBundle, state: GameState, narrator: Narrati
           lethal: c.lethal,
           warn: c.warn,
           tags: c.tags,
+          stakes: stakesFor(content, state, c),
         };
       });
   return {

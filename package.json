@@ -18,7 +18,8 @@
     "balance": "tsx tools/balance.ts",
     "build:artifact": "npm run build && tsx tools/build-artifact.ts",
     "check": "npm run typecheck && npm test && npm run validate && npm run lint:style && npm run bot -- --runs 200",
-    "scan": "tsx tools/render-scan.ts"
+    "scan": "tsx tools/render-scan.ts",
+    "audit": "tsx tools/audit-choices.ts"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.10.6",

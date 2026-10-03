@@ -48,9 +48,12 @@ You count the sticks under your breath. You cannot help it; you never can. Forty
 
 Your father does not look at you. His hands are flat on the trestle and still as stones. He knows you can count. He taught you.
 
-- Say what you counted, out loud, in front of the clerk.
-- Keep your mouth shut and tell your father afterwards.
-- Say nothing. Copy the tallies onto Father Anselm's scrap of parchment that night.
+- Say what you counted, out loud, in front of the clerk.  
+  <small>At stake: Honor + · Piers − · Master Gervase Holt ± · Remembered later</small>
+- Keep your mouth shut and tell your father afterwards.  
+  <small>At stake: Ruthlessness + · Piers + · Coin + · Remembered later</small>
+- Say nothing. Copy the tallies onto Father Anselm's scrap of parchment that night.  
+  <small>At stake: Father Anselm + · Learning + · Copied tallies + · Remembered later</small>
 
 **Chose:** Say nothing. Copy the tallies onto Father Anselm's scrap of parchment that night.
 
@@ -88,9 +91,12 @@ Somebody knocks at the dairy door, which nobody ever does; people come in. It is
 
 She says it to your mother. She looks at you while she says it, as if daring you to say something.
 
-- Fill Mag's jug yourself, and carry it home for her.
-- Ask your mother about the brother whose tunic you wear.
-- Go out to the fields where your father is with the plough-teams.
+- Fill Mag's jug yourself, and carry it home for her.  
+  <small>At stake: Mag Coker + · Mag Coker + · Piers − · Remembered later</small>
+- Ask your mother about the brother whose tunic you wear.  
+  <small>At stake: Piety +</small>
+- Go out to the fields where your father is with the plough-teams.  
+  <small>At stake: Piers + · Stewardship +</small>
 
 **Chose:** Fill Mag's jug yourself, and carry it home for her.
 
@@ -114,10 +120,14 @@ The barley lies flat in the fields and sprouts in the ear. The sheep cough in th
 
 At Ashby your father has to collect the lord's dues from men who have nothing. The Cokers were put off their holding in the spring for arrears, on your father's word, and live in a hut by the common now, five of them in a space you could spit across. Wat Coker throws stones at you when you pass. "Reeve's whelp! Fat on our oats!" His sister Mag does not throw anything. She watches, and you would rather the stones.
 
-- Take your share of the bread to the Cokers' hut.
-- Set snares in Lord Ravell's chase after dark. *(Even)*
-- Go round the tenants with your father and the steward, collecting arrears.
-- Get into the tithe barn at night and fill a sack. *(Even)*
+- Take your share of the bread to the Cokers' hut.  
+  <small>At stake: Common Folk + · Piety + · Wat Coker + · Mag Coker +</small>
+- Set snares in Lord Ravell's chase after dark. *(Even)*  
+  <small>At stake: A wound · Common Folk + · Mariot Wood + · Woodcraft +</small>
+- Go round the tenants with your father and the steward, collecting arrears.  
+  <small>At stake: Common Folk − · Merchants + · Master Gervase Holt + · Wat Coker −</small>
+- Get into the tithe barn at night and fill a sack. *(Even)*  
+  <small>At stake: Ruthlessness + · Church − · Common Folk − · Intrigue +</small>
 
 **Chose:** Go round the tenants with your father and the steward, collecting arrears.
 
@@ -137,9 +147,12 @@ He is not old, as knights go: about thirty, lean and brown, in a red surcoat bad
 
 He sees you watching from the smithy door. Everyone else has found a reason to be elsewhere; ordinary people do not stand about near knights. He looks at you with a kind of amusement, as if you were a puppy that had wandered into church, and says, "Well? Do you want to hold him, or don't you?"
 
-- Hold his horse while the smith works.
-- Ask him how a man becomes a knight.
-- The squire kicks the smith's dog. Kick him back.
+- Hold his horse while the smith works.  
+  <small>At stake: Sir Walter Pryce + · Coin +</small>
+- Ask him how a man becomes a knight.  
+  <small>At stake: Sir Walter Pryce + · Coin + · Remembered later</small>
+- The squire kicks the smith's dog. Kick him back.  
+  <small>At stake: Common Folk + · Honor + · Sir Walter Pryce + · Remembered later</small>
 - Watch from a safe distance, and say nothing.
 
 **Chose:** Hold his horse while the smith works.
@@ -166,10 +179,14 @@ Father Anselm will teach Latin letters to any boy who brings him firewood. Old S
 
 Whatever you choose, something else goes untaught.
 
-- Learn your letters, Latin and Adalian, properly.
-- Learn to fight with sword and buckler.
-- Learn how gentlefolk eat, speak and stand, by serving at their tables.
-- Learn horses and hounds, riding and the chase.
+- Learn your letters, Latin and Adalian, properly.  
+  <small>At stake: Father Anselm + · Father Benet + · Learning + · Remembered later</small>
+- Learn to fight with sword and buckler.  
+  <small>At stake: Will Cobb + · Sir Bertram Oakes + · Arms + · Remembered later</small>
+- Learn how gentlefolk eat, speak and stand, by serving at their tables.  
+  <small>At stake: Courtesy + · Remembered later</small>
+- Learn horses and hounds, riding and the chase.  
+  <small>At stake: Riding + · Woodcraft + · Remembered later</small>
 
 **Chose:** Learn your letters, Latin and Adalian, properly.
 
@@ -191,9 +208,12 @@ You are twelve, and this year, for the first time, you are not one of the childr
 
 Mag Coker is by the barrel, with her brother Wat watching her like a dog with a bone. She sees you. She does not look away.
 
-- Ask Mag to jump the fire with you.
-- Stay with the young men, and jump it alone.
-- Walk Mag home the long way, when the fire burns down.
+- Ask Mag to jump the fire with you.  
+  <small>At stake: Mag Coker + · Piers − · Wat Coker − · Annot Dyer +</small>
+- Stay with the young men, and jump it alone.  
+  <small>At stake: Common Folk + · Wat Coker + · Remembered later</small>
+- Walk Mag home the long way, when the fire burns down.  
+  <small>At stake: Mag Coker ± · Annot Dyer ± · Mariot Wood ± · Nell ±</small>
 - Go home before the drinking starts.
 
 **Chose:** Ask Mag to jump the fire with you.
@@ -216,10 +236,14 @@ By the next spring, you have stopped being a child in other people's eyes, and s
 
 Wat Coker is fifteen and built like a barn door. He says your father stole his family's holding, and he says it at the ale-stake where everyone can hear. "Thief's son! Ask him where our oats went!" Tonight he is waiting at the churchyard wall with two friends, and one of them has a cudgel. Mag ran past your door at dusk and said, without stopping, "Don't go by the church." Then she was gone.
 
-- Meet him at the wall with your fists. *(Even)*
-- Go round by the mill and let the steward's men find Wat waiting with a weapon. *(Even)*
-- Go to the Cokers' hut by daylight and talk to Wat. *(Even)*
-- Do nothing. Let it pass and keep your head down.
+- Meet him at the wall with your fists. *(Even)*  
+  <small>At stake: A wound · Common Folk + · Wat Coker ± · Giles Marrick −</small>
+- Go round by the mill and let the steward's men find Wat waiting with a weapon. *(Even)*  
+  <small>At stake: Common Folk − · Ruthlessness + · Wat Coker ± · Mag Coker −</small>
+- Go to the Cokers' hut by daylight and talk to Wat. *(Even)*  
+  <small>At stake: Common Folk − · Wat Coker ± · Remembered later</small>
+- Do nothing. Let it pass and keep your head down.  
+  <small>At stake: Honor + · Wat Coker −</small>
 
 **Chose:** Go to the Cokers' hut by daylight and talk to Wat. (Even: success)
 
@@ -255,9 +279,12 @@ Lord Ravell is to visit at Martinmas with thirty mouths. Master Gervase Holt is 
 
 Your father stands behind the steward with his hat in his hands. He does not look at you. Things have not been easy between you since the reckoning.
 
-- Step forward and show Sir Hamon where the reckoning is wrong. *(Favorable)*
-- ~~Let your father call in what Master Gervase owes him.~~ *(Favorable, Requires: your father's goodwill)*
-- Wait for a chance to be seen. *(Even)*
+- Step forward and show Sir Hamon where the reckoning is wrong. *(Favorable)*  
+  <small>At stake: Your station + · Sir Hamon Darrell + · Master Gervase Holt −</small>
+- ~~Let your father call in what Master Gervase owes him.~~ *(Favorable, Requires: your father's goodwill)*  
+  <small>At stake: Your station + · Piers ±</small>
+- Wait for a chance to be seen. *(Even)*  
+  <small>At stake: A wound · Your station + · Renown + · Common Folk +</small>
 - Do nothing. Sir Hamon will choose whom he chooses.
 
 **Chose:** Step forward and show Sir Hamon where the reckoning is wrong. (Favorable: success)
@@ -286,9 +313,12 @@ You go as a knight's boy, which is not yet a squire and is a long way from a kni
 
 Your father walks you to the stile. He has something to say, and takes most of the lane not saying it. "Master Gervase will be watching you," he manages at last. "And he'll be watching me. You remember who your friends are." Cis says you'd better send her a ribbon. Avice cries. Mag Coker is at the well when you pass, with two buckets, and she does not pretend not to see you.
 
-- Go to Mag and tell her you will come back.
-- Promise your father you will keep an eye on Master Gervase for him.
-- Leave before dawn, before anyone can make you promise anything.
+- Go to Mag and tell her you will come back.  
+  <small>At stake: Mag Coker ± · Wat Coker − · Annot Dyer + · Ralf Mercer −</small>
+- Promise your father you will keep an eye on Master Gervase for him.  
+  <small>At stake: Piers + · Ralf Mercer + · Hugh Fletcher + · Will Cobb +</small>
+- Leave before dawn, before anyone can make you promise anything.  
+  <small>At stake: Mag Coker − · Annot Dyer − · Mariot Wood − · Nell −</small>
 
 **Chose:** Promise your father you will keep an eye on Master Gervase for him.
 
@@ -320,9 +350,12 @@ The eldest of the four is Giles Marrick, nineteen, the second son of a Carrow kn
 
 Aymer Ravell is there too: the lord's younger son, sixteen, fair, quick, restless, already bored with you and everyone else. He asks where you are from, and when you tell him he says "Ah," as if that explained something, and goes back to his dice.
 
-- Kneel to your master in the yard, properly, as if you had been doing it all your life. *(Risky)*
-- Go straight to the stables and make yourself useful before anyone tells you to.
-- Find someone in the hall who might tell you how things are done here.
+- Kneel to your master in the yard, properly, as if you had been doing it all your life. *(Risky)*  
+  <small>At stake: Sir Hamon Darrell + · Giles Marrick −</small>
+- Go straight to the stables and make yourself useful before anyone tells you to.  
+  <small>At stake: Sir Hamon Darrell + · Master Ranulf +</small>
+- Find someone in the hall who might tell you how things are done here.  
+  <small>At stake: Isabel Sayer +</small>
 
 **Chose:** Kneel to your master in the yard, properly, as if you had been doing it all your life. (Risky: success)
 
@@ -344,9 +377,12 @@ You have a place by the wall, which is the worst place, because it is the coldes
 
 Somebody sits down on the end of your pallet in the dark. It is Aymer Ravell, the lord's second son, who has no business in a groom's loft or a squires' corner at this hour, with a candle-end and a pie he has stolen from the kitchen. "You're Hamon's new boy," he says. "So am I, come spring. Want some pie?"
 
-- Share the pie, and talk until the candle goes out.
-- Lie awake, and think about home.
-- Get up before anyone, and have your work done before they wake.
+- Share the pie, and talk until the candle goes out.  
+  <small>At stake: Aymer Ravell + · Will Cobb +</small>
+- Lie awake, and think about home.  
+  <small>At stake: Mag Coker + · Annot Dyer + · Mariot Wood + · Nell +</small>
+- Get up before anyone, and have your work done before they wake.  
+  <small>At stake: Sir Hamon Darrell +</small>
 
 **Chose:** Share the pie, and talk until the candle goes out.
 
@@ -368,9 +404,12 @@ A swan, roasted and then dressed again in its own skin and feathers, with a gild
 
 You knew the name before you heard it. A knight on a lame horse in the wet year, and a penny, and four things a man needs. He does not look at you. Why would he.
 
-- Serve slowly and correctly, every joint in its place. *(Risky)*
-- Serve it fast and plain, the way a hungry man wants to be served. *(Even)*
-- Watch the others closely and do exactly what the best of them does. *(Even)*
+- Serve slowly and correctly, every joint in its place. *(Risky)*  
+  <small>At stake: Your station + · Sir Hamon Darrell ± · Sir Walter Pryce + · Giles Marrick −</small>
+- Serve it fast and plain, the way a hungry man wants to be served. *(Even)*  
+  <small>At stake: Your station + · Sir Walter Pryce + · Sir Hamon Darrell ±</small>
+- Watch the others closely and do exactly what the best of them does. *(Even)*  
+  <small>At stake: Your station + · Courtesy +</small>
 
 **Chose:** Serve slowly and correctly, every joint in its place. (Risky: success)
 
@@ -392,11 +431,16 @@ He calls you the reeve's son in front of the other squires, as if it were your n
 
 The other squires watch to see what you do.
 
-- Challenge him at the pell, in front of Sir Bertram Oakes. *(Risky)*
-- Arrange for Giles to be found where he should not be. *(Even)*
-- Win over the other squires, one at a time, until Giles is the one who stands alone. *(Even)*
-- ~~Stand the whole loft a cask of Gascon wine on Saint Michael's night.~~ *(Requires Coin 5s)*
-- Take it. Do your duties better than he does his, and let that be your answer.
+- Challenge him at the pell, in front of Sir Bertram Oakes. *(Risky)*  
+  <small>At stake: A wound · Renown + · Knights + · Giles Marrick ±</small>
+- Arrange for Giles to be found where he should not be. *(Even)*  
+  <small>At stake: Ruthlessness + · Giles Marrick − · Sir Hamon Darrell − · Intrigue +</small>
+- Win over the other squires, one at a time, until Giles is the one who stands alone. *(Even)*  
+  <small>At stake: Knights + · Aymer Ravell + · Giles Marrick + · Remembered later</small>
+- ~~Stand the whole loft a cask of Gascon wine on Saint Michael's night.~~ *(Requires Coin 5s)*  
+  <small>At stake: Knights + · Giles Marrick − · Coin − · Remembered later</small>
+- Take it. Do your duties better than he does his, and let that be your answer.  
+  <small>At stake: Honor + · Sir Hamon Darrell + · Giles Marrick − · Remembered later</small>
 
 **Chose:** Take it. Do your duties better than he does his, and let that be your answer.
 
@@ -410,9 +454,12 @@ It is a long autumn. Your master's harness is fished out of the moat and cleaned
 
 Wat Coker has come to Ravell. He took the levy's penny after his family lost their holding, and he is in Will Cobb's company now, a big man with a bow and a long memory. He nods to you in the yard. Not friendship. Not war either.
 
-- Make it right with him, once and for all. *(Favorable)*
-- Make it clear, in front of others, who stands higher now. *(Even)*
-- Let the marshal know Wat still sets snares in the chase.
+- Make it right with him, once and for all. *(Favorable)*  
+  <small>At stake: Wat Coker ± · Remembered later</small>
+- Make it clear, in front of others, who stands higher now. *(Even)*  
+  <small>At stake: Wat Coker ± · Sir Hamon Darrell −</small>
+- Let the marshal know Wat still sets snares in the chase.  
+  <small>At stake: Ruthlessness + · Wat Coker − · Sir Hamon Darrell +</small>
 - Leave it. You have work to do.
 
 **Chose:** Make it right with him, once and for all. (Favorable: success)
@@ -433,8 +480,10 @@ Lady Ravell shuts herself in the solar with her women and burns juniper until th
 
 And your master needs someone to do Edmund Penn's work, and someone to carry Edmund Penn's body down to the churchyard.
 
-- Help Father Benet with the sick. *(Even)*
-- Keep away from the sick and the dead.
+- Help Father Benet with the sick. *(Even)*  
+  <small>At stake: A wound · Common Folk + · Piety + · Father Benet +</small>
+- Keep away from the sick and the dead.  
+  <small>At stake: Common Folk −</small>
 
 **Chose:** Help Father Benet with the sick. (Even: success)
 
@@ -456,10 +505,14 @@ It is the first winter, and you are learning that a household in winter is a sch
 
 You have the winter. You cannot be everywhere.
 
-- Sir Bertram's pell, every morning, until your arms stop shaking.
-- The covered ride with Master Ranulf and the young horses.
-- Father Benet's cold room, and the lord's accounts.
-- Lady Ravell's hall, where the young men learn to be company.
+- Sir Bertram's pell, every morning, until your arms stop shaking.  
+  <small>At stake: Sir Bertram Oakes +</small>
+- The covered ride with Master Ranulf and the young horses.  
+  <small>At stake: Master Ranulf +</small>
+- Father Benet's cold room, and the lord's accounts.  
+  <small>At stake: Father Benet + · Learning + · Stewardship +</small>
+- Lady Ravell's hall, where the young men learn to be company.  
+  <small>At stake: Will Cobb + · Isabel Sayer + · Command + · Courtesy +</small>
 
 **Chose:** Father Benet's cold room, and the lord's accounts.
 
@@ -483,10 +536,14 @@ He calls you into the chamber afterwards, with the hounds asleep on his feet and
 
 "You can count," he says. "God help me. Count this."
 
-- Sit down with the subsidy rolls and the Ashby accounts, and find where it went. *(Favorable)*
-- Go down to Master Lanzi yourself and talk him into waiting. *(Even)*
-- Tell Lord Ravell, quietly, before somebody less friendly does.
-- It is your master's business. Keep out of it.
+- Sit down with the subsidy rolls and the Ashby accounts, and find where it went. *(Favorable)*  
+  <small>At stake: Sir Hamon Darrell + · Remembered later</small>
+- Go down to Master Lanzi yourself and talk him into waiting. *(Even)*  
+  <small>At stake: Sarenza + · Bertuccio Lanzi + · Sir Hamon Darrell + · Remembered later</small>
+- Tell Lord Ravell, quietly, before somebody less friendly does.  
+  <small>At stake: Ruthlessness + · Sir Hamon Darrell − · Lord Thurstan Ravell +</small>
+- It is your master's business. Keep out of it.  
+  <small>At stake: Sir Hamon Darrell +</small>
 
 **Chose:** Sit down with the subsidy rolls and the Ashby accounts, and find where it went. (Favorable: success)
 
@@ -500,9 +557,12 @@ Three nights. The subsidy was collected in full. Some of it went through Ashby o
 
 Wendham on market day is a din of carts and hawkers and pigs loose in the street, and girls with baskets, and Sarenzan sailors with gold in their ears, and the smell of the tan-pits over everything. It will take all day if you are quick, and two if you are not, and there is a great deal in Wendham to make a young man not quick.
 
-- Deliver the letter to Master Fuller in person, and stay to dinner if asked.
-- Do the errands fast and cheap, and keep what you save. *(Even)*
-- Do the errands, and spend the afternoon in the Bell listening to the carriers' news.
+- Deliver the letter to Master Fuller in person, and stay to dinner if asked.  
+  <small>At stake: Merchants + · Cecily Fuller +</small>
+- Do the errands fast and cheap, and keep what you save. *(Even)*  
+  <small>At stake: Coin +</small>
+- Do the errands, and spend the afternoon in the Bell listening to the carriers' news.  
+  <small>At stake: Intrigue + · Tactics +</small>
 
 **Chose:** Deliver the letter to Master Fuller in person, and stay to dinner if asked.
 
@@ -522,10 +582,14 @@ Home is a day's walk. You do it in less, and come over the last rise at dusk, an
 
 Your father has a new cough and the same tallies. Your mother has put the blue tunic away at last; Cis is wearing it, cut down, and is furious about it. Mag Coker is at the well with two buckets.
 
-- Spend all three days with your family.
-- Find Mag, and spend the evenings with her.
-- Spend your wages on gifts for everyone, and let them see you can.
-- Give up your leave, and stay with your master.
+- Spend all three days with your family.  
+  <small>At stake: Piers + · Ralf Mercer + · Hugh Fletcher + · Agnes +</small>
+- Find Mag, and spend the evenings with her.  
+  <small>At stake: Mag Coker + · Annot Dyer + · Mariot Wood + · Nell +</small>
+- Spend your wages on gifts for everyone, and let them see you can.  
+  <small>At stake: Common Folk + · Piers + · Ralf Mercer + · Hugh Fletcher +</small>
+- Give up your leave, and stay with your master.  
+  <small>At stake: Sir Hamon Darrell +</small>
 
 **Chose:** Spend all three days with your family.
 
@@ -549,11 +613,16 @@ Lady Ravell's women dance the carol in a ring and choose partners from the young
 
 At the top table the knights are drinking a health to the King's claim on Valdrenne, whatever that is going to mean.
 
-- Join the carol and dance with Isabel Sayer. *(Risky)*
-- Carry Lady Maud's cup when her own page is drunk, and listen to her. *(Risky)*
-- Go below the salt and sit with the Wendham burgesses. *(Favorable)*
-- Drink with the knights at the top table, and keep up. *(Even)*
-- Slip out to the chapel and write to Mag at home.
+- Join the carol and dance with Isabel Sayer. *(Risky)*  
+  <small>At stake: Isabel Sayer ± · Isabel Sayer + · Lady Eleanor Ravell −</small>
+- Carry Lady Maud's cup when her own page is drunk, and listen to her. *(Risky)*  
+  <small>At stake: Lady Maud de Lisle ± · Remembered later</small>
+- Go below the salt and sit with the Wendham burgesses. *(Favorable)*  
+  <small>At stake: Merchants + · Knights − · Cecily Fuller +</small>
+- Drink with the knights at the top table, and keep up. *(Even)*  
+  <small>At stake: Knights + · Sir Hamon Darrell + · Sir Bertram Oakes + · Giles Marrick −</small>
+- Slip out to the chapel and write to Mag at home.  
+  <small>At stake: Mag Coker + · Annot Dyer + · Mariot Wood + · Nell +</small>
 
 **Chose:** Join the carol and dance with Isabel Sayer. (Risky: success)
 
@@ -573,9 +642,12 @@ It is the first time you have been alone with your master for more than an hour.
 
 The hounds find nothing all morning. Sir Hamon does not seem to mind. He sits his old grey on the edge of a covert with the reins loose, eating bread and cheese from his saddlebag and giving half to the dogs, and talks: about his father, who was a hard man, and his wife, who died eleven years ago in childbed with the child, and whom he still talks to sometimes, at night. He says it as if it were ordinary. Perhaps it is.
 
-- Ask him about his wife.
-- Ask him to teach you the hounds properly.
-- Say nothing, and keep him company.
+- Ask him about his wife.  
+  <small>At stake: Sir Hamon Darrell + · Remembered later</small>
+- Ask him to teach you the hounds properly.  
+  <small>At stake: Sir Hamon Darrell + · Woodcraft + · Tactics + · Remembered later</small>
+- Say nothing, and keep him company.  
+  <small>At stake: Sir Hamon Darrell +</small>
 
 **Chose:** Ask him to teach you the hounds properly.
 
@@ -599,10 +671,14 @@ Will Cobb's archers are down from the March for the season, shooting at the long
 
 "You've got a month before the March gets lively," Sir Bertram says, wiping his face with a two-fingered hand. "Use it, or don't. It's your neck."
 
-- Ride at the quintain until it stops knocking you down. *(Even)*
-- Ask Sir Bertram for sword and buckler, every morning, until he is sick of you.
-- Go down to the long butts and shoot with Cobb's archers.
-- Sit with Father Benet and the rolls of arms.
+- Ride at the quintain until it stops knocking you down. *(Even)*  
+  <small>At stake: A wound · Sir Bertram Oakes + · Remembered later</small>
+- Ask Sir Bertram for sword and buckler, every morning, until he is sick of you.  
+  <small>At stake: Sir Bertram Oakes + · Remembered later</small>
+- Go down to the long butts and shoot with Cobb's archers.  
+  <small>At stake: Common Folk + · Will Cobb + · Remembered later</small>
+- Sit with Father Benet and the rolls of arms.  
+  <small>At stake: Father Benet + · Courtesy + · Learning + · Remembered later</small>
 
 **Chose:** Ride at the quintain until it stops knocking you down. (Even: failure)
 
@@ -628,9 +704,12 @@ You are going. Everyone is going. The armourer in the outer ward has a queue rou
 
 You own a shirt, a cloak, and whatever your master lends you. A Caldmoor spear does not care which.
 
-- Buy a padded jack and a kettle hat from the armourer. Three shillings.
-- ~~Ask your master for the loan of his old jack.~~ *(Requires: your master's goodwill)*
-- Spend the night before in the chapel, instead.
+- Buy a padded jack and a kettle hat from the armourer. Three shillings.  
+  <small>At stake: Coin − · Padded jack + · Kettle hat +</small>
+- ~~Ask your master for the loan of his old jack.~~ *(Requires: your master's goodwill)*  
+  <small>At stake: Sir Hamon Darrell + · Padded jack +</small>
+- Spend the night before in the chapel, instead.  
+  <small>At stake: Piety + · Church +</small>
 - Go as you are.
 
 **Chose:** Buy a padded jack and a kettle hat from the armourer. Three shillings.
@@ -655,11 +734,16 @@ Sir Ancel says the horse will go in when the archers have loosed twice. That is 
 
 Your mouth is dry. Your hands are steady, which surprises you. Somewhere across the water a cow is bellowing, the same note over and over.
 
-- Take a spear and go into the ford with the horse. *(Favorable, MORTAL DANGER)*
-- Take two of Cobb's men upstream to the second ford and get behind the herd. *(Even)*
-- Get down into the alders with Cobb's archers and make them shoot faster. *(Risky)*
-- Wade out and shout for a parley. The cattle, for their lives. *(Even)*
-- Stay with the horses, as you were told.
+- Take a spear and go into the ford with the horse. *(Favorable, MORTAL DANGER)*  
+  <small>At stake: A wound · Your life · Renown + · Knights +</small>
+- Take two of Cobb's men upstream to the second ford and get behind the herd. *(Even)*  
+  <small>At stake: Renown + · Sir Hamon Darrell + · Sir Ancel Brome + · Remembered later</small>
+- Get down into the alders with Cobb's archers and make them shoot faster. *(Risky)*  
+  <small>At stake: A wound · Renown + · Will Cobb + · Sir Ancel Brome +</small>
+- Wade out and shout for a parley. The cattle, for their lives. *(Even)*  
+  <small>At stake: Renown + · Caldmoor + · Honor + · Sir Ancel Brome −</small>
+- Stay with the horses, as you were told.  
+  <small>At stake: Sir Hamon Darrell + · Sir Hugh Wyck's sword + · Remembered later</small>
 
 **Chose:** Stay with the horses, as you were told.
 
@@ -698,9 +782,12 @@ You tell her anyway. You give her the sword. She holds it across her knees, not 
 
 Her stepson Ralph, nineteen and Sir Hugh's son by his first wife, comes in while you are still talking, with mud to the knee, and asks whether the sword is his now. She does not answer him. She does not look at him. She looks at you.
 
-- Stay to supper, and let her talk about him.
-- Tell Ralph Wyck plainly that the sword is his father's widow's to give.
-- Give her the sword, say what must be said, and go.
+- Stay to supper, and let her talk about him.  
+  <small>At stake: Dame Joan Wyck + · Dame Joan Wyck + · Sir Hugh Wyck's sword −</small>
+- Tell Ralph Wyck plainly that the sword is his father's widow's to give.  
+  <small>At stake: Honor + · Dame Joan Wyck + · Dame Joan Wyck + · Sir Hugh Wyck's sword −</small>
+- Give her the sword, say what must be said, and go.  
+  <small>At stake: Honor + · Sir Hugh Wyck's sword −</small>
 
 **Chose:** Stay to supper, and let her talk about him.
 
@@ -714,8 +801,10 @@ Whitsun, and the village has a ram tied to a post on the green for the best wres
 
 "Come on, then, Lord Ravell's own!" somebody yells at you. "Or are you too fine for it now?" The crowd hoots. A huge red-faced ploughman called Big Hodge is standing in the ring with his arms folded, waiting for anybody stupid enough.
 
-- Strip off and get in the ring. *(Even)*
-- Stay on the hurdles and bet on Hodge.
+- Strip off and get in the ring. *(Even)*  
+  <small>At stake: A wound · Common Folk +</small>
+- Stay on the hurdles and bet on Hodge.  
+  <small>At stake: Coin +</small>
 
 **Chose:** Strip off and get in the ring. (Even: success)
 
@@ -729,7 +818,8 @@ The squires have a game on summer evenings, after the knights have gone in: a br
 
 Giles Marrick has the ring tonight, on a string round his neck, and is making a show of it. "Well?" he calls across the meadow. "Anyone?"
 
-- Borrow a horse and a lance, and go for the ring. *(Even)*
+- Borrow a horse and a lance, and go for the ring. *(Even)*  
+  <small>At stake: Knights + · Coin −</small>
 - Hold the horses, and watch how the good ones do it.
 
 **Chose:** Borrow a horse and a lance, and go for the ring. (Even: failure)
@@ -752,9 +842,12 @@ Sometimes it is the first man you saw die close enough to touch. You did not kno
 
 By Candlemas, other men have noticed that you are not sleeping.
 
-- Talk to Aymer about it.
-- Go to Father Benet, and make your confession.
-- Work until you are too tired to dream.
+- Talk to Aymer about it.  
+  <small>At stake: Aymer Ravell + · Will Cobb +</small>
+- Go to Father Benet, and make your confession.  
+  <small>At stake: Piety + · Father Benet +</small>
+- Work until you are too tired to dream.  
+  <small>At stake: Sir Bertram Oakes +</small>
 - Keep it to yourself. Everyone has their own.
 
 **Chose:** Talk to Aymer about it.
@@ -775,9 +868,12 @@ Your twelve are what was left over: four Ravell foresters, three of Cobb's young
 
 The first night, two of them are asleep on watch, the carter has lost the flint, and the Ingrams are fighting over a blanket. Thwaite sits by the fire, coughs, and watches to see what you will do about it.
 
-- Sit down with them, one at a time, and learn who they are.
-- Set a hard roster, and walk the watch yourself every night. *(Even)*
-- Leave the men to Thwaite, and spend the weeks riding the fords.
+- Sit down with them, one at a time, and learn who they are.  
+  <small>At stake: Common Folk +</small>
+- Set a hard roster, and walk the watch yourself every night. *(Even)*  
+  <small>At stake: Common Folk −</small>
+- Leave the men to Thwaite, and spend the weeks riding the fords.  
+  <small>At stake: Tactics + · Woodcraft + · Remembered later</small>
 
 **Chose:** Sit down with them, one at a time, and learn who they are.
 
@@ -803,9 +899,12 @@ Inside the helm, the world is a slot of light and the sound of your own breath, 
 
 "When you're ready," he says. "Or not. Up to you."
 
-- Go at him, and keep going. *(Even)*
-- Make him come to you. Let him tire himself. *(Even)*
-- Tell him you are not ready, and take your test next year.
+- Go at him, and keep going. *(Even)*  
+  <small>At stake: A wound · Renown + · Knights + · Sir Bertram Oakes +</small>
+- Make him come to you. Let him tire himself. *(Even)*  
+  <small>At stake: Sir Bertram Oakes + · Tactics + · Remembered later</small>
+- Tell him you are not ready, and take your test next year.  
+  <small>At stake: Knights −</small>
 
 **Chose:** Go at him, and keep going. (Even: failure)
 
@@ -829,10 +928,14 @@ The Earl of Carrow rides in on the second day with Sir Walter Pryce and forty me
 
 The household is in a fever. Squires are everywhere at once. For three days it is possible, just, for anyone to be seen by anyone.
 
-- Get yourself near the King. Hold his stirrup, carry his cup, be there. *(Risky)*
-- Watch the King's household for whoever is watching it. *(Even)*
-- Make yourself known to Sir Walter Pryce, who is hiring men for the war. *(Favorable)*
-- Keep to your master's side and do your work well.
+- Get yourself near the King. Hold his stirrup, carry his cup, be there. *(Risky)*  
+  <small>At stake: Renown + · Crown + · Remembered later</small>
+- Watch the King's household for whoever is watching it. *(Even)*  
+  <small>At stake: Renown + · Crown + · Sarenza − · Remembered later</small>
+- Make yourself known to Sir Walter Pryce, who is hiring men for the war. *(Favorable)*  
+  <small>At stake: Sir Walter Pryce + · Remembered later</small>
+- Keep to your master's side and do your work well.  
+  <small>At stake: Sir Hamon Darrell +</small>
 
 **Chose:** Get yourself near the King. Hold his stirrup, carry his cup, be there. (Risky: success)
 
@@ -854,11 +957,16 @@ Giles Marrick has entered everything. He is twenty now and is to be knighted at 
 
 Isabel Sayer is in the stands with Lady Ravell's women. She has a green sleeve in her lap. She has not given it to anyone yet. She is not looking at you, in a way that takes some effort.
 
-- ~~Ride in the squires' course.~~ *(Risky, Requires: a horse, or your master's loan of one)*
-- Fight in the melee on foot. *(Even)*
-- Serve your master in the lists: his horse, his lances, his helm, everything right. *(Even)*
-- ~~Spend the day below the stands, betting on other men.~~ *(Even, Requires Coin 2s)*
-- Ask Isabel Sayer for her green sleeve, and wear it.
+- ~~Ride in the squires' course.~~ *(Risky, Requires: a horse, or your master's loan of one)*  
+  <small>At stake: A wound · Renown + · Knights + · Crown +</small>
+- Fight in the melee on foot. *(Even)*  
+  <small>At stake: A wound · Renown + · Knights + · Giles Marrick +</small>
+- Serve your master in the lists: his horse, his lances, his helm, everything right. *(Even)*  
+  <small>At stake: Your station + · Sir Hamon Darrell ± · Sir Bertram Oakes + · Remembered later</small>
+- ~~Spend the day below the stands, betting on other men.~~ *(Even, Requires Coin 2s)*  
+  <small>At stake: Merchants + · Coin ±</small>
+- Ask Isabel Sayer for her green sleeve, and wear it.  
+  <small>At stake: Isabel Sayer ± · Lady Eleanor Ravell −</small>
 
 **Chose:** Serve your master in the lists: his horse, his lances, his helm, everything right. (Even: success)
 
@@ -874,9 +982,12 @@ A letter from your father, in his own careful clerk's hand.
 
 Master Gervase is squeezing him. The steward has been skimming the manor for years, and now he is blaming your father's tallies for the gaps. Your father asks you, if you still have the copy you made as a boy, to keep it safe. "It may be all that saves me," he writes.
 
-- Take the copy to Sir Hamon, and tell him what the steward is doing.
-- ~~Send him what money you can, and tell him to hold firm.~~ *(Requires Coin 5s)*
-- Write back that you cannot be mixed up in it.
+- Take the copy to Sir Hamon, and tell him what the steward is doing.  
+  <small>At stake: Sir Hamon Darrell + · Piers + · Remembered later</small>
+- ~~Send him what money you can, and tell him to hold firm.~~ *(Requires Coin 5s)*  
+  <small>At stake: Piers + · Coin −</small>
+- Write back that you cannot be mixed up in it.  
+  <small>At stake: Honor + · Piers −</small>
 
 **Chose:** Take the copy to Sir Hamon, and tell him what the steward is doing.
 
@@ -892,9 +1003,12 @@ Aymer Ravell is in the end stall of the stable, in the dark, with his face red t
 
 "So I'm asking you," he says. "God help me. You're the only one I know who wouldn't tell."
 
-- ~~Lend him what you can. Five shillings.~~ *(Requires Coin 5s)*
-- Tell him he must go to his father, and offer to stand beside him when he does. *(Favorable)*
-- Tell him you have nothing to lend.
+- ~~Lend him what you can. Five shillings.~~ *(Requires Coin 5s)*  
+  <small>At stake: Aymer Ravell + · Coin −</small>
+- Tell him he must go to his father, and offer to stand beside him when he does. *(Favorable)*  
+  <small>At stake: Aymer Ravell ± · Lord Thurstan Ravell +</small>
+- Tell him you have nothing to lend.  
+  <small>At stake: Aymer Ravell −</small>
 
 **Chose:** Tell him he must go to his father, and offer to stand beside him when he does. (Favorable: failure)
 
@@ -916,10 +1030,14 @@ The rumour is war. The King has gone south to argue with the Moot. Every man in 
 
 There is not time for everything. There never is.
 
-- Ask for a file of men, and learn to drill them.
-- Sit with your master over the old campaigns, and learn how wars are fought.
-- Learn the business of a manor, from the steward's books.
-- Learn Valdrennish from the Queen's Valdrennish clerk who is snowed in at Ravell.
+- Ask for a file of men, and learn to drill them.  
+  <small>At stake: Remembered later</small>
+- Sit with your master over the old campaigns, and learn how wars are fought.  
+  <small>At stake: Tactics + · Remembered later</small>
+- Learn the business of a manor, from the steward's books.  
+  <small>At stake: Stewardship + · Trade + · Remembered later</small>
+- Learn Valdrennish from the Queen's Valdrennish clerk who is snowed in at Ravell.  
+  <small>At stake: Valdrenne + · Diplomacy + · Learning + · Remembered later</small>
 
 **Chose:** Ask for a file of men, and learn to drill them.
 
@@ -959,12 +1077,18 @@ Afterwards, in the passage, Sir Hamon leans against the wall with his hand on hi
 
 You have your copy of the Ashby figures in your shirt. You can feel it there, like a second heart.
 
-- Go through the rolls in front of the commissioners and show where the money went. *(Favorable)*
-- ~~Broker a loan from the Lanzi bank to pay the shortfall, before Lammas.~~ *(Even, Requires: a way in at the Lanzi bank)*
-- ~~Ask Lord Ravell to speak for Sir Hamon to the Earl.~~ *(Risky, Requires: Lord Ravell's ear)*
-- ~~Find Sir Hamon a hired champion, a man who fights in the lists for pay.~~ *(Favorable, Requires: a pound, or someone who owes you)*
-- Sir Hamon's heart fails him the week before the trial. The law lets his sworn man fight for him. Fight. *(Even, MORTAL DANGER)*
-- Go to Sir Walter Pryce and offer him your service, before the roof falls in.
+- Go through the rolls in front of the commissioners and show where the money went. *(Favorable)*  
+  <small>At stake: Renown + · Sir Hamon Darrell + · Sir Walter Pryce +</small>
+- ~~Broker a loan from the Lanzi bank to pay the shortfall, before Lammas.~~ *(Even, Requires: a way in at the Lanzi bank)*  
+  <small>At stake: Sarenza + · Sir Hamon Darrell + · Bertuccio Lanzi +</small>
+- ~~Ask Lord Ravell to speak for Sir Hamon to the Earl.~~ *(Risky, Requires: Lord Ravell's ear)*  
+  <small>At stake: Sir Hamon Darrell + · Remembered later</small>
+- ~~Find Sir Hamon a hired champion, a man who fights in the lists for pay.~~ *(Favorable, Requires: a pound, or someone who owes you)*  
+  <small>At stake: Renown + · Sir Bertram Oakes + · Sir Hamon Darrell + · Coin −</small>
+- Sir Hamon's heart fails him the week before the trial. The law lets his sworn man fight for him. Fight. *(Even, MORTAL DANGER)*  
+  <small>At stake: A wound · Your life · Renown + · Knights +</small>
+- Go to Sir Walter Pryce and offer him your service, before the roof falls in.  
+  <small>At stake: Knights − · Honor − · Sir Walter Pryce + · Sir Hamon Darrell −</small>
 - Stand by him, and hope that is enough.
 
 **Chose:** Go through the rolls in front of the commissioners and show where the money went. (Favorable: success)
@@ -1007,13 +1131,20 @@ A knight must have a warhorse, a riding horse, a harness of plate, a squire of h
 
 You have 2d.
 
-- Accept what your master offers: his spare harness and a horse from his string.
-- ~~Accept a fee from Lord Ravell, ten pounds a year for life, for your service.~~ *(Requires: Lord Ravell's favour and high regard)*
-- ~~Ride your own horse, in your own prize harness.~~ *(Requires: the prize harness and a horse of your own)*
-- ~~Buy a second-hand harness and a horse in Wendham. Six pounds.~~ *(Requires Coin £6)*
-- ~~Borrow twenty pounds from the Lanzi bank against what you will win in Valdrenne.~~ *(Requires: a way in at the Lanzi bank)*
-- Accept Dame Joan Wyck's offer of her late husband's harness and horse.
-- ~~Accept Sir Walter Pryce's offer of horse and harness from the Earl of Carrow, and wear the Earl's livery.~~ *(Requires: Sir Walter Pryce's acquaintance)*
+- Accept what your master offers: his spare harness and a horse from his string.  
+  <small>At stake: Sir Hamon Darrell + · Harness of plate +</small>
+- ~~Accept a fee from Lord Ravell, ten pounds a year for life, for your service.~~ *(Requires: Lord Ravell's favour and high regard)*  
+  <small>At stake: Harness of plate + · Remembered later</small>
+- ~~Ride your own horse, in your own prize harness.~~ *(Requires: the prize harness and a horse of your own)*  
+  <small>At stake: Knights +</small>
+- ~~Buy a second-hand harness and a horse in Wendham. Six pounds.~~ *(Requires Coin £6)*  
+  <small>At stake: Coin − · Harness of plate +</small>
+- ~~Borrow twenty pounds from the Lanzi bank against what you will win in Valdrenne.~~ *(Requires: a way in at the Lanzi bank)*  
+  <small>At stake: Sarenza + · Harness of plate + · Remembered later</small>
+- Accept Dame Joan Wyck's offer of her late husband's harness and horse.  
+  <small>At stake: Dame Joan Wyck ± · Harness of plate + · Remembered later</small>
+- ~~Accept Sir Walter Pryce's offer of horse and harness from the Earl of Carrow, and wear the Earl's livery.~~ *(Requires: Sir Walter Pryce's acquaintance)*  
+  <small>At stake: Great Nobles + · Lord Thurstan Ravell − · Sir Walter Pryce + · Harness of plate +</small>
 - You cannot. Go to the war as you are, and win it there.
 
 **Chose:** Accept what your master offers: his spare harness and a horse from his string.
@@ -1030,10 +1161,14 @@ You have the means. Now you need a knight willing to give you the accolade, and 
 
 And you need to be able to pass for one. A knight who eats with his knife in the salt, or does not know which knee to kneel on, or calls a banneret "sir" when he should say "my lord," shames the man who dubbed him, and the man who dubbed him knows it. Lord Ravell's knights have noticed that you do not know these things. Your own master may forgive it. A lord or a king will not.
 
-- Ask your master to knight you.
-- ~~Accept Lord Ravell's offer to knight you himself, before the household.~~ *(Requires: Lord Ravell's favour, renown, and Courtesy 2)*
-- ~~Go to Saltcombe, where the King will knight a batch of squires before the army sails.~~ *(Requires: the King's notice, renown, and Courtesy 2)*
-- ~~Kneel to Sir Walter Pryce, in the Earl of Carrow's colours.~~ *(Requires: the Earl of Carrow's livery, and renown)*
+- Ask your master to knight you.  
+  <small>At stake: Your station + · Sir Hamon Darrell +</small>
+- ~~Accept Lord Ravell's offer to knight you himself, before the household.~~ *(Requires: Lord Ravell's favour, renown, and Courtesy 2)*  
+  <small>At stake: Your station + · Great Nobles + · Lord Thurstan Ravell + · Remembered later</small>
+- ~~Go to Saltcombe, where the King will knight a batch of squires before the army sails.~~ *(Requires: the King's notice, renown, and Courtesy 2)*  
+  <small>At stake: Your station + · Renown + · Crown + · Remembered later</small>
+- ~~Kneel to Sir Walter Pryce, in the Earl of Carrow's colours.~~ *(Requires: the Earl of Carrow's livery, and renown)*  
+  <small>At stake: Your station + · Knights − · Sir Walter Pryce +</small>
 - Not yet. Go to war as a man-at-arms under your master's banner, and win your spurs in the field.
 
 **Chose:** Ask your master to knight you.
@@ -1054,9 +1189,12 @@ To Ashby, and the tithe barn, and a boy in his dead brother's blue tunic countin
 
 In the morning you are bathed, dressed, armed, and struck once on the neck. It is harder than you expected. Then you are Sir Hal, and the world is exactly the same, except that it is not.
 
-- Pray, as you are meant to, until dawn.
-- Let your friends smuggle in a flask and keep you company.
-- Sit with your sword and think about what you will do with it.
+- Pray, as you are meant to, until dawn.  
+  <small>At stake: Piety + · Church +</small>
+- Let your friends smuggle in a flask and keep you company.  
+  <small>At stake: Knights + · Aymer Ravell +</small>
+- Sit with your sword and think about what you will do with it.  
+  <small>At stake: Ruthlessness + · Tactics +</small>
 
 **Chose:** Pray, as you are meant to, until dawn.
 
@@ -1076,11 +1214,16 @@ There is time for one thing before you go. Perhaps two, if you do not sleep.
 
 Isabel Sayer is at Ravell with Lady Ravell's household. Dame Joan Wyck is at Wyck, a half-day west.
 
-- Find Isabel Sayer and give her your token.
-- Ride to Wyck and see Dame Joan.
-- Go home to Ashby one last time.
-- Spend the night in the chapel. Nobody can say you went unshriven.
-- Spend the last night in the alehouse with the men.
+- Find Isabel Sayer and give her your token.  
+  <small>At stake: Isabel Sayer + · A keepsake +</small>
+- Ride to Wyck and see Dame Joan.  
+  <small>At stake: Dame Joan Wyck +</small>
+- Go home to Ashby one last time.  
+  <small>At stake: Piers + · Mag Coker + · Ralf Mercer + · Annot Dyer +</small>
+- Spend the night in the chapel. Nobody can say you went unshriven.  
+  <small>At stake: Piety + · Church +</small>
+- Spend the last night in the alehouse with the men.  
+  <small>At stake: Common Folk + · Knights +</small>
 
 **Chose:** Find Isabel Sayer and give her your token.
 
@@ -1118,9 +1261,12 @@ Your master has men to spare, if you want them, and will expect to be thanked.
 
 A following has to be fed, and paid, and kept in hand. It is also the only thing on a battlefield that will look after you.
 
-- Take the two archers your master offers from Will Cobb's company.
-- Send home for a man you trust: Wat Coker. Take Jankin Rooke as well.
-- ~~Hire Roger Tallis, a veteran of the free companies, and the three hard men who follow him. A pound for the season.~~ *(Requires Coin £1)*
+- Take the two archers your master offers from Will Cobb's company.  
+  <small>At stake: Your men + · Your men's loyalty + · Sir Hamon Darrell +</small>
+- Send home for a man you trust: Wat Coker. Take Jankin Rooke as well.  
+  <small>At stake: Your men + · Your men's loyalty ± · Wat Coker + · Gib Shawe +</small>
+- ~~Hire Roger Tallis, a veteran of the free companies, and the three hard men who follow him. A pound for the season.~~ *(Requires Coin £1)*  
+  <small>At stake: Your men + · Coin −</small>
 - Go as you are, with Davy.
 
 **Chose:** Send home for a man you trust: Wat Coker. Take Jankin Rooke as well.
@@ -1149,9 +1295,12 @@ The shipmaster comes aft along the rail, hand over hand, streaming water. "Those
 
 Davy is too sick to stand. Your men are looking at you, the way men look at whoever is supposed to know what to do.
 
-- Go down into the hold with the horses. *(Even)*
-- Stay on deck with your men and keep them together. *(Favorable)*
-- Pray. There is nothing else to be done in a storm.
+- Go down into the hold with the horses. *(Even)*  
+  <small>At stake: Renown + · Sir Hamon Darrell + · Riding +</small>
+- Stay on deck with your men and keep them together. *(Favorable)*  
+  <small>At stake: Your men's loyalty + · Command +</small>
+- Pray. There is nothing else to be done in a storm.  
+  <small>At stake: Piety +</small>
 
 **Chose:** Go down into the hold with the horses. (Even: failure)
 
@@ -1173,9 +1322,12 @@ The boats go in. The first wave is already over the side and wading, chest-deep,
 
 Then the crossbows begin, with a noise like a flock of birds getting up, and the first man near you goes under the water and does not come up.
 
-- Lead your men up the beach, straight at them. *(Favorable, MORTAL DANGER)*
-- Get your archers onto the dunes on the flank, and shoot them off the beach. *(Favorable)*
-- See to the horses and the boats while others do the fighting.
+- Lead your men up the beach, straight at them. *(Favorable, MORTAL DANGER)*  
+  <small>At stake: A wound · Your life · Your men − · Renown +</small>
+- Get your archers onto the dunes on the flank, and shoot them off the beach. *(Favorable)*  
+  <small>At stake: Renown + · Sir Hamon Darrell +</small>
+- See to the horses and the boats while others do the fighting.  
+  <small>At stake: Sir Hamon Darrell +</small>
 
 **Chose:** Get your archers onto the dunes on the flank, and shoot them off the beach. (Favorable: success)
 
@@ -1195,8 +1347,10 @@ Davy has your harness off and is scrubbing the salt out of it with sand, talking
 
 They are looking at you, a little, the way men look at the one who is supposed to say something.
 
-- Sit with them, and get each of them talking about home.
-- Tell them plainly how you mean to run things.
+- Sit with them, and get each of them talking about home.  
+  <small>At stake: Your men's loyalty +</small>
+- Tell them plainly how you mean to run things.  
+  <small>At stake: Roger Tallis + · Command +</small>
 - Walk the edge of the camp alone, and look at the dark.
 
 **Chose:** Sit with them, and get each of them talking about home.
@@ -1217,9 +1371,12 @@ Jehanne of Armance is thirty, plain, sunburned, and wears her husband's sword be
 
 There is a council in her pavilion. There is also wine in the Armance knights' tents. Somebody in the camp will know the roads.
 
-- Get yourself into the Duchess's pavilion, carrying something for your master. *(Risky)*
-- Sit by the fire and learn the country from someone who knows it.
-- Drink in the Armance knights' tents. *(Favorable)*
+- Get yourself into the Duchess's pavilion, carrying something for your master. *(Risky)*  
+  <small>At stake: Valdrenne + · Duchess Jehanne + · Remembered later</small>
+- Sit by the fire and learn the country from someone who knows it.  
+  <small>At stake: Tactics + · Remembered later</small>
+- Drink in the Armance knights' tents. *(Favorable)*  
+  <small>At stake: Valdrenne + · Remembered later</small>
 
 **Chose:** Get yourself into the Duchess's pavilion, carrying something for your master. (Risky: success)
 
@@ -1243,9 +1400,12 @@ The young men have not done it, and are about to.
 
 Your men are looking at you again.
 
-- Tell your men you will follow the orders to the letter. Burn what you are told, take what you are told, nothing more.
-- Tell them you will take what you need and burn nothing you do not have to.
-- Tell them what they take, they keep.
+- Tell your men you will follow the orders to the letter. Burn what you are told, take what you are told, nothing more.  
+  <small>At stake: Crown + · Ruthlessness +</small>
+- Tell them you will take what you need and burn nothing you do not have to.  
+  <small>At stake: Honor + · Sir Hamon Darrell −</small>
+- Tell them what they take, they keep.  
+  <small>At stake: Your men's loyalty ± · Ruthlessness + · Coin + · Remembered later</small>
 
 **Chose:** Tell them you will take what you need and burn nothing you do not have to.
 
@@ -1261,8 +1421,10 @@ A Valdrennish herald in his tabard of lilies rides into the column under a white
 
 He sees your face, which is the least hungry one he can find, and comes to you. "Monseigneur," he says, in careful Adalian, "of your courtesy. The King of Adalia. Where?"
 
-- Escort him to the King yourself, honourably.
-- Delay him long enough to have someone read his letters.
+- Escort him to the King yourself, honourably.  
+  <small>At stake: Honor + · Sir Hamon Darrell + · Tactics +</small>
+- Delay him long enough to have someone read his letters.  
+  <small>At stake: Honor − · Crown + · Intrigue +</small>
 
 **Chose:** Escort him to the King yourself, honourably.
 
@@ -1284,10 +1446,14 @@ Your men are waiting, watching you, to see whether you meant it.
 
 Somewhere behind the church a woman is screaming. It is not one of yours who is making her scream. It may soon be.
 
-- Get the people out of the church and onto the road. Then burn Bréval, as ordered.
-- Offer the village a bargain. Pay, and Bréval stands. *(Even)*
-- Go behind the church yourself, and stop what is happening there. Then decide about the village. *(Favorable)*
-- Let your men do as they please. It is war, and they were promised.
+- Get the people out of the church and onto the road. Then burn Bréval, as ordered.  
+  <small>At stake: Ruthlessness + · Valdrenne − · Crown +</small>
+- Offer the village a bargain. Pay, and Bréval stands. *(Even)*  
+  <small>At stake: Your men's loyalty − · Honor + · Valdrenne ± · Coin +</small>
+- Go behind the church yourself, and stop what is happening there. Then decide about the village. *(Favorable)*  
+  <small>At stake: Your men's loyalty + · Honor + · Valdrenne ± · Roger Tallis +</small>
+- Let your men do as they please. It is war, and they were promised.  
+  <small>At stake: Your men's loyalty ± · Ruthlessness + · Honor − · Valdrenne −</small>
 
 **Chose:** Offer the village a bargain. Pay, and Bréval stands. (Even: success)
 
@@ -1307,10 +1473,14 @@ You find the grange. You find its granary full, and its people gone, so recently
 
 That should have told you something. It is when you come out of the granary with the first sacks that you see it: the lane back to the army is full of Valdrennish horsemen, twenty of them, perhaps, knights and serjeants with lances, the morning sun behind them, sitting their horses quite still, waiting for you to notice.
 
-- Form your men across the lane and fight it out from the wagons. *(Even, MORTAL DANGER)*
-- Get everyone into the stone granary and let the archers shoot from the doors. *(Favorable)*
-- Send Davy back for help on the fastest horse, and hold until it comes. *(Favorable)*
-- Leave the wagons and get your men away while you can.
+- Form your men across the lane and fight it out from the wagons. *(Even, MORTAL DANGER)*  
+  <small>At stake: A wound · Your life · Your men − · Renown +</small>
+- Get everyone into the stone granary and let the archers shoot from the doors. *(Favorable)*  
+  <small>At stake: Renown +</small>
+- Send Davy back for help on the fastest horse, and hold until it comes. *(Favorable)*  
+  <small>At stake: Aymer Ravell +</small>
+- Leave the wagons and get your men away while you can.  
+  <small>At stake: Sir Hamon Darrell −</small>
 
 **Chose:** Get everyone into the stone granary and let the archers shoot from the doors. (Favorable: success)
 
@@ -1330,9 +1500,12 @@ It is not a sack. There is no time for a sack. The Constable of Valdrenne's van 
 
 In the market square there is a great stone house with a coat of arms over the door, three black crows on gold. The house of a lord. Giles Marrick, a knight now, in his father's colours, is already riding toward it.
 
-- Get to the house with the crows before anyone else does. *(Even)*
-- Keep your men together and stop them going wild in the town. *(Favorable)*
-- Take your share of Vaudrey.
+- Get to the house with the crows before anyone else does. *(Even)*  
+  <small>At stake: Renown + · Giles Marrick ± · Messire Raoul de Corbie + · Remembered later</small>
+- Keep your men together and stop them going wild in the town. *(Favorable)*  
+  <small>At stake: Your men − · Honor + · Valdrenne + · Merchants +</small>
+- Take your share of Vaudrey.  
+  <small>At stake: Ruthlessness + · Valdrenne − · Coin + · Remembered later</small>
 
 **Chose:** Get to the house with the crows before anyone else does. (Even: failure)
 
@@ -1358,9 +1531,12 @@ The whole camp turns out to look at her. Héloïse de Corbie is twenty-two, dark
 
 She does not look at any of them. She is brought to Giles Marrick, because her brother is his. Giles does not speak Valdrennish well. Somebody has to translate. Somebody remembers that you were at the house with the crows.
 
-- Deal with her honestly. Tell her what the ransom is, what it will cost, and how it can be paid. *(Favorable)*
-- Help Giles squeeze her, for a share.
-- See that she is properly lodged, fed, and kept safe in a camp full of soldiers.
+- Deal with her honestly. Tell her what the ransom is, what it will cost, and how it can be paid. *(Favorable)*  
+  <small>At stake: Valdrenne + · Héloïse de Corbie + · Messire Raoul de Corbie + · Corbie signet +</small>
+- Help Giles squeeze her, for a share.  
+  <small>At stake: Ruthlessness + · Héloïse de Corbie − · Giles Marrick + · Coin +</small>
+- See that she is properly lodged, fed, and kept safe in a camp full of soldiers.  
+  <small>At stake: Honor + · Héloïse de Corbie + · Corbie signet +</small>
 
 **Chose:** Deal with her honestly. Tell her what the ransom is, what it will cost, and how it can be paid. (Favorable: success)
 
@@ -1382,9 +1558,12 @@ The Margrave of the Ostmark, who took Sarenzan money to march on Valdrenne from 
 
 The Constable of Valdrenne, Gaucelin de Brésy, has twenty thousand men a day's march to the south, between the army and the Armance.
 
-- Go with your master to the edge of the King's council, and listen. *(Risky)*
-- Take the ferry across, and cut the hanged men down.
-- Tell your men the truth. The road back will be harder than the road here.
+- Go with your master to the edge of the King's council, and listen. *(Risky)*  
+  <small>At stake: Tactics + · Remembered later</small>
+- Take the ferry across, and cut the hanged men down.  
+  <small>At stake: Piety + · Valdrenne + · Common Folk +</small>
+- Tell your men the truth. The road back will be harder than the road here.  
+  <small>At stake: Your men's loyalty + · Roger Tallis + · Remembered later</small>
 
 **Chose:** Go with your master to the edge of the King's council, and listen. (Risky: failure)
 
@@ -1405,8 +1584,10 @@ The King's orders are to cross at first light: the van, then the King, then the 
 There is a mist coming up off the marshes. By midnight you cannot see the river from the road.
 
 - Sleep, if you can.
-- Go round your men and see they are ready to move in the dark.
-- Go down the river in the dark and find the ford for yourself. *(Even)*
+- Go round your men and see they are ready to move in the dark.  
+  <small>At stake: The rearguard + · Your men's loyalty + · Remembered later</small>
+- Go down the river in the dark and find the ford for yourself. *(Even)*  
+  <small>At stake: The rearguard + · Woodcraft + · Remembered later</small>
 
 **Chose:** Sleep, if you can.
 
@@ -1428,10 +1609,14 @@ Away on the right, along the river, their horse is going at a canter for the bri
 
 The archers start shooting. You hear the arrows hit the painted shields like hail on a roof. The block does not stop.
 
-- Take your place in the line of men-at-arms and meet them. *(Favorable, MORTAL DANGER)*
-- Get your archers shooting over the shields, at the crossbowmen as they wind. *(Favorable)*
-- Mount up and ride for the bridge, where their horse is going for the baggage. *(Even)*
-- Stay at your master's side, wherever he goes.
+- Take your place in the line of men-at-arms and meet them. *(Favorable, MORTAL DANGER)*  
+  <small>At stake: A wound · Your life · The rearguard + · Your men −</small>
+- Get your archers shooting over the shields, at the crossbowmen as they wind. *(Favorable)*  
+  <small>At stake: The rearguard + · Your men − · Renown + · Common Folk +</small>
+- Mount up and ride for the bridge, where their horse is going for the baggage. *(Even)*  
+  <small>At stake: The rearguard + · Renown + · Sir Hamon Darrell + · Coin −</small>
+- Stay at your master's side, wherever he goes.  
+  <small>At stake: Sir Hamon Darrell + · Remembered later</small>
 
 **Chose:** Get your archers shooting over the shields, at the crossbowmen as they wind. (Favorable: success)
 
@@ -1449,9 +1634,12 @@ Word comes down the line, shouted from man to man: the King's engineers are at t
 
 You cannot see your master's banner. The last you saw of it, it was going down into the press.
 
-- Keep your own men together and get them over the bridge in order. *(Favorable)*
-- Go back into the press for your master. *(Favorable, MORTAL DANGER)*
-- Get yourself over the bridge. Your men can follow or not.
+- Keep your own men together and get them over the bridge in order. *(Favorable)*  
+  <small>At stake: The rearguard + · Your men's loyalty + · Your men − · Renown +</small>
+- Go back into the press for your master. *(Favorable, MORTAL DANGER)*  
+  <small>At stake: A wound · Your life · Renown + · Honor +</small>
+- Get yourself over the bridge. Your men can follow or not.  
+  <small>At stake: Your men − · Your men's loyalty −</small>
 
 **Chose:** Go back into the press for your master. (Favorable: success)
 
@@ -1463,6 +1651,8 @@ He does not thank you. Men do not, for this. He looks at you differently for the
 
 ## The Far Bank
 
+Your stretch of the line held as long as any of it. It was not enough to save the day. It was enough to save some of the men in it, and they know it.
+
 The Constable does not try to cross. He does not need to. He has the near bank, the baggage, a thousand prisoners, and the day.
 
 The Adalian army camps in the rain a mile west of the broken bridge with no tents, because the tents were in the baggage, and counts itself. Eighteen hundred men dead, drowned or taken, nearly all from the rearguard. Six hundred horses. The King's plate. The pay chest. Lord Ravell, taken alive under his own banner, and half his household knights with him.
@@ -1471,13 +1661,16 @@ The Valdrennish dead, the heralds think, are fewer than three hundred.
 
 *(Continue)*
 
-"Eighteen hundred," someone says, by your fire, flatly, as if it were a price. "Eighteen hundred, and the plate." "Bugger the plate," says someone else, and that is the end of the talking.
+"Eighteen hundred," someone says, by your fire, flatly, as if it were a price. "And the plate." "Bugger the plate," says someone else, and that is the end of the talking.
 
 Nobody sings anything that night. The King walks among the fires bareheaded, and stops at some of them, and says nothing much, and goes on.
 
-- Count your men, and name the missing.
-- Go to the heralds and help them make the list of the taken.
-- Find somebody with drink, and drink it.
+- Count your men, and name the missing.  
+  <small>At stake: Your men's loyalty +</small>
+- Go to the heralds and help them make the list of the taken.  
+  <small>At stake: Knights + · Sir Hamon Darrell +</small>
+- Find somebody with drink, and drink it.  
+  <small>At stake: Coin −</small>
 
 **Chose:** Count your men, and name the missing.
 
@@ -1501,10 +1694,14 @@ Behind it and on its flanks ride the Iron Company, eight hundred Hroswald horse 
 
 Every morning there are fewer men in the column than there were the night before. Some of them were caught. Some of them are walking home on their own. Some of them are lying in ditches with their boots off, too tired to get up.
 
-- Carry your wounded with you, all of them, whatever it costs in pace. *(Favorable)*
-- Lay an ambush at a stream crossing for the Hroswald riders who follow the column. *(Favorable)*
-- Take what you need from the villages along the road. Your men come first.
-- Keep your head down and keep marching.
+- Carry your wounded with you, all of them, whatever it costs in pace. *(Favorable)*  
+  <small>At stake: A wound · Your men's loyalty + · Your men − · Honor +</small>
+- Lay an ambush at a stream crossing for the Hroswald riders who follow the column. *(Favorable)*  
+  <small>At stake: Your men − · Renown + · Remembered later</small>
+- Take what you need from the villages along the road. Your men come first.  
+  <small>At stake: Your men's loyalty + · Ruthlessness + · Valdrenne −</small>
+- Keep your head down and keep marching.  
+  <small>At stake: Your men −</small>
 
 **Chose:** Carry your wounded with you, all of them, whatever it costs in pace. (Favorable: success)
 
@@ -1530,10 +1727,14 @@ Your men come to you one cold morning in a body, with the oldest of them doing t
 
 The Lanzi bank has a house in Lannec. Everybody knows it. It is the only house in the town with a fire in every room.
 
-- Pay them out of your own purse, everything that is owed.
-- Go to the Lanzi house, and borrow to pay them.
-- Take them raiding over the border into the Constable's own lands. Let them pay themselves.
-- Tell them the truth, and promise them a share of whatever the spring brings. *(Favorable)*
+- Pay them out of your own purse, everything that is owed.  
+  <small>At stake: Your men's loyalty + · Your men + · Coin −</small>
+- Go to the Lanzi house, and borrow to pay them.  
+  <small>At stake: Your men's loyalty + · Fiammetta Lanzi + · Remembered later</small>
+- Take them raiding over the border into the Constable's own lands. Let them pay themselves.  
+  <small>At stake: Your men's loyalty ± · Ruthlessness + · Valdrenne − · Coin +</small>
+- Tell them the truth, and promise them a share of whatever the spring brings. *(Favorable)*  
+  <small>At stake: Your men − · Roger Tallis +</small>
 
 **Chose:** Pay them out of your own purse, everything that is owed.
 
@@ -1557,9 +1758,12 @@ What he chooses is Sauvemer: a walled port on a spit of land between the sea and
 
 The King does not mean to wait two years. He means to batter a breach and take it by storm before the winter. Everyone has an opinion about whether he can. The engineers say yes. The old soldiers say nothing.
 
-- Build your men a proper shelter on the dunes before the weather turns.
-- Offer yourself to the siege engineers, who need men who can count.
-- Find the Lanzi house in the siege camp. Every army has a banker.
+- Build your men a proper shelter on the dunes before the weather turns.  
+  <small>At stake: Your men's loyalty + · Coin − · Remembered later</small>
+- Offer yourself to the siege engineers, who need men who can count.  
+  <small>At stake: Tactics + · Stewardship + · Remembered later</small>
+- Find the Lanzi house in the siege camp. Every army has a banker.  
+  <small>At stake: Fiammetta Lanzi +</small>
 - Rest. You have earned it.
 
 **Chose:** Build your men a proper shelter on the dunes before the weather turns.
@@ -1576,8 +1780,10 @@ A letter from Isabel Sayer, short, in a hand that has been steadier.
 
 Her father has accepted the widowed knight from Hollesby for her, without asking. The betrothal is to be at Lady Day. She has refused, and been told that refusing is not hers to do. She still has your token. She does not say what she means to do with it.
 
-- Write to her father yourself, and ask him to wait for you. *(Favorable)*
-- Write back that she must do what she must. You cannot ask her to wait for a man who may not come home.
+- Write to her father yourself, and ask him to wait for you. *(Favorable)*  
+  <small>At stake: Isabel Sayer + · Remembered later</small>
+- Write back that she must do what she must. You cannot ask her to wait for a man who may not come home.  
+  <small>At stake: Honor + · Remembered later</small>
 
 **Chose:** Write to her father yourself, and ask him to wait for you. (Favorable: success)
 
@@ -1589,8 +1795,10 @@ A letter, in a hand you know: narrow, slanting, with ink blots where she has pre
 
 It is mostly news. Lady Ravell has a new confessor. Aymer has been sent home from the war with a broken arm and is unbearable. Her father has had another offer for her and she has refused it. At the end, in smaller letters: "I would like to know you are alive. That is all. I find I would like to know it."
 
-- Write back, properly, whatever it costs to send.
-- Send a short answer. You are alive.
+- Write back, properly, whatever it costs to send.  
+  <small>At stake: Isabel Sayer +</small>
+- Send a short answer. You are alive.  
+  <small>At stake: Isabel Sayer +</small>
 
 **Chose:** Write back, properly, whatever it costs to send.
 
@@ -1608,9 +1816,12 @@ Behind them go the boats: every ship's boat in the fleet, full of men with axes 
 
 The admiral wants volunteers for all three. He is honest about the fireships. "Some of you will not come back," he says. "The ones who do will drink free in Saltcombe for the rest of their lives."
 
-- Volunteer to steer a fireship in. *(Favorable, MORTAL DANGER)*
-- Take your men in the boats, to cut out the ships that do not burn. *(Favorable)*
-- Take your archers onto the mole and keep the sea tower's crossbows busy. *(Even)*
+- Volunteer to steer a fireship in. *(Favorable, MORTAL DANGER)*  
+  <small>At stake: A wound · Your life · The siege + · Renown +</small>
+- Take your men in the boats, to cut out the ships that do not burn. *(Favorable)*  
+  <small>At stake: The siege + · Your men's loyalty + · Your men − · Renown +</small>
+- Take your archers onto the mole and keep the sea tower's crossbows busy. *(Even)*  
+  <small>At stake: A wound · The siege + · Renown + · Common Folk +</small>
 - Watch from the dunes.
 
 **Chose:** Take your men in the boats, to cut out the ships that do not burn. (Favorable: success)
@@ -1635,10 +1846,14 @@ At first light a Carrow captain walks along the storming party, slapping backs. 
 
 At dawn the trumpets go.
 
-- Go up the rubble with the storming party. *(Favorable, MORTAL DANGER)*
-- Take your men to the ladders on the curtain wall, to draw the defenders off. *(Favorable)*
-- Hold the ditch below the breach, to bring back whoever comes down.
-- Tell your captain the breach is a trap, and keep your men out of it. *(Favorable)*
+- Go up the rubble with the storming party. *(Favorable, MORTAL DANGER)*  
+  <small>At stake: A wound · Your life · The siege + · Your men −</small>
+- Take your men to the ladders on the curtain wall, to draw the defenders off. *(Favorable)*  
+  <small>At stake: Your men − · Renown + · Sir Hamon Darrell +</small>
+- Hold the ditch below the breach, to bring back whoever comes down.  
+  <small>At stake: The siege + · Renown + · Honor + · Common Folk +</small>
+- Tell your captain the breach is a trap, and keep your men out of it. *(Favorable)*  
+  <small>At stake: Your men − · Knights − · Sir Hamon Darrell ±</small>
 
 **Chose:** Take your men to the ladders on the curtain wall, to draw the defenders off. (Favorable: success)
 
@@ -1658,9 +1873,12 @@ The one in charge of the townswomen is the castellan's wife: Dame Clémence de V
 
 Sire Enguerrand watches from the wall above the breach with his arms folded. He does not come down.
 
-- Take off your sword and work in the ditch with the rest.
-- Speak to Dame Clémence, in what Valdrennish you have. *(Even)*
-- Use the truce to get a good look at the new wall behind the breach. *(Favorable)*
+- Take off your sword and work in the ditch with the rest.  
+  <small>At stake: Piety + · Valdrenne + · Dame Clémence de Vaux +</small>
+- Speak to Dame Clémence, in what Valdrennish you have. *(Even)*  
+  <small>At stake: Valdrenne + · Dame Clémence de Vaux + · Remembered later</small>
+- Use the truce to get a good look at the new wall behind the breach. Spying under a burial truce is not honourable. *(Favorable)*  
+  <small>At stake: The siege + · Honor − · Sir Hamon Darrell + · Remembered later</small>
 - Stay in the lines. You have seen enough of that ditch.
 
 **Chose:** Speak to Dame Clémence, in what Valdrennish you have. (Even: success)
@@ -1687,10 +1905,14 @@ The town is not starving. Its own ships are ash, but on dark nights, Sarenzan ga
 
 Your men are dry, at least.
 
-- Move your men's camp up to the chapel spring, away from the latrine ditches. *(Favorable)*
-- Nurse your sick men yourself, with your own hands. *(Favorable)*
-- Help the engineers build a boom across the harbour mouth to stop the galleys. *(Even)*
-- Keep your head down and get through it.
+- Move your men's camp up to the chapel spring, away from the latrine ditches. *(Favorable)*  
+  <small>At stake: Your men's loyalty + · Your men − · Stewardship + · Remembered later</small>
+- Nurse your sick men yourself, with your own hands. *(Favorable)*  
+  <small>At stake: A wound · Your men's loyalty + · Piety +</small>
+- Help the engineers build a boom across the harbour mouth to stop the galleys. *(Even)*  
+  <small>At stake: Renown + · Sir Hamon Darrell + · Remembered later</small>
+- Keep your head down and get through it.  
+  <small>At stake: Your men −</small>
 
 **Chose:** Move your men's camp up to the chapel spring, away from the latrine ditches. (Favorable: success)
 
@@ -1704,8 +1926,10 @@ A carter from Saltcombe, asking for you by name, with a cart: two sides of bacon
 
 Dame Joan Wyck has heard that the Sauvemer garrison is short of everything. She has sent what she could. Ralph, her stepson, has brought a suit against her in the King's court for Wyck. She is fighting it. "I find I have a taste for fighting," she writes. "I did not know that about myself until this year."
 
-- Write back, and send her something from Valdrenne in return.
-- Share it all out among your men, and write to tell her so.
+- Write back, and send her something from Valdrenne in return.  
+  <small>At stake: Dame Joan Wyck +</small>
+- Share it all out among your men, and write to tell her so.  
+  <small>At stake: Your men's loyalty + · Dame Joan Wyck +</small>
 
 **Chose:** Write back, and send her something from Valdrenne in return.
 
@@ -1725,9 +1949,12 @@ They dig from a pit behind the siege lines toward the Water Tower at the corner 
 
 The Valdrennish know it. They have dug a countermine from inside the walls, and on still nights both sides can hear each other through the earth: picks, voices, a cough. The miners' captain, a man called Treloar, wants soldiers in the gallery for when the two tunnels meet.
 
-- Go down into the gallery with Treloar's miners. *(Favorable, MORTAL DANGER)*
-- Set bowls of water along the gallery to find where they are digging. *(Favorable)*
-- Guard the mouth of the mine with your men, above ground.
+- Go down into the gallery with Treloar's miners. *(Favorable, MORTAL DANGER)*  
+  <small>At stake: A wound · Your life · The siege + · Renown +</small>
+- Set bowls of water along the gallery to find where they are digging. *(Favorable)*  
+  <small>At stake: The siege + · Renown + · Tactics +</small>
+- Guard the mouth of the mine with your men, above ground.  
+  <small>At stake: The siege + · Remembered later</small>
 
 **Chose:** Set bowls of water along the gallery to find where they are digging. (Favorable: success)
 
@@ -1745,9 +1972,12 @@ Two hundred of his men come out of the sea gate at low tide and along the beach 
 
 Your company is the nearest.
 
-- Get your men up and go straight at them. *(Favorable, MORTAL DANGER)*
-- Save what can be saved of the engines and the men under them.
-- Go for the sea gate behind them and cut them off from the town. *(Favorable)*
+- Get your men up and go straight at them. *(Favorable, MORTAL DANGER)*  
+  <small>At stake: A wound · Your life · The siege + · Your men −</small>
+- Save what can be saved of the engines and the men under them.  
+  <small>At stake: A wound · The siege + · Renown + · Honor +</small>
+- Go for the sea gate behind them and cut them off from the town. *(Favorable)*  
+  <small>At stake: The siege + · Renown + · Sir Hamon Darrell + · Remembered later</small>
 
 **Chose:** Save what can be saved of the engines and the men under them.
 
@@ -1758,6 +1988,8 @@ You drag men out from under burning timber all night, with wet sacking over your
 ## The Host on the Heights
 
 *Spring, year 23 of King Aldred*
+
+The siege has worn the town down, and you had some part in it. The garrison is hungry, and fewer than it was.
 
 In May the castellan of Sauvemer, Sire Enguerrand de Vaux, dies of the flux in his own castle. The town does not open its gates. His wife holds the keys, and his lieutenant holds the walls, and they wait.
 
@@ -1777,8 +2009,10 @@ The King holds a council in the ruins of a salt-boiler's house. Half the captain
 
 If he is wrong, there will be no army to put on the ships. Every man in the army knows it. Most of them think he is wrong.
 
-- Ride out with the young men who go skirmishing under the heights. *(Even)*
-- Have Father Benet or a camp priest write your men's wills.
+- Ride out with the young men who go skirmishing under the heights. *(Even)*  
+  <small>At stake: A wound · Renown + · Héloïse de Corbie + · Coin +</small>
+- Have Father Benet or a camp priest write your men's wills.  
+  <small>At stake: The battle + · Your men's loyalty + · Coin −</small>
 
 **Chose:** Ride out with the young men who go skirmishing under the heights. (Even: success)
 
@@ -1792,8 +2026,10 @@ A Valdrennish squire on a bay horse, just as eager as you. You break a lance on 
 
 A letter from your father. Ashby has a new steward, an honest one. Your father is reeve for the twelfth year running. He is proud of you, he writes, in a sentence he has clearly rewritten several times.
 
-- Send money home.
-- Write back.
+- Send money home.  
+  <small>At stake: Piers + · Coin −</small>
+- Write back.  
+  <small>At stake: Piers +</small>
 
 **Chose:** Send money home.
 
@@ -1809,8 +2045,10 @@ It is the custom, the night before a battle, for knights to be made. A man may f
 
 You are a knight already. You watch the others kneel.
 
-- Spend the night with your men instead.
-- Write to someone at home, in case.
+- Spend the night with your men instead.  
+  <small>At stake: The battle + · Your men's loyalty +</small>
+- Write to someone at home, in case.  
+  <small>At stake: Isabel Sayer + · Cecily Fuller + · Lady Maud de Lisle + · Dame Joan Wyck +</small>
 - Stand at the edge of the lines and watch the Valdrennish fires on the heights.
 
 **Chose:** Spend the night with your men instead.
@@ -1831,10 +2069,14 @@ They come down off the heights at dawn and out across the salt pans in long colu
 
 The archers shoot. The shields take it. The columns come on at a walk, and the walk does not change.
 
-- Run for the sluice-gates, and open them yourself. *(Favorable)*
-- Steady the men around you. Nobody here has seen anything like this. *(Favorable)*
-- Take a bow and pick off the shield-bearers at the heads of the columns. *(Risky)*
-- Kneel with the line when the priests go along it.
+- Run for the sluice-gates, and open them yourself. *(Favorable)*  
+  <small>At stake: The battle ± · Renown + · Remembered later</small>
+- Steady the men around you. Nobody here has seen anything like this. *(Favorable)*  
+  <small>At stake: The battle + · Command +</small>
+- Take a bow and pick off the shield-bearers at the heads of the columns. *(Risky)*  
+  <small>At stake: The battle + · Common Folk +</small>
+- Kneel with the line when the priests go along it.  
+  <small>At stake: The battle + · Piety +</small>
 
 **Chose:** Run for the sluice-gates, and open them yourself. (Favorable: success)
 
@@ -1856,9 +2098,12 @@ And then, behind you, the bells of Sauvemer begin to ring, and the land gate ope
 
 The line you are standing in has enemies in front and enemies behind.
 
-- Hold the line. Shoulder to shoulder, and do not step back. *(Favorable, MORTAL DANGER)*
-- Stand in the second rank, behind your men, and let the front rank take the weight.
-- Turn your men round and meet the garrison coming out of the town. *(Favorable)*
+- Hold the line. Shoulder to shoulder, and do not step back. *(Favorable, MORTAL DANGER)*  
+  <small>At stake: A wound · Your life · Your men − · Renown +</small>
+- Stand in the second rank, behind your men, and let the front rank take the weight.  
+  <small>At stake: Your men −</small>
+- Turn your men round and meet the garrison coming out of the town. *(Favorable)*  
+  <small>At stake: A wound · Your men − · Renown + · Sir Hamon Darrell +</small>
 
 **Chose:** Stand in the second rank, behind your men, and let the front rank take the weight.
 
@@ -1878,9 +2123,12 @@ In the same moment, in front of you, a knot of Valdrennish knights in the Consta
 
 Away on the far left, on their own causeway, the gold shuttle banners of Vervais have not moved since dawn.
 
-- Go right, for the King's banner. *(Favorable, MORTAL DANGER)*
-- Go for the Constable's son. *(Even)*
-- Stay in your place in the line. The line is everything.
+- Go right, for the King's banner. *(Favorable, MORTAL DANGER)*  
+  <small>At stake: A wound · Your life · Your men − · Renown +</small>
+- Go for the Constable's son. *(Even)*  
+  <small>At stake: Renown + · Knights + · Sir Walter Pryce + · Coin +</small>
+- Stay in your place in the line. The line is everything.  
+  <small>At stake: Sir Hamon Darrell +</small>
 
 **Chose:** Go for the Constable's son. (Even: failure)
 
@@ -1906,28 +2154,35 @@ The gold shuttle banners of Vervais go back up the heights with the rest. They n
 
 The sun goes down on the salt pans and on the dead in them, and the water is red where it is not grey.
 
-- Go out onto the pans with a lantern, among the dead and the dying.
-- Go out onto the pans for what the dead no longer need.
-- Go to where the Armance lances are, and find the Duchess.
-- Stand with your men on the dyke until the King releases the line.
+- Go out onto the pans with a lantern, among the dead and the dying.  
+  <small>At stake: Piety + · Honor +</small>
+- Go out onto the pans for what the dead no longer need.  
+  <small>At stake: Ruthlessness + · Coin + · Valdrennish sword +</small>
+- Go to where the Armance lances are, and find the Duchess.  
+  <small>At stake: Valdrenne + · Duchess Jehanne + · Remembered later</small>
+- Stand with your men on the dyke until the King releases the line.  
+  <small>At stake: Your men's loyalty +</small>
 
 **Chose:** Go out onto the pans with a lantern, among the dead and the dying.
 
 The heralds are already out, wading, counting coats of arms. You find a Valdrennish boy younger than Davy face down on a causeway with the water rising, alive, and turn him over, and get him to the dyke. You find the dead of your own company and close their eyes, and say their names to the priest so they will be written down.
 
-*Piety +1 · Honor +1*
+*Piety +1 · Honor +1 · Renown +1 · Crown standing +1*
 
 ## After Les Salines
+
+What you did on the dyke mattered. The left held because men like yours held it, the water came where it was meant to, and when the Valdrennish broke they broke all at once, into the pans, and could not get out.
 
 In the morning the King rides along the dyke with his leg bound up and thanks the army, company by company. He does it slowly, because it takes him a long time to get on and off his horse.
 
 *(Continue)*
 
-The count comes in during the day. Two thousand Adalians dead or dying, a fifth of the army. The Valdrennish dead the heralds stop counting at five thousand, half of them drowned. Among the Adalian dead are two earls and a bishop's nephew. Among the wounded is the King. Among the prisoners, a duke, eleven counts, and more knights than there are Adalian knights left standing to guard them.
+The count comes in during the day. Fifteen hundred Adalians dead or dying, a seventh of the army. The Valdrennish dead the heralds stop counting at five thousand, half of them drowned. Among the Adalian dead are two earls and a bishop's nephew. Among the wounded is the King. Among the prisoners, a duke, eleven counts, and more knights than there are Adalian knights left standing to guard them.
 
 It is a victory. Two years ago, it is the victory everyone in the army thought they would have by Lammas. Now they know what it cost, and that they nearly did not have it at all. On the walls of Sauvemer, the people who were watching the heights watch them empty.
 
-- Bury your dead, and go on.
+- Bury your dead, and go on.  
+  <small>At stake: Your men's loyalty +</small>
 
 **Chose:** Bury your dead, and go on.
 
@@ -1947,9 +2202,12 @@ The King cannot afford to storm it and cannot afford to sit in front of it anoth
 
 The keys are held by Dame Clémence de Vaux, who has held them since her husband died in May. The King's council wants the town emptied of everyone who will not swear to him, and their houses given to Adalians. The town wants its people to keep their homes and its garrison to march out with its arms. Somewhere between the two there is a bargain. Somebody has to find it.
 
-- Offer to carry the terms between the King's council and Dame Clémence. *(Favorable)*
-- Speak for gentle terms in your captain's ear, and hope it reaches the council. *(Risky)*
-- Make sure your company gets a good house in the town before the others do.
+- Offer to carry the terms between the King's council and Dame Clémence. *(Favorable)*  
+  <small>At stake: Renown + · Valdrenne + · Honor + · Dame Clémence de Vaux +</small>
+- Speak for gentle terms in your captain's ear, and hope it reaches the council. *(Risky)*  
+  <small>At stake: Honor + · Valdrenne + · Dame Clémence de Vaux + · Remembered later</small>
+- Make sure your company gets a good house in the town before the others do.  
+  <small>At stake: Your men's loyalty + · Valdrenne − · Coin +</small>
 - Leave it to the heralds. It is the King's business.
 
 **Chose:** Offer to carry the terms between the King's council and Dame Clémence. (Favorable: success)
@@ -1974,10 +2232,14 @@ One of the ladies is Lady Alys Fane, the Earl of Westry's daughter. She is ninet
 
 Héloïse de Corbie is at the feast too, at the far end of a lower table with the other Valdrennish women of rank who are the King's guests until their kinsmen's ransoms are paid. She is watching the Adalians celebrate. She is not smiling.
 
-- Ask Lady Alys to dance, before the young lord can. *(Even)*
-- Go down to the lower table and sit with Héloïse de Corbie.
-- Work the room. Every great lord in the army is here tonight, drunk and generous. *(Favorable)*
-- Slip out and drink with your own men in the castle stables.
+- Ask Lady Alys to dance, before the young lord can. *(Even)*  
+  <small>At stake: Lady Alys Fane ± · Lady Alys Fane +</small>
+- Go down to the lower table and sit with Héloïse de Corbie.  
+  <small>At stake: Valdrenne + · Héloïse de Corbie +</small>
+- Work the room. Every great lord in the army is here tonight, drunk and generous. *(Favorable)*  
+  <small>At stake: Great Nobles + · Earl Baldwin +</small>
+- Slip out and drink with your own men in the castle stables.  
+  <small>At stake: Your men's loyalty + · Common Folk +</small>
 
 **Chose:** Ask Lady Alys to dance, before the young lord can. (Even: success)
 
@@ -2001,24 +2263,33 @@ Sauvemer and all its march are Adalian, held of no one. The Duke of Armance come
 
 It is not the crown of Valdrenne. Nobody in the army ever really thought it would be, after the Lisonne. It is a port, a march, an ally kept, and a King of Valdrenne who has learned what it costs to fight one. Men argue in the taverns of Sauvemer for months about whether that was worth Grisolles. Most decide it was. The ones who were in the rearguard are not so sure.
 
+The legate does not say so, but everyone at Saint-Lys knows why the terms lean Adalian: the host that drowned in the pans was the only army Amaury had. Men who were on the dyke walk a little taller in Sauvemer that spring.
+
 *(Continue)*
 
 Half the army goes home. The rest stays, to garrison Sauvemer and its march, and to be paid even more slowly than before.
 
-- Stay with the garrison in Sauvemer. That is where the King's grants will be given, when they are given.
-- Go with the companies the King lends the Armance, to hold its castles through the truce.
-- Take service with Sir Walter Pryce, who is keeping a company in the field through the truce, for pay.
+- Stay with the garrison in Sauvemer. That is where the King's grants will be given, when they are given.  
+  <small>At stake: Crown +</small>
+- Go with the companies the King lends the Armance, to hold its castles through the truce.  
+  <small>At stake: Valdrenne + · Duchess Jehanne + · Remembered later</small>
+- Take service with Sir Walter Pryce, who is keeping a company in the field through the truce, for pay.  
+  <small>At stake: Ruthlessness + · Sir Walter Pryce + · Coin +</small>
 
 **Chose:** Stay with the garrison in Sauvemer. That is where the King's grants will be given, when they are given.
 
 You take a house in the Rue des Tanneurs with your men: two rooms, a yard, a well, and neighbours who will not look you in the eye. Sauvemer is the King's now, and in a sense yours. It does not feel like it.
 
+*Crown standing +1*
+
 ## Rooke's Vow
 
 Jankin Rooke, who prays before he looses and has never missed, comes to you after Mass one Sunday and asks leave to go on pilgrimage to Saint-Lys when the truce allows. He has killed, he says, a great many men he could see clearly, and he would like to be forgiven for it, or at least to ask.
 
-- Give him leave, and money for the road.
-- Tell him you cannot spare him.
+- Give him leave, and money for the road.  
+  <small>At stake: Your men's loyalty + · Piety + · Jankin Rooke + · Coin −</small>
+- Tell him you cannot spare him.  
+  <small>At stake: Your men's loyalty −</small>
 
 **Chose:** Give him leave, and money for the road.
 
@@ -2032,8 +2303,10 @@ Davy Ludd is seventeen now, and has stopped talking quite so much, and has start
 
 One evening he asks you, formally, whether he might ever hope to be more than a squire. He means: could a groom's grandson be knighted, as you were, or will be. He has clearly been chewing on it for weeks.
 
-- Tell him yes, and that you will see to it if you can.
-- Tell him the truth. It is hard, and rare, and it cost you everything you had.
+- Tell him yes, and that you will see to it if you can.  
+  <small>At stake: Your men's loyalty + · Davy Ludd +</small>
+- Tell him the truth. It is hard, and rare, and it cost you everything you had.  
+  <small>At stake: Your men's loyalty + · Davy Ludd +</small>
 
 **Chose:** Tell him yes, and that you will see to it if you can.
 
@@ -2057,10 +2330,14 @@ Your following has changed since Saltcombe. Some faces are new. Some are gone. D
 
 You have time, for the first time in years, to choose what to do with it.
 
-- Train your men properly, every day, as if the war will start again tomorrow.
-- Learn the town. The language, the people, who owes whom.
-- Spend your evenings where the women of rank are.
-- Put your money to work. Cloth, wine, ransoms: there is money to be made in a garrison town by a man who can count. *(Even)*
+- Train your men properly, every day, as if the war will start again tomorrow.  
+  <small>At stake: Sir Hamon Darrell + · Command + · Tactics + · Remembered later</small>
+- Learn the town. The language, the people, who owes whom.  
+  <small>At stake: Valdrenne + · Diplomacy + · Intrigue + · Remembered later</small>
+- Spend your evenings where the women of rank are.  
+  <small>At stake: Dame Clémence de Vaux + · Fiammetta Lanzi + · Héloïse de Corbie +</small>
+- Put your money to work. Cloth, wine, ransoms: there is money to be made in a garrison town by a man who can count. *(Even)*  
+  <small>At stake: Merchants + · Coin ±</small>
 
 **Chose:** Train your men properly, every day, as if the war will start again tomorrow.
 
@@ -2084,10 +2361,14 @@ Their spokesman is an old salt-boiler with burned forearms and no front teeth. "
 
 They come to you next.
 
-- Take your men and whoever will follow you, and fight the Iron Company off. *(Favorable, MORTAL DANGER)*
-- Ride out to Ulric Rotbart and buy him off. *(Even)*
-- You cannot stop them. But you can warn the villages in their path, and get the people out.
-- Send them away. There is a truce, and it is not your affair.
+- Take your men and whoever will follow you, and fight the Iron Company off. *(Favorable, MORTAL DANGER)*  
+  <small>At stake: A wound · Your life · Your men − · Renown +</small>
+- Ride out to Ulric Rotbart and buy him off. *(Even)*  
+  <small>At stake: Valdrenne + · Ulric Rotbart + · Coin −</small>
+- You cannot stop them. But you can warn the villages in their path, and get the people out.  
+  <small>At stake: Valdrenne + · Honor +</small>
+- Send them away. There is a truce, and it is not your affair.  
+  <small>At stake: Valdrenne − · Remembered later</small>
 
 **Chose:** Ride out to Ulric Rotbart and buy him off. (Even: failure)
 
@@ -2105,8 +2386,10 @@ You have been away for four years. You have letters from home that are a year ol
 
 The King's grants for the conquered lands are to be decided at Michaelmas, in Sauvemer. A man who is away when grants are decided is easy to forget.
 
-- Go home, for the summer.
-- Stay. Grants are given to men who are there.
+- Go home, for the summer.  
+  <small>At stake: Coin −</small>
+- Stay. Grants are given to men who are there.  
+  <small>At stake: Sir Hamon Darrell +</small>
 
 **Chose:** Go home, for the summer.
 
@@ -2124,8 +2407,10 @@ Ashby is the same thirty-one households, the same church, the same mill. Your fa
 
 The March is quiet now, the way a burned field is quiet. Everyone at home talks about Harlow Moss, where the King broke the Caldmoor host in the snow. In the March they talk about the winter before it, when the towers held and everything outside them burned.
 
-- Spend the summer with your family.
-- Find Mag.
+- Spend the summer with your family.  
+  <small>At stake: Piers + · Ralf Mercer + · Hugh Fletcher + · Agnes +</small>
+- Find Mag.  
+  <small>At stake: Mag Coker + · Annot Dyer + · Mariot Wood + · Nell +</small>
 
 **Chose:** Spend the summer with your family.
 
@@ -2141,7 +2426,8 @@ Sir Hamon is there, home from the war, living on what is left of Ashby. He feeds
 
 Isabel Sayer is still with Lady Ravell. She sees you across the inner ward and stops walking.
 
-- Find Isabel Sayer.
+- Find Isabel Sayer.  
+  <small>At stake: Isabel Sayer +</small>
 - Go on to Saltcombe.
 
 **Chose:** Find Isabel Sayer.
@@ -2162,20 +2448,22 @@ The great hall of Sauvemer castle is packed to the beams, and hot, and smells of
 
 *(Continue)*
 
-Then the clerk reads your name, and a place nobody else in the hall has heard of. "Kerval, in the Armance. By the King's grant, with the assent of the Duchess of Armance."
+Then the clerk reads your name, and the King looks up from his cup, and smiles, which he does not do for many. "Marsalin," the clerk reads.
 
-The Duchess's steward, standing by the dais in her ermine, looks across the hall at you and inclines his head. Kerval is a manor of good farmland in the hills behind Lannec: orchards, a mill, a fortified farm on a ridge, two hundred and fifty people, and a stream that never floods. It is the best land anybody in this hall has been given today. It is also a day's ride from the nearest Adalian garrison, in a duchy with two claimants and enemies on three sides. "The Duchess asked for you," the steward says afterwards. "She has a long memory. It is her best quality, and her worst."
+You know it. Everyone in the hall knows it. Marsalin is the salt manor on the edge of Les Salines: the pans where the Valdrennish drowned, the sluice-gates, the causeways, a stone house on the dyke, a village of salt-boilers, a chapel, three hundred souls and the best salt on the coast. "The King thought," says the clerk, reading from his roll without expression, "that the man who opened the gates should own them."
 
-The people of Kerval are the only Valdrennish you have met who are glad to see an Adalian. That may not last.
+The salt-boilers of Marsalin watched the battle from their roofs. They know your face. Half of them are glad of it. The other half buried kin out of those pans.
 
-- Kneel, and do homage for Kerval.
-- Kneel, and ask, respectfully, for more. *(Even)*
+- Kneel, and do homage for Marsalin.  
+  <small>At stake: Your station + · Renown + · Remembered later</small>
+- Kneel, and ask, respectfully, for more. *(Even)*  
+  <small>At stake: Your station + · Renown + · Great Nobles − · Crown −</small>
 
-**Chose:** Kneel, and do homage for Kerval.
+**Chose:** Kneel, and do homage for Marsalin.
 
-You put your hands between the King's hands and swear to be his man for the land of Kerval. It takes less time than a paternoster. His hands are dry and cold and he does not look at you; he has done this forty times today.
+You put your hands between the King's hands and swear to be his man for the land of Marsalin. It takes less time than a paternoster. His hands are dry and cold and he does not look at you; he has done this forty times today.
 
-Then you stand up, and you are a lord of somewhere. The clerk writes it in the roll. Two hundred and fifty people in the Armance hills do not know yet that they are yours.
+Then you stand up, and you are a lord of somewhere. The clerk writes it in the roll. A few hundred people on the edge of the sea do not know yet that they are yours.
 
 *Station: Lord · Renown +1*
 
@@ -2193,10 +2481,12 @@ In the east, they say, beyond the Midsea, there is a sickness that came off a ca
 
 Nobody believes it, quite. Sailors' stories always grow.
 
-In the spring you will go to Kerval.
+In the spring you will go to Marsalin.
 
-- Begin to prepare. Grain, salt, a physician if you can find one.
-- Pray, and have Masses said, against it.
+- Begin to prepare. Grain, salt, a physician if you can find one.  
+  <small>At stake: Coin − · Remembered later</small>
+- Pray, and have Masses said, against it.  
+  <small>At stake: Piety + · Church + · Coin − · Remembered later</small>
 - It is a sailors' story.
 
 **Chose:** Begin to prepare. Grain, salt, a physician if you can find one.
@@ -2205,31 +2495,31 @@ People laugh at you, gently. You buy grain anyway, and salt, and a Sarenzan phys
 
 *Coin −10s · Supplies +2*
 
-## Kerval
+## Marsalin
 
 *Winter, year 25 of King Aldred*
 
-In the spring you take ship down the coast to Port-Haudry, where all of this began, and ride inland through the Armance hills, with your banner and your following and the King's writ and the Duchess's letter, to Kerval.
+In the spring you ride out of Sauvemer by the land gate, the one Dame Clémence carried the keys out of, with your banner and your following and the King's writ, along the dyke where the line held, past the sluice-gates and the pans, to Marsalin.
 
 Behind you ride the few who are left. Davy carries your banner. He is a man now. "Nearly there, sir," he says, every mile, as if you might have forgotten.
 
 *(Continue)*
 
-The village sees you coming down the valley road between the orchards, and comes out. You see the people gathering at the edge of the green, and for a moment you think it is a welcome. Then you hear the bell.
+The salt-boilers see you coming along the dyke a mile off. By the time you reach the stone house, every door in the village is shut, and the chapel bell is ringing.
 
-Not for you. For a death. The first, in Kerval, of the great mortality.
+Not for you. For a death. The first, in Marsalin, of the great mortality.
 
 - Ride in.
 
 **Chose:** Ride in.
 
-*Grain in store (seasons) +2*
+*Temper of the village +2 · Grain in store (seasons) +2*
 
 ## The Bell
 
-The dead woman is the miller's mother, old Maheut, and she died this morning, after three days of coughing, with her skin gone the grey-dark of a bad bruise from her throat to her belly.
+The dead woman is a salt-boiler's wife called Jehannette, and she died this morning, after three days of coughing, with her skin gone the grey-dark of a bad bruise from her throat to her belly.
 
-The priest meets you in the street outside the church, still in his stole. Dom Hervé is a fat, rosy Benedictine with a shrewd eye, lent to Kerval by the Duchess's abbey. "Monseigneur," he says, and bows as well as his belly lets him. "Welcome to Kerval. I am sorry it is today."
+The priest meets you in the street outside the church, still in his stole. Père Yves is perhaps twenty-five, thin, earnest, with the shaking hands of a man who has not slept. "Monseigneur," he says. "You came. I did not think anyone would come."
 
 *(Continue)*
 
@@ -2241,12 +2531,16 @@ The village has come out, in spite of everything, to look at its new lord. They 
 
 "Well, it did. Everyone knows it did."
 
-A huge cheerful man shoves through, beaming, with his hat in his hands. "Gwenaël! I am the reeve! Welcome, welcome!" His smile falters. "Is a bad day. A bad, bad day. But welcome!"
+A big woman with forearms like hams pushes to the front, wiping her hands on her apron. "Margot," she says. "I keep the salt-boilers. I saw you on the dyke, the day of the battle." She looks at you without love and without hate. "My man's still out there in the pans somewhere. Well. You're here now. What are you going to do?"
 
-- Go into the dead woman's house yourself, and see.
-- Climb the church steps and speak to them, in their own tongue. *(Favorable)*
-- Keep your men apart from the village, and send for the priest to tell you what is needed.
-- Turn round and ride back to the town until it has passed.
+- Go into the dead woman's house yourself, and see.  
+  <small>At stake: Piety + · Your manor</small>
+- Climb the church steps and speak to them, in their own tongue. *(Favorable)*  
+  <small>At stake: Your manor</small>
+- Keep your men apart from the village, and send for the priest to tell you what is needed.  
+  <small>At stake: Plague deaths − · Your manor</small>
+- Turn round and ride back to the town until it has passed.  
+  <small>At stake: Plague deaths + · Honor − · Your manor</small>
 
 **Chose:** Climb the church steps and speak to them, in their own tongue. (Favorable: success)
 
@@ -2266,15 +2560,20 @@ It goes through a house the way fire goes through thatch: the mother, then the c
 
 They come to you, because you are the lord, and that is what lords are for.
 
-"Shut the valley road," Gwenaël says, not smiling now. "Nobody comes in. Is what my grandfather did, for the flux." Dom Hervé wants a procession, with the abbey's relics, round every field. "The Duchess has a Sarenzan physician at Lannec," he adds, mildly. "If one were to ask her."
+"Shut the dyke," says Margot. "Nobody in from Sauvemer, nobody out. It's coming off the ships." "Burn the houses," says somebody else. "Burn it out." Père Yves just wants someone to help him carry the dying to the church.
 
 Everybody has a cure. Nobody has a cure. Whatever you choose, people will die, and they will remember what you chose.
 
-- Shut the manor. Nobody in, nobody out, by your order and your men's spears.
-- Burn the houses of the dead, and the bedding, and the straw.
-- Go down among the sick with the priest, and nurse them with your own hands. *(Favorable, MORTAL DANGER)*
-- Send for a Sarenzan physician, whatever he costs.
-- Order Masses and a procession round every field, with the relics and the whole manor walking.
+- Shut the manor. Nobody in, nobody out, by your order and your men's spears.  
+  <small>At stake: Plague deaths − · Valdrenne + · Your manor</small>
+- Burn the houses of the dead, and the bedding, and the straw.  
+  <small>At stake: Plague deaths − · Ruthlessness + · Your manor</small>
+- Go down among the sick with the priest, and nurse them with your own hands. *(Favorable, MORTAL DANGER)*  
+  <small>At stake: Your life · A wound · Plague deaths − · Piety +</small>
+- Send for a Sarenzan physician, whatever he costs.  
+  <small>At stake: Plague deaths − · Coin −</small>
+- Order Masses and a procession round every field, with the relics and the whole manor walking.  
+  <small>At stake: Plague deaths + · Piety + · Your manor</small>
 
 **Chose:** Go down among the sick with the priest, and nurse them with your own hands. (Favorable: success)
 
@@ -2286,7 +2585,7 @@ Water. Broth. Clean straw. Sitting up with the dying so they do not die alone. C
 
 ## Your Own House
 
-You thought, without ever quite thinking it, that it would not come into your own house. Everyone thinks that, Père Dom Hervé says afterwards. Lords most of all.
+You thought, without ever quite thinking it, that it would not come into your own house. Everyone thinks that, Père Yves says afterwards. Lords most of all.
 
 It comes in at midsummer. One of the men who came with you from the war, who walked out of Grisolles and stood on the dyke at Les Salines and lived through all of it, starts coughing at supper, and looks at his hand, and goes quiet.
 
@@ -2298,9 +2597,12 @@ There is nobody else to look at but you.
 
 He is dead in four days. The journal of your life will say his name. You will not need it to.
 
-- Sit with him to the end. *(Favorable)*
-- Keep the rest of your men away from him. You need them alive.
-- Get drunk, and stay drunk, until it is over.
+- Sit with him to the end. *(Favorable)*  
+  <small>At stake: A wound · Your men's loyalty +</small>
+- Keep the rest of your men away from him. You need them alive.  
+  <small>At stake: Your men's loyalty − · Roger Tallis +</small>
+- Get drunk, and stay drunk, until it is over.  
+  <small>At stake: Roger Tallis −</small>
 
 **Chose:** Sit with him to the end. (Favorable: success)
 
@@ -2320,9 +2622,12 @@ The letters come late and few, by ships that are turned away from half the ports
 
 The letter is from your mother, in Father Anselm's hand, and Father Anselm has added a line of his own at the bottom, crooked, as if written in a hurry. Your father died at Lammas. "He kept the tallies to the last day," your mother says. "He was cutting the oats tally when it took him. He said, tell the boy the count was right." Cis and Avice are alive. Ashby has lost eleven households of thirty-one.
 
-- Send home what money you can spare.
-- Send for your sisters to come to you, when the seas are open.
-- Have Masses said for the dead, here and at home.
+- Send home what money you can spare.  
+  <small>At stake: Common Folk + · Coin −</small>
+- Send for your sisters to come to you, when the seas are open.  
+  <small>At stake: Your manor +</small>
+- Have Masses said for the dead, here and at home.  
+  <small>At stake: Piety + · Your manor</small>
 
 **Chose:** Send home what money you can spare.
 
@@ -2336,16 +2641,20 @@ You send it by a Sarenzan who swears it will reach them, and charges a quarter f
 
 The harvest stands in the fields, ripe and golden and enormous, the best harvest anyone can remember, and there is nobody to bring it in.
 
-The orchards are heavy with apples rotting on the branch. The barley is down in the low fields, and the hill fields are standing, and Gwenaël walks along the headlands every morning with his hat in his hand, counting what he cannot reap.
+The salt pans are untended and silting. The little barley fields on the dyke are standing. Margot has her surviving boilers working the pans by moonlight, because the pans are the money and the money is the winter.
 
 *(Continue)*
 
-"Them that's left want paying," the headman tells you. "Paying proper. Day-wages. Thruppence a day, they're asking, and a dinner, where it was a penny and nothing in the old lord's time." Gwenaël shrugs his giant shoulders. "And they will get it, monseigneur. From you or from the next valley."
+"Them that's left want paying," the headman tells you. "Paying proper. Day-wages. Thruppence a day, they're asking, and a dinner, where it was a penny and nothing in the old lord's time." A long pause. "The old lord would have made them do it for nothing. By custom. Boon-work, it's called. Owed to the lord."
 
-- Take off your coat and reap with your own men and your own hands.
-- Pay the wages they are asking. Bring it in, whatever it costs.
-- Order the boon-work by custom. They owe it to the lord.
-- Bring in what can be brought in, and let the far fields go.
+- Take off your coat and reap with your own men and your own hands.  
+  <small>At stake: Your manor · Remembered later</small>
+- Pay the wages they are asking. Bring it in, whatever it costs.  
+  <small>At stake: Common Folk + · Great Nobles − · Your manor · Coin −</small>
+- Order the boon-work by custom. They owe it to the lord.  
+  <small>At stake: Ruthlessness + · Your manor</small>
+- Bring in what can be brought in, and let the far fields go.  
+  <small>At stake: Your manor</small>
 
 **Chose:** Take off your coat and reap with your own men and your own hands.
 
@@ -2353,7 +2662,7 @@ The orchards are heavy with apples rotting on the branch. The barley is down in 
 
 Your back is broken by the third day. Your hands are a mass of blisters. Davy is better at it than you, and says so. It is the best fortnight you have had since you came. The people do not love you for it. They do talk about it, at night, the way people talk about a thing they did not expect.
 
-*Grain in store (seasons) +2 · Harvest in: 8 seasons of grain · Michaelmas rents: £3 15s · People -83*
+*Grain in store (seasons) +2 · Harvest in: 8 seasons of grain · Michaelmas rents: £4 15s · People -99*
 
 ## The Reckoning of the Dead
 
@@ -2365,13 +2674,16 @@ The frost comes at Martinmas, and with the frost, the Mottle goes, the way a tid
 
 You count the dead with the priest, in the cold church, from his list. It takes all afternoon.
 
-A third of the manor. One in three. Whole families gone, houses standing empty with the doors open and the hens walking in and out. There are 167 souls left on your manor.
+A third of the manor. One in three. Whole families gone, houses standing empty with the doors open and the hens walking in and out. There are 201 souls left on your manor.
 
-Gwenaël comes to the church at the end, and sits on the back bench, and cries like a child, quite openly, and nobody tells him to stop.
+Margot comes to the church at the end and stands at the back with her arms folded. "Well," she says. "We're still here. Some of us."
 
-- Raise a stone cross in the churchyard, with the names cut into it.
-- Give the widows back their Michaelmas rents.
-- Get on with it. There is a manor to run.
+- Raise a stone cross in the churchyard, with the names cut into it.  
+  <small>At stake: Your manor · Coin −</small>
+- Give the widows back their Michaelmas rents.  
+  <small>At stake: Common Folk + · Your manor · Coin −</small>
+- Get on with it. There is a manor to run.  
+  <small>At stake: Your manor</small>
 
 **Chose:** Raise a stone cross in the churchyard, with the names cut into it.
 
@@ -2389,7 +2701,7 @@ The manor is quieter. There are empty houses on every lane, and strips of land w
 
 *(Continue)*
 
-There is a letter on your table, under the King's seal, about the wages of labourers. There is another from the Duchess, about the truce, which runs out at Lady Day next year. There is a third, unopened, from home.
+There is a letter on your table, under the King's seal, about the wages of labourers. There is another from the captain at Sauvemer, about the truce, which runs out at Lady Day next year. There is a third, unopened, from home.
 
 You are a lord of a manor that has lived through the end of the world. Now you have to find out how to live in what comes after.
 
@@ -2409,14 +2721,18 @@ There is a silence. Then somebody at the back laughs, a short ugly bark.
 
 "Common good," says a voice. "Whose?"
 
-Gwenaël turns his hat round and round in his big hands. "Monseigneur. In the next valley, the lord pays fourpence. Everybody knows. If you pay a penny, by harvest you will have nobody. Is not a threat. Is just arithmetic."
+"Before the Mottle," Margot says, loudly, to you and not to the steward, "there were forty of us working the pans. There are twenty-six. You want the same salt for the same pay, you'll want the dead back first."
 
 Everybody is looking at you. The law is the King's. The manor is yours.
 
-- Enforce the ordinance. The King's law is the King's law.
-- Pay them what the market asks, quietly, and keep it off the rolls.
-- Let the empty holdings to them as tenants, on easy rents. Land instead of wages. *(Favorable)*
-- Put your own men to work in the fields beside them, and hold the line on wages.
+- Enforce the ordinance. The King's law is the King's law.  
+  <small>At stake: Crown + · Common Folk − · Your manor −</small>
+- Pay them what the market asks, quietly, and keep it off the rolls.  
+  <small>At stake: Great Nobles − · Your manor · Coin −</small>
+- Let the empty holdings to them as tenants, on easy rents. Land instead of wages. *(Favorable)*  
+  <small>At stake: Common Folk + · Great Nobles − · Your manor · Coin −</small>
+- Put your own men to work in the fields beside them, and hold the line on wages.  
+  <small>At stake: Your men's loyalty − · Your manor</small>
 
 **Chose:** Enforce the ordinance. The King's law is the King's law.
 
@@ -2426,30 +2742,34 @@ Two families leave in the night, walking east toward lords who pay. You send men
 
 *Temper of the village −2 · People −8 · Crown standing +1 · Common Folk standing −1*
 
-## The Marriage Fine
+## The Poacher
 
-A plague widow and a plague widower, both with children, both with empty houses and fields too big to work alone, come to the manor court together to ask leave to marry. They are not young. They hold hands under the table where they think nobody can see.
+Your men catch a boy of fourteen with a sack of your eels from the lord's weirs, at dawn, and bring him up to the house by the ear.
 
-By the custom of the manor, a villein's daughter or widow who marries pays the lord a fine. The steward has the sum written down. It is more than either of them has.
+He is thin as a rake and plague-orphaned and furious, and he looks at you the way you once looked at anybody who had what you did not.
 
-"It's the custom, monseigneur," the steward murmurs.
+"Hang him," says somebody. "That's the law." It is.
 
-- Waive the fine, and come to the wedding.
-- Take the fine. The custom is the custom.
+- Put him to work in your stables, where you can keep an eye on him.  
+  <small>At stake: Your men + · Your manor</small>
+- Have him flogged at the church door, and let it be known.  
+  <small>At stake: Ruthlessness + · Your manor</small>
+- Hang him. The law is the law.  
+  <small>At stake: Ruthlessness + · Honor − · Your manor</small>
 
-**Chose:** Waive the fine, and come to the wedding.
+**Chose:** Put him to work in your stables, where you can keep an eye on him.
 
-You come to the wedding. They are so astonished they forget their words. You dance with the bride, badly, and she laughs, and the whole village sees you do it.
+He bolts twice in the first month. The third time he comes back on his own, at dark, wet through, and sleeps in the hay without a word. By the spring he is the best hand with a horse in the place. He never says thank you. He never takes so much as a turnip again.
 
-*Temper of the village +2 · People +2*
+*Temper of the village +1 · Men +1*
 
 ## The Settlers
 
 *Spring, year 27 of King Aldred*
 
-In the summer the Duchess's steward sends you people to fill your empty houses.
+In the summer the Crown sends you people to fill your empty houses.
 
-They are not Adalians, at Kerval: the Duchess sends you nine families from her own burned villages on the eastern border, and three Adalian archers' widows from Lannec who want a roof, and a letter asking you to make them welcome. They come up the road in a straggling line with their bundles, and stop in the street, and look at your village. Your village looks back.
+They come over from Saltcombe in a hired cog: thirty-odd Adalian men and women, labourers and their wives and their children, from the plague-emptied villages of the south, promised land in the new march if they would cross the sea for it. They come up the road in a straggling line with their bundles, and stop in the street, and look at your village. Your village looks back.
 
 *(Continue)*
 
@@ -2457,10 +2777,14 @@ Their leader is a big, red-faced Saltcombe brewer's son called Hodge Brewster, w
 
 You notice one of the settlers is a Coker: a cousin of Wat's, with the family's jaw and the family's way of looking at a reeve's son.
 
-- Give them the empty houses in the village, among the locals.
-- Settle them together on the far fields, apart, with their own lane.
-- Mix them holding by holding, and make the locals stand godparent to the settlers' children. *(Favorable)*
-- Send them back. Your people have had enough strangers.
+- Give them the empty houses in the village, among the locals.  
+  <small>At stake: Your manor +</small>
+- Settle them together on the far fields, apart, with their own lane.  
+  <small>At stake: Your manor +</small>
+- Mix them holding by holding, and make the locals stand godparent to the settlers' children. *(Favorable)*  
+  <small>At stake: Your manor +</small>
+- Send them back. Your people have had enough strangers.  
+  <small>At stake: Crown − · Your manor +</small>
 
 **Chose:** Give them the empty houses in the village, among the locals.
 
@@ -2474,13 +2798,16 @@ There is a fight at the well within a week, and another at the alehouse, and a V
 
 Manor court, in the hall, on a wet Thursday, with the whole village crammed in to watch, because it is better than work.
 
-A widow called Guillemette says that Pierre the carter's pigs have been in her barley three times since Easter, and she has lost half her strip, and she wants paying. Pierre the carter says his pigs are honest pigs and her fence is a disgrace. Pierre the carter is also Gwenaël's cousin, and everyone in the hall knows it, and is watching to see whether you know it too.
+A widow called Guillemette says that Pierre the carter's pigs have been in her barley three times since Easter, and she has lost half her strip, and she wants paying. Pierre the carter says his pigs are honest pigs and her fence is a disgrace. Pierre the carter is also Margot's cousin, and everyone in the hall knows it, and is watching to see whether you know it too.
 
 "Well, monseigneur?" says the steward, pen ready.
 
-- Find for the widow. Pierre pays for the barley and mends her fence.
-- Find for Pierre. Keep the headman sweet; you need him.
-- Split it. Half the barley, and both of them mend the fence together.
+- Find for the widow. Pierre pays for the barley and mends her fence.  
+  <small>At stake: Honor + · Your manor</small>
+- Find for Pierre. Keep the headman sweet; you need him.  
+  <small>At stake: Ruthlessness + · Your manor</small>
+- Split it. Half the barley, and both of them mend the fence together.  
+  <small>At stake: Your manor</small>
 
 **Chose:** Find for the widow. Pierre pays for the barley and mends her fence.
 
@@ -2492,38 +2819,43 @@ A widow called Guillemette says that Pierre the carter's pigs have been in her b
 
 *Summer, year 27 of King Aldred*
 
-At Michaelmas a knight rides up the valley with twenty men and the arms of Penhoët on his shield, and stops at the edge of your land, and sends a herald. Messire Yann de Penhoët, of the party of the Count of Léhon, the Duchess's rival for the Armance. Kerval, his herald says, was Penhoët land in his grandfather's day, before the Duchess's father took it in the last war. The Count of Léhon will restore it to its rightful lord when he takes the duchy. Messire Yann would be glad to spare everyone the trouble.
+At Michaelmas an old woman in black comes up the dyke road in a litter with four servants, and has herself set down at your gate, and sends in her name. Dame Péronnelle de Salines: the widow of the last lord of Marsalin, who died in the pans with the rest of the Valdrennish. By the custom of Valdrenne, a widow keeps a third of her husband's land for her life. She has come for her third.
 
-"Tell your master," the herald adds, in a lower voice, "that Messire Yann is not a patient man."
+"I am sixty-one," she says, accepting a cup of your wine and not drinking it. "I do not expect to trouble you for long. But I was married in that chapel, monseigneur, and I mean to be buried in it, from my own house, on my own land. Your King's writ says nothing about widows. My lawyers say a great deal."
 
-- Take it to law, before the King's justices at Sauvemer. *(Favorable)*
-- Buy the claim out, for a sum that will make them go away.
-- Offer them a share, a holding of their own, in return for their oath.
-- Tell them plainly that the land is yours by the sword, and they may try to take it the same way.
+- Take it to law, before the King's justices at Sauvemer. *(Favorable)*  
+  <small>At stake: Crown + · Your manor · Coin −</small>
+- Buy the claim out, for a sum that will make them go away.  
+  <small>At stake: Coin −</small>
+- Offer them a share, a holding of their own, in return for their oath.  
+  <small>At stake: Valdrenne + · Your manor −</small>
+- Tell them plainly that the land is yours by the sword, and they may try to take it the same way.  
+  <small>At stake: Ruthlessness + · Your manor</small>
 
 **Chose:** Take it to law, before the King's justices at Sauvemer. (Favorable: success)
 
-The Duchess's court at Lannec finds that Kerval was taken lawfully in war by her father, and granted lawfully by her, and Penhoët's claim is a rebel's. Messire Yann does not attend. He sends word that he does not recognise the court. Nobody expected him to.
+The justices find for the widow's dower, in principle, and for you, in practice: she has her third for life, in rents, paid by you, and the land stays yours. She takes it with a little bow. "You fought fair," she says. "My husband never did." She lives in a house in the town and comes to Mass at Marsalin every Sunday, in black, in the front pew, and watches you.
 
 *Crown standing +1 · Temper of the village −1*
 
-## The Poacher
+## The Sea Comes In
 
-Your men catch a boy of fourteen with a buck from the hill woods across his shoulders, at dawn, and bring him up to the house by the ear.
+In February a gale and a spring tide come together, and the sea comes over the dyke at the north pans, and does not go out again.
 
-He is thin as a rake and plague-orphaned and furious, and he looks at you the way you once looked at anybody who had what you did not.
+You stand on the dyke in the rain with the headman and watch salt water creep across your best fields, inch by inch, white with foam. "Three days to close it," Margot shouts over the wind. "If every soul on the manor carries clay. Every soul. Including you."
 
-"Hang him," says somebody. "That's the law." It is.
+- Pick up a basket and carry clay with them.  
+  <small>At stake: Your manor</small>
+- Hire labourers from Sauvemer to close it.  
+  <small>At stake: Your manor · Coin −</small>
+- Let the low fields go. Save the village end.  
+  <small>At stake: Your manor −</small>
 
-- Put him to work in your stables, where you can keep an eye on him.
-- Have him flogged at the church door, and let it be known.
-- Hang him. The law is the law.
+**Chose:** Pick up a basket and carry clay with them.
 
-**Chose:** Put him to work in your stables, where you can keep an eye on him.
+Three days and two nights in the wind and the mud, everyone, lord and settlers and grandmothers, a chain of baskets from the clay pit to the breach. On the third night it holds. You have never been so cold or so filthy or so proud of anything. The fields are spoiled for a year. The manor is saved.
 
-He bolts twice in the first month. The third time he comes back on his own, at dark, wet through, and sleeps in the hay without a word. By the spring he is the best hand with a horse in the place. He never says thank you. He never takes so much as a turnip again.
-
-*Temper of the village +1 · Men +1 · Harvest in: 7 seasons of grain · Michaelmas rents: £3 1s 6d*
+*Temper of the village +2 · Grain in store (seasons) −1 · Harvest in: 6 seasons of grain · Michaelmas rents: £3 17s*
 
 ## Lady Day
 
@@ -2541,13 +2873,16 @@ And there is news from over the border. Thibaut de Brésy, the Constable's son, 
 
 You have the spring to get ready.
 
-- Put everyone to the defences. Ditch, palisade, a watch on the road.
-- Train the villagers, settlers and all, with bows and bills. *(Favorable)*
-- Ride round your neighbours and agree to come to each other's aid.
+- Put everyone to the defences. Ditch, palisade, a watch on the road.  
+  <small>At stake: Your manor</small>
+- Train the villagers, settlers and all, with bows and bills. *(Favorable)*  
+  <small>At stake: Your manor · Command +</small>
+- Ride round your neighbours and agree to come to each other's aid.  
+  <small>At stake: Knights + · Your manor · Remembered later</small>
 
 **Chose:** Put everyone to the defences. Ditch, palisade, a watch on the road.
 
-All spring, every spare hand digs. You wall the fortified farm on the ridge properly, and clear the orchards back from it a bowshot. The village grumbles about the work. The village also sleeps better.
+All spring, every spare hand digs. You raise the dyke wall by the stone house and cut the causeway so it can be blocked with a cart. The village grumbles about the work. The village also sleeps better.
 
 *Defences +2 · Temper of the village −1*
 
@@ -2559,9 +2894,12 @@ The great wheel of the mill cracks in the spring flood, a split right through th
 
 A new shaft is oak, and oak means a carpenter from the town, and a carpenter from the town means money. Until then, everyone on the manor grinds their grain by hand in querns, which is the custom forbidden by the lord, because the lord takes a toll at the mill.
 
-- Pay for the carpenter and the oak.
-- Let them grind by hand until it is mended. No toll, no fines.
-- Make the miller pay for it. He takes a toll too.
+- Pay for the carpenter and the oak.  
+  <small>At stake: Your manor · Coin −</small>
+- Let them grind by hand until it is mended. No toll, no fines.  
+  <small>At stake: Your manor · Coin −</small>
+- Make the miller pay for it. He takes a toll too.  
+  <small>At stake: Your manor</small>
 
 **Chose:** Pay for the carpenter and the oak.
 
@@ -2575,7 +2913,7 @@ The carpenter comes, and the oak, and the wheel turns again by Whitsun. The mill
 
 They come on a night at the end of June, with no moon, the way raiders always do.
 
-You wake to the bell, and shouting, and a red light under the shutters that is not dawn. A barn is burning on the lower orchard. In the light of it you can see horsemen in the street, twenty or thirty of them, and cattle being driven, and people running.
+You wake to the bell, and shouting, and a red light under the shutters that is not dawn. A barn is burning on the edge of the village. In the light of it you can see horsemen in the street, twenty or thirty of them, and cattle being driven, and people running.
 
 *(Continue)*
 
@@ -2583,31 +2921,37 @@ Davy is already at your door with your sword. "Sir! Sir, they're in the village!
 
 At the head of the horsemen, under a black-and-silver banner, a young knight with a gold circlet on his helm is sitting his horse in the firelight, watching your house. Thibaut de Brésy, the Constable's son.
 
-- Arm and ride straight at them with every man you have. *(Favorable, MORTAL DANGER)*
-- Get everyone into the walled farm and hold it. Let them have the cattle. *(Favorable)*
-- Ride out under a white cloth and talk to Thibaut. *(Even)*
+- Arm and ride straight at them with every man you have. *(Favorable, MORTAL DANGER)*  
+  <small>At stake: A wound · Your life · Renown + · Your manor −</small>
+- Get everyone into the stone house and hold it. Let them have the cattle. *(Favorable)*  
+  <small>At stake: Your manor −</small>
+- Ride out under a white cloth and talk to Thibaut. *(Even)*  
+  <small>At stake: Valdrenne + · Messire Thibaut de Brésy + · Your manor</small>
 
-**Chose:** Get everyone into the walled farm and hold it. Let them have the cattle. (Favorable: success)
+**Chose:** Get everyone into the stone house and hold it. Let them have the cattle. (Favorable: success)
 
 Every soul you can find, children and grandmothers and the settlers' pigs, inside the walls before the raiders have finished with the first barn. They ride round you twice, shouting, and loose a few arrows, and take the cattle and the hay and go. You lose the cattle. You lose nobody.
 
 *Grain in store (seasons) −2 · Temper of the village +1*
 
-## The Late Frost
+## The Marriage Fine
 
-A frost comes in the first week of May, when the apple trees are in full blossom, and in one night turns the whole valley brown.
+A plague widow and a plague widower, both with children, both with empty houses and fields too big to work alone, come to the manor court together to ask leave to marry. They are not young. They hold hands under the table where they think nobody can see.
 
-Gwenaël walks through the orchards in the morning, touching the dead blossoms, with tears running into his beard. "No apples," he says. "No cider. No money. Is a bad year coming, monseigneur." Dom Hervé says the frost is a judgement. Nobody asks him on whom.
+By the custom of the manor, a villein's daughter or widow who marries pays the lord a fine. The steward has the sum written down. It is more than either of them has.
 
-- Buy grain in Lannec to see them through.
-- Halve the year's rents.
-- It is a bad year. Everyone has bad years.
+"It's the custom, monseigneur," the steward murmurs.
 
-**Chose:** Buy grain in Lannec to see them through.
+- Waive the fine, and come to the wedding.  
+  <small>At stake: Your manor +</small>
+- Take the fine. The custom is the custom.  
+  <small>At stake: Your manor · Coin +</small>
 
-You buy it before the price goes up, which is the only clever thing anyone does that year. Kerval is hungry but nobody starves. Gwenaël tells everyone it was his idea.
+**Chose:** Waive the fine, and come to the wedding.
 
-*Coin −6s 8d · Grain in store (seasons) +2 · Harvest in: 7 seasons of grain · Michaelmas rents: £3 1s 6d*
+You come to the wedding. They are so astonished they forget their words. You dance with the bride, badly, and she laughs, and the whole village sees you do it.
+
+*People +2 · Harvest in: 6 seasons of grain · Michaelmas rents: £3 17s 6d*
 
 ## The Masterless Men
 
@@ -2615,21 +2959,24 @@ You buy it before the price goes up, which is the only clever thing anyone does 
 
 In the autumn the Iron Company comes back, or what is left of it.
 
-Not eight hundred any more. Sixty or seventy hard, ragged men with good weapons and no master, living in the hill woods above the valley, taking a sheep here and a woman there and a whole wagon of salt on the Sauvemer road in broad daylight. Nobody pays them now. They pay themselves.
+Not eight hundred any more. Sixty or seventy hard, ragged men with good weapons and no master, living in the reed-beds of the marsh, taking a sheep here and a woman there and a whole wagon of salt on the Sauvemer road in broad daylight. Nobody pays them now. They pay themselves.
 
 *(Continue)*
 
 And then one evening their captain rides up to your gate, alone, with his hands open. Ulric Rotbart: older, greyer, thinner, with a cough. "Herr," he says. "I hear you are a lord now. Lords need men." He smiles, tiredly. "I have sixty men who will die of hunger this winter, or hang. I would rather they did neither. Would you?"
 
-- Take them on as your garrison, under your banner and your law.
-- Hunt them down, with your men and your neighbours. *(Favorable)*
-- Feed them for a night, and send them on their way.
+- Take them on as your garrison, under your banner and your law.  
+  <small>At stake: Ulric Rotbart + · Your manor · Coin − · Remembered later</small>
+- Hunt them down, with your men and your neighbours. *(Favorable)*  
+  <small>At stake: Your men − · Renown + · Common Folk + · Your manor</small>
+- Feed them for a night, and send them on their way.  
+  <small>At stake: Honor + · Ulric Rotbart + · Your manor · Coin −</small>
 
 **Chose:** Take them on as your garrison, under your banner and your law.
 
 "Your law," Rotbart repeats. "Ja. Good. Somebody's law." He spits on his palm and holds it out.
 
-Sixty Hroswald mercenaries in your barns and your alehouse. The village is terrified of them. Hodge Brewster's settlers start a fight with them in the first week and lose it. By Christmas the bandits on the road have stopped, because the worst of them are eating your bread, and the Duchess's steward writes you a nervous little letter asking what you intend to do with an army.
+Sixty Hroswald mercenaries in your barns and your alehouse. The village is terrified of them. Hodge Brewster's settlers start a fight with them in the first week and lose it. By Christmas the bandits on the road have stopped, because the worst of them are eating your bread, and the Sauvemer captain writes you a nervous little letter asking what you intend to do with an army.
 
 *Coin −10s · Defences +3 · Temper of the village −2 · Ulric Rotbart's respect +2*
 
@@ -2639,7 +2986,7 @@ Sixty Hroswald mercenaries in your barns and your alehouse. The village is terri
 
 The second winter on the manor is quiet. You had forgotten what that was like.
 
-Snow on the orchards, the fire built up in the hall, the steward's accounts done, the dogs asleep. Your men, the ones who are left, round the fire with the ale. Villagers come in of an evening now, to sit at the bottom of the hall and listen to the stories, the way people used to come into your own lord's hall when you were a boy.
+Snow on the marsh, the fire built up in the hall, the steward's accounts done, the dogs asleep. Your men, the ones who are left, round the fire with the ale. Villagers come in of an evening now, to sit at the bottom of the hall and listen to the stories, the way people used to come into your own lord's hall when you were a boy.
 
 *(Continue)*
 
@@ -2647,9 +2994,12 @@ Davy Ludd is twenty-two, and broad in the shoulder, and has a beard he is proud 
 
 "Sir," he says. "I've two things to ask. I don't know which one first."
 
-- Give Davy leave to marry his girl, and a holding to keep her on.
-- Kneel him down by the fire, and knight him.
-- Tell them the story of Grisolles, the way it really was.
+- Give Davy leave to marry his girl, and a holding to keep her on.  
+  <small>At stake: Your men's loyalty + · Davy Ludd + · Your manor + · Remembered later</small>
+- Kneel him down by the fire, and knight him.  
+  <small>At stake: Your men's loyalty + · Knights − · Common Folk + · Davy Ludd +</small>
+- Tell them the story of Grisolles, the way it really was.  
+  <small>At stake: Valdrenne + · Your manor</small>
 
 **Chose:** Give Davy leave to marry his girl, and a holding to keep her on.
 
@@ -2665,7 +3015,7 @@ Two years. The manor has filled up again, mostly, with strangers and children, a
 
 *(Continue)*
 
-In Lent a letter comes from home, and another from the Duchess, and a third from someone you have not heard from in a long time. They are all, one way or another, about the same thing. You are twenty-eight. You hold land. People have started asking, at dinner, in letters, in the street, when you mean to marry.
+In Lent a letter comes from home, and another from Sauvemer, and a third from someone you have not heard from in a long time. They are all, one way or another, about the same thing. You are twenty-eight. You hold land. People have started asking, at dinner, in letters, in the street, when you mean to marry.
 
 *(Continue)*
 
@@ -2683,9 +3033,9 @@ Héloïse de Corbie has gone into the convent at Saint-Lys, now her brother's ra
 
 ## A Wife for the Manor
 
-"A lord wants a lady," says Gwenaël the reeve, loudly, in his terrible Adalian, at the manor court. "A hall wants a woman in it. Look at the state of it. Rushes from Martinmas. Dogs on the table." Nobody laughs, quite.
+"A lord wants a lady," says Margot of the salt-boilers, to your face, in front of the whole pan-yard. "A hall wants a woman in it. Look at the state of it. Rushes from Martinmas. Dogs on the table." Nobody laughs, quite.
 
-Dom Hervé says it more politely, and more often. Without an heir the manor goes back to the Crown when you die, and everyone on it goes back with it, to whoever the King feels like rewarding next. They have had one new lord. They do not want another.
+Père Yves says it more politely, and more often. Without an heir the manor goes back to the Crown when you die, and everyone on it goes back with it, to whoever the King feels like rewarding next. They have had one new lord. They do not want another.
 
 *(Continue)*
 
@@ -2723,9 +3073,12 @@ Ravell Hall, the front way this time, with your own men behind you. Isabel is wa
 
 Her father, Sir John Sayer, has six other daughters married and one dowry left to find, and would give her to you with both hands and a blessing. The difficulty is Lady Ravell, who has kept Isabel for eleven years and is not used to giving things up. Sir John agreed to wait a year for you, once. It has been five.
 
-- Make your case yourself. *(Favorable)*
-- Make Lady Ravell a gift for the loss of her waiting-woman. Six pounds.
-- Let her settle it herself.
+- Make your case yourself. *(Favorable)*  
+  <small>At stake: Isabel Sayer ± · Coin − · Remembered later</small>
+- Make Lady Ravell a gift for the loss of her waiting-woman. Six pounds.  
+  <small>At stake: Coin −</small>
+- Let her settle it herself.  
+  <small>At stake: Isabel Sayer ±</small>
 
 **Chose:** Make your case yourself. (Favorable: success)
 
@@ -2735,15 +3088,18 @@ You go down on one knee to Lady Ravell, which is not usual, and she knows it. Sh
 
 Sir John Sayer can find five pounds, a horse, and his blessing, and he is ashamed that it is not more. Isabel is ashamed that he is ashamed. There is the question of what you settle on her in return.
 
-- Drive a hard bargain. *(Even)*
-- Settle it fairly, as her people ask.
-- Ask for nothing but her.
+- Drive a hard bargain. *(Even)*  
+  <small>At stake: Isabel Sayer −</small>
+- Settle it fairly, as her people ask.  
+  <small>At stake: Isabel Sayer +</small>
+- Ask for nothing but her.  
+  <small>At stake: Honor + · Isabel Sayer + · Remembered later</small>
 
 **Chose:** Drive a hard bargain. (Even: success)
 
 You haggle like your life depends on it, and come away with more than anyone expected, including you. Isabel Sayer watches you do it, and you cannot tell what she thinks of it.
 
-*Isabel Sayer's affection +4 · Isabel Sayer's respect +2 · Harvest in: 7 seasons of grain · Michaelmas rents: £3 1s 9d · Coin +£5 · Coin +£1 5s · Knights standing +1*
+*Isabel Sayer's affection +4 · Isabel Sayer's respect +2 · Harvest in: 6 seasons of grain · Michaelmas rents: £3 17s 9d · Coin +£5 · Coin +£1 5s · Knights standing +1*
 
 ## The Wedding
 
@@ -2755,13 +3111,16 @@ You are married at Ravell, in the chapel where you used to serve Mass, with Lady
 
 At the feast an old knight you do not know leans over to you and says, "New man, eh? Married well, though. That's the way. That's how my grandfather did it." He means it kindly. You decide to take it so.
 
-- Feast the whole manor, whatever it costs.
-- A plain wedding, and the money to the church and the poor.
-- Let her have the wedding she wants.
+- Feast the whole manor, whatever it costs.  
+  <small>At stake: Common Folk + · Isabel Sayer + · Your manor · Coin −</small>
+- A plain wedding, and the money to the church and the poor.  
+  <small>At stake: Piety + · Your manor · Coin −</small>
+- Let her have the wedding she wants.  
+  <small>At stake: Isabel Sayer + · Isabel Sayer + · Coin −</small>
 
 **Chose:** Feast the whole manor, whatever it costs.
 
-You roast two oxen and broach every cask in the cellar, and the manor eats and drinks and dances for two days, and at the end of it Gwenaël makes a speech that nobody can hear and everybody cheers. For a while afterwards people smile at you in the lane.
+You roast two oxen and broach every cask in the cellar, and the manor eats and drinks and dances for two days, and at the end of it Margot of the salt-boilers makes a speech that nobody can hear and everybody cheers. For a while afterwards people smile at you in the lane.
 
 *Coin −£3 · Temper of the village +1 · Common Folk standing +1 · Isabel Sayer's affection +1*
 
@@ -2777,9 +3136,12 @@ She knows how a gentle house is run, and yours is not one. She says so, kindly, 
 
 It comes to a head at Candlemas, in the hall, in front of the household, the way these things always do.
 
-- Give her the keys and the books, and let her run the house.
-- Stand with her in public, whatever it costs you with the neighbours.
-- It is your manor. Keep your own counsel.
+- Give her the keys and the books, and let her run the house.  
+  <small>At stake: Isabel Sayer + · Your manor</small>
+- Stand with her in public, whatever it costs you with the neighbours.  
+  <small>At stake: Great Nobles − · Common Folk + · Valdrenne + · Isabel Sayer +</small>
+- It is your manor. Keep your own counsel.  
+  <small>At stake: Isabel Sayer −</small>
 
 **Chose:** Give her the keys and the books, and let her run the house.
 
@@ -2791,11 +3153,11 @@ You give her the keys. All of them. The household watches you do it, and then wa
 
 *Spring, year 30 of King Aldred*
 
-In the spring she takes your hand in the orchard and puts it on her belly, and waits for you to understand. She is with child. The baby will come at harvest, she thinks, or a little after.
+In the spring she takes your hand in the orchard, such as it is, and puts it on her belly, and waits for you to understand. She is with child. The baby will come at harvest, she thinks, or a little after.
 
 *(Continue)*
 
-The manor is delighted. Old women stop her in the lane to feel her belly and tell her it is a boy, from the way she carries, or a girl, from the way she walks. Gwenaël's wife brings an eagle-stone to tie to her arm. The priest says a Mass.
+The manor is delighted. Old women stop her in the lane to feel her belly and tell her it is a boy, from the way she carries, or a girl, from the way she walks. Margot brings an eagle-stone to tie to her arm. The priest says a Mass.
 
 You are not delighted. You are frightened, all the time, in a way the war never managed. You have seen what fever does in a closed room. Everybody knows a woman who died in childbed. Everybody knows several. Sir Hamon's Alice did, eleven years before you knew him, and he still talks to her at night.
 
@@ -2803,15 +3165,18 @@ You are not delighted. You are frightened, all the time, in a way the war never 
 
 There are choices to make about who will be in the room, and you, being a man, will not be.
 
-- Send to Sauvemer for the Sarenzan physician, the best money can buy.
-- Get the best midwife in the country, and let her do as she thinks fit.
-- Borrow the girdle of Saint Margaret from the abbey, and trust to God.
+- Send to Sauvemer for the Sarenzan physician, the best money can buy.  
+  <small>At stake: Coin − · Remembered later</small>
+- Get the best midwife in the country, and let her do as she thinks fit.  
+  <small>At stake: Your manor</small>
+- Borrow the girdle of Saint Margaret from the abbey, and trust to God.  
+  <small>At stake: Piety + · Church + · Coin − · Remembered later</small>
 
 **Chose:** Send to Sauvemer for the Sarenzan physician, the best money can buy.
 
 Maestro Orsini comes up from Sauvemer with two boys carrying his books and a box of instruments that the midwife looks at as if they were snakes. He casts her horoscope, and bleeds her twice for balance, and is confident of everything. Your wife does not like him. Neither do the women. They do as he says anyway, because he cost two pounds.
 
-*Coin −£2 · Harvest in: 7 seasons of grain · Michaelmas rents: £3 1s 9d · A son*
+*Coin −£2 · Harvest in: 6 seasons of grain · Michaelmas rents: £3 17s 9d · A son*
 
 ## Childbed
 
@@ -2836,12 +3201,14 @@ A boy. Red, furious, perfect, with a fist like a walnut. They put it in your arm
 - Piers, for your father.
 - Hal, for yourself.
 - Hamon, for your old master.
-- Aldred, for the King.
-- Let her choose.
+- Aldred, for the King.  
+  <small>At stake: Crown +</small>
+- Let her choose.  
+  <small>At stake: Piety +</small>
 
 **Chose:** Piers, for your father.
 
-Piers, the priest writes in the book, and the date, and your name, and hers. The manor drinks the child's health for three days, and Gwenaël makes another speech.
+Piers, the priest writes in the book, and the date, and your name, and hers. The manor drinks the child's health for three days, and Margot makes another speech.
 
 ## The Harvest of Year Thirty
 
@@ -2867,10 +3234,14 @@ Ashby is up. Your mother writes that the manor court rolls were burned on the gr
 
 And then the King's letter: every lord who holds of the Crown is to come with every man he can raise, to put down the rebels, at the King's charge. It is not a request.
 
-- Raise your men, cross, and ride for the King.
-- Cross with a few men, and try to talk to them before the King's army does.
-- Send the King money and a few men, and stay to hold your manor.
-- Stay where you are, and send nothing. You will not hunt your own people.
+- Raise your men, cross, and ride for the King.  
+  <small>At stake: Your men − · Crown + · Great Nobles + · Your manor</small>
+- Cross with a few men, and try to talk to them before the King's army does.  
+  <small>At stake: Remembered later</small>
+- Send the King money and a few men, and stay to hold your manor.  
+  <small>At stake: Your men − · Coin −</small>
+- Stay where you are, and send nothing. You will not hunt your own people.  
+  <small>At stake: Your men − · Crown − · Common Folk + · Your manor</small>
 
 **Chose:** Raise your men, cross, and ride for the King.
 
@@ -2894,9 +3265,12 @@ They want the end of villeinage. They want a fourpenny rent. They want pardons. 
 
 And then the captain of the Ravell men comes forward to kneel to the King, and it is Wat Coker, older, thinner, grey at the temples, and the same set to his jaw that he had at ten, throwing stones at the reeve's boy. He does not kneel quite low enough. The Earl of Carrow leans over to the King and says something, and the King does not answer, and does not look round. Then the Earl lifts one finger, and his marshal, a big man called Sir Hugh Malet, puts his horse forward with his sword already out. A lord's villein, in arms against his lord. A lord's justice. The King is looking at the sky.
 
-- Stay where you are. This is the King's business.
-- Shout a warning.
-- Put your horse between them. *(Even)*
+- Stay where you are. This is the King's business.  
+  <small>At stake: Crown + · Common Folk −</small>
+- Shout a warning.  
+  <small>At stake: Crown − · Common Folk + · Honor + · Wat Coker +</small>
+- Put your horse between them. *(Even)*  
+  <small>At stake: Renown + · Crown + · Common Folk + · Wat Coker +</small>
 
 **Chose:** Stay where you are. This is the King's business.
 
@@ -2914,7 +3288,7 @@ On the March, while the commons rose, the Caldmoor border stayed quiet. Sir Ance
 
 **Chose:** Read on.
 
-*Harvest in: 7 seasons of grain · Michaelmas rents: £3 1s 9d*
+*Harvest in: 6 seasons of grain · Michaelmas rents: £3 17s 9d*
 
 ## The House of Ravell
 
@@ -2932,9 +3306,12 @@ It is Aymer who comes to tell you. He is thirty, and handsome still, and has the
 
 He looks round your hall. "You've done well," he says. He does not quite manage not to mind.
 
-- ~~Buy Ashby. Thirty pounds.~~ *(Requires Coin £30)*
-- Buy it with half down, and half from the rents over five years.
-- Lend Aymer what you can spare, for his own sake.
+- ~~Buy Ashby. Thirty pounds.~~ *(Requires Coin £30)*  
+  <small>At stake: Coin − · Remembered later</small>
+- Buy it with half down, and half from the rents over five years.  
+  <small>At stake: Coin − · Remembered later</small>
+- Lend Aymer what you can spare, for his own sake.  
+  <small>At stake: Aymer Ravell + · Coin −</small>
 - Let it go. It is not your house.
 
 **Chose:** Buy it with half down, and half from the rents over five years.
@@ -2959,9 +3336,11 @@ Then Piers wakes up hot.
 
 By noon the child is burning, and will not drink, and does not know you. Your wife has not left the cradle since dawn. The whole house goes quiet, the way houses do.
 
-- Send for the physician.
+- Send for the physician.  
+  <small>At stake: Coin −</small>
 - Sit up with the child yourself, with cold cloths and small beer, the way your mother did.
-- Have the priest say Masses, and go on with the manor's business.
+- Have the priest say Masses, and go on with the manor's business.  
+  <small>At stake: Piety +</small>
 
 **Chose:** Send for the physician.
 
@@ -2981,11 +3360,14 @@ The fever goes as it came. By Lent Piers is running about the yard after the gee
 
 The church roof leaks. It leaked before the Mottle, and the old lord never mended it, and now it leaks onto the new cross and the names on it.
 
-"The abbey," says Dom Hervé delicately, "would of course consider it a great kindness."
+"God sees it, monseigneur," Père Yves says, earnestly, looking up at the drip. "God sees everything."
 
-- Pay for new lead and a new roof.
-- Give the timber, and let the village give the labour.
-- Next year.
+- Pay for new lead and a new roof.  
+  <small>At stake: Church + · Your manor · Coin −</small>
+- Give the timber, and let the village give the labour.  
+  <small>At stake: Your manor</small>
+- Next year.  
+  <small>At stake: Your manor</small>
 
 **Chose:** Pay for new lead and a new roof.
 
@@ -3005,16 +3387,20 @@ You sit up with it until the candle is out. The guild masters of Vervais were ha
 
 And Sir Walter Pryce was the Earl's captain then, and is the Earl's man still, and you do not know whether he knew.
 
-- Take it to the King.
-- Take it to the Prince.
-- Take it to the Earl of Carrow, privately.
-- Say nothing. Keep it.
+- Take it to the King.  
+  <small>At stake: Crown + · Great Nobles − · Remembered later</small>
+- Take it to the Prince.  
+  <small>At stake: Crown + · Remembered later</small>
+- Take it to the Earl of Carrow, privately.  
+  <small>At stake: Ruthlessness + · Honor − · Coin + · Remembered later</small>
+- Say nothing. Keep it.  
+  <small>At stake: Intrigue + · Remembered later</small>
 
 **Chose:** Take it to the King.
 
 You take it to Wendmere yourself, and wait four days for an audience, and give it to the King in a window of the long gallery with nobody near. Aldred reads it twice. His face does not change at all. At the end he folds it, and puts it inside his gown, and says, "Thank you. You will say nothing of this to anyone." Then, after a moment: "Grisolles cost me eight thousand men." He does not say anything else. He does not need to. Something has begun, and you have begun it.
 
-*Crown standing +3 · Great Nobles standing −1*
+*Crown standing +1 · Great Nobles standing −1*
 
 ## Summer
 
@@ -3035,13 +3421,14 @@ It is easier the second time, everyone says. It is, mostly. Eleven hours instead
 A girl. Smaller than the first, and louder. Isabel, sitting up in bed with her hair everywhere, looks at it and says, "Well. That's that, then," and laughs, and holds out her arms.
 
 - Anne, for the saint whose day it is.
-- Aude, for Davy's wife, who sat up with yours.
+- Aude, for Davy's wife, who sat up with yours.  
+  <small>At stake: Davy Ludd + · Will Cobb +</small>
 
 **Chose:** Anne, for the saint whose day it is.
 
 Anne, the priest writes, under the first.
 
-*Harvest in: 7 seasons of grain · Michaelmas rents: £3 1s 9d*
+*Harvest in: 6 seasons of grain · Michaelmas rents: £3 17s 9d*
 
 ## The Summons
 
@@ -3061,10 +3448,14 @@ Sir Walter Pryce comes to see you in October. He is a banneret now, grey and hea
 
 Your wife says, that night, "You're going, then." It is not a question. "Go. But come back. And come back with something."
 
-- Go to the council as the King's man.
-- Let Pryce put your name to the Earl.
-- Go to the Prince's household at Christmas.
-- Go to the council as your own man, beholden to nobody.
+- Go to the council as the King's man.  
+  <small>At stake: Crown + · Remembered later</small>
+- Let Pryce put your name to the Earl.  
+  <small>At stake: Great Nobles + · Remembered later</small>
+- Go to the Prince's household at Christmas.  
+  <small>At stake: Crown + · Remembered later</small>
+- Go to the council as your own man, beholden to nobody.  
+  <small>At stake: Honor +</small>
 
 **Chose:** Go to the council as the King's man.
 
@@ -3074,7 +3465,7 @@ You go to Wendmere as the King's man, and nobody else's, and say so to anyone wh
 
 You ride out of the manor gate in November, with your men behind you, and your wife at the gate with the children, and half the village in the lane, waving caps.
 
-Six years ago you came here with the bell tolling and the dead in the street. Some nights you still walk the salt pans in your sleep, among the dead. Now the manor is full again, nearly. And there is another place on the list of what you hold, across the sea, where you were born.
+Six years ago you came here with the bell tolling and the dead in the street. Some nights you still walk the salt pans in your sleep, among the dead. Now there are more people on the manor than there were before the Mottle. And there is another place on the list of what you hold, across the sea, where you were born.
 
 *(Continue)*
 
@@ -3106,9 +3497,12 @@ The Earl of Carrow rises. He is old now, white-haired and ruddy, and speaks well
 
 The King, on the dais, watches the Earl the whole time he speaks, without any expression at all. You know what he is thinking. You put it there.
 
-- Speak for the war in the West. You know that country. *(Favorable)*
-- Go to the Prince's rooms that night, where the young men are.
-- Say nothing. Listen, and count who stands with whom.
+- Speak for the war in the West. You know that country. *(Favorable)*  
+  <small>At stake: Renown + · The King's favour + · Carrow's favour −</small>
+- Go to the Prince's rooms that night, where the young men are.  
+  <small>At stake: The Prince's favour +</small>
+- Say nothing. Listen, and count who stands with whom.  
+  <small>At stake: Intrigue +</small>
 
 **Chose:** Speak for the war in the West. You know that country. (Favorable: success)
 
@@ -3126,9 +3520,12 @@ Piers is two, and walking, and talking, mostly to the dogs, and Anne is in the c
 
 The question is who holds the manor while you are gone. And the other places too, with their own reeves and their own complaints, which come by every carrier now.
 
-- Leave it in your wife's hands.
-- Leave it with the priest and the reeve between them.
-- Leave one of your own men as castellan.
+- Leave it in your wife's hands.  
+  <small>At stake: Isabel Sayer + · Your manor</small>
+- Leave it with the priest and the reeve between them.  
+  <small>At stake: Your manor</small>
+- Leave one of your own men as castellan.  
+  <small>At stake: Your manor</small>
 
 **Chose:** Leave it in your wife's hands.
 
@@ -3146,16 +3543,20 @@ A lord of your standing owes the King a company: so many lances, so many bows, f
 
 Your steward reads the indenture, and then reads it again, and then goes and sits down. Ulric Rotbart's men, the remnant you hired as a garrison, are already sharpening things in the yard, and watching you to see what you will offer.
 
-- Raise the whole company properly, on credit if you must.
-- Raise fewer men, and only good ones.
-- Raise the company from your own manor.
-- Make Rotbart's men the core of it.
+- Raise the whole company properly, on credit if you must.  
+  <small>At stake: Your company + · Your men + · Renown + · Coin −</small>
+- Raise fewer men, and only good ones.  
+  <small>At stake: Your company + · Your men + · Coin −</small>
+- Raise the company from your own manor.  
+  <small>At stake: Your company + · Your men + · Your manor − · Coin −</small>
+- Make Rotbart's men the core of it.  
+  <small>At stake: Your company + · Your men + · Knights − · Coin −</small>
 
 **Chose:** Raise the whole company properly, on credit if you must.
 
 You raise the whole company: thirty lances and sixty bows, horsed and harnessed and paid a quarter in advance, which is what it takes to get men worth having. It costs every penny you have and a loan from a Sarenzan house in Sauvemer. You ride to the muster at the head of a hundred men with your own badge on their sleeves, and other lords look at your company before they look at you.
 
-*Men +90 · Coin −£9 10s 4d · Renown +1*
+*Men +90 · Coin −£10 · Renown +1*
 
 ## The Armance Again
 
@@ -3167,17 +3568,20 @@ The fleet comes into Lannec on a June morning with the whole Armance shore lit u
 
 Duchess Jehanne meets the King on the quay. She is seventy, and uses a stick, and walks without it when people are watching. Beside her is a girl of fourteen in black, with a face like a closed door: Mahaut, her granddaughter, whose father died in Cordelle's prison. Everyone on the quay knows what she is. The Armance does not pass to Adalia. It passes to Mahaut.
 
-The Duchess sees you in the King's train, and stops, and says, "The one who carried my message." She does not smile. From Jehanne that is better. Your own people from Kerval have walked down to the coast to see the fleet. Gwenaël is waving his hat on a pole.
+The Duchess sees you in the King's train, and stops, and says, "The one who carried my message." She does not smile. From Jehanne that is better.
 
-- Pay your respects to the Duchess and her granddaughter. *(Even)*
-- Stay at the King's side. That is where this war will be decided.
-- Ride out and look at the country before anyone else does.
+- Pay your respects to the Duchess and her granddaughter. *(Even)*  
+  <small>At stake: Standing in the West + · Valdrenne + · Remembered later</small>
+- Stay at the King's side. That is where this war will be decided.  
+  <small>At stake: Renown + · The King's favour +</small>
+- Ride out and look at the country before anyone else does.  
+  <small>At stake: The battle + · Tactics + · Remembered later</small>
 
 **Chose:** Pay your respects to the Duchess and her granddaughter. (Even: failure)
 
 The Duchess receives you with the rest of the King's lords, in a line, and gives you the same two words she gives all of them. Mahaut looks through you as if you were a window.
 
-*Harvest in: 7 seasons of grain · Michaelmas rents: £3 1s 9d · Rents from your other holdings: £1*
+*Harvest in: 6 seasons of grain · Michaelmas rents: £3 17s 9d · Rents from your other holdings: £1*
 
 ## The Towns Remember
 
@@ -3191,9 +3595,12 @@ At Vaudrey the gates open after a day's talking, the way gates do when the town 
 
 At Saint-Ferréol, a little walled town on a hill with the Constable's garrison in it, the King's marshal gives your company the job of opening the gate.
 
-- Talk them out. Offer the garrison their lives and their horses. *(Favorable)*
-- Storm it at dawn, before they expect it. *(Favorable)*
-- Sit down in front of it and wait.
+- Talk them out. Offer the garrison their lives and their horses. *(Favorable)*  
+  <small>At stake: Your men − · Standing in the West + · Honor + · Valdrenne +</small>
+- Storm it at dawn, before they expect it. *(Favorable)*  
+  <small>At stake: Your men − · Renown + · Standing in the West −</small>
+- Sit down in front of it and wait.  
+  <small>At stake: The King's favour −</small>
 
 **Chose:** Talk them out. Offer the garrison their lives and their horses. (Favorable: success)
 
@@ -3213,9 +3620,12 @@ Your wife's letters come every fortnight, by the Lannec boats, in a quick hand: 
 
 It is a long winter. Your company is bored, and when men are bored they drink.
 
-- Keep them working. Drill every day, march every week.
-- Keep them happy. Pay them on time and feed them well.
-- Leave the company to your lieutenants, and go home for the winter.
+- Keep them working. Drill every day, march every week.  
+  <small>At stake: The battle +</small>
+- Keep them happy. Pay them on time and feed them well.  
+  <small>At stake: The battle + · Your men's loyalty + · Coin −</small>
+- Leave the company to your lieutenants, and go home for the winter.  
+  <small>At stake: Your men − · Your children + · Your manor</small>
 
 **Chose:** Keep them working. Drill every day, march every week.
 
@@ -3235,7 +3645,8 @@ The King draws up on the ridge in three battles. The centre is his own. The righ
 
 On the eve of the battle the King sends for you, alone. "If Carrow's battle does not move tomorrow when the trumpet goes," he says, "you will ride to the Earl and tell him from me that I know about Vervais. In those words." He does not wait for an answer.
 
-- Arm, hear Mass, and take your place.
+- Arm, hear Mass, and take your place.  
+  <small>At stake: The battle +</small>
 
 **Chose:** Arm, hear Mass, and take your place.
 
@@ -3249,8 +3660,10 @@ The archers shoot until their fingers bleed. The Valdrennish come on anyway, lea
 
 And on the left, under the black boar, nothing happens. The trumpet goes. The Earl's battle stands where it is.
 
-- Ride to the Earl of Carrow. *(Even)*
-- Take your company into the gap where Carrow's battle should be. *(Favorable, MORTAL DANGER)*
+- Ride to the Earl of Carrow. *(Even)*  
+  <small>At stake: The battle + · Renown + · Carrow's favour − · The King's favour +</small>
+- Take your company into the gap where Carrow's battle should be. *(Favorable, MORTAL DANGER)*  
+  <small>At stake: A wound · Your life · The battle + · Your men −</small>
 - Hold your place and keep your men in hand.
 
 **Chose:** Ride to the Earl of Carrow. (Even: failure)
@@ -3265,9 +3678,12 @@ The Constable's attack stalls on the ridge, and stays there, and the two lines g
 
 Then the Constable's horse comes: two thousand lances held back all morning, coming up the dry stream at the trot.
 
-- Get your lances mounted and go down into them. *(Even, MORTAL DANGER)*
-- Bring your archers to the lip of the ridge and shoot them into the stream. *(Favorable)*
-- Pull back and see to your wounded.
+- Get your lances mounted and go down into them. *(Even, MORTAL DANGER)*  
+  <small>At stake: A wound · Your life · The battle + · Your men −</small>
+- Bring your archers to the lip of the ridge and shoot them into the stream. *(Favorable)*  
+  <small>At stake: The battle ± · Renown +</small>
+- Pull back and see to your wounded.  
+  <small>At stake: Your men's loyalty + · Common Folk +</small>
 
 **Chose:** Bring your archers to the lip of the ridge and shoot them into the stream. (Favorable: success)
 
@@ -3285,13 +3701,14 @@ Everyone saw the black boar stand still. Nobody says it aloud. In the King's ten
 
 You walk your company's lines in the dark with a lantern, and count.
 
-- Count them.
+- Count them.  
+  <small>At stake: Renown +</small>
 
 **Chose:** Count them.
 
 It could have been worse. That is what you tell the men, and it is true, and it does not help.
 
-*Harvest in: 7 seasons of grain · Michaelmas rents: £3 1s 9d · Rents from your other holdings: £1*
+*Harvest in: 6 seasons of grain · Michaelmas rents: £3 17s 9d · Rents from your other holdings: £1*
 
 ## The Second Grant
 
@@ -3305,9 +3722,12 @@ In Lent the King rewards his captains.
 
 Your name is read third, after two earls. The King makes you a banneret, with the right to carry a square banner and lead other knights under it, and grants you lands in the West, and asks you which.
 
-- La Garde, the tower on the Sauvemer march. A border, and a fortress.
-- The rents of Vaudrey, the town you took in the first war.
-- Ask instead for an office at court, and the King's ear.
+- La Garde, the tower on the Sauvemer march. A border, and a fortress.  
+  <small>At stake: Standing in the West + · Your holdings + · Your manor</small>
+- The rents of Vaudrey, the town you took in the first war.  
+  <small>At stake: Standing in the West + · Your holdings ±</small>
+- Ask instead for an office at court, and the King's ear.  
+  <small>At stake: The King's favour +</small>
 
 **Chose:** La Garde, the tower on the Sauvemer march. A border, and a fortress.
 
@@ -3337,9 +3757,12 @@ The accounts come in at midsummer from every place you hold, by carrier, in four
 
 Your own manor's receipts are down a fifth, and the reeve blames the weather and the war. The weather was good. You were there for some of it.
 
-- Ride there yourself and go through the books in front of him. *(Favorable)*
-- Hire a Sarenzan clerk to audit every holding, every year.
-- Trust your stewards. You chose them.
+- Ride there yourself and go through the books in front of him. *(Favorable)*  
+  <small>At stake: Your holdings ± · Your manor</small>
+- Hire a Sarenzan clerk to audit every holding, every year.  
+  <small>At stake: Your holdings ± · Coin −</small>
+- Trust your stewards. You chose them.  
+  <small>At stake: Your holdings −</small>
 
 **Chose:** Ride there yourself and go through the books in front of him. (Favorable: success)
 
@@ -3349,14 +3772,15 @@ You ride in unannounced and ask for the books, and the steward goes the colour o
 
 Two of your own villages have fallen out over a boundary stone. It has been moved, by somebody, at night, about forty paces, and there is a meadow on the wrong side of it now. Both villages are yours. Both send a deputation. Both deputations are in your hall at the same time, and have brought their grandfathers.
 
-- Walk the bounds with the oldest men of both villages.
+- Walk the bounds with the oldest men of both villages.  
+  <small>At stake: Common Folk + · Your manor</small>
 - Split the meadow down the middle.
 
 **Chose:** Walk the bounds with the oldest men of both villages.
 
 You walk the bounds all day with six old men who disagree about everything, and at the end of it you find the old hole where the stone stood, by the yew, exactly where the oldest of them said. You put the stone back with your own hands. Both villages grumble. Both villages are satisfied.
 
-*Common Folk standing +1 · Harvest in: 7 seasons of grain · Michaelmas rents: £3 1s 9d · Rents from your other holdings: £3*
+*Common Folk standing +1 · Harvest in: 6 seasons of grain · Michaelmas rents: £3 17s 9d · Rents from your other holdings: £3*
 
 ## An Old Face
 
@@ -3368,8 +3792,10 @@ Wat Coker is dead, cut down at the Hythe Fields. In the autumn you ride through 
 
 There was always something between you, from boyhood.
 
-- Let the past be past.
-- Do nothing.
+- Let the past be past.  
+  <small>At stake: Your men's loyalty + · Merchants + · Common Folk + · The King's favour −</small>
+- Do nothing.  
+  <small>At stake: Your men's loyalty − · The King's favour + · Common Folk − · Wat Coker −</small>
 
 **Chose:** Let the past be past.
 
@@ -3387,16 +3813,20 @@ Piers can read, nobody is sure how: the priest says he only showed the letters o
 
 In a family like yours, children of this age go away: to a great house as a page, to learn manners and make friends who will matter; or to the Church, to learn letters; or they stay at home and learn what their father can teach them, which depends on the father. Your wife has an opinion about it. She has made sure you know what it is.
 
-- Send Piers to the Prince's household, as a page.
-- Send Piers to the Duchess's household at Lannec.
-- Send Piers to the abbey to learn letters.
-- Keep Piers at home, and teach what you know.
+- Send Piers to the Prince's household, as a page.  
+  <small>At stake: The Prince's favour + · Your children −</small>
+- Send Piers to the Duchess's household at Lannec.  
+  <small>At stake: Standing in the West + · Your children −</small>
+- Send Piers to the abbey to learn letters.  
+  <small>At stake: Church + · Piety + · Your children</small>
+- Keep Piers at home, and teach what you know.  
+  <small>At stake: Your children +</small>
 
 **Chose:** Send Piers to the Prince's household, as a page.
 
 Piers goes to the Prince's household at Saltmarsh in a new coat with a bundle and a dog, which is sent back. The first letter says your son has found the Prince's library, and is hard to get out of it. The house is quieter. You did not expect to mind so much.
 
-*Harvest in: 7 seasons of grain · Michaelmas rents: £3 1s 9d · Rents from your other holdings: £3*
+*Harvest in: 6 seasons of grain · Michaelmas rents: £3 17s 9d · Rents from your other holdings: £3*
 
 ## The King's Christmas
 
@@ -3412,9 +3842,12 @@ The court breaks into pieces like ice in a thaw. The Prince's young men walk the
 
 The King sends for you on the fourth day. He is sitting up, grey, in a furred gown. "They are counting the days," he says. "Do not let them hurry me."
 
-- Stand by the King. Be seen to.
-- Go to the Prince, and make your promise plain.
-- Dine with the Earl of Carrow on Twelfth Night.
+- Stand by the King. Be seen to.  
+  <small>At stake: The King's favour + · The Prince's favour −</small>
+- Go to the Prince, and make your promise plain.  
+  <small>At stake: The Prince's favour + · The King's favour −</small>
+- Dine with the Earl of Carrow on Twelfth Night.  
+  <small>At stake: Carrow's favour + · The Prince's favour −</small>
 
 **Chose:** Stand by the King. Be seen to.
 
@@ -3430,7 +3863,7 @@ In the spring your wife tells you, in the orchard, the way she told you the firs
 
 **Chose:** Go on.
 
-*Harvest in: 7 seasons of grain · Michaelmas rents: £3 1s 9d · Rents from your other holdings: £3 · A daughter*
+*Harvest in: 6 seasons of grain · Michaelmas rents: £3 17s 9d · Rents from your other holdings: £3 · A daughter*
 
 ## The Third Child
 
@@ -3440,8 +3873,10 @@ The third time you do not walk up and down the yard. You sit in the hall with th
 
 A girl. Isabel, propped up on the bolster, looks at you over the baby's head and says, "That's the last. I mean it." She does.
 
-- Jehanne, for the old Duchess.
-- Margaret, for the saint who keeps women in childbed.
+- Jehanne, for the old Duchess.  
+  <small>At stake: The Prince's favour + · Standing in the West +</small>
+- Margaret, for the saint who keeps women in childbed.  
+  <small>At stake: The King's favour + · Piety +</small>
 - Joan. A plain name, and a strong one.
 
 **Chose:** Jehanne, for the old Duchess.
@@ -3454,17 +3889,20 @@ In the autumn of the thirty-seventh year, the King's Chancellor, needing money f
 
 *(Continue)*
 
-The salt-guilds of Sauvemer refuse it. Then the pans at Les Salines refuse it. Then the Kerval carters who carry the salt inland stop carrying it, and Gwenaël comes to tell you, apologetically, that he is one of them.
+The salt-guilds of Sauvemer refuse it. Then the pans at Les Salines refuse it. Then your own salt-boilers at Marsalin, with Margot at their head, come to your gate and refuse it to your face.
 
 The King's officer in Sauvemer, a Wendmere man called Master Thomas Hales, writes to every Adalian lord in the West to send men to make the pans pay.
 
-- Send men. A King's tax is a King's tax.
-- Stand with the guilds. Write to the King that the West will not bear it.
-- Ride to Sauvemer and broker a bargain between the officer and the guilds. *(Favorable)*
+- Send men. A King's tax is a King's tax.  
+  <small>At stake: The King's favour + · Standing in the West − · Your manor</small>
+- Stand with the guilds. Write to the King that the West will not bear it.  
+  <small>At stake: Standing in the West + · The King's favour − · Your manor</small>
+- Ride to Sauvemer and broker a bargain between the officer and the guilds. *(Favorable)*  
+  <small>At stake: Renown + · Standing in the West ± · The King's favour ±</small>
 
 **Chose:** Send men. A King's tax is a King's tax.
 
-You send twenty men to stand at the pans with the King's officer while the salt is weighed. Nobody fights. Nobody needs to. The salt-boilers pay, and look at your men, and at your badge on their sleeves, and remember it. At Michaelmas Master Hales writes to the Chancellor that you are a loyal lord. At Michaelmas, too, somebody burns your barn at Kerval, and nobody saw anything.
+You send twenty men to stand at the pans with the King's officer while the salt is weighed. Nobody fights. Nobody needs to. The salt-boilers pay, and look at your men, and at your badge on their sleeves, and remember it. At Michaelmas Master Hales writes to the Chancellor that you are a loyal lord. At Michaelmas, too, somebody burns your barn at Marsalin, and nobody saw anything.
 
 *Temper of the village −2 · Jehanne is dead*
 
@@ -3480,9 +3918,12 @@ Mahaut is eighteen, and Duchess of Armance, and unmarried, and her marriage is i
 
 And the West watches to see what Adalia will do with the girl who is the Armance.
 
-- Speak for her right to choose her own husband.
-- Back the Prince's candidate.
-- Back the Earl of Carrow's grandson.
+- Speak for her right to choose her own husband.  
+  <small>At stake: Standing in the West + · The King's favour − · Mahaut d'Armance +</small>
+- Back the Prince's candidate.  
+  <small>At stake: The Prince's favour + · Standing in the West −</small>
+- Back the Earl of Carrow's grandson.  
+  <small>At stake: Carrow's favour + · Standing in the West − · Coin +</small>
 
 **Chose:** Speak for her right to choose her own husband.
 

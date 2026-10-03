@@ -83,3 +83,22 @@ export async function importSave(file: File, content: ContentBundle): Promise<Lo
 export async function importSaveText(text: string, content: ContentBundle): Promise<LoadResult> {
   return fromSave(await decodeSaveCode(text), content);
 }
+
+/** Per-browser display preferences. Storage can be missing or throw; the default wins then. */
+export function readPref(name: string, fallback: boolean): boolean {
+  try {
+    const v = localStorage.getItem(`knight-of-adalia.pref.${name}`);
+    return v === null ? fallback : v === '1';
+  } catch {
+    return fallback;
+  }
+}
+
+export function writePref(name: string, on: boolean): void {
+  try {
+    localStorage.setItem(`knight-of-adalia.pref.${name}`, on ? '1' : '0');
+  } catch {
+    /* ignore */
+  }
+}
+

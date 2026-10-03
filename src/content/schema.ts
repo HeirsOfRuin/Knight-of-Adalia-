@@ -269,6 +269,8 @@ export const ConfigSchema = z.object({
   seasons: z.array(Id).length(4),
   chapters: z.array(z.string()),
   in_progress: z.array(z.string()).default([]), // chapters still being written: 'later' flags for them stay quiet
+  // counters the player may see named in a choice's stakes line (e.g. sl_edge: the battle); others stay hidden
+  counter_labels: z.record(z.string(), z.string()).default({}),
   // named NPC slots ("@master") whose occupant is decided during play
   aliases: z.array(Id).default([]),
 }).strict();

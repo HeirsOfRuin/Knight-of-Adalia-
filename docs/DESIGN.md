@@ -1021,6 +1021,39 @@ Approved 2026-10-02 (`docs/FRAME-CH4-CH5.md`): the Western Crown, the Ch5 ending
 - Mahaut is courted in 2-7% of runs (widowers and the unmarried), consistent with Crowned at 5-7% having several routes;
 - top standing by policy: martial play with the King, cunning with the Prince, diplomacy in the West, wealth with Carrow.
 
+## Choices that matter (2026-10-03, after playtest feedback)
+The author reported that some choices did not feel as if they made a difference, especially in the Ch2 battles. Spying on the new wall during the burial truce, for example, cost Honour and seemed to do nothing.
+
+**What was true:**
+- Every Ch2 battle had a fixed outcome at army level (Grisolles lost, the breach failed, Les Salines won). A player's choices changed only his own fate: renown, wounds, followers, knighting.
+- Les Salines had an edge counter, but it only adjusted later checks.
+- The spying did pay off later (+1 in the mine fight) without saying so. Its Honour cost was never explained.
+
+**Changes:**
+- **"At stake" line under every choice.** Computed from the choice's real effects across all its outcomes (`src/engine/stakes.ts`), so it cannot drift from the game. It names:
+  - life, wounds, the battle, station, men, renown, reputation, people, coin, skills, items, manor, holdings, children;
+  - and "Remembered later" when the choice sets a flag that a later condition actually reads.
+
+  It shows + or − when all outcomes agree, and ± when they differ. It can be turned off in the Menu.
+- **Counters the player can see** are named in config `counter_labels`: the battle, the rearguard, the siege, court favour, the West, plague deaths.
+- **Grisolles: counter `gr_line`.** The eve, the line, the archers, the baggage, bringing the men out and the ford feed it.
+  - At 4+ the rearguard held longest: about 1,200 lost instead of 1,800; the column keeps its wounded and horses; renown +2; it counts as Armance fame at the grants and opens the Grisolles knighting.
+  - At 0 the line broke early: 2,200 lost, supplies and men lost, a harsher retreat.
+- **Sauvemer: counter `siege`.** The fireships, the assault, spying in the truce, the mine war and the sortie feed it.
+  - At 3+ and 6+ the garrison is weaker at Les Salines (+1 or +2 battle edge), and the relief scene says why.
+  - At 5+ it counts as Sauvemer fame at the grants.
+- **Les Salines.** Edge and held line now set the result:
+  - decisive (about 15-45%): 1,500 dead instead of 2,000, renown and Crown standing, and a truce scene that says why the terms lean Adalian;
+  - hard-won;
+  - pyrrhic (2-15%): 3,000 dead, and the line bent on his part of the dyke.
+- **The burial truce.** The choice now says up front that spying under a burial truce is dishonourable. The outcome says the knights saw it, and that the miners will use his drawing.
+- **Hollow choices.** Several were given real effects: sending for kin, leaving the priest in charge, staying with the Sauvemer garrison for the grants, the widow's custom, and resting before battle (health).
+- **Tools.** `npm run audit` classifies every choice as now, later, flavour or none. Branches count as "later". The transcripts now print the At stake line.
+
+**Numbers after the changes:**
+- **Hollow choices:** 18 of 663, nearly all deliberate "do nothing" options. Some of those, such as going to the muster without armour or ignoring the plague warning, matter by what they leave undone.
+- **Flags (remembered choices):** 402 are set. 187 change later mechanics, 95 change only later prose, and 120 are not read yet. Those 120 are owed to Ch4-5: 57 from Ch3 and 28 from Ch4.
+
 ## Decisions log
 | Date | Decision |
 |---|---|
@@ -1044,3 +1077,4 @@ Approved 2026-10-02 (`docs/FRAME-CH4-CH5.md`): the Western Crown, the Ch5 ending
 | 2026-10-02 | Ch4-5 frame approved as recommended: the West (Armance and the Salt Coast) is the new crown; Aldred dies about year 40, Edwin succeeds, Carrow rises; candidate #12 is Jehanne's granddaughter; heirs may die in Ch4 only through his choices; his death ends the game; Vervais stays a third party. |
 | 2026-10-02 | Ch4 engine (holdings, heirs growth, court standing) and Act I, the Second War, built. Validator enforces the death rule. Harvest base raised to people/40. Ending ch3_complete renamed story_so_far. |
 | 2026-10-02 | Ch4 Act II, the Lord of Many Places, built. |
+| 2026-10-03 | Choices that matter: At stake hints, Ch2 battle outcomes driven by player performance (rearguard, siege, Les Salines), burial-truce honour made explicit, hollow choices fixed, choice audit tool. |

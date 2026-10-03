@@ -305,7 +305,7 @@
         You write it four times before it is right. It is a long way, and a foreign country, and a manor that has just lost a third of its people. You promise them a house and a place and your protection, which is more than anyone at home can promise them now.
 
         [if background == archer]Kit's answer comes back in the spring, in the priest's hand, two words long: "I'm coming."[else]The answer, when it comes, is yes.[/if]
-      effects: [ { set: flag.c3_sent_for_kin } ]
+      effects: [ { add: { estate.people: 3, estate.temper: 1 } }, { set: flag.c3_sent_for_kin } ]
       next: c3_harvest
     - id: mass
       text: Have Masses said for the dead, here and at home.
@@ -402,6 +402,7 @@
     - id: on
       text: Get on with it. There is a manor to run.
       text_after: You go home and sleep for two days. Then you get up and start on the list of everything that needs doing, which is everything.
+      effects: [ { add: { estate.food: 1 } } ]
       next: c3_spring
 
 - id: c3_spring

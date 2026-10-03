@@ -5,7 +5,7 @@ import { view, describeDate } from '../../engine/index';
 import type { CheckResult } from '../../engine/checks';
 import { capitalise } from '../../engine/format';
 import { ageOf } from '../../engine/calendar';
-import { exportSave } from '../storage';
+import { exportSave, readPref, writePref } from '../storage';
 import { ConfirmButton } from './Confirm';
 import { SaveCode } from './SaveCode';
 import { StatusPanel } from './StatusPanel';
@@ -42,6 +42,7 @@ export function GameScreen(p: Props) {
   const [panel, setPanel] = useState<Panel>('none');
   const [force, setForce] = useState<CheckResult | undefined>();
   const [saveMsg, setSaveMsg] = useState<string | undefined>();
+  const [showStakes, setShowStakes] = useState(() => readPref('stakes', true));
   const v = view(content, state);
   // A scene can be split into pages with a [break] line; the player reads them with Continue.
   const pages = v.text.split(/\n\s*\[break\]\s*(?:\n|$)/).map((t) => t.trim()).filter(Boolean);
@@ -127,6 +128,7 @@ export function GameScreen(p: Props) {
                     </span>
                   )}
                   {c.warn && <span class="warn">{c.warn}</span>}
+                  {showStakes && c.stakes.length > 0 && <span class="stakes">At stake: {c.stakes.join(' · ')}</span>}
                 </button>
               ))}
               {v.deadEnd && (
@@ -162,6 +164,7 @@ export function GameScreen(p: Props) {
                 </label>
                 <SaveCode state={state} content={content} onLoadText={p.onImportText} />
                 <ConfirmButton class="btn wide" question="Start a new life? This one stays in the autosave until you make your first choice in the new one." confirmLabel="Start a new life" onConfirm={p.onNewGame}>New life</ConfirmButton>
+                <label class="pref"><input type="checkbox" checked={showStakes} onChange={(e) => { const on = (e.currentTarget as HTMLInputElement).checked; setShowStakes(on); writePref('stakes', on); }} /> Show what is at stake under each choice</label>
                 <button class="btn wide subtle" onClick={p.onToggleDebug}>{p.debug ? 'Hide' : 'Show'} debug tools</button>
                 <p class="fineprint">Seed {state.seed} &middot; content {content.hash}</p>
               </div>

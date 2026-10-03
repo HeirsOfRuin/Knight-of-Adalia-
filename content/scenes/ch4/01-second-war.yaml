@@ -131,7 +131,7 @@
       tags: [piety]
       text_after: |
         [if flag.c2_granted_marsalin]Père Yves and Margot[elif flag.c2_granted_kerval]Dom Hervé and Gwenaël[else]Père Guérin and Bastien[/if] will hold it between them, which means they will argue about everything and agree about what matters. You leave them a list. They read it in front of you and then put it in the fire, politely.
-      effects: [ { set: flag.c4_priest_holds } ]
+      effects: [ { add: { estate.temper: 1, estate.church: 1 } }, { set: flag.c4_priest_holds } ]
       next: c4_company
     - id: man
       text: Leave one of your own men as castellan.

@@ -89,4 +89,5 @@
       text: Custom is custom. Find her a husband among the tenants.
       tags: [cunning]
       text_after: "You find her a husband: a decent man, a widower with a good plough-team. She marries him. She does not look at you at the church door."
+      effects: [ { add: { estate.temper: -1, rep.ruthlessness: 1 } } ]
       next: "@return"

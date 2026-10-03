@@ -173,15 +173,15 @@
       tags: [allies, wealth]
       text_after: |
         You raise it from the manor and the villages round: the young men, the second sons, the salt-boilers' boys who want to see the world, the Adalian settlers' sons who want to show the locals something. They are cheap and brave and know nothing. [if flag.c2_granted_marsalin]Margot[elif flag.c2_granted_kerval]Gwenaël[else]Bastien[/if] stands at the gate as they march out and counts them, aloud, and you know she will count them again when they come back.
-      effects: [ { set: flag.c4_manor_company }, { add: { res.men: 70, res.coin: -480, counter.company: 1, estate.people: -40, estate.temper: -1 } } ]
+      effects: [ { set: flag.c4_manor_company }, { add: { res.men: 70, res.coin: -480, counter.company: 1, estate.people: -40, estate.temper: -1, res.levy: -30 } } ]
       next: c4_landing
     - id: rotbart
       text: Make Rotbart's men the core of it.
       tags: [martial, cunning]
       visible_if: [ flag.c3_hired_bandits, npc.ulric_rotbart.alive ]
       text_after: |
-        Rotbart's remnant are the best soldiers you will ever pay for and the worst men you will ever command. They want a share of everything, in writing. You give it to them in writing. At the muster the King's marshal looks at the black eagle sewn under your badge and says, "Iron Company?" and you say, "Mine," and he lets it go.
-      effects: [ { set: flag.c4_iron_core }, { add: { res.men: 80, res.coin: -1200, counter.company: 3, rep.knights: -1 } } ]
+        Rotbart's sixty come out of your barns, and he finds twenty more of their kind in a month, from places you do not ask about. They are the best soldiers you will ever pay for and the worst men you will ever command. Your manor goes back to its own watch. They want a share of everything, in writing. You give it to them in writing. At the muster the King's marshal looks at the black eagle sewn under your badge and says, "Iron Company?" and you say, "Mine," and he lets it go.
+      effects: [ { set: flag.c4_iron_core }, { add: { res.men: 80, res.garrison: -60, res.coin: -1200, counter.company: 3, rep.knights: -1 } } ]
       next: c4_landing
 
 - id: c4_landing

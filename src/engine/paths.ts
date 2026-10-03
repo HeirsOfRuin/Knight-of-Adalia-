@@ -175,7 +175,7 @@ export function checkPath(content: ContentBundle, path: string): string | null {
     case 'attr': return need(content.config.attributes.includes(a), 'attribute');
     case 'skill': return need(content.config.skills.includes(a), 'skill');
     case 'rep': return need(a in reg.factions, 'faction');
-    case 'res': return need(['coin', 'supplies', 'horses', 'renown', 'men'].includes(a), 'resource');
+    case 'res': return need(['coin', 'supplies', 'horses', 'renown', 'men', 'garrison', 'levy'].includes(a), 'resource');
     case 'estate': return need((ESTATE_FIELDS as readonly string[]).includes(a), 'estate field');
     case 'favor': return need(a in reg.npcs, 'npc');
     case 'trait': return need(a in reg.traits, 'trait');
@@ -229,4 +229,12 @@ export function labelFor(content: ContentBundle, path: string): string {
     case 'estate': return ESTATE_LABELS[a as EstateField] ?? cap(a!);
     default: return cap(path);
   }
+}
+
+/** The men he commands: named followers and the company march with him; the garrison holds his manor. The village levy is counted apart. */
+export function forceOf(state: GameState): { named: number; men: number; garrison: number; levy: number; total: number } {
+  const named = Object.values(state.npcs).filter((n) => n.follower && n.alive).length;
+  const men = state.res.men ?? 0;
+  const garrison = state.res.garrison ?? 0;
+  return { named, men, garrison, levy: state.res.levy ?? 0, total: named + men + garrison };
 }

@@ -5,6 +5,7 @@ import { view, describeDate } from '../../engine/index';
 import type { CheckResult } from '../../engine/checks';
 import { capitalise } from '../../engine/format';
 import { ageOf } from '../../engine/calendar';
+import { forceOf } from '../../engine/paths';
 import { exportSave, readPref, writePref } from '../storage';
 import { ConfirmButton } from './Confirm';
 import { SaveCode } from './SaveCode';
@@ -53,7 +54,7 @@ export function GameScreen(p: Props) {
   const nextPage = () => setPageState({ key: pageKey, n: shown + 1 });
   const toggle = (x: Panel) => setPanel((cur) => (cur === x ? 'none' : x));
   const ending = v.ended ? content.registry.endings[v.ended.ending] : undefined;
-  const menCount = Object.values(state.npcs).filter((n) => n.follower && n.alive).length + (state.res.men ?? 0);
+  const menCount = forceOf(state).total;
 
   return (
     <div class={`game ${p.debug ? 'has-debug' : ''}`}>

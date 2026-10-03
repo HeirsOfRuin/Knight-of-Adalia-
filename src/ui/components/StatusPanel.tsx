@@ -1,6 +1,6 @@
 import type { ContentBundle } from '../../content/schema';
 import type { GameState } from '../../engine/state';
-import { effectiveAttr, effectiveSkill, npcLabel } from '../../engine/paths';
+import { effectiveAttr, effectiveSkill, npcLabel, forceOf } from '../../engine/paths';
 import { computePrejudice } from '../../engine/station';
 import { ageOf, describeDate } from '../../engine/calendar';
 import { formatCoin, capitalise, signed } from '../../engine/format';
@@ -24,6 +24,15 @@ function Section({ title, children }: { title: string; children: preact.Componen
   );
 }
 
+function forceBreakdown(f: ReturnType<typeof forceOf>): string {
+  const parts = [
+    f.named > 0 ? `${f.named} named` : '',
+    f.men > 0 ? `${f.men} in your company` : '',
+    f.garrison > 0 ? `${f.garrison} holding your manor` : '',
+  ].filter(Boolean);
+  return parts.length > 1 ? ` (${parts.join(', ')})` : '';
+}
+
 export function StatusPanel({ content, state }: { content: ContentBundle; state: GameState }) {
   const reg = content.registry;
   const bg = content.backgrounds[state.background];
@@ -31,7 +40,7 @@ export function StatusPanel({ content, state }: { content: ContentBundle; state:
   const npcs = Object.entries(state.npcs).filter(([, n]) => n.met);
   const factions = Object.entries(reg.factions).filter(([, f]) => f.kind === 'faction');
   const personal = Object.entries(reg.factions).filter(([, f]) => f.kind === 'personal');
-  const force = { named: Object.values(state.npcs).filter((n) => n.follower && n.alive).length, men: state.res.men ?? 0 };
+  const force = forceOf(state);
 
   return (
     <div class="status">
@@ -43,7 +52,8 @@ export function StatusPanel({ content, state }: { content: ContentBundle; state:
         <dt>Health</dt><dd>{state.health}/10</dd>
         <dt>Coin</dt><dd>{formatCoin(state.res.coin ?? 0)}</dd>
         <dt>Renown</dt><dd>{state.res.renown ?? 0}</dd>
-        {(force.named + force.men > 0) && <><dt>Men under your banner</dt><dd>{force.named + force.men}{force.named > 0 ? ` (${force.named} named, ${force.men} others)` : ''}</dd></>}
+        {force.total > 0 && <><dt>Men under your banner</dt><dd>{force.total}{forceBreakdown(force)}</dd></>}
+        {force.levy > 0 && <><dt>Village levy</dt><dd>{force.levy}, trained to bow and bill, who can be called out</dd></>}
         <dt>His birth, to the gentry</dt><dd>{prejudiceWord(computePrejudice(state, content, 'nobles'))}</dd>
       </dl>
 

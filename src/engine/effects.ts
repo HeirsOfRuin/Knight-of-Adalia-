@@ -9,6 +9,9 @@ import { test } from './conditions';
 import type { RngCursor } from './rng';
 import { formatCoin, signed, capitalise } from './format';
 
+/** How resource changes read in the journal. */
+const RES_LABELS: Record<string, string> = { men: 'Men in your company', garrison: 'Men holding your manor', levy: 'Trained village levy' };
+
 export interface EffectCtx {
   scene: string;
   choice: string;
@@ -91,7 +94,7 @@ function addNumber(state: GameState, content: ContentBundle, rawPath: string, de
       const before = state.res[a] ?? 0;
       state.res[a] = Math.max(0, before + delta);
       const d = state.res[a]! - before;
-      if (d !== 0) changes.push(a === 'coin' ? `Coin ${d > 0 ? '+' : '−'}${formatCoin(Math.abs(d))}` : `${capitalise(a)} ${signed(d)}`);
+      if (d !== 0) changes.push(a === 'coin' ? `Coin ${d > 0 ? '+' : '−'}${formatCoin(Math.abs(d))}` : `${RES_LABELS[a] ?? capitalise(a)} ${signed(d)}`);
       return;
     }
     case 'rel': {

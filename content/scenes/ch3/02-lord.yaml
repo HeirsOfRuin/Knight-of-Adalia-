@@ -232,11 +232,11 @@
       check: { attr: presence, skill: command, difficulty: 3, mods: [ { if: flag.c1_drilled_men || flag.c2_drilled, add: 1, label: you have drilled men before } ] }
       success:
         text: Every Sunday after Mass, on the green, the whole manor at the butts, the way it is at home. The Valdrennish think it is mad, and then they think it is a game, and then, when the young men start beating the settlers at the clout, they think it is theirs. By midsummer you have forty bows and a dozen bills that will stand, maybe, for a while.
-        effects: [ { add: { estate.defence: 2, estate.temper: 1, skill.command: 1 } } ]
+        effects: [ { add: { estate.defence: 2, estate.temper: 1, skill.command: 1, res.levy: 52 } } ]
         next: { pool: c3_manor, count: 1, then: c3_raid }
       failure:
         text: Half of them come once and never again. The other half come for the ale. You end the spring with twelve archers who can hit a barn door and a great deal of resentment about your Sundays.
-        effects: [ { add: { estate.defence: 1, estate.temper: -1 } } ]
+        effects: [ { add: { estate.defence: 1, estate.temper: -1, res.levy: 12 } } ]
         next: { pool: c3_manor, count: 1, then: c3_raid }
     - id: neighbours
       text: Ride round your neighbours and agree to come to each other's aid.
@@ -355,7 +355,7 @@
         "Your law," Rotbart repeats. "Ja. Good. Somebody's law." He spits on his palm and holds it out.
 
         Sixty Hroswald mercenaries in your barns and your alehouse. The village is terrified of them. Hodge Brewster's settlers start a fight with them in the first week and lose it. By Christmas the bandits on the road have stopped, because the worst of them are eating your bread, and the [if flag.c2_granted_kerval]Duchess's steward[else]Sauvemer captain[/if] writes you a nervous little letter asking what you intend to do with an army.
-      effects: [ { set: flag.c3_hired_bandits }, { add: { res.coin: -120, estate.defence: 3, estate.temper: -2, rel.ulric_rotbart.respect: 2 } } ]
+      effects: [ { set: flag.c3_hired_bandits }, { add: { res.coin: -120, res.garrison: 60, estate.defence: 3, estate.temper: -2, rel.ulric_rotbart.respect: 2 } } ]
       next: { switch: [ { if: estate.temper <= -3, go: c3_unrest } ], default: c3_winter_hall }
     - id: hunt
       text: Hunt them down, with your men and your neighbours.

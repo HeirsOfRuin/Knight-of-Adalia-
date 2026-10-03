@@ -4,7 +4,7 @@ import type { GameState } from './state';
 import { newNpcState } from './effects';
 
 export const SAVE_FORMAT = 'knight-of-adalia-save';
-export const SAVE_VERSION = 1;
+export const SAVE_VERSION = 2;
 
 export interface SaveFile {
   format: typeof SAVE_FORMAT;
@@ -17,8 +17,19 @@ export class SaveError extends Error {}
 
 /** fromVersion -> function producing the next version's save. */
 export const migrations: Record<number, (save: SaveFile) => SaveFile> = {
-  // 1: (s) => ({ ...s, saveVersion: 2, state: { ...s.state, newField: default } }),
+  // 2 split the force into company, garrison and village levy. Older saves made those choices without the men being counted.
+  1: (s) => ({ ...s, saveVersion: 2, state: countOldForce(structuredClone(s.state)) }),
 };
+
+function countOldForce(state: GameState): GameState {
+  const f = state.flags;
+  const res = state.res;
+  if (f.c2_paid_men) res.men = (res.men ?? 0) + 2;
+  if (f.c3_hired_bandits && !f.c4_iron_core) res.garrison = (res.garrison ?? 0) + 60;
+  const drill = state.journal.find((e) => e.scene === 'c3_truce_ends' && /^Train the villagers/.test(e.choice));
+  if (drill && !f.c4_manor_company) res.levy = (res.levy ?? 0) + (drill.changes.some((c) => c.startsWith('Command')) || drill.changes.length === 0 ? 52 : 12);
+  return state;
+}
 
 export function toSave(state: GameState, content: ContentBundle): SaveFile {
   return { format: SAVE_FORMAT, saveVersion: SAVE_VERSION, contentHash: content.hash, state };

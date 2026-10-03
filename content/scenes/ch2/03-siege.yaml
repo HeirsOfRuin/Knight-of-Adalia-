@@ -33,13 +33,13 @@
       text: Pay them out of your own purse, everything that is owed.
       tags: [wealth]
       requires: [ res.coin >= 120 ]
-      text_after: It takes a great deal of what you have. They are paid, all of them, to the penny, and they know which lords in Lannec have not paid their own men. Your following becomes something it was not before. Men from other companies start asking whether you need anyone.
+      text_after: It takes a great deal of what you have. They are paid, all of them, to the penny, and they know which lords in Lannec have not paid their own men. Your following becomes something it was not before. Men from other companies start asking whether you need anyone, and three of them, archers whose own lord has not paid them since Michaelmas, you take on.
       effects:
         - set: flag.c2_paid_men
         - add: { res.coin: -120 }
         - if: retinue >= 4
           then: [ { add: { res.coin: -120 } } ]
-        - add: { rel.davy_ludd.loyalty: 2, rel.jankin_rooke.loyalty: 2, rel.simkin_barre.loyalty: 2, rel.roger_tallis.loyalty: 2, rel.wat_coker.loyalty: 2, rel.perkin_dyer.loyalty: 2, rel.gib_shawe.loyalty: 2, rel.dickon_laund.loyalty: 2, res.men: 1 }
+        - add: { rel.davy_ludd.loyalty: 2, rel.jankin_rooke.loyalty: 2, rel.simkin_barre.loyalty: 2, rel.roger_tallis.loyalty: 2, rel.wat_coker.loyalty: 2, rel.perkin_dyer.loyalty: 2, rel.gib_shawe.loyalty: 2, rel.dickon_laund.loyalty: 2, res.men: 3 }
       next: c2_sauvemer
     - id: borrow
       text: Go to the Lanzi house, and borrow to pay them.

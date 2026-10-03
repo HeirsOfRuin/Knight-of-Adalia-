@@ -29,4 +29,15 @@ describe('save', () => {
     delete s.npcs.odo_groom;
     expect(fromSave(toSave(s, c), c).state.npcs.odo_groom).toBeDefined();
   });
+
+  it('counts men hired before the force was split (version 1 saves)', () => {
+    const s = game();
+    s.flags.c2_paid_men = true;
+    s.flags.c3_hired_bandits = true;
+    s.journal.push({ at: 0, scene: 'c3_truce_ends', sceneTitle: '', choice: 'Train the villagers, settlers and all, with bows and bills.', changes: ['Defences +2', 'Command +1'] } as never);
+    const { state } = fromSave({ ...toSave(s, c), saveVersion: 1 }, c);
+    expect(state.res.men).toBe((s.res.men ?? 0) + 2);
+    expect(state.res.garrison).toBe(60);
+    expect(state.res.levy).toBe(52);
+  });
 });

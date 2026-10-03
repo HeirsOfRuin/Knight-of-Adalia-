@@ -250,4 +250,12 @@ A single Church across all realms, under **the Pontiff**. For two generations th
 - **Year 33:** the truce lapses at Lady Day. The King lands at Lannec in June. Duchess Jehanne, 70, has an heir: her granddaughter Mahaut, 14, whose father died in Cordelle's prison. The army takes the Armance towns through the autumn, including Saint-Ferréol.
 - **Year 34, May: Mortefontaine.** The Constable's men-at-arms attack the King's ridge on foot. The Earl of Carrow's battle stands still, or is made to move. The Constable's horse is broken in the dry stream. The outcome depends on the player's run, but the Constable always escapes to Cordelle, where he fights his own boy-king.
 - **Year 35, Lent:** the King's grants. The player becomes a banneret.
+- **Year 37, winter:** Duchess Jehanne dies. Mahaut is Duchess of Armance and the King's ward.
+- **Year 39, Candlemas:** King Aldred II dies at 53. Edwin is crowned at Lady Day, at 27.
+- **Year 40:** the Earl of Carrow rises "for the King, against his evil counsellors." At midsummer, Wythen Heath, north of Wendmere. The outcome depends on the run:
+  - Edwin wins and Carrow is beheaded;
+  - Carrow wins and Edwin holds Wendmere, refusing a council of regency;
+  - or a bloody draw that splits Adalia north and south.
+- **Year 40, autumn:** the Valdrennish king, now 18, arrests the Constable Gaucelin de Brésy, who dies in the Châtelet. The Brésy are put out of the King's peace, and Thibaut flees west.
+- **Year 41, spring:** the Sauvemer salt guilds refuse both salt taxes. At Mahaut's feast-day at Lannec, the western lords talk of a duke who answers to nobody, "or more than a duke."
 

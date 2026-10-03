@@ -1021,6 +1021,44 @@ Approved 2026-10-02 (`docs/FRAME-CH4-CH5.md`): the Western Crown, the Ch5 ending
 - Mahaut is courted in 2-7% of runs (widowers and the unmarried), consistent with Crowned at 5-7% having several routes;
 - top standing by policy: martial play with the King, cunning with the Prince, diplomacy in the West, wealth with Carrow.
 
+**Act III, the Fracture** (summer year 38 to spring year 41). Ten scenes in `ch4/03-fracture.yaml`.
+1. **The Old Master.** His last living master dies; if none is left, it is Father Benet. He can:
+   - go, reaching the deathbed and receiving the master's sword;
+   - send the eldest (bond +2);
+   - write, and the letter arrives too late.
+
+   Reads `c1_left_master`, `c1_master_cleared`, `c1_lost_master`, `c2_saved_master` and `c1_ancel_lamed`.
+2. **The King Is Dead.** Aldred dies at Candlemas year 39, and Edwin is crowned at Lady Day.
+   - Reads: the Hythe Fields warning or rescue (Edwin liked it), the refused ward, the marriage debt, and the Vervais secret (deposited or told, Carrow is called to account).
+   - Choices: kneel first, ask a price (the wardenship of the Sauvemer march, helped by `c3_lent_aymer`), or kneel late.
+3. **The Black Boar Rises.** Carrow rises "for the King." He can ride for Edwin, ride for Carrow (with standing or a past with him), or stay in the West.
+   - Plague-year conduct decides whether the manor sends its men willingly: fair wages or tenancies give `fr` +1 and more men.
+   - Settlers housed or mixed give `fr` +1 and Hodge Brewster's men.
+   - Coll or Ewan keep Caldmoor out of the war.
+4. **The eldest at ten** (the second growth period).
+   - **A son** asks to come to war as his page. Taking him is the only way an heir can die in this act: a 30% chance, and only if the flank attack fails. Refusing leads to a quarrel coloured by temperament.
+   - **A daughter** has a betrothal offer, from Mahaut's circle, the King's men, or a neighbour. Let her choose (bond +3), or make the match (bond −2, coin).
+5. **Wythen Heath.**
+   - Before: find the bog (Tactics), walk the line (Ch2 hooks: paid men, rules, Tallis), or parley between the armies (difficulty 6; a third of the field goes home).
+   - Crisis: turn into Malet's knights (lethal; the heir risk), close round the banner, or get the boy out (`fr` −1).
+   - Counter `fr`: 5+ means his side wins, 3-4 a bloody draw, under 3 his side loses.
+   - **Results:** `c4_edwin_won` (Carrow beheaded), `c4_carrow_won` (Edwin holds Wendmere and refuses a regency), or a draw that splits Adalia north and south.
+   - **On the losing side:** `c4_on_losing_side`. If he fought for Carrow and Edwin won, he loses his Adalian holdings.
+6. **News from Wythen Heath** (if he stayed in the West). The battle is a draw, and the West thanks him.
+7. **The Boy King.** Valdrenne's king, now 18, arrests the Constable, who dies in prison. Thibaut flees west to him. He can shelter the Brésy (West +2, Valdrenne +2), send them on to Sarenza, or hand them over (Honor −3, coin; his wife hates it if she is a Brésy).
+8. **Lannec.** The salt guilds refuse both taxes. At Mahaut's feast-day, the western lords talk of a duke who answers to nobody, "or more than a duke."
+   - His seat depends on `west_estates`.
+   - Plague conduct (fled, or went into the plague houses) and the old lord's kin are remembered.
+   - He can speak for the West, speak for Adalia, or count the nods. A courted Mahaut's regard rises.
+9. **End of build:** `c4_act3_end`.
+
+**Engine:** `heir_dies` takes a selector (eldest, second, third, last). `heirs.lastdead` names the most recent dead child.
+
+**Bot results** (100 runs per background per policy):
+- **Wythen:** a bloody draw in 44-91% of runs; his side wins in up to about 35%.
+- **Sides:** martial and diplomacy play ride for Edwin; cunning play stays in the West or rides for Carrow; wealth play splits.
+- **Heirs:** an heir is killed in well under 1% of runs, and only where he took the boy and the flank attack failed.
+
 ## Choices that matter (2026-10-03, after playtest feedback)
 The author reported that some choices did not feel as if they made a difference, especially in the Ch2 battles. Spying on the new wall during the burial truce, for example, cost Honour and seemed to do nothing.
 
@@ -1078,3 +1116,4 @@ The author reported that some choices did not feel as if they made a difference,
 | 2026-10-02 | Ch4 engine (holdings, heirs growth, court standing) and Act I, the Second War, built. Validator enforces the death rule. Harvest base raised to people/40. Ending ch3_complete renamed story_so_far. |
 | 2026-10-02 | Ch4 Act II, the Lord of Many Places, built. |
 | 2026-10-03 | Choices that matter: At stake hints, Ch2 battle outcomes driven by player performance (rearguard, siege, Les Salines), burial-truce honour made explicit, hollow choices fixed, choice audit tool. |
+| 2026-10-03 | Ch4 Act III, the Fracture, built: the master's death, Aldred's death and Edwin's crowning, Carrow's rising and Wythen Heath (player-driven), the eldest at ten, the Constable's fall, Lannec. |

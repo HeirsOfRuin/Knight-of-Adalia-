@@ -1,0 +1,442 @@
+# Chapter 4, Act III: the Fracture. Summer year 38 to spring year 41. Age 37-40.
+# The old master's death, the King's death and Edwin's crowning, Carrow's rising
+# and the battle of Wythen Heath (counter fr; three outcomes, or none if he stays
+# in the West), the eldest's second growth period and the first real quarrel,
+# the boy-king of Valdrenne breaking the Constable, and the West stirring at Lannec.
+
+- id: c4_master
+  chapter: ch4
+  title: "[if flag.c4_master_dying]The Old Master[else]Father Benet[/if]"
+  checkpoint: true
+  on_enter: [ { advance: { seasons: 1 } }, { if: npc.@master.alive, then: [ { set: flag.c4_master_dying } ] } ]
+  text: |
+    [if flag.c4_master_dying]The letter comes at midsummer, in a hand you do not know, from [if alias.master == hamon_darrell]Ashby[elif alias.master == ancel_brome]Brome Tower[elif alias.master == walter_pryce]Pryce's manor in Carrow[else]Ravell Hall[/if]. {npc.@master} is dying. He has asked for you by name. He has asked, the letter says, for almost nobody else.
+
+    [if alias.master == hamon_darrell]Sir Hamon is past eighty, and has outlived his wife by forty years, and his hounds by three generations, and all his debts by the simple method of never paying them.[elif alias.master == ancel_brome]Sir Ancel is near seventy, [if flag.c1_ancel_lamed]on two sticks since Thorne's gate,[/if] and has ridden his walls every night of his life, and cannot get up the stairs to them any more.[elif alias.master == walter_pryce]Sir Walter Pryce, banneret, the Earl of Carrow's captain for thirty years, has a growth in his belly that the physicians will not name.[else]Lord Ravell is old and ruined and half-blind, in a hall that is half sold.[/if][else]The letter comes at midsummer from Ravell, in Father Benet's hand, which has gone shaky. He is dying. He would like, he writes, to confess one more sinner before he goes, and has chosen you, as the one most in need of it.[/if]
+
+    [break]
+
+    [if flag.c1_left_master]You left your first master once, when he needed you. You have never been sure he forgave it.[elif flag.c1_master_cleared]You stood by him once, when the commissioners came. He has never once mentioned it. He has not forgotten it either.[elif flag.c1_lost_master]You lost your first master, years ago, and found another. This one took you in when you had nothing.[elif flag.c2_saved_master]You went back for him into the rout at Grisolles. He has told that story at every Christmas since, worse each time.[/if]
+
+    It is three weeks' journey there and back, across the sea, with Carrow's men on the roads and the King dying and everything you hold needing you at once.
+  choices:
+    - id: go
+      text: Go. Now. Whatever it costs.
+      tags: [allies]
+      text_after: |
+        You get there in time, just. [if flag.c4_master_dying][if alias.master == hamon_darrell]Sir Hamon is propped up in bed with a hound across his feet, and his face lights up, and he says, "There he is," the way he said it the day you came, and asks if you have eaten.[elif alias.master == ancel_brome]Sir Ancel is in a chair by the window where he can see the March. He looks at you a long while. "Hm," he says. And then, which you have never heard from him: "Well done, boy."[elif alias.master == walter_pryce]Pryce is thin as a lath, and courteous as ever, and makes you sit and drink his wine. "I put your name in a great many ears," he says. "I'm glad it was worth it." At the end, almost asleep, he says, "Mind Carrow. He liked me. He likes nobody."[else]Lord Ravell does not know you at first. Then he does, and weeps, and holds your hand, and calls you by his dead son's name, and you let him.[/if][else]Father Benet hears your confession for two hours, and laughs twice, and gives you a penance that is mostly prayer and partly carrying firewood for the almshouse, the same as thirty years ago. "Better for the soul than either alone," he says. Then he sleeps.[/if] He dies two days later, with you there.
+      effects:
+        - set: flag.c4_at_deathbed
+        - add: { estate.temper: -1, counter.court_king: -1, rep.honor: 1 }
+        - if: flag.c4_master_dying
+          then: [ { kill: "@master" }, { item: +masters_sword } ]
+          else: [ { kill: father_benet }, { add: { rep.piety: 1 } } ]
+      next: { pool: c4_lord, count: 1, then: c4_king_dies }
+    - id: child
+      text: Send {heir.eldest.name} in your place, with a letter.
+      tags: [allies, cunning]
+      visible_if: [ heir.eldest.alive, heir.eldest.age >= 7 ]
+      text_after: |
+        You send {heir.eldest.name}, with a letter and two of your men. The child comes back a month later, grave and grown, with [if flag.c4_master_dying]the old man's sword wrapped in a cloak[else]a psalter with Father Benet's notes in the margins[/if], and tells you about the deathbed in a voice you have not heard before. "He said to tell you he was glad of you," {heir.eldest.name} says. "He said I should be glad of you too. Then he made a joke I didn't understand."
+      effects:
+        - add: { heir.eldest.bond: 2 }
+        - if: flag.c4_master_dying
+          then: [ { kill: "@master" }, { item: +masters_sword } ]
+          else: [ { kill: father_benet } ]
+      next: { pool: c4_lord, count: 1, then: c4_king_dies }
+    - id: write
+      text: Write. You cannot leave now.
+      tags: [yield]
+      text_after: |
+        You write, at length, the best letter you have ever written, and send it by the fastest boat. It arrives, they tell you, two days after the funeral. Somebody reads it aloud at his grave.
+      effects:
+        - if: flag.c4_master_dying
+          then: [ { kill: "@master" } ]
+          else: [ { kill: father_benet } ]
+      next: { pool: c4_lord, count: 1, then: c4_king_dies }
+
+- id: c4_king_dies
+  chapter: ch4
+  title: The King Is Dead
+  checkpoint: true
+  on_enter: [ { advance: { seasons: 6 } } ]
+  text: |
+    King Aldred dies at Wendmere at Candlemas in the thirty-ninth year of his reign, at fifty-three, after two years of dying.
+
+    [if flag.c4_chamber_knight]You are in the room. The Queen, the Chancellor, two physicians, a priest, the Prince, and you, by the door, because the knight of the chamber is always by the door. At the end the King opens his eyes and looks round the room, at every face, as if counting. He stops at his son. He says, "Don't," and nobody ever knows what. Then he is gone.[elif counter.court_king >= 5]You are at Wendmere when it happens, sent for by the King a week before. He did not ask you for anything when you came. He held your hand, and talked about Les Salines, and the dyke, and the water coming in, and said it was the best day of his life.[else]You hear it at [if flag.c2_granted_kerval]Kerval[elif flag.c2_granted_marsalin]Marsalin[else]Ormel[/if], from a rider who has killed two horses bringing it.[/if]
+
+    [break]
+
+    Edwin is crowned at Lady Day, at twenty-seven, in the abbey at Wendmere, with his new men around him in a crowd and the old lords at the back in their furs. [if flag.c3_saved_wat || flag.c3_warned_wat]At the coronation feast the new King stops by you, and says, low, "You're the one who rode between Malet and the Coker man at the Hythe Fields. My father hated that. I liked it."[/if] [if flag.c3_refused_king_ward]The new King's chamberlain does not forget, either, that you once refused his father's gift of a ward, and seats you accordingly.[/if] [if flag.c3_owes_king_marriage]Your debt to the old King for his word in your marriage dies with him, or ought to. Edwin's clerks have it in a book.[/if]
+
+    [if flag.c4_vervais_deposited]Three days after the coronation, the Chancellor opens a sealed letter under your seal in front of the new King, and the Earl of Carrow is not at the feast that night.[elif flag.c3_told_prince_vervais || flag.c3_told_king_vervais]Three days after the coronation, the new King calls the Earl of Carrow to account for Vervais, in council, in front of everyone. The Earl walks out of the hall without a word.[/if]
+  choices:
+    - id: swear
+      text: Kneel first, and swear before anyone else does.
+      tags: [allies, martial]
+      text_after: |
+        You are the third man to kneel and put your hands between the new King's, after two dukes, and before a hundred lords who were still deciding. Edwin sees it. So does the whole hall. [if flag.c4_sworn_prince]"You said you would," he says, quietly, with your hands in his. "I wrote it down."[/if]
+      effects: [ { set: flag.c4_swore_edwin_first }, { add: { counter.court_prince: 3, counter.court_carrow: -2 } } ]
+      next: c4_carrow_rises
+    - id: ask
+      text: Swear, and ask the new King for something in return.
+      tags: [cunning, wealth]
+      check: { attr: presence, skill: diplomacy, difficulty: 4, mods: [ { if: counter.court_prince >= 4, add: 1, label: he knows you }, { if: flag.c4_sworn_prince, add: 1, label: you were his before }, { if: flag.c3_lent_aymer, add: 1, label: Aymer speaks for you } ] }
+      success:
+        text: |
+          You swear, and then, still on your knees, ask for the wardenship of the Sauvemer march: the right to keep the King's castles there, and command the King's men in them. A hundred lords hold their breath. Edwin laughs. "Done," he says. "I like a man who knows what he wants." [if flag.c3_lent_aymer]Aymer Ravell, behind the King, catches your eye and winks. He has paid you back.[/if]
+        effects: [ { set: flag.c4_warden_march }, { add: { counter.court_prince: 1, counter.west_estates: 2, estate.defence: 2 } } ]
+        next: c4_carrow_rises
+      failure:
+        text: |
+          You swear, and ask for the wardenship of the Sauvemer march, and the new King's face closes like a door. "We will consider it," he says. Everyone in the hall heard you ask. Everyone heard the answer.
+        effects: [ { add: { counter.court_prince: -1 } } ]
+        next: c4_carrow_rises
+    - id: wait
+      text: Wait at the back with the old lords, and watch who kneels.
+      tags: [cunning]
+      text_after: |
+        You wait. You watch. The new men kneel in a rush, the old lords one by one and slowly, and some not at all. [if flag.c3_party_own || flag.c3_stayed_home]You have never been anybody's man. It seems late to start now.[/if] When you kneel, near the end, Edwin looks at you over your head with no expression whatever. He has a little book. You know you are in it.
+      effects: [ { set: flag.c4_knelt_late }, { add: { counter.court_prince: -2, counter.west_estates: 1 } } ]
+      next: c4_carrow_rises
+
+- id: c4_carrow_rises
+  chapter: ch4
+  title: The Black Boar Rises
+  checkpoint: true
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    The Earl of Carrow does not rise against the King. He rises, he says, for the King: to free a young man from the evil counsellors who surround him, and to restore the old lords to their rightful place in his council, as in his father's time. Every rebellion in Adalian history has said the same thing.
+
+    By May he has four thousand men under the black boar, and the northern earls with him, and Sir Hugh Malet as his marshal. [if npc.walter_pryce.alive]Sir Walter Pryce, they say, has refused to march, and is at home, dying, and has told the Earl so.[elif alias.master == walter_pryce]Pryce is dead, and the Earl's company is led by Malet now, which everyone agrees is worse.[/if]
+
+    [break]
+
+    The King summons every lord who holds of the Crown, with every man he can raise.
+
+    [if flag.c3_party_carrow || flag.c4_dined_carrow]And the Earl of Carrow writes to you, in his own hand, reminding you of a dinner on Twelfth Night, and of what you said about councils of regency.[/if] [if counter.west_estates >= 4]And from the West come letters too: from the salt guilds, from western lords, from Lannec. The West has no quarrel in this, they write. Stay. The West will need you more than either side does.[/if] [if flag.c3_coll_wedding || flag.c3_coll_ended_feud]From the March, a short letter in Latin: Coll of Glenhallow writes that while Adalia fights itself, Caldmoor will keep the Old Bond and stay home, because he asked it to. Nobody else in Adalia will get that letter.[elif flag.c3_ewan_beaten]From the March: Black Ewan, old and beaten, has kept his word, and Caldmoor stays home.[/if]
+  choices:
+    - id: edwin
+      text: Ride for King Edwin with every man you can raise.
+      tags: [martial, allies]
+      text_after: |
+        You ride for the King. [if flag.c3_enforced_ordinance || flag.c3_compelled]The manor gives you its young men because it must, and they march out sullen.[elif flag.c3_paid_market || flag.c3_new_tenancies || flag.c3_gave_back_rents || flag.c3_paid_wages]The manor gives you its young men without being asked: the ones whose fathers you paid fairly in the plague years.[else]The manor gives you its young men.[/if] [if flag.c3_settlers_houses || flag.c3_settlers_mixed]The Adalian settlers come too, Hodge Brewster at their head, wanting a fight with the lords who hanged their cousins at the Hythe Fields.[/if]
+      effects:
+        - set: flag.c4_side_edwin
+        - add: { counter.court_prince: 2, counter.court_carrow: -3 }
+        - if: { any: [ flag.c3_paid_market, flag.c3_new_tenancies, flag.c3_gave_back_rents, flag.c3_paid_wages ] }
+          then: [ { add: { counter.fr: 1, res.men: 20 } } ]
+        - if: { any: [ flag.c3_settlers_houses, flag.c3_settlers_mixed ] }
+          then: [ { add: { counter.fr: 1, res.men: 15 } } ]
+      next: c4_eldest_two
+    - id: carrow
+      text: Ride for the Earl. The new men will ruin the kingdom.
+      tags: [cunning, martial]
+      visible_if: [ { any: [ counter.court_carrow >= 2, flag.c3_party_carrow, flag.c4_dined_carrow, flag.c3_sold_vervais ] } ]
+      text_after: |
+        You ride north to the black boar. The Earl receives you in his tent, in harness, with Malet at his elbow, and gives you his hand, and a place in the van. "I knew you would see sense," he says. [if flag.c3_sold_vervais]He does not mention Vervais. Neither do you.[/if] [if flag.c3_beat_carrow_lawyers || flag.c3_paid_carrow]He does mention, lightly, that you once cost his steward a good deal of money. Malet laughs.[/if]
+      effects:
+        - set: flag.c4_side_carrow
+        - add: { counter.court_carrow: 3, counter.court_prince: -4 }
+      next: c4_eldest_two
+    - id: west
+      text: Stay in the West. Hold your lands, and let Adalia settle its own quarrel.
+      tags: [yield, cunning]
+      text_after: |
+        You write to the King that the Sauvemer march cannot be left bare with Valdrenne in turmoil, which is true, and you stay. You write to the Earl nothing at all. The salt guilds send you a cask of wine and a letter of thanks in a beautiful hand. [if flag.c4_warden_march]As warden of the march you were meant to come. The King's clerks note it.[/if]
+      effects:
+        - set: flag.c4_side_west
+        - add: { counter.west_estates: 3, counter.court_prince: -2 }
+        - if: flag.c4_warden_march
+          then: [ { add: { counter.court_prince: -2 } } ]
+      next: c4_eldest_two
+
+- id: c4_eldest_two
+  chapter: ch4
+  title: "[if heir.eldest.alive]{heir.eldest.name}[else]The Muster[/if]"
+  text: |
+    [if heir.eldest.alive][if heir.eldest.upbringing == page]{heir.eldest.name} comes home from the Prince's household (the King's household now) the week of the muster, grown out of every garment, with a court accent and a court swagger and a dagger at the belt that nobody gave permission for.[elif heir.eldest.upbringing == court]{heir.eldest.name} comes home from Lannec the week of the muster, speaking Valdrennish to the grooms and Adalian to you, and [if heir.eldest.sex == daughter]riding astride, which Mahaut taught[else]carrying messages, sealed, from the Duchess Mahaut to half the lords of the West[/if].[elif heir.eldest.upbringing == church]{heir.eldest.name} comes home from the abbey for the summer, pale from the scriptorium, with ink on every finger and a great many opinions about the Fathers of the Church.[else]{heir.eldest.name} has grown up in your hall, under your feet, at your elbow, and is ten now, and has watched the muster all week from the gatehouse roof.[/if]
+
+    [break]
+
+    [if heir.eldest.sex == son && !flag.c4_side_west]On the last night before you march, {heir.eldest.name} comes to you in the hall. "Take me," he says. "As your page. To carry your helm. Other lords' sons are going." [if heir.eldest.temperament == bold]He has already packed.[elif heir.eldest.temperament == bookish]He has read every account of a battle in the abbey library, he says, and he would like to see one.[elif heir.eldest.temperament == merry]He says it lightly. He does not mean it lightly.[else]He says it quietly, and has clearly been thinking about it for a month.[/if][elif heir.eldest.sex == daughter]On the last night, {heir.eldest.name} comes to you in the hall with a letter. A betrothal: [if counter.west_estates >= 3]the son of a great lord of the Armance, a match Mahaut herself has suggested[elif counter.court_prince >= 4]one of the King's new men, a young baron with a fine name and no money[else]the heir of a neighbouring Adalian lord, a solid match, dull as a ditch[/if]. "They want an answer," she says. "I want an answer too. Do I have a say?"[elif flag.c4_side_west]{heir.eldest.name} asks you, at supper, why you are not going to the war when every other lord is, and you try to explain, and find you cannot explain it to a ten-year-old, and are not sure you can explain it to yourself.[else]On the last night, {heir.eldest.name} comes to you in the hall, and says, without being asked, "Come back," and goes to bed, and you sit up a long while.[/if][else]The muster takes a week. On the last night you sit alone in the hall, and think about the people who are not in it.[/if]
+  choices:
+    - id: take
+      text: Take him. A lord's son learns war by seeing it.
+      tags: [martial]
+      visible_if: [ heir.eldest.alive, heir.eldest.sex == son, "!flag.c4_side_west" ]
+      text_after: |
+        You take him. He rides behind you all the way north with your helm on his saddle-bow and his face shining, and you watch him the whole time, and do not sleep.
+      effects: [ { set: flag.c4_heir_at_war }, { heir_set: { which: eldest, upbringing: arms } }, { add: { heir.eldest.bond: 2 } } ]
+      next: c4_wythen
+    - id: refuse
+      text: Tell him no. Not this war. Not yet.
+      tags: [allies]
+      visible_if: [ heir.eldest.alive, heir.eldest.sex == son, "!flag.c4_side_west" ]
+      text_after: |
+        "No," you say. He argues. You say no again. [if heir.eldest.temperament == bold]He shouts, the first time he has ever shouted at you, that you are afraid; and you say that you are; and he does not know what to do with that, and goes out, and slams the door so hard the dogs bark.[elif heir.eldest.temperament == grave]He does not argue. He looks at you for a long moment, and says, "Yes, father," in a voice like a shut door, and you know you will pay for it later.[else]He sulks for a day, and then forgets to, and is at the gate to wave you off with the dogs.[/if]
+      effects: [ { add: { heir.eldest.bond: -1 } } ]
+      next: { switch: [ { if: flag.c4_side_west, go: c4_west_war } ], default: c4_wythen }
+    - id: match
+      text: Let her choose. She will have the match she wants, or none.
+      tags: [allies]
+      visible_if: [ heir.eldest.alive, heir.eldest.sex == daughter ]
+      text_after: |
+        "You have a say," you tell her. "You have the only say." She looks at you as if you had given her a horse. She takes a month to decide, and writes to the young man herself, and in the end says yes, on her own terms, which include a clause about her own horses that the lawyers have never seen before.
+      effects: [ { set: flag.c4_daughter_chose }, { add: { heir.eldest.bond: 3 } }, { if: counter.west_estates >= 3, then: [ { add: { counter.west_estates: 1 } } ] } ]
+      next: { switch: [ { if: flag.c4_side_west, go: c4_west_war } ], default: c4_wythen }
+    - id: arrange
+      text: Make the match. It is a good one, and she is young.
+      tags: [cunning, wealth]
+      visible_if: [ heir.eldest.alive, heir.eldest.sex == daughter ]
+      text_after: |
+        You make the match, and sign the contract, and she does not speak to you for a month. [if heir.eldest.temperament == merry]Then one morning she laughs at something you say at breakfast, and seems surprised at herself, and goes on being angry, but less.[else]Then she speaks to you again, politely, and you would rather she had gone on shouting.[/if]
+      effects: [ { set: flag.c4_daughter_matched }, { add: { heir.eldest.bond: -2, res.coin: 1200 } }, { if: counter.west_estates >= 3, then: [ { add: { counter.west_estates: 1 } } ], else: [ { add: { counter.court_prince: 1 } } ] } ]
+      next: { switch: [ { if: flag.c4_side_west, go: c4_west_war } ], default: c4_wythen }
+    - id: on
+      text: Go on.
+      next: { switch: [ { if: flag.c4_side_west, go: c4_west_war } ], default: c4_wythen }
+
+- id: c4_wythen
+  chapter: ch4
+  title: Wythen Heath
+  checkpoint: true
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    The armies meet on Wythen Heath, north of Wendmere, at midsummer, on a hot still morning with larks going up from the heather and the smoke of burning farms on the skyline behind the Earl's lines.
+
+    [if flag.c4_side_edwin]The King has the larger army and the younger. The Earl has the old lords, their household knights, and men who have been fighting since before the King was born. Edwin rides along the line in gilt harness with his crown on his helm, which everyone says is brave and the old soldiers say is daft.[else]The Earl has the old lords, their household knights, and men who have been fighting since before the young King was born. The King has more men, and younger ones, and a gilt crown on his helm that every archer in your army can see from half a mile.[/if] [if flag.c4_heir_at_war]{heir.eldest.name} is at your stirrup with your helm, white as milk.[/if]
+
+    [break]
+
+    [if flag.c4_side_edwin]Your company is given the King's right. Across the heath, under the black boar, Sir Hugh Malet's banner is in the line facing you.[else]Your company is given the Earl's left. Across the heath, under the King's leopards, are men you stood beside at Mortefontaine.[/if] [if flag.c3_westry_kin]Your wife's father's banner, the white hart of Westry, is [if flag.c4_side_edwin]beside yours[else]across the heath from yours[/if].[/if]
+  choices:
+    - id: ground
+      text: Go over the ground before the fighting starts, and find what the heralds missed.
+      tags: [cunning, learning]
+      check: { attr: wits, skill: tactics, difficulty: 4, mods: [ { if: flag.c4_scouted, add: 1, label: "you found Mortefontaine's road the same way" }, { if: flag.c2_found_countermine || flag.c2_found_ford, add: 1, label: you have a nose for ground } ] }
+      success:
+        text: |
+          You walk the heath at dawn with two of your men and find it: a bog in the hollow in front of the enemy's right, green and innocent, deep enough to take a horse to the girths. You tell your captain-general. When the enemy's horse comes, it comes through the hollow.
+        effects: [ { add: { counter.fr: 2 } }, { set: flag.c4_found_bog } ]
+        next: c4_wythen_2
+      failure:
+        text: You walk the heath and find heather, and larks, and nothing else, and come back with wet boots.
+        next: c4_wythen_2
+    - id: men
+      text: Walk your company's line and speak to every man by name.
+      tags: [allies]
+      text_after: |
+        You walk the line and speak to every man you know by name, which is most of them, and to the ones you do not, you ask. [if flag.c2_paid_men || flag.c2_stance_orders]Some of the old ones remember the winter at Lannec, and the rules you laid down, and say so.[/if] It steadies them. It steadies you.
+      effects: [ { add: { counter.fr: 1, rel.davy_ludd.loyalty: 1, rel.roger_tallis.loyalty: 1 } }, { if: { any: [ flag.c2_paid_men, flag.c2_stance_orders, flag.c2_hired_tallis ] }, then: [ { add: { counter.fr: 1 } } ] } ]
+      next: c4_wythen_2
+    - id: parley
+      text: Ride out under a white rod, and try to stop it.
+      tags: [diplomacy]
+      check: { attr: presence, skill: diplomacy, difficulty: 6, mods: [ { if: counter.court_carrow >= 2 && counter.court_prince >= 2, add: 2, label: both sides know you }, { if: flag.c3_saved_wat || flag.c3_warned_wat, add: 1, label: the commons trust you } ] }
+      success:
+        text: |
+          You ride into the middle of the heath under a white rod, and the heralds of both sides come out to meet you, and then the captains, and then, astonishingly, the Earl himself and the King's uncle. You talk for an hour in the sun between two armies. It does not stop the battle. It stops a third of it: the northern earls, who did not want this, take their men off the field before noon, and the Earl of Carrow fights with what is left.
+        effects: [ { set: flag.c4_parleyed_wythen }, { add: { counter.fr: 2, res.renown: 2, rep.honor: 1 } } ]
+        next: c4_wythen_2
+      failure:
+        text: You ride out under a white rod and the heralds hear you out politely and ride back to their own lines, and an archer on the other side, who did not hear the heralds, puts an arrow into your horse.
+        effects: [ { add: { res.horses: -1 } } ]
+        next: c4_wythen_2
+
+- id: c4_wythen_2
+  chapter: ch4
+  title: The Black Boar and the Leopards
+  text: |
+    It goes the way battles go: arrows, then the lines closing, then a long grinding hour in the heat in which nobody can see anything but the man in front.
+
+    [if counter.fr >= 3]Your side of the field holds, and pushes, and holds again.[elif counter.fr >= 1]Your side of the field holds, barely.[else]Your side of the field gives ground, step by step, back toward the baggage.[/if] And then, at the turn of the day, the thing you were afraid of: Malet's household knights come round the flank on foot, two hundred of them in harness, straight at [if flag.c4_side_edwin]the King's banner[else]the Earl's banner[/if]. [if flag.c4_heir_at_war]And {heir.eldest.name}, with your helm in his arms, is between you and them.[/if]
+  choices:
+    - id: line
+      text: Turn your company into their flank.
+      tags: [martial]
+      lethal: true
+      warn: Two hundred knights in harness. Without armour, or carrying a serious wound, you could die here.
+      check: { attr: strength, skill: command, difficulty: 5, mods: [ { if: counter.fr >= 3, add: 1, label: your side is winning }, { if: counter.company >= 2, add: 1, label: your company is strong }, { if: armour >= 2, add: 1, label: good harness }, { if: trait.veteran, add: 1, label: you have done this before } ] }
+      success:
+        text: |
+          You turn your company into their flank at the run, and hit them where their harness is thinnest, and they break, and run, and the battle runs with them. [if flag.c4_heir_at_war]When it is over you find {heir.eldest.name} sitting on a dead horse with your helm in his lap, shaking, unhurt. He does not say anything. Neither do you. You just hold on.[/if]
+        effects: [ { set: flag.c4_broke_malet }, { add: { counter.fr: 3, res.renown: 3 } }, { casualties: { men: 10, named: 0 } } ]
+        next: c4_wythen_after
+      partial:
+        text: |
+          You turn into their flank and it is a brawl, harness on harness, and you hold them, and then the reserve comes and finishes it. You come out of it with a broken sword and somebody else's blood to the elbow. [if flag.c4_heir_at_war]{heir.eldest.name} is behind the baggage wagons, where Davy carried him by the collar, unhurt and furious.[/if]
+        effects: [ { add: { counter.fr: 1, res.renown: 1 } }, { casualties: { men: 14, named: 1 } }, { injury: cut_brow } ]
+        next: c4_wythen_after
+      failure:
+        text: |
+          [if armour >= 1 && !injured]You turn into their flank and they turn into you, and it goes against you. You go down under a poleaxe and your harness holds and your men drag you out by the heels.[else]You turn into their flank and they turn into you, and you go down under a poleaxe on Wythen Heath, in the heather, with the larks still going up.[/if] [if flag.c4_heir_at_war]You do not see what happens to {heir.eldest.name}.[/if]
+        effects:
+          - if: [ armour >= 1, "!injured" ]
+            then: [ { injury: cracked_skull }, { casualties: { men: 20, named: 1 } } ]
+            else: [ { die: "Killed on Wythen Heath, under the black boar's knights" } ]
+          - if: flag.c4_heir_at_war
+            then: [ { chance: 30, then: [ { heir_dies: eldest }, { set: flag.c4_heir_killed } ] } ]
+        next: c4_wythen_after
+    - id: guard
+      text: Close round the banner and hold.
+      tags: [allies, martial]
+      check: { attr: endurance, skill: arms, difficulty: 4, mods: [ { if: counter.fr >= 1, add: 1, label: your side is holding }, { if: armour >= 2, add: 1, label: good harness } ] }
+      success:
+        text: |
+          You close round the banner with your company, shoulder to shoulder, and Malet's knights come into you like surf onto a rock, and break, and come again, and break. It is not glorious. It holds. [if flag.c4_heir_at_war]{heir.eldest.name} is in the middle of the ring, behind you, the whole time, and never once drops your helm.[/if]
+        effects: [ { add: { counter.fr: 2, res.renown: 1 } }, { casualties: { men: 8, named: 0 } } ]
+        next: c4_wythen_after
+      failure:
+        text: |
+          The ring breaks. Not where you are, but near enough. You fight your way back to the banner and it is still up, just, when the rest of your side comes. [if flag.c4_heir_at_war]You find {heir.eldest.name} afterwards with a gash across the forehead that will scar, and he is so proud of it you cannot bear to look.[/if]
+        effects: [ { casualties: { men: 16, named: 1 } } ]
+        next: c4_wythen_after
+    - id: boy
+      text: Get {heir.eldest.name} out of it first, whatever it costs.
+      tags: [allies]
+      visible_if: [ flag.c4_heir_at_war ]
+      text_after: |
+        You get {heir.eldest.name} out: you put him up behind Davy and send them back to the baggage at a gallop, and only then turn round. By then Malet's knights are past you, and other men stop them, and it is not your company that does it. Nobody blames you. Nobody who has a son.
+      effects: [ { add: { counter.fr: -1, heir.eldest.bond: 2 } } ]
+      next: c4_wythen_after
+
+- id: c4_wythen_after
+  chapter: ch4
+  title: After Wythen Heath
+  on_enter:
+    - if: counter.fr >= 5
+      then: [ { set: flag.c4_wythen_ours } ]
+      else:
+        - if: counter.fr >= 3
+          then: [ { set: flag.c4_wythen_bloody } ]
+          else: [ { set: flag.c4_wythen_theirs } ]
+    - if: [ flag.c4_side_edwin, flag.c4_wythen_ours ]
+      then: [ { set: flag.c4_edwin_won }, { add: { counter.court_prince: 3 } } ]
+    - if: [ flag.c4_side_carrow, flag.c4_wythen_ours ]
+      then: [ { set: flag.c4_carrow_won }, { add: { counter.court_carrow: 3 } } ]
+    - if: [ flag.c4_side_edwin, flag.c4_wythen_theirs ]
+      then: [ { set: flag.c4_carrow_won } ]
+    - if: [ flag.c4_side_carrow, flag.c4_wythen_theirs ]
+      then: [ { set: flag.c4_edwin_won } ]
+    - if: { any: [ [ flag.c4_side_carrow, flag.c4_edwin_won ], [ flag.c4_side_edwin, flag.c4_carrow_won ] ] }
+      then:
+        - set: flag.c4_on_losing_side
+        - add: { counter.court_prince: -3, counter.court_carrow: -3 }
+        - if: flag.c4_side_carrow
+          then: [ { release: ashby }, { release: hollin }, { release: wendham_rents }, { release: underhill }, { release: lisle }, { release: wyck }, { release: ashdown } ]
+  text: |
+    [if flag.c4_edwin_won]The black boar goes down at sunset. [if flag.c4_side_edwin]The King's side holds the heath, and what you did on the right is part of why.[else]Your side breaks, and you are on the wrong side of the heath when it does.[/if] The Earl of Carrow is taken alive in a farmyard two miles north, with Malet dead beside him. He is beheaded at Wendmere a month later, on the same day his grandson is made a ward of the Crown. The old lords go home, and are quiet, and remember.[elif flag.c4_carrow_won]The King's battle breaks at sunset, and Edwin is carried off the field by his household with an arrow in his thigh, still shouting. [if flag.c4_side_carrow]Your side holds the heath, and what you did on the left is part of why.[else]Your side breaks, and you are on the wrong side of the heath when it does.[/if] The Earl does not take Wendmere. He does not need to. He sends the King terms: a council of regency of the old lords, with himself at its head. Edwin, in Wendmere, with his leg bound up, refuses, and the war goes on.[else]Nobody wins Wythen Heath. Both armies hold their ground till dark and draw off in the night, and in the morning there are four thousand dead in the heather and the larks going up as if nothing had happened. The King holds Wendmere and the south. The Earl holds the north. Adalia is two countries now, and everyone knows it.[/if]
+
+    [break]
+
+    [if flag.c4_heir_killed]You found {heirs.lastdead} on the heath, at dusk, among Malet's dead, with your helm still in his arms. You carry him home yourself, across your saddle, the whole way, and do not let anyone help. It was your choice. You knew it was. You will know it every day.[elif flag.c4_heir_at_war]{heir.eldest.name} comes home with you, older than he went.[/if]
+  choices:
+    - id: on
+      text: Go home.
+      effects: [ { if: flag.c4_heir_killed, then: [ { add: { estate.temper: -1, rep.honor: 1 } } ] } ]
+      next: c4_valdrenne
+
+- id: c4_west_war
+  chapter: ch4
+  title: News from Wythen Heath
+  on_enter:
+    - advance: { seasons: 1 }
+    - set: flag.c4_wythen_bloody
+  text: |
+    You hold the West through the summer while Adalia fights itself. The news comes by every boat.
+
+    Nobody won Wythen Heath. Both armies held their ground till dark and drew off in the night, and in the morning there were four thousand dead in the heather. The King holds Wendmere and the south. The Earl holds the north. Adalia is two countries now.
+
+    [break]
+
+    In the West nothing happens, which is the point. The salt goes out, the rents come in, the Valdrennish across the march watch and wait. [if flag.c4_warden_march]The King's clerks have added a line under your name, about wardens who do not come when called.[/if] At the end of the summer the guildmasters of Sauvemer give a dinner for the western lords who stayed home. You sit at the head of the table.
+  choices:
+    - id: on
+      text: Go on.
+      effects: [ { add: { counter.west_estates: 1 } } ]
+      next: c4_valdrenne
+
+- id: c4_valdrenne
+  chapter: ch4
+  title: The Boy King
+  checkpoint: true
+  on_enter: [ { advance: { seasons: 1 } }, { meet: thibaut_brese } ]
+  text: |
+    In the autumn the boy-king of Valdrenne, who is eighteen now and no longer a boy, does what everyone knew he would. He calls the Constable to Cordelle, to council, and the Constable goes, because he has always gone, and the King has him arrested at the door of the council chamber by his own guard. Gaucelin de Brésy dies in the Châtelet a month later. Of a fever, the court says.
+
+    The Brésy and all their kin are put out of the King's peace. Their lands in the west of Valdrenne are given to the King's friends, who will have to go and take them.
+
+    [break]
+
+    In November, Thibaut de Brésy rides into your yard with twenty men and his cousin's wife and two children on a cart. [if flag.c3_brese_kin]He is your wife's cousin. He does not need to say anything else.[elif flag.c3_thibaut_spared]You spared him once, at your own gate. He seems to think that means something.[elif flag.c2_took_thibaut]You took him prisoner on the salt pans, twenty years ago. "You treated me decently," he says. "I've come to see if you still do."[else]He has nowhere else to go, and you are the nearest Adalian lord who is not at war with himself.[/if] "I'm asking for a roof," he says. "And perhaps more than that, later."
+  choices:
+    - id: shelter
+      text: Shelter them, all of them, and let both kings think what they like.
+      tags: [allies, cunning]
+      text_after: |
+        You shelter them: Thibaut, his men, the cousin's wife, the children. The Valdrennish King writes to demand them. King Edwin writes to ask what you think you are doing. You answer both letters with the same sentence, which your steward thinks is the cleverest thing he has ever heard, and which is: "They are guests in the West." Within a month, every Brésy man in the west of Valdrenne knows where Thibaut is.
+      effects: [ { set: flag.c4_sheltered_brese }, { add: { counter.west_estates: 2, rep.valdrenne: 2, counter.court_prince: -1 } } ]
+      next: { pool: c4_lord, count: 1, then: c4_lannec }
+    - id: send
+      text: Feed them, give them horses, and send them on to Sarenza.
+      tags: [diplomacy, wealth]
+      text_after: |
+        You feed them and give them horses and a letter to [if flag.c3_lanzi_kin]your wife's house[else]a banker you know[/if] in Sarenza, and see them off at the gate. Thibaut kisses your hand, which you do not expect. "I'll remember this," he says. Everyone says that. He might.
+      effects: [ { set: flag.c4_sent_brese_on }, { add: { res.coin: -240, rep.honor: 1 } } ]
+      next: { pool: c4_lord, count: 1, then: c4_lannec }
+    - id: hand_over
+      text: Hand them over to the Valdrennish King's officers.
+      tags: [cunning]
+      text_after: |
+        You hold them, politely, and write to Cordelle, and the Valdrennish King's officers come for them in December with a writ and a cart with bars on it. Thibaut does not curse you. He looks at you as he goes past, once, and you would rather he had cursed. The Valdrennish King sends you a gold cup. You put it in a chest and do not look at it.
+      effects: [ { set: flag.c4_gave_up_brese }, { add: { rep.honor: -3, rep.ruthlessness: 2, counter.west_estates: -2, res.coin: 1200 } }, { if: flag.c3_brese_kin, then: [ { add: { rel.@spouse.affection: -6 } } ] } ]
+      next: { pool: c4_lord, count: 1, then: c4_lannec }
+
+- id: c4_lannec
+  chapter: ch4
+  title: Lannec
+  checkpoint: true
+  on_enter: [ { advance: { seasons: 2 } } ]
+  text: |
+    In the spring of the forty-first year, the salt guilds of Sauvemer stop paying the salt penny, and the Valdrennish salt tithe, both, on the same day. They say they will pay the King who protects them, when they find out which one that is.
+
+    In the same week, Mahaut, Duchess of Armance, twenty-two and still unmarried, invites the western lords to Lannec for her feast-day. Nobody invites the King's officers, or the Valdrennish King's. Everybody understands.
+
+    [break]
+
+    [if counter.west_estates >= 6]You are seated at her right hand.[elif counter.west_estates >= 3]You are seated at the high table, near the end.[else]You are seated below the salt, among the lesser lords, which tells you exactly what the West thinks of you.[/if] [if flag.c3_fled]Some of the Sauvemer men have long memories. One of them says, not quite to you, that some lords ran to the town when the Mottle came.[elif flag.c3_saw_it || flag.c3_spoke_steps || flag.c3_nursed]An old salt-boiler from Les Salines comes to your place, and takes your hand, and says to the table: "This one came into the plague houses with us."[/if] [if flag.c3_claim_shared || flag.c3_claim_bought]The old lord's kin you settled with is at the table, and raises a cup to you.[elif flag.c3_claim_threat]The old lord's kin you drove off is at the table, and does not look at you.[/if]
+
+    After dinner Mahaut walks in the garden with the lords she trusts, and says the thing nobody has said aloud. "Adalia has two kings and Valdrenne has a madman. The West has salt, and ships, and the Armance. The West could have a duke who answers to nobody." She looks round at them. "Or more than a duke."
+  choices:
+    - id: west
+      text: Say it with her. The West should stand on its own feet.
+      tags: [diplomacy, allies]
+      text_after: |
+        You say it with her, in front of them all: that the West has bled for two kings and been taxed by both, and owes neither of them anything it has not already paid. It is treason in two languages. Nobody leaves the garden. When you go in, Mahaut puts her hand on your arm for a moment, and says, "I knew you would." [if suit.mahaut_armance.status >= courted]She does not take it away.[/if]
+      effects: [ { set: flag.c4_spoke_for_west }, { add: { counter.west_estates: 3, counter.court_prince: -2 } }, { if: suit.mahaut_armance.status >= courted, then: [ { add: { suit.mahaut_armance.regard: 2 } } ] } ]
+      next: c4_act3_end
+    - id: adalia
+      text: Say the West's place is with Adalia, whatever Adalia is now.
+      tags: [allies, martial]
+      text_after: |
+        You say it plainly: the West was won by Adalian blood, and will be held by it, or lost to Cordelle. Some of them nod. More of them do not. Mahaut hears you out with her face perfectly still, and thanks you for your honesty, and does not invite you into the garden again.
+      effects: [ { set: flag.c4_spoke_for_adalia }, { add: { counter.west_estates: -2, counter.court_prince: 2 } } ]
+      next: c4_act3_end
+    - id: listen
+      text: Say nothing. Listen, and count who nods.
+      tags: [cunning]
+      text_after: |
+        You say nothing, and count. Nine of the twenty lords in the garden nodded. Four did not. Seven watched to see who else would. Mahaut, you notice, counted too, and when your eyes meet across the garden, she knows exactly what you were doing, and smiles.
+      effects: [ { set: flag.c4_counted_lannec }, { add: { skill.intrigue: 1, counter.west_estates: 1 } } ]
+      next: c4_act3_end
+
+- id: c4_act3_end
+  chapter: ch4
+  kind: ending
+  ending: story_so_far
+  title: Spring, Year Forty-One
+  text: |
+    You are forty. Adalia has two kings, or a king and an earl who says he is not one. Valdrenne has a king who murdered his Constable. And the West, where you hold your land and where your [if heirs.count >= 1]children are growing up speaking two languages[else]name is known[/if], is beginning to think about itself.
+
+    End of the chapters written so far. Chapter 4 continues with the Summons to Lannec.

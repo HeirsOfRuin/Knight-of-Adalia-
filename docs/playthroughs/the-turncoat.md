@@ -1230,7 +1230,7 @@ A following has to be fed, and paid, and kept in hand. It is also the only thing
 - Send home for a man you trust: Dickon, Nell's brother. Take Jankin Rooke as well.  
   <small>At stake: Your men + · Your men's loyalty ± · Wat Coker + · Gib Shawe +</small>
 - Hire Roger Tallis, a veteran of the free companies, and the three hard men who follow him. A pound for the season.  
-  <small>At stake: Your men + · Coin −</small>
+  <small>At stake: Your men + · Coin − · Remembered later</small>
 - Go as you are, with Davy.
 
 **Chose:** Go as you are, with Davy.
@@ -1361,7 +1361,7 @@ The young men have not done it, and are about to.
 Your men are looking at you again.
 
 - Tell your men you will follow the orders to the letter. Burn what you are told, take what you are told, nothing more.  
-  <small>At stake: Crown + · Ruthlessness +</small>
+  <small>At stake: Crown + · Ruthlessness + · Remembered later</small>
 - Tell them you will take what you need and burn nothing you do not have to.  
   <small>At stake: Honor + · Sir Walter Pryce −</small>
 - Tell them what they take, they keep.  
@@ -1685,7 +1685,7 @@ Davy asks you, carefully, whether there will be any money this month. His boots 
 The Lanzi bank has a house in Lannec. Everybody knows it. It is the only house in the town with a fire in every room.
 
 - Pay them out of your own purse, everything that is owed.  
-  <small>At stake: Your men's loyalty + · Your men + · Coin −</small>
+  <small>At stake: Your men's loyalty + · Your men + · Coin − · Remembered later</small>
 - Go to the Lanzi house, and borrow to pay them.  
   <small>At stake: Your men's loyalty + · Fiammetta Lanzi + · Remembered later</small>
 - Take them raiding over the border into the Constable's own lands. Let them pay themselves.  
@@ -1947,7 +1947,7 @@ The Valdrennish know it. They have dug a countermine from inside the walls, and 
 - Go down into the gallery with Treloar's miners. *(Favorable, MORTAL DANGER)*  
   <small>At stake: A wound · Your life · The siege + · Renown +</small>
 - Set bowls of water along the gallery to find where they are digging. *(Risky)*  
-  <small>At stake: The siege + · Renown + · Tactics +</small>
+  <small>At stake: The siege + · Renown + · Tactics + · Remembered later</small>
 - Guard the mouth of the mine with your men, above ground.  
   <small>At stake: The siege + · Remembered later</small>
 
@@ -2657,7 +2657,7 @@ Bastien comes to the church at the end and leans in the doorway. "Lost my brothe
 - Raise a stone cross in the churchyard, with the names cut into it.  
   <small>At stake: Your manor · Coin −</small>
 - Give the widows back their Michaelmas rents.  
-  <small>At stake: Common Folk + · Your manor · Coin −</small>
+  <small>At stake: Common Folk + · Your manor · Coin − · Remembered later</small>
 - Get on with it. There is a manor to run.  
   <small>At stake: Your manor</small>
 
@@ -2704,7 +2704,7 @@ Everybody is looking at you. The law is the King's. The manor is yours.
 - Enforce the ordinance. The King's law is the King's law.  
   <small>At stake: Crown + · Common Folk − · Your manor −</small>
 - Pay them what the market asks, quietly, and keep it off the rolls.  
-  <small>At stake: Great Nobles − · Your manor · Coin −</small>
+  <small>At stake: Great Nobles − · Your manor · Coin − · Remembered later</small>
 - Let the empty holdings to them as tenants, on easy rents. Land instead of wages. *(Even)*  
   <small>At stake: Common Folk + · Great Nobles − · Your manor · Coin −</small>
 - Put your own men to work in the fields beside them, and hold the line on wages.  
@@ -2750,11 +2750,11 @@ They come over from Saltcombe in a hired cog: thirty-odd Adalian men and women, 
 Their leader is a big, red-faced Saltcombe brewer's son called Hodge Brewster, with hands like hams and opinions to match. "Your lordship," he says, pulling his forelock as if he had been told to and resented it. "We was promised houses. And land. And that the locals was tame." He looks at a Valdrennish woman glaring at him from a doorway. "I don't think they was told."
 
 - Give them the empty houses in the village, among the locals.  
-  <small>At stake: Your manor +</small>
+  <small>At stake: Your manor + · Remembered later</small>
 - Settle them together on the far fields, apart, with their own lane.  
   <small>At stake: Your manor +</small>
 - Mix them holding by holding, and make the locals stand godparent to the settlers' children. *(Even)*  
-  <small>At stake: Your manor +</small>
+  <small>At stake: Your manor + · Remembered later</small>
 - Send them back. Your people have had enough strangers.  
   <small>At stake: Crown − · Your manor +</small>
 
@@ -3313,7 +3313,7 @@ He looks round your hall. "You've done well," he says. He does not quite manage 
 - Buy it with half down, and half from the rents over five years.  
   <small>At stake: Coin − · Remembered later</small>
 - Lend Aymer what you can spare, for his own sake.  
-  <small>At stake: Aymer Ravell + · Coin −</small>
+  <small>At stake: Aymer Ravell + · Coin − · Remembered later</small>
 - Let it go. It is not your house.
 
 **Chose:** Buy it with half down, and half from the rents over five years.
@@ -3859,9 +3859,9 @@ The King sends for you on the fourth day. He is sitting up, grey, in a furred go
 - Stand by the King. Be seen to.  
   <small>At stake: The King's favour + · The Prince's favour −</small>
 - Go to the Prince, and make your promise plain.  
-  <small>At stake: The Prince's favour + · The King's favour −</small>
+  <small>At stake: The Prince's favour + · The King's favour − · Remembered later</small>
 - Dine with the Earl of Carrow on Twelfth Night.  
-  <small>At stake: Carrow's favour + · The Prince's favour −</small>
+  <small>At stake: Carrow's favour + · The Prince's favour − · Remembered later</small>
 
 **Chose:** Stand by the King. Be seen to.
 
@@ -3945,8 +3945,250 @@ You stand up in the King's council when the matter comes, which it does at Candl
 
 ## Spring, Year Thirty-Eight
 
+*Summer, year 38 of King Aldred*
+
 You are thirty-seven. Your name is on the rent-rolls of more places than you have slept in. Hal, Agnes and Jehanne: growing, quarrelling, away and home again.
 
 The King is dying. Everyone knows it, and nobody says it, and everyone is counting.
 
-End of the chapters written so far. Chapter 4 continues with the Fracture.
+- Go on.
+
+**Chose:** Go on.
+
+*Harvest in: 4 seasons of grain · Michaelmas rents: £2 2s 11d · Rents from your other holdings: £2 17s 6d*
+
+## The Old Master
+
+*Autumn, year 38 of King Aldred*
+
+The letter comes at midsummer, in a hand you do not know, from Pryce's manor in Carrow. Walter Pryce is dying. He has asked for you by name. He has asked, the letter says, for almost nobody else.
+
+Sir Walter Pryce, banneret, the Earl of Carrow's captain for thirty years, has a growth in his belly that the physicians will not name.
+
+*(Continue)*
+
+You left your first master once, when he needed you. You have never been sure he forgave it.
+
+It is three weeks' journey there and back, across the sea, with Carrow's men on the roads and the King dying and everything you hold needing you at once.
+
+- Go. Now. Whatever it costs.  
+  <small>At stake: The King's favour − · Honor + · Piety + · Your manor</small>
+- Send Hal in your place, with a letter.  
+  <small>At stake: Your children + · Your old master's sword +</small>
+- Write. You cannot leave now.
+
+**Chose:** Go. Now. Whatever it costs.
+
+You get there in time, just. Pryce is thin as a lath, and courteous as ever, and makes you sit and drink his wine. "I put your name in a great many ears," he says. "I'm glad it was worth it." At the end, almost asleep, he says, "Mind Carrow. He liked me. He likes nobody." He dies two days later, with you there.
+
+*Temper of the village −1 · Honor +1 · Walter Pryce is dead · Gained: Your old master's sword*
+
+## The Boundary Stone
+
+Two of your own villages have fallen out over a boundary stone. It has been moved, by somebody, at night, about forty paces, and there is a meadow on the wrong side of it now. Both villages are yours. Both send a deputation. Both deputations are in your hall at the same time, and have brought their grandfathers.
+
+- Walk the bounds with the oldest men of both villages.  
+  <small>At stake: Common Folk + · Your manor</small>
+- Split the meadow down the middle.
+
+**Chose:** Walk the bounds with the oldest men of both villages.
+
+You walk the bounds all day with six old men who disagree about everything, and at the end of it you find the old hole where the stone stood, by the yew, exactly where the oldest of them said. You put the stone back with your own hands. Both villages grumble. Both villages are satisfied.
+
+*Temper of the village +1 · Common Folk standing +1 · Harvest in: 4 seasons of grain · Michaelmas rents: £2 2s 11d · Rents from your other holdings: £2 17s 6d*
+
+## The King Is Dead
+
+*Spring, year 40 of King Aldred*
+
+King Aldred dies at Wendmere at Candlemas in the thirty-ninth year of his reign, at fifty-three, after two years of dying.
+
+You are at Wendmere when it happens, sent for by the King a week before. He did not ask you for anything when you came. He held your hand, and talked about Les Salines, and the dyke, and the water coming in, and said it was the best day of his life.
+
+*(Continue)*
+
+Edwin is crowned at Lady Day, at twenty-seven, in the abbey at Wendmere, with his new men around him in a crowd and the old lords at the back in their furs.
+
+Three days after the coronation, the new King calls the Earl of Carrow to account for Vervais, in council, in front of everyone. The Earl walks out of the hall without a word.
+
+- Kneel first, and swear before anyone else does.  
+  <small>At stake: The Prince's favour + · Carrow's favour −</small>
+- Swear, and ask the new King for something in return. *(Even)*  
+  <small>At stake: The Prince's favour ± · Standing in the West + · Your manor · Remembered later</small>
+- Wait at the back with the old lords, and watch who kneels.  
+  <small>At stake: The Prince's favour − · Standing in the West +</small>
+
+**Chose:** Kneel first, and swear before anyone else does.
+
+You are the third man to kneel and put your hands between the new King's, after two dukes, and before a hundred lords who were still deciding. Edwin sees it. So does the whole hall.
+
+## The Black Boar Rises
+
+*Summer, year 40 of King Aldred*
+
+The Earl of Carrow does not rise against the King. He rises, he says, for the King: to free a young man from the evil counsellors who surround him, and to restore the old lords to their rightful place in his council, as in his father's time. Every rebellion in Adalian history has said the same thing.
+
+By May he has four thousand men under the black boar, and the northern earls with him, and Sir Hugh Malet as his marshal. Pryce is dead, and the Earl's company is led by Malet now, which everyone agrees is worse.
+
+*(Continue)*
+
+The King summons every lord who holds of the Crown, with every man he can raise.
+
+And from the West come letters too: from the salt guilds, from western lords, from Lannec. The West has no quarrel in this, they write. Stay. The West will need you more than either side does. From the March, a short letter in Latin: Coll of Glenhallow writes that while Adalia fights itself, Caldmoor will keep the Old Bond and stay home, because he asked it to. Nobody else in Adalia will get that letter.
+
+- Ride for King Edwin with every man you can raise.  
+  <small>At stake: The battle + · Your men + · The Prince's favour + · Carrow's favour −</small>
+- Stay in the West. Hold your lands, and let Adalia settle its own quarrel.  
+  <small>At stake: Standing in the West + · The Prince's favour − · Remembered later</small>
+
+**Chose:** Ride for King Edwin with every man you can raise.
+
+You ride for the King. The manor gives you its young men because it must, and they march out sullen. The Adalian settlers come too, Hodge Brewster at their head, wanting a fight with the lords who hanged their cousins at the Hythe Fields.
+
+*Men +15*
+
+## Hal
+
+Hal comes home from the Prince's household (the King's household now) the week of the muster, grown out of every garment, with a court accent and a court swagger and a dagger at the belt that nobody gave permission for.
+
+*(Continue)*
+
+On the last night before you march, Hal comes to you in the hall. "Take me," he says. "As your page. To carry your helm. Other lords' sons are going." He says it lightly. He does not mean it lightly.
+
+- Take him. A lord's son learns war by seeing it.  
+  <small>At stake: Your children + · Remembered later</small>
+- Tell him no. Not this war. Not yet.  
+  <small>At stake: Your children −</small>
+- Go on.
+
+**Chose:** Take him. A lord's son learns war by seeing it.
+
+You take him. He rides behind you all the way north with your helm on his saddle-bow and his face shining, and you watch him the whole time, and do not sleep.
+
+*Harvest in: 4 seasons of grain · Michaelmas rents: £2 2s 11d · Rents from your other holdings: £2 17s 6d*
+
+## Wythen Heath
+
+*Autumn, year 40 of King Aldred*
+
+The armies meet on Wythen Heath, north of Wendmere, at midsummer, on a hot still morning with larks going up from the heather and the smoke of burning farms on the skyline behind the Earl's lines.
+
+The King has the larger army and the younger. The Earl has the old lords, their household knights, and men who have been fighting since before the King was born. Edwin rides along the line in gilt harness with his crown on his helm, which everyone says is brave and the old soldiers say is daft. Hal is at your stirrup with your helm, white as milk.
+
+*(Continue)*
+
+Your company is given the King's right. Across the heath, under the black boar, Sir Hugh Malet's banner is in the line facing you.
+
+- Go over the ground before the fighting starts, and find what the heralds missed. *(Even)*  
+  <small>At stake: The battle +</small>
+- Walk your company's line and speak to every man by name.  
+  <small>At stake: The battle + · Your men's loyalty +</small>
+- Ride out under a white rod, and try to stop it. *(Risky)*  
+  <small>At stake: The battle + · Renown + · Honor +</small>
+
+**Chose:** Go over the ground before the fighting starts, and find what the heralds missed. (Even: failure)
+
+You walk the heath and find heather, and larks, and nothing else, and come back with wet boots.
+
+## The Black Boar and the Leopards
+
+It goes the way battles go: arrows, then the lines closing, then a long grinding hour in the heat in which nobody can see anything but the man in front.
+
+Your side of the field holds, barely. And then, at the turn of the day, the thing you were afraid of: Malet's household knights come round the flank on foot, two hundred of them in harness, straight at the King's banner. And Hal, with your helm in his arms, is between you and them.
+
+- Turn your company into their flank. *(Favorable, MORTAL DANGER)*  
+  <small>At stake: A wound · Your life · The battle + · Your men −</small>
+- Close round the banner and hold. *(Favorable)*  
+  <small>At stake: The battle + · Your men − · Renown +</small>
+- Get Hal out of it first, whatever it costs.  
+  <small>At stake: The battle − · Your children +</small>
+
+**Chose:** Close round the banner and hold. (Favorable: success)
+
+You close round the banner with your company, shoulder to shoulder, and Malet's knights come into you like surf onto a rock, and break, and come again, and break. It is not glorious. It holds. Hal is in the middle of the ring, behind you, the whole time, and never once drops your helm.
+
+*Renown +1 · 8 of your men are dead*
+
+## After Wythen Heath
+
+Nobody wins Wythen Heath. Both armies hold their ground till dark and draw off in the night, and in the morning there are four thousand dead in the heather and the larks going up as if nothing had happened. The King holds Wendmere and the south. The Earl holds the north. Adalia is two countries now, and everyone knows it.
+
+*(Continue)*
+
+Hal comes home with you, older than he went.
+
+- Go home.  
+  <small>At stake: Honor + · Your manor</small>
+
+**Chose:** Go home.
+
+## The Boy King
+
+*Winter, year 40 of King Aldred*
+
+In the autumn the boy-king of Valdrenne, who is eighteen now and no longer a boy, does what everyone knew he would. He calls the Constable to Cordelle, to council, and the Constable goes, because he has always gone, and the King has him arrested at the door of the council chamber by his own guard. Gaucelin de Brésy dies in the Châtelet a month later. Of a fever, the court says.
+
+The Brésy and all their kin are put out of the King's peace. Their lands in the west of Valdrenne are given to the King's friends, who will have to go and take them.
+
+*(Continue)*
+
+In November, Thibaut de Brésy rides into your yard with twenty men and his cousin's wife and two children on a cart. You took him prisoner on the salt pans, twenty years ago. "You treated me decently," he says. "I've come to see if you still do." "I'm asking for a roof," he says. "And perhaps more than that, later."
+
+- Shelter them, all of them, and let both kings think what they like.  
+  <small>At stake: Standing in the West + · Valdrenne + · The Prince's favour −</small>
+- Feed them, give them horses, and send them on to Sarenza.  
+  <small>At stake: Honor + · Coin −</small>
+- Hand them over to the Valdrennish King's officers.  
+  <small>At stake: Honor − · Ruthlessness + · Standing in the West − · Isabel Sayer −</small>
+
+**Chose:** Shelter them, all of them, and let both kings think what they like.
+
+You shelter them: Thibaut, his men, the cousin's wife, the children. The Valdrennish King writes to demand them. King Edwin writes to ask what you think you are doing. You answer both letters with the same sentence, which your steward thinks is the cleverest thing he has ever heard, and which is: "They are guests in the West." Within a month, every Brésy man in the west of Valdrenne knows where Thibaut is.
+
+*Valdrenne standing +2*
+
+## The Widow's Petition
+
+A woman comes to the manor court with a petition written for her by the priest: her husband was one of the men you took to Mortefontaine, and did not come back, and the holding is in his name, and the reeve says it must go to a man.
+
+- Let her keep the holding in her own name.  
+  <small>At stake: Common Folk + · Honor + · Your manor</small>
+- Custom is custom. Find her a husband among the tenants.  
+  <small>At stake: Ruthlessness + · Your manor</small>
+
+**Chose:** Let her keep the holding in her own name.
+
+You let her keep it, in her own name, for her life and her son's. The reeve says it is against custom. You say you are the custom. That evening, from the hall, you hear singing from her end of the village, and are not sure whether it is for you.
+
+*Temper of the village +1 · Common Folk standing +1 · Honor +1*
+
+## Lannec
+
+*Summer, year 41 of King Aldred*
+
+In the spring of the forty-first year, the salt guilds of Sauvemer stop paying the salt penny, and the Valdrennish salt tithe, both, on the same day. They say they will pay the King who protects them, when they find out which one that is.
+
+In the same week, Mahaut, Duchess of Armance, twenty-two and still unmarried, invites the western lords to Lannec for her feast-day. Nobody invites the King's officers, or the Valdrennish King's. Everybody understands.
+
+*(Continue)*
+
+You are seated at her right hand. Some of the Sauvemer men have long memories. One of them says, not quite to you, that some lords ran to the town when the Mottle came.
+
+After dinner Mahaut walks in the garden with the lords she trusts, and says the thing nobody has said aloud. "Adalia has two kings and Valdrenne has a madman. The West has salt, and ships, and the Armance. The West could have a duke who answers to nobody." She looks round at them. "Or more than a duke."
+
+- Say it with her. The West should stand on its own feet.  
+  <small>At stake: Standing in the West + · The Prince's favour − · Mahaut d'Armance +</small>
+- Say the West's place is with Adalia, whatever Adalia is now.  
+  <small>At stake: Standing in the West − · The Prince's favour +</small>
+- Say nothing. Listen, and count who nods.  
+  <small>At stake: Standing in the West + · Intrigue +</small>
+
+**Chose:** Say it with her. The West should stand on its own feet.
+
+You say it with her, in front of them all: that the West has bled for two kings and been taxed by both, and owes neither of them anything it has not already paid. It is treason in two languages. Nobody leaves the garden. When you go in, Mahaut puts her hand on your arm for a moment, and says, "I knew you would."
+
+## Spring, Year Forty-One
+
+You are forty. Adalia has two kings, or a king and an earl who says he is not one. Valdrenne has a king who murdered his Constable. And the West, where you hold your land and where your children are growing up speaking two languages, is beginning to think about itself.
+
+End of the chapters written so far. Chapter 4 continues with the Summons to Lannec.

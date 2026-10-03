@@ -50,7 +50,7 @@ const BaseEffectSchema = z.union([
   // heirs (Ch3+): a birth draws son or daughter with the seeded RNG unless given; name_heir names the newest unnamed child
   z.object({ birth: z.enum(['random', 'son', 'daughter']) }).strict(),
   z.object({ name_heir: z.string().min(1) }).strict(),
-  z.object({ heir_dies: z.literal('last') }).strict(),
+  z.object({ heir_dies: z.enum(['last', 'eldest', 'second', 'third']) }).strict(),
   // heirs' growth (Ch4): which child, and what to set. temperament 'random' fills only an unset temperament.
   z.object({ heir_set: z.object({ which: z.enum(['eldest', 'second', 'third', 'last', 'all']), temperament: z.string().optional(), upbringing: z.string().optional() }).strict() }).strict(),
   // other holdings (Ch4): a manor beyond the first, kept as income (pence a year) and temper (-5..5)

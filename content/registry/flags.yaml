@@ -415,3 +415,30 @@ c2_rearguard_held_long: { description: "His stretch of the Grisolles rearguard h
 c2_rearguard_broke: { description: "His part of the Grisolles rearguard broke early", hidden: true, later: ch4 }
 c2_salines_decisive: { description: "Les Salines was decisive, and his part of the dyke helped make it so", later: ch4 }
 c2_salines_pyrrhic: { description: "His part of the dyke at Les Salines bent and nearly broke", hidden: true, later: ch4 }
+c4_at_deathbed: { description: "Reached his old master's deathbed in time", later: ch5 }
+c4_broke_malet: { description: "Broke Malet's knights at Wythen Heath", later: ch5 }
+c4_carrow_won: { description: "The Earl of Carrow won at Wythen Heath", later: ch5 }
+c4_counted_lannec: { description: "Counted the nods in Mahaut's garden at Lannec", hidden: true, later: ch5 }
+c4_daughter_chose: { description: "Let his daughter choose her own match", later: ch5 }
+c4_daughter_matched: { description: "Made his daughter's match for her", later: ch5 }
+c4_edwin_won: { description: "King Edwin won at Wythen Heath", later: ch5 }
+c4_found_bog: { description: "Found the bog on Wythen Heath", hidden: true, later: ch5 }
+c4_gave_up_brese: { description: "Handed the Brésy fugitives to the Valdrennish King", later: ch5 }
+c4_heir_at_war: { description: "Took his eldest son to war at Wythen Heath", later: ch5 }
+c4_heir_killed: { description: "His eldest son was killed at Wythen Heath", later: ch5 }
+c4_knelt_late: { description: "Knelt late to King Edwin", later: ch5 }
+c4_master_dying: { description: "His old master was alive to die in Act III", hidden: true, later: ch5 }
+c4_on_losing_side: { description: "Fought on the losing side at Wythen Heath", later: ch5 }
+c4_parleyed_wythen: { description: "Parleyed between the armies at Wythen Heath", later: ch5 }
+c4_sent_brese_on: { description: "Sent the Brésy fugitives on to Sarenza", later: ch5 }
+c4_sheltered_brese: { description: "Sheltered Thibaut de Brésy and his kin", later: ch5 }
+c4_side_carrow: { description: "Rode for Carrow in the rising", later: ch5 }
+c4_side_edwin: { description: "Rode for King Edwin against Carrow", later: ch5 }
+c4_side_west: { description: "Stayed in the West through Carrow's rising", later: ch5 }
+c4_spoke_for_adalia: { description: "Spoke for Adalia at Lannec", later: ch5 }
+c4_spoke_for_west: { description: "Spoke for the West standing alone at Lannec", later: ch5 }
+c4_swore_edwin_first: { description: "Knelt first to King Edwin", later: ch5 }
+c4_warden_march: { description: "Warden of the Sauvemer march", later: ch5 }
+c4_wythen_bloody: { description: "Wythen Heath was a bloody draw", later: ch5 }
+c4_wythen_ours: { description: "His side won at Wythen Heath", hidden: true, later: ch5 }
+c4_wythen_theirs: { description: "His side lost at Wythen Heath", hidden: true, later: ch5 }

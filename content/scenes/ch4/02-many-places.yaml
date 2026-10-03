@@ -332,13 +332,13 @@
 
 - id: c4_act2_end
   chapter: ch4
-  kind: ending
-  ending: story_so_far
   title: Spring, Year Thirty-Eight
   on_enter: [ { advance: { seasons: 1 } } ]
   text: |
     You are thirty-seven. [if holdings.count >= 2]Your name is on the rent-rolls of more places than you have slept in.[else]You hold your manor and your tower and your name.[/if] [if heirs.count >= 1]{heirs.names}: [if heirs.count >= 2]growing, quarrelling, away and home again[else]growing, away and home again[/if].[/if]
 
     The King is dying. Everyone knows it, and nobody says it, and everyone is counting.
-
-    End of the chapters written so far. Chapter 4 continues with the Fracture.
+  choices:
+    - id: on
+      text: Go on.
+      next: c4_master

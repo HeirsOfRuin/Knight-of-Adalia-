@@ -296,7 +296,7 @@ export function applyEffects(state: GameState, content: ContentBundle, effects: 
       const h = state.heirs?.find((x) => !x.name);
       if (h) h.name = e.name_heir === '@self' ? state.name : e.name_heir;
     } else if ('heir_dies' in e) {
-      const h = state.heirs?.filter((x) => x.alive).at(-1);
+      const h = pickHeirs(state, e.heir_dies)[0];
       if (h) { h.alive = false; ctx.changes.push(`${h.name || 'The child'} dies`); }
     } else if ('heir_set' in e) {
       for (const h of pickHeirs(state, e.heir_set.which)) {

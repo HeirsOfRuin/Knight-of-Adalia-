@@ -50,7 +50,7 @@ expect:
   - flag.c1_dubbed_by_master
   - rep.knights >= 2
   - flag.c1_thorne_taken
-  - npc.ancel_brome.alive
+  - flag.c4_master_dying
   - suit.mariot_wood.status == married
   - flag.c3_married
   - heirs.born >= 1

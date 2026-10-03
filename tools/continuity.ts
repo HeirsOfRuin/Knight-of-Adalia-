@@ -18,7 +18,7 @@ interface RuleSrc { match: string; allow: string; chapters?: string[]; except?: 
 interface Rule { src: RuleSrc; re: RegExp; cond: Cond }
 export interface Hit { kind: string; scene: string; sentence: string; background: string; seed: number }
 
-const MEMORIAL = /\b(dead|died|dies|die|death|dying|grave|graves|buried|bury|burial|remember|remembers|remembered|memory|ghost|late|killed|kill|mourn|mourned|pray|prayers?|mass|soul|tomb|widow|widowed|was|were|had|used to|always did|would have|named|name|after him|after her|lost|gone|missing|fell|fallen|body|bones|corpse|hanged)\b|\bfor your (father|mother|old master)\b/i;
+const MEMORIAL = /\b(dead|died|dies|die|death|dying|grave|graves|buried|bury|burial|remember|remembers|remembered|memory|ghost|late|killed|kill|mourn|mourned|pray|prayers?|mass|soul|tomb|widow|widowed|was|were|had|used to|always did|would have|named|name|after him|after her|lost|gone|missing|fell|fallen|body|bones|corpse|hanged|kills|killed|slain|shot|in black for|mourning)\b|\bfor your (father|mother|old master)\b/i;
 
 export function loadRules(content: ContentBundle, dir = CONTENT_DIR): { rules: Rule[]; deadOk: Record<string, string[]>; errors: string[] } {
   const raw = YAML.parse(readFileSync(join(dir, 'continuity.yaml'), 'utf8')) as { rules: RuleSrc[]; dead_names_ok?: Record<string, string[]> };
@@ -37,6 +37,8 @@ export function loadRules(content: ContentBundle, dir = CONTENT_DIR): { rules: R
  * and the bare first name when no other NPC shares it. A bare first name that one
  * of his children carries is left out for that run: "Hamon is five" is the son.
  */
+/** First names that are also ordinary words at the start of a sentence. */
+const COMMON_WORDS = new Set(['Will', 'Mark', 'Grace', 'Hope', 'May', 'Joy']);
 interface NamePat { id: string; strict: RegExp; bare?: RegExp; first: string }
 const esc = (t: string) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 function namePatterns(content: ContentBundle): NamePat[] {
@@ -46,7 +48,7 @@ function namePatterns(content: ContentBundle): NamePat[] {
   return npcs.map(([id, n]) => {
     const f = n.name.split(' ')[0]!;
     const strict = [...(n.name.includes(' ') ? [n.name] : []), ...(n.title ? [`${n.title} ${f}`] : [])];
-    const bare = f !== n.name && firsts[f] === 1 && f.length >= 4 ? new RegExp(`\\b${esc(f)}\\b`) : n.name === f && firsts[f] === 1 ? new RegExp(`\\b${esc(f)}\\b`) : undefined;
+    const bare = COMMON_WORDS.has(f) ? undefined : f !== n.name && firsts[f] === 1 && f.length >= 4 ? new RegExp(`\\b${esc(f)}\\b`) : n.name === f && firsts[f] === 1 ? new RegExp(`\\b${esc(f)}\\b`) : undefined;
     return { id, strict: strict.length ? new RegExp(`\\b(${strict.map(esc).join('|')})\\b`) : /(?!)/, bare, first: f };
   });
 }

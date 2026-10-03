@@ -128,7 +128,7 @@
   text: |
     A letter, in a hand you know: narrow, slanting, with ink blots where she has pressed too hard. Isabel Sayer has written to you without being written to first, which a woman in her position does not do.
 
-    It is mostly news. Lady Ravell has a new confessor. Aymer has been sent home from the war with a broken arm and is unbearable. Her father has had another offer for her and she has refused it. At the end, in smaller letters: "I would like to know you are alive. That is all. I find I would like to know it."
+    It is mostly news. Lady Ravell has a new confessor. [if npc.aymer_ravell.alive]Aymer has been sent home from the war with a broken arm and is unbearable.[else]The house is in black for Aymer, and Lord Ravell has not come down to dinner since.[/if] Her father has had another offer for her and she has refused it. At the end, in smaller letters: "I would like to know you are alive. That is all. I find I would like to know it."
   choices:
     - id: write
       text: Write back, properly, whatever it costs to send.

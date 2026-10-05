@@ -607,3 +607,8 @@ c5f_law: { description: "Judged his own man by the law at his first court" }
 c5f_own: { description: "Protected his own man at his first court" }
 c5f_truth: { description: "Had his true descent written in the roll of great houses" }
 c5f_crusader: { description: "Let the heralds find him a crusader" }
+
+c5_gave_staple: { description: "Gave the salt guilds the staple for the war" }
+c5_gave_exemptions: { description: "Gave the old lords of the West their exemptions for the war" }
+c5_gave_tithes: { description: "Gave the Bishop the tithes of the march for the war" }
+c5_gave_nothing: { description: "Gave the West's backers nothing for the war" }

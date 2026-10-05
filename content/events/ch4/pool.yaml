@@ -92,3 +92,188 @@
       text_after: "You find her a husband: a decent man, a widower with a good plough-team. She marries him. She does not look at you at the church door."
       effects: [ { add: { estate.temper: -1, rep.ruthlessness: 1 } } ]
       next: "@return"
+
+- id: c4p_raiders
+  chapter: ch4
+  kind: pool
+  pool: c4_lord
+  title: Raiders at the Manor
+  once: true
+  requires: [ estate.people >= 1 ]
+  text: |
+    The letter comes from [if flag.c4_wife_holds]your wife[elif flag.c4_man_holds]the man you left as castellan[else]your steward[/if], in a hand that has been hurrying. Forty horsemen, masterless men from the last war or someone's men pretending to be, have been burning ricks along the valley and are two days from the manor. [if flag.inv_tower]The tower is provisioned.[elif estate.defence >= 3]The walls will hold against horsemen, probably.[else]The manor has a ditch, a gate and a great deal of hope.[/if]
+
+    You are three weeks' ride away.
+  choices:
+    - id: hold
+      text: Write back by the fastest horse you have. Hold the gate, bring the village inside, and wait.
+      tags: [martial, allies]
+      check: { attr: wits, skill: command, difficulty: 4, mods: [ { if: estate.defence >= 3, add: 1, label: the walls }, { if: estate.defence >= 5, add: 1, label: the tower }, { if: res.garrison >= 10, add: 1, label: the garrison }, { if: flag.c4_man_holds || flag.c4_wife_holds, add: 1, label: someone you trust is there } ] }
+      success:
+        text: The raiders ride up to the gate on a wet morning, look at what is behind it, and ride away to look for somewhere easier. The village spends two nights in your hall and goes home with nothing worse than fleas. When you come home, the steward has had the story painted, badly, on the wall of the gatehouse.
+        effects: [ { add: { estate.temper: 1, rep.commons: 1 } } ]
+        next: "@return"
+      failure:
+        text: The gate holds. The fields do not. The raiders burn the outlying farms and the mill and drive off the cattle, and are gone before anyone can follow them. The winter will be hungry.
+        effects: [ { add: { estate.people: -8, estate.food: -2, estate.temper: -1 } } ]
+        next: "@return"
+    - id: pay
+      text: Send money to buy them off before they reach the manor. (£4)
+      tags: [wealth, cunning]
+      requires: [ res.coin >= 960 ]
+      text_after: Your steward meets their captain at a ford with a purse and a cask of wine, and the captain, who is a practical man, takes both and rides on towards somebody else's manor. You are not proud of it. Nobody on the manor is hurt.
+      effects: [ { add: { res.coin: -960 } } ]
+      next: "@return"
+
+- id: c4p_veteran
+  chapter: ch4
+  kind: pool
+  pool: c4_lord
+  title: A Man from Grisolles
+  once: true
+  text: |
+    There is a man at the gate with one arm and a Grisolles badge on a cord round his neck, the little lead boat the army wore in the first war. He says he was in the rearguard at the bridge, two files behind you. He does not ask for anything. He says he wanted to see what became of you.
+
+    He looks as though he has not eaten since Michaelmas.
+  choices:
+    - id: place
+      text: Give him a place in your household for the rest of his life.
+      tags: [allies]
+      text_after: He becomes your porter, and sits at the gate with his one arm and his lead boat and tells everyone who comes in about the bridge at Grisolles, getting it a little more wrong every year. Your men treat him like a relic. So, after a while, do you.
+      effects: [ { add: { rep.knights: 1, rep.commons: 1, res.coin: -60 } } ]
+      next: "@return"
+    - id: purse
+      text: Feed him, give him a purse, and wish him well.
+      tags: [wealth]
+      text_after: He eats in the kitchen, and thanks you, and takes the purse, and goes on down the road. You find yourself thinking about him at odd times for a month.
+      effects: [ { add: { res.coin: -120 } } ]
+      next: "@return"
+
+- id: c4p_hunger
+  chapter: ch4
+  kind: pool
+  pool: c4_lord
+  title: A Wet Summer
+  once: true
+  requires: [ estate.people >= 1 ]
+  text: |
+    It rains from Whitsun to Lammas. The barley rots standing. By Michaelmas the price of bread in the market town has doubled, and your steward comes to you with the figures, and with the faces of the families on the outlying holdings, who have started eating next year's seed corn.
+  choices:
+    - id: granary
+      text: Open the granary to every family on the manor.
+      tags: [allies]
+      visible_if: [ flag.inv_c3_granary ]
+      text_after: The stone granary the village laughed at feeds them through to spring. Nobody laughs at it now. The priest preaches on Joseph in Egypt, and looks at you, and the whole church looks at you.
+      effects: [ { add: { estate.temper: 2, rep.commons: 1, estate.food: -2 } } ]
+      next: "@return"
+    - id: buy
+      text: Buy grain in Sarenza and ship it in, whatever it costs. (£3)
+      tags: [wealth, allies]
+      requires: [ res.coin >= 720 ]
+      text_after: The Sarenzan grain comes in on two ships in November, and costs three times what it should, and nobody on your manor starves. In the next valley, where the lord waited, they bury children all winter.
+      effects: [ { add: { res.coin: -720, estate.food: 3, estate.temper: 1 } } ]
+      next: "@return"
+    - id: rents
+      text: Forgive the year's rents, and let them buy their own.
+      tags: [diplomacy]
+      text_after: You forgive the rents. Your own purse feels it at Michaelmas. The families on the outlying holdings stay, which is the point, and their sons will remember who forgave the rent in the wet year.
+      effects: [ { add: { estate.temper: 2, res.coin: -480 } } ]
+      next: "@return"
+    - id: nothing
+      text: The manor has come through worse. It will come through this.
+      tags: [yield]
+      text_after: It comes through, mostly. Six families leave in the spring for the towns. The ones who stay do not forget, and your rents are slower for years.
+      effects: [ { add: { estate.people: -12, estate.temper: -2 } } ]
+      next: "@return"
+
+- id: c4p_lanzi_debt
+  chapter: ch4
+  kind: pool
+  pool: c4_lord
+  title: The Lanzi Call In a Debt
+  once: true
+  requires: [ flag.c4_war_debt ]
+  text: |
+    A Sarenzan in black waits for you in your own hall, with a ledger open on the table at the page that has your name on it. The money you borrowed to raise your company, he says, has been at interest for some years now, and the house of Lanzi would like to discuss it.
+
+    He names a figure. It is larger than the one you borrowed by a great deal.
+  choices:
+    - id: pay
+      text: Pay it, all of it, and be done with them. (£12)
+      tags: [wealth]
+      requires: [ res.coin >= 2880 ]
+      text_after: You pay. He counts it twice, closes the ledger, and draws a line through your name with a little flourish, and you feel lighter than you have in years.
+      effects: [ { clear: flag.c4_war_debt }, { add: { res.coin: -2880, rep.sarenza: 1 } } ]
+      next: "@return"
+    - id: terms
+      text: Talk terms. A lord of the West is worth more to the Lanzi as a friend.
+      tags: [cunning, diplomacy]
+      check: { attr: wits, skill: trade, difficulty: 5, mods: [ { if: background == burgess, add: 1, label: you grew up at a counting board }, { if: rep.sarenza >= 2, add: 1, label: the Signory knows you }, { if: flag.inv_c2_factor, add: 1, label: your factor's account } ] }
+      success:
+        text: It takes an afternoon and a good deal of wine. When he leaves, the debt is half what it was, the interest is a quarter, and the Lanzi have the right to buy your salt before anyone else for ten years, which they would have had anyway.
+        effects: [ { clear: flag.c4_war_debt }, { add: { res.coin: -1200, rep.sarenza: 1 } } ]
+        next: "@return"
+      failure:
+        text: He listens politely, agrees with everything you say, and changes nothing. The figure stands. You pay what you can, and the rest stays in the ledger.
+        effects: [ { add: { res.coin: -960, rep.sarenza: -1 } } ]
+        next: "@return"
+    - id: refuse
+      text: Tell him the King's war was the King's debt, and show him the door.
+      tags: [martial]
+      text_after: He bows, and closes the ledger, and goes. Every banker in Sarenza knows your name by Christmas, and none of them will lend to you again.
+      effects: [ { clear: flag.c4_war_debt }, { add: { rep.sarenza: -2, rep.merchants: -1 } } ]
+      next: "@return"
+
+- id: c4p_rival_son
+  chapter: ch4
+  kind: pool
+  pool: c4_lord
+  title: "{npc.@rival}'s Son"
+  once: true
+  text: |
+    A boy of fifteen comes to your gate with a letter and a bundle. The letter is from [if npc.@rival.alive]{npc.@rival}, who has not written to you since you were both boys and had better reasons to hate each other[else]{npc.@rival}'s widow, who writes that her husband always said you were the only one of them who made anything of himself[/if]. The boy is {npc.@rival}'s son, and would like a place in your household, as a page, or a groom, or anything.
+
+    He has his father's face. It takes you a moment to get used to it.
+  choices:
+    - id: take
+      text: Take him in, and give him the chance you were given.
+      tags: [allies]
+      text_after: You take him in. He is clumsy, and proud, and quick, and reminds you of yourself at fifteen more than of his father, and in two years he is the best of your squires. [if npc.@rival.alive]{npc.@rival} writes to thank you, four lines, and the last line is the closest thing to an apology you will ever get.[/if]
+      effects: [ { add: { rel.@rival.affection: 3, res.men: 1, rep.honor: 1 } } ]
+      next: "@return"
+    - id: refuse
+      text: Send him home with a purse and a letter of regret.
+      tags: [cunning]
+      text_after: You send him home with a purse, and a letter that says the household is full, which it is not. He takes the purse. He does not look back from the road.
+      effects: [ { add: { res.coin: -60, rel.@rival.affection: -2 } } ]
+      next: "@return"
+
+- id: c4p_tourney
+  chapter: ch4
+  kind: pool
+  pool: c4_lord
+  title: The Tourney at Lannec
+  once: true
+  text: |
+    [if npc.jehanne_armance.alive]The Duchess holds[else]Mahaut d'Armance holds[/if] a tourney at Lannec for the feast of Saint John: three days of jousting in the meadows below the castle, with a gold ring for the best lance and every knight in the West in the lists. You are older than most of them, and heavier, and better known.
+
+    Your name is on the herald's list already. Somebody put it there.
+  choices:
+    - id: joust
+      text: Ride. A lord of your name does not sit in the stands.
+      tags: [martial]
+      check: { attr: agility, skill: riding, difficulty: 5, mods: [ { if: item.warhorse, add: 1, label: your destrier }, { if: armour >= 3, add: 1, label: your new harness }, { if: flag.c1_tourney_won, add: 1, label: you have won before } ] }
+      success:
+        text: You unhorse two young men on the first day and a Valdrennish champion on the third, and [if npc.jehanne_armance.alive]the Duchess[else]Mahaut[/if] gives you the ring with her own hand. Your knees will not forgive you for a month. The West will not forget it for a generation.
+        effects: [ { add: { res.renown: 2, rep.knights: 1 } } ]
+        next: "@return"
+      failure:
+        text: A boy half your age takes you off your horse in the first course, cleanly, in front of the whole West. You get up, and bow to him, and he bows back. It could have been worse. The bruises last until Lammas.
+        effects: [ { add: { health: -1, rep.knights: 1 } } ]
+        next: "@return"
+    - id: judge
+      text: Ask to judge the lists instead.
+      tags: [diplomacy]
+      text_after: You sit with the Armance heralds and judge three days of jousting fairly, which is rarer than good jousting, and every young knight in the West learns your name for the right reason.
+      effects: [ { add: { rep.honor: 1, rep.nobles: 1 } } ]
+      next: "@return"

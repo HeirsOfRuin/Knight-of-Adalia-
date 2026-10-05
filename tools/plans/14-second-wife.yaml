@@ -179,7 +179,7 @@ steps:
   c4_widow: meet!success
   c4_act2_end: on
   c4_master: child
-  c4p_petition: keep
+  c4p_tourney: judge
   c4_king_dies: swear
   c4_buy_war:
     - levy
@@ -190,7 +190,7 @@ steps:
   c4_wythen_2: guard!success
   c4_wythen_after: on
   c4_valdrenne: shelter
-  c4p_old_friend: stay
+  c4p_rival_son: take
   c4_lannec: west
   c4_act3_end: on
   c4_barony: accept
@@ -201,16 +201,18 @@ steps:
   c5_estates_2: hales
   c5_vote: duchy
   c5_war_opens: divide!success
-  c5_buy_war:
-    - guilds
-    - done
+  c5_price: guilds
+  c5_buy_war: done
+  c5w_bread: go!success
   c5_war_muster: horse!success
-  c5_bridge: hold!success
+  c5_bridge: hold!failure
   c5_war_after: on
-  c5_recognition: church!success
-  c5_recognition_2: king
-  c5_king_price: refuse
+  c5w_prisoner: free
+  c5_recognition: king
+  c5_king_price: adalia
   c5_reckoning: heir
+  c5f_court: law
+  c5f_heralds: truth
   c5_epilogue: end
   c5_chronicle: end
 ending: founder

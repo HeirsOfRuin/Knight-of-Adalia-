@@ -173,7 +173,7 @@ steps:
   c4_act1_end: core
   c4_stewards: trust
   c4_buy_estates: done
-  c4p_petition: keep
+  c4p_tourney: judge
   c4_rival: give
   c4q_steward: read
   c4_eldest: home
@@ -184,7 +184,7 @@ steps:
   c4_mahaut: free
   c4_act2_end: on
   c4_master: child
-  c4p_old_friend: stay
+  c4p_veteran: place
   c4_king_dies: swear
   c4_buy_war: done
   c4_carrow_rises: edwin
@@ -194,7 +194,7 @@ steps:
   c4_wythen_2: guard!failure
   c4_wythen_after: on
   c4_valdrenne: shelter
-  c4p_pony: buy
+  c4p_petition: keep
   c4_lannec: adalia
   c4_act3_end: on
   c4_barony: accept
@@ -206,10 +206,12 @@ steps:
   c5_vote: duchy
   c5_surety: steal!success
   c5_war_opens: divide!failure
+  c5_price: lords
   c5_buy_war:
     - arrears
     - done
-  c5_war_muster: horse!failure
+  c5w_bread: go!success
+  c5_war_muster: horse!success
   c5_bridge: hold!success
   c5_war_after: on
   c5_defeat: submit!success

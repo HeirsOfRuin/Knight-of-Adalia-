@@ -164,7 +164,7 @@ steps:
   c4_buy_estates:
     - carrow
     - done
-  c4p_petition: custom
+  c4p_tourney: judge
   c4_rival: give
   c4_eldest: church
   c4_christmas: king
@@ -184,7 +184,7 @@ steps:
   c4_wythen_2: line!success
   c4_wythen_after: on
   c4_valdrenne: hand_over
-  c4p_old_friend: stay
+  c4p_veteran: place
   c4_lannec: listen
   c4_act3_end: on
   c4_barony: accept
@@ -197,14 +197,21 @@ steps:
   c5_betrothal: lanzi
   c5_vote: mahaut_queen
   c5_war_opens: towns
-  c5_buy_war: done
-  c5_war_muster: bows
+  c5_price: church
+  c5_buy_war:
+    - arrears
+    - done
+  c5w_spy: mercy
+  c5_war_muster: horse!success
   c5_bridge: hold!success
   c5_war_after: on
-  c5_recognition: king
-  c5_king_price: valdrenne
+  c5w_prisoner: hold
+  c5_recognition: sarenza!success
+  c5_recognition_2: enough
   c5_reckoning: lord
-  c5_younger: time
+  c5_younger: church
+  c5f_court: own
+  c5f_heralds: crusader
   c5_epilogue: end
   c5_chronicle: end
 ending: founder

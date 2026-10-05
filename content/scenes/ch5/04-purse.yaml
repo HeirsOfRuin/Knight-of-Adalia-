@@ -50,4 +50,4 @@
       next: c5_buy_war
     - id: done
       text: Close the chest.
-      next: c5_war_muster
+      next: { pool: c5_west, count: 1, then: c5_war_muster }

@@ -1,0 +1,193 @@
+# Chapter 5 pool events (pool c5_west): the West between the vote and the war
+# (requires flag.c5_war_tax, which the war sets) and after it (requires its absence).
+
+- id: c5w_veterans
+  chapter: ch5
+  kind: pool
+  pool: c5_west
+  title: The Old Company
+  once: true
+  requires: [ flag.c5_war_tax ]
+  text: |
+    Twenty men come down the Lannec road in a body, in old jacks and mended mail, with a banner nobody has carried for ten years. They were at [if flag.c2_salines_field || flag.c2_salines_decisive]Les Salines, on the dyke, some of them beside you[elif flag.c4_mf_victory]Mortefontaine, in the King's host[else]the King's wars, one or another of them[/if]. They are grey now, and slow, and they have heard there is a war for the West.
+
+    Their captain says they are too old for it. He says it as if he expects to be argued with.
+  choices:
+    - id: captains
+      text: Make them serjeants, every one, and give each a company of the levy to teach.
+      tags: [martial, allies]
+      check: { attr: presence, skill: command, difficulty: 4, mods: [ { if: trait.veteran, add: 1, label: you were one of them }, { if: flag.inv_c2_serjeant, add: 1, label: Old Matthew vouches for you } ] }
+      success:
+        text: By spring the levy of the West marches like soldiers, because twenty old men have shouted at it all winter. When the muster comes, the old company stands in the front rank, by choice.
+        effects: [ { add: { res.men: 20, rep.knights: 1 } } ]
+        next: "@return"
+      failure:
+        text: The old men try. The levy does not take to being shouted at by men older than their fathers, and half of them go home. The veterans march with you anyway, all twenty.
+        effects: [ { add: { res.men: 20 } } ]
+        next: "@return"
+    - id: home
+      text: Thank them, and send them home with a purse. They have done enough.
+      tags: [allies]
+      text_after: They go, some of them relieved, and the captain last, slowly, looking back. In the spring three of them turn up at the muster anyway.
+      effects: [ { add: { res.coin: -240, res.men: 3, rep.honor: 1 } } ]
+      next: "@return"
+
+- id: c5w_spy
+  chapter: ch5
+  kind: pool
+  pool: c5_west
+  title: A Letter in the Wrong Hand
+  once: true
+  requires: [ flag.c5_war_tax ]
+  text: |
+    Your steward brings you a letter that should not exist: a copy of your own last letter to the salt towns, in a clerk's hand, found sewn into the lining of a cloak in a Valdrennish carter's wagon at the ford. Someone in your household is selling your letters.
+
+    It takes your steward three days to find him. He is a young clerk with a sick mother and a Valdrennish purse under his mattress.
+  choices:
+    - id: turn
+      text: Keep him at his desk, and let him go on selling letters, the ones you write for the purpose.
+      tags: [cunning]
+      check: { attr: wits, skill: intrigue, difficulty: 5, mods: [ { if: flag.c4_counted_council || flag.c4_counted_lannec, add: 1, label: you know how councils read letters }, { if: flag.c5_divided_kings, add: 1, label: you have done this all winter } ] }
+      success:
+        text: All spring the enemy reads your letters with great attention, and moves where they tell him to. When the armies meet, it is on ground you chose, against a host that came the long way round.
+        effects: [ { add: { counter.ww: 1 } } ]
+        next: "@return"
+      failure:
+        text: The clerk's paymaster is cleverer than you hoped, and smells it in a week. The clerk disappears from Lannec one night, sick mother and all, and the letters stop.
+        next: "@return"
+    - id: hang
+      text: Hang him at the gate, for the household to see.
+      tags: [martial]
+      text_after: He hangs at the gate for a week. Nobody in your household sells a letter again. Nobody in your household jokes in your hearing again, either.
+      effects: [ { add: { rep.ruthlessness: 1 } } ]
+      next: "@return"
+    - id: mercy
+      text: Pay his mother's physician, and send him away.
+      tags: [allies]
+      text_after: You pay the physician, and send the clerk away across the march with nothing but his life. The household knows what you did. Some of them think it was weakness. The ones who matter do not.
+      effects: [ { add: { res.coin: -120, rep.honor: 1 } } ]
+      next: "@return"
+
+- id: c5w_bread
+  chapter: ch5
+  kind: pool
+  pool: c5_west
+  title: Bread in Sauvemer
+  once: true
+  requires: [ flag.c5_war_tax ]
+  text: |
+    The war tax has doubled the price of bread in Sauvemer, and in March the harbour quarter riots. They burn the tax-collector's house and break the windows of the salt guildhall. The guild masters, who voted for the war, write to you in a state of great indignation, and ask for soldiers.
+  choices:
+    - id: go
+      text: Ride to Sauvemer yourself, and speak to them in the square.
+      tags: [diplomacy, allies]
+      check: { attr: presence, skill: diplomacy, difficulty: 5, mods: [ { if: flag.c2_learned_town, add: 1, label: Sauvemer knows you }, { if: flag.inv_c2_quarter, add: 1, label: you rebuilt the harbour quarter }, { if: rep.commons >= 3, add: 1, label: the commons trust you } ] }
+      success:
+        text: You stand on a barrel in the fish market and tell them the truth, which is that the war will cost them bread and losing it will cost them more. They listen. Then they go home. The guild masters, who expected you to hang someone, are disappointed.
+        effects: [ { add: { counter.west_estates: 1, rep.commons: 1 } } ]
+        next: "@return"
+      failure:
+        text: They listen for a while, and then someone throws a fish. You go back to Lannec with fish-scales on your cloak and the riot still going, and the guild masters get their soldiers in the end.
+        effects: [ { add: { rep.commons: -1 } } ]
+        next: "@return"
+    - id: grain
+      text: Buy grain for the town out of your own purse. (£6)
+      tags: [wealth, allies]
+      requires: [ res.coin >= 1440 ]
+      text_after: The grain comes in on the next tide. The riot stops the day the bakers light their ovens. In the harbour quarter they call it the lord's bread for years, and they mean you.
+      effects: [ { add: { res.coin: -1440, rep.commons: 2, counter.west_estates: 1 } } ]
+      next: "@return"
+    - id: soldiers
+      text: Send the soldiers the guilds asked for.
+      tags: [martial]
+      text_after: The soldiers clear the square in an afternoon. Four men are killed, one of them a boy. The guilds thank you. The harbour quarter does not.
+      effects: [ { add: { rep.ruthlessness: 1, rep.commons: -2, rep.merchants: 1 } } ]
+      next: "@return"
+
+- id: c5w_widows
+  chapter: ch5
+  kind: pool
+  pool: c5_west
+  title: The Widows
+  once: true
+  requires: [ "!flag.c5_war_tax" ]
+  text: |
+    After the bridge, the widows come to Lannec: forty of them, with children, from the villages of the levy, walking in a body behind a priest with a cross. They do not shout. They stand in the yard of the castle all morning, in the rain, until someone asks them what they want.
+
+    They want what their husbands were promised at the muster: something for the ones who did not come home.
+  choices:
+    - id: pensions
+      text: Pay every widow of the levy a pension for life, from your own purse. (£8)
+      tags: [wealth, allies]
+      requires: [ res.coin >= 1920 ]
+      text_after: Your clerks write forty names in a book, and a sum against each, and the book is read aloud in every parish of the West. It is the most expensive book you will ever own, and the best.
+      effects: [ { add: { res.coin: -1920, rep.commons: 2, rep.piety: 1, estate.temper: 1 } } ]
+      next: "@return"
+    - id: estates
+      text: Put it to the Estates. The West made the war; the West can pay for it.
+      tags: [diplomacy]
+      text_after: The Estates argue for a month, and vote half of what was asked, and pay it late. The widows get something. Nobody thanks the Estates, and some of them thank you.
+      effects: [ { add: { rep.commons: 1 } } ]
+      next: "@return"
+    - id: refuse
+      text: Tell them the treasury is empty, which it nearly is.
+      tags: [yield]
+      text_after: They go home. The priest with the cross goes last. Within a year there is a song about it in the villages of the levy, and your name is in it, and it is not a kind song.
+      effects: [ { add: { rep.commons: -2 } } ]
+      next: "@return"
+
+- id: c5w_prisoner
+  chapter: ch5
+  kind: pool
+  pool: c5_west
+  title: A Prisoner of Rank
+  once: true
+  requires: [ "!flag.c5_war_tax", "!flag.c5_war_lost" ]
+  text: |
+    Among the prisoners taken at the bridge is a young lord of the enemy's household, a cousin of [if flag.c4_carrow_won]the black boar's heir[else]King Edwin's new marshal[/if], with a broken collarbone and excellent manners. His family has written. They will pay, they say, whatever is reasonable.
+
+    What is reasonable for a cousin of a king is a great deal of money.
+  choices:
+    - id: ransom
+      text: Ransom him at the full price.
+      tags: [wealth]
+      text_after: His family pays, in the end, after a year of letters, and you could buy a manor with what they pay. The young man writes to thank you for the physician. His family does not write at all.
+      effects: [ { add: { res.coin: 4800 } } ]
+      next: "@return"
+    - id: free
+      text: Send him home without ransom, with your compliments to his cousin.
+      tags: [diplomacy]
+      text_after: You send him home on a good horse with your compliments. It is the kind of gesture the old chronicles are full of, and it is remembered, at the court that holds him, by people who will one day sign a treaty.
+      effects: [ { add: { rep.honor: 2, rep.crown: 1, counter.court_prince: 1 } } ]
+      next: "@return"
+    - id: hold
+      text: Keep him at Lannec, honourably, until there is a peace to sign.
+      tags: [cunning]
+      text_after: He stays, and plays chess with you on winter evenings, badly, and learns your language, and when the ambassadors come he is the first thing they ask about.
+      effects: [ { add: { counter.reign: 1, rep.crown: 1 } } ]
+      next: "@return"
+
+- id: c5w_quarrel
+  chapter: ch5
+  kind: pool
+  pool: c5_west
+  title: "{heir.eldest.name}'s Quarrel"
+  once: true
+  requires: [ "!flag.c5_war_tax", heir.eldest.alive, heir.eldest.age >= 14 ]
+  text: |
+    {heir.eldest.name} has quarrelled with a young lord of the West at a feast, over a seat, or a girl, or the bridge, or all three, and there was wine, and there were words. This morning a herald brings the young lord's challenge: a passage of arms, to settle it, at Midsummer.
+
+    {heir.eldest.name} has already said yes. {heir.eldest.name} has said it in front of the whole hall.
+  choices:
+    - id: allow
+      text: Let it stand. A quarrel settled in the lists is settled.
+      tags: [martial]
+      text_after: You let it stand, and do not sleep for a week, and stand at the barrier at Midsummer with your fists closed. [if heir.eldest.temperament == bold]{heir.eldest.name} wins, on the second course, and helps the other young man up, and they are friends by evening, which is how these things go when they go well.[else]{heir.eldest.name} loses, on the third course, and gets up, and bows, and walks off the field without limping until out of sight. You are prouder of the walk than you would have been of a win.[/if]
+      effects: [ { add: { heir.eldest.bond: 2, rep.knights: 1 } } ]
+      next: "@return"
+    - id: settle
+      text: Go to the young lord's father, and settle it over dinner.
+      tags: [diplomacy]
+      text_after: You settle it over dinner with the young lord's father, who is as relieved as you are. {heir.eldest.name} is furious for a month, and says you made a child of [if heir.eldest.sex == son]him[else]her[/if] in front of the whole West, and is not entirely wrong.
+      effects: [ { add: { heir.eldest.bond: -2, counter.west_estates: 1 } } ]
+      next: "@return"

@@ -175,7 +175,7 @@ steps:
   c4_act1_end: core
   c4_stewards: trust
   c4_buy_estates: done
-  c4p_petition: keep
+  c4p_lanzi_debt: pay
   c4_rival: hard
   c4_eldest: church
   c4q_ravell_heir: swear
@@ -186,7 +186,7 @@ steps:
   c4_mahaut: edwin
   c4_act2_end: on
   c4_master: write
-  c4p_old_friend: go
+  c4p_rival_son: refuse
   c4_king_dies: ask!failure
   c4_buy_war: done
   c4_carrow_rises: west
@@ -209,11 +209,12 @@ steps:
   c5_buy_war:
     - chantry
     - done
-  c5_war_muster: ground!success
-  c5_bridge: reserve!failure
+  c5w_veterans: home
+  c5_war_muster: horse!failure
+  c5_bridge: hold!failure
   c5_war_after: on
   c5_defeat: flee
-  c5_reckoning: heir
+  c5_reckoning: lord
   c5_younger: church
   c5_epilogue: end
   c5_chronicle: end

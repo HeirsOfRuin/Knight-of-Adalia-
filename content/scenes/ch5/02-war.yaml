@@ -30,14 +30,14 @@
       text_after: |
         You spend the winter on walls: [if holding.la_garde.held]La Garde first, re-roofed and provisioned for a year[else]the towers along the Sauvemer road[/if], then the fords, then the bridges, with every mason in the West and every penny you can find. When the spring comes, the enemy will have to take three castles before they can reach a single field.
       effects: [ { add: { counter.ww: 1, res.coin: -960 } }, { if: { any: [ holding.la_garde.held, estate.defence >= 3, flag.c4_warden_march ] }, then: [ { add: { counter.ww: 1 } } ] } ]
-      next: c5_buy_war
+      next: { switch: [ { if: flag.c5_west_free, go: c5_price } ], default: c5_buy_war }
     - id: towns
       text: Raise the salt towns. Every boiler, carter and fisherman who can hold a pike.
       tags: [allies]
       text_after: |
         You ride from town to town through the winter and speak in every market square. [if counter.west_estates >= 5]They come: salt-boilers, eel-men, carters, fishermen, the sons of men who stood at Les Salines on the other side, five thousand of them with pikes and bills and a grudge against every tax-collector who ever lived.[else]Some of them come. Not as many as you hoped. The towns have long memories, and not all of them are kind to you.[/if]
       effects: [ { add: { counter.ww: 1 } }, { if: counter.west_estates >= 5, then: [ { add: { counter.ww: 1, res.men: 60 } } ] } ]
-      next: c5_buy_war
+      next: { switch: [ { if: flag.c5_west_free, go: c5_price } ], default: c5_buy_war }
     - id: divide
       text: Divide them. Write to each king that the other is the real enemy.
       tags: [cunning, diplomacy]
@@ -46,11 +46,11 @@
         text: |
           You write all winter: to Wendmere, to Cordelle, to the Bishop, to the Lanzi. By spring, King Edwin's marshal is sure Amaury means to take Sauvemer for himself, and Amaury's council is sure Edwin means to take the Armance, and the two armies that were to crush the West between them are marching at different speeds, by different roads, watching each other as much as you.
         effects: [ { set: flag.c5_divided_kings }, { add: { counter.ww: 2 } } ]
-        next: c5_buy_war
+        next: { switch: [ { if: flag.c5_west_free, go: c5_price } ], default: c5_buy_war }
       failure:
         text: |
           You write all winter, and some of it is believed, and most of it is not. A letter of yours turns up in Cordelle's council, read aloud, to laughter.
-        next: c5_buy_war
+        next: { switch: [ { if: flag.c5_west_free, go: c5_price } ], default: c5_buy_war }
 
 - id: c5_war_muster
   chapter: ch5
@@ -193,7 +193,7 @@
   choices:
     - id: on
       text: "[if flag.c5_war_lost]Face what comes.[else]Go on.[/if]"
-      next: { switch: [ { if: flag.c5_war_lost, go: c5_defeat }, { if: flag.c5_west_free, go: c5_recognition } ], default: c5_kings_reward }
+      next: { switch: [ { if: flag.c5_war_lost, go: c5_defeat }, { if: flag.c5_west_free, go: { pool: c5_west, count: 1, then: c5_recognition } } ], default: { pool: c5_west, count: 1, then: c5_kings_reward } }
 
 - id: c5_defeat
   chapter: ch5
@@ -249,3 +249,38 @@
             then: [ { set: flag.c5_attainted }, { injury: crushed_ribs }, { release: la_garde }, { release: vaudrey }, { release: lisle }, { release: ashdown }, { release: wyck } ]
             else: [ { die: "Killed on the walls of Lannec, holding the West to the last" } ]
         next: c5_reckoning
+
+- id: c5_price
+  chapter: ch5
+  title: The Price of the West
+  text: |
+    The West voted for its freedom in a week. It will take longer to pay for it, and the men who voted for it have come to Lannec to say what they expect in return. They come one at a time, in the evenings, with their requests written out in fair copies, as if the war were a contract and they were reading you its terms.
+
+    The salt guilds want the salt staple: every grain of salt in the West sold through their halls, at their price. The old lords want their exemptions back, the ones the Adalian kings took from their grandfathers: no tax, no service, their own courts. The Bishop of Saint-Lys wants the tithes of the march, which the Adalian crown has been collecting for itself for fifty years.
+
+    You can give one of them what they ask. Perhaps two. Not all three, and not nothing, unless you want to fight this war alone.
+  choices:
+    - id: guilds
+      text: Give the guilds their staple. The war runs on salt money.
+      tags: [wealth, allies]
+      text_after: The guilds get their staple, and lend the war chest a sum that makes your treasurer sit down. In the fishing villages, where salt is how they keep the catch, the price goes up by a third, and the villages notice who did it.
+      effects: [ { set: flag.c5_gave_staple }, { add: { rep.merchants: 2, rep.commons: -1, res.coin: 3600 } } ]
+      next: c5_buy_war
+    - id: lords
+      text: Give the old lords their exemptions. They bring the knights.
+      tags: [diplomacy, martial]
+      text_after: The old lords get their charters, sealed and read in the hall. They bring their knights to the muster, every one, in their grandfathers' colours. The West will be paying for those charters for a hundred years, and the old lords know it, and so do you.
+      effects: [ { set: flag.c5_gave_exemptions }, { add: { res.men: 30, rep.nobles: 2, counter.reign: 1 } } ]
+      next: c5_buy_war
+    - id: church
+      text: Give the Bishop his tithes. A war with God's blessing is a war other kings can recognise.
+      tags: [piety, diplomacy]
+      text_after: The Bishop gets his tithes, and preaches the war from the cathedral steps at Saint-Lys, and writes, in a long letter in his own trembling hand, to the Pontiff. Whatever the Pontiff thinks of the West, he now thinks of it as a place that pays its tithes.
+      effects: [ { set: flag.c5_gave_tithes }, { add: { rep.church: 2, rep.piety: 1 } } ]
+      next: c5_buy_war
+    - id: none
+      text: Give none of them anything. The West is free, or it is not.
+      tags: [allies]
+      text_after: You send them all away with the same answer, which is that a free West does not begin by selling itself. The commons hear of it and cheer. The guilds lend less, the old lords bring fewer knights, and the Bishop prays for you in a tone of voice you do not like.
+      effects: [ { set: flag.c5_gave_nothing }, { add: { rep.commons: 2, rep.honor: 1, counter.ww: -1 } } ]
+      next: c5_buy_war

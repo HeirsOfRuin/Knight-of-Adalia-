@@ -165,7 +165,7 @@ steps:
   c4_act1_end: on
   c4_stewards: clerk
   c4_buy_estates: done
-  c4p_old_friend: stay
+  c4p_hunger: buy
   c4_rival: hard
   c4_eldest: prince
   c4q_ravell_heir: deny!success
@@ -176,7 +176,7 @@ steps:
   c4_mahaut: edwin
   c4_act2_end: on
   c4_master: child
-  c4p_boundary: split
+  c4p_petition: custom
   c4_king_dies: ask!success
   c4_buy_war:
     - feast
@@ -188,7 +188,7 @@ steps:
   c4_wythen_2: guard!success
   c4_wythen_after: on
   c4_valdrenne: hand_over
-  c4p_petition: custom
+  c4p_rival_son: refuse
   c4_lannec: listen
   c4_act3_end: on
   c4_barony: accept
@@ -204,12 +204,16 @@ steps:
   c5_buy_war:
     - guilds
     - done
+  c5w_veterans: home
   c5_war_muster: ground!success
   c5_bridge: reserve!success
   c5_war_after: on
+  c5w_prisoner: hold
   c5_kings_reward: son!success
   c5_reckoning: lord
   c5_younger: time
+  c5f_court: law
+  c5f_heralds: crusader
   c5_epilogue: end
   c5_chronicle: end
 ending: founder

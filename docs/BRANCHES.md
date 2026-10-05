@@ -56,7 +56,7 @@ The map of the story: where it forks, what each fork remembers, and who can be d
 - **Act IV, the summons:** the barony, Mahaut's answer (if courted), the writ.
 
 ### Chapter 5 (age 42 on): the crown
-- The Estates of the West, the vote, the war, the bridge.
+- The Estates of the West, the vote, the war, the bridge. If the West breaks away, the backers' price (`c5_price`) comes before the war chest. One `c5_west` pool event before the muster and one after the war.
 - **Children:** a betrothal for the second child before the vote (`c5_betrothal`); a surety held in Adalia after the West breaks away (`c5_surety`); after the reckoning, what he leaves the younger ones (`c5_younger`).
 - **Fork:** war lost leads to `c5_defeat`; the West free leads to `c5_recognition`; otherwise `c5_kings_reward`.
 - **After the reckoning** (and `c5_younger`): the reckoning sets `c5_reigns`, `c5_kingmaker_path` or `c5_founder_path`, which lead to the first year of the reign (`c5r_*`), the kingmaker's coda (`c5k_*`) or the founder's (`c5f_*`), then the epilogue.

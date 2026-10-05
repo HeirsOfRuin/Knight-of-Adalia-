@@ -1211,6 +1211,25 @@ A player finished with about £118 unspent. Eight shop scenes now sit on the spi
 - Crowned 5.5%; deaths 4%.
 - Bots at a shop keep back the men's pay. A spender (the wealth policy) buys what he can; others buy one thing half the time.
 
+## Dynasty export: the sequel's input contract (2026-10-04)
+Every ending except death shows a "To be continued" block: a line per ending (`sequel` in registry/endings.yaml) and an **Export your house** button. The button gives a text code: `KOAD1.` plus base64url of the deflated JSON, the same encoding as save codes (`encodeCode` in src/engine/savecode.ts). The code is not a save and cannot reopen the life. It is what a sequel reads to continue the family.
+
+**Schema.** `DynastyExport` in src/engine/dynasty.ts, version 1, carries `kind: knight-of-adalia/dynasty` and these fields:
+- `date`: year, season, king, reign year;
+- `ending`: id and label;
+- `founder`: name, background, role, age, station, renown, attributes, skills, traits, items, reputation;
+- `spouse`: id, name, alive;
+- `heirs[]`: name, sex, age, alive, temperament, upbringing, bond, a `match` (penhoet, brese, lanzi, valdrenne, chosen, arranged) and `crowned`;
+- `realm`: the West free, adalian, lost or unsettled; `reigns`; `stability` from `counter.reign`;
+- `lands`: the manor's fields and every holding with its income;
+- `wealth`: coin, men, garrison, levy;
+- `people[]`: everyone he met, with relations;
+- `counters` and every flag set.
+
+Each entry carries both its registry id and its display name, so a reader needs no Knight of Adalia content.
+
+**Changing the schema.** Add a field freely. Rename or remove one only with a version bump, and keep a reader for version 1.
+
 ## Continuity (2026-10-03, after playtest feedback)
 Josh found text that assumed choices he had not made. A survey found 47 such places, and the force panel and a Ch3 population line had the same fault: the story said one thing and the state another.
 
@@ -1261,3 +1280,4 @@ Josh found text that assumed choices he had not made. A survey found 47 such pla
 | 2026-10-03 | Step 2, investments: eight shops, Michaelmas pay for the company and garrison, pay-off at the end of Ch4 Act I, payoffs in existing checks; plans record a list of choices for a scene visited more than once. See Investments. |
 | 2026-10-03 | Step 3, the younger children. Ch4 Act III: a surety demand for the second child from the side he rides with (send, excuse, refuse). Ch4 Act IV: the second child's upbringing (a West house, the abbey, a Sarenzan counting-house, home). Ch5: a betrothal offered at the Estates for votes, money or the Church, or refused; a surety held on the wrong side of the new border (ransom £25, a night rescue, or leave them); after the reckoning, what he leaves the younger ones (land, the Church, a year of his time). Bond moves for every child. The epilogue gives the second and third child their own lines. Bot: the surety demand reaches 67% of runs, the second child's upbringing and the betrothal 51%, the younger ones 90%. Crowned 5.7%, deaths 3.8% (2,000 runs). |
 | 2026-10-03 | Step 4, after the crown. The reckoning now decides what follows it: `flag.c5_reigns` (the crowned ending's conditions, evaluated once; the chronicle reads the flag), `c5_kingmaker_path`, `c5_founder_path`. Crowned runs play the first year of the reign (ch5/06-reign.yaml): the oaths and the lord of Quérec who will not kneel, the council, the peace with Adalia and Valdrenne, the war tax, Quérec's revolt and judgement, and the succession. `counter.reign` ("The kingdom") measures how settled the West is; the revolt reads it and the crowned ending reports it, with the year's choices. Kingmakers get two scenes (an office, a reward); founders get two (the first court day, the heralds' pedigree), and their endings read them. Dates run in the player's own name from the oaths (`reigns` king `@self`). Bot: every run that sees a coda ends in its ending. New plan: The King. |
+| 2026-10-04 | Step 5: "To be continued" on the ending page, with a line per ending and the dynasty export (see Dynasty export). |

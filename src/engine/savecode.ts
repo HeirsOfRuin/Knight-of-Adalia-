@@ -36,8 +36,21 @@ function compact(save: unknown): unknown {
 }
 
 export async function encodeSaveCode(save: unknown): Promise<string> {
-  const json = new TextEncoder().encode(JSON.stringify(compact(save)));
-  return CODE_PREFIX + toBase64Url(await pipe(json, new CompressionStream('deflate-raw')));
+  return encodeCode(CODE_PREFIX, compact(save));
+}
+
+/** Any JSON as prefix + base64url of its deflated text (save codes, dynasty codes). */
+export async function encodeCode(prefix: string, value: unknown): Promise<string> {
+  const json = new TextEncoder().encode(JSON.stringify(value));
+  return prefix + toBase64Url(await pipe(json, new CompressionStream('deflate-raw')));
+}
+
+/** The JSON inside a code made by encodeCode with this prefix. Throws on anything else. */
+export async function decodeCode(prefix: string, text: string): Promise<unknown> {
+  const t = text.trim();
+  if (!t.startsWith(prefix)) throw new Error(`Not a code beginning ${prefix}`);
+  const bytes = await pipe(fromBase64Url(t.slice(prefix.length).replace(/\s+/g, '')), new DecompressionStream('deflate-raw'));
+  return JSON.parse(new TextDecoder().decode(bytes));
 }
 
 /** Parses a save code or plain save JSON. Throws on anything else. */

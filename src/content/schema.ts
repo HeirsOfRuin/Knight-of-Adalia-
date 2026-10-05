@@ -210,6 +210,8 @@ export const EndingDefSchema = z.object({
   description: z.string(),
   // chapter whose content must exist before the validator demands reachability
   chapter: z.string(),
+  // the "to be continued" line on the ending page: what the house carries into the next story
+  sequel: z.string().optional(),
 }).strict();
 export const RomanceDefSchema = z.object({
   npc: Id,

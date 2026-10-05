@@ -1,9 +1,9 @@
 # Chapter 5 endings are computed from accumulated state. The validator only
 # demands reachability once the named chapter has content.
-crowned: { chapter: ch5, label: Crowned, description: "Kingship by marriage claim, conquest with recognition, or a kingmaker's bargain." }
-kingmaker: { chapter: ch5, label: Kingmaker, description: "The power behind a throne he does not sit on." }
-founder: { chapter: ch5, label: Founder of a House, description: "A secure great lord with heirs and lands that will outlast him." }
-diminished: { chapter: ch5, label: Diminished Lord, description: "Keeps some land, loses the rest and most of his influence." }
-exile: { chapter: ch5, label: Exile, description: "Lives abroad in Sarenza, Hroswald or Valdrenne, on sufferance." }
-ruin: { chapter: ch5, label: Ruin, description: "Attainted, landless, his name struck from the rolls." }
+crowned: { chapter: ch5, label: Crowned, description: "Kingship by marriage claim, conquest with recognition, or a kingmaker's bargain.", sequel: "The West has a king, and the king has a son, or a daughter, or a cousin with a claim. Crowns are harder to pass on than to win." }
+kingmaker: { chapter: ch5, label: Kingmaker, description: "The power behind a throne he does not sit on.", sequel: "The hand behind the throne passes to whoever is holding it when you let go. Your children will have to learn to hold it, or to let it go." }
+founder: { chapter: ch5, label: Founder of a House, description: "A secure great lord with heirs and lands that will outlast him.", sequel: "A house is three generations: the man who makes it, the one who keeps it, and the one who spends it. You were the first." }
+diminished: { chapter: ch5, label: Diminished Lord, description: "Keeps some land, loses the rest and most of his influence.", sequel: "A small house remembers what it lost longer than a great one remembers what it won. Your children have a long memory." }
+exile: { chapter: ch5, label: Exile, description: "Lives abroad in Sarenza, Hroswald or Valdrenne, on sufferance.", sequel: "Exiles' children grow up speaking a foreign tongue and dreaming of a country they have never seen. Some of them go home." }
+ruin: { chapter: ch5, label: Ruin, description: "Attainted, landless, his name struck from the rolls.", sequel: "The name was struck from the rolls. Names have been written back in before, by children who wanted them enough." }
 death: { chapter: prologue, label: Death, description: "Dead before his time. The manner of it is recorded." }

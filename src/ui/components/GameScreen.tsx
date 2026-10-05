@@ -9,6 +9,7 @@ import { forceOf } from '../../engine/paths';
 import { exportSave, readPref, writePref } from '../storage';
 import { ConfirmButton } from './Confirm';
 import { SaveCode } from './SaveCode';
+import { DynastyExport } from './DynastyExport';
 import { StatusPanel } from './StatusPanel';
 import { Journal } from './Journal';
 import { PeoplePanel, WorldPanel } from './Codex';
@@ -125,6 +126,13 @@ export function GameScreen(p: Props) {
               <h2>{ending?.label ?? v.ended.ending}</h2>
               {v.ended.cause && <p>{v.ended.cause}</p>}
               {ending && <p class="muted">{ending.description}</p>}
+              {ending?.sequel && v.ended.ending !== 'death' && (
+                <section class="continued">
+                  <h3>To be continued</h3>
+                  <p>{ending.sequel}</p>
+                  <DynastyExport state={state} content={content} />
+                </section>
+              )}
               <button class="btn primary wide" onClick={p.onNewGame}>Begin another life</button>
             </section>
           ) : (

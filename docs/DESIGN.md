@@ -1211,6 +1211,22 @@ A player finished with about £118 unspent. Eight shop scenes now sit on the spi
 - Crowned 5.5%; deaths 4%.
 - Bots at a shop keep back the men's pay. A spender (the wealth policy) buys what he can; others buy one thing half the time.
 
+## The world map (2026-10-05)
+The map is pixel art drawn in code; there is no image file.
+
+- **Terrain.** `tools/make-map.ts` draws the terrain from shapes: coasts, mountains, hills, forests, marsh, farmland, rivers and salt pans, made ragged with seeded noise. It writes `content/map/world.txt` at one character per tile, 160 × 120. Change a shape there and re-run it.
+- **Places.** `registry/places.yaml` gives each place's tile, kind, region and description, and an `if` saying when the hero knows of it. The validator keeps every place on the map and out of the sea.
+- **Where scenes happen.** `content/map/scene-places.yaml` maps each scene to a place, or to `@home` (by background), `@service` (Ravell Hall, or Brome for the levy), `@manor` (the grant) or `@town`. A scene with no place leaves him where he was. About 90% of the story is placed.
+- **Engine.** `src/engine/map.ts` covers resolution, his stays (one per run of scenes at a place), where he is now, and what he knows of. Conditions can test `seen.<scene>`.
+- **UI.** `MapView` sits at the top of the World panel, with a full-screen view that zooms ×1–4 and closes with Escape. It shows:
+  - terrain at 4 canvas pixels a tile, with tiny patterns: trees, peaks, furrows, reeds, waves;
+  - 7×7 icons per kind of place;
+  - his road as a dotted line;
+  - his own lands in gold, and a pulsing ring where he is;
+  - labels placed most-important-first without overlaps.
+
+  Tapping a place shows its description and every date he was there. Chapter cards carry a small map, and the date line above a scene names the place.
+
 ## Dynasty export: the sequel's input contract (2026-10-04)
 Every ending except death shows a "To be continued" block: a line per ending (`sequel` in registry/endings.yaml) and an **Export your house** button. The button gives a text code: `KOAD1.` plus base64url of the deflated JSON, the same encoding as save codes (`encodeCode` in src/engine/savecode.ts). The code is not a save and cannot reopen the life. It is what a sequel reads to continue the family.
 
@@ -1286,3 +1302,4 @@ Josh found text that assumed choices he had not made. A survey found 47 such pla
 | 2026-10-05 | Population after the Mottle (`growPeople`, src/engine/estate.ts): births and newcomers each Michaelmas, more under a trusted lord, with empty holdings or a market; departures under a sullen one. Median manor back to its founding size by the end of Ch3, about 118% by the end; the worst tenth stays under 85%. The steward reports it at the ends of Ch4 Acts I and II. |
 | 2026-10-05 | Wives' voices: each of the 16 wives has her own line at eleven moments of the marriage (first year, lying-in, the child's fever, the farewell, the homecoming, her letters, the third child, the writ, the muster, old age, the epilogue), in `romances.<id>.voice`, written into scenes as `{wife.<moment>}`. The validator requires every moment from the stage she can marry in (`married_in`); a test renders them all and checks no two wives share a line. |
 | 2026-10-05 | The economy made consistent (docs/ECONOMY.md is the reference). Incomes were a tenth of history while prose prices were historical: rent is now 20d a head (a manor of 250 yields about £21), salt and orchards scaled to match, other holdings x5, men's pay 6s a year. Lordly purchases repriced to the reference bands (towers £45-60, a stone church £110, a manor £150, the Ch4 company £10-50, Ch5 armies and treaties); prose sums changed to match. Promised money now arrives: Lord Ravell's £10 fee pays until Ravell sells up; the Crown buys great prisoners and pays the captor £40 (Corbie, the Constable's son). \"More money than your family sees\" lines are written per background (a wool merchant's year is ten times a reeve's). A test checks every price shown on a choice against what it costs and requires. Bot: the spender ends Ch5 with about £140, a cautious lord about £300; desertion 6%; Crowned 6.6%, deaths 4%. |
+\n| 2026-10-05 | The world map: terrain generator, 56 places, scene places, World panel and full-screen map, chapter-card map, the place in the date line. See The world map. |\n

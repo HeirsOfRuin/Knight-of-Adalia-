@@ -132,6 +132,7 @@ export function getValue(state: GameState, content: ContentBundle, rawPath: stri
       if (a === 'season') return seasonName(state, content);
       if (a === 'year') return regnalYear(state, content);
       return undefined;
+    case 'seen': return state.seen[a!] !== undefined; // seen.<scene>: he has been through that scene
     case 'alias': return state.aliases?.[a!] ?? 'none';
     case 'station': return state.station;
     case 'track': return state.track ?? 'none';
@@ -179,6 +180,7 @@ export function checkPath(content: ContentBundle, path: string): string | null {
     case 'rep': return need(a in reg.factions, 'faction');
     case 'res': return need(['coin', 'supplies', 'horses', 'renown', 'men', 'garrison', 'levy'].includes(a), 'resource');
     case 'estate': return need((ESTATE_FIELDS as readonly string[]).includes(a) || a === 'founded' || a === 'recovery', 'estate field');
+    case 'seen': return need(a in content.scenes, 'scene');
     case 'favor': return need(a in reg.npcs, 'npc');
     case 'trait': return need(a in reg.traits, 'trait');
     case 'injury': return need(a in reg.injuries, 'injury');

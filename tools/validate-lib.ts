@@ -123,6 +123,19 @@ export function validate(content: ContentBundle): ValidationReport {
     r.errors.forEach((e) => err(where, `text: ${e}`));
     r.paths.filter((p) => p.startsWith('flag.')).forEach((p) => flagsRead.add(p.slice(5)));
   };
+  // the world map: places sit on the map, on land; scene places name real scenes and places
+  const rows = content.map?.rows ?? [];
+  for (const [id, p] of Object.entries(content.registry.places)) {
+    if (p.if !== undefined) checkCond(`places/${id}`, p.if);
+    const tile = rows[p.y]?.[p.x];
+    if (tile === undefined) err(`places/${id}`, `off the map at ${p.x},${p.y}`);
+    else if (p.kind !== 'region' && (tile === '~' || tile === '-')) err(`places/${id}`, `in the sea at ${p.x},${p.y}`);
+  }
+  for (const [scene, ref] of Object.entries(content.map?.scenes ?? {})) {
+    if (!content.scenes[scene]) err('map/scene-places.yaml', `unknown scene "${scene}"`);
+    if (!ref.startsWith('@') && !content.registry.places[ref]) err('map/scene-places.yaml', `${scene}: unknown place "${ref}"`);
+    if (ref.startsWith('@') && !['@home', '@service', '@manor', '@town'].includes(ref)) err('map/scene-places.yaml', `${scene}: unknown place reference "${ref}"`);
+  }
   // each wife's voice: valid text, and a line for every moment from the stage she can marry in
   for (const [id, r] of Object.entries(content.registry.romances)) {
     for (const [m, line] of Object.entries(r.voice)) {

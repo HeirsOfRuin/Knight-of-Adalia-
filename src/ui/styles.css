@@ -237,3 +237,29 @@ code, pre { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.
   .topbar-info .when { display: none; }
   .tab { padding: 0 0.35rem; font-size: 0.85rem; }
 }
+
+/* ---- the world map ---- */
+.worldmap { margin: 0.6rem 0 1rem; }
+.worldmap-scroll { overflow: auto; border: 2px solid #4a3b2c; border-radius: 4px; background: #2c4a62; max-height: 80vh; }
+.worldmap-inner { position: relative; }
+.worldmap-canvas { display: block; width: 100%; height: auto; image-rendering: pixelated; image-rendering: crisp-edges; }
+.worldmap .place { position: absolute; width: 18px; height: 18px; margin: -9px 0 0 -9px; padding: 0; border: 0; background: transparent; cursor: pointer; min-height: 0; }
+.worldmap .place.region { width: auto; height: auto; transform: translate(-50%, -50%); margin: 0; }
+.worldmap .place-label { position: absolute; left: 12px; top: -2px; white-space: nowrap; font-family: var(--sans); font-size: 0.68rem; font-weight: 600; color: #fbf6ea;
+  text-shadow: 0 0 2px #1c140e, 0 0 2px #1c140e, 1px 1px 0 #1c140e; pointer-events: none; }
+.worldmap .place.region .place-label { position: static; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: #f6e9c8; font-weight: 500; }
+.worldmap .place.on .place-label { color: #ffd77a; }
+.worldmap .place:focus-visible { outline: 2px solid #ffd77a; border-radius: 50%; }
+.worldmap .here { position: absolute; width: 14px; height: 14px; margin: -7px 0 0 -7px; border: 2px solid #ffd77a; border-radius: 50%; pointer-events: none; animation: here-pulse 1.6s ease-out infinite; }
+@keyframes here-pulse { 0% { transform: scale(0.6); opacity: 1; } 100% { transform: scale(1.8); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .worldmap .here { animation: none; } }
+.worldmap-bar { display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 0.4rem; }
+.place-info { margin-top: 0.6rem; padding: 0.6rem 0.8rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); }
+.place-info h3 { margin: 0 0 0.3rem; font-size: 1.05rem; }
+.place-info p { margin: 0.3rem 0; font-size: 0.95rem; }
+.place-visits { margin: 0.4rem 0 0; padding-left: 1.1rem; font-family: var(--sans); font-size: 0.82rem; color: var(--muted); }
+.worldmap-overlay { position: fixed; inset: 0; z-index: 50; background: var(--bg); padding: 12px 16px; overflow: auto; }
+.worldmap-title { max-width: 1100px; margin: 0 auto 0.4rem; font-size: 1.2rem; }
+.worldmap-overlay .worldmap { max-width: 1100px; margin: 0 auto; }
+.worldmap.mini { max-width: 28rem; margin: 0 auto 1.4rem; }
+.worldmap.mini .worldmap-scroll { max-height: none; overflow: hidden; }

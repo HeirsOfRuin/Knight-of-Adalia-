@@ -1,3 +1,4 @@
+import { MapView } from './MapView';
 // People and World pages: what he knows, growing as he learns it.
 import type { ContentBundle } from '../../content/schema';
 import type { GameState } from '../../engine/state';
@@ -63,6 +64,7 @@ export function WorldPanel({ content, state }: { content: ContentBundle; state: 
   return (
     <div class="codex">
       <h2>The World</h2>
+      <MapView content={content} state={state} />
       <p class="muted">What you know of the world. New entries appear as you learn them.</p>
       {cats.map((cat) => (
         <section key={cat}>

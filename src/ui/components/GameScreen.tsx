@@ -6,10 +6,12 @@ import type { CheckResult } from '../../engine/checks';
 import { capitalise } from '../../engine/format';
 import { ageOf } from '../../engine/calendar';
 import { forceOf } from '../../engine/paths';
+import { placeOfScene } from '../../engine/map';
 import { exportSave, readPref, writePref } from '../storage';
 import { ConfirmButton } from './Confirm';
 import { SaveCode } from './SaveCode';
 import { DynastyExport } from './DynastyExport';
+import { MapView } from './MapView';
 import { StatusPanel } from './StatusPanel';
 import { Journal } from './Journal';
 import { PeoplePanel, WorldPanel } from './Codex';
@@ -59,6 +61,8 @@ export function GameScreen(p: Props) {
   const toggle = (x: Panel) => setPanel((cur) => (cur === x ? 'none' : x));
   const ending = v.ended ? content.registry.endings[v.ended.ending] : undefined;
   const menCount = forceOf(state).total;
+  const placeId = placeOfScene(content, state, state.scene);
+  const place = placeId ? content.registry.places[placeId]?.name : undefined;
 
   return (
     <div class={`game ${p.debug ? 'has-debug' : ''}`}>
@@ -101,6 +105,7 @@ export function GameScreen(p: Props) {
               <p class="card-title">{v.card.title}</p>
               {v.card.subtitle && <h1 class="card-subtitle">{v.card.subtitle}</h1>}
               {v.card.epigraph && <p class="card-epigraph">{v.card.epigraph}</p>}
+              <MapView content={content} state={state} mini />
               <dl class="card-rows">
                 {v.card.rows.map(([k, val]) => [<dt key={`${k}t`}>{k}</dt>, <dd key={`${k}d`}>{val}</dd>])}
               </dl>
@@ -108,7 +113,7 @@ export function GameScreen(p: Props) {
             </article>
           ) : (
             <article class="scene">
-              {v.dateChanged && <p class="date">{describeDate(state, content)}</p>}
+              {v.dateChanged && <p class="date">{describeDate(state, content)}{place ? <> &middot; {place}</> : null}</p>}
               {v.title && <h1>{v.title}</h1>}
               {v.cause && (
                 <p class="cause">This follows from {describeDate({ ...state, time: v.cause.at }, content).toLowerCase()}: <em>{v.cause.text}</em></p>

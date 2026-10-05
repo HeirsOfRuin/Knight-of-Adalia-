@@ -242,6 +242,18 @@ export const HoldingDefSchema = z.object({
   description: z.string(),
 }).strict();
 
+// A place on the world map (registry/places.yaml); x, y in tiles of content/map/world.txt.
+export const PlaceDefSchema = z.object({
+  name: z.string(),
+  x: z.number().int().min(0),
+  y: z.number().int().min(0),
+  kind: z.enum(['city', 'town', 'castle', 'manor', 'abbey', 'port', 'battle', 'region']),
+  region: z.string(),
+  text: z.string(),
+  if: CondInputSchema.optional(), // when he knows of it; omitted = from the start
+}).strict();
+export type PlaceDef = z.infer<typeof PlaceDefSchema>;
+
 export const RegistrySchema = z.object({
   flags: z.record(Id, FlagDefSchema),
   npcs: z.record(Id, NpcDefSchema),
@@ -253,6 +265,7 @@ export const RegistrySchema = z.object({
   romances: z.record(Id, RomanceDefSchema).default({}),
   lore: z.record(Id, LoreDefSchema).default({}),
   holdings: z.record(Id, HoldingDefSchema).default({}),
+  places: z.record(Id, PlaceDefSchema).default({}),
 });
 export type Registry = z.infer<typeof RegistrySchema>;
 
@@ -312,4 +325,6 @@ export interface ContentBundle {
   scenes: Record<string, Scene>;
   /** source file per scene id, for validator messages */
   sources: Record<string, string>;
+  /** the world map: terrain rows (tools/make-map.ts) and where each scene happens (content/map/scene-places.yaml) */
+  map?: { rows: string[]; scenes: Record<string, string> };
 }

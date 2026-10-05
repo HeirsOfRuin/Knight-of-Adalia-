@@ -619,7 +619,7 @@
         effects: [ { assign: { suit.heloise_corbie.status: known } }, { if: flag.c2_took_corbie, then: [ { set: flag.c2_corbie_ransom_due } ] } ]
         next: c2_looms
     - id: squeeze
-      text: "[if flag.c2_took_corbie]Squeeze her. Two thousand marks, and a thousand more for your trouble.[else]Help Giles squeeze her, for a share.[/if]"
+      text: "[if flag.c2_took_corbie]Squeeze her. Two thousand marks for the ransom, and forty pounds more for your trouble.[else]Help Giles squeeze her, for a share.[/if]"
       tags: [cunning, wealth]
       text_after: She agrees, because she has to. She looks at you once, at the end, the way people look at a wolf. [if flag.c2_took_corbie]You will be paid. Raoul de Corbie will remember the price.[else]Giles pays you your share with a smile you do not like.[/if]
       effects:

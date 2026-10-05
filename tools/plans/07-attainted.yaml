@@ -154,17 +154,17 @@ steps:
   c3_end: ride
   c4_council: edwin
   c4_home: wife
-  c4_company: credit
+  c4_company: good
   c4_buy_fitting: done
-  c4_landing: king
+  c4_landing: country
   c4_towns: starve
-  c4_winter: home
+  c4_winter: drill
   c4_carrow: on
   c4_mf_1: ride!failure
   c4_mf_2: archers!failure
   c4_mf_after: on
   c4_grant: office
-  c4_act1_end: half
+  c4_act1_end: core
   c4_stewards: clerk
   c4_buy_estates: done
   c4p_old_friend: stay
@@ -173,7 +173,7 @@ steps:
   c4q_carn_dubh: give
   c4_christmas: carrow
   c4_third_router: on
-  c4_third_child: name_a
+  c4_third_child: name_b
   c4_salt: broker!failure
   c4_mahaut: suit
   c4_act2_end: on
@@ -184,24 +184,24 @@ steps:
   c4_carrow_rises: west
   c4_eldest_two: on
   c4_west_war: on
-  c4_valdrenne: hand_over
+  c4_valdrenne: shelter
   c4p_tourney: joust!success
   c4_lannec: listen
   c4_act3_end: on
   c4_barony: accept
-  c4_second: west
+  c4_second: church
   c4_mahaut_router: on
   c4_mahaut_answer: ask!success
-  c4_writ: secret
+  c4_writ: money
   c4_end: on
   c5_estates: guilds!failure
   c5_estates_2: wait
-  c5_betrothal: lanzi
-  c5_vote: mahaut_queen
+  c5_betrothal: brese
+  c5_vote: self
   c5_war_opens: divide!failure
-  c5_price: lords
+  c5_price: church
   c5_buy_war: done
-  c5w_veterans: home
+  c5w_veterans: captains!success
   c5_war_muster: ground!failure
   c5_bridge: reserve!failure
   c5_war_after: on

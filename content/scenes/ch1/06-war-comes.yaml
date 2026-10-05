@@ -57,6 +57,7 @@
       effects:
         - set: flag.c1_has_means
         - set: flag.c1_ravell_fee
+        - hold: { id: ravell_fee, income: 2400 }
         - item: +harness
         - set: flag.strong_patron
         - trait: +ravell_man

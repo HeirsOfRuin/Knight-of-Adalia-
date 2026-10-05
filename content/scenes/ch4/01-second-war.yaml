@@ -15,25 +15,25 @@
     - if: flag.c3_holds_home
       then:
         - if: background == reeve
-          then: [ { hold: { id: ashby, income: 480 } } ]
+          then: [ { hold: { id: ashby, income: 2400 } } ]
         - if: background == archer
-          then: [ { hold: { id: hollin, income: 420 } } ]
+          then: [ { hold: { id: hollin, income: 2100 } } ]
         - if: background == burgess
-          then: [ { hold: { id: wendham_rents, income: 600 } } ]
+          then: [ { hold: { id: wendham_rents, income: 3000 } } ]
         - if: background == servant
-          then: [ { hold: { id: underhill, income: 420 } } ]
+          then: [ { hold: { id: underhill, income: 2100 } } ]
         - if: flag.c3_home_mortgaged
           then: [ { add: { holding.ashby.income: -240, holding.hollin.income: -210, holding.wendham_rents.income: -300, holding.underhill.income: -210 } } ]
     - if: flag.c3_holds_lisle
-      then: [ { hold: { id: lisle, income: 1200, temper: -1 } } ]
+      then: [ { hold: { id: lisle, income: 6000, temper: -1 } } ]
     - if: flag.c3_holds_wyck
-      then: [ { hold: { id: wyck, income: 720 } } ]
+      then: [ { hold: { id: wyck, income: 3600 } } ]
     - if: flag.c3_holds_ashdown
-      then: [ { hold: { id: ashdown, income: 1440, temper: -1 } } ]
+      then: [ { hold: { id: ashdown, income: 7200, temper: -1 } } ]
     - if: flag.c3_corbie_vineyard
-      then: [ { hold: { id: corbie_vineyard, income: 240 } } ]
+      then: [ { hold: { id: corbie_vineyard, income: 1200 } } ]
     - if: flag.c3_sauvemer_house
-      then: [ { hold: { id: sauvemer_house, income: 480 } } ]
+      then: [ { hold: { id: sauvemer_house, income: 2400 } } ]
     - if: flag.c3_party_king
       then: [ { add: { counter.court_king: 2 } } ]
     - if: flag.c3_party_prince
@@ -160,33 +160,33 @@
       text: Raise the whole company properly, on credit if you must.
       tags: [martial, wealth]
       text_after: |
-        You raise the whole company: thirty lances and sixty bows, horsed and harnessed and paid a quarter in advance, which is what it takes to get men worth having. [if flag.c4_company_borrowed]It costs every penny you have and a loan from [if flag.c3_lanzi_kin && npc.fiammetta_lanzi.alive]your wife's house, at a rate your wife says is an insult to the family[elif flag.c3_lanzi_kin]your dead wife's house, at a rate her uncles call a kindness to her memory[elif flag.c3_carrow_paper || flag.c3_party_carrow]the Earl of Carrow's steward, who is delighted to oblige[else]a Sarenzan house in Sauvemer[/if].[else]It costs ten pounds out of your own chest, which surprises the King's clerks, who are used to lords who borrow.[/if] You ride to the muster at the head of a hundred men with your own badge on their sleeves, and other lords look at your company before they look at you.
-      effects: [ { if: res.coin < 2400, then: [ { set: flag.c4_company_borrowed } ] }, { if: [ "!flag.c3_lanzi_kin", res.coin < 2400 ], then: [ { set: flag.c4_war_debt } ] }, { set: flag.c4_full_company }, { add: { res.men: 90, res.coin: -2400, counter.company: 3, res.renown: 1 } } ]
+        You raise the whole company: thirty lances and sixty bows, horsed and harnessed and paid a quarter in advance, which is what it takes to get men worth having. [if flag.c4_company_borrowed]It costs every penny you have and a loan from [if flag.c3_lanzi_kin && npc.fiammetta_lanzi.alive]your wife's house, at a rate your wife says is an insult to the family[elif flag.c3_lanzi_kin]your dead wife's house, at a rate her uncles call a kindness to her memory[elif flag.c3_carrow_paper || flag.c3_party_carrow]the Earl of Carrow's steward, who is delighted to oblige[else]a Sarenzan house in Sauvemer[/if].[else]It costs fifty pounds out of your own chest, which surprises the King's clerks, who are used to lords who borrow.[/if] You ride to the muster at the head of a hundred men with your own badge on their sleeves, and other lords look at your company before they look at you.
+      effects: [ { if: res.coin < 12000, then: [ { set: flag.c4_company_borrowed } ] }, { if: [ "!flag.c3_lanzi_kin", res.coin < 12000 ], then: [ { set: flag.c4_war_debt } ] }, { set: flag.c4_full_company }, { add: { res.men: 90, res.coin: -12000, counter.company: 3, res.renown: 1 } } ]
       next: c4_buy_fitting
     - id: good
       text: Raise fewer men, and only good ones.
       tags: [martial, cunning]
-      requires: [ res.coin >= 960 ]
+      requires: [ res.coin >= 4800 ]
       text_after: |
         You write to the King's clerks that you will bring twenty lances and forty bows, all of them men who have done it before, and you will pay the difference in the fine. The clerks grumble. The marshal, when he sees your company at the muster, stops grumbling. Small, hard, and quiet: men who stand.
-      effects: [ { set: flag.c4_good_company }, { add: { res.men: 60, res.coin: -960, counter.company: 2 } } ]
+      effects: [ { set: flag.c4_good_company }, { add: { res.men: 60, res.coin: -4800, counter.company: 2 } } ]
       next: c4_buy_fitting
     - id: manor
       text: Raise the company from your own manor.
       tags: [allies, wealth]
-      requires: [ res.coin >= 480 ]
+      requires: [ res.coin >= 2400 ]
       text_after: |
         You raise it from the manor and the villages round: the young men, the second sons, [if flag.c2_granted_kerval]the orchard men's boys[else]the salt-boilers' boys[/if] who want to see the world, the Adalian settlers' sons who want to show the locals something. They are cheap and brave and know nothing. [if flag.c2_granted_marsalin]Margot[elif flag.c2_granted_kerval]Gwenaël[else]Bastien[/if] stands at the gate as they march out and counts them, aloud, and you know [if flag.c2_granted_marsalin]she[else]he[/if] will count them again when they come back.
-      effects: [ { set: flag.c4_manor_company }, { add: { res.men: 70, res.coin: -480, counter.company: 1, estate.people: -40, estate.temper: -1, res.levy: -30 } } ]
+      effects: [ { set: flag.c4_manor_company }, { add: { res.men: 70, res.coin: -2400, counter.company: 1, estate.people: -40, estate.temper: -1, res.levy: -30 } } ]
       next: c4_buy_fitting
     - id: rotbart
       text: Make Rotbart's men the core of it.
       tags: [martial, cunning]
-      requires: [ res.coin >= 1200 ]
+      requires: [ res.coin >= 6000 ]
       visible_if: [ flag.c3_hired_bandits, npc.ulric_rotbart.alive ]
       text_after: |
         Rotbart's sixty come out of your barns, and he finds twenty more of their kind in a month, from places you do not ask about. They are the best soldiers you will ever pay for and the worst men you will ever command. Your manor goes back to its own watch. They want a share of everything, in writing. You give it to them in writing. At the muster the King's marshal looks at the black eagle sewn under your badge and says, "Iron Company?" and you say, "Mine," and he lets it go.
-      effects: [ { set: flag.c4_iron_core }, { add: { res.men: 80, res.garrison: -60, res.coin: -1200, counter.company: 3, rep.knights: -1 } } ]
+      effects: [ { set: flag.c4_iron_core }, { add: { res.men: 80, res.garrison: -60, res.coin: -6000, counter.company: 3, rep.knights: -1 } } ]
       next: c4_buy_fitting
 
 - id: c4_landing
@@ -498,14 +498,14 @@
       tags: [martial]
       text_after: |
         La Garde is a square tower on a rock above the Sauvemer road, with two villages under it and a view of half the march. It has been taken and retaken four times in your lifetime. It will cost you more to hold than it will ever pay. Nobody will come at your other lands except past it.
-      effects: [ { hold: { id: la_garde, income: 480, temper: 0 } }, { set: flag.c4_banneret }, { add: { estate.defence: 2, counter.west_estates: 1 } } ]
+      effects: [ { hold: { id: la_garde, income: 2400, temper: 0 } }, { set: flag.c4_banneret }, { add: { estate.defence: 2, counter.west_estates: 1 } } ]
       next: c4_act1_end
     - id: vaudrey
       text: The rents of Vaudrey, the town you took in the first war.
       tags: [wealth]
       text_after: |
         [if flag.c2_vaudrey_held]Vaudrey's burgomaster sends you a barrel of wine and a letter of welcome in his own hand. "You kept your men out of the lower town," he writes again, as if you might have forgotten.[elif flag.c2_vaudrey_looted]Vaudrey sends its rents on time and nothing else. When you ride through the town for the first time as its lord, the shutters close in front of you, street by street, like a wave.[else]Vaudrey accepts you the way towns accept a new lord: politely, warily, and with a petition about the bridge tolls on the first day.[/if]
-      effects: [ { hold: { id: vaudrey, income: 1200, temper: 0 } }, { set: flag.c4_banneret }, { if: flag.c2_vaudrey_looted, then: [ { add: { holding.vaudrey.temper: -3 } } ] }, { if: flag.c2_vaudrey_held, then: [ { add: { holding.vaudrey.temper: 2, counter.west_estates: 1 } } ] } ]
+      effects: [ { hold: { id: vaudrey, income: 6000, temper: 0 } }, { set: flag.c4_banneret }, { if: flag.c2_vaudrey_looted, then: [ { add: { holding.vaudrey.temper: -3 } } ] }, { if: flag.c2_vaudrey_held, then: [ { add: { holding.vaudrey.temper: 2, counter.west_estates: 1 } } ] } ]
       next: c4_act1_end
     - id: office
       text: Ask instead for an office at court, and the King's ear.
@@ -523,7 +523,7 @@
 
     [if heirs.count >= 1]At home, {heirs.names} [if heirs.count >= 2]are[else]is[/if] growing, without you, the way children do.[/if] [if flag.c3_married && npc.@spouse.alive]Your wife's last letter says [if flag.c2_granted_kerval]the orchards have set well and the mill-race is mended[elif flag.c2_granted_marsalin]the dyke held and the salt is good[else]the ditches held through the winter and the salt is poor but sells[/if], and that she has had the hall whitewashed, and you are not to complain about it.[/if] [if estate.recovery >= 110]The steward writes that there are new houses going up along the lane for the first time since the Mottle, and that the priest wants a bigger font.[elif estate.recovery >= 95]The steward writes that the last of the empty holdings has been taken, by a family from over the hill with six children and a cow.[elif estate.recovery >= 80]The steward writes that most of the empty holdings have tenants again, and the rest have nettles.[else]The steward writes that there are still houses standing empty since the Mottle, and that the young people go to the towns.[/if]
 
-    [if res.men >= 10]The indenture ran out with the campaign. The King's wage stops, and the company does not. From this Michaelmas every man in it draws his shilling a year from your purse, [if res.garrison >= 1]as the garrison at home already does, [/if]or goes looking for a lord who will pay him.[/if]
+    [if res.men >= 10]The indenture ran out with the campaign. The King's wage stops, and the company does not. From this Michaelmas every man in it draws his six shillings a year from your purse, [if res.garrison >= 1]as the garrison at home already does, [/if]or goes looking for a lord who will pay him.[/if]
   on_enter: [ { clear: flag.c4_on_indenture } ]
   choices:
     - id: on

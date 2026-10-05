@@ -192,7 +192,7 @@
       visible_if: [ heir.eldest.alive, heir.eldest.sex == daughter ]
       text_after: |
         You make the match, and sign the contract, and she does not speak to you for a month. [if heir.eldest.temperament == merry]Then one morning she laughs at something you say at breakfast, and seems surprised at herself, and goes on being angry, but less.[else]Then she speaks to you again, politely, and you would rather she had gone on shouting.[/if]
-      effects: [ { set: flag.c4_daughter_matched }, { add: { heir.eldest.bond: -2, res.coin: 1200 } }, { if: counter.west_estates >= 3, then: [ { add: { counter.west_estates: 1 } } ], else: [ { add: { counter.court_prince: 1 } } ] } ]
+      effects: [ { set: flag.c4_daughter_matched }, { add: { heir.eldest.bond: -2, res.coin: 4800 } }, { if: counter.west_estates >= 3, then: [ { add: { counter.west_estates: 1 } } ], else: [ { add: { counter.court_prince: 1 } } ] } ]
       next: { switch: [ { if: flag.c4_side_west, go: c4_west_war } ], default: c4_wythen }
     - id: on
       text: Go on.
@@ -391,7 +391,7 @@
       tags: [cunning]
       text_after: |
         You hold them, politely, and write to Cordelle, and the Valdrennish King's officers come for them in December with a writ and a cart with bars on it. Thibaut does not curse you. He looks at you as he goes past, once, and you would rather he had cursed. The Valdrennish King sends you a gold cup. You put it in a chest and do not look at it.
-      effects: [ { set: flag.c4_gave_up_brese }, { add: { rep.honor: -3, rep.ruthlessness: 2, counter.west_estates: -2, res.coin: 1200 } }, { if: flag.c3_brese_kin, then: [ { add: { rel.@spouse.affection: -6 } } ] } ]
+      effects: [ { set: flag.c4_gave_up_brese }, { add: { rep.honor: -3, rep.ruthlessness: 2, counter.west_estates: -2, res.coin: 4800 } }, { if: flag.c3_brese_kin, then: [ { add: { rel.@spouse.affection: -6 } } ] } ]
       next: { pool: c4_lord, count: 1, then: c4_lannec }
 
 - id: c4_lannec

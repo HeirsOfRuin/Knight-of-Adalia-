@@ -15,8 +15,8 @@
       tags: [wealth, martial]
       visible_if: [ "!flag.inv_c2_harness", armour < 2 ]
       requires: [ res.coin >= 720 ]
-      text_after: The squire is fifteen and does not haggle. The harness fits well enough at the shoulders and badly at the knee, and the armourer by the bridge says he can fix the knee for another shilling, and does, mostly.
-      effects: [ { set: flag.inv_c2_harness }, { add: { res.coin: -732 } }, { item: +harness } ]
+      text_after: The squire is fifteen and does not haggle. The harness fits well enough at the shoulders and badly at the knee, and the armourer by the bridge fixes the knee for the price of a drink, mostly.
+      effects: [ { set: flag.inv_c2_harness }, { add: { res.coin: -720 } }, { item: +harness } ]
       next: c2_buy_lannec
     - id: horse
       text: Buy a sound horse from a farmer who cannot feed two through the winter. (£1)
@@ -102,7 +102,7 @@
       visible_if: [ "!flag.inv_c2_factor" ]
       requires: [ res.coin >= 720 ]
       text_after: The factor writes you a paper in a beautiful hand, and explains that the money will go into salt and come back larger, every Michaelmas, for as long as the salt sells. Your chaplain says this is usury. The factor says it is a partnership, and smiles.
-      effects: [ { set: flag.inv_c2_factor }, { add: { res.coin: -720, rep.sarenza: 1, rep.merchants: 1 } }, { hold: { id: sauvemer_factor, income: 120 } } ]
+      effects: [ { set: flag.inv_c2_factor }, { add: { res.coin: -720, rep.sarenza: 1, rep.merchants: 1 } }, { hold: { id: sauvemer_factor, income: 600 } } ]
       next: c2_buy_sauvemer
     - id: quarter
       text: Give to the rebuilding of the harbour quarter that burned in the siege. (£1)

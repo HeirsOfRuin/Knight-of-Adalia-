@@ -152,7 +152,7 @@ steps:
   c4_home: wife
   c4_company: manor
   c4_buy_fitting:
-    - tackle
+    - wagons
     - done
   c4_landing: court!failure
   c4_towns: talk!failure

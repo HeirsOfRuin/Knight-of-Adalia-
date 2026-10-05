@@ -247,13 +247,13 @@
       effects: [{"add": {"res.coin": -1440}}]
       next: "c3_contract"
     - id: pay_maud_delisle
-      text: "Pay the Crown's price for Lady Maud's marriage. Thirty pounds."
+      text: "Pay the Crown's price for Lady Maud's marriage. Ninety pounds."
       tags: ["wealth"]
       visible_if: ["alias.spouse == maud_delisle"]
-      requires: ["res.coin >= 7200"]
+      requires: ["res.coin >= 21600"]
       text_after: |
         Silver talks in every language, and it talks to everybody. [if alias.spouse == maud_delisle]The clerk of the wardrobe counts it twice, and smiles for the first time, and the Crown gives you Maud as if it were doing you a kindness.[elif alias.spouse == alys_fane]The Earl looks at your bankers' letters for a long while, and then at you, and says, "Well. You are not what I wanted. But you are more than I thought."[else]It is done in an afternoon, with a handshake and a cup, and everybody pretends that it was not about the money.[/if]
-      effects: [{"add": {"res.coin": -7200}}]
+      effects: [{"add": {"res.coin": -21600}}]
       next: "c3_contract"
     - id: pay_cecily_fuller
       text: "Show Master Osbert your accounts, and a purse to match. Six pounds."
@@ -274,13 +274,13 @@
       effects: [{"add": {"res.coin": -1920}}]
       next: "c3_contract"
     - id: pay_alys_fane
-      text: "Show the Earl you are worth more than he thinks. Thirty pounds."
+      text: "Show the Earl you are worth more than he thinks. Sixty pounds."
       tags: ["wealth"]
       visible_if: ["alias.spouse == alys_fane"]
-      requires: ["res.coin >= 7200"]
+      requires: ["res.coin >= 14400"]
       text_after: |
         Silver talks in every language, and it talks to everybody. [if alias.spouse == maud_delisle]The clerk of the wardrobe counts it twice, and smiles for the first time, and the Crown gives you Maud as if it were doing you a kindness.[elif alias.spouse == alys_fane]The Earl looks at your bankers' letters for a long while, and then at you, and says, "Well. You are not what I wanted. But you are more than I thought."[else]It is done in an afternoon, with a handshake and a cup, and everybody pretends that it was not about the money.[/if]
-      effects: [{"add": {"res.coin": -7200}}]
+      effects: [{"add": {"res.coin": -14400}}]
       next: "c3_contract"
     - id: pay_heloise_corbie
       text: "Pay for the King's licence, and Raoul's goodwill. Ten pounds."

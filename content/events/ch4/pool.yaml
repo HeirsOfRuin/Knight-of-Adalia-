@@ -118,11 +118,11 @@
         effects: [ { add: { estate.people: -8, estate.food: -2, estate.temper: -1 } } ]
         next: "@return"
     - id: pay
-      text: Send money to buy them off before they reach the manor. (£4)
+      text: Send money to buy them off before they reach the manor. (£12)
       tags: [wealth, cunning]
-      requires: [ res.coin >= 960 ]
+      requires: [ res.coin >= 2880 ]
       text_after: Your steward meets their captain at a ford with a purse and a cask of wine, and the captain, who is a practical man, takes both and rides on towards somebody else's manor. You are not proud of it. Nobody on the manor is hurt.
-      effects: [ { add: { res.coin: -960 } } ]
+      effects: [ { add: { res.coin: -2880 } } ]
       next: "@return"
 
 - id: c4p_veteran
@@ -167,17 +167,17 @@
       effects: [ { add: { estate.temper: 2, rep.commons: 1, estate.food: -2 } } ]
       next: "@return"
     - id: buy
-      text: Buy grain in Sarenza and ship it in, whatever it costs. (£3)
+      text: Buy grain in Sarenza and ship it in, whatever it costs. (£9)
       tags: [wealth, allies]
-      requires: [ res.coin >= 720 ]
+      requires: [ res.coin >= 2160 ]
       text_after: The Sarenzan grain comes in on two ships in November, and costs three times what it should, and nobody on your manor starves. In the next valley, where the lord waited, they bury children all winter.
-      effects: [ { add: { res.coin: -720, estate.food: 3, estate.temper: 1 } } ]
+      effects: [ { add: { res.coin: -2160, estate.food: 3, estate.temper: 1 } } ]
       next: "@return"
     - id: rents
       text: Forgive the year's rents, and let them buy their own.
       tags: [diplomacy]
       text_after: You forgive the rents. Your own purse feels it at Michaelmas. The families on the outlying holdings stay, which is the point, and their sons will remember who forgave the rent in the wet year.
-      effects: [ { add: { estate.temper: 2, res.coin: -480 } } ]
+      effects: [ { add: { estate.temper: 2, res.coin: -3840 } } ]
       next: "@return"
     - id: nothing
       text: The manor has come through worse. It will come through this.
@@ -199,11 +199,11 @@
     He names a figure. It is larger than the one you borrowed by a great deal.
   choices:
     - id: pay
-      text: Pay it, all of it, and be done with them. (£12)
+      text: Pay it, all of it, and be done with them. (£60)
       tags: [wealth]
-      requires: [ res.coin >= 2880 ]
+      requires: [ res.coin >= 14400 ]
       text_after: You pay. He counts it twice, closes the ledger, and draws a line through your name with a little flourish, and you feel lighter than you have in years.
-      effects: [ { clear: flag.c4_war_debt }, { add: { res.coin: -2880, rep.sarenza: 1 } } ]
+      effects: [ { clear: flag.c4_war_debt }, { add: { res.coin: -14400, rep.sarenza: 1 } } ]
       next: "@return"
     - id: terms
       text: Talk terms. A lord of the West is worth more to the Lanzi as a friend.
@@ -211,11 +211,11 @@
       check: { attr: wits, skill: trade, difficulty: 5, mods: [ { if: background == burgess, add: 1, label: you grew up at a counting board }, { if: rep.sarenza >= 2, add: 1, label: the Signory knows you }, { if: flag.inv_c2_factor, add: 1, label: your factor's account } ] }
       success:
         text: It takes an afternoon and a good deal of wine. When he leaves, the debt is half what it was, the interest is a quarter, and the Lanzi have the right to buy your salt before anyone else for ten years, which they would have had anyway.
-        effects: [ { clear: flag.c4_war_debt }, { add: { res.coin: -1200, rep.sarenza: 1 } } ]
+        effects: [ { clear: flag.c4_war_debt }, { add: { res.coin: -6000, rep.sarenza: 1 } } ]
         next: "@return"
       failure:
         text: He listens politely, agrees with everything you say, and changes nothing. The figure stands. You pay what you can, and the rest stays in the ledger.
-        effects: [ { add: { res.coin: -960, rep.sarenza: -1 } } ]
+        effects: [ { add: { res.coin: -4800, rep.sarenza: -1 } } ]
         next: "@return"
     - id: refuse
       text: Tell him the King's war was the King's debt, and show him the door.

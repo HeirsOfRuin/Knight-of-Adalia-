@@ -328,12 +328,12 @@
         difficulty: 6
         mods: [ { if: retinue >= 4, add: 1, label: your men go with you }, { if: counter.sl_held >= 1, add: 1, label: you are where he is going }, { if: flag.c1_knows_arms, add: 1, label: you know the Constable's colours } ]
       success:
-        text: You get to him first, through his own men, and he gives you his gauntlet before anyone else can reach him. Thibaut de Brésy, nineteen, furious, weeping with rage inside his helm. His ransom will be set by the King himself, and the King will take most of it. Your share will still be more money than your family has seen in four generations. It was luck. The man who should have had him is lying dead a yard short.
+        text: You get to him first, through his own men, and he gives you his gauntlet before anyone else can reach him. Thibaut de Brésy, nineteen, furious, weeping with rage inside his helm. He is the Crown's prisoner now, as every prisoner of rank is. The King will buy him from you for a reward, and collect the ransom himself, which will be thousands. The reward is forty pounds, [if background == reeve]more than your father saw in ten years of reeving[elif background == archer]more than your father earned in his whole life[elif background == burgess]what your father's house clears in a good year[else]more than your mother has been paid in her whole life[/if]. It was luck. The man who should have had him is lying dead a yard short.
         effects:
           - set: flag.c2_took_thibaut
-          - add: { res.renown: 3, res.coin: 2400, rep.knights: 1 }
+          - add: { res.renown: 3, res.coin: 9600, rep.knights: 1 }
           - if: flag.c1_better_terms
-            then: [ { add: { res.coin: 1200 } } ]
+            then: [ { add: { res.coin: 2400 } } ]
         next: c2_salines_4
       failure:
         text: You get there third. Sir Walter Pryce gets there first, and has Thibaut de Brésy's gauntlet in his fist before you are close enough to see the circlet. It will make him rich. It was always going to be someone.

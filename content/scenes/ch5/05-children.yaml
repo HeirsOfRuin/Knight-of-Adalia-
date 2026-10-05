@@ -32,11 +32,11 @@
           else: [ { add: { counter.estates: 1, rep.church: 1 } } ]
       next: c5_vote
     - id: lanzi
-      text: Promise {heir.second.name} to the Lanzi, for a dowry of forty pounds and the house's credit.
+      text: Promise {heir.second.name} to the Lanzi, for a dowry of two hundred pounds and the house's credit.
       tags: [wealth, cunning]
       text_after: |
         The Sarenzan counts out the first half of the dowry on your table in gold, and leaves a letter of credit for the rest. The Lanzi lend to the West's cause at half their usual rate from that week on, which is still a high rate. The old West, which marries land to land, thinks you have sold your child for money, and says so, in the hall.
-      effects: [ { set: flag.c5_betrothed_lanzi }, { add: { res.coin: 9600, rep.sarenza: 1, counter.estates: -1, heir.second.bond: -1 } } ]
+      effects: [ { set: flag.c5_betrothed_lanzi }, { add: { res.coin: 48000, rep.sarenza: 1, counter.estates: -1, heir.second.bond: -1 } } ]
       next: c5_vote
     - id: refuse
       text: Thank all three, and refuse. {heir.second.name} will choose, when the time comes.
@@ -59,24 +59,24 @@
     Nobody has threatened anything. Nobody needs to. [if heir.second.temperament == bold]The copy of the letter has a line at the bottom in a child's hand, which the clerk did not think to cut: "I am well. Do not do anything stupid."[elif heir.second.temperament == grave]The copy of the letter has a line at the bottom in a child's hand, which the clerk did not think to cut: "I understand. Do what you must."[else]The copy of the letter has a line at the bottom in a child's hand, which the clerk did not think to cut: "Will you come?"[/if]
   choices:
     - id: ransom
-      text: Offer to buy {heir.second.name} back, openly, at the price of a great lord's son. (£25)
+      text: Offer to buy {heir.second.name} back, openly, at the price of a great lord's son. (£100)
       tags: [wealth, diplomacy]
-      requires: [ res.coin >= 6000 ]
+      requires: [ res.coin >= 24000 ]
       text_after: |
         It takes two months of letters and a Sarenzan banker at each end. [if flag.c4_side_carrow]The Earl's steward[else]The King's chamberlain[/if] counts the money twice. {heir.second.name} comes home by sea in a new cloak, taller, and runs the length of the quay, and you do not care who sees.
-      effects: [ { set: flag.c5_surety_ransomed }, { add: { res.coin: -6000, heir.second.bond: 2 } } ]
+      effects: [ { set: flag.c5_surety_ransomed }, { add: { res.coin: -24000, heir.second.bond: 2 } } ]
       next: c5_war_opens
     - id: steal
       text: Send men you trust to bring {heir.second.name} out at night.
       tags: [cunning]
-      check: { attr: wits, skill: intrigue, difficulty: 5, mods: [ { if: npc.davy_ludd.alive, add: 1, label: Davy goes }, { if: flag.c4_counted_council || flag.c4_counted_lannec, add: 1, label: you know whose servants can be bought }, { if: res.coin >= 2400, add: 1, label: money for bribes } ] }
+      check: { attr: wits, skill: intrigue, difficulty: 5, mods: [ { if: npc.davy_ludd.alive, add: 1, label: Davy goes }, { if: flag.c4_counted_council || flag.c4_counted_lannec, add: 1, label: you know whose servants can be bought }, { if: res.coin >= 6000, add: 1, label: money for bribes } ] }
       success:
         text: Three men go, [if npc.davy_ludd.alive]Davy at their head, [/if]with a boat and a forged pass and a great deal of silver for a laundress. On the ninth night a boat comes into the Lannec river with {heir.second.name} asleep in the bottom of it under a sail. When the child wakes, the first words are, "I knew you would."
-        effects: [ { set: flag.c5_surety_stolen }, { add: { heir.second.bond: 3, res.coin: -480 } } ]
+        effects: [ { set: flag.c5_surety_stolen }, { add: { heir.second.bond: 3, res.coin: -1200 } } ]
         next: c5_war_opens
       failure:
         text: The laundress takes the silver and talks. Your men get out, two of them. {heir.second.name} is moved to a castle in the north with a guard on the door, and is kept there, honourably, and without visitors, until the peace.
-        effects: [ { set: flag.c5_surety_kept }, { add: { heir.second.bond: -1, res.coin: -480 } } ]
+        effects: [ { set: flag.c5_surety_kept }, { add: { heir.second.bond: -1, res.coin: -1200 } } ]
         next: c5_war_opens
     - id: leave
       text: Leave {heir.second.name} there. Nobody harms a child surety. It would cost them every lord they have.
@@ -105,10 +105,10 @@
     - id: church
       text: Endow a place in the Church for {heir.second.name}[if heir.third.alive], and one for {heir.third.name}[/if], with money enough to want for nothing.
       tags: [piety, wealth]
-      requires: [ res.coin >= 2400 ]
+      requires: [ res.coin >= 9600 ]
       text_after: |
         You endow a prebend at the cathedral[if heir.third.alive] and a place in the Lannec convent[/if], with money enough that nobody there will ever give orders to a child of yours. [if heir.second.upbringing == church]{heir.second.name}, who learned letters at the abbey, is pleased.[elif heir.second.temperament == bold]{heir.second.name} is not pleased, and says so, at length, and in the end takes the prebend and never goes near the cathedral.[else]{heir.second.name} takes it, and thanks you, and you are never certain what lies behind the thanks.[/if]
-      effects: [ { set: flag.c5_younger_church }, { add: { res.coin: -2400, rep.church: 1, heir.second.bond: 1 } } ]
+      effects: [ { set: flag.c5_younger_church }, { add: { res.coin: -9600, rep.church: 1, heir.second.bond: 1 } } ]
       next: { switch: [ { if: flag.c5_reigns, go: c5r_oaths }, { if: flag.c5_kingmaker_path, go: c5k_council }, { if: flag.c5_founder_path, go: c5f_court } ], default: c5_epilogue }
     - id: time
       text: Give [if heir.third.alive]the younger ones[else]{heir.second.name}[/if] what you did not give the eldest. A year of your time.

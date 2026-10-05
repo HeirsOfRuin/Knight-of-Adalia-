@@ -9,52 +9,52 @@
     You have {coin}.[if res.men >= 1 && !flag.c4_on_indenture || res.garrison >= 1 && !flag.c4_on_indenture] Your men's pay at Michaelmas will come to {pay_due}.[/if]
   choices:
     - id: full_harness
-      text: A harness in the new Sarenzan style, fluted, made to your measure. (£15)
+      text: A harness in the new Sarenzan style, fluted, made to your measure. (£110)
       tags: [wealth, martial]
       visible_if: [ "!flag.inv_full_harness" ]
-      requires: [ res.coin >= 3600 ]
+      requires: [ res.coin >= 26400 ]
       text_after: The armourer measures you like a tailor and works like a smith. The harness is lighter than your old one and turns a blow the old one would have taken. You wear it round the yard for a day to learn it, and the grooms laugh at you until you let one of them try it on.
-      effects: [ { set: flag.inv_full_harness }, { add: { res.coin: -3600 } }, { item: +full_harness } ]
+      effects: [ { set: flag.inv_full_harness }, { add: { res.coin: -26400 } }, { item: +full_harness } ]
       next: c4_buy_fitting
     - id: warhorse
-      text: A trained destrier, schooled for the charge. (£10)
+      text: A trained destrier, schooled for the charge. (£75)
       tags: [wealth, martial]
       visible_if: [ "!flag.inv_warhorse" ]
-      requires: [ res.coin >= 2400 ]
+      requires: [ res.coin >= 18000 ]
       text_after: A grey stallion of the Armance breed, seventeen hands, with a temper. He bites the groom, and the groom's boy, and then decides he likes you. In a charge he will go where you point him and keep going.
-      effects: [ { set: flag.inv_warhorse }, { add: { res.coin: -2400 } }, { item: +warhorse } ]
+      effects: [ { set: flag.inv_warhorse }, { add: { res.coin: -18000 } }, { item: +warhorse } ]
       next: c4_buy_fitting
     - id: drill
-      text: Hire a drill-master to make the company move as one. (£4)
+      text: Hire a drill-master to make the company move as one. (£30)
       tags: [wealth, martial]
       visible_if: [ "!flag.inv_drill", res.men >= 10 ]
-      requires: [ res.coin >= 960 ]
+      requires: [ res.coin >= 7200 ]
       text_after: He is a Hroswald veteran with one ear and no patience. For a fortnight the company marches up and down the beach to his shouting, and hates him, and by the time the ships sail it wheels like a gate.
-      effects: [ { set: flag.inv_drill }, { add: { res.coin: -960, counter.company: 1 } } ]
+      effects: [ { set: flag.inv_drill }, { add: { res.coin: -7200, counter.company: 1 } } ]
       next: c4_buy_fitting
     - id: tackle
-      text: Siege tackle, ladders and a ram, and a carpenter who knows his work. (£6)
+      text: Siege tackle, ladders and a ram, and a carpenter who knows his work. (£45)
       tags: [wealth, martial]
       visible_if: [ "!flag.inv_tackle" ]
-      requires: [ res.coin >= 1440 ]
+      requires: [ res.coin >= 10800 ]
       text_after: Two carts of it, and the carpenter, who is called Huw and talks about nothing but timber. Other companies laugh at your carts until the first town.
-      effects: [ { set: flag.inv_tackle }, { add: { res.coin: -1440 } } ]
+      effects: [ { set: flag.inv_tackle }, { add: { res.coin: -10800 } } ]
       next: c4_buy_fitting
     - id: wagons
-      text: Wagons, spare horses, and salt beef enough for a winter. (£3)
+      text: Wagons, spare horses, and salt beef enough for a winter. (£22 10s)
       tags: [wealth]
       visible_if: [ "!flag.inv_wagons" ]
-      requires: [ res.coin >= 720 ]
+      requires: [ res.coin >= 5400 ]
       text_after: Six wagons, a dozen remounts and enough beef to make the whole company sick of it by Martinmas. Nobody in your company will eat grass this year.
-      effects: [ { set: flag.inv_wagons }, { add: { res.coin: -720, res.horses: 2, res.supplies: 3 } } ]
+      effects: [ { set: flag.inv_wagons }, { add: { res.coin: -5400, res.horses: 2, res.supplies: 3 } } ]
       next: c4_buy_fitting
     - id: chest
-      text: Lend the King's war chest a hundred marks' worth of your own money, and ask nothing for it. (£10)
+      text: Lend the King's war chest a hundred marks of your own money, and ask nothing for it. (a hundred marks)
       tags: [wealth, diplomacy]
       visible_if: [ "!flag.inv_war_chest" ]
-      requires: [ res.coin >= 2400 ]
+      requires: [ res.coin >= 16000 ]
       text_after: The Treasurer's clerk writes your name in a list. The Treasurer himself mentions it to the King, who mentions it to you, at the muster, in front of the other captains.
-      effects: [ { set: flag.inv_war_chest }, { add: { res.coin: -2400, counter.court_king: 1, rep.crown: 1 } } ]
+      effects: [ { set: flag.inv_war_chest }, { add: { res.coin: -16000, counter.court_king: 1, rep.crown: 1 } } ]
       next: c4_buy_fitting
     - id: done
       text: Take ship.
@@ -69,60 +69,60 @@
     You have {coin}.[if res.men >= 1 && !flag.c4_on_indenture || res.garrison >= 1 && !flag.c4_on_indenture] Your men's pay at Michaelmas will come to {pay_due}.[/if]
   choices:
     - id: church
-      text: Rebuild the manor church in stone, with a tower and a bell. (£15)
+      text: Rebuild the manor church in stone, with a tower and a bell. (£110)
       tags: [wealth]
       visible_if: [ "!flag.inv_church" ]
-      requires: [ res.coin >= 3600 ]
+      requires: [ res.coin >= 26400 ]
       text_after: It takes four years. The bell is cast in the churchyard, in a pit, and the whole village comes to watch the metal poured. Your arms are carved over the door, small, where the Bishop will see them when he comes to consecrate it.
-      effects: [ { set: flag.inv_church }, { add: { res.coin: -3600, estate.church: 3, rep.church: 2, rep.piety: 1 } } ]
+      effects: [ { set: flag.inv_church }, { add: { res.coin: -26400, estate.church: 3, rep.church: 2, rep.piety: 1 } } ]
       next: c4_buy_estates
     - id: bridge
-      text: Build a bridge and mend the road to the market town, and take the tolls. (£10)
+      text: Build a bridge and mend the road to the market town, and take the tolls. (£75)
       tags: [wealth, cunning]
       visible_if: [ "!flag.inv_bridge" ]
-      requires: [ res.coin >= 2400 ]
+      requires: [ res.coin >= 18000 ]
       text_after: A stone bridge of three arches where there was a ford that drowned someone every spring. Carts that went the long way go your way now, and pay a farthing at the bridge-house.
-      effects: [ { set: flag.inv_bridge }, { add: { res.coin: -2400, rep.merchants: 1 } }, { hold: { id: road_tolls, income: 360 } } ]
+      effects: [ { set: flag.inv_bridge }, { add: { res.coin: -18000, rep.merchants: 1 } }, { hold: { id: road_tolls, income: 1800 } } ]
       next: c4_buy_estates
     - id: hospital
-      text: Found a hospital for the sick, with a physician paid by the year. (£8)
+      text: Found a hospital for the sick, with a physician paid by the year. (£60)
       tags: [wealth, diplomacy]
       visible_if: [ "!flag.inv_hospital" ]
-      requires: [ res.coin >= 1920 ]
+      requires: [ res.coin >= 14400 ]
       text_after: Twelve beds, a chapel, a garden of herbs, and a physician from Lannec who is better than most and knows it. Your tenants come to it from all your holdings, and so do strangers.
-      effects: [ { set: flag.inv_hospital }, { add: { res.coin: -1920, estate.temper: 2, rep.commons: 2, rep.piety: 1 } } ]
+      effects: [ { set: flag.inv_hospital }, { add: { res.coin: -14400, estate.temper: 2, rep.commons: 2, rep.piety: 1 } } ]
       next: c4_buy_estates
     - id: tower
-      text: Build a stone tower at the manor, with a gate and a well inside it. (£12)
+      text: Build a stone tower at the manor, with a gate and a well inside it. (£90)
       tags: [wealth, martial]
       visible_if: [ "!flag.inv_tower" ]
-      requires: [ res.coin >= 2880 ]
+      requires: [ res.coin >= 21600 ]
       text_after: It takes the masons two summers. When it is done it is forty feet high and ugly, and a raiding party will ride past it to look for somewhere easier.
-      effects: [ { set: flag.inv_tower }, { add: { res.coin: -2880, estate.defence: 3, rep.knights: 1 } } ]
+      effects: [ { set: flag.inv_tower }, { add: { res.coin: -21600, estate.defence: 3, rep.knights: 1 } } ]
       next: c4_buy_estates
     - id: prince
-      text: Send the Prince a gift for his household, a pair of Armance hawks and a Sarenzan saddle. (£10)
+      text: Send the Prince a gift for his household, a pair of Armance hawks and a Sarenzan saddle. (£75)
       tags: [wealth, diplomacy]
       visible_if: [ "!flag.inv_gift_prince" ]
-      requires: [ res.coin >= 2400 ]
+      requires: [ res.coin >= 18000 ]
       text_after: The Prince writes back himself, which he does not often do, about the hawks, at length. The saddle he gives to one of his friends.
-      effects: [ { set: flag.inv_gift_prince }, { add: { res.coin: -2400, counter.court_prince: 1 } } ]
+      effects: [ { set: flag.inv_gift_prince }, { add: { res.coin: -18000, counter.court_prince: 1 } } ]
       next: c4_buy_estates
     - id: carrow
-      text: Send the Earl of Carrow a gift, a gilt cup with his arms on it. (£10)
+      text: Send the Earl of Carrow a gift, a gilt cup with his arms on it. (£75)
       tags: [wealth, cunning]
       visible_if: [ "!flag.inv_gift_carrow" ]
-      requires: [ res.coin >= 2400 ]
+      requires: [ res.coin >= 18000 ]
       text_after: Carrow's secretary acknowledges the cup in a letter of three lines. Carrow does not write. But at the next council, he nods to you across the room, and other men see him do it.
-      effects: [ { set: flag.inv_gift_carrow }, { add: { res.coin: -2400, counter.court_carrow: 1 } } ]
+      effects: [ { set: flag.inv_gift_carrow }, { add: { res.coin: -18000, counter.court_carrow: 1 } } ]
       next: c4_buy_estates
     - id: guild
-      text: Become a patron of the salt-boilers' guild at Lannec. (£8)
+      text: Become a patron of the salt-boilers' guild at Lannec. (£60)
       tags: [wealth, allies]
       visible_if: [ "!flag.inv_guild" ]
-      requires: [ res.coin >= 1920 ]
+      requires: [ res.coin >= 14400 ]
       text_after: Your arms go up in the guildhall beside the Duchess's, on a painted board, slightly smaller. The guild masters drink your health at their feast and send you a barrel of the white salt every Christmas.
-      effects: [ { set: flag.inv_guild }, { add: { res.coin: -1920, counter.west_estates: 1, rep.merchants: 1 } } ]
+      effects: [ { set: flag.inv_guild }, { add: { res.coin: -14400, counter.west_estates: 1, rep.merchants: 1 } } ]
       next: c4_buy_estates
     - id: done
       text: The rest can wait.
@@ -137,36 +137,36 @@
     You have {coin}.[if res.men >= 1 && !flag.c4_on_indenture || res.garrison >= 1 && !flag.c4_on_indenture] Your men's pay at Michaelmas will come to {pay_due}.[/if]
   choices:
     - id: free_company
-      text: Hire a free company of forty men, horse and foot. (£20, and a shilling a man each Michaelmas)
+      text: Hire a free company of forty men, horse and foot. (£150, and six shillings a man each Michaelmas)
       tags: [wealth, martial]
       visible_if: [ "!flag.inv_free_company" ]
-      requires: [ res.coin >= 4800 ]
+      requires: [ res.coin >= 36000 ]
       text_after: Their captain is a Valdrennish knight with no land and a good name, who looks at your contract, then at you, and signs. They are hard men and well armed, and they will stay as long as they are paid.
-      effects: [ { set: flag.inv_free_company }, { add: { res.coin: -4800, res.men: 40 } } ]
+      effects: [ { set: flag.inv_free_company }, { add: { res.coin: -36000, res.men: 40 } } ]
       next: c4_buy_war
     - id: levy
-      text: Put the village levy in jacks and kettle hats, and give them bills. (£6)
+      text: Put the village levy in jacks and kettle hats, and give them bills. (£45)
       tags: [wealth, martial]
       visible_if: [ "!flag.inv_levy_armed", res.levy >= 10 ]
-      requires: [ res.coin >= 1440 ]
+      requires: [ res.coin >= 10800 ]
       text_after: The village smith works through the winter and so do his boys. In the spring the levy drills on the green, and looks for the first time like soldiers instead of farmers who were told to stand in a line.
-      effects: [ { set: flag.inv_levy_armed }, { add: { res.coin: -1440, counter.company: 1 } } ]
+      effects: [ { set: flag.inv_levy_armed }, { add: { res.coin: -10800, counter.company: 1 } } ]
       next: c4_buy_war
     - id: walls
-      text: Raise the manor's walls and lay in a store against a siege. (£10)
+      text: Raise the manor's walls and lay in a store against a siege. (£75)
       tags: [wealth, martial]
       visible_if: [ "!flag.inv_walls" ]
-      requires: [ res.coin >= 2400 ]
+      requires: [ res.coin >= 18000 ]
       text_after: A ditch, a bank, a timber wall on the bank and a stone gate in the wall. Barrels of salt meat in the cellars, and grain enough for a year in the granary.
-      effects: [ { set: flag.inv_walls }, { add: { res.coin: -2400, estate.defence: 2, estate.food: 3 } } ]
+      effects: [ { set: flag.inv_walls }, { add: { res.coin: -18000, estate.defence: 2, estate.food: 3 } } ]
       next: c4_buy_war
     - id: feast
-      text: Keep open table for the lords of the West at Christmas. (£6)
+      text: Keep open table for the lords of the West at Christmas. (£45)
       tags: [wealth, diplomacy]
       visible_if: [ "!flag.inv_feast" ]
-      requires: [ res.coin >= 1440 ]
+      requires: [ res.coin >= 10800 ]
       text_after: Twelve days, three hundred guests, a boar's head, swans, and a great deal of Lannec wine. Men who never spoke to you before go home calling you by your name.
-      effects: [ { set: flag.inv_feast }, { add: { res.coin: -1440, counter.west_estates: 1, rep.nobles: 1 } } ]
+      effects: [ { set: flag.inv_feast }, { add: { res.coin: -10800, counter.west_estates: 1, rep.nobles: 1 } } ]
       next: c4_buy_war
     - id: done
       text: Enough. Watch, and wait.

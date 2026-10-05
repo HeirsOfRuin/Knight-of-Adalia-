@@ -41,12 +41,12 @@
         effects: [ { set: flag.c5r_querec_left }, { add: { counter.reign: -1 } } ]
         next: c5r_council
     - id: largesse
-      text: Open the treasury instead. Gifts for every man who swears, and a feast for the town. (£20)
+      text: Open the treasury instead. Gifts for every man who swears, and a feast for the town. (£100)
       tags: [wealth, allies]
-      requires: [ res.coin >= 4800 ]
+      requires: [ res.coin >= 24000 ]
       text_after: |
         Every lord who swears goes home with a cup, a horse or a purse, and the town of Lannec eats at your cost for a week. Quérec swears on the fourth day, looking at his cup and not at you, and the old lords of the West, who do not change their minds, find that their minds have been changed.
-      effects: [ { set: flag.c5r_largesse }, { add: { res.coin: -4800, counter.reign: 2, rep.nobles: 1, rep.commons: 1 } } ]
+      effects: [ { set: flag.c5r_largesse }, { add: { res.coin: -24000, counter.reign: 2, rep.nobles: 1, rep.commons: 1 } } ]
       next: c5r_council
 
 - id: c5r_council
@@ -77,7 +77,7 @@
       tags: [wealth, cunning]
       text_after: |
         A guildmaster of the Lannec salt-boilers becomes treasurer, with a Lanzi factor at his elbow. In a year the royal revenues are up by a third and every lord in the West is paying taxes he did not know existed. They pay them. They do not like it.
-      effects: [ { set: flag.c5r_council_purse }, { add: { rep.merchants: 2, rep.sarenza: 1 } }, { hold: { id: crown_revenues, income: 2400 } } ]
+      effects: [ { set: flag.c5r_council_purse }, { add: { rep.merchants: 2, rep.sarenza: 1 } }, { hold: { id: crown_revenues, income: 12000 } } ]
       next: c5r_treaty
     - id: mahaut
       text: Let Mahaut choose the council, as Jehanne would have.
@@ -93,19 +93,19 @@
   title: The Peace
   on_enter:
     - if: "!flag.c5r_council_purse"
-      then: [ { hold: { id: crown_revenues, income: 1200 } } ]
+      then: [ { hold: { id: crown_revenues, income: 6000 } } ]
   text: |
     The war ended at the bridge. The peace has not been written yet. [if flag.c5_paid_valdrenne]Valdrenne has had its price, and holds Saint-Lys, and smiles.[/if] Ambassadors come to Lannec from Adalia and from Valdrenne in the same week, and are lodged at opposite ends of the town, and both ask for the same thing in different words: the West's march castles, and money, and a marriage.
 
     Without a treaty there will be raids on the march every summer for a generation. With one, there will be a price.
   choices:
     - id: pay
-      text: Pay for the peace. Silver is cheaper than castles. (£30)
+      text: Pay for the peace. Silver is cheaper than castles. (£150)
       tags: [wealth, diplomacy]
-      requires: [ res.coin >= 7200 ]
+      requires: [ res.coin >= 36000 ]
       text_after: |
         You pay both, in instalments, through the Lanzi, and the ambassadors go home with treaties sealed in green wax. The money hurts. The march is quiet that summer, and the next, and the one after that.
-      effects: [ { set: flag.c5r_peace_bought }, { add: { res.coin: -7200, counter.reign: 2 } } ]
+      effects: [ { set: flag.c5r_peace_bought }, { add: { res.coin: -36000, counter.reign: 2 } } ]
       next: c5r_petition
     - id: castle
       text: Give back a march castle, and keep the treasury.
@@ -147,7 +147,7 @@
       tags: [allies]
       text_after: |
         You end it by proclamation, read in every market square in the West on the same Sunday. In the salt towns they ring the bells. The crown is poorer for it, and so, for a while, are you.
-      effects: [ { set: flag.c5r_tax_ended }, { add: { counter.reign: 2, rep.commons: 2, res.coin: -2400 } } ]
+      effects: [ { set: flag.c5r_tax_ended }, { add: { counter.reign: 2, rep.commons: 2, res.coin: -12000 } } ]
       next: c5r_revolt
     - id: half
       text: Halve it, and spend the half you keep where the towns can see it.
@@ -161,7 +161,7 @@
       tags: [wealth, cunning]
       text_after: |
         You keep it, and explain why, at length, in a proclamation nobody reads. In the salt towns they do not ring the bells. Your treasury fills. So, in the alehouses of the marsh, does the talk.
-      effects: [ { set: flag.c5r_tax_kept }, { add: { counter.reign: -1, rep.commons: -2 } }, { hold: { id: crown_revenues, income: 3600 } } ]
+      effects: [ { set: flag.c5r_tax_kept }, { add: { counter.reign: -1, rep.commons: -2 } }, { hold: { id: crown_revenues, income: 18000 } } ]
       next: c5r_revolt
 
 - id: c5r_revolt
@@ -183,7 +183,7 @@
         next: c5r_judgement
       failure:
         text: It takes the whole autumn. Quérec's marsh is all dykes and ditches, and his men know every one. When it ends, it ends in a siege, and starvation, and a surrender that leaves both sides poorer. He is brought to you in chains, thinner than you remember.
-        effects: [ { set: flag.c5r_revolt_long }, { add: { counter.reign: -1, res.coin: -1440 } } ]
+        effects: [ { set: flag.c5r_revolt_long }, { add: { counter.reign: -1, res.coin: -5760 } } ]
         next: c5r_judgement
     - id: talk
       text: Go to him alone, under a flag, and ask him what he wants.
@@ -195,15 +195,15 @@
         next: c5r_year_end
       failure:
         text: He gives you wine, and listens, and sends you back with a list of demands that no king could grant. The fighting takes the autumn. When it is over he is brought to you in chains.
-        effects: [ { set: flag.c5r_revolt_long }, { add: { counter.reign: -1, res.coin: -1440 } } ]
+        effects: [ { set: flag.c5r_revolt_long }, { add: { counter.reign: -1, res.coin: -5760 } } ]
         next: c5r_judgement
     - id: buy
-      text: Buy his cousins out from under him, and let him sit alone in his marsh. (£15)
+      text: Buy his cousins out from under him, and let him sit alone in his marsh. (£60)
       tags: [wealth, cunning]
-      requires: [ res.coin >= 3600 ]
+      requires: [ res.coin >= 14400 ]
       text_after: |
         The Lanzi carry the money. By Martinmas Quérec's cousins are back in their own halls with new horses, and Quérec is alone behind his dykes with forty men and his grandfather's charters. He submits by letter at Christmas. You let him keep his land, and he lets you forget he ever rose, which is a bargain of a kind.
-      effects: [ { set: flag.c5r_revolt_bought }, { add: { res.coin: -3600, counter.reign: 1 } } ]
+      effects: [ { set: flag.c5r_revolt_bought }, { add: { res.coin: -14400, counter.reign: 1 } } ]
       next: c5r_year_end
 
 - id: c5r_judgement
@@ -224,14 +224,14 @@
       tags: [cunning]
       text_after: |
         You take his land and give it to a man who owes you everything. Quérec goes into Valdrenne with his family and a cart, and writes letters for twenty years, and nobody answers them.
-      effects: [ { set: flag.c5r_querec_exiled }, { add: { counter.reign: 1, rep.ruthlessness: 1 } }, { hold: { id: querec, income: 480 } } ]
+      effects: [ { set: flag.c5r_querec_exiled }, { add: { counter.reign: 1, rep.ruthlessness: 1 } }, { hold: { id: querec, income: 2400 } } ]
       next: c5r_year_end
     - id: execute
       text: Try him for treason, and carry out the sentence.
       tags: [martial]
       text_after: |
         He is tried by the lords of the West, who find him guilty in an afternoon, and beheaded in the square at Lannec on a grey morning in front of a silent crowd. Nobody rises against you again for eleven years. Nobody forgets it, either.
-      effects: [ { set: flag.c5r_querec_executed }, { add: { counter.reign: 2, rep.ruthlessness: 2, rep.honor: -1 } }, { hold: { id: querec, income: 480 } } ]
+      effects: [ { set: flag.c5r_querec_executed }, { add: { counter.reign: 2, rep.ruthlessness: 2, rep.honor: -1 } }, { hold: { id: querec, income: 2400 } } ]
       next: c5r_year_end
 
 - id: c5r_year_end
@@ -311,7 +311,7 @@
       text: Take the forfeit marsh, and its salt.
       tags: [wealth]
       text_after: You take the land. The salt of the southern marsh comes up white every August, and goes to market under your seal.
-      effects: [ { set: flag.c5k_land }, { hold: { id: querec, income: 480 } } ]
+      effects: [ { set: flag.c5k_land }, { hold: { id: querec, income: 2400 } } ]
       next: c5_epilogue
     - id: marriage
       text: "[if heir.eldest.alive]Take the marriage, for {heir.eldest.name}, into the royal house.[else]Take the marriage, for a kinsman.[/if]"
@@ -344,7 +344,7 @@
       tags: [allies, diplomacy]
       text_after: |
         You judge it by the law, and the law says the man hangs, or pays the blood-price, which he cannot. You pay it for him, and banish him, and the neighbour rides home satisfied and tells everyone. After that the march brings its quarrels to you before it brings its swords.
-      effects: [ { set: flag.c5f_law }, { add: { rep.honor: 1, res.coin: -960 } } ]
+      effects: [ { set: flag.c5f_law }, { add: { rep.honor: 1, res.coin: -2400 } } ]
       next: c5f_heralds
     - id: own
       text: Protect your own man. A lord who will not is no lord.

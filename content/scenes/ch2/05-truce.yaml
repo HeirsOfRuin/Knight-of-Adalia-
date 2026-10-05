@@ -7,8 +7,15 @@
   chapter: ch2
   title: The Truce of Saint-Lys
   checkpoint: true
-  on_enter: [ { advance: { seasons: 1 } }, { meet: orsino_brancale } ]
+  on_enter:
+    - advance: { seasons: 1 }
+    - meet: orsino_brancale
+    # the Crown buys prisoners of rank from their captors (docs/ECONOMY.md); the squeeze added the sister's forty pounds
+    - if: [ flag.c2_took_corbie, flag.c2_corbie_ransom_due ]
+      then: [ { add: { res.coin: 9600 } }, { if: flag.c2_corbie_squeezed, then: [ { add: { res.coin: 9600 } } ] } ]
   text: |
+    [if flag.c2_took_corbie && flag.c2_corbie_ransom_due]With the truce, the King's treasurer buys your prisoner from you, as the Crown buys every prisoner of rank: forty pounds for Raoul de Corbie[if flag.c2_corbie_squeezed], and his sister's forty besides, paid in Sarenzan gold with a look you will remember[/if], while the Crown collects the two thousand marks itself.[/if]
+
     King Aldred would fight on, if he could pay for it. He cannot. Nor can King Amaury, who has lost an army on the salt pans and needs ten years and a great deal of borrowed money to raise another.
 
     In Lent, the Lanzi house tells King Aldred that it will lend him nothing more until he treats. In the same week, the Varesco house tells King Amaury the same thing, in almost the same words. The Signory of Sarenza has lent too much to both to let either one fight to the end.

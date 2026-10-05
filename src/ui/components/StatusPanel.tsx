@@ -53,7 +53,7 @@ export function StatusPanel({ content, state }: { content: ContentBundle; state:
         {state.aliases.master && <><dt>Master</dt><dd>{npcLabel(content, state.aliases.master)}</dd></>}
         <dt>Health</dt><dd>{state.health}/10</dd>
         <dt>Coin</dt><dd>{formatCoin(state.res.coin ?? 0)}</dd>
-        {state.estate && payDue(state) > 0 && <><dt>Pay due at Michaelmas</dt><dd>{formatCoin(payDue(state))}, a shilling a man{state.counters.pay_arrears ? '; last year\'s is still owed' : ''}</dd></>}
+        {state.estate && payDue(state) > 0 && <><dt>Pay due at Michaelmas</dt><dd>{formatCoin(payDue(state))}, six shillings a man{state.counters.pay_arrears ? '; last year\'s is still owed' : ''}</dd></>}
         <dt>Renown</dt><dd>{state.res.renown ?? 0}</dd>
         {force.total > 0 && <><dt>Men under your banner</dt><dd>{force.total}{forceBreakdown(force)}</dd></>}
         {force.levy > 0 && <><dt>Village levy</dt><dd>{force.levy}, trained to bow and bill, who can be called out</dd></>}

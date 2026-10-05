@@ -205,7 +205,7 @@
       text: Sell him the year's salt.
       tags: [wealth]
       text_after: Coin in your hand before the pans are even drawn. Three months later the price of salt in Sauvemer doubles, because half the coast sold to the Varesco, and the Varesco are holding it. The salt-boilers say nothing to you. They do not need to.
-      effects: [ { add: { res.coin: 150, estate.temper: -1, rep.sarenza: 1 } } ]
+      effects: [ { add: { res.coin: 450, estate.temper: -1, rep.sarenza: 1 } } ]
       next: "@return"
     - id: market
       text: Take it to the Sauvemer market yourself.
@@ -213,11 +213,11 @@
       check: { attr: wits, skill: trade, difficulty: 3, mods: [ { if: background == burgess, add: 1, label: you were raised to this } ] }
       success:
         text: You hold it back until the price climbs, and sell it in small lots to the fishmongers, who need it for the herring. Twice what the Sarenzan offered. The salt-boilers get a share of it, which nobody expected.
-        effects: [ { add: { res.coin: 250, estate.temper: 1, estate.salt: 1 } } ]
+        effects: [ { add: { res.coin: 750, estate.temper: 1, estate.salt: 1 } } ]
         next: "@return"
       failure:
         text: You hold it back too long. A Varesco ship comes in with a cargo from the south and the price falls through the floor.
-        effects: [ { add: { res.coin: 60 } } ]
+        effects: [ { add: { res.coin: 180 } } ]
         next: "@return"
 
 - id: c3m_lanzi

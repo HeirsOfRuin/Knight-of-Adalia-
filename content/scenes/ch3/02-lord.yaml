@@ -183,10 +183,10 @@
     - id: buy
       text: Buy the claim out, for a sum that will make them go away.
       tags: [wealth, cunning]
-      requires: [ res.coin >= 200 ]
+      requires: [ res.coin >= 1000 ]
       text_after: |
         [if flag.c2_granted_marsalin]A lump sum and a pension. Dame Péronnelle counts it with a long finger, nodding. "Sensible," she says. "My husband would have fought you and lost. You are cleverer than he was. That is not saying a great deal."[elif flag.c2_granted_kerval]Messire Yann takes your gold and signs a quitclaim and rides away, and the Duchess's steward tells you, with some satisfaction, that you have just paid for a rebel's horses.[else]Hugues d'Ormel takes it with his face burning. "My uncle's land," he says, "for a merchant's purse." He takes it anyway. He has nothing else. He spends it, they say, in Cordelle, on lawyers.[/if]
-      effects: [ { set: flag.c3_claim_bought }, { set: flag.c3_claim_won }, { add: { res.coin: -200 } } ]
+      effects: [ { set: flag.c3_claim_bought }, { set: flag.c3_claim_won }, { add: { res.coin: -1000 } } ]
       next: { pool: c3_manor, count: 1, then: c3_truce_ends }
     - id: share
       text: Offer them a share, a holding of their own, in return for their oath.
@@ -354,7 +354,7 @@
       text_after: |
         "Your law," Rotbart repeats. "Ja. Good. Somebody's law." He spits on his palm and holds it out.
 
-        Sixty Hroswald mercenaries in your barns and your alehouse. The village is terrified of them. Hodge Brewster's settlers start a fight with them in the first week and lose it. They will want paying every Michaelmas, a shilling a man, which is cheap for soldiers and dear for a manor. By Christmas the bandits on the road have stopped, because the worst of them are eating your bread, and the [if flag.c2_granted_kerval]Duchess's steward[else]Sauvemer captain[/if] writes you a nervous little letter asking what you intend to do with an army.
+        Sixty Hroswald mercenaries in your barns and your alehouse. The village is terrified of them. Hodge Brewster's settlers start a fight with them in the first week and lose it. They will want paying every Michaelmas, six shillings a man, which is cheap for soldiers and dear for a manor. By Christmas the bandits on the road have stopped, because the worst of them are eating your bread, and the [if flag.c2_granted_kerval]Duchess's steward[else]Sauvemer captain[/if] writes you a nervous little letter asking what you intend to do with an army.
       effects: [ { set: flag.c3_hired_bandits }, { add: { res.coin: -120, res.garrison: 60, estate.defence: 3, estate.temper: -2, rel.ulric_rotbart.respect: 2 } } ]
       next: { switch: [ { if: estate.temper <= -3, go: c3_unrest } ], default: c3_winter_hall }
     - id: hunt

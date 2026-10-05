@@ -162,7 +162,7 @@ steps:
   c4_home: wife
   c4_company: credit
   c4_buy_fitting:
-    - chest
+    - wagons
     - done
   c4_landing: court!success
   c4_towns: storm!failure

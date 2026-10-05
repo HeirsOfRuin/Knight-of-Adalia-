@@ -234,10 +234,10 @@
     - id: wall
       text: Pay for a stone wall and a tower at home, and a watch on the fords.
       tags: [wealth, allies]
-      requires: [ res.coin >= 720 ]
+      requires: [ res.coin >= 3600 ]
       label: "Requires Coin £3"
       text_after: You pay for a wall round the church and the houses nearest it, and a tower with a bell, and four men to watch the fords. It is the most money you have ever spent on a place you do not live. The next time Ewan comes, the bell rings, and the village goes behind the wall, and he goes home again with nothing. He does not come back after that. He is getting old.
-      effects: [ { set: flag.c3_walled_home }, { add: { res.coin: -720, rep.commons: 1 } } ]
+      effects: [ { set: flag.c3_walled_home }, { add: { res.coin: -3600, rep.commons: 1 } } ]
       next: c3_ravell
     - id: coll
       text: Write to Coll of Glenhallow.
@@ -274,7 +274,7 @@
   chapter: ch3
   title: The House of Ravell
   checkpoint: true
-  on_enter: [ { advance: { seasons: 1 } } ]
+  on_enter: [ { advance: { seasons: 1 } }, { release: ravell_fee } ]
   text: |
     [if flag.c2_ravell_taken]Lord Ravell's ransom broke him. Three years in a Valdrennish castle, and a price that the whole shire had to help pay, and then the Mottle, which took the tenants who paid the rents that paid the interest on the loans that paid the ransom.[else]The war was hard on Ravell, and the Mottle was harder. Half the tenants dead, the rents gone, the loans from the war still owing, and Lord Ravell too proud to sell anything until it was too late.[/if] [if flag.c3_wat_cut_down]And then the rising, and the burning of the manor rolls, and the hangings, and the fines.[/if]
 
@@ -287,34 +287,36 @@
     [if npc.aymer_ravell.alive]"My father is selling everything that isn't nailed down," he says. "My brother is letting him, because my brother would rather have money in Wendmere than land in the shire.[else]"His lordship is selling everything that isn't nailed down," he says. "The young lord is letting him, because he would rather have money in Wendmere than land in the shire.[/if] [if background == reeve]Ashby's on the list.[elif background == archer]Hollin's on the list, and the chase.[elif background == burgess]The Ravell rents in Wendham are on the list. Your father's street.[else]The home farm at Underhill is on the list. Where your mother was born.[/if] I thought you should hear it from [if npc.aymer_ravell.alive]me[else]the house[/if] before you heard it from a Lanzi clerk."
 
     He looks round your hall. "You've done well," he says. [if npc.aymer_ravell.alive]He does not quite manage not to mind.[else]He means it, and it costs him nothing, and you find that harder.[/if]
+
+    [if flag.c1_ravell_fee]Your fee from Ravell Mill, ten pounds a year for life, goes with everything else: the mill is sold to a Wendham man who has never heard of you.[/if]
   choices:
     - id: buy
-      text: "[if background == reeve]Buy Ashby.[elif background == archer]Buy Hollin and the chase.[elif background == burgess]Buy the Wendham rents.[else]Buy Underhill.[/if] Thirty pounds."
+      text: "[if background == reeve]Buy Ashby.[elif background == archer]Buy Hollin and the chase.[elif background == burgess]Buy the Wendham rents.[else]Buy Underhill.[/if] A hundred and fifty pounds."
       tags: [wealth]
-      requires: [ res.coin >= 7200 ]
+      requires: [ res.coin >= 36000 ]
       label: "Requires Coin £30"
       text_after: |
         You buy it. The deed comes under Lord Ravell's seal, and the old man does not come down to sign it in person. [if background == reeve]You ride into Ashby as its lord on a wet day in October. Your mother is at the door of the end cottage. The whole village is out, and nobody says anything, and then old Father Anselm starts to laugh, and cannot stop, and then everyone is laughing, and you are too.[elif background == archer]You ride into Hollin as its lord, past the butts where you ran for arrows at a farthing a dozen. Kit is at the door. "Lord of Hollin," she says. "Our dad would've laughed himself sick."[elif background == burgess]You are the landlord of your father's street. The first rent-day, half the street comes to pay in person, to see your face.[else]You walk round Underhill as its lord, and stand at the door of the cottage where your mother was born, and nobody in the world but you knows why.[/if]
-      effects: [ { add: { res.coin: -7200 } }, { set: flag.c3_holds_home } ]
+      effects: [ { add: { res.coin: -36000 } }, { set: flag.c3_holds_home } ]
       next: c3_fever_router
     - id: half
       text: Buy it with half down, and half from the rents over five years.
       tags: [wealth, cunning]
-      requires: [ res.coin >= 3600 ]
+      requires: [ res.coin >= 18000 ]
       label: "Requires Coin £15"
       text_after: |
-        Fifteen pounds now and the rest from the rents. Lord Ravell's steward, who has no choice, agrees. You hold [if background == reeve]Ashby[elif background == archer]Hollin[elif background == burgess]the Wendham rents[else]Underhill[/if] in mortgage, which is to say, as long as you pay. It is yours, mostly. You will be paying for it until your eldest is grown.
-      effects: [ { add: { res.coin: -3600 } }, { set: flag.c3_holds_home }, { set: flag.c3_home_mortgaged } ]
+        Seventy-five pounds now and the rest from the rents. Lord Ravell's steward, who has no choice, agrees. You hold [if background == reeve]Ashby[elif background == archer]Hollin[elif background == burgess]the Wendham rents[else]Underhill[/if] in mortgage, which is to say, as long as you pay. It is yours, mostly. You will be paying for it until your eldest is grown.
+      effects: [ { add: { res.coin: -18000 } }, { set: flag.c3_holds_home }, { set: flag.c3_home_mortgaged } ]
       next: c3_fever_router
     - id: lend
       text: Lend Aymer what you can spare, for his own sake.
       tags: [allies]
       visible_if: [ npc.aymer_ravell.alive ]
-      requires: [ res.coin >= 960 ]
+      requires: [ res.coin >= 4800 ]
       label: "Requires Coin £4"
       text_after: |
-        You lend Aymer four pounds, which is not enough to save anything, and you both know it. He takes it anyway, and puts it away in his purse as if it might break, and says, "I'll pay you back," and means it. He will pay you back, in the end, in something other than money.
-      effects: [ { add: { res.coin: -960, favor.aymer_ravell: 1, rel.aymer_ravell.affection: 3 } }, { set: flag.c3_lent_aymer } ]
+        You lend Aymer twenty pounds, which is not enough to save anything, and you both know it. He takes it anyway, and puts it away in his purse as if it might break, and says, "I'll pay you back," and means it. He will pay you back, in the end, in something other than money.
+      effects: [ { add: { res.coin: -4800, favor.aymer_ravell: 1, rel.aymer_ravell.affection: 3 } }, { set: flag.c3_lent_aymer } ]
       next: c3_fever_router
     - id: pass
       text: Let it go. It is not your house.

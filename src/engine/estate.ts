@@ -40,8 +40,8 @@ export function temperWord(t: number): string {
   return 'loyal';
 }
 
-/** A lord's own men (company and garrison) draw a shilling a man a year, paid at Michaelmas. */
-export const PAY_PER_MAN = 12;
+/** A lord's own men (company and garrison) draw a fee of 6s a man a year at Michaelmas; their keep comes from the manor (docs/ECONOMY.md). */
+export const PAY_PER_MAN = 72;
 
 function paidByOthers(state: GameState): boolean {
   return !!(state.flags.c4_on_indenture || state.flags.c5_war_tax);
@@ -123,7 +123,8 @@ export function estateTick(state: GameState, changes: string[]): void {
     // Michaelmas: harvest in, rents due. Both scale with the people left to do the work.
     const harvest = Math.max(1, Math.round((e.people ?? 0) / 40) + Math.floor((e.orchard ?? 0) / 2));
     e.food = clampEstate('food', (e.food ?? 0) + harvest);
-    let rent = (e.people ?? 0) * 3 + (e.salt ?? 0) * 40 + (e.orchard ?? 0) * 30;
+    // docs/ECONOMY.md: about 20d a head to the lord in rents, mill and court, so a manor of 250 yields about £21
+    let rent = (e.people ?? 0) * 20 + (e.salt ?? 0) * 200 + (e.orchard ?? 0) * 150;
     if ((e.temper ?? 0) <= -3) rent = Math.floor(rent / 2);
     state.res.coin = (state.res.coin ?? 0) + rent;
     changes.push(`Harvest in: ${harvest} seasons of grain`, `Michaelmas rents: ${formatCoin(rent)}`);

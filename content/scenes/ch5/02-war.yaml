@@ -29,7 +29,7 @@
       tags: [martial, wealth]
       text_after: |
         You spend the winter on walls: [if holding.la_garde.held]La Garde first, re-roofed and provisioned for a year[else]the towers along the Sauvemer road[/if], then the fords, then the bridges, with every mason in the West and every penny you can find. When the spring comes, the enemy will have to take three castles before they can reach a single field.
-      effects: [ { add: { counter.ww: 1, res.coin: -960 } }, { if: { any: [ holding.la_garde.held, estate.defence >= 3, flag.c4_warden_march ] }, then: [ { add: { counter.ww: 1 } } ] } ]
+      effects: [ { add: { counter.ww: 1, res.coin: -4800 } }, { if: { any: [ holding.la_garde.held, estate.defence >= 3, flag.c4_warden_march ] }, then: [ { add: { counter.ww: 1 } } ] } ]
       next: { switch: [ { if: flag.c5_west_free, go: c5_price } ], default: c5_buy_war }
     - id: towns
       text: Raise the salt towns. Every boiler, carter and fisherman who can hold a pike.
@@ -65,11 +65,11 @@
     - id: bows
       text: Crossbowmen. Hire every Sarenzan crossbow the Lanzi can ship.
       tags: [wealth]
-      requires: [ { any: [ res.coin >= 2400, flag.c3_lanzi_kin ] } ]
+      requires: [ { any: [ res.coin >= 12000, flag.c3_lanzi_kin ] } ]
       label: "Requires Coin £10, or the Lanzi in your family"
       text_after: |
         [if flag.c3_lanzi_kin]You write one letter to the Lanzi in Sarenza, [if npc.fiammetta_lanzi.alive]in your wife's hand, [/if]in the bank's private cipher. Six galleys come round the cape in April with eight hundred crossbowmen in red, and a bill you are not to see until after the war.[else]You pay the Lanzi in Sauvemer what they ask, which is a great deal, and six galleys come round the cape in April with eight hundred crossbowmen in red.[/if] Nobody in the West has ever seen so many. Nobody on the other side will have, either.
-      effects: [ { add: { counter.ww: 2 } }, { if: { not: flag.c3_lanzi_kin }, then: [ { add: { res.coin: -2400 } } ] } ]
+      effects: [ { add: { counter.ww: 2 } }, { if: { not: flag.c3_lanzi_kin }, then: [ { add: { res.coin: -12000 } } ] } ]
       next: c5_bridge
     - id: horse
       text: Horse. Put the Armance knights and the Brésy together, under one banner.
@@ -219,11 +219,11 @@
     - id: submit
       text: Go to the victor's camp and submit, on your knees, and take what terms they give.
       tags: [allies, diplomacy]
-      check: { attr: presence, skill: diplomacy, difficulty: 5, mods: [ { if: counter.court_prince >= 4 && !flag.c5_crowned_self, add: 2, label: the King remembers you }, { if: flag.c5_west_adalian, add: 1, label: you held the West for Adalia }, { if: res.coin >= 2400, add: 1, label: you can pay a fine }, { if: flag.c5_crowned_self, add: -3, label: you took a crown } ] }
+      check: { attr: presence, skill: diplomacy, difficulty: 5, mods: [ { if: counter.court_prince >= 4 && !flag.c5_crowned_self, add: 2, label: the King remembers you }, { if: flag.c5_west_adalian, add: 1, label: you held the West for Adalia }, { if: res.coin >= 12000, add: 1, label: you can pay a fine }, { if: flag.c5_crowned_self, add: -3, label: you took a crown } ] }
       success:
         text: |
           You go on your knees in the mud of the victor's camp, in front of the army, and ask for the King's mercy. You get it, at a price: [if holdings.count >= 1]every holding but your first manor[else]a fine that will take you ten years to pay[/if], your banner, your seat in any council, and your eldest as a hostage at court. You keep your head, and a roof, and your name, smaller.
-        effects: [ { set: flag.c5_submitted }, { release: la_garde }, { release: vaudrey }, { release: lisle }, { release: ashdown }, { release: wyck }, { release: ashby }, { release: hollin }, { release: wendham_rents }, { release: underhill }, { release: corbie_vineyard }, { release: sauvemer_house }, { add: { res.coin: -1200 } } ]
+        effects: [ { set: flag.c5_submitted }, { release: la_garde }, { release: vaudrey }, { release: lisle }, { release: ashdown }, { release: wyck }, { release: ashby }, { release: hollin }, { release: wendham_rents }, { release: underhill }, { release: corbie_vineyard }, { release: sauvemer_house }, { add: { res.coin: -6000 } } ]
         next: c5_reckoning
       failure:
         text: |
@@ -264,7 +264,7 @@
       text: Give the guilds their staple. The war runs on salt money.
       tags: [wealth, allies]
       text_after: The guilds get their staple, and lend the war chest a sum that makes your treasurer sit down. In the fishing villages, where salt is how they keep the catch, the price goes up by a third, and the villages notice who did it.
-      effects: [ { set: flag.c5_gave_staple }, { add: { rep.merchants: 2, rep.commons: -1, res.coin: 3600 } } ]
+      effects: [ { set: flag.c5_gave_staple }, { add: { rep.merchants: 2, rep.commons: -1, res.coin: 18000 } } ]
       next: c5_buy_war
     - id: lords
       text: Give the old lords their exemptions. They bring the knights.

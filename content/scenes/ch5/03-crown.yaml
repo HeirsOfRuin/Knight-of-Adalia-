@@ -134,7 +134,7 @@
       text: Accept the earldom.
       tags: [allies, wealth]
       text_after: You accept. The patent comes under the great seal, with your arms on it, and a herald reads it in the market square at Sauvemer to a crowd that listens in silence and goes home.
-      effects: [ { set: flag.c5_earl }, { station: great_lord }, { add: { counter.court_prince: 2, counter.west_estates: -2 } }, { hold: { id: la_garde, income: 480 } } ]
+      effects: [ { set: flag.c5_earl }, { station: great_lord }, { add: { counter.court_prince: 2, counter.west_estates: -2 } }, { hold: { id: la_garde, income: 2400 } } ]
       next: c5_reckoning
     - id: son
       text: Accept it, and ask that it go to your eldest after you, with the West's liberties written in.

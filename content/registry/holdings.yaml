@@ -17,3 +17,4 @@ market_charter: { label: The market and fair, region: west, description: "A Thur
 road_tolls: { label: The bridge tolls, region: west, description: "A stone bridge on the road to market, and a farthing for every cart that crosses it." }
 crown_revenues: { label: The revenues of the crown, region: west, description: "Tolls, salt dues, the forfeits of the courts and whatever the war tax has become." }
 querec: { label: Quérec, region: west, description: "A salt lordship in the southern marsh, forfeit for treason." }
+ravell_fee: { label: Your fee from Ravell Mill, region: adalia, description: "Ten pounds a year for life from the rents of Ravell Mill, for service in peace and war. Good while Ravell lasts." }

@@ -223,7 +223,7 @@
       text_after: |
         "Twenty pounds," says Lord Ravell, when you bring the boy in, and you nearly drop the rope. An absurd sum for a cattle-thief's nephew, and a fair one for Black Ewan's heir.
 
-        Most of it goes to Lord Ravell and your master, by right. Your share is two pounds: more money than your father has seen in a year. You keep it in your boot for a month, and touch it at night. Coll goes home in the autumn, thinner, on a borrowed pony. He does not say goodbye. At the gate he looks back once, and nods, and you cannot tell what it means.
+        Most of it goes to Lord Ravell and your master, by right. Your share is two pounds: [if background == reeve]as much as your father sees in a year of reeving[elif background == archer]more money than your father has seen in a year[elif background == burgess]what your father's house turns over in a fortnight, and more than you have ever held in your own hand[else]more than your mother is paid in two years of service[/if]. You keep it in your boot for a month, and touch it at night. Coll goes home in the autumn, thinner, on a borrowed pony. He does not say goodbye. At the gate he looks back once, and nods, and you cannot tell what it means.
       effects:
         - set: flag.c1_coll_ransomed
         - add: { res.coin: 480, rep.caldmoor: 1, rel.thurstan_ravell.respect: 1, rel.coll_glenhallow.respect: 1 }

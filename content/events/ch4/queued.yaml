@@ -63,11 +63,11 @@
     - id: pay
       text: Pay it. All of it. Your father's debt is your debt.
       tags: [wealth]
-      requires: [ res.coin >= 2400 ]
+      requires: [ res.coin >= 14400 ]
       label: "Requires Coin £10"
       text_after: |
-        Ten pounds now and the rest from the wool rents of the West, over three years. The steward is surprised; he had expected you to bargain. You burn the note yourself when the last payment is made, in the same hearth, and you are sorry your father did not live to see it.
-      effects: [ { set: flag.c4_note_paid }, { add: { res.coin: -2400, rep.merchants: 2, rep.honor: 1 } } ]
+        Sixty pounds now and the rest from the wool rents of the West, over three years. The steward is surprised; he had expected you to bargain. You burn the note yourself when the last payment is made, in the same hearth, and you are sorry your father did not live to see it.
+      effects: [ { set: flag.c4_note_paid }, { add: { res.coin: -14400, rep.merchants: 2, rep.honor: 1 } } ]
       next: "@return"
     - id: fight
       text: Fight it in law. A thirty-year-old note with no Wendham copy is worth what a court says.
@@ -75,11 +75,11 @@
       check: { attr: wits, skill: trade, difficulty: 4, mods: [ { if: skill.learning >= 3, add: 1, label: you read the Sarenzan law yourself } ] }
       success:
         text: Two terms in the King's court of the Exchequer, and a Sarenzan lawyer who costs more than the debt, and at the end of it the judges find that a debt sold three times without the debtor's knowledge is a debt nobody can prove. The Earl does not appeal. He remembers.
-        effects: [ { set: flag.c4_note_fought }, { add: { res.coin: -360, counter.court_carrow: -1, rep.merchants: 1 } } ]
+        effects: [ { set: flag.c4_note_fought }, { add: { res.coin: -2160, counter.court_carrow: -1, rep.merchants: 1 } } ]
         next: "@return"
       failure:
         text: The court finds for the Earl, with costs. You pay, and you pay the lawyers, and the Earl's steward sends you a civil letter of thanks, in his best hand.
-        effects: [ { set: flag.c4_note_paid }, { add: { res.coin: -3000, counter.court_carrow: -1 } } ]
+        effects: [ { set: flag.c4_note_paid }, { add: { res.coin: -18000, counter.court_carrow: -1 } } ]
         next: "@return"
     - id: owe
       text: Settle it in friendship. Tell the steward the Earl may count on you.
@@ -164,11 +164,11 @@
       text: Name a price for your silence.
       tags: [cunning, wealth]
       text_after: |
-        You name it: [if flag.c3_home_mortgaged]what is still owed on Underhill, cancelled, and two hundred marks besides[elif flag.c3_holds_home]two hundred marks in coin, since Underhill is already yours[else]Underhill, where your mother was born, in fee, by charter, this year[/if]. He does not argue. He looks at you the way his mother looked at you in her solar when you were a boy, and says, "You are exactly what she said you were." [if flag.c3_holds_home]The money comes at Michaelmas.[else]The charter comes at Michaelmas.[/if] So does a man in Ravell colours who watches your gate for a month and then goes away, which tells you how close it was.
+        You name it: [if flag.c3_home_mortgaged]what is still owed on Underhill, cancelled, and sixty marks besides[elif flag.c3_holds_home]sixty marks in coin, since Underhill is already yours[else]Underhill, where your mother was born, in fee, by charter, this year[/if]. He does not argue. He looks at you the way his mother looked at you in her solar when you were a boy, and says, "You are exactly what she said you were." [if flag.c3_holds_home]The money comes at Michaelmas.[else]The charter comes at Michaelmas.[/if] So does a man in Ravell colours who watches your gate for a month and then goes away, which tells you how close it was.
       effects:
         - set: flag.c4_ravell_squeezed
         - if: flag.c3_holds_home
-          then: [ { add: { res.coin: 3200 } } ]
-          else: [ { hold: { id: underhill, income: 420 } } ]
+          then: [ { add: { res.coin: 9600 } } ]
+          else: [ { hold: { id: underhill, income: 2100 } } ]
         - add: { rep.ruthlessness: 2, rep.nobles: -2, rel.eleanor_ravell.affection: -3 }
       next: "@return"

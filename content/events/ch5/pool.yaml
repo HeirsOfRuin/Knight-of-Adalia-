@@ -29,7 +29,7 @@
       text: Thank them, and send them home with a purse. They have done enough.
       tags: [allies]
       text_after: They go, some of them relieved, and the captain last, slowly, looking back. In the spring three of them turn up at the muster anyway.
-      effects: [ { add: { res.coin: -240, res.men: 3, rep.honor: 1 } } ]
+      effects: [ { add: { res.coin: -480, res.men: 3, rep.honor: 1 } } ]
       next: "@return"
 
 - id: c5w_spy
@@ -91,11 +91,11 @@
         effects: [ { add: { rep.commons: -1 } } ]
         next: "@return"
     - id: grain
-      text: Buy grain for the town out of your own purse. (£6)
+      text: Buy grain for the town out of your own purse. (£21)
       tags: [wealth, allies]
-      requires: [ res.coin >= 1440 ]
+      requires: [ res.coin >= 5040 ]
       text_after: The grain comes in on the next tide. The riot stops the day the bakers light their ovens. In the harbour quarter they call it the lord's bread for years, and they mean you.
-      effects: [ { add: { res.coin: -1440, rep.commons: 2, counter.west_estates: 1 } } ]
+      effects: [ { add: { res.coin: -5040, rep.commons: 2, counter.west_estates: 1 } } ]
       next: "@return"
     - id: soldiers
       text: Send the soldiers the guilds asked for.
@@ -117,11 +117,11 @@
     They want what their husbands were promised at the muster: something for the ones who did not come home.
   choices:
     - id: pensions
-      text: Pay every widow of the levy a pension for life, from your own purse. (£8)
+      text: Pay every widow of the levy a pension for life, from your own purse. (£32)
       tags: [wealth, allies]
-      requires: [ res.coin >= 1920 ]
+      requires: [ res.coin >= 7680 ]
       text_after: Your clerks write forty names in a book, and a sum against each, and the book is read aloud in every parish of the West. It is the most expensive book you will ever own, and the best.
-      effects: [ { add: { res.coin: -1920, rep.commons: 2, rep.piety: 1, estate.temper: 1 } } ]
+      effects: [ { add: { res.coin: -7680, rep.commons: 2, rep.piety: 1, estate.temper: 1 } } ]
       next: "@return"
     - id: estates
       text: Put it to the Estates. The West made the war; the West can pay for it.
@@ -152,7 +152,7 @@
       text: Ransom him at the full price.
       tags: [wealth]
       text_after: His family pays, in the end, after a year of letters, and you could buy a manor with what they pay. The young man writes to thank you for the physician. His family does not write at all.
-      effects: [ { add: { res.coin: 4800 } } ]
+      effects: [ { add: { res.coin: 36000 } } ]
       next: "@return"
     - id: free
       text: Send him home without ransom, with your compliments to his cousin.

@@ -1,3 +1,4 @@
+import { PAY_PER_MAN } from '../../src/engine/estate';
 import { describe, it, expect } from 'vitest';
 import { applyEffects } from '../../src/engine/effects';
 import { getValue } from '../../src/engine/paths';
@@ -78,7 +79,7 @@ describe('estate', () => {
     const coin = s.res.coin ?? 0;
     const x = ctx();
     applyEffects(s, c, fx({ advance: { seasons: 2 } }), x); // summer (food 0), then autumn (harvest, rent, eat)
-    expect(s.res.coin).toBe(coin + 200 * 3 + 2 * 40);
+    expect(s.res.coin).toBe(coin + 200 * 20 + 2 * 200);
     expect(s.estate!.food).toBe(0 + 5 - 1); // 200 people / 40
     expect(x.changes.join('|')).toMatch(/Michaelmas rents/);
     s.estate!.food = 0;
@@ -93,20 +94,20 @@ describe('estate', () => {
     s.time = 1; // summer
     s.res.men = 30;
     s.res.garrison = 10;
-    s.res.coin = 40 * 12 + 5;
+    s.res.coin = 40 * PAY_PER_MAN + 5;
     const x = ctx();
     applyEffects(s, c, fx({ advance: { seasons: 1 } }), x);
     expect(s.res.coin).toBe(5);
     expect(x.changes.join('|')).toMatch(/Michaelmas pay for 40 men/);
     // a year later he can pay only 20 of 40: the unpaid wait a year
-    s.res.coin = 20 * 12;
+    s.res.coin = 20 * PAY_PER_MAN;
     const w = ctx();
     applyEffects(s, c, fx({ advance: { seasons: 4 } }), w);
     expect(s.res.coin).toBe(0);
     expect((s.res.men ?? 0) + (s.res.garrison ?? 0)).toBe(40);
     expect(w.changes.join('|')).toMatch(/will wait one year/);
     // short again the next year: half the unpaid (10) desert, in proportion
-    s.res.coin = 20 * 12;
+    s.res.coin = 20 * PAY_PER_MAN;
     const y = ctx();
     applyEffects(s, c, fx({ advance: { seasons: 4 } }), y);
     expect((s.res.men ?? 0) + (s.res.garrison ?? 0)).toBe(30);
@@ -207,7 +208,7 @@ describe('holdings and heirs growth', () => {
     const before = s.res.coin ?? 0;
     while (s.time % 4 !== 1) s.time += 1; // next season is Michaelmas
     applyEffects(s, c, fx({ advance: { seasons: 1 } }), ctx());
-    expect((s.res.coin ?? 0) - before).toBe(300 + 600); // manor rent (100 people x 3) + Lisle halved for a sullen temper
+    expect((s.res.coin ?? 0) - before).toBe(2000 + 600); // manor rent (100 people x 20d) + Lisle halved for a sullen temper
     applyEffects(s, c, fx({ release: 'lisle' }), ctx());
     expect(getValue(s, c, 'holdings.count')).toBe(0);
   });

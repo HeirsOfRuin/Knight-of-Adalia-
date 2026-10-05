@@ -114,6 +114,8 @@
 
     [if heirs.count >= 2]{heir.eldest.name} is [if heir.eldest.age <= 1]barely walking[else]{heir.eldest.ageword}, and walking, and talking, mostly to the dogs[/if], and {heir.second.name} is in the cradle. [if heir.eldest.temperament == bold]{heir.eldest.name} has already fallen out of the hay-loft once and gone straight back up the ladder.[elif heir.eldest.temperament == bookish]{heir.eldest.name} sits by the priest at Mass and watches his hands turn the pages.[elif heir.eldest.temperament == merry]{heir.eldest.name} laughs at everything, including you, especially you.[else]{heir.eldest.name} watches everyone, and says little, and misses nothing.[/if][elif heirs.count == 1]{heir.eldest.name} is [if heir.eldest.age <= 1]barely walking[else]{heir.eldest.ageword}, and into everything[/if]. [if heir.eldest.temperament == bold]Already falls out of things and climbs back in.[elif heir.eldest.temperament == bookish]Already sits still, which nobody else in your family has ever managed.[elif heir.eldest.temperament == merry]Already laughs at you, which is fair.[else]Already watches, the way you used to.[/if][else]The hall is quiet. The dogs are on the table.[/if]
 
+    [if flag.c3_married && npc.@spouse.alive]{wife.home}[/if]
+
     [break]
 
     The question is who holds the manor while you are gone.[if holdings.count >= 1] And the other places too, with their own reeves and their own complaints, which come by every carrier now.[/if]
@@ -158,12 +160,13 @@
       text: Raise the whole company properly, on credit if you must.
       tags: [martial, wealth]
       text_after: |
-        You raise the whole company: thirty lances and sixty bows, horsed and harnessed and paid a quarter in advance, which is what it takes to get men worth having. It costs every penny you have and a loan from [if flag.c3_lanzi_kin && npc.fiammetta_lanzi.alive]your wife's house, at a rate your wife says is an insult to the family[elif flag.c3_lanzi_kin]your dead wife's house, at a rate her uncles call a kindness to her memory[elif flag.c3_carrow_paper || flag.c3_party_carrow]the Earl of Carrow's steward, who is delighted to oblige[else]a Sarenzan house in Sauvemer[/if]. You ride to the muster at the head of a hundred men with your own badge on their sleeves, and other lords look at your company before they look at you.
-      effects: [ { set: flag.c4_full_company }, { add: { res.men: 90, res.coin: -2400, counter.company: 3, res.renown: 1 } }, { if: { not: flag.c3_lanzi_kin }, then: [ { set: flag.c4_war_debt } ] } ]
+        You raise the whole company: thirty lances and sixty bows, horsed and harnessed and paid a quarter in advance, which is what it takes to get men worth having. [if flag.c4_company_borrowed]It costs every penny you have and a loan from [if flag.c3_lanzi_kin && npc.fiammetta_lanzi.alive]your wife's house, at a rate your wife says is an insult to the family[elif flag.c3_lanzi_kin]your dead wife's house, at a rate her uncles call a kindness to her memory[elif flag.c3_carrow_paper || flag.c3_party_carrow]the Earl of Carrow's steward, who is delighted to oblige[else]a Sarenzan house in Sauvemer[/if].[else]It costs ten pounds out of your own chest, which surprises the King's clerks, who are used to lords who borrow.[/if] You ride to the muster at the head of a hundred men with your own badge on their sleeves, and other lords look at your company before they look at you.
+      effects: [ { if: res.coin < 2400, then: [ { set: flag.c4_company_borrowed } ] }, { if: [ "!flag.c3_lanzi_kin", res.coin < 2400 ], then: [ { set: flag.c4_war_debt } ] }, { set: flag.c4_full_company }, { add: { res.men: 90, res.coin: -2400, counter.company: 3, res.renown: 1 } } ]
       next: c4_buy_fitting
     - id: good
       text: Raise fewer men, and only good ones.
       tags: [martial, cunning]
+      requires: [ res.coin >= 960 ]
       text_after: |
         You write to the King's clerks that you will bring twenty lances and forty bows, all of them men who have done it before, and you will pay the difference in the fine. The clerks grumble. The marshal, when he sees your company at the muster, stops grumbling. Small, hard, and quiet: men who stand.
       effects: [ { set: flag.c4_good_company }, { add: { res.men: 60, res.coin: -960, counter.company: 2 } } ]
@@ -171,6 +174,7 @@
     - id: manor
       text: Raise the company from your own manor.
       tags: [allies, wealth]
+      requires: [ res.coin >= 480 ]
       text_after: |
         You raise it from the manor and the villages round: the young men, the second sons, [if flag.c2_granted_kerval]the orchard men's boys[else]the salt-boilers' boys[/if] who want to see the world, the Adalian settlers' sons who want to show the locals something. They are cheap and brave and know nothing. [if flag.c2_granted_marsalin]Margot[elif flag.c2_granted_kerval]Gwenaël[else]Bastien[/if] stands at the gate as they march out and counts them, aloud, and you know [if flag.c2_granted_marsalin]she[else]he[/if] will count them again when they come back.
       effects: [ { set: flag.c4_manor_company }, { add: { res.men: 70, res.coin: -480, counter.company: 1, estate.people: -40, estate.temper: -1, res.levy: -30 } } ]
@@ -178,6 +182,7 @@
     - id: rotbart
       text: Make Rotbart's men the core of it.
       tags: [martial, cunning]
+      requires: [ res.coin >= 1200 ]
       visible_if: [ flag.c3_hired_bandits, npc.ulric_rotbart.alive ]
       text_after: |
         Rotbart's sixty come out of your barns, and he finds twenty more of their kind in a month, from places you do not ask about. They are the best soldiers you will ever pay for and the worst men you will ever command. Your manor goes back to its own watch. They want a share of everything, in writing. You give it to them in writing. At the muster the King's marshal looks at the black eagle sewn under your badge and says, "Iron Company?" and you say, "Mine," and he lets it go.
@@ -283,7 +288,7 @@
   text: |
     The army winters in the Armance, in the towns it has taken, and the Constable winters in Cordelle, and everyone knows what the spring will bring.
 
-    [if flag.c4_wife_holds]Your wife's letters come every fortnight, by the Lannec boats, in a quick hand: [if flag.c2_granted_kerval]the price of apples, the state of the mill-race[elif flag.c2_granted_marsalin]the price of salt, the state of the dyke[else]the price of salt, the state of the ditches[/if], what the children said. [if heirs.count >= 1]At the bottom, in a different hand, enormous: a word or two from {heir.eldest.name}, and a drawing of a horse, or possibly a dog.[/if][elif heirs.count >= 1]The letters from home come by the Lannec boats. At the bottom of one, in a huge hand guided by somebody else's: {heir.eldest.name}.[else]No letters come from home that matter. You find you mind.[/if]
+    [if flag.c4_wife_holds && npc.@spouse.alive]Your wife's letters come every fortnight, by the Lannec boats. {wife.letter} [if heirs.count >= 1]At the bottom, in a different hand, enormous: a word or two from {heir.eldest.name}, and a drawing of a horse, or possibly a dog.[/if][elif heirs.count >= 1]The letters from home come by the Lannec boats. At the bottom of one, in a huge hand guided by somebody else's: {heir.eldest.name}.[else]No letters come from home that matter. You find you mind.[/if]
 
     [break]
 
@@ -516,7 +521,7 @@
   text: |
     You are {age_words}. You carry a square banner now, and lead other men's knights under it, and [if holdings.count >= 2]hold land in more places than you can ride to in a week[elif holdings.count == 1]hold land in two countries[else]hold the King's ear, which is a kind of land[/if].
 
-    [if heirs.count >= 1]At home, {heirs.names} [if heirs.count >= 2]are[else]is[/if] growing, without you, the way children do.[/if] [if flag.c3_married && npc.@spouse.alive]Your wife's last letter says [if flag.c2_granted_kerval]the orchards have set well and the mill-race is mended[elif flag.c2_granted_marsalin]the dyke held and the salt is good[else]the ditches held through the winter and the salt is poor but sells[/if], and that she has had the hall whitewashed, and you are not to complain about it.[/if]
+    [if heirs.count >= 1]At home, {heirs.names} [if heirs.count >= 2]are[else]is[/if] growing, without you, the way children do.[/if] [if flag.c3_married && npc.@spouse.alive]Your wife's last letter says [if flag.c2_granted_kerval]the orchards have set well and the mill-race is mended[elif flag.c2_granted_marsalin]the dyke held and the salt is good[else]the ditches held through the winter and the salt is poor but sells[/if], and that she has had the hall whitewashed, and you are not to complain about it.[/if] [if estate.recovery >= 110]The steward writes that there are new houses going up along the lane for the first time since the Mottle, and that the priest wants a bigger font.[elif estate.recovery >= 95]The steward writes that the last of the empty holdings has been taken, by a family from over the hill with six children and a cow.[elif estate.recovery >= 80]The steward writes that most of the empty holdings have tenants again, and the rest have nettles.[else]The steward writes that there are still houses standing empty since the Mottle, and that the young people go to the towns.[/if]
 
     [if res.men >= 10]The indenture ran out with the campaign. The King's wage stops, and the company does not. From this Michaelmas every man in it draws his shilling a year from your purse, [if res.garrison >= 1]as the garrison at home already does, [/if]or goes looking for a lord who will pay him.[/if]
   on_enter: [ { clear: flag.c4_on_indenture } ]

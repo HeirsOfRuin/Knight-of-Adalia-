@@ -28,6 +28,7 @@ export function parseStyleGuide(md: string): StyleRule[] {
 /** All player-facing strings in the bundle, with a location. */
 export function textsOf(content: ContentBundle): { where: string; text: string }[] {
   const out: { where: string; text: string }[] = [];
+  for (const [id, r] of Object.entries(content.registry.romances)) for (const [m, t] of Object.entries(r.voice)) out.push({ where: `romances/${id}/voice.${m}`, text: t });
   for (const s of Object.values(content.scenes)) {
     const w = `${content.sources[s.id]}:${s.id}`;
     out.push({ where: w, text: s.text });

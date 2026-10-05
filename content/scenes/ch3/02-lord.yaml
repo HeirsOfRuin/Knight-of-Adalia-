@@ -206,7 +206,7 @@
 - id: c3_truce_ends
   chapter: ch3
   title: Lady Day
-  on_enter: [ { advance: { seasons: 3 } } ]
+  on_enter: [ { catch_up: { year: 28, season: spring } } ]
   text: |
     The truce of Saint-Lys runs out at Lady Day, three years to the day after the bankers made it, and nobody renews it, and nobody declares war either.
 

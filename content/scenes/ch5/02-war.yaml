@@ -58,7 +58,7 @@
   text: |
     In the spring the West mustered on the meadows below Lannec: [if counter.ww >= 2]more men than anyone expected[else]fewer men than anyone hoped[/if], under more banners than anyone could name. [if flag.c4_sheltered_brese || flag.c5_brese_pact]Thibaut's Brésy knights are there, in their own colours, by the hundred now.[/if] [if flag.c4_iron_core && npc.ulric_rotbart.alive]Rotbart's old Iron Company men are there too, grey and wicked and paid.[/if]
 
-    [if heir.eldest.alive && heir.eldest.sex == son]{heir.eldest.name} is {heir.eldest.ageword}, and [if heir.eldest.upbringing == arms || heir.eldest.upbringing == page]has been trained to this since he could walk[elif heir.eldest.upbringing == church]has left the abbey without asking anyone, and is here, in borrowed harness[else]is here, in harness that fits him for the first time[/if].[/if] [if flag.c3_married && npc.@spouse.alive]Your wife has come to Lannec to see you off, and stands at the edge of the meadow with the other women, and does not wave.[/if]
+    [if heir.eldest.alive && heir.eldest.sex == son]{heir.eldest.name} is {heir.eldest.ageword}, and [if heir.eldest.upbringing == arms || heir.eldest.upbringing == page]has been trained to this since he could walk[elif heir.eldest.upbringing == church]has left the abbey without asking anyone, and is here, in borrowed harness[else]is here, in harness that fits him for the first time[/if].[/if] [if flag.c3_married && npc.@spouse.alive]{wife.muster}[/if]
 
     What the West lacks is not courage. It is something else.
   choices:
@@ -203,7 +203,7 @@
   text: |
     In the autumn the victors come for the men who led the West, and you are high on every list.
 
-    [if flag.c5_crowned_self]A crowned rebel is the worst kind. There will be no terms for you. There may be terms for your children, if you are not there to be hanged in front of them.[elif flag.c5_west_adalian]The Valdrennish want you for holding the West against them. They are offering a price for you in every port.[else]Both kings want you. Each has a gallows ready, and a list of your lands and who will have them.[/if]
+    [if flag.c5_crowned_self]A crowned rebel is the worst kind. There will be no terms for you. There may be terms for [if heirs.count >= 2]your children[elif heirs.count == 1]{heir.eldest.name}[else]your people[/if], if you are not there to be hanged in front of them.[elif flag.c5_west_adalian]The Valdrennish want you for holding the West against them. They are offering a price for you in every port.[else]Both kings want you. Each has a gallows ready, and a list of your lands and who will have them.[/if]
 
     [break]
 

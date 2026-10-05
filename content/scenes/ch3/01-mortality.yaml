@@ -407,7 +407,7 @@
 - id: c3_spring
   chapter: ch3
   title: The First Spring
-  on_enter: [ { advance: { seasons: 1 } } ]
+  on_enter: [ { advance: { seasons: 2 } } ]
   text: |
     In the spring the swallows come back, as if nothing had happened.
 

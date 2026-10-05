@@ -425,7 +425,7 @@
       text: Go to where the Armance lances are, and find the Duchess.
       tags: [diplomacy]
       text_after: |
-        She is sitting on a dead horse on the beach with her helm off, letting a surgeon sew her scalp. A third of her lances did not come back from the charge. "[if flag.c2_jehanne_noticed]The one who did not yawn,[else]An Adalian,[/if]" she says, when she sees you. "Tell your King I came. Tell him I want my husband. Tell him that before he forgets."
+        She is sitting on a dead horse on the beach with her helm off, letting a surgeon sew her scalp. A third of her lances did not come back from the charge. "[if flag.c2_jehanne_noticed]The one who did not yawn,[else]An Adalian,[/if]" she says, when she sees you. "Tell your King I came. Tell him I want my husband and my son. Tell him that before he forgets."
 
         You will tell him, if you ever get the chance. You suspect she knows how likely that is.
       effects: [ { set: flag.c2_jehanne_message }, { add: { rel.jehanne_armance.respect: 1, rep.valdrenne: 1 } } ]

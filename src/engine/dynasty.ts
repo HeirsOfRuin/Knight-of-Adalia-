@@ -20,7 +20,7 @@ export interface DynastyHeir {
   upbringing?: string;
   /** his bond with the child, -5..5 */
   bond: number;
-  /** a match made or promised for the child, if any: penhoet, brese, lanzi, valdrenne, chosen, arranged */
+  /** a match made or promised for the child, if any: penhoet, brese, lanzi, valdrenne, royal, chosen, arranged */
   match?: string;
   /** crowned in his father's lifetime */
   crowned?: boolean;
@@ -72,6 +72,7 @@ function heirMatch(state: GameState, index: number): string | undefined {
   const f = state.flags;
   if (index === 0) {
     if (f.c5r_peace_marriage) return 'valdrenne';
+    if (f.c5k_marriage) return 'royal';
     if (f.c4_daughter_chose) return 'chosen';
     if (f.c4_daughter_matched) return 'arranged';
   }

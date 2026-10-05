@@ -213,12 +213,27 @@ export const EndingDefSchema = z.object({
   // the "to be continued" line on the ending page: what the house carries into the next story
   sequel: z.string().optional(),
 }).strict();
+// A wife's own voice at the recurring moments of a marriage. Scenes write {wife.<moment>}, which
+// renders the current wife's line (a passage: conditions and variables allowed). The stage says
+// from when a moment can happen, so a wife married later needs only the later moments.
+export const WIFE_MOMENTS = {
+  first_year: 'ch3', lying_in: 'ch3', fever: 'ch3', farewell: 'ch3',
+  home: 'ch4a', letter: 'ch4a', third: 'ch4a',
+  writ: 'ch4b',
+  muster: 'ch5', old: 'ch5', epilogue: 'ch5',
+} as const;
+export type WifeMoment = keyof typeof WIFE_MOMENTS;
+export const MARRIAGE_STAGES = ['ch3', 'ch4a', 'ch4b', 'ch5'] as const;
+
 export const RomanceDefSchema = z.object({
   npc: Id,
   introduced: z.string(),
   hidden: z.boolean().default(false),
   brings: z.string(),
   obstacle: z.string(),
+  // the stage at which this match can become a marriage (ch4a: Ch4 Acts I-II, ch4b: Acts III-IV)
+  married_in: z.enum(MARRIAGE_STAGES).default('ch3'),
+  voice: z.record(z.string(), z.string()).default({}),
 }).strict();
 
 export const HoldingDefSchema = z.object({

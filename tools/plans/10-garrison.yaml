@@ -200,13 +200,15 @@ steps:
   c5_estates_2: hales
   c5_vote: adalia
   c5_war_opens: divide!success
-  c5_buy_war: done
+  c5_buy_war:
+    - arrears
+    - done
   c5w_spy: mercy
   c5_war_muster: horse!success
   c5_bridge: hold!success
   c5_war_after: on
   c5w_widows: estates
-  c5_kings_reward: accept
+  c5_kings_reward: son!success
   c5_reckoning: heir
   c5_younger: time
   c5f_court: law

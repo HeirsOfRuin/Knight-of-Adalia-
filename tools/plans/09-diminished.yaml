@@ -208,7 +208,7 @@ steps:
   c5_war_opens: divide!failure
   c5_price: lords
   c5_buy_war:
-    - arrears
+    - chantry
     - done
   c5w_bread: go!success
   c5_war_muster: horse!success

@@ -159,7 +159,7 @@
   chapter: ch4
   title: The King's Christmas
   checkpoint: true
-  on_enter: [ { advance: { seasons: 3 } } ]
+  on_enter: [ { catch_up: { year: 36, season: winter } } ]
   text: |
     The King keeps Christmas at Wendmere in the {reign_year} year of his reign, and everyone who matters is there, and everyone who matters notices that the King is ill.
 
@@ -206,7 +206,7 @@
   title: Spring
   on_enter: [ { advance: { seasons: 1 } } ]
   text: |
-    [if flag.c3_married && npc.@spouse.alive && heirs.born < 3]In the spring your wife tells you, in the orchard, the way she told you the first time, and laughs at your face.[else]Spring comes to the West, late and wet.[/if]
+    [if flag.c3_married && npc.@spouse.alive && heirs.born < 3]{wife.third}[else]Spring comes to the West, late and wet.[/if]
   choices:
     - id: on
       text: Go on.
@@ -396,7 +396,7 @@
   title: Spring, Year Thirty-Eight
   on_enter: [ { advance: { seasons: 1 } } ]
   text: |
-    You are {age_words}. [if holdings.count >= 2]Your name is on the rent-rolls of more places than you have slept in.[else]You hold your manor and your tower and your name.[/if] [if heirs.count >= 1]{heirs.names}: [if heirs.count >= 2]growing, quarrelling, away and home again[else]growing, away and home again[/if].[/if]
+    You are {age_words}. [if holdings.count >= 2]Your name is on the rent-rolls of more places than you have slept in.[else]You hold your manor and your [if flag.inv_tower]tower[else]hall[/if] and your name.[/if] [if estate.recovery >= 120]The manor is bigger than it has ever been: a new street below the church, a second alehouse, children everywhere.[elif estate.recovery >= 100]The manor is full again. Nobody under twenty can remember it empty.[elif estate.recovery >= 85]The manor is nearly full again.[else]The manor is still smaller than it was before the Mottle, and the empty houses are falling in.[/if] [if heirs.count >= 1]{heirs.names}: [if heirs.count >= 2]growing, quarrelling, away and home again[else]growing, away and home again[/if].[/if]
 
     The King is dying. Everyone knows it, and nobody says it, and everyone is counting.
   choices:

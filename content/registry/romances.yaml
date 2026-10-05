@@ -1,18 +1,284 @@
 # Romance candidates (DESIGN.md §11a). Slot 1 is one candidate per background.
 # Ch2+ candidates (#6-12) are listed in canon.md and get entries when their chapter is written.
-mag_coker: { npc: mag_coker, introduced: prologue, brings: "Loyalty and Commons standing; Wat Coker as a brother-in-law", obstacle: "The Coker feud. Status cost with gentry." }
-annot_dyer: { npc: annot_dyer, introduced: prologue, brings: "Commons and Wendham goodwill", obstacle: "His father wants a richer match. Status cost." }
-mariot_wood: { npc: mariot_wood, introduced: prologue, brings: "A friend in the Ravell chase; woodcraft", obstacle: "Status cost. The forester's debts." }
-nell_laundress: { npc: nell_laundress, introduced: prologue, brings: "Eyes and ears below stairs at Ravell Hall", obstacle: "Status cost. Lady Ravell's notice." }
-isabel_sayer: { npc: isabel_sayer, introduced: ch1, brings: "A first gentry connection; Courtesy", obstacle: "Lady Ravell guards her waiting-women. Her father wants a knight at least." }
-maud_delisle: { npc: maud_delisle, introduced: ch1, brings: "An heiress's lands and a large cut to prejudice", obstacle: "Her marriage belongs to Lord Ravell, who means to sell it. Scandal is dangerous." }
-cecily_fuller: { npc: cecily_fuller, introduced: ch1, brings: "Coin, credit and Merchant standing", obstacle: "Knights sneer at trade. Her father wants a title first." }
-joan_wyck: { npc: joan_wyck, introduced: ch1, hidden: true, brings: "Wyck manor and a household that already runs", obstacle: "Older than him. Her stepson's claims on Wyck." }
-alys_fane: { npc: alys_fane, introduced: ch2, brings: "A connection to the Earl of Westry, a great house", obstacle: "Her father wants a ransom-rich husband; rivals for her are many and well born." }
-heloise_corbie: { npc: heloise_corbie, introduced: ch2, hidden: true, brings: "Valdrenne standing; kin in the conquered country", obstacle: "Enemy blood. Crown suspicion. Her brother's ransom stands between you." }
-fiammetta_lanzi: { npc: fiammetta_lanzi, introduced: ch2, hidden: true, brings: "Credit, ships, Sarenza standing", obstacle: "Foreign, and her father's bank holds half the shire's debts. The Church distrusts the family." }
-clemence_vaux: { npc: clemence_vaux, introduced: ch2, hidden: true, brings: "Standing in Sauvemer and its march; a household that knows the country", obstacle: "Hostile townsfolk, her own kin's claims, and whatever happened at the siege." }
-alienor_brese: { npc: alienor_brese, introduced: ch3, brings: "Peace on the border; Brésy kin across the march; Valdrenne standing", obstacle: "An arranged match: her father's terms, her cousin Thibaut, and whether she forgives the bargaining." }
-philippa_ashdown: { npc: philippa_ashdown, introduced: ch3, brings: "Ashdown, three manors in the south of Adalia; the King's goodwill", obstacle: "The King's gift: refusing it offends. She did not choose him and resents being given." }
-mahaut_armance: { npc: mahaut_armance, introduced: ch4, hidden: true, brings: "The Armance: the dynastic claim to the West", obstacle: "Her marriage is in the King's gift; every great house wants her; only a widower or an unmarried lord can ask." }
-blanche_kerguen: { npc: blanche_kerguen, introduced: ch4, hidden: true, brings: "Her dower of Kerguen; a mother for his children; Armance kin", obstacle: "Offered only to a widower who has not asked for Mahaut. Her son is the Kerguen heir, and she means to keep it so." }
+# voice: the wife's own line at each moment of the marriage ({wife.<moment>} in scenes; schema WIFE_MOMENTS)
+mag_coker:
+  npc: mag_coker
+  introduced: prologue
+  brings: Loyalty and Commons standing; Wat Coker as a brother-in-law
+  obstacle: The Coker feud. Status cost with gentry.
+  voice:
+    first_year: 'Mag runs the manor the way she ran the Coker cottage: loudly, and from the doorway. Within a month the dairymaids are afraid of her, the reeve is afraid of her, and the steward has started asking her before he asks you. "They''re not bad," she tells you at night. "They''re just used to nobody watching."'
+    lying_in: Mag will not lie in. She is in the dairy the day before her pains start, and in the yard shouting at a carter the morning of, and only goes up when the midwife takes her by the arm. "Wat was born in a ditch," she says on the stairs. "Our mother walked home after."
+    fever: Mag sits by the cradle with her sleeves rolled up and a basin of cold water, and has thrown the priest out twice. She does not cry. She talks to the child the whole time, low and steady, the way she talks to a frightened cow.
+    farewell: 'Mag does not kiss you in front of the village. She grips your stirrup and says, "Come back with all your fingers."[if npc.wat_coker.alive] And, lower: "If you see my brother, tell him he''s a fool."[/if]'
+    home: Mag listens to the news of the war with her arms folded. "The last war gave you this manor," she says. "This one had better give you something we can eat."
+    letter: 'Her letters are short and spelled the way she talks: what the harvest made, who is stealing, which of your men''s wives has had a baby. Every one ends the same way: "Don''t do anything brave."'
+    third: In the spring Mag tells you, in the cowshed, between two cows, as if it were news about the price of hay. Then she laughs at your face, and goes on milking.
+    writ: Mag reads the writ, or has it read to her by the priest, and spits in the fire. "They want you because you can fight and you're nobody's cousin," she says. "Go. Make them pay for it."
+    muster: Mag has come to Lannec to see you off, in her good dress and her old boots. She stands with the lords' wives and does not look at any of them, and when your company passes she shouts your name, once, across the whole meadow.
+    old: Mag sits across the fire from you with her mending. [if heirs.count >= 1]She still talks to the dogs as if they were her children and to the children as if they were dogs, and both of them obey her.[else]She still talks to the dogs as if they were people, and to people as if they were dogs, and both of them obey her.[/if]
+    epilogue: and never once in all those years lets a lady at any table forget that she was a Coker of Ashby, or that she was proud of it
+
+annot_dyer:
+  npc: annot_dyer
+  introduced: prologue
+  brings: Commons and Wendham goodwill
+  obstacle: His father wants a richer match. Status cost.
+  voice:
+    first_year: Annot fills the manor with noise. She laughs in the kitchen, argues with the steward about the price of madder, and has the hall hung with cloth from Wendham, blue, because she knows what it cost and nobody else does. The village does not know what to make of a lady with blue hands. By Michaelmas they have stopped trying.
+    lying_in: 'Annot is frightened, and says so, loudly, to anyone who will listen, and then laughs at herself for saying it. Her mother sends a parcel from Wendham: swaddling bands, a holy medal, and a letter that says the Dyer women have always had easy births, which is a lie, and Annot knows it, and is comforted anyway.'
+    fever: Annot has stopped laughing. She sits by the cradle and holds the child's hot hand and sings, under her breath, the dyers' songs from the vat-yard in Wendham, the same three over and over.
+    farewell: Annot hugs you at the gate in front of everybody, the whole village, the steward, your men. "Don't you dare die," she says, loud enough for all of them. "I've only just got used to you."
+    home: Annot hears about the war and laughs, but not the usual way. "My father said the wool trade lives on wars," she says. "He never said what the wives live on."
+    letter: Her letters are long and badly spelled and full of jokes, and she draws the steward's face in the margins when he annoys her. Every one is the best part of your fortnight.
+    third: In the spring Annot tells you over supper, by putting a baby's cap on your head in front of the whole hall. The hall cheers. She laughs until she has to sit down.
+    writ: 'Annot reads the writ and whistles. "A writ under the great seal," she says. "My father would have it framed." Then, quieter: "Go. But come home a lord, not a story."'
+    muster: Annot has come to Lannec to see you off, and climbs on a cart to see over the crowd, and waves both arms when your company passes, and does not care who sees her do it.
+    old: Annot's hands are not blue any more. She notices, one evening by the fire, and looks at them a long time, and then laughs, louder than she needs to.
+    epilogue: and never once in all those years lets a lady at any table forget that she came from the dyers' street in Wendham, or that she was proud of it
+
+mariot_wood:
+  npc: mariot_wood
+  introduced: prologue
+  brings: A friend in the Ravell chase; woodcraft
+  obstacle: Status cost. The forester's debts.
+  voice:
+    first_year: Mariot says little in the hall, and less to the knights' wives who come to look at her. But she walks every boundary of the manor in her first month, alone, and comes back knowing more about your woods and fields than your steward does.
+    lying_in: Mariot is calm. She has helped deliver calves and fawns, she says, and a forester's wife once, in the snow. When the time comes she goes up without a word, and the women who go up with her come down later and say she made less noise than any of them.
+    fever: Mariot has gone out in the dark to the woods and come back with willow bark and feverfew, and sits at the cradle steeping them in a cup, quiet and exact, counting the child's breaths under her own.
+    farewell: Mariot walks beside your horse to the edge of the woods, saying nothing, and at the edge of the trees she stops. "I'll be here," she says. It is the longest speech she makes all day.
+    home: Mariot hears about the war and goes out to the woods for the afternoon. When she comes back she says, "You'll need the old horse shod again," and that is all she says about it.
+    letter: 'Her letters are few, and short, and exact: the lambing, the wood cut, the boundary oak that came down in a storm. Once, at the bottom, she writes: "The house is too quiet."'
+    third: In the spring Mariot takes you out into the wood, to the place where the bluebells are, and tells you there, and you understand that she has been saving the place for it.
+    writ: Mariot reads the writ slowly, twice, and puts it down. "You'll go," she says. It is not a question, and she does not argue, but she does not sleep that night, and neither do you.
+    muster: Mariot has come to Lannec to see you off. She stands apart from the other wives, at the edge of the trees by the river, and you only see her because you knew to look there.
+    old: Mariot still walks the boundaries every spring, slower now, with a stick, and comes back and tells you which trees have fallen and which have not.
+    epilogue: and never once in all those years lets a lady at any table forget that she was a forester's daughter from the Ravell chase, or that she was proud of it
+
+nell_laundress:
+  npc: nell_laundress
+  introduced: prologue
+  brings: Eyes and ears below stairs at Ravell Hall
+  obstacle: Status cost. Lady Ravell's notice.
+  voice:
+    first_year: 'Nell laughs at the manor, all of it: the steward''s chain, the priest''s Latin, the way the servants bow to her. Then she goes down to the laundry on the first wash-day and works beside them, and by the end of the year they would walk into the sea for her.'
+    lying_in: Nell is terrified and makes a joke of it, every hour, until the jokes stop being funny. She holds your hand on the stairs and says, "If I die, don't you dare marry a lady."
+    fever: Nell sits at the cradle with a wet cloth and talks nonsense to the child, every song and story from the laundry at Ravell, and does not stop even when her voice goes.
+    farewell: Nell laughs at you on your big horse, at the gate, in front of everybody. "Look at him," she says to the village. "You'd think he'd never carried a basket of wet sheets in his life." Then she stops laughing, and holds your hand a moment too long.
+    home: Nell listens to the war news and says, "At Ravell, when the lord went to war, we washed his shirts and waited. I'm not washing your shirts." She does, though.
+    letter: Her letters are written by the priest, because she never learned, and they are full of things no priest should write down. You can hear her laughing in every line.
+    third: In the spring Nell tells you on wash-day, up to her elbows in suds, and flicks water at your face when you stand there with your mouth open.
+    writ: Nell has the writ read to her twice and laughs. "A laundry girl's husband, summoned by the King," she says. "Lady Ravell will choke on her wine." Then she says, "Go on, then. Show them."
+    muster: Nell has come to Lannec to see you off. She has found the other soldiers' wives, the ones who walk behind the baggage, and stands with them, not with the ladies, and waves a wet shirt like a banner when you pass.
+    old: Nell still laughs at you, every evening, at something. You have come to depend on it.
+    epilogue: and never once in all those years lets a lady at any table forget that she was a laundry girl at Ravell Hall, or that she was proud of it
+
+isabel_sayer:
+  npc: isabel_sayer
+  introduced: ch1
+  brings: A first gentry connection; Courtesy
+  obstacle: Lady Ravell guards her waiting-women. Her father wants a knight at least.
+  voice:
+    first_year: Isabel runs the manor with a pen. She writes everything down, laughs at most of it, and keeps a second book, in a hand nobody else can read, of everything the neighbours say about her. "For later," she tells you. She is funnier this year than you have ever known her, and you are not sure that is a good sign.
+    lying_in: Isabel writes letters to all six of her sisters, one after the other, the week before, each funnier than the last. "In case," she says, and seals them, and gives them to the priest to keep.
+    fever: 'Isabel sits by the cradle and reads to the child, though the child cannot hear her: saints'' lives, the Sayer pedigree, a cookery book, anything. When she stops reading she starts to shake, so she does not stop.'
+    farewell: Isabel stands at the gate with ink on her finger and says, "I'll write every week, and you'll answer every month, and I'll pretend that's enough." Then she makes a joke about your helmet, which is a bad one, and you laugh anyway.
+    home: Isabel hears about the war and says, "Seven daughters, my father had, and he went to every war there was, to pay for us. I always wondered what he was running from." She looks at you. "Don't run."
+    letter: Her letters are clever, and wicked about the neighbours, and come every week as she promised. Only once does one of them stop being funny in the middle, for three lines, and then go on.
+    third: 'In the spring Isabel tells you in a letter, though you are in the same house: a formal letter, sealed, delivered by the steward at dinner. You open it at the table. She watches you read it, and laughs.'
+    writ: Isabel reads the writ, and reads it again, and reads out the best phrases in the voice of the Chancellor's clerk, until you laugh. Then she says, "It's a trap, or it's a crown. Probably both. Go and find out which."
+    muster: Isabel has come to Lannec to see you off, and stands with the other wives, making them laugh, and does not look at the column until your company passes. Then she looks at nothing else.
+    old: Isabel still keeps her second book. One evening she reads you some of it, thirty years of the neighbours, and you both laugh until you cannot breathe.
+    epilogue: and is remembered in the West as the wittiest woman in it, and the kindest, by everyone she ever made laugh, which was everyone
+
+maud_delisle:
+  npc: maud_delisle
+  introduced: ch1
+  brings: An heiress's lands and a large cut to prejudice
+  obstacle: Her marriage belongs to Lord Ravell, who means to sell it. Scandal is dangerous.
+  voice:
+    first_year: Maud is composed in the hall and fierce in the solar. In public she is the heiress of Lisle, courteous to every neighbour. In private she goes through your accounts, your charters and your promises with a speed that frightens you, and tells you, low and quick, exactly who has been cheating you and how.
+    lying_in: Maud faces it like a siege. She has the room prepared, the midwife chosen, the physician dismissed, and her will written. "I was nearly sold to Carrow's son," she says. "I can manage a child."
+    fever: Maud has sent for every physician within two days' ride and dismissed three of them. She sits upright by the cradle in her day gown, composed, speaking low to the child, and her hands are white where she grips the cradle's edge.
+    farewell: 'Maud gives you her hand at the gate, formally, the heiress of Lisle to her lord. Then, so low only you can hear: "If they kill you, I will find out who, and I will ruin him."'
+    home: 'Maud hears about the war and asks three questions, all of them the right ones: who pays, who commands, who profits. She does not like the answers.'
+    letter: 'Her letters are short, composed, and dangerous: a list of who visited, what they wanted, and what she gave them, which is never quite what they wanted.'
+    third: In the spring Maud tells you in the solar, with the door shut, quickly and low, as if it were a secret of state. Then she smiles, which she does not often do.
+    writ: Maud reads the writ, and then reads it again for what it does not say. "They're afraid of you," she says. "Good. Go, and make sure they stay afraid."
+    muster: Maud has come to Lannec to see you off, with the Lisle banner beside yours, and sits her horse at the edge of the meadow like a queen reviewing troops. Several lords of the West find that they bow to her as they pass.
+    old: Maud still reads every charter before you seal it, and still finds something wrong in half of them, and still tells you, low and quick, by the fire.
+    epilogue: and holds Lisle and everything you leave with both hands, and is remembered in the West as a woman nobody ever cheated twice
+
+cecily_fuller:
+  npc: cecily_fuller
+  introduced: ch1
+  brings: Coin, credit and Merchant standing
+  obstacle: Knights sneer at trade. Her father wants a title first.
+  voice:
+    first_year: Cecily takes the account rolls on the second day and gives them back on the third, corrected. By Michaelmas she knows what every holding pays, what it should pay, and why it does not. The steward resigns at Christmas, and is replaced by a man she chose, and the rents go up a sixth without anyone being turned off.
+    lying_in: 'Cecily has costed it: the midwife, the physician, the Masses, the christening feast. She shows you the figures. "In case I die," she says, "you''ll know what it should have cost." It is the most frightened you have ever seen her.'
+    fever: Cecily sits by the cradle with a slate on her knee, writing down every hour the child's heat, what it drank, what the physician did, what it cost. She cannot do anything else, so she does that.
+    farewell: Cecily gives you a purse at the gate and a list of what it is for. "Bring back the receipts," she says, and then holds onto your sleeve for a moment longer than a purse needs.
+    home: Cecily hears about the war and goes straight to the accounts. "If you go, you go properly," she says, "and you come back with more than you took. I'll do the sums."
+    letter: 'Her letters are accounts: rents in, debts out, the price of grain at three markets. At the bottom of every one, after the totals, a single line that is not about money.'
+    third: In the spring Cecily tells you at the counting-table, in the middle of the Lady Day accounts, as an item in the column of things to be provided for. Then she puts down her pen and laughs.
+    writ: Cecily reads the writ and asks what it will cost and what it will pay. Then she reads it again. "It doesn't say," she says. "That means it's worth everything or nothing. Go."
+    muster: Cecily has come to Lannec to see you off, and has checked the company's stores herself before it marches, and found four barrels short, and found who took them.
+    old: Cecily still does the accounts, every quarter-day, with her spectacles on the end of her nose, and still finds the steward out, and still tells you about it at supper.
+    epilogue: and keeps the books to the end, and leaves the house richer than she found it, and says on her deathbed that you were the only man she ever met who could not be cheated, because you never tried to cheat anyone
+
+joan_wyck:
+  npc: joan_wyck
+  introduced: ch1
+  hidden: true
+  brings: Wyck manor and a household that already runs
+  obstacle: Older than him. Her stepson's claims on Wyck.
+  voice:
+    first_year: 'Joan runs your manor the way she ran Wyck: early, hard, and without fuss. She is up before the dairymaids and in the fields before the reeve. When the wives of the neighbouring knights come to look her over, she gives them good wine and plain talk and sends them home knowing exactly as much as she meant them to.'
+    lying_in: Joan is older than most women at their first lying-in, and knows it, and does not talk about it. She works until the last day, putting the manor in order, and leaves you a list of what to do if she dies, in her square plain hand.
+    fever: Joan has not slept. She sits by the cradle mending a shirt that does not need mending, stitch after stitch, the way she grieved for her first husband, by working, and she does not stop when her eyes close.
+    farewell: Joan straightens your cloak at the gate as if you were a boy going to school. "I buried one husband who went to the wars," she says. "Don't make me practise."
+    home: Joan hears the news and goes out to count the horses. "Wyck sent men to the last war," she says when she comes back. "Half came home. Take the good ones, and bring them back."
+    letter: 'Her letters are plain and practical: the harvest, the stock, the stepson''s latest lawyer. Once she writes that she has taken to walking your side of the bed at night to keep it warm, and then crosses it out, but not so you cannot read it.'
+    third: In the spring Joan tells you in the stable-yard, wryly, with her sleeves rolled up. "At my age," she says. "God has a sense of humour."
+    writ: Joan reads the writ and puts it down. "Well," she says. "You'd better go. Take the good cloak, and leave me the steward."
+    muster: Joan has come to Lannec to see you off, and is in the baggage lines before you, seeing that your men's carts are loaded properly, and nobody dares tell her she should not be there.
+    old: Joan is older than you, and does not let you forget it, and is still up before you every morning.
+    epilogue: and works until the last week of her life, and dies in the dairy, which is where she would have chosen, and is mourned by every tenant you ever had
+
+alys_fane:
+  npc: alys_fane
+  introduced: ch2
+  brings: A connection to the Earl of Westry, a great house
+  obstacle: Her father wants a ransom-rich husband; rivals for her are many and well born.
+  voice:
+    first_year: Alys is bored for a month and then finds the manor's lawsuits. She has her father's lawyers' habits and her father's library, and by the end of the year she has won back two fields and a fishery your predecessor lost, and is looking for more. "Nobody told me land was interesting," she says.
+    lying_in: 'Alys has an earl''s daughter''s lying-in: the chamber hung with tapestries from Westry, a midwife sent by her mother, and a priest with a relic. She endures all of it with the same patience she gave the young lord who talked about his horse, and then sends them all out and keeps only the midwife.'
+    fever: Alys has written to her father for his physician and is sitting by the cradle in her riding-dress, waiting for him, too tall for the chair, holding the child's hand and telling it stories about a horse that talked too much.
+    farewell: Alys rides out with you as far as the crossroads, on her own grey, and at the crossroads turns to you. "You are the least boring man I have ever met," she says. "Do not die and become a story. Stories are dull."
+    home: Alys hears about the war and is interested, as she is in everything. She asks you about the Armance roads and the Constable's habits, and by the end of the evening knows more about the campaign than half the King's council.
+    letter: 'Her letters are long, and full of questions: about the war, the country, the people you meet. You find yourself noticing things so that you can tell her.'
+    third: In the spring Alys tells you on horseback, at a gallop, shouted over her shoulder as she passes you, and then reins in at the top of the hill to see your face.
+    writ: Alys reads the writ with real pleasure. "My father always said the great houses were made by men who answered summonses nobody else dared to," she says. "Go and answer it."
+    muster: Alys has come to Lannec to see you off, on her grey, among the lords and not the wives, and when the column moves she rides beside it for a mile before she turns back.
+    old: Alys still asks questions every evening, about everything, and you still find yourself saving things up during the day to answer them.
+    epilogue: and is remembered in the West as a sharp, curious, restless woman who made every dull man in the county talk about something worth hearing
+
+heloise_corbie:
+  npc: heloise_corbie
+  introduced: ch2
+  hidden: true
+  brings: Valdrenne standing; kin in the conquered country
+  obstacle: Enemy blood. Crown suspicion. Her brother's ransom stands between you.
+  voice:
+    first_year: Héloïse is a Valdrennish lady in an Adalian lord's house, and does not pretend otherwise. She keeps her own priest, her own tongue and her own counsel, and the village bows to her more deeply than to you. At night, in Valdrennish, she tells you what the village is really saying.
+    lying_in: Héloïse sends to her brother's lands for a Valdrennish midwife and a Valdrennish priest, and will have no other. "If the child is born under this roof," she says, "it will at least hear its prayers in a language God understands."
+    fever: Héloïse kneels by the cradle with her rosary, saying the Valdrennish prayers under her breath, without moving, as she has knelt since dawn. She will not let the Adalian priest near the child.
+    farewell: Héloïse says goodbye at the gate in Valdrennish, formally, the way her mother said goodbye to her father when he rode out against the Adalians. Then, in Adalian, "Come back. I do not want to be a widow twice in two languages."
+    home: Héloïse hears that the King is going back to war against Valdrenne and says nothing at all for an evening. At night she says, "My brother will be in the Constable's army. If you meet him, do not kill him. And do not let him kill you."
+    letter: Her letters are in Valdrennish, and formal, and say little anyone could take hold of if they were read on the road. You learn to read what they do not say.
+    third: In the spring Héloïse tells you in the chapel, after Mass, kneeling beside you, in Valdrennish, under her breath. For the first time since you married, she smiles in church.
+    writ: Héloïse reads the writ, which summons a lord of the West, and her face changes. "The West," she says. "Not Adalia. Not Valdrenne. Perhaps there is a country for people like us after all."
+    muster: Héloïse has come to Lannec to see you off, and stands with the Valdrennish-born wives of the West, under the Corbie colours, and when you pass she lifts her hand, once.
+    old: Héloïse speaks Valdrennish to you now, always, even before the servants, and you answer her in it, and neither of you remembers when that began.
+    epilogue: and is remembered in the West as the lady of two countries, who taught [if heirs.count >= 1]her children[else]the children of the manor[/if] both tongues and both sets of prayers and never once let either country forget the other
+
+fiammetta_lanzi:
+  npc: fiammetta_lanzi
+  introduced: ch2
+  hidden: true
+  brings: Credit, ships, Sarenza standing
+  obstacle: Foreign, and her father's bank holds half the shire's debts. The Church distrusts the family.
+  voice:
+    first_year: Fiammetta turns the manor into a branch of the bank. She has the rents paid in coin, the coin lent at interest, the interest lent again, and argues with you about all of it over dinner, every night, in three languages, because she needs someone to argue with and you are the best she has found.
+    lying_in: Fiammetta writes to Sarenza for a physician, a midwife, an astrologer and a lawyer, and the lawyer is the only one who arrives in time. She dictates her will to him between pains, and argues with him about the clauses.
+    fever: Fiammetta has sent to Sarenza for a physician by the fastest ship, and sits by the cradle in her black, perfectly still, which is the most frightening thing you have ever seen her do.
+    farewell: Fiammetta gives you a letter of credit at the gate, drawn on the house of Lanzi, good in any town in the world. "Do not use it," she says. "But if you need it, use all of it. You are worth more alive."
+    home: Fiammetta hears about the war and knows already. "The bank lent the King the money for it last month," she says. "At a good rate. I will tell you which towns to take."
+    letter: Her letters are written in Sarenzan cipher, because she says the roads are full of spies, and they are mostly about exchange rates, and they are the most interesting letters you have ever received.
+    third: In the spring Fiammetta tells you at the counting-table, between two columns of figures, as a new venture with uncertain returns. "I am told the partnership will be profitable," she says, and then laughs.
+    writ: Fiammetta reads the writ and says, "The West wants a lord who can pay for an army. The bank knows one." She looks at you. "Go. I will be the one who pays."
+    muster: Fiammetta has come to Lannec to see you off, in her black, with a Lanzi clerk at her elbow totting up the cost of the column as it passes, and when your company comes by she stops him, and watches.
+    old: Fiammetta still argues with you every night, about everything, and you still lose most of the arguments, and you would not give up a single one.
+    epilogue: and goes back to Sarenza only once, to bury her father, and comes home within the month, and leaves the West a branch of the house of Lanzi that outlasts the bank itself
+
+clemence_vaux:
+  npc: clemence_vaux
+  introduced: ch2
+  hidden: true
+  brings: Standing in Sauvemer and its march; a household that knows the country
+  obstacle: Hostile townsfolk, her own kin's claims, and whatever happened at the siege.
+  voice:
+    first_year: Clémence knows the name of everyone on the manor within a month, living and dead, and keeps a list of both. She is grave, and slow to speak, and the Valdrennish families on your land, who were afraid of an Adalian lord, bring their troubles to her instead, and she brings them to you.
+    lying_in: Clémence has borne no child in her first marriage, and is no longer young, and says so plainly to the midwife. She makes her confession the night before, and prays, and then sleeps, and is calmer than anyone in the house.
+    fever: Clémence sits by the cradle with her list, the same list she kept in the siege, and has not written the child's name on it, and will not.
+    farewell: Clémence takes your hand at the gate and says, "I counted the dead of Sauvemer. I will not count you." She says it like a vow, and turns, and goes in.
+    home: Clémence hears that the King is going to war in Valdrenne again and says only, "Do not burn the towns. They remember."
+    letter: 'Her letters are grave and brief, in a careful Adalian she learned for you: who was born, who died, who needs help. She signs them with her full name, as if you might forget it.'
+    third: In the spring Clémence tells you in the chapel, before the altar, as if she were making a vow, and then puts her hand on your arm and lets you see that she is afraid, which she has never done before.
+    writ: Clémence reads the writ and sets it down, and says nothing until the candle has burned an inch. "When Sauvemer fell," she says, "I carried the keys out to an Adalian king. If the West is to have its own, I want to see it."
+    muster: Clémence has come to Lannec to see you off, and stands with the women of Sauvemer, who remember her, and when your company passes she makes the sign of the cross over it.
+    old: Clémence still keeps her list. You have seen it. Your name is not on it.
+    epilogue: and asks to be buried at Sauvemer beside her first husband, and is, and the town that remembers her keys calls her its lady for a hundred years
+
+alienor_brese:
+  npc: alienor_brese
+  introduced: ch3
+  brings: Peace on the border; Brésy kin across the march; Valdrenne standing
+  obstacle: 'An arranged match: her father''s terms, her cousin Thibaut, and whether she forgives the bargaining.'
+  voice:
+    first_year: Aliénor watches. She watches the steward, the priest, the village, your men and you, and says nothing, in Valdrennish, for most of the year. Then one day at dinner she corrects your Adalian, in perfect Adalian, and the whole hall goes quiet. She has understood every word since the wedding.
+    lying_in: Aliénor makes you promise, before her pains begin, that if the child is a son he will not be sent to Adalia as a hostage. She remembers every bargain made over her own head. You promise.
+    fever: Aliénor sits by the cradle, straight-backed, dry-eyed, watching the child's chest rise and fall, and has not taken her eyes off it since dawn. When you speak to her she does not answer.
+    farewell: Aliénor does not come to the gate. She watches from the tower window, and when you look up she does not wave, but she does not leave the window either, until you are out of sight.
+    home: Aliénor hears that the King is going to war again and says, "My father's people will be on the other side." She says it as a fact, and waits to see what you will do with it.
+    letter: 'Her letters come in both languages, as if she cannot decide which of you she is writing to: the Valdrennish part about the border, the Adalian part about [if heirs.count >= 2]the children[elif heirs.count == 1]{heir.eldest.name}[else]the manor[/if]. Both parts are worth reading.'
+    third: 'In the spring Aliénor tells you on the wall-walk, looking out at the march, and then asks you, before you can say anything, what this child will be: Adalian, or Valdrennish, or something else.'
+    writ: Aliénor reads the writ and says, "Your West will need a Brésy, sooner or later. Tell them they have one."
+    muster: Aliénor has come to Lannec to see you off, in Brésy colours, and when Thibaut's knights ride past she watches them, and then watches you, and you know she is counting what each of you is worth.
+    old: Aliénor still watches everything. She tells you at night what she has seen, and she is still right about all of it.
+    epilogue: and is remembered on both sides of the march as the Brésy who married an Adalian and kept her own name, and her own counsel, to the end
+
+philippa_ashdown:
+  npc: philippa_ashdown
+  introduced: ch3
+  brings: Ashdown, three manors in the south of Adalia; the King's goodwill
+  obstacle: 'The King''s gift: refusing it offends. She did not choose him and resents being given.'
+  voice:
+    first_year: Philippa is perfectly polite all year. She runs the house, receives the neighbours, sits by you at Mass, and never once says a word that anyone could fault. She is also furious, all year, at being given away, and you are the only one who can tell. At Christmas, for the first time, she laughs at something you say, and looks surprised.
+    lying_in: Philippa buried her father and brothers in the Mottle. She faces her lying-in without a word, and sends for the Ashdown chaplain, and has the family's black hangings taken down from her chamber the day before, and white ones put up.
+    fever: Philippa sits by the cradle in the black she wore for her father, and says, with perfect courtesy, to the physician, that if the child dies she will see him hanged. He believes her.
+    farewell: Philippa gives you her hand at the gate, correctly, and her cheek, correctly. Then she says, so that only you can hear, "I did not choose you. I would now." She has never said it before.
+    home: Philippa hears about the war and says, in her careful polite voice, "The King gave me to you as a reward for one war. I hope he does not mean to take you away for another."
+    letter: Her letters are polite, correct, and in a beautiful hand, and for the first two years say nothing at all. Then one winter a letter comes that is three pages long and says everything.
+    third: In the spring Philippa tells you in the garden, politely, as if it were a matter of household business, and then cannot keep her face straight, and gives up trying.
+    writ: Philippa reads the writ and says, "The King gave me away. The West asks. I know which I prefer."
+    muster: Philippa has come to Lannec to see you off, and sits her horse in the Ashdown black and silver beside the lords of the West, correct and still, and when your company passes she bows her head.
+    old: Philippa is still perfectly polite to everyone in the world except you. You have come to understand this as the greatest compliment she can pay.
+    epilogue: and is remembered at Ashdown and in the West as a gracious lady who never once forgot that she had been given away, or forgave it, or regretted what came of it
+
+mahaut_armance:
+  npc: mahaut_armance
+  introduced: ch4
+  hidden: true
+  brings: 'The Armance: the dynastic claim to the West'
+  obstacle: Her marriage is in the King's gift; every great house wants her; only a widower or an unmarried lord can ask.
+  married_in: ch5
+  voice:
+    muster: Mahaut has come down to the meadow at Lannec with her hawk on her wrist, as Duchess of the Armance and your wife, and the West's host cheers her louder than it cheers you, and you do not mind.
+    old: Mahaut still hunts every morning she can, with the hawk Jehanne gave her, and comes in at noon and tells you what the falconers say about the kingdom, which is more than the council says.
+    epilogue: and rules the Armance in her own name after you, and is remembered there as the last of Jehanne's line and the best
+
+blanche_kerguen:
+  npc: blanche_kerguen
+  introduced: ch4
+  hidden: true
+  brings: Her dower of Kerguen; a mother for his children; Armance kin
+  obstacle: Offered only to a widower who has not asked for Mahaut. Her son is the Kerguen heir, and she means to keep it so.
+  married_in: ch4b
+  voice:
+    writ: Blanche reads the writ and then reads the Kerguen accounts, side by side. "We can afford it," she says. "Just. Go."
+    muster: Blanche has come to Lannec to see you off, with her son beside her in his first harness, too big for him, and she watches both of you march away with the same face.
+    old: Blanche still keeps the accounts of both houses, Kerguen and yours, in one book, side by side, and has never once let the columns touch.
+    epilogue: and keeps Kerguen for her son, as she said she would, and raises [if heirs.count >= 2]your children[else]your child[/if] with hers as if there had never been a difference
+

@@ -379,6 +379,7 @@
     - id: pay
       text: Pay the goldsmith for the cup, and the provost for his trouble.
       tags: [wealth]
+      requires: [ res.coin >= 480 ]
       text_after: Two pounds. Barre swears he will pay you back. He does, in fact, over a year, in stolen things you do not ask about.
       effects: [ { add: { res.coin: -480, rel.simkin_barre.loyalty: 4 } } ]
       next: "@return"

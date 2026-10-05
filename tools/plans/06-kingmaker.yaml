@@ -156,7 +156,7 @@ steps:
   c4_home: man
   c4_company: rotbart
   c4_buy_fitting:
-    - wagons
+    - drill
     - done
   c4_landing: country
   c4_towns: storm!success

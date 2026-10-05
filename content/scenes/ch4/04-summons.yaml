@@ -104,7 +104,7 @@
 
     [if flag.c4_side_edwin && !flag.c4_on_losing_side]King Edwin writes in the same month. He has heard of a meeting at Lannec. He trusts that his loyal Baron will attend it in order to report to him. He does not need to underline "loyal."[elif flag.c4_side_carrow && !flag.c4_on_losing_side]The council of regency writes in the same month. It has heard of a meeting at Lannec. It expects its friends to attend, and to remember who their friends are.[elif flag.c4_on_losing_side]Nobody in Adalia writes to you. You fought on the losing side at Wythen Heath, and the winners have a list.[else]Nobody in Adalia writes to you. Both halves of it have forgotten the West exists, or would like to.[/if] [if flag.c4_sheltered_brese]Thibaut de Brésy, who has wintered under your roof, rides out the day the writ comes, and comes back a fortnight later with letters from forty Brésy knights in the west of Valdrenne, who have read the writ too.[/if]
 
-    [if flag.c3_married && npc.@spouse.alive]Your wife reads the writ twice and puts it down. "Well," she says. "You'd better go. Take the good cloak."[elif heirs.count >= 1]{heir.eldest.name} reads the writ over your shoulder, at {heir.eldest.ageword}, and says, "Are we going to be traitors?" and you find you do not have a good answer.[/if]
+    [if flag.c3_married && npc.@spouse.alive]{wife.writ}[elif heirs.count >= 1]{heir.eldest.name} reads the writ over your shoulder, at {heir.eldest.ageword}, and says, "Are we going to be traitors?" and you find you do not have a good answer.[/if]
 
     What you bring to Lannec matters as much as what you say there.
   choices:

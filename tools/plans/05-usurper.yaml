@@ -180,7 +180,7 @@ steps:
   c4_act1_end: half
   c4_stewards: audit!failure
   c4_buy_estates:
-    - bridge
+    - church
     - done
   c4p_boundary: walk
   c4_rival: hard
@@ -198,7 +198,7 @@ steps:
   c4_buy_war:
     - feast
     - levy
-    - free_company
+    - walls
     - done
   c4_carrow_rises: edwin
   c4_surety: send
@@ -207,17 +207,17 @@ steps:
   c4_wythen_2: guard!success
   c4_wythen_after: on
   c4_valdrenne: send
-  c4p_lanzi_debt: terms!success
+  c4p_hunger: buy
   c4_lannec: listen
   c4_act3_end: on
   c4_barony: accept
   c4_mahaut_router: on
-  c4_writ: men
+  c4_writ: money
   c4_end: on
   c5_estates: guilds!success
   c5_estates_2: wait
   c5_vote: self
-  c5_surety: steal!failure
+  c5_surety: steal!success
   c5_war_opens: march
   c5_price: guilds
   c5_buy_war:
@@ -225,16 +225,16 @@ steps:
     - guilds
     - arrears
     - done
-  c5w_spy: turn!failure
+  c5w_bread: go!success
   c5_war_muster: ground!success
   c5_bridge: lead!success
   c5_war_after: on
-  c5w_prisoner: ransom
+  c5w_widows: estates
   c5_recognition: sarenza!success
-  c5_recognition_2: church!failure
+  c5_recognition_2: church!success
   c5_reckoning: lord
   c5_younger: land
-  c5r_oaths: largesse
+  c5r_oaths: kneel!failure
   c5r_council: purse
   c5r_treaty: refuse
   c5r_petition: keep

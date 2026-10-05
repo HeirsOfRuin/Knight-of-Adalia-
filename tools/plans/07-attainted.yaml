@@ -142,7 +142,7 @@ steps:
   c3_rising_far: alms
   c3_march_router: on
   c3_coll: go
-  c3_ravell: pass
+  c3_ravell: lend
   c3_fever_router: on
   c3_fever: nurse
   c3_fever_after: on
@@ -154,7 +154,7 @@ steps:
   c3_end: ride
   c4_council: edwin
   c4_home: wife
-  c4_company: good
+  c4_company: credit
   c4_buy_fitting: done
   c4_landing: king
   c4_towns: starve

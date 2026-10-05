@@ -8,7 +8,8 @@
   card: { title: The Reign, subtitle: The First Year, epigraph: "A crown is a promise made by a great many men at once. The hard part is the second year." }
   title: The Oaths
   checkpoint: true
-  on_enter: [ { advance: { seasons: 1 } } ]
+  # the reign's first year runs from Lady Day of year 45: the oaths, Midsummer's petition, Michaelmas's revolt
+  on_enter: [ { advance: { seasons: 1 } }, { catch_up: { year: 45, season: spring } } ]
   text: |
     The lords of the West come to Lannec to swear to you in the great hall of the Armance dukes, one at a time, on their knees, with their hands between yours. It takes three days. [if counter.estates >= 8]Hardly a bench is empty.[elif counter.estates >= 5]Most of the benches are full, and the empty ones are counted.[else]There are more empty benches than anyone will say aloud.[/if]
 
@@ -91,7 +92,6 @@
   chapter: ch5
   title: The Peace
   on_enter:
-    - advance: { seasons: 1 }
     - if: "!flag.c5r_council_purse"
       then: [ { hold: { id: crown_revenues, income: 1200 } } ]
   text: |
@@ -137,7 +137,6 @@
 - id: c5r_petition
   chapter: ch5
   title: The Salt Tax
-  on_enter: [ { advance: { seasons: 1 } } ]
   text: |
     The war tax was voted for the war. The war is over. At Midsummer a petition comes up from the salt towns with eleven hundred names and marks on it, asking, in the most respectful possible language, whether the tax is over too.
 
@@ -170,7 +169,7 @@
   title: Quérec
   on_enter: [ { advance: { seasons: 1 } } ]
   text: |
-    [if flag.c5r_querec_knelt]Quérec swore to you on his knees in front of the West, and kept it for nine months, which some men would call loyalty. At Michaelmas he breaks it.[elif flag.c5r_patience]Lady Day is a long way off, and Quérec does not wait for it.[elif flag.c5r_largesse]Quérec took your cup, and swore, and kept the cup.[elif flag.c5r_querec_left]Quérec walked out of the oaths and down the length of the hall, and has been writing letters ever since.[else]Quérec rode south from the oaths and has been writing letters ever since.[/if] [if flag.c5r_tax_kept]The salt towns of the southern marsh, who are paying your tax and do not see why, open their gates to him.[elif flag.c5r_no_peace]Raiders from over the march ride with him, and he does not ask whose.[else]He has his own men, and his cousins', and a claim that he is defending the West's old liberties against a new king.[/if]
+    [if flag.c5r_querec_knelt]Quérec swore to you on his knees in front of the West, and kept it for six months, which some men would call loyalty. At Michaelmas he breaks it.[elif flag.c5r_patience]Lady Day is a long way off, and Quérec does not wait for it.[elif flag.c5r_largesse]Quérec took your cup, and swore, and kept the cup.[elif flag.c5r_querec_left]Quérec walked out of the oaths and down the length of the hall, and has been writing letters ever since.[else]Quérec rode south from the oaths and has been writing letters ever since.[/if] [if flag.c5r_tax_kept]The salt towns of the southern marsh, who are paying your tax and do not see why, open their gates to him.[elif flag.c5r_no_peace]Raiders from over the march ride with him, and he does not ask whose.[else]He has his own men, and his cousins', and a claim that he is defending the West's old liberties against a new king.[/if]
 
     [if counter.reign >= 5]Nobody else rises with him. The West, which made you king, watches to see what kind.[elif counter.reign >= 2]Two other salt lords send him money, and wait.[else]Two other salt lords join him, and the talk in every hall in the West is about who will be third.[/if]
   choices:
@@ -238,7 +237,7 @@
 - id: c5r_year_end
   chapter: ch5
   title: A Year and a Day
-  on_enter: [ { advance: { seasons: 1 } } ]
+  on_enter: [ { advance: { seasons: 1 } }, { catch_up: { year: 46, season: spring } } ]
   text: |
     A year and a day after the oaths at Lannec, [if counter.reign >= 6]the West is quiet. Not content, because nowhere is content, but quiet, the way a field is quiet after the harvest is in.[elif counter.reign >= 3]the West is mostly quiet. There are lords who would not mind you dead, and you know their names, and they know you know.[else]the West is still deciding whether it made a mistake. You can feel it in every hall you ride into.[/if]
 
@@ -259,7 +258,7 @@
       tags: [diplomacy]
       text_after: |
         You tell the Estates that the West chose its first king and will choose its second. The old houses approve. The young ones start counting votes, which will go on for the rest of your life.
-      effects: [ { set: flag.c5r_estates_choose } ]
+      effects: [ { set: flag.c5r_estates_choose }, { add: { rep.nobles: 1, counter.reign: 1 } } ]
       next: c5_epilogue
     - id: rule
       text: Leave the question. There is a kingdom to rule.
@@ -277,7 +276,7 @@
   checkpoint: true
   on_enter: [ { advance: { seasons: 1 } } ]
   text: |
-    [if flag.c5_mahaut_queen]Queen Mahaut[elif flag.c5_thibaut_king]King Thibaut[elif flag.c5_crowned_self]The crown you could not keep, and gave away,[else]The new reign[/if] holds its first council at Lannec at Martinmas. You are given the chair at the right hand, because everyone in the room knows whose chair it is, and you are offered a choice of offices, because nobody in the room can decide what to call you.
+    [if flag.c5_mahaut_queen]Queen Mahaut[elif flag.c5_thibaut_king]King Thibaut[elif flag.c5_crowned_self]The crown you could not keep, and gave away,[else]The new reign[/if] holds its first council at Lannec in the {season}. You are given the chair at the right hand, because everyone in the room knows whose chair it is, and you are offered a choice of offices, because nobody in the room can decide what to call you.
   choices:
     - id: chancellor
       text: Take the seal. Be chancellor, and do the work.
@@ -298,7 +297,7 @@
       tags: [cunning]
       text_after: |
         You take nothing, and go home, and are asked. Every week a rider comes from Lannec with a letter that begins with a question and ends with a request, and you answer them all, from your own hall, by your own fire.
-      effects: [ { set: flag.c5k_home } ]
+      effects: [ { set: flag.c5k_home }, { add: { rep.honor: 1 } } ]
       next: c5k_price
 
 - id: c5k_price
@@ -306,7 +305,7 @@
   title: What the Throne Owes
   on_enter: [ { advance: { seasons: 2 } } ]
   text: |
-    At Easter the crown asks you, through its chancellor[if flag.c5k_chancellor], which is to say through yourself, which you find funny[/if], what reward you will take for the West. There is land going: Quérec's marsh, forfeit for treason by a lord who backed the wrong side. There is a marriage going. There is, if you want it, nothing at all, which is the most expensive gift of the three.
+    In the {season} the crown asks you, through its chancellor[if flag.c5k_chancellor], which is to say through yourself, which you find funny[/if], what reward you will take for the West. There is land going: Quérec's marsh, forfeit for treason by a lord who backed the wrong side. There is a marriage going. There is, if you want it, nothing at all, which is the most expensive gift of the three.
   choices:
     - id: land
       text: Take the forfeit marsh, and its salt.
@@ -318,7 +317,7 @@
       text: "[if heir.eldest.alive]Take the marriage, for {heir.eldest.name}, into the royal house.[else]Take the marriage, for a kinsman.[/if]"
       tags: [allies, cunning]
       text_after: You take the marriage. Your blood and the crown's are joined by a contract forty pages long, and every lawyer in the West reads it, and your great-grandchildren will be princes, or claim to be.
-      effects: [ { set: flag.c5k_marriage } ]
+      effects: [ { set: flag.c5k_marriage }, { add: { rep.crown: 1, rep.nobles: 1 } } ]
       next: c5_epilogue
     - id: nothing
       text: Take nothing. Let them owe you.
@@ -336,7 +335,7 @@
   checkpoint: true
   on_enter: [ { advance: { seasons: 1 } } ]
   text: |
-    You hold your first great court at Michaelmas, as lord of all you hold, in a hall full of people who have walked for two days to be heard. Boundaries, debts, a disputed will, a widow's dower, a stolen pig, a killing on the march. Your steward reads them out. Your chair is the one in the middle.
+    You hold your first great court in the {season}, as lord of all you hold, in a hall full of people who have walked for two days to be heard. Boundaries, debts, a disputed will, a widow's dower, a stolen pig, a killing on the march. Your steward reads them out. Your chair is the one in the middle.
 
     The killing on the march is the last case, and the worst. A man of yours killed a man of a neighbour's in a quarrel over a ditch, and the neighbour has come himself, with thirty men in the yard, to see what your justice is worth.
   choices:
@@ -376,5 +375,5 @@
       tags: [cunning]
       text_after: |
         The herald finds you a crusader in an afternoon, with a name and a castle in a country nobody has ever been to, and a coat of arms that is almost yours. It goes into the roll. Within a generation your family believes it.
-      effects: [ { set: flag.c5f_crusader } ]
+      effects: [ { set: flag.c5f_crusader }, { add: { rep.nobles: 1 } } ]
       next: c5_epilogue

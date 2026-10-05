@@ -84,7 +84,7 @@ describe('estate', () => {
     s.estate!.food = 0;
     const y = ctx();
     applyEffects(s, c, fx({ advance: { seasons: 1 } }), y);
-    expect(s.estate!.people).toBe(192);
+    expect(s.estate!.people).toBe(193); // 200 + 2 born at Michaelmas, then 4% lost to hunger
     expect(s.estate!.temper).toBe(-1);
   });
   it('pays the company and garrison a shilling a man at Michaelmas, and unpaid men desert', () => {
@@ -117,6 +117,21 @@ describe('estate', () => {
     const z = ctx();
     applyEffects(s, c, fx({ advance: { seasons: 4 } }), z);
     expect(z.changes.join('|')).not.toMatch(/pay/);
+  });
+  it('refills an emptied manor under a trusted lord, and empties under a hated one', () => {
+    const s = game('reeve');
+    applyEffects(s, c, fx({ found_estate: { people: 300, food: 8, temper: 3 } }), ctx());
+    s.estate!.people = 200; // after the Mottle
+    s.time = 1;
+    const x = ctx();
+    applyEffects(s, c, fx({ advance: { seasons: 1 } }), x);
+    // births 1% + newcomers 1% + 0.5% x 2 points of temper above 1 + empty holdings 1.5% x 1/3 = 3.5%: 7 more
+    expect(s.estate!.people).toBe(207);
+    expect(x.changes.join('|')).toMatch(/The manor grows: 7 more people/);
+    s.estate!.temper = -3;
+    s.estate!.food = 8;
+    applyEffects(s, c, fx({ advance: { seasons: 4 } }), ctx());
+    expect(s.estate!.people).toBe(205); // births 1%, leaving 2%: -1% of 207 = -2
   });
   it('loses a share of the people, and estate paths read and clamp', () => {
     const s = game('reeve');

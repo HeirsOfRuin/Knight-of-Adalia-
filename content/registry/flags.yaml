@@ -612,3 +612,4 @@ c5_gave_staple: { description: "Gave the salt guilds the staple for the war" }
 c5_gave_exemptions: { description: "Gave the old lords of the West their exemptions for the war" }
 c5_gave_tithes: { description: "Gave the Bishop the tithes of the march for the war" }
 c5_gave_nothing: { description: "Gave the West's backers nothing for the war" }
+c4_company_borrowed: { description: "Borrowed to raise the full company in the second war", hidden: true }

@@ -422,6 +422,7 @@
     - id: feast
       text: "Feast the whole manor, whatever it costs."
       tags: ["allies", "wealth"]
+      requires: [ res.coin >= 720 ]
       text_after: |
         You roast two oxen and broach every cask in the cellar, and the manor eats and drinks and dances for two days, and at the end of it [if flag.c2_granted_marsalin]Margot of the salt-boilers[elif flag.c2_granted_kerval]Gwenaël[else]Bastien[/if] makes a speech that nobody can hear and everybody cheers. [if estate.temper <= -1]It does not buy back everything. But it buys back something.[else]For a while afterwards people smile at you in the lane.[/if]
       effects: [{"add": {"res.coin": -720, "estate.temper": 2, "rep.commons": 1, "rel.@spouse.affection": 1}}]
@@ -436,6 +437,7 @@
     - id: hers
       text: "Let her have the wedding she wants."
       tags: ["allies"]
+      requires: [ res.coin >= 480 ]
       text_after: |
         You let her have it her way, all of it, and it costs more than you meant and is better than you would have made it. [if alias.spouse == mag_coker || alias.spouse == nell_laundress]She wants dancing, so there is dancing, all night, and she dances with every man in the parish and then with you, last, and longest.[elif alias.spouse == cecily_fuller || alias.spouse == fiammetta_lanzi]She wants it done properly, and it is: every guest placed exactly, every gift recorded. She shows you the list afterwards, in bed, and explains who will want what in return.[else]She wants musicians from the town, and there are musicians, and she makes you dance though you cannot, and laughs at you, and does not let go of your hand.[/if]
       effects: [{"add": {"res.coin": -480, "rel.@spouse.affection": 3, "suit.@spouse.regard": 1}}]
@@ -450,6 +452,8 @@
     The first winter you are married, you discover that you know nothing whatever about anything.
 
     [if alias.spouse == mag_coker || alias.spouse == annot_dyer || alias.spouse == mariot_wood || alias.spouse == nell_laundress]She is not a lady, and the county will not let either of you forget it. The wives of the neighbouring knights do not call. When you dine at [if flag.c2_granted_kerval]the Duchess's court[else]the governor's table in Sauvemer[/if], she is seated below the salt, by accident, twice. She says nothing about it at the time. On the ride home she says, "I can milk a cow, keep a garden, salt a pig and knock a man down. I can't eat an orange with a knife. Is that what they want?"[elif alias.spouse == cecily_fuller || alias.spouse == fiammetta_lanzi]She wants the books. Not some of them: all of them. The manor's rents, the salt, the debts, the lien, your own purse. [if alias.spouse == cecily_fuller]"I married you," Cecily says, "not your steward. Your steward is a thief."[else]"In Sarenza," Fiammetta says, "a wife who does not keep the books is a wife who does not know her husband is ruined until the bailiffs come."[/if] Your steward, who has been listening at the door, goes white.[elif alias.spouse == isabel_sayer || alias.spouse == joan_wyck || alias.spouse == maud_delisle || alias.spouse == alys_fane || alias.spouse == philippa_ashdown][if alias.spouse == philippa_ashdown]She is polite to you, always. She manages the household well, and her women adore her, and at night she turns her face to the wall. It is the King's marriage, not hers, and she has not forgiven anybody for it, and you are the only one in reach.[elif alias.spouse == maud_delisle]She has her own ideas of how a lord's house is run, learned at Ravell and at court, and none of them include you deciding anything. Lisle is hers, she says, and she will run it, and she would like you to stop interfering with the reeves.[else]She knows how a gentle house is run, and yours is not one. She says so, kindly, the first week, and then less kindly the third week, when nothing has changed.[/if][elif alias.spouse == heloise_corbie || alias.spouse == clemence_vaux || alias.spouse == alienor_brese]Your Adalians do not trust her. [if npc.hodge_brewster.met]Hodge Brewster's settlers call her "the Valdrennish woman" in the alehouse, and worse in the fields.[else]Your own men call her "madame" to her face and other things behind it.[/if] The village loves her, which makes it worse. When there is a quarrel between an Adalian and a local, she takes the local's side every time, in front of everybody, and you have to decide whether to back her.[/if]
+
+    {wife.first_year}
 
     [break]
 
@@ -487,7 +491,7 @@
 
     [break]
 
-    The manor is delighted. Old women stop her in the lane to feel her belly and tell her it is a boy, from the way she carries, or a girl, from the way she walks. [if flag.c2_granted_marsalin]Margot[elif flag.c2_granted_kerval]Gwenaël's wife[else]Bastien's sister[/if] brings an eagle-stone to tie to her arm. The priest says a Mass.
+    The manor is delighted. Old women stop her in the lane to feel her belly and tell her it is a boy, from the way she carries, or a girl, from the way she walks. [if flag.c2_granted_marsalin]Margot[elif flag.c2_granted_kerval]Gwenaël's wife[else]Bastien's sister[/if] brings an eagle-stone to tie to her arm. The priest says a Mass.[if flag.c3_married && npc.@spouse.alive] {wife.lying_in}[/if]
 
     You are not delighted. You are frightened, all the time, in a way the war never managed. [if flag.c3_sat_with_man || flag.c3_nursed]You have seen what fever does in a closed room.[/if] Everybody knows a woman who died in childbed. Everybody knows several. [if alias.master == hamon_darrell]Sir Hamon's Alice did, eleven years before you knew him, and [if npc.hamon_darrell.alive]he still talks to her at night[else]he talked to her at night until the day he died[/if].[/if]
 
@@ -634,6 +638,7 @@
 - id: c3_match_end
   chapter: ch3
   title: "The Harvest of Year Thirty"
+  on_enter: [ { catch_up: { year: 30, season: autumn } } ]
   text: |
     [if flag.c3_married && npc.@spouse.alive]The harvest is in. The baby sleeps in a basket by the hall fire, and the dogs, who have been put off the table, lie round it like a guard.[elif flag.c3_married]The harvest is in. The baby sleeps in a basket by the hall fire, and a wet-nurse from the village sits beside it, and you sit up late, most nights, not reading the accounts.[else]The harvest is in. The hall is quiet. The dogs are on the table again.[/if]
   choices:

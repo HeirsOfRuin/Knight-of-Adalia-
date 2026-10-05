@@ -23,7 +23,7 @@
 
     [if flag.c2_salines_decisive]The legate does not say so, but everyone at Saint-Lys knows why the terms lean Adalian: the host that drowned in the pans was the only army Amaury had. Men who were on the dyke walk a little taller in Sauvemer that spring.[elif flag.c2_salines_pyrrhic]The legate does not say so, but everyone at Saint-Lys knows the King could not have fought another summer. Les Salines bled both armies white, and the terms are what two exhausted men could agree.[/if]
 
-    [if flag.c2_jehanne_message]You never did get the chance to give the King the Duchess's message. Someone did. Her husband rides into Lannec at Whitsun, thin and grey and blinking, and she meets him at the gate.[/if]
+    [if flag.c2_jehanne_message]You never did get the chance to give the King the Duchess's message. Someone did. Her husband rides into Lannec at Whitsun, thin and grey and blinking, and she meets him at the gate. Her son does not come with him. The Valdrennish say he has a fever, and will follow when he is well.[/if]
 
     [break]
 
@@ -185,7 +185,7 @@
   title: A Ship for Saltcombe
   on_enter: [ { advance: { seasons: 1 } } ]
   text: |
-    In the spring of the second year of the truce, a ship sails from Sauvemer for Saltcombe with the garrison's letters, and a few places for men on leave.
+    In the winter of the second year of the truce, a ship sails from Sauvemer for Saltcombe with the garrison's letters, and a few places for men on leave.
 
     You have been away for four years. You have letters from home that are a year old. [if retinue >= 3]Your men will keep, if [if npc.roger_tallis.follower && npc.roger_tallis.alive]Tallis or [/if]someone you trust is in charge.[/if] The passage costs a pound. The journey home and back will take the whole summer.
 
@@ -423,7 +423,7 @@
 
     Nobody believes it, quite. Sailors' stories always grow. [if npc.fiammetta_lanzi.met]Fiammetta Lanzi believes it. Her letters from Sarenza have stopped.[/if]
 
-    In the spring you will go to [if flag.c2_granted_marsalin]Marsalin[elif flag.c2_granted_kerval]Kerval[else]Ormel[/if].
+    After Christmas you will go to [if flag.c2_granted_marsalin]Marsalin[elif flag.c2_granted_kerval]Kerval[else]Ormel[/if].
   choices:
     - id: prepare
       text: Begin to prepare. Grain, salt, a physician if you can find one.
@@ -440,7 +440,7 @@
     - id: ignore
       text: It is a sailors' story.
       tags: [yield]
-      text_after: It is a sailors' story. You go to your manor in the spring with your men and your grant and a great many plans.
+      text_after: It is a sailors' story. You go to your manor after Christmas with your men and your grant and a great many plans.
       next: c2_end
 
 - id: c2_end
@@ -448,7 +448,7 @@
   title: "[if flag.c2_granted_marsalin]Marsalin[elif flag.c2_granted_kerval]Kerval[else]Ormel[/if]"
   on_enter: [ { advance: { seasons: 1 } } ]
   text: |
-    [if flag.c2_granted_kerval]In the spring you take ship down the coast to Port-Haudry, where all of this began, and ride inland through the Armance hills, with your banner and your following and the King's writ and the Duchess's letter, to Kerval.[else]In the spring you ride out of Sauvemer by the land gate, the one Dame Clémence carried the keys out of, with your banner and your following and the King's writ, [if flag.c2_granted_marsalin]along the dyke where the line held, past the sluice-gates and the pans, to Marsalin.[else]along the dunes and across the marsh to Ormel.[/if][/if]
+    [if flag.c2_granted_kerval]After Christmas you take ship down the coast to Port-Haudry, where all of this began, and ride inland through the Armance hills, with your banner and your following and the King's writ and the Duchess's letter, to Kerval.[else]After Christmas you ride out of Sauvemer by the land gate, the one Dame Clémence carried the keys out of, with your banner and your following and the King's writ, [if flag.c2_granted_marsalin]along the dyke where the line held, past the sluice-gates and the pans, to Marsalin.[else]along the dunes and across the marsh to Ormel.[/if][/if]
 
     [if retinue >= 4]Behind you ride the men who have followed you through the war, or the ones who are left.[elif retinue >= 1]Behind you ride the few who are left.[else]You ride alone, with Davy, if Davy is still with you.[/if] [if npc.davy_ludd.alive && npc.davy_ludd.follower]Davy carries your banner. He is a man now. "Nearly there, sir," he says, every mile, as if you might have forgotten.[/if]
 

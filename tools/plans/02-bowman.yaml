@@ -44,7 +44,7 @@ ending: founder
 expect:
   - flag.c3_shut
   - station >= lord
-  - npc.jankin_rooke.follower
+  - flag.c2_men_from_master   # the master's archers joined (whether Jankin survives the Mottle is luck)
   - flag.p_lower_track
   - flag.c1_raised_at_ford
   - flag.c1_dubbed_by_master

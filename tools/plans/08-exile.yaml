@@ -175,7 +175,7 @@ steps:
   c4_act1_end: core
   c4_stewards: trust
   c4_buy_estates: done
-  c4p_lanzi_debt: pay
+  c4p_hunger: buy
   c4_rival: hard
   c4_eldest: church
   c4q_ravell_heir: swear

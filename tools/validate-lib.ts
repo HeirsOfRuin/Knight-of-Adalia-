@@ -1,6 +1,6 @@
 // Content validator. Static checks over the bundle; per-background structural
 // checks run once the relevant chapter has content (otherwise PENDING).
-import type { Choice, ContentBundle, Effect, Next, Outcome, Scene, SimpleNext } from '../src/content/schema';
+import { WIFE_MOMENTS, MARRIAGE_STAGES, type Choice, type ContentBundle, type Effect, type Next, type Outcome, type Scene, type SimpleNext } from '../src/content/schema';
 import { validateCond, condPaths, compileCond as rawCompile, type Cond } from '../src/engine/conditions';
 import type { CondInput } from '../src/content/schema';
 
@@ -123,6 +123,17 @@ export function validate(content: ContentBundle): ValidationReport {
     r.errors.forEach((e) => err(where, `text: ${e}`));
     r.paths.filter((p) => p.startsWith('flag.')).forEach((p) => flagsRead.add(p.slice(5)));
   };
+  // each wife's voice: valid text, and a line for every moment from the stage she can marry in
+  for (const [id, r] of Object.entries(content.registry.romances)) {
+    for (const [m, line] of Object.entries(r.voice)) {
+      if (!(m in WIFE_MOMENTS)) err(`romances/${id}`, `voice: unknown moment "${m}"`);
+      checkText(`romances/${id}/voice.${m}`, line);
+    }
+    const from = MARRIAGE_STAGES.indexOf(r.married_in);
+    for (const [m, stage] of Object.entries(WIFE_MOMENTS)) {
+      if (MARRIAGE_STAGES.indexOf(stage) >= from && !r.voice[m]) err(`romances/${id}`, `voice: no line for "${m}"`);
+    }
+  }
   const checkNext = (where: string, raw: Next | undefined, scene: Scene) => {
     if (raw === undefined) return err(where, 'no next scene');
     if (typeof raw === 'object' && 'switch' in raw) raw.switch.forEach((b) => checkCond(where, b.if));

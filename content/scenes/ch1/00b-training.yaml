@@ -78,7 +78,7 @@
   title: Sir Bertram's Test
   on_enter: [ { advance: { seasons: 1 } }, { meet: bertram_oakes } ]
   text: |
-    Every Lady Day, Sir Bertram tests the young men of the household in harness, on foot, with blunted swords, in the tilt-yard, in front of everybody. It has been the custom at Ravell for thirty years. Nobody remembers who started it. Everyone remembers who failed.
+    Every Candlemas, Sir Bertram tests the young men of the household in harness, on foot, with blunted swords, in the tilt-yard, in front of everybody. It has been the custom at Ravell for thirty years. Nobody remembers who started it. Everyone remembers who failed.
 
     "It's not a tourney," he tells you, on the morning, buckling you into borrowed plate that smells of somebody else's sweat. "Nobody's winning anything. I want to see what you do when you're tired and frightened and can't see, because that's what a fight is." He thumps your breastplate. "And don't fall over. Gets in the ballads."
 

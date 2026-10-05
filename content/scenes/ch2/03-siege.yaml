@@ -463,7 +463,7 @@
   title: The Mine
   on_enter: [ { advance: { seasons: 1 } } ]
   text: |
-    In the spring the King sends for miners from the tin country in the west of Adalia, and they come: small, quiet, pale men who do not like the light much and like soldiers less.
+    At Candlemas the King sends for miners from the tin country in the west of Adalia, and they come: small, quiet, pale men who do not like the light much and like soldiers less.
 
     They dig from a pit behind the siege lines toward the Water Tower at the corner of the town wall, under the ditch, through the sand and the clay, propping the gallery with timbers as they go. When they are under the tower they will fill the end of the gallery with brushwood and pig fat, and fire it, and the timbers will burn, and the tower will come down.
 

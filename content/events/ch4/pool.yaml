@@ -101,7 +101,7 @@
   once: true
   requires: [ estate.people >= 1 ]
   text: |
-    The letter comes from [if flag.c4_wife_holds]your wife[elif flag.c4_man_holds]the man you left as castellan[else]your steward[/if], in a hand that has been hurrying. Forty horsemen, masterless men from the last war or someone's men pretending to be, have been burning ricks along the valley and are two days from the manor. [if flag.inv_tower]The tower is provisioned.[elif estate.defence >= 3]The walls will hold against horsemen, probably.[else]The manor has a ditch, a gate and a great deal of hope.[/if]
+    The letter comes from [if flag.c4_wife_holds && npc.@spouse.alive]your wife[elif flag.c4_man_holds]the man you left as castellan[else]your steward[/if], in a hand that has been hurrying. Forty horsemen, masterless men from the last war or someone's men pretending to be, have been burning ricks along the valley and are two days from the manor. [if flag.inv_tower]The tower is provisioned.[elif estate.defence >= 3]The walls will hold against horsemen, probably.[else]The manor has a ditch, a gate and a great deal of hope.[/if]
 
     You are three weeks' ride away.
   choices:

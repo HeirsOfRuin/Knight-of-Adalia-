@@ -1,6 +1,6 @@
 // Passage templating: {var} substitution and [if cond]...[elif cond]...[else]...[/if].
 import { payDue } from './estate';
-import type { ContentBundle } from '../content/schema';
+import { WIFE_MOMENTS, type ContentBundle } from '../content/schema';
 import type { GameState } from './state';
 import { evalCond, parseInline, validateCond, type Cond } from './conditions';
 import { getValue, checkPath, deref } from './paths';
@@ -72,6 +72,11 @@ function varValue(name: string, state: GameState, content: ContentBundle): strin
     case 'reign_year': return ordinalWords(reignOf(state, content).year);
     case 'king': return reignOf(state, content).king;
   }
+  // the current wife's own line for a moment of the marriage (registry romances[].voice)
+  if (name.startsWith('wife.')) {
+    const line = reg.romances[state.aliases.spouse ?? '']?.voice[name.slice(5)];
+    return line ? renderText(line, state, content) : '';
+  }
   const [ns, id, field] = deref(state, name).split('.');
   if (ns === 'npc' && id) {
     const def = reg.npcs[id];
@@ -121,6 +126,10 @@ export function validateText(src: string, content: ContentBundle): { errors: str
     for (const n of ns) {
       if (n.t === 'var') {
         if (SPECIAL_VARS.includes(n.name)) continue;
+        if (n.name.startsWith('wife.')) {
+          if (!(n.name.slice(5) in WIFE_MOMENTS)) errors.push(`unknown wife moment in {${n.name}}`);
+          continue;
+        }
         const [space, id, field] = n.name.split('.');
         if (space === 'npc') {
           if (id?.startsWith('@')) {

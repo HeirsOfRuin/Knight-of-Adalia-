@@ -1,4 +1,5 @@
 // Browser persistence. Every access is guarded: storage can be missing or throw.
+import { heroOf } from '@engine/character';
 import type { ContentBundle } from '../content/schema';
 import type { GameState } from '../game/state';
 import { toSave, fromSave, type LoadResult } from '../game/save';
@@ -53,7 +54,7 @@ async function hostDownloads(): Promise<DownloadsApi | null> {
 /** Returns a message for the player, or undefined when the browser handled it. */
 export async function exportSave(state: GameState, content: ContentBundle): Promise<string | undefined> {
   const data = JSON.stringify(toSave(state, content));
-  const filename = `adalia-${state.name.toLowerCase().replace(/[^a-z0-9]+/g, '-') || 'save'}-${state.time}.json`;
+  const filename = `adalia-${heroOf(state).name.toLowerCase().replace(/[^a-z0-9]+/g, '-') || 'save'}-${state.time}.json`;
   const host = await hostDownloads();
   if (host) {
     try {

@@ -1,3 +1,4 @@
+import { heroOf } from '@engine/character';
 import { describe, it, expect } from 'vitest';
 import { content, game } from '../helpers';
 import { reignOf, timeOf } from '@engine/calendar';
@@ -39,7 +40,7 @@ describe('calendar', () => {
 
   it("the player's own reign counts from the year of the oaths, in his name", () => {
     const s = game();
-    s.name = 'Hal';
+    heroOf(s).name = 'Hal';
     s.seen.c4_king_dies = timeOf(c, 39, 'winter');
     s.seen.c5r_oaths = timeOf(c, 46, 'winter');
     s.time = timeOf(c, 47, 'spring');

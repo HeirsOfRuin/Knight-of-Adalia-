@@ -97,6 +97,8 @@ prejudice >= 3
 ```
 Station, chapter, season, suit status and pledge compare by their order. For example, `station >= squire` is true for a knight.
 
+The hero's own paths (`attr`, `skill`, `trait`, `injury`, `item`, `health`, `age`, `injured`, `wounded`, `armour`, `station`, `track`) can also be written with `hero.` in front: `hero.attr.wits` is `attr.wits`. Three paths exist only with it: `hero.sex` (`male` or `female`), `hero.name` and `hero.alive`. The bare form stays the house style for Knight of Adalia; the prefix is for House of Adalia, where other characters have paths of their own.
+
 ## Effects
 ```yaml
 - set: flag.x                     # and: clear: flag.x
@@ -140,6 +142,7 @@ Clamps:
 
 ## Text
 - `{name}`, `{date}`, `{coin}`, `{station}`, `{background}` ("Reeve's son"), `{origin}` ("reeve's son"), `{season}`, `{year}`, `{age}`
+- Pronouns for the hero, written in the masculine and rendered for the hero's sex: `{he}` (she), `{him}` (her), `{his}` (her), `{himself}` (herself), `{lord}` (lady), `{man}` (woman), `{son}` (daughter). Capitalise the first letter to capitalise the word: `{He}`, `{His}`. Only pronouns may be capitalised. Knight of Adalia's hero is always a man and its prose is in the second person, so it rarely needs them; they are for House of Adalia.
 - Titles take templates too.
 - Do not start a passage with `{date}`; the UI already shows the date above every scene.
 - `{npc.hamon_darrell}` gives the name; `{npc.hamon_darrell.title}` gives "Sir Hamon Darrell".

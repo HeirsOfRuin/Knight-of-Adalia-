@@ -1,3 +1,4 @@
+import { heroOf } from '@engine/character';
 import { useEffect, useState } from 'preact/hooks';
 import type { ContentBundle } from '../content/schema';
 import type { GameState } from '../game/state';
@@ -128,7 +129,7 @@ export function App({ content }: { content: ContentBundle }) {
               setScreen('game');
             }}
           >
-            Continue: {autosave.state.name}, {content.backgrounds[autosave.state.background]?.label}
+            Continue: {heroOf(autosave.state).name}, {content.backgrounds[autosave.state.background]?.label}
           </button>
         )}
         <button class={`btn ${autosave ? '' : 'primary'}`} onClick={() => setScreen('new')}>New life</button>

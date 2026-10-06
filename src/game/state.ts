@@ -2,7 +2,7 @@
 // the background, the suits of the women he courts, the manor, his children and holdings.
 import type { CoreState } from '@engine/state';
 
-export type { RngState, NpcState, ActiveInjury, QueuedEvent, JournalEntry } from '@engine/state';
+export type { RngState, NpcState, ActiveInjury, QueuedEvent, JournalEntry, Character, Sex } from '@engine/state';
 
 export type SuitStatus = 'hidden' | 'known' | 'courted' | 'available' | 'married' | 'lost';
 export interface SuitState {
@@ -32,6 +32,9 @@ export interface Holding {
   income: number; // pence a year, paid at Michaelmas
   temper: number; // -5..5
 }
+
+/** The id of the hero in state.characters: the commoner who founds the house. */
+export const HERO_ID = 'founder';
 
 export interface GameState extends CoreState {
   background: string;

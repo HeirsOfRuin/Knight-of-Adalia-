@@ -1,3 +1,4 @@
+import { heroOf } from '@engine/character';
 import { describe, it, expect } from 'vitest';
 import { realContent, game } from '../helpers';
 import { resolvePlace, visits, hereNow, knownPlaces, placeOfScene } from '@engine/map';
@@ -11,7 +12,7 @@ describe('the world map', () => {
   it('resolves home, service, manor and town for this run', () => {
     const s = game('archer');
     expect(resolvePlace(c, '@home', s)).toBe('hollin');
-    s.track = 'levy';
+    heroOf(s).track = 'levy';
     expect(resolvePlace(c, '@service', s)).toBe('brome');
     s.flags.c2_granted_kerval = true;
     expect(resolvePlace(c, '@manor', s)).toBe('kerval');

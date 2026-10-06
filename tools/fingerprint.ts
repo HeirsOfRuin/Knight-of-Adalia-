@@ -1,7 +1,8 @@
 // CLI: npm run fingerprint [-- --runs N]. A behaviour fingerprint for refactors that must not
 // change play: hashes every view and state across the scripted plans and seeded bot runs, the
 // dynasty exports, save round-trips and the validator's output, per channel. Run it before and
-// after a change and compare; a channel that differs names what changed.
+// after a change and compare; a channel that differs names what changed. Values are hashed as
+// canonical JSON (keys sorted, undefined dropped), so the order fields are written in does not count.
 import { createHash, type Hash } from 'node:crypto';
 import { loadContent } from './content-loader';
 import { playOnce, DEFAULT_POLICIES, loadPlans, playPlan } from './bot-lib';
@@ -15,8 +16,12 @@ const runs = arg >= 0 ? Number(process.argv[arg + 1]) : 6;
 const c = loadContent();
 const total = createHash('sha256');
 const channels: Record<string, Hash> = {};
+const canon = (v: unknown): unknown =>
+  Array.isArray(v) ? v.map(canon)
+  : v && typeof v === 'object' ? Object.fromEntries(Object.keys(v).sort().filter((k) => (v as Record<string, unknown>)[k] !== undefined).map((k) => [k, canon((v as Record<string, unknown>)[k])]))
+  : v;
 const feed = (channel: string, v: unknown) => {
-  const s = JSON.stringify(v);
+  const s = JSON.stringify(canon(v));
   total.update(s);
   (channels[channel] ??= createHash('sha256')).update(s);
 };

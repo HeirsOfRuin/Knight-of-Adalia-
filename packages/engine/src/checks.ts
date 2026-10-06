@@ -1,5 +1,6 @@
 // Skill checks. computeOdds is the only place odds are derived: the UI band
 // and the resolution both come from it.
+import { heroOf } from './character';
 import type { Check, CoreContent as ContentBundle } from './schema';
 import type { CoreState as GameState } from './state';
 import { effectiveAttr, effectiveSkill } from './paths';
@@ -34,7 +35,7 @@ export function computeOdds(check: Check, state: GameState, content: ContentBund
   if (check.skill) breakdown.push({ label: check.skill, value: effectiveSkill(state, content, check.skill) });
   const aud = gameOf(content).audience?.(state, content, check.audience);
   if (aud) breakdown.push(aud);
-  if (state.health <= 3) breakdown.push({ label: 'poor health', value: -1 });
+  if (heroOf(state).health <= 3) breakdown.push({ label: 'poor health', value: -1 });
   for (const m of check.mods) if (test(m.if, state, content)) breakdown.push({ label: m.label, value: m.add });
   breakdown.push({ label: 'difficulty', value: -check.difficulty });
   const score = breakdown.reduce((s, b) => s + b.value, 0);

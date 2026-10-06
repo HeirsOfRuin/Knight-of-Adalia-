@@ -1,3 +1,4 @@
+import { heroOf } from '@engine/character';
 import type { ContentBundle } from '../../content/schema';
 import type { GameState } from '../../game/state';
 import { effectiveAttr, effectiveSkill, npcLabel, forceOf } from '@engine/paths';
@@ -37,6 +38,7 @@ function forceBreakdown(f: ReturnType<typeof forceOf>): string {
 
 export function StatusPanel({ content, state }: { content: ContentBundle; state: GameState }) {
   const reg = content.registry;
+  const hero = heroOf(state);
   const bg = content.backgrounds[state.background];
   const role = state.role ? bg?.roles?.[state.role]?.label : undefined;
   const npcs = Object.entries(state.npcs).filter(([, n]) => n.met);
@@ -46,12 +48,12 @@ export function StatusPanel({ content, state }: { content: ContentBundle; state:
 
   return (
     <div class="status">
-      <h2>{state.name}</h2>
+      <h2>{hero.name}</h2>
       <p class="muted">{bg?.label}{role ? `, ${role.toLowerCase()}` : ''}. Age {ageOf(state)}. {describeDate(state, content)}.</p>
       <dl class="kv">
-        <dt>Station</dt><dd>{capitalise(state.station)}{state.track ? ` (${capitalise(state.track)})` : ''}</dd>
+        <dt>Station</dt><dd>{capitalise(hero.station)}{hero.track ? ` (${capitalise(hero.track)})` : ''}</dd>
         {state.aliases.master && <><dt>Master</dt><dd>{npcLabel(content, state.aliases.master)}</dd></>}
-        <dt>Health</dt><dd>{state.health}/10</dd>
+        <dt>Health</dt><dd>{hero.health}/10</dd>
         <dt>Coin</dt><dd>{formatCoin(state.res.coin ?? 0)}</dd>
         {state.estate && payDue(state) > 0 && <><dt>Pay due at Michaelmas</dt><dd>{formatCoin(payDue(state))}, six shillings a man{state.counters.pay_arrears ? '; last year\'s is still owed' : ''}</dd></>}
         <dt>Renown</dt><dd>{state.res.renown ?? 0}</dd>
@@ -120,7 +122,7 @@ export function StatusPanel({ content, state }: { content: ContentBundle; state:
         <dl class="kv">
           {content.config.attributes.map((a) => {
             const eff = effectiveAttr(state, content, a);
-            const base = state.attributes[a] ?? 0;
+            const base = hero.attributes[a] ?? 0;
             return [<dt key={`${a}t`}>{capitalise(a)}</dt>, <dd key={`${a}d`}>{eff}{eff !== base && <span class="mod"> ({signed(eff - base)})</span>}</dd>];
           })}
         </dl>
@@ -130,18 +132,18 @@ export function StatusPanel({ content, state }: { content: ContentBundle; state:
         <dl class="kv">
           {content.config.skills.map((s) => {
             const eff = effectiveSkill(state, content, s);
-            const base = state.skills[s] ?? 0;
+            const base = hero.skills[s] ?? 0;
             return [<dt key={`${s}t`} class={eff ? '' : 'muted'}>{capitalise(s)}</dt>, <dd key={`${s}d`} class={eff ? '' : 'muted'}>{eff}{eff !== base && <span class="mod"> ({signed(eff - base)})</span>}</dd>];
           })}
         </dl>
       </Section>
 
-      {(state.injuries.length > 0 || state.traits.length > 0 || state.items.length > 0) && (
+      {(hero.injuries.length > 0 || hero.traits.length > 0 || hero.items.length > 0) && (
         <Section title="Marks and belongings">
           <ul class="plain">
-            {state.injuries.map((i) => <li key={i.id} class="injury"><strong>{reg.injuries[i.id]?.label}</strong>: {reg.injuries[i.id]?.description}</li>)}
-            {state.traits.map((t) => <li key={t}><strong>{reg.traits[t]?.label}</strong>: {reg.traits[t]?.description}</li>)}
-            {state.items.map((i) => <li key={i}><strong>{reg.items[i]?.label}</strong>: {reg.items[i]?.description}</li>)}
+            {hero.injuries.map((i) => <li key={i.id} class="injury"><strong>{reg.injuries[i.id]?.label}</strong>: {reg.injuries[i.id]?.description}</li>)}
+            {hero.traits.map((t) => <li key={t}><strong>{reg.traits[t]?.label}</strong>: {reg.traits[t]?.description}</li>)}
+            {hero.items.map((i) => <li key={i}><strong>{reg.items[i]?.label}</strong>: {reg.items[i]?.description}</li>)}
           </ul>
         </Section>
       )}

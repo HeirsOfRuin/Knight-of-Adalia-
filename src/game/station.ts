@@ -1,4 +1,5 @@
 // Station ladder and the "new man" prejudice modifier (the audience modifier on checks).
+import { heroOf } from '@engine/character';
 import type { ContentBundle } from '../content/schema';
 import type { GameState } from './state';
 
@@ -16,7 +17,7 @@ export function computePrejudice(state: GameState, content: ContentBundle, audie
   const bg = content.backgrounds[state.background];
   if (!bg) return 0;
   let p = bg.prejudice.base + (audience === 'knights' ? bg.prejudice.knights : 0);
-  const step = Math.max(0, stationIndex(content, state.station) - stationIndex(content, 'squire'));
+  const step = Math.max(0, stationIndex(content, heroOf(state).station) - stationIndex(content, 'squire'));
   p -= step; // knight 1, lord 2, great lord 3, royal 4
   p -= Math.floor((state.res.renown ?? 0) / 10);
   if (state.flags.noble_marriage) p -= 1;

@@ -2,12 +2,13 @@
 // and its save-code prefix.
 import { makeSaveCodec, SaveError, type SaveFile as CoreSaveFile, type LoadResult as CoreLoadResult } from '@engine/save';
 import { encodeSaveCode as encodeCode, decodeSaveCode as decodeCode } from '@engine/savecode';
-import type { GameState } from './state';
+import { bornAtAge } from '@engine/character';
+import { HERO_ID, type Character, type GameState } from './state';
 
 export { SaveError };
 
 export const SAVE_FORMAT = 'knight-of-adalia-save';
-export const SAVE_VERSION = 3;
+export const SAVE_VERSION = 4;
 
 export type SaveFile = CoreSaveFile<GameState>;
 export type LoadResult = CoreLoadResult<GameState>;
@@ -18,7 +19,37 @@ export const migrations: Record<number, (save: SaveFile) => SaveFile> = {
   1: (s) => ({ ...s, saveVersion: 2, state: countOldForce(structuredClone(s.state)) }),
   // 3 remembers how many people the manor held when it was granted (estate.founded).
   2: (s) => ({ ...s, saveVersion: 3, state: rememberFounding(structuredClone(s.state)) }),
+  // 4 keeps the hero as a character (state.characters.founder) instead of fields on the state.
+  3: (s) => ({ ...s, saveVersion: 4, state: heroToCharacter(structuredClone(s.state)) }),
 };
+
+/** The hero's own fields as they were kept before save version 4, on the state itself. */
+const OLD_HERO_FIELDS = ['name', 'startAge', 'attributes', 'skills', 'health', 'traits', 'injuries', 'items', 'station', 'track'] as const;
+
+function heroToCharacter(state: GameState): GameState {
+  const old = state as unknown as Record<string, unknown>;
+  if (state.characters) return state;
+  const dead = state.ended?.ending === 'death';
+  const hero: Character = {
+    name: old.name as string,
+    sex: 'male',
+    born: bornAtAge(old.startAge as number),
+    alive: !dead,
+    attributes: old.attributes as Record<string, number>,
+    skills: old.skills as Record<string, number>,
+    health: old.health as number,
+    traits: old.traits as string[],
+    injuries: old.injuries as Character['injuries'],
+    items: old.items as string[],
+    station: old.station as string,
+  };
+  if (old.track !== undefined) hero.track = old.track as string;
+  if (dead) hero.died = state.time;
+  for (const f of OLD_HERO_FIELDS) delete old[f];
+  state.characters = { [HERO_ID]: hero };
+  state.hero = HERO_ID;
+  return state;
+}
 
 /** The founding populations given by found_estate in c3_arrival (content/scenes/ch3/01-mortality.yaml). */
 function rememberFounding(state: GameState): GameState {

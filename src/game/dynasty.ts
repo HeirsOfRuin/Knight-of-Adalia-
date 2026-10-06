@@ -2,6 +2,7 @@
 // sequel that continues the family (docs/DESIGN.md, "Dynasty export"). Plain data with
 // registry ids and display names both, so a reader needs no Knight of Adalia content.
 // Encoded as "KOAD1." + base64url of the deflated JSON.
+import { heroOf } from '@engine/character';
 import type { ContentBundle } from '../content/schema';
 import type { GameState } from './state';
 import { ageOf, reignOf, regnalYear, seasonName } from '@engine/calendar';
@@ -126,16 +127,16 @@ export function toDynasty(state: GameState, content: ContentBundle): DynastyExpo
     date: { year: regnalYear(state, content), season: seasonName(state, content), king: reign.king, reignYear: reign.year },
     ending: { id: state.ended?.ending ?? 'unfinished', label: reg.endings[state.ended?.ending ?? '']?.label ?? 'Unfinished' },
     founder: {
-      name: state.name,
+      name: heroOf(state).name,
       background: state.background,
       role: state.role,
       age: ageOf(state),
-      station: state.station,
+      station: heroOf(state).station,
       renown: state.res.renown ?? 0,
-      attributes: { ...state.attributes },
-      skills: { ...state.skills },
-      traits: [...state.traits],
-      items: [...state.items],
+      attributes: { ...heroOf(state).attributes },
+      skills: { ...heroOf(state).skills },
+      traits: [...heroOf(state).traits],
+      items: [...heroOf(state).items],
       reputation: { ...state.rep },
     },
     spouse: f.c3_married && sp && sp !== 'none' ? { id: sp, name: reg.npcs[sp]?.name ?? sp, alive: state.npcs[sp]?.alive !== false } : undefined,

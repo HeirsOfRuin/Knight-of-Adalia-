@@ -1,5 +1,6 @@
 // Passage templating: {var} substitution and [if cond]...[elif cond]...[else]...[/if].
 // Variables a game renders itself ({wife.first_year}) go to its module (GameModule.textVar).
+import { heroOf, pronoun, PRONOUN_VARS } from './character';
 import type { CoreContent as ContentBundle } from './schema';
 import type { CoreState as GameState } from './state';
 import { gameOf } from './game';
@@ -15,7 +16,7 @@ type Node =
 
 export class TextError extends Error {}
 
-const TOKEN = /\[if ([^\]]+)\]|\[elif ([^\]]+)\]|\[else\]|\[\/if\]|\{([a-z_][a-z0-9_.@]*)\}/g;
+const TOKEN = /\[if ([^\]]+)\]|\[elif ([^\]]+)\]|\[else\]|\[\/if\]|\{([A-Za-z_][a-z0-9_.@]*)\}/g;
 const cache = new Map<string, Node[]>();
 
 export function parseText(src: string): Node[] {
@@ -55,13 +56,23 @@ export function parseText(src: string): Node[] {
 
 const SPECIAL_VARS = ['name', 'date', 'coin', 'station', 'season', 'year', 'age', 'age_words', 'reign_year', 'regnal_year', 'king'];
 
+/** {he}, {His}: a pronoun for the hero, capitalised when written capitalised. */
+function pronounVar(name: string, state: GameState): string | undefined {
+  const word = name.charAt(0).toLowerCase() + name.slice(1);
+  if (!PRONOUN_VARS.includes(word)) return undefined;
+  const p = pronoun(heroOf(state).sex, word)!;
+  return name === word ? p : capitalise(p);
+}
+
 function varValue(name: string, state: GameState, content: ContentBundle): string {
   const reg = content.registry;
+  const pv = pronounVar(name, state);
+  if (pv !== undefined) return pv;
   switch (name) {
-    case 'name': return state.name;
+    case 'name': return heroOf(state).name;
     case 'date': return describeDate(state, content);
     case 'coin': return (state.res.coin ?? 0) > 0 ? formatCoin(state.res.coin!) : 'not a penny';
-    case 'station': return capitalise(state.station);
+    case 'station': return capitalise(heroOf(state).station);
     case 'season': return String(getValue(state, content, 'calendar.season'));
     case 'year': return String(getValue(state, content, 'calendar.year'));
     case 'age': return String(getValue(state, content, 'age'));
@@ -123,6 +134,8 @@ export function validateText(src: string, content: ContentBundle): { errors: str
     for (const n of ns) {
       if (n.t === 'var') {
         if (SPECIAL_VARS.includes(n.name)) continue;
+        if (PRONOUN_VARS.includes(n.name.charAt(0).toLowerCase() + n.name.slice(1))) continue;
+        if (/^[A-Z]/.test(n.name)) { errors.push(`only pronouns are capitalised: {${n.name}}`); continue; }
         const own = gameOf(content).checkTextVar?.(n.name, content);
         if (own) { errors.push(...own); continue; }
         const [space, id, field] = n.name.split('.');

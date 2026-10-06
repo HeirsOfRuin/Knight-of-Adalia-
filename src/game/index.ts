@@ -7,12 +7,15 @@ import { RngCursor, seedRng } from '@engine/rng';
 import { newNpcState } from '@engine/effects';
 import { enterScene } from '@engine/director';
 import { EngineError } from '@engine/index';
+import { bornAtAge } from '@engine/character';
+import { HERO_ID } from './state';
 
 export { EngineError, view, choose, visibleChoices, isAvailable, mergeChanges } from '@engine/index';
 export type { ChoiceView, SceneView, ChooseOptions, ChooseResult } from '@engine/index';
 export { describeDate } from '@engine/calendar';
 export { formatCoin } from '@engine/format';
 export type { GameState } from './state';
+export { heroOf } from '@engine/character';
 
 export interface NewGameOptions {
   background: string;
@@ -49,21 +52,28 @@ export function newGame(content: ContentBundle, opts: NewGameOptions): GameState
     contentHash: content.hash,
     seed: opts.seed,
     rng: rng.state,
-    name: opts.name.trim() || 'Wat',
+    characters: {
+      [HERO_ID]: {
+        name: opts.name.trim() || 'Wat',
+        sex: 'male',
+        born: bornAtAge(bg.start_age),
+        alive: true,
+        attributes,
+        skills,
+        health: 10,
+        traits: [...bg.traits],
+        injuries: [],
+        items: [...bg.items],
+        station: content.config.stations[0]!,
+      },
+    },
+    hero: HERO_ID,
     background: bg.id,
     role,
     chapter: content.scenes[bg.start_scene]?.chapter ?? content.config.chapters[0]!,
     scene: bg.start_scene,
     returnStack: [],
     time: 0,
-    startAge: bg.start_age,
-    attributes,
-    skills,
-    health: 10,
-    traits: [...bg.traits],
-    injuries: [],
-    items: [...bg.items],
-    station: content.config.stations[0]!,
     rep,
     res: { coin: bg.coin, supplies: 0, horses: 0, renown: 0 },
     favors: {},

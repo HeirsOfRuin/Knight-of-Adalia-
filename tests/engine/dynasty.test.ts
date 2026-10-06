@@ -1,3 +1,4 @@
+import { heroOf } from '@engine/character';
 import { describe, it, expect } from 'vitest';
 import { realContent } from '../helpers';
 import { loadPlans, playPlan } from '../../tools/bot-lib';
@@ -19,7 +20,7 @@ describe('dynasty export', () => {
     expect(d.heirs.length).toBeGreaterThan(0);
     expect(d.heirs.every((h) => typeof h.age === 'number' && h.name !== undefined)).toBe(true);
     expect(d.flags).toContain('c5_reigns');
-    expect(d.founder.name).toBe(state.name);
+    expect(d.founder.name).toBe(heroOf(state).name);
     expect(d.people.every((p) => p.name && typeof p.alive === 'boolean')).toBe(true);
   });
 

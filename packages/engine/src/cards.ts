@@ -1,6 +1,7 @@
 // Chapter cards: the title page shown before the first scene of a chapter (config.chapter_cards)
 // or of an act (scene.card), with a short account of where the hero stands and what the years
 // since the last card have brought.
+import { heroOf } from './character';
 import type { Card, CoreContent as ContentBundle } from './schema';
 import type { CoreState as GameState } from './state';
 import { gameOf } from './game';
@@ -40,7 +41,7 @@ export function cardView(content: ContentBundle, state: GameState, card: Card): 
   const rows: [string, string][] = [];
   rows.push(['Date', describeDate(state, content)]);
   rows.push(['Age', String(ageOf(state))]);
-  rows.push(['Station', capitalise(state.station.replace('_', ' '))]);
+  rows.push(['Station', capitalise(heroOf(state).station.replace('_', ' '))]);
 
   rows.push(...(game.cardRows?.(content, state) ?? []));
   const f = forceOf(state);

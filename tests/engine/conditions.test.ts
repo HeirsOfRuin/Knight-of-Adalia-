@@ -1,3 +1,4 @@
+import { heroOf } from '@engine/character';
 import { describe, it, expect } from 'vitest';
 import { test as cond, unmetLabel, validateCond, parseExpr } from '@engine/conditions';
 import { content, game } from '../helpers';
@@ -15,7 +16,7 @@ describe('conditions', () => {
     expect(cond('skill.learning >= 3', s, c)).toBe(false);
     expect(cond('background == reeve', s, c)).toBe(true);
     expect(cond('station >= squire', s, c)).toBe(false);
-    s.station = 'knight';
+    heroOf(s).station = 'knight';
     expect(cond('station >= squire', s, c)).toBe(true);
     expect(cond('calendar.season == spring', s, c)).toBe(true);
   });

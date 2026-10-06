@@ -1,3 +1,4 @@
+import { heroOf } from '@engine/character';
 import { describe, it, expect } from 'vitest';
 import { choose, view, newGame } from '../../src/game/index';
 import { content, game, withScenes } from '../helpers';
@@ -9,7 +10,7 @@ describe('engine', () => {
     for (const bg of Object.keys(c.backgrounds)) {
       const s = game(bg);
       expect(s.scene).toBe(c.backgrounds[bg]!.start_scene);
-      const total = Object.values(s.attributes).reduce((a, b) => a + b, 0);
+      const total = Object.values(heroOf(s).attributes).reduce((a, b) => a + b, 0);
       expect(total).toBe(11);
     }
   });
@@ -28,7 +29,7 @@ describe('engine', () => {
   it('servant gets a role and its skills', () => {
     const s = newGame(c, { background: 'servant', seed: 1, name: 'x', role: 'huntsman' });
     expect(s.role).toBe('huntsman');
-    expect(s.skills.woodcraft).toBe(3);
+    expect(heroOf(s).skills.woodcraft).toBe(3);
   });
 
   it('shows locked choices with a requirement label, hides hidden ones', () => {
@@ -70,7 +71,7 @@ describe('engine', () => {
   it('forces check outcomes in debug', () => {
     const r = choose(c, game(), 'strike', { force: 'partial' });
     expect(r.check?.result).toBe('partial');
-    expect(r.state.injuries.map((i) => i.id)).toContain('cut_brow');
+    expect(heroOf(r.state).injuries.map((i) => i.id)).toContain('cut_brow');
   });
 
   it('plays a pool interlude and returns to the spine', () => {
@@ -159,17 +160,17 @@ describe('Phase 3 rules', () => {
 
   it('a failed ford charge kills only the unarmoured or already injured', () => {
     const armoured = atScene('c1_raid');
-    armoured.items.push('padded_jack');
+    heroOf(armoured).items.push('padded_jack');
     const a = choose(c, armoured, 'charge', { force: 'failure' }).state;
     expect(a.ended).toBeUndefined();
-    expect(a.injuries.map((i) => i.id)).toContain('cracked_skull');
+    expect(heroOf(a).injuries.map((i) => i.id)).toContain('cracked_skull');
 
     const bare = choose(c, atScene('c1_raid'), 'charge', { force: 'failure' }).state;
     expect(bare.ended?.ending).toBe('death');
 
     const hurt = atScene('c1_raid');
-    hurt.items.push('padded_jack');
-    hurt.injuries.push({ id: 'cracked_skull', since: hurt.time });
+    heroOf(hurt).items.push('padded_jack');
+    heroOf(hurt).injuries.push({ id: 'cracked_skull', since: hurt.time });
     expect(choose(c, hurt, 'charge', { force: 'failure' }).state.ended?.ending).toBe('death');
   });
 
@@ -177,9 +178,9 @@ describe('Phase 3 rules', () => {
     const { renderText } = await import('@engine/text');
     const s = game('archer');
     expect(renderText('[if background == reeve || item.yew_bow && !injured]yes[else]no[/if]', s, c)).toBe('yes');
-    s.injuries.push({ id: 'bruised_ribs', since: 0 }); // minor wounds do not count
+    heroOf(s).injuries.push({ id: 'bruised_ribs', since: 0 }); // minor wounds do not count
     expect(renderText('[if background == reeve || item.yew_bow && !injured]yes[else]no[/if]', s, c)).toBe('yes');
-    s.injuries.push({ id: 'cracked_skull', since: 0 });
+    heroOf(s).injuries.push({ id: 'cracked_skull', since: 0 });
     expect(renderText('[if background == reeve || item.yew_bow && !injured]yes[else]no[/if]', s, c)).toBe('no');
   });
 

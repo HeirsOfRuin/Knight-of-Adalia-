@@ -1,3 +1,4 @@
+import { heroOf } from '@engine/character';
 import { describe, it, expect } from 'vitest';
 import { computeOdds, bandFor, resolveCheck } from '@engine/checks';
 import { computePrejudice, audienceModifier } from '../../src/game/station';
@@ -29,7 +30,7 @@ describe('checks', () => {
   });
   it('prejudice shrinks with station and renown but never below 1', () => {
     const s = game('reeve');
-    s.station = 'royal';
+    heroOf(s).station = 'royal';
     s.res.renown = 100;
     s.flags.noble_marriage = true;
     expect(computePrejudice(s, c)).toBe(1);

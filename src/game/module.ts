@@ -2,6 +2,7 @@
 // The background and its prejudice, the women he courts, the manor and its upkeep, his
 // children, his other holdings, drill, the wives' voices, and where his home is.
 // Registered on import; every entry point that loads content imports it (tools/content-loader.ts, src/main.tsx).
+import { heroOf } from '@engine/character';
 import { registerGame, STAKES_RANK as RANK, type GameModule } from '@engine/game';
 import type { CoreContent } from '@engine/schema';
 import type { CoreState } from '@engine/state';
@@ -39,14 +40,14 @@ function train(state: GameState, content: ContentBundle, spec: Record<string, nu
   const ceiling = spec.ceiling ?? DRILL_CEILING;
   for (const [skill, by] of Object.entries(spec)) {
     if (skill === 'ceiling' || skill === 'quiet') continue;
-    const before = state.skills[skill] ?? 0;
+    const before = heroOf(state).skills[skill] ?? 0;
     const room = Math.max(0, ceiling - before);
     if (room > 0) addNumber(state, content, `skill.${skill}`, Math.min(by, room), changes);
     if (by <= room || spec.quiet) continue;
     const label = labelFor(content, `skill.${skill}`);
     const attr = TRAIN_OVERFLOW[skill];
     const key = `overflow_${attr}`;
-    if (attr && !state.counters[key] && (state.attributes[attr] ?? 1) < OVERFLOW_MAX) {
+    if (attr && !state.counters[key] && (heroOf(state).attributes[attr] ?? 1) < OVERFLOW_MAX) {
       state.counters[key] = 1;
       changes.push(`${label}: practice alone can take you no further. The work goes into your body instead.`);
       addNumber(state, content, `attr.${attr}`, 1, changes);
@@ -265,7 +266,7 @@ export const knight: GameModule = {
       const state = st(s);
       const e = effect as Op<'name_heir'>;
       const h = state.heirs?.find((x) => !x.name);
-      if (h) h.name = e.name_heir === '@self' ? state.name : e.name_heir;
+      if (h) h.name = e.name_heir === '@self' ? heroOf(state).name : e.name_heir;
     },
     heir_dies(s, _c, effect, ctx) {
       const e = effect as Op<'heir_dies'>;
@@ -365,7 +366,7 @@ export const knight: GameModule = {
     const state = st(s);
     switch (ref) {
       case '@home': return HOME[state.background] ?? 'wendham';
-      case '@service': return state.track === 'levy' ? 'brome' : 'ravell_hall';
+      case '@service': return heroOf(state).track === 'levy' ? 'brome' : 'ravell_hall';
       case '@manor': return state.flags.c2_granted_kerval ? 'kerval' : state.flags.c2_granted_marsalin ? 'marsalin' : state.flags.c2_granted_ormel ? 'ormel' : undefined;
       case '@town': return state.flags.c2_granted_kerval ? 'lannec' : 'sauvemer';
     }

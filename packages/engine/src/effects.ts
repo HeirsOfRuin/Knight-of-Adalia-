@@ -1,9 +1,10 @@
 // Effect application. Operates on a state that the caller has already cloned.
 // The engine's own ops are applied here; a game's ops and paths go to its module.
+import { heroOf } from './character';
 import { CORE_EFFECT_OPS, type CoreContent as ContentBundle, type CoreBaseEffect, type EffectLike, type GameEffect } from './schema';
 import type { CoreState as GameState, NpcState } from './state';
 import { advanceSeasons, timeOf } from './calendar';
-import { labelFor, deref } from './paths';
+import { labelFor, deref, unhero } from './paths';
 import { test } from './conditions';
 import { gameOf, type EffectCtx } from './game';
 import { formatCoin, signed, capitalise } from './format';
@@ -25,20 +26,20 @@ export function npc(state: GameState, content: ContentBundle, id: string): NpcSt
 }
 
 export function addNumber(state: GameState, content: ContentBundle, rawPath: string, delta: number, changes: string[]): void {
-  const path = deref(state, rawPath);
+  const path = unhero(deref(state, rawPath));
   const [ns, a, b] = path.split('.') as [string, string, string | undefined];
   const note = (label: string, d: number) => { if (d !== 0) changes.push(`${label} ${signed(d)}`); };
   switch (ns) {
     case 'attr': {
-      const before = state.attributes[a] ?? 1;
-      state.attributes[a] = clamp(before + delta, 1, 6);
-      note(labelFor(content, path), state.attributes[a]! - before);
+      const before = heroOf(state).attributes[a] ?? 1;
+      heroOf(state).attributes[a] = clamp(before + delta, 1, 6);
+      note(labelFor(content, path), heroOf(state).attributes[a]! - before);
       return;
     }
     case 'skill': {
-      const before = state.skills[a] ?? 0;
-      state.skills[a] = clamp(before + delta, 0, 10);
-      note(labelFor(content, path), state.skills[a]! - before);
+      const before = heroOf(state).skills[a] ?? 0;
+      heroOf(state).skills[a] = clamp(before + delta, 0, 10);
+      note(labelFor(content, path), heroOf(state).skills[a]! - before);
       return;
     }
     case 'rep': {
@@ -76,9 +77,9 @@ export function addNumber(state: GameState, content: ContentBundle, rawPath: str
       state.counters[a] = (state.counters[a] ?? 0) + delta;
       return;
     case 'health': {
-      const before = state.health;
-      state.health = clamp(before + delta, 1, 10); // death only through `die`
-      note('Health', state.health - before);
+      const before = heroOf(state).health;
+      heroOf(state).health = clamp(before + delta, 1, 10); // death only through `die`
+      note('Health', heroOf(state).health - before);
       return;
     }
     default: {
@@ -90,11 +91,11 @@ export function addNumber(state: GameState, content: ContentBundle, rawPath: str
 }
 
 function assignValue(state: GameState, content: ContentBundle, rawPath: string, value: string | number | boolean): void {
-  const path = deref(state, rawPath);
+  const path = unhero(deref(state, rawPath));
   const [ns, a, b] = path.split('.') as [string, string, string | undefined];
   switch (ns) {
     case 'chapter': state.chapter = String(value); return;
-    case 'track': state.track = String(value); return;
+    case 'track': heroOf(state).track = String(value); return;
     case 'counter': state.counters[a] = Number(value); return;
     case 'res': state.res[a] = Number(value); return; // e.g. keep a score of men: assign res.men 20
     case 'flag': if (value) state.flags[a] = true; else delete state.flags[a]; return;
@@ -147,43 +148,43 @@ export function applyEffects(state: GameState, content: ContentBundle, effects: 
     else if ('assign' in e) for (const [p, v] of Object.entries(e.assign)) assignValue(state, content, p, v);
     else if ('trait' in e) {
       const id = e.trait.slice(1);
-      const has = state.traits.includes(id);
+      const has = heroOf(state).traits.includes(id);
       if (e.trait[0] === '+' && !has) {
-        state.traits.push(id);
+        heroOf(state).traits.push(id);
         ctx.changes.push(`Gained: ${reg.traits[id]?.label ?? id}`);
       } else if (e.trait[0] === '-' && has) {
-        state.traits = state.traits.filter((t) => t !== id);
+        heroOf(state).traits = heroOf(state).traits.filter((t) => t !== id);
         ctx.changes.push(`Lost: ${reg.traits[id]?.label ?? id}`);
       }
     } else if ('item' in e) {
       const id = e.item.slice(1);
-      const has = state.items.includes(id);
+      const has = heroOf(state).items.includes(id);
       if (e.item[0] === '+' && !has) {
-        state.items.push(id);
+        heroOf(state).items.push(id);
         ctx.changes.push(`Gained: ${reg.items[id]?.label ?? id}`);
       } else if (e.item[0] === '-' && has) {
-        state.items = state.items.filter((t) => t !== id);
+        heroOf(state).items = heroOf(state).items.filter((t) => t !== id);
         ctx.changes.push(`Lost: ${reg.items[id]?.label ?? id}`);
       }
     } else if ('injury' in e) {
       const def = reg.injuries[e.injury];
-      if (!state.injuries.some((i) => i.id === e.injury)) {
-        state.injuries.push({ id: e.injury, since: state.time });
+      if (!heroOf(state).injuries.some((i) => i.id === e.injury)) {
+        heroOf(state).injuries.push({ id: e.injury, since: state.time });
         ctx.changes.push(`Injury: ${def?.label ?? e.injury}`);
-        if (def && def.heals_after === undefined && def.scar && !state.traits.includes(def.scar)) {
-          state.traits.push(def.scar);
+        if (def && def.heals_after === undefined && def.scar && !heroOf(state).traits.includes(def.scar)) {
+          heroOf(state).traits.push(def.scar);
           ctx.changes.push(`Gained: ${reg.traits[def.scar]?.label ?? def.scar}`);
         }
       }
     } else if ('heal' in e) {
-      if (state.injuries.some((i) => i.id === e.heal)) {
-        state.injuries = state.injuries.filter((i) => i.id !== e.heal);
+      if (heroOf(state).injuries.some((i) => i.id === e.heal)) {
+        heroOf(state).injuries = heroOf(state).injuries.filter((i) => i.id !== e.heal);
         ctx.changes.push(`${reg.injuries[e.heal]?.label ?? e.heal} has healed`);
       }
     } else if ('station' in e) {
-      if (state.station !== e.station) ctx.changes.push(`Station: ${capitalise(e.station)}`);
-      state.station = e.station;
-      if (e.track) state.track = e.track;
+      if (heroOf(state).station !== e.station) ctx.changes.push(`Station: ${capitalise(e.station)}`);
+      heroOf(state).station = e.station;
+      if (e.track) heroOf(state).track = e.track;
     } else if ('meet' in e) {
       npc(state, content, deref(state, e.meet)).met = true;
     } else if ('casualties' in e) {
@@ -235,6 +236,9 @@ export function applyEffects(state: GameState, content: ContentBundle, effects: 
     } else if ('journal' in e) {
       ctx.changes.push(e.journal);
     } else if ('die' in e) {
+      const h = heroOf(state);
+      h.alive = false;
+      h.died = state.time;
       state.ended = { ending: 'death', cause: e.die };
       return true;
     }

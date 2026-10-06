@@ -21,6 +21,31 @@ export interface ActiveInjury {
   since: number; // absolute season index
 }
 
+export type Sex = 'male' | 'female';
+
+/**
+ * A person the player can play: the hero now, and in a game of generations the heirs who
+ * succeed. The hero is state.characters[state.hero]; paths with no character named (attr.wits,
+ * health, station) read the hero.
+ */
+export interface Character {
+  name: string;
+  sex: Sex;
+  /** absolute season index of birth; before game start it is negative (age = whole years since) */
+  born: number;
+  alive: boolean;
+  /** season index of death */
+  died?: number;
+  attributes: Record<string, number>;
+  skills: Record<string, number>;
+  health: number; // 1..10
+  traits: string[];
+  injuries: ActiveInjury[];
+  items: string[];
+  station: string;
+  track?: string;
+}
+
 export interface QueuedEvent {
   event: string;
   dueAt: number; // absolute season index
@@ -44,22 +69,16 @@ export interface CoreState {
   contentHash: string;
   seed: number;
   rng: RngState;
-  name: string;
+  /** everyone the player can play, by id */
+  characters: Record<string, Character>;
+  /** the id of the character the player plays now */
+  hero: string;
   chapter: string;
   scene: string;
   /** continuation stack for interludes (pool and queued events) */
   returnStack: string[];
   /** absolute season count since game start; 0 = start season */
   time: number;
-  startAge: number;
-  attributes: Record<string, number>;
-  skills: Record<string, number>;
-  health: number; // 1..10
-  traits: string[];
-  injuries: ActiveInjury[];
-  items: string[];
-  station: string;
-  track?: string;
   rep: Record<string, number>;
   res: Record<string, number>; // coin (pence), supplies, horses, renown
   favors: Record<string, number>; // + owed to him, - he owes

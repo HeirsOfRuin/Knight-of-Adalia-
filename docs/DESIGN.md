@@ -1287,6 +1287,17 @@ Step 1 of the sequel's build order (`docs/SEQUEL-FRAME.md`). The engine moved to
 - **No behaviour change**, checked with `npm run fingerprint` (new): every view and state across the 16 scripted plans and 96 seeded bot runs, the dynasty exports, save round-trips and the validator's output hash the same before and after. `npm run check`, the browser smoke test and the Pages build pass. The bundle is 5 KB larger.
 - **Not moved yet:** Knight of Adalia stays at the repository root (`content/`, `src/`, `tools/`) rather than `games/knight/`. Moving it changes nothing in play and every path in the docs and tools; it waits until House of Adalia's shell exists, when the tools are parameterised by game.
 
+## The hero as a character (2026-10-06)
+Step 2 of the sequel's build order. The hero moves off the state into `state.characters`, and `state.hero` names the one the player plays, so in House of Adalia play can pass to an heir. Knight of Adalia's hero is `characters.founder`.
+
+- **Moved onto the character:** name, attributes, skills, health, traits, injuries, items, station, track. Added: sex, birth (`born`, a season index, replacing `startAge`), `alive` and `died`.
+- **Stayed on the state:** relationships, reputation, resources, favours, flags, counters, suits, the manor, heirs and holdings. In House of Adalia these belong to the house.
+- **Paths.** Bare paths still mean the hero, so no content changed. `hero.attr.wits` reads the same as `attr.wits`; `hero.sex`, `hero.name`, `hero.alive` are new.
+- **Pronouns.** `{he}` `{him}` `{his}` `{himself}` `{lord}` `{man}` `{son}` render for the hero's sex; `{He}` capitalises. The validator rejects any other capitalised variable.
+- **Death.** `die` also marks the hero dead.
+- **Saves.** Version 4. The migration moves a version 3 save's hero fields onto `characters.founder`; a test loads a version 3 save and gets the same state.
+- **Checked.** Every view and every state (projected back to the old shape), the dynasty exports, save round-trips, bot runs and validator output hash the same as before. `npm run fingerprint` now hashes canonical JSON, so the order fields are written in no longer counts.
+
 ## Continuity (2026-10-03, after playtest feedback)
 Josh found text that assumed choices he had not made. A survey found 47 such places, and the force panel and a Ch3 population line had the same fault: the story said one thing and the state another.
 
@@ -1349,3 +1360,4 @@ Josh found text that assumed choices he had not made. A survey found 47 such pla
 | 2026-10-06 | Sequel framed in `docs/SEQUEL-FRAME.md`. Author accepted the recommended scope: a hybrid of authored spine and light realm simulation, three generations, one repository with a shared engine package, succession law as a live lever (daughters can head the house), and the dynasty export optional. Openings, endings, systems, build order and six open decisions await approval. |
 | 2026-10-06 | Sequel frame approved as House of Adalia, with every open decision as recommended. The author's rule: the West does not always start free. The frame now has three starting frames (Free, Adalian, Partitioned) written separately, nine opening and frame combinations, and checks for frame-bound prose. The dynasty export gains `realm.settlement`, `realm.sovereign` and `realm.war`. |
 | 2026-10-06 | Engine extraction (sequel step 1): the engine in `packages/engine/` behind a game module, Knight of Adalia's rules in `src/game/`. No behaviour change by fingerprint. See The engine and the game module. |
+| 2026-10-06 | The hero as a character (sequel step 2): `state.characters` and `state.hero`, `hero.*` paths, pronoun variables, save version 4. No change in play. |

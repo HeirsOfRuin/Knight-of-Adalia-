@@ -259,7 +259,7 @@ tools/               validator, bot, continuity, lint: parameterised by game
 ## 11. Build order
 0. **Export additions** (done 2026-10-06): `realm.settlement`, `realm.sovereign` and `realm.war`, with tests.
 1. **Engine extraction** (done 2026-10-06): the engine in `packages/engine` behind a game module (`packages/engine/README.md`), KoA's rules in `src/game/`. No behaviour change by `npm run fingerprint`; `npm run check`, the smoke test and the Pages build pass. KoA moves to `games/knight/` when House of Adalia's shell is added.
-2. **Character refactor:** `characters`, `ruler`, paths and pronouns, with KoA ported onto it and still green.
+2. **Character refactor** (done 2026-10-06): the hero is a `Character` in `state.characters`, pointed to by `state.hero` (the frame's "ruler"; Knight of Adalia's hero is `founder`). `hero.*` paths, pronoun variables, a version 4 save migration. KoA plays the same: every view, projected state, export, save and bot run matches the previous commit. Other characters' paths and passing play to an heir come with succession in step 4.
 3. **Frame support:** `realm.*` paths and variables, variants keyed by frame, the validator and continuity rules in section 7.
 4. **Vertical slice:** the Founder opening in two frames (Free and Adalian), the prologue, Book I and one succession into Book II. Bot and continuity checks on it, and a transcript per frame.
 5. **Houses, realm and war**, tuned against the slice.

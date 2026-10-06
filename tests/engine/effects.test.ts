@@ -1,3 +1,4 @@
+import { heroOf } from '@engine/character';
 import { PAY_PER_MAN } from '../../src/game/estate';
 import { describe, it, expect } from 'vitest';
 import { applyEffects } from '@engine/effects';
@@ -15,7 +16,7 @@ describe('effects', () => {
     const s = game('reeve');
     const x = ctx();
     applyEffects(s, c, fx({ add: { 'skill.arms': 20, 'rep.commons': -50, 'res.coin': -1000, 'rep.piety': -3 } }), x);
-    expect(s.skills.arms).toBe(10);
+    expect(heroOf(s).skills.arms).toBe(10);
     expect(s.rep.commons).toBe(-10);
     expect(s.res.coin).toBe(0);
     expect(s.rep.piety).toBe(0); // personal axes floor at 0
@@ -33,11 +34,11 @@ describe('effects', () => {
   it('injuries apply mods, heal with time, and leave scars', () => {
     const s = game('archer');
     applyEffects(s, c, fx({ injury: 'cut_brow' }), ctx());
-    expect(s.injuries.map((i) => i.id)).toEqual(['cut_brow']);
+    expect(heroOf(s).injuries.map((i) => i.id)).toEqual(['cut_brow']);
     const x = ctx();
     applyEffects(s, c, fx({ advance: { seasons: 1 } }), x);
-    expect(s.injuries).toHaveLength(0);
-    expect(s.traits).toContain('scarred_face');
+    expect(heroOf(s).injuries).toHaveLength(0);
+    expect(heroOf(s).traits).toContain('scarred_face');
     expect(x.changes.join('|')).toMatch(/healed/);
   });
   it('loyalty only touches men in the following', () => {
@@ -56,7 +57,7 @@ describe('effects', () => {
   it('health never drops below 1 without a die effect', () => {
     const s = game();
     applyEffects(s, c, fx({ add: { health: -50 } }), ctx());
-    expect(s.health).toBe(1);
+    expect(heroOf(s).health).toBe(1);
     expect(s.ended).toBeUndefined();
     expect(applyEffects(s, c, fx({ die: 'x' }), ctx())).toBe(true);
     expect(s.ended?.ending).toBe('death');
@@ -64,8 +65,8 @@ describe('effects', () => {
   it('station changes set track', () => {
     const s = game();
     applyEffects(s, c, fx({ station: 'retainer', track: 'levy' }), ctx());
-    expect(s.station).toBe('retainer');
-    expect(s.track).toBe('levy');
+    expect(heroOf(s).station).toBe('retainer');
+    expect(heroOf(s).track).toBe('levy');
   });
 });
 
@@ -148,26 +149,26 @@ describe('train', () => {
   const fx = (...e: unknown[]) => e.map((x) => EffectSchema.parse(x));
   it('stops drill at the ceiling and puts the overflow into the body once', () => {
     const s = game();
-    s.skills.arms = 3;
-    s.attributes.endurance = 2;
+    heroOf(s).skills.arms = 3;
+    heroOf(s).attributes.endurance = 2;
     const cx = ctx();
     applyEffects(s, c, fx({ train: { arms: 2 } }), cx);
-    expect(s.skills.arms).toBe(4);
-    expect(s.attributes.endurance).toBe(3);
+    expect(heroOf(s).skills.arms).toBe(4);
+    expect(heroOf(s).attributes.endurance).toBe(3);
     applyEffects(s, c, fx({ train: { arms: 1 } }), cx);
-    expect(s.skills.arms).toBe(4);
-    expect(s.attributes.endurance).toBe(3); // once per attribute
+    expect(heroOf(s).skills.arms).toBe(4);
+    expect(heroOf(s).attributes.endurance).toBe(3); // once per attribute
     expect(cx.changes.some((m) => m.includes('take a master'))).toBe(true);
   });
   it('lets a mentor go higher, and learning on the job stays quiet', () => {
     const s = game();
-    s.skills.arms = 4;
+    heroOf(s).skills.arms = 4;
     applyEffects(s, c, fx({ train: { arms: 1, ceiling: 6 } }), ctx());
-    expect(s.skills.arms).toBe(5);
-    s.skills.command = 5;
+    expect(heroOf(s).skills.arms).toBe(5);
+    heroOf(s).skills.command = 5;
     const cx = ctx();
     applyEffects(s, c, fx({ train: { command: 1, ceiling: 5, quiet: 1 } }), cx);
-    expect(s.skills.command).toBe(5);
+    expect(heroOf(s).skills.command).toBe(5);
     expect(cx.changes).toEqual([]);
   });
 });
@@ -177,7 +178,7 @@ describe('heirs and chance', () => {
   const fx = (...e: unknown[]) => e.map((x) => EffectSchema.parse(x));
   it('records a birth, names the newest child, and reads the heirs paths', () => {
     const s = game();
-    s.name = 'Wat';
+    heroOf(s).name = 'Wat';
     applyEffects(s, c, fx({ birth: 'son' }, { name_heir: '@self' }, { birth: 'daughter' }, { name_heir: 'Alison' }), ctx());
     expect(s.heirs!.map((h) => h.name)).toEqual(['Wat', 'Alison']);
     expect(getValue(s, c, 'heirs.count')).toBe(2);

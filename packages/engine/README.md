@@ -34,10 +34,18 @@ The game also builds its own:
 
 Knight of Adalia's are in `src/content/schema.ts` and `src/game/`.
 
+## Characters (`src/character.ts`)
+The hero is a `Character` in `state.characters`, and `state.hero` is its id. A character has a name, a sex, a birth (a season index; negative before the game starts), whether it is alive, and its own attributes, skills, health, traits, injuries, items, station and track. `heroOf(state)` returns the hero.
+
+- **Paths.** The hero's own paths are written bare (`attr.wits`, `health`, `station`) or with `hero.` in front. `hero.sex`, `hero.name` and `hero.alive` exist only with the prefix.
+- **Pronouns.** `{he}` `{him}` `{his}` `{himself}` `{lord}` `{man}` `{son}`, rendered for the hero's sex; `{He}` capitalises.
+- **Death.** `die` marks the hero dead (`alive`, `died`) as well as ending the game.
+- **Not yet:** paths and effects for characters other than the hero, creating characters in play, and passing play to another character. House of Adalia's slice adds them with succession (step 4 of its build order).
+
 ## Known assumptions still in the engine
 These are general enough for both games for now. They move to config or the module when House of Adalia needs them to differ.
-- One hero: attributes, skills, traits and health sit on the state itself. The character refactor (step 2 of the sequel's build order) makes the hero a pointer.
-- Text and labels say "he" and "his". Step 2 adds pronouns.
+- Relationships (`state.npcs`), reputation, resources and favours belong to the state, not to a character. In a game of generations they are the house's; whether some pass to an heir is a decision for the slice.
+- The engine's own player-facing strings are second person ("Your men", "You owe ..."), which suits a hero of either sex. Gendered labels belong to the game: Knight of Adalia's check label "his origins" is in its module.
 - Resources are a fixed list: coin, supplies, horses, renown, men, garrison, levy. The force (company, garrison, levy) is the engine's.
 - The world (`worldgen.ts`) is the one both games share.
 

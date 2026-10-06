@@ -1,3 +1,4 @@
+import { heroOf } from '@engine/character';
 import { useState } from 'preact/hooks';
 import type { ContentBundle } from '../../content/schema';
 import type { GameState } from '../../game/state';
@@ -68,8 +69,8 @@ export function GameScreen(p: Props) {
     <div class={`game ${p.debug ? 'has-debug' : ''}`}>
       <header class="topbar">
         <div class="topbar-info">
-          <span class="who">{state.name}</span>
-          <span class="when">{capitalise(state.station)} &middot; age {ageOf(state)}{menCount > 0 ? <> &middot; {menCount} {menCount === 1 ? 'man' : 'men'}</> : null}</span>
+          <span class="who">{heroOf(state).name}</span>
+          <span class="when">{capitalise(heroOf(state).station)} &middot; age {ageOf(state)}{menCount > 0 ? <> &middot; {menCount} {menCount === 1 ? 'man' : 'men'}</> : null}</span>
         </div>
         <nav class="topbar-nav">
           <button class={`tab ${panel === 'status' ? 'on' : ''}`} aria-expanded={panel === 'status'} onClick={() => toggle('status')}>Status</button>

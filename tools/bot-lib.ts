@@ -1,6 +1,7 @@
 // Playthrough bot. Plays the engine headless with a policy and reports how
 // each run ended. It asserts progress: a run that never advances is a failure,
 // not a pass.
+import { heroOf } from '@engine/character';
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import YAML from 'yaml';
@@ -130,7 +131,7 @@ export function describeFinal(s: GameState): Record<string, string> {
   const suits = Object.entries(s.suits).filter(([, x]) => x.status === 'courted' || x.pledge !== 'none');
   return {
     gate: s.flags.p_lower_track ? 'lower track' : 'squire track',
-    exit: s.ended?.ending === 'death' ? 'dead' : s.station === 'knight' ? 'knight' : s.track === 'man_at_arms' ? 'man-at-arms' : `${s.station}/${s.track ?? '-'}`,
+    exit: s.ended?.ending === 'death' ? 'dead' : heroOf(s).station === 'knight' ? 'knight' : heroOf(s).track === 'man_at_arms' ? 'man-at-arms' : `${heroOf(s).station}/${heroOf(s).track ?? '-'}`,
     master: s.aliases.master ?? 'none',
     'lost first master': s.flags.c1_lost_master ? 'yes' : 'no',
     'courtships open': String(suits.length),

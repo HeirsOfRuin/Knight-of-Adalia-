@@ -1,3 +1,4 @@
+import { heroOf } from '@engine/character';
 import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -96,7 +97,7 @@ describe('scripted plans', () => {
     const finals = plans.map((p) => {
       const s = playPlan(c, p).state;
       const grant = ['marsalin', 'kerval', 'ormel'].find((g) => s.flags[`c2_granted_${g}`]);
-      return `${s.background}/${s.ended?.ending}/${s.station}/${s.track}/${s.aliases.master}/${s.aliases.spouse}/${grant}`;
+      return `${s.background}/${s.ended?.ending}/${heroOf(s).station}/${heroOf(s).track}/${s.aliases.master}/${s.aliases.spouse}/${grant}`;
     });
     expect(new Set(finals).size).toBe(plans.length);
   });

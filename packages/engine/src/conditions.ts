@@ -3,7 +3,7 @@
 // lists (all), { all }, { any }, { not }.
 import type { CoreContent as ContentBundle, CondInput } from './schema';
 import type { CoreState as GameState } from './state';
-import { getValue, checkPath, ordinalFor, labelFor, deref, type Value } from './paths';
+import { getValue, checkPath, ordinalFor, labelFor, deref, unhero, type Value } from './paths';
 import { gameOf } from './game';
 import { formatCoin, capitalise } from './format';
 
@@ -116,7 +116,8 @@ export function validateCond(input: CondInput, content: ContentBundle): string[]
       if (c.t === 'cmp' && typeof c.value === 'string') {
         const ord = ordinalFor(content, c.path);
         const known =
-          ord ?? (c.path === 'track' ? [...content.config.tracks, 'none']
+          ord ?? (unhero(c.path) === 'track' ? [...content.config.tracks, 'none']
+          : c.path === 'hero.sex' ? ['male', 'female']
           : c.path.startsWith('alias.') ? ['none', ...Object.keys(content.registry.npcs)]
           : gameOf(content).namedValues?.(content, c.path, c.value));
         if (!known) errs.push(`"${c.src}": path does not take a named value`);

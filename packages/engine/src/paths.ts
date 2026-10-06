@@ -1,6 +1,7 @@
 // State paths: the shared vocabulary of conditions, effects and text.
 // One resolver for everything, so displayed values and resolved values cannot
 // drift apart. Namespaces a game owns (GameModule.namespaces) go to its module.
+import { heroOf } from './character';
 import type { CoreContent as ContentBundle } from './schema';
 import type { CoreState as GameState } from './state';
 import { regnalYear, seasonName, ageOf } from './calendar';
@@ -12,23 +13,35 @@ export type { Value } from './game';
 export function modifierFor(state: GameState, content: ContentBundle, key: string): number {
   const reg = content.registry;
   let m = 0;
-  for (const t of state.traits) m += reg.traits[t]?.mods[key] ?? 0;
-  for (const i of state.injuries) m += reg.injuries[i.id]?.mods[key] ?? 0;
-  for (const it of state.items) m += reg.items[it]?.mods[key] ?? 0;
+  for (const t of heroOf(state).traits) m += reg.traits[t]?.mods[key] ?? 0;
+  for (const i of heroOf(state).injuries) m += reg.injuries[i.id]?.mods[key] ?? 0;
+  for (const it of heroOf(state).items) m += reg.items[it]?.mods[key] ?? 0;
   return m;
 }
 
 export function effectiveAttr(state: GameState, content: ContentBundle, id: string): number {
-  return Math.max(1, (state.attributes[id] ?? 0) + modifierFor(state, content, `attr.${id}`));
+  return Math.max(1, (heroOf(state).attributes[id] ?? 0) + modifierFor(state, content, `attr.${id}`));
 }
 
 export function effectiveSkill(state: GameState, content: ContentBundle, id: string): number {
-  return Math.max(0, (state.skills[id] ?? 0) + modifierFor(state, content, `skill.${id}`));
+  return Math.max(0, (heroOf(state).skills[id] ?? 0) + modifierFor(state, content, `skill.${id}`));
 }
 
 /** Replaces @alias segments with the NPC id they currently point to. */
 export function deref(state: GameState, path: string): string {
   return path.includes('@') ? path.replace(/@([a-z_][a-z0-9_]*)/g, (m, a: string) => state.aliases?.[a] ?? m) : path;
+}
+
+/** Paths about the hero's own person. Written bare (attr.wits) or as hero.attr.wits. */
+export const HERO_PATHS = ['attr', 'skill', 'trait', 'injury', 'item', 'health', 'age', 'injured', 'wounded', 'armour', 'station', 'track'];
+/** The hero's own fields that only the hero. prefix reaches: hero.sex, hero.name, hero.alive. */
+const HERO_FIELDS = ['sex', 'name', 'alive'];
+
+/** hero.attr.wits -> attr.wits: the bare path it means. Other paths are returned as they are. */
+export function unhero(path: string): string {
+  if (!path.startsWith('hero.')) return path;
+  const rest = path.slice(5);
+  return HERO_PATHS.includes(rest.split('.')[0]!) ? rest : path;
 }
 
 /** A friend: someone whose affection and respect have both grown high enough. Friends back him up in scenes. */
@@ -47,9 +60,13 @@ export function numberWord(n: number): string {
 }
 
 export function getValue(state: GameState, content: ContentBundle, rawPath: string): Value {
-  const path = deref(state, rawPath);
+  const path = unhero(deref(state, rawPath));
   const [ns, a, b] = path.split('.');
   switch (ns) {
+    case 'hero': {
+      const h = heroOf(state);
+      return a === 'sex' ? h.sex : a === 'name' ? h.name : a === 'alive' ? h.alive : undefined;
+    }
     case 'flag': return !!state.flags[a!];
     case 'counter': return state.counters[a!] ?? 0;
     case 'attr': return effectiveAttr(state, content, a!);
@@ -57,9 +74,9 @@ export function getValue(state: GameState, content: ContentBundle, rawPath: stri
     case 'rep': return state.rep[a!] ?? 0;
     case 'res': return state.res[a!] ?? 0;
     case 'favor': return state.favors[a!] ?? 0;
-    case 'trait': return state.traits.includes(a!);
-    case 'injury': return state.injuries.some((i) => i.id === a);
-    case 'item': return state.items.includes(a!);
+    case 'trait': return heroOf(state).traits.includes(a!);
+    case 'injury': return heroOf(state).injuries.some((i) => i.id === a);
+    case 'item': return heroOf(state).items.includes(a!);
     case 'rel': {
       const n = state.npcs[a!];
       return n ? (n[b as 'affection' | 'respect' | 'loyalty'] ?? 0) : 0;
@@ -78,14 +95,14 @@ export function getValue(state: GameState, content: ContentBundle, rawPath: stri
       return undefined;
     case 'seen': return state.seen[a!] !== undefined; // seen.<scene>: he has been through that scene
     case 'alias': return state.aliases?.[a!] ?? 'none';
-    case 'station': return state.station;
-    case 'track': return state.track ?? 'none';
+    case 'station': return heroOf(state).station;
+    case 'track': return heroOf(state).track ?? 'none';
     case 'chapter': return state.chapter;
     case 'age': return ageOf(state);
-    case 'health': return state.health;
-    case 'injured': return state.injuries.some((i) => content.registry.injuries[i.id]?.serious);
-    case 'wounded': return state.injuries.length > 0;
-    case 'armour': return state.items.reduce((m, it) => Math.max(m, content.registry.items[it]?.armour ?? 0), 0);
+    case 'health': return heroOf(state).health;
+    case 'injured': return heroOf(state).injuries.some((i) => content.registry.injuries[i.id]?.serious);
+    case 'wounded': return heroOf(state).injuries.length > 0;
+    case 'armour': return heroOf(state).items.reduce((m, it) => Math.max(m, content.registry.items[it]?.armour ?? 0), 0);
     case 'retinue': return Object.values(state.npcs).filter((n) => n.follower && n.alive).length + (state.res.men ?? 0);
     case 'time': return state.time;
     // back in the same scene after one of its choices (a shop after a purchase)
@@ -98,11 +115,13 @@ export function getValue(state: GameState, content: ContentBundle, rawPath: stri
 }
 
 /** Static check of a path against the registry. Returns an error message or null. */
-export function checkPath(content: ContentBundle, path: string): string | null {
+export function checkPath(content: ContentBundle, rawPath: string): string | null {
+  const path = unhero(rawPath);
   const [ns, a, b, extra] = path.split('.');
   const reg = content.registry;
   const need = (ok: boolean, what: string) => (ok ? null : `unknown ${what} in "${path}"`);
   if (extra !== undefined) return `too many segments in "${path}"`;
+  if (ns === 'hero') return HERO_FIELDS.includes(a ?? '') && b === undefined ? null : `unknown hero field in "${path}"`;
   const game = gameOf(content);
   if (game.namespaces.includes(ns!)) return game.checkPath(content, path);
   const single = ['station', 'track', 'chapter', 'age', 'health', 'injured', 'wounded', 'armour', 'retinue', 'time', 'revisit'];
@@ -137,7 +156,8 @@ export function checkPath(content: ContentBundle, path: string): string | null {
 }
 
 /** Ordinal scales for identifier comparisons (station >= squire). */
-export function ordinalFor(content: ContentBundle, path: string): string[] | undefined {
+export function ordinalFor(content: ContentBundle, rawPath: string): string[] | undefined {
+  const path = unhero(rawPath);
   if (path === 'station') return content.config.stations;
   if (path === 'chapter') return content.config.chapters;
   if (path === 'calendar.season') return content.config.seasons;
@@ -151,7 +171,8 @@ export function npcLabel(content: ContentBundle, id: string): string {
 }
 
 /** Human label for a path, used in requirement labels and journal changes. */
-export function labelFor(content: ContentBundle, path: string): string {
+export function labelFor(content: ContentBundle, rawPath: string): string {
+  const path = unhero(rawPath);
   const [ns, a, b] = path.split('.');
   const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1).replace(/_/g, ' ');
   const reg = content.registry;

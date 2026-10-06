@@ -1,0 +1,62 @@
+# The family's own scenes (PLAN.md §4.1-4.2), queued by the game itself: the news of the year,
+# and the succession. Functional prose for the framework; the prologue's writing pass replaces it.
+- id: h_q_news
+  chapter: prologue
+  kind: queued
+  title: "[if family.news == death]A Death in the House[elif family.news == birth]A Birth[elif family.news == match]A Match[else]Of Age[/if]"
+  on_enter: [ { take_news: true } ]
+  text: |
+    [if family.news == death]{news.name} is dead of {family.cause}. {news.He} was {news.ageword}.[elif family.news == birth][if news.sex == male]A son[else]A daughter[/if] is born to the house.[if family.childbed] The mother does not live to hold the child.[/if][elif family.news == match]{news.name} is {news.ageword}, and of an age to marry. Offers come, the way they do.[else]{news.name} comes of age, and the regency is over.[/if]
+  choices:
+    - id: name_grandparent
+      visible_if: family.news == birth
+      text: Name the child for a grandparent.
+      effects: [ { name_child: { who: news, style: grandparent } } ]
+      next: '@return'
+    - id: name_parent
+      visible_if: family.news == birth
+      text: Name the child for a parent.
+      effects: [ { name_child: { who: news, style: parent } } ]
+      next: '@return'
+    - id: match_home
+      visible_if: family.news == match
+      text: Make a match with a family of Adalia.
+      effects: [ { marry: { who: news, culture: adalian } } ]
+      next: '@return'
+    - id: match_west
+      visible_if: family.news == match
+      text: Make a match with a family of the West.
+      effects: [ { marry: { who: news, culture: valdrennish } } ]
+      next: '@return'
+    - id: go_on
+      text: "[if family.news == match]Not yet.[else]Go on.[/if]"
+      effects: [ { if: family.news == birth, then: [ { name_child: { who: news, style: culture } } ] } ]
+      next: '@return'
+
+- id: h_q_succession
+  chapter: prologue
+  kind: queued
+  title: The Succession
+  text: |
+    [if head.retired]{head.name} has given up the headship and gone into the Church.[else]{head.name} is dead of {family.cause}, at {head.ageword}.[/if]
+
+    [if family.no_heir]There is no one left of the blood to take the house up.[elif family.minor]The heir under the law of the house is {heir.name}, who is {heir.ageword}. Until {heir.he} comes of age, someone will have to govern for {heir.him}.[else]The heir under the law of the house is {heir.name}.[/if][if family.contested] But {head.name}'s will names {will.name}, and there are men who will hold to the will.[/if]
+  choices:
+    - id: the_law
+      text: "[if family.no_heir]Let it end.[else]Let the law stand.[/if]"
+      effects: [ { succeed: {} } ]
+      text_after: "{chronicle.last}"
+      next: { switch: [ { if: family.extinct, go: h_extinct } ], default: '@return' }
+    - id: the_will
+      visible_if: family.contested
+      text: Hold to the will.
+      effects: [ { succeed: { heir: will } }, { add: { counter.contested: 1 } } ]
+      text_after: "{chronicle.last}"
+      next: { switch: [ { if: family.extinct, go: h_extinct } ], default: '@return' }
+
+- id: h_extinct
+  chapter: prologue
+  kind: ending
+  ending: extinct
+  text: |
+    The house ends with {head.name}. The lands go to the crown, or to whoever can hold them, and the name to the chronicle.

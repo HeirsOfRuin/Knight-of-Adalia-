@@ -1,0 +1,15 @@
+# Seventy-five empty years: the family's odds with no story. Used by npm run house:life and the tests.
+- id: t_years
+  chapter: test
+  title: The Years
+  text: "Year {year}. {head.name} is {head.ageword}, head of the house."
+  choices:
+    - id: wait
+      text: Let a year pass.
+      effects: [ { advance: { seasons: 4 } } ]
+      next: { switch: [ { if: calendar.year >= 125, go: t_end } ], default: t_years }
+- id: t_end
+  chapter: test
+  kind: ending
+  ending: story_so_far
+  text: The years are over.

@@ -1,0 +1,16 @@
+# The odds of a life (PLAN.md §4.1), in percent a year unless said. Tuned with npm run house:life.
+mortality:
+  - { to: 0, p: 12 }    # the first year (history: 20-30%; lowered so families are not hollowed out before the player knows them)
+  - { to: 4, p: 3 }
+  - { to: 14, p: 1 }
+  - { to: 39, p: 1 }
+  - { to: 49, p: 2 }
+  - { to: 59, p: 4 }
+  - { to: 69, p: 8 }
+  - { to: 200, p: 15 }
+childbed: 2             # per birth
+fertility: { from: 16, to: 40, p: 30, late_from: 35, late_p: 15 }
+plague: { all: 3, children: 5 }   # the Second Mottle (Book I, Act III) is the children's mortality
+majority: 16
+match_age: 17
+founder_family: { spouse_alive: 75, children: [2, 4], born: [27, 41] }   # regnal years of the children's births

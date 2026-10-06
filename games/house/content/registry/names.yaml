@@ -1,0 +1,17 @@
+# Given names by culture (canon.md, Naming conventions), and lesser families for generated spouses.
+adalian:
+  male: [Piers, Hal, Wat, Hob, Ralf, Gervase, Aymer, Osmund, Hamon, Thurstan, Giles, Roger, Walter, Hugh, Simon, Geoffrey, Adam, John, Nicholas, Robert]
+  female: [Agnes, Alys, Isabel, Maud, Joan, Cecily, Margery, Philippa, Eleanor, Edith, Mariot, Annot, Avice, Juliana, Emma, Beatrice, Katherine, Margaret, Elena, Ida]
+  families: [Malvern, Darrell, Wyck, Thorne, Sayer, Fuller, Marrick, Oakes, Lisle, Pelham]
+valdrennish:
+  male: [Amaury, Gaucelin, Lothaire, Évrard, Raoul, Gautier, Enguerrand, Thibaut, Yann, Alain, Guillaume, Renaud, Hugues, Bertrand, Jehan]
+  female: [Jehanne, Mahaut, Héloïse, Clémence, Aliénor, Blanche, Isabeau, Marguerite, Ysolde, Béatrix, Perrine, Agnès, Jacquette, Philippine, Sibylle]
+  families: [de Corbie, de Vaux, de Kerguen, de Penhoët, de Quérec, de Montbrun, de Lannec, de Sauvel]
+caldmoor:
+  male: [Dughal, Fearchar, Ewan, Coll, Lachlan, Niall, Murdo, Somerled]
+  female: [Mairead, Ciorstag, Una, Morag, Eithne, Bride]
+  families: [of Glenhallow, of Ardmhor]
+sarenzan:
+  male: [Ugolino, Bertuccio, Nerio, Matteo, Lapo, Cione, Vanni]
+  female: [Fiammetta, Lisa, Bice, Tessa, Nera, Giovanna]
+  families: [Lanzi, Varesco, Spada]

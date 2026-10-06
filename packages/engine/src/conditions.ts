@@ -5,6 +5,7 @@ import type { CoreContent as ContentBundle, CondInput } from './schema';
 import type { CoreState as GameState } from './state';
 import { getValue, checkPath, ordinalFor, labelFor, deref, unhero, type Value } from './paths';
 import { gameOf } from './game';
+import { isSelector } from './character';
 import { formatCoin, capitalise } from './format';
 
 export type Op = '>=' | '<=' | '>' | '<' | '==' | '!=';
@@ -118,6 +119,8 @@ export function validateCond(input: CondInput, content: ContentBundle): string[]
         const known =
           ord ?? (unhero(c.path) === 'track' ? [...content.config.tracks, 'none']
           : c.path === 'hero.sex' ? ['male', 'female']
+          : isSelector(content, c.path.split('.')[0]!) && c.path.endsWith('.sex') ? ['none', 'male', 'female']
+          : isSelector(content, c.path.split('.')[0]!) && c.path.endsWith('.temperament') ? ['none', 'bold', 'bookish', 'merry', 'grave']
           : c.path.startsWith('alias.') ? ['none', ...Object.keys(content.registry.npcs)]
           : gameOf(content).namedValues?.(content, c.path, c.value));
         if (!known) errs.push(`"${c.src}": path does not take a named value`);

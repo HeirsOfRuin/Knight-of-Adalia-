@@ -1,6 +1,6 @@
 # House of Adalia: Detailed Plan
 
-**Status:** draft for the author's approval, 2026-10-06. It builds on the approved frame (`FRAME.md`) and the framework already in code (`../README.md`). Nothing below is built until it is approved. The decisions that need the author are in section 11, each with a recommendation.
+**Status:** approved by the author, 2026-10-06, with all ten decisions in section 11 as recommended. It builds on the approved frame (`FRAME.md`) and the framework in code (`../README.md`). The canon additions (decision 10) are in `../content/canon.md`. Build progress is in section 10.
 
 **How to read it.** Sections 1-3 are the game as a player meets it. Section 4 covers the systems, with numbers. Sections 5-8 cover the story. Sections 9-12 cover the budget, build order, decisions and risks. Every system lists what reads it, under the rule from Knight of Adalia: a system that no scene or ending reads is cut.
 
@@ -412,7 +412,7 @@ The framework is done (steps 1-3). Step 4, the slice, is split so the hardest en
 
 | Step | What | Gate |
 |---|---|---|
-| **4a. Family and succession** | Characters for the whole family (kinship, selectors `heir.*`, `spouse.*`, `child.<n>.*`, pronouns for each); births, deaths and the mortality table; queued narrated deaths; the year tick; succession (the law, the heir, regency, extinction); the hero passing to the heir; the chronicle paragraph | Unit tests; a bot that plays 75 years of empty years and reports extinction, generations and family size |
+| **4a. Family and succession** (done 2026-10-06) | Characters for the whole family (kinship; selectors `head`, `heir`, `spouse`, `father`, `mother`, `eldest`, `second`, `third`, `youngest`, `bastard`, `regent`, `will`, `news`; pronouns for each); births, deaths and the mortality table (`content/registry/life.yaml`); news scenes for every death, birth, match and majority; the Michaelmas tick; succession under the three laws, with wills, regency, legitimation, stepping down and extinction; play passing to the heir; the chronicle paragraph (`content/registry/chronicle.yaml`) | Unit tests; `npm run house:life`, which plays 75 empty years from every start (results below) |
 | **4b. The prologue** | All 14 scenes for the **Founder** opening in **free and Adalian** frames, fresh and imported; matches (first use); the ledger; the House panel | Validator, frame rule, continuity, a transcript per frame, the author's read |
 | **4c. Book I, Act I** | The New Lord, both frames; two rival houses (Penhoët, Kerguen) as state | The same, plus bot balance of standing and money |
 | **5. Systems** | Houses (all ten), the realm, war, the Church | Bot: standing spread, war outcomes, debt |
@@ -421,6 +421,22 @@ The framework is done (steps 1-3). Step 4, the slice, is split so the hardest en
 | **8. The full interface** | House, Ledger, Realm, Chronicle panels; map borders; autosave and save codes; the installable app | Smoke test on phone and desktop |
 
 **Testing.** Every step keeps Knight of Adalia's fingerprint unchanged (no change in play), and House's `npm run house:check` green.
+
+### Step 4a results: the odds alone (`npm run house:life`, 75 empty years from every start)
+| Measure | Result | Reading |
+|---|---|---|
+| Runs, failures | 102-170, 0 | Every start reaches year 125 |
+| Heads per run | 3.7-3.9 | Three generations and often a fourth, as planned |
+| Successions to a woman | 19-24% | Close to history (about a quarter of English baronial lines passed to heiresses) |
+| Runs with a minor succeeding | 17-20% | A regency in about one run in five |
+| Family | about 63 characters, peak 24 living | Large, because every member of the house who comes of age is offered a match |
+| Save size | 48 KB average, 74-99 KB largest | Within budget; save codes will be long (a step 8 item) |
+| **Extinct before Book III** | **0%** | **Below the 15-25% target** (see below) |
+
+**Extinction comes from the story, not the odds.** With these fertility and mortality numbers, a house that follows every son's and daughter's line almost always has an heir. Three ways to reach the target, in the order recommended:
+1. **The story's own deaths:** wars and battles, the Second Mottle, attainders and executions, sons in the Church, and younger sons who never marry. The empty-years harness has none of these; the books do. Measure again once Book I exists.
+2. **Matches, not universal marriage:** step 4b's match system replaces the harness's offer to every member at seventeen. Historically, many younger sons and some daughters never married.
+3. **Only if 1 and 2 fall short:** a lower fertility or a narrower line of heirs (no claims beyond second cousins).
 
 ---
 

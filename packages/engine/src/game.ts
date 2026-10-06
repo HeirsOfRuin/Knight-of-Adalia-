@@ -66,9 +66,17 @@ export interface GameModule {
   /** which entry of scene.variants replaces a scene's text for this run */
   variantKey?(state: CoreState): string | undefined;
 
+  // ---- characters ---------------------------------------------------------------------
+  /** words that name a character in paths and text (heir, spouse, eldest): heir.age, {heir.name}, {heir.He} */
+  characterSelectors?: readonly string[];
+  /** the id of the character a selector names now, or undefined for nobody */
+  selectCharacter?(state: CoreState, content: CoreContent, selector: string): string | undefined;
+  /** the hero has died: true if play goes on (the game has queued what follows), false or absent to end the game */
+  onHeroDeath?(state: CoreState, content: CoreContent, cause: string, ctx: EffectCtx): boolean;
+
   // ---- time, checks, places, cards ------------------------------------------------------
-  /** upkeep each season as the calendar advances (rents, harvests, pay) */
-  onSeason?(state: CoreState, content: CoreContent, changes: string[]): void;
+  /** upkeep each season as the calendar advances (rents, harvests, pay); rng is absent where nothing may be drawn */
+  onSeason?(state: CoreState, content: CoreContent, changes: string[], rng?: RngCursor): void;
   /** the modifier a check's audience applies to this hero, with its label */
   audience?(state: CoreState, content: CoreContent, audience: Audience): { label: string; value: number } | undefined;
   /** a scene place reference (@home) resolved for this run: a place id, undefined for none, or the ref itself if unknown */

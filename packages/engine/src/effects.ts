@@ -1,6 +1,6 @@
 // Effect application. Operates on a state that the caller has already cloned.
 // The engine's own ops are applied here; a game's ops and paths go to its module.
-import { heroOf } from './character';
+import { heroOf, isSelector, selected } from './character';
 import { CORE_EFFECT_OPS, type CoreContent as ContentBundle, type CoreBaseEffect, type EffectLike, type GameEffect } from './schema';
 import type { CoreState as GameState, NpcState } from './state';
 import { advanceSeasons, timeOf } from './calendar';
@@ -84,6 +84,16 @@ export function addNumber(state: GameState, content: ContentBundle, rawPath: str
     }
     default: {
       const game = gameOf(content);
+      if (isSelector(content, ns)) {
+        const c = selected(state, content, ns);
+        if (!c) return; // nobody to change
+        if (a === 'bond') c.bond = clamp((c.bond ?? 0) + delta, -5, 5);
+        else if (a === 'attr' && b) c.attributes[b] = clamp((c.attributes[b] ?? 1) + delta, 1, 6);
+        else if (a === 'skill' && b) c.skills[b] = clamp((c.skills[b] ?? 0) + delta, 0, 10);
+        else if (a === 'health') c.health = clamp(c.health + delta, 1, 10);
+        else throw new Error(`add: cannot add to ${path}`);
+        return;
+      }
       if (!game.namespaces.includes(ns) || !game.addNumber) throw new Error(`add: unsupported path ${path}`);
       game.addNumber(state, content, path, delta, changes);
     }
@@ -230,15 +240,17 @@ export function applyEffects(state: GameState, content: ContentBundle, effects: 
         origin: { scene: ctx.scene, choice: ctx.choice, at: state.time, text: ctx.choiceText },
       });
     } else if ('advance' in e) {
-      advanceSeasons(state, content, e.advance.seasons, ctx.changes);
+      advanceSeasons(state, content, e.advance.seasons, ctx.changes, ctx.rng);
     } else if ('catch_up' in e) {
-      advanceSeasons(state, content, timeOf(content, e.catch_up.year, e.catch_up.season) - state.time, ctx.changes);
+      advanceSeasons(state, content, timeOf(content, e.catch_up.year, e.catch_up.season) - state.time, ctx.changes, ctx.rng);
     } else if ('journal' in e) {
       ctx.changes.push(e.journal);
     } else if ('die' in e) {
       const h = heroOf(state);
       h.alive = false;
       h.died = state.time;
+      // in a game of generations the house goes on: the game queues the succession, and play continues
+      if (gameOf(content).onHeroDeath?.(state, content, e.die, ctx)) continue;
       state.ended = { ending: 'death', cause: e.die };
       return true;
     }

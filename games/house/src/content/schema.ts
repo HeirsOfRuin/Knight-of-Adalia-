@@ -2,9 +2,10 @@
 // West stands), sovereigns (who rules it), openings (the six starts) and the west effect.
 // See games/house/docs/FRAME.md, sections 2 and 7.
 import { z } from 'zod';
-import { CORE_EFFECTS, CORE_REGISTRY, Id, makeSceneSchemas, wrapEffects, type CondInput, type CoreContent } from '@engine/schema';
+import { CORE_EFFECTS, CORE_REGISTRY, CondInputSchema, Id, makeSceneSchemas, wrapEffects, type CondInput, type CoreContent } from '@engine/schema';
 
 export { CondInputSchema, ConfigSchema } from '@engine/schema';
+export { Id };
 export type { CondInput, Config } from '@engine/schema';
 
 /** Where the West stands: a free realm (crowned or ducal), Adalia's, or divided between the two kings. */
@@ -13,9 +14,37 @@ export const FrameId = z.enum(FRAMES);
 export type Frame = (typeof FRAMES)[number];
 
 // ---- Effects --------------------------------------------------------------
+/** The law the house's headship passes by (PLAN.md §4.2). */
+export const HOUSE_LAWS = ['male_line', 'male_preference', 'partible'] as const;
+export const HouseLawId = z.enum(HOUSE_LAWS);
+export type HouseLaw = (typeof HOUSE_LAWS)[number];
+/** A character, named by one of the game's selectors (src/game/family.ts SELECTORS). */
+const Who = Id;
+
 export const HOUSE_EFFECTS = [
   // the West changes hands: a new frame, a new sovereign, or both (FRAME.md §2, "The frame can change")
   z.object({ west: z.object({ frame: FrameId.optional(), sovereign: Id.optional() }).strict() }).strict(),
+  // ---- the family (PLAN.md §4.1-4.2) ----
+  // a child of the head and the head's spouse, or of who and their spouse; sex drawn unless given
+  z.object({ birth: z.object({ of: Who.optional(), sex: z.enum(['male', 'female']).optional() }).strict() }).strict(),
+  // names the newest unnamed child (or who): after a grandparent, after a parent, or a name from the house's culture
+  z.object({ name_child: z.object({ who: Who.optional(), style: z.enum(['grandparent', 'parent', 'culture']), }).strict() }).strict(),
+  // a match for who, with a spouse generated from a culture's names; to: the spouse's house
+  z.object({ marry: z.object({ who: Who, culture: Id.default('adalian'), to: z.string().optional() }).strict() }).strict(),
+  // who dies, narrated by the scene this is in; the head's death queues the succession
+  z.object({ death: z.object({ who: Who, cause: z.string() }).strict() }).strict(),
+  // the head names an heir by will (contested at the succession if the law says otherwise); none clears it
+  z.object({ designate: Who }).strict(),
+  z.object({ house_law: HouseLawId }).strict(),
+  // the Church makes a bastard legitimate
+  z.object({ legitimate: Who }).strict(),
+  // the head gives up the headship alive (a religious house, abdication)
+  z.object({ step_down: z.string() }).strict(),
+  // the succession itself: the law's heir, or the heir named (will) when the player backs the will
+  z.object({ succeed: z.object({ heir: Who.optional() }).strict() }).strict(),
+  z.object({ upbringing: z.object({ who: Who, set: Id }).strict() }).strict(),
+  // the news scene (h_q_news) takes the next piece of news as it opens: news.* and family.news read it
+  z.object({ take_news: z.literal(true) }).strict(),
 ] as const;
 const BaseEffectSchema = z.union([...CORE_EFFECTS, ...HOUSE_EFFECTS]);
 export type BaseEffect = z.infer<typeof BaseEffectSchema>;
@@ -52,6 +81,26 @@ export const SovereignDefSchema = z.object({
 }).strict();
 export type SovereignDef = z.infer<typeof SovereignDefSchema>;
 
+// The odds of a life, in percent a year (PLAN.md §4.1). Tuned with npm run house:life.
+export const LifeSchema = z.object({
+  // yearly chance of death by age: the first band whose `to` (age, inclusive) covers the age
+  mortality: z.array(z.object({ to: z.number().int(), p: z.number() }).strict()).min(1),
+  childbed: z.number(), // chance the mother dies, per birth
+  fertility: z.object({ from: z.number().int(), to: z.number().int(), p: z.number(), late_from: z.number().int(), late_p: z.number() }).strict(),
+  // multipliers in a plague year (flag.plague), and for children under 15 when flag.plague_children is also set
+  plague: z.object({ all: z.number(), children: z.number() }).strict(),
+  majority: z.number().int(), // a younger heir needs a regent
+  match_age: z.number().int(), // an unmarried member of the house is offered a match from this age
+  // a fresh start's family (an import brings its own)
+  founder_family: z.object({ spouse_alive: z.number(), children: z.tuple([z.number().int(), z.number().int()]), born: z.tuple([z.number().int(), z.number().int()]) }).strict(),
+}).strict();
+export type Life = z.infer<typeof LifeSchema>;
+
+export const NamesSchema = z.object({ male: z.array(z.string()).min(1), female: z.array(z.string()).min(1), families: z.array(z.string()).default([]) }).strict();
+
+// A line of a head's chronicle paragraph, shown when the condition holds at the handover (head is the old head).
+export const ChronicleLineSchema = z.object({ if: CondInputSchema.optional(), text: z.string() }).strict();
+
 export const RegistrySchema = z.object({
   flags: CORE_REGISTRY.flags,
   npcs: CORE_REGISTRY.npcs,
@@ -64,6 +113,9 @@ export const RegistrySchema = z.object({
   places: CORE_REGISTRY.places,
   frames: z.record(FrameId, FrameDefSchema),
   sovereigns: z.record(Id, SovereignDefSchema),
+  life: LifeSchema,
+  names: z.record(Id, NamesSchema),
+  chronicle: z.array(ChronicleLineSchema).default([]),
 });
 export type Registry = z.infer<typeof RegistrySchema>;
 

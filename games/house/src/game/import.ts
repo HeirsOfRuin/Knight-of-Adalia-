@@ -5,7 +5,8 @@ import { bornAtAge } from '@engine/character';
 import type { Character } from '@engine/state';
 import type { ContentBundle, Frame } from '../content/schema';
 import { begin, checkStart, EngineError } from './index';
-import type { HouseState } from './state';
+import { newId, person } from './family';
+import { FOUNDER_ID, HOUSE_ID, type HouseState } from './state';
 
 /** The frame a Knight of Adalia settlement leaves the West in. */
 export function frameOf(d: DynastyExport): Frame | undefined {
@@ -58,5 +59,30 @@ export function fromDynasty(content: ContentBundle, d: DynastyExport, opts: Impo
     station: content.config.stations.includes(f.station) ? f.station : opening.founder.station,
   };
   const res = { coin: d.wealth.coin, supplies: 0, horses: 0, renown: f.renown, men: d.wealth.men, garrison: d.wealth.garrison, levy: d.wealth.levy };
-  return begin(content, opts.seed, opening.id, frame, sovereign, founder, res, { inheritance: d });
+  const gap = Math.max(0, startYear - d.date.year); // years between the end of the life and the start of the house
+  return begin(content, opts.seed, opening.id, frame, sovereign, founder, res, { inheritance: d }, (s, c, rng) => {
+    // the wife and children the life left, as characters; ages carried forward to the house's first year
+    let spouse: string | undefined;
+    if (d.spouse) {
+      spouse = newId(s);
+      const w = person(c, d.spouse.name, 'female', founder.born + 4 * 8, d.spouse.id, rng);
+      w.spouse = FOUNDER_ID;
+      if (!d.spouse.alive) { w.alive = false; w.died = 0; }
+      s.characters[spouse] = w;
+      founder.spouse = spouse;
+    }
+    for (const h of d.heirs) {
+      const id = newId(s);
+      const child = person(c, h.name, h.sex === 'son' ? 'male' : 'female', bornAtAge(h.age + gap), HOUSE_ID, rng);
+      child.father = FOUNDER_ID;
+      if (spouse) child.mother = spouse;
+      child.alive = h.alive;
+      if (!h.alive) child.died = 0;
+      if (h.temperament) child.temperament = h.temperament;
+      if (h.upbringing) child.upbringing = h.upbringing;
+      child.bond = h.bond;
+      child.station = h.crowned ? 'royal' : founder.station;
+      s.characters[id] = child;
+    }
+  });
 }

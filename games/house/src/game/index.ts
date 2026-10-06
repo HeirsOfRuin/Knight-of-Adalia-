@@ -3,7 +3,8 @@
 // Importing this registers the game module.
 import './module';
 import type { ContentBundle, Frame } from '../content/schema';
-import { FOUNDER_ID, type HouseState } from './state';
+import { FOUNDER_ID, HOUSE_ID, type HouseState } from './state';
+import { bear, marry, nameChild, person } from './family';
 import { RngCursor, seedRng } from '@engine/rng';
 import { newNpcState } from '@engine/effects';
 import { enterScene } from '@engine/director';
@@ -60,14 +61,38 @@ export function newGame(content: ContentBundle, opts: NewHouseOptions): HouseSta
     injuries: [],
     items: [],
     station: f.station,
+    house: HOUSE_ID,
   };
-  return begin(content, opts.seed, op!.id, opts.frame, sovereign, founder, { coin: f.coin, supplies: 0, horses: 0, renown: f.renown, men: f.men });
+  return begin(content, opts.seed, op!.id, opts.frame, sovereign, founder, { coin: f.coin, supplies: 0, horses: 0, renown: f.renown, men: f.men }, {}, freshFamily);
 }
 
-/** Fills the rest of a state and enters the opening's first scene. */
-export function begin(content: ContentBundle, seed: number, opening: string, frame: Frame, sovereign: string, founder: Character, res: Record<string, number>, extra: Partial<HouseState> = {}): HouseState {
+/** A fresh founder's family, from the life table's founder_family: a spouse (living or not) and children. */
+function freshFamily(s: HouseState, content: ContentBundle, rng: RngCursor): void {
+  const ff = content.registry.life.founder_family;
+  const founder = s.characters[FOUNDER_ID]!;
+  const spouse = marry(s, content, FOUNDER_ID, 'valdrennish', undefined, rng);
+  const sp = s.characters[spouse]!;
+  sp.born = founder.born + (founder.sex === 'male' ? 4 * (4 + rng.int(6)) : -4 * (1 + rng.int(4)));
+  const [lo, hi] = ff.children;
+  const n = lo + rng.int(hi - lo + 1);
+  const years = Array.from({ length: n }, () => ff.born[0] + rng.int(ff.born[1] - ff.born[0] + 1)).sort((a, b) => a - b);
+  const [mother, father] = founder.sex === 'female' ? [FOUNDER_ID, spouse] : [spouse, FOUNDER_ID];
+  for (const y of years) {
+    const id = bear(s, content, mother, father, undefined, rng);
+    s.characters[id]!.born = (y - content.config.start_year) * 4;
+    nameChild(s, content, id, rng.int(3) === 0 ? 'grandparent' : 'culture', rng);
+  }
+  if (rng.int(100) >= ff.spouse_alive) { sp.alive = false; sp.died = -4 * (1 + rng.int(6)); }
+}
+
+/** Fills the rest of a state, builds the family, and enters the opening's first scene. */
+export function begin(
+  content: ContentBundle, seed: number, opening: string, frame: Frame, sovereign: string, founder: Character, res: Record<string, number>,
+  extra: Partial<HouseState> = {}, family?: (s: HouseState, content: ContentBundle, rng: RngCursor) => void,
+): HouseState {
   const op = content.openings[opening]!;
   const rng = new RngCursor(seedRng(seed));
+  founder.house = HOUSE_ID;
   const state: HouseState = {
     version: 1,
     contentHash: content.hash,
@@ -77,6 +102,8 @@ export function begin(content: ContentBundle, seed: number, opening: string, fra
     hero: FOUNDER_ID,
     opening,
     realm: { west: frame, sovereign, changes: 0 },
+    family: { law: 'male_preference', news: [], next: 1, generation: 1, since: 0, offered: {} },
+    chronicle: [],
     chapter: content.scenes[op.start_scene]?.chapter ?? content.config.chapters[0]!,
     scene: op.start_scene,
     returnStack: [],
@@ -93,6 +120,7 @@ export function begin(content: ContentBundle, seed: number, opening: string, fra
     journal: [],
     ...extra,
   };
+  family?.(state, content, rng);
   const start = content.scenes[op.start_scene];
   if (!start) throw new EngineError(`opening ${opening}: unknown start scene ${op.start_scene}`);
   enterScene(state, content, start, [], rng);

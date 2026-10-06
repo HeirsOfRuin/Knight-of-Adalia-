@@ -1,7 +1,7 @@
 // State paths: the shared vocabulary of conditions, effects and text.
 // One resolver for everything, so displayed values and resolved values cannot
 // drift apart. Namespaces a game owns (GameModule.namespaces) go to its module.
-import { heroOf } from './character';
+import { heroOf, isSelector, selected, characterValue, checkCharacterPath } from './character';
 import type { CoreContent as ContentBundle } from './schema';
 import type { CoreState as GameState } from './state';
 import { regnalYear, seasonName, ageOf } from './calendar';
@@ -109,7 +109,9 @@ export function getValue(state: GameState, content: ContentBundle, rawPath: stri
     case 'revisit': return state.journal.at(-1)?.scene === state.scene;
     default: {
       const game = gameOf(content);
-      return game.namespaces.includes(ns!) ? game.getValue(state, content, path) : undefined;
+      if (game.namespaces.includes(ns!)) return game.getValue(state, content, path);
+      if (isSelector(content, ns!)) return characterValue(state, selected(state, content, ns!), a!, b);
+      return undefined;
     }
   }
 }
@@ -124,6 +126,7 @@ export function checkPath(content: ContentBundle, rawPath: string): string | nul
   if (ns === 'hero') return HERO_FIELDS.includes(a ?? '') && b === undefined ? null : `unknown hero field in "${path}"`;
   const game = gameOf(content);
   if (game.namespaces.includes(ns!)) return game.checkPath(content, path);
+  if (isSelector(content, ns!)) return checkCharacterPath(content, path);
   const single = ['station', 'track', 'chapter', 'age', 'health', 'injured', 'wounded', 'armour', 'retinue', 'time', 'revisit'];
   if (single.includes(ns!)) return a === undefined ? null : `"${ns}" takes no sub-path ("${path}")`;
   if (a === undefined) return `incomplete path "${path}"`;
@@ -161,6 +164,8 @@ export function ordinalFor(content: ContentBundle, rawPath: string): string[] | 
   if (path === 'station') return content.config.stations;
   if (path === 'chapter') return content.config.chapters;
   if (path === 'calendar.season') return content.config.seasons;
+  const [ns, field] = path.split('.');
+  if (field === 'station' && isSelector(content, ns!)) return content.config.stations;
   return gameOf(content).ordinalFor?.(content, path);
 }
 

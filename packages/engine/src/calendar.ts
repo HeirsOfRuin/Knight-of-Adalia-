@@ -4,6 +4,7 @@ import { heroOf, ageOfCharacter } from './character';
 import type { CoreContent as ContentBundle } from './schema';
 import type { CoreState as GameState } from './state';
 import { gameOf } from './game';
+import type { RngCursor } from './rng';
 
 export function seasonName(state: GameState, content: ContentBundle): string {
   return content.config.seasons[state.time % 4]!;
@@ -53,12 +54,12 @@ export function describeDate(state: GameState, content: ContentBundle): string {
 }
 
 /** Advance time; heals injuries whose time has run out. Mutates the given (already cloned) state. */
-export function advanceSeasons(state: GameState, content: ContentBundle, n: number, changes: string[]): void {
+export function advanceSeasons(state: GameState, content: ContentBundle, n: number, changes: string[], rng?: RngCursor): void {
   if (n <= 0) return;
   const onSeason = gameOf(content).onSeason;
   for (let i = 0; i < n; i++) {
     state.time += 1;
-    onSeason?.(state, content, changes);
+    onSeason?.(state, content, changes, rng);
   }
   const reg = content.registry.injuries;
   const healed = heroOf(state).injuries.filter((i) => {

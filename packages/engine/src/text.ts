@@ -1,6 +1,6 @@
 // Passage templating: {var} substitution and [if cond]...[elif cond]...[else]...[/if].
 // Variables a game renders itself ({wife.first_year}) go to its module (GameModule.textVar).
-import { heroOf, pronoun, PRONOUN_VARS } from './character';
+import { heroOf, pronoun, PRONOUN_VARS, isSelector, selected } from './character';
 import type { CoreContent as ContentBundle } from './schema';
 import type { CoreState as GameState } from './state';
 import { gameOf } from './game';
@@ -16,7 +16,7 @@ type Node =
 
 export class TextError extends Error {}
 
-const TOKEN = /\[if ([^\]]+)\]|\[elif ([^\]]+)\]|\[else\]|\[\/if\]|\{([A-Za-z_][a-z0-9_.@]*)\}/g;
+const TOKEN = /\[if ([^\]]+)\]|\[elif ([^\]]+)\]|\[else\]|\[\/if\]|\{([A-Za-z_][A-Za-z0-9_.@]*)\}/g;
 const cache = new Map<string, Node[]>();
 
 export function parseText(src: string): Node[] {
@@ -56,17 +56,27 @@ export function parseText(src: string): Node[] {
 
 const SPECIAL_VARS = ['name', 'date', 'coin', 'station', 'season', 'year', 'age', 'age_words', 'reign_year', 'regnal_year', 'king'];
 
-/** {he}, {His}: a pronoun for the hero, capitalised when written capitalised. */
-function pronounVar(name: string, state: GameState): string | undefined {
-  const word = name.charAt(0).toLowerCase() + name.slice(1);
+/** A pronoun variable: {he} or {His} for the hero, {heir.he} or {heir.His} for a character a selector names. */
+function splitPronoun(name: string): { sel?: string; raw: string; word: string } | undefined {
+  const dot = name.lastIndexOf('.');
+  const raw = dot >= 0 ? name.slice(dot + 1) : name;
+  const word = raw.charAt(0).toLowerCase() + raw.slice(1);
   if (!PRONOUN_VARS.includes(word)) return undefined;
-  const p = pronoun(heroOf(state).sex, word)!;
-  return name === word ? p : capitalise(p);
+  return { sel: dot >= 0 ? name.slice(0, dot) : undefined, raw, word };
+}
+
+function pronounVar(name: string, state: GameState, content: ContentBundle): string | undefined {
+  const sp = splitPronoun(name);
+  if (!sp) return undefined;
+  if (sp.sel !== undefined && !isSelector(content, sp.sel)) return undefined;
+  const c = sp.sel === undefined ? heroOf(state) : selected(state, content, sp.sel);
+  const p = pronoun(c?.sex ?? 'male', sp.word)!;
+  return sp.raw === sp.word ? p : capitalise(p);
 }
 
 function varValue(name: string, state: GameState, content: ContentBundle): string {
   const reg = content.registry;
-  const pv = pronounVar(name, state);
+  const pv = pronounVar(name, state, content);
   if (pv !== undefined) return pv;
   switch (name) {
     case 'name': return heroOf(state).name;
@@ -134,8 +144,10 @@ export function validateText(src: string, content: ContentBundle): { errors: str
     for (const n of ns) {
       if (n.t === 'var') {
         if (SPECIAL_VARS.includes(n.name)) continue;
-        if (PRONOUN_VARS.includes(n.name.charAt(0).toLowerCase() + n.name.slice(1))) continue;
-        if (/^[A-Z]/.test(n.name)) { errors.push(`only pronouns are capitalised: {${n.name}}`); continue; }
+        const sp = splitPronoun(n.name);
+        if (sp && (sp.sel === undefined || isSelector(content, sp.sel))) continue;
+        if (sp && sp.sel !== undefined) { errors.push(`unknown character in {${n.name}}`); continue; }
+        if (/[A-Z]/.test(n.name)) { errors.push(`only pronouns are capitalised: {${n.name}}`); continue; }
         const own = gameOf(content).checkTextVar?.(n.name, content);
         if (own) { errors.push(...own); continue; }
         const [space, id, field] = n.name.split('.');

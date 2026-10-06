@@ -29,6 +29,8 @@ export function validate(content: ContentBundle): Issue[] {
   const issues = validateContent(content, {
     starts: [...new Set(Object.values(content.openings).map((o) => o.start_scene))],
     variantKeys: [...FRAMES],
+    deathContinues: true,
+    queuedByGame: ['h_q_news', 'h_q_succession'],
     checkGameEffect: (where, e, err) => {
       if ('west' in e) {
         const w = (e as { west: { frame?: string; sovereign?: string } }).west;

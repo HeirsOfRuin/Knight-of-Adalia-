@@ -44,6 +44,22 @@ export interface Character {
   items: string[];
   station: string;
   track?: string;
+  // ---- family (games of generations; Knight of Adalia leaves these unset) ----
+  /** character ids */
+  father?: string;
+  mother?: string;
+  spouse?: string;
+  /** false for a bastard not legitimated */
+  legitimate?: boolean;
+  /** bold, bookish, merry, grave */
+  temperament?: string;
+  upbringing?: string;
+  /** with the head of the family, -5..5 */
+  bond?: number;
+  /** the house the character belongs to (a game's own ids) */
+  house?: string;
+  /** gave up the headship alive (stepped down) */
+  retired?: boolean;
 }
 
 export interface QueuedEvent {

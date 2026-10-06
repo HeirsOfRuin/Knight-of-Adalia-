@@ -21,6 +21,10 @@ export interface ValidateOptions {
   flagsSetElsewhere?: string[];
   /** a game's checks on one of its own effect ops */
   checkGameEffect?: (where: string, e: EffectLike, err: (where: string, m: string) => void) => void;
+  /** a death does not end the game (the house goes on), so a dying outcome still needs a next scene */
+  deathContinues?: boolean;
+  /** scenes the game itself queues (news, the succession), reachable from anywhere */
+  queuedByGame?: string[];
   /** a game's checks on each scene */
   checkScene?: (where: string, s: Scene, err: (where: string, m: string) => void, warn: (where: string, m: string) => void) => void;
 }
@@ -195,7 +199,7 @@ export function validateContent(content: CoreContent, opts: ValidateOptions): Is
         checkText(`${cw}[${label}]`, o.text);
         checkEffects(`${cw}[${label}]`, o.effects, c.lethal);
         const dies = flatEffects(o.effects).some((e) => opOf(e) === 'die');
-        if (!dies) checkNext(`${cw}[${label}]`, o.next ?? c.next, s);
+        if (!dies || opts.deathContinues) checkNext(`${cw}[${label}]`, o.next ?? c.next, s);
       }
     }
     // Fail-forward rule: some choice must always be available.
@@ -218,7 +222,7 @@ export function validateContent(content: CoreContent, opts: ValidateOptions): Is
 
   // Reachability from the starts (spine links, switches, pools and queued events)
   const reached = new Set<string>();
-  const stack = opts.starts.filter((st) => scenes[st]);
+  const stack = [...opts.starts, ...(opts.queuedByGame ?? [])].filter((st) => scenes[st]);
   while (stack.length) {
     const id = stack.pop()!;
     if (reached.has(id)) continue;

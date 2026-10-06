@@ -51,7 +51,7 @@ describe('House of Adalia: the West in each frame', () => {
     const s = house({ frame: 'adalian' });
     const x = ctx();
     applyEffects(s, c, [{ west: { frame: 'free', sovereign: 'mahaut' } }], x);
-    expect(s.realm).toEqual({ west: 'free', sovereign: 'mahaut', changes: 1 });
+    expect(s.realm).toEqual({ west: 'free', sovereign: 'mahaut', changes: 1, from: 50 });
     expect(x.changes).toEqual(['The West: A free West, under Queen Mahaut']);
     expect(() => applyEffects(s, c, [{ west: { frame: 'adalian', sovereign: 'mahaut' } }], ctx())).toThrow(/does not rule a adalian West/);
     expect(() => applyEffects(s, c, [{ west: { frame: 'partitioned' } }], ctx())).toThrow(/needs a sovereign/);

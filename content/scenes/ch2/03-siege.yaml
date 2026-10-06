@@ -45,7 +45,7 @@
       text: Go to the Lanzi house, and borrow to pay them.
       tags: [wealth, cunning]
       text_after: |
-        The person who runs the Lanzi house in Lannec is not a factor. It is Matteo Lanzi's daughter, Fiammetta: twenty-four, sharp as a quill, in black like a widow though she is not one. She knows your name before you give it. "[if flag.c1_lanzi_debt]You owe us twenty pounds already,[elif npc.bertuccio_lanzi.met]You are the one my cousin Bertuccio writes about,[else]You are one of Carrow's,[/if]" she says. "Sit down. Tell me what an army costs. I have been trying to work it out since Grisolles, and nobody here can count."
+        The Lanzi house in Lannec is run by no hired factor but by Matteo Lanzi's daughter, Fiammetta: twenty-four, sharp as a quill, in black like a widow though she is not one. She knows your name before you give it. "[if flag.c1_lanzi_debt]You owe us twenty pounds already,[elif npc.bertuccio_lanzi.met]You are the one my cousin Bertuccio writes about,[else]You are one of Carrow's,[/if]" she says. "Sit down. Tell me what an army costs. I have been trying to work it out since Grisolles, and nobody here can count."
 
         She lends against your future ransoms at a rate she calls friendly. "Friendly to whom?" you ask. She smiles. It is still cheaper than losing your men. "You see?" she says. "This is what a war costs. Somebody always pays, and it is never the King."
       effects:

@@ -18,7 +18,7 @@
   text: |
     [if flag.c5_west_free]Neither king lets it go.
 
-    [if flag.c4_carrow_won]From the north, the council of regency in Wendmere's name sends four thousand men under the black boar's heir.[else]From the north, King Edwin sends four thousand men under his new marshal, with orders to bring the West back to its allegiance and its rebels to Wendmere in chains.[/if] From the east, over the hills, King Amaury the Younger of Valdrenne comes in person with the royal host, nineteen and furious, to take back the provinces his great-grandfather lost and show the world he can win a battle. Between them is the West: the Armance, the Salt, the towns, [if flag.c5_brese_pact || flag.c4_sheltered_brese]Thibaut's Brésy knights,[/if] and whoever will stand.[else]The West stays Adalian, and King Amaury the Younger of Valdrenne, nineteen and furious, comes over the hills with the royal host to take back the provinces his great-grandfather lost. King Edwin, with Adalia still split, sends letters, and a few hundred men, and his confidence in his loyal lords of the West.[/if]
+    [if flag.c4_carrow_won]From the north, the council of regency in Wendmere's name sends four thousand men under the black boar's heir.[else]From the north, King Edwin sends four thousand men under his new marshal, with orders to bring the West back to its allegiance and its rebels to Wendmere in chains.[/if] From the east, over the hills, King Amaury the Younger of Valdrenne comes in person with the royal host, nineteen and furious, to take back the provinces lost in his father's reign and his own minority and show the world he can win a battle. Between them is the West: the Armance, the Salt, the towns, [if flag.c5_brese_pact || flag.c4_sheltered_brese]Thibaut's Brésy knights,[/if] and whoever will stand.[else]The West stays Adalian, and King Amaury the Younger of Valdrenne, nineteen and furious, comes over the hills with the royal host to take back the provinces lost in his father's reign and his own minority. King Edwin, [if flag.c4_edwin_won]with Carrow's lands still to settle and his treasury spent on Wythen[elif flag.c4_carrow_won]shut up in Wendmere while a council of regency rules in his name[else]with Adalia still split[/if], sends letters, and a few hundred men, and his confidence in his loyal lords of the West.[/if]
 
     [break]
 
@@ -39,17 +39,17 @@
       effects: [ { add: { counter.ww: 1 } }, { if: counter.west_estates >= 5, then: [ { add: { counter.ww: 1, res.men: 60 } } ] } ]
       next: { switch: [ { if: flag.c5_west_free, go: c5_price } ], default: c5_buy_war }
     - id: divide
-      text: Divide them. Write to each king that the other is the real enemy.
+      text: "[if flag.c5_west_adalian]Divide them. Write to Amaury's dukes that their boy king will spend them for his pride.[else]Divide them. Write to each king that the other is the real enemy.[/if]"
       tags: [cunning, diplomacy]
       check: { attr: wits, skill: intrigue, difficulty: 5, mods: [ { if: flag.c4_counted_council || flag.c4_counted_lannec, add: 1, label: you know who counts }, { if: flag.c5_west_adalian, add: 1, label: Adalia is on your side already } ] }
       success:
         text: |
-          You write all winter: to Wendmere, to Cordelle, to the Bishop, to the Lanzi. By spring, King Edwin's marshal is sure Amaury means to take Sauvemer for himself, and Amaury's council is sure Edwin means to take the Armance, and the two armies that were to crush the West between them are marching at different speeds, by different roads, watching each other as much as you.
+          [if flag.c5_west_adalian]You write all winter: to the dukes of Valdrenne, to the Bishop, to the Lanzi, to every lord over the hills whose father the Constable hanged. By spring, half of Amaury's great lords are quarrelling over who leads the van, two of them have stayed at home with fevers nobody believes in, and the royal host comes over the hills a month late and a third short.[else]You write all winter: to Wendmere, to Cordelle, to the Bishop, to the Lanzi. By spring, King Edwin's marshal is sure Amaury means to take Sauvemer for himself, and Amaury's council is sure Edwin means to take the Armance, and the two armies that were to crush the West between them are marching at different speeds, by different roads, watching each other as much as you.[/if]
         effects: [ { set: flag.c5_divided_kings }, { add: { counter.ww: 2 } } ]
         next: { switch: [ { if: flag.c5_west_free, go: c5_price } ], default: c5_buy_war }
       failure:
         text: |
-          You write all winter, and some of it is believed, and most of it is not. A letter of yours turns up in Cordelle's council, read aloud, to laughter.
+          You write all winter, and some of it is believed, and most of it is not. A letter of yours turns up in Cordelle's council, read aloud, to laughter.[if flag.c5_west_adalian] Amaury's dukes close ranks around him, which is the opposite of what you wanted.[/if]
         next: { switch: [ { if: flag.c5_west_free, go: c5_price } ], default: c5_buy_war }
 
 - id: c5_war_muster
@@ -60,16 +60,17 @@
 
     [if heir.eldest.alive && heir.eldest.sex == son]{heir.eldest.name} is {heir.eldest.ageword}, and [if heir.eldest.upbringing == arms || heir.eldest.upbringing == page]has been trained to this since he could walk[elif heir.eldest.upbringing == church]has left the abbey without asking anyone, and is here, in borrowed harness[else]is here, in harness that fits him for the first time[/if].[/if] [if flag.c3_married && npc.@spouse.alive]{wife.muster}[/if]
 
-    What the West lacks is not courage. It is something else.
+    The West has courage enough. It has time to buy one thing more before the summer, and you must choose which.
   choices:
     - id: bows
       text: Crossbowmen. Hire every Sarenzan crossbow the Lanzi can ship.
       tags: [wealth]
-      requires: [ { any: [ res.coin >= 12000, flag.c3_lanzi_kin ] } ]
-      label: "Requires Coin £10, or the Lanzi in your family"
+      visible_if: [ "!flag.inv_crossbows || flag.c3_lanzi_kin" ]
+      requires: [ { any: [ res.coin >= 43200, flag.c3_lanzi_kin ] } ]
+      label: "Requires Coin £180, or the Lanzi in your family"
       text_after: |
-        [if flag.c3_lanzi_kin]You write one letter to the Lanzi in Sarenza, [if npc.fiammetta_lanzi.alive]in your wife's hand, [/if]in the bank's private cipher. Six galleys come round the cape in April with eight hundred crossbowmen in red, and a bill you are not to see until after the war.[else]You pay the Lanzi in Sauvemer what they ask, which is a great deal, and six galleys come round the cape in April with eight hundred crossbowmen in red.[/if] Nobody in the West has ever seen so many. Nobody on the other side will have, either.
-      effects: [ { add: { counter.ww: 2 } }, { if: { not: flag.c3_lanzi_kin }, then: [ { add: { res.coin: -12000 } } ] } ]
+        [if flag.c3_lanzi_kin]You write one letter to the Lanzi in Sarenza, [if npc.fiammetta_lanzi.alive]in your wife's hand, [/if]in the bank's private cipher. Six galleys come round the cape in April with eight hundred crossbowmen in red, and a bill you are not to see until after the war. Nobody in the West has ever seen so many. Nobody on the other side will have, either.[else]You pay the Lanzi in Sauvemer £180, which is what three hundred crossbowmen cost for a season, and two galleys come round the cape in April with three hundred crossbowmen in red.[/if]
+      effects: [ { add: { counter.ww: 2 } }, { if: { not: flag.c3_lanzi_kin }, then: [ { add: { res.coin: -43200 } } ] } ]
       next: c5_bridge
     - id: horse
       text: Horse. Put the Armance knights and the Brésy together, under one banner.
@@ -185,7 +186,7 @@
           then: [ { set: flag.c5_war_held } ]
           else: [ { set: flag.c5_war_lost }, { set: flag.c5_on_losing_side } ]
   text: |
-    [if flag.c5_war_won]The Pont-aux-Moines is a victory, and the kind that ends wars. King Amaury goes back over the hills with a third of his host and none of his reputation[if !flag.c5_west_adalian], and the Adalian van, seeing which way the river is running, turns round on the Sauvemer road and goes home[/if]. [if flag.c5_host_decisive]Men will say for a hundred years that it was your doing. Some of them will even be right.[/if][elif flag.c5_war_held]The Pont-aux-Moines is not a victory. It is a stopping. Amaury goes back over the hills because he cannot get over the bridge, and [if !flag.c5_west_adalian]the Adalians sit on the Sauvemer road all summer and do not attack, and [/if]the West is still the West at the end of it, bled white, and free [if flag.c5_west_adalian]of Valdrenne[else]for now[/if].[else]The Pont-aux-Moines is lost. The West falls back on Lannec and then past it, and by Michaelmas [if flag.c5_west_adalian]Valdrennish banners fly over half the Armance[else]Valdrennish banners fly over the Armance and Adalian ones over the Salt, and the two kings are arguing over the carcass[/if].[/if]
+    [if flag.c5_war_won]The Pont-aux-Moines is a victory, and the kind that ends wars. King Amaury goes back over the hills with a third of his host and none of his reputation[if !flag.c5_west_adalian], and the Adalian van, seeing which way the river is running, turns round on the Sauvemer road and goes home[/if]. [if flag.c5_host_decisive]Men will say for a hundred years that it was your doing. Some of them will even be right.[/if][elif flag.c5_war_held]Nobody can call the Pont-aux-Moines a victory. The enemy is stopped, and that is all. Amaury goes back over the hills because he cannot get over the bridge, and [if !flag.c5_west_adalian]the Adalians sit on the Sauvemer road all summer and do not attack, and [/if]the West is still the West at the end of it, bled white, and free [if flag.c5_west_adalian]of Valdrenne[else]for now[/if].[else]The Pont-aux-Moines is lost. The West falls back on Lannec and then past it, and by Michaelmas [if flag.c5_west_adalian]Valdrennish banners fly over half the Armance[else]Valdrennish banners fly over the Armance and Adalian ones over the Salt, and the two kings are arguing over the carcass[/if].[/if]
 
     [break]
 

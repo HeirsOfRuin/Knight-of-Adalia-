@@ -109,5 +109,6 @@ not unkindly
 its own kind of
 /\bfor a long time\b/
 /\bIt is not [^.]*\. It is\b/
+/\b(is|was) not (an? |the )?\w+\. (It|That|This) (is|was)\b/
 /\byou will (think about|remember) (this|it|that)\b/
 ```

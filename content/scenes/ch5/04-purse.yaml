@@ -4,7 +4,7 @@
   chapter: ch5
   title: The War Chest
   text: |
-    [if revisit]The clerks of the war chest read out what is left.[else]A war is fought with men, and men are bought with money, and the West has less of both than either king. What it has is salt, and Sarenzan credit, and men like you who came home from the last war richer than they went. Before the spring, the money has to become something that can fight.[/if]
+    [if revisit]The clerks of the war chest read out what is left.[else]A war is fought with men, and men are bought with money, and the West has less of both than [if flag.c5_west_adalian]Valdrenne[else]either king[/if]. What it has is salt, and Sarenzan credit, and men like you who came home from the last war richer than they went. Before the spring, the money has to become something that can fight.[/if]
 
     You have {coin}.[if res.men >= 1 && !flag.c4_on_indenture && !flag.c5_war_tax || res.garrison >= 1 && !flag.c4_on_indenture && !flag.c5_war_tax] Your men's pay at Michaelmas will come to {pay_due}.[/if]
   choices:

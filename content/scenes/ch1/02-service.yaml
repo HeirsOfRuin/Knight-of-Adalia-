@@ -159,7 +159,7 @@
         difficulty: 4
         mods: [ { if: flag.p_poached, add: 1, label: you have tracked worse } ]
       success:
-        text: The trail does not go to Thorne's manor. It goes north, over the border, by the old drove road. At a shieling past the Leven you find a Caldmoor cattle-buyer's mark cut on a gatepost, and a Thorne man's knife in the mud. Thorne did not take the cattle for himself. He sold them to Black Ewan of Glenhallow. That is not a feud. That is treason.
+        text: The trail does not go to Thorne's manor. It goes north, over the border, by the old drove road. At a shieling past the Leven you find a Caldmoor cattle-buyer's mark cut on a gatepost, and a Thorne man's knife in the mud. Thorne did not take the cattle for himself. He sold them to Black Ewan of Glenhallow. A feud would have been his own business. Selling to Caldmoor is treason.
         effects:
           - set: flag.c1_found_cattle_trail
           - add: { rel.ancel_brome.respect: 2, skill.woodcraft: 1 }

@@ -1,5 +1,7 @@
 # The Economy of Adalia
 
+> Paths here are relative to `games/knight/`.
+
 Every sum in the game, in prose or in effects, is checked against this page. Money is counted in pence: 12d = 1s, 20s = £1 (240d). A mark is 13s 4d (160d), two-thirds of a pound. Prices follow canon.md's table, which follows mid-fourteenth-century England.
 
 ## 1. What people earn in a year

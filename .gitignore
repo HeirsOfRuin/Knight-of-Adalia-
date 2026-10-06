@@ -1,6 +1,6 @@
 node_modules
 dist
-src/content/bundle.json
+games/*/src/content/bundle.json
 *.log
 smoke-out
 dist-artifact

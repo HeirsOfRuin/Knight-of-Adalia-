@@ -4,7 +4,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 
-const root = join(import.meta.dirname, '..');
+const root = join(import.meta.dirname, '..', '..', '..'); // the repository: vite builds this game to dist/ there
 const dist = join(root, 'dist');
 const html = readFileSync(join(dist, 'index.html'), 'utf8');
 const js = [...html.matchAll(/<script[^>]*src="\.?\/?([^"]+)"[^>]*><\/script>/g)].map((m) => readFileSync(join(dist, m[1]!), 'utf8'));

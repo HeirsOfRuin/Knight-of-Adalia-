@@ -1,5 +1,7 @@
 # Chapters 4 and 5: Frame for Approval
 
+> Paths here are relative to `games/knight/`.
+
 **Status:** approved by the author, 2026-10-02. All six decisions in section 4 were accepted as recommended.
 
 **Method:** Ch5 is framed first, from its endings. Ch4 is then framed as the chapter that produces what those endings read. Nothing here is built until it is approved.

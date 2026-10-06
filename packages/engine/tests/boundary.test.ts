@@ -4,7 +4,7 @@ import { join } from 'node:path';
 
 // The engine (packages/engine) is shared by every game on it. It may import only itself and
 // zod; a game's rules reach it through the game module (packages/engine/src/game.ts).
-const ENGINE = join(import.meta.dirname, '..', '..', 'packages', 'engine', 'src');
+const ENGINE = join(import.meta.dirname, '..', 'src');
 
 describe('the engine boundary', () => {
   it('imports nothing outside the engine but zod', () => {

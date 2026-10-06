@@ -12,7 +12,10 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   const req = event.request;
-  if (req.method !== 'GET' || new URL(req.url).origin !== self.location.origin) return;
+  const url = new URL(req.url);
+  if (req.method !== 'GET' || url.origin !== self.location.origin) return;
+  // other games published beside this one (house/) are theirs to serve, offline or not
+  if (url.pathname.startsWith(new URL('./house/', self.registration.scope).pathname)) return;
   event.respondWith(
     fetch(req, { cache: 'no-store' })
       .then((res) => {

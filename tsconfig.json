@@ -16,5 +16,5 @@
     "types": ["node", "vite/client"],
     "paths": { "@engine/*": ["./packages/engine/src/*"] }
   },
-  "include": ["packages", "src", "tools", "tests", "vite.config.ts"]
+  "include": ["packages", "games", "vite.config.ts", "vitest.config.ts"]
 }

@@ -1,5 +1,7 @@
 # DESIGN — Knight of Adalia
 
+> **Paths** in this document are relative to `games/knight/` (this game's folder since 2026-10-06), except `packages/...`, which is at the repository root.
+
 Status: Phases 0-1 approved. Phase 2 (prologue + Chapter 1 vertical slice) complete, awaiting Phase 3 review. Decisions log at the bottom.
 
 ## Context
@@ -1278,7 +1280,7 @@ Each entry carries both its registry id and its display name, so a reader needs 
 **Changing the schema.** Add a field freely. Rename or remove one only with a version bump, and keep a reader for version 1.
 
 ## The engine and the game module (2026-10-06)
-Step 1 of the sequel's build order (`docs/SEQUEL-FRAME.md`). The engine moved to `packages/engine/` so House of Adalia can share it, and Knight of Adalia's own rules moved behind a **game module**. Contract and hook list: `packages/engine/README.md`.
+Step 1 of the sequel's build order (`games/house/docs/FRAME.md`). The engine moved to `packages/engine/` so House of Adalia can share it, and Knight of Adalia's own rules moved behind a **game module**. Contract and hook list: `packages/engine/README.md`.
 
 - **Engine** (`packages/engine/src/`, imported as `@engine/<module>`): conditions, effects, text, checks, calendar, director, stakes, cards, map, worldgen, narration, saves and save codes, and the core content schema. It imports only itself and zod (`tests/engine/boundary.test.ts`).
 - **Knight of Adalia's module** (`src/game/module.ts`): its paths (`estate`, `suit`, `heir`, `heirs`, `holding`, `holdings`, `background`, `role`, `prejudice`), its effect ops (the manor, children, holdings, drill), the wives' voices, the background as the scene variant key, the manor's seasonal upkeep, the prejudice modifier, `@home`-style places, its chapter-card lines and the save fallback scene.
@@ -1357,7 +1359,7 @@ Josh found text that assumed choices he had not made. A survey found 47 such pla
 
 | 2026-10-05 | The world map: terrain generator, 56 places, scene places, World panel and full-screen map, chapter-card map, the place in the date line. See The world map. |
 | 2026-10-05 | World map rebuilt: a 360 × 240 generated world with far lands (Ice Reach, Ember Isles, Thousand Isles, Grass Sea, Midsea, Glass Desert), realm borders, zoom ×1–6 and drag panning. |
-| 2026-10-06 | Sequel framed in `docs/SEQUEL-FRAME.md`. Author accepted the recommended scope: a hybrid of authored spine and light realm simulation, three generations, one repository with a shared engine package, succession law as a live lever (daughters can head the house), and the dynasty export optional. Openings, endings, systems, build order and six open decisions await approval. |
+| 2026-10-06 | Sequel framed in `games/house/docs/FRAME.md`. Author accepted the recommended scope: a hybrid of authored spine and light realm simulation, three generations, one repository with a shared engine package, succession law as a live lever (daughters can head the house), and the dynasty export optional. Openings, endings, systems, build order and six open decisions await approval. |
 | 2026-10-06 | Sequel frame approved as House of Adalia, with every open decision as recommended. The author's rule: the West does not always start free. The frame now has three starting frames (Free, Adalian, Partitioned) written separately, nine opening and frame combinations, and checks for frame-bound prose. The dynasty export gains `realm.settlement`, `realm.sovereign` and `realm.war`. |
 | 2026-10-06 | Engine extraction (sequel step 1): the engine in `packages/engine/` behind a game module, Knight of Adalia's rules in `src/game/`. No behaviour change by fingerprint. See The engine and the game module. |
 | 2026-10-06 | The hero as a character (sequel step 2): `state.characters` and `state.hero`, `hero.*` paths, pronoun variables, save version 4. No change in play. |

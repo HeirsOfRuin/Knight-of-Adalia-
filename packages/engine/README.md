@@ -1,6 +1,6 @@
 # The engine
 
-The engine shared by Knight of Adalia and House of Adalia (`docs/SEQUEL-FRAME.md`). It plays any content written in the scene, choice, check and effect format: conditions, effects, text, checks, the calendar, the director, chapter cards, the world map, saves and save codes.
+The engine shared by Knight of Adalia and House of Adalia (`games/house/docs/FRAME.md`). It plays any content written in the scene, choice, check and effect format: conditions, effects, text, checks, the calendar, the director, chapter cards, the world map, saves and save codes.
 
 It holds none of a game's own rules. A game supplies those through a **game module**.
 

@@ -1,5 +1,7 @@
 # Branches, Paths and Continuity
 
+> Paths here are relative to `games/knight/`.
+
 The map of the story: where it forks, what each fork remembers, and who can be dead by when. Read this before writing any line that mentions a person, a place or an earlier choice. File references are relative to `content/`; `S/` is `scenes/`, `E/` is `events/`.
 
 `npm run continuity` checks the rendered text of a few hundred runs against `content/continuity.yaml` and against the kill table below. It runs in `npm run check` and in CI. A new rule goes in that file whenever a fix here could regress.

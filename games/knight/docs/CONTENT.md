@@ -1,5 +1,7 @@
 # Content Authoring Reference
 
+> Paths here are relative to `games/knight/`.
+
 All game content lives in `/content` as YAML. `src/content/schema.ts` (Zod) is the authoritative schema. This file documents it for writers. `npm run validate` and `npm run lint:style` must pass before committing content.
 
 ## Files

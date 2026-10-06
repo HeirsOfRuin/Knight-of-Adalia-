@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import { toSave, fromSave, SaveError } from '../../src/engine/save';
-import { estateRecovery } from '../../src/engine/paths';
-import { choose } from '../../src/engine/index';
+import { toSave, fromSave, SaveError } from '../../src/game/save';
+import { estateRecovery } from '../../src/game/estate';
+import { choose } from '../../src/game/index';
 import { content, game } from '../helpers';
 
 describe('save', () => {

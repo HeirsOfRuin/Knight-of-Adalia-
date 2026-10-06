@@ -1,10 +1,10 @@
 import type { ContentBundle } from '../../content/schema';
-import type { GameState } from '../../engine/state';
-import { effectiveAttr, effectiveSkill, npcLabel, forceOf } from '../../engine/paths';
-import { computePrejudice } from '../../engine/station';
-import { ageOf, describeDate } from '../../engine/calendar';
-import { formatCoin, capitalise, signed } from '../../engine/format';
-import { ESTATE_LABELS, temperWord, payDue } from '../../engine/estate';
+import type { GameState } from '../../game/state';
+import { effectiveAttr, effectiveSkill, npcLabel, forceOf } from '@engine/paths';
+import { computePrejudice } from '../../game/station';
+import { ageOf, describeDate } from '@engine/calendar';
+import { formatCoin, capitalise, signed } from '@engine/format';
+import { ESTATE_LABELS, temperWord, payDue } from '../../game/estate';
 
 const feeling = (n: number) =>
   n <= -6 ? 'hates you' : n <= -3 ? 'dislikes you' : n < 0 ? 'cool' : n === 0 ? 'indifferent' : n <= 2 ? 'warm' : n <= 5 ? 'fond' : 'devoted';

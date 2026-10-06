@@ -1,10 +1,10 @@
 import { useState } from 'preact/hooks';
 import type { ContentBundle } from '../../content/schema';
-import type { GameState } from '../../engine/state';
-import type { CheckResult } from '../../engine/checks';
-import { computeOdds } from '../../engine/checks';
-import { enterScene } from '../../engine/director';
-import { visibleChoices } from '../../engine/index';
+import type { GameState } from '../../game/state';
+import type { CheckResult } from '@engine/checks';
+import { computeOdds } from '@engine/checks';
+import { enterScene } from '@engine/director';
+import { visibleChoices } from '../../game/index';
 
 interface Props {
   content: ContentBundle;

@@ -1,8 +1,8 @@
-import { PAY_PER_MAN } from '../../src/engine/estate';
+import { PAY_PER_MAN } from '../../src/game/estate';
 import { describe, it, expect } from 'vitest';
-import { applyEffects } from '../../src/engine/effects';
-import { getValue } from '../../src/engine/paths';
-import { RngCursor, seedRng } from '../../src/engine/rng';
+import { applyEffects } from '@engine/effects';
+import { getValue } from '@engine/paths';
+import { RngCursor, seedRng } from '@engine/rng';
 import { EffectSchema } from '../../src/content/schema';
 import { content, game } from '../helpers';
 

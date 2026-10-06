@@ -1,72 +1,30 @@
-import { ESTATE_FIELDS, clampEstate, type EstateField } from './estate';
 // Effect application. Operates on a state that the caller has already cloned.
-import type { ContentBundle, Effect } from '../content/schema';
-import type { GameState, NpcState, SuitState } from './state';
-import { pickHeirs, TEMPERAMENTS } from './heirs';
+// The engine's own ops are applied here; a game's ops and paths go to its module.
+import { CORE_EFFECT_OPS, type CoreContent as ContentBundle, type CoreBaseEffect, type EffectLike, type GameEffect } from './schema';
+import type { CoreState as GameState, NpcState } from './state';
 import { advanceSeasons, timeOf } from './calendar';
 import { labelFor, deref } from './paths';
 import { test } from './conditions';
-import type { RngCursor } from './rng';
+import { gameOf, type EffectCtx } from './game';
 import { formatCoin, signed, capitalise } from './format';
+
+export type { EffectCtx } from './game';
 
 /** How resource changes read in the journal. */
 const RES_LABELS: Record<string, string> = { men: 'Men in your company', garrison: 'Men holding your manor', levy: 'Trained village levy' };
 
-export interface EffectCtx {
-  scene: string;
-  choice: string;
-  choiceText: string;
-  changes: string[];
-  /** needed for random casualties; absent in contexts that cannot draw */
-  rng?: RngCursor;
-}
-
-const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v));
-
-export const DRILL_CEILING = 4;
-/** Where drill goes once the skill is past what drill can teach: the work hardens the body instead. */
-export const TRAIN_OVERFLOW: Record<string, string> = { arms: 'endurance', archery: 'strength', riding: 'endurance', woodcraft: 'endurance' };
-const OVERFLOW_MAX = 5;
-
-function train(state: GameState, content: ContentBundle, spec: Record<string, number>, changes: string[]): void {
-  const ceiling = spec.ceiling ?? DRILL_CEILING;
-  for (const [skill, by] of Object.entries(spec)) {
-    if (skill === 'ceiling' || skill === 'quiet') continue;
-    const before = state.skills[skill] ?? 0;
-    const room = Math.max(0, ceiling - before);
-    if (room > 0) addNumber(state, content, `skill.${skill}`, Math.min(by, room), changes);
-    if (by <= room || spec.quiet) continue;
-    const label = labelFor(content, `skill.${skill}`);
-    const attr = TRAIN_OVERFLOW[skill];
-    const key = `overflow_${attr}`;
-    if (attr && !state.counters[key] && (state.attributes[attr] ?? 1) < OVERFLOW_MAX) {
-      state.counters[key] = 1;
-      changes.push(`${label}: practice alone can take you no further. The work goes into your body instead.`);
-      addNumber(state, content, `attr.${attr}`, 1, changes);
-    } else {
-      changes.push(`${label}: practice alone can take you no further. It will take a master, or a hard day, to teach you more.`);
-    }
-  }
-}
+export const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v));
 
 export function newNpcState(content: ContentBundle, id: string): NpcState {
   const def = content.registry.npcs[id];
   return { met: false, alive: true, affection: def?.affection ?? 0, respect: def?.respect ?? 0, loyalty: 0, grudges: [] };
 }
 
-export function newSuitState(): SuitState {
-  return { status: 'known', regard: 0, family: 0, discretion: 10, pledge: 'none' };
-}
-
-function npc(state: GameState, content: ContentBundle, id: string): NpcState {
+export function npc(state: GameState, content: ContentBundle, id: string): NpcState {
   return (state.npcs[id] ??= newNpcState(content, id));
 }
 
-function suit(state: GameState, id: string): SuitState {
-  return (state.suits[id] ??= newSuitState());
-}
-
-function addNumber(state: GameState, content: ContentBundle, rawPath: string, delta: number, changes: string[]): void {
+export function addNumber(state: GameState, content: ContentBundle, rawPath: string, delta: number, changes: string[]): void {
   const path = deref(state, rawPath);
   const [ns, a, b] = path.split('.') as [string, string, string | undefined];
   const note = (label: string, d: number) => { if (d !== 0) changes.push(`${label} ${signed(d)}`); };
@@ -114,47 +72,20 @@ function addNumber(state: GameState, content: ContentBundle, rawPath: string, de
       changes.push(delta > 0 ? `${name} owes you` : `You owe ${name}`);
       return;
     }
-    case 'suit': {
-      const s = suit(state, a);
-      const f = b as 'regard' | 'family' | 'discretion';
-      const before = s[f];
-      s[f] = clamp(before + delta, f === 'discretion' ? 0 : -10, 10);
-      return;
-    }
     case 'counter':
       state.counters[a] = (state.counters[a] ?? 0) + delta;
       return;
-    case 'estate': {
-      if (!state.estate) state.estate = {};
-      const f = a as EstateField;
-      const before = state.estate[f] ?? 0;
-      state.estate[f] = clampEstate(f, before + delta);
-      note(labelFor(content, path), state.estate[f]! - before);
-      return;
-    }
-    case 'heir': {
-      for (const h of pickHeirs(state, a)) {
-        if (b !== 'bond') throw new Error(`add: only heir.<which>.bond can change, not ${path}`);
-        h.bond = clamp((h.bond ?? 0) + delta, -5, 5);
-      }
-      return;
-    }
-    case 'holding': {
-      const h = state.holdings?.[a];
-      if (!h) return; // nothing to change on a holding he does not hold
-      if (b === 'income') h.income = Math.max(0, h.income + delta);
-      else h.temper = clamp(h.temper + delta, -5, 5);
-      note(labelFor(content, path), delta);
-      return;
-    }
     case 'health': {
       const before = state.health;
       state.health = clamp(before + delta, 1, 10); // death only through `die`
       note('Health', state.health - before);
       return;
     }
-    default:
-      throw new Error(`add: unsupported path ${path}`);
+    default: {
+      const game = gameOf(content);
+      if (!game.namespaces.includes(ns) || !game.addNumber) throw new Error(`add: unsupported path ${path}`);
+      game.addNumber(state, content, path, delta, changes);
+    }
   }
 }
 
@@ -167,36 +98,49 @@ function assignValue(state: GameState, content: ContentBundle, rawPath: string, 
     case 'counter': state.counters[a] = Number(value); return;
     case 'res': state.res[a] = Number(value); return; // e.g. keep a score of men: assign res.men 20
     case 'flag': if (value) state.flags[a] = true; else delete state.flags[a]; return;
-    case 'suit': {
-      const s = suit(state, a);
-      (s as unknown as Record<string, unknown>)[b!] = value;
-      return;
-    }
     case 'rel': {
       const n = npc(state, content, a);
       (n as unknown as Record<string, unknown>)[b!] = Number(value);
       return;
     }
-    default:
-      throw new Error(`assign: unsupported path ${path}`);
+    default: {
+      const game = gameOf(content);
+      if (!game.namespaces.includes(ns) || !game.assignValue) throw new Error(`assign: unsupported path ${path}`);
+      game.assignValue(state, content, path, value);
+    }
   }
 }
 
+/** The op of an effect: its one key, or if/chance for the wrappers. */
+export function opOf(e: EffectLike): string {
+  return 'if' in e ? 'if' : 'chance' in e ? 'chance' : Object.keys(e)[0]!;
+}
+
 /** Applies effects in order. Returns true if the character died. */
-export function applyEffects(state: GameState, content: ContentBundle, effects: Effect[], ctx: EffectCtx): boolean {
+export function applyEffects(state: GameState, content: ContentBundle, effects: readonly EffectLike[], ctx: EffectCtx): boolean {
   const reg = content.registry;
-  for (const e of effects) {
-    if ('if' in e) {
-      const branch = test(e.if, state, content) ? e.then : (e.else ?? []);
+  for (const raw of effects) {
+    const op = opOf(raw);
+    if (op === 'if') {
+      const c = raw as { if: Parameters<typeof test>[0]; then: EffectLike[]; else?: EffectLike[] };
+      const branch = test(c.if, state, content) ? c.then : (c.else ?? []);
       if (applyEffects(state, content, branch, ctx)) return true;
       continue;
     }
-    if ('chance' in e) {
+    if (op === 'chance') {
+      const c = raw as { chance: number; then: EffectLike[]; else?: EffectLike[] };
       // without a cursor (never expected in play) the unlucky branch is not taken
-      const hit = ctx.rng ? ctx.rng.float() * 100 < e.chance : false;
-      if (applyEffects(state, content, hit ? e.then : (e.else ?? []), ctx)) return true;
+      const hit = ctx.rng ? ctx.rng.float() * 100 < c.chance : false;
+      if (applyEffects(state, content, hit ? c.then : (c.else ?? []), ctx)) return true;
       continue;
     }
+    if (!CORE_EFFECT_OPS.has(op)) {
+      const handler = gameOf(content).effects[op];
+      if (!handler) throw new Error(`unknown effect op "${op}"`);
+      if (handler(state, content, raw as GameEffect, ctx)) return true;
+      continue;
+    }
+    const e = raw as CoreBaseEffect;
     if ('set' in e) state.flags[e.set.replace(/^flag\./, '')] = true;
     else if ('clear' in e) delete state.flags[e.clear.replace(/^flag\./, '')];
     else if ('add' in e) for (const [p, d] of Object.entries(e.add)) addNumber(state, content, p, d, ctx.changes);
@@ -284,48 +228,6 @@ export function applyEffects(state: GameState, content: ContentBundle, effects: 
         earliestChapter: e.queue.earliest_chapter,
         origin: { scene: ctx.scene, choice: ctx.choice, at: state.time, text: ctx.choiceText },
       });
-    } else if ('lose_share' in e) {
-      for (const [raw, pct] of Object.entries(e.lose_share)) {
-        const [, f] = raw.split('.') as [string, EstateField];
-        if (!state.estate) continue;
-        const before = state.estate[f] ?? 0;
-        state.estate[f] = clampEstate(f, before - Math.round((before * pct) / 100));
-        const d = state.estate[f]! - before;
-        if (d) ctx.changes.push(`${labelFor(content, raw)} ${d}`);
-      }
-    } else if ('birth' in e) {
-      const sex = e.birth === 'random' ? (ctx.rng && ctx.rng.float() < 0.5 ? 'daughter' : 'son') : e.birth;
-      const temperament = ctx.rng ? TEMPERAMENTS[ctx.rng.int(TEMPERAMENTS.length)] : 'merry';
-      (state.heirs ??= []).push({ name: '', sex, born: state.time, alive: true, temperament, bond: 0 });
-      ctx.changes.push(sex === 'son' ? 'A son' : 'A daughter');
-    } else if ('name_heir' in e) {
-      const h = state.heirs?.find((x) => !x.name);
-      if (h) h.name = e.name_heir === '@self' ? state.name : e.name_heir;
-    } else if ('heir_dies' in e) {
-      const h = pickHeirs(state, e.heir_dies)[0];
-      if (h) { h.alive = false; h.died = state.time; ctx.changes.push(`${h.name || 'The child'} dies`); }
-    } else if ('heir_set' in e) {
-      for (const h of pickHeirs(state, e.heir_set.which)) {
-        const t = e.heir_set.temperament;
-        if (t === 'random') { if (!h.temperament) h.temperament = ctx.rng ? TEMPERAMENTS[ctx.rng.int(TEMPERAMENTS.length)] : 'merry'; }
-        else if (t) h.temperament = t;
-        if (e.heir_set.upbringing) h.upbringing = e.heir_set.upbringing;
-        h.bond ??= 0;
-      }
-    } else if ('hold' in e) {
-      (state.holdings ??= {})[e.hold.id] = { income: e.hold.income, temper: clamp(e.hold.temper, -5, 5) };
-      ctx.changes.push(`You hold ${reg.holdings[e.hold.id]?.label ?? e.hold.id}`);
-    } else if ('release' in e) {
-      if (state.holdings?.[e.release]) {
-        delete state.holdings[e.release];
-        ctx.changes.push(`Lost: ${reg.holdings[e.release]?.label ?? e.release}`);
-      }
-    } else if ('train' in e) {
-      train(state, content, e.train, ctx.changes);
-    } else if ('found_estate' in e) {
-      state.estate = {};
-      for (const f of ESTATE_FIELDS) state.estate[f] = clampEstate(f, e.found_estate[f] ?? 0);
-      state.estate.founded = state.estate.people ?? 0; // what the manor held when he came, for estate.recovery
     } else if ('advance' in e) {
       advanceSeasons(state, content, e.advance.seasons, ctx.changes);
     } else if ('catch_up' in e) {

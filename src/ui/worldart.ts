@@ -1,7 +1,7 @@
 // Paints the generated world (src/engine/worldgen.ts) as pixel art: S canvas pixels a tile,
 // biome colours lit by the hillshade, small patterns (trees, peaks, furrows, vines, dunes,
 // salt pans, reeds, waves, floes), foam on the coast and dotted borders between realms.
-import { Biome, isWater, tileHash, type World } from '../engine/worldgen';
+import { Biome, isWater, tileHash, type World } from '@engine/worldgen';
 
 export const S = 3;
 

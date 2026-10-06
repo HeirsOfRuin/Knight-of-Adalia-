@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { choose, view, newGame } from '../../src/engine/index';
+import { choose, view, newGame } from '../../src/game/index';
 import { content, game, withScenes } from '../helpers';
 
 describe('engine', () => {
@@ -144,7 +144,7 @@ describe('queued events with a chapter gate', () => {
 
 describe('mergeChanges', () => {
   it('folds repeated numeric changes and drops ones that cancel out', async () => {
-    const { mergeChanges } = await import('../../src/engine/index');
+    const { mergeChanges } = await import('../../src/game/index');
     expect(mergeChanges(['A +1', 'Gained: X', 'A +2', 'B −1', 'B +1'])).toEqual(['A +3', 'Gained: X']);
   });
 });
@@ -174,7 +174,7 @@ describe('Phase 3 rules', () => {
   });
 
   it('text conditions accept && and ||', async () => {
-    const { renderText } = await import('../../src/engine/text');
+    const { renderText } = await import('@engine/text');
     const s = game('archer');
     expect(renderText('[if background == reeve || item.yew_bow && !injured]yes[else]no[/if]', s, c)).toBe('yes');
     s.injuries.push({ id: 'bruised_ribs', since: 0 }); // minor wounds do not count
@@ -213,9 +213,9 @@ describe('Phase 3b engine changes', () => {
     expect(view(c, s).dateChanged).toBe(false);
   });
   it('followers join and leave, friends are derived from affection and respect', async () => {
-    const { applyEffects } = await import('../../src/engine/effects');
+    const { applyEffects } = await import('@engine/effects');
     const { EffectSchema } = await import('../../src/content/schema');
-    const { getValue } = await import('../../src/engine/paths');
+    const { getValue } = await import('@engine/paths');
     const s = game('archer');
     const ctx = { scene: 's', choice: 'c', choiceText: 't', changes: [] as string[] };
     applyEffects(s, c, [EffectSchema.parse({ join: 'will_cobb' }), EffectSchema.parse({ add: { 'res.men': 3 } })], ctx);

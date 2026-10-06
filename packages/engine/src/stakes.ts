@@ -1,9 +1,11 @@
 // "At stake": a short line under each choice naming what it can change, worked
 // out from the choice's own effects across all its outcomes, so it cannot drift
 // from what the game does. Direction is shown only when every outcome agrees.
-import type { Choice, ContentBundle, Effect } from '../content/schema';
-import type { GameState } from './state';
+import { CORE_EFFECT_OPS, type Choice, type CoreContent as ContentBundle, type CoreBaseEffect, type EffectLike, type GameEffect } from './schema';
+import type { CoreState as GameState } from './state';
 import { deref, npcLabel } from './paths';
+import { gameOf, STAKES_RANK as RANK } from './game';
+import { opOf } from './effects';
 
 const TEXT_KEYS = new Set(['text', 'text_after', 'title', 'label', 'warn', 'description', 'journal', 'die']);
 const readCache = new WeakMap<ContentBundle, Set<string>>();
@@ -31,10 +33,9 @@ function mechanicalReads(content: ContentBundle): Set<string> {
 
 interface Item { key: string; label: string; rank: number; signs: Set<number> }
 
-const RANK = { life: 0, battle: 1, station: 2, men: 3, renown: 4, rep: 5, rel: 6, family: 6, manor: 7, coin: 8, skill: 9, other: 10, remembered: 11 };
-
-function collect(content: ContentBundle, state: GameState, effects: Effect[], into: Map<string, Item>, outcome: number): void {
+function collect(content: ContentBundle, state: GameState, effects: readonly EffectLike[], into: Map<string, Item>, outcome: number): void {
   const reg = content.registry;
+  const game = gameOf(content);
   const put = (key: string, label: string, rank: number, sign = 0) => {
     const it = into.get(key) ?? { key, label, rank, signs: new Set<number>() };
     it.signs.add(sign);
@@ -42,8 +43,16 @@ function collect(content: ContentBundle, state: GameState, effects: Effect[], in
     (it as Item & { seen: Set<number> }).seen.add(outcome);
     into.set(key, it);
   };
-  for (const e of effects) {
-    if ('if' in e || 'chance' in e) { collect(content, state, e.then, into, outcome); collect(content, state, e.else ?? [], into, outcome); continue; }
+  for (const raw of effects) {
+    const op = opOf(raw);
+    if (op === 'if' || op === 'chance') {
+      const w = raw as { then: EffectLike[]; else?: EffectLike[] };
+      collect(content, state, w.then, into, outcome);
+      collect(content, state, w.else ?? [], into, outcome);
+      continue;
+    }
+    if (!CORE_EFFECT_OPS.has(op)) { game.stakesOf?.(content, state, raw as GameEffect, put); continue; }
+    const e = raw as CoreBaseEffect;
     if ('add' in e) {
       for (const [raw, d] of Object.entries(e.add)) {
         const path = deref(state, raw);
@@ -61,16 +70,14 @@ function collect(content: ContentBundle, state: GameState, effects: Effect[], in
             else put(`rel.${a}`, npcLabel(content, a!), RANK.rel, sign);
             break;
           }
-          case 'suit': put(`suit.${a}`, npcLabel(content, reg.romances[a!]?.npc ?? a!), RANK.rel, sign); break;
           case 'skill': case 'attr': put(path, a!.charAt(0).toUpperCase() + a!.slice(1), RANK.skill, sign); break;
-          case 'estate': put('estate', 'Your manor', RANK.manor, b === undefined && a === 'people' ? sign : 0); break;
-          case 'holding': put('holding', 'Your holdings', RANK.manor, sign); break;
-          case 'heir': put('heir', 'Your children', RANK.family, sign); break;
           case 'counter': {
             const label = content.config.counter_labels[a!];
-            if (label) put(`counter.${a}`, label, a!.startsWith('court_') || a === 'west_estates' ? RANK.rep : RANK.battle, sign);
+            if (label) put(`counter.${a}`, label, game.counterRank?.(a!) ?? RANK.battle, sign);
             break;
           }
+          default:
+            if (game.namespaces.includes(ns!)) game.stakesOfAdd?.(content, path, sign, put);
         }
       }
     } else if ('die' in e) put('life', 'Your life', RANK.life, -1);
@@ -80,8 +87,6 @@ function collect(content: ContentBundle, state: GameState, effects: Effect[], in
     else if ('join' in e) put('men', 'Your men', RANK.men, 1);
     else if ('leave' in e) put('men', 'Your men', RANK.men, -1);
     else if ('item' in e) put(`item.${e.item.slice(1)}`, reg.items[e.item.slice(1)]?.label ?? e.item.slice(1), RANK.other, e.item.startsWith('+') ? 1 : -1);
-    else if ('hold' in e) put('holding', 'Your holdings', RANK.manor, 1);
-    else if ('birth' in e || 'heir_set' in e) put('heir', 'Your children', RANK.family, 0);
     else if ('set' in e) {
       const f = e.set.replace(/^flag\./, '');
       if (mechanicalReads(content).has(f)) put('remembered', 'Remembered later', RANK.remembered, 0);
@@ -91,7 +96,7 @@ function collect(content: ContentBundle, state: GameState, effects: Effect[], in
 
 /** Up to four short items, e.g. ["Renown +", "Honor −", "Remembered later"]. Empty when nothing is at stake. */
 export function stakesFor(content: ContentBundle, state: GameState, c: Choice): string[] {
-  const outcomes: Effect[][] = c.check
+  const outcomes: EffectLike[][] = c.check
     ? (['success', 'partial', 'failure'] as const).filter((k) => c[k]).map((k) => [...c.effects, ...(c[k]!.effects ?? [])])
     : [c.effects];
   const items = new Map<string, Item>();

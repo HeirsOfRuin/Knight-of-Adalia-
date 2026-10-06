@@ -1,17 +1,17 @@
 // Content validator. Static checks over the bundle; per-background structural
 // checks run once the relevant chapter has content (otherwise PENDING).
 import { WIFE_MOMENTS, MARRIAGE_STAGES, type Choice, type ContentBundle, type Effect, type Next, type Outcome, type Scene, type SimpleNext } from '../src/content/schema';
-import { validateCond, condPaths, compileCond as rawCompile, type Cond } from '../src/engine/conditions';
+import { validateCond, condPaths, compileCond as rawCompile, type Cond } from '@engine/conditions';
 import type { CondInput } from '../src/content/schema';
 
 /** Compile, or treat as unconditional if malformed (the error is reported separately). */
 function compileCond(c: CondInput): Cond {
   try { return rawCompile(c); } catch { return { t: 'all', of: [] }; }
 }
-import { validateText } from '../src/engine/text';
-import { checkPath } from '../src/engine/paths';
-import { world, isWater } from '../src/engine/worldgen';
-import { TEMPERAMENTS, UPBRINGINGS } from '../src/engine/heirs';
+import { validateText } from '@engine/text';
+import { checkPath } from '@engine/paths';
+import { world, isWater } from '@engine/worldgen';
+import { TEMPERAMENTS, UPBRINGINGS } from '../src/game/heirs';
 
 export type Severity = 'error' | 'warning';
 export interface Issue { severity: Severity; where: string; message: string }

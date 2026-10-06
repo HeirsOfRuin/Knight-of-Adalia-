@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'preact/hooks';
 import type { ContentBundle } from '../content/schema';
-import type { GameState } from '../engine/state';
-import { newGame, choose, type NewGameOptions } from '../engine/index';
-import type { CheckResult } from '../engine/checks';
+import type { GameState } from '../game/state';
+import { newGame, choose, type NewGameOptions } from '../game/index';
+import type { CheckResult } from '@engine/checks';
 import { readAutosave, writeAutosave, clearAutosave, importSave, importSaveText } from './storage';
 import { ConfirmButton } from './components/Confirm';
 import { NewGame } from './components/NewGame';

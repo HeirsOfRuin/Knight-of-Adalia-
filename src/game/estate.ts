@@ -2,7 +2,7 @@
 // per season by the calendar. Content reads them as `estate.<field>` and changes
 // them with `add: { estate.<field>: n }`; `found_estate` creates the record.
 import type { GameState } from './state';
-import { formatCoin } from './format';
+import { formatCoin } from '@engine/format';
 
 export const ESTATE_FIELDS = ['people', 'food', 'temper', 'defence', 'church', 'salt', 'orchard'] as const;
 export type EstateField = (typeof ESTATE_FIELDS)[number];
@@ -147,4 +147,10 @@ export function estateTick(state: GameState, changes: string[]): void {
     e.temper = clampEstate('temper', (e.temper ?? 0) - 1);
     changes.push(`Hunger on the manor: ${lost} dead or gone`);
   }
+}
+
+/** People on the manor as a percentage of what it held when he came. Prose that compares the present with the past reads this, never a raw count. */
+export function estateRecovery(state: GameState): number {
+  const founded = state.estate?.founded ?? 0;
+  return founded > 0 ? Math.round(((state.estate?.people ?? 0) * 100) / founded) : 100;
 }

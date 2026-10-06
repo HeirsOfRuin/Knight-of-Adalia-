@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { realContent, game } from '../helpers';
-import { renderText } from '../../src/engine/text';
+import { renderText } from '@engine/text';
 import { WIFE_MOMENTS, MARRIAGE_STAGES } from '../../src/content/schema';
 
 describe('wives have their own voices', () => {

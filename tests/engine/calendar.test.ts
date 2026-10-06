@@ -1,10 +1,10 @@
 import { describe, it, expect } from 'vitest';
 import { content, game } from '../helpers';
-import { reignOf, timeOf } from '../../src/engine/calendar';
-import { numberWords, ordinalWords } from '../../src/engine/format';
-import { applyEffects } from '../../src/engine/effects';
-import { renderText } from '../../src/engine/text';
-import { toSave, fromSave } from '../../src/engine/save';
+import { reignOf, timeOf } from '@engine/calendar';
+import { numberWords, ordinalWords } from '@engine/format';
+import { applyEffects } from '@engine/effects';
+import { renderText } from '@engine/text';
+import { toSave, fromSave } from '../../src/game/save';
 
 describe('calendar', () => {
   const c = content();

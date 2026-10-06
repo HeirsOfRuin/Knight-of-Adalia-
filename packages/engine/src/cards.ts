@@ -1,8 +1,9 @@
 // Chapter cards: the title page shown before the first scene of a chapter (config.chapter_cards)
 // or of an act (scene.card), with a short account of where the hero stands and what the years
 // since the last card have brought.
-import type { Card, ContentBundle } from '../content/schema';
-import type { GameState } from './state';
+import type { Card, CoreContent as ContentBundle } from './schema';
+import type { CoreState as GameState } from './state';
+import { gameOf } from './game';
 import { ageOf, describeDate } from './calendar';
 import { forceOf } from './paths';
 import { capitalise, formatCoin, numberWords } from './format';
@@ -34,26 +35,14 @@ function lastCardAt(content: ContentBundle, state: GameState): number | undefine
   return undefined;
 }
 
-const SEX_WORD = { son: 'a son', daughter: 'a daughter' } as const;
-
 export function cardView(content: ContentBundle, state: GameState, card: Card): CardView {
+  const game = gameOf(content);
   const rows: [string, string][] = [];
   rows.push(['Date', describeDate(state, content)]);
   rows.push(['Age', String(ageOf(state))]);
   rows.push(['Station', capitalise(state.station.replace('_', ' '))]);
 
-  const sp = state.aliases.spouse;
-  if (state.flags.c3_married && sp && sp !== 'none') {
-    const name = content.registry.npcs[sp]?.name ?? sp;
-    rows.push([state.npcs[sp]?.alive === false ? 'Late wife' : 'Wife', name]);
-  }
-  const living = (state.heirs ?? []).filter((h) => h.alive);
-  if (living.length) rows.push(['Children', living.map((h) => `${h.name || 'a baby'} (${Math.floor((state.time - h.born) / 4)})`).join(', ')]);
-  if (state.estate) {
-    const grant = state.flags.c2_granted_marsalin ? 'Marsalin' : state.flags.c2_granted_kerval ? 'Kerval' : state.flags.c2_granted_ormel ? 'Ormel' : 'Your manor';
-    const others = Object.keys(state.holdings ?? {}).length;
-    rows.push(['Lands', `${grant}, ${state.estate.people ?? 0} people${others ? `; ${others} other holding${others === 1 ? '' : 's'}` : ''}`]);
-  }
+  rows.push(...(game.cardRows?.(content, state) ?? []));
   const f = forceOf(state);
   if (f.total > 0) rows.push(['Men', String(f.total)]);
   rows.push(['Purse', formatCoin(state.res.coin ?? 0)]);
@@ -63,13 +52,11 @@ export function cardView(content: ContentBundle, state: GameState, card: Card): 
   if (from !== undefined) {
     const years = Math.floor((state.time - from) / 4);
     if (years >= 1) since.push(`${capitalise(numberWords(years))} year${years === 1 ? '' : 's'} have passed.`.replace('One year have', 'One year has'));
-    for (const h of state.heirs ?? []) {
-      if (h.born >= from) since.push(`Born: ${h.name || SEX_WORD[h.sex]}${h.name ? `, ${SEX_WORD[h.sex].slice(2)}` : ''}.`);
-    }
+    since.push(...(game.cardBorn?.(content, state, from) ?? []));
     const dead = Object.entries(state.npcs)
       .filter(([, n]) => n.met && !n.alive && n.diedAt !== undefined && n.diedAt >= from)
       .map(([id]) => content.registry.npcs[id]?.name ?? id);
-    for (const h of state.heirs ?? []) if (!h.alive && h.died !== undefined && h.died >= from) dead.push(h.name || 'your child');
+    dead.push(...(game.cardDead?.(content, state, from) ?? []));
     if (dead.length) since.push(`Dead: ${dead.join(', ')}.`);
   }
   return { ...card, rows, since };

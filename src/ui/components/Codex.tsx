@@ -1,11 +1,11 @@
 import { MapView } from './MapView';
 // People and World pages: what he knows, growing as he learns it.
 import type { ContentBundle } from '../../content/schema';
-import type { GameState } from '../../engine/state';
-import { test } from '../../engine/conditions';
-import { renderText } from '../../engine/text';
-import { npcLabel, isFriend } from '../../engine/paths';
-import { capitalise } from '../../engine/format';
+import type { GameState } from '../../game/state';
+import { test } from '@engine/conditions';
+import { renderText } from '@engine/text';
+import { npcLabel, isFriend } from '@engine/paths';
+import { capitalise } from '@engine/format';
 
 const feeling = (n: number) =>
   n <= -6 ? 'hates you' : n <= -3 ? 'dislikes you' : n < 0 ? 'cool toward you' : n === 0 ? 'indifferent' : n <= 2 ? 'warm' : n <= 5 ? 'fond of you' : 'devoted to you';

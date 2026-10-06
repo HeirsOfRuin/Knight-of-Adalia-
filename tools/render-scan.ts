@@ -3,7 +3,7 @@
 // Hits are leads, not failures: ellipses and the word "none" in prose are fine.
 import { loadContent } from './content-loader';
 import { playOnce, DEFAULT_POLICIES } from './bot-lib';
-import { view } from '../src/engine/index';
+import { view } from '../src/game/index';
 const c = loadContent();
 const bad: Record<string, Set<string>> = {};
 const pats: [string, RegExp][] = [['brace', /[{}]/], ['tag', /\[(if|elif|else|\/if)/], ['undefined', /undefined|NaN|\bnull\b/], ['at', /@[a-z]/], ['doublespace', /\S  \S/], ['space-punct', / [,.;:!?](\s|$)/], ['empty-quote', /""/], ['dup-word', /\b(\w+) \1\b/i], ['lower-after-stop', /[.!?] [a-z]/], ['start-lower', /^[a-z]/], ['stop-stop', /[.!?,][.,]/]];

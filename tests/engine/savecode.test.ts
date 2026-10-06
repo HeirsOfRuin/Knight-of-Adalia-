@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { encodeSaveCode, decodeSaveCode, CODE_PREFIX } from '../../src/engine/savecode';
-import { toSave, fromSave } from '../../src/engine/save';
+import { encodeSaveCode, decodeSaveCode, CODE_PREFIX } from '../../src/game/save';
+import { toSave, fromSave } from '../../src/game/save';
 import { content, game } from '../helpers';
 
 describe('save codes', () => {

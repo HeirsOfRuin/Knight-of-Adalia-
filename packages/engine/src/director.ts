@@ -1,8 +1,8 @@
 // Scene transitions: spine links, pool interludes, delayed (queued) events.
 // Interludes use a return stack: a pool or queued scene ends with "@return"
 // and play resumes where it was going.
-import type { ContentBundle, Next, Scene, SimpleNext } from '../content/schema';
-import type { GameState } from './state';
+import type { CoreContent as ContentBundle, Next, Scene, SimpleNext } from './schema';
+import type { CoreState as GameState } from './state';
 import { test } from './conditions';
 import { applyEffects } from './effects';
 import { renderText } from './text';

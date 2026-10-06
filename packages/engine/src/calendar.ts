@@ -1,8 +1,8 @@
 // Calendar: time is an absolute season count from game start (spring of the
 // configured regnal year). Age advances with it.
-import type { ContentBundle } from '../content/schema';
-import type { GameState } from './state';
-import { estateTick } from './estate';
+import type { CoreContent as ContentBundle } from './schema';
+import type { CoreState as GameState } from './state';
+import { gameOf } from './game';
 
 export function seasonName(state: GameState, content: ContentBundle): string {
   return content.config.seasons[state.time % 4]!;
@@ -45,9 +45,10 @@ export function describeDate(state: GameState, content: ContentBundle): string {
 /** Advance time; heals injuries whose time has run out. Mutates the given (already cloned) state. */
 export function advanceSeasons(state: GameState, content: ContentBundle, n: number, changes: string[]): void {
   if (n <= 0) return;
+  const onSeason = gameOf(content).onSeason;
   for (let i = 0; i < n; i++) {
     state.time += 1;
-    estateTick(state, changes);
+    onSeason?.(state, content, changes);
   }
   const reg = content.registry.injuries;
   const healed = state.injuries.filter((i) => {

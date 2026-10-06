@@ -1,10 +1,10 @@
 // Skill checks. computeOdds is the only place odds are derived: the UI band
 // and the resolution both come from it.
-import type { Check, ContentBundle } from '../content/schema';
-import type { GameState } from './state';
+import type { Check, CoreContent as ContentBundle } from './schema';
+import type { CoreState as GameState } from './state';
 import { effectiveAttr, effectiveSkill } from './paths';
-import { audienceModifier } from './station';
 import { test } from './conditions';
+import { gameOf } from './game';
 import type { RngCursor } from './rng';
 
 export type Band = 'Risky' | 'Even' | 'Favorable';
@@ -32,8 +32,8 @@ export function computeOdds(check: Check, state: GameState, content: ContentBund
   const attr = effectiveAttr(state, content, check.attr);
   breakdown.push({ label: check.attr, value: attr });
   if (check.skill) breakdown.push({ label: check.skill, value: effectiveSkill(state, content, check.skill) });
-  const aud = audienceModifier(state, content, check.audience);
-  if (aud) breakdown.push({ label: aud < 0 ? 'his origins' : 'one of their own', value: aud });
+  const aud = gameOf(content).audience?.(state, content, check.audience);
+  if (aud) breakdown.push(aud);
   if (state.health <= 3) breakdown.push({ label: 'poor health', value: -1 });
   for (const m of check.mods) if (test(m.if, state, content)) breakdown.push({ label: m.label, value: m.add });
   breakdown.push({ label: 'difficulty', value: -check.difficulty });

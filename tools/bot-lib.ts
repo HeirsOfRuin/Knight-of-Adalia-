@@ -5,11 +5,11 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import YAML from 'yaml';
 import type { ContentBundle } from '../src/content/schema';
-import { newGame, view, choose, type GameState } from '../src/engine/index';
-import { RngCursor, seedRng } from '../src/engine/rng';
-import { test as testCond } from '../src/engine/conditions';
-import type { CheckResult } from '../src/engine/checks';
-import { payDue } from '../src/engine/estate';
+import { newGame, view, choose, type GameState } from '../src/game/index';
+import { RngCursor, seedRng } from '@engine/rng';
+import { test as testCond } from '@engine/conditions';
+import type { CheckResult } from '@engine/checks';
+import { payDue } from '../src/game/estate';
 
 export type Policy =
   | { kind: 'random' }

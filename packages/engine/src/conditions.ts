@@ -1,9 +1,10 @@
 // Condition grammar. Strings like "skill.diplomacy >= 4", "flag.met_aldric",
 // "!flag.disgraced", "station >= squire", "background == reeve", combined with
 // lists (all), { all }, { any }, { not }.
-import type { ContentBundle, CondInput } from '../content/schema';
-import type { GameState } from './state';
+import type { CoreContent as ContentBundle, CondInput } from './schema';
+import type { CoreState as GameState } from './state';
 import { getValue, checkPath, ordinalFor, labelFor, deref, type Value } from './paths';
+import { gameOf } from './game';
 import { formatCoin, capitalise } from './format';
 
 export type Op = '>=' | '<=' | '>' | '<' | '==' | '!=';
@@ -115,16 +116,9 @@ export function validateCond(input: CondInput, content: ContentBundle): string[]
       if (c.t === 'cmp' && typeof c.value === 'string') {
         const ord = ordinalFor(content, c.path);
         const known =
-          ord ?? (c.path === 'background' ? Object.keys(content.backgrounds)
-          : c.path === 'track' ? [...content.config.tracks, 'none']
-          : c.path === 'role' ? ['none', ...Object.values(content.backgrounds).flatMap((b) => Object.keys(b.roles ?? {}))]
+          ord ?? (c.path === 'track' ? [...content.config.tracks, 'none']
           : c.path.startsWith('alias.') ? ['none', ...Object.keys(content.registry.npcs)]
-          : c.path === 'heirs.last' ? ['none', 'son', 'daughter']
-          : c.path === 'heirs.eldest_id' ? [String(c.value)] // a child's given name, lower-cased: any word
-          : /^heir\.[a-z]+\.sex$/.test(c.path) ? ['none', 'son', 'daughter']
-          : /^heir\.[a-z]+\.temperament$/.test(c.path) ? ['none', 'bold', 'bookish', 'merry', 'grave']
-          : /^heir\.[a-z]+\.upbringing$/.test(c.path) ? ['none', 'home', 'page', 'church', 'arms', 'letters', 'court']
-          : undefined);
+          : gameOf(content).namedValues?.(content, c.path, c.value));
         if (!known) errs.push(`"${c.src}": path does not take a named value`);
         else if (!known.includes(c.value)) errs.push(`"${c.src}": unknown value "${c.value}"`);
       }
@@ -159,7 +153,8 @@ function leafLabel(c: Extract<Cond, { t: 'cmp' | 'truthy' }>, content: ContentBu
   }
   const { op, value } = c;
   const path = cpath;
-  if (path === 'background') return `${op === '!=' ? 'not ' : ''}${content.backgrounds[value as string]?.label ?? value}`;
+  const own = gameOf(content).comparisonLabel?.(content, path, op, value);
+  if (own !== undefined) return own;
   if (path === 'station') return `Station ${op === '>=' ? '' : op + ' '}${capitalise(String(value))}`.replace('  ', ' ');
   if (path === 'res.coin' && typeof value === 'number') return `Coin ${formatCoin(value)}`;
   const name = labelFor(content, path);

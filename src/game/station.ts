@@ -1,4 +1,4 @@
-// Station ladder and the "new man" prejudice modifier.
+// Station ladder and the "new man" prejudice modifier (the audience modifier on checks).
 import type { ContentBundle } from '../content/schema';
 import type { GameState } from './state';
 

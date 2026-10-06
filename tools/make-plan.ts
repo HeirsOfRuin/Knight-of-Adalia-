@@ -14,10 +14,10 @@ import { join } from 'node:path';
 import YAML from 'yaml';
 import { loadContent } from './content-loader';
 import { playOnce, DEFAULT_POLICIES, policyName, PLAN_DIR, playPlan, type Plan, type Policy } from './bot-lib';
-import { newGame, choose } from '../src/engine/index';
-import { test as testCond } from '../src/engine/conditions';
+import { newGame, choose } from '../src/game/index';
+import { test as testCond } from '@engine/conditions';
 import type { ContentBundle } from '../src/content/schema';
-import type { GameState } from '../src/engine/state';
+import type { GameState } from '../src/game/state';
 
 interface Spec { name: string; file: string; background: string; ending: string; want: string[]; expect: string[]; note?: string }
 interface Generated { policy: string; seed: number; want: string[] }

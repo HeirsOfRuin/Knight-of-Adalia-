@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { realContent, game } from '../helpers';
-import { resolvePlace, visits, hereNow, knownPlaces, placeOfScene } from '../../src/engine/map';
-import type { JournalEntry } from '../../src/engine/state';
+import { resolvePlace, visits, hereNow, knownPlaces, placeOfScene } from '@engine/map';
+import type { JournalEntry } from '../../src/game/state';
 
 const entry = (scene: string, at: number): JournalEntry => ({ at, scene, choice: 'x', changes: [] });
 
@@ -10,13 +10,13 @@ describe('the world map', () => {
 
   it('resolves home, service, manor and town for this run', () => {
     const s = game('archer');
-    expect(resolvePlace('@home', s)).toBe('hollin');
+    expect(resolvePlace(c, '@home', s)).toBe('hollin');
     s.track = 'levy';
-    expect(resolvePlace('@service', s)).toBe('brome');
+    expect(resolvePlace(c, '@service', s)).toBe('brome');
     s.flags.c2_granted_kerval = true;
-    expect(resolvePlace('@manor', s)).toBe('kerval');
-    expect(resolvePlace('@town', s)).toBe('lannec');
-    expect(resolvePlace('grisolles', s)).toBe('grisolles');
+    expect(resolvePlace(c, '@manor', s)).toBe('kerval');
+    expect(resolvePlace(c, '@town', s)).toBe('lannec');
+    expect(resolvePlace(c, 'grisolles', s)).toBe('grisolles');
   });
 
   it('keeps one stay per run of scenes at a place, and knows where he is now', () => {

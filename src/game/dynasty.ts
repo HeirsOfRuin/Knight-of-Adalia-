@@ -4,9 +4,9 @@
 // Encoded as "KOAD1." + base64url of the deflated JSON.
 import type { ContentBundle } from '../content/schema';
 import type { GameState } from './state';
-import { ageOf, reignOf, regnalYear, seasonName } from './calendar';
-import { forceOf } from './paths';
-import { encodeCode, decodeCode } from './savecode';
+import { ageOf, reignOf, regnalYear, seasonName } from '@engine/calendar';
+import { forceOf } from '@engine/paths';
+import { encodeCode, decodeCode } from '@engine/savecode';
 
 export const DYNASTY_PREFIX = 'KOAD1.';
 export const DYNASTY_VERSION = 1;

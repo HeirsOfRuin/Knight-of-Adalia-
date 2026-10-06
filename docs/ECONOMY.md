@@ -44,7 +44,7 @@ Every sum in the game, in prose or in effects, is checked against this page. Mon
 
 | Formula | Value | Where |
 |---|---|---|
-| Manor rent, per person, at Michaelmas | 20d (so 250 people ≈ £21) | src/engine/estate.ts |
+| Manor rent, per person, at Michaelmas | 20d (so 250 people ≈ £21) | src/game/estate.ts |
 | Salt works, per point | 200d | estate.ts |
 | Orchards and fields, per point | 150d | estate.ts |
 | Other holdings | as the registry's income, paid at Michaelmas | content effects (`hold`) |

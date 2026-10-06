@@ -1,8 +1,6 @@
-// Save codes: the save as short copyable text. "KOA1." + base64url of the
-// deflated JSON. Plain JSON (older saves, exported files) is still accepted.
+// Save codes: the save as short copyable text. A game's prefix ("KOA1.") + base64url
+// of the deflated JSON. Plain JSON (older saves, exported files) is still accepted.
 // Uses the platform CompressionStream (browsers, Node 18+).
-
-export const CODE_PREFIX = 'KOA1.';
 
 async function pipe(data: Uint8Array, stream: CompressionStream | DecompressionStream): Promise<Uint8Array> {
   const out = new Response(new Blob([data as Uint8Array<ArrayBuffer>]).stream().pipeThrough(stream));
@@ -35,8 +33,8 @@ function compact(save: unknown): unknown {
   return { ...s, state: { ...s.state, journal } };
 }
 
-export async function encodeSaveCode(save: unknown): Promise<string> {
-  return encodeCode(CODE_PREFIX, compact(save));
+export async function encodeSaveCode(prefix: string, save: unknown): Promise<string> {
+  return encodeCode(prefix, compact(save));
 }
 
 /** Any JSON as prefix + base64url of its deflated text (save codes, dynasty codes). */
@@ -54,12 +52,12 @@ export async function decodeCode(prefix: string, text: string): Promise<unknown>
 }
 
 /** Parses a save code or plain save JSON. Throws on anything else. */
-export async function decodeSaveCode(text: string): Promise<unknown> {
+export async function decodeSaveCode(prefix: string, text: string): Promise<unknown> {
   const t = text.trim();
-  if (t.startsWith(CODE_PREFIX)) {
+  if (t.startsWith(prefix)) {
     let bytes: Uint8Array;
     try {
-      bytes = await pipe(fromBase64Url(t.slice(CODE_PREFIX.length).replace(/\s+/g, '')), new DecompressionStream('deflate-raw'));
+      bytes = await pipe(fromBase64Url(t.slice(prefix.length).replace(/\s+/g, '')), new DecompressionStream('deflate-raw'));
     } catch {
       throw new Error('The save text is damaged or incomplete. Check it was copied in full.');
     }

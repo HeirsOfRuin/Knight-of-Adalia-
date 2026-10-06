@@ -4,8 +4,8 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { loadContent } from './content-loader';
 import { loadPlans, planStep, unplannedChoice, type Plan } from './bot-lib';
-import { newGame, view, choose } from '../src/engine/index';
-import type { CheckResult } from '../src/engine/checks';
+import { newGame, view, choose } from '../src/game/index';
+import type { CheckResult } from '@engine/checks';
 import type { ContentBundle } from '../src/content/schema';
 
 export function transcript(content: ContentBundle, plan: Plan): string {

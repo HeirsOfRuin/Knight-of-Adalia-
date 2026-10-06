@@ -1,6 +1,6 @@
 import type { ContentBundle } from '../../content/schema';
-import type { GameState } from '../../engine/state';
-import { describeDate } from '../../engine/calendar';
+import type { GameState } from '../../game/state';
+import { describeDate } from '@engine/calendar';
 
 export function Journal({ content, state }: { content: ContentBundle; state: GameState }) {
   const entries = [...state.journal].reverse();

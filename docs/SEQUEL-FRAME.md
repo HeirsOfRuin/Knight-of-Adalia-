@@ -117,7 +117,7 @@ The KoA ending decides the opening, the same way the four backgrounds decided th
 | **Ruin** | Attainted; a name struck from the rolls | Writing it back in: service, marriage, a pardon bought |
 
 ### Import
-`DynastyExport` v1 (src/engine/dynasty.ts) maps onto the start:
+`DynastyExport` v1 (src/game/dynasty.ts) maps onto the start:
 - `realm.settlement` and `realm.sovereign` choose the frame and who rules. `realm.war` says how the last war ended.
 - `founder` becomes the prologue's character.
 - `heirs[]` become characters, with their temperament, upbringing, bond and match.
@@ -230,7 +230,7 @@ games/knight/        Knight of Adalia: content, station, estate, romance, its UI
 games/house/         House of Adalia: content, characters, houses, realm, succession, matches, war, its UI shell
 tools/               validator, bot, continuity, lint: parameterised by game
 ```
-- The move is done first, as its own step, with no behaviour change.
+- The engine move was done first, as its own step, with no behaviour change (2026-10-06). Knight of Adalia is still at the repository root; it moves to `games/knight/` with the tools when `games/house/` is added.
 - **Gate:** KoA's `npm run check` passes unchanged after the move, and the published Pages build plays the same. The Pages workflow publishes both games (KoA at its current URL, House of Adalia beside it).
 
 ### Tooling
@@ -258,7 +258,7 @@ tools/               validator, bot, continuity, lint: parameterised by game
 
 ## 11. Build order
 0. **Export additions** (done 2026-10-06): `realm.settlement`, `realm.sovereign` and `realm.war`, with tests.
-1. **Engine extraction** into `packages/engine`, with KoA green and its Pages build unchanged.
+1. **Engine extraction** (done 2026-10-06): the engine in `packages/engine` behind a game module (`packages/engine/README.md`), KoA's rules in `src/game/`. No behaviour change by `npm run fingerprint`; `npm run check`, the smoke test and the Pages build pass. KoA moves to `games/knight/` when House of Adalia's shell is added.
 2. **Character refactor:** `characters`, `ruler`, paths and pronouns, with KoA ported onto it and still green.
 3. **Frame support:** `realm.*` paths and variables, variants keyed by frame, the validator and continuity rules in section 7.
 4. **Vertical slice:** the Founder opening in two frames (Free and Adalian), the prologue, Book I and one succession into Book II. Bot and continuity checks on it, and a transcript per frame.

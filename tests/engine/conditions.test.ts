@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { test as cond, unmetLabel, validateCond, parseExpr } from '../../src/engine/conditions';
+import { test as cond, unmetLabel, validateCond, parseExpr } from '@engine/conditions';
 import { content, game } from '../helpers';
 
 describe('conditions', () => {

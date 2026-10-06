@@ -9,9 +9,9 @@ import { join } from 'node:path';
 import YAML from 'yaml';
 import { loadContent, CONTENT_DIR } from './content-loader';
 import { playOnce, DEFAULT_POLICIES, loadPlans, playPlan } from './bot-lib';
-import { view } from '../src/engine/index';
-import { compileCond, evalCond, validateCond, type Cond } from '../src/engine/conditions';
-import type { GameState } from '../src/engine/state';
+import { view } from '../src/game/index';
+import { compileCond, evalCond, validateCond, type Cond } from '@engine/conditions';
+import type { GameState } from '../src/game/state';
 import type { ContentBundle } from '../src/content/schema';
 
 interface RuleSrc { match: string; allow: string; chapters?: string[]; except?: string[]; why?: string }

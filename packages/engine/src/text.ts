@@ -1,7 +1,8 @@
 // Passage templating: {var} substitution and [if cond]...[elif cond]...[else]...[/if].
-import { payDue } from './estate';
-import { WIFE_MOMENTS, type ContentBundle } from '../content/schema';
-import type { GameState } from './state';
+// Variables a game renders itself ({wife.first_year}) go to its module (GameModule.textVar).
+import type { CoreContent as ContentBundle } from './schema';
+import type { CoreState as GameState } from './state';
+import { gameOf } from './game';
 import { evalCond, parseInline, validateCond, type Cond } from './conditions';
 import { getValue, checkPath, deref } from './paths';
 import { formatCoin, capitalise, numberWords, ordinalWords } from './format';
@@ -52,18 +53,15 @@ export function parseText(src: string): Node[] {
   return root;
 }
 
-const SPECIAL_VARS = ['name', 'date', 'coin', 'station', 'background', 'origin', 'season', 'year', 'age', 'age_words', 'reign_year', 'regnal_year', 'king', 'pay_due'];
+const SPECIAL_VARS = ['name', 'date', 'coin', 'station', 'season', 'year', 'age', 'age_words', 'reign_year', 'regnal_year', 'king'];
 
 function varValue(name: string, state: GameState, content: ContentBundle): string {
   const reg = content.registry;
   switch (name) {
     case 'name': return state.name;
     case 'date': return describeDate(state, content);
-    case 'pay_due': return formatCoin(payDue(state));
     case 'coin': return (state.res.coin ?? 0) > 0 ? formatCoin(state.res.coin!) : 'not a penny';
     case 'station': return capitalise(state.station);
-    case 'background': return content.backgrounds[state.background]?.label ?? state.background;
-    case 'origin': return (content.backgrounds[state.background]?.label ?? state.background).toLowerCase();
     case 'season': return String(getValue(state, content, 'calendar.season'));
     case 'year': return String(getValue(state, content, 'calendar.year'));
     case 'age': return String(getValue(state, content, 'age'));
@@ -74,11 +72,8 @@ function varValue(name: string, state: GameState, content: ContentBundle): strin
     case 'regnal_year': return ordinalWords(Number(getValue(state, content, 'calendar.year')));
     case 'king': return reignOf(state, content).king;
   }
-  // the current wife's own line for a moment of the marriage (registry romances[].voice)
-  if (name.startsWith('wife.')) {
-    const line = reg.romances[state.aliases.spouse ?? '']?.voice[name.slice(5)];
-    return line ? renderText(line, state, content) : '';
-  }
+  const own = gameOf(content).textVar?.(name, state, content);
+  if (own !== undefined) return own;
   const [ns, id, field] = deref(state, name).split('.');
   if (ns === 'npc' && id) {
     const def = reg.npcs[id];
@@ -128,10 +123,8 @@ export function validateText(src: string, content: ContentBundle): { errors: str
     for (const n of ns) {
       if (n.t === 'var') {
         if (SPECIAL_VARS.includes(n.name)) continue;
-        if (n.name.startsWith('wife.')) {
-          if (!(n.name.slice(5) in WIFE_MOMENTS)) errors.push(`unknown wife moment in {${n.name}}`);
-          continue;
-        }
+        const own = gameOf(content).checkTextVar?.(n.name, content);
+        if (own) { errors.push(...own); continue; }
         const [space, id, field] = n.name.split('.');
         if (space === 'npc') {
           if (id?.startsWith('@')) {

@@ -5,9 +5,10 @@ import { createHash } from 'node:crypto';
 import YAML from 'yaml';
 import { z } from 'zod';
 import {
-  BackgroundSchema, ConfigSchema, RegistrySchema, SceneSchema,
+  BackgroundSchema, ConfigSchema, RegistrySchema, SceneSchema, GAME_ID,
   type ContentBundle, type Scene, type Background,
 } from '../src/content/schema';
+import '../src/game/module'; // the rules this content is played by
 
 export const CONTENT_DIR = join(import.meta.dirname, '..', 'content');
 
@@ -96,5 +97,5 @@ export function loadContent(dir = CONTENT_DIR): ContentBundle {
     map = { scenes: (readYaml(placesPath) ?? {}) as Record<string, string> };
   }
 
-  return { hash: hash.digest('hex').slice(0, 12), config, registry, backgrounds, scenes, sources, map };
+  return { hash: hash.digest('hex').slice(0, 12), game: GAME_ID, config, registry, backgrounds, scenes, sources, map };
 }

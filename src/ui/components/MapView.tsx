@@ -1,10 +1,10 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'preact/hooks';
 import { createPortal } from 'preact/compat';
 import type { ContentBundle, PlaceDef } from '../../content/schema';
-import type { GameState } from '../../engine/state';
-import { hereNow, knownPlaces, resolvePlace, visits } from '../../engine/map';
-import { describeDate } from '../../engine/calendar';
-import { world, type World } from '../../engine/worldgen';
+import type { GameState } from '../../game/state';
+import { hereNow, knownPlaces, resolvePlace, visits } from '@engine/map';
+import { describeDate } from '@engine/calendar';
+import { world, type World } from '@engine/worldgen';
 import { paintWorld, S } from '../worldart';
 
 // 7x7 icons: # dark, o light
@@ -53,7 +53,7 @@ export function MapView({ content, state, mini = false }: { content: ContentBund
   const here = hereNow(content, state);
   const mine = useMemo(() => {
     const s = new Set<string>();
-    const manor = resolvePlace('@manor', state);
+    const manor = resolvePlace(content, '@manor', state);
     if (manor && state.estate) s.add(manor);
     for (const id of Object.keys(state.holdings ?? {})) { const p = HOLDING_PLACE[id] ?? id; if (content.registry.places[p]) s.add(p); }
     return s;

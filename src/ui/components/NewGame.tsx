@@ -1,6 +1,6 @@
 import { useState } from 'preact/hooks';
 import type { ContentBundle } from '../../content/schema';
-import type { NewGameOptions } from '../../engine/index';
+import type { NewGameOptions } from '../../game/index';
 import { randomSeed } from '../storage';
 
 const DEFAULT_NAMES = ['Hal', 'Will', 'Robin', 'Jack', 'Tom', 'Hob', 'Simkin', 'Geoff', 'Rafe', 'Kit'];

@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import { realContent, game } from '../helpers';
-import { view } from '../../src/engine/index';
-import { applyEffects } from '../../src/engine/effects';
-import type { JournalEntry } from '../../src/engine/state';
+import { view } from '../../src/game/index';
+import { applyEffects } from '@engine/effects';
+import type { JournalEntry } from '../../src/game/state';
 
 const entry = (scene: string, at: number): JournalEntry => ({ at, scene, choice: 'x', changes: [] });
 

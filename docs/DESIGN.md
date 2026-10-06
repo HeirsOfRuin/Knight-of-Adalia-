@@ -38,6 +38,8 @@ choose(content, state, choiceId, opts?: { force?: 'success'|'partial'|'failure' 
 
 ### Modules (`src/engine/`)
 
+> **Superseded 2026-10-06.** The engine now lives in `packages/engine/` and Knight of Adalia's own rules in `src/game/`. See "The engine and the game module" below; this table is the original Phase 1 plan.
+
 | Module | Responsibility | Phase |
 |---|---|---|
 | `rng.ts` | sfc32 seeded PRNG. State lives in the save, so reloading cannot reroll a check. | 1 |
@@ -1152,7 +1154,7 @@ The author reported that some choices did not feel as if they made a difference,
 - The spying did pay off later (+1 in the mine fight) without saying so. Its Honour cost was never explained.
 
 **Changes:**
-- **"At stake" line under every choice.** Computed from the choice's real effects across all its outcomes (`src/engine/stakes.ts`), so it cannot drift from the game. It names:
+- **"At stake" line under every choice.** Computed from the choice's real effects across all its outcomes (`packages/engine/src/stakes.ts`), so it cannot drift from the game. It names:
   - life, wounds, the battle, station, men, renown, reputation, people, coin, skills, items, manor, holdings, children;
   - and "Remembered later" when the choice sets a flag that a later condition actually reads.
 
@@ -1198,7 +1200,7 @@ A player finished with about £118 unspent. Eight shop scenes now sit on the spi
 
 "What Became of Them" names what he built.
 
-**Pay.** At Michaelmas a lord pays his company and garrison a shilling a man a year (`payMen` in src/engine/estate.ts).
+**Pay.** At Michaelmas a lord pays his company and garrison a shilling a man a year (`payMen` in src/game/estate.ts).
 - The King's indenture pays the company in Ch4 Act I (`flag.c4_on_indenture`).
 - The Estates' war tax pays the host in the War of the West (`flag.c5_war_tax`).
 - Men wait one Michaelmas unpaid. Unpaid two years running, half the unpaid desert.
@@ -1214,7 +1216,7 @@ A player finished with about £118 unspent. Eight shop scenes now sit on the spi
 ## The world map (2026-10-05, rebuilt the same day)
 The map is pixel art generated in code; there is no image file and no build step.
 
-- **Terrain.** `src/engine/worldgen.ts` generates a 360 × 240 world, deterministic and cached, in about half a second. It builds land from polygons (made ragged by shared warp fields), then:
+- **Terrain.** `packages/engine/src/worldgen.ts` generates a 360 × 240 world, deterministic and cached, in about half a second. It builds land from polygons (made ragged by shared warp fields), then:
   - cuts out seas, fjords and straits, and adds islands;
   - raises ridges and downs for elevation;
   - assigns biomes by latitude and named zones.
@@ -1243,7 +1245,7 @@ The map is pixel art generated in code; there is no image file and no build step
   - `@town`.
 
   A scene with no place leaves him where he was.
-- **Engine.** `src/engine/map.ts` covers resolution, his stays, where he is now, and what he knows of. Conditions can test `seen.<scene>`.
+- **Engine.** `packages/engine/src/map.ts` covers resolution, his stays, where he is now, and what he knows of. Conditions can test `seen.<scene>`.
 - **UI.** `src/ui/worldart.ts` paints the terrain once at 3 canvas pixels a tile. It uses:
   - a palette per biome, with hillshade and depth tint;
   - 3×3 patterns: trees, pines, peaks, furrows, vines, dunes, reeds, lava, waves;
@@ -1259,7 +1261,7 @@ The map is pixel art generated in code; there is no image file and no build step
 ## Dynasty export: the sequel's input contract (2026-10-04)
 Every ending except death shows a "To be continued" block: a line per ending (`sequel` in registry/endings.yaml) and an **Export your house** button. The button gives a text code: `KOAD1.` plus base64url of the deflated JSON, the same encoding as save codes (`encodeCode` in src/engine/savecode.ts). The code is not a save and cannot reopen the life. It is what a sequel reads to continue the family.
 
-**Schema.** `DynastyExport` in src/engine/dynasty.ts, version 1, carries `kind: knight-of-adalia/dynasty` and these fields:
+**Schema.** `DynastyExport` in src/game/dynasty.ts, version 1, carries `kind: knight-of-adalia/dynasty` and these fields:
 - `date`: year, season, king, reign year;
 - `ending`: id and label;
 - `founder`: name, background, role, age, station, renown, attributes, skills, traits, items, reputation;
@@ -1274,6 +1276,16 @@ Every ending except death shows a "To be continued" block: a line per ending (`s
 Each entry carries both its registry id and its display name, so a reader needs no Knight of Adalia content.
 
 **Changing the schema.** Add a field freely. Rename or remove one only with a version bump, and keep a reader for version 1.
+
+## The engine and the game module (2026-10-06)
+Step 1 of the sequel's build order (`docs/SEQUEL-FRAME.md`). The engine moved to `packages/engine/` so House of Adalia can share it, and Knight of Adalia's own rules moved behind a **game module**. Contract and hook list: `packages/engine/README.md`.
+
+- **Engine** (`packages/engine/src/`, imported as `@engine/<module>`): conditions, effects, text, checks, calendar, director, stakes, cards, map, worldgen, narration, saves and save codes, and the core content schema. It imports only itself and zod (`tests/engine/boundary.test.ts`).
+- **Knight of Adalia's module** (`src/game/module.ts`): its paths (`estate`, `suit`, `heir`, `heirs`, `holding`, `holdings`, `background`, `role`, `prejudice`), its effect ops (the manor, children, holdings, drill), the wives' voices, the background as the scene variant key, the manor's seasonal upkeep, the prejudice modifier, `@home`-style places, its chapter-card lines and the save fallback scene.
+- **Knight of Adalia's other code** (`src/game/`): `state.ts` (its `GameState` extends the engine's `CoreState`), `index.ts` (its `newGame`, and the engine's `view` and `choose`), `save.ts` (format, version 3, migrations, the `KOA1.` prefix), `estate.ts`, `heirs.ts`, `station.ts`, `dynasty.ts`. Its schema (`src/content/schema.ts`) is composed from the engine's pieces and keeps every name it exported before.
+- **Content** carries its game's id (`content.game: knight`). The content hash is unchanged, so saves made before still match.
+- **No behaviour change**, checked with `npm run fingerprint` (new): every view and state across the 16 scripted plans and 96 seeded bot runs, the dynasty exports, save round-trips and the validator's output hash the same before and after. `npm run check`, the browser smoke test and the Pages build pass. The bundle is 5 KB larger.
+- **Not moved yet:** Knight of Adalia stays at the repository root (`content/`, `src/`, `tools/`) rather than `games/knight/`. Moving it changes nothing in play and every path in the docs and tools; it waits until House of Adalia's shell exists, when the tools are parameterised by game.
 
 ## Continuity (2026-10-03, after playtest feedback)
 Josh found text that assumed choices he had not made. A survey found 47 such places, and the force panel and a Ch3 population line had the same fault: the story said one thing and the state another.
@@ -1328,7 +1340,7 @@ Josh found text that assumed choices he had not made. A survey found 47 such pla
 | 2026-10-04 | Step 5: "To be continued" on the ending page, with a line per ending and the dynasty export (see Dynasty export). |
 | 2026-10-05 | Step 6, Ch4–5 depth. The Ch4 pool `c4_lord` grows from 4 to 10 events: raiders at the manor while he is away (reads the walls, tower and garrison), a one-armed man from Grisolles, a wet summer (the granary pays off), the Lanzi calling in a war debt, the rival's son, a tourney at Lannec. A new Ch5 pool `c5_west`: before the war, the old company, a spy in the household and a bread riot in Sauvemer; after it, the widows of the levy, a prisoner of rank and the eldest's quarrel. One draw before the muster and one after the war. When the West breaks away, `c5_price`: the backers' price for the war (the salt staple, the old lords' exemptions, the Bishop's tithes, or nothing), read by the chronicle. A second Ch4 draw raised Crowned by a point, so each slot draws one event from the larger pool. Crowned 6.1%, deaths 3.6% (2,000 runs). |
 | 2026-10-05 | Polish pass. Branch sweeps over 1,600+ bot runs (wife, children, son/daughter, dead master and parents, the wrong grant, Sir before knighthood, ages, negative values, seasons against the date). Fixes: the Duchess's age (fifty-eight in the first war, matching canon's seventy in year 33; her son, Mahaut's father, taken with her husband and dead in Cordelle's prison); Ch3 dates a season early from \"The First Spring\" to the claimant (Lady Day in winter, Michaelmas in summer); the King's Christmas in summer on paths without the eldest's scene; \"The Harvest of Year Thirty\" a year early on short paths; the end of Ch2 riding out \"in the spring\" in winter; the reign act anchored to Lady Day of year 45 so its feasts fall in their seasons; the reckoning's hall follows the season; plural \"children\" with one child; \"your wife's cousin\" for a widower; a raid letter from a dead wife; a hardcoded child's age; purchases that cost nothing when the purse was empty (the Ch4 company, the wedding feasts, the goldsmith) now require the coin, and \"on credit\" only borrows when he cannot pay. |
-| 2026-10-05 | Population after the Mottle (`growPeople`, src/engine/estate.ts): births and newcomers each Michaelmas, more under a trusted lord, with empty holdings or a market; departures under a sullen one. Median manor back to its founding size by the end of Ch3, about 118% by the end; the worst tenth stays under 85%. The steward reports it at the ends of Ch4 Acts I and II. |
+| 2026-10-05 | Population after the Mottle (`growPeople`, src/game/estate.ts): births and newcomers each Michaelmas, more under a trusted lord, with empty holdings or a market; departures under a sullen one. Median manor back to its founding size by the end of Ch3, about 118% by the end; the worst tenth stays under 85%. The steward reports it at the ends of Ch4 Acts I and II. |
 | 2026-10-05 | Wives' voices: each of the 16 wives has her own line at eleven moments of the marriage (first year, lying-in, the child's fever, the farewell, the homecoming, her letters, the third child, the writ, the muster, old age, the epilogue), in `romances.<id>.voice`, written into scenes as `{wife.<moment>}`. The validator requires every moment from the stage she can marry in (`married_in`); a test renders them all and checks no two wives share a line. |
 | 2026-10-05 | The economy made consistent (docs/ECONOMY.md is the reference). Incomes were a tenth of history while prose prices were historical: rent is now 20d a head (a manor of 250 yields about £21), salt and orchards scaled to match, other holdings x5, men's pay 6s a year. Lordly purchases repriced to the reference bands (towers £45-60, a stone church £110, a manor £150, the Ch4 company £10-50, Ch5 armies and treaties); prose sums changed to match. Promised money now arrives: Lord Ravell's £10 fee pays until Ravell sells up; the Crown buys great prisoners and pays the captor £40 (Corbie, the Constable's son). \"More money than your family sees\" lines are written per background (a wool merchant's year is ten times a reeve's). A test checks every price shown on a choice against what it costs and requires. Bot: the spender ends Ch5 with about £140, a cautious lord about £300; desertion 6%; Crowned 6.6%, deaths 4%. |
 
@@ -1336,3 +1348,4 @@ Josh found text that assumed choices he had not made. A survey found 47 such pla
 | 2026-10-05 | World map rebuilt: a 360 × 240 generated world with far lands (Ice Reach, Ember Isles, Thousand Isles, Grass Sea, Midsea, Glass Desert), realm borders, zoom ×1–6 and drag panning. |
 | 2026-10-06 | Sequel framed in `docs/SEQUEL-FRAME.md`. Author accepted the recommended scope: a hybrid of authored spine and light realm simulation, three generations, one repository with a shared engine package, succession law as a live lever (daughters can head the house), and the dynasty export optional. Openings, endings, systems, build order and six open decisions await approval. |
 | 2026-10-06 | Sequel frame approved as House of Adalia, with every open decision as recommended. The author's rule: the West does not always start free. The frame now has three starting frames (Free, Adalian, Partitioned) written separately, nine opening and frame combinations, and checks for frame-bound prose. The dynasty export gains `realm.settlement`, `realm.sovereign` and `realm.war`. |
+| 2026-10-06 | Engine extraction (sequel step 1): the engine in `packages/engine/` behind a game module, Knight of Adalia's rules in `src/game/`. No behaviour change by fingerprint. See The engine and the game module. |

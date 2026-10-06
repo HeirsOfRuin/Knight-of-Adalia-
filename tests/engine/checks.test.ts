@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import { computeOdds, bandFor, resolveCheck } from '../../src/engine/checks';
-import { computePrejudice, audienceModifier } from '../../src/engine/station';
-import { RngCursor, seedRng } from '../../src/engine/rng';
+import { computeOdds, bandFor, resolveCheck } from '@engine/checks';
+import { computePrejudice, audienceModifier } from '../../src/game/station';
+import { RngCursor, seedRng } from '@engine/rng';
 import { CheckSchema } from '../../src/content/schema';
 import { content, game } from '../helpers';
 

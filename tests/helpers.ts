@@ -4,7 +4,7 @@ import YAML from 'yaml';
 import { loadContent } from '../tools/content-loader';
 import type { ContentBundle, Scene } from '../src/content/schema';
 import { SceneSchema, RegistrySchema } from '../src/content/schema';
-import { newGame, type GameState } from '../src/engine/index';
+import { newGame, type GameState } from '../src/game/index';
 
 let real: ContentBundle | undefined;
 let cached: ContentBundle | undefined;

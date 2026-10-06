@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { renderText, validateText } from '../../src/engine/text';
+import { renderText, validateText } from '@engine/text';
 import { content, game } from '../helpers';
 
 describe('text', () => {

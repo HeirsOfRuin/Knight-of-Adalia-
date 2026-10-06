@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { seedRng, rngNext, RngCursor } from '../../src/engine/rng';
+import { seedRng, rngNext, RngCursor } from '@engine/rng';
 
 describe('rng', () => {
   it('is deterministic for a seed', () => {

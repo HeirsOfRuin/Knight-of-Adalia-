@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { realContent } from '../helpers';
 import { loadPlans, playPlan } from '../../tools/bot-lib';
-import { toDynasty, encodeDynasty, decodeDynasty, DYNASTY_PREFIX } from '../../src/engine/dynasty';
+import { toDynasty, encodeDynasty, decodeDynasty, DYNASTY_PREFIX } from '../../src/game/dynasty';
 
 describe('dynasty export', () => {
   const c = realContent();

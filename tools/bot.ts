@@ -3,7 +3,7 @@
 // softlocks and coverage. Exits non-zero on any failure or if no run made progress.
 import { loadContent } from './content-loader';
 import { playOnce, summarise, DEFAULT_POLICIES, loadPlans, playPlan, type RunResult } from './bot-lib';
-import { view } from '../src/engine/index';
+import { view } from '../src/game/index';
 import { validate } from './validate-lib';
 
 const args = process.argv.slice(2);

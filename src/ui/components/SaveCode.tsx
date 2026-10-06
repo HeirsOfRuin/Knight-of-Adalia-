@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'preact/hooks';
 import type { ContentBundle } from '../../content/schema';
-import type { GameState } from '../../engine/state';
-import { toSave } from '../../engine/save';
-import { encodeSaveCode } from '../../engine/savecode';
+import type { GameState } from '../../game/state';
+import { toSave } from '../../game/save';
+import { encodeSaveCode } from '../../game/save';
 
 /** Save as copyable text. Works where file downloads are blocked. */
 export function SaveCode({ state, content, onLoadText }: { state: GameState; content: ContentBundle; onLoadText: (text: string) => void }) {

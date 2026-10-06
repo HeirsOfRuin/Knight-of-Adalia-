@@ -13,7 +13,8 @@
     "skipLibCheck": true,
     "isolatedModules": true,
     "noEmit": true,
-    "types": ["node", "vite/client"]
+    "types": ["node", "vite/client"],
+    "paths": { "@engine/*": ["./packages/engine/src/*"] }
   },
-  "include": ["src", "tools", "tests", "vite.config.ts"]
+  "include": ["packages", "src", "tools", "tests", "vite.config.ts"]
 }

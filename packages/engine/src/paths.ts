@@ -1,14 +1,12 @@
-import { pickHeirs } from './heirs';
-import { ESTATE_FIELDS, ESTATE_LABELS, type EstateField } from './estate';
 // State paths: the shared vocabulary of conditions, effects and text.
 // One resolver for everything, so displayed values and resolved values cannot
-// drift apart.
-import type { ContentBundle } from '../content/schema';
-import type { GameState } from './state';
-import { computePrejudice } from './station';
+// drift apart. Namespaces a game owns (GameModule.namespaces) go to its module.
+import type { CoreContent as ContentBundle } from './schema';
+import type { CoreState as GameState } from './state';
 import { regnalYear, seasonName, ageOf } from './calendar';
+import { gameOf, type Value } from './game';
 
-export type Value = number | string | boolean | undefined;
+export type { Value } from './game';
 
 /** Sum of modifiers from traits, active injuries and carried items for a key like "skill.arms". */
 export function modifierFor(state: GameState, content: ContentBundle, key: string): number {
@@ -58,7 +56,6 @@ export function getValue(state: GameState, content: ContentBundle, rawPath: stri
     case 'skill': return effectiveSkill(state, content, a!);
     case 'rep': return state.rep[a!] ?? 0;
     case 'res': return state.res[a!] ?? 0;
-    case 'estate': return a === 'recovery' ? estateRecovery(state) : state.estate?.[a!] ?? 0;
     case 'favor': return state.favors[a!] ?? 0;
     case 'trait': return state.traits.includes(a!);
     case 'injury': return state.injuries.some((i) => i.id === a);
@@ -75,59 +72,6 @@ export function getValue(state: GameState, content: ContentBundle, rawPath: stri
       if (b === 'friend') return isFriend(state, content, a!);
       return undefined;
     }
-    case 'suit': {
-      const s = state.suits[a!];
-      if (!s) return b === 'status' ? 'hidden' : b === 'pledge' ? 'none' : 0;
-      return s[b as keyof typeof s];
-    }
-    case 'heirs': {
-      const all = state.heirs ?? [];
-      const living = all.filter((h) => h.alive);
-      const last = all.at(-1);
-      switch (a) {
-        case 'count': return living.length;
-        case 'born': return all.length;
-        case 'sons': return living.filter((h) => h.sex === 'son').length;
-        case 'daughters': return living.filter((h) => h.sex === 'daughter').length;
-        case 'last': return last?.sex ?? 'none';
-        case 'lastname': return last?.name || 'the baby';
-        case 'eldest': return living[0]?.name || 'none';
-        case 'dead': return all.length - living.length;
-        case 'lastdead': return all.filter((h) => !h.alive).at(-1)?.name || 'the child';
-        case 'eldest_id': return (living[0]?.name || 'none').toLowerCase(); // for conditions: heirs.eldest_id == piers
-        case 'names': {
-          const n = living.map((h) => h.name).filter(Boolean);
-          return n.length <= 1 ? (n[0] ?? '') : `${n.slice(0, -1).join(', ')} and ${n.at(-1)}`;
-        }
-      }
-      return undefined;
-    }
-    case 'heir': {
-      const h = pickHeirs(state, a!)[0];
-      if (b === 'alive') return !!h;
-      if (!h) return b === 'age' || b === 'bond' ? 0 : 'none';
-      switch (b) {
-        case 'name': return h.name || 'the baby';
-        case 'sex': return h.sex;
-        case 'age': return Math.floor((state.time - h.born) / 4);
-        case 'ageword': return numberWord(Math.floor((state.time - h.born) / 4));
-        case 'temperament': return h.temperament ?? 'none';
-        case 'upbringing': return h.upbringing ?? 'none';
-        case 'bond': return h.bond ?? 0;
-      }
-      return undefined;
-    }
-    case 'holding': {
-      const h = state.holdings?.[a!];
-      if (b === 'held') return !!h;
-      return h ? h[b as 'income' | 'temper'] : 0;
-    }
-    case 'holdings': {
-      const all = Object.values(state.holdings ?? {});
-      if (a === 'count') return all.length;
-      if (a === 'income') return all.reduce((s, h) => s + h.income, 0);
-      return undefined;
-    }
     case 'calendar':
       if (a === 'season') return seasonName(state, content);
       if (a === 'year') return regnalYear(state, content);
@@ -136,8 +80,6 @@ export function getValue(state: GameState, content: ContentBundle, rawPath: stri
     case 'alias': return state.aliases?.[a!] ?? 'none';
     case 'station': return state.station;
     case 'track': return state.track ?? 'none';
-    case 'background': return state.background;
-    case 'role': return state.role ?? 'none';
     case 'chapter': return state.chapter;
     case 'age': return ageOf(state);
     case 'health': return state.health;
@@ -146,10 +88,12 @@ export function getValue(state: GameState, content: ContentBundle, rawPath: stri
     case 'armour': return state.items.reduce((m, it) => Math.max(m, content.registry.items[it]?.armour ?? 0), 0);
     case 'retinue': return Object.values(state.npcs).filter((n) => n.follower && n.alive).length + (state.res.men ?? 0);
     case 'time': return state.time;
-    case 'prejudice': return computePrejudice(state, content, 'nobles');
     // back in the same scene after one of its choices (a shop after a purchase)
     case 'revisit': return state.journal.at(-1)?.scene === state.scene;
-    default: return undefined;
+    default: {
+      const game = gameOf(content);
+      return game.namespaces.includes(ns!) ? game.getValue(state, content, path) : undefined;
+    }
   }
 }
 
@@ -159,14 +103,15 @@ export function checkPath(content: ContentBundle, path: string): string | null {
   const reg = content.registry;
   const need = (ok: boolean, what: string) => (ok ? null : `unknown ${what} in "${path}"`);
   if (extra !== undefined) return `too many segments in "${path}"`;
-  const single = ['station', 'track', 'background', 'role', 'chapter', 'age', 'health', 'injured', 'wounded', 'armour', 'retinue', 'time', 'prejudice', 'revisit'];
+  const game = gameOf(content);
+  if (game.namespaces.includes(ns!)) return game.checkPath(content, path);
+  const single = ['station', 'track', 'chapter', 'age', 'health', 'injured', 'wounded', 'armour', 'retinue', 'time', 'revisit'];
   if (single.includes(ns!)) return a === undefined ? null : `"${ns}" takes no sub-path ("${path}")`;
   if (a === undefined) return `incomplete path "${path}"`;
   if (a.startsWith('@')) {
-    if (!['rel', 'npc', 'favor', 'suit'].includes(ns!)) return `alias not allowed in "${path}"`;
+    if (!['rel', 'npc', 'favor'].includes(ns!)) return `alias not allowed in "${path}"`;
     if (!content.config.aliases.includes(a.slice(1))) return `unknown alias in "${path}"`;
     if (ns === 'favor') return null;
-    if (ns === 'suit') return need(['status', 'regard', 'family', 'discretion', 'pledge'].includes(b ?? ''), 'suit field');
     return ns === 'rel'
       ? need(['affection', 'respect', 'loyalty'].includes(b ?? ''), 'relationship field')
       : need(['met', 'alive', 'follower', 'friend'].includes(b ?? ''), 'npc field');
@@ -179,7 +124,6 @@ export function checkPath(content: ContentBundle, path: string): string | null {
     case 'skill': return need(content.config.skills.includes(a), 'skill');
     case 'rep': return need(a in reg.factions, 'faction');
     case 'res': return need(['coin', 'supplies', 'horses', 'renown', 'men', 'garrison', 'levy'].includes(a), 'resource');
-    case 'estate': return need((ESTATE_FIELDS as readonly string[]).includes(a) || a === 'founded' || a === 'recovery', 'estate field');
     case 'seen': return need(a in content.scenes, 'scene');
     case 'favor': return need(a in reg.npcs, 'npc');
     case 'trait': return need(a in reg.traits, 'trait');
@@ -187,12 +131,7 @@ export function checkPath(content: ContentBundle, path: string): string | null {
     case 'item': return need(a in reg.items, 'item');
     case 'rel': return need(a in reg.npcs, 'npc') ?? need(['affection', 'respect', 'loyalty'].includes(b ?? ''), 'relationship field');
     case 'npc': return need(a in reg.npcs, 'npc') ?? need(['met', 'alive', 'follower', 'friend'].includes(b ?? ''), 'npc field');
-    case 'suit': return need(a in reg.romances, 'romance') ?? need(['status', 'regard', 'family', 'discretion', 'pledge'].includes(b ?? ''), 'suit field');
     case 'calendar': return need(['season', 'year'].includes(a), 'calendar field');
-    case 'heir': return need(['eldest', 'second', 'third', 'last'].includes(a), 'heir selector') ?? need(['alive', 'name', 'sex', 'age', 'ageword', 'temperament', 'upbringing', 'bond'].includes(b ?? ''), 'heir field');
-    case 'holding': return need(a in reg.holdings, 'holding') ?? need(['held', 'income', 'temper'].includes(b ?? ''), 'holding field');
-    case 'holdings': return need(['count', 'income'].includes(a), 'holdings field');
-    case 'heirs': return need(['count', 'born', 'sons', 'daughters', 'last', 'lastname', 'eldest', 'eldest_id', 'lastdead', 'dead', 'names'].includes(a), 'heirs field');
     default: return `unknown namespace "${ns}" in "${path}"`;
   }
 }
@@ -202,9 +141,7 @@ export function ordinalFor(content: ContentBundle, path: string): string[] | und
   if (path === 'station') return content.config.stations;
   if (path === 'chapter') return content.config.chapters;
   if (path === 'calendar.season') return content.config.seasons;
-  if (path.startsWith('suit.') && path.endsWith('.status')) return ['lost', 'hidden', 'known', 'courted', 'available', 'married'];
-  if (path.startsWith('suit.') && path.endsWith('.pledge')) return ['none', 'token', 'understanding'];
-  return undefined;
+  return gameOf(content).ordinalFor?.(content, path);
 }
 
 export function npcLabel(content: ContentBundle, id: string): string {
@@ -227,11 +164,11 @@ export function labelFor(content: ContentBundle, path: string): string {
     case 'trait': return reg.traits[a!]?.label ?? cap(a!);
     case 'item': return reg.items[a!]?.label ?? cap(a!);
     case 'injury': return reg.injuries[a!]?.label ?? cap(a!);
-    case 'suit': return `${reg.npcs[reg.romances[a!]?.npc ?? a!]?.name ?? a}: ${b}`;
     case 'station': return 'Station';
-    case 'holding': return `${reg.holdings[a!]?.label ?? cap(a!)}: ${b === 'temper' ? 'temper' : 'income'}`;
-    case 'estate': return ESTATE_LABELS[a as EstateField] ?? cap(a!);
-    default: return cap(path);
+    default: {
+      const game = gameOf(content);
+      return (game.namespaces.includes(ns!) ? game.labelFor?.(content, path) : undefined) ?? cap(path);
+    }
   }
 }
 
@@ -241,10 +178,4 @@ export function forceOf(state: GameState): { named: number; men: number; garriso
   const men = state.res.men ?? 0;
   const garrison = state.res.garrison ?? 0;
   return { named, men, garrison, levy: state.res.levy ?? 0, total: named + men + garrison };
-}
-
-/** People on the manor as a percentage of what it held when he came. Prose that compares the present with the past reads this, never a raw count. */
-export function estateRecovery(state: GameState): number {
-  const founded = state.estate?.founded ?? 0;
-  return founded > 0 ? Math.round(((state.estate?.people ?? 0) * 100) / founded) : 100;
 }

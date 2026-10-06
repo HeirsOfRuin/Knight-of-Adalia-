@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'preact/hooks';
 import type { ContentBundle } from '../../content/schema';
-import type { GameState } from '../../engine/state';
-import { toDynasty, encodeDynasty } from '../../engine/dynasty';
+import type { GameState } from '../../game/state';
+import { toDynasty, encodeDynasty } from '../../game/dynasty';
 
 /** The house this life leaves behind, as copyable text for a sequel to read (docs/DESIGN.md, "Dynasty export"). */
 export function DynastyExport({ state, content }: { state: GameState; content: ContentBundle }) {

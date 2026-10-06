@@ -1,8 +1,8 @@
 // Browser persistence. Every access is guarded: storage can be missing or throw.
 import type { ContentBundle } from '../content/schema';
-import type { GameState } from '../engine/state';
-import { toSave, fromSave, type LoadResult } from '../engine/save';
-import { decodeSaveCode } from '../engine/savecode';
+import type { GameState } from '../game/state';
+import { toSave, fromSave, type LoadResult } from '../game/save';
+import { decodeSaveCode } from '../game/save';
 
 const AUTOSAVE_KEY = 'knight-of-adalia.autosave.v1';
 

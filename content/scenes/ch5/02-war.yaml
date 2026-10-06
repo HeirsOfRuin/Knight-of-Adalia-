@@ -58,7 +58,7 @@
   text: |
     In the spring the West mustered on the meadows below Lannec: [if counter.ww >= 2]more men than anyone expected[else]fewer men than anyone hoped[/if], under more banners than anyone could name. [if flag.c4_sheltered_brese || flag.c5_brese_pact]Thibaut's Brésy knights are there, in their own colours, by the hundred now.[/if] [if flag.c4_iron_core && npc.ulric_rotbart.alive]Rotbart's old Iron Company men are there too, grey and wicked and paid.[/if]
 
-    [if heir.eldest.alive && heir.eldest.sex == son]{heir.eldest.name} is {heir.eldest.ageword}, and [if heir.eldest.upbringing == arms || heir.eldest.upbringing == page]has been trained to this since he could walk[elif heir.eldest.upbringing == church]has left the abbey without asking anyone, and is here, in borrowed harness[else]is here, in harness that fits him for the first time[/if].[/if] [if flag.c3_married && npc.@spouse.alive]{wife.muster}[/if]
+    [if heir.eldest.alive && heir.eldest.sex == son && heir.eldest.age >= 14]{heir.eldest.name} is {heir.eldest.ageword}, and [if heir.eldest.upbringing == arms || heir.eldest.upbringing == page]has been trained to this since he could walk[elif heir.eldest.upbringing == church]has left the abbey without asking anyone, and is here, in borrowed harness[else]is here, in harness that fits him for the first time[/if].[if heir.eldest.age < 16] He rides as a squire, at [if npc.davy_ludd.alive && npc.davy_ludd.follower]Davy[else]your marshal[/if]'s stirrup, and will not command anything.[/if][elif heir.eldest.alive && heir.eldest.sex == son]{heir.eldest.name} is {heir.eldest.ageword}, and wanted to come. You have left him at Lannec with [if flag.c3_married && npc.@spouse.alive]his mother[else]the household[/if] and a promise about the next war, and he has not forgiven you.[/if] [if flag.c3_married && npc.@spouse.alive]{wife.muster}[/if]
 
     The West has courage enough. It has time to buy one thing more before the summer, and you must choose which.
   choices:
@@ -115,7 +115,7 @@
 
     It is a long day. You will remember all of it and be able to describe almost none. [if counter.ww >= 3]For most of it the West holds: the bridge, the meadows, the line of the river.[else]For most of it the West gives ground, slowly, fighting for every yard of meadow.[/if] And in the late afternoon, the thing that decides it: [if flag.c5_west_adalian]Amaury's household knights, the best in Valdrenne, come over the bridge on foot, in close order, straight at the banner of the West.[else]Amaury's household knights, the best in Valdrenne, come over the bridge on foot, straight at the banner of the West, while the Adalian van comes up the road behind you.[/if]
 
-    [if heir.eldest.alive && heir.eldest.sex == son]{heir.eldest.name} is with the reserve, behind the river-bank, with forty lances, waiting for your word.[/if]
+    [if heir.eldest.alive && heir.eldest.sex == son && heir.eldest.age >= 16]{heir.eldest.name} is with the reserve, behind the river-bank, with forty lances, waiting for your word.[elif heir.eldest.alive && heir.eldest.sex == son && heir.eldest.age >= 14]The reserve is behind the river-bank, forty lances under [if npc.davy_ludd.alive && npc.davy_ludd.follower]Davy[else]your marshal[/if], with {heir.eldest.name} at his stirrup carrying the pennon, waiting for your word.[else]The reserve is behind the river-bank, forty lances under [if npc.davy_ludd.alive && npc.davy_ludd.follower]Davy[else]your marshal[/if], waiting for your word.[/if]
   choices:
     - id: lead
       text: Lead the counter-charge yourself, at the head of everything you have.
@@ -142,22 +142,24 @@
             else: [ { die: "Killed on the Pont-aux-Moines, leading the West against the King of Valdrenne" } ]
         next: c5_war_after
     - id: reserve
-      text: "[if heir.eldest.alive && heir.eldest.sex == son]Send {heir.eldest.name} and the reserve into their flank.[else]Send the reserve into their flank.[/if]"
+      text: "[if heir.eldest.alive && heir.eldest.sex == son && heir.eldest.age >= 16]Send {heir.eldest.name} and the reserve into their flank.[else]Send the reserve into their flank.[/if]"
       tags: [cunning, martial]
       check: { attr: wits, skill: tactics, difficulty: 5, mods: [ { if: flag.c5_chose_ground, add: 2, label: you chose this ground }, { if: counter.ww >= 3, add: 1, label: the day is going your way }, { if: flag.inv_bridge_works, add: 1, label: the works on the bridge } ] }
       success:
         text: |
-          [if heir.eldest.alive && heir.eldest.sex == son]You send the word, and {heir.eldest.name} takes the reserve out of the river-bank at the gallop, forty lances in a wedge with your son at the point, and hits the household knights in the flank as they come off the bridge.[else]You send the reserve out of the river-bank at the gallop, and it hits the household knights in the flank as they come off the bridge.[/if] It is the best-timed charge you have ever seen. The bridge is choked with Valdrennish dead by nightfall, and the West holds the field.
-        effects: [ { set: flag.c5_reserve_won }, { add: { counter.ww: 3, res.renown: 2 } }, { if: heir.eldest.alive, then: [ { add: { heir.eldest.bond: 2 } } ] }, { if: flag.c5_commands, then: [ { set: flag.c5_host_decisive } ] } ]
+          [if heir.eldest.alive && heir.eldest.sex == son && heir.eldest.age >= 16]You send the word, and {heir.eldest.name} takes the reserve out of the river-bank at the gallop, forty lances in a wedge with your son at the point, and hits the household knights in the flank as they come off the bridge.[elif heir.eldest.alive && heir.eldest.sex == son && heir.eldest.age >= 14]You send the word, and the reserve comes out of the river-bank at the gallop, forty lances in a wedge, with {heir.eldest.name}'s pennon at [if npc.davy_ludd.alive && npc.davy_ludd.follower]Davy[else]your marshal[/if]'s shoulder, and hits the household knights in the flank as they come off the bridge.[else]You send the reserve out of the river-bank at the gallop, and it hits the household knights in the flank as they come off the bridge.[/if] It is the best-timed charge you have ever seen. The bridge is choked with Valdrennish dead by nightfall, and the West holds the field.
+        effects: [ { set: flag.c5_reserve_won }, { add: { counter.ww: 3, res.renown: 2 } }, { if: [ heir.eldest.alive, heir.eldest.age >= 14 ], then: [ { add: { heir.eldest.bond: 2 } } ] }, { if: flag.c5_commands, then: [ { set: flag.c5_host_decisive } ] } ]
         next: c5_war_after
       failure:
         text: |
-          [if heir.eldest.alive && heir.eldest.sex == son]{heir.eldest.name} takes the reserve out too soon, and the household knights see it coming and turn, and you watch the wedge break against them from the other side of the river.[else]The reserve goes too soon, and the household knights see it coming and turn, and you watch it break against them from the other side of the river.[/if]
+          [if heir.eldest.alive && heir.eldest.sex == son && heir.eldest.age >= 16]{heir.eldest.name} takes the reserve out too soon, and the household knights see it coming and turn, and you watch the wedge break against them from the other side of the river.[elif heir.eldest.alive && heir.eldest.sex == son && heir.eldest.age >= 14]The reserve goes too soon, with {heir.eldest.name}'s pennon in the front of it, and the household knights see it coming and turn, and you watch the wedge break against them from the other side of the river.[else]The reserve goes too soon, and the household knights see it coming and turn, and you watch it break against them from the other side of the river.[/if]
         effects:
           - add: { counter.ww: -1 }
           - casualties: { men: 20, named: 0 }
-          - if: [ heir.eldest.alive, heir.eldest.sex == son ]
+          - if: [ heir.eldest.alive, heir.eldest.sex == son, heir.eldest.age >= 16 ]
             then: [ { chance: 25, then: [ { heir_dies: eldest }, { set: flag.c5_heir_killed } ] } ]
+          - if: [ heir.eldest.alive, heir.eldest.sex == son, heir.eldest.age >= 14, heir.eldest.age < 16 ]
+            then: [ { chance: 10, then: [ { heir_dies: eldest }, { set: flag.c5_heir_killed } ] } ]
         next: c5_war_after
     - id: hold
       text: Hold the bank. Let them break themselves on it.
@@ -190,7 +192,7 @@
 
     [break]
 
-    [if flag.c5_heir_killed]They bring {heirs.lastdead} back from the far bank in the evening, across a horse. You sent him. You will always have sent him.[elif heir.eldest.alive && heir.eldest.sex == son]{heir.eldest.name} finds you on the bank at dusk, filthy, alive, and shaking, and sits down beside you without a word, and you put your arm round him, and neither of you says anything until the fires are lit.[/if]
+    [if flag.c5_heir_killed]They bring {heirs.lastdead} back from the far bank in the evening, across a horse. You sent him. You will always have sent him.[elif heir.eldest.alive && heir.eldest.sex == son && heir.eldest.age >= 14]{heir.eldest.name} finds you on the bank at dusk, filthy, alive, and shaking, and sits down beside you without a word, and you put your arm round him, and neither of you says anything until the fires are lit.[elif heir.eldest.alive && heir.eldest.sex == son]When you ride into Lannec, {heir.eldest.name} is on the gate-tower, where he has been for three days, and comes down the stair so fast he nearly falls.[/if]
   choices:
     - id: on
       text: "[if flag.c5_war_lost]Face what comes.[else]Go on.[/if]"

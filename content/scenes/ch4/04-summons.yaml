@@ -45,7 +45,7 @@
   text: |
     She meets you in the garden at Lannec, where the lords talked treason in the spring, with her women out of earshot and a hawk on her fist that she does not need.
 
-    "Every king in the world wants to marry me to someone," she says. "Edwin wants me for one of his young men. The regency council wants me for Carrow's grandson. The Valdrennish King wants me for his brother, who is eleven." She strokes the hawk. "If I marry any of them, the Armance is theirs, and the West is theirs, and everything we said in this garden was talk."
+    "Every king in the world wants to marry me to someone," she says. "Edwin wants me for one of his young men. [if flag.c4_edwin_won]Carrow's widow wants me for her grandson, to buy back his lands.[elif flag.c4_carrow_won]The regency council wants me for Carrow's grandson.[else]Carrow wants me for his grandson.[/if] The Valdrennish King wants me for his brother, who is eleven." She strokes the hawk. "If I marry any of them, the Armance is theirs, and the West is theirs, and everything we said in this garden was talk."
 
     [break]
 

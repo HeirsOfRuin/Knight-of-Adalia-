@@ -17,7 +17,7 @@
 
     [break]
 
-    Mahaut opens the Estates from the ducal chair, in black, with her grandmother's stick across her knees. She says that two kings are at war with themselves and a third has murdered his Constable; that the West has paid three salt taxes in ten years and been protected by none of them; and that the Estates are met to decide, before God and each other, to whom the West belongs. Then she sits down, and the hall erupts.
+    Mahaut opens the Estates from the ducal chair, in black, with her grandmother's stick across her knees. She says that [if flag.c4_edwin_won]one king has just beheaded his greatest earl[elif flag.c4_carrow_won]one king is a prisoner in his own capital[else]one king is at war with half his own kingdom[/if] and another has murdered his Constable; that the West has paid three salt taxes in ten years and been protected by none of them; and that the Estates are met to decide, before God and each other, to whom the West belongs. Then she sits down, and the hall erupts.
 
     You have three days before the question is put. [if counter.estates >= 8]Men come to you before you have taken your seat.[elif counter.estates >= 5]Men watch to see where you sit.[else]Most men are watching someone else.[/if]
   choices:

@@ -52,7 +52,7 @@ export function parseText(src: string): Node[] {
   return root;
 }
 
-const SPECIAL_VARS = ['name', 'date', 'coin', 'station', 'background', 'origin', 'season', 'year', 'age', 'age_words', 'reign_year', 'king', 'pay_due'];
+const SPECIAL_VARS = ['name', 'date', 'coin', 'station', 'background', 'origin', 'season', 'year', 'age', 'age_words', 'reign_year', 'regnal_year', 'king', 'pay_due'];
 
 function varValue(name: string, state: GameState, content: ContentBundle): string {
   const reg = content.registry;
@@ -70,6 +70,8 @@ function varValue(name: string, state: GameState, content: ContentBundle): strin
     // for prose that names the date or his age: always agrees with the date shown above the scene
     case 'age_words': return numberWords(ageOf(state));
     case 'reign_year': return ordinalWords(reignOf(state, content).year);
+    // the year counted from Aldred II's crowning, whoever reigns now: for the old King's own years
+    case 'regnal_year': return ordinalWords(Number(getValue(state, content, 'calendar.year')));
     case 'king': return reignOf(state, content).king;
   }
   // the current wife's own line for a moment of the marriage (registry romances[].voice)

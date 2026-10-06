@@ -62,7 +62,7 @@
   checkpoint: true
   on_enter: [ { advance: { seasons: 6 } }, { catch_up: { year: 39, season: winter } } ]
   text: |
-    King Aldred dies at Wendmere at Candlemas in the {reign_year} year of his reign, at fifty-three, after two years of dying.
+    King Aldred dies at Wendmere at Candlemas in the {regnal_year} year of his reign, at fifty-three, after two years of dying.
 
     [if flag.c4_chamber_knight]You are in the room. The Queen, the Chancellor, two physicians, a priest, the Prince, and you, by the door, because the knight of the chamber is always by the door. At the end the King opens his eyes and looks round the room, at every face, as if counting. He stops at his son. He says, "Don't," and nobody ever knows what. Then he is gone.[elif counter.court_king >= 5]You are at Wendmere when it happens, sent for by the King a week before. He did not ask you for anything when you came. He held your hand, and talked about Les Salines, and the dyke, and the water coming in, and said it was the best day of his life.[else]You hear it at [if flag.c2_granted_kerval]Kerval[elif flag.c2_granted_marsalin]Marsalin[else]Ormel[/if], from a rider who has killed two horses bringing it.[/if]
 
@@ -408,7 +408,7 @@
 
     [if counter.west_estates >= 6]You are seated at her right hand.[elif counter.west_estates >= 3]You are seated at the high table, near the end.[else]You are seated below the salt, among the lesser lords, which tells you exactly what the West thinks of you.[/if] [if flag.c3_fled]Some of the Sauvemer men have long memories. One of them says, not quite to you, that some lords ran to the town when the Mottle came.[elif flag.c3_saw_it || flag.c3_spoke_steps || flag.c3_nursed]An old salt-boiler from Les Salines comes to your place, and takes your hand, and says to the table: "This one came into the plague houses with us."[/if] [if flag.c3_claim_shared || flag.c3_claim_bought]The old lord's kin you settled with is at the table, and raises a cup to you.[elif flag.c3_claim_threat]The old lord's kin you drove off is at the table, and does not look at you.[/if]
 
-    After dinner Mahaut walks in the garden with the lords she trusts, and says the thing nobody has said aloud. "Adalia has two kings and Valdrenne has a madman. The West has salt, and ships, and the Armance. The West could have a duke who answers to nobody." She looks round at them. "Or more than a duke."
+    After dinner Mahaut walks in the garden with the lords she trusts, and says the thing nobody has said aloud. "[if flag.c4_edwin_won]Adalia has a young king with an earl's head over his gate[elif flag.c4_carrow_won]Adalia has a king shut up in Wendmere and an earl ruling in his name[else]Adalia has two kings, one in the south and one in the north[/if], and Valdrenne has a madman. The West has salt, and ships, and the Armance. The West could have a duke who answers to nobody." She looks round at them. "Or more than a duke."
   choices:
     - id: west
       text: Say it with her. The West should stand on its own feet.
@@ -434,9 +434,9 @@
 
 - id: c4_act3_end
   chapter: ch4
-  title: The Second Spring of King Edwin
+  title: The West Stirs
   text: |
-    You are {age_words}. Adalia has two kings, or a king and an earl who says he is not one. Valdrenne has a king who murdered his Constable. And the West, where you hold your land and where your [if heirs.count >= 2]children are growing up speaking two languages[elif heirs.count == 1]child is growing up speaking two languages[else]name is known[/if], is beginning to think about itself.
+    You are {age_words}. [if flag.c4_edwin_won]Adalia has a young king who has just cut off the head of its greatest earl, and is looking round for the next.[elif flag.c4_carrow_won]Adalia has a king in Wendmere and an earl who rules everything outside its walls.[else]Adalia has two kings, or a king and an earl who says he is not one.[/if] Valdrenne has a king who murdered his Constable. And the West, where you hold your land and where your [if heirs.count >= 2]children are growing up speaking two languages[elif heirs.count == 1]child is growing up speaking two languages[else]name is known[/if], is beginning to think about itself.
   choices:
     - id: on
       text: Go on.

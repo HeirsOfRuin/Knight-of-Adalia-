@@ -134,7 +134,7 @@
       text: Accept the earldom.
       tags: [allies, wealth]
       text_after: You accept. The patent comes under the great seal, with your arms on it, and a herald reads it in the market square at Sauvemer to a crowd that listens in silence and goes home.
-      effects: [ { set: flag.c5_earl }, { station: great_lord }, { add: { counter.court_prince: 2, counter.west_estates: -2 } }, { hold: { id: la_garde, income: 2400 } } ]
+      effects: [ { set: flag.c5_earl }, { station: great_lord }, { add: { counter.court_prince: 2, counter.west_estates: -2 } }, { hold: { id: earldom_march, income: 144000 } }, { vassals: { add: 12, region: west } } ]
       next: c5_reckoning
     - id: son
       text: Accept it, and ask that it go to your eldest after you, with the West's liberties written in.
@@ -143,11 +143,11 @@
       check: { attr: presence, skill: diplomacy, difficulty: 4, mods: [ { if: counter.court_prince >= 4, add: 1, label: the King knows you } ] }
       success:
         text: The King agrees, with a sigh you can hear across the sea. The patent comes with the salt-guilds' old liberties in it, word for word, and your eldest's name below yours.
-        effects: [ { set: flag.c5_earl }, { set: flag.c5_liberties }, { station: great_lord }, { add: { counter.west_estates: 1 } } ]
+        effects: [ { set: flag.c5_earl }, { set: flag.c5_liberties }, { station: great_lord }, { add: { counter.west_estates: 1 } }, { hold: { id: earldom_march, income: 144000 } }, { vassals: { add: 12, region: west } } ]
         next: c5_reckoning
       failure:
         text: The King gives you the earldom and not the liberties. "One thing at a time," his letter says.
-        effects: [ { set: flag.c5_earl }, { station: great_lord } ]
+        effects: [ { set: flag.c5_earl }, { station: great_lord }, { hold: { id: earldom_march, income: 144000 } }, { vassals: { add: 12, region: west } } ]
         next: c5_reckoning
     - id: refuse
       text: Refuse it. The West is not yours to take.

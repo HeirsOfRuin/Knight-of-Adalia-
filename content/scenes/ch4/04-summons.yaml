@@ -23,9 +23,15 @@
           then: [ { station: great_lord }, { set: flag.c4_great_lord } ]
         # only when it was the West, not a king or the council, that made him
         - if: [ counter.west_estates >= 6, { not: { any: [ [ flag.c4_edwin_won, counter.court_prince >= 6 ], [ flag.c4_carrow_won, counter.court_carrow >= 6 ] ] } } ]
-          then: [ { set: flag.c4_baron_by_acclaim } ]
+          then: [ { set: flag.c4_baron_by_acclaim }, { hold: { id: west_gift, income: 14400 } }, { vassals: { add: 8, region: west } } ]
+        # a king's or the council's barony comes with the honour: its lands and its knights
+        - if: { any: [ [ flag.c4_edwin_won, counter.court_prince >= 6 ], [ flag.c4_carrow_won, counter.court_carrow >= 6 ] ] }
+          then: [ { hold: { id: honour_march, income: 38400 } }, { vassals: { add: 8, region: west } } ]
+        # lesser men of the country round his lands commend themselves to him
+        - if: [ holdings.count >= 3, "!flag.c4_baron_by_acclaim", { not: { any: [ [ flag.c4_edwin_won, counter.court_prince >= 6 ], [ flag.c4_carrow_won, counter.court_carrow >= 6 ] ] } } ]
+          then: [ { vassals: { add: 4, region: west } } ]
       text_after: |
-        [if flag.c4_great_lord]You have a banner of your own now, square, and a seat at the head of tables, and a herald who knows your arms without looking them up. It changes less than you thought. It changes everything about how other men speak to you.[else]You go back to the manor, and the accounts, and the harvest. Somewhere above you, greater men are deciding the shape of the world. You find you are not sure you want to be one of them.[/if]
+        [if flag.c4_great_lord]You have a banner of your own now, square, and a seat at the head of tables, and a herald who knows your arms without looking them up. [if holding.honour_march.held]The honour comes with it: four manors in demesne, the courts of the march, and eight knights who ride to Sauvemer at Michaelmas to kneel and put their hands between yours: {vassals.names}. Your steward, reading the honour's rolls, says the barony is worth a hundred and sixty pounds a year before the knights' dues, and has to sit down.[elif flag.c4_baron_by_acclaim]At Michaelmas eight lords of the West ride to your manor to do you homage for lands they hold of no king they recognise: {vassals.names}. The salt guilds vote you sixty pounds a year from the salt penny, to keep a baron's state. No law makes them pay it.[elif vassals.count >= 1]Four lesser men of the country round your lands come and commend themselves to you, as men do to a lord who can protect them: {vassals.names}.[/if] It changes less than you thought. It changes everything about how other men speak to you.[else]You go back to the manor, and the accounts, and the harvest. Somewhere above you, greater men are deciding the shape of the world. You find you are not sure you want to be one of them.[/if]
       next: { switch: [ { if: [ heir.second.alive, heir.second.age >= 5, "!flag.c4_surety_given" ], go: c4_second } ], default: c4_mahaut_router }
 
 - id: c4_mahaut_router

@@ -3,6 +3,7 @@
 // registry ids and display names both, so a reader needs no Knight of Adalia content.
 // Encoded as "KOAD1." + base64url of the deflated JSON.
 import type { ContentBundle } from '../content/schema';
+import { vassalName } from './lordship';
 import type { GameState } from './state';
 import { ageOf, reignOf, regnalYear, seasonName } from './calendar';
 import { forceOf } from './paths';
@@ -59,6 +60,8 @@ export interface DynastyExport {
   lands: {
     manor?: { name: string; people: number; temper: number; defence: number; church: number; salt: number; orchard: number };
     holdings: { id: string; name: string; income: number; temper: number }[];
+    /** knights who hold of him (registry/vassals.yaml); optional so older v1 codes still read */
+    vassals?: { id: string; name: string; heir: boolean }[];
   };
   wealth: { coin: number; men: number; garrison: number; levy: number };
   /** named people he met: relations as they stand */
@@ -137,6 +140,7 @@ export function toDynasty(state: GameState, content: ContentBundle): DynastyExpo
         ? { name: grant, people: e.people ?? 0, temper: e.temper ?? 0, defence: e.defence ?? 0, church: e.church ?? 0, salt: e.salt ?? 0, orchard: e.orchard ?? 0 }
         : undefined,
       holdings: Object.entries(state.holdings ?? {}).map(([id, h]) => ({ id, name: reg.holdings[id]?.label ?? id, income: h.income, temper: h.temper })),
+      vassals: (state.vassals ?? []).map((v) => ({ id: v.id, name: vassalName(content, v), heir: !!v.heir })),
     },
     wealth: { coin: state.res.coin ?? 0, men: force.men, garrison: force.garrison, levy: force.levy },
     people: Object.entries(state.npcs)

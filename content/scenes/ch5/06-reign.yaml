@@ -9,7 +9,12 @@
   title: The Oaths
   checkpoint: true
   # the reign's first year runs from Lady Day of year 45: the oaths, Midsummer's petition, Michaelmas's revolt
-  on_enter: [ { advance: { seasons: 1 } }, { catch_up: { year: 45, season: spring } } ]
+  on_enter:
+    - advance: { seasons: 1 }
+    - catch_up: { year: 45, season: spring }
+    - if: counter.estates >= 8
+      then: [ { vassals: { add: 16, region: west } } ]
+      else: [ { if: counter.estates >= 5, then: [ { vassals: { add: 12, region: west } } ], else: [ { vassals: { add: 8, region: west } } ] } ]
   text: |
     The lords of the West come to Lannec to swear to you in the great hall of the Armance dukes, one at a time, on their knees, with their hands between yours. It takes three days. [if counter.estates >= 8]Hardly a bench is empty.[elif counter.estates >= 5]Most of the benches are full, and the empty ones are counted.[else]There are more empty benches than anyone will say aloud.[/if]
 
@@ -77,7 +82,7 @@
       tags: [wealth, cunning]
       text_after: |
         A guildmaster of the Lannec salt-boilers becomes treasurer, with a Lanzi factor at his elbow. In a year the royal revenues are up by a third and every lord in the West is paying taxes he did not know existed. They pay them. They do not like it.
-      effects: [ { set: flag.c5r_council_purse }, { add: { rep.merchants: 2, rep.sarenza: 1 } }, { hold: { id: crown_revenues, income: 12000 } } ]
+      effects: [ { set: flag.c5r_council_purse }, { add: { rep.merchants: 2, rep.sarenza: 1 } }, { hold: { id: crown_revenues, income: 192000 } } ]
       next: c5r_treaty
     - id: mahaut
       text: Let Mahaut choose the council, as Jehanne would have.
@@ -93,7 +98,7 @@
   title: The Peace
   on_enter:
     - if: "!flag.c5r_council_purse"
-      then: [ { hold: { id: crown_revenues, income: 6000 } } ]
+      then: [ { hold: { id: crown_revenues, income: 144000 } } ]
   text: |
     The war ended at the bridge. The peace has not been written yet. [if flag.c5_paid_valdrenne]Valdrenne has had its price, and holds Saint-Lys, and smiles.[/if] Ambassadors come to Lannec from Adalia and from Valdrenne in the same week, and are lodged at opposite ends of the town, and both ask for the same thing in different words: the West's march castles, and money, and a marriage.
 
@@ -161,7 +166,7 @@
       tags: [wealth, cunning]
       text_after: |
         You keep it, and explain why, at length, in a proclamation nobody reads. In the salt towns they do not ring the bells. Your treasury fills. So, in the alehouses of the marsh, does the talk.
-      effects: [ { set: flag.c5r_tax_kept }, { add: { counter.reign: -1, rep.commons: -2 } }, { hold: { id: crown_revenues, income: 18000 } } ]
+      effects: [ { set: flag.c5r_tax_kept }, { add: { counter.reign: -1, rep.commons: -2 } }, { hold: { id: crown_revenues, income: 240000 } } ]
       next: c5r_revolt
 
 - id: c5r_revolt

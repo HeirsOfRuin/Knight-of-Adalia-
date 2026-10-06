@@ -47,7 +47,7 @@ export function advanceSeasons(state: GameState, content: ContentBundle, n: numb
   if (n <= 0) return;
   for (let i = 0; i < n; i++) {
     state.time += 1;
-    estateTick(state, changes);
+    estateTick(state, changes, content);
   }
   const reg = content.registry.injuries;
   const healed = state.injuries.filter((i) => {

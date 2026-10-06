@@ -57,6 +57,8 @@ const BaseEffectSchema = z.union([
   z.object({ heir_set: z.object({ which: z.enum(['eldest', 'second', 'third', 'last', 'all']), temperament: z.string().optional(), upbringing: z.string().optional() }).strict() }).strict(),
   // other holdings (Ch4): a manor beyond the first, kept as income (pence a year) and temper (-5..5)
   z.object({ hold: z.object({ id: Id, income: z.number().int(), temper: z.number().int().default(0) }).strict() }).strict(),
+  // knights who come to hold land of him (registry/vassals.yaml): the next unused names of a region
+  z.object({ vassals: z.object({ add: z.number().int().positive(), region: z.enum(['adalia', 'west']) }).strict() }).strict(),
   z.object({ release: Id }).strict(),
   z.object({ journal: z.string() }).strict(),
   z.object({ die: z.string() }).strict(), // only legal inside lethal choices (validator)
@@ -236,6 +238,9 @@ export const RomanceDefSchema = z.object({
   voice: z.record(z.string(), z.string()).default({}),
 }).strict();
 
+export const VassalDefSchema = z.object({ name: z.string(), seat: z.string(), region: z.enum(['adalia', 'west']) }).strict();
+export type VassalDef = z.infer<typeof VassalDefSchema>;
+
 export const HoldingDefSchema = z.object({
   label: z.string(),
   region: z.enum(['adalia', 'west']),
@@ -266,6 +271,7 @@ export const RegistrySchema = z.object({
   lore: z.record(Id, LoreDefSchema).default({}),
   holdings: z.record(Id, HoldingDefSchema).default({}),
   places: z.record(Id, PlaceDefSchema).default({}),
+  vassals: z.record(Id, VassalDefSchema).default({}),
 });
 export type Registry = z.infer<typeof RegistrySchema>;
 

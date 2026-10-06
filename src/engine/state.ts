@@ -40,6 +40,13 @@ export interface Heir {
   died?: number;
 }
 
+/** A knight who holds of him. `heir`: the knight has died, and his heir (a minor, or grown) holds now. */
+export interface Vassal {
+  id: string;
+  since: number;
+  heir?: 'minor' | 'grown';
+}
+
 export interface Holding {
   income: number; // pence a year, paid at Michaelmas
   temper: number; // -5..5
@@ -105,6 +112,8 @@ export interface GameState {
   heirs?: Heir[];
   /** other holdings beyond the first manor (Ch4+), by registry id */
   holdings?: Record<string, Holding>;
+  /** knights who hold land of him (registry/vassals.yaml), in the order they did homage */
+  vassals?: Vassal[];
   queue: QueuedEvent[];
   /** scene id -> last time played (for once/cooldown) */
   seen: Record<string, number>;

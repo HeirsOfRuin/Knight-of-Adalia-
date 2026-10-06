@@ -49,6 +49,10 @@ Every sum in the game, in prose or in effects, is checked against this page. Mon
 | Orchards and fields, per point | 150d | estate.ts |
 | Other holdings | as the registry's income, paid at Michaelmas | content effects (`hold`) |
 | Pay for company and garrison | 72d (6s) a man a year | estate.ts `PAY_PER_MAN` |
+| Dues from each knight who holds of him | 120d (10s) a year | lordship.ts `DUES_PER_FEE` |
+| Relief, when a knight dies and his son succeeds | 1,200d (£5), about 2.5% of knights a year | lordship.ts `RELIEF` |
+| Wardship sold, when the heir is under age | 4,800d (£20), about 1.5% a year | lordship.ts `WARDSHIP` |
+| A great household | a tenth of the year's income (a seventh for a king) | lordship.ts `householdCost` |
 
 ## 6. Price bands for the player's purse
 
@@ -59,3 +63,19 @@ Every sum in the game, in prose or in effects, is checked against this page. Mon
 | Ch3 | a manor's rents (£15 – £25 a year) | seed, mills, salt pans, a watch, a tower, a wedding |
 | Ch4 | rents from several holdings | a company, harness and a destrier, churches and bridges, gifts to great men |
 | Ch5 | a great lord's income | armies, treaties, kingdoms |
+
+## 7. Lordship: what each rank brings
+
+Rank is not only a word. Each step up comes with land in demesne (its own rents) and with knights who hold of him: they owe homage, service in war and dues, and their deaths bring reliefs and wardships. A great lord keeps a great household out of his income. The figures are gross, at Michaelmas.
+
+| Rank | What comes with it | About a year |
+|---|---|---|
+| Landed knight, lord of a manor | the manor's rents | £20 – £40 |
+| Banneret | La Garde (£10, 2 knights), Vaudrey (£25), or a chamber knight's fee (£20) | £45 – £75 with the manor |
+| Baron of the March, by the King's or the council's patent | the honour: £160 in demesne and 8 knights | £200 – £260, less a tenth for the household |
+| Baron by the West's acclaim | the salt penny, £60, and 8 western lords' homage | £100 – £150, less a tenth |
+| A great lord in all but name (three holdings) | 4 lesser men commend themselves | as his holdings, less a tenth |
+| Earl of the March | the earldom, £600 (demesne and the third penny), and 12 more knights | £700 – £900, less a tenth |
+| King of the West | the crown revenues, £600 – £1,000, and 8 – 16 of the West's lords as tenants-in-chief | £700 – £1,100, less a seventh |
+
+These sit at the low end of the historical bands in section 1, because the West is a small, war-torn country, and because the game's purchases are priced for a lord's purse, not a prince's.

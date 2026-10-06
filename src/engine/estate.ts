@@ -1,8 +1,10 @@
 // Estate (Ch3+): the manor he holds. Plain numbers in state.estate, ticked once
 // per season by the calendar. Content reads them as `estate.<field>` and changes
 // them with `add: { estate.<field>: n }`; `found_estate` creates the record.
+import type { ContentBundle } from '../content/schema';
 import type { GameState } from './state';
 import { formatCoin } from './format';
+import { feudalYear, householdCost } from './lordship';
 
 export const ESTATE_FIELDS = ['people', 'food', 'temper', 'defence', 'church', 'salt', 'orchard'] as const;
 export type EstateField = (typeof ESTATE_FIELDS)[number];
@@ -114,8 +116,23 @@ export function growPeople(state: GameState, changes: string[]): void {
   changes.push(delta > 0 ? `The manor grows: ${delta} more people this year, born or come over the hill` : `${-delta} people leave the manor this year for better lords`);
 }
 
+/** The manor's Michaelmas rents: about 20d a head, the salt works and orchards; halved when the village is close to rising. */
+export function manorRent(state: GameState): number {
+  const e = state.estate;
+  if (!e) return 0;
+  const rent = (e.people ?? 0) * 20 + (e.salt ?? 0) * 200 + (e.orchard ?? 0) * 150;
+  return (e.temper ?? 0) <= -3 ? Math.floor(rent / 2) : rent;
+}
+
+/** The other holdings' year, at Michaelmas; a holding close to rising pays half. */
+export function holdingsIncome(state: GameState): number {
+  let other = 0;
+  for (const h of Object.values(state.holdings ?? {})) other += h.temper <= -3 ? Math.floor(h.income / 2) : h.income;
+  return other;
+}
+
 /** One season on the manor. Season index: 0 spring, 1 summer, 2 autumn, 3 winter. */
-export function estateTick(state: GameState, changes: string[]): void {
+export function estateTick(state: GameState, changes: string[], content?: ContentBundle): void {
   const e = state.estate;
   if (!e) return;
   const season = state.time % 4;
@@ -124,17 +141,17 @@ export function estateTick(state: GameState, changes: string[]): void {
     const harvest = Math.max(1, Math.round((e.people ?? 0) / 40) + Math.floor((e.orchard ?? 0) / 2));
     e.food = clampEstate('food', (e.food ?? 0) + harvest);
     // docs/ECONOMY.md: about 20d a head to the lord in rents, mill and court, so a manor of 250 yields about £21
-    let rent = (e.people ?? 0) * 20 + (e.salt ?? 0) * 200 + (e.orchard ?? 0) * 150;
-    if ((e.temper ?? 0) <= -3) rent = Math.floor(rent / 2);
+    const rent = manorRent(state);
     state.res.coin = (state.res.coin ?? 0) + rent;
     changes.push(`Harvest in: ${harvest} seasons of grain`, `Michaelmas rents: ${formatCoin(rent)}`);
     // other holdings pay their year's income at the same time
-    let other = 0;
-    for (const h of Object.values(state.holdings ?? {})) other += h.temper <= -3 ? Math.floor(h.income / 2) : h.income;
+    const other = holdingsIncome(state);
     if (other > 0) {
       state.res.coin += other;
       changes.push(`Rents from your other holdings: ${formatCoin(other)}`);
     }
+    const dues = content ? feudalYear(state, content, changes) : 0;
+    householdCost(state, rent + other + dues, changes);
     growPeople(state, changes);
     payMen(state, changes);
   }

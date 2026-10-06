@@ -1,4 +1,5 @@
 import { pickHeirs } from './heirs';
+import { nameList, vassalName } from './lordship';
 import { ESTATE_FIELDS, ESTATE_LABELS, type EstateField } from './estate';
 // State paths: the shared vocabulary of conditions, effects and text.
 // One resolver for everything, so displayed values and resolved values cannot
@@ -122,6 +123,12 @@ export function getValue(state: GameState, content: ContentBundle, rawPath: stri
       if (b === 'held') return !!h;
       return h ? h[b as 'income' | 'temper'] : 0;
     }
+    case 'vassals': {
+      const vs = state.vassals ?? [];
+      if (a === 'count') return vs.length;
+      if (a === 'names') return nameList(vs.map((v) => vassalName(content, v)));
+      return undefined;
+    }
     case 'holdings': {
       const all = Object.values(state.holdings ?? {});
       if (a === 'count') return all.length;
@@ -192,6 +199,7 @@ export function checkPath(content: ContentBundle, path: string): string | null {
     case 'heir': return need(['eldest', 'second', 'third', 'last'].includes(a), 'heir selector') ?? need(['alive', 'name', 'sex', 'age', 'ageword', 'temperament', 'upbringing', 'bond'].includes(b ?? ''), 'heir field');
     case 'holding': return need(a in reg.holdings, 'holding') ?? need(['held', 'income', 'temper'].includes(b ?? ''), 'holding field');
     case 'holdings': return need(['count', 'income'].includes(a), 'holdings field');
+    case 'vassals': return need(['count', 'names'].includes(a), 'vassals field');
     case 'heirs': return need(['count', 'born', 'sons', 'daughters', 'last', 'lastname', 'eldest', 'eldest_id', 'lastdead', 'dead', 'names'].includes(a), 'heirs field');
     default: return `unknown namespace "${ns}" in "${path}"`;
   }

@@ -1,4 +1,5 @@
 import { ESTATE_FIELDS, clampEstate, type EstateField } from './estate';
+import { addVassals } from './lordship';
 // Effect application. Operates on a state that the caller has already cloned.
 import type { ContentBundle, Effect } from '../content/schema';
 import type { GameState, NpcState, SuitState } from './state';
@@ -315,6 +316,8 @@ export function applyEffects(state: GameState, content: ContentBundle, effects: 
     } else if ('hold' in e) {
       (state.holdings ??= {})[e.hold.id] = { income: e.hold.income, temper: clamp(e.hold.temper, -5, 5) };
       ctx.changes.push(`You hold ${reg.holdings[e.hold.id]?.label ?? e.hold.id}`);
+    } else if ('vassals' in e) {
+      addVassals(state, content, e.vassals.add, e.vassals.region, ctx.changes);
     } else if ('release' in e) {
       if (state.holdings?.[e.release]) {
         delete state.holdings[e.release];

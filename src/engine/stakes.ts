@@ -81,6 +81,7 @@ function collect(content: ContentBundle, state: GameState, effects: Effect[], in
     else if ('leave' in e) put('men', 'Your men', RANK.men, -1);
     else if ('item' in e) put(`item.${e.item.slice(1)}`, reg.items[e.item.slice(1)]?.label ?? e.item.slice(1), RANK.other, e.item.startsWith('+') ? 1 : -1);
     else if ('hold' in e) put('holding', 'Your holdings', RANK.manor, 1);
+    else if ('vassals' in e) put('vassals', 'Knights who hold of you', RANK.manor, 1);
     else if ('birth' in e || 'heir_set' in e) put('heir', 'Your children', RANK.family, 0);
     else if ('set' in e) {
       const f = e.set.replace(/^flag\./, '');

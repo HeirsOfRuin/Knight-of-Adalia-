@@ -1229,7 +1229,12 @@ The map is pixel art generated in code; there is no image file and no build step
   - the enclosed Midsea, with the Glass Desert beyond it where the caravans come from;
   - the far southern coast across the Southern Sea.
 
-  Realm borders are drawn as dotted lines, set by `realmAt`.
+  Realm borders are grown, not drawn. Each realm spreads from its heartlands (`HEARTS` in worldgen.ts) at a cost per tile:
+  - rivers and mountain crests cost the most, so borders settle on them: the March on the Leven, Vervais on the Lisonne, Hroswald on the Iron Spine;
+  - forest, marsh and hills cost more than open land;
+  - a noise term leaves irregular salients.
+
+  The map draws them as dark purple dashes, distinct from his road.
 - **Places.** `registry/places.yaml` gives each place's tile, kind, region and description, and an `if` saying when the hero knows of it. Kinds include `region` and `sea`, which get large centred labels and no icon. The validator keeps every place on the map, puts seas on water, and keeps every other kind off it.
 - **Where scenes happen.** `content/map/scene-places.yaml` maps each scene to a place, or to one of these:
   - `@home` (by background);

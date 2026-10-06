@@ -204,6 +204,7 @@ export interface World {
   elev: Float32Array; // -1 deep sea .. 1 peaks
   biome: Uint8Array;
   shade: Float32Array; // hillshade, about -1..1 (lit from the north-west)
+  realm: Uint8Array; // index into REALMS
 }
 
 let cached: World | undefined;
@@ -331,7 +332,7 @@ export function world(): World {
     if (land[i] && dist[i] === 0 && elev[i]! > 0.3 && biome[i] !== Biome.River) biome[i] = Biome.Cliff;
   }
 
-  cached = { w: W, h: H, elev, biome, shade };
+  cached = { w: W, h: H, elev, biome, shade, realm: growRealms(W, H, biome, elev) };
   return cached;
 }
 
@@ -339,15 +340,85 @@ export function isWater(b: number): boolean {
   return b === Biome.Deep || b === Biome.Sea || b === Biome.Shallow || b === Biome.Floe;
 }
 
-/** Which realm a land tile belongs to, for the borders drawn on the map. */
+// ---- realms ------------------------------------------------------------------------
+// Borders are not drawn: each realm grows out from its heartlands across the land, and
+// pays for what it crosses. Rivers and mountain crests cost the most, so borders settle
+// on them, as real ones did; rough, wooded or marshy country costs more than open
+// farmland, and a ragged noise term leaves salients and bulges no surveyor would draw.
+export const REALMS = ['caldmoor', 'adalia', 'armance', 'valdrenne', 'vervais', 'hroswald', 'sarenza', 'steppe', 'desert', 'south', 'ice', 'isles'] as const;
+// [realm, x, y, head start]: a larger head start is an older, stronger claim
+const HEARTS: [typeof REALMS[number], number, number, number][] = [
+  ['caldmoor', 84, 36, 0], ['caldmoor', 112, 40, 0], ['caldmoor', 76, 52, 0],
+  ['adalia', 128, 82, 0], ['adalia', 84, 94, 0], ['adalia', 94, 70, 0],
+  ['armance', 42, 156, 0], ['armance', 64, 134, 0], ['armance', 108, 128, 6], ['armance', 84, 150, 0],
+  ['valdrenne', 194, 170, 6], ['valdrenne', 160, 142, 2], ['valdrenne', 186, 136, 2], ['valdrenne', 176, 196, 0], ['valdrenne', 136, 176, 0], ['valdrenne', 236, 172, 0],
+  ['vervais', 232, 110, 2], ['vervais', 226, 124, 0], ['vervais', 250, 90, 0],
+  ['hroswald', 285, 140, 4], ['hroswald', 300, 100, 0], ['hroswald', 272, 160, 0],
+  ['sarenza', 222, 226, 4], ['sarenza', 206, 222, 0], ['sarenza', 240, 222, 0], ['sarenza', 190, 226, 0],
+  ['steppe', 338, 112, 0], ['steppe', 344, 150, 0],
+  ['desert', 336, 214, 0], ['south', 220, 238, 0], ['ice', 180, 4, 0], ['ice', 40, 5, 0], ['ice', 320, 5, 0],
+  ['isles', 20, 104, 0], ['isles', 46, 210, 0],
+];
+
+function growRealms(W: number, H: number, biome: Uint8Array, elev: Float32Array): Uint8Array {
+  const N = W * H;
+  const rough = fbmField(W, H, 901, 22), grain = fbmField(W, H, 937, 7, 3);
+  const cost = new Float32Array(N);
+  for (let i = 0; i < N; i++) {
+    const b = biome[i]!;
+    let c = 1 + Math.max(0, rough[i]! * 1.6) + grain[i]! * 0.5;
+    if (isWater(b)) c = 9;
+    else if (b === Biome.River || b === Biome.Lake) c += 14;
+    else if (b === Biome.Mountain || b === Biome.Snow || b === Biome.Cliff) c += 10 * elev[i]!;
+    else if (b === Biome.Hills) c += 3;
+    else if (b === Biome.DarkForest || b === Biome.Marsh || b === Biome.Forest || b === Biome.Pine) c += 1.2;
+    else if (b === Biome.Desert || b === Biome.Dunes || b === Biome.Steppe) c += 0.6;
+    cost[i] = Math.max(0.3, c);
+  }
+  const best = new Float64Array(N).fill(Infinity);
+  const realm = new Uint8Array(N).fill(255);
+  // a binary heap of [cost, tile]
+  const hc: number[] = [], hi: number[] = [];
+  const push = (c: number, i: number) => {
+    let k = hc.length; hc.push(c); hi.push(i);
+    while (k > 0) { const p = (k - 1) >> 1; if (hc[p]! <= c) break; hc[k] = hc[p]!; hi[k] = hi[p]!; k = p; }
+    hc[k] = c; hi[k] = i;
+  };
+  const pop = (): [number, number] => {
+    const c0 = hc[0]!, i0 = hi[0]!, c = hc.pop()!, i = hi.pop()!;
+    if (hc.length) {
+      let k = 0;
+      for (;;) {
+        let m = 2 * k + 1;
+        if (m >= hc.length) break;
+        if (m + 1 < hc.length && hc[m + 1]! < hc[m]!) m++;
+        if (hc[m]! >= c) break;
+        hc[k] = hc[m]!; hi[k] = hi[m]!; k = m;
+      }
+      hc[k] = c; hi[k] = i;
+    }
+    return [c0, i0];
+  };
+  for (const [r, x, y, head] of HEARTS) {
+    const i = y * W + x, c = -head;
+    if (c < best[i]!) { best[i] = c; realm[i] = REALMS.indexOf(r); push(c, i); }
+  }
+  while (hc.length) {
+    const [c, i] = pop();
+    if (c > best[i]!) continue;
+    const x = i % W, y = (i - x) / W;
+    for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) {
+      if (!dx && !dy) continue;
+      const nx = x + dx, ny = y + dy;
+      if (nx < 0 || ny < 0 || nx >= W || ny >= H) continue;
+      const j = ny * W + nx, nc = c + cost[j]! * (dx && dy ? 1.41 : 1);
+      if (nc < best[j]!) { best[j] = nc; realm[j] = realm[i]!; push(nc, j); }
+    }
+  }
+  return realm;
+}
+
+/** Which realm a tile belongs to, for the borders drawn on the map. */
 export function realmAt(x: number, y: number): string {
-  if (y <= 113 && x <= 146) return y < 61 ? 'caldmoor' : 'adalia';
-  if (y >= 229) return 'far';
-  if (x >= 300 && y >= 182) return 'far';
-  if (x >= 314) return 'far';
-  if (y >= 212 && x >= 180 && x <= 252) return 'sarenza';
-  if (x < 146) return 'west';
-  if (x >= 258) return 'hroswald';
-  if (x >= 206 && y < 150) return 'vervais';
-  return 'valdrenne';
+  return REALMS[world().realm[y * WORLD_W + x]!] ?? 'none';
 }

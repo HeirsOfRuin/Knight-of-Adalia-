@@ -1,7 +1,7 @@
 // Paints the generated world (src/engine/worldgen.ts) as pixel art: S canvas pixels a tile,
 // biome colours lit by the hillshade, small patterns (trees, peaks, furrows, vines, dunes,
 // salt pans, reeds, waves, floes), foam on the coast and dotted borders between realms.
-import { Biome, isWater, realmAt, tileHash, type World } from '../engine/worldgen';
+import { Biome, isWater, tileHash, type World } from '../engine/worldgen';
 
 export const S = 3;
 
@@ -73,19 +73,19 @@ export function paintWorld(w: World): HTMLCanvasElement {
       if (nb) { const [dx, dy] = nb; const fx = dx === 1 ? S - 1 : 0, fy = dy === 1 ? S - 1 : 0; for (let t = 0; t < S; t++) put(X + (dx ? fx : t), Y + (dy ? fy : t), [196, 216, 222], 1); }
     }
   }
-  // borders between realms: dotted, on land
+  // borders between realms: a dotted line through the tiles where two realms meet, on land
   for (let y = 0; y < w.h; y++) for (let x = 0; x < w.w; x++) {
     const i = y * w.w + x;
     if (isWater(w.biome[i]!)) continue;
-    const r = realmAt(x, y);
-    for (const [dx, dy] of [[1, 0], [0, 1]] as const) {
-      const nx = x + dx, ny = y + dy;
-      if (nx >= w.w || ny >= w.h || isWater(w.biome[ny * w.w + nx]!)) continue;
-      if (realmAt(nx, ny) !== r && (x + y) % 2 === 0) {
-        const px = dx ? x * S + S - 1 : x * S + 1, py = dy ? y * S + S - 1 : y * S + 1;
-        put(px, py, [120, 32, 26]); put(px + (dy ? 1 : 0), py + (dx ? 1 : 0), [120, 32, 26]);
-      }
-    }
+    const r = w.realm[i]!;
+    const edge = [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => {
+      const nx = x + dx!, ny = y + dy!;
+      if (nx < 0 || ny < 0 || nx >= w.w || ny >= w.h) return false;
+      const j = ny * w.w + nx;
+      return !isWater(w.biome[j]!) && w.realm[j]! > r;
+    });
+    // dashes two tiles long, in a dark purple that will not be taken for his road
+    if (edge && ((x + y) >> 1) % 2 === 0) for (const [ox, oy] of [[0, 0], [1, 0], [0, 1], [1, 1]] as const) put(x * S + ox, y * S + oy, [74, 22, 58]);
   }
   ctx.putImageData(img, 0, 0);
   return cv;

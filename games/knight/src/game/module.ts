@@ -13,6 +13,7 @@ import { formatCoin, signed } from '@engine/format';
 import { WIFE_MOMENTS, GAME_ID, type ContentBundle, type Effect } from '../content/schema';
 import type { GameState, SuitState } from './state';
 import { ESTATE_FIELDS, ESTATE_LABELS, clampEstate, estateRecovery, estateTick, payDue, type EstateField } from './estate';
+import { addVassals, nameList, vassalName } from './lordship';
 import { pickHeirs, TEMPERAMENTS } from './heirs';
 import { audienceModifier, computePrejudice } from './station';
 
@@ -68,9 +69,18 @@ const SEX_WORD = { son: 'a son', daughter: 'a daughter' } as const;
 
 type Op<K extends string> = Extract<Effect, Record<K, unknown>>;
 
+/** What the household calls him, by station and, below squire, by his track. */
+function rankWord(state: GameState, content: ContentBundle): string {
+  const st0 = content.config.stations;
+  const h = heroOf(state);
+  if (st0.indexOf(h.station) >= st0.indexOf('knight')) return 'knight';
+  if (h.station === 'squire' || h.track === 'squire_track') return 'squire';
+  return h.track === 'levy' ? 'archer' : h.track === 'household' ? 'groom' : h.track === 'man_at_arms' ? 'man-at-arms' : 'squire';
+}
+
 export const knight: GameModule = {
   id: GAME_ID,
-  namespaces: ['estate', 'suit', 'heirs', 'heir', 'holding', 'holdings', 'background', 'role', 'prejudice'],
+  namespaces: ['estate', 'suit', 'heirs', 'heir', 'holding', 'holdings', 'vassals', 'background', 'role', 'prejudice'],
 
   getValue(s, c, path) {
     const state = st(s);
@@ -131,6 +141,12 @@ export const knight: GameModule = {
         if (a === 'income') return all.reduce((sum, h) => sum + h.income, 0);
         return undefined;
       }
+      case 'vassals': {
+        const vs = state.vassals ?? [];
+        if (a === 'count') return vs.length;
+        if (a === 'names') return nameList(vs.map((v) => vassalName(content, v)));
+        return undefined;
+      }
       case 'background': return state.background;
       case 'role': return state.role ?? 'none';
       case 'prejudice': return computePrejudice(state, content, 'nobles');
@@ -156,6 +172,7 @@ export const knight: GameModule = {
       case 'heir': return need(['eldest', 'second', 'third', 'last'].includes(a), 'heir selector') ?? need(['alive', 'name', 'sex', 'age', 'ageword', 'temperament', 'upbringing', 'bond'].includes(b ?? ''), 'heir field');
       case 'holding': return need(a in reg.holdings, 'holding') ?? need(['held', 'income', 'temper'].includes(b ?? ''), 'holding field');
       case 'holdings': return need(['count', 'income'].includes(a), 'holdings field');
+      case 'vassals': return need(['count', 'names'].includes(a), 'vassals field');
       case 'heirs': return need(['count', 'born', 'sons', 'daughters', 'last', 'lastname', 'eldest', 'eldest_id', 'lastdead', 'dead', 'names'].includes(a), 'heirs field');
     }
     return `unknown namespace "${ns}" in "${path}"`;
@@ -300,6 +317,10 @@ export const knight: GameModule = {
     train(s, c, effect, ctx) {
       train(st(s), ct(c), (effect as Op<'train'>).train, ctx.changes);
     },
+    vassals(s, c, effect, ctx) {
+      const e = effect as Op<'vassals'>;
+      addVassals(st(s), ct(c), e.vassals.add, e.vassals.region, ctx.changes);
+    },
     found_estate(s, _c, effect) {
       const state = st(s);
       const e = effect as Op<'found_estate'>;
@@ -311,6 +332,7 @@ export const knight: GameModule = {
 
   stakesOf(_c, _s, effect, put) {
     if ('hold' in effect) put('holding', 'Your holdings', RANK.manor, 1);
+    else if ('vassals' in effect) put('vassals', 'Knights who hold of you', RANK.manor, 1);
     else if ('birth' in effect || 'heir_set' in effect) put('heir', 'Your children', RANK.family, 0);
   },
 
@@ -336,6 +358,9 @@ export const knight: GameModule = {
       case 'pay_due': return formatCoin(payDue(state));
       case 'background': return content.backgrounds[state.background]?.label ?? state.background;
       case 'origin': return (content.backgrounds[state.background]?.label ?? state.background).toLowerCase();
+      // what the household calls him: squire, archer, groom... (rank_words: the plural)
+      case 'rank_word': return rankWord(state, content);
+      case 'rank_words': { const w = rankWord(state, content); return w === 'man-at-arms' ? 'men-at-arms' : `${w}s`; }
     }
     // the current wife's own line for a moment of the marriage (registry romances[].voice)
     if (name.startsWith('wife.')) {
@@ -346,15 +371,15 @@ export const knight: GameModule = {
   },
 
   checkTextVar(name) {
-    if (name === 'pay_due' || name === 'background' || name === 'origin') return [];
+    if (name === 'pay_due' || name === 'background' || name === 'origin' || name === 'rank_word' || name === 'rank_words') return [];
     if (name.startsWith('wife.')) return name.slice(5) in WIFE_MOMENTS ? [] : [`unknown wife moment in {${name}}`];
     return undefined;
   },
 
   variantKey: (s) => st(s).background,
 
-  onSeason(s, _c, changes) {
-    estateTick(st(s), changes);
+  onSeason(s, c, changes) {
+    estateTick(st(s), changes, ct(c));
   },
 
   audience(s, c, audience) {

@@ -2,6 +2,7 @@
 // The contract itself, and its text code, are in packages/dynasty/src/contract.ts.
 import { heroOf } from '@engine/character';
 import type { ContentBundle } from '../content/schema';
+import { vassalName } from './lordship';
 import type { GameState } from './state';
 import { ageOf, reignOf, regnalYear, seasonName } from '@engine/calendar';
 import { forceOf } from '@engine/paths';
@@ -99,6 +100,7 @@ export function toDynasty(state: GameState, content: ContentBundle): DynastyExpo
         ? { name: grant, people: e.people ?? 0, temper: e.temper ?? 0, defence: e.defence ?? 0, church: e.church ?? 0, salt: e.salt ?? 0, orchard: e.orchard ?? 0 }
         : undefined,
       holdings: Object.entries(state.holdings ?? {}).map(([id, h]) => ({ id, name: reg.holdings[id]?.label ?? id, income: h.income, temper: h.temper })),
+      vassals: (state.vassals ?? []).map((v) => ({ id: v.id, name: vassalName(content, v), heir: !!v.heir })),
     },
     wealth: { coin: state.res.coin ?? 0, men: force.men, garrison: force.garrison, levy: force.levy },
     people: Object.entries(state.npcs)

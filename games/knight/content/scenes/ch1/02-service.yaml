@@ -6,7 +6,7 @@
   title: Winter at the Pell
   on_enter: [ { advance: { seasons: 1 } } ]
   text: |
-    Snow on the moat, ice in the horse-trough, and the hall so full of smoke from Martinmas to Candlemas that everyone at Ravell coughs like Master Gervase.
+    [if track == levy]At Martinmas Sir Ancel brings his archers down from Brome to winter at Ravell, where there is a roof for forty men and Brome has one for twelve. [/if]Snow on the moat, ice in the horse-trough, and the hall so full of smoke from Martinmas to Candlemas that everyone at Ravell coughs like Master Gervase.
 
     "Winter," Sir Bertram says, blowing on his two-fingered hand, "is when boys turn into something or don't."
 

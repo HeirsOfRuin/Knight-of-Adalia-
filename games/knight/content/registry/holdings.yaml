@@ -18,3 +18,7 @@ road_tolls: { label: The bridge tolls, region: west, description: "A stone bridg
 crown_revenues: { label: The revenues of the crown, region: west, description: "Tolls, salt dues, the forfeits of the courts and whatever the war tax has become." }
 querec: { label: Quérec, region: west, description: "A salt lordship in the southern marsh, forfeit for treason." }
 ravell_fee: { label: Your fee from Ravell Mill, region: adalia, description: "Ten pounds a year for life from the rents of Ravell Mill, for service in peace and war. Good while Ravell lasts." }
+chamber_fee: { label: Your fee as a knight of the chamber, region: adalia, description: "Twenty pounds a year at the Exchequer, to keep your banner and your place at court." }
+honour_march: { label: The honour of the March, region: west, description: "The barony's own lands: four manors in demesne, the castle-guard of the march towers, and the courts of the honour." }
+west_gift: { label: The salt penny of the West, region: west, description: "A yearly gift from the salt guilds and the western lords to their baron by acclaim. No law makes them pay it. They pay it." }
+earldom_march: { label: The earldom of the March, region: west, description: "Sauvemer, its salt and its castles: the earldom's demesne, and the third penny of the pleas of the county." }

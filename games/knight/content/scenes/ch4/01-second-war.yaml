@@ -498,7 +498,7 @@
       tags: [martial]
       text_after: |
         La Garde is a square tower on a rock above the Sauvemer road, with two villages under it and a view of half the march. It has been taken and retaken four times in your lifetime. It will cost you more to hold than it will ever pay. Nobody will come at your other lands except past it.
-      effects: [ { hold: { id: la_garde, income: 2400, temper: 0 } }, { set: flag.c4_banneret }, { add: { estate.defence: 2, counter.west_estates: 1 } } ]
+      effects: [ { hold: { id: la_garde, income: 2400, temper: 0 } }, { vassals: { add: 2, region: west } }, { set: flag.c4_banneret }, { add: { estate.defence: 2, counter.west_estates: 1 } } ]
       next: c4_act1_end
     - id: vaudrey
       text: The rents of Vaudrey, the town you took in the first war.
@@ -512,7 +512,7 @@
       tags: [cunning, diplomacy]
       text_after: |
         You ask for no land. You ask to be made one of the King's knights of the chamber, which pays a little and means a great deal: you sleep in the next room to the King when the court travels, and you hear things. The King looks at you for a moment as if he were seeing you properly for the first time. "Granted," he says. "God help you."
-      effects: [ { set: flag.c4_chamber_knight }, { set: flag.c4_banneret }, { add: { counter.court_king: 3 } } ]
+      effects: [ { set: flag.c4_chamber_knight }, { set: flag.c4_banneret }, { add: { counter.court_king: 3 } }, { hold: { id: chamber_fee, income: 4800 } } ]
       next: c4_act1_end
 
 - id: c4_act1_end

@@ -65,6 +65,8 @@ export interface DynastyExport {
   lands: {
     manor?: { name: string; people: number; temper: number; defence: number; church: number; salt: number; orchard: number };
     holdings: { id: string; name: string; income: number; temper: number }[];
+    /** knights who hold of him (registry/vassals.yaml); optional so older v1 codes still read */
+    vassals?: { id: string; name: string; heir: boolean }[];
   };
   wealth: { coin: number; men: number; garrison: number; levy: number };
   /** named people he met: relations as they stand */

@@ -6,6 +6,8 @@ import { computePrejudice } from '../../game/station';
 import { ageOf, describeDate } from '@engine/calendar';
 import { formatCoin, capitalise, signed } from '@engine/format';
 import { ESTATE_LABELS, temperWord, payDue } from '../../game/estate';
+import { DUES_PER_FEE, householdShare, titleOf, vassalName } from '../../game/lordship';
+import { holdingsIncome, manorRent } from '../../game/estate';
 
 const feeling = (n: number) =>
   n <= -6 ? 'hates you' : n <= -3 ? 'dislikes you' : n < 0 ? 'cool' : n === 0 ? 'indifferent' : n <= 2 ? 'warm' : n <= 5 ? 'fond' : 'devoted';
@@ -52,6 +54,7 @@ export function StatusPanel({ content, state }: { content: ContentBundle; state:
       <p class="muted">{bg?.label}{role ? `, ${role.toLowerCase()}` : ''}. Age {ageOf(state)}. {describeDate(state, content)}.</p>
       <dl class="kv">
         <dt>Station</dt><dd>{capitalise(hero.station)}{hero.track ? ` (${capitalise(hero.track)})` : ''}</dd>
+        {titleOf(state) && <><dt>Title</dt><dd>{titleOf(state)}</dd></>}
         {state.aliases.master && <><dt>Master</dt><dd>{npcLabel(content, state.aliases.master)}</dd></>}
         <dt>Health</dt><dd>{hero.health}/10</dd>
         <dt>Coin</dt><dd>{formatCoin(state.res.coin ?? 0)}</dd>
@@ -105,6 +108,31 @@ export function StatusPanel({ content, state }: { content: ContentBundle; state:
           </dl>
         </Section>
       )}
+
+      {(state.vassals?.length ?? 0) > 0 && (
+        <Section title="Knights who hold of you">
+          <ul class="vassals">
+            {state.vassals!.map((v) => <li key={v.id}>{capitalise(vassalName(content, v))}</li>)}
+          </ul>
+        </Section>
+      )}
+
+      {state.estate && (() => {
+        const rent = manorRent(state), other = holdingsIncome(state), dues = (state.vassals?.length ?? 0) * DUES_PER_FEE;
+        const household = Math.round((rent + other + dues) * householdShare(state)), pay = payDue(state);
+        return (
+          <Section title="A year at Michaelmas">
+            <dl class="kv">
+              <dt>The manor's rents</dt><dd>{formatCoin(rent)}</dd>
+              {other > 0 && <><dt>Your other holdings</dt><dd>{formatCoin(other)}</dd></>}
+              {dues > 0 && <><dt>Your knights' dues</dt><dd>{formatCoin(dues)}</dd></>}
+              {household > 0 && <><dt>Your household</dt><dd>&minus;{formatCoin(household)}</dd></>}
+              {pay > 0 && <><dt>Your men's pay</dt><dd>&minus;{formatCoin(pay)}</dd></>}
+              <dt>Left over</dt><dd>{rent + other + dues - household - pay < 0 ? `short by ${formatCoin(household + pay - rent - other - dues)}` : formatCoin(rent + other + dues - household - pay)}</dd>
+            </dl>
+          </Section>
+        );
+      })()}
 
       {COURT.some(([k]) => (state.counters[k] ?? 0) !== 0) && (
         <Section title="Standing">

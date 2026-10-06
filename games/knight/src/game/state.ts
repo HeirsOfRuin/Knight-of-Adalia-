@@ -36,6 +36,13 @@ export interface Holding {
 /** The id of the hero in state.characters: the commoner who founds the house. */
 export const HERO_ID = 'founder';
 
+/** A knight who holds of him. `heir`: the knight has died, and his heir (a minor, or grown) holds now. */
+export interface Vassal {
+  id: string;
+  since: number;
+  heir?: 'minor' | 'grown';
+}
+
 export interface GameState extends CoreState {
   background: string;
   role?: string;
@@ -46,4 +53,6 @@ export interface GameState extends CoreState {
   heirs?: Heir[];
   /** other holdings beyond the first manor (Ch4+), by registry id */
   holdings?: Record<string, Holding>;
+  /** knights who hold land of him (registry/vassals.yaml), in the order they did homage */
+  vassals?: Vassal[];
 }

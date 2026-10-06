@@ -24,7 +24,7 @@
 
     Lord Ravell will take forty lances and two hundred archers. Every knight of his is going. Every squire is going. [if alias.master == walter_pryce]The Earl of Carrow's company will be twice that, and Sir Walter Pryce means to come home from it a banneret, and says so, cheerfully, to anybody who will listen.[/if]
 
-    For a squire, there is one question now. Whether you cross the Narrow Sea with spurs on your heels, or without them.
+    [if station == squire]For a squire, there is one question now. Whether you cross the Narrow Sea with spurs on your heels, or without them.[elif track == levy]Every archer is going too, and Will Cobb is choosing which. For you the question is a different one: whether you cross the Narrow Sea in the ranks with a bow and sixpence a day, or as something more.[else]For you the question is a different one: whether you cross the Narrow Sea as a servant of the household, or as something more.[/if]
   choices:
     - id: ready
       text: Make ready.

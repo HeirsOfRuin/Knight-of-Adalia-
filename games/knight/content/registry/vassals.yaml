@@ -1,0 +1,45 @@
+# Lords and knights who may come to hold land of him as he rises (docs/ECONOMY.md,
+# "Lordship"). The `vassals` effect takes the next unused names of a region, in an
+# order fixed by the run's seed. Each owes homage, suit of court, service in war and
+# dues; at Michaelmas they pay, and now and then one dies, and his heir pays a relief
+# or comes into the lord's wardship.
+# The West: the Armance, the Salt and the march (Valdrennish names)
+penhoet_cadet: { name: Sir Yvon de Penhoët, seat: Kerlan, region: west }
+aubrac: { name: Sir Gautier d'Aubrac, seat: Aubrac, region: west }
+morlaix: { name: Sir Hervé de Morlaix, seat: Morlaix-sur-Sel, region: west }
+coatmen: { name: Sir Alain de Coatmen, seat: Coatmen, region: west }
+saint_aubin: { name: Sir Renaud de Saint-Aubin, seat: Saint-Aubin, region: west }
+salvert: { name: Sir Josselin Salvert, seat: the Salvert dyke, region: west }
+la_roche: { name: Sir Bertrand de la Roche, seat: La Roche-aux-Moines, region: west }
+quintin: { name: Sir Mériadec de Quintin, seat: Quintin, region: west }
+ploerec: { name: Sir Guéthenoc de Ploërec, seat: Ploërec, region: west }
+vaucelles: { name: Sir Anseau de Vaucelles, seat: Vaucelles, region: west }
+marans: { name: Sir Thibaud de Marans, seat: Marans, region: west }
+lesneven: { name: Sir Derrien de Lesneven, seat: Lesneven, region: west }
+grandpre: { name: Sir Enguerran de Grandpré, seat: Grandpré, region: west }
+belair: { name: Sir Aymeric Belair, seat: the Belair saltings, region: west }
+rostren: { name: Sir Tanguy de Rostren, seat: Rostren, region: west }
+montcalm: { name: Sir Hugues de Montcalm, seat: Montcalm, region: west }
+kerouac: { name: Sir Even de Kerouac, seat: Kerouac, region: west }
+tremblay: { name: Sir Robin du Tremblay, seat: Le Tremblay, region: west }
+fougeray: { name: Sir Payen de Fougeray, seat: Fougeray, region: west }
+lanvaux: { name: Sir Conan de Lanvaux, seat: Lanvaux, region: west }
+brehat: { name: Sir Olivier de Bréhat, seat: Bréhat, region: west }
+saint_gildas: { name: Sir Pierre de Saint-Gildas, seat: Saint-Gildas, region: west }
+loheac: { name: Sir Raoul de Lohéac, seat: Lohéac, region: west }
+moncontour: { name: Sir Geoffroi de Moncontour, seat: Moncontour, region: west }
+salines_bastard: { name: Jehan le Bâtard des Salines, seat: the Grand Marais, region: west }
+pontivy: { name: Sir Alain de Pontivy, seat: Pontivy, region: west }
+cleder: { name: Sir Bernard de Cléder, seat: Cléder, region: west }
+la_hunaudaye: { name: Sir Guillaume de la Hunaudaye, seat: La Hunaudaye, region: west }
+# Adalia (English names): for Ravell country and the Caldmoor march
+fenwick: { name: Sir Walter Fenwick, seat: Fenwick, region: adalia }
+haldane: { name: Sir Roger Haldane, seat: Haldane Tower, region: adalia }
+oakhurst: { name: Sir John Oakhurst, seat: Oakhurst, region: adalia }
+mallory: { name: Sir Nicholas Mallory, seat: Mallory's Cross, region: adalia }
+ferrers: { name: Sir Thomas Ferrers, seat: Brackley, region: adalia }
+hawtrey: { name: Sir Simon Hawtrey, seat: Hawtrey, region: adalia }
+lisle_cadet: { name: Sir Hugh Lisle, seat: Upper Lisle, region: adalia }
+grey_stoke: { name: Sir Ralph Greystoke, seat: Greystoke, region: adalia }
+bramley: { name: Sir Edmund Bramley, seat: Bramley, region: adalia }
+cotes: { name: Sir Peter Cotes, seat: Cotes, region: adalia }

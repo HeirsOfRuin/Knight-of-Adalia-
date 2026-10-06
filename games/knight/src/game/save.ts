@@ -4,6 +4,9 @@ import { makeSaveCodec, SaveError, type SaveFile as CoreSaveFile, type LoadResul
 import { encodeSaveCode as encodeCode, decodeSaveCode as decodeCode } from '@engine/savecode';
 import { bornAtAge } from '@engine/character';
 import { HERO_ID, type Character, type GameState } from './state';
+import type { ContentBundle } from '../content/schema';
+import type { CoreContent } from '@engine/schema';
+import { backfillLordship, nameList } from './lordship';
 
 export { SaveError };
 
@@ -69,7 +72,13 @@ function countOldForce(state: GameState): GameState {
   return state;
 }
 
-export const { toSave, fromSave } = makeSaveCodec<GameState>({ format: SAVE_FORMAT, title: 'Knight of Adalia', version: SAVE_VERSION, migrations });
+/** Saves made before lordship carried land and knights get what their rank brings, once (lordship.ts). */
+function afterLoad(state: GameState, content: CoreContent): string[] {
+  const given = backfillLordship(state, content as ContentBundle);
+  return given.length ? [`Your rank now carries its lands and knights: ${nameList(given)}.`] : [];
+}
+
+export const { toSave, fromSave } = makeSaveCodec<GameState>({ format: SAVE_FORMAT, title: 'Knight of Adalia', version: SAVE_VERSION, migrations, afterLoad });
 
 /** Save codes: "KOA1." + base64url of the deflated save. */
 export const CODE_PREFIX = 'KOA1.';

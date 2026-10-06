@@ -49,7 +49,7 @@ export function loadContent(dir = CONTENT_DIR): ContentBundle {
   const config = parse(ConfigSchema, readYaml(join(dir, 'config.yaml')), 'config.yaml');
 
   const regRaw: Record<string, unknown> = {};
-  for (const key of ['flags', 'npcs', 'traits', 'injuries', 'items', 'factions', 'endings', 'romances', 'lore', 'holdings', 'places']) {
+  for (const key of ['flags', 'npcs', 'traits', 'injuries', 'items', 'factions', 'endings', 'romances', 'lore', 'holdings', 'places', 'vassals']) {
     const p = join(dir, 'registry', `${key}.yaml`);
     regRaw[key] = existsSync(p) ? (readYaml(p) ?? {}) : {};
     if (existsSync(p)) hash.update(readFileSync(p));

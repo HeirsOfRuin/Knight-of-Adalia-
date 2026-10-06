@@ -27,6 +27,8 @@ export interface SaveCodecSpec<S extends CoreState> {
   version: number;
   /** fromVersion -> function producing the next version's save */
   migrations: Record<number, (save: SaveFile<S>) => SaveFile<S>>;
+  /** a game's own fix-ups on every load, after the scene checks: returns warnings for the player */
+  afterLoad?: (state: S, content: ContentBundle) => string[];
 }
 
 export function makeSaveCodec<S extends CoreState>(spec: SaveCodecSpec<S>) {
@@ -65,6 +67,7 @@ export function makeSaveCodec<S extends CoreState>(spec: SaveCodecSpec<S>) {
       return ok;
     });
     state.queue = state.queue.filter((q) => !!content.scenes[q.event]);
+    warnings.push(...(spec.afterLoad?.(state, content) ?? []));
     if (save.contentHash !== content.hash) warnings.push('The game content has been updated since this save was made.');
     state.contentHash = content.hash;
     return { state, warnings };

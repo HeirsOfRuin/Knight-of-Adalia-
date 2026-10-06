@@ -231,7 +231,7 @@
     - id: give
       text: Hand him over to your master, and let him take the credit and the money.
       tags: [allies]
-      text_after: Your master is surprised, then pleased, then thoughtful. It is the right thing for a squire to do and almost nobody does it. The ransom goes to him. The gratitude comes to you.
+      text_after: Your master is surprised, then pleased, then thoughtful. It is the right thing for a man in your place to do, and almost nobody does it. The ransom goes to him. The gratitude comes to you.
       effects:
         - set: flag.c1_coll_given
         - add: { rel.@master.affection: 3, rel.@master.respect: 1, rep.honor: 1 }
@@ -261,7 +261,7 @@
           - add: { rep.honor: 1, rep.caldmoor: 3, rel.coll_glenhallow.affection: 5 }
         next: c1_raid_return
       failure:
-        text: The guard wakes. Coll gets away. You do not. Lord Ravell has twenty pounds less and a squire he will not forget. Your master takes the stick to you himself, to save you worse.
+        text: The guard wakes. Coll gets away. You do not. Lord Ravell has twenty pounds less and one {rank_word} he will not forget. Your master takes the stick to you himself, to save you worse.
         effects:
           - set: flag.c1_coll_freed
           - add: { rep.caldmoor: 3, rel.coll_glenhallow.affection: 5, rel.thurstan_ravell.respect: -3, rel.@master.respect: -2 }

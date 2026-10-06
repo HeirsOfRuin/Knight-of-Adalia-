@@ -13,6 +13,11 @@
 # path such as estate.recovery, never a raw count: see the population rule.
 
 rules:
+  # Chapter 1 on the lower tracks: an archer or a groom is not a squire until he is made one
+  - match: "honest squire|what squires do|Sit in, squire|seen squires before|your master's other squire|The other squires watch|whose squire you are|For a squire, there is one question"
+    allow: station == squire || track == squire_track || station >= knight
+    chapters: [ch1]
+    why: The levy and household tracks are archers and grooms until a route up makes them squires.
   # Children at war: a page of twelve may carry a helm; a squire of fourteen rides under a captain; only a man of sixteen commands
   - match: "with your son at the point|takes the reserve out"
     allow: heir.eldest.age >= 16
@@ -104,3 +109,4 @@ dead_names_ok:
   c4q_old_note: [ralf_mercer]     # the dead father's name on his old note
   c4q_steward: [piers_reeve]      # the dead reeve, cleared in church
   c4p_rival_son: ['*']           # the boy is named as the rival's son; when the rival is dead, his widow writes
+

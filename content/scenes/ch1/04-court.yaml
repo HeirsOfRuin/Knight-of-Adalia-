@@ -29,7 +29,7 @@
           - { if: flag.ravell_favor, add: 1, label: Lord Ravell puts you forward }
           - { if: flag.c1_schemer, add: -1, label: the steward has a long memory }
       success:
-        text: On the third morning you hold the King's stirrup while he mounts for the hunt. He looks down and asks your name. [if flag.c1_raid_distinguished]Lord Ravell, beside him, adds something about the Leven ford.[else]Lord Ravell, beside him, has to be reminded whose squire you are.[/if] The King repeats your name, as if to keep it. Then he is gone, in a crowd of horses. It lasted the time it takes to say a paternoster. You carry it with you all your life.
+        text: On the third morning you hold the King's stirrup while he mounts for the hunt. He looks down and asks your name. [if flag.c1_raid_distinguished]Lord Ravell, beside him, adds something about the Leven ford.[else]Lord Ravell, beside him, has to be reminded whose {rank_word} you are.[/if] The King repeats your name, as if to keep it. Then he is gone, in a crowd of horses. It lasted the time it takes to say a paternoster. You carry it with you all your life.
         effects:
           - set: flag.c1_king_noticed
           - add: { rep.crown: 2, res.renown: 1 }

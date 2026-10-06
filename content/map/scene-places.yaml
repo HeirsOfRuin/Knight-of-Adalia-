@@ -37,7 +37,7 @@ c1_master_ride: '@service'
 c1_quintain: '@service'
 c1_bertram_test: ravell_hall
 c1_long_winter: '@service'
-c1_winter: '@service'
+c1_winter: ravell_hall
 c1_trouble_hamon: ashby
 c1_trouble_ancel: brome
 c1_christmas: ravell_hall

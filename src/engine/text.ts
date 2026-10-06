@@ -52,7 +52,15 @@ export function parseText(src: string): Node[] {
   return root;
 }
 
-const SPECIAL_VARS = ['name', 'date', 'coin', 'station', 'background', 'origin', 'season', 'year', 'age', 'age_words', 'reign_year', 'regnal_year', 'king', 'pay_due'];
+const SPECIAL_VARS = ['name', 'date', 'coin', 'station', 'background', 'origin', 'season', 'year', 'age', 'age_words', 'reign_year', 'regnal_year', 'king', 'pay_due', 'rank_word', 'rank_words'];
+
+/** What the household calls him, by station and, below squire, by his track. */
+function rankWord(state: GameState, content: ContentBundle): string {
+  const st = content.config.stations;
+  if (st.indexOf(state.station) >= st.indexOf('knight')) return 'knight';
+  if (state.station === 'squire' || state.track === 'squire_track') return 'squire';
+  return state.track === 'levy' ? 'archer' : state.track === 'household' ? 'groom' : state.track === 'man_at_arms' ? 'man-at-arms' : 'squire';
+}
 
 function varValue(name: string, state: GameState, content: ContentBundle): string {
   const reg = content.registry;
@@ -73,6 +81,9 @@ function varValue(name: string, state: GameState, content: ContentBundle): strin
     // the year counted from Aldred II's crowning, whoever reigns now: for the old King's own years
     case 'regnal_year': return ordinalWords(Number(getValue(state, content, 'calendar.year')));
     case 'king': return reignOf(state, content).king;
+    // what the household calls him: squire, archer, groom... (rank_words: the plural)
+    case 'rank_word': return rankWord(state, content);
+    case 'rank_words': { const w = rankWord(state, content); return w === 'man-at-arms' ? 'men-at-arms' : `${w}s`; }
   }
   // the current wife's own line for a moment of the marriage (registry romances[].voice)
   if (name.startsWith('wife.')) {

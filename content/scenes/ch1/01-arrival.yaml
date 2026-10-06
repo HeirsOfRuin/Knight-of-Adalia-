@@ -200,7 +200,7 @@
 
     [if track == squire_track]He calls you the {origin} in front of the other squires, as if it were your name, and they have started to use it too. Last week your master's best harness went into the moat, and Giles told the marshal you had been careless with it, and the marshal believed him, because Giles is a gentleman.[else]He calls you the {origin} whenever he passes. Yesterday he had you whipped for insolence, in the yard, because you did not step out of the mud fast enough when he rode by, and the man who whipped you apologised afterwards, quietly, which was worse.[/if]
 
-    The other squires watch to see what you do. [if rel.aymer_ravell.affection >= 3]Aymer Ravell catches your eye and shrugs: your quarrel, not mine, unless you ask.[/if] [if flag.c1_first_night_friend && alias.master == ancel_brome]Will Cobb says only, "There's always one."[/if]
+    [if station == squire || track == squire_track]The other squires watch[else]The yard watches[/if] to see what you do. [if rel.aymer_ravell.affection >= 3]Aymer Ravell catches your eye and shrugs: your quarrel, not mine, unless you ask.[/if] [if flag.c1_first_night_friend && alias.master == ancel_brome]Will Cobb says only, "There's always one."[/if]
   choices:
     - id: fight
       text: Challenge him at the pell, in front of Sir Bertram Oakes.

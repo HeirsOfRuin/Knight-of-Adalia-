@@ -182,7 +182,7 @@
 
     "Seven's the main! Seven! Come on, you bitch!" The dice rattle off the wall. Somebody groans. Somebody laughs. The serjeant, a scarred old Marcher called Long Tom, has a pile of pennies in front of him like a little cairn.
 
-    "Sit in, squire?" he says, without looking up. "We don't bite. Much."
+    "Sit in, {rank_word}?" he says, without looking up. "We don't bite. Much."
 
     The game is hazard. The stakes are pennies, then shillings, then whatever anyone has left, including, last month, a groom's boots.
   choices:
@@ -247,7 +247,7 @@
       tags: [cunning, wealth]
       check: { attr: presence, skill: trade, difficulty: 3 }
       success:
-        text: A good pack-horse at two shillings under your master's price. You keep the two shillings. That is what squires do.
+        text: A good pack-horse at two shillings under your master's price. You keep the two shillings. That is what {rank_words} do.
         effects: [ { add: { res.coin: 24 } } ]
         next: "@return"
       failure:
@@ -257,7 +257,7 @@
     - id: honest
       text: Buy the pack-horse at a fair price and bring back the change.
       text_after: |
-        A sturdy brown cob at a fair price, and you bring back the change to the last farthing. Your master counts it, twice, and looks at you oddly. "Well," he says. "Well, well. An honest squire. I'll have to have you stuffed."
+        A sturdy brown cob at a fair price, and you bring back the change to the last farthing. Your master counts it, twice, and looks at you oddly. "Well," he says. "Well, well. An honest {rank_word}. I'll have to have you stuffed."
       effects: [ { add: { rel.@master.respect: 1, rep.honor: 1 } } ]
       next: "@return"
 
@@ -269,7 +269,7 @@
   text: |
     The bloody flux comes to Ravell in August, out of the moat and the midden and the heat.
 
-    It takes a man a week to die of it, and he knows the whole week. Six go in the village. Then a cook. Then two grooms. Then Edmund Penn, your master's other squire, sixteen, freckled, who could never hold his drink and used to sing hymns in his sleep. He lasts five days.
+    It takes a man a week to die of it, and he knows the whole week. Six go in the village. Then a cook. Then two grooms. Then Edmund Penn, [if station == squire || track == squire_track]your master's other squire[else]your master's squire[/if], sixteen, freckled, who could never hold his drink and used to sing hymns in his sleep. He lasts five days.
 
     [break]
 
@@ -357,7 +357,7 @@
   text: |
     "Wasters," says Sir Bertram Oakes, with contempt, kicking a pile of wooden practice swords. "You lot have learned to fight with sticks, and you'll die like it."
 
-    Today it is sharp swords, at half speed, in the tilt-yard, in front of Lady Ravell's women, who have come down with cushions to watch. A real edge on a real blade, catching the sun. The squires look at each other. Nobody laughs.
+    Today it is sharp swords, at half speed, in the tilt-yard, in front of Lady Ravell's women, who have come down with cushions to watch. A real edge on a real blade, catching the sun. [if station == squire || track == squire_track]The squires look at each other.[else]The squires look at each other, and at the archers and grooms who have crowded the fence.[/if] Nobody laughs.
 
     "You," says Sir Bertram, and points his two-fingered hand at you. "First."
   choices:
@@ -461,7 +461,7 @@
         effects: [ { add: { res.coin: 12 } } ]
         next: "@return"
       failure:
-        text: The Wendham shopkeepers have seen squires before.
+        text: The Wendham shopkeepers have seen {rank_words} before.
         next: "@return"
     - id: tavern
       text: Do the errands, and spend the afternoon in the Bell listening to the carriers' news.

@@ -49,8 +49,16 @@ export interface DynastyExport {
   spouse?: { id: string; name: string; alive: boolean };
   heirs: DynastyHeir[];
   realm: {
-    /** where the West stands: free (a kingdom or duchy), adalian, or lost */
+    /** where the West stands: free (a kingdom or duchy), adalian, or lost. Kept for v1 readers; an Adalian West
+     * that lost the war still reads adalian here, so a sequel reads `settlement` instead. */
     west: 'free' | 'adalian' | 'lost' | 'unsettled';
+    /** the settlement the war left: a crowned West, a free duchy, Adalia's, or divided between the kings
+     * (Valdrenne in the Armance, Adalia in the Salt) after a lost war, whichever side he fought on */
+    settlement: 'kingdom' | 'duchy' | 'adalian' | 'partitioned' | 'unsettled';
+    /** who rules the West: himself, Queen Mahaut, King Thibaut, the Estates' duchy, the King of Adalia, or the two kings */
+    sovereign: 'self' | 'mahaut' | 'thibaut' | 'duchy' | 'adalia' | 'divided' | 'unsettled';
+    /** how the War of the West ended */
+    war?: 'won' | 'held' | 'lost';
     /** he reigns over it (the crowned ending) */
     reigns: boolean;
     /** 0+ how settled his kingdom is, when he reigns */
@@ -82,6 +90,24 @@ function heirMatch(state: GameState, index: number): string | undefined {
     if (f.c5_betrothed_lanzi) return 'lanzi';
   }
   return undefined;
+}
+
+function westSettlement(state: GameState): DynastyExport['realm']['settlement'] {
+  const f = state.flags;
+  if (f.c5_war_lost && (f.c5_west_free || f.c5_west_adalian)) return 'partitioned';
+  if (f.c5_west_free) return f.c5_free_duchy ? 'duchy' : 'kingdom';
+  if (f.c5_west_adalian) return 'adalian';
+  return 'unsettled';
+}
+
+function westSovereign(state: GameState): DynastyExport['realm']['sovereign'] {
+  const f = state.flags;
+  const settlement = westSettlement(state);
+  if (settlement === 'partitioned') return 'divided';
+  if (settlement === 'adalian') return 'adalia';
+  if (settlement === 'duchy') return 'duchy';
+  if (settlement === 'kingdom') return f.c5_crowned_self ? 'self' : f.c5_mahaut_queen ? 'mahaut' : f.c5_thibaut_king ? 'thibaut' : 'unsettled';
+  return 'unsettled';
 }
 
 export function toDynasty(state: GameState, content: ContentBundle): DynastyExport {
@@ -129,6 +155,9 @@ export function toDynasty(state: GameState, content: ContentBundle): DynastyExpo
     }),
     realm: {
       west: f.c5_west_free ? (f.c5_war_lost ? 'lost' : 'free') : f.c5_west_adalian ? 'adalian' : 'unsettled',
+      settlement: westSettlement(state),
+      sovereign: westSovereign(state),
+      war: f.c5_war_won ? 'won' : f.c5_war_held ? 'held' : f.c5_war_lost ? 'lost' : undefined,
       reigns: !!f.c5_reigns,
       stability: f.c5_reigns ? state.counters.reign ?? 0 : undefined,
     },

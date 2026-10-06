@@ -1265,7 +1265,7 @@ Every ending except death shows a "To be continued" block: a line per ending (`s
 - `founder`: name, background, role, age, station, renown, attributes, skills, traits, items, reputation;
 - `spouse`: id, name, alive;
 - `heirs[]`: name, sex, age, alive, temperament, upbringing, bond, a `match` (penhoet, brese, lanzi, valdrenne, chosen, arranged) and `crowned`;
-- `realm`: the West free, adalian, lost or unsettled; `reigns`; `stability` from `counter.reign`;
+- `realm`: the West free, adalian, lost or unsettled; `settlement` (kingdom, duchy, adalian, partitioned or unsettled; added 2026-10-06 because `west` reads an Adalian West that lost the war as adalian); `sovereign` (self, mahaut, thibaut, duchy, adalia, divided); `war` (won, held, lost); `reigns`; `stability` from `counter.reign`;
 - `lands`: the manor's fields and every holding with its income;
 - `wealth`: coin, men, garrison, levy;
 - `people[]`: everyone he met, with relations;
@@ -1335,3 +1335,4 @@ Josh found text that assumed choices he had not made. A survey found 47 such pla
 | 2026-10-05 | The world map: terrain generator, 56 places, scene places, World panel and full-screen map, chapter-card map, the place in the date line. See The world map. |
 | 2026-10-05 | World map rebuilt: a 360 × 240 generated world with far lands (Ice Reach, Ember Isles, Thousand Isles, Grass Sea, Midsea, Glass Desert), realm borders, zoom ×1–6 and drag panning. |
 | 2026-10-06 | Sequel framed in `docs/SEQUEL-FRAME.md`. Author accepted the recommended scope: a hybrid of authored spine and light realm simulation, three generations, one repository with a shared engine package, succession law as a live lever (daughters can head the house), and the dynasty export optional. Openings, endings, systems, build order and six open decisions await approval. |
+| 2026-10-06 | Sequel frame approved as House of Adalia, with every open decision as recommended. The author's rule: the West does not always start free. The frame now has three starting frames (Free, Adalian, Partitioned) written separately, nine opening and frame combinations, and checks for frame-bound prose. The dynasty export gains `realm.settlement`, `realm.sovereign` and `realm.war`. |

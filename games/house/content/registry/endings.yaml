@@ -1,0 +1,9 @@
+# FRAME.md §5. Computed at the end of Book III, or earlier if the house fails.
+royal_line: { chapter: book3, label: A Royal Line, description: "The house holds a crown at the end, with a recognised heir." }
+power: { chapter: book3, label: The Power in the Realm, description: "The greatest house that is not royal; the crown answers to it." }
+old_house: { chapter: book3, label: An Old House, description: "Landed, titled and secure; three generations kept it." }
+fallen_house: { chapter: book3, label: A Fallen House, description: "Survives, but smaller than the founder left it." }
+foreign_house: { chapter: book3, label: A Foreign House, description: "The line continues abroad and has stopped coming home." }
+name_struck: { chapter: book3, label: The Name Struck, description: "Attainted, landless, the line alive." }
+extinct: { chapter: book1, label: Extinct, description: "No heir to succeed." }
+story_so_far: { chapter: prologue, label: The Story So Far, description: "Where the framework ends: the prologue is not written yet." }

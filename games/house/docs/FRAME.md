@@ -225,12 +225,14 @@ Pools are written once and gated by frame where they only make sense in one.
 
 ### Repository layout
 ```
-packages/engine/     conditions, effects, director, text, rng, calendar, save, savecode, checks, cards, map, worldgen
-games/knight/        Knight of Adalia: content, station, estate, romance, its UI shell
-games/house/         House of Adalia: content, characters, houses, realm, succession, matches, war, its UI shell
-tools/               validator, bot, continuity, lint: parameterised by game
+packages/engine/     conditions, effects, director, text, rng, calendar, save, savecode, checks, cards, map, worldgen, characters
+packages/dynasty/    the dynasty export contract, written by Knight of Adalia and read by House of Adalia
+packages/tools/      shared Node tooling: content loading, validation, headless play, phrase continuity
+games/knight/        Knight of Adalia: content, rules (src/game), UI, tools, tests, docs
+games/house/         House of Adalia: the same
 ```
-- The engine move was done first, as its own step, with no behaviour change (2026-10-06). Knight of Adalia is still at the repository root; it moves to `games/knight/` with the tools when `games/house/` is added.
+- **As built (2026-10-06).** The engine move was done first, with no behaviour change. Knight of Adalia then moved to `games/knight/`, again with no behaviour change.
+- **Tools: one toolchain per game, not one parameterised toolchain.** Knight of Adalia's validator, bot and continuity checker are bound to its backgrounds, wives and per-background structural checks. Each game keeps its own toolchain in `games/<game>/tools/`, built on `packages/tools/`. Knight of Adalia's tools were left as they were, so its gate is untouched; porting them onto `packages/tools` is optional later work.
 - **Gate:** KoA's `npm run check` passes unchanged after the move, and the published Pages build plays the same. The Pages workflow publishes both games (KoA at its current URL, House of Adalia beside it).
 
 ### Tooling
@@ -260,7 +262,7 @@ tools/               validator, bot, continuity, lint: parameterised by game
 0. **Export additions** (done 2026-10-06): `realm.settlement`, `realm.sovereign` and `realm.war`, with tests.
 1. **Engine extraction** (done 2026-10-06): the engine in `packages/engine` behind a game module (`packages/engine/README.md`), KoA's rules in `src/game/`. No behaviour change by `npm run fingerprint`; `npm run check`, the smoke test and the Pages build pass. KoA moves to `games/knight/` when House of Adalia's shell is added.
 2. **Character refactor** (done 2026-10-06): the hero is a `Character` in `state.characters`, pointed to by `state.hero` (the frame's "ruler"; Knight of Adalia's hero is `founder`). `hero.*` paths, pronoun variables, a version 4 save migration. KoA plays the same: every view, projected state, export, save and bot run matches the previous commit. Other characters' paths and passing play to an heir come with succession in step 4.
-3. **Frame support:** `realm.*` paths and variables, variants keyed by frame, the validator and continuity rules in section 7.
+3. **Frame support** (done 2026-10-06, `games/house/README.md`): the House of Adalia skeleton, with its openings, frames and sovereigns. Built: `realm.*` paths and text variables, variants keyed by frame, the `west` effect, dates in the sovereign's reign, the static frame rule and its runtime twin, `frames:` on scenes, and the dynasty import. The bot plays all 17 starts (nine opening and frame combinations, by sovereign); continuity is clean. Next: the detailed gameplay and story plan (`docs/PLAN.md`), then the slice.
 4. **Vertical slice:** the Founder opening in two frames (Free and Adalian), the prologue, Book I and one succession into Book II. Bot and continuity checks on it, and a transcript per frame.
 5. **Houses, realm and war**, tuned against the slice.
 6. **The other openings and the Partitioned frame**, then Books II and III, each with a bot pass and a transcript per frame.

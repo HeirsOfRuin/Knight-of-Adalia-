@@ -1,0 +1,15 @@
+id: ruin
+label: Ruin
+summary: "Attainted, your name struck from the rolls. Names have been written back in before."
+from_ending: ruin
+frames: ["partitioned"]
+sovereigns: {"partitioned": ["amaury", "edwin_salt"]}
+start_scene: h_open
+founder:
+  age: 49
+  station: knight
+  attributes: {"presence": 2, "wits": 3, "endurance": 3, "strength": 3, "agility": 2}
+  skills: {"arms": 3, "intrigue": 2, "woodcraft": 2, "diplomacy": 2}
+  coin: 240
+  renown: 4
+  men: 0

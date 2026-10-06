@@ -80,6 +80,9 @@ export interface GameModule {
   /** chapter card names of the game's own dead since `from` (children) */
   cardDead?(content: CoreContent, state: CoreState, from: number): string[];
 
+  /** whose reign dates are counted in, titled ("Queen Mahaut"), and the year of it; undefined uses config.reigns */
+  reign?(state: CoreState, content: CoreContent): { ruler: string; year: number } | undefined;
+
   // ---- saves ----------------------------------------------------------------------------
   /** where a save resumes when its scene and checkpoint are both gone */
   startScene?(state: CoreState, content: CoreContent): string | undefined;

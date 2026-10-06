@@ -1,0 +1,15 @@
+id: founder
+label: Founder of a House
+summary: "A great lord with lands that will outlast you, and rivals for the same rank."
+from_ending: founder
+frames: ["free", "adalian"]
+sovereigns: {"free": ["mahaut", "thibaut", "duchy"], "adalian": ["edwin"]}
+start_scene: h_open
+founder:
+  age: 49
+  station: great_lord
+  attributes: {"presence": 3, "wits": 3, "endurance": 3, "strength": 2, "agility": 2}
+  skills: {"stewardship": 4, "command": 3, "diplomacy": 3, "courtesy": 3, "arms": 3, "tactics": 2}
+  coin: 30000
+  renown: 12
+  men: 30

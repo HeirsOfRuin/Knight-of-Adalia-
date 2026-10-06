@@ -1,0 +1,15 @@
+id: kingmaker
+label: Kingmaker
+summary: "You made someone else a crown. Their heir resents the house that made them."
+from_ending: kingmaker
+frames: ["free"]
+sovereigns: {"free": ["mahaut", "thibaut"]}
+start_scene: h_open
+founder:
+  age: 49
+  station: great_lord
+  attributes: {"presence": 3, "wits": 4, "endurance": 2, "strength": 2, "agility": 2}
+  skills: {"intrigue": 4, "diplomacy": 4, "command": 3, "courtesy": 3, "stewardship": 3, "arms": 3}
+  coin: 40000
+  renown: 16
+  men: 40

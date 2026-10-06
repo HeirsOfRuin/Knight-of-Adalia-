@@ -11,7 +11,7 @@ export default defineConfig({
   root: here(`./games/${game}`),
   base: './',
   // the shared engine (packages/engine); tsconfig.json maps the same alias for tsc and tsx
-  resolve: { alias: { '@engine': here('./packages/engine/src') } },
+  resolve: { alias: { '@engine': here('./packages/engine/src'), '@dynasty': here('./packages/dynasty/src') } },
   plugins: [preact()],
   build: { outDir: here(game === 'knight' ? './dist' : `./dist/${game}`), emptyOutDir: game === 'knight' },
   // the installed app (GitHub Pages) registers a service worker; the claude.ai artifact build does not

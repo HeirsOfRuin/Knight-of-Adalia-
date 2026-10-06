@@ -38,10 +38,18 @@ export function reignOf(state: GameState, content: ContentBundle): { king: strin
   return r ? { king: r.king === '@self' ? heroOf(state).name : r.king, year: y - r.from_year + 1 } : { king: content.config.regnal_king, year: y };
 }
 
+/** Whose reign the date is counted in, with the ruler's title ("King Edwin"), and the year of it. A game may date by its own sovereign (GameModule.reign). */
+export function reignTitle(state: GameState, content: ContentBundle): { ruler: string; year: number } {
+  const own = gameOf(content).reign?.(state, content);
+  if (own) return own;
+  const r = reignOf(state, content);
+  return { ruler: `King ${r.king}`, year: r.year };
+}
+
 export function describeDate(state: GameState, content: ContentBundle): string {
   const s = seasonName(state, content);
-  const r = reignOf(state, content);
-  return `${s.charAt(0).toUpperCase()}${s.slice(1)}, year ${r.year} of King ${r.king}`;
+  const r = reignTitle(state, content);
+  return `${s.charAt(0).toUpperCase()}${s.slice(1)}, year ${r.year} of ${r.ruler}`;
 }
 
 /** Advance time; heals injuries whose time has run out. Mutates the given (already cloned) state. */

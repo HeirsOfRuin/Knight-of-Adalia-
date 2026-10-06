@@ -1,0 +1,24 @@
+# Where the West stands (FRAME.md §2). Provisional wording; the detailed plan settles it.
+# bound: phrases true only in that frame. The validator rejects a scene that can show one in
+# another frame, and the continuity checker fails any shown in the wrong frame.
+free:
+  label: A free West
+  summary: "A realm nobody has ruled before, between two crowns that want it back."
+  assembly: the Estates of the West
+  border: the hills over the Armance
+  law: no written law of succession
+  bound: ["crown of the West", "Estates of the West"]
+adalian:
+  label: An Adalian West
+  summary: "A province of Adalia that voted to stay, governed from Wendmere."
+  assembly: the Moot
+  border: the hills over the Armance
+  law: the law of Adalia
+  bound: ["Earl of the March", "King's governor at Lannec"]
+partitioned:
+  label: A divided West
+  summary: "Lost in the war and cut in two: Valdrenne holds the Armance, Adalia the Salt."
+  assembly: the two kings' courts
+  border: the new border
+  law: two laws, one on each side of the border
+  bound: ["the new border", "Valdrennish governor"]

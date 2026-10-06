@@ -1,0 +1,15 @@
+id: diminished
+label: Diminished Lord
+summary: "One holding left, and long memories of the rest."
+from_ending: diminished
+frames: ["free", "adalian", "partitioned"]
+sovereigns: {"free": ["mahaut", "thibaut", "duchy"], "adalian": ["edwin"], "partitioned": ["amaury", "edwin_salt"]}
+start_scene: h_open
+founder:
+  age: 49
+  station: lord
+  attributes: {"presence": 2, "wits": 3, "endurance": 3, "strength": 2, "agility": 2}
+  skills: {"stewardship": 3, "arms": 3, "command": 2, "diplomacy": 2, "courtesy": 2}
+  coin: 8000
+  renown: 6
+  men: 10

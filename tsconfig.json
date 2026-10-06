@@ -14,7 +14,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "types": ["node", "vite/client"],
-    "paths": { "@engine/*": ["./packages/engine/src/*"] }
+    "paths": { "@engine/*": ["./packages/engine/src/*"], "@dynasty/*": ["./packages/dynasty/src/*"], "@tools/*": ["./packages/tools/src/*"] }
   },
   "include": ["packages", "games", "vite.config.ts", "vitest.config.ts"]
 }

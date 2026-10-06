@@ -1,0 +1,15 @@
+id: exile
+label: Exile
+summary: "A small court abroad, and a claim at home."
+from_ending: exile
+frames: ["partitioned"]
+sovereigns: {"partitioned": ["amaury", "edwin_salt"]}
+start_scene: h_open
+founder:
+  age: 49
+  station: knight
+  attributes: {"presence": 3, "wits": 3, "endurance": 2, "strength": 2, "agility": 2}
+  skills: {"diplomacy": 3, "intrigue": 3, "arms": 3, "courtesy": 2, "trade": 2}
+  coin: 2000
+  renown: 6
+  men: 4

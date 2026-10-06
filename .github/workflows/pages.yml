@@ -1,4 +1,4 @@
-# Builds the installable app and publishes it to GitHub Pages on every push.
+# Builds the installable app (and House of Adalia, under house/) and publishes it to GitHub Pages on every push.
 # One-time setup in the repository: Settings > Pages > Build and deployment >
 # Source: GitHub Actions. The app is then at https://heirsofruin.github.io/Knight-of-Adalia-/
 name: Publish app
@@ -27,10 +27,13 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - run: npm run content
       - run: npm test
       - run: npm run validate
       - run: npm run continuity -- --strict
-      - run: npm run build:pwa
+      - run: npm run house:check
+      # Knight of Adalia at the site root, House of Adalia (early build) under house/
+      - run: npm run build:pages
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

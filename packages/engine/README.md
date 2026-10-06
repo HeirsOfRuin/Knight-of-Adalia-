@@ -26,13 +26,15 @@ A content bundle names its game by id (`content.game`). The game's module regist
 | `cardRows`, `cardBorn`, `cardDead` | Its lines on chapter cards | Wife, children, lands |
 | `startScene` | Where a save resumes if its scene and checkpoint are gone | The background's first scene |
 
+| `reign` | Whose reign dates are counted in, titled | (none: `config.reigns`) |
+
 The game also builds its own:
-- **schema**, from `CORE_EFFECTS`, `CORE_REGISTRY`, `wrapEffects` and `makeSceneSchemas` (`src/schema.ts`);
+- **schema**, from `CORE_EFFECTS`, `CORE_REGISTRY`, `wrapEffects` and `makeSceneSchemas` (`src/schema.ts`), which takes the game's own scene fields as a second argument (House of Adalia's `frames:`);
 - **state**, extending `CoreState`;
 - **new game**, which fills a state and calls `enterScene`;
 - **save codec**, with `makeSaveCodec` (format name, version, migrations) and its own save-code prefix.
 
-Knight of Adalia's are in `src/content/schema.ts` and `src/game/`.
+Each game's are in `games/<game>/src/content/schema.ts` and `games/<game>/src/game/`. Shared Node tooling for a game's toolchain (loading, validation, headless play, continuity) is in `packages/tools/`.
 
 ## Characters (`src/character.ts`)
 The hero is a `Character` in `state.characters`, and `state.hero` is its id. A character has a name, a sex, a birth (a season index; negative before the game starts), whether it is alive, and its own attributes, skills, health, traits, injuries, items, station and track. `heroOf(state)` returns the hero.

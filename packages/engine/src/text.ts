@@ -7,7 +7,7 @@ import { gameOf } from './game';
 import { evalCond, parseInline, validateCond, type Cond } from './conditions';
 import { getValue, checkPath, deref } from './paths';
 import { formatCoin, capitalise, numberWords, ordinalWords } from './format';
-import { describeDate, ageOf, reignOf } from './calendar';
+import { describeDate, ageOf, reignOf, reignTitle } from './calendar';
 
 type Node =
   | { t: 'text'; s: string }
@@ -78,7 +78,7 @@ function varValue(name: string, state: GameState, content: ContentBundle): strin
     case 'age': return String(getValue(state, content, 'age'));
     // for prose that names the date or his age: always agrees with the date shown above the scene
     case 'age_words': return numberWords(ageOf(state));
-    case 'reign_year': return ordinalWords(reignOf(state, content).year);
+    case 'reign_year': return ordinalWords(reignTitle(state, content).year);
     // the year counted from Aldred II's crowning, whoever reigns now: for the old King's own years
     case 'regnal_year': return ordinalWords(Number(getValue(state, content, 'calendar.year')));
     case 'king': return reignOf(state, content).king;

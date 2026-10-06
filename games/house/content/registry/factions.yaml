@@ -1,0 +1,4 @@
+west: { label: The West, kind: faction }
+adalia: { label: Adalia, kind: faction }
+valdrenne: { label: Valdrenne, kind: faction }
+church: { label: The Church, kind: faction }

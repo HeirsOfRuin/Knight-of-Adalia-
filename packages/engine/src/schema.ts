@@ -107,8 +107,8 @@ export type Audience = Check['audience'];
 export const CardSchema = z.object({ title: z.string(), subtitle: z.string().optional(), epigraph: z.string().optional() }).strict();
 export type Card = z.infer<typeof CardSchema>;
 
-/** Outcome, choice and scene schemas over a game's effect schema. */
-export function makeSceneSchemas<E>(EffectSchema: z.ZodType<E>) {
+/** Outcome, choice and scene schemas over a game's effect schema, with any scene fields of the game's own. */
+export function makeSceneSchemas<E, X extends z.ZodRawShape = {}>(EffectSchema: z.ZodType<E>, sceneExtra: X = {} as X) {
   const OutcomeSchema = z.object({
     text: z.string().optional(),
     effects: z.array(EffectSchema).default([]),
@@ -153,7 +153,7 @@ export function makeSceneSchemas<E>(EffectSchema: z.ZodType<E>) {
     variants: z.record(Id, z.string()).optional(), // variant key (GameModule.variantKey) -> replacement text
     on_enter: z.array(EffectSchema).default([]),
     choices: z.array(ChoiceSchema).default([]),
-  }).strict();
+  }).extend(sceneExtra).strict();
 
   return { OutcomeSchema, ChoiceSchema, SceneSchema };
 }

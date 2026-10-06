@@ -1,0 +1,8 @@
+# Who rules the West, by frame. reign_from: the regnal year the reign is dated from (canon.md timeline).
+self:       { frame: free, style: "[if hero.sex == female]Queen[else]King[/if] {name}", capital: Lannec, reign_from: 45 }
+mahaut:     { frame: free, style: Queen Mahaut, capital: Lannec, reign_from: 42 }
+thibaut:    { frame: free, style: King Thibaut, capital: Lannec, reign_from: 42 }
+duchy:      { frame: free, style: the free duchy, capital: Lannec, reign_from: 42 }
+edwin:      { frame: adalian, style: King Edwin, capital: Wendmere, reign_from: 40 }
+edwin_salt: { frame: partitioned, style: King Edwin, capital: Wendmere, reign_from: 40 }
+amaury:     { frame: partitioned, style: King Amaury, capital: Cordelle, reign_from: 33 }

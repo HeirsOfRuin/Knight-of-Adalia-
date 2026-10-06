@@ -1,0 +1,15 @@
+id: crowned
+label: Crowned
+summary: "You founded a dynasty on a throne nobody had sat on before. The law of succession is the first fight."
+from_ending: crowned
+frames: ["free"]
+sovereigns: {"free": ["self"]}
+start_scene: h_open
+founder:
+  age: 49
+  station: royal
+  attributes: {"presence": 4, "wits": 3, "endurance": 2, "strength": 2, "agility": 2}
+  skills: {"command": 4, "diplomacy": 4, "courtesy": 3, "stewardship": 3, "arms": 3, "tactics": 3}
+  coin: 60000
+  renown: 20
+  men: 60

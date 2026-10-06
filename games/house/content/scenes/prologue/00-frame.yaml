@@ -1,0 +1,42 @@
+# The framework's only scene: it shows where the West stands in each frame. The prologue
+# (The Old Lord) replaces it once the detailed plan (docs/PLAN.md) is approved.
+- id: h_open
+  chapter: prologue
+  title: The Old Lord
+  checkpoint: true
+  text: |
+    The hall is cold in the mornings now, and so are you. You are {age_words}, and there is grey in your hair that was not there at Lannec.
+
+    [if realm.sovereign == duchy]The free duchy is eight years old. The Estates of the West still meet at Lannec every Whitsun and still argue about who calls them.[elif realm.sovereign == self]The crown of the West is five years old, and you have worn it since the oaths at Lannec. It is heavier than it looked.[else]The crown of the West is eight years old, and {realm.sovereign} wears it. [if opening == kingmaker]You put it there, and everyone at court knows it, including {realm.sovereign}.[else]You knelt with the others.[/if][/if]
+
+    [break]
+
+    This is as far as House of Adalia goes for now. The West is set as it stands in your story, and the rest is still being planned.
+  variants:
+    adalian: |
+      The hall is cold in the mornings now, and so are you. You are {age_words}, and there is grey in your hair that was not there at Lannec.
+
+      The West is Adalia's. The lords voted it at Lannec eight years ago, and {realm.sovereign} rules it from {realm.capital}. [if inherited.c5_earl]You hold it for him as Earl of the March[if inherited.c5_liberties], with the West's old liberties written into your patent for your heir[/if].[else]His governors come and go. The taxes stay.[/if]
+
+      [break]
+
+      This is as far as House of Adalia goes for now. The West is set as it stands in your story, and the rest is still being planned.
+    partitioned: |
+      The hall is cold in the mornings now, and so are you. You are {age_words}, and there is grey in your hair that was not there at the Pont-aux-Moines.
+
+      The West lost its war. Valdrenne holds the Armance and Adalia the Salt, and the new border runs [if realm.sovereign == amaury]east of the valleys you came from. You hold your land of King Amaury now, or the Valdrennish governor at Lannec says you do.[else]along the marsh. You are King Edwin's again, and Wendmere has not forgotten that you were not, once.[/if] [if opening == exile]You hear all of it from abroad, a season late.[elif opening == ruin]None of it is yours to hold now. Your name was struck from the rolls.[/if]
+
+      [break]
+
+      This is as far as House of Adalia goes for now. The West is set as it stands in your story, and the rest is still being planned.
+  choices:
+    - id: go_on
+      text: Go on.
+      next: h_story_so_far
+
+- id: h_story_so_far
+  chapter: prologue
+  kind: ending
+  ending: story_so_far
+  text: |
+    The story so far: {name}, {realm.frame}, under {realm.sovereign}. The house goes on from here.

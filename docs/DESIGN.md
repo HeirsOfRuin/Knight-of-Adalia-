@@ -1334,3 +1334,4 @@ Josh found text that assumed choices he had not made. A survey found 47 such pla
 
 | 2026-10-05 | The world map: terrain generator, 56 places, scene places, World panel and full-screen map, chapter-card map, the place in the date line. See The world map. |
 | 2026-10-05 | World map rebuilt: a 360 × 240 generated world with far lands (Ice Reach, Ember Isles, Thousand Isles, Grass Sea, Midsea, Glass Desert), realm borders, zoom ×1–6 and drag panning. |
+| 2026-10-06 | Sequel framed in `docs/SEQUEL-FRAME.md`. Author accepted the recommended scope: a hybrid of authored spine and light realm simulation, three generations, one repository with a shared engine package, succession law as a live lever (daughters can head the house), and the dynasty export optional. Openings, endings, systems, build order and six open decisions await approval. |

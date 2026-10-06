@@ -1,66 +1,77 @@
-# Places on the world map (tools/make-map.ts draws the terrain they sit on).
-# x, y: tile on the 160 x 120 map. kind: city, town, castle, manor, abbey, port, battle, region.
+# Places on the world map (src/engine/worldgen.ts generates the terrain they sit on).
+# x, y: tile on the 360 x 240 world (src/engine/worldgen.ts). kind: city, town, castle, manor, abbey, port, battle, region, sea.
 # "if": when the hero knows of it (a condition); omitted = known from the start.
 # Scenes say where they happen in content/map/scene-places.yaml.
 
 # ---- the island ----
-wendmere: { name: Wendmere, x: 51, y: 44, kind: city, region: adalia, text: "The King's capital, on a tidal river: the court, the Chancery, the abbey where kings are crowned." }
-saltcombe: { name: Saltcombe, x: 38, y: 58, kind: port, region: adalia, text: "The chief port of Adalia and the wool staple. Every army for Valdrenne sails from here." }
-wendham: { name: Wendham, x: 31, y: 50, kind: town, region: adalia, text: "A wool market town in the south midlands: dyers, fullers, tanners and merchants' guilds." }
-ashby: { name: Ashby, x: 34, y: 47, kind: manor, region: adalia, text: "A manor near Wendham, held by Sir Hamon Darrell. A reeve's son grows up here." }
-ravell_hall: { name: Ravell Hall, x: 27, y: 44, kind: castle, region: adalia, text: "The seat of Lord Thurstan Ravell, a day's ride from Wendham, on the edge of his chase." }
-hollin: { name: Hollin, x: 24, y: 47, kind: manor, region: adalia, text: "A dozen cottages and a church on the edge of the Ravell chase. The archers' village." }
-underhill: { name: Underhill, x: 25, y: 41, kind: manor, region: adalia, if: background == servant, text: "A Ravell manor under the chase, where the tirewoman's family came from." }
-thorne_hall: { name: Thorne Hall, x: 18, y: 38, kind: castle, region: adalia, if: flag.c1_thorne_taken || seen.c1_crisis_hamon, text: "Sir Godric Thorne's palisaded hall, taken by the King's men without a blow." }
-hythe_fields: { name: The Hythe Fields, x: 53, y: 47, kind: battle, region: adalia, if: seen.c3_rising || seen.c3_rising_far || seen.c3_rising_news, text: "Across the river from Wendmere, where the commons met the King, and where it ended." }
-wythen_heath: { name: Wythen Heath, x: 49, y: 37, kind: battle, region: adalia, if: seen.c4_wythen || seen.c4_west_war, text: "North of Wendmere, where King Edwin and the Earl of Carrow fought for the kingdom." }
-carrow: { name: Carrow, x: 49, y: 31, kind: castle, region: adalia, text: "The Earl of Carrow's seat, among the northern earls, in the woods above Wendmere." }
-saltmarsh: { name: Saltmarsh, x: 52, y: 55, kind: castle, region: adalia, if: seen.c4_eldest || seen.c4_home, text: "The Prince's household, on the marsh coast east of Saltcombe." }
-westry: { name: Westry, x: 20, y: 55, kind: castle, region: adalia, if: seen.c2_feast || seen.c3_suitor, text: "The Earl of Westry's seat, the richest earldom in the south." }
-ashdown: { name: Ashdown, x: 44, y: 55, kind: manor, region: adalia, if: seen.c3_match, text: "Three manors in the south of Adalia, half empty since the Mottle. The heiress is the King's ward." }
-lisle: { name: Lisle, x: 12, y: 44, kind: castle, region: adalia, if: seen.c1_arrival, text: "A manor and a half in the west of Adalia, with a castle that leaks: Lady Maud's inheritance." }
-wyck: { name: Wyck, x: 40, y: 30, kind: manor, region: march, if: seen.c1_raid, text: "Dame Joan Wyck's manor near the March, which her stepson wants." }
-leven_ford: { name: The Leven ford, x: 37, y: 24, kind: battle, region: march, if: seen.c1_raid, text: "The border river. Cattle cross here, and raiders, and sometimes armies." }
-harrow_ford: { name: Harrow Ford, x: 28, y: 25, kind: battle, region: march, text: "The old battle on the Leven, in the last king's war with Caldmoor. Old men still argue about it." }
-glenhallow: { name: Glenhallow, x: 23, y: 14, kind: castle, region: caldmoor, if: seen.c1_raid, text: "Black Ewan's tower in the Caldmoor hills: the raiders' home, and Coll's." }
-kilbride: { name: Kilbride, x: 35, y: 11, kind: abbey, region: caldmoor, if: seen.c4q_carn_dubh || seen.c4_stewards, text: "The Caldmoor abbey, where the monks keep the names of the dead." }
-carn_dubh: { name: Carn Dubh, x: 16, y: 18, kind: battle, region: caldmoor, if: background == archer, text: "A mill in Caldmoor, in the last war. The archer's father does not speak of it." }
+wendmere: { name: Wendmere, x: 128, y: 82, kind: city, region: adalia, text: "The King's capital, on a tidal river: the court, the Chancery, the abbey where kings are crowned." }
+saltcombe: { name: Saltcombe, x: 80, y: 107, kind: port, region: adalia, text: "The chief port of Adalia and the wool staple. Every army for Valdrenne sails from here." }
+wendham: { name: Wendham, x: 84, y: 94, kind: town, region: adalia, text: "A wool market town in the south midlands: dyers, fullers, tanners and merchants' guilds." }
+ashby: { name: Ashby, x: 91, y: 91, kind: manor, region: adalia, text: "A manor near Wendham, held by Sir Hamon Darrell. A reeve's son grows up here." }
+ravell_hall: { name: Ravell Hall, x: 74, y: 82, kind: castle, region: adalia, text: "The seat of Lord Thurstan Ravell, a day's ride from Wendham, on the edge of his chase." }
+hollin: { name: Hollin, x: 68, y: 85, kind: manor, region: adalia, text: "A dozen cottages and a church on the edge of the Ravell chase. The archers' village." }
+underhill: { name: Underhill, x: 70, y: 78, kind: manor, region: adalia, if: background == servant, text: "A Ravell manor under the chase, where the tirewoman's family came from." }
+thorne_hall: { name: Thorne Hall, x: 61, y: 77, kind: castle, region: adalia, if: flag.c1_thorne_taken || seen.c1_crisis_hamon, text: "Sir Godric Thorne's palisaded hall, taken by the King's men without a blow." }
+hythe_fields: { name: The Hythe Fields, x: 129, y: 87, kind: battle, region: adalia, if: seen.c3_rising || seen.c3_rising_far || seen.c3_rising_news, text: "Across the river from Wendmere, where the commons met the King, and where it ended." }
+wythen_heath: { name: Wythen Heath, x: 124, y: 74, kind: battle, region: adalia, if: seen.c4_wythen || seen.c4_west_war, text: "North of Wendmere, where King Edwin and the Earl of Carrow fought for the kingdom." }
+carrow: { name: Carrow, x: 118, y: 70, kind: castle, region: adalia, text: "The Earl of Carrow's seat, among the northern earls, in the woods above Wendmere." }
+saltmarsh: { name: Saltmarsh, x: 132, y: 99, kind: castle, region: adalia, if: seen.c4_eldest || seen.c4_home, text: "The Prince's household, on the marsh coast east of Saltcombe." }
+westry: { name: Westry, x: 64, y: 103, kind: castle, region: adalia, if: seen.c2_feast || seen.c3_suitor, text: "The Earl of Westry's seat, the richest earldom in the south." }
+ashdown: { name: Ashdown, x: 100, y: 104, kind: manor, region: adalia, if: seen.c3_match, text: "Three manors in the south of Adalia, half empty since the Mottle. The heiress is the King's ward." }
+lisle: { name: Lisle, x: 56, y: 92, kind: castle, region: adalia, if: seen.c1_arrival, text: "A manor and a half in the west of Adalia, with a castle that leaks: Lady Maud's inheritance." }
+wyck: { name: Wyck, x: 92, y: 72, kind: manor, region: march, if: seen.c1_raid, text: "Dame Joan Wyck's manor near the March, which her stepson wants." }
+leven_ford: { name: The Leven ford, x: 93, y: 61, kind: battle, region: march, if: seen.c1_raid, text: "The border river. Cattle cross here, and raiders, and sometimes armies." }
+harrow_ford: { name: Harrow Ford, x: 84, y: 62, kind: battle, region: march, text: "The old battle on the Leven, in the last king's war with Caldmoor. Old men still argue about it." }
+glenhallow: { name: Glenhallow, x: 76, y: 40, kind: castle, region: caldmoor, if: seen.c1_raid, text: "Black Ewan's tower in the Caldmoor hills: the raiders' home, and Coll's." }
+kilbride: { name: Kilbride, x: 96, y: 26, kind: abbey, region: caldmoor, if: seen.c4q_carn_dubh || seen.c4_stewards, text: "The Caldmoor abbey, where the monks keep the names of the dead." }
+carn_dubh: { name: Carn Dubh, x: 66, y: 44, kind: battle, region: caldmoor, if: background == archer, text: "A mill in Caldmoor, in the last war. The archer's father does not speak of it." }
 
 # ---- the West: the Armance and the Sauvemer march ----
-port_haudry: { name: Port-Haudry, x: 30, y: 71, kind: port, region: west, if: chapter == ch2 || seen.c2_landing, text: "The Armance port where the King's army landed in the first war." }
-lannec: { name: Lannec, x: 20, y: 79, kind: city, region: west, if: seen.c2_armance, text: "The Duchess's castle town and the heart of the Armance: the horse fair, the salt guilds, the Estates of the West." }
-kerval: { name: Kerval, x: 25, y: 83, kind: manor, region: west, if: flag.c2_granted_kerval || seen.c2_grants, text: "Orchards and good farmland in the Armance hills behind Lannec, with a mill and a fortified farm." }
-saint_ferreol: { name: Saint-Ferréol, x: 13, y: 76, kind: town, region: west, if: seen.c4_towns, text: "An Armance town on the western coast, taken in the second war." }
-kerguen: { name: Kerguen, x: 17, y: 86, kind: manor, region: west, if: seen.c4_widow || seen.c4_second, text: "A mill and two villages in the Armance hills: the Kerguen dower." }
-saint_lys: { name: Saint-Lys, x: 33, y: 83, kind: abbey, region: west, if: seen.c2_truce, text: "The Bishop's city and its abbey, where the truce was made and the West's kings are crowned." }
-sauvemer: { name: Sauvemer, x: 45, y: 66, kind: city, region: west, if: seen.c2_sauvemer || seen.c2_armance, text: "A walled port on a spit between the sea and the salt marshes, two days up the coast from the Armance." }
-les_salines: { name: Les Salines, x: 48, y: 71, kind: battle, region: west, if: seen.c2_relief || seen.c2_salines_eve, text: "The salt marsh behind Sauvemer, where the line held on the dyke." }
-marsalin: { name: Marsalin, x: 46, y: 70, kind: manor, region: west, if: flag.c2_granted_marsalin || seen.c2_grants, text: "The salt manor on the edge of Les Salines: a stone house on the dyke and the battle's sluice-gates." }
-ormel: { name: Ormel, x: 52, y: 73, kind: manor, region: west, if: flag.c2_granted_ormel || seen.c2_grants, text: "A poor marsh manor behind Sauvemer, with a church and a tithe barn: the grant nobody wanted." }
-saint_aubin: { name: Saint-Aubin, x: 54, y: 76, kind: abbey, region: west, if: seen.c3_arrival, text: "The abbey across the marsh, with its novice-master and its midwife." }
-la_garde: { name: La Garde, x: 53, y: 69, kind: castle, region: west, if: holding.la_garde.held || seen.c4_grant, text: "A square tower on a rock above the Sauvemer road, with two villages under it." }
-querec: { name: Quérec, x: 35, y: 96, kind: castle, region: west, if: seen.c5r_oaths, text: "A salt lordship in the southern marsh of the West, behind its dykes." }
-pont_aux_moines: { name: The Pont-aux-Moines, x: 60, y: 75, kind: battle, region: west, if: seen.c3_suitor || seen.c5_war_opens || seen.c3_raid, text: "The border bridge, the one road south a host can use, where the West's war was decided." }
+port_haudry: { name: Port-Haudry, x: 60, y: 133, kind: port, region: west, if: chapter == ch2 || seen.c2_landing, text: "The Armance port where the King's army landed in the first war." }
+lannec: { name: Lannec, x: 38, y: 152, kind: city, region: west, if: seen.c2_armance, text: "The Duchess's castle town and the heart of the Armance: the horse fair, the salt guilds, the Estates of the West." }
+kerval: { name: Kerval, x: 47, y: 160, kind: manor, region: west, if: flag.c2_granted_kerval || seen.c2_grants, text: "Orchards and good farmland in the Armance hills behind Lannec, with a mill and a fortified farm." }
+saint_ferreol: { name: Saint-Ferréol, x: 30, y: 147, kind: town, region: west, if: seen.c4_towns, text: "An Armance town on the western coast, taken in the second war." }
+kerguen: { name: Kerguen, x: 36, y: 166, kind: manor, region: west, if: seen.c4_widow || seen.c4_second, text: "A mill and two villages in the Armance hills: the Kerguen dower." }
+saint_lys: { name: Saint-Lys, x: 72, y: 144, kind: abbey, region: west, if: seen.c2_truce, text: "The Bishop's city and its abbey, where the truce was made and the West's kings are crowned." }
+sauvemer: { name: Sauvemer, x: 110, y: 120, kind: city, region: west, if: seen.c2_sauvemer || seen.c2_armance, text: "A walled port on a spit between the sea and the salt marshes, two days up the coast from the Armance." }
+les_salines: { name: Les Salines, x: 112, y: 128, kind: battle, region: west, if: seen.c2_relief || seen.c2_salines_eve, text: "The salt marsh behind Sauvemer, where the line held on the dyke." }
+marsalin: { name: Marsalin, x: 104, y: 131, kind: manor, region: west, if: flag.c2_granted_marsalin || seen.c2_grants, text: "The salt manor on the edge of Les Salines: a stone house on the dyke and the battle's sluice-gates." }
+ormel: { name: Ormel, x: 130, y: 134, kind: manor, region: west, if: flag.c2_granted_ormel || seen.c2_grants, text: "A poor marsh manor behind Sauvemer, with a church and a tithe barn: the grant nobody wanted." }
+saint_aubin: { name: Saint-Aubin, x: 136, y: 141, kind: abbey, region: west, if: seen.c3_arrival, text: "The abbey across the marsh, with its novice-master and its midwife." }
+la_garde: { name: La Garde, x: 122, y: 142, kind: castle, region: west, if: holding.la_garde.held || seen.c4_grant, text: "A square tower on a rock above the Sauvemer road, with two villages under it." }
+querec: { name: Quérec, x: 107, y: 177, kind: castle, region: west, if: seen.c5r_oaths, text: "A salt lordship in the southern marsh of the West, behind its dykes." }
+pont_aux_moines: { name: The Pont-aux-Moines, x: 145, y: 138, kind: battle, region: west, if: seen.c3_suitor || seen.c5_war_opens || seen.c3_raid, text: "The border bridge, the one road south a host can use, where the West's war was decided." }
 
 # ---- Valdrenne ----
-cordelle: { name: Cordelle, x: 84, y: 95, kind: city, region: valdrenne, text: "The capital of Valdrenne, inland on a great river." }
-brese: { name: Brésy, x: 66, y: 79, kind: castle, region: valdrenne, if: seen.c3_raid || seen.c3_suitor || seen.c2_grisolles, text: "The Brésy lands in the west of Valdrenne, across the border bridge from the march." }
-vaudrey: { name: Vaudrey, x: 62, y: 71, kind: town, region: valdrenne, if: seen.c2_vaudrey, text: "A walled cloth town on a river, with a stone bridge and a castle on an island." }
-breval: { name: Bréval, x: 56, y: 68, kind: town, region: valdrenne, if: seen.c2_village, text: "A village on the road east, ransomed or burned in the first war." }
-grisolles: { name: Grisolles, x: 80, y: 73, kind: battle, region: valdrenne, if: seen.c2_grisolles_eve, text: "Where the Aube crosses the road back west. The rearguard held the bridge, or did not." }
-mortefontaine: { name: Mortefontaine, x: 61, y: 86, kind: battle, region: valdrenne, if: seen.c4_carrow || seen.c4_mf_1, text: "The abbey of the dead spring, on a ridge where the road from Cordelle comes over the hills." }
-vervais: { name: Vervais, x: 112, y: 70, kind: region, region: valdrenne, text: "The weaving towns of the north-east, which live on Adalian wool." }
-lisonne: { name: The Lisonne, x: 98, y: 70, kind: region, region: valdrenne, if: seen.c2_looms, text: "The river between Amaury's lands and Vervais." }
-midi: { name: The Midi, x: 88, y: 102, kind: region, region: valdrenne, text: "The rich south of Valdrenne: wine and salt." }
+cordelle: { name: Cordelle, x: 194, y: 170, kind: city, region: valdrenne, text: "The capital of Valdrenne, inland on a great river." }
+brese: { name: Brésy, x: 154, y: 141, kind: castle, region: valdrenne, if: seen.c3_raid || seen.c3_suitor || seen.c2_grisolles, text: "The Brésy lands in the west of Valdrenne, across the border bridge from the march." }
+vaudrey: { name: Vaudrey, x: 160, y: 131, kind: town, region: valdrenne, if: seen.c2_vaudrey, text: "A walled cloth town on a river, with a stone bridge and a castle on an island." }
+breval: { name: Bréval, x: 150, y: 128, kind: town, region: valdrenne, if: seen.c2_village, text: "A village on the road east, ransomed or burned in the first war." }
+grisolles: { name: Grisolles, x: 172, y: 133, kind: battle, region: valdrenne, if: seen.c2_grisolles_eve, text: "Where the Aube crosses the road back west. The rearguard held the bridge, or did not." }
+mortefontaine: { name: Mortefontaine, x: 168, y: 151, kind: battle, region: valdrenne, if: seen.c4_carrow || seen.c4_mf_1, text: "The abbey of the dead spring, on a ridge where the road from Cordelle comes over the hills." }
+vervais: { name: Vervais, x: 230, y: 110, kind: region, region: valdrenne, text: "The weaving towns of the north-east, which live on Adalian wool." }
+lisonne: { name: The Lisonne, x: 202, y: 128, kind: region, region: valdrenne, if: seen.c2_looms, text: "The river between Amaury's lands and Vervais." }
+midi: { name: The Midi, x: 176, y: 192, kind: region, region: valdrenne, text: "The rich south of Valdrenne: wine and salt." }
 
 # ---- beyond ----
-sarenza: { name: Sarenza, x: 92, y: 115, kind: port, region: sarenza, text: "The chief of the Sarenzan ports on the southern sea: banks, galleys and the Signory." }
-vellagio: { name: Vellagio, x: 108, y: 114, kind: port, region: sarenza, text: "A Sarenzan port of the league." }
-calvi_porto: { name: Calvi Porto, x: 76, y: 112, kind: port, region: sarenza, text: "A Sarenzan port of the league, west of the city." }
-hroswald: { name: Hroswald, x: 146, y: 76, kind: region, region: hroswald, text: "Forest, mountains and mining towns east of Valdrenne, where the free companies come from." }
-ostmark: { name: The Ostmark, x: 147, y: 64, kind: region, region: hroswald, text: "Hroswald's eastern frontier." }
-caldmoor: { name: Caldmoor, x: 30, y: 9, kind: region, region: caldmoor, text: "The highland north of the island: clans, cattle and old feuds." }
+sarenza: { name: Sarenza, x: 222, y: 226, kind: port, region: sarenza, text: "The chief of the Sarenzan ports on the southern sea: banks, galleys and the Signory." }
+vellagio: { name: Vellagio, x: 240, y: 222, kind: port, region: sarenza, text: "A Sarenzan port of the league." }
+calvi_porto: { name: Calvi Porto, x: 206, y: 222, kind: port, region: sarenza, text: "A Sarenzan port of the league, west of the city." }
+hroswald: { name: Hroswald, x: 285, y: 140, kind: region, region: hroswald, text: "Forest, mountains and mining towns east of Valdrenne, where the free companies come from." }
+ostmark: { name: The Ostmark, x: 310, y: 100, kind: region, region: hroswald, text: "Hroswald's eastern frontier." }
+caldmoor: { name: Caldmoor, x: 92, y: 34, kind: region, region: caldmoor, text: "The highland north of the island: clans, cattle and old feuds." }
 
 # added for Chapter 1's March
-brome: { name: Brome, x: 31, y: 29, kind: manor, region: march, if: seen.c1_trouble_ancel || track == levy || seen.c1_muster, text: "Sir Ancel Brome's manor on the March, with its walls, its butts and its cattle." }
-aikbank: { name: Aikbank, x: 45, y: 23, kind: battle, region: march, if: seen.c1_watch, text: "A ford on the Leven below the moss, where the watch keeps its fires." }
+brome: { name: Brome, x: 88, y: 66, kind: manor, region: march, if: seen.c1_trouble_ancel || track == levy || seen.c1_muster, text: "Sir Ancel Brome's manor on the March, with its walls, its butts and its cattle." }
+aikbank: { name: Aikbank, x: 100, y: 60, kind: battle, region: march, if: seen.c1_watch, text: "A ford on the Leven below the moss, where the watch keeps its fires." }
+
+# ---- the seas, and the lands known only from sailors' tales ----
+narrow_sea: { name: The Narrow Sea, x: 72, y: 119, kind: sea, region: seas, text: "Between the island and Valdrenne: a day or two with a fair wind, weeks without one." }
+grey_ocean: { name: The Grey Ocean, x: 22, y: 62, kind: sea, region: seas, text: "The ocean to the west. Fishermen go out on it. Nobody comes back from the other side, because nobody has gone." }
+southern_sea: { name: The Southern Sea, x: 120, y: 222, kind: sea, region: seas, text: "The warm sea of the Sarenzan galleys, the salt trade and the pilgrims' ships." }
+midsea: { name: The Midsea, x: 296, y: 184, kind: sea, region: seas, text: "An enclosed sea in the south-east, with one narrow mouth. The caravans come to its far shore, and the sickness came with them." }
+ice_reach: { name: The Ice Reach, x: 180, y: 4, kind: region, region: far, text: "Ice and floes north of Caldmoor. The Caldmoor men hunt seals at its edge in a hard winter." }
+ember_isles: { name: The Ember Isles, x: 22, y: 104, kind: region, region: far, text: "Burning islands in the western sea. Sailors give them a wide berth, and say the smoke can be seen from Lisle on a clear day." }
+thousand_isles: { name: The Thousand Isles, x: 48, y: 208, kind: region, region: far, text: "Rocks, reefs and fishing villages south of the Armance, where every island has its own saint and its own pirates." }
+grass_sea: { name: The Grass Sea, x: 338, y: 112, kind: region, region: far, text: "The open steppe past the Ostmark. Horsemen live there, and come west when the grass fails." }
+glass_desert: { name: The Glass Desert, x: 336, y: 214, kind: region, region: far, text: "Beyond the Midsea: sand fused to glass, say the Sarenzan merchants, by a fire older than the world. The caravans cross it." }

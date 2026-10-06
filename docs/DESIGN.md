@@ -1211,21 +1211,45 @@ A player finished with about £118 unspent. Eight shop scenes now sit on the spi
 - Crowned 5.5%; deaths 4%.
 - Bots at a shop keep back the men's pay. A spender (the wealth policy) buys what he can; others buy one thing half the time.
 
-## The world map (2026-10-05)
-The map is pixel art drawn in code; there is no image file.
+## The world map (2026-10-05, rebuilt the same day)
+The map is pixel art generated in code; there is no image file and no build step.
 
-- **Terrain.** `tools/make-map.ts` draws the terrain from shapes: coasts, mountains, hills, forests, marsh, farmland, rivers and salt pans, made ragged with seeded noise. It writes `content/map/world.txt` at one character per tile, 160 × 120. Change a shape there and re-run it.
-- **Places.** `registry/places.yaml` gives each place's tile, kind, region and description, and an `if` saying when the hero knows of it. The validator keeps every place on the map and out of the sea.
-- **Where scenes happen.** `content/map/scene-places.yaml` maps each scene to a place, or to `@home` (by background), `@service` (Ravell Hall, or Brome for the levy), `@manor` (the grant) or `@town`. A scene with no place leaves him where he was. About 90% of the story is placed.
-- **Engine.** `src/engine/map.ts` covers resolution, his stays (one per run of scenes at a place), where he is now, and what he knows of. Conditions can test `seen.<scene>`.
-- **UI.** `MapView` sits at the top of the World panel, with a full-screen view that zooms ×1–4 and closes with Escape. It shows:
-  - terrain at 4 canvas pixels a tile, with tiny patterns: trees, peaks, furrows, reeds, waves;
-  - 7×7 icons per kind of place;
-  - his road as a dotted line;
-  - his own lands in gold, and a pulsing ring where he is;
-  - labels placed most-important-first without overlaps.
+- **Terrain.** `src/engine/worldgen.ts` generates a 360 × 240 world, deterministic and cached, in about half a second. It builds land from polygons (made ragged by shared warp fields), then:
+  - cuts out seas, fjords and straits, and adds islands;
+  - raises ridges and downs for elevation;
+  - assigns biomes by latitude and named zones.
 
-  Tapping a place shows its description and every date he was there. Chapter cards carry a small map, and the date line above a scene names the place.
+  Farm, vines, salt, marsh, dark forest, steppe, desert and glacier are the zones. Rivers are traced lines, and shoals follow a chamfer distance from the coast. Change a shape there and the map changes; the validator re-checks every place.
+- **The world beyond the West.** The map is meant to read as a large world with the home realms in one corner:
+  - the Ice Reach and its floes across the north;
+  - the volcanic Ember Isles in the Grey Ocean;
+  - the Thousand Isles in the south-west;
+  - the Iron Spine and the dark forest of Hroswald;
+  - the Grass Sea steppe in the east;
+  - the enclosed Midsea, with the Glass Desert beyond it where the caravans come from;
+  - the far southern coast across the Southern Sea.
+
+  Realm borders are drawn as dotted lines, set by `realmAt`.
+- **Places.** `registry/places.yaml` gives each place's tile, kind, region and description, and an `if` saying when the hero knows of it. Kinds include `region` and `sea`, which get large centred labels and no icon. The validator keeps every place on the map, puts seas on water, and keeps every other kind off it.
+- **Where scenes happen.** `content/map/scene-places.yaml` maps each scene to a place, or to one of these:
+  - `@home` (by background);
+  - `@service` (Ravell Hall, or Brome for the levy);
+  - `@manor` (the grant);
+  - `@town`.
+
+  A scene with no place leaves him where he was.
+- **Engine.** `src/engine/map.ts` covers resolution, his stays, where he is now, and what he knows of. Conditions can test `seen.<scene>`.
+- **UI.** `src/ui/worldart.ts` paints the terrain once at 3 canvas pixels a tile. It uses:
+  - a palette per biome, with hillshade and depth tint;
+  - 3×3 patterns: trees, pines, peaks, furrows, vines, dunes, reeds, lava, waves;
+  - foam on coasts.
+
+  `MapView` lays places, his road and labels over it.
+  - The World panel shows a fixed-height window centred on where he is.
+  - **Open the map** gives "The Known World" full screen. It zooms ×1–6, never smaller than its frame, pans by drag or touch, and closes with Escape.
+  - Labels are placed most-important-first without overlaps.
+  - Tapping a place shows its description and every date he was there.
+  - Chapter cards carry a small map centred on him.
 
 ## Dynasty export: the sequel's input contract (2026-10-04)
 Every ending except death shows a "To be continued" block: a line per ending (`sequel` in registry/endings.yaml) and an **Export your house** button. The button gives a text code: `KOAD1.` plus base64url of the deflated JSON, the same encoding as save codes (`encodeCode` in src/engine/savecode.ts). The code is not a save and cannot reopen the life. It is what a sequel reads to continue the family.
@@ -1304,3 +1328,4 @@ Josh found text that assumed choices he had not made. A survey found 47 such pla
 | 2026-10-05 | The economy made consistent (docs/ECONOMY.md is the reference). Incomes were a tenth of history while prose prices were historical: rent is now 20d a head (a manor of 250 yields about £21), salt and orchards scaled to match, other holdings x5, men's pay 6s a year. Lordly purchases repriced to the reference bands (towers £45-60, a stone church £110, a manor £150, the Ch4 company £10-50, Ch5 armies and treaties); prose sums changed to match. Promised money now arrives: Lord Ravell's £10 fee pays until Ravell sells up; the Crown buys great prisoners and pays the captor £40 (Corbie, the Constable's son). \"More money than your family sees\" lines are written per background (a wool merchant's year is ten times a reeve's). A test checks every price shown on a choice against what it costs and requires. Bot: the spender ends Ch5 with about £140, a cautious lord about £300; desertion 6%; Crowned 6.6%, deaths 4%. |
 
 | 2026-10-05 | The world map: terrain generator, 56 places, scene places, World panel and full-screen map, chapter-card map, the place in the date line. See The world map. |
+| 2026-10-05 | World map rebuilt: a 360 × 240 generated world with far lands (Ice Reach, Ember Isles, Thousand Isles, Grass Sea, Midsea, Glass Desert), realm borders, zoom ×1–6 and drag panning. |

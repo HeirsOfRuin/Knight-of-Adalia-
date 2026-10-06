@@ -41,6 +41,14 @@ Two kingdoms share a cold, wet island. Adalia, in the south, is rich in wool and
   - **The Lisonne** is the river between Amaury's lands and Vervais. **The Aube** crosses the road back west at **Grisolles**.
 - **Hroswald**: forest, mountains and mining towns east of Valdrenne. The **Ostmark** is its eastern frontier.
 - **Sarenza**: a league of ports on the southern sea. Sarenza is the chief city, with **Vellagio** and **Calvi Porto** beside it.
+- **Beyond the known realms** (the map shows these; the story only mentions them):
+  - **The Ice Reach**: pack ice and floes north of Caldmoor. The fishers go no further.
+  - **The Grey Ocean**: the open western sea. The **Ember Isles** lie in it, smoking islands the Armance sailors give a wide berth.
+  - **The Thousand Isles**: scattered islands south-west of the Armance, fishers and wreckers.
+  - **The Iron Spine**: the mountain wall of Hroswald.
+  - **The Grass Sea**: the open steppe beyond the Ostmark. Horse peoples.
+  - **The Midsea**: an enclosed sea south-east of Valdrenne. Beyond it lies the **Glass Desert**, where the caravans start.
+  - **The far south**: a coast across the Southern Sea that the Sarenzans trade with.
 
 ## Adalia
 - **Government:** a feudal monarchy. The king rules with a Council. Taxes need the consent of **the Moot**, an assembly of lords, knights of the shire and burgesses. The Crown is poor. It depends on the wool custom and on Sarenzan loans.

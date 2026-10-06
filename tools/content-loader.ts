@@ -88,15 +88,12 @@ export function loadContent(dir = CONTENT_DIR): ContentBundle {
     });
   }
 
-  // the world map: terrain and where scenes happen
+  // where scenes happen, for the world map
   let map: ContentBundle['map'];
-  const worldPath = join(dir, 'map', 'world.txt');
-  if (existsSync(worldPath)) {
-    const worldText = readFileSync(worldPath, 'utf8');
-    const placesPath = join(dir, 'map', 'scene-places.yaml');
-    hash.update(worldText);
-    if (existsSync(placesPath)) hash.update(readFileSync(placesPath));
-    map = { rows: worldText.trimEnd().split('\n'), scenes: (existsSync(placesPath) ? readYaml(placesPath) : {}) as Record<string, string> };
+  const placesPath = join(dir, 'map', 'scene-places.yaml');
+  if (existsSync(placesPath)) {
+    hash.update(readFileSync(placesPath));
+    map = { scenes: (readYaml(placesPath) ?? {}) as Record<string, string> };
   }
 
   return { hash: hash.digest('hex').slice(0, 12), config, registry, backgrounds, scenes, sources, map };

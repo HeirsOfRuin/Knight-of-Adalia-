@@ -10,6 +10,7 @@ function compileCond(c: CondInput): Cond {
 }
 import { validateText } from '../src/engine/text';
 import { checkPath } from '../src/engine/paths';
+import { world, isWater } from '../src/engine/worldgen';
 import { TEMPERAMENTS, UPBRINGINGS } from '../src/engine/heirs';
 
 export type Severity = 'error' | 'warning';
@@ -124,12 +125,13 @@ export function validate(content: ContentBundle): ValidationReport {
     r.paths.filter((p) => p.startsWith('flag.')).forEach((p) => flagsRead.add(p.slice(5)));
   };
   // the world map: places sit on the map, on land; scene places name real scenes and places
-  const rows = content.map?.rows ?? [];
+  const wd = world();
   for (const [id, p] of Object.entries(content.registry.places)) {
     if (p.if !== undefined) checkCond(`places/${id}`, p.if);
-    const tile = rows[p.y]?.[p.x];
-    if (tile === undefined) err(`places/${id}`, `off the map at ${p.x},${p.y}`);
-    else if (p.kind !== 'region' && (tile === '~' || tile === '-')) err(`places/${id}`, `in the sea at ${p.x},${p.y}`);
+    if (p.x >= wd.w || p.y >= wd.h) { err(`places/${id}`, `off the map at ${p.x},${p.y}`); continue; }
+    const water = isWater(wd.biome[p.y * wd.w + p.x]!);
+    if (p.kind === 'sea' && !water) err(`places/${id}`, `a sea on land at ${p.x},${p.y}`);
+    if (p.kind !== 'sea' && p.kind !== 'region' && water) err(`places/${id}`, `in the sea at ${p.x},${p.y}`);
   }
   for (const [scene, ref] of Object.entries(content.map?.scenes ?? {})) {
     if (!content.scenes[scene]) err('map/scene-places.yaml', `unknown scene "${scene}"`);

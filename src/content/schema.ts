@@ -247,7 +247,7 @@ export const PlaceDefSchema = z.object({
   name: z.string(),
   x: z.number().int().min(0),
   y: z.number().int().min(0),
-  kind: z.enum(['city', 'town', 'castle', 'manor', 'abbey', 'port', 'battle', 'region']),
+  kind: z.enum(['city', 'town', 'castle', 'manor', 'abbey', 'port', 'battle', 'region', 'sea']),
   region: z.string(),
   text: z.string(),
   if: CondInputSchema.optional(), // when he knows of it; omitted = from the start
@@ -325,6 +325,6 @@ export interface ContentBundle {
   scenes: Record<string, Scene>;
   /** source file per scene id, for validator messages */
   sources: Record<string, string>;
-  /** the world map: terrain rows (tools/make-map.ts) and where each scene happens (content/map/scene-places.yaml) */
-  map?: { rows: string[]; scenes: Record<string, string> };
+  /** where each scene happens, for the world map (content/map/scene-places.yaml; terrain is src/engine/worldgen.ts) */
+  map?: { scenes: Record<string, string> };
 }

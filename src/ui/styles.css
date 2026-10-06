@@ -240,13 +240,16 @@ code, pre { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.
 
 /* ---- the world map ---- */
 .worldmap { margin: 0.6rem 0 1rem; }
-.worldmap-scroll { overflow: auto; border: 2px solid #4a3b2c; border-radius: 4px; background: #2c4a62; max-height: 80vh; }
+.worldmap-scroll { position: relative; overflow: auto; border: 2px solid #4a3b2c; border-radius: 4px; background: #1d3a52; height: 300px; cursor: grab; touch-action: pan-x pan-y; }
+.worldmap-scroll:active { cursor: grabbing; }
+.worldmap-wait { margin: 0; padding: 1rem; font-family: var(--sans); font-size: 0.85rem; color: #d8e4ee; }
 .worldmap-inner { position: relative; }
 .worldmap-canvas { display: block; width: 100%; height: auto; image-rendering: pixelated; image-rendering: crisp-edges; }
 .worldmap .place { position: absolute; width: 18px; height: 18px; margin: -9px 0 0 -9px; padding: 0; border: 0; background: transparent; cursor: pointer; min-height: 0; }
-.worldmap .place.region { width: auto; height: auto; transform: translate(-50%, -50%); margin: 0; }
+.worldmap .place.region, .worldmap .place.sea { width: auto; height: auto; transform: translate(-50%, -50%); margin: 0; }
 .worldmap .place-label { position: absolute; left: 12px; top: -2px; white-space: nowrap; font-family: var(--sans); font-size: 0.68rem; font-weight: 600; color: #fbf6ea;
   text-shadow: 0 0 2px #1c140e, 0 0 2px #1c140e, 1px 1px 0 #1c140e; pointer-events: none; }
+.worldmap .place.sea .place-label { position: static; font-style: italic; font-size: 0.74rem; letter-spacing: 0.08em; color: #bcdcf0; font-weight: 500; }
 .worldmap .place.region .place-label { position: static; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: #f6e9c8; font-weight: 500; }
 .worldmap .place.on .place-label { color: #ffd77a; }
 .worldmap .place:focus-visible { outline: 2px solid #ffd77a; border-radius: 50%; }
@@ -261,5 +264,6 @@ code, pre { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.
 .worldmap-overlay { position: fixed; inset: 0; z-index: 50; background: var(--bg); padding: 12px 16px; overflow: auto; }
 .worldmap-title { max-width: 1100px; margin: 0 auto 0.4rem; font-size: 1.2rem; }
 .worldmap-overlay .worldmap { max-width: 1100px; margin: 0 auto; }
+.worldmap-overlay .worldmap-scroll { height: calc(100vh - 150px); }
 .worldmap.mini { max-width: 28rem; margin: 0 auto 1.4rem; }
-.worldmap.mini .worldmap-scroll { max-height: none; overflow: hidden; }
+.worldmap.mini .worldmap-scroll { height: 200px; overflow: hidden; cursor: default; }

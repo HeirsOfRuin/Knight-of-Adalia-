@@ -83,7 +83,7 @@ export function fromSave(raw: unknown, content: ContentBundle): LoadResult {
   });
   state.queue = state.queue.filter((q) => !!content.scenes[q.event]);
   const lordship = backfillLordship(state, content);
-  if (lordship.length) warnings.push(`Your rank now carries its lands and knights: ${nameList(lordship)}.`);
+  if (lordship.length) warnings.push(`Your lands brought up to date: ${nameList(lordship)}.`);
   if (save.contentHash !== content.hash) warnings.push('The game content has been updated since this save was made.');
   state.contentHash = content.hash;
   return { state, warnings };

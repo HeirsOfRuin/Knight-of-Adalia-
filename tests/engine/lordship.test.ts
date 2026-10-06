@@ -86,4 +86,13 @@ describe('lordship', () => {
     expect(backfillLordship(s, c)).toEqual([]);
     expect(s.vassals).toHaveLength(8);
   });
+
+  it('reprices holdings granted before the economy was repriced, once', () => {
+    const s = game('reeve');
+    s.holdings = { vaudrey: { income: 1320, temper: -2 }, la_garde: { income: 2400, temper: 0 } };
+    expect(backfillLordship(s, c)).toEqual(['one holding repriced to the present rents']);
+    expect(s.holdings.vaudrey!.income).toBe(6600);
+    expect(s.holdings.la_garde!.income).toBe(2400);
+    expect(backfillLordship(s, c)).toEqual([]);
+  });
 });

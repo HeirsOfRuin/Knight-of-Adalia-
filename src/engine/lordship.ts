@@ -132,6 +132,14 @@ export function backfillLordship(state: GameState, content: ContentBundle): stri
   const hold = (id: string, income: number) => { if (!h[id]) { h[id] = { income, temper: 0 }; given.push(content.registry.holdings[id]?.label ?? id); } };
   const knights = (n: number) => { const before = state.vassals?.length ?? 0; addVassals(state, content, n, 'west', []); if ((state.vassals?.length ?? 0) > before) given.push(`${(state.vassals?.length ?? 0) - before} knights who hold of you`); };
   const fresh = !state.vassals;
+  // holdings granted before the economy was repriced (2026-10-05) pay a fifth of what they should
+  const grant = grantIncomes(content);
+  let repriced = 0;
+  for (const [id, x] of Object.entries(h)) {
+    const base = grant[id];
+    if (base && x.income > 0 && x.income * 3 <= base) { x.income *= 5; repriced++; }
+  }
+  if (repriced) given.push(`${repriced === 1 ? 'one holding' : `${repriced} holdings`} repriced to the present rents`);
   if (f.c4_chamber_knight) hold('chamber_fee', 4800);
   if (fresh && f.c4_banneret && h.la_garde && !f.c5_earl) knights(2);
   if (fresh && f.c4_great_lord) {
@@ -147,4 +155,18 @@ export function backfillLordship(state: GameState, content: ContentBundle): stri
   if (f.c5_reigns && state.seen.c5r_oaths !== undefined && fresh) knights((c.estates ?? 0) >= 8 ? 16 : (c.estates ?? 0) >= 5 ? 12 : 8);
   if (!Object.keys(h).length) delete state.holdings;
   return given;
+}
+
+let grantCache: { content: ContentBundle; incomes: Record<string, number> } | undefined;
+/** The smallest income each holding is granted at anywhere in the story. */
+function grantIncomes(content: ContentBundle): Record<string, number> {
+  if (grantCache?.content === content) return grantCache.incomes;
+  const incomes: Record<string, number> = {};
+  const json = JSON.stringify([content.scenes]);
+  for (const m of json.matchAll(/"hold":\{"id":"([a-z_]+)","income":(\d+)/g)) {
+    const n = Number(m[2]);
+    incomes[m[1]!] = Math.min(incomes[m[1]!] ?? Infinity, n);
+  }
+  grantCache = { content, incomes };
+  return incomes;
 }

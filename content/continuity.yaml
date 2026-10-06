@@ -13,6 +13,10 @@
 # path such as estate.recovery, never a raw count: see the population rule.
 
 rules:
+  # Adalia after Wythen Heath: only a draw leaves it with two kings
+  - match: "[Aa]dalia has two kings|[Tt]wo kings are at war"
+    allow: "!flag.c4_edwin_won && !flag.c4_carrow_won"
+    why: After Wythen, Edwin either beheaded Carrow or is besieged in Wendmere; only a bloody draw splits the realm.
   # Origins
   - match: "reeve's son in a ditch"
     allow: background == reeve

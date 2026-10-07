@@ -5,9 +5,11 @@ Knight of Adalia's canon (`games/knight/content/canon.md`) holds for the sequel.
 ## Additions
 | Year | Addition | Analogue |
 |---|---|---|
+| Martinmas 52 | **King Thibaut dies** in the saddle, hunting, in the eleventh year of his reign (runs where he was crowned). The Estates of the West choose his successor | |
 | about 54 | Bishop Évrard of Saint-Lys dies; both kings want the new bishop | |
 | 63-65 | **The Second Mottle**, called the children's mortality: it falls hardest on the young | The pestilence of 1361-62 |
 | about 64 | **Edwin of Adalia dies**, at about 52. His heir is a minor; a regency council governs Adalia | Richard II's minority |
+| about 73 | **Mahaut of Armance dies**, at 54. Queen Mahaut's reign, where she was crowned, is thirty-one years | |
 | 86-88 | **The Lanzi crash**: Sarenzan banks fail when a crown defaults | Bardi and Peruzzi, 1340s |
 | 89 | **The Schism**: a second Pope is elected in Sarenza against the Pope at Saint-Lys; each realm chooses its obedience | Avignon and Rome, 1378 |
 | 96-100 | **Amaury VII's absences**: the King of Valdrenne is sometimes mad | Charles VI |
@@ -30,7 +32,8 @@ Approved with the story's spine and acts (`../docs/STORY.md`, Layers 1 and 2, 20
 | Yann de Penhoët | about 70, dying | Head of the house of Penhoët, of the Armance's other claimant's party. Claims Kerval was his grandfather's. ("Old Penhoët" in Knight of Adalia.) |
 | Hervé de Penhoët | about 45 | Yann's son and heir. Careful, patient, never forgets a field. The rival of the Prologue and Book I. |
 | Tanguy de Kerguen | 21 | Son of Sire Alain de Kerguen (killed at Mortefontaine) and Dame Blanche; the Kerguen heir. |
-| Jehanne d'Armance | 6 (born year 44) | Mahaut's daughter and heir, named after her great-grandmother Duchess Jehanne. Her father is the founder if Knight of Adalia married him to Mahaut; otherwise a West lord killed in the War of the West (to be named). Makes the law of inheritance through women personal to Mahaut. |
+| Jehanne d'Armance | 6 (born year 44) | Mahaut's daughter and heir, named after her great-grandmother Duchess Jehanne. Her father is the founder if Knight of Adalia married him to Mahaut; otherwise Sire Riwal de Kerguen. Makes the law of inheritance through women personal to Mahaut. |
+| Sire Riwal de Kerguen | dead (killed year 44) | Sire Alain's younger brother. Mahaut's chosen husband in runs where she did not marry the founder; married in year 42 or 43, killed at the Pont-aux-Moines. Tanguy's uncle, so Jehanne is Tanguy's cousin. |
 | Ronan de Penhoët | about 16 | Hervé's son, Yann's grandson. The match Penhoët offers for the founder's second child. |
 
 ## The law of succession
@@ -44,3 +47,13 @@ The law fight is mostly fixed (STORY.md, L2-2). Each frame has a likely outcome,
 | Free | The Estates of the West adopt male preference; Jehanne is Mahaut's heir | Penhoët carrying the Estates for the male line |
 | Adalian | King Edwin wins Jehanne's wardship and her marriage | A strong house winning Mahaut her right in the King's court |
 | Divided | Amaury VII's escheat of the duchy of Armance stands | A strong resistance, or a suit won at Cordelle |
+
+## Fixed by Knight of Adalia's epilogue
+- **The founder's widow** dies eleven years after the founder.
+- **The second child:**
+  - under `c5_betrothed_penhoet`, they married into Penhoët at sixteen;
+  - under `c5_betrothal_refused`, they choose their own match at nineteen.
+- **The old company:**
+  - Davy Ludd dies at seventy;
+  - Will Cobb dies at about a hundred;
+  - Wat Coker dies free on his own holding.

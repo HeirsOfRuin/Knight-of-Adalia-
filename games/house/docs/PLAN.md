@@ -236,7 +236,7 @@ What happens in the world, year by year, unless the player changes it. Frame-spe
 | 61-63 | Caldmoor's regency war spills over the March; free companies unemployed after the peace raid the West | The free companies after Brétigny, 1360s |
 | 63-65 | **The Second Mottle**: the "children's mortality" | 1361-62 |
 | 64-66 | Edwin of Adalia dies at about 52; his son's heir is a minor; regency council | Richard II's minority |
-| 68-72 | A minority or a disputed crown in the West or in Valdrenne (by frame) | |
+| 68-73 | A minority or a disputed crown in the West or in Valdrenne (by frame); Mahaut dies about 73 | |
 | 75-78 | The Keeper's generation ends | |
 | 80-86 | Adalia and Valdrenne at war again, fought through the West | The war after 1369 |
 | 86-88 | **The Lanzi crash**: Sarenzan banks fail on a royal default | Bardi and Peruzzi, 1340s |

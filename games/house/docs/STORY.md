@@ -805,7 +805,7 @@ These are not yet in `PLAN.md` §8. The beat sheets above honour all of them:
 
 ---
 
-## Layer 3: Beat sheets, round 3: Book I, Act II, *The Law* (draft for the author's decisions, 2026-10-07)
+## Layer 3: Beat sheets, round 3: Book I, Act II, *The Law* (decisions taken 2026-10-07; awaiting sign-off)
 
 **Years:** 58-63. **Strand:** the realm.
 
@@ -821,9 +821,9 @@ These are not yet in `PLAN.md` §8. The beat sheets above honour all of them:
 **The law is mostly fixed** (L2-2). The likely outcomes by frame:
 - free: male preference passes, and Jehanne is Mahaut's heir;
 - Adalian: King Edwin wins Jehanne's wardship;
-- under King Gaucelin: see L3-12.
+- under King Gaucelin: the male line passes, unless the house helps Gaucelin turn on his regents at his majority (C6), and then male preference passes (L3-12).
 
-The likely outcome stands unless a **threshold** is met: votes, standing, men and the sovereign's need, added up. The threshold's arithmetic is step 5's to design. These scenes say only what feeds it, marked **(T)**.
+The likely outcome stands unless a **threshold** is met: votes, standing, men and the sovereign's need, added up. The house can never meet it alone: it always needs an ally, meaning the spouse's house, the second child's house or Kerguen (L3-13). The threshold's arithmetic is step 5's to design. These scenes say only what feeds it, marked **(T)**.
 
 **Scene count:** 11 scenes and 2 pool draws. A queued **upbringing** scene also fires whenever a child of the Keeper turns seven (`upbringing`, built). In most runs that falls in Act III, and in some it falls here.
 
@@ -879,7 +879,7 @@ The likely outcome stands unless a **threshold** is met: votes, standing, men an
   2. The threshold is made visible in prose: "Penhoët needs eleven more voices, and you are three of them."
 - **Choices:**
   - Spend for the side you are on: coin, favours (built: favours), and the house's men. (T) +.
-  - Bring an ally over (L3-13): the spouse's house, the second child's house, or Kerguen. It is a check, and it costs that ally's goodwill later.
+  - Bring an ally over (L3-13: required to overturn): the spouse's house, the second child's house, or Kerguen. It is a check, and it costs that ally's goodwill later.
   - Hold back what you have: (T) unchanged, and the house keeps its coin.
 - **Check:** presence + diplomacy, hard, to bring an ally over.
 - **Sets:** (T). If both offers were taken in C1, the first concealment check is made here.
@@ -939,10 +939,10 @@ The likely outcome stands unless a **threshold** is met: votes, standing, men an
 - **Choices:**
   - Make peace with the losing side: costs coin or a concession, and their temper is partly restored.
   - Press the advantage, if the house is on the winning side: land, an office, or a wardship. The losers' temper falls further.
-  - Under the King's wardship (Adalian), bid for Jehanne's marriage (L3-14).
-- **Sets:** `counter.penhoet`, Mahaut's regard, and possibly `marry` for a house member to Jehanne (pending L3-14).
+  - Under the King's wardship (Adalian), bid for Jehanne's marriage (L3-14): for the Keeper's son, the second child, or a cousin. It is costly. Penhoët and Adalian houses bid against the house, and Mahaut's view of whoever buys her daughter depends on her regard for them. If it is won, the duchy of Armance can come into the house by marriage, which is a hook for Acts III-IV and Book II.
+- **Sets:** `counter.penhoet`, Mahaut's regard, and possibly `marry` for a house member to Jehanne, as a betrothal until she is of age. **[5]:** bidding for a wardship.
 
-**C11. The House's Own Law** (spring, year 63). The act ends here (L3-15).
+**C11. The House's Own Law** (spring, year 63). The act ends here, on the house's law and then the rumour of plague (L3-15, decided).
 - **Beats:**
   1. The Keeper, the spouse and the Keeper's children at table.
   2. Whether the house's own succession follows the realm's new law.
@@ -977,6 +977,10 @@ The likely outcome stands unless a **threshold** is met: votes, standing, men an
 | L3-9 | The Kerguen match | Azenor de Kerguen, Tanguy's sister, born after her father's death at Mortefontaine (autumn of year 34); 20 in year 55. The author chose 19; 20 is the nearest age that canon allows. |
 | L3-10 | The Kerval verdict | Mostly fixed: kept with a strong charter, lost with a weak one, otherwise shared (the manor to the house, the wood and the mill to Penhoët). A court check moves it one step. |
 | L3-11 | Act I's ending | Two offers for the house's vote, and no answer: a cliffhanger into Act II |
+| L3-12 | The law under King Gaucelin | The male line, unless the house helps Gaucelin turn on his regents at his majority (C6) |
+| L3-13 | Overturning a likely outcome | Always needs an ally: the spouse's house, the second child's house or Kerguen |
+| L3-14 | Jehanne's marriage under the King's wardship (Adalian) | The house can bid for it, at a high cost and against rival bidders |
+| L3-15 | Act II's ending | The house's own law, then the first rumour of the Second Mottle |
 | L3-4 | Who writes the scenes | Claude writes every scene. The author reviews and suggests changes in playtest, and keeps advisory control of major plot points. |
 
 ---
@@ -992,3 +996,4 @@ The likely outcome stands unless a **threshold** is met: votes, standing, men an
 | 2026-10-07 | Layer 3 | The prologue's beat sheets (P1-P16) approved after the author read the summary. |
 | 2026-10-07 | Layer 3, round 3 (Act I) | King Gaucelin, 9 (L3-8); Azenor de Kerguen, 20 (L3-9); Kerval's verdict mostly fixed, shared by default (L3-10); Act I ends on two offers (L3-11). |
 | 2026-10-07 | Layer 3 | Book I, Act I's beat sheets (B1-B12) approved. |
+| 2026-10-07 | Layer 3, round 4 (Act II) | Male line likely under Gaucelin unless he is turned at his majority (L3-12); overturning always needs an ally (L3-13); the house can bid for Jehanne's marriage (L3-14); Act II ends on the house law and the plague rumour (L3-15). |

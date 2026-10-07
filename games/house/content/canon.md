@@ -42,11 +42,12 @@ Approved with the story's spine and acts (`../docs/STORY.md`, Layers 1 and 2, 20
 The house's headship passes by the house's law: `male_line` (only men, through men), `male_preference` (sons before daughters, then daughters and their lines), or `partible` (the eldest son is head; the younger sons' shares come from the lands). A fresh house starts under male preference, the custom of both kingdoms for land.
 
 ## The realm's law in Book I, Act II
-The law fight is mostly fixed (STORY.md, L2-2). Each frame has a likely outcome, which stands unless a strong house overturns it:
+The law fight is mostly fixed (STORY.md, L2-2). Each frame has a likely outcome, which stands unless a strong house, with an ally, overturns it:
 
 | Frame | Likely outcome | Overturned by |
 |---|---|---|
 | Free | The Estates of the West adopt male preference; Jehanne is Mahaut's heir | Penhoët carrying the Estates for the male line |
+| Free, under King Gaucelin | The Brésy regents carry the male line | Gaucelin turning on his regents at his majority (year 60), which lets male preference pass |
 | Adalian | King Edwin wins Jehanne's wardship and her marriage | A strong house winning Mahaut her right in the King's court |
 | Divided | Amaury VII's escheat of the duchy of Armance stands | A strong resistance, or a suit won at Cordelle |
 

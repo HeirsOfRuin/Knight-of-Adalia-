@@ -805,7 +805,7 @@ These are not yet in `PLAN.md` §8. The beat sheets above honour all of them:
 
 ---
 
-## Layer 3: Beat sheets, round 3: Book I, Act II, *The Law* (decisions taken 2026-10-07; awaiting sign-off)
+## Layer 3: Beat sheets, round 3: Book I, Act II, *The Law* (approved 2026-10-07)
 
 **Years:** 58-63. **Strand:** the realm.
 
@@ -964,6 +964,159 @@ The likely outcome stands unless a **threshold** is met: votes, standing, men an
 
 ---
 
+## Layer 3: Beat sheets, round 4: Book I, Act III, *The Children's Mortality* (draft for the author's decisions, 2026-10-07)
+
+**Years:** 63-66. **Strand:** family.
+
+**The Second Mottle** runs from 63 to 65 (canon). While the `plague` and `plague_children` flags are set (built), the life odds kill more, and children most of all. How hard it hits is L3-18.
+
+**What it reads from Act II:**
+- the realm's law, or who holds the wardship;
+- the house's own law;
+- Penhoët's standing;
+- Mahaut's regard;
+- any betrothal to Jehanne.
+
+**Scene count:** 11 scenes and 1 pool draw. Most of the act's deaths come through the queued news scene (`h_q_news`, built), framed by the scenes below.
+
+**D1. The Sickness Comes** (summer, year 63).
+- **Beats:**
+  1. The ship's master's rumour (C11) is true.
+  2. The first deaths are in the port, then in Lannec.
+  3. A rider brings word that the sickness is a day's ride off. Knight of Adalia's Chapter 3 asked the same question: stay or go.
+- **Choices:**
+  - Shut the gates of the hall and the village: the family's risk falls, the village's temper falls, and the free companies find the roads empty.
+  - Stay with the people, opening the hall to the sick: the village's temper rises sharply, and the family's risk rises.
+  - Flee to the hills with the children: the family's risk falls most. The village's temper falls hard, and the household calls it the founder's son running.
+- **Check:** none. **Sets:** `flag.plague`, `plague_children` (built), and `flag.h_mottle_shut`, `h_mottle_stayed` or `h_mottle_fled`.
+- **[5]:** the response changes the family's odds while the flags are set.
+- **Risks:** "the Mottle" is the West's name for it, and canon calls it the children's mortality. The first Mottle was in Knight of Adalia's year 1.
+
+**D2. The Sealed Village** (autumn, year 63).
+- **Beats:** one of the house's own villages has the sickness. The reeve asks whether to seal it: nobody in, nobody out.
+- **Choices:**
+  - Seal it, and send food to the boundary stone: costs coin, and the village is half-saved.
+  - Seal it, and send nothing: no cost, and the village's temper is lost for a generation.
+  - Leave it open: the sickness spreads to the next village, and the hall's risk rises.
+- **Check:** none. **Sets:** holding temper **[5: holdings]**.
+
+**D3. The Stone in the Chancel** (framed news, any season, years 63-65).
+- **Beats:**
+  1. When the odds take a child of the house, the news scene (`h_q_news`) is followed by this one.
+  2. The burial, the mother and the father, and the priest who has said the words too many times this year.
+  3. Knight of Adalia's epilogue promised that a dead child is "remembered on a stone in the chancel, every year, on the day".
+- **Choices:**
+  - A stone in the chancel, with the child's name: coin.
+  - A vow: a pilgrimage, a chapel, or a child given to the Church if the next one lives. `flag.h_vow`, read in Act IV.
+  - Nothing but the grave: the spouse's regard falls, if the spouse is the parent.
+- **Check:** none.
+- **Risks:**
+  - The dead stay dead.
+  - Kinship words must change after the death: "your eldest" now means the next child.
+
+**D4. The Crown in the Plague** (spring, year 64).
+- **Adalian (L3-16):**
+  1. Edwin of Adalia dies at 52. His son died before him, and his grandson is a minor.
+  2. A regency council governs at Wendmere.
+  3. The new reign asks every lord for homage by proxy, because nobody will ride through the plague.
+  4. Choices:
+     - Swear by proxy at once: `counter.favour +1`.
+     - Ask that the founder's patent be confirmed first: a check. The liberties are confirmed, or the council marks the house as difficult.
+     - Send a son or a knight to Wendmere to stand for the house: the council knows him, and the plague is in Wendmere.
+- **Free:**
+  1. The crown (or the Duchess) is shut in Lannec, and the Estates do not meet.
+  2. Mahaut sends for nobody, and the West is governed by whoever holds its valleys.
+  3. Choices:
+     - Govern your own country: justice, a market and the roads. `counter.household +1`, and the crown notes it either way.
+     - Send help to Lannec: coin and men. Mahaut's regard +2.
+     - Keep everything at home.
+- **Check:** wits + diplomacy, hard (the patent, Adalian).
+- **Risks:**
+  - "King's governor at Lannec" belongs to the Adalian frame only.
+  - The child king is "the King". Edwin is now "the late King".
+
+**D5. Penhoët in Mourning** (autumn, year 64).
+- **Beats:** the Mottle takes from Penhoët too (L3-17).
+  1. Black on Penhoët's gate.
+  2. Who died, and who now holds Penhoët.
+  3. If the second child married into Penhoët, it is their house in mourning, and their letter brings the news.
+- **Choices:** what the house sends:
+  - condolence and a Mass: `counter.penhoet +1`;
+  - nothing: no change;
+  - a man to count Penhoët's strength: `flag.h_counted_penhoet`, which makes D6 easier.
+- **Check:** none.
+
+**D6. Succour or Strike** (winter, years 64-65).
+- **Beats:**
+  1. Penhoët is weak, and its men are dead or sick.
+  2. Its boundary at Kerval is unwatched.
+  3. The old knights, if they are kept (B10), say what the founder would have done.
+- **Choices:**
+  - Succour Penhoët with grain and men to bring in its harvest: `counter.penhoet` reset to friendly, and a debt owed to the house. `flag.h_succoured`.
+  - Strike: take back the wood and the mill, or more. Land, and `counter.penhoet` to its floor: a feud for a generation. `flag.h_struck`.
+  - Leave it: no change, and Penhoët recovers.
+  - Under `h_second_penhoet`: help your sibling hold Penhoët. They hold it, and their loyalty and allegiance are fixed toward the house.
+- **Check:** command + tactics, medium (strike), or presence + diplomacy (succour, so that pride lets Penhoët accept it).
+- **Risks:**
+  - Under `c5r_peace_*`, a strike is a private war between houses, not a war with Valdrenne.
+  - Penhoët cannot be broken here. That waits for Act IV (L2-3).
+
+**D7. The Free Company** (spring, year 65).
+- **Beats:**
+  1. Men paid off after the March war (C7), on the roads in the plague.
+  2. A captain at the gate offers protection, at a price.
+  3. If the house hired a free company in C7, it is this company, and it remembers the pay.
+- **Choices:**
+  - Pay it: coin, and the valley is safe for the year.
+  - Fight it: a battle, with the house's men.
+  - Hire it against someone else (Penhoët, if the house struck): the feud is worse, and the house is feared.
+- **Check:** command + tactics, hard (fight).
+
+**D8. The Widow** (summer, year 65). Only if the founder died in year 54. In cloister runs this scene moves to year 68, in Act IV.
+- **Beats:**
+  1. The founder's widow dies, eleven years after him, as Knight of Adalia's epilogue says. It is scripted.
+  2. Her last days, with the Keeper. She is the one person who knew the founder from the inside.
+  3. She tells one thing about the founder that the Keeper never knew. It is drawn from the import: the wife's own moments, the dead child, the debt, the confession.
+- **Choices:**
+  - Ask her about him: `counter.shadow -1`. The Keeper sees the man, not the legend.
+  - Ask her nothing, and hold her hand: `heir.bond`'s analogue, the spouse's regard.
+  - If she is not the Keeper's mother: settle her dower with her own kin generously (coin, and her kin's goodwill), or by the letter of it.
+- **Sets:** `death: { who: <widow> }` (scripted), and the dower's return **[5: dower lands]**.
+- **Risks:**
+  - She is "your mother" only if she is.
+  - Knight of Adalia's `{wife.epilogue}` line ("and never once in all those years lets a lady at any table forget...") must be honoured. This scene is where it shows.
+
+**D9. Pool draw** (year 65): the friar, the mass grave, or the orphaned cousin.
+
+**D10. The Count of the Dead** (spring, year 66).
+- **Beats:**
+  1. The sickness lifts.
+  2. The steward's roll of who is left: the household, the villages and the family.
+  3. The orphaned cousin at the gate (if not drawn in D9).
+- **Choices:**
+  - Take the cousin in: a new member of the house (a ward), and a mouth to feed.
+  - Send them to the Church: the Church's favour.
+  - Find them a place with a client house: coin, and a dependant's loyalty.
+- **Check:** none. **Sets:** characters (built). Clear `plague` and `plague_children`.
+
+**D11. The Keeper's Will** (summer, year 66). The act ends here (L3-19).
+- **Beats:**
+  1. The Keeper, about 36, has buried children, perhaps a parent and perhaps a spouse.
+  2. With the priest and the steward, the Keeper writes the will the founder once wrote.
+- **Choices:**
+  - Name the heir: `designate`, against the law if need be. It is contested (built).
+  - Name a guardian in case of a minority: the spouse, the second child, the Old Companion's son, or the sovereign. **[5]:** a regent chosen by will.
+  - Provide for the younger survivors: land, the Church, or a match. These are the same choices as P12, and the shadow is read here: does the Keeper write the founder's will again?
+- **Check:** none.
+- **Sets:** the Act III chapter card: the dead, the living, and the will.
+
+**Under a player king:**
+- D4 is the house's own crown shut in Lannec.
+- D3's dead child may be a prince or princess, so the stone is in the cathedral.
+- D11 is the crown's succession, and the Estates will read it.
+
+---
+
 ## Layer 3 decisions, round 1 (2026-10-07)
 | # | Decision | Decided |
 |---|---|---|
@@ -997,3 +1150,4 @@ The likely outcome stands unless a **threshold** is met: votes, standing, men an
 | 2026-10-07 | Layer 3, round 3 (Act I) | King Gaucelin, 9 (L3-8); Azenor de Kerguen, 20 (L3-9); Kerval's verdict mostly fixed, shared by default (L3-10); Act I ends on two offers (L3-11). |
 | 2026-10-07 | Layer 3 | Book I, Act I's beat sheets (B1-B12) approved. |
 | 2026-10-07 | Layer 3, round 4 (Act II) | Male line likely under Gaucelin unless he is turned at his majority (L3-12); overturning always needs an ally (L3-13); the house can bid for Jehanne's marriage (L3-14); Act II ends on the house law and the plague rumour (L3-15). |
+| 2026-10-07 | Layer 3 | Book I, Act II's beat sheets (C1-C11) approved. |

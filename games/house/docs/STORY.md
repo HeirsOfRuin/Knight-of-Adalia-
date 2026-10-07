@@ -618,7 +618,7 @@ These are not yet in `PLAN.md` §8. The beat sheets above honour all of them:
 ---
 
 
-## Layer 3: Beat sheets, round 2: Book I, Act I, *The New Lord* (decisions taken 2026-10-07; awaiting sign-off)
+## Layer 3: Beat sheets, round 2: Book I, Act I, *The New Lord* (approved 2026-10-07)
 
 **Years:** 55-58. **Strands:** family and rival.
 
@@ -805,6 +805,165 @@ These are not yet in `PLAN.md` §8. The beat sheets above honour all of them:
 
 ---
 
+## Layer 3: Beat sheets, round 3: Book I, Act II, *The Law* (draft for the author's decisions, 2026-10-07)
+
+**Years:** 58-63. **Strand:** the realm.
+
+**Scope:** the Founder opening, in the free frame (under Queen Mahaut, the free duchy, or King Gaucelin) and the Adalian frame.
+
+**What it reads from Act I:**
+- the house's stance (B2);
+- the Keeper's spouse's house (B3);
+- the second child's house (B8);
+- Kerval kept, shared or lost (B6);
+- the four counters (shadow, household, favour, Penhoët).
+
+**The law is mostly fixed** (L2-2). The likely outcomes by frame:
+- free: male preference passes, and Jehanne is Mahaut's heir;
+- Adalian: King Edwin wins Jehanne's wardship;
+- under King Gaucelin: see L3-12.
+
+The likely outcome stands unless a **threshold** is met: votes, standing, men and the sovereign's need, added up. The threshold's arithmetic is step 5's to design. These scenes say only what feeds it, marked **(T)**.
+
+**Scene count:** 11 scenes and 2 pool draws. A queued **upbringing** scene also fires whenever a child of the Keeper turns seven (`upbringing`, built). In most runs that falls in Act III, and in some it falls here.
+
+**C1. The Two Offers** (Lady Day, year 58). This answers B12.
+- **Beats:**
+  1. Mahaut's envoy and Hervé de Penhoët, a week apart, in the Keeper's hall.
+  2. Each offer is shaped by Act I.
+  3. **Mahaut** offers an office, or a wardship of her own to give, or her favour for the second child.
+  4. **Penhoët** offers to end the Kerval quarrel for good (the wood and the mill given back, if shared or lost), or a match.
+- **Choices:**
+  - Take Mahaut's: `flag.h_law_women`, and (T) +.
+  - Take Penhoët's: `flag.h_law_male`, and (T) for the male line.
+  - Take neither, and keep the house's vote its own: `flag.h_law_own`. Both sides go on courting.
+  - Take both, and play them off: a check each year to keep it hidden. If found out, `counter.penhoet -3` and Mahaut's regard -3, and the house's word is worth less in every later check.
+- **Check:** wits + diplomacy, hard, at C5 and C9 if both were taken.
+- **Reads:** B2's stance, B3, B8, and the Kerval flags.
+
+**C2. The Estates Open / The Hearing Opens** (Whitsun, year 58).
+- **Free:**
+  1. The Estates of the West at Lannec, in the hall where the founder spoke (P8): the lords, the Church and the towns.
+  2. The new Bishop of Saint-Lys gives the opening Mass, and lets it be known which law the Church can bless.
+  3. Who sits where says who has the votes.
+- **Adalian:**
+  1. The King's justices sit at Lannec.
+  2. Edwin's serjeant argues that a girl of fourteen with a duchy is the King's ward by Adalian law.
+  3. Mahaut's pleader argues the West's liberties, which are in the founder's patent if `c5_liberties`.
+- **Choices:**
+  - Speak on the first day: (T) +, and the house's stance is public.
+  - Watch and count: `flag.h_counted`. Later checks are easier, the way Knight of Adalia's `c4_counted_council` was.
+  - Work the corridors, at a cost in coin: (T) +, quietly.
+- **Check:** presence + diplomacy (speak), or wits + courtesy (corridors), medium.
+- **Risks:**
+  - The Moot is the Adalian assembly, but this is the King's justices, not the Moot.
+  - "Estates of the West" appears in the free frame only.
+
+**C3. The Price** (autumn, year 58).
+- **Beats:** the side the house did not take makes its own offer, and it is not polite. One of three, by state:
+  - **a bribe:** coin, or Kerval's title confirmed;
+  - **a threat:** a debt called in, a suit revived, or the second child's position at Penhoët made difficult;
+  - **a marriage** for a child of the Keeper, or for the widow.
+- **Choices:**
+  - Take it, and change sides: the first side's temper falls, and (T) moves.
+  - Refuse it: the threat is carried out, and the house holds.
+  - Pretend to take it: the same as taking both offers in C1.
+- **Check:** none, unless the threat is fought: then by the threat's own skill.
+- **Reads / sets:** `counter.penhoet` and Mahaut's regard. If the threat is carried out against the second child, `counter.second`.
+
+**C4. Pool draw** (year 59): a pilgrim's relic, a bad harvest, or the bookish child and the tutor.
+
+**C5. The Count** (winter, years 59-60).
+- **Beats:**
+  1. Before the vote (free) or the ruling (Adalian), the house's clerk lays out who stands where.
+  2. The threshold is made visible in prose: "Penhoët needs eleven more voices, and you are three of them."
+- **Choices:**
+  - Spend for the side you are on: coin, favours (built: favours), and the house's men. (T) +.
+  - Bring an ally over (L3-13): the spouse's house, the second child's house, or Kerguen. It is a check, and it costs that ally's goodwill later.
+  - Hold back what you have: (T) unchanged, and the house keeps its coin.
+- **Check:** presence + diplomacy, hard, to bring an ally over.
+- **Sets:** (T). If both offers were taken in C1, the first concealment check is made here.
+
+**C6. The King Comes of Age** (summer, year 60). Free, under King Gaucelin only.
+- **Beats:**
+  1. Gaucelin, 16, is of age.
+  2. He has to decide whether he is his regents' king or his own.
+  3. The Brésy regents want the male line, because it is his own claim's law.
+- **Choices:**
+  - Back the regents: (T) for the male line, and the crown's favour.
+  - Back the boy against them: a check. On success, Gaucelin turns on his regents, and the crown no longer pushes the male line (L3-12).
+  - Keep out of it: neither side forgives it.
+- **Check:** presence + courtesy, hard.
+
+  In other free runs this slot is a pool draw.
+
+**C7. The March Burns** (year 61).
+- **Beats:**
+  1. Caldmoor's regency war spills over the March.
+  2. The free companies, paid off after the last war, are on the West's roads.
+  3. **Adalian:** the King needs the West's men, and that need is the house's leverage over the wardship.
+  4. **Free:** the Estates need a war levy, and votes on the law are traded for it.
+- **Choices:**
+  - Send men: costs men and coin. (T) + with the sovereign, and `counter.favour +2`.
+  - Hire the free company to guard your own lands: coin, and safety, but the company has opinions.
+  - Do nothing: your own valleys are raided (the pool's free company comes in), and (T) is unchanged.
+- **Check:** command + tactics, medium, if the house's own men fight.
+- **Risks:**
+  - `c5r_peace_bought` and `c5r_peace_marriage` forbid war with Valdrenne. This fight is Caldmoor's, and the free companies', only.
+
+**C8. Pool draw** (year 61).
+
+**C9. The Vote / The Ruling** (Whitsun, year 62).
+- **Beats:**
+  1. The day.
+  2. The house's last word, spoken or not.
+  3. The count, or the justices' ruling.
+  4. **The outcome:** the likely one, unless (T) is met.
+- **Free outcomes:**
+  - male preference: Jehanne is heir;
+  - or the male line: Penhoët's claim to the Armance rises over hers, and the house's own daughters cannot inherit if the house follows the realm.
+- **Adalian outcomes:**
+  - the King's wardship: Jehanne goes to Wendmere, and her marriage is the King's to sell;
+  - or Mahaut's right: Jehanne stays, and the West's liberties are confirmed in law.
+- **Choices:**
+  - The last word: for, against, or silence.
+  - Under C1's double game: the last concealment check.
+- **Check:** presence + diplomacy, hard. It is the house's final (T) push.
+- **Sets:** the realm's law, which is new state **[5]**. Until then, `flag.h_realm_male_pref`, `h_realm_male_line`, `h_wardship_king` or `h_wardship_mahaut`.
+
+**C10. The Reckoning of the Law** (autumn, year 62).
+- **Beats:**
+  1. The winners reward, and the losers remember.
+  2. Penhoët is raised (male line, or the King's wardship with Penhoët as the King's man) or checked.
+  3. Mahaut is secure, or diminished.
+- **Choices:**
+  - Make peace with the losing side: costs coin or a concession, and their temper is partly restored.
+  - Press the advantage, if the house is on the winning side: land, an office, or a wardship. The losers' temper falls further.
+  - Under the King's wardship (Adalian), bid for Jehanne's marriage (L3-14).
+- **Sets:** `counter.penhoet`, Mahaut's regard, and possibly `marry` for a house member to Jehanne (pending L3-14).
+
+**C11. The House's Own Law** (spring, year 63). The act ends here (L3-15).
+- **Beats:**
+  1. The Keeper, the spouse and the Keeper's children at table.
+  2. Whether the house's own succession follows the realm's new law.
+  3. A ship's master at the Keeper's table mentions, in passing, a sickness in Sarenza that takes the children first.
+- **Choices:**
+  - Keep male preference: no change, or `house_law: male_preference`.
+  - Adopt the male line: `house_law: male_line`. The Keeper's daughters cannot inherit, and Penhoët approves.
+  - Name the heir by will: `designate`. It is contested if it is against the law (built).
+  - Divide the lands among the sons: `house_law: partible`.
+- **Check:** none.
+- **Sets:** `house_law` (built), and the Act II chapter card.
+- **Under `c5_married_mahaut`:** the house's daughters include Jehanne, so the house's own law decides whether Mahaut's daughter is also the house's heir.
+
+**Under a player king:**
+- The Estates are writing the crown's own succession.
+- The crown proposes, and the Estates can defy it. The threshold runs the other way: the crown's law stands unless enough of the Estates refuse it.
+- C11 is the same choice as C9.
+- Penhoët's male-line claim to the Armance is rebellion, and C10's "press the advantage" can be an attainder.
+
+---
+
 ## Layer 3 decisions, round 1 (2026-10-07)
 | # | Decision | Decided |
 |---|---|---|
@@ -832,3 +991,4 @@ These are not yet in `PLAN.md` §8. The beat sheets above honour all of them:
 | 2026-10-07 | Layer 3, round 2 | Thibaut's election goes to Mahaut unless swung, and plot paths are checked under a player king (L3-5); the prologue's odds are held off the founder, heir and spouse (L3-6); a cloistered founder dies about year 57 (L3-7). The prologue's sign-off waits on the author reading a summary. |
 | 2026-10-07 | Layer 3 | The prologue's beat sheets (P1-P16) approved after the author read the summary. |
 | 2026-10-07 | Layer 3, round 3 (Act I) | King Gaucelin, 9 (L3-8); Azenor de Kerguen, 20 (L3-9); Kerval's verdict mostly fixed, shared by default (L3-10); Act I ends on two offers (L3-11). |
+| 2026-10-07 | Layer 3 | Book I, Act I's beat sheets (B1-B12) approved. |

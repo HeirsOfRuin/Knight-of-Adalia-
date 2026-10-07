@@ -34,6 +34,8 @@ Approved with the story's spine and acts (`../docs/STORY.md`, Layers 1 and 2, 20
 | Tanguy de Kerguen | 21 | Son of Sire Alain de Kerguen (killed at Mortefontaine) and Dame Blanche; the Kerguen heir. |
 | Jehanne d'Armance | 6 (born year 44) | Mahaut's daughter and heir, named after her great-grandmother Duchess Jehanne. Her father is the founder if Knight of Adalia married him to Mahaut; otherwise Sire Riwal de Kerguen. Makes the law of inheritance through women personal to Mahaut. |
 | Sire Riwal de Kerguen | dead (killed year 44) | Sire Alain's younger brother. Mahaut's chosen husband in runs where she did not marry the founder; married in year 42 or 43, killed at the Pont-aux-Moines. Tanguy's uncle, so Jehanne is Tanguy's cousin. |
+| Azenor de Kerguen | 16 (born autumn 34) | Tanguy's sister, born after her father's death at Mortefontaine. A match for the Keeper in Book I. |
+| Gaucelin de Brésy | 6 (born year 44) | Thibaut's son. In free runs under Thibaut, the Estates may choose him king at Candlemas 53, under a Brésy regency, instead of Mahaut. Named for his grandfather the Constable. |
 | Ronan de Penhoët | about 16 | Hervé's son, Yann's grandson. The match Penhoët offers for the founder's second child. |
 
 ## The law of succession

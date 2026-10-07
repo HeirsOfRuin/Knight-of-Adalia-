@@ -618,7 +618,7 @@ These are not yet in `PLAN.md` §8. The beat sheets above honour all of them:
 ---
 
 
-## Layer 3: Beat sheets, round 2: Book I, Act I, *The New Lord* (draft for the author's decisions, 2026-10-07)
+## Layer 3: Beat sheets, round 2: Book I, Act I, *The New Lord* (decisions taken 2026-10-07; awaiting sign-off)
 
 **Years:** 55-58. **Strands:** family and rival.
 
@@ -627,7 +627,7 @@ These are not yet in `PLAN.md` §8. The beat sheets above honour all of them:
 **The free sovereign from here** depends on the prologue:
 - Queen Mahaut;
 - the free duchy;
-- or, in Thibaut runs, whoever the Estates chose: Queen Mahaut, or Thibaut's son under a Brésy regency. The boy needs a sovereign entry, `thibaut_heir` (content), and a name (L3-8).
+- or, in Thibaut runs, whoever the Estates chose: Queen Mahaut, or Thibaut's son under a Brésy regency. The boy is King Gaucelin, 9 in year 53, named for his grandfather the Constable (L3-8). He comes of age at 16, about year 60, in the middle of Act II, and can turn on his regents. He needs a sovereign entry, `thibaut_heir` (content).
 
 **What it reads from the prologue:**
 - `counter.shadow`, `counter.household`, `counter.favour`, `counter.penhoet`;
@@ -682,7 +682,7 @@ These are not yet in `PLAN.md` §8. The beat sheets above honour all of them:
 **B3. The Keeper's Match** (winter, years 55-56). Skipped if the Keeper is already married, for example under `c5r_peace_marriage` (married into Sauvel). Then B4 is that marriage's first year.
 - **Beats:** the offers come. The Keeper is about 25.
 - **The candidates:**
-  - **Kerguen:** Tanguy's sister (L3-9). If the founder married Blanche de Kerguen, she is the Keeper's stepsister: no blood, but the Bishop's dispensation is asked for anyway, to be safe.
+  - **Kerguen:** Azenor de Kerguen, Tanguy's sister, 20 in year 55 (L3-9). If the founder married Blanche de Kerguen, she is the Keeper's stepsister: no blood, but the Bishop's dispensation is asked for anyway, to be safe.
   - **Mahaut's court:** a lady, or for a Keeper who is a woman a lord, of Mahaut's household. It binds the house to the Armance and to the law of women.
   - **An Adalian house** (Hale, Carrow's kin, Ashdown): coin and the King's ear.
   - **A love match:** someone of no great house. `counter.household +1`, and every great house is offended.
@@ -717,7 +717,7 @@ These are not yet in `PLAN.md` §8. The beat sheets above honour all of them:
      - Adalian: the King's governor at Lannec, or the King's justices on eyre.
   2. The charter, the witnesses, and the old men's memories of who held the mill.
   3. The verdict.
-- **The outcome is mostly fixed** (L3-10), read from the prologue:
+- **The outcome is mostly fixed** (L3-10, decided), read from the prologue:
   - `h_suit_strong`: Kerval is kept whole.
   - `h_suit_weak`: Kerval is lost to Penhoët.
   - Otherwise, it is **shared**: the house keeps the manor, and Penhoët takes the wood and the mill. That is the likely outcome.
@@ -780,7 +780,7 @@ These are not yet in `PLAN.md` §8. The beat sheets above honour all of them:
 
 **B11. Pool draw** (year 57).
 
-**B12. Before the Estates** (Lady Day, year 58). The act ends here (L3-11).
+**B12. Before the Estates** (Lady Day, year 58). The act ends here, on two offers and no answer (L3-11, decided).
 - **Free:**
   1. The Estates of the West are summoned for Whitsun to write the law.
   2. Mahaut's people and Penhoët's both come to the house before the summons is a week old.
@@ -814,6 +814,10 @@ These are not yet in `PLAN.md` §8. The beat sheets above honour all of them:
 | L3-5 | The likely outcome of Thibaut's election | Mahaut, unless the house swings the Estates to Thibaut's son. Every plot path must also hold under a player king (see the section above). |
 | L3-6 | The odds in the prologue | Held off the founder, the heir and the founder's spouse. Births, matches and others' deaths still run. |
 | L3-7 | A cloistered founder's death | About year 57, in Book I, Act I. His letters run until then. |
+| L3-8 | Thibaut's son | King Gaucelin, 9 in year 53, named for the Constable; of age about year 60 |
+| L3-9 | The Kerguen match | Azenor de Kerguen, Tanguy's sister, born after her father's death at Mortefontaine (autumn of year 34); 20 in year 55. The author chose 19; 20 is the nearest age that canon allows. |
+| L3-10 | The Kerval verdict | Mostly fixed: kept with a strong charter, lost with a weak one, otherwise shared (the manor to the house, the wood and the mill to Penhoët). A court check moves it one step. |
+| L3-11 | Act I's ending | Two offers for the house's vote, and no answer: a cliffhanger into Act II |
 | L3-4 | Who writes the scenes | Claude writes every scene. The author reviews and suggests changes in playtest, and keeps advisory control of major plot points. |
 
 ---
@@ -827,3 +831,4 @@ These are not yet in `PLAN.md` §8. The beat sheets above honour all of them:
 | 2026-10-07 | Layer 3, round 1 | Thibaut's successor chosen by the Estates (L3-1); Mahaut dies about year 73 (L3-2); Sire Riwal de Kerguen, Jehanne's father in non-founder runs (L3-3); Claude writes all scenes, the author advises on major plot points (L3-4). |
 | 2026-10-07 | Layer 3, round 2 | Thibaut's election goes to Mahaut unless swung, and plot paths are checked under a player king (L3-5); the prologue's odds are held off the founder, heir and spouse (L3-6); a cloistered founder dies about year 57 (L3-7). The prologue's sign-off waits on the author reading a summary. |
 | 2026-10-07 | Layer 3 | The prologue's beat sheets (P1-P16) approved after the author read the summary. |
+| 2026-10-07 | Layer 3, round 3 (Act I) | King Gaucelin, 9 (L3-8); Azenor de Kerguen, 20 (L3-9); Kerval's verdict mostly fixed, shared by default (L3-10); Act I ends on two offers (L3-11). |

@@ -346,7 +346,7 @@ The law is **mostly fixed** (L2-2). Each frame has a likely outcome that stands 
 
 Penhoët's temper and the suit for Kerval are rival-house state **[5]**. Until that is built, `counter.penhoet` and the flags `h_suit_*` stand in for them.
 
-**The odds in the prologue (an assumption).**
+**The odds in the prologue (decided, L3-6).**
 - The life odds do not kill the founder, the heir or the founder's spouse in the prologue. Births, matches and the deaths of others still happen.
 - The founder's death is scripted (P14). The spouse's is also scripted: Knight of Adalia's epilogue says she outlives the founder by eleven years.
 - This is a small hook in `family.ts` **[5]**.
@@ -466,7 +466,7 @@ Penhoët's temper and the suit for Kerval are rival-house state **[5]**. Until t
     - Speak for Mahaut: `flag.h_law_women`, Mahaut's regard +2.
     - Say nothing: `flag.h_law_silent`.
   - Check: presence + diplomacy, medium; how far the speech carries.
-  - Outcome: see the open question in the decisions below. The `west` effect (built) changes the sovereign.
+  - Outcome, mostly fixed (L3-5): the Estates crown Mahaut, unless the house speaks for the boy and the speech carries. Then Thibaut's son is king, under a Brésy regency. The `west` effect (built) changes the sovereign.
 - **Adalian:**
   - The King's governor at Lannec reads the founder's patent line by line. With `c5_liberties`, he finds the West's liberties written into it, and does not like them.
   - Choices:
@@ -556,7 +556,7 @@ Penhoët's temper and the suit for Kerval are rival-house state **[5]**. Until t
   - Say nothing and hold his hand: `flag.h_answer_silent`. The shadow is left where the act put it.
 - **Check:** none.
 - **Variants:**
-  - **Cloister:** the founder does not die. The heir visits him at the abbey gate, and the same question is asked through a grille. The founder's letters come into Book I.
+  - **Cloister:** the founder does not die yet. The heir visits him at the abbey gate, and the same question is asked through a grille. His letters run through Book I, Act I, and he dies about year 57 (L3-7): a letter comes from the abbot instead. P15 moves to Act I with him, and the prologue goes from the abbey gate to the oath.
   - **`c5_married_mahaut`:** Mahaut is at the bedside as wife and as Duchess or Queen.
 - **Risks:**
   - The dead must stay dead: no living named person who died in Knight of Adalia.
@@ -588,6 +588,19 @@ Penhoët's temper and the suit for Kerval are rival-house state **[5]**. Until t
 - **Sets:** the prologue's chapter card, and the end of the prologue.
 - **Risks:** with `c5_married_mahaut` under Queen Mahaut, the heir swears to their stepmother.
 
+### Under a player king (the Crowned opening, free frame)
+The author asked that every plot path also make sense where the house wears the crown (`realm.sovereign == self`). The beat sheets above are for the Founder opening; the Crowned opening's prologue is its own (Layer 2). These are the rules the Crowned writing pass must keep:
+
+| Plot path | Under a player king |
+|---|---|
+| Thibaut's death and the election (P8, L3-5) | Does not happen as an election. Thibaut was never king. If Knight of Adalia sheltered him (`c4_sheltered_brese`), he is the house's own great vassal, and he still dies in the saddle at Martinmas 52 (the epilogue says only that he reigns eleven years when he is king). His death opens a Brésy wardship for the crown to give. |
+| Mahaut | Duchess of Armance, or the founder's queen (`c5_married_mahaut`: "crowned beside you"). As queen, she is the widow-to-be, and Jehanne is the founder's daughter: a princess. |
+| The law fight (Act II) | The Estates write the law of the crown's own succession, so the house's vote is the crown's will, and the Estates can defy it. Male preference puts the founder's eldest son before Jehanne. The male line does the same, and also shuts out the founder's daughters for ever. |
+| Mahaut's death (about year 73) | As queen dowager or Duchess: the duchy of Armance passes to Jehanne, and the crown does not, so the test is whether the Armance stays with the crown. |
+| Penhoët | Claims the Armance, and with it the crown's own right in the Armance, by the male line. It is a rebel's claim, not a suitor's. |
+| The handover (P10) | The crowning of the heir in the founder's lifetime (`c5r_heir_crowned` may have done it already). The oath (P16) is the Estates' acclamation, not homage. |
+| The Kingmaker, `c5_crowned_self` | Knight of Adalia says the founder "sets the crown on the head of Mahaut, or a younger man". That opening starts with someone else wearing it, and the founder as the hand behind the throne. |
+
 ### Continuity findings from Knight of Adalia's epilogue
 These are not yet in `PLAN.md` §8. The beat sheets above honour all of them:
 
@@ -611,6 +624,9 @@ These are not yet in `PLAN.md` §8. The beat sheets above honour all of them:
 | L3-1 | Who follows King Thibaut (dies at Martinmas of year 52) | The Estates of the West choose between his young son and Mahaut. The founder's summons (P8) is that election. |
 | L3-2 | Mahaut's death | About year 73, at 54, in every run. It keeps Knight of Adalia's "Queen Mahaut reigns thirty-one years", and Act IV's free crisis lands with the Keeper's shaped end. |
 | L3-3 | Mahaut's husband, when it is not the founder | Sire Riwal de Kerguen, killed at the Pont-aux-Moines in year 44. Jehanne is Tanguy's cousin. |
+| L3-5 | The likely outcome of Thibaut's election | Mahaut, unless the house swings the Estates to Thibaut's son. Every plot path must also hold under a player king (see the section above). |
+| L3-6 | The odds in the prologue | Held off the founder, the heir and the founder's spouse. Births, matches and others' deaths still run. |
+| L3-7 | A cloistered founder's death | About year 57, in Book I, Act I. His letters run until then. |
 | L3-4 | Who writes the scenes | Claude writes every scene. The author reviews and suggests changes in playtest, and keeps advisory control of major plot points. |
 
 ---
@@ -622,3 +638,4 @@ These are not yet in `PLAN.md` §8. The beat sheets above honour all of them:
 | 2026-10-07 | Layer 1 | All seven decisions as recommended: Penhoët the rival (L1-1); the founder's shadow (L1-2); the second child an ally who can be turned (L1-3); the handover in the year 53 illness, by the founder's choice of manner (L1-4); the cloister kept (L1-5); Mahaut's heir a daughter (L1-6); Knight of Adalia's tone (L1-7). Names kept: Hervé de Penhoët, Tanguy de Kerguen; the Old Companion from the import or generated. |
 | 2026-10-07 | Layer 2 | Act IV named by frame (L2-1). The law fight mostly fixed, with a likely outcome per frame that a strong house can overturn (L2-2). Penhoët can be broken, reconciled or contained, with Sir Yvon of Kerlan as the heir to a broken claim (L2-3). The Keeper's end open, with a shaped end in years 72-78 (L2-4). Jehanne, born year 44 (L2-5). Ronan de Penhoët, about 16 (L2-6). Penhoët holds Diminished's lost manor (L2-7). |
 | 2026-10-07 | Layer 3, round 1 | Thibaut's successor chosen by the Estates (L3-1); Mahaut dies about year 73 (L3-2); Sire Riwal de Kerguen, Jehanne's father in non-founder runs (L3-3); Claude writes all scenes, the author advises on major plot points (L3-4). |
+| 2026-10-07 | Layer 3, round 2 | Thibaut's election goes to Mahaut unless swung, and plot paths are checked under a player king (L3-5); the prologue's odds are held off the founder, heir and spouse (L3-6); a cloistered founder dies about year 57 (L3-7). The prologue's sign-off waits on the author reading a summary. |

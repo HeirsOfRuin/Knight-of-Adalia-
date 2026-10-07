@@ -1,6 +1,6 @@
 # House of Adalia: The Story of the Prologue and Book I
 
-**Status:** Layer 1 (the spine) and Layer 2 (the acts) approved by the author, 2026-10-07. Layer 3 (the beat sheets) is next, and step 4b's writing starts only after it is signed off. The process is in the decisions log at the end.
+**Status:** Layer 1 (the spine) and Layer 2 (the acts) approved by the author, 2026-10-07. Layer 3 (the beat sheets): the prologue approved 2026-10-07; Book I is drafted act by act. Step 4b's writing of the prologue can start. The process is in the decisions log at the end.
 
 **Holds to:** `../../knight/content/canon.md` and `../content/canon.md` (dates, ages, names); `FRAME.md` §2 (frames and the nine starts); `PLAN.md` §4-8 (systems, timeline, cast, the Knight of Adalia promises); the Knight of Adalia style guide (voice).
 
@@ -327,7 +327,7 @@ The law is **mostly fixed** (L2-2). Each frame has a likely outcome that stands 
 
 ---
 
-## Layer 3: Beat sheets, round 1: the Prologue (draft for the author's decisions, 2026-10-07)
+## Layer 3: Beat sheets, round 1: the Prologue (approved 2026-10-07)
 
 **Scope.** The Founder opening, in the free frame (under Queen Mahaut, King Thibaut or the free duchy) and the Adalian frame (under King Edwin). The other openings and the divided frame keep their Layer 2 outlines until their own writing pass.
 
@@ -618,6 +618,193 @@ These are not yet in `PLAN.md` §8. The beat sheets above honour all of them:
 ---
 
 
+## Layer 3: Beat sheets, round 2: Book I, Act I, *The New Lord* (draft for the author's decisions, 2026-10-07)
+
+**Years:** 55-58. **Strands:** family and rival.
+
+**Scope:** the Founder opening, in the free and Adalian frames, read the same way as the prologue. "You" is the Keeper. The founder is "your father", or {father.name}.
+
+**The free sovereign from here** depends on the prologue:
+- Queen Mahaut;
+- the free duchy;
+- or, in Thibaut runs, whoever the Estates chose: Queen Mahaut, or Thibaut's son under a Brésy regency. The boy needs a sovereign entry, `thibaut_heir` (content), and a name (L3-8).
+
+**What it reads from the prologue:**
+- `counter.shadow`, `counter.household`, `counter.favour`, `counter.penhoet`;
+- the flags `h_suit_*`, `h_penhoet_match`, `h_law_*`, `h_patent_*`, `h_will_secret`, `h_will_conditions`, `h_oath_*`, `h_companion_counsel`;
+- the handover's manner, and whether the founder is in the cloister.
+
+**Scene count:** 11 scenes and 2 pool draws.
+
+**B1. The Homage of the Knights** (summer, year 55).
+- **Beats:**
+  1. The knights who held of the founder come to renew their homage to the Keeper, one by one, in the hall.
+  2. They come from Knight of Adalia's `lands.vassals`, or are generated for a fresh start.
+  3. One of them withholds. If Sir Yvon de Penhoët of Kerlan holds of the house, it is him: he is Hervé's cousin, and he asks which lord he serves when the two fall out.
+- **Choices:**
+  - Take the homage on the founder's terms: `counter.shadow +1`, and the knights stay content.
+  - Take it on new terms (heavier service, lighter dues, or the reverse): `counter.shadow -1`. The terms are read at Michaelmas.
+  - With the one who withholds:
+    - release him from his homage: he holds of nobody, and `counter.penhoet +1`;
+    - or hold him to it, with a check. On a failure, he is Penhoët's man in your own lands.
+- **Check:** presence + command, medium. The founder's knights count the household's loyalty, so the check is easier with high `counter.household`.
+- **Reads / sets:** `lands.vassals` as the house's own vassals **[5]**; until then, flags per knight.
+- **Variants:**
+  - Adalian: the homage is taken "saving the faith owed to the King".
+  - Free: "saving the faith owed to {realm.sovereign}".
+- **Risks:**
+  - A vassal who died in Knight of Adalia's run is not here. His heir comes instead, under age or of age.
+
+**B2. The Sovereign's Question** (autumn, year 55).
+- **Free:**
+  1. A herald from Lannec asks every great house where it stands, before the Estates meet to write the law.
+  2. Under Queen Mahaut, it is her own heir's cause. Under Thibaut's son, the Brésy regents want the male line.
+  3. The house answers in writing, and the answer is filed.
+- **Adalian:**
+  1. A new King's governor arrives at Lannec.
+  2. The founder's patent is read again by a new set of lawyers.
+  3. What the founder did in P8 comes back:
+     - defended: the governor is cold;
+     - conceded: the clause is already gone, and he wants another;
+     - bought: the question is found again, and the bribe with it, `counter.favour -2`.
+- **Choices:**
+  - Free:
+    - stand where the founder stood (`h_law_*`): `counter.shadow +1`;
+    - take your own stance: `counter.shadow -1`, and the side the founder chose remembers;
+    - delay: neither side trusts the house, and both court it in Act II.
+  - Adalian:
+    - concede to the governor: `counter.favour +1`, and the West's regard falls;
+    - stand on the patent: `counter.favour -1`, `flag.h_patent_stood`;
+    - write to Wendmere over the governor's head: a check.
+- **Check (Adalian, the letter):** wits + diplomacy, hard. It is easier with `c4_met_edwin` or `c5_earl`.
+- **Sets:** the house's stance, carried into Act II's threshold.
+
+**B3. The Keeper's Match** (winter, years 55-56). Skipped if the Keeper is already married, for example under `c5r_peace_marriage` (married into Sauvel). Then B4 is that marriage's first year.
+- **Beats:** the offers come. The Keeper is about 25.
+- **The candidates:**
+  - **Kerguen:** Tanguy's sister (L3-9). If the founder married Blanche de Kerguen, she is the Keeper's stepsister: no blood, but the Bishop's dispensation is asked for anyway, to be safe.
+  - **Mahaut's court:** a lady, or for a Keeper who is a woman a lord, of Mahaut's household. It binds the house to the Armance and to the law of women.
+  - **An Adalian house** (Hale, Carrow's kin, Ashdown): coin and the King's ear.
+  - **A love match:** someone of no great house. `counter.household +1`, and every great house is offended.
+- **Choices:** one of the four, or put it off (the offers come again, worse). Each sets an alliance: a house's temper floor, and a promise to send men **[5: matches]**.
+- **Reads / sets:** `marry: { who: head, to, culture }` (built). **[5]:** matches with a named house.
+- **Variants:**
+  - A Keeper who is a woman marries a husband who expects to rule her house. That tension is written into B4.
+- **Risks:** affinity words (stepsister, "sister-in-law"), and the dispensation from Saint-Lys.
+
+**B4. The Wedding** (spring, year 56).
+- **Beats:**
+  1. The feast, and the whole house in one hall.
+  2. Who comes and who does not: Hervé de Penhoët, Mahaut's envoy, the governor (Adalian) or the herald (free).
+  3. A quarrel at the high table, carried by the second child or the widow.
+- **Choices:**
+  - Seat Hervé high: `counter.penhoet +1`. The old knights mutter.
+  - Seat him by his rank and no higher: nothing changes.
+  - Do not invite him: `counter.penhoet -1`, and the snub is spoken of.
+- **Check:** none. **Reads:** B3, `h_penhoet_match` (the second child may come as a Penhoët).
+- **Risks:** the widow's place at table. She is the dowager, not "your mother" if she is the founder's second wife.
+
+**B5. Pool draw** (year 56). From Act I's pool:
+- a rival's border quarrel;
+- an indebted house's daughter;
+- the free company on the road;
+- the widow's dower suit, which is the founder's widow claiming her third.
+
+**B6. The Suit Judged** (Whitsun or summer, year 56). Only if the suit is still open: not bought off, and not settled by the match.
+- **Beats:**
+  1. Kerval before the court:
+     - free: the crown's court at Lannec, or the Duchess's council;
+     - Adalian: the King's governor at Lannec, or the King's justices on eyre.
+  2. The charter, the witnesses, and the old men's memories of who held the mill.
+  3. The verdict.
+- **The outcome is mostly fixed** (L3-10), read from the prologue:
+  - `h_suit_strong`: Kerval is kept whole.
+  - `h_suit_weak`: Kerval is lost to Penhoët.
+  - Otherwise, it is **shared**: the house keeps the manor, and Penhoët takes the wood and the mill. That is the likely outcome.
+  - A check in court can move the verdict one step.
+- **Choices:**
+  - Argue it yourself: a check.
+  - Hire a Lannec pleader: coin, and an easier check.
+  - Settle on the steps before the verdict: a share on your terms, and `counter.penhoet +1`.
+- **Check:** wits + stewardship, hard. P13's ride-out makes it harder (`counter.penhoet` low), and P13's court choice makes it easier.
+- **Sets:** `flag.h_kerval_kept`, `h_kerval_shared` or `h_kerval_lost`, and the holding's income **[5: holdings]**.
+- **Risks:** Kerval's name must match the import, as in P4.
+
+**B7. The Second Child's Grievance** (autumn, year 56).
+- **Beats:**
+  1. The second child, about 23, wants land and a life.
+  2. Under `h_will_secret`, they have found out that the Keeper changed the will.
+  3. Under `h_penhoet_match`, they come from Penhoët, and speak with Hervé's patience.
+- **Choices:**
+  - Give a manor: the Keeper's share shrinks, and their loyalty rises.
+  - Give coin, and a promise: their loyalty holds for now.
+  - Give nothing: their loyalty falls, and Penhoët notices.
+  - Under `h_will_secret`, confess and make it good: `counter.shadow -1`, and their loyalty is restored. Deny it: their loyalty falls sharply.
+- **Check:** presence + diplomacy, medium, to make a lesser gift land well.
+- **Sets:** the second child's allegiance, as a counter (`counter.second`) until rival state is built **[5]**.
+
+**B8. The Second Child's Match** (winter, years 56-57). This is Book I's hinge (Layer 1).
+- **Beats:**
+  1. If the second child is unmarried, the offers are:
+     - Penhoët: Ronan, or Hervé's daughter;
+     - Kerguen: Tanguy himself, about 26;
+     - elsewhere: an Adalian house, Sarenza, or the Church.
+  2. If they are already married into Penhoët, the scene is a visit home. Penhoët asks them to carry its claim, and the Keeper asks them to carry the house's.
+- **Choices:**
+  - **Into Penhoët:** the second child's grandchildren could carry Penhoët's claim if the law changes in Act II. `counter.penhoet +2`, and Penhoët is half-family.
+  - **Into Kerguen:** the counterweight is bound to the house. `counter.penhoet -1`, and Kerguen is an ally.
+  - **Elsewhere or the Church:** coin or a bishopric's friend. The second child's loyalty depends on whether they chose it.
+  - **Let them choose:** their loyalty rises, and the match is drawn from their temperament.
+  - **If already married into Penhoët:** ask them to work for the house inside Penhoët (`flag.h_second_inside`), or let them be Penhoët's.
+- **Check:** none. The choice is the point.
+- **Sets:** `marry` (built), the second child's allegiance, and `flag.h_second_penhoet`, `h_second_kerguen` or `h_second_elsewhere`.
+
+**B9. The Letter from the Abbot** (spring, year 57). Cloister runs only.
+- **Beats:**
+  1. The founder's letters have come all through the act. Each B scene has a line from one: advice, a rebuke, a joke.
+  2. Then a letter comes in another hand.
+  3. The funeral and the chronicle, moved here from P15.
+- **Choices:** P15's choices (where he lies, and what the stone says), plus whether to read his last letter aloud in the hall: `counter.household +1`, or `counter.shadow +1`.
+- **Sets:** `death: { who: father }`, which is scripted.
+
+**B10. The Old Knights or New Men** (summer, year 57).
+- **Beats:**
+  1. The founder's knights are old. The Keeper needs men who are the Keeper's.
+  2. The Old Companion, if living, is the voice of the old order.
+- **Choices:**
+  - Keep the old knights in their places: `counter.shadow +1`, `counter.household +1`. The house is slower to change.
+  - Raise new men (younger sons, or a free company's captain): `counter.shadow -2`, `counter.household -1`. The old knights' loyalty is tested in Act II.
+  - Pension the old knights off with honour: costs coin, and `counter.shadow -1`, with no loss of loyalty.
+- **Check:** none.
+- **Sets:** the household's makeup **[5: retainers]**; until then, `flag.h_new_men` or `h_old_knights`.
+
+**B11. Pool draw** (year 57).
+
+**B12. Before the Estates** (Lady Day, year 58). The act ends here (L3-11).
+- **Free:**
+  1. The Estates of the West are summoned for Whitsun to write the law.
+  2. Mahaut's people and Penhoët's both come to the house before the summons is a week old.
+  3. Each asks for the house's vote, and each offers something.
+- **Adalian:**
+  1. The King's justices will hear the West's liberties at Lannec.
+  2. The governor wants the house to speak for the King's wardship of Mahaut's daughter.
+  3. Mahaut wants it to speak for her right.
+- **Choices:** none yet. The act ends on the two offers. The chapter card shows what the house has, and who it has made:
+  - the Keeper's spouse;
+  - the second child's house;
+  - Kerval kept, shared or lost;
+  - the shadow.
+- **Sets:** Act II begins.
+
+**Openings at Act I** (Layer 2): Exile and Ruin converge here. Exile has its return and a manor given back under the pardon. Ruin has a holding won by service, a B1 analogue in which the Keeper gives homage rather than taking it.
+
+**Under a player king:**
+- B1's homage is to the crown.
+- B2 is the Estates' own question to the crown: will the crown let the Estates write its succession?
+- B12 is the crown's summons, not a request for the house's vote.
+
+---
+
 ## Layer 3 decisions, round 1 (2026-10-07)
 | # | Decision | Decided |
 |---|---|---|
@@ -639,3 +826,4 @@ These are not yet in `PLAN.md` §8. The beat sheets above honour all of them:
 | 2026-10-07 | Layer 2 | Act IV named by frame (L2-1). The law fight mostly fixed, with a likely outcome per frame that a strong house can overturn (L2-2). Penhoët can be broken, reconciled or contained, with Sir Yvon of Kerlan as the heir to a broken claim (L2-3). The Keeper's end open, with a shaped end in years 72-78 (L2-4). Jehanne, born year 44 (L2-5). Ronan de Penhoët, about 16 (L2-6). Penhoët holds Diminished's lost manor (L2-7). |
 | 2026-10-07 | Layer 3, round 1 | Thibaut's successor chosen by the Estates (L3-1); Mahaut dies about year 73 (L3-2); Sire Riwal de Kerguen, Jehanne's father in non-founder runs (L3-3); Claude writes all scenes, the author advises on major plot points (L3-4). |
 | 2026-10-07 | Layer 3, round 2 | Thibaut's election goes to Mahaut unless swung, and plot paths are checked under a player king (L3-5); the prologue's odds are held off the founder, heir and spouse (L3-6); a cloistered founder dies about year 57 (L3-7). The prologue's sign-off waits on the author reading a summary. |
+| 2026-10-07 | Layer 3 | The prologue's beat sheets (P1-P16) approved after the author read the summary. |

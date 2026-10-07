@@ -23,14 +23,24 @@ Knight of Adalia's canon (`games/knight/content/canon.md`) holds for the sequel.
 | The Kerguen heir | 21 | Eight in year 37 |
 
 ## People added for the sequel
-Approved with the story spine (`../docs/STORY.md`, Layer 1, 2026-10-07).
+Approved with the story's spine and acts (`../docs/STORY.md`, Layers 1 and 2, 2026-10-07).
 
 | Person | In year 50 | Who they are |
 |---|---|---|
 | Yann de Penhoët | about 70, dying | Head of the house of Penhoët, of the Armance's other claimant's party. Claims Kerval was his grandfather's. ("Old Penhoët" in Knight of Adalia.) |
 | Hervé de Penhoët | about 45 | Yann's son and heir. Careful, patient, never forgets a field. The rival of the Prologue and Book I. |
 | Tanguy de Kerguen | 21 | Son of Sire Alain de Kerguen (killed at Mortefontaine) and Dame Blanche; the Kerguen heir. |
-| Mahaut's heir | a daughter (name and age set in the story's Layer 2) | Makes the law of inheritance through women personal to Mahaut. |
+| Jehanne d'Armance | 6 (born year 44) | Mahaut's daughter and heir, named after her great-grandmother Duchess Jehanne. Her father is the founder if Knight of Adalia married him to Mahaut; otherwise a West lord killed in the War of the West (to be named). Makes the law of inheritance through women personal to Mahaut. |
+| Ronan de Penhoët | about 16 | Hervé's son, Yann's grandson. The match Penhoët offers for the founder's second child. |
 
 ## The law of succession
 The house's headship passes by the house's law: `male_line` (only men, through men), `male_preference` (sons before daughters, then daughters and their lines), or `partible` (the eldest son is head; the younger sons' shares come from the lands). A fresh house starts under male preference, the custom of both kingdoms for land.
+
+## The realm's law in Book I, Act II
+The law fight is mostly fixed (STORY.md, L2-2). Each frame has a likely outcome, which stands unless a strong house overturns it:
+
+| Frame | Likely outcome | Overturned by |
+|---|---|---|
+| Free | The Estates of the West adopt male preference; Jehanne is Mahaut's heir | Penhoët carrying the Estates for the male line |
+| Adalian | King Edwin wins Jehanne's wardship and her marriage | A strong house winning Mahaut her right in the King's court |
+| Divided | Amaury VII's escheat of the duchy of Armance stands | A strong resistance, or a suit won at Cordelle |

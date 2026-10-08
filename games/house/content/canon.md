@@ -7,8 +7,8 @@ Knight of Adalia's canon (`games/knight/content/canon.md`) holds for the sequel.
 |---|---|---|
 | Martinmas 52 | **King Thibaut dies** in the saddle, hunting, in the eleventh year of his reign (runs where he was crowned). The Estates of the West choose his successor | |
 | about 54 | Bishop Évrard of Saint-Lys dies; both kings want the new bishop | |
-| 63-65 | **The Second Mottle**, called the children's mortality: it falls hardest on the young | The pestilence of 1361-62 |
 | 61 | **Prince Aymer of Adalia dies**, Edwin's son, of a fever after the Caldmoor war on the March | The Black Prince |
+| 63-65 | **The Second Mottle**, called the children's mortality: it falls hardest on the young | The pestilence of 1361-62 |
 | about 64 | **Edwin of Adalia dies**, at about 52. His grandson **Aldred III**, aged 9, is king; a regency council governs Adalia until about year 71 | Richard II's minority |
 | about 64 | **Ronan de Penhoët dies** in the Second Mottle, at about 30. Hervé survives him; Penhoët's heir is Ronan's child, a minor | |
 | about 73 | **Mahaut of Armance dies**, at 54. Queen Mahaut's reign, where she was crowned, is thirty-one years | |

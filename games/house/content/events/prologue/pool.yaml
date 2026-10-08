@@ -102,6 +102,7 @@
         effects: [ { add: { attr.endurance: -1 } } ]
         next: "@return"
     - id: send
+      visible_if: "heir.age >= 14"
       text: Send the men under {heir.first}, and stay at the gate.
       effects: [ { add: { heir.bond: 1, counter.shadow: -1 } } ]
       text_after: |

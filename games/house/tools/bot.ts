@@ -6,6 +6,10 @@ import { playOnce, POLICIES, type Run } from '@tools/play';
 import { newGame, startsOf } from '../src/game/index';
 import { frameRule } from './frames';
 import type { HouseState } from '../src/game/state';
+import { fromDynasty } from '../src/game/import';
+import { toDynasty } from '../../knight/src/game/dynasty';
+import { loadPlans, playPlan } from '../../knight/tools/bot-lib';
+import { loadContent as loadKnight } from '../../knight/tools/content-loader';
 
 const args = process.argv.slice(2);
 const runs = Number(args[args.indexOf('--runs') + 1]) || 20;
@@ -18,6 +22,19 @@ for (const st of starts) {
     const policy = POLICIES[i % POLICIES.length]!;
     const r = playOnce<HouseState>(content, label, (seed) => newGame(content, { ...st, seed, name: 'Bot', sex: i % 2 ? 'female' : 'male' }), 1 + i * 7919, policy, { rule: (s) => frameRule(content, s) });
     all.push(r);
+  }
+}
+// the crowned path (STORY.md): a Knight of Adalia crowned life married to Mahaut, with no children before her
+{
+  const knight = loadKnight();
+  const plan = loadPlans().find((p) => playPlan(knight, p).state.ended?.ending === 'crowned');
+  if (plan) {
+    const base = toDynasty(playPlan(knight, plan).state, knight);
+    const d = { ...base, flags: [...base.flags, 'c5_married_mahaut'], spouse: { id: 'mahaut_armance', name: "Mahaut d'Armance", alive: true }, heirs: [] };
+    for (let i = 0; i < runs; i++) {
+      const policy = POLICIES[i % POLICIES.length]!;
+      all.push(playOnce<HouseState>(content, 'crowned/free/self+mahaut', (seed) => fromDynasty(content, d, { seed }), 1 + i * 7919, policy, { rule: (s) => frameRule(content, s) }));
+    }
   }
 }
 const by = new Map<string, Run[]>();

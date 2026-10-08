@@ -102,7 +102,7 @@ export function begin(
     hero: FOUNDER_ID,
     opening,
     realm: { west: frame, sovereign, changes: 0 },
-    family: { law: 'male_preference', news: [], next: 1, generation: 1, since: 0, offered: {} },
+    family: { law: op.law, news: [], next: 1, generation: 1, since: 0, offered: {} },
     chronicle: [],
     chapter: content.scenes[op.start_scene]?.chapter ?? content.config.chapters[0]!,
     scene: op.start_scene,

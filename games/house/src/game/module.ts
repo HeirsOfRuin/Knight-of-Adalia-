@@ -19,9 +19,9 @@ const REALM_IDS = ['west', 'sovereign', 'changes'];
 const REALM_TEXT = ['sovereign', 'capital', 'border', 'assembly', 'law', 'frame'];
 const SINGLE = ['opening', 'imported'];
 /** family.<field>: the house as a whole. */
-const FAMILY = ['law', 'generation', 'members', 'children', 'sons', 'daughters', 'extinct', 'no_heir', 'minor', 'regency', 'contested', 'news', 'childbed', 'cloister'];
+const FAMILY = ['law', 'generation', 'members', 'children', 'sons', 'daughters', 'extinct', 'no_heir', 'minor', 'regency', 'contested', 'news', 'childbed', 'cloister', 'junior'];
 // {house.*}: the founder's house as Knight of Adalia left it, or as a fresh start has it
-const HOUSE_TEXT = ['manor', 'claimed', 'companion', 'companion_first', 'origin', 'parent', 'parent_start', 'knights', 'withholder', 'parent_word'];
+const HOUSE_TEXT = ['manor', 'claimed', 'companion', 'companion_first', 'origin', 'parent', 'parent_start', 'knights', 'withholder', 'parent_word', 'querec', 'querec_start', 'querec_short'];
 // house.<field> in conditions: the founder's knights as Knight of Adalia left them
 const HOUSE_IDS = ['yvon', 'vassals'];
 
@@ -88,6 +88,8 @@ export const house: GameModule = {
           case 'childbed': return !!f.current?.childbed;
           // the last head who stepped down went into a religious house
           case 'cloister': return f.manner === 'cloister';
+          // the last head crowned the heir beside them and lives on (the Crowned opening's junior crown)
+          case 'junior': return f.manner === 'junior_crown';
         }
         return undefined;
       }
@@ -296,6 +298,10 @@ function houseText(s: HouseState, f: string): string | undefined {
       const v = d?.lands.vassals ?? [];
       return v.find((x) => x.id === 'penhoet_cadet')?.name ?? v.at(-1)?.name ?? 'Sir Renaud de Saint-Aubin';
     }
+    // who defies a girl's crown: old Quérec, or his son if Knight of Adalia exiled or beheaded him
+    case 'querec': return d?.flags.includes('c5r_querec_executed') || d?.flags.includes('c5r_querec_exiled') ? 'Bertrand de Quérec' : 'the lord of Quérec';
+    case 'querec_start': return d?.flags.includes('c5r_querec_executed') || d?.flags.includes('c5r_querec_exiled') ? 'Bertrand de Quérec' : 'The lord of Quérec';
+    case 'querec_short': return d?.flags.includes('c5r_querec_executed') || d?.flags.includes('c5r_querec_exiled') ? 'Bertrand' : 'Quérec';
     // the founder as the founder's children call them: Father, Mother
     case 'parent_word': return s.characters[FOUNDER_ID]?.sex === 'female' ? 'Mother' : 'Father';
     case 'parent_start': return s.characters[FOUNDER_ID]?.sex === 'female' ? 'Your mother' : 'Your father';

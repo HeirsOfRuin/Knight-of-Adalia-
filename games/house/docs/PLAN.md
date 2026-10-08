@@ -486,6 +486,11 @@ The framework is done (steps 1-3). Step 4, the slice, is split so the hardest en
   - the founder's children marry only by the story while Book I is played (the empty-years harness is unchanged);
   - character ages are written in words past twenty.
 - **Tests** in `tests/prologue.test.ts`: the four Kerval verdicts, the settled suit skipped, the Keeper's match and no odds' matches for the founder's children, the Sauvel import, and every frame and sovereign to the end of Act I.
+- **The crowned path** (STORY.md, L3-24 to L3-30) is written for the prologue and Act I:
+  - `scenes/prologue/30-crowned.yaml` and `scenes/book1/20-crowned.yaml`, with the Crowned opening's `eldest` house law;
+  - the Mahaut import rules;
+  - the bot plays it as `crowned/free/self+mahaut`;
+  - `npm run house:transcript -- --mahaut` writes `docs/transcripts/crowned-mahaut.md`.
 - **Still open:**
   - the rival-house state (`counter.penhoet` stands in);
   - the vassals as state (homage terms are flags);

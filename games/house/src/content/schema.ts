@@ -15,7 +15,8 @@ export type Frame = (typeof FRAMES)[number];
 
 // ---- Effects --------------------------------------------------------------
 /** The law the house's headship passes by (PLAN.md §4.2). */
-export const HOUSE_LAWS = ['male_line', 'male_preference', 'partible'] as const;
+// eldest: the eldest child of either sex (the custom Knight of Adalia's Crowned ending promises the West's new crown)
+export const HOUSE_LAWS = ['male_line', 'male_preference', 'partible', 'eldest'] as const;
 export const HouseLawId = z.enum(HOUSE_LAWS);
 export type HouseLaw = (typeof HOUSE_LAWS)[number];
 /** A character, named by one of the game's selectors (src/game/family.ts SELECTORS). */
@@ -132,6 +133,7 @@ export const OpeningSchema = z.object({
   // the sovereigns a fresh start may pick, per frame (the first is the default)
   sovereigns: z.partialRecord(FrameId, z.array(Id).min(1)),
   start_scene: Id,
+  law: HouseLawId.default('male_preference'), // the house's law at the start
   // the founder in a fresh start
   founder: z.object({
     age: z.number().int(),

@@ -1307,6 +1307,58 @@ In free runs this slot is Mahaut's last illness: the court at Lannec knows, and 
 
 ---
 
+## Layer 3: The crowned path (the Crowned opening, married to Mahaut; decided 2026-10-08)
+
+The author's own Knight of Adalia run ends as King of the West, married to Mahaut before the Estates in year 42, with no children before her. This path is written for that run. A crowned life without Mahaut keeps the framework scene for now.
+
+**The shape:**
+- **Prologue, first half (50-53), as the King:**
+  - the court at Lannec, and the Old Company;
+  - Jehanne at six;
+  - **Quérec refuses to swear to a girl as heir**, shaped by his fate in Knight of Adalia;
+  - the exchequer;
+  - **Valdrenne's embassy** for Jehanne's hand (Prince Lothaire);
+  - a pool draw;
+  - the Estates asked to swear to Jehanne, or to write the eldest-child law;
+  - the illness;
+  - **the crowning**: Jehanne made junior queen at nine, by Bishop Évrard at a hundred and one.
+- **Prologue, second half (53-55), as Jehanne, nine to eleven, under Mahaut's regency:**
+  - the first council;
+  - the regency council (Armance men, the old king's men, or half and half);
+  - **Quérec's rising in the marsh**;
+  - the old king's question (the deathbed question, asked in the garden);
+  - Bishop Évrard's death and the new bishop;
+  - the Estates' acclamation.
+- **Book I, Act I (55-58), as Queen Jehanne, eleven to fourteen:**
+  - the lords' homage, with **Hervé's homage "saving the right of my house in the Armance"**;
+  - Penhoët's claim to the Armance by the male line, and the offer of Ronan;
+  - the Queen's betrothal: Ronan, Lothaire, Tanguy, or no one;
+  - the Easter court, and the old king's toast;
+  - Quérec's end;
+  - a younger brother or sister, if there is one;
+  - the Queen and her mother;
+  - the Queen's guard;
+  - a pool draw;
+  - **the Estates summoned to settle the crown's own succession**: Hervé offers his vote for the crown in exchange for the male line in the Armance.
+
+| # | Decision | Decided |
+|---|---|---|
+| L3-24 | Knight of Adalia's "you reign nineteen years and die in your bed" | Kept. The handover in year 53 is the heir's crowning as junior king or queen. The old king lives at court, held from the odds, and dies in his bed about year 64. The deathbed moves to Act III. |
+| L3-25 | Who is crowned | The eldest child, either sex, as Knight of Adalia's crowned ending promised. The Crowned opening starts under a new house law, `eldest`. |
+| L3-26 | The author's family | No children before Mahaut. Jehanne, born 44, is the eldest. |
+| L3-27 | Who is played from 53 | Jehanne, the child queen, under Mahaut's regency until sixteen (year 60) |
+| L3-28 | Mahaut's other children | By the odds for years 45 to 49, always younger than Jehanne. More can be born in the prologue. |
+| L3-29 | The prologue's rival | Quérec, defying a girl's crown: the old lord of Quérec, or his son Bertrand if Knight of Adalia exiled or beheaded him |
+| L3-30 | Penhoët's quarrel in Act I | The Armance by the male line, against the Queen's inheritance from her mother. Hervé offers Ronan to unite the claim and the duchy. |
+
+**Import rules for this path** (`games/house/src/game/import.ts`):
+- Mahaut is thirty-one in year 50.
+- A child born before year 43 is not given Mahaut as mother.
+- Jehanne, born 44, is added unless the life already left a daughter of about that age.
+- The odds hold Mahaut to about year 73 (canon).
+
+---
+
 ## Layer 3 decisions, round 1 (2026-10-07)
 | # | Decision | Decided |
 |---|---|---|
@@ -1355,3 +1407,4 @@ In free runs this slot is Mahaut's last illness: the court at Lannec knows, and 
 | 2026-10-08 | Layer 3 | Book I, Act IV's beat sheets (E1-E13) approved. Layer 3 complete. PLAN.md §6.1-6.2 now point here, and §8 carries the epilogue promises found in Layer 3. |
 | 2026-10-08 | Step 4b | The prologue (P1-P16) written for the Founder opening, free and Adalian frames. Transcripts in `transcripts/`. Waiting on the author's playtest. |
 | 2026-10-08 | Step 4c | Book I, Act I (B1-B12) written for the Founder opening, free and Adalian frames. The playtest link carries the prologue and Act I. |
+| 2026-10-08 | The crowned path | The author's run: King of the West married to Mahaut, no children before her. Junior crown in 53, old king to about 64 (L3-24); eldest of either sex (L3-25); Jehanne played from 53 under Mahaut's regency (L3-26, L3-27); Mahaut's other children by the odds (L3-28); Quérec defies a girl's crown (L3-29); Penhoët claims the Armance by the male line in Act I (L3-30). Written for the prologue and Book I, Act I. |

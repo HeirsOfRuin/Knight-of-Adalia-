@@ -181,3 +181,81 @@ describe('Book I, Act I: The New Lord', () => {
     }
   });
 });
+
+describe('the crowned path: King of the West, married to Mahaut', () => {
+  const knight = loadKnight();
+  const crowned = () => {
+    const plan = loadPlans().find((p) => playPlan(knight, p).state.ended?.ending === 'crowned')!;
+    return toDynasty(playPlan(knight, plan).state, knight);
+  };
+  /** A crowned life married to Mahaut before the Estates in year 42, with no children before her (the author's run). */
+  const married = () => {
+    const d = crowned();
+    d.flags = [...d.flags, 'c5_married_mahaut'];
+    d.spouse = { id: 'mahaut_armance', name: "Mahaut d'Armance", alive: true };
+    d.heirs = [];
+    return d;
+  };
+  const CROWNED = {
+    ...ROUTE, h_pc00_crown: ['go_on'], h_pc01_court: ['ride'], h_pc02_company: ['counsel'], h_pc03_heir: ['mahaut'],
+    h_pc04_querec: ['watch'], h_pc05_exchequer: ['save'], h_pc06_embassy: ['free'], h_pc08_estates: ['swear'],
+    h_pc09_illness: ['rest'], h_pc10_crowning: ['cathedral'], h_pc11_council: ['count'], h_pc12_regency: ['both'],
+    h_pc13_rising: ['treat'], h_pc14_question: ['be_myself'], h_pc15_bishop: ['anselm'], h_pc16_acclamation: ['written'],
+    h_bc01_homage: ['mother'], h_bc02_claim: ['hear'], h_bc03_betrothal: ['ronan'], h_bc04_court: ['let_him'],
+    h_bc05_querec: ['hostage'], h_bc06_sibling: ['close'], h_bc07_mother: ['learn'], h_bc08_household: ['old'], h_bc09_estates: ['end'],
+  };
+
+  it('brings Mahaut at thirty-one, and Jehanne born in year 44, the heir under the crown\'s custom of the eldest', () => {
+    const s = fromDynasty(c, married(), { seed: 2 });
+    expect(s.opening).toBe('crowned');
+    expect(s.family.law).toBe('eldest');
+    const mahaut = s.characters[s.characters[FOUNDER_ID]!.spouse!]!;
+    expect(mahaut.name).toBe("Mahaut d'Armance");
+    expect(renderText('{spouse.age}', s, c)).toBe('31');
+    const heir = s.characters[select(s, c, 'heir')!]!;
+    expect(heir.name).toBe('Jehanne');
+    expect(renderText('{heir.age}', s, c)).toBe('6');
+    expect(heir.mother).toBe(s.characters[FOUNDER_ID]!.spouse);
+    // Mahaut's other children, by the odds, are younger than Jehanne
+    for (const k of Object.values(s.characters).filter((x) => x.mother === heir.mother && x !== heir)) expect(k.born).toBeGreaterThan(heir.born);
+  });
+
+  it('gives a child born before the marriage no mother in Mahaut', () => {
+    const d = married();
+    d.heirs = [{ name: 'Hamon', sex: 'son', age: 12, alive: true, bond: 1 }];
+    const s = fromDynasty(c, d, { seed: 2 });
+    const hamon = Object.values(s.characters).find((x) => x.name === 'Hamon')!;
+    expect(hamon.mother).toBeUndefined();
+    expect(Object.values(s.characters).some((x) => x.name === 'Jehanne')).toBe(true);
+  });
+
+  it('crowns Jehanne junior queen at nine, under her mother\'s regency, and plays to the end of Act I with the old king living', () => {
+    for (const seed of [1, 2, 3]) {
+      const seen: string[] = [];
+      const s = drive(fromDynasty(c, married(), { seed }), CROWNED, seen);
+      expect(seen.slice(0, 2)).toEqual(['h_pc00_crown', 'h_pc01_court']);
+      expect(seen).toContain('h_pc10_crowning');
+      expect(seen).not.toContain('h_p01_hall');
+      expect(s.scene).toBe('h_bc_end');
+      const queen = s.characters[s.hero]!;
+      expect(queen.name).toBe('Jehanne');
+      expect(s.characters[FOUNDER_ID]!.alive).toBe(true); // held to his death in about year 64
+      expect(s.characters[FOUNDER_ID]!.retired).toBe(true);
+      expect(s.characters[queen.mother!]!.alive).toBe(true);
+      expect(s.flags.h_c_junior).toBe(true);
+      expect(s.time).toBe(32);
+    }
+  });
+
+  it('makes Mahaut regent for the child queen until she is sixteen', () => {
+    const s = drive(fromDynasty(c, married(), { seed: 4 }), CROWNED);
+    const queen = s.characters[s.hero]!;
+    expect(renderText('{head.age}', s, c)).toBe('14');
+    expect(s.family.regent).toBe(queen.mother);
+  });
+
+  it('keeps the framework scene for a crowned life without Mahaut', () => {
+    const s = fromDynasty(c, crowned(), { seed: 1 });
+    expect(choose(c, s, 'go_on').state.scene).toBe('h_open');
+  });
+});

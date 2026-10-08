@@ -50,7 +50,7 @@ const inLine = (c: Character) => c.legitimate !== false;
 export function heirOf(s: HouseState, law: HouseLaw, fromId: string): string | undefined {
   const order = (id: string): string[] => {
     const kids = childrenOf(s, id).filter(([, c]) => inLine(c) && (law !== 'male_line' || c.sex === 'male'));
-    const sorted = law === 'male_line' ? kids : [...kids.filter(([, c]) => c.sex === 'male'), ...kids.filter(([, c]) => c.sex !== 'male')];
+    const sorted = law === 'male_line' || law === 'eldest' ? kids : [...kids.filter(([, c]) => c.sex === 'male'), ...kids.filter(([, c]) => c.sex !== 'male')];
     return sorted.flatMap(([cid]) => [cid, ...order(cid)]);
   };
   let from: string | undefined = fromId;
@@ -226,9 +226,17 @@ function household(s: HouseState): [string, Character][] {
 /** Michaelmas: deaths, births, matches and majorities, each told as news. Draws only with a cursor. */
 /** Who the odds may not kill: in the prologue, the founder, the founder's spouse, the head and the founder's heir (STORY.md, L3-6). */
 export function heldFromOdds(s: HouseState): Set<string> {
-  if (s.chapter !== 'prologue') return new Set();
   const founder = s.characters[FOUNDER_ID];
-  return new Set([FOUNDER_ID, founder?.spouse, s.hero, s.hero === FOUNDER_ID ? heirOf(s, s.family.law, FOUNDER_ID) : undefined].filter((x): x is string => !!x));
+  const held = new Set<string>();
+  // a crowned founder married to Mahaut reigns nineteen years (Knight of Adalia's ending): the old king lives to his
+  // scripted death in about year 64, and Mahaut to hers in about year 73 (canon)
+  if (s.inheritance?.flags.includes('c5_married_mahaut') && s.opening === 'crowned') {
+    if (s.time < 14 * 4) held.add(FOUNDER_ID);
+    if (founder?.spouse && s.time < 23 * 4) held.add(founder.spouse);
+  }
+  if (s.chapter !== 'prologue') return held;
+  for (const id of [FOUNDER_ID, founder?.spouse, s.hero, s.hero === FOUNDER_ID ? heirOf(s, s.family.law, FOUNDER_ID) : undefined]) if (id) held.add(id);
+  return held;
 }
 
 export function yearTick(s: HouseState, content: ContentBundle, rng: RngCursor): void {

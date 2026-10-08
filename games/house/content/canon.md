@@ -40,6 +40,10 @@ Approved with the story's spine and acts (`../docs/STORY.md`, Layers 1 and 2, 20
 | Sire Riwal de Kerguen | dead (killed year 44) | Sire Alain's younger brother. Mahaut's chosen husband in runs where she did not marry the founder; married in year 42 or 43, killed at the Pont-aux-Moines. Tanguy's uncle, so Jehanne is Tanguy's cousin. |
 | Azenor de Kerguen | 16 (born autumn 34) | Tanguy's sister, born after her father's death at Mortefontaine. A match for the Keeper in Book I. |
 | Gaucelin de Brésy | 6 (born year 44) | Thibaut's son. In free runs under Thibaut, the Estates may choose him king at Candlemas 53, under a Brésy regency, instead of Mahaut. Named for his grandfather the Constable. |
+| Prince Lothaire of Valdrenne | 20 | King Amaury VII's brother ("who is eleven" in year 41). Valdrenne offers him for Mahaut's daughter. |
+| Bertrand de Quérec | about 25 | The lord of Quérec's son, a salt lord of the southern marsh. Heads the house if Knight of Adalia exiled or beheaded his father. |
+| Master Anselm | 50s | The crowned founder's chancellor-clerk, who wrote the crown's patent. A candidate for Bishop of Saint-Lys (year 54) |
+| Sire Guiomar | 40s | An Armance knight of Mahaut's, who held a gate at Mortefontaine with eleven men |
 | Ronan de Penhoët | about 16 | Hervé's son, Yann's grandson. The match Penhoët offers for the founder's second child. |
 
 ## The law of succession
@@ -64,3 +68,9 @@ The law fight is mostly fixed (STORY.md, L2-2). Each frame has a likely outcome,
   - Davy Ludd dies at seventy;
   - Will Cobb dies at about a hundred;
   - Wat Coker dies free on his own holding.
+
+## The crowned path (a crowned founder married to Mahaut)
+- **The crown's law** is the eldest child of either sex, as Knight of Adalia's crowned ending promised. The Estates may swear to it (year 52), write it into law, or leave it unwritten.
+- **Jehanne**, Mahaut's eldest, is crowned junior queen at Saint-Lys or in the palace chapel at Lady Day, year 53, at nine, by Bishop Évrard, aged a hundred and one. Mahaut is regent until Jehanne is sixteen (year 60).
+- **The old king** reigns nineteen years in all, and dies in his bed about year 64.
+

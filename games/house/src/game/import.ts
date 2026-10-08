@@ -3,6 +3,7 @@
 import type { DynastyExport } from '@dynasty/contract';
 import { bornAtAge } from '@engine/character';
 import type { Character } from '@engine/state';
+import type { RngCursor } from '@engine/rng';
 import type { ContentBundle, Frame } from '../content/schema';
 import { begin, checkStart, EngineError } from './index';
 import { newId, person } from './family';
@@ -60,12 +61,15 @@ export function fromDynasty(content: ContentBundle, d: DynastyExport, opts: Impo
   };
   const res = { coin: d.wealth.coin, supplies: 0, horses: 0, renown: f.renown, men: d.wealth.men, garrison: d.wealth.garrison, levy: d.wealth.levy };
   const gap = Math.max(0, startYear - d.date.year); // years between the end of the life and the start of the house
+  const married42 = d.flags.includes('c5_married_mahaut') && d.spouse?.id === 'mahaut_armance';
   return begin(content, opts.seed, opening.id, frame, sovereign, founder, res, { inheritance: d }, (s, c, rng) => {
     // the wife and children the life left, as characters; ages carried forward to the house's first year
     let spouse: string | undefined;
     if (d.spouse) {
       spouse = newId(s);
-      const w = person(c, d.spouse.name, 'female', founder.born + 4 * 8, d.spouse.id, rng);
+      // Mahaut was fourteen in year 33 (canon), so thirty-one at the house's start
+      const born = d.spouse.id === 'mahaut_armance' ? (19 - startYear) * 4 : founder.born + 4 * 8;
+      const w = person(c, d.spouse.name, 'female', born, d.spouse.id, rng);
       w.spouse = FOUNDER_ID;
       if (!d.spouse.alive) { w.alive = false; w.died = 0; }
       s.characters[spouse] = w;
@@ -75,7 +79,8 @@ export function fromDynasty(content: ContentBundle, d: DynastyExport, opts: Impo
       const id = newId(s);
       const child = person(c, h.name, h.sex === 'son' ? 'male' : 'female', bornAtAge(h.age + gap), HOUSE_ID, rng);
       child.father = FOUNDER_ID;
-      if (spouse) child.mother = spouse;
+      // married to Mahaut at Whitsun in year 42: a child born before that is a first marriage's (the export keeps no first wife)
+      if (spouse && !(married42 && child.born < (43 - startYear) * 4)) child.mother = spouse;
       child.alive = h.alive;
       if (!h.alive) child.died = 0;
       if (h.temperament) child.temperament = h.temperament;
@@ -84,5 +89,37 @@ export function fromDynasty(content: ContentBundle, d: DynastyExport, opts: Impo
       child.station = h.crowned ? 'royal' : founder.station;
       s.characters[id] = child;
     }
+    if (married42 && spouse) mahautsChildren(s, c, spouse, founder.station, rng);
   });
+}
+
+/**
+ * The founder married Mahaut before the Estates in year 42 (STORY.md, crowned path). Their daughter Jehanne is born
+ * in year 44 (canon), unless the life already left a daughter of about that age; then Mahaut's other children,
+ * drawn by the odds for years 45 to 49 (the author's decision), with Valdrennish names.
+ */
+function mahautsChildren(s: HouseState, c: ContentBundle, mahaut: string, station: string, rng: RngCursor): void {
+  const start = c.config.start_year;
+  const at = (year: number) => (year - start) * 4;
+  const kids = Object.values(s.characters).filter((k) => k.mother === mahaut);
+  const add = (name: string, sex: 'male' | 'female', born: number) => {
+    const id = newId(s);
+    const k = person(c, name, sex, born, HOUSE_ID, rng);
+    Object.assign(k, { father: FOUNDER_ID, mother: mahaut, station, bond: 2 });
+    s.characters[id] = k;
+    return id;
+  };
+  if (!kids.some((k) => k.sex === 'female' && Math.abs(k.born - at(44)) <= 4)) add('Jehanne', 'female', at(44));
+  const fert = c.registry.life.fertility;
+  for (let y = 45; y < start; y++) {
+    if (Object.values(s.characters).some((k) => k.mother === mahaut && k.born >= at(y) - 4)) continue; // a year apart at least
+    if (rng.float() * 100 >= fert.p) continue;
+    const id = add('', rng.float() < 0.5 ? 'female' : 'male', at(y));
+    const k = s.characters[id]!;
+    // a name from the Valdrennish pool that no living sibling or parent already has
+    const pool = c.registry.names.valdrennish![k.sex === 'male' ? 'male' : 'female'];
+    const taken = new Set(Object.values(s.characters).map((x) => x.name.split(' ')[0]));
+    const free = pool.filter((n) => !taken.has(n));
+    k.name = (free.length ? free : pool)[rng.int((free.length ? free : pool).length)]!;
+  }
 }

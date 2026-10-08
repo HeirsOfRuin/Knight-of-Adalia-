@@ -4,7 +4,8 @@ summary: "You founded a dynasty on a throne nobody had sat on before. The law of
 from_ending: crowned
 frames: ["free"]
 sovereigns: {"free": ["self"]}
-start_scene: h_open
+start_scene: h_pc00_crown
+law: eldest
 founder:
   age: 49
   station: royal

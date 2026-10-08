@@ -1,0 +1,10 @@
+/* House of Adalia's own additions to Knight of Adalia's stylesheet (its tokens, light and dark). */
+.playtest-notes {
+  display: flex; flex-direction: column; gap: 0.5rem;
+  margin-block: 2rem 1rem; padding: 0.75rem 0.9rem;
+  border: 1px dashed var(--rule); border-radius: 6px; background: var(--surface);
+  font-family: var(--sans); font-size: 0.95rem;
+}
+.playtest-notes .row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.playtest-notes textarea { width: 100%; box-sizing: border-box; font: inherit; }
+.playtest-notes p { margin: 0; }

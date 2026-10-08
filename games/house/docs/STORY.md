@@ -964,7 +964,7 @@ The likely outcome stands unless a **threshold** is met: votes, standing, men an
 
 ---
 
-## Layer 3: Beat sheets, round 4: Book I, Act III, *The Children's Mortality* (decisions taken 2026-10-08; awaiting sign-off)
+## Layer 3: Beat sheets, round 4: Book I, Act III, *The Children's Mortality* (approved 2026-10-08)
 
 **Years:** 63-66. **Strand:** family.
 
@@ -1120,6 +1120,193 @@ The likely outcome stands unless a **threshold** is met: votes, standing, men an
 
 ---
 
+## Layer 3: Beat sheets, round 5: Book I, Act IV, *The Test of the Law* (free) / *The Minority* (Adalian) (draft for the author's decisions, 2026-10-08)
+
+**Years:** 66-78. **Strands:** the realm and the rival together, then the family at the Keeper's end.
+
+**What it reads from Act III:**
+- who survived the Mottle;
+- Penhoët's new shape: Hervé, with Ronan's child as heir, and perhaps the second child holding it;
+- whether the house succoured or struck;
+- the Keeper's will and guardian;
+- any vow.
+
+**Fixed events in the act:**
+- **free:** Mahaut dies about year 73;
+- **Adalian:** Aldred III comes of age about year 71;
+- the churchly child becomes Bishop of Saint-Lys about year 70, if there is one.
+
+**Scene count:** 13 scenes and 2 pool draws.
+
+**The Keeper's end is open** (L2-4). The odds can end the Keeper at any point in the act. The succession (built) then makes the heir the player for the rest of Book I, and the remaining scenes read `head`, not "the Keeper". How Book I closes if the Keeper is still alive in year 78 is L3-23.
+
+**E1. The Crisis Opens** (spring, year 67).
+- **Adalian:**
+  1. Aldred III's regency council splits.
+  2. On one side, Carrow's heirs and the Old Baronage; on the other, Wendmere's officers under the Hales.
+  3. Each wants the West's great houses.
+  4. Penhoët chooses first if the house waits.
+- **Free:**
+  1. Mahaut, 48, asks the house's counsel on Jehanne's marriage. Jehanne is 23, the greatest match in the West, and the law's test in waiting.
+  2. The candidates:
+     - a Sauvel (peace with Valdrenne);
+     - an Adalian lord (Edwin's grandson's council would like it);
+     - King Gaucelin himself, under Gaucelin, which would unite the crown and the duchy;
+     - a lord of the Armance.
+  3. Tanguy de Kerguen is Jehanne's first cousin, so not without a dispensation.
+- **Choices:**
+  - Adalian: speak to both parties, choose one, or say the house waits for the King's majority.
+  - Free: counsel one candidate; regard follows the choice.
+- **Check:** wits + diplomacy, medium.
+- **Sets:**
+  - Adalian: the house's party, `flag.h_party_carrow` or `h_party_hales`, or neither.
+  - Free: Jehanne's husband (the house's counsel moves Mahaut's choice **[5]**).
+
+**E2. The Side** (year 68).
+- **Adalian:**
+  1. The parties fight in council and then in the shires: an arrest, a seized castle, a murdered clerk.
+  2. The house is asked to prove its side with men or coin.
+- **Free:**
+  1. Jehanne's wedding.
+  2. At the feast, Hervé speaks to the Keeper alone. He does not threaten; he says what he will do when Mahaut is dead.
+- **Choices:**
+  - Adalian: send men, send coin, or keep your side in words only.
+  - Free: warn Mahaut, keep Hervé's words to yourself (`flag.h_hervé_secret`), or answer him in kind.
+- **Sets:** Adalian, the party's debt to the house **[5: favours]**.
+
+**E3. The Widow, or a pool draw** (year 68).
+- In cloister runs, the founder's widow dies (D8's scene, moved here).
+- Otherwise a pool draw: the ransom owed, a heresy in the market, or the regent's letter.
+
+**E4. Hervé's Last Move** (year 69).
+- **Beats:** under cover of the crisis, Penhoët moves.
+  - **Adalian:** Penhoët's party gives it a commission to keep the King's peace in the Armance. It uses the commission to take Kerval's wood and mill, or Kerval itself.
+  - **Free:** Penhoët arms quietly for the day Mahaut dies, and buys the free companies. Under the male line (C9), it means to claim the Armance. Under male preference, it means to make the claim anyway.
+  - **Under a player king:** it is rebellion.
+- **Choices:** what the house does first:
+  - arm too;
+  - go to the sovereign;
+  - go to Penhoët, through the second child if they are there;
+  - wait.
+- **Check:** wits + tactics, medium, to read Penhoët's intent truly.
+- **Sets:** `flag.h_penhoet_moving`, and the house's first answer.
+
+**E5. The Bishop** (year 70).
+- **Beats:**
+  1. If a child of the house was raised for the Church, the chapter of Saint-Lys elects them bishop: the first born in the West, as Knight of Adalia promised. Both kings want a say.
+  2. If there is no churchly child, a pool draw.
+- **Choices:**
+  - Use the house's weight to secure it: (T) spent, and the house has a bishop in Book II.
+  - Let the chapter decide.
+- **Check:** presence + diplomacy, hard, against the sovereign's candidate.
+- **Sets:** a bishop in the house **[5: the Church]**.
+
+**E6. Kerval** (year 70 or 71).
+- **Beats:** Penhoët's move comes to the field or the court. This is Book I's only fight of houses (L3-22).
+  1. Men at Kerval's bridge, or Penhoët's commission read at the gate.
+  2. The Keeper's men, the old knights or the new (B10), and the free company (D7).
+- **Choices:**
+  - Fight: a short campaign of houses **[5: war]**, with the Keeper in the field or not.
+  - Go to law and the sovereign: slow, and Kerval may be held while the court sits.
+  - Treat through the second child or Penhoët's young heir's guardians: a reconciliation opens.
+- **Check:** command + tactics, hard (fight), or wits + diplomacy (treat).
+- **Sets:** Kerval's fate, and whether Penhoët can be broken in E8.
+- **Risks:**
+  - No war with Valdrenne (`c5r_peace_*`). Valdrennish men in Penhoët's pay are free companies, not the King's.
+
+**E7. The King's Majority** (year 71). Adalian.
+- **Beats:**
+  1. Aldred III, 16, takes the government into his own hands.
+  2. He rewards one party and punishes the other (L3-21).
+  3. The house learns which it is.
+- **Choices:**
+  - Kneel first: `counter.favour +2`, whatever the party.
+  - Ask for the reward, if the house is on the winning side: an office, a wardship, or Penhoët's lands if it was attainted.
+  - Ask for mercy, if on the losing side: costs coin, and saves the patent.
+- **Check:** presence + courtesy, medium.
+- **Sets:** `counter.favour` and the party's fate.
+
+In free runs this slot is Mahaut's last illness: the court at Lannec knows, and the houses count.
+
+**E8. Penhoët Settled** (year 72).
+- **Beats:**
+  1. Hervé dies (L3-20), and with him the generation's quarrel.
+  2. What Penhoët becomes depends on E6 and the house.
+- **Choices:**
+  - **Broken:** with the sovereign's leave, Penhoët is attainted and its lands taken. Its claim passes to the cadet, Sir Yvon of Kerlan, who returns in Book II (L2-3). It needs E6 won and `counter.favour` high.
+  - **Reconciled:** a marriage between the Keeper's grandchild (or child) and Ronan's child. Under `h_second_penhoet`, it is the second child's grandchild, so the two houses are one blood.
+  - **Contained:** a treaty, the boundary walked and sworn, and Kerval's mill shared.
+- **Check:** none. The choice is gated by E6.
+- **Sets:** Penhoët's state into Book II **[5: rival state]**; `flag.h_penhoet_broken`, `h_penhoet_reconciled` or `h_penhoet_contained`.
+
+**E9. The Queen Is Dead / The Duchess Is Dead** (spring, year 73).
+- **Beats:**
+  1. Mahaut dies at 54. She has written to the founder's house every Christmas, and the last letter comes after her.
+  2. Jehanne, 29, succeeds:
+     - to the crown, if her mother was Queen;
+     - to the duchy of Armance otherwise;
+     - Adalian: to the duchy, under the King.
+- **Choices:**
+  - Ride to Lannec at once and kneel: Jehanne's regard +3.
+  - Wait to see who else rides.
+  - (Free, male line) Stand with Penhoët's claim, if Penhoët is not broken.
+- **Check:** none.
+- **Variants:**
+  - **`c5_married_mahaut`:** she is the Keeper's stepmother, or mother. Jehanne is the Keeper's sister or half-sister, and the house's own law (C11) decides whether she is also the house's heir.
+  - **Adalian, if the house bought Jehanne's marriage (C10):** a son or daughter of the house is Duke or Duchess of Armance by marriage.
+
+**E10. The Test** (years 73-74). Free.
+- **Beats:**
+  1. The West decides whether it will have Jehanne.
+  2. **Male preference:** the law says yes. Penhoët, if not broken, says no in arms, as a rebel.
+  3. **Male line:** the law says no. The Armance goes to Penhoët's line, or to the nearest male of Mahaut's blood, unless Jehanne's party overturns it (the threshold again, with an ally).
+  4. **Under Gaucelin's male line:** the duchy escheats to the crown, unless overturned.
+- **Choices:**
+  - Back Jehanne;
+  - back the law against her;
+  - hold back;
+  - make the house the price of the settlement (land, an office, a match).
+- **Check:** presence + command, hard, for the house's voice to carry at Lannec.
+- **Sets:** who holds the Armance into Book II.
+
+**Adalian E10: The New Reign's Bill** (year 74).
+- **Beats:** Aldred III's first parliament (the Moot) taxes the West. The patent's liberties are read for the third time in thirty years.
+- **Choices:** pay, protest by the patent, or bargain.
+- **Sets:** the West's liberties into Book II.
+
+**E11. Pool draw** (year 75): the old company's last man, if still living.
+
+**E12. The Heir Comes of Age** (year 75 or 76).
+- **Beats:**
+  1. The Keeper's heir, the Builder of Book II, at about 18.
+  2. One scene that shows who they are, shaped by their upbringing (the queued scene).
+  3. The Keeper sees themself in them, or the founder, or neither.
+- **Choices:**
+  - Give the heir a manor: the same choice the founder made in P3, read against the shadow.
+  - Send them to court.
+  - Keep the reins.
+- **Sets:** the Builder's bond, and the Keeper's own shadow on the Builder (`counter.shadow` passes on, halved **[5]**).
+
+**E13. The Keeper's End** (years 76-78). The act ends here.
+- **Beats:** shaped by the act (L2-4):
+  - **a death in the crisis**, if the Keeper fought at Kerval or the Test and was wounded;
+  - **an illness**, the founder's illness again;
+  - **stepping down** for the heir: `step_down` (built), at home or into the cloister, as the founder could.
+- **Choices:** the manner, as in P10, and the last words to the heir. These are the founder's question from P14, now asked by the Keeper.
+- **Sets:**
+  - the succession (built);
+  - the Keeper's chronicle paragraph;
+  - Book I's chapter card;
+  - Book II, *The Builder*, begins in year 78.
+
+**Under a player king:**
+- E4 and E6 are a rebellion against the crown.
+- E8's "broken" is an attainder for treason.
+- E9-E10 decide whether the Armance stays with the crown, with Jehanne as the founder's daughter or the Duchess.
+- E13's stepping down is an abdication, and the heir's crowning follows.
+
+---
+
 ## Layer 3 decisions, round 1 (2026-10-07)
 | # | Decision | Decided |
 |---|---|---|
@@ -1159,3 +1346,4 @@ The likely outcome stands unless a **threshold** is met: votes, standing, men an
 | 2026-10-07 | Layer 3, round 4 (Act II) | Male line likely under Gaucelin unless he is turned at his majority (L3-12); overturning always needs an ally (L3-13); the house can bid for Jehanne's marriage (L3-14); Act II ends on the house law and the plague rumour (L3-15). |
 | 2026-10-07 | Layer 3 | Book I, Act II's beat sheets (C1-C11) approved. |
 | 2026-10-08 | Layer 3, round 5 (Act III) | Aldred III, 9, with Prince Aymer dead in 61 (L3-16); Ronan dies in the Mottle (L3-17); harsh odds with one sure loss (L3-18); Act III ends on the Keeper's will (L3-19). |
+| 2026-10-08 | Layer 3 | Book I, Act III's beat sheets (D1-D11) approved. |

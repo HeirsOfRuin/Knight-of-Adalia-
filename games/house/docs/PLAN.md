@@ -492,7 +492,15 @@ The framework is done (steps 1-3). Step 4, the slice, is split so the hardest en
   - the bot plays it as `crowned/free/self+mahaut`;
   - `npm run house:transcript -- --mahaut` writes `docs/transcripts/crowned-mahaut.md`.
   - it reads the Keeper's sex and Knight of Adalia's elective crown; the author's own save (`tests/fixtures/author-crowned.koad`, King David, Mahaut and Jehan) is tested to the end of Act I, and `npm run house:transcript -- --save <file>` plays any save (`docs/transcripts/crowned-author-save.md`).
+- **Depth and carry-over** (2026-10-08, the author's decisions):
+  - **The calendar:** the Church's years of grace with the sovereign's year ("Summer 912, the second year of King David"), through the engine's `date` hook. The old count stays in docs and canon.
+  - **Hints and results:** the tested skill, "At stake", mortal danger, and the cause line before a choice. After it, the story tracks and relationships in words ("Penhoët: colder"), through the engine's `changeNote` and `checkLabel` hooks.
+  - **Panels:** Status, House, People, World (22 lore entries) and Journal (`src/ui/Panels.tsx`).
+  - **The economy:** Knight of Adalia's rules and prices (`src/game/economy.ts`). The import carries lands, knights, standing, honour, ruthlessness, piety, and the great folk's feelings. Children's qualities come from temperament and upbringing.
+  - **New starts:** questions build a dynasty export and go through the import (`src/game/setup.ts`, `tests/setup.test.ts`).
 - **Still open:**
+  - content does not yet read the economy (no `estate.*` paths), and a crown's income makes most scene prices trivial; balance in step 5;
+  - Knight of Adalia's followers other than the great folk (Davy Ludd and the old company) are text only (`{house.companion}`);
   - the rival-house state (`counter.penhoet` stands in);
   - the vassals as state (homage terms are flags);
   - a later match for a Keeper who put marriage off (`h_b_wed_later`), which Act II must offer.

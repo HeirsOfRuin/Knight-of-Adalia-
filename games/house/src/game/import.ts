@@ -38,6 +38,8 @@ export interface ImportOptions {
   /** only for an export whose West was never settled */
   frame?: Frame;
   sovereign?: string;
+  /** the founder's sex: Knight of Adalia's founder is a man; a start built from the setup questions may be a woman */
+  sex?: 'male' | 'female';
 }
 
 export function fromDynasty(content: ContentBundle, d: DynastyExport, opts: ImportOptions): HouseState {
@@ -51,7 +53,7 @@ export function fromDynasty(content: ContentBundle, d: DynastyExport, opts: Impo
   const f = d.founder;
   const founder: Character = {
     name: f.name,
-    sex: 'male',
+    sex: opts.sex ?? 'male',
     born: bornAtAge(f.age + Math.max(0, startYear - d.date.year)),
     alive: true,
     attributes: Object.fromEntries(content.config.attributes.map((a) => [a, f.attributes[a] ?? 2])),
@@ -75,7 +77,7 @@ export function fromDynasty(content: ContentBundle, d: DynastyExport, opts: Impo
       spouse = newId(s);
       // Mahaut was fourteen in year 33 (canon), so thirty-one at the house's start
       const born = d.spouse.id === 'mahaut_armance' ? (19 - startYear) * 4 : founder.born + 4 * 8;
-      const w = person(c, d.spouse.name, 'female', born, d.spouse.id, rng);
+      const w = person(c, d.spouse.name, founder.sex === 'female' ? 'male' : 'female', born, d.spouse.id, rng);
       w.spouse = FOUNDER_ID;
       if (!d.spouse.alive) { w.alive = false; w.died = 0; }
       s.characters[spouse] = w;
@@ -84,9 +86,9 @@ export function fromDynasty(content: ContentBundle, d: DynastyExport, opts: Impo
     for (const h of d.heirs) {
       const id = newId(s);
       const child = person(c, h.name, h.sex === 'son' ? 'male' : 'female', bornAtAge(h.age + gap), HOUSE_ID, rng);
-      child.father = FOUNDER_ID;
       // married to Mahaut at Whitsun in year 42: a child born before that is a first marriage's (the export keeps no first wife)
-      if (spouse && !(married42 && child.born < (43 - startYear) * 4)) child.mother = spouse;
+      const other = spouse && !(married42 && child.born < (43 - startYear) * 4) ? spouse : undefined;
+      if (founder.sex === 'female') { child.mother = FOUNDER_ID; child.father = other; } else { child.father = FOUNDER_ID; child.mother = other; }
       child.alive = h.alive;
       if (!h.alive) child.died = 0;
       if (h.temperament) child.temperament = h.temperament;
@@ -130,7 +132,8 @@ function carryLands(s: HouseState, d: DynastyExport): void {
   if (d.lands.vassals?.length) {
     s.vassals = d.lands.vassals.map((v) => {
       // "Sir Derrien de Lesneven", "the young lord of Aubrac": the seat is the place he holds
-      const seat = v.name.match(/(?:\bof |\bde |\bd')(.+)$/)?.[1] ?? v.id.replace(/_/g, ' ');
+      // the place after the last "of", "de" or "d'": "Sir Bertrand de la Roche of La Roche-aux-Moines" holds La Roche-aux-Moines
+      const seat = v.name.match(/.*(?:\bof |\bde |\bd')(.+)$/)?.[1] ?? v.id.replace(/_/g, ' ');
       return { id: v.id, name: v.name, seat, heir: v.heir ? (/young/.test(v.name) ? 'minor' : 'grown') : undefined };
     });
   }

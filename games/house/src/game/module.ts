@@ -365,8 +365,9 @@ function houseText(s: HouseState, f: string): string | undefined {
     case 'parent_start': return s.characters[FOUNDER_ID]?.sex === 'female' ? 'Your mother' : 'Your father';
     case 'origin': {
       // Knight of Adalia's founder ending: a reeve's, a wool merchant's or an archer's son, or else a tirewoman's
-      const words: Record<string, string> = { reeve: "a reeve's son", burgess: "a wool merchant's son", archer: "an archer's son" };
-      if (d) return words[d.founder.background] ?? "a tirewoman's son";
+      const ch = s.characters[FOUNDER_ID]?.sex === 'female' ? 'daughter' : 'son';
+      const words: Record<string, string> = { reeve: `a reeve's ${ch}`, burgess: `a wool merchant's ${ch}`, archer: `an archer's ${ch}` };
+      if (d) return words[d.founder.background] ?? `a tirewoman's ${ch}`;
       return s.characters[FOUNDER_ID]?.sex === 'female' ? 'a younger daughter of nobody in particular' : 'a younger son of nobody in particular';
     }
   }

@@ -11,3 +11,7 @@
 
 /* what a check tests, beside its odds */
 .choice-meta .test { font-family: var(--sans); font-size: 0.8rem; color: var(--muted); }
+
+/* the setup questions */
+.setup-q { border: 0; padding: 0; margin: 0 0 1rem; }
+.setup-q legend { font-weight: 600; margin-bottom: 0.4rem; }

@@ -4,7 +4,8 @@
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import { decodeDynasty } from '@dynasty/contract';
 import type { ContentBundle, Frame } from '../content/schema';
-import { newGame, view, choose, checkStart, describeDate, type HouseState } from '../game/index';
+import { view, choose, checkStart, describeDate, type HouseState } from '../game/index';
+import { questionsFor, settleAnswers, newGameFromSetup, labelOf, type SetupStart } from '../game/setup';
 import { fromDynasty } from '../game/import';
 import { toSave, fromSave } from '../game/save';
 import { Notes } from './Notes';
@@ -32,16 +33,23 @@ function NewHouse({ content, onStart }: { content: ContentBundle; onStart: (s: H
   const [code, setCode] = useState('');
   const [error, setError] = useState('');
   const seed = () => (Math.random() * 2 ** 32) >>> 0;
+  // one seed for the form, so the family the answers draw stays the same while the player changes them
+  const [formSeed] = useState(seed);
+  const [raw, setRaw] = useState<Record<string, string>>({});
+  const start: SetupStart = { opening, frame: frameOk, sovereign: sov, name, sex, seed: formSeed };
+  const answers = settleAnswers(content, start, raw);
+  const questions = questionsFor(content, start, answers);
 
   const begin = () => {
     try {
       checkStart(content, opening, frameOk, sov);
-      onStart(newGame(content, { opening, frame: frameOk, sovereign: sov, seed: seed(), name, sex }));
+      onStart(newGameFromSetup(content, start, answers));
     } catch (e) { setError((e as Error).message); }
   };
   const importCode = async () => {
     try {
-      onStart(fromDynasty(content, await decodeDynasty(code), { seed: seed() }));
+      // the form's frame and sovereign stand in only for a life whose West was never settled
+      onStart(fromDynasty(content, await decodeDynasty(code), { seed: seed(), frame: frameOk, sovereign: sov }));
     } catch (e) { setError((e as Error).message); }
   };
   const styleOf = (id: string) => content.registry.sovereigns[id]?.style.replace(/\[if[^\]]*\]Queen\[else\]King\[\/if\] \{name\}/, 'Yourself') ?? id;
@@ -49,7 +57,7 @@ function NewHouse({ content, onStart }: { content: ContentBundle; onStart: (s: H
   return (
     <main class="newgame">
       <h1>House of Adalia</h1>
-      <p class="muted">A playtest build of the sequel. The prologue and Book One, Act I are written for <strong>Founder of a House</strong>, in a free or an Adalian West; the other openings stop after their first scene. Your place is saved in this browser as you play.</p>
+      <p class="muted">A playtest build of the sequel. The prologue and Book One, Act I are written for <strong>Founder of a House</strong> (a free or an Adalian West) and for <strong>Crowned</strong> married to Mahaut; the other openings stop after their first scene. Your place is saved in this browser as you play.</p>
 
       <h2>Continue a life</h2>
       <label class="field">
@@ -93,6 +101,21 @@ function NewHouse({ content, onStart }: { content: ContentBundle; onStart: (s: H
           <option value="female">a woman</option>
         </select>
       </label>
+      <h2>Your life before</h2>
+      <p class="muted">What Knight of Adalia would have settled. Each has a default; change what you like.</p>
+      {questions.map((q) => (
+        <fieldset key={q.id} class="setup-q">
+          <legend>{q.question}</legend>
+          <div class="bg-list" role="radiogroup" aria-label={q.question}>
+            {q.options.map((o) => (
+              <button key={o.id} role="radio" aria-checked={answers[q.id] === o.id} class={`bg-card ${answers[q.id] === o.id ? 'selected' : ''}`} onClick={() => setRaw({ ...raw, [q.id]: o.id })}>
+                <strong>{labelOf(o, content, start, answers)}</strong>
+                <span class="bg-summary">{o.hint}</span>
+              </button>
+            ))}
+          </div>
+        </fieldset>
+      ))}
       {error && <p class="error">{error}</p>}
       <button class="btn primary wide" onClick={begin}>Begin</button>
     </main>

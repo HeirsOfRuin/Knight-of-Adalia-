@@ -65,7 +65,7 @@ export function StatusPanel({ content, state }: { content: ContentBundle; state:
       <p class="muted">Age {age}. {describeDate(state, content)}.</p>
       <dl class="kv">
         <dt>Station</dt><dd>{capitalise(hero.station.replace('_', ' '))}</dd>
-        <dt>The West</dt><dd>{reg.frames[state.realm.west]?.label}, under {sovereignStyle(state, content)}</dd>
+        <dt>The West</dt><dd>{reg.frames[state.realm.west]?.label}, under {sovereignStyle(state, content)}{state.realm.war ? `, at war with ${state.realm.war}` : ''}</dd>
         {regent && <><dt>Regent</dt><dd>{regent.name}, until you are {reg.life.majority}</dd></>}
         <dt>Health</dt><dd>{hero.health}/10</dd>
         <dt>Your house</dt><dd>{capitalise(standingWord(standingOf(state)))} ({standingOf(state)})</dd>
@@ -107,6 +107,7 @@ export function StatusPanel({ content, state }: { content: ContentBundle; state:
 
       {(b.rent || b.holdings || b.dues || b.pay) > 0 && (
         <Section title="A year at Michaelmas">
+          <p class="muted">In a fair year with steady trade. {state.year ? `Last Michaelmas brought ${renderText('{house.harvest}', state, content)}${state.year.raided ? ', and raiders' : ''}.` : ''} Rents rise and fall with the harvest; salt, markets and tolls with the trade.</p>
           <dl class="kv">
             {b.rent > 0 && <><dt>Rents of the manor</dt><dd>{formatCoin(b.rent)}</dd></>}
             {b.holdings > 0 && <><dt>Other holdings</dt><dd>{formatCoin(b.holdings)}</dd></>}

@@ -12,7 +12,10 @@ import { FRAMES, GAME_ID, HOUSE_LAWS, type ContentBundle, type Effect, type Fram
 import { FOUNDER_ID, HOUSE_ID, type HouseState } from './state';
 import { SELECTORS, select, heirOf, livingChildren, die, queueSuccession, succeed, bear, marry, nameChild, yearTick, SUCCESSION_SCENE } from './family';
 import { ageOfCharacter } from '@engine/character';
-import { economyTick } from './economy';
+import { economyTick, ESTATE_LABELS, HARVESTS, TRADES } from './economy';
+import { formatCoin } from '@engine/format';
+
+const ESTATE_FIELDS = ['exists', 'people', 'food', 'temper', 'defence', 'church', 'salt', 'orchard'];
 import { rival, addRival, housesYear, standingOf, standingWord, RIVAL_FIELDS } from './houses';
 
 const st = (s: CoreState) => s as HouseState;
@@ -25,7 +28,7 @@ const SINGLE = ['opening', 'imported'];
 /** family.<field>: the house as a whole. */
 const FAMILY = ['law', 'generation', 'members', 'children', 'sons', 'daughters', 'extinct', 'no_heir', 'minor', 'regency', 'contested', 'news', 'childbed', 'cloister', 'junior'];
 // {house.*}: the founder's house as Knight of Adalia left it, or as a fresh start has it
-const HOUSE_TEXT = ['manor', 'claimed', 'companion', 'companion_first', 'origin', 'parent', 'parent_start', 'knights', 'withholder', 'parent_word', 'querec', 'querec_start', 'querec_short', 'ruler', 'ruler_lc', 'match_penhoet', 'match_valdrenne', 'match_kerguen', 'standing'];
+const HOUSE_TEXT = ['manor', 'claimed', 'companion', 'companion_first', 'origin', 'parent', 'parent_start', 'knights', 'withholder', 'parent_word', 'querec', 'querec_start', 'querec_short', 'ruler', 'ruler_lc', 'match_penhoet', 'match_valdrenne', 'match_kerguen', 'standing', 'harvest'];
 // house.<field> in conditions: the founder's knights as Knight of Adalia left them
 const HOUSE_IDS = ['yvon', 'vassals', 'standing'];
 
@@ -74,7 +77,7 @@ export function sovereignStyle(state: HouseState, content: ContentBundle): strin
 
 export const house: GameModule = {
   id: GAME_ID,
-  namespaces: ['realm', 'opening', 'imported', 'inherited', 'family', 'house', 'rival'],
+  namespaces: ['realm', 'opening', 'imported', 'inherited', 'family', 'house', 'rival', 'estate', 'holding'],
   characterSelectors: SELECTORS,
   selectCharacter: (s, c, sel) => select(st(s), ct(c), sel),
 
@@ -102,6 +105,10 @@ export const house: GameModule = {
       case 'imported': return !!state.inheritance;
       // inherited.<flag>: a story flag set in the Knight of Adalia life this house continues
       case 'inherited': return !!state.inheritance?.flags.includes(a!);
+      // estate.<field>: the house's manor (economy.ts); estate.exists when it has one
+      case 'estate': return a === 'exists' ? !!state.estate : state.estate?.[a as 'people'] ?? 0;
+      // holding.<id>: the house holds it
+      case 'holding': return !!state.holdings?.[a!];
       // rival.<house>.<field>: a rival house's standing, temper toward this house, or claim (houses.ts)
       case 'rival': {
         const b = path.split('.')[2]!;
@@ -148,6 +155,8 @@ export const house: GameModule = {
     const [ns, a, b] = path.split('.');
     if (SINGLE.includes(ns!)) return a === undefined ? null : `"${ns}" takes no sub-path ("${path}")`;
     if (a === undefined) return `incomplete path "${path}"`;
+    if (ns === 'estate') return ESTATE_FIELDS.includes(a) ? (b === undefined ? null : `too many segments in "${path}"`) : `unknown manor field in "${path}"`;
+    if (ns === 'holding') return /^[a-z][a-z0-9_]*$/.test(a) && b === undefined ? null : `bad holding id in "${path}"`;
     if (ns === 'rival') {
       if (!ct(_c).registry.houses[a]) return `unknown house "${a}" in "${path}"`;
       return b && (RIVAL_FIELDS as readonly string[]).includes(b) ? null : `rival paths are rival.<house>.${RIVAL_FIELDS.join('|')} ("${path}")`;
@@ -173,6 +182,17 @@ export const house: GameModule = {
 
   addNumber(s, c, path, delta, changes) {
     const [ns, a, b] = path.split('.');
+    if (ns === 'estate') {
+      const e = st(s).estate;
+      if (!e || a === 'exists') return; // a house with no manor: nothing to improve
+      const f = a as keyof typeof ESTATE_LABELS;
+      const [lo, hi] = f === 'people' ? [0, 2000] : f === 'temper' ? [-5, 5] : f === 'food' ? [0, 12] : [0, 10];
+      const before = e[f];
+      e[f] = Math.min(hi, Math.max(lo, before + delta));
+      const d = e[f] - before;
+      if (d) changes.push(f === 'people' ? `${d > 0 ? '+' : ''}${d} people at ${e.name}` : f === 'temper' ? `${e.name}: ${d > 0 ? 'the village warmer' : 'the village colder'}` : `${ESTATE_LABELS[f]} ${d > 0 ? '+' : ''}${d}`);
+      return;
+    }
     if (ns !== 'rival') throw new Error(`add: unsupported path ${path}`);
     const d = addRival(st(s), ct(c), a!, b!, delta);
     const t = d ? changeNote(st(s), ct(c), path, d) : '';
@@ -182,6 +202,7 @@ export const house: GameModule = {
   stakesOfAdd(c, path, sign, put) {
     const [ns, a] = path.split('.');
     if (ns === 'rival') put(`rival.${a}`, ct(c).registry.houses[a!]?.name ?? a!, STAKES_RANK.rep, sign);
+    if (ns === 'estate') put('manor', 'The manor', STAKES_RANK.manor, sign);
   },
 
   labelFor(c, path) {
@@ -205,6 +226,20 @@ export const house: GameModule = {
   },
 
   effects: {
+    hold(s, _c, effect, ctx) {
+      const e = (effect as Op<'hold'>).hold;
+      const h = (st(s).holdings ??= {});
+      const had = h[e.id];
+      h[e.id] = { name: e.name, income: (had?.income ?? 0) + e.income, temper: had?.temper ?? 0, kind: e.kind ?? had?.kind };
+      ctx.changes.push(`${had ? 'Improved' : 'You hold'}: ${e.name} (${formatCoin(e.income)} a year${had ? ' more' : ''})`);
+    },
+    war(s, _c, effect, ctx) {
+      const w = (effect as Op<'war'>).war;
+      const state = st(s);
+      if (w === 'none') { if (state.realm.war) ctx.changes.push('Peace'); delete state.realm.war; return; }
+      state.realm.war = w;
+      ctx.changes.push(`War with ${w}`);
+    },
     west(s, c, effect, ctx) {
       const state = st(s);
       const content = ct(c);
@@ -368,6 +403,8 @@ function houseText(s: HouseState, f: string): string | undefined {
   switch (f) {
     // the house's standing in PLAN.md's words (houses.ts)
     case 'standing': return standingWord(standingOf(s));
+    // the last Michaelmas, in words: "a poor harvest and slack trade"
+    case 'harvest': { const y = s.year; return y ? `${HARVESTS.find((x) => x.id === y.harvest)?.word ?? y.harvest} and ${TRADES.find((x) => x.id === y.trade)?.word ?? y.trade}` : 'a fair harvest and steady trade'; }
     case 'manor': return manor;
     case 'claimed': return manor === 'Kerval' || d?.flags.includes('c2_granted_kerval') || !d ? 'Kerval' : manor;
     case 'companion': case 'companion_first': {

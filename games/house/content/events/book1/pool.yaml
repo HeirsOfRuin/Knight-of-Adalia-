@@ -35,7 +35,7 @@
       next: { switch: [ { if: [ "!flag.h_suit_bought", "!flag.h_suit_settled" ], go: h_b06_suit }, { if: sibling.exists, go: h_b07_grievance }, { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
     - id: let_be
       text: Let it go. It is one hill, and you have a wedding to pay for.
-      effects: [ { add: { counter.shadow: -1, counter.household: -1 } } ]
+      effects: [ { add: { counter.shadow: -1, counter.household: -1, estate.temper: -1 } } ]
       text_after: |
         You let it go. The sheep stay. So does the shepherd's black eye, and the story of it, which goes round the valley twice and comes back worse.
       next: { switch: [ { if: [ "!flag.h_suit_bought", "!flag.h_suit_settled" ], go: h_b06_suit }, { if: sibling.exists, go: h_b07_grievance }, { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }

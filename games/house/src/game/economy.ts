@@ -47,6 +47,39 @@ function hash(seed: number, a: string, b = 0): number {
   return ((h ^ (h >>> 15)) >>> 0) / 4294967296;
 }
 
+// ---- the year's luck (deterministic: the seed and the year decide it, so no dice are drawn) ----------------------
+/** The harvest: what the land's rents and the barn come to, against a fair year. Weighted to about a fair year on average. */
+export const HARVESTS = [
+  { id: 'failed', upto: 0.06, rent: 0.5, grain: 0.3, word: 'the harvest failed' },
+  { id: 'poor', upto: 0.26, rent: 0.8, grain: 0.7, word: 'a poor harvest' },
+  { id: 'fair', upto: 0.74, rent: 1, grain: 1, word: 'a fair harvest' },
+  { id: 'good', upto: 0.94, rent: 1.15, grain: 1.3, word: 'a good harvest' },
+  { id: 'rich', upto: 1, rent: 1.35, grain: 1.6, word: 'a rich harvest' },
+] as const;
+/** The trade: what the salt, the markets, the tolls and the customs come to. */
+export const TRADES = [
+  { id: 'slack', upto: 0.2, mult: 0.75, word: 'slack trade' },
+  { id: 'steady', upto: 0.8, mult: 1, word: 'steady trade' },
+  { id: 'brisk', upto: 1, mult: 1.25, word: 'brisk trade' },
+] as const;
+/** War on the realm's borders cuts the trade; a plague year cuts it and empties the villages. */
+const WAR_TRADE = 0.6, PLAGUE_TRADE = 0.7, PLAGUE_DEATHS = 0.15;
+
+/** Holdings by what moves them: rents move with the harvest, tolls and salt with the trade, fees with nothing. */
+const TRADE_HOLDINGS = new Set(['market_charter', 'road_tolls', 'sauvemer_factor', 'west_gift', 'customs', 'salt_road', 'mint', 'harbour']);
+const FIXED_HOLDINGS = new Set(['exile_pension', 'chamber_fee']);
+export const kindOf = (id: string, h: { kind?: string }) => h.kind ?? (TRADE_HOLDINGS.has(id) ? 'trade' : FIXED_HOLDINGS.has(id) ? 'fixed' : id === 'crown_revenues' ? 'crown' : 'land');
+
+/** This Michaelmas's harvest and trade, from the seed and the year. */
+export function yearLuck(s: HouseState): { harvest: (typeof HARVESTS)[number]; trade: (typeof TRADES)[number]; tradeMult: number } {
+  const year = Math.floor(s.time / 4);
+  const h = hash(s.seed, 'harvest', year), t = hash(s.seed, 'trade', year);
+  const harvest = HARVESTS.find((x) => h < x.upto) ?? HARVESTS[2];
+  const trade = TRADES.find((x) => t < x.upto) ?? TRADES[1];
+  const tradeMult = trade.mult * (s.realm.war ? WAR_TRADE : 1) * (s.flags.plague ? PLAGUE_TRADE : 1);
+  return { harvest, trade, tradeMult };
+}
+
 /** The manor's rents: about 20d a head, the salt works and orchards; halved when the village is close to rising. */
 export function manorRent(s: HouseState): number {
   const e = s.estate;
@@ -182,12 +215,55 @@ function interest(s: HouseState, notes: string[]): number {
 }
 
 /** One season on the house's lands. At Michaelmas: harvest, rents, dues, the household, the men's pay; one line for the year. */
+/** The year's rents, as the harvest and the trade make them (manorRent and holdingsIncome are a fair year's). */
+function luckyIncome(s: HouseState, luck: ReturnType<typeof yearLuck>): { rent: number; other: number } {
+  const e = s.estate;
+  let rent = 0;
+  if (e) {
+    rent = Math.round((e.people * 20 + e.orchard * 150) * luck.harvest.rent + e.salt * 200 * luck.tradeMult);
+    if (e.temper <= -3) rent = Math.floor(rent / 2);
+  }
+  let other = 0;
+  for (const [id, h] of Object.entries(s.holdings ?? {})) {
+    const k = kindOf(id, h);
+    // the crown's revenues: half the land's (the domain, the hearth-tax), half the trade's (the salt penny, the customs)
+    const m = k === 'land' ? luck.harvest.rent : k === 'trade' ? luck.tradeMult : k === 'crown' ? (luck.harvest.rent + luck.tradeMult) / 2 : 1;
+    const n = Math.round(h.income * m);
+    other += h.temper <= -3 ? Math.floor(n / 2) : n;
+  }
+  return { rent, other };
+}
+
+/** War on the march: a manor may be raided, the likelier the weaker its walls. */
+function raid(s: HouseState, notes: string[]): boolean {
+  const e = s.estate;
+  if (!e || !s.realm.war) return false;
+  const r = hash(s.seed, 'raid', Math.floor(s.time / 4));
+  if (r >= Math.max(0.05, 0.35 - e.defence * 0.03)) return false;
+  const lost = Math.ceil(e.people * 0.04);
+  e.people = clamp('people', e.people - lost);
+  e.food = clamp('food', e.food - 2);
+  e.temper = clamp('temper', e.temper - 1);
+  notes.push(`Raiders came over the march to ${e.name}: the outlying farms burned, ${lost} people dead or fled, and the barn short`);
+  return true;
+}
+
 export function economyTick(s: HouseState, _content: ContentBundle, changes: string[]): void {
   const e = s.estate;
   const notes: string[] = [];
   if (s.time % 4 === 2 && (e || s.holdings || s.vassals || s.debt || (s.res.men ?? 0) + (s.res.garrison ?? 0) > 0)) {
-    if (e) e.food = clamp('food', e.food + Math.max(1, Math.round(e.people / 40) + Math.floor(e.orchard / 2)));
-    const rent = manorRent(s), other = holdingsIncome(s), dues = feudalYear(s, notes);
+    const luck = yearLuck(s);
+    // a plague year empties the village before the harvest is in
+    if (e && s.flags.plague) {
+      const dead = Math.round(e.people * PLAGUE_DEATHS);
+      e.people = clamp('people', e.people - dead);
+      notes.push(`The sickness in ${e.name}: ${dead} dead this year`);
+    }
+    const raided = raid(s, notes);
+    if (e) e.food = clamp('food', e.food + Math.max(1, Math.round((Math.round(e.people / 40) + Math.floor(e.orchard / 2)) * luck.harvest.grain)));
+    s.year = { harvest: luck.harvest.id, trade: luck.trade.id, at: s.time, raided: raided || undefined };
+    const { rent, other } = luckyIncome(s, luck);
+    const dues = feudalYear(s, notes);
     const income = rent + other + dues;
     s.res.coin = (s.res.coin ?? 0) + income;
     const household = Math.min(Math.max(0, s.res.coin), Math.round(income * householdShare(s)));
@@ -198,14 +274,16 @@ export function economyTick(s: HouseState, _content: ContentBundle, changes: str
     const paid = interest(s, notes);
     const out = [household ? `the household ${formatCoin(household)}` : '', pay ? `the men's pay ${formatCoin(pay)}` : '', fixed ? `repairs ${formatCoin(fixed)}` : '', paid ? `the Lanzi's interest ${formatCoin(paid)}` : ''].filter(Boolean);
     const list = out.length > 1 ? `${out.slice(0, -1).join(', ')} and ${out.at(-1)}` : out[0];
-    changes.push(`Michaelmas: ${formatCoin(income)} came in${list ? `; ${list} went out` : ''}`, ...notes);
+    const how = e || Object.keys(s.holdings ?? {}).length ? `, ${luck.harvest.word} and ${luck.trade.word}${s.realm.war ? ', in a year of war' : ''}` : '';
+    changes.push(`Michaelmas${how}: ${formatCoin(income)} came in${list ? `; ${list} went out` : ''}`, ...notes);
   }
   // every season eats one season of grain; an empty barn costs people and temper
   if (e) {
     e.food -= 1;
     if (e.food < 0) {
       e.food = 0;
-      const lost = Math.ceil(e.people * 0.04);
+      // hunger: a stone granary (KoA's investment) keeps half the village alive that would otherwise go
+      const lost = Math.ceil(e.people * (s.flags.inv_h_granary ? 0.02 : 0.04));
       e.people = clamp('people', e.people - lost);
       e.temper = clamp('temper', e.temper - 1);
       changes.push(`Hunger at ${e.name}: ${lost} dead or gone`);

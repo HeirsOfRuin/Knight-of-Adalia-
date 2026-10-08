@@ -18,6 +18,8 @@ export interface Realm {
   changes: number;
   /** the regnal year the sovereign's reign is dated from, when it began in play (a new king of the house) */
   from?: number;
+  /** the realm is at war, and with whom (economy.ts: trade suffers, manors are raided) */
+  war?: string;
 }
 
 /** The house's own id in Character.house; a married-in spouse keeps the house they were born to. */
@@ -81,8 +83,8 @@ export interface Estate {
   founded: number;
 }
 
-/** Another holding: its income in pence a year, paid at Michaelmas, and its temper. */
-export interface Holding { name: string; income: number; temper: number }
+/** Another holding: its income in pence a year, paid at Michaelmas, and its temper; kind: what moves it (economy.ts). */
+export interface Holding { name: string; income: number; temper: number; kind?: 'land' | 'trade' | 'fixed' }
 
 /** A knight who holds land of the house; heir: his son holds now, as a minor (in wardship) or grown. */
 export interface Vassal { id: string; name: string; seat: string; heir?: 'minor' | 'grown' }
@@ -98,6 +100,8 @@ export interface HouseState extends CoreState {
   estate?: Estate;
   holdings?: Record<string, Holding>;
   vassals?: Vassal[];
+  /** the last Michaelmas: how the harvest and the trade went (economy.ts) */
+  year?: { harvest: string; trade: string; at: number; raided?: boolean };
   /** pence owed to the Lanzi bank, at 10% a year (PLAN.md §4.3); unpaid interest is added to it */
   debt?: number;
   /** the rival houses (houses.ts, registry/houses.yaml); filled in on first read for older saves */

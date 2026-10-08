@@ -100,6 +100,13 @@ money:
   category: money
   text: |
     Twelve pence make a shilling, twenty shillings a pound, and a mark is thirteen shillings and fourpence. A labourer earns two pence a day, an archer six in war, a man-at-arms twelve, a knight two shillings. A great house lives on its rents, its dues and its credit, and every one of them is late.
+the_year:
+  title: Harvests and trade
+  category: money
+  text: |
+    A lord's rents are what his people can pay, and they pay out of the harvest. A good year fills the barns and the rent rolls; a wet summer halves both, and a failed one empties the barns by spring and the village after them. A stone granary is the only insurance there is.
+
+    Salt, markets, tolls and customs live on the trade, which is brisk in a year of peace and slack in a year of rumours. War on the march halves it, and sends raiders to the farms nearest the hills, the more of them the weaker the walls.
 salt:
   title: Salt
   category: money

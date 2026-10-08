@@ -18,7 +18,7 @@ const args = process.argv.slice(2);
 const runs = Number(args[args.indexOf('--runs') + 1]) || 12;
 const content = loadContent();
 
-interface Sample { coin: number; start: number; net: number; income: number; standing: number; penhoet: number; kerguen: number; arrears: boolean; deserted: boolean; locked: number; offered: number; scenes: Set<string> }
+interface Sample { coin: number; start: number; net: number; income: number; years: number[]; standing: number; penhoet: number; kerguen: number; arrears: boolean; deserted: boolean; locked: number; offered: number; scenes: Set<string> }
 
 function sample(label: string, make: (seed: number) => HouseState): Sample[] {
   const out: Sample[] = [];
@@ -26,12 +26,15 @@ function sample(label: string, make: (seed: number) => HouseState): Sample[] {
     let last: HouseState | undefined;
     let first: HouseState | undefined;
     let locked = 0, offered = 0, deserted = false;
+    const years: number[] = [];
     const r = playOnce<HouseState>(content, label, make, 1 + i * 7919, POLICIES[i % POLICIES.length]!, {
       observe: (s, v) => {
         first ??= s; last = s;
         // a choice shut by money: its lock names coin
         for (const c of v.choices) { offered++; if (!c.available && /coin/i.test(c.lockReason ?? '')) locked++; }
         if (v.outcome?.changes.some((x) => /desert/.test(x))) deserted = true;
+        // each Michaelmas's takings, as the year's luck made them (whole pounds)
+        for (const x of v.outcome?.changes ?? []) { const m = /^Michaelmas[^:]*: £(\d+)/.exec(x); if (m) years.push(Number(m[1])); }
       },
     });
     if (r.outcome !== 'ending' || !last || !first) throw new Error(`${label}: ${r.outcome} ${r.detail ?? ''}`);
@@ -39,7 +42,7 @@ function sample(label: string, make: (seed: number) => HouseState): Sample[] {
     out.push({
       coin: last.res.coin ?? 0, start: first.res.coin ?? 0, net: b.net, income: b.rent + b.holdings + b.dues,
       standing: standingOf(last), penhoet: last.houses?.penhoet?.temper ?? 0, kerguen: last.houses?.kerguen?.standing ?? 0,
-      arrears: !!last.counters.pay_arrears, deserted, locked, offered, scenes: new Set(r.scenes),
+      arrears: !!last.counters.pay_arrears, deserted, years, locked, offered, scenes: new Set(r.scenes),
     });
   }
   return out;
@@ -61,7 +64,7 @@ for (const st of startsOf(content)) {
   rows.push({ label: "the author's save", xs: sample("the author's save", (seed) => fromDynasty(content, d, { seed })) });
 }
 
-console.log(`${'start'.padEnd(44)} ${'coin start→end'.padEnd(20)} ${'in/yr'.padEnd(7)} ${'net/yr'.padEnd(8)} ${'standing'.padEnd(30)} ${'Penhoët'.padEnd(9)} ${'Kerguen'.padEnd(8)} locked  unpaid`);
+console.log(`${'start'.padEnd(44)} ${'coin start→end'.padEnd(20)} ${'in/yr'.padEnd(7)} ${'net/yr'.padEnd(8)} ${'years'.padEnd(12)} ${'standing'.padEnd(30)} ${'Penhoët'.padEnd(9)} ${'Kerguen'.padEnd(8)} locked  unpaid`);
 for (const { label, xs } of rows) {
   const s = med(xs.map((x) => x.standing));
   console.log([
@@ -69,6 +72,7 @@ for (const { label, xs } of rows) {
     `${pounds(med(xs.map((x) => x.start)))}→${pounds(med(xs.map((x) => x.coin)))}`.padEnd(20),
     pounds(med(xs.map((x) => x.income))).padEnd(7),
     pounds(med(xs.map((x) => x.net))).padEnd(8),
+    (xs.some((x) => x.years.length) ? `£${Math.min(...xs.flatMap((x) => x.years))}..£${Math.max(...xs.flatMap((x) => x.years))}` : '-').padEnd(12),
     `${s} ${standingWord(s)}`.padEnd(30),
     range(xs.map((x) => x.penhoet)).padEnd(9),
     range(xs.map((x) => x.kerguen)).padEnd(8),

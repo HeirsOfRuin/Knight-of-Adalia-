@@ -82,7 +82,7 @@
   frames: [free, adalian]
   requires: "inherited.c5r_no_peace"
   weight: 20
-  on_enter: [ { advance: { seasons: 1 } } ]
+  on_enter: [ { advance: { seasons: 1 } }, { add: { estate.people: -6, estate.food: -1 } } ]
   text: |
     Smoke in the east at dawn, three columns of it, over the hills where the march runs. By Terce the first carts come in with families on top of their furniture. Valdrennish horse, they say, forty, maybe sixty, and gone again before anyone could get a lance on them. Two farms burned at the head of the valley. A shepherd dead. A girl taken, and let go at the ford, because she bit.
 
@@ -111,7 +111,7 @@
     - id: rebuild
       text: Let them go, and pay to rebuild the farms. (£8)
       requires: "res.coin >= 1920"
-      effects: [ { add: { res.coin: -1920 } } ]
+      effects: [ { add: { res.coin: -1920, estate.people: 6, estate.temper: 1 } } ]
       text_after: |
         You pay for timber and thatch and seed corn, and the farms are up by harvest. The families thank you. Over the hills, presumably, the Valdrennish horse are already planning the next one.
       next: "@return"

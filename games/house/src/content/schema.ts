@@ -25,6 +25,11 @@ const Who = Id;
 export const HOUSE_EFFECTS = [
   // the West changes hands: a new frame, a new sovereign, or both (FRAME.md §2, "The frame can change")
   z.object({ west: z.object({ frame: FrameId.optional(), sovereign: Id.optional() }).strict() }).strict(),
+  // ---- the purse (economy.ts) ----
+  // a holding gained or improved: income in pence a year; kind says what moves it (rents, trade, or a fixed fee)
+  z.object({ hold: z.object({ id: Id, name: z.string(), income: z.number().int(), kind: z.enum(['land', 'trade', 'fixed']).optional() }).strict() }).strict(),
+  // the realm goes to war with someone, or makes peace (none): trade suffers and the march is raided while it lasts
+  z.object({ war: z.string() }).strict(),
   // ---- the family (PLAN.md §4.1-4.2) ----
   // a child of the head and the head's spouse, or of who and their spouse; sex drawn unless given
   z.object({ birth: z.object({ of: Who.optional(), sex: z.enum(['male', 'female']).optional() }).strict() }).strict(),

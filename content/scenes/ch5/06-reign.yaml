@@ -128,7 +128,7 @@
       tags: [diplomacy, allies]
       visible_if: [ heir.eldest.alive ]
       text_after: |
-        Valdrenne takes the match, a princess of the blood for {heir.eldest.name}, and with it signs a peace for the lifetime of both parties. Adalia, outmanoeuvred, signs a truce rather than be left out. {heir.eldest.name} [if heir.eldest.bond >= 3]trusts you, and agrees, and you hope you have earned it[elif heir.eldest.bond <= -2]agrees, coldly, and you know it will be held against you[else]agrees, after a week of not speaking to you[/if].
+        Valdrenne takes the match, a princess of the blood for {heir.eldest.name}, and with it signs a peace for the lifetime of both parties. Adalia, outmanoeuvred, signs a truce rather than be left out. [if heir.eldest.age < 10]{heir.eldest.name} is {heir.eldest.ageword}, and is betrothed in the cradle, as princes are, and will be told when [if heir.eldest.sex == son]he[else]she[/if] is old enough to mind.[else]{heir.eldest.name} [if heir.eldest.bond >= 3]trusts you, and agrees, and you hope you have earned it[elif heir.eldest.bond <= -2]agrees, coldly, and you know it will be held against you[else]agrees, after a week of not speaking to you[/if].[/if]
       effects: [ { set: flag.c5r_peace_marriage }, { add: { counter.reign: 2, rep.valdrenne: 2, heir.eldest.bond: -1 } } ]
       next: c5r_petition
     - id: refuse

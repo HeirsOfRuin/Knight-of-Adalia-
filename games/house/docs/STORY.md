@@ -964,11 +964,14 @@ The likely outcome stands unless a **threshold** is met: votes, standing, men an
 
 ---
 
-## Layer 3: Beat sheets, round 4: Book I, Act III, *The Children's Mortality* (draft for the author's decisions, 2026-10-07)
+## Layer 3: Beat sheets, round 4: Book I, Act III, *The Children's Mortality* (decisions taken 2026-10-08; awaiting sign-off)
 
 **Years:** 63-66. **Strand:** family.
 
-**The Second Mottle** runs from 63 to 65 (canon). While the `plague` and `plague_children` flags are set (built), the life odds kill more, and children most of all. How hard it hits is L3-18.
+**The Second Mottle** runs from 63 to 65 (canon). While the `plague` and `plague_children` flags are set (built), the life odds kill more, and children most of all. How hard it hits (L3-18, decided):
+- The plague odds are raised enough that most runs lose a child of the house.
+- Every run loses at least one named member of the extended family by script: a cousin, a nephew, or the Old Companion's son.
+- This is the extinction target's main lever: 15-25% by year 102, against 0% from the odds alone.
 
 **What it reads from Act II:**
 - the realm's law, or who holds the wardship;
@@ -1016,7 +1019,7 @@ The likely outcome stands unless a **threshold** is met: votes, standing, men an
 
 **D4. The Crown in the Plague** (spring, year 64).
 - **Adalian (L3-16):**
-  1. Edwin of Adalia dies at 52. His son died before him, and his grandson is a minor.
+  1. Edwin of Adalia dies at 52. His son, Prince Aymer, died in year 61 of a fever after the Caldmoor war on the March (C7). His grandson **Aldred III**, aged 9, is king.
   2. A regency council governs at Wendmere.
   3. The new reign asks every lord for homage by proxy, because nobody will ride through the plague.
   4. Choices:
@@ -1036,7 +1039,7 @@ The likely outcome stands unless a **threshold** is met: votes, standing, men an
   - The child king is "the King". Edwin is now "the late King".
 
 **D5. Penhoët in Mourning** (autumn, year 64).
-- **Beats:** the Mottle takes from Penhoët too (L3-17).
+- **Beats:** the Mottle takes Ronan de Penhoët, about 30 (L3-17). Hervé, about 59, survives him, broken, and Penhoët's heir is Ronan's child, a minor. If the second child married Ronan, that child is the Keeper's blood, and the second child is the natural power at Penhoët (Knight of Adalia: "runs that old house better than any Penhoët has"). Hervé, alone and dangerous, goes into Act IV.
   1. Black on Penhoët's gate.
   2. Who died, and who now holds Penhoët.
   3. If the second child married into Penhoët, it is their house in mourning, and their letter brings the news.
@@ -1099,7 +1102,7 @@ The likely outcome stands unless a **threshold** is met: votes, standing, men an
   - Find them a place with a client house: coin, and a dependant's loyalty.
 - **Check:** none. **Sets:** characters (built). Clear `plague` and `plague_children`.
 
-**D11. The Keeper's Will** (summer, year 66). The act ends here (L3-19).
+**D11. The Keeper's Will** (summer, year 66). The act ends here, on the will (L3-19, decided).
 - **Beats:**
   1. The Keeper, about 36, has buried children, perhaps a parent and perhaps a spouse.
   2. With the priest and the steward, the Keeper writes the will the founder once wrote.
@@ -1134,6 +1137,10 @@ The likely outcome stands unless a **threshold** is met: votes, standing, men an
 | L3-13 | Overturning a likely outcome | Always needs an ally: the spouse's house, the second child's house or Kerguen |
 | L3-14 | Jehanne's marriage under the King's wardship (Adalian) | The house can bid for it, at a high cost and against rival bidders |
 | L3-15 | Act II's ending | The house's own law, then the first rumour of the Second Mottle |
+| L3-16 | Adalia's boy king | Aldred III, 9 in year 64, Edwin's grandson; Prince Aymer died in 61. The regency runs to about 71. |
+| L3-17 | Penhoët's loss in the Mottle | Ronan dies; Hervé survives with a minor heir, Ronan's child |
+| L3-18 | The Mottle's severity | Harsh plague odds, plus one scripted death in the extended family in every run |
+| L3-19 | Act III's ending | The Keeper's will |
 | L3-4 | Who writes the scenes | Claude writes every scene. The author reviews and suggests changes in playtest, and keeps advisory control of major plot points. |
 
 ---
@@ -1151,3 +1158,4 @@ The likely outcome stands unless a **threshold** is met: votes, standing, men an
 | 2026-10-07 | Layer 3 | Book I, Act I's beat sheets (B1-B12) approved. |
 | 2026-10-07 | Layer 3, round 4 (Act II) | Male line likely under Gaucelin unless he is turned at his majority (L3-12); overturning always needs an ally (L3-13); the house can bid for Jehanne's marriage (L3-14); Act II ends on the house law and the plague rumour (L3-15). |
 | 2026-10-07 | Layer 3 | Book I, Act II's beat sheets (C1-C11) approved. |
+| 2026-10-08 | Layer 3, round 5 (Act III) | Aldred III, 9, with Prince Aymer dead in 61 (L3-16); Ronan dies in the Mottle (L3-17); harsh odds with one sure loss (L3-18); Act III ends on the Keeper's will (L3-19). |

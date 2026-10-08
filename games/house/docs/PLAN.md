@@ -498,8 +498,28 @@ The framework is done (steps 1-3). Step 4, the slice, is split so the hardest en
   - **Panels:** Status, House, People, World (22 lore entries) and Journal (`src/ui/Panels.tsx`).
   - **The economy:** Knight of Adalia's rules and prices (`src/game/economy.ts`). The import carries lands, knights, standing, honour, ruthlessness, piety, and the great folk's feelings. Children's qualities come from temperament and upbringing.
   - **New starts:** questions build a dynasty export and go through the import (`src/game/setup.ts`, `tests/setup.test.ts`).
+- **The gate: rival houses as state, and the bot's balance** (2026-10-08):
+  - **Rival houses** (`registry/houses.yaml`, `src/game/houses.ts`). Penhoët and Kerguen have heads by date, standing, temper toward the house and a claim. Content reads `rival.<house>.*` and `house.standing`; the old `counter.penhoet` is gone. Kerguen rises a point a year, and a Penhoët at temper -4 or worse moves against the house (`h_b1p_penhoet_feud`). The house's own standing is derived (§4.3).
+  - **The economy, finished to §4.3 and §4.6:**
+    - castle repairs at £5 a point of defence;
+    - the Lanzi's interest at 10%;
+    - dowries at the sibling's match;
+    - the Founder's honour of Kerval (£160, Knight of Adalia's great lord's honour);
+    - crown-sized prices on the crowned path (five times higher).
+  - **`npm run house:balance`** (in `house:check`): every start × treasury, 12 runs each. Results (medians):
+
+    | Start | Income a year | Clear a year | Coin at the end of Act I | Standing |
+    |---|---|---|---|---|
+    | Founder, free West | £256 | £202 (£177 in debt) | £1,704 | 53, a great house |
+    | Founder, Adalian West (Earl of the March) | £858 | £743 | £6,044 | 73, one of the great houses |
+    | Crowned, with Mahaut | £708 | £564 | £4,617 | 86, the greatest in the West |
+    | The author's save | £794 | £580 | £7,836 | 100 |
+
+    Penhoët's temper ends anywhere from -4 to +7 across runs, and Kerguen's standing from 30 to 40. No comfortable start loses money or leaves its men unpaid. Money locks about 1% of choices, and only for starts in debt.
+  - **The finding:** Act I spends little against a great house's surplus, so the purse grows about eightfold by its end. Act II's spends (§4.6: building, dowries for the Keeper's children, war wages, the Lanzi) are where money must bite; or Act I's household share rises to §4.6's 15%. That is for the author (`docs/STORY.md` decisions).
 - **Still open:**
-  - content does not yet read the economy (no `estate.*` paths), and a crown's income makes most scene prices trivial; balance in step 5;
+  - content reads the purse (`res.coin`) but not yet the manor (`estate.*` paths);
+  - the crown's income follows Knight of Adalia (£600-£1,000), not §4.6's "about £4,000"; §4.6 should be corrected to the save's figures;
   - Knight of Adalia's followers other than the great folk (Davy Ludd and the old company) are text only (`{house.companion}`);
   - the rival-house state (`counter.penhoet` stands in);
   - the vassals as state (homage terms are flags);

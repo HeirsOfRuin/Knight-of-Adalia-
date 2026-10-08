@@ -294,7 +294,7 @@ describe('the crowned path: King of the West, married to Mahaut', () => {
       let t = s;
       const lines: string[] = [];
       for (let i = 0; i < 12 && t.time < 3; i++) { const r = choose(c, t, view(c, t).choices.find((x) => x.available)!.id); t = r.state; lines.push(...(t.lastOutcome?.changes ?? [])); }
-      expect(lines.some((l) => /^Michaelmas: £\d+.* came in; the household .* and the men's pay .* went out$/.test(l))).toBe(true);
+      expect(lines.some((l) => /^Michaelmas: £\d+.* came in; the household .*, the men's pay .* and repairs .* went out$/.test(l))).toBe(true);
     });
 
     it('plays the elective crown through to the end of Act I, with Jehan king under his mother\'s regency', async () => {

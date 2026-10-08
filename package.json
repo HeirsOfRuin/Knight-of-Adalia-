@@ -31,8 +31,9 @@
     "house:validate": "tsx games/house/tools/validate.ts",
     "house:bot": "tsx games/house/tools/bot.ts",
     "house:continuity": "tsx games/house/tools/continuity.ts",
-    "house:check": "npm run house:validate && npm run house:continuity -- --strict && npm run house:bot -- --runs 20 && npm run house:life -- --runs 6",
+    "house:check": "npm run house:validate && npm run house:continuity -- --strict && npm run house:bot -- --runs 20 && npm run house:life -- --runs 6 && npm run house:balance -- --runs 12",
     "house:life": "tsx games/house/tools/life.ts",
+    "house:balance": "tsx games/house/tools/balance.ts",
     "house:transcript": "tsx games/house/tools/transcript.ts",
     "house:build:artifact": "npm run house:build && tsx games/house/tools/build-artifact.ts"
   },

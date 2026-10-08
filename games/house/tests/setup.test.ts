@@ -72,6 +72,14 @@ describe('the setup questions', () => {
     expect(kids.every((k) => k.father === f.spouse)).toBe(true);
   });
 
+  it('starts a house in debt owing the Lanzi, who take their tenth at Michaelmas', () => {
+    let s = newGameFromSetup(c, { opening: 'founder', frame: 'free', sovereign: 'mahaut', name: 'Hal', sex: 'male', seed: 2 }, { treasury: 'debt' });
+    expect(s.debt).toBe(60000);
+    const lines: string[] = [];
+    for (let i = 0; i < 15 && s.time < 3; i++) { s = choose(c, s, view(c, s).choices.find((x) => x.available)!.id).state; lines.push(...(s.lastOutcome?.changes ?? [])); }
+    expect(lines.some((l) => /the Lanzi's interest £25|The Lanzi's interest unpaid/.test(l))).toBe(true);
+  });
+
   it('settles a missing or stale answer to the first open option', () => {
     const start: SetupStart = { opening: 'founder', frame: 'free', sovereign: 'mahaut', name: 'Hal', sex: 'male', seed: 1 };
     const a = settleAnswers(c, start, { children: 'mahaut_son', treasury: 'nonsense' });

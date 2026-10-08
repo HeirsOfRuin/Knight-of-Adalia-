@@ -98,6 +98,8 @@ export interface HouseState extends CoreState {
   estate?: Estate;
   holdings?: Record<string, Holding>;
   vassals?: Vassal[];
+  /** pence owed to the Lanzi bank, at 10% a year (PLAN.md §4.3); unpaid interest is added to it */
+  debt?: number;
   /** the rival houses (houses.ts, registry/houses.yaml); filled in on first read for older saves */
   houses?: Record<string, { standing: number; temper: number; claim: number }>;
 }

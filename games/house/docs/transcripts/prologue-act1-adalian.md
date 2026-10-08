@@ -112,7 +112,7 @@ He comes himself a week later, which you did not expect. He is a careful man of 
 
 The steward finds a copy of a copy, in a hand nobody knows, with a hole where the witnesses should be. "It'll do," he says, in the voice of a man who knows it will not. Hervé's clerk asks, politely, whether he might see it, and makes a note.
 
-*Michaelmas: £120 5s came in; the household £12 6d and the men's pay £9 went out*
+*Michaelmas: £252 15s came in; the household £25 5s 6d, the men's pay £9 and repairs £20 went out*
 
 ### The First Michaelmas
 
@@ -200,7 +200,7 @@ You know who is left. You could count them on one hand now, and you do, under th
 
 You take a corner of the coffin with Piers atte Brook and two of the old company, and your back tells you about it for a week. The whole village comes. At the grave somebody starts the story about Hamon and the Brésy horse, and somebody else corrects it, and by the end there is laughing in the churchyard, which the priest pretends not to hear.
 
-*Coin −£2; The household: more loyal; Michaelmas: £140 18s 4d came in; the household £14 1s 10d and the men's pay £9 went out; Sir Josselin Salvert dies and leaves a son under age; the wardship of the Salvert dyke is sold for £20*
+*Coin −£2; The household: more loyal; Michaelmas: £273 8s 4d came in; the household £27 6s 10d, the men's pay £9 and repairs £20 went out; Sir Josselin Salvert dies and leaves a son under age; the wardship of the Salvert dyke is sold for £20*
 
 ### The Summons
 
@@ -248,7 +248,7 @@ The King's governor at Lannec is a lawyer from Wendmere with a fur collar and co
 
 You take him through it clause by clause, as you once took a company through a ford, and at the end he has nothing in his margins that he can make stick. "The King will be pleased," he says, in a voice that means the King will be told. The West hears of it by Michaelmas.
 
-*The sovereign's favour: lower; Michaelmas: £121 6s 8d came in; the household £12 2s 8d and the men's pay £9 went out*
+*The sovereign's favour: lower; Michaelmas: £253 16s 8d came in; the household £25 7s 8d, the men's pay £9 and repairs £20 went out*
 
 ### The Illness
 
@@ -341,7 +341,7 @@ On the fourth morning Piers atte Brook brings you the first thing to sign. It is
 
 You say it, and your voice goes up at the end like a boy's. The old man says, "As you like, my lord," and you would rather he had argued. The gate is cut to six. The men do it. In the yard you hear one of them say, "The old lord'd never," and the other one say, "Well, the old lord isn't here."
 
-*Hal's shadow: shorter; The household: less loyal; Michaelmas: £121 15s came in; the household £12 3s 6d and the men's pay £9 went out*
+*Hal's shadow: shorter; The household: less loyal; Michaelmas: £254 5s came in; the household £25 8s 6d, the men's pay £9 and repairs £20 went out*
 
 ### The Will
 
@@ -439,7 +439,7 @@ It is not enough. You did not expect it to be.
 
 Under the chancel floor, at the step, where the priest will walk over him every day and the village will see the stone every Sunday. The mason cuts the arms and the name and the year, and nothing else, because you could not decide what else, and in the end that seems right.
 
-*The household: more loyal; Michaelmas: £127 5s came in; the household £12 14s 6d and the men's pay £9 went out; Sir Renaud de Saint-Aubin dies; his son pays £5 in relief*
+*The household: more loyal; Michaelmas: £259 15s came in; the household £25 19s 6d, the men's pay £9 and repairs £20 went out; Sir Renaud de Saint-Aubin dies; his son pays £5 in relief*
 
 ### The Oath
 
@@ -509,7 +509,7 @@ The hall has gone quiet. Somebody's dog yawns.
 
 "You hold your land of this house," you say, "whoever sits in this chair. Kneel, or give it back." For a long breath he does nothing. Then he goes down on one knee, and then the other, and puts his hands between yours, and says the words. His hands are colder than yours. Behind you somebody lets out a breath they have been holding since Terce.
 
-*The household: more loyal; Michaelmas: £122 15s came in; the household £12 5s 6d and the men's pay £9 went out*
+*The household: more loyal; Michaelmas: £255 5s came in; the household £25 10s 6d, the men's pay £9 and repairs £20 went out*
 
 ### The New Governor
 
@@ -565,7 +565,7 @@ And the name nobody writes down, because it belongs to someone of no great house
 
 Tanguy rides over himself to settle the terms, and drinks your wine, and laughs at the steward's jokes, and does not haggle once. "My mother's done the haggling already," he says. "By letter. You'll find it in your steward's chest." Hervé de Penhoët hears of it within the week. He sends congratulations.
 
-*Penhoët: colder; Tanguy: much warmer; John marries Azenor de Kerguen*
+*Penhoët: colder; Tanguy: much warmer; Kerguen: much warmer; Kerguen's standing: much higher; John marries Azenor de Kerguen*
 
 ### The Wedding Feast
 
@@ -602,7 +602,7 @@ The clerk unrolls the parchment. Her family has already chosen which third.
 
 Agnès looks at you, and then at the clerk, who is visibly disappointed not to have to argue. "Well," she says. "Your father would have made me fight for it." She kisses you on the cheek, which she has not done since you were small.
 
-*Coin −£10; The household: more loyal; Michaelmas: £123 5s came in; the household £12 6s 6d and the men's pay £9 went out*
+*Coin −£10; The household: more loyal; Michaelmas: £255 15s came in; the household £25 11s 6d, the men's pay £9 and repairs £20 went out*
 
 ### Robert
 
@@ -663,7 +663,7 @@ Piers atte Brook rides up beside you, and looks where you are looking, and says 
 
 A pension for life to each of the five oldest, and a place at the high table at Christmas, and their sons first in line for their fathers' service. It costs a great deal. The old men grumble, and take it, and drink to you at Christmas, and mean it.
 
-*Hal's shadow: shorter; Coin −£12; Michaelmas: £123 5s came in; the household £12 6s 6d and the men's pay £9 went out; Sir Gautier d'Aubrac withholds his dues this year, over a quarrel the house's court will have to hear*
+*Hal's shadow: shorter; Coin −£12; Michaelmas: £255 15s came in; the household £25 11s 6d, the men's pay £9 and repairs £20 went out; Sir Gautier d'Aubrac withholds his dues this year, over a quarrel the house's court will have to hear*
 
 ### Sir Josselin's Daughter
 

@@ -98,9 +98,9 @@
   choices:
     - id: ronan
       text: Betroth yourself to {house.match_penhoet}.
-      effects: [ { set: flag.h_bc_betrothed_penhoet }, { add: { rival.penhoet.temper: 3, rival.penhoet.standing: 10, rel.mahaut_armance.affection: -2 } }, { if: flag.h_c_betrothed_valdrenne, then: [ { add: { counter.favour: -2, res.coin: -9600 } } ] } ]
+      effects: [ { set: flag.h_bc_betrothed_penhoet }, { add: { rival.penhoet.temper: 3, rival.penhoet.standing: 10, rel.mahaut_armance.affection: -2 } }, { if: flag.h_c_betrothed_valdrenne, then: [ { add: { counter.favour: -2, res.coin: -48000 } } ] } ]
       text_after: |
-        [if flag.h_c_betrothed_valdrenne]Breaking the Valdrennish betrothal costs forty pounds and a cold letter from Cordelle.[/if] Hervé comes to sign, and kisses your hand, and then, unexpectedly, your forehead. "The claim's in one bed now," he says. "We'll see whose." Your mother signs as Duchess of Armance. She does not look up from the parchment.
+        [if flag.h_c_betrothed_valdrenne]Breaking the Valdrennish betrothal costs two hundred pounds and a cold letter from Cordelle.[/if] Hervé comes to sign, and kisses your hand, and then, unexpectedly, your forehead. "The claim's in one bed now," he says. "We'll see whose." Your mother signs as Duchess of Armance. She does not look up from the parchment.
       next: h_bc04_court
     - id: lothaire
       visible_if: flag.h_c_betrothed_valdrenne
@@ -111,9 +111,9 @@
       next: h_bc04_court
     - id: tanguy
       text: Betroth yourself to {house.match_kerguen}.
-      effects: [ { set: flag.h_bc_betrothed_kerguen }, { add: { rival.penhoet.temper: -2, rel.tanguy_kerguen.affection: 2, rival.kerguen.temper: 3, rival.kerguen.standing: 10 } }, { if: flag.h_c_betrothed_valdrenne, then: [ { add: { counter.favour: -2, res.coin: -9600 } } ] } ]
+      effects: [ { set: flag.h_bc_betrothed_kerguen }, { add: { rival.penhoet.temper: -2, rel.tanguy_kerguen.affection: 2, rival.kerguen.temper: 3, rival.kerguen.standing: 10 } }, { if: flag.h_c_betrothed_valdrenne, then: [ { add: { counter.favour: -2, res.coin: -48000 } } ] } ]
       text_after: |
-        [if flag.h_c_betrothed_valdrenne]Breaking the Valdrennish betrothal costs forty pounds and a cold letter from Cordelle.[/if] [if hero.sex == female]Tanguy rides to Lannec in the snow to kneel to you, and does it with great style, and stays to dinner, and makes your father laugh twice.[else]Tanguy brings Maëlle to Lannec in the snow to be presented, and kneels to you himself, with great style, and stays to dinner, and makes your father laugh twice. Maëlle says nothing the whole evening, and at the end of it curtsies to you as if she meant it.[/if] Kerguen and the crown, against Penhoët and the custom of the Armance. Hervé hears of it at dinner and finishes his dinner.
+        [if flag.h_c_betrothed_valdrenne]Breaking the Valdrennish betrothal costs two hundred pounds and a cold letter from Cordelle.[/if] [if hero.sex == female]Tanguy rides to Lannec in the snow to kneel to you, and does it with great style, and stays to dinner, and makes your father laugh twice.[else]Tanguy brings Maëlle to Lannec in the snow to be presented, and kneels to you himself, with great style, and stays to dinner, and makes your father laugh twice. Maëlle says nothing the whole evening, and at the end of it curtsies to you as if she meant it.[/if] Kerguen and the crown, against Penhoët and the custom of the Armance. Hervé hears of it at dinner and finishes his dinner.
       next: h_bc04_court
     - id: none
       text: Promise yourself to no one. Not yet.

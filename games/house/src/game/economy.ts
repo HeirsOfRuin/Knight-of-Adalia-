@@ -35,6 +35,10 @@ export const DUES_PER_FEE = 120;
 export const RELIEF = 1200;
 /** A wardship, sold: the custody of a minor heir's lands and marriage. */
 export const WARDSHIP = 4800;
+/** A castle's repair, a year, for each point of the manor's defences: £20-£60 for a castle (PLAN.md §4.6). */
+export const REPAIR_PER_DEFENCE = 1200;
+/** The Sarenzan rate, a year (PLAN.md §4.3). */
+export const INTEREST = 0.1;
 
 function hash(seed: number, a: string, b = 0): number {
   let h = (seed ^ 0x9e3779b9) | 0;
@@ -145,17 +149,43 @@ function payMen(s: HouseState, notes: string[]): number {
   return paid * PAY_PER_MAN;
 }
 
-/** The year's account, without changing anything: for the status page. */
-export function yearBudget(s: HouseState): { rent: number; holdings: number; dues: number; household: number; pay: number } {
+/** The year's repairs and interest. */
+export const repairsDue = (s: HouseState) => (s.estate?.defence ?? 0) * REPAIR_PER_DEFENCE;
+export const interestDue = (s: HouseState) => Math.round((s.debt ?? 0) * INTEREST);
+
+/** The year's account, without changing anything: for the status page and the balance report. */
+export function yearBudget(s: HouseState): { rent: number; holdings: number; dues: number; household: number; pay: number; repairs: number; interest: number; net: number } {
   const rent = manorRent(s), holdings = holdingsIncome(s), dues = (s.vassals?.length ?? 0) * DUES_PER_FEE;
-  return { rent, holdings, dues, household: Math.round((rent + holdings + dues) * householdShare(s)), pay: payDue(s) };
+  const household = Math.round((rent + holdings + dues) * householdShare(s)), pay = payDue(s), repairs = repairsDue(s), interest = interestDue(s);
+  return { rent, holdings, dues, household, pay, repairs, interest, net: rent + holdings + dues - household - pay - repairs - interest };
+}
+
+/** The walls: repaired if the purse allows, else the defences slip a point. */
+function repair(s: HouseState, notes: string[]): number {
+  const e = s.estate;
+  const due = repairsDue(s);
+  if (!e || !due) return 0;
+  if ((s.res.coin ?? 0) >= due) { s.res.coin! -= due; return due; }
+  e.defence = clamp('defence', e.defence - 1);
+  notes.push(`No money for the repairs at ${e.name}: the defences slip`);
+  return 0;
+}
+
+/** The Lanzi's interest: paid if the purse allows, else added to what is owed. */
+function interest(s: HouseState, notes: string[]): number {
+  const due = interestDue(s);
+  if (!due) return 0;
+  if ((s.res.coin ?? 0) >= due) { s.res.coin! -= due; return due; }
+  s.debt = (s.debt ?? 0) + due;
+  notes.push(`The Lanzi's interest unpaid: ${formatCoin(due)} added to the debt, now ${formatCoin(s.debt)}`);
+  return 0;
 }
 
 /** One season on the house's lands. At Michaelmas: harvest, rents, dues, the household, the men's pay; one line for the year. */
 export function economyTick(s: HouseState, _content: ContentBundle, changes: string[]): void {
   const e = s.estate;
   const notes: string[] = [];
-  if (s.time % 4 === 2 && (e || s.holdings || s.vassals || (s.res.men ?? 0) + (s.res.garrison ?? 0) > 0)) {
+  if (s.time % 4 === 2 && (e || s.holdings || s.vassals || s.debt || (s.res.men ?? 0) + (s.res.garrison ?? 0) > 0)) {
     if (e) e.food = clamp('food', e.food + Math.max(1, Math.round(e.people / 40) + Math.floor(e.orchard / 2)));
     const rent = manorRent(s), other = holdingsIncome(s), dues = feudalYear(s, notes);
     const income = rent + other + dues;
@@ -164,8 +194,11 @@ export function economyTick(s: HouseState, _content: ContentBundle, changes: str
     s.res.coin -= household;
     if (e) growPeople(e, notes);
     const pay = payMen(s, notes);
-    const out = [household ? `the household ${formatCoin(household)}` : '', pay ? `the men's pay ${formatCoin(pay)}` : ''].filter(Boolean);
-    changes.push(`Michaelmas: ${formatCoin(income)} came in${out.length ? `; ${out.join(' and ')} went out` : ''}`, ...notes);
+    const fixed = repair(s, notes);
+    const paid = interest(s, notes);
+    const out = [household ? `the household ${formatCoin(household)}` : '', pay ? `the men's pay ${formatCoin(pay)}` : '', fixed ? `repairs ${formatCoin(fixed)}` : '', paid ? `the Lanzi's interest ${formatCoin(paid)}` : ''].filter(Boolean);
+    const list = out.length > 1 ? `${out.slice(0, -1).join(', ')} and ${out.at(-1)}` : out[0];
+    changes.push(`Michaelmas: ${formatCoin(income)} came in${list ? `; ${list} went out` : ''}`, ...notes);
   }
   // every season eats one season of grain; an empty barn costs people and temper
   if (e) {

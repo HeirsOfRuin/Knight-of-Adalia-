@@ -57,7 +57,6 @@ export function StatusPanel({ content, state }: { content: ContentBundle; state:
   const holdings = Object.entries(state.holdings ?? {});
   const vassals = state.vassals ?? [];
   const b = yearBudget(state);
-  const net = b.rent + b.holdings + b.dues - b.household - b.pay;
   const t = tracks(state, content);
   const res = state.res;
   return (
@@ -75,6 +74,7 @@ export function StatusPanel({ content, state }: { content: ContentBundle; state:
       <Section title="Treasury and men">
         <dl class="kv">
           <dt>Coin</dt><dd>{formatCoin(res.coin ?? 0)}</dd>
+          {(state.debt ?? 0) > 0 && <><dt>Owed to the Lanzi</dt><dd>{formatCoin(state.debt!)}</dd></>}
           <dt>Renown</dt><dd>{res.renown ?? 0}</dd>
           <dt>Men under your banner</dt><dd>{res.men ?? 0}</dd>
           {(res.garrison ?? 0) > 0 && <><dt>Holding your walls</dt><dd>{res.garrison}</dd></>}
@@ -113,7 +113,9 @@ export function StatusPanel({ content, state }: { content: ContentBundle; state:
             {b.dues > 0 && <><dt>Knights' dues ({formatCoin(DUES_PER_FEE)} a fee)</dt><dd>{formatCoin(b.dues)}</dd></>}
             {b.household > 0 && <><dt>The household</dt><dd>−{formatCoin(b.household)}</dd></>}
             {b.pay > 0 && <><dt>The men's pay (6s a man)</dt><dd>−{formatCoin(b.pay)}</dd></>}
-            <dt><strong>Left over</strong></dt><dd><strong>{net < 0 ? '−' : ''}{formatCoin(Math.abs(net))}</strong></dd>
+            {b.repairs > 0 && <><dt>Repairs to the defences</dt><dd>−{formatCoin(b.repairs)}</dd></>}
+            {b.interest > 0 && <><dt>The Lanzi's interest (10%)</dt><dd>−{formatCoin(b.interest)}</dd></>}
+            <dt><strong>Left over</strong></dt><dd><strong>{b.net < 0 ? '−' : ''}{formatCoin(Math.abs(b.net))}</strong></dd>
           </dl>
         </Section>
       )}

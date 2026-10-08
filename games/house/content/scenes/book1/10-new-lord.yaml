@@ -430,23 +430,34 @@
         - set: flag.h_second_penhoet
         - set: flag.h_penhoet_match
         - add: { rival.penhoet.temper: 2 }
+        # the dowry (PLAN.md §4.6): a daughter of the house costs a fifth of a year to a great house; a son's bride brings one
+        - if: "sibling.sex == female"
+          then: [ { add: { res.coin: -14400 } } ]
+          else: [ { add: { res.coin: 9600 } } ]
         - if: "sibling.age >= 16 && sibling.sex == female"
           then: [ { marry: { who: sibling, culture: valdrennish, to: de Penhoët, name: Ronan de Penhoët } } ]
         - if: "sibling.age >= 16 && sibling.sex == male"
           then: [ { marry: { who: sibling, culture: valdrennish, to: de Penhoët } } ]
       text_after: |
         Hervé comes himself to sign, and kisses {sibling.first} on both cheeks, and tells {sibling.him} {sibling.he} will be happy, as a man might tell someone the date of Michaelmas. If the law the Estates write goes the wrong way, {sibling.first}'s children will carry Penhoët's claim. Everyone at the table knows it. Nobody says it.
+
+        [if sibling.sex == female]The dowry is sixty pounds, paid at Candlemas, and Hervé's clerk counts it twice.[else]Hervé's daughter brings forty pounds and a book of accounts she has kept herself since she was twelve.[/if]
       next: { switch: [ { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
     - id: kerguen
       text: Give {sibling.first} to Kerguen.
       effects:
         - set: flag.h_second_kerguen
         - add: { rival.penhoet.temper: -1, rel.tanguy_kerguen.affection: 1, rival.kerguen.temper: 2, rival.kerguen.standing: 3 }
+        - if: "sibling.sex == female"
+          then: [ { add: { res.coin: -7200 } } ]
+          else: [ { add: { res.coin: 2400 } } ]
         - if: "sibling.age >= 16 && sibling.sex == female && !flag.h_b_wed_kerguen && head.sex == male"
           then: [ { marry: { who: sibling, culture: valdrennish, to: de Kerguen, name: Tanguy de Kerguen } } ]
           else: [ { if: "sibling.age >= 16", then: [ { marry: { who: sibling, culture: valdrennish, to: de Kerguen } } ] } ]
       text_after: |
         Kerguen and the house, bound twice over, or bound at last. Tanguy is delighted and does not hide it. At Penhoët, Hervé hears the news at dinner, the story goes, and finishes his dinner.
+
+        [if sibling.sex == female]The dowry is thirty pounds, which is what a house of Kerguen's size can decently ask, and Tanguy is too pleased to ask for more.[else]The bride brings ten pounds and a share in a mill, which is what Kerguen has, and Tanguy apologises for it twice.[/if]
       next: { switch: [ { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
     - id: sarenza
       text: Take the Sarenzan money.
@@ -466,6 +477,9 @@
           then:
             - set: flag.h_second_kerguen
             - add: { rival.kerguen.temper: 2, rival.kerguen.standing: 3 }
+            - if: "sibling.sex == female"
+              then: [ { add: { res.coin: -7200 } } ]
+              else: [ { add: { res.coin: 2400 } } ]
             - if: "sibling.age >= 16"
               then: [ { marry: { who: sibling, culture: valdrennish, to: de Kerguen } } ]
           else:

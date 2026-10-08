@@ -148,11 +148,11 @@
         effects: [ { set: flag.h_c_querec_defiant }, { add: { counter.household: -1 } } ]
         next: h_pc05_exchequer
     - id: buy
-      text: "[if inherited.c5r_querec_exiled || inherited.c5r_querec_executed]Buy his oath with his father's land at Quérec. (£40)[else]Buy his oath with the salt of the southern marsh. (£40)[/if]"
-      requires: "res.coin >= 9600"
-      effects: [ { set: flag.h_c_querec_bought }, { add: { res.coin: -9600 } } ]
+      text: "[if inherited.c5r_querec_exiled || inherited.c5r_querec_executed]Buy his oath with his father's land at Quérec. (£200)[else]Buy his oath with the salt of the southern marsh. (£200)[/if]"
+      requires: "res.coin >= 48000"
+      effects: [ { set: flag.h_c_querec_bought }, { add: { res.coin: -48000 } } ]
       text_after: |
-        A private word after Vespers, and [if inherited.c5r_querec_exiled || inherited.c5r_querec_executed]his father's land at Quérec back, with forty pounds of the crown's to restock it[else]the crown's share of the marsh salt for ten years[/if]. He takes it, and swears at Michaelmas in a small chapel with three witnesses, and everyone who matters hears what it cost. It is an oath. You will find out what kind.
+        A private word after Vespers, and [if inherited.c5r_querec_exiled || inherited.c5r_querec_executed]his father's land at Quérec back, with two hundred pounds of the crown's to restock it[else]the crown's share of the marsh salt for ten years[/if]. He takes it, and swears at Michaelmas in a small chapel with three witnesses, and everyone who matters hears what it cost. It is an oath. You will find out what kind.
       next: h_pc05_exchequer
     - id: watch
       text: Let it lie, and have him watched.
@@ -178,9 +178,9 @@
     "No, Your Grace. But you used to be younger about it."
   choices:
     - id: pay
-      text: Pay the household and the guard well, and let them know it was you. (£10)
-      requires: "res.coin >= 2400"
-      effects: [ { add: { res.coin: -2400, counter.household: 1 } } ]
+      text: Pay the household and the guard well, and let them know it was you. (£50)
+      requires: "res.coin >= 12000"
+      effects: [ { add: { res.coin: -12000, counter.household: 1 } } ]
       text_after: |
         You pay every man his wage and a shilling over, and hand the captains theirs yourself. In the guardroom they drink your health and {heir.first}'s, in that order, and then the other way round, to be safe.
       next: h_pc06_embassy
@@ -192,7 +192,7 @@
       next: h_pc06_embassy
     - id: largesse
       text: Remit the salt towns' arrears, and let the Estates hear of it.
-      effects: [ { add: { res.coin: -4800, counter.favour: 2 } }, { set: flag.h_c_largesse } ]
+      effects: [ { add: { res.coin: -24000, counter.favour: 2 } }, { set: flag.h_c_largesse } ]
       text_after: |
         The arrears of six salt towns, forgiven at a stroke. The bells ring in Sauvemer on Sunday, and the guildmasters, who will sit in the Estates, remember it in their prayers, and in their votes.
       next: h_pc06_embassy

@@ -32,6 +32,7 @@ interface Draft {
   holdings: DynastyExport['lands']['holdings'];
   knights: number;
   war?: 'won' | 'held' | 'lost';
+  debt?: number;
 }
 
 interface Ctx { start: SetupStart; content: ContentBundle; answers: Record<string, string> }
@@ -127,7 +128,7 @@ export const SETUP: SetupQuestion[] = [
       { id: 'comfortable', label: () => 'Comfortable', hint: 'What your rank should have', apply: () => {} },
       { id: 'rich', label: () => 'Rich: the war paid', hint: 'Two and a half times as much', apply: (d) => { d.coin *= 2.5; } },
       { id: 'stretched', label: () => 'Stretched', hint: 'Less than half', apply: (d) => { d.coin *= 0.4; } },
-      { id: 'debt', label: () => 'In debt to the Lanzi bank', hint: 'A tenth, and the Sarenzans remember', apply: (d) => { d.coin *= 0.1; d.flags.add('c4_war_debt'); add(d.rep, 'sarenza', -3); } },
+      { id: 'debt', label: () => 'In debt to the Lanzi bank', hint: "A tenth, and owing twice your rank's purse at ten in the hundred", apply: (d) => { d.debt = d.coin * 2; d.coin *= 0.1; d.flags.add('c4_war_debt'); add(d.rep, 'sarenza', -3); } },
     ],
   },
   {
@@ -285,7 +286,7 @@ export function buildExport(content: ContentBundle, start: SetupStart, raw: Reco
     wealth: { coin: r(d.coin), men: r(d.men), garrison: 0, levy: 0 },
     // the oldest of the old company, who rode with you from the start ({house.companion})
     people: [{ id: 'old_companion', name: 'Piers atte Brook', alive: true, affection: 6, respect: 4, loyalty: 9, follower: true }],
-    counters: {},
+    counters: d.debt ? { house_debt: r(d.debt) } : {},
     flags: [...d.flags].sort(),
   };
 }

@@ -127,6 +127,9 @@ function carryStanding(s: HouseState, c: ContentBundle, d: DynastyExport): void 
 
 /** The manor, the other holdings and the knights who hold of him, as the life left them (economy.ts runs them). */
 function carryLands(s: HouseState, d: DynastyExport): void {
+  // a debt to the Lanzi: the setup's own figure, or Knight of Adalia's loan to raise the company (under £50)
+  const debt = d.counters.house_debt ?? (d.flags.includes('c4_war_debt') ? 12000 : 0);
+  if (debt > 0) s.debt = debt;
   const m = d.lands.manor;
   // Knight of Adalia does not export the barn: a manor starts the house with a year's grain in store
   if (m) s.estate = { name: m.name, people: m.people, food: 4, temper: m.temper, defence: m.defence, church: m.church, salt: m.salt, orchard: m.orchard, founded: m.people };

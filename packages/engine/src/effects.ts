@@ -25,6 +25,15 @@ export function npc(state: GameState, content: ContentBundle, id: string): NpcSt
   return (state.npcs[id] ??= newNpcState(content, id));
 }
 
+/** The game's own result line for a change, if it words it; true when the game took the line (shown or not). */
+function gameNote(state: GameState, content: ContentBundle, path: string, delta: number, changes: string[]): boolean {
+  if (delta === 0) return false;
+  const t = gameOf(content).changeNote?.(state, content, path, delta);
+  if (t === undefined) return false;
+  if (t) changes.push(t);
+  return true;
+}
+
 export function addNumber(state: GameState, content: ContentBundle, rawPath: string, delta: number, changes: string[]): void {
   const path = unhero(deref(state, rawPath));
   const [ns, a, b] = path.split('.') as [string, string, string | undefined];
@@ -46,6 +55,7 @@ export function addNumber(state: GameState, content: ContentBundle, rawPath: str
       const personal = content.registry.factions[a]?.kind === 'personal';
       const before = state.rep[a] ?? 0;
       state.rep[a] = clamp(before + delta, personal ? 0 : -10, 10);
+      if (gameNote(state, content, path, state.rep[a]! - before, changes)) return;
       note(`${labelFor(content, path)}${personal ? '' : ' standing'}`, state.rep[a]! - before);
       return;
     }
@@ -63,6 +73,7 @@ export function addNumber(state: GameState, content: ContentBundle, rawPath: str
       const n = npc(state, content, a);
       const before = n[f];
       n[f] = clamp(before + delta, -10, 10);
+      if (gameNote(state, content, path, n[f] - before, changes)) return;
       // feelings change in people he has not met yet (word travels), but the journal only names people he knows
       if (n.met) note(labelFor(content, path), n[f] - before);
       return;
@@ -75,6 +86,7 @@ export function addNumber(state: GameState, content: ContentBundle, rawPath: str
     }
     case 'counter':
       state.counters[a] = (state.counters[a] ?? 0) + delta;
+      gameNote(state, content, path, delta, changes);
       return;
     case 'health': {
       const before = heroOf(state).health;

@@ -4,7 +4,9 @@
 import { registerGame, type GameModule } from '@engine/game';
 import type { CoreContent } from '@engine/schema';
 import type { CoreState } from '@engine/state';
-import { regnalYear } from '@engine/calendar';
+import { regnalYear, seasonName } from '@engine/calendar';
+import { ordinalWords } from '@engine/format';
+import { labelFor } from '@engine/paths';
 import { renderText } from '@engine/text';
 import { FRAMES, GAME_ID, HOUSE_LAWS, type ContentBundle, type Effect, type Frame } from '../content/schema';
 import { FOUNDER_ID, HOUSE_ID, type HouseState } from './state';
@@ -26,6 +28,36 @@ const HOUSE_TEXT = ['manor', 'claimed', 'companion', 'companion_first', 'origin'
 const HOUSE_IDS = ['yvon', 'vassals'];
 
 type Op<K extends string> = Extract<Effect, Record<K, unknown>>;
+
+/** The Church's count of years (canon.md, "The calendar"): the old count from Aldred II's accession plus 862, so year 50 is 912. */
+export const GRACE = 862;
+export const graceYear = (s: CoreState, c: CoreContent) => regnalYear(s, c) + GRACE;
+
+/** A story track's result line in words ("Penhoët: colder"), '' to keep it hidden, undefined for the engine's own line. */
+function changeNote(s: HouseState, c: ContentBundle, path: string, d: number): string | undefined {
+  const [ns, a, b] = path.split('.') as [string, string, string | undefined];
+  const much = Math.abs(d) >= 2 ? 'much ' : '';
+  const say = (who: string, up: string, down: string) => `${who}: ${much}${d > 0 ? up : down}`;
+  const first = (sel: string) => renderText(`{${sel}.first}`, s, c);
+  if (ns === 'counter') {
+    switch (a) {
+      case 'household': return say('The household', 'more loyal', 'less loyal');
+      case 'shadow': return say(`${first('founder')}'s shadow`, 'longer', 'shorter');
+      case 'penhoet': return say('Penhoët', 'warmer', 'colder');
+      case 'favour': return say(s.realm.sovereign === 'self' ? 'Standing in the realm' : "The sovereign's favour", 'higher', 'lower');
+      case 'second': return select(s, c, 'sibling') ? say(first('sibling'), 'closer', 'further off') : '';
+      default: return '';
+    }
+  }
+  if (ns === 'rel') {
+    const name = (c.registry.npcs[a]?.name ?? a).split(' ')[0]!;
+    if (b === 'affection') return say(name, 'warmer', 'colder');
+    if (b === 'respect') return say(`${name}'s respect`, 'higher', 'lower');
+    if (b === 'loyalty') return say(`${name}'s loyalty`, 'firmer', 'weaker');
+  }
+  if (ns === 'rep') return say(`Standing with ${c.registry.factions[a]?.label.replace(/^The /, 'the ') ?? a}`, 'higher', 'lower');
+  return undefined;
+}
 
 /** The sovereign's style for prose and the date line ("Queen Mahaut", "King Edwin"). */
 export function sovereignStyle(state: HouseState, content: ContentBundle): string {
@@ -234,7 +266,7 @@ export const house: GameModule = {
     // the last head's chronicle paragraph, as the handover shows it
     if (name === 'chronicle.last') {
       const e = st(s).chronicle.at(-1);
-      return e ? `${e.name}, head of the house from year ${e.from} to year ${e.to}. ${e.lines.join(' ')}`.trim() : '';
+      return e ? `${e.name}, head of the house from ${e.from + GRACE} to ${e.to + GRACE}. ${e.lines.join(' ')}`.trim() : '';
     }
     if (name.startsWith('house.')) return houseText(st(s), name.slice(6));
     if (!name.startsWith('realm.')) return undefined;
@@ -270,6 +302,18 @@ export const house: GameModule = {
     if (!def) return undefined;
     return { ruler: sovereignStyle(state, content), year: regnalYear(state, content) - (state.realm.from ?? def.reign_from) + 1 };
   },
+
+  // "Summer 912, the second year of King David": the Church's year, which every realm keeps, and the sovereign's
+  date(s, c) {
+    const r = this.reign!(s, c);
+    const season = seasonName(s, c);
+    const head = `${season.charAt(0).toUpperCase()}${season.slice(1)} ${graceYear(s, c)}`;
+    return r && r.year >= 1 ? `${head}, the ${ordinalWords(r.year)} year of ${r.ruler}` : head;
+  },
+
+  changeNote: (s, c, path, d) => changeNote(st(s), ct(c), path, d),
+
+  checkLabel: (c, check) => [check.attr, check.skill].filter(Boolean).map((k, i) => labelFor(c, `${i ? 'skill' : 'attr'}.${k}`)).join(' and '),
 
   startScene: (s, c) => ct(c).openings[st(s).opening]?.start_scene,
 };

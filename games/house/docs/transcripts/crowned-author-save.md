@@ -10,7 +10,7 @@ Imported from the Knight of Adalia save in games/house/tests/fixtures/author-cro
 
 ### The Crown of the West
 
-*Spring, year 2 of King David*
+*Spring 912, the second year of King David*
 
 You have worn the crown of the West since the oaths at Lannec. It is heavier than it looked.
 
@@ -20,7 +20,7 @@ You have worn the crown of the West since the oaths at Lannec. It is heavier tha
 
 ### The King at Lannec
 
-*Spring, year 2 of King David*
+*Spring 912, the second year of King David*
 
 The great hall at Lannec is cold in the mornings, and so are you. You are forty-nine. The fire was lit at Prime and has not reached the dais yet, and the chamberlain stands at your elbow with the day's petitions under his arm, waiting for you to be ready.
 
@@ -42,9 +42,11 @@ Mahaut comes down with her women. She is thirty-one, and Queen of the West, and 
 
 You ride out by the river gate with Jehan in front of you on the saddle, holding the reins he thinks are steering the horse. The people on the road stop and bow and stare. "Why are they looking?" he asks. "Because you're going to be their king." He thinks about that for a furlong. "Can I have a horse of my own, then?"
 
+*David's shadow: longer*
+
 ### The Old Company
 
-*Spring, year 2 of King David*
+*Spring 912, the second year of King David*
 
 Davy Ludd comes up from the guardroom after Terce, the way he has every day since there was a guardroom to come up from. He is grey now, and walks with one shoulder lower than the other, and he does not bow to the King of the West unless there is somebody watching.
 
@@ -64,7 +66,7 @@ You have. The old company, the ones who rode with you when you had one horse and
 
 ### The Heir of the West
 
-*Summer, year 2 of King David*
+*Summer 912, the second year of King David*
 
 Midsummer, and the court at Lannec in the long gallery out of the heat. You watch Jehan across the gallery, trying to make the Queen's greyhound jump over a stool, and getting the stool over the greyhound instead.
 
@@ -82,9 +84,11 @@ There has only been one crown of the West, and you are wearing it, and the Estat
 
 Mahaut takes him in hand that summer: the council chamber, the household accounts, the order of precedence at a feast, which takes a month. By Michaelmas Jehan can tell a Kerguen from a Quérec across a hall by the way they stand, and says so, loudly, which Mahaut is working on.
 
+*Mahaut: warmer*
+
 ### Quérec
 
-*Summer, year 2 of King David*
+*Summer 912, the second year of King David*
 
 The summer court ends with the oaths, as it does every year: the lords of the West renew their faith to the King, and this year, for the first time, you have asked them to swear to Jehan as your heir.
 
@@ -102,9 +106,11 @@ He is the son of the man you sent over the march in a cart. Quérec is the crown
 
 The hall goes quiet. Bertrand looks at you, and at your guard along the wall, and at Jehan, who is looking straight back at him. Then he kneels, slowly, and kisses his hand, and says the words. On his way out he says to him, quite gently, "You'll do, I expect," and he says, "I know," and half the hall laughs.
 
+*The household: more loyal*
+
 ### The Exchequer
 
-*Autumn, year 2 of King David*
+*Autumn 912, the second year of King David*
 
 Michaelmas, and the crown's reckoning. The treasurer sets up his chequered cloth in the lower hall, and the sheriffs of the West come in one by one to account for their shires, with their tallies and their excuses, and the clerks move the counters on the squares like a game nobody wins.
 
@@ -124,11 +130,11 @@ You sit through all of it, as you always have. The salt penny is in. The Sauveme
 
 The arrears of six salt towns, forgiven at a stroke. The bells ring in Sauvemer on Sunday, and the guildmasters, who will sit in the Estates, remember it in their prayers, and in their votes.
 
-*Coin −£20*
+*Coin −£20; Standing in the realm: much higher*
 
 ### The Embassy
 
-*Winter, year 2 of King David*
+*Winter 912, the second year of King David*
 
 At Martinmas an embassy comes over the hills from Cordelle with forty horses and a bishop, to ask for the heir of the West.
 
@@ -146,9 +152,11 @@ You bought the peace with Valdrenne in coin. Amaury is offering to make it a fam
 
 You send them home with gifts and a refusal so courteous that it takes the bishop a day's ride to understand it. Mahaut, at supper, puts her hand over yours on the table, and leaves it there.
 
+*Mahaut: much warmer*
+
 ### The Old Company
 
-*Spring, year 3 of King David*
+*Spring 913, the third year of King David*
 
 Hamon the farrier dies at haymaking, on his bench outside the forge, in the sun. He shod your horse the year you had one horse, and every horse after, and he would never take money from you for the first one.
 
@@ -164,13 +172,13 @@ You know who is left. You could count them on one hand now, and you do, under th
 
 You take a corner of the coffin with Davy Ludd and two of the old company, and your back tells you about it for a week. The whole village comes. At the grave somebody starts the story about Hamon and the Brésy horse, and somebody else corrects it, and by the end there is laughing in the churchyard, which the priest pretends not to hear.
 
-*Coin −£2*
+*Coin −£2; The household: more loyal*
 
 ### The Estates at Whitsun
 
-*Spring, year 4 of King David*
+*Spring 914, the fourth year of King David*
 
-You call the Estates of the West to Lannec at Whitsun in the year 52, and they come: the lords on their benches, the bishops in their stalls, the burgesses of the salt towns at the back in their good wool, all of them in the hall where they made you king.
+You call the Estates of the West to Lannec at Whitsun in 914, and they come: the lords on their benches, the bishops in their stalls, the burgesses of the salt towns at the back in their good wool, all of them in the hall where they made you king.
 
 You have called them for one thing. You told them they would choose your successor. You want them to choose now, while you live: to elect Jehan King of the West after you, so that when you are dead there is no empty chair to fight over. The kings of Valdrenne did it this way once, when their crown was young. It is also, everyone in the hall knows, exactly what you promised not to do.
 
@@ -188,7 +196,7 @@ You speak, and it goes well enough, and then Bertrand's friends stand and talk a
 
 ### The Illness
 
-*Winter, year 4 of King David*
+*Winter 914, the fourth year of King David*
 
 It comes at Christmas, with the great hall full and the boar's head on the table. A shaking first, that you put down to the cold. Then a heat, and a weight on your chest like a man kneeling on it.
 
@@ -208,11 +216,11 @@ The fever goes in a week. The weakness does not. You cannot get up the stairs wi
 
 You lie still. Mahaut runs the kingdom from a chair beside your bed for the whole of Lent, and runs it well, and tells you about it every evening whether you want to hear or not. It is the first winter in thirty years you have not ridden out. The West, you notice, does not fall down.
 
-*Strength −1; Endurance −1*
+*The household: more loyal; Strength −1; Endurance −1; Mahaut: warmer*
 
 ### The Crowning
 
-*Spring, year 5 of King David*
+*Spring 915, the fifth year of King David*
 
 Lady Day, the new year. You sit in the gallery in a chair with a fur over your knees, and you know.
 
@@ -230,9 +238,11 @@ You promised the Estates they would choose. They have not chosen. To crown him n
 
 They carry you into the cathedral in a chair, and you stand for the crowning, because you will not sit for it. Old Évrard sets a small crown on Jehan's head with hands that shake so badly two canons have to steady them, and the oldest man in the West crowns the youngest, and the nave roars. Jehan does not cry, and does not smile, and does not drop the sceptre, which is heavier than he is. Afterwards, in the sacristy, he is sick into a basin, and then asks for his dinner.
 
+*Standing in the realm: much higher; The household: more loyal*
+
 ### The Succession
 
-*Spring, year 5 of King David*
+*Spring 915, the fifth year of King David*
 
 David has set the crown on Jehan's head beside his own, and gives the rule into other hands while he lives.
 
@@ -242,7 +252,7 @@ The heir under the law of the house is Jehan, who is eight. Until he comes of ag
 
 **You choose:** Let the law stand.
 
-David, head of the house from year 50 to year 53. He crowned his heir in his own lifetime, and gave the rule into other hands while he lived.
+David, head of the house from 912 to 915. He crowned his heir in his own lifetime, and gave the rule into other hands while he lived.
 
 *Jehan is head of the house*
 
@@ -254,7 +264,7 @@ David, head of the house from year 50 to year 53. He crowned his heir in his own
 
 ### The Council
 
-*Summer, year 1 of King Jehan*
+*Summer 915, the first year of King Jehan*
 
 You are eight years old, and King of the West, and the chair in the council chamber was made for your father. Your feet do not reach the floor. Somebody has put a footstool under them, tactfully, and you would like to kick it across the room.
 
@@ -272,9 +282,11 @@ Today the council is talking about Quérec. He swore to you, and kissed your han
 
 "What does Quérec want?" you say. It comes out loud. The council stops. The chancellor opens his mouth and shuts it. Your mother looks at you for a long moment, and then says, "That is the question, my lords. Answer the King." They try. None of them knows. You see your mother see that.
 
+*David's shadow: shorter; Mahaut's respect: higher*
+
 ### The Regency
 
-*Autumn, year 1 of King Jehan*
+*Autumn 915, the first year of King Jehan*
 
 After Michaelmas your mother sends for you to her own chamber, with only her old nurse present, the way she once sent for your father when they were deciding something nobody could know yet.
 
@@ -292,9 +304,11 @@ After Michaelmas your mother sends for you to her own chamber, with only her old
 
 You go through the list with her, name by name, and keep the ones who have been to the march and the marsh, and lose the ones who only talk. She argues. You argue back. At the end she sits back and looks at you and says, "Your father would have kept all his," and you cannot tell whether she is pleased.
 
+*Mahaut's respect: much higher; David's shadow: shorter*
+
 ### The Marsh
 
-*Winter, year 1 of King Jehan*
+*Winter 915, the first year of King Jehan*
 
 At Candlemas the oath Bertrand swore in the great hall, with your father's guard along the wall, turns out to have been worth what such oaths are worth. He takes the crown's salt-works at the edge of the marsh, and the toll bridge, and says in a letter to every lord in the West that he swore to a King, not to a child and his mother.
 
@@ -312,9 +326,11 @@ On the third day she turns to you. "It is your crown he has hung on that bridge,
 
 They put you on a grey pony in a cloak of the royal colours, in the middle of six hundred men, and the constable does the rest. At the toll bridge the marsh men see the child king's banner coming over the causeway in the frost and lose their nerve, half of them, before anyone has drawn. Bertrand holds the tower for two days, and then asks for terms. Your mother gives him the terms, in your name, and makes you watch her do it.
 
+*The household: much more loyal; David's shadow: shorter*
+
 ### The King's Question
 
-*Spring, year 2 of King Jehan*
+*Spring 916, the second year of King Jehan*
 
 In the spring your father is well enough to sit in the garden at the foot of the palace wall, in the sun, with a blanket and a cup of wine he is not supposed to have.
 
@@ -332,9 +348,11 @@ Then he stops, and looks at you, and you can see him decide to say it.
 
 He laughs, which hurts him, and grips your hand. "Good," he says. "Good. One of me was plenty."
 
+*David's shadow: much shorter*
+
 ### The Bishop of Saint-Lys
 
-*Summer, year 2 of King Jehan*
+*Summer 916, the second year of King Jehan*
 
 Bishop Évrard of Saint-Lys dies at midsummer, at a hundred and two, in the middle of the Office, between one psalm and the next. He crowned your father. He crowned you. The whole West comes to bury him, and you stand at the front of the nave in black with your mother, and try not to look at the place where he set the crown on your head.
 
@@ -350,11 +368,13 @@ There are three names. Your mother's confessor, a quiet Armance canon who has ne
 
 Master Anselm becomes Bishop of Saint-Lys, the first born in the West, and comes to see your father in the garden the day after, and they laugh together for an hour about things neither will tell you. He will bless what the crown wants. He will also remember what the crown owes him.
 
+*David's shadow: longer; The household: more loyal*
+
 ### The Acclamation
 
-*Spring, year 3 of King Jehan*
+*Spring 917, the third year of King Jehan*
 
-Lady Day, year 55. You are ten. The Estates of the West meet at Lannec to acclaim you, in person, as their King: not as a child with a crown on, but as the King they will obey. They did not choose you. Your father chose for them. Today they will say whether they agree.
+Lady Day, 917. You are ten. The Estates of the West meet at Lannec to acclaim you, in person, as their King: not as a child with a crown on, but as the King they will obey. They did not choose you. Your father chose for them. Today they will say whether they agree.
 
 The hall is full. Your father sits at the side of the dais in a chair with arms, where everyone can see him and nobody can say he is ruling. Your mother stands behind your chair, which is the old King's chair, with the footstool gone, because you have grown. Bertrand is on the marsh lords' bench, under guard, and will kneel today whether he likes it or not.
 
@@ -370,13 +390,15 @@ The hall goes quiet. It is your turn.
 
 "I am ten," you say. "My father was nobody, and my mother's grandmother held the Armance against a king. I don't know which of them I'll be. You'll find out when I do." There is a silence like a held breath. Then your father laughs out loud from his chair, and the hall laughs with him, and then it roars. Your mother puts her hand on your shoulder from behind, and leaves it there.
 
+*Standing in the realm: much higher; David's shadow: shorter*
+
 ---
 
 ## Book One: The Keeper
 
 ### The Homage of the Lords
 
-*Summer, year 3 of King Jehan*
+*Summer 917, the third year of King Jehan*
 
 At midsummer the great lords of the West come to Lannec to do you homage in person, now that the Estates have acclaimed you: every man who holds of the crown, one by one, on his knees, with his hands between yours.
 
@@ -396,9 +418,11 @@ Behind you, your mother has gone completely still.
 
 "Swear plain, my lord," you say, "or swear another day." Your voice does not go up at the end. Hervé looks at you for a long moment, as a man looks at a field he has been told is his neighbour's. Then he says the words again, plain, without the saving, and rises, and bows lower than he did before.
 
+*The household: more loyal; Mahaut's respect: higher*
+
 ### Penhoët's Claim
 
-*Autumn, year 3 of King Jehan*
+*Autumn 917, the third year of King Jehan*
 
 After Michaelmas Hervé de Penhoët puts it in writing, before the council, in his own neat hand.
 
@@ -418,9 +442,11 @@ Then, at the bottom, under his seal, the offer. His daughter Sibylle is eight. I
 
 Sibylle de Penhoët comes to court at Martinmas with her father: eight, solemn, her grandfather's chin and her father's patience. She curtsies to you, and to your mother, and then beats you at merels twice, and does not let you win the third game, which almost nobody at court would dare. You do not tell your mother that part.
 
+*Penhoët: warmer*
+
 ### The Betrothal
 
-*Winter, year 3 of King Jehan*
+*Winter 917, the third year of King Jehan*
 
 In the dark of the year the council talks about your marriage, as it has every winter since you were crowned, and this year they talk about it in front of you, because you are ten, and a king unpromised at ten is a king every court in the world is writing letters about.
 
@@ -436,9 +462,11 @@ Your mother says, "Whatever you choose, choose it yourself." Your father, in the
 
 Tanguy brings Maëlle to Lannec in the snow to be presented, and kneels to you himself, with great style, and stays to dinner, and makes your father laugh twice. Maëlle says nothing the whole evening, and at the end of it curtsies to you as if she meant it. Kerguen and the crown, against Penhoët and the custom of the Armance. Hervé hears of it at dinner and finishes his dinner.
 
+*Penhoët: much colder; Tanguy: much warmer*
+
 ### The Easter Court
 
-*Spring, year 4 of King Jehan*
+*Spring 918, the fourth year of King Jehan*
 
 At Easter the court keeps the feast at Lannec, the long tables down the great hall, the boar's head, the Sarenzan musicians, and the whole West, or as much of it as owes you or wants something, in one hall.
 
@@ -456,9 +484,11 @@ Your father sits at the side of the dais in his chair with arms. Halfway through
 
 You stand beside him, and he hears you get up, and gives you the cup instead of raising it. "To the West," you say, "which made my father a king and my mother a queen and me a bother." The hall laughs, and drinks, and your father sits down beaming, and tells everyone for a week that he was interrupted by his own son at his own feast.
 
+*David's shadow: shorter; Standing in the realm: higher*
+
 ### The Marsh
 
-*Summer, year 4 of King Jehan*
+*Summer 918, the fourth year of King Jehan*
 
 Bertrand de Quérec has been under guard at Lannec since the bridge, in a good room with a fire, waiting. The council has argued about him for two years. At midsummer your mother says the council will not decide it. You will. You are eleven.
 
@@ -472,9 +502,11 @@ You go to see him, once, before you decide. He gets up when you come in, and bow
 
 His son comes to court as your page, a boy of nine with his father's eyes, and is given a room near yours and a tutor and a pony, and every courtesy, and is never once let out of the walls of Lannec. Bertrand swears to you that autumn. He has to.
 
+*Standing in the realm: higher*
+
 ### Aliénor
 
-*Autumn, year 4 of King Jehan*
+*Autumn 918, the fourth year of King Jehan*
 
 Your sister Aliénor is seven, and the King's sister, and the most valuable girl in the West, and every great house has noticed. At Michaelmas the offers start coming for her too, as if she were a smaller crown.
 
@@ -487,9 +519,11 @@ Your mother says, "You'll have to decide what she is to you. Before someone else
 
 Aliénor gets the room next to yours, and a place at the high table on your left, and sits through council with you, kicking the footstool. Every envoy who comes to court about her hand has to get past her first, and she has opinions about all of them.
 
+*Aliénor: much closer*
+
 ### The Regent
 
-*Winter, year 4 of King Jehan*
+*Winter 918, the fourth year of King Jehan*
 
 In the winter you are eleven, and you have sat through three years of council, and you have stopped kicking the footstool, and you have started, without meaning to, to disagree with your mother in front of people.
 
@@ -507,9 +541,11 @@ She notices. Of course she notices. At Candlemas she sends for you to her chambe
 
 "No," she says, gently. "Not yet. Ask me again in a year, and ask me better." It is the right answer. You know it is the right answer, which makes it worse.
 
+*David's shadow: longer*
+
 ### The King's Guard
 
-*Summer, year 5 of King Jehan*
+*Summer 919, the fifth year of King Jehan*
 
 At midsummer the captain of your guard dies, of a fever, at sixty: one of your father's old company, who carried you on his shoulders at your crowning so that you could see. The council has three names for his place.
 
@@ -525,9 +561,11 @@ Davy Ludd says, "The son. He's dull. Dull's what you want at a door."
 
 He kneels to you on the tourney field in front of everyone, which was not the plan, and swears with a voice that cracks on "faith", and the whole court laughs, and he goes scarlet. By Michaelmas he has the guard turned out at dawn to ride at the ring with you, and the old company's sons have stopped laughing and started getting up early.
 
+*David's shadow: much shorter; The household: less loyal*
+
 ### The Salt Towns' Charter
 
-*Autumn, year 5 of King Jehan*
+*Autumn 919, the fifth year of King Jehan*
 
 At Michaelmas the burgesses of the salt towns come up the river to Lannec, six of them in good wool, with a charter already written out on the best parchment in the West, wanting only a seal.
 
@@ -545,11 +583,11 @@ The chancellor says the towns will be harder to tax in a bad year. Your mother s
 
 You seal it yourself, with the Great Seal, which takes both hands. The burgesses kneel, and pay the first year's farm on the spot, in silver, out of a chest they brought up the river on the chance. The chancellor counts it twice. It is all there.
 
-*Coin +£20*
+*Coin +£20; Standing in the realm: higher; The household: less loyal*
 
 ### Before the Estates
 
-*Spring, year 6 of King Jehan*
+*Spring 920, the sixth year of King Jehan*
 
 At Lady Day the summons goes out under the Great Seal, in your name, though you did not write it: the Estates of the West will sit at Lannec at Whitsun to settle the law of succession of the crown.
 

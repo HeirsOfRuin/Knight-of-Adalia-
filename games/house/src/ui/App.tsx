@@ -4,7 +4,7 @@
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import { decodeDynasty } from '@dynasty/contract';
 import type { ContentBundle, Frame } from '../content/schema';
-import { newGame, view, choose, checkStart, type HouseState } from '../game/index';
+import { newGame, view, choose, checkStart, describeDate, type HouseState } from '../game/index';
 import { fromDynasty } from '../game/import';
 import { toSave, fromSave } from '../game/save';
 import { Notes } from './Notes';
@@ -134,6 +134,8 @@ function Play({ content, state, onChoose, onRestart }: { content: ContentBundle;
           <p class="card-title">{v.card.title}</p>
           {v.card.subtitle && <h1 class="card-subtitle">{v.card.subtitle}</h1>}
           {v.card.epigraph && <p class="card-epigraph">{v.card.epigraph}</p>}
+          {v.card.rows.length > 0 && <dl class="card-rows">{v.card.rows.map(([k, x]) => [<dt key={`${k}t`}>{k}</dt>, <dd key={`${k}d`}>{x}</dd>])}</dl>}
+          {v.card.since.length > 0 && <ul class="card-since">{v.card.since.map((x, i) => <li key={i}>{x}</li>)}</ul>}
           <section class="choices">
             <button class="choice continue" onClick={() => setCardSeen(v.sceneId)}><span class="choice-text">Continue</span></button>
           </section>
@@ -143,6 +145,7 @@ function Play({ content, state, onChoose, onRestart }: { content: ContentBundle;
           <article class="scene">
             <p class="date">{v.date}</p>
             {v.title && <h1>{v.title}</h1>}
+            {v.cause && <p class="cause">This follows from {describeDate({ ...state, time: v.cause.at }, content).replace(/^\w/, (x) => x.toLowerCase())}: <em>{v.cause.text}</em></p>}
             {pages.slice(0, page + 1).map((t, i) => <Paragraphs key={i} text={t} />)}
           </article>
           {!last ? (
@@ -157,15 +160,18 @@ function Play({ content, state, onChoose, onRestart }: { content: ContentBundle;
           ) : (
             <section class="choices">
               {v.choices.map((c) => (
-                <button key={c.id} class={`choice ${c.available ? '' : 'locked'}`} disabled={!c.available} onClick={() => onChoose(c.id)}>
+                <button key={c.id} class={`choice ${c.available ? '' : 'locked'} ${c.lethal ? 'lethal' : ''}`} disabled={!c.available} onClick={() => onChoose(c.id)}>
                   <span class="choice-text">{c.text}</span>
-                  {(c.band || c.lockReason) && (
+                  {(c.band || c.lockReason || c.lethal) && (
                     <span class="choice-meta">
+                      {c.lethal && <span class="tag danger">Mortal danger</span>}
                       {c.band && <span class={`tag band-${c.band.toLowerCase()}`}>{c.band}</span>}
+                      {c.test && <span class="test">{c.test}</span>}
                       {c.lockReason && <span class="lock">{c.lockReason}</span>}
                     </span>
                   )}
                   {c.warn && <span class="warn">{c.warn}</span>}
+                  {c.stakes.length > 0 && <span class="stakes">At stake: {c.stakes.join(' · ')}</span>}
                 </button>
               ))}
               {v.deadEnd && <p class="error" role="alert">No choice is open here. That is a fault in the content (scene {v.sceneId}); please note it.</p>}

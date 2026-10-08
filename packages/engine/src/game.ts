@@ -5,7 +5,7 @@
 // (content.game); the module registers itself when the game's code is loaded.
 //
 // Hooks receive the engine's CoreState and CoreContent; a game casts them to its own types.
-import type { Audience, CoreContent, GameEffect } from './schema';
+import type { Audience, Check, CoreContent, GameEffect } from './schema';
 import type { CoreState } from './state';
 import type { RngCursor } from './rng';
 
@@ -90,6 +90,13 @@ export interface GameModule {
 
   /** whose reign dates are counted in, titled ("Queen Mahaut"), and the year of it; undefined uses config.reigns */
   reign?(state: CoreState, content: CoreContent): { ruler: string; year: number } | undefined;
+  /** the whole date line, for a game with its own calendar; undefined uses "Season, year N of <reign>" */
+  date?(state: CoreState, content: CoreContent): string | undefined;
+  /** the result line for an add to a counter, relationship or reputation (path after deref), given the change actually made;
+   *  undefined keeps the engine's own line (none for a counter), '' shows nothing */
+  changeNote?(state: CoreState, content: CoreContent, path: string, delta: number): string | undefined;
+  /** what a choice's check tests, in words ("Presence and Diplomacy"), shown beside its odds */
+  checkLabel?(content: CoreContent, check: Check): string | undefined;
 
   // ---- saves ----------------------------------------------------------------------------
   /** where a save resumes when its scene and checkpoint are both gone */

@@ -1,6 +1,6 @@
 title: House of Adalia
-start_year: 50          # regnal year (counted from Aldred II, as in Knight of Adalia) at the start of the prologue
-regnal_king: Edwin      # unused: dates are counted in the West's sovereign's reign (registry/sovereigns.yaml)
+start_year: 50          # the old count (from Aldred II, as in Knight of Adalia) at the start of the prologue; shown as the Church's year, 912 (module.ts GRACE)
+regnal_king: Edwin      # unused: dates are the Church's year and the West's sovereign's reign (registry/sovereigns.yaml)
 reigns: []
 attributes: [strength, agility, endurance, wits, presence]
 skills: [arms, archery, riding, woodcraft, command, tactics, diplomacy, intrigue, courtesy, stewardship, trade, learning]
@@ -10,6 +10,13 @@ seasons: [spring, summer, autumn, winter]
 chapters: [test, prologue, book1, book2, book3]
 in_progress: [prologue, book1, book2, book3]
 aliases: [spouse]
+# the story tracks, named for the "At stake" line; their results are worded by the game module (changeNote)
+counter_labels:
+  household: The household
+  shadow: The founder's shadow
+  penhoet: Penhoët
+  favour: Favour
+  second: The second child
 chapter_cards:
   prologue: { title: Prologue, subtitle: The Old Lord, epigraph: "A house is three generations: the man who makes it, the one who keeps it, and the one who spends it." }
   book1: { title: Book One, subtitle: The Keeper }

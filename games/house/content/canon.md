@@ -2,6 +2,12 @@
 
 Knight of Adalia's canon (`games/knight/content/canon.md`) holds for the sequel. This file holds what House of Adalia adds to it, approved by the author on 2026-10-06 (PLAN.md, decision 10). If content contradicts either file, the file wins and the content gets fixed.
 
+## The calendar
+Decided by the author on 2026-10-08. The Church, one Church across every realm under the Pontiff at Saint-Lys, counts **the years of grace**, and every realm keeps that count alongside its own sovereign's years. House of Adalia dates by both: "Summer 912, the second year of King David".
+- **Conversion:** a year of grace is the old count plus 862. Knight of Adalia's years are counted from Aldred II's accession, an Adalian count that means nothing in a free West. So year 50 = 912, year 26 (the Mottle) = 888, and year 43 (the War of the West) = 905.
+- **The sovereign's year** is counted from that ruler's own accession (registry/sovereigns.yaml). A junior king's years count from his crowning.
+- **In docs and in this file,** years stay in the old count ("year 50") so they match Knight of Adalia's canon. **In player-facing text,** use the year of grace or the sovereign's year, never the old count.
+
 ## Additions
 | Year | Addition | Analogue |
 |---|---|---|

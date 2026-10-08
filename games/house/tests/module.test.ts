@@ -25,12 +25,12 @@ describe('House of Adalia: starts', () => {
 
 describe('House of Adalia: the West in each frame', () => {
   const c = content();
-  it('dates by the sovereign of the West', () => {
-    expect(view(c, house({ sovereign: 'mahaut' })).date).toBe('Spring, year 9 of Queen Mahaut');
-    expect(view(c, house({ frame: 'adalian' })).date).toBe('Spring, year 11 of King Edwin');
-    expect(view(c, house({ opening: 'diminished', frame: 'partitioned', sovereign: 'amaury' })).date).toBe('Spring, year 18 of King Amaury');
-    expect(view(c, house({ opening: 'crowned', sovereign: 'self' })).date).toBe('Spring, year 6 of King Hal');
-    expect(view(c, house({ opening: 'crowned', sovereign: 'self', sex: 'female' })).date).toBe('Spring, year 6 of Queen Hal');
+  it('dates by the Church\'s year and the sovereign of the West', () => {
+    expect(view(c, house({ sovereign: 'mahaut' })).date).toBe('Spring 912, the ninth year of Queen Mahaut');
+    expect(view(c, house({ frame: 'adalian' })).date).toBe('Spring 912, the eleventh year of King Edwin');
+    expect(view(c, house({ opening: 'diminished', frame: 'partitioned', sovereign: 'amaury' })).date).toBe('Spring 912, the eighteenth year of King Amaury');
+    expect(view(c, house({ opening: 'crowned', sovereign: 'self' })).date).toBe('Spring 912, the sixth year of King Hal');
+    expect(view(c, house({ opening: 'crowned', sovereign: 'self', sex: 'female' })).date).toBe('Spring 912, the sixth year of Queen Hal');
   });
   it('shows each frame its own text', () => {
     expect(view(c, house({ sovereign: 'thibaut' })).text).toMatch(/The crown of the West is eight years old, and King Thibaut wears it/);

@@ -236,7 +236,7 @@
   frames: [free]
   on_enter: [ { catch_up: { year: 52, season: spring } } ]
   text: |
-    You call the Estates of the West to Lannec at Whitsun in the year 52, and they come: the lords on their benches, the bishops in their stalls, the burgesses of the salt towns at the back in their good wool, all of them in the hall where they made you king.
+    You call the Estates of the West to Lannec at Whitsun in 914, and they come: the lords on their benches, the bishops in their stalls, the burgesses of the salt towns at the back in their good wool, all of them in the hall where they made you king.
 
     [if inherited.c5r_estates_choose]You have called them for one thing. You told them they would choose your successor. You want them to choose now, while you live: to elect {heir.first} {house.ruler} of the West after you, so that when you are dead there is no empty chair to fight over. The kings of Valdrenne did it this way once, when their crown was young. It is also, everyone in the hall knows, exactly what you promised not to do.[else]You have called them for one thing. You want them to swear, as a body, to {heir.first} as your heir, so that when you are dead nobody can say the West never agreed.[/if]
 
@@ -556,7 +556,7 @@
   frames: [free]
   on_enter: [ { catch_up: { year: 55, season: spring } } ]
   text: |
-    Lady Day, year 55. You are {age_words}. The Estates of the West meet at Lannec to acclaim you, in person, as their {house.ruler}: not as a child with a crown on, but as the {house.ruler} they will obey.[if inherited.c5r_estates_choose && !flag.h_c_estates_swore] They did not choose you. Your father chose for them. Today they will say whether they agree.[/if]
+    Lady Day, 917. You are {age_words}. The Estates of the West meet at Lannec to acclaim you, in person, as their {house.ruler}: not as a child with a crown on, but as the {house.ruler} they will obey.[if inherited.c5r_estates_choose && !flag.h_c_estates_swore] They did not choose you. Your father chose for them. Today they will say whether they agree.[/if]
 
     The hall is full. Your father sits at the side of the dais in a chair with arms, where everyone can see him and nobody can say he is ruling. Your mother stands behind your chair, which is the old King's chair, with the footstool gone, because you have grown. [if flag.h_c_rising_open]There are empty places on the marsh lords' bench, and everyone looks at them.[elif flag.h_c_rising_crushed]{house.querec_short} is on the marsh lords' bench, under guard, and will kneel today whether he likes it or not.[else]{house.querec_short} is on the marsh lords' bench, with his men, and has not decided what he will do.[/if]
 

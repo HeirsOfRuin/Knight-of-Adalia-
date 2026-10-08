@@ -81,7 +81,7 @@ describe('the succession', () => {
     expect(s.chronicle).toHaveLength(1);
     expect(s.chronicle[0]!.name).toBe('Hal');
     expect(['t_years', 'h_q_news']).toContain(s.scene); // the year that passed may have brought news
-    expect(s.lastOutcome?.text).toMatch(/^Hal, head of the house from year 50 to year 51\./);
+    expect(s.lastOutcome?.text).toMatch(/^Hal, head of the house from 912 to 913\./);
     expect(s.journal.slice(0, -1).every((e) => e.changes.length === 0 && e.outcome === undefined)).toBe(true);
   });
 

@@ -234,7 +234,7 @@
       then: [ { advance: { seasons: 4 } } ]
       else: [ { advance: { seasons: 3 } } ]
   text: |
-    Lady Day, year 55. You ride to Lannec to do homage for {house.parent}'s lands, which are yours.
+    Lady Day, 917. You ride to Lannec to do homage for {house.parent}'s lands, which are yours.
 
     [if realm.west == adalian]It is done in the governor's hall, before a new governor, a younger man with a sharper collar, who takes it for King Edwin with a clerk at his elbow writing down every word.[else]It is done in the great hall at Lannec, before {realm.sovereign}, with the Estates' lords along the walls watching who kneels and how.[/if] You have watched {house.parent} do this. You have never done it. You go down on both knees on the cold stone, and put your hands between the hands held out to you, and the words are there in your mouth as if somebody else had put them in.
 

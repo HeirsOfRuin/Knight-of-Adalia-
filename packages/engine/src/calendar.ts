@@ -48,6 +48,8 @@ export function reignTitle(state: GameState, content: ContentBundle): { ruler: s
 }
 
 export function describeDate(state: GameState, content: ContentBundle): string {
+  const own = gameOf(content).date?.(state, content);
+  if (own !== undefined) return own;
   const s = seasonName(state, content);
   const r = reignTitle(state, content);
   return `${s.charAt(0).toUpperCase()}${s.slice(1)}, year ${r.year} of ${r.ruler}`;

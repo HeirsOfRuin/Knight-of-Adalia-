@@ -33,6 +33,8 @@ export interface ChoiceView {
   tags: string[];
   /** what the choice can change, for the hint line */
   stakes: string[];
+  /** what its check tests, in words, where the game words it */
+  test?: string;
 }
 
 export interface SceneView {
@@ -82,6 +84,7 @@ export function view(content: ContentBundle, state: GameState, narrator: Narrati
           warn: c.warn,
           tags: c.tags,
           stakes: stakesFor(content, state, c),
+          test: c.check ? gameOf(content).checkLabel?.(content, c.check) : undefined,
         };
       });
   return {

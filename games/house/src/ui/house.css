@@ -8,3 +8,6 @@
 .playtest-notes .row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .playtest-notes textarea { width: 100%; box-sizing: border-box; font: inherit; }
 .playtest-notes p { margin: 0; }
+
+/* what a check tests, beside its odds */
+.choice-meta .test { font-family: var(--sans); font-size: 0.8rem; color: var(--muted); }

@@ -82,3 +82,28 @@ describe('the World and People pages', () => {
     }
   });
 });
+
+describe('the rival houses (houses.ts)', () => {
+  const c = content();
+  it('start where their opening puts them', () => {
+    expect(house().houses).toEqual({ penhoet: { standing: 45, temper: 0, claim: 1 }, kerguen: { standing: 22, temper: 1, claim: 0 } });
+    expect(house({ opening: 'diminished', frame: 'partitioned', sovereign: 'amaury' }).houses!.penhoet).toEqual({ standing: 52, temper: 1, claim: 1 });
+  });
+  it('are read and moved by rival paths, with results in words and a place on the at-stake line', () => {
+    const s = house();
+    expect(cond('rival.penhoet.temper >= 0', s, c)).toBe(true);
+    expect(validateCond('rival.nobody.temper > 0', c)).not.toEqual([]);
+    expect(validateCond('rival.penhoet.mood > 0', c)).not.toEqual([]);
+    const x = { changes: [] as string[] } as unknown as Parameters<typeof applyEffects>[3];
+    applyEffects(s, c, [{ add: { 'rival.penhoet.temper': -2, 'rival.kerguen.standing': 5 } }], x);
+    expect(s.houses!.penhoet!.temper).toBe(-2);
+    expect(x.changes).toEqual(expect.arrayContaining(['Penhoët: much colder', "Kerguen's standing: much higher"]));
+    expect(renderText('{house.standing}', s, c)).not.toBe('');
+  });
+  it('let a rising house rise each Michaelmas, and keep the house\'s own standing in PLAN.md\'s words', () => {
+    let s = house();
+    for (let i = 0; i < 12 && s.time < 10; i++) s = choose(c, s, view(c, s).choices.find((x) => x.available)!.id).state;
+    expect(s.houses!.kerguen!.standing).toBeGreaterThan(22);
+    expect(cond('house.standing >= 20', s, c)).toBe(true);
+  });
+});

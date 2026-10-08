@@ -98,4 +98,6 @@ export interface HouseState extends CoreState {
   estate?: Estate;
   holdings?: Record<string, Holding>;
   vassals?: Vassal[];
+  /** the rival houses (houses.ts, registry/houses.yaml); filled in on first read for older saves */
+  houses?: Record<string, { standing: number; temper: number; claim: number }>;
 }

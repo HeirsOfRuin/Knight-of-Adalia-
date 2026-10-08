@@ -24,6 +24,7 @@ h_b_new_terms: { description: "The Keeper changed the knights' terms at their ho
 h_b_old_terms: { description: "The Keeper took the knights' homage on the founder's terms", later: book1 }
 h_b_patent_conceded: { description: "The Keeper conceded the new governor's narrow reading of the patent", later: book1 }
 h_b_patent_stood: { description: "The Keeper stood on the patent as written", later: book1 }
+h_b_penhoet_answered: { description: "The house answered Penhoët's men in kind, in daylight, and the Armance laughed at Penhoët", later: book1 }
 h_b_released: { description: "The Keeper released the knight who would not kneel", later: book1 }
 h_b_snub: { description: "The Keeper turned Hervé away from the wedding feast", later: book1 }
 h_b_stance_delay: { description: "The Keeper told Lannec the house will speak when the Estates sit", later: book1 }

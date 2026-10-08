@@ -70,7 +70,7 @@
   choices:
     - id: release
       text: Release him from his homage, and let him go.
-      effects: [ { set: flag.h_b_released }, { if: house.yvon, then: [ { add: { counter.penhoet: 1 } } ] } ]
+      effects: [ { set: flag.h_b_released }, { if: house.yvon, then: [ { add: { rival.penhoet.temper: 1 } } ] } ]
       text_after: |
         "Then hold of nobody," you say. "Go in peace." He bows, and goes. [if house.yvon]Kerlan is his own now, or Penhoët's, and Hervé writes you a courteous letter about it within the week.[else]His land goes out of your service with him. The steward crosses a line out of the roll, slowly, as if it hurts.[/if]
       next: { switch: [ { if: realm.west == adalian, go: h_b02_governor } ], default: h_b02_herald }
@@ -110,7 +110,7 @@
       text: Answer that the house stands for inheritance through women.
       effects:
         - set: flag.h_b_stance_women
-        - add: { rel.mahaut_armance.affection: 1, counter.penhoet: -1 }
+        - add: { rel.mahaut_armance.affection: 1, rival.penhoet.temper: -1 }
         - if: flag.h_law_women
           then: [ { add: { counter.shadow: 1 } } ]
           else: [ { add: { counter.shadow: -1 } } ]
@@ -121,7 +121,7 @@
       text: Answer that the house stands for the male line.
       effects:
         - set: flag.h_b_stance_male
-        - add: { counter.penhoet: 1, rel.mahaut_armance.affection: -1 }
+        - add: { rival.penhoet.temper: 1, rel.mahaut_armance.affection: -1 }
         - if: flag.h_law_male
           then: [ { add: { counter.shadow: 1 } } ]
           else: [ { add: { counter.shadow: -1 } } ]
@@ -207,7 +207,7 @@
       text: "[if head.sex == male]Marry Azenor de Kerguen.[else]Marry Tanguy de Kerguen.[/if]"
       effects:
         - set: flag.h_b_wed_kerguen
-        - add: { counter.penhoet: -1, rel.tanguy_kerguen.affection: 2 }
+        - add: { rival.penhoet.temper: -1, rel.tanguy_kerguen.affection: 2, rival.kerguen.temper: 3, rival.kerguen.standing: 5 }
         - if: head.sex == male
           then: [ { marry: { who: head, culture: valdrennish, to: de Kerguen, name: Azenor de Kerguen } } ]
           else: [ { marry: { who: head, culture: valdrennish, to: de Kerguen, name: Tanguy de Kerguen } } ]
@@ -294,7 +294,7 @@
   choices:
     - id: high
       text: Seat Hervé at the high table, beside you.
-      effects: [ { add: { counter.penhoet: 1, counter.household: -1 } }, { set: flag.h_b_herve_high } ]
+      effects: [ { add: { rival.penhoet.temper: 1, counter.household: -1 } }, { set: flag.h_b_herve_high } ]
       text_after: |
         Hervé sits at your left hand and talks all through the feast, courteously, about wool prices and the weather and his late father's gout. The old knights at the lower table watch him eat your bread with faces like a hard frost.
       next: { pool: h_b1_early, count: 1, then: h_b10_knights }
@@ -306,7 +306,7 @@
       next: { pool: h_b1_early, count: 1, then: h_b10_knights }
     - id: away
       text: Have the steward tell him there is no room.
-      effects: [ { add: { counter.penhoet: -1, counter.household: 1 } }, { set: flag.h_b_snub } ]
+      effects: [ { add: { rival.penhoet.temper: -1, counter.household: 1 } }, { set: flag.h_b_snub } ]
       text_after: |
         The steward tells him, at the door, with every courtesy in the language. Hervé hears him out, leaves his gift on the step, and rides home in the rain. The story is all over the Armance by Whitsun, in two versions, and you come out of neither of them well.
       next: { pool: h_b1_early, count: 1, then: h_b10_knights }
@@ -333,7 +333,7 @@
           - if: flag.h_suit_weak
             then: [ { set: flag.h_kerval_shared } ]
             else: [ { set: flag.h_kerval_kept } ]
-          - add: { counter.penhoet: -1 }
+          - add: { rival.penhoet.temper: -1 }
         next: { switch: [ { if: sibling.exists, go: h_b07_grievance }, { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
       failure:
         text: |
@@ -342,7 +342,7 @@
           - if: flag.h_suit_strong
             then: [ { set: flag.h_kerval_shared } ]
             else: [ { set: flag.h_kerval_lost } ]
-          - add: { counter.penhoet: 1 }
+          - add: { rival.penhoet.temper: 1 }
         next: { switch: [ { if: sibling.exists, go: h_b07_grievance }, { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
     - id: pleader
       text: Hire the best pleader in Lannec. (£15)
@@ -368,7 +368,7 @@
         next: { switch: [ { if: sibling.exists, go: h_b07_grievance }, { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
     - id: settle
       text: Settle on the courthouse steps before the verdict.
-      effects: [ { set: flag.h_kerval_shared }, { add: { counter.penhoet: 1 } } ]
+      effects: [ { set: flag.h_kerval_shared }, { add: { rival.penhoet.temper: 1 } } ]
       text_after: |
         You find Hervé on the steps at the dinner hour, eating bread and cheese out of a cloth like a farmer. "The manor to me," you say, "the wood to you, the mill shared, and we go home." He chews, and swallows, and offers you some cheese. "Done," he says. "My father would have held out for the mill." The court is told after dinner, and is visibly relieved.
       next: { switch: [ { if: sibling.exists, go: h_b07_grievance }, { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
@@ -429,7 +429,7 @@
       effects:
         - set: flag.h_second_penhoet
         - set: flag.h_penhoet_match
-        - add: { counter.penhoet: 2 }
+        - add: { rival.penhoet.temper: 2 }
         - if: "sibling.age >= 16 && sibling.sex == female"
           then: [ { marry: { who: sibling, culture: valdrennish, to: de Penhoët, name: Ronan de Penhoët } } ]
         - if: "sibling.age >= 16 && sibling.sex == male"
@@ -441,7 +441,7 @@
       text: Give {sibling.first} to Kerguen.
       effects:
         - set: flag.h_second_kerguen
-        - add: { counter.penhoet: -1, rel.tanguy_kerguen.affection: 1 }
+        - add: { rival.penhoet.temper: -1, rel.tanguy_kerguen.affection: 1, rival.kerguen.temper: 2, rival.kerguen.standing: 3 }
         - if: "sibling.age >= 16 && sibling.sex == female && !flag.h_b_wed_kerguen && head.sex == male"
           then: [ { marry: { who: sibling, culture: valdrennish, to: de Kerguen, name: Tanguy de Kerguen } } ]
           else: [ { if: "sibling.age >= 16", then: [ { marry: { who: sibling, culture: valdrennish, to: de Kerguen } } ] } ]
@@ -465,6 +465,7 @@
         - if: "sibling.temperament == bold || sibling.temperament == merry"
           then:
             - set: flag.h_second_kerguen
+            - add: { rival.kerguen.temper: 2, rival.kerguen.standing: 3 }
             - if: "sibling.age >= 16"
               then: [ { marry: { who: sibling, culture: valdrennish, to: de Kerguen } } ]
           else:
@@ -502,7 +503,7 @@
         next: { switch: [ { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
     - id: let_be
       text: Tell {sibling.him} to do what is right for {sibling.his} children.
-      effects: [ { set: flag.h_second_penhoet }, { add: { counter.second: 1, counter.penhoet: 1 } } ]
+      effects: [ { set: flag.h_second_penhoet }, { add: { counter.second: 1, rival.penhoet.temper: 1 } } ]
       text_after: |
         "They're your children," you say. "Do what's right for them." {sibling.first} looks at you, and you see {sibling.him} understand that you mean it, and that it will cost the house. "Thank you," {sibling.he} says, and kisses you on the forehead, the way {house.parent} used to, and goes to bed.
       next: { switch: [ { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }

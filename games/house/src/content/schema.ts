@@ -102,6 +102,22 @@ export const NamesSchema = z.object({ male: z.array(z.string()).min(1), female: 
 // A line of a head's chronicle paragraph, shown when the condition holds at the handover (head is the old head).
 export const ChronicleLineSchema = z.object({ if: CondInputSchema.optional(), text: z.string() }).strict();
 
+/** A rival house (PLAN.md §4.4): who heads it by date, where it sits, and where it starts. */
+const HouseStart = z.object({ standing: z.number().int().min(0).max(100), temper: z.number().int().min(-10).max(10), claim: z.number().int().min(0).max(3) }).strict();
+export const HouseDefSchema = z.object({
+  name: z.string(),
+  seat: z.string(),
+  culture: Id,
+  // heads in order; each until the old-count year it ends (the last has none)
+  heads: z.array(z.object({ npc: Id, until: z.number().int().optional() }).strict()).min(1),
+  start: HouseStart,
+  // the opening's own start, where it differs (Diminished: Penhoët holds the lost manor)
+  openings: z.record(Id, HouseStart.partial()).default({}),
+  // standing gained each Michaelmas (a house rising), to a ceiling
+  rising: z.object({ per_year: z.number().int(), to: z.number().int() }).strict().optional(),
+}).strict();
+export type HouseDef = z.infer<typeof HouseDefSchema>;
+
 export const RegistrySchema = z.object({
   flags: CORE_REGISTRY.flags,
   npcs: CORE_REGISTRY.npcs,
@@ -117,6 +133,7 @@ export const RegistrySchema = z.object({
   life: LifeSchema,
   names: z.record(Id, NamesSchema),
   chronicle: z.array(ChronicleLineSchema).default([]),
+  houses: z.record(Id, HouseDefSchema).default({}),
 });
 export type Registry = z.infer<typeof RegistrySchema>;
 

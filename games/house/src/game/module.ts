@@ -1,7 +1,7 @@
 // House of Adalia's game module: where the West stands (realm.*), the opening, what the house
 // inherited, the frame as the scene variant key, and dates counted in the sovereign's reign.
 // Registered on import; every entry point that loads content imports it.
-import { registerGame, type GameModule } from '@engine/game';
+import { registerGame, STAKES_RANK, type GameModule } from '@engine/game';
 import type { CoreContent } from '@engine/schema';
 import type { CoreState } from '@engine/state';
 import { regnalYear, seasonName } from '@engine/calendar';
@@ -13,6 +13,7 @@ import { FOUNDER_ID, HOUSE_ID, type HouseState } from './state';
 import { SELECTORS, select, heirOf, livingChildren, die, queueSuccession, succeed, bear, marry, nameChild, yearTick, SUCCESSION_SCENE } from './family';
 import { ageOfCharacter } from '@engine/character';
 import { economyTick } from './economy';
+import { rival, addRival, housesYear, standingOf, standingWord, RIVAL_FIELDS } from './houses';
 
 const st = (s: CoreState) => s as HouseState;
 const ct = (c: CoreContent) => c as ContentBundle;
@@ -24,9 +25,9 @@ const SINGLE = ['opening', 'imported'];
 /** family.<field>: the house as a whole. */
 const FAMILY = ['law', 'generation', 'members', 'children', 'sons', 'daughters', 'extinct', 'no_heir', 'minor', 'regency', 'contested', 'news', 'childbed', 'cloister', 'junior'];
 // {house.*}: the founder's house as Knight of Adalia left it, or as a fresh start has it
-const HOUSE_TEXT = ['manor', 'claimed', 'companion', 'companion_first', 'origin', 'parent', 'parent_start', 'knights', 'withholder', 'parent_word', 'querec', 'querec_start', 'querec_short', 'ruler', 'ruler_lc', 'match_penhoet', 'match_valdrenne', 'match_kerguen'];
+const HOUSE_TEXT = ['manor', 'claimed', 'companion', 'companion_first', 'origin', 'parent', 'parent_start', 'knights', 'withholder', 'parent_word', 'querec', 'querec_start', 'querec_short', 'ruler', 'ruler_lc', 'match_penhoet', 'match_valdrenne', 'match_kerguen', 'standing'];
 // house.<field> in conditions: the founder's knights as Knight of Adalia left them
-const HOUSE_IDS = ['yvon', 'vassals'];
+const HOUSE_IDS = ['yvon', 'vassals', 'standing'];
 
 type Op<K extends string> = Extract<Effect, Record<K, unknown>>;
 
@@ -44,7 +45,6 @@ function changeNote(s: HouseState, c: ContentBundle, path: string, d: number): s
     switch (a) {
       case 'household': return say('The household', 'more loyal', 'less loyal');
       case 'shadow': return say(`${first('founder')}'s shadow`, 'longer', 'shorter');
-      case 'penhoet': return say('Penhoët', 'warmer', 'colder');
       case 'favour': return say(s.realm.sovereign === 'self' ? 'Standing in the realm' : "The sovereign's favour", 'higher', 'lower');
       case 'second': return select(s, c, 'sibling') ? say(first('sibling'), 'closer', 'further off') : '';
       default: return '';
@@ -55,6 +55,12 @@ function changeNote(s: HouseState, c: ContentBundle, path: string, d: number): s
     if (b === 'affection') return say(name, 'warmer', 'colder');
     if (b === 'respect') return say(`${name}'s respect`, 'higher', 'lower');
     if (b === 'loyalty') return say(`${name}'s loyalty`, 'firmer', 'weaker');
+  }
+  if (ns === 'rival') {
+    const name = c.registry.houses[a]?.name ?? a;
+    if (b === 'temper') return say(name, 'warmer', 'colder');
+    if (b === 'standing') return say(`${name}'s standing`, 'higher', 'lower');
+    if (b === 'claim') return say(`${name}'s claim`, 'stronger', 'weaker');
   }
   if (ns === 'rep') return say(`Standing with ${c.registry.factions[a]?.label.replace(/^The /, 'the ') ?? a}`, 'higher', 'lower');
   return undefined;
@@ -68,7 +74,7 @@ export function sovereignStyle(state: HouseState, content: ContentBundle): strin
 
 export const house: GameModule = {
   id: GAME_ID,
-  namespaces: ['realm', 'opening', 'imported', 'inherited', 'family', 'house'],
+  namespaces: ['realm', 'opening', 'imported', 'inherited', 'family', 'house', 'rival'],
   characterSelectors: SELECTORS,
   selectCharacter: (s, c, sel) => select(st(s), ct(c), sel),
 
@@ -79,6 +85,7 @@ export const house: GameModule = {
 
   onSeason(s, c, changes, rng) {
     economyTick(st(s), ct(c), changes); // deterministic: runs whether or not dice may be drawn
+    if (s.time % 4 === 2) housesYear(st(s), ct(c));
     if (rng && s.time % 4 === 2) yearTick(st(s), ct(c), rng); // Michaelmas
   },
 
@@ -95,7 +102,13 @@ export const house: GameModule = {
       case 'imported': return !!state.inheritance;
       // inherited.<flag>: a story flag set in the Knight of Adalia life this house continues
       case 'inherited': return !!state.inheritance?.flags.includes(a!);
+      // rival.<house>.<field>: a rival house's standing, temper toward this house, or claim (houses.ts)
+      case 'rival': {
+        const b = path.split('.')[2]!;
+        return rival(state, ct(_c), a!)?.[b as 'standing'];
+      }
       case 'house': {
+        if (a === 'standing') return standingOf(state);
         const v = state.inheritance?.lands.vassals ?? [];
         if (a === 'yvon') return v.some((x) => x.id === 'penhoet_cadet');
         if (a === 'vassals') return v.length;
@@ -135,6 +148,10 @@ export const house: GameModule = {
     const [ns, a, b] = path.split('.');
     if (SINGLE.includes(ns!)) return a === undefined ? null : `"${ns}" takes no sub-path ("${path}")`;
     if (a === undefined) return `incomplete path "${path}"`;
+    if (ns === 'rival') {
+      if (!ct(_c).registry.houses[a]) return `unknown house "${a}" in "${path}"`;
+      return b && (RIVAL_FIELDS as readonly string[]).includes(b) ? null : `rival paths are rival.<house>.${RIVAL_FIELDS.join('|')} ("${path}")`;
+    }
     if (b !== undefined) return `too many segments in "${path}"`;
     if (ns === 'realm') return REALM_IDS.includes(a) ? null : `unknown realm field in "${path}"`;
     if (ns === 'family') return FAMILY.includes(a) ? null : `unknown family field in "${path}"`;
@@ -154,8 +171,27 @@ export const house: GameModule = {
     return undefined;
   },
 
+  addNumber(s, c, path, delta, changes) {
+    const [ns, a, b] = path.split('.');
+    if (ns !== 'rival') throw new Error(`add: unsupported path ${path}`);
+    const d = addRival(st(s), ct(c), a!, b!, delta);
+    const t = d ? changeNote(st(s), ct(c), path, d) : '';
+    if (t) changes.push(t);
+  },
+
+  stakesOfAdd(c, path, sign, put) {
+    const [ns, a] = path.split('.');
+    if (ns === 'rival') put(`rival.${a}`, ct(c).registry.houses[a!]?.name ?? a!, STAKES_RANK.rep, sign);
+  },
+
   labelFor(c, path) {
     const content = ct(c);
+    if (path === 'house.standing') return "The house's standing";
+    if (path.startsWith('rival.')) {
+      const [, a, b] = path.split('.');
+      const name = content.registry.houses[a!]?.name ?? a;
+      return b === 'temper' ? `${name}'s temper toward you` : `${name}'s ${b}`;
+    }
     if (path === 'realm.west') return 'Where the West stands';
     if (path === 'realm.sovereign') return 'Who rules the West';
     if (path.startsWith('inherited.')) return `From the founder's life: ${content.registry.flags[path.slice(10)]?.description ?? path.slice(10)}`;
@@ -330,6 +366,8 @@ function houseText(s: HouseState, f: string): string | undefined {
   const d = s.inheritance;
   const manor = d?.lands.manor?.name ?? 'Kerval';
   switch (f) {
+    // the house's standing in PLAN.md's words (houses.ts)
+    case 'standing': return standingWord(standingOf(s));
     case 'manor': return manor;
     case 'claimed': return manor === 'Kerval' || d?.flags.includes('c2_granted_kerval') || !d ? 'Kerval' : manor;
     case 'companion': case 'companion_first': {

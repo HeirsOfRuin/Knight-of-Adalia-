@@ -263,12 +263,12 @@
       success:
         text: |
           It takes three days. On the third day the Estates of the West write it: the crown to pass to the eldest child of the last wearer, son or daughter. Hervé de Penhoët votes against, quietly, and asks for his vote to be recorded. It is. You have just settled a question for a hundred years, or started one.
-        effects: [ { set: flag.h_c_law_written }, { set: flag.h_c_estates_swore }, { add: { counter.penhoet: -1 } } ]
+        effects: [ { set: flag.h_c_law_written }, { set: flag.h_c_estates_swore }, { add: { rival.penhoet.temper: -1 } } ]
         next: h_pc09_illness
       failure:
         text: |
           The Estates will not write a law for a hundred years at the end of a long day for a King who is plainly tired. [if inherited.c5r_estates_choose]They remind you, courteously, of what you promised them in your first year, and adjourn.[else]They swear to "the King's heir, as the law shall be", and adjourn.[/if] Hervé de Penhoët, on his way out, says to the Armance bench, "As the law shall be," as if tasting it.
-        effects: [ { set: flag.h_c_estates_divided }, { add: { counter.penhoet: 1 } } ]
+        effects: [ { set: flag.h_c_estates_divided }, { add: { rival.penhoet.temper: 1 } } ]
         next: h_pc09_illness
     - id: no
       text: "[if inherited.c5r_estates_choose]Ask them nothing, and keep your promise. They will choose when you are gone.[else]Ask them nothing. A crowned king crowns his heir.[/if]"

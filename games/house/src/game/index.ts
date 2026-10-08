@@ -6,6 +6,7 @@ import type { ContentBundle, Frame } from '../content/schema';
 import { FOUNDER_ID, HOUSE_ID, type HouseState } from './state';
 import { bear, marry, nameChild, person, shapeChild } from './family';
 import { settleLands } from './economy';
+import { startHouses } from './houses';
 import { RngCursor, seedRng } from '@engine/rng';
 import { newNpcState } from '@engine/effects';
 import { enterScene } from '@engine/director';
@@ -123,6 +124,7 @@ export function begin(
     queue: [],
     seen: {},
     journal: [],
+    houses: startHouses(content, opening),
     ...extra,
   };
   family?.(state, content, rng);

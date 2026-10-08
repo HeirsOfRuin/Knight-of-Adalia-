@@ -102,12 +102,12 @@
       success:
         text: |
           You ride out with twelve men and the frost cracking under the hooves. The Penhoët woodcutters see you coming and stop, and their foreman, a big man in a leather hood, puts his axe down slowly. "Put it back," you say. Your voice does not go up at the end. They put it back. You sit your horse and watch them do it, forty yards, two men to the stone, and on the way home {house.companion} says, "Well," and nothing else, and it is enough.
-        effects: [ { add: { counter.penhoet: -2, counter.household: 1, counter.shadow: 1 } }, { set: flag.h_rode_out } ]
+        effects: [ { add: { rival.penhoet.temper: -2, counter.household: 1, counter.shadow: 1 } }, { set: flag.h_rode_out } ]
         next: h_p14_deathbed
       failure:
         text: |
           You ride out, and the Penhoët men do not stop. Somebody throws something. Somebody else draws. By the time it is over a Penhoët carter has a broken head and one of your grooms has lost two fingers, and the stone is still where they put it, and Hervé has a grievance he can take to any court in the West.
-        effects: [ { add: { counter.penhoet: -3 } }, { set: flag.h_rode_out }, { set: flag.h_blood_at_kerval } ]
+        effects: [ { add: { rival.penhoet.temper: -3 } }, { set: flag.h_rode_out }, { set: flag.h_blood_at_kerval } ]
         next: h_p14_deathbed
     - id: court
       text: Send to the court, and let the stone wait for the law.
@@ -115,7 +115,7 @@
       success:
         text: |
           You write it yourself, by candle, with the charter at your elbow: the stone, the night, the carts, the forty yards. The court sends an order by Lent: the stone to go back, the wood to be paid for. Hervé pays, to the penny, and writes you a courteous letter about clerks.
-        effects: [ { add: { counter.penhoet: -1 } }, { set: flag.h_court_held } ]
+        effects: [ { add: { rival.penhoet.temper: -1 } }, { set: flag.h_court_held } ]
         next: h_p14_deathbed
       failure:
         text: |
@@ -124,7 +124,7 @@
         next: h_p14_deathbed
     - id: concede
       text: Let them have the wood. Keep the land.
-      effects: [ { add: { counter.penhoet: 1, counter.shadow: -1, counter.household: -1 } }, { set: flag.h_wood_conceded } ]
+      effects: [ { add: { rival.penhoet.temper: 1, counter.shadow: -1, counter.household: -1 } }, { set: flag.h_wood_conceded } ]
       text_after: |
         "The wood," you write to Hervé. "Not the land. The stone goes back when the wood is cut." He agrees within the week, which tells you that the wood was what he wanted all along, or that he wanted to see what you would give. In the yard an old knight spits, and says something about {house.parent}'s day, and stops when he sees you have heard.
       next: h_p14_deathbed
@@ -136,7 +136,7 @@
       success:
         text: |
           {sibling.first} meets you at Penhoët's gate and walks you in, and sits at the table between you and Hervé like a wall with a face. By the end of the evening the stone is a clerk's mistake again, and the wood will be paid for, and Hervé is pouring you his thin sour wine himself. "You both bargain like Penhoëts," he says, and {sibling.first} laughs at him.
-        effects: [ { add: { counter.penhoet: 1, counter.second: 1 } }, { set: flag.h_second_envoy } ]
+        effects: [ { add: { rival.penhoet.temper: 1, counter.second: 1 } }, { set: flag.h_second_envoy } ]
         next: h_p14_deathbed
       failure:
         text: |

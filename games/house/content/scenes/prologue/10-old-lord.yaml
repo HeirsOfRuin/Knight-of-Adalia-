@@ -163,7 +163,7 @@
     - id: buy
       text: Buy him off. Name a sum and see if he is a man of business. (£30)
       requires: "res.coin >= 7200"
-      effects: [ { add: { res.coin: -7200, counter.penhoet: 1 } }, { set: flag.h_suit_bought } ]
+      effects: [ { add: { res.coin: -7200, rival.penhoet.temper: 1 } }, { set: flag.h_suit_bought } ]
       text_after: |
         Hervé listens to the sum, and to the reasons, and takes it. "For my father's sake," he says. "He'd like the money more than the land, at the end. He'll want to give it to the Church." He signs a quitclaim in his own neat hand. You notice he does not say anything about his own son's sake, or his son's son's.
       next: h_p05_michaelmas
@@ -234,7 +234,7 @@
       effects:
         - set: flag.h_penhoet_match
         - set: flag.h_suit_settled
-        - add: { counter.penhoet: 2, counter.second: -1 }
+        - add: { rival.penhoet.temper: 2, counter.second: -1 }
         - if: "sibling.age >= 16 && sibling.sex == female"
           then: [ { marry: { who: sibling, culture: valdrennish, to: de Penhoët, name: Ronan de Penhoët } } ]
         - if: "sibling.age >= 16 && sibling.sex == male"
@@ -252,7 +252,7 @@
           then:
             - set: flag.h_penhoet_match
             - set: flag.h_suit_settled
-            - add: { counter.penhoet: 2 }
+            - add: { rival.penhoet.temper: 2 }
             - if: "sibling.age >= 16 && sibling.sex == female"
               then: [ { marry: { who: sibling, culture: valdrennish, to: de Penhoët, name: Ronan de Penhoët } } ]
             - if: "sibling.age >= 16 && sibling.sex == male"
@@ -262,7 +262,7 @@
       next: h_p07_year
     - id: refuse
       text: Tell him your children are not a price for a mill.
-      effects: [ { add: { counter.penhoet: -1 } } ]
+      effects: [ { add: { rival.penhoet.temper: -1 } } ]
       text_after: |
         Yann looks at you, and the fire spits. "No," he says. "I didn't think so. I wouldn't have either." He shuts his eyes. Hervé sees you out, courteous to the gate, and says, "I'll see you in court, then," the way another man might say good night.
       next: h_p07_year
@@ -288,13 +288,13 @@
   choices:
     - id: let_go
       text: Let the mill go, for {sibling.first}'s sake.
-      effects: [ { set: flag.h_suit_settled }, { add: { counter.penhoet: 2, counter.second: 1 } } ]
+      effects: [ { set: flag.h_suit_settled }, { add: { rival.penhoet.temper: 2, counter.second: 1 } } ]
       text_after: |
         "For {sibling.first}," you say. The old man nods, and does not let go of {sibling.his} hand. Hervé writes it out that night in his neat clerk's hand. In the morning {sibling.first} walks you to your horse and says, quietly, "Thank you. They'd never have let me hear the end of it."
       next: h_p07_year
     - id: keep
       text: Tell him the marriage was the price, and the mill stays yours.
-      effects: [ { add: { counter.penhoet: -1, counter.second: -1 } } ]
+      effects: [ { add: { rival.penhoet.temper: -1, counter.second: -1 } } ]
       text_after: |
         Yann's face does not change. {sibling.first}'s does. "Then it'll be fought over," says the old man, "and {sibling.he}'ll be in the middle of it." You know. You knew when you said it.
       next: h_p07_year
@@ -314,7 +314,7 @@
     - id: mass
       text: Pay for a Mass for the old man's soul, and say so.
       requires: "res.coin >= 240"
-      effects: [ { add: { res.coin: -240, counter.penhoet: 1, rel.herve_penhoet.affection: 1 } } ]
+      effects: [ { add: { res.coin: -240, rival.penhoet.temper: 1, rel.herve_penhoet.affection: 1 } } ]
       text_after: |
         A pound to the abbey for a year of Masses. Hervé hears of it by the end of the week and sends you a cask of Penhoët wine, which is thin and sour and the best they have.
       next: { pool: h_prologue, count: 1, then: h_p08_summons }
@@ -368,20 +368,20 @@
   choices:
     - id: boy
       text: Speak for the boy, and his father's line.
-      check: { attr: presence, skill: diplomacy, difficulty: 7, audience: nobles, mods: [ { if: counter.favour >= 1, add: 1, label: the crown's regard }, { if: counter.penhoet >= 1, add: 1, label: Penhoët speaks with you } ] }
+      check: { attr: presence, skill: diplomacy, difficulty: 7, audience: nobles, mods: [ { if: counter.favour >= 1, add: 1, label: the crown's regard }, { if: rival.penhoet.temper >= 1, add: 1, label: Penhoët speaks with you } ] }
       success:
         text: |
           You speak for the boy, and for the line, and for not making a woman queen in the snow with a war ten years behind you. It is a short speech, not a good one, and it lands. The Brésy lords carry the hall by nine voices. Gaucelin is acclaimed with his mother holding him up, and Mahaut walks out with her ladies before the oaths. She does not look at you as she passes.
-        effects: [ { west: { sovereign: gaucelin } }, { set: flag.h_law_male }, { add: { counter.penhoet: 1, counter.favour: 2, rel.mahaut_armance.affection: -2 } } ]
+        effects: [ { west: { sovereign: gaucelin } }, { set: flag.h_law_male }, { add: { rival.penhoet.temper: 1, counter.favour: 2, rel.mahaut_armance.affection: -2 } } ]
         next: h_p09_illness
       failure:
         text: |
           You speak for the boy, and it is not enough. Mahaut's people have counted the hall better than the Brésy men have. She is acclaimed queen by eleven voices, and when she takes the oaths she looks at you over the heads of the kneeling lords, once.
-        effects: [ { west: { sovereign: mahaut } }, { set: flag.h_law_male }, { add: { counter.penhoet: 1, rel.mahaut_armance.affection: -2 } } ]
+        effects: [ { west: { sovereign: mahaut } }, { set: flag.h_law_male }, { add: { rival.penhoet.temper: 1, rel.mahaut_armance.affection: -2 } } ]
         next: h_p09_illness
     - id: queen
       text: Speak for Mahaut, who has the blood.
-      effects: [ { west: { sovereign: mahaut } }, { set: flag.h_law_women }, { add: { rel.mahaut_armance.affection: 2, counter.favour: 2, counter.penhoet: -1 } } ]
+      effects: [ { west: { sovereign: mahaut } }, { set: flag.h_law_women }, { add: { rel.mahaut_armance.affection: 2, counter.favour: 2, rival.penhoet.temper: -1 } } ]
       text_after: |
         You speak for Mahaut, and her grandmother, and the Armance, which a woman held through the worst war in a hundred years. The hall acclaims her by twenty voices. She takes the oaths with her daughter at her side, and when you kneel she says, low, "I remember who stood first," and you believe her.
       next: h_p09_illness
@@ -411,12 +411,12 @@
       success:
         text: |
           "I have daughters," you say, "and so does every man here. Write it so they can inherit, and you'll never again have to go to war over a girl in a castle." It gets a laugh, and then it gets a silence, which is better. Mahaut sends you a cup of her own wine after.
-        effects: [ { set: flag.h_law_women }, { set: flag.h_law_carried }, { add: { rel.mahaut_armance.affection: 2, counter.penhoet: -1 } } ]
+        effects: [ { set: flag.h_law_women }, { set: flag.h_law_carried }, { add: { rel.mahaut_armance.affection: 2, rival.penhoet.temper: -1 } } ]
         next: h_p09_illness
       failure:
         text: |
           You say what you meant to say, and it comes out like an old man's grievance. The hall listens politely. Mahaut thanks you, and Hervé de Penhoët, across the floor, makes a small note.
-        effects: [ { set: flag.h_law_women }, { add: { rel.mahaut_armance.affection: 1, counter.penhoet: -1 } } ]
+        effects: [ { set: flag.h_law_women }, { add: { rel.mahaut_armance.affection: 1, rival.penhoet.temper: -1 } } ]
         next: h_p09_illness
     - id: male
       text: Speak for the old custom, and the male line.
@@ -424,12 +424,12 @@
       success:
         text: |
           You speak for the custom your fathers knew, which is true of nobody's father in this hall but sounds well. The old lords stamp. Hervé de Penhoët crosses the floor afterwards to shake your hand, and Mahaut's ladies stop talking when you pass.
-        effects: [ { set: flag.h_law_male }, { set: flag.h_law_carried }, { add: { counter.penhoet: 2, rel.mahaut_armance.affection: -2 } } ]
+        effects: [ { set: flag.h_law_male }, { set: flag.h_law_carried }, { add: { rival.penhoet.temper: 2, rel.mahaut_armance.affection: -2 } } ]
         next: h_p09_illness
       failure:
         text: |
           You speak for the male line and nobody much listens. Hervé thanks you anyway. Mahaut does not.
-        effects: [ { set: flag.h_law_male }, { add: { counter.penhoet: 1, rel.mahaut_armance.affection: -2 } } ]
+        effects: [ { set: flag.h_law_male }, { add: { rival.penhoet.temper: 1, rel.mahaut_armance.affection: -2 } } ]
         next: h_p09_illness
     - id: silent
       text: Say nothing, and count who speaks.

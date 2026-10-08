@@ -278,3 +278,51 @@
         The messenger goes back to Cordelle with an empty bag. Amaury does not write again. At the end of the year the Valdrennish customs men on the march are slower than usual with the salt, which may mean nothing.
       next: "@return"
 
+
+# Penhoët moves against the house when its temper is bad enough (PLAN.md §4.4: rivals act through gated events).
+- id: h_b1p_penhoet_feud
+  chapter: book1
+  kind: pool
+  pool: h_b1_late
+  on_enter: [ { catch_up: { year: 57, season: autumn } } ]
+  title: Penhoët's Men
+  frames: [free, adalian]
+  requires: "rival.penhoet.temper <= -4"
+  weight: 40
+  text: |
+    [if opening == crowned]At Michaelmas Penhoët's men stop the salt carts on the Armance road at the Penhoët bridge, and take a toll from them that the crown never granted, and give the carters a receipt in Hervé's name, all courtesy. The carters bring the receipts to Lannec.[else]At Michaelmas Penhoët's men come over the stream below {house.manor} with a reeve and a cart, dig up two of the boundary stones, and set them again forty yards inside your land. They leave a receipt, signed in Hervé's name, for the stones.[/if]
+
+    Nobody was hurt. That is the point. Hervé de Penhoët has told the whole Armance what he thinks your house is worth, and done it in a way no court will call a war.
+  choices:
+    - id: answer
+      text: Send your men to put it back, and say why.
+      check: { attr: presence, skill: command, difficulty: 4, audience: nobles }
+      success:
+        text: |
+          Your men go out in daylight, with a banner and a clerk of their own, and undo it all in an afternoon, and leave a receipt of their own in your name. The Armance laughs, and the laugh is at Penhoët. Hervé does not write.
+        effects: [ { add: { counter.household: 1, rival.penhoet.temper: -1 } }, { set: flag.h_b_penhoet_answered } ]
+        next: "@return"
+      failure:
+        text: |
+          Your men go out, and Penhoët's men are waiting for them, more of them, and there is shoving, and then a broken arm, and then the men come home. The stones stay where Hervé put them, and now there is blood on them.
+        effects: [ { add: { counter.household: -1, rival.penhoet.temper: -1, res.men: -2 } } ]
+        next: "@return"
+    - id: court
+      text: Take it to law, with the receipt as evidence.
+      check: { attr: wits, skill: diplomacy, difficulty: 4 }
+      success:
+        text: |
+          The court hears it at Martinmas, reads the receipt aloud twice, and finds for you with costs. Hervé pays at once, in full, and sends a note with the money saying he is glad the matter is settled in a lawful way. He may even mean it.
+        effects: [ { add: { rival.penhoet.temper: 1, res.coin: 1200 } } ]
+        next: "@return"
+      failure:
+        text: |
+          The court hears it at Martinmas and adjourns it to the spring, and then to the next Michaelmas. Hervé's lawyer is better than yours, and older, and bills less.
+        effects: [ { add: { res.coin: -1200 } } ]
+        next: "@return"
+    - id: let_go
+      text: Let it go. It is two stones, and a toll.
+      effects: [ { add: { rival.penhoet.temper: 1, counter.household: -1 } } ]
+      text_after: |
+        You say nothing. The household says a great deal, in the kitchens. Hervé, hearing of it, sends a cask of wine at Christmas, which is worse.
+      next: "@return"

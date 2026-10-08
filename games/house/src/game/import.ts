@@ -115,6 +115,8 @@ function carryStanding(s: HouseState, c: ContentBundle, d: DynastyExport): void 
   if (rep.crown !== undefined) s.rep.adalia = rep.crown;
   const west = ['nobles', 'knights', 'commons'].map((k) => rep[k]).filter((x): x is number => x !== undefined);
   if (west.length) s.rep.west = Math.round(west.reduce((a, b) => a + b, 0) / west.length);
+  // the founder's dealings with the rival houses in Knight of Adalia (STORY.md, P6: Penhoët's match)
+  if (d.flags.includes('c5_betrothed_penhoet') && s.houses?.penhoet) s.houses.penhoet.temper += 3;
   for (const p of d.people) {
     const id = PEOPLE[p.id] ?? p.id;
     const n = s.npcs[id];

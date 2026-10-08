@@ -7,7 +7,7 @@ import '../src/game/module'; // the rules this content is played by
 
 export { ContentError };
 export const CONTENT_DIR = join(import.meta.dirname, '..', 'content');
-const REGISTRY = ['flags', 'npcs', 'traits', 'injuries', 'items', 'factions', 'endings', 'lore', 'places', 'frames', 'sovereigns', 'life', 'names', 'chronicle'];
+const REGISTRY = ['flags', 'npcs', 'traits', 'injuries', 'items', 'factions', 'endings', 'lore', 'places', 'frames', 'sovereigns', 'life', 'names', 'chronicle', 'houses'];
 
 export function loadContent(dir = CONTENT_DIR): ContentBundle {
   const { hash, base, rel } = loadBase({ dir, game: GAME_ID, config: ConfigSchema, registry: RegistrySchema, scene: SceneSchema, registryKeys: REGISTRY });

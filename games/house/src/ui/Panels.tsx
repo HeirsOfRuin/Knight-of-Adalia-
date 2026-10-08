@@ -13,6 +13,7 @@ import { heirOf, select } from '../game/family';
 import { FOUNDER_ID, HOUSE_ID } from '../game/state';
 import { GRACE, sovereignStyle } from '../game/module';
 import { ESTATE_LABELS, temperWord, yearBudget, DUES_PER_FEE } from '../game/economy';
+import { rival, headOf, standingOf, standingWord, temperWord as houseTemper, claimWord } from '../game/houses';
 
 function Section({ title, children }: { title: string; children: ComponentChildren }) {
   return (
@@ -39,7 +40,6 @@ function tracks(s: HouseState, c: ContentBundle): [string, string][] {
   const first = (sel: string) => renderText(`{${sel}.first}`, s, c);
   if (v('household') !== undefined) { const n = v('household')!; out.push(['The household', n >= 4 ? 'devoted' : n >= 2 ? 'loyal' : n >= 0 ? 'steady' : n >= -2 ? 'grumbling' : 'disaffected']); }
   if (v('shadow') !== undefined) { const n = v('shadow')!; out.push([`${first('founder')}'s shadow`, n >= 4 ? 'long: everyone measures the house against him' : n >= 2 ? 'lengthening' : n >= 0 ? 'ordinary' : 'short: the house is making its own name']); }
-  if (v('penhoet') !== undefined) { const n = v('penhoet')!; out.push(['Penhoët', n >= 4 ? 'friendly' : n >= 2 ? 'satisfied, for now' : n >= 0 ? 'watchful' : n >= -2 ? 'aggrieved' : 'hostile']); }
   if (v('favour') !== undefined) { const n = v('favour')!; out.push([s.realm.sovereign === 'self' ? 'Standing in the realm' : "The sovereign's favour", n >= 4 ? 'high' : n >= 2 ? 'good' : n >= 0 ? 'ordinary' : 'poor']); }
   if (v('second') !== undefined && select(s, c, 'sibling')) { const n = v('second')!; out.push([first('sibling'), n >= 3 ? 'close' : n >= 1 ? 'friendly' : n >= -1 ? 'distant' : 'estranged']); }
   return out;
@@ -69,6 +69,7 @@ export function StatusPanel({ content, state }: { content: ContentBundle; state:
         <dt>The West</dt><dd>{reg.frames[state.realm.west]?.label}, under {sovereignStyle(state, content)}</dd>
         {regent && <><dt>Regent</dt><dd>{regent.name}, until you are {reg.life.majority}</dd></>}
         <dt>Health</dt><dd>{hero.health}/10</dd>
+        <dt>Your house</dt><dd>{capitalise(standingWord(standingOf(state)))} ({standingOf(state)})</dd>
       </dl>
 
       <Section title="Treasury and men">
@@ -122,6 +123,21 @@ export function StatusPanel({ content, state }: { content: ContentBundle; state:
           <dl class="kv">{t.map(([k, w]) => [<dt key={`${k}t`}>{k}</dt>, <dd key={`${k}d`}>{w}</dd>])}</dl>
         </Section>
       )}
+
+      <Section title="The great houses">
+        <ul class="plain">
+          {Object.entries(reg.houses).map(([id, h]) => {
+            const r = rival(state, content, id)!;
+            const head = headOf(state, content, id);
+            return (
+              <li key={id}>
+                <strong>{h.name}</strong>: {standingWord(r.standing)}; {houseTemper(r.temper)} toward you{r.claim ? `; ${claimWord(r.claim)} in the Armance` : ''}.
+                {head && <span class="muted"> Head: {reg.npcs[head]?.name ?? head}.</span>}
+              </li>
+            );
+          })}
+        </ul>
+      </Section>
 
       <Section title="Standing">
         <dl class="kv">{factions.map(([id, f]) => [<dt key={`${id}t`}>{f.label}</dt>, <dd key={`${id}d`}>{standing(state.rep[id] ?? 0)}</dd>])}</dl>

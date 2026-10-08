@@ -1,0 +1,19 @@
+# The rival houses in play (PLAN.md §4.4, STORY.md L1-1, L2-3). State is in HouseState.houses: standing 0-100 (the
+# same words as the player's house), temper toward the player's house -10..10, claim 0-3 to the West's crown or the
+# Armance. Content reads rival.<id>.<field> and changes it with add: { rival.<id>.temper: n }.
+# Heads by date: years in the old count (canon.md, "The calendar"): Yann dies Lady Day 51; Hervé in 72.
+penhoet:
+  name: Penhoët
+  seat: Penhoët, in the Armance hills
+  culture: valdrennish
+  heads: [ { npc: yann_penhoet, until: 51 }, { npc: herve_penhoet, until: 72 } ]
+  start: { standing: 45, temper: 0, claim: 1 }      # temper 0: watchful (the old rival.penhoet.temper started here)
+  openings:
+    diminished: { standing: 52, temper: 1 }     # it holds the manor the house lost (L2-7), and can afford to be gracious
+kerguen:
+  name: Kerguen
+  seat: Kerguen, a mill and two villages in the Armance
+  culture: valdrennish
+  heads: [ { npc: tanguy_kerguen } ]
+  start: { standing: 22, temper: 1, claim: 0 }
+  rising: { per_year: 1, to: 45 }               # a young house rising (canon.md)

@@ -25,7 +25,7 @@
   choices:
     - id: accept
       text: Take his homage, saving and all, and say nothing.
-      effects: [ { set: flag.h_bc_saving_taken }, { add: { counter.penhoet: 1, rel.mahaut_armance.affection: -1 } } ]
+      effects: [ { set: flag.h_bc_saving_taken }, { add: { rival.penhoet.temper: 1, rel.mahaut_armance.affection: -1 } } ]
       text_after: |
         You let him rise. He bows, and goes back to his place, and the clerk at the side of the dais writes the saving into the roll, because a clerk writes everything. That evening your mother does not come to see you before Compline, which she has done every night since you were crowned.
       next: h_bc02_claim
@@ -40,7 +40,7 @@
       failure:
         text: |
           "Swear plain, my lord," you say, and Hervé says, quite gently, "I have sworn, Your Grace. The saving is the truth, and I'll not lie to my {house.ruler_lc} at {his} first homage." The hall murmurs. He goes back to his place with the saving still in the roll, and everyone knows you asked him to take it out.
-        effects: [ { set: flag.h_bc_saving_taken }, { add: { counter.penhoet: 1 } } ]
+        effects: [ { set: flag.h_bc_saving_taken }, { add: { rival.penhoet.temper: 1 } } ]
         next: h_bc02_claim
     - id: mother
       text: Turn to your mother. It is her duchy.
@@ -67,13 +67,13 @@
   choices:
     - id: hear
       text: Hear the offer. Ask to meet {house.match_penhoet}.
-      effects: [ { set: flag.h_bc_ronan_offer }, { add: { counter.penhoet: 1 } } ]
+      effects: [ { set: flag.h_bc_ronan_offer }, { add: { rival.penhoet.temper: 1 } } ]
       text_after: |
         [if hero.sex == female]Ronan de Penhoët comes to court at Martinmas: tall, quiet, his grandfather's shoulders and his father's patience, and none of either's habit of saying the clever thing. He bows to you, and to your mother, and talks to you for an hour about horses as if you were a person, which almost nobody at court does.[else]Sibylle de Penhoët comes to court at Martinmas with her father: eight, solemn, her grandfather's chin and her father's patience. She curtsies to you, and to your mother, and then beats you at merels twice, and does not let you win the third game, which almost nobody at court would dare.[/if] You do not tell your mother that part.
       next: h_bc03_betrothal
     - id: reject
       text: Answer that the Armance is your mother's, and then yours, and there is nothing to discuss.
-      effects: [ { set: flag.h_bc_claim_rejected }, { add: { counter.penhoet: -2, rel.mahaut_armance.affection: 1 } } ]
+      effects: [ { set: flag.h_bc_claim_rejected }, { add: { rival.penhoet.temper: -2, rel.mahaut_armance.affection: 1 } } ]
       text_after: |
         The answer goes to Penhoët under the small seal, in your hand, which shakes only a little. Hervé writes back within the week, courteously, to say that he understands, and that the Estates will no doubt wish to consider the custom of the Armance when they come to consider the law. He has named a date, and called it courtesy.
       next: h_bc03_betrothal
@@ -98,20 +98,20 @@
   choices:
     - id: ronan
       text: Betroth yourself to {house.match_penhoet}.
-      effects: [ { set: flag.h_bc_betrothed_penhoet }, { add: { counter.penhoet: 3, rel.mahaut_armance.affection: -2 } }, { if: flag.h_c_betrothed_valdrenne, then: [ { add: { counter.favour: -2, res.coin: -9600 } } ] } ]
+      effects: [ { set: flag.h_bc_betrothed_penhoet }, { add: { rival.penhoet.temper: 3, rival.penhoet.standing: 10, rel.mahaut_armance.affection: -2 } }, { if: flag.h_c_betrothed_valdrenne, then: [ { add: { counter.favour: -2, res.coin: -9600 } } ] } ]
       text_after: |
         [if flag.h_c_betrothed_valdrenne]Breaking the Valdrennish betrothal costs forty pounds and a cold letter from Cordelle.[/if] Hervé comes to sign, and kisses your hand, and then, unexpectedly, your forehead. "The claim's in one bed now," he says. "We'll see whose." Your mother signs as Duchess of Armance. She does not look up from the parchment.
       next: h_bc04_court
     - id: lothaire
       visible_if: flag.h_c_betrothed_valdrenne
       text: Keep the Valdrennish betrothal, and the peace with it.
-      effects: [ { set: flag.h_bc_betrothed_valdrenne }, { add: { counter.favour: 1, counter.penhoet: -1 } } ]
+      effects: [ { set: flag.h_bc_betrothed_valdrenne }, { add: { counter.favour: 1, rival.penhoet.temper: -1 } } ]
       text_after: |
         You write to {house.match_valdrenne} yourself, for the first time, in your own hand, and say that you will keep your father's promise. [if hero.sex == female]His answer comes in his own hand too, badly spelled, and says he is glad, and that he has a horse for you.[else]Her answer comes in her own hand too, in large careful letters, and says she is glad, and asks whether it is true that it rains in the West all the year round.[/if]
       next: h_bc04_court
     - id: tanguy
       text: Betroth yourself to {house.match_kerguen}.
-      effects: [ { set: flag.h_bc_betrothed_kerguen }, { add: { counter.penhoet: -2, rel.tanguy_kerguen.affection: 2 } }, { if: flag.h_c_betrothed_valdrenne, then: [ { add: { counter.favour: -2, res.coin: -9600 } } ] } ]
+      effects: [ { set: flag.h_bc_betrothed_kerguen }, { add: { rival.penhoet.temper: -2, rel.tanguy_kerguen.affection: 2, rival.kerguen.temper: 3, rival.kerguen.standing: 10 } }, { if: flag.h_c_betrothed_valdrenne, then: [ { add: { counter.favour: -2, res.coin: -9600 } } ] } ]
       text_after: |
         [if flag.h_c_betrothed_valdrenne]Breaking the Valdrennish betrothal costs forty pounds and a cold letter from Cordelle.[/if] [if hero.sex == female]Tanguy rides to Lannec in the snow to kneel to you, and does it with great style, and stays to dinner, and makes your father laugh twice.[else]Tanguy brings Maëlle to Lannec in the snow to be presented, and kneels to you himself, with great style, and stays to dinner, and makes your father laugh twice. Maëlle says nothing the whole evening, and at the end of it curtsies to you as if she meant it.[/if] Kerguen and the crown, against Penhoët and the custom of the Armance. Hervé hears of it at dinner and finishes his dinner.
       next: h_bc04_court
@@ -158,7 +158,7 @@
     - id: seat
       visible_if: "!flag.h_bc_betrothed_penhoet"
       text: Before he speaks, send to Hervé and seat him at the high table.
-      effects: [ { add: { counter.penhoet: 1, counter.household: -1 } }, { set: flag.h_b_herve_high } ]
+      effects: [ { add: { rival.penhoet.temper: 1, counter.household: -1 } }, { set: flag.h_b_herve_high } ]
       text_after: |
         Hervé is brought up to the dais in the middle of the feast, past the whole hall, and seated beside your mother, who is gracious to him for an hour in a way that frightens the pages. Your father's toast, when it comes, is to "neighbours", and he looks at Hervé while he makes it.
       next: h_bc05_querec
@@ -215,7 +215,7 @@
     - id: church
       visible_if: "sibling.sex == male"
       text: Give him to the Church. A bishop's mitre is a crown too.
-      effects: [ { set: flag.h_bc_sibling_church }, { upbringing: { who: sibling, set: church } }, { add: { counter.second: -2, counter.penhoet: -1 } } ]
+      effects: [ { set: flag.h_bc_sibling_church }, { upbringing: { who: sibling, set: church } }, { add: { counter.second: -2, rival.penhoet.temper: -1 } } ]
       text_after: |
         He goes to the abbey at Saint-Lys at Martinmas with a chest of books and a face like stone. The Brésy cousins stop drinking to him. Your mother says nothing at all, which tells you she thinks it was right, and that she will not forgive you for it.
       next: h_bc07_mother

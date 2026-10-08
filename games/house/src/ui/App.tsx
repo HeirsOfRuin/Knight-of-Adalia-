@@ -8,6 +8,13 @@ import { newGame, view, choose, checkStart, describeDate, type HouseState } from
 import { fromDynasty } from '../game/import';
 import { toSave, fromSave } from '../game/save';
 import { Notes } from './Notes';
+import { StatusPanel, HousePanel, PeoplePanel, WorldPanel, Journal } from './Panels';
+import { heroOf, ageOfCharacter } from '@engine/character';
+import { capitalise } from '@engine/format';
+import { forceOf } from '@engine/paths';
+
+type Panel = 'none' | 'status' | 'house' | 'people' | 'world' | 'journal';
+const TABS: [Panel, string][] = [['status', 'Status'], ['house', 'House'], ['people', 'People'], ['world', 'World'], ['journal', 'Journal']];
 
 type Sex = 'male' | 'female';
 
@@ -119,7 +126,19 @@ function Play({ content, state, onChoose, onRestart }: { content: ContentBundle;
   const onCard = !!v.card && cardSeen !== v.sceneId;
   const last = page >= pages.length - 1;
   const ending = v.ended ? content.registry.endings[v.ended.ending] : undefined;
+  const [panel, setPanel] = useState<Panel>('none');
+  const hero = heroOf(state);
   return (
+    <div class="game">
+    <header class="topbar">
+      <div class="topbar-info">
+        <span class="who">{hero.name}</span>
+        <span class="when">{capitalise(hero.station.replace('_', ' '))} &middot; age {ageOfCharacter(state, hero)}{forceOf(state).total > 0 ? <> &middot; {forceOf(state).total} men</> : null}</span>
+      </div>
+      <nav class="topbar-nav">
+        {TABS.map(([k, label]) => <button key={k} class={`tab ${panel === k ? 'on' : ''}`} aria-expanded={panel === k} onClick={() => setPanel(panel === k ? 'none' : k)}>{label}</button>)}
+      </nav>
+    </header>
     <div class="layout">
     <main class="story">
       {v.outcome && (v.outcome.text || v.outcome.changes.length > 0) && (
@@ -182,6 +201,17 @@ function Play({ content, state, onChoose, onRestart }: { content: ContentBundle;
       <Notes content={content} state={state} sceneId={v.sceneId} title={v.title ?? v.sceneId} date={v.date} />
       <button class="btn subtle wide" onClick={onRestart}>Start a new house</button>
     </main>
+    {panel !== 'none' && (
+      <aside class="panel" aria-label={panel}>
+        <button class="panel-close link" onClick={() => setPanel('none')}>Close</button>
+        {panel === 'status' && <StatusPanel content={content} state={state} />}
+        {panel === 'house' && <HousePanel content={content} state={state} />}
+        {panel === 'people' && <PeoplePanel content={content} state={state} />}
+        {panel === 'world' && <WorldPanel content={content} state={state} />}
+        {panel === 'journal' && <Journal content={content} state={state} />}
+      </aside>
+    )}
+    </div>
     </div>
   );
 }

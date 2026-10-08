@@ -6,4 +6,4 @@ fallen_house: { chapter: book3, label: A Fallen House, description: "Survives, b
 foreign_house: { chapter: book3, label: A Foreign House, description: "The line continues abroad and has stopped coming home." }
 name_struck: { chapter: book3, label: The Name Struck, description: "Attainted, landless, the line alive." }
 extinct: { chapter: book1, label: Extinct, description: "No heir to succeed." }
-story_so_far: { chapter: prologue, label: The Story So Far, description: "Where the written story ends for now: the prologue, for the Founder opening; the framework scene, for the others." }
+story_so_far: { chapter: prologue, label: The Story So Far, description: "Where the written story ends for now: Book One, Act I for the Founder opening and the crowned path; the framework scene for the other openings." }

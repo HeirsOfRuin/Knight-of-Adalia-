@@ -1,8 +1,57 @@
 # Great figures carried over from Knight of Adalia (canon.md). Provisional.
-mahaut_armance: { name: Mahaut of Armance, title: Duchess, faction: west, notes: "Jehanne's granddaughter. Queen of the West, Duchess, or a claimant, by frame." }
-thibaut_brese: { name: Thibaut de Brésy, title: Messire, faction: west, notes: "The Constable's son. King of the West in one free frame." }
-king_edwin: { name: Edwin, title: King, faction: adalia, notes: "King of Adalia from year 39." }
-king_amaury: { name: Amaury, title: King, faction: valdrenne, notes: "Amaury VII of Valdrenne, nineteen at the War of the West." }
-yann_penhoet: { name: Yann de Penhoët, title: Sire, faction: west, notes: "Old Penhoët: head of the house, about seventy and dying in year 50. Says Kerval was his grandfather's. Dies at Lady Day, year 51." }
-herve_penhoet: { name: Hervé de Penhoët, title: Sire, faction: west, notes: "Yann's son and heir, about forty-five. Careful, patient, never forgets a field. The rival of the Prologue and Book I." }
-tanguy_kerguen: { name: Tanguy de Kerguen, title: Sire, faction: west, notes: "The Kerguen heir: son of Sire Alain (killed at Mortefontaine) and Dame Blanche; 21 in year 50. A young house rising, and the counterweight to Penhoët. Azenor's brother; Jehanne's cousin through his uncle Riwal." }
+# codex: the People page. In House of Adalia an entry with no "if" is known from the start (these are the realm's great
+# folk, not people met on the road); "if" holds an entry back until it is true. Years are years of grace (old N = 862 + N).
+mahaut_armance:
+  name: Mahaut of Armance
+  title: Duchess
+  faction: west
+  notes: "Jehanne's granddaughter. Queen of the West, Duchess, or a claimant, by frame."
+  codex:
+    - text: "Duchess of Armance in her own right since 899, when her grandmother Duchess Jehanne died; the old King of Adalia's ward before that. Her father died in Cordelle's prison. Born in 881."
+    - { if: "realm.sovereign == mahaut", text: "Queen of the West since the Estates chose her at Lannec in 904." }
+    - { if: inherited.c5_married_mahaut, text: "She chose the King for her husband before the Estates in 904, and has never let a clerk forget that the Armance is hers." }
+    - { if: family.regency, text: "She governs for a child, and keeps a list of every lord in the West and what he wants." }
+thibaut_brese:
+  name: Thibaut de Brésy
+  title: Messire
+  faction: west
+  notes: "The Constable's son. King of the West in one free frame."
+  codex:
+    - text: "Son of Gaucelin de Brésy, the Constable of Valdrenne, who died in the Châtelet in 902 after his own king arrested him. Thibaut fled west, and the West took him in."
+    - { if: "realm.sovereign == thibaut", text: "King of the West since the Estates chose him in 904." }
+king_edwin:
+  name: Edwin
+  title: King
+  faction: adalia
+  notes: "King of Adalia from year 39."
+  codex:
+    - text: "King of Adalia since Lady Day 901, crowned at twenty-seven after his father Aldred II died. He kept his crown at Wythen Heath in 902, one way or another. His son, Prince Aymer, is his heir."
+king_amaury:
+  name: Amaury
+  title: King
+  faction: valdrenne
+  notes: "Amaury VII of Valdrenne, nineteen at the War of the West."
+  codex:
+    - text: "Amaury VII of Valdrenne. A boy king governed by the Constable, until at eighteen he had the Constable arrested. He led his army over the hills in 905 himself, and came back without the West."
+yann_penhoet:
+  name: Yann de Penhoët
+  title: Sire
+  faction: west
+  notes: "Old Penhoët: head of the house, about seventy and dying in year 50. Says Kerval was his grandfather's. Dies at Lady Day, year 51."
+  codex:
+    - text: "Old Penhoët: head of his house, about seventy, and dying by inches. He says {house.claimed} was his grandfather's, and will die saying it."
+herve_penhoet:
+  name: Hervé de Penhoët
+  title: Sire
+  faction: west
+  notes: "Yann's son and heir, about forty-five. Careful, patient, never forgets a field. The rival of the Prologue and Book I."
+  codex:
+    - text: "Yann's son and heir, about forty-five in 912. Careful, patient, and never forgets a field. Dresses in good dark wool, travels with a clerk, and carries no sword."
+    - { if: flag.h_bc_saving_taken, text: "He did homage saving the right of his house in the Armance, and the saving is in the roll." }
+tanguy_kerguen:
+  name: Tanguy de Kerguen
+  title: Sire
+  faction: west
+  notes: "The Kerguen heir: son of Sire Alain (killed at Mortefontaine) and Dame Blanche; 21 in year 50. A young house rising, and the counterweight to Penhoët. Azenor's brother; Jehanne's cousin through his uncle Riwal."
+  codex:
+    - text: "The Kerguen heir, twenty-one in 912: son of Sire Alain, killed at Mortefontaine, and Dame Blanche. Kerguen is a young house rising, and the natural counterweight to Penhoët in the Armance. He has great style and knows it."

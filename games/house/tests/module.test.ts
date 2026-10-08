@@ -64,3 +64,21 @@ describe('House of Adalia: the West in each frame', () => {
     expect(fromSave(JSON.parse(JSON.stringify(toSave(s, c))), c).state).toEqual(s);
   });
 });
+
+describe('the World and People pages', () => {
+  const c = content();
+  it('render every entry the house knows, in every start, with nothing left unrendered', () => {
+    for (const st of startsOf(c)) {
+      const s = house(st);
+      const lore = Object.values(c.registry.lore).filter((l) => l.if === undefined || cond(l.if, s, c));
+      expect(lore.length, `${st.opening}/${st.frame}/${st.sovereign}`).toBeGreaterThan(10);
+      const codex = Object.values(c.registry.npcs).flatMap((n) => n.codex).filter((x) => x.if === undefined || cond(x.if, s, c));
+      for (const t of [...lore.map((l) => l.text), ...codex.map((x) => x.text)]) {
+        const r = renderText(t, s, c);
+        expect(r, `${st.opening}/${st.frame}/${st.sovereign}`).not.toMatch(/[{}]|undefined|\[if /);
+        // the frame's own phrases stay in their frame (registry/frames.yaml)
+        for (const [f, def] of Object.entries(c.registry.frames)) if (f !== s.realm.west) for (const b of def.bound) expect(r).not.toContain(b);
+      }
+    }
+  });
+});

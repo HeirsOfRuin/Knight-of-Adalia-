@@ -1,1 +1,131 @@
-{}
+# World page entries for House of Adalia (canon.md of both games). "if" decides when the house knows it; omitted =
+# known from the start. Years in player-facing text are years of grace (canon.md, "The calendar"): old year N = 862 + N.
+
+# ---- the realms -----------------------------------------------------------------------------------------------------
+the_west:
+  title: The West
+  category: powers
+  text: |
+    The land beyond the hills over the Armance: the Armance itself, Lannec and its valleys, and the salt coast down to Sauvemer and the southern marsh. For three hundred years it belonged to Valdrenne's kings, and for a generation before the war Adalia's armies fought over it.
+
+    [if realm.west == free]In 904 the Estates of the West met at Lannec and declared it free, and in the war that followed, 905 and 906, the West kept what it had declared at the Pont-aux-Moines. It is a realm now, between two crowns that both want it back.[elif realm.west == adalian]In 904 the Estates at Lannec voted to stay with Adalia, and in the war that followed the West held for King Edwin. It is a province of Adalia, governed from Wendmere through the King's governor at Lannec.[else]In the war of 905 and 906 the West was lost and cut in two. Valdrenne holds the Armance and its hills; Adalia holds the Salt, Sauvemer and the coast. The new border runs between them, and families with land on both sides of it answer to two kings.[/if]
+adalia:
+  title: Adalia
+  category: powers
+  text: |
+    The southern two-thirds of the island across the Narrow Sea: rich in wool, short of money, governed by its King and Council with the consent of the Moot. King Edwin has reigned since 901. His son, Prince Aymer, is his heir.
+valdrenne:
+  title: Valdrenne
+  category: powers
+  text: |
+    The largest and richest realm in the known world: grain, wine, salt, and more castles than anyone can count. Its great dukes keep their own courts and coin. King Amaury VII came to the throne a boy, governed by the Constable, Gaucelin de Brésy, until he had the Constable arrested. He led the army over the hills in 905 himself, at nineteen.
+sarenza:
+  title: Sarenza
+  category: powers
+  text: |
+    A league of merchant ports on the southern sea. It lends to every crown and is owed by most. The Lanzi and the Varesco are its great banking houses, and a king who defaults to them finds no one else will lend.
+
+# ---- great houses ---------------------------------------------------------------------------------------------------
+penhoet:
+  title: The house of Penhoët
+  category: people
+  text: |
+    An old house of the Armance, of the party of the duchy's other claimant in the long quarrel over its succession. Old Yann de Penhoët says {house.claimed} was his grandfather's and will die saying it. His son Hervé is the patient one: he never forgets a field, and never says the clever thing when the true thing will serve.
+kerguen:
+  title: The house of Kerguen
+  category: people
+  text: |
+    A young house of the Armance, rising. Sire Alain de Kerguen died at Mortefontaine; his son Tanguy, twenty-one, is the heir, and the natural counterweight to Penhoët in the duchy.
+querec:
+  title: Quérec and the southern marsh
+  category: people
+  if: "opening == crowned"
+  text: |
+    The salt lords of the marsh south of Sauvemer, who pay their tithe late and their grudges early. [if inherited.c5r_querec_exiled]The old lord of Quérec went over the march into exile in the King's first years; his son Bertrand holds the family's name and wants its land.[elif inherited.c5r_querec_executed]The old lord of Quérec went to the block in the King's first years; his son Bertrand holds the family's name and wants its land.[else]The lord of Quérec swore to the King at the crowning, with his men at his back, and has been counting since.[/if]
+
+# ---- places ---------------------------------------------------------------------------------------------------------
+lannec:
+  title: Lannec
+  category: places
+  text: |
+    The chief town of the West, in the valley below the Armance hills: a cathedral, a palace built for dukes, a market, and the great hall where the Estates meet. [if realm.west == free]It is the seat of the crown of the West.[elif realm.west == adalian]It is the seat of the King's governor at Lannec.[else]It lies on the Valdrennish side of the new border now, under a Valdrennish governor.[/if]
+the_armance:
+  title: The Armance
+  category: places
+  text: |
+    The western peninsula, a duchy of hills, orchards and hard-headed lords. Its succession has been quarrelled over for two generations. Duchess Jehanne held it against a king; her granddaughter Mahaut has held it since 899. Penhoët says that by the custom of the Armance it went by the male line for three hundred years, until the wars gave it to women, and there are men in the duchy who agree.
+sauvemer:
+  title: Sauvemer
+  category: places
+  text: |
+    A walled port on a spit between the sea and the salt marshes, two days up the coast from the Armance. Adalia took it in 885, after a year's siege and the battle on the salt pans at Les Salines. Its salt guilds refused both kings' salt taxes in 903, which is where the West's freedom began, if you ask them.
+pont_aux_moines:
+  title: The Pont-aux-Moines
+  category: places
+  text: |
+    The border bridge over the river below the hills, where the War of the West was decided in 906. The monks' chapel at its western end was burned and has been rebuilt twice since. Old soldiers still walk out to it on the anniversary, and do not say much.
+
+# ---- customs and law ------------------------------------------------------------------------------------------------
+the_estates:
+  title: The Estates of the West
+  category: customs
+  if: "realm.west == free"
+  text: |
+    The assembly of the West: the lords on their benches, the bishops in their stalls, and the burgesses of the salt towns at the back. They met at Lannec at Whitsun in 904 and decided what the West would be. Since then they meet when they are called, and argue about who may call them. [if inherited.c5r_estates_choose]The King promised them, in the first year of his reign, that they would choose the West's next king.[/if]
+succession:
+  title: The law of succession
+  category: customs
+  text: |
+    A house passes by its own law. [if family.law == eldest]The crown and the house go to the eldest child of the last holder, son or daughter: the custom the crown of the West was given at its making.[elif family.law == male_line]Only men inherit, and only through men.[elif family.law == partible]The eldest son is head, and the younger sons' shares come out of the lands.[else]Sons inherit before daughters, and a daughter and her children before a cousin: the custom of both kingdoms for land.[/if] [if realm.west == free]The West has no written law of succession for its own crown. That is a question everyone is waiting for someone else to ask.[elif realm.west == adalian]The West keeps the law of Adalia now, which the Moot makes and the King's judges read.[else]The two halves of the West keep two laws, one on each side of the border.[/if]
+regency:
+  title: Wardship and regency
+  category: customs
+  if: family.regency
+  text: |
+    A minor cannot hold land in his own hand. Someone governs for him until he comes of age at sixteen: by custom his mother or his nearest kin, unless his lord takes the wardship and sells it. A regent may spend a ward's revenues, arrange a ward's marriage, and do a great deal of harm in a few years.
+homage:
+  title: Homage
+  category: customs
+  text: |
+    A man who holds land of a lord kneels to him and puts his hands between the lord's hands, and swears to be his man for the land. He may add a saving: "saving my faith to the King", or "saving the right of my house". A saving is a reservation in front of witnesses. Clerks write it in the roll, and lawyers read it out again years later.
+the_calendar:
+  title: The years of grace
+  category: faith
+  text: |
+    The Church counts the years of grace, the same in every realm, and every chancery dates its letters by that count and by the year of its own sovereign: "the year of grace 912, the twelfth year of King Edwin". A realm's years start again with every reign. The Church's count runs on. Adalians still date by their own kings out of habit, and Valdrenne's clerks by theirs.
+
+# ---- money ----------------------------------------------------------------------------------------------------------
+money:
+  title: Money
+  category: money
+  text: |
+    Twelve pence make a shilling, twenty shillings a pound, and a mark is thirteen shillings and fourpence. A labourer earns two pence a day, an archer six in war, a man-at-arms twelve, a knight two shillings. A great house lives on its rents, its dues and its credit, and every one of them is late.
+salt:
+  title: Salt
+  category: money
+  text: |
+    The salt of the coast below Sauvemer is the best in the west of the world and the West's chief wealth. Valdrenne taxes salt with the salt tithe, which its south resents. Whoever holds the pans, the sluices and the toll bridges on the causeways holds the purse of the West.
+
+# ---- war ------------------------------------------------------------------------------------------------------------
+war_of_the_west:
+  title: The War of the West
+  category: war
+  text: |
+    905 and 906. King Amaury VII of Valdrenne came over the hills to take the West back[if realm.west == free], and Adalia came up the Sauvemer road for the same reason[/if]. It was decided at the Pont-aux-Moines. [if realm.west == free]The West held both of them off.[elif realm.west == adalian]The West held for Adalia, and Valdrenne went home.[else]The West lost, and the two kings shared it out.[/if] Everyone over twenty in the West lost someone in it.
+mortefontaine:
+  title: Mortefontaine
+  category: war
+  text: |
+    May 896. The Constable of Valdrenne's men-at-arms came on foot against King Aldred's ridge in the Armance, and his horse was broken in the dry stream. Sire Alain de Kerguen died there. Sire Guiomar held a gate with eleven men and is said never to have smiled since.
+
+# ---- the Church -----------------------------------------------------------------------------------------------------
+church:
+  title: The Church
+  category: faith
+  text: |
+    One Church across all the realms, under the Pontiff, who has lived at Saint-Lys in Valdrenne for two generations, which is why Adalians mutter that the Church leans Valdrennish. Bishop Évrard of Saint-Lys, a peer of Valdrenne and nearly a hundred, crowned whoever the Estates chose in 904.
+the_mottle:
+  title: The Mottle
+  category: faith
+  text: |
+    The great mortality of 888: a cough, a fever, skin gone grey and dark like a spreading bruise, blood. About a third of the people died. Every family in the West has its Mottle graves, and every priest has a theory about why it came.

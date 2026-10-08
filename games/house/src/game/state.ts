@@ -63,6 +63,8 @@ export interface Family {
   /** season index a member of the house was last offered a match, by id */
   offered: Record<string, number>;
   extinct?: boolean;
+  /** how the last head who stepped down went: the handover's manner (cloister, or one at home) */
+  manner?: string;
 }
 
 export interface HouseState extends CoreState {

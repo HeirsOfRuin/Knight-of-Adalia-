@@ -38,7 +38,7 @@
   kind: queued
   title: The Succession
   text: |
-    [if head.retired]{head.name} has given up the headship and gone into the Church.[else]{head.name} is dead of {family.cause}, at {head.ageword}.[/if]
+    [if head.retired && family.cloister]{head.name} has given up the headship and gone into the Church.[elif head.retired]{head.name} has given the house into other hands while {head.he} still lives.[else]{head.name} is dead of {family.cause}, at {head.ageword}.[/if]
 
     [if family.no_heir]There is no one left of the blood to take the house up.[elif family.minor]The heir under the law of the house is {heir.name}, who is {heir.ageword}. Until {heir.he} comes of age, someone will have to govern for {heir.him}.[else]The heir under the law of the house is {heir.name}.[/if][if family.contested] But {head.name}'s will names {will.name}, and there are men who will hold to the will.[/if]
   choices:

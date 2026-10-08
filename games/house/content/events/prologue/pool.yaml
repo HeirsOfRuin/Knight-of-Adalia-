@@ -1,0 +1,116 @@
+# The prologue's pool (STORY.md, Layer 2: the old company's last man, a creditor's letter, a border
+# raid under c5r_no_peace). One is drawn in the summer of year 51, between Yann's funeral and the summons.
+
+- id: h_pp_old_man
+  chapter: prologue
+  kind: pool
+  pool: h_prologue
+  title: The Old Company
+  frames: [free, adalian]
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    Hamon the farrier dies at haymaking, on his bench outside the forge, in the sun. He shod your horse the year you had one horse, and every horse after, and he would never take money from you for the first one.
+
+    His widow comes up to the hall in her good apron, with her sons behind her. "He'd want you told first," she says. "Before the priest. He said you'd want to know who was left."
+
+    You know who is left. You could count them on one hand now, and you do, under the table, while she talks.
+  choices:
+    - id: bury
+      text: Pay for the burial, and carry the coffin yourself. (£2)
+      requires: "res.coin >= 480"
+      effects: [ { add: { res.coin: -480, counter.household: 1 } } ]
+      text_after: |
+        You take a corner of the coffin with {house.companion} and two of the old company, and your back tells you about it for a week. The whole village comes. At the grave somebody starts the story about Hamon and the Brésy horse, and somebody else corrects it, and by the end there is laughing in the churchyard, which the priest pretends not to hear.
+      next: "@return"
+    - id: forge
+      text: Give the forge to his eldest, rent-free for his life.
+      effects: [ { add: { counter.household: 1 } } ]
+      text_after: |
+        The boy is twenty and has his father's hands and none of his patience. "Rent-free," you say, "and you shoe my horses for nothing, the way he did." He grins, and says his father always said you'd find a way to get your money's worth.
+      next: "@return"
+    - id: send
+      text: Send the widow money by the steward, and let the priest do the rest.
+      effects: []
+      text_after: |
+        The steward takes the widow ten shillings and your sorrow. She thanks him. The old company notices you were not at the grave, and does not say so, and you notice them not saying so.
+      next: "@return"
+
+- id: h_pp_creditor
+  chapter: prologue
+  kind: pool
+  pool: h_prologue
+  title: A Letter from Lannec
+  frames: [free, adalian]
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    A letter comes by the Lannec carrier, on good Sarenzan paper, in a clerk's hand you do not know. It is polite to a fault. It reminds you of a sum borrowed [if inherited.c4_war_debt]to raise your company before Mortefontaine[else]in the year of the war, when everyone borrowed[/if], with the interest since, which the clerk has helpfully added up at the foot of the page.
+
+    The steward reads it twice, and then a third time, as if the number might change. "Fifteen pounds," he says. "They've been very patient. That's what worries me."
+  choices:
+    - id: pay
+      text: Pay it, every penny, and have the bond back. (£15)
+      requires: "res.coin >= 3600"
+      effects: [ { add: { res.coin: -3600 } }, { set: flag.h_p_paid_debt } ]
+      text_after: |
+        You pay. The bond comes back in a month with the seal cut through, and you burn it in the hall fire, and feel lighter than you have any right to for fifteen pounds.
+      next: "@return"
+    - id: dispute
+      text: Dispute the interest. The Church has views on usury.
+      check: { attr: wits, skill: trade, difficulty: 6 }
+      success:
+        text: |
+          You write back with the chaplain's help and three texts from the Fathers. The Sarenzans write back with a lawyer's. In the end they take eleven pounds and call it a gift, which is what Sarenzans call it when they have lost.
+        effects: [ { add: { res.coin: -2640 } }, { set: flag.h_p_paid_debt } ]
+        next: "@return"
+      failure:
+        text: |
+          The Sarenzans' lawyer is better than your chaplain. You pay the fifteen pounds and a pound more for the lawyer's trouble, which the letter assures you is customary.
+        effects: [ { add: { res.coin: -3840 } }, { set: flag.h_p_paid_debt } ]
+        next: "@return"
+    - id: delay
+      text: Write back promising payment at Michaelmas next.
+      effects: [ { set: flag.h_p_owed } ]
+      text_after: |
+        They agree, politely. The debt will still be there. The interest is already being added up, in that clerk's careful hand, on good Sarenzan paper.
+      next: "@return"
+
+- id: h_pp_raid
+  chapter: prologue
+  kind: pool
+  pool: h_prologue
+  title: Smoke on the March
+  frames: [free, adalian]
+  requires: "inherited.c5r_no_peace"
+  weight: 20
+  on_enter: [ { advance: { seasons: 1 } } ]
+  text: |
+    Smoke in the east at dawn, three columns of it, over the hills where the march runs. By Terce the first carts come in with families on top of their furniture. Valdrennish horse, they say, forty, maybe sixty, and gone again before anyone could get a lance on them. Two farms burned at the head of the valley. A shepherd dead. A girl taken, and let go at the ford, because she bit.
+
+    It has been like this since the war, on and off. [if spouse.alive]{spouse.first} looks at you across the hall and says, "You can't ride," and you say, "I know," and you both know you are going to.[else]You cannot ride. You know you are going to anyway.[/if]
+  choices:
+    - id: ride
+      text: Ride out after them, with every man who can sit a horse.
+      check: { attr: endurance, skill: command, difficulty: 6, mods: [ { if: res.men >= 20, add: 1, label: your men are many } ] }
+      success:
+        text: |
+          You catch the rearguard at the ford in the afternoon, with the sun behind you, and they break when they see your banner. Three of them stay in the river. You come home at dark so stiff you have to be lifted from the saddle, and the whole valley turns out with torches to watch it done.
+        effects: [ { add: { counter.household: 1, attr.endurance: -1 } } ]
+        next: "@return"
+      failure:
+        text: |
+          They are gone over the hills by the time you reach the ford, and you sit your horse in the water and look at the hoofprints until {house.companion} takes your bridle and turns you home. You are in bed a week after. The village is grateful you came, and knows you came too late.
+        effects: [ { add: { attr.endurance: -1 } } ]
+        next: "@return"
+    - id: send
+      text: Send the men under {heir.first}, and stay at the gate.
+      effects: [ { add: { heir.bond: 1, counter.shadow: -1 } } ]
+      text_after: |
+        {heir.first} goes with your men and your banner and comes back at dark with nothing to show but a lame horse, and a story about the ford that gets better at every telling. It is the first time the valley has seen {heir.him} ride out instead of you. They are still deciding what they think.
+      next: "@return"
+    - id: rebuild
+      text: Let them go, and pay to rebuild the farms. (£8)
+      requires: "res.coin >= 1920"
+      effects: [ { add: { res.coin: -1920 } } ]
+      text_after: |
+        You pay for timber and thatch and seed corn, and the farms are up by harvest. The families thank you. Over the hills, presumably, the Valdrennish horse are already planning the next one.
+      next: "@return"

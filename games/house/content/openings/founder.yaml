@@ -4,7 +4,7 @@ summary: "A great lord with lands that will outlast you, and rivals for the same
 from_ending: founder
 frames: ["free", "adalian"]
 sovereigns: {"free": ["mahaut", "thibaut", "duchy"], "adalian": ["edwin"]}
-start_scene: h_open
+start_scene: h_p01_hall
 founder:
   age: 49
   station: great_lord

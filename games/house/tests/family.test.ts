@@ -115,11 +115,20 @@ describe('the succession', () => {
 
   it('lets a head step down alive', () => {
     let s = family([['male', 22]]);
-    applyEffects(s, c, [{ step_down: 'the cloister' } as never], ctx());
+    applyEffects(s, c, [{ step_down: 'cloister' } as never], ctx());
     s = play(play(s, 'wait'), 'the_law');
     expect(s.hero).toBe('k0');
     expect(s.characters[FOUNDER_ID]!.alive).toBe(true);
     expect(s.chronicle[0]!.lines).toContain('He gave up the headship alive and went into the Church.');
+  });
+
+  it('lets a head hand the house over at home, and says so', () => {
+    let s = family([['male', 22]]);
+    applyEffects(s, c, [{ step_down: 'handover_hall' } as never], ctx());
+    s = play(play(s, 'wait'), 'the_law');
+    expect(s.hero).toBe('k0');
+    expect(s.chronicle[0]!.lines).toContain("He gave the house into his heir's hands while he still lived.");
+    expect(s.chronicle[0]!.lines.join(' ')).not.toMatch(/Church/);
   });
 
   it('keeps play going when a lethal choice kills the head', () => {

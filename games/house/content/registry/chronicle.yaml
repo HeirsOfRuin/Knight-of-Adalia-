@@ -1,6 +1,7 @@
 # Lines of a head's chronicle paragraph (PLAN.md §4.10), shown when the condition holds at the handover.
 # head is the old head; family.* reads the house as the old head leaves it. Provisional: the slice writes the deeds.
-- { if: "head.retired", text: "{head.He} gave up the headship alive and went into the Church." }
+- { if: "head.retired && family.cloister", text: "{head.He} gave up the headship alive and went into the Church." }
+- { if: "head.retired && !family.cloister", text: "{head.He} gave the house into {head.his} heir's hands while {head.he} still lived." }
 - { if: "family.children >= 4", text: "{head.He} left {family.children} children living, which in that age was a kind of wealth." }
 - { if: "family.children == 0", text: "{head.He} died with no child living." }
 - { if: "head.age >= 70", text: "{head.He} lived to a great age, and outlived most of {head.his} enemies." }

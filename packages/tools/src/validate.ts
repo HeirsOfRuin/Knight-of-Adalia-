@@ -7,6 +7,7 @@ import { validateText } from '@engine/text';
 import { checkPath, unhero } from '@engine/paths';
 import { opOf } from '@engine/effects';
 import { gameOf } from '@engine/game';
+import { isSelector } from '@engine/character';
 import { CORE_EFFECT_OPS, type Choice, type CondInput, type CoreBaseEffect, type CoreContent, type EffectLike, type Next, type Outcome, type Scene, type SimpleNext } from '@engine/schema';
 
 export type Severity = 'error' | 'warning';
@@ -116,7 +117,8 @@ export function validateContent(content: CoreContent, opts: ValidateOptions): Is
       } else if ('add' in e) {
         for (const p of Object.keys(e.add)) {
           const ns = unhero(p).split('.')[0]!;
-          const ok = CORE_ADDABLE.includes(ns) || (game.namespaces.includes(ns) && !!game.addNumber);
+          // a selector's own numbers (heir.bond, heir.skill.arms) are the engine's (effects.ts addNumber)
+          const ok = CORE_ADDABLE.includes(ns) || isSelector(content, ns) || (game.namespaces.includes(ns) && !!game.addNumber);
           if (!ok) err(where, `add: cannot add to "${p}"`);
           else if (ns !== 'health') { const pe = checkPath(content, p); if (pe) err(where, `add: ${pe}`); }
         }

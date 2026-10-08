@@ -30,7 +30,7 @@ export const HOUSE_EFFECTS = [
   // names the newest unnamed child (or who): after a grandparent, after a parent, or a name from the house's culture
   z.object({ name_child: z.object({ who: Who.optional(), style: z.enum(['grandparent', 'parent', 'culture']), }).strict() }).strict(),
   // a match for who, with a spouse generated from a culture's names; to: the spouse's house
-  z.object({ marry: z.object({ who: Who, culture: Id.default('adalian'), to: z.string().optional() }).strict() }).strict(),
+  z.object({ marry: z.object({ who: Who, culture: Id.default('adalian'), to: z.string().optional(), name: z.string().optional() }).strict() }).strict(), // name: a spouse the story names (Ronan de Penhoët)
   // who dies, narrated by the scene this is in; the head's death queues the succession
   z.object({ death: z.object({ who: Who, cause: z.string() }).strict() }).strict(),
   // the head names an heir by will (contested at the succession if the law says otherwise); none clears it

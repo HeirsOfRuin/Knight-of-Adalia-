@@ -40,7 +40,8 @@ describe('the frame rule (FRAME.md §7)', () => {
 
   it('stops a run that enters a scene written for another frame', () => {
     const c = structuredClone(content());
-    c.scenes.h_open = { ...c.scenes.h_open!, frames: ['free'] };
+    const first = house({ frame: 'free' }).scene;
+    c.scenes[first] = { ...c.scenes[first]!, frames: ['free'] };
     expect(frameRule(c, house({ frame: 'free' }))).toBeUndefined();
     expect(frameRule(c, house({ frame: 'adalian', sovereign: 'edwin' }))).toMatch(/written for free entered in a adalian West/);
   });

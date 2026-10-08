@@ -32,7 +32,8 @@
     "house:bot": "tsx games/house/tools/bot.ts",
     "house:continuity": "tsx games/house/tools/continuity.ts",
     "house:check": "npm run house:validate && npm run house:continuity -- --strict && npm run house:bot -- --runs 20 && npm run house:life -- --runs 6",
-    "house:life": "tsx games/house/tools/life.ts"
+    "house:life": "tsx games/house/tools/life.ts",
+    "house:transcript": "tsx games/house/tools/transcript.ts"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.10.6",

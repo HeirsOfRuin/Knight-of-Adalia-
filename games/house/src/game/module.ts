@@ -7,7 +7,7 @@ import type { CoreState } from '@engine/state';
 import { regnalYear } from '@engine/calendar';
 import { renderText } from '@engine/text';
 import { FRAMES, GAME_ID, HOUSE_LAWS, type ContentBundle, type Effect, type Frame } from '../content/schema';
-import { HOUSE_ID, type HouseState } from './state';
+import { FOUNDER_ID, HOUSE_ID, type HouseState } from './state';
 import { SELECTORS, select, heirOf, livingChildren, die, queueSuccession, succeed, bear, marry, nameChild, yearTick, SUCCESSION_SCENE } from './family';
 import { ageOfCharacter } from '@engine/character';
 
@@ -19,7 +19,9 @@ const REALM_IDS = ['west', 'sovereign', 'changes'];
 const REALM_TEXT = ['sovereign', 'capital', 'border', 'assembly', 'law', 'frame'];
 const SINGLE = ['opening', 'imported'];
 /** family.<field>: the house as a whole. */
-const FAMILY = ['law', 'generation', 'members', 'children', 'sons', 'daughters', 'extinct', 'no_heir', 'minor', 'regency', 'contested', 'news', 'childbed'];
+const FAMILY = ['law', 'generation', 'members', 'children', 'sons', 'daughters', 'extinct', 'no_heir', 'minor', 'regency', 'contested', 'news', 'childbed', 'cloister'];
+// {house.*}: the founder's house as Knight of Adalia left it, or as a fresh start has it
+const HOUSE_TEXT = ['manor', 'claimed', 'companion', 'companion_first', 'origin', 'parent', 'parent_start'];
 
 type Op<K extends string> = Extract<Effect, Record<K, unknown>>;
 
@@ -76,6 +78,8 @@ export const house: GameModule = {
           case 'contested': return !!f.will && f.will !== heir && !!state.characters[f.will]?.alive;
           case 'news': return f.current?.kind ?? 'none';
           case 'childbed': return !!f.current?.childbed;
+          // the last head who stepped down went into a religious house
+          case 'cloister': return f.manner === 'cloister';
         }
         return undefined;
       }
@@ -158,6 +162,7 @@ export const house: GameModule = {
       const who = state.characters[id ?? ''];
       if (!id || !who?.alive || who.spouse && state.characters[who.spouse]?.alive) return;
       const sp = marry(state, ct(c), id, e.marry.culture, e.marry.to, ctx.rng);
+      if (e.marry.name) state.characters[sp]!.name = e.marry.name;
       ctx.changes.push(`${who.name} marries ${state.characters[sp]!.name}`);
     },
     death(s, c, effect, ctx) {
@@ -188,6 +193,7 @@ export const house: GameModule = {
     step_down(s, _c, effect) {
       const state = st(s);
       state.characters[state.hero]!.retired = true;
+      state.family.manner = (effect as Op<'step_down'>).step_down;
       queueSuccession(state, (effect as Op<'step_down'>).step_down);
     },
     succeed(s, c, effect, ctx) {
@@ -219,6 +225,7 @@ export const house: GameModule = {
       const e = st(s).chronicle.at(-1);
       return e ? `${e.name}, head of the house from year ${e.from} to year ${e.to}. ${e.lines.join(' ')}`.trim() : '';
     }
+    if (name.startsWith('house.')) return houseText(st(s), name.slice(6));
     if (!name.startsWith('realm.')) return undefined;
     const state = st(s);
     const content = ct(c);
@@ -237,6 +244,7 @@ export const house: GameModule = {
 
   checkTextVar(name) {
     if (name === 'family.cause' || name === 'chronicle.last') return [];
+    if (name.startsWith('house.')) return HOUSE_TEXT.includes(name.slice(6)) ? [] : [`unknown house field in {${name}}`];
     if (!name.startsWith('realm.')) return undefined;
     const f = name.slice(6);
     return REALM_TEXT.includes(f) || REALM_IDS.includes(f) ? [] : [`unknown realm field in {${name}}`];
@@ -254,5 +262,29 @@ export const house: GameModule = {
 
   startScene: (s, c) => ct(c).openings[st(s).opening]?.start_scene,
 };
+
+/** The founder's manor; the manor Penhoët claims (Kerval, which was Yann's grandfather's, if the founder holds it); the founder's oldest follower; where the founder began. */
+function houseText(s: HouseState, f: string): string | undefined {
+  const d = s.inheritance;
+  const manor = d?.lands.manor?.name ?? 'Kerval';
+  switch (f) {
+    case 'manor': return manor;
+    case 'claimed': return manor === 'Kerval' || d?.flags.includes('c2_granted_kerval') || !d ? 'Kerval' : manor;
+    case 'companion': case 'companion_first': {
+      const name = [...(d?.people ?? [])].filter((p) => p.alive && p.follower).sort((a, b) => b.loyalty - a.loyalty || (a.id < b.id ? -1 : 1))[0]?.name ?? 'Piers atte Brook';
+      return f === 'companion' ? name : name.split(' ')[0];
+    }
+    // the founder, as the founder's children speak of them
+    case 'parent': return s.characters[FOUNDER_ID]?.sex === 'female' ? 'your mother' : 'your father';
+    case 'parent_start': return s.characters[FOUNDER_ID]?.sex === 'female' ? 'Your mother' : 'Your father';
+    case 'origin': {
+      // Knight of Adalia's founder ending: a reeve's, a wool merchant's or an archer's son, or else a tirewoman's
+      const words: Record<string, string> = { reeve: "a reeve's son", burgess: "a wool merchant's son", archer: "an archer's son" };
+      if (d) return words[d.founder.background] ?? "a tirewoman's son";
+      return s.characters[FOUNDER_ID]?.sex === 'female' ? 'a younger daughter of nobody in particular' : 'a younger son of nobody in particular';
+    }
+  }
+  return undefined;
+}
 
 registerGame(house);

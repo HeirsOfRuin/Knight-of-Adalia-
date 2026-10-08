@@ -9,13 +9,13 @@ import { test } from '@engine/conditions';
 import { renderText } from '@engine/text';
 import { regnalYear } from '@engine/calendar';
 import type { ContentBundle, HouseLaw } from '../content/schema';
-import { HOUSE_ID, type HouseState, type News } from './state';
+import { FOUNDER_ID, HOUSE_ID, type HouseState, type News } from './state';
 
 export const st = (s: CoreState) => s as HouseState;
 export const ct = (c: CoreContent) => c as ContentBundle;
 
 /** The words content uses to name a character: head.age, {heir.He}, spouse.alive. */
-export const SELECTORS = ['head', 'heir', 'spouse', 'father', 'mother', 'eldest', 'second', 'third', 'youngest', 'bastard', 'regent', 'will', 'news'] as const;
+export const SELECTORS = ['head', 'heir', 'spouse', 'father', 'mother', 'eldest', 'second', 'third', 'youngest', 'bastard', 'regent', 'will', 'news', 'founder', 'dowager', 'sibling'] as const;
 
 /** The first succession scene in the queue jumps every other event: the house cannot hear news without a head. */
 export const SUCCESSION_DUE = Number.MIN_SAFE_INTEGER;
@@ -96,6 +96,14 @@ export function select(s: HouseState, content: ContentBundle, sel: string): stri
     case 'regent': return s.family.regent;
     case 'will': return s.family.will;
     case 'news': return s.family.current?.who;
+    // the founder of the house, living or dead, and the founder's spouse
+    case 'founder': return s.characters[FOUNDER_ID] ? FOUNDER_ID : undefined;
+    case 'dowager': return s.characters[FOUNDER_ID]?.spouse;
+    // the founder's eldest living child who does not keep the house: not the founder's heir while the founder is head, not the head after
+    case 'sibling': {
+      const keeper = s.hero === FOUNDER_ID ? heirOf(s, s.family.law, FOUNDER_ID) : s.hero;
+      return livingChildren(s, FOUNDER_ID).find((id) => id !== keeper);
+    }
   }
   return undefined;
 }
@@ -216,15 +224,24 @@ function household(s: HouseState): [string, Character][] {
 }
 
 /** Michaelmas: deaths, births, matches and majorities, each told as news. Draws only with a cursor. */
+/** Who the odds may not kill: in the prologue, the founder, the founder's spouse, the head and the founder's heir (STORY.md, L3-6). */
+export function heldFromOdds(s: HouseState): Set<string> {
+  if (s.chapter !== 'prologue') return new Set();
+  const founder = s.characters[FOUNDER_ID];
+  return new Set([FOUNDER_ID, founder?.spouse, s.hero, s.hero === FOUNDER_ID ? heirOf(s, s.family.law, FOUNDER_ID) : undefined].filter((x): x is string => !!x));
+}
+
 export function yearTick(s: HouseState, content: ContentBundle, rng: RngCursor): void {
   const life = content.registry.life;
   const plague = !!s.flags.plague;
   const children = plague && !!s.flags.plague_children;
+  const held = heldFromOdds(s);
   for (const [id, c] of household(s)) {
     const a = age(s, c);
     const band = life.mortality.find((m) => a <= m.to) ?? life.mortality.at(-1)!;
     const mult = plague ? (children && a < 15 ? life.plague.children : life.plague.all) : 1;
-    if (rng.float() * 100 < band.p * mult) {
+    // always draw, so holding someone does not shift later rolls
+    if (rng.float() * 100 < band.p * mult && !held.has(id)) {
       die(s, id, plague ? 'the plague' : a < 5 ? 'a fever' : a >= 60 ? 'old age' : 'an illness');
       if (id !== s.hero) tell(s, { kind: 'death', who: id, cause: plague ? 'the plague' : undefined, at: s.time });
     }
@@ -238,15 +255,15 @@ export function yearTick(s: HouseState, content: ContentBundle, rng: RngCursor):
     if (a < life.fertility.from || a > life.fertility.to) continue;
     if (rng.float() * 100 >= (a >= life.fertility.late_from ? life.fertility.late_p : life.fertility.p)) continue;
     const child = bear(s, content, id, wife.spouse, undefined, rng);
-    const lost = rng.float() * 100 < life.childbed;
+    const lost = rng.float() * 100 < life.childbed && !held.has(id);
     if (lost) die(s, id, 'childbed');
     tell(s, { kind: 'birth', who: child, childbed: lost, at: s.time });
   }
-  // matches due and majorities reached
+  // matches due and majorities reached; in the prologue the matches are the story's own (STORY.md, P6)
   for (const [id, c] of Object.entries(s.characters)) {
     if (!c.alive || c.house !== HOUSE_ID) continue;
     const a = age(s, c);
-    if (!c.spouse && a >= life.match_age && c.legitimate !== false && s.time - (s.family.offered[id] ?? -999) >= 12) {
+    if (s.chapter !== 'prologue' && !c.spouse && a >= life.match_age && c.legitimate !== false && s.time - (s.family.offered[id] ?? -999) >= 12) {
       s.family.offered[id] = s.time;
       tell(s, { kind: 'match', who: id, at: s.time });
     }

@@ -57,7 +57,8 @@ describe('House of Adalia: the West in each frame', () => {
     expect(() => applyEffects(s, c, [{ west: { frame: 'partitioned' } }], ctx())).toThrow(/needs a sovereign/);
   });
   it('plays to the end of the framework and round-trips a save', () => {
-    const s = choose(c, house(), 'go_on').state;
+    // the framework scene: every opening but the Founder, whose prologue is written (prologue.test.ts)
+    const s = choose(c, house({ opening: 'kingmaker' }), 'go_on').state;
     expect(s.ended?.ending).toBe('story_so_far');
     expect(heroOf(s).name).toBe('Hal');
     expect(fromSave(JSON.parse(JSON.stringify(toSave(s, c))), c).state).toEqual(s);

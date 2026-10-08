@@ -1,1 +1,53 @@
-{}
+# House of Adalia's own story flags. Knight of Adalia's are read as inherited.<flag>; they are not declared here.
+# later: book1 marks a flag the prologue sets for Book I to read (STORY.md, "What Book I inherits").
+h_answer_self: { description: 'At the deathbed the heir said, "I will be myself"', later: book1 }
+h_answer_silent: { description: "At the deathbed the heir said nothing, and held his hand", later: book1 }
+h_answer_you: { description: 'At the deathbed the heir said, "I will try to be you"', later: book1 }
+h_blood_at_kerval: { description: "Blood was spilled at the Kerval boundary", later: book1 }
+h_buried_beside: { description: "The founder lies beside his wife", later: book1 }
+h_buried_home: { description: "The founder lies in the chancel at home", later: book1 }
+h_buried_lannec: { description: "The founder lies at Lannec among the great", later: book1 }
+h_changed_order: { description: "The heir changed the founder's standing order for the gate", later: book1 }
+h_cloister: { description: "The founder took the cowl and lives at the abbey", later: book1 }
+h_companion_counsel: { description: "The founder asked the Old Companion to counsel the heir", later: book1 }
+h_companion_holding: { description: "The founder gave the Old Companion a holding of his own", later: book1 }
+h_companion_side: { description: "The founder kept the Old Companion at his side to the end", later: book1 }
+h_court_held: { description: "The court ordered the Kerval stone put back", later: book1 }
+h_founder_rallies: { description: "The founder rallied from his illness", later: book1 }
+h_handover_hall: { description: "The founder handed over the house before the household", later: book1 }
+h_handover_letter: { description: "The founder handed over the house by letter to the sovereign", later: book1 }
+h_handover_will: { description: "The founder handed over the house by a will with conditions", later: book1 }
+h_heir_court: { description: "The founder sent the heir to court", later: book1 }
+h_heir_kept: { description: "The founder kept the heir at his side", later: book1 }
+h_heir_manor: { description: "The founder gave the heir a manor to run", later: book1 }
+h_law_carried: { description: "The founder's speech on the law carried the hall", later: book1 }
+h_law_male: { description: "The house spoke for the male line", later: book1 }
+h_law_silent: { description: "The house kept silent on the law", later: book1 }
+h_law_women: { description: "The house spoke for inheritance through women", later: book1 }
+h_oath_bought: { description: "The heir bought the sovereign's goodwill with a gift at the oath", later: book1 }
+h_oath_plain: { description: "The heir swore homage plain", later: book1 }
+h_oath_reserved: { description: "The heir swore homage with a reservation spoken aloud", later: book1 }
+h_p_books: { description: "The founder went over the books with the steward on the first morning", later: book1 }
+h_p_lent: { description: "The founder lent to a neighbour at the first Michaelmas", later: book1 }
+h_p_owed: { description: "The founder put off the Sarenzan debt", later: book1 }
+h_p_paid_debt: { description: "The founder paid the Sarenzan debt", later: book1 }
+h_p_saved: { description: "The founder put coin by at the first Michaelmas", later: book1 }
+h_patent_bought: { description: "The founder paid the governor's clerks to lose the question of the patent", later: book1 }
+h_patent_conceded: { description: "The founder conceded a clause of the patent", later: book1 }
+h_patent_defended: { description: "The founder defended the patent word for word", later: book1 }
+h_penhoet_match: { description: "A child of the house is married or promised into Penhoët", later: book1 }
+h_rode_out: { description: "The heir rode out to the boundary stone at Kerval", later: book1 }
+h_second_envoy: { description: "The heir dealt with Hervé through the sibling at Penhoët", later: book1 }
+h_suit_bought: { description: "The founder bought Penhoët off over Kerval", later: book1 }
+h_suit_law: { description: "The founder fought Penhoët's suit for Kerval at law", later: book1 }
+h_suit_match: { description: "The founder offered to settle Kerval between families", later: book1 }
+h_suit_settled: { description: "The Kerval quarrel was settled by the Penhoët match", later: book1 }
+h_suit_strong: { description: "The founder found a good charter for Kerval", later: book1 }
+h_suit_weak: { description: "The founder's charter for Kerval is weak", later: book1 }
+h_thibaut_dead: { description: "King Thibaut died in the saddle at Martinmas, year 52", later: book1 }
+h_watched_herve: { description: "The founder watched who came to speak to Hervé at Yann's funeral", later: book1 }
+h_will_amended: { description: "The heir had the founder's will amended", later: book1 }
+h_will_conditions: { description: "The founder's will carries conditions", later: book1 }
+h_will_honoured: { description: "The heir honoured the founder's will", later: book1 }
+h_will_secret: { description: "The heir means to change the founder's will after his death", later: book1 }
+h_wood_conceded: { description: "The heir let Penhoët have the Kerval wood", later: book1 }

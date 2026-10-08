@@ -6,3 +6,4 @@ duchy:      { frame: free, style: the free duchy, capital: Lannec, reign_from: 4
 edwin:      { frame: adalian, style: King Edwin, capital: Wendmere, reign_from: 40 }
 edwin_salt: { frame: partitioned, style: King Edwin, capital: Wendmere, reign_from: 40 }
 amaury:     { frame: partitioned, style: King Amaury, capital: Cordelle, reign_from: 33 }
+gaucelin:   { frame: free, style: King Gaucelin, capital: Lannec, reign_from: 53 }   # Thibaut's son, chosen by the Estates at Candlemas 53 (STORY.md, L3-1, L3-8)

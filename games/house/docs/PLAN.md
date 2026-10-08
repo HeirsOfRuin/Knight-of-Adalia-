@@ -435,6 +435,38 @@ The framework is done (steps 1-3). Step 4, the slice, is split so the hardest en
 
 **Testing.** Every step keeps Knight of Adalia's fingerprint unchanged (no change in play), and House's `npm run house:check` green.
 
+### Step 4b progress (2026-10-08): the prologue is written
+- **The scenes.** All of `STORY.md`'s P1-P16 are written for the Founder opening, free and Adalian frames, fresh and imported:
+  - `content/scenes/prologue/10-old-lord.yaml` (the founder) and `20-heir.yaml` (the heir);
+  - `content/events/prologue/pool.yaml` (three pool events);
+  - the summons splits by frame into the Estates (free), the election after Thibaut's death (free, under Thibaut) and the patent (Adalian).
+
+  The other openings still start at the framework scene `h_open`.
+- **Built for it:**
+  - the `founder`, `dowager` and `sibling` selectors;
+  - the `{house.*}` text: the manor, the manor Penhoët claims, the Old Companion, the founder's origin, and "your father/mother";
+  - the prologue's hold on the odds (STORY.md L3-6);
+  - the handover's manner (`family.cloister`), so stepping down at home is not told as the cloister;
+  - `marry` with a named spouse (Ronan de Penhoët);
+  - King Gaucelin as a sovereign;
+  - the validator accepts `add:` on selector paths (heir.bond, heir.skill.*), which the engine already supported.
+- **Matches.** The prologue suspends the automatic yearly match offers. Its matches are the story's own: Penhoët's offer is the first.
+- **Stand-ins until step 5:** counters `shadow`, `household`, `favour`, `penhoet` and `second`, and `h_*` flags (declared `later: book1`). They stand for rival-house state, the realm's law and the sibling's allegiance.
+- **Gates passed:**
+  - validator and frame rule: 0 errors;
+  - continuity --strict: 0 problems;
+  - bot: 340 runs, 0 failures;
+  - `tests/prologue.test.ts`: every frame and sovereign, a female founder, the cloister, and imports from every Knight of Adalia plan that ends as Founder;
+  - Knight of Adalia's fingerprint is unchanged.
+- **Transcripts:** `docs/transcripts/prologue-free.md` and `prologue-adalian.md`, made by `npm run house:transcript` (`--frame`, `--sovereign`, `--seed`, `--sex`).
+- **Still open in 4b:**
+  - the match system proper (offers, terms, named houses);
+  - the ledger and the House panel;
+  - the author's playtest.
+- **Known gaps:**
+  - a founder who married Mahaut in Knight of Adalia (`c5_married_mahaut`) gets no variant prose yet;
+  - an imported Old Companion is assumed to be a man.
+
 ### Step 4a results: the odds alone (`npm run house:life`, 75 empty years from every start)
 | Measure | Result | Reading |
 |---|---|---|

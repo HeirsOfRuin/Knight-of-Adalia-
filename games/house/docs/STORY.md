@@ -1120,7 +1120,7 @@ The likely outcome stands unless a **threshold** is met: votes, standing, men an
 
 ---
 
-## Layer 3: Beat sheets, round 5: Book I, Act IV, *The Test of the Law* (free) / *The Minority* (Adalian) (draft for the author's decisions, 2026-10-08)
+## Layer 3: Beat sheets, round 5: Book I, Act IV, *The Test of the Law* (free) / *The Minority* (Adalian) (decisions taken 2026-10-08; awaiting sign-off)
 
 **Years:** 66-78. **Strands:** the realm and the rival together, then the family at the Keeper's end.
 
@@ -1138,7 +1138,7 @@ The likely outcome stands unless a **threshold** is met: votes, standing, men an
 
 **Scene count:** 13 scenes and 2 pool draws.
 
-**The Keeper's end is open** (L2-4). The odds can end the Keeper at any point in the act. The succession (built) then makes the heir the player for the rest of Book I, and the remaining scenes read `head`, not "the Keeper". How Book I closes if the Keeper is still alive in year 78 is L3-23.
+**The Keeper's end is open** (L2-4). The odds can end the Keeper at any point in the act. The succession (built) then makes the heir the player for the rest of Book I, and the remaining scenes read `head`, not "the Keeper". If the Keeper is still alive in year 78, E13 always closes the headship (L3-23), by stepping down, the cloister, illness or a wound. A Keeper who steps down lives on into Book II as advisor or nuisance, as the cloistered founder did. Each book is one head's story.
 
 **E1. The Crisis Opens** (spring, year 67).
 - **Adalian:**
@@ -1202,7 +1202,7 @@ The likely outcome stands unless a **threshold** is met: votes, standing, men an
 - **Sets:** a bishop in the house **[5: the Church]**.
 
 **E6. Kerval** (year 70 or 71).
-- **Beats:** Penhoët's move comes to the field or the court. This is Book I's only fight of houses (L3-22).
+- **Beats:** Penhoët's move comes to the field or the court. This is Book I's only fight of houses: a short campaign with the war system at small scale, a siege or a field at Kerval's bridge (L3-22). It tests the war system before Book II's great war (years 80-86), and the Keeper can be wounded, which feeds E13.
   1. Men at Kerval's bridge, or Penhoët's commission read at the gate.
   2. The Keeper's men, the old knights or the new (B10), and the free company (D7).
 - **Choices:**
@@ -1217,7 +1217,7 @@ The likely outcome stands unless a **threshold** is met: votes, standing, men an
 **E7. The King's Majority** (year 71). Adalian.
 - **Beats:**
   1. Aldred III, 16, takes the government into his own hands.
-  2. He rewards one party and punishes the other (L3-21).
+  2. He keeps the Hales, Wendmere's officers who raised him, and punishes Carrow's heirs and the Old Baronage. That stands unless the house and an ally swing him (L3-21). Joining Carrow is the risky, high-reward path.
   3. The house learns which it is.
 - **Choices:**
   - Kneel first: `counter.favour +2`, whatever the party.
@@ -1230,7 +1230,7 @@ In free runs this slot is Mahaut's last illness: the court at Lannec knows, and 
 
 **E8. Penhoët Settled** (year 72).
 - **Beats:**
-  1. Hervé dies (L3-20), and with him the generation's quarrel.
+  1. Hervé dies at about 67 (L3-20, scripted, after E6), and with him the generation's quarrel.
   2. What Penhoët becomes depends on E6 and the house.
 - **Choices:**
   - **Broken:** with the sovereign's leave, Penhoët is attainted and its lands taken. Its claim passes to the cadet, Sir Yvon of Kerlan, who returns in Book II (L2-3). It needs E6 won and `counter.favour` high.
@@ -1328,6 +1328,10 @@ In free runs this slot is Mahaut's last illness: the court at Lannec knows, and 
 | L3-17 | Penhoët's loss in the Mottle | Ronan dies; Hervé survives with a minor heir, Ronan's child |
 | L3-18 | The Mottle's severity | Harsh plague odds, plus one scripted death in the extended family in every run |
 | L3-19 | Act III's ending | The Keeper's will |
+| L3-20 | Hervé's death | Year 72, at about 67, scripted after his last move at Kerval |
+| L3-21 | Aldred III's majority (Adalian) | He keeps the Hales and punishes Carrow's heirs, unless the house and an ally swing him |
+| L3-22 | The fight at Kerval | A short campaign with the war system, at small scale |
+| L3-23 | Book I's close | An end is always taken in E13. A Keeper who steps down lives on into Book II. |
 | L3-4 | Who writes the scenes | Claude writes every scene. The author reviews and suggests changes in playtest, and keeps advisory control of major plot points. |
 
 ---
@@ -1347,3 +1351,4 @@ In free runs this slot is Mahaut's last illness: the court at Lannec knows, and 
 | 2026-10-07 | Layer 3 | Book I, Act II's beat sheets (C1-C11) approved. |
 | 2026-10-08 | Layer 3, round 5 (Act III) | Aldred III, 9, with Prince Aymer dead in 61 (L3-16); Ronan dies in the Mottle (L3-17); harsh odds with one sure loss (L3-18); Act III ends on the Keeper's will (L3-19). |
 | 2026-10-08 | Layer 3 | Book I, Act III's beat sheets (D1-D11) approved. |
+| 2026-10-08 | Layer 3, round 6 (Act IV) | Hervé dies in 72 (L3-20); Aldred III keeps the Hales unless swung (L3-21); Kerval is a short campaign (L3-22); an end is always taken in E13 (L3-23). |

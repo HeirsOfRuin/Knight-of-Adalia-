@@ -11,6 +11,8 @@ Knight of Adalia's canon (`games/knight/content/canon.md`) holds for the sequel.
 | 63-65 | **The Second Mottle**, called the children's mortality: it falls hardest on the young | The pestilence of 1361-62 |
 | about 64 | **Edwin of Adalia dies**, at about 52. His grandson **Aldred III**, aged 9, is king; a regency council governs Adalia until about year 71 | Richard II's minority |
 | about 64 | **Ronan de Penhoët dies** in the Second Mottle, at about 30. Hervé survives him; Penhoët's heir is Ronan's child, a minor | |
+| 71 | **Aldred III comes of age** and takes the government. He keeps the Hales, Wendmere's officers, unless swung | |
+| 72 | **Hervé de Penhoët dies**, at about 67 | |
 | about 73 | **Mahaut of Armance dies**, at 54. Queen Mahaut's reign, where she was crowned, is thirty-one years | |
 | 86-88 | **The Lanzi crash**: Sarenzan banks fail when a crown defaults | Bardi and Peruzzi, 1340s |
 | 89 | **The Schism**: a second Pope is elected in Sarenza against the Pope at Saint-Lys; each realm chooses its obedience | Avignon and Rome, 1378 |

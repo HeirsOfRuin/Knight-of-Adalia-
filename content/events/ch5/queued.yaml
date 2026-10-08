@@ -14,16 +14,16 @@
     - set: flag.c5_armance_heir
     - add: { counter.west_estates: 1, rel.mahaut_armance.affection: 2 }
   text: |
-    In the {season}, [if flag.c5_war_tax]with the war coming over the hills, [/if]Mahaut is brought to bed at Lannec, in the great chamber of the Armance dukes, where her grandmother was born, and her father, and where the women of her house have been brought to bed for two hundred years with the whole hall listening below.
+    In the {season}, [if flag.c5_war_tax]with the war coming over the hills, [/if]Mahaut is brought to bed at Lannec, in the great chamber of the Armance dukes, where her father was born, and his father, and where the duchesses of the Armance have been brought to bed for two hundred years with the whole hall listening below.
 
-    She will not have you sent out. "Jehanne had my grandfather in this bed with the old Duke reading her the war news," she says, between pains, "and I will have you here, and you will read me the muster rolls." You read her the muster rolls. She corrects your Valdrennish twice.
+    She will not have you sent out. "My grandmother had my father in this bed with my grandfather reading her the war news," she says, between pains, "and I will have you here, and you will read me the muster rolls." You read her the muster rolls. She corrects your Valdrennish twice.
 
     [break]
 
     A [if heirs.last == son]son[else]daughter[/if], red and furious and whole. [if heirs.count >= 2]Your other children are brought in to look at [if heirs.last == son]him[else]her[/if], and do, doubtfully.[/if] Mahaut looks at the child until the women stop fussing, and then at you. "The Armance has an heir," she says. [if heirs.count == 1]"And the West. Tell them. Tell all of them."[else]"Tell them."[/if] Down in the town the bells are already ringing. Somebody has told them.
   choices:
     - id: name_a
-      text: "[if heirs.last == son]Jehan, for the dukes of the Armance.[else]Jehanne, for her great-grandmother.[/if]"
+      text: "[if heirs.last == son]Jehan, for the dukes of the Armance.[else]Jehanne, for Mahaut's grandmother, the old Duchess.[/if]"
       tags: [diplomacy]
       effects:
         - if: heirs.last == son

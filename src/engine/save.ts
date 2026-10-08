@@ -87,6 +87,13 @@ export function fromSave(raw: unknown, content: ContentBundle): LoadResult {
     if (state.chapter === 'ch3') state.queue.push({ event: 'c3q_kin', dueAt: state.time, earliestChapter: 'ch3', origin: { scene: 'c3_letters', choice: 'kin', at: state.time, text: 'Sent for his kin' } });
     else state.flags.c3_kin_came = true;
   }
+  // wives married after Chapter 3 had no children before their births were queued: queue them now
+  const queued = (id: string) => state.queue.some((q) => q.event === id);
+  const late = state.chapter === 'ch4' || state.chapter === 'ch5';
+  if (late && state.flags.c4_remarried && !state.flags.c4_blanche_child && state.aliases.spouse === 'blanche_kerguen' && state.npcs.blanche_kerguen?.alive && !queued('c4q_blanche_child') && content.scenes.c4q_blanche_child)
+    state.queue.push({ event: 'c4q_blanche_child', dueAt: state.time, earliestChapter: 'ch4', origin: { scene: 'c4_widow', choice: 'married', at: state.time, text: 'Married Dame Blanche' } });
+  if (state.chapter === 'ch5' && state.flags.c5_married_mahaut && !state.flags.c5_armance_heir && state.npcs.mahaut_armance?.alive && !queued('c5q_mahaut_child') && content.scenes.c5q_mahaut_child)
+    state.queue.push({ event: 'c5q_mahaut_child', dueAt: state.time, earliestChapter: 'ch5', origin: { scene: 'c5_estates', choice: 'declare', at: state.time, text: 'Married Mahaut' } });
   const lordship = backfillLordship(state, content);
   if (lordship.length) warnings.push(`Your lands brought up to date: ${nameList(lordship)}.`);
   if (save.contentHash !== content.hash) warnings.push('The game content has been updated since this save was made.');

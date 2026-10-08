@@ -476,6 +476,7 @@ c5_led_charge: { description: "Led the charge over the Pont-aux-Moines" }
 c5_liberties: { description: "Wrote the West's liberties into his earldom" }
 c5_mahaut_queen: { description: "Mahaut crowned Queen of the West" }
 c5_married_mahaut: { description: "Married Mahaut before the Estates" }
+c5_armance_heir: { description: "Mahaut bore him a child, the heir of the Armance (c5q_mahaut_child)" }
 c5_on_losing_side: { description: "On the losing side of the War of the West" }
 c5_paid_valdrenne: { description: "Paid Valdrenne's price for recognition" }
 c5_promised_hales: { description: "Promised Master Hales to speak for the King's peace" }
@@ -507,6 +508,7 @@ c4_ravell_sworn: { description: "Swore to the heir of Ravell that the secret die
 c4_ravell_denied: { description: "Told the heir of Ravell he heard nothing", later: ch5 }
 c4_ravell_squeezed: { description: "Sold his silence to the heir of Ravell", later: ch5 }
 c4_remarried: { description: "Married Dame Blanche de Kerguen as a widower", later: ch5 }
+c4_blanche_child: { description: "Dame Blanche bore him a child (c4q_blanche_child)" }
 c4_widow_refused: { description: "Dame Blanche de Kerguen refused him", later: ch5 }
 c4_stayed_widower: { description: "Declined to marry again", later: ch5 }
 c5_soldiers_with_you: { description: "The knights and captains of the West talked him up at the Estates" }

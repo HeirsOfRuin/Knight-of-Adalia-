@@ -170,3 +170,68 @@
           else: [ { hold: { id: underhill, income: 2400 } } ]
         - add: { rep.ruthlessness: 2, rep.nobles: -2, rel.eleanor_ravell.affection: -3 }
       next: "@return"
+
+# A second wife has children too. Dame Blanche's comes a year and more after the
+# wedding (c4_widow), at Kerguen or in your hall, with her son of the first marriage
+# looking on.
+- id: c4q_blanche_child
+  chapter: ch4
+  kind: queued
+  title: A Child for Kerguen
+  requires: [ alias.spouse == blanche_kerguen, npc.blanche_kerguen.alive, "!flag.c4_blanche_child" ]
+  on_enter:
+    - birth: random
+    - heir_set: { which: last, temperament: random }
+    - set: flag.c4_blanche_child
+    - add: { rel.blanche_kerguen.affection: 2 }
+  text: |
+    Blanche tells you at table, between the fish and the cheese, in the voice she uses for the mill accounts, and goes on eating. She is brought to bed in the {season}, with the Kerguen midwife who brought her son into the world, and it goes, the midwife says, as well as these things go.
+
+    [break]
+
+    A [if heirs.last == son]son[else]daughter[/if]. Blanche's boy, the young Kerguen, is let in to see the child, and holds [if heirs.last == son]him[else]her[/if] with both arms stiff, as if [if heirs.last == son]he[else]she[/if] might go off. [if heirs.count >= 2]Your own children crowd round behind him. It is the first time, you think, that they have looked like one family.[/if] Blanche watches them all from the bolster, and says, "Well, my lord. That is a beginning."
+  choices:
+    - id: name_a
+      text: "[if heirs.last == son]Hervé, a Kerguen name.[else]Marguerite, a Kerguen name.[/if]"
+      tags: [diplomacy]
+      effects:
+        - if: heirs.last == son
+          then: [ { name_heir: Hervé } ]
+          else: [ { name_heir: Marguerite } ]
+        - add: { counter.west_estates: 1 }
+      text_after: "{heirs.lastname}, the priest writes, at the bottom of the page."
+      next: "@return"
+    - id: name_b
+      text: "[if heirs.last == son]{name}. Your own name.[else]Blanche, for her mother.[/if]"
+      tags: [allies]
+      effects:
+        - if: heirs.last == son
+          then: [ { name_heir: "@self" } ]
+          else: [ { name_heir: Blanche } ]
+      text_after: "{heirs.lastname}, the priest writes, at the bottom of the page."
+      next: "@return"
+    - id: name_c
+      text: "[if heirs.last == son][if background == reeve]Piers, for your father, who kept the tallies.[elif background == burgess]Ralf, for your father, who kept the books.[elif background == archer]Hugh, for your father, who taught you the bow.[else]Hob, for old Hob Crane, who put you on your first horse.[/if][else][if background == reeve]Edith, for your mother.[elif background == burgess]Margery, for your mother.[elif background == archer]Alison, for your mother, who spun until the day she died.[else]Agnes, for your mother.[/if][/if]"
+      tags: [allies]
+      effects:
+        - if: heirs.last == son
+          then:
+            - if: background == reeve
+              then: [ { name_heir: Piers } ]
+            - if: background == burgess
+              then: [ { name_heir: Ralf } ]
+            - if: background == archer
+              then: [ { name_heir: Hugh } ]
+            - if: background == servant
+              then: [ { name_heir: Hob } ]
+          else:
+            - if: background == reeve
+              then: [ { name_heir: Edith } ]
+            - if: background == burgess
+              then: [ { name_heir: Margery } ]
+            - if: background == archer
+              then: [ { name_heir: Alison } ]
+            - if: background == servant
+              then: [ { name_heir: Agnes } ]
+      text_after: "{heirs.lastname}, the priest writes, at the bottom of the page."
+      next: "@return"

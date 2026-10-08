@@ -364,6 +364,7 @@
           - assign: { suit.blanche_kerguen.status: married }
           - set: flag.c4_remarried
           - hold: { id: kerguen_dower, income: 1800 }
+          - queue: { event: c4q_blanche_child, delay: { seasons: 5 }, earliest_chapter: ch4 }
           - add: { rel.blanche_kerguen.affection: 3, rel.blanche_kerguen.respect: 2, counter.west_estates: 1, rep.valdrenne: 1 }
         next: c4_act2_end
       failure:
@@ -381,6 +382,7 @@
         - assign: { suit.blanche_kerguen.status: married }
         - set: flag.c4_remarried
         - hold: { id: kerguen_dower, income: 1800 }
+        - queue: { event: c4q_blanche_child, delay: { seasons: 5 }, earliest_chapter: ch4 }
         - add: { rel.blanche_kerguen.respect: 2, counter.west_estates: 1 }
       next: c4_act2_end
     - id: no

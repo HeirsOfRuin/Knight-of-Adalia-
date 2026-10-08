@@ -110,6 +110,7 @@
         - assign: { suit.mahaut_armance.status: married }
         - set: flag.c3_married
         - add: { counter.estates: 3, rel.mahaut_armance.affection: 4 }
+        - queue: { event: c5q_mahaut_child, delay: { seasons: 3 }, earliest_chapter: ch5 }
       next: { switch: [ { if: [ heir.second.alive, heir.second.age >= 8, "!flag.c4_surety_given" ], go: c5_betrothal } ], default: c5_vote }
     - id: thibaut
       text: Take Thibaut's forty knights and his vote, and promise him his father's justice.

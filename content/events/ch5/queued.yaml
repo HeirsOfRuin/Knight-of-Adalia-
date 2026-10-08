@@ -1,0 +1,68 @@
+# Chapter 5 queued events.
+
+# A wife married at the Estates has children too. Mahaut's first child comes about a
+# year after the wedding at Lannec, whatever else the West is doing: the heir of the
+# Armance, and, if he has no older child, of everything he holds.
+- id: c5q_mahaut_child
+  chapter: ch5
+  kind: queued
+  title: The Heir of the Armance
+  requires: [ flag.c5_married_mahaut, npc.mahaut_armance.alive, "!flag.c5_armance_heir" ]
+  on_enter:
+    - birth: random
+    - heir_set: { which: last, temperament: random }
+    - set: flag.c5_armance_heir
+    - add: { counter.west_estates: 1, rel.mahaut_armance.affection: 2 }
+  text: |
+    In the {season}, [if flag.c5_war_tax]with the war coming over the hills, [/if]Mahaut is brought to bed at Lannec, in the great chamber of the Armance dukes, where her grandmother was born, and her father, and where the women of her house have been brought to bed for two hundred years with the whole hall listening below.
+
+    She will not have you sent out. "Jehanne had my grandfather in this bed with the old Duke reading her the war news," she says, between pains, "and I will have you here, and you will read me the muster rolls." You read her the muster rolls. She corrects your Valdrennish twice.
+
+    [break]
+
+    A [if heirs.last == son]son[else]daughter[/if], red and furious and whole. [if heirs.count >= 2]Your other children are brought in to look at [if heirs.last == son]him[else]her[/if], and do, doubtfully.[/if] Mahaut looks at the child until the women stop fussing, and then at you. "The Armance has an heir," she says. [if heirs.count == 1]"And the West. Tell them. Tell all of them."[else]"Tell them."[/if] Down in the town the bells are already ringing. Somebody has told them.
+  choices:
+    - id: name_a
+      text: "[if heirs.last == son]Jehan, for the dukes of the Armance.[else]Jehanne, for her great-grandmother.[/if]"
+      tags: [diplomacy]
+      effects:
+        - if: heirs.last == son
+          then: [ { name_heir: Jehan } ]
+          else: [ { name_heir: Jehanne } ]
+        - add: { counter.west_estates: 1 }
+      text_after: "{heirs.lastname}, the priest writes, at the bottom of the page."
+      next: "@return"
+    - id: name_b
+      text: "[if heirs.last == son]{name}. Your own name.[else]Mahaut, for her mother.[/if]"
+      tags: [allies]
+      effects:
+        - if: heirs.last == son
+          then: [ { name_heir: "@self" } ]
+          else: [ { name_heir: Mahaut } ]
+      text_after: "{heirs.lastname}, the priest writes, at the bottom of the page."
+      next: "@return"
+    - id: name_c
+      text: "[if heirs.last == son][if background == reeve]Piers, for your father, who kept the tallies.[elif background == burgess]Ralf, for your father, who kept the books.[elif background == archer]Hugh, for your father, who taught you the bow.[else]Hob, for old Hob Crane, who put you on your first horse.[/if][else][if background == reeve]Edith, for your mother.[elif background == burgess]Margery, for your mother.[elif background == archer]Alison, for your mother, who spun until the day she died.[else]Agnes, for your mother.[/if][/if]"
+      tags: [allies]
+      effects:
+        - if: heirs.last == son
+          then:
+            - if: background == reeve
+              then: [ { name_heir: Piers } ]
+            - if: background == burgess
+              then: [ { name_heir: Ralf } ]
+            - if: background == archer
+              then: [ { name_heir: Hugh } ]
+            - if: background == servant
+              then: [ { name_heir: Hob } ]
+          else:
+            - if: background == reeve
+              then: [ { name_heir: Edith } ]
+            - if: background == burgess
+              then: [ { name_heir: Margery } ]
+            - if: background == archer
+              then: [ { name_heir: Alison } ]
+            - if: background == servant
+              then: [ { name_heir: Agnes } ]
+      text_after: "{heirs.lastname}, the priest writes, at the bottom of the page."
+      next: "@return"

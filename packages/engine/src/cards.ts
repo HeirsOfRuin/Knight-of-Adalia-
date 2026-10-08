@@ -16,12 +16,18 @@ export interface CardView extends Card {
   since: string[];
 }
 
-/** The card for a scene, if the scene opens a chapter or an act. */
-export function cardFor(content: ContentBundle, scene: string, prevScene: string | undefined): Card | undefined {
+/** The card for a scene, if the scene opens a chapter or an act. `upto` journal entries came before it. */
+export function cardFor(content: ContentBundle, scene: string, journal: readonly { scene: string }[], upto = journal.length): Card | undefined {
   const s = content.scenes[scene];
   if (!s) return undefined;
   if (s.card) return s.card;
-  const prevChapter = prevScene ? content.scenes[prevScene]?.chapter : undefined;
+  // news and other queued scenes belong to the chapter they interrupt: they neither open one nor close one
+  if (s.kind === 'queued') return undefined;
+  let prevChapter: string | undefined;
+  for (let i = upto - 1; i >= 0; i--) {
+    const p = content.scenes[journal[i]!.scene];
+    if (p && p.kind !== 'queued') { prevChapter = p.chapter; break; }
+  }
   if (prevChapter === s.chapter) return undefined;
   return content.config.chapter_cards[s.chapter];
 }
@@ -31,7 +37,7 @@ function lastCardAt(content: ContentBundle, state: GameState): number | undefine
   const j = state.journal;
   // the last entry is the scene just left; the current card belongs to the scene now open
   for (let i = j.length - 1; i >= 0; i--) {
-    if (cardFor(content, j[i]!.scene, j[i - 1]?.scene)) return j[i]!.at;
+    if (cardFor(content, j[i]!.scene, j, i)) return j[i]!.at;
   }
   return undefined;
 }

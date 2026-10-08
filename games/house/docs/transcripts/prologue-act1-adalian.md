@@ -657,12 +657,6 @@ Sir Josselin of the dyke comes at Michaelmas with his hat in his hands and his d
 
 Her name is Perrine. Within a year she is keeping the household's accounts, and finding things in them the steward would rather she had not, and the steward has started, grudgingly, to ask her to check his sums.
 
----
-
-## Prologue: The Old Lord
-
-> A house is three generations: the man who makes it, the one who keeps it, and the one who spends it.
-
 ### A Birth
 
 *Autumn, year 18 of King Edwin*
@@ -687,10 +681,6 @@ A daughter is born to the house.
 
 **You choose:** Name the child for a grandparent.
 
----
-
-## Book One: The Keeper
-
 ### Before the Estates
 
 *Spring, year 19 of King Edwin*
@@ -713,4 +703,4 @@ Nobody tells you any more what your father would have done. They are waiting to 
 
 Here Act I of Book One ends. You are head of the house Hal Fletcher founded, under King Edwin, married to Azenor de Kerguen, with Kerval in your hands, and two offers on the table for the house's vote.
 
-Act II, *The Law*, is still being written.
+Act II, The Law, is still being written.

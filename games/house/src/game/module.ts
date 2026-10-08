@@ -21,7 +21,7 @@ const SINGLE = ['opening', 'imported'];
 /** family.<field>: the house as a whole. */
 const FAMILY = ['law', 'generation', 'members', 'children', 'sons', 'daughters', 'extinct', 'no_heir', 'minor', 'regency', 'contested', 'news', 'childbed', 'cloister', 'junior'];
 // {house.*}: the founder's house as Knight of Adalia left it, or as a fresh start has it
-const HOUSE_TEXT = ['manor', 'claimed', 'companion', 'companion_first', 'origin', 'parent', 'parent_start', 'knights', 'withholder', 'parent_word', 'querec', 'querec_start', 'querec_short'];
+const HOUSE_TEXT = ['manor', 'claimed', 'companion', 'companion_first', 'origin', 'parent', 'parent_start', 'knights', 'withholder', 'parent_word', 'querec', 'querec_start', 'querec_short', 'ruler', 'ruler_lc', 'match_penhoet', 'match_valdrenne', 'match_kerguen'];
 // house.<field> in conditions: the founder's knights as Knight of Adalia left them
 const HOUSE_IDS = ['yvon', 'vassals'];
 
@@ -274,6 +274,11 @@ export const house: GameModule = {
   startScene: (s, c) => ct(c).openings[st(s).opening]?.start_scene,
 };
 
+function keeperSex(s: HouseState): string | undefined {
+  const id = s.hero === FOUNDER_ID ? heirOf(s, s.family.law, FOUNDER_ID) : s.hero;
+  return s.characters[id ?? '']?.sex;
+}
+
 /** The founder's manor; the manor Penhoët claims (Kerval, which was Yann's grandfather's, if the founder holds it); the founder's oldest follower; where the founder began. */
 function houseText(s: HouseState, f: string): string | undefined {
   const d = s.inheritance;
@@ -298,7 +303,14 @@ function houseText(s: HouseState, f: string): string | undefined {
       const v = d?.lands.vassals ?? [];
       return v.find((x) => x.id === 'penhoet_cadet')?.name ?? v.at(-1)?.name ?? 'Sir Renaud de Saint-Aubin';
     }
-    // who defies a girl's crown: old Quérec, or his son if Knight of Adalia exiled or beheaded him
+    // the Keeper (the founder's heir while the founder is head, the head after) as a crowned head: King or Queen
+    case 'ruler': return keeperSex(s) === 'female' ? 'Queen' : 'King';
+    case 'ruler_lc': return keeperSex(s) === 'female' ? 'queen' : 'king';
+    // the crowned Keeper's matches (canon.md): Penhoët's, Valdrenne's and Kerguen's, by the Keeper's sex
+    case 'match_penhoet': return keeperSex(s) === 'female' ? 'Ronan de Penhoët' : 'Sibylle de Penhoët';
+    case 'match_valdrenne': return keeperSex(s) === 'female' ? 'Prince Lothaire' : 'Princess Isabeau';
+    case 'match_kerguen': return keeperSex(s) === 'female' ? 'Tanguy de Kerguen' : 'Maëlle de Kerguen';
+    // who defies the heir's crown: old Quérec, or his son if Knight of Adalia exiled or beheaded him
     case 'querec': return d?.flags.includes('c5r_querec_executed') || d?.flags.includes('c5r_querec_exiled') ? 'Bertrand de Quérec' : 'the lord of Quérec';
     case 'querec_start': return d?.flags.includes('c5r_querec_executed') || d?.flags.includes('c5r_querec_exiled') ? 'Bertrand de Quérec' : 'The lord of Quérec';
     case 'querec_short': return d?.flags.includes('c5r_querec_executed') || d?.flags.includes('c5r_querec_exiled') ? 'Bertrand' : 'Quérec';

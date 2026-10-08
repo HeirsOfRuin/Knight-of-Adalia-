@@ -1,15 +1,19 @@
 # The Prologue for the Crowned opening when the founder married Mahaut (STORY.md, "The crowned path"). The founder
-# is King of the West, Mahaut his queen. Their eldest, Jehanne (born 44), is the heir under the crown's custom of the
-# eldest child. At Lady Day of year 53 the old king crowns her junior queen at nine; Mahaut governs as regent, and the
-# old king lives on at court until about year 64. The rival of the prologue is Quérec, who will not swear to a girl.
+# is King of the West, Mahaut his queen. Their eldest child is the heir: the children the life left (the author's
+# run: Jehan, born 45), or canon's Jehanne (born 44) if it left none. At Lady Day of year 53 the old king crowns the
+# heir junior king or queen; Mahaut governs as regent, and the old king lives on at court until about year 64.
+# Where the life left the succession to the Estates (c5r_estates_choose) the crown is elective, and the King must
+# ask the Estates to elect his child in his lifetime. The rival of the prologue is Quérec, who defies the heir's
+# crown: the Estates' right to choose where the crown is elective, else a girl's crown, or a child's.
 # A crowned life without Mahaut keeps the framework scene (h_open) for now.
+# {house.ruler} is the heir's style (King or Queen) while the founder lives, and the head's after.
 
 - id: h_pc00_crown
   chapter: prologue
   title: The Crown of the West
   frames: [free]
   text: |
-    The crown of the West is five years old, and you have worn it since the oaths at Lannec. It is heavier than it looked.
+    You have worn the crown of the West since the oaths at Lannec. It is heavier than it looked.
   choices:
     - id: go_on
       text: Go on.
@@ -23,27 +27,27 @@
   text: |
     The great hall at Lannec is cold in the mornings, and so are you. You are {age_words}. The fire was lit at Prime and has not reached the dais yet, and the chamberlain stands at your elbow with the day's petitions under his arm, waiting for you to be ready.
 
-    You were {house.origin} once. Now the hall stands when you come in, and the hall is the hall where the Estates of the West made you king, and every morning you walk past the place where you stood that day and do not look at it.
+    You were {house.origin} once. Now the hall stands when you come in, and the hall is the hall where the Estates of the West made you king, and every morning you walk past the place where you stood that day and do not look at it.[if inherited.c5r_estates_choose] You told them, in the first year of your reign, that when you were gone they would choose again, as they chose you. You meant it at the time.[/if]
 
-    Mahaut comes down with her women. She is thirty-one, and Queen of the West, and Duchess of Armance in her own right, which she has never once let a clerk forget. She takes the chair beside yours and moves the salt so you can reach it. Jehanne comes after her at a run, six years old, in a gown she has already torn, and climbs into your lap without asking, as she has since she could climb.[if family.children >= 2] The younger ones come behind with their nurse, in order of size.[/if]
+    Mahaut comes down with her women. She is thirty-one, and Queen of the West, and Duchess of Armance in her own right, which she has never once let a clerk forget. She takes the chair beside yours and moves the salt so you can reach it. {heir.first} comes after her at a run, {heir.ageword} years old, in a [if heir.sex == female]gown[else]tunic[/if] {heir.he} has already torn, and climbs into your lap without asking, as {heir.he} has since {heir.he} could climb.[if family.children >= 2] The younger ones come behind with their nurse, in order of size.[/if]
 
-    "Your daughter," says Mahaut, "has been in the stables again."
+    "Your {heir.son}," says Mahaut, "has been in the stables again."
 
-    "My daughter," you say, "is the heir to the crown of the West. She can be in the stables if she likes."
+    "My {heir.son}," you say, "is going to be {house.ruler} of the West. {heir.He} can be in the stables if {heir.he} likes."
 
-    "That," says Mahaut, "is what I am afraid of."
+    [if inherited.c5r_estates_choose]"If the Estates say so," says Mahaut. "Until they do, the stables are where the grooms will tell everyone {heir.he} was."[else]"That," says Mahaut, "is what I am afraid of."[/if]
   choices:
     - id: ride
-      text: Take Jehanne up on your saddle and ride out to the fields.
+      text: Take {heir.first} up on your saddle and ride out to the fields.
       effects: [ { add: { heir.bond: 1, counter.shadow: 1 } } ]
       text_after: |
-        You ride out by the river gate with Jehanne in front of you on the saddle, holding the reins she thinks are steering the horse. The people on the road stop and bow and stare. "Why are they looking?" she asks. "Because you're going to be their queen." She thinks about that for a furlong. "Can I have a horse of my own, then?"
+        You ride out by the river gate with {heir.first} in front of you on the saddle, holding the reins {heir.he} thinks are steering the horse. The people on the road stop and bow and stare. "Why are they looking?" {heir.he} asks. "Because you're going to be their {house.ruler_lc}." {heir.He} thinks about that for a furlong. "Can I have a horse of my own, then?"
       next: h_pc02_company
     - id: rolls
       text: Go through the treasurer's rolls before the petitioners come.
       effects: [ { set: flag.h_p_books } ]
       text_after: |
-        The crown's revenues in a clerk's tidy columns: the salt tithe, the customs at Sauvemer, the demesne rents, the fines of the court. The crown's costs underneath, longer. You read it twice. A king who stops reading his treasurer's rolls finds out what he missed from the Sarenzans.
+        The crown's revenues in a clerk's tidy columns: the salt penny, the customs at Sauvemer, the demesne rents, the fines of the court. The crown's costs underneath, longer. You read it twice. A king who stops reading his treasurer's rolls finds out what he missed from the Sarenzans.
       next: h_pc02_company
     - id: petitions
       text: Hear the petitions in the great hall yourself.
@@ -63,7 +67,7 @@
 
     You have. The old company, the ones who rode with you when you had one horse and no name, fit round one table now, with room. The rest are names in the chancel, or names you say when the wine is good.
 
-    "I'm not asking for anything," says {house.companion_first}. "I want that said first. But you're the King, and you're not young, and the little one's six." He turns the cup. "I want to know what happens to us. After."
+    "I'm not asking for anything," says {house.companion_first}. "I want that said first. But you're the King, and you're not young, and the little one's {heir.ageword}." He turns the cup. "I want to know what happens to us. After."
   choices:
     - id: holding
       text: Give him a manor of the crown's, with a hearth he can die at.
@@ -72,10 +76,10 @@
         "The crown manor at the ford," you say. "Rent of a rose at midsummer." He argues, and stops, and looks at the table for long enough that you pour him more wine so he has something to do with his hands. He goes in the spring. The palace is quieter without him, and you miss being argued with.
       next: h_pc03_heir
     - id: counsel
-      text: Ask him to stand at Jehanne's shoulder when you are gone.
+      text: Ask him to stand at {heir.first}'s shoulder when you are gone.
       effects: [ { set: flag.h_companion_counsel } ]
       text_after: |
-        "Me? With a princess?" He laughs. "She'll have bishops for that." "She'll have bishops," you say. "She'll need someone who'll tell her the truth." He thinks about it, and nods once, and finishes the wine like a man signing something.
+        "Me? With a [if heir.sex == female]princess[else]prince[/if]?" He laughs. "{heir.He}'ll have bishops for that." "{heir.He}'ll have bishops," you say. "{heir.He}'ll need someone who'll tell {heir.him} the truth." He thinks about it, and nods once, and finishes the wine like a man signing something.
       next: h_pc03_heir
     - id: side
       text: Keep him at your side to the end. You will need someone who remembers.
@@ -90,31 +94,31 @@
   frames: [free]
   on_enter: [ { catch_up: { year: 50, season: summer } } ]
   text: |
-    Midsummer, and the court at Lannec in the long gallery out of the heat. You watch Jehanne across the gallery, [if heir.temperament == bookish]curled in a window seat with a book of hours she cannot read yet, telling herself the pictures[elif heir.temperament == bold]trying to make the Queen's greyhound jump over a stool, and getting the stool over the greyhound instead[elif heir.temperament == merry]holding court among the pages, who are laughing at something she has said about the Bishop[else]standing still beside her mother's chair, watching the lords come and go and remembering their faces[/if].
+    Midsummer, and the court at Lannec in the long gallery out of the heat. You watch {heir.first} across the gallery, [if heir.temperament == bookish]curled in a window seat with a book of hours {heir.he} cannot read yet, telling {heir.himself} the pictures[elif heir.temperament == bold]trying to make the Queen's greyhound jump over a stool, and getting the stool over the greyhound instead[elif heir.temperament == merry]holding court among the pages, who are laughing at something {heir.he} has said about the Bishop[else]standing still beside {heir.his} mother's chair, watching the lords come and go and remembering their faces[/if].
 
-    No woman has worn the crown of the West. There has only been one crown of the West, and you are wearing it. The custom of the new crown is what you made it at your crowning: the eldest child, son or daughter, crowned after you without anyone thinking to object.
+    [if inherited.c5r_estates_choose]There has only been one crown of the West, and you are wearing it, and the Estates gave it to you. In the first year of your reign you told them that when you were gone they would give it again, to whom they chose. You had no child in the hall that day. You have one now.[else]No one but you has ever worn the crown of the West. The custom of the new crown is what you made it at your crowning: the eldest child, son or daughter, crowned after you without anyone thinking to object.[/if]
 
-    "They will object," Mahaut says, beside you, low. "Not now. Now you are alive. When you're old, and she's a girl, and there's a man somewhere with a better beard." She watches her daughter. "My grandmother held the Armance through a war. Nobody thought a woman could. She'll need to know how."
+    [if inherited.c5r_estates_choose]"They will choose someone else," Mahaut says, beside you, low. "Not now. Now you are alive. When you're old, and {heir.he}'s a child, and there's a man somewhere with a better claim and a grown beard." She watches her {heir.son}. "My grandmother held the Armance through a war, a woman alone, and nobody chose her. She held it anyway. {heir.He}'ll need to know how."[else]"They will object," Mahaut says, beside you, low. "Not now. Now you are alive. When you're old, and {heir.he}'s [if heir.sex == female]a girl[else]a child[/if], and there's a man somewhere with a better beard." She watches her {heir.son}. "My grandmother held the Armance through a war. Nobody thought a woman could. {heir.He}'ll need to know how."[/if]
 
-    "Then who teaches her?"
+    "Then who teaches {heir.him}?"
   choices:
     - id: mahaut
-      text: Give her to Mahaut and her women, to learn courts and councils.
+      text: Give {heir.him} to Mahaut and her household, to learn courts and councils.
       effects: [ { set: flag.h_heir_court }, { upbringing: { who: heir, set: court } }, { add: { heir.skill.courtesy: 1, heir.skill.diplomacy: 1, rel.mahaut_armance.affection: 1 } } ]
       text_after: |
-        Mahaut takes her in hand that summer: the council chamber, the household accounts, the order of precedence at a feast, which takes a month. By Michaelmas Jehanne can tell a Kerguen from a Quérec across a hall by the way they stand, and says so, loudly, which Mahaut is working on.
+        Mahaut takes {heir.him} in hand that summer: the council chamber, the household accounts, the order of precedence at a feast, which takes a month. By Michaelmas {heir.first} can tell a Kerguen from a Quérec across a hall by the way they stand, and says so, loudly, which Mahaut is working on.
       next: h_pc04_querec
     - id: armance
-      text: Send her to the Armance, to be known there as its heiress.
+      text: Send {heir.him} to the Armance, to be known there as its [if heir.sex == female]heiress[else]heir[/if].
       effects: [ { set: flag.h_heir_manor }, { upbringing: { who: heir, set: home } }, { add: { heir.skill.stewardship: 1, heir.skill.riding: 1, heir.bond: -1 } } ]
       text_after: |
-        She goes at Lammas with her nurse and Mahaut's old steward to the castle above the Armance, where her great-grandmother held out. The Armance lords come to see her, and kneel to a six-year-old, and go home and tell their wives. You miss her in the palace more than you say.
+        {heir.He} goes at Lammas with {heir.his} nurse and Mahaut's old steward to the castle above the Armance, where {heir.his} great-grandmother held out. The Armance lords come to see {heir.him}, and kneel to a child of {heir.ageword}, and go home and tell their wives. You miss {heir.him} in the palace more than you say.
       next: h_pc04_querec
     - id: king
-      text: Keep her at your side, and teach her what you know.
+      text: Keep {heir.him} at your side, and teach {heir.him} what you know.
       effects: [ { set: flag.h_heir_kept }, { upbringing: { who: heir, set: arms } }, { add: { counter.shadow: 2, heir.skill.riding: 1, heir.skill.command: 1 } } ]
       text_after: |
-        "With me," you say. "Every council, every court day, every fool with a grievance." Mahaut raises an eyebrow and says nothing, which is a great deal. Jehanne sits on a stool at the foot of the dais through the summer assize and falls asleep twice, and on the third day asks the chancellor a question that makes him go red.
+        "With me," you say. "Every council, every court day, every fool with a grievance." Mahaut raises an eyebrow and says nothing, which is a great deal. {heir.first} sits on a stool at the foot of the dais through the summer assize and falls asleep twice, and on the third day asks the chancellor a question that makes him go red.
       next: h_pc04_querec
 
 - id: h_pc04_querec
@@ -122,39 +126,39 @@
   title: Quérec
   frames: [free]
   text: |
-    The summer court ends with the oaths, as it does every year: the lords of the West renew their faith to the King, and this year, for the first time, you have asked them to swear to Jehanne as your heir.
+    The summer court ends with the oaths, as it does every year: the lords of the West renew their faith to the King, and this year, for the first time, you have asked them to swear to {heir.first} as your heir.
 
-    They swear, one after another, and kiss the child's small hand, and she bears it with a face like a bishop. Then {house.querec} comes forward, and stands, and does not kneel.
+    They swear, one after another, and kiss the child's small hand, and {heir.he} bears it with a face like a bishop. Then {house.querec} comes forward, and stands, and does not kneel.
 
-    [if inherited.c5r_querec_executed]He is the son of the man whose head you set on the square at Lannec. He was nineteen then. He is twenty-five now, with his father's eyes and the marsh lands you gave him back out of mercy, or policy, and he has never forgotten which.[elif inherited.c5r_querec_exiled]He is the son of the man you sent over the march in a cart, and he has come back under a safe-conduct, with his father's eyes, to say what his father would have said.[elif inherited.c5r_querec_pardoned]He is old now, the salt lord of the southern marsh, pardoned in this hall when he knelt to you the third time. He seems to have decided that three times was enough.[else]He is old now, the salt lord of the southern marsh, the last man in the West who still says what he thinks of you to your face.[/if]
+    [if inherited.c5r_querec_executed]He is the son of the man whose head you set on the square at Lannec. He has his father's eyes and none of his father's land, and he has never forgotten either.[elif inherited.c5r_querec_exiled]He is the son of the man you sent over the march in a cart. Quérec is the crown's now. He has come back under the peace and a safe-conduct, landless, with his father's eyes, to say what his father would have said.[elif inherited.c5r_querec_pardoned]He is old now, the salt lord of the southern marsh, pardoned in this hall when he knelt to you the third time. He seems to have decided that three times was enough.[else]He is old now, the salt lord of the southern marsh, the last man in the West who still says what he thinks of you to your face.[/if]
 
-    "I swore to you," {house.querec_short} says, loud enough for the hall. "I'll keep it. But no woman has ever worn this crown, because no one has ever worn this crown but you, and I'll not swear to a girl of six who'll be a woman of twenty with a husband nobody's chosen yet. Not this year. Ask me when you know who'll really rule."
+    [if inherited.c5r_estates_choose]"You were chosen," {house.querec_short} says, loud enough for the hall. "The Estates of the West chose you, in this hall, and you told them they'd choose again. I heard you. So did they." He looks round the benches. "I'll swear to {heir.first} when the Estates have chosen {heir.him}. Not before. A crown the West gives isn't a ring a king hands his {heir.son}."[elif heir.sex == female]"I swore to you," {house.querec_short} says, loud enough for the hall. "I'll keep it. But no woman has ever worn this crown, because no one has ever worn this crown but you, and I'll not swear to a girl of {heir.ageword} who'll be a woman of twenty with a husband nobody's chosen yet. Not this year. Ask me when you know who'll really rule."[else]"I swore to you," {house.querec_short} says, loud enough for the hall. "I'll keep it. But I'll not swear to a child of {heir.ageword} and whoever governs him when you're gone. Not this year. Ask me when you know who'll really rule."[/if]
   choices:
     - id: demand
       text: Tell him he will swear now, before the West, or answer for it.
-      check: { attr: presence, skill: command, difficulty: 6, audience: nobles, mods: [ { if: inherited.c5r_querec_knelt, add: 1, label: he knelt to you before }, { if: counter.household >= 2, add: 1, label: the court is with you } ] }
+      check: { attr: presence, skill: command, difficulty: 6, audience: nobles, mods: [ { if: inherited.c5r_querec_knelt, add: 1, label: he knelt to you before }, { if: counter.household >= 2, add: 1, label: the court is with you }, { if: inherited.c5r_estates_choose, add: -1, label: he is holding you to your word } ] }
       success:
         text: |
-          The hall goes quiet. {house.querec_short} looks at you, and at your guard along the wall, and at Jehanne, who is looking straight back at him. Then he kneels, slowly, and kisses her hand, and says the words. On his way out he says to her, quite gently, "You'll do, I expect," and she says, "I know," and half the hall laughs.
+          The hall goes quiet. {house.querec_short} looks at you, and at your guard along the wall, and at {heir.first}, who is looking straight back at him. Then he kneels, slowly, and kisses {heir.his} hand, and says the words. On his way out he says to {heir.him}, quite gently, "You'll do, I expect," and {heir.he} says, "I know," and half the hall laughs.
         effects: [ { set: flag.h_c_querec_swore }, { add: { counter.household: 1 } } ]
         next: h_pc05_exchequer
       failure:
         text: |
-          He hears you out, and bows, which is not kneeling, and walks the length of the hall and out of the door, and nobody stops him. He rides south that night, to the marsh. In a month the whole West knows that a lord refused to swear to the King's daughter, and lived.
+          He hears you out, and bows, which is not kneeling, and walks the length of the hall and out of the door, and nobody stops him. He rides south that night, to the marsh. In a month the whole West knows that a lord refused to swear to the King's {heir.son}, and lived.
         effects: [ { set: flag.h_c_querec_defiant }, { add: { counter.household: -1 } } ]
         next: h_pc05_exchequer
     - id: buy
-      text: Buy his oath with the salt tithe of the southern marsh. (£40)
+      text: "[if inherited.c5r_querec_exiled || inherited.c5r_querec_executed]Buy his oath with his father's land at Quérec. (£40)[else]Buy his oath with the salt of the southern marsh. (£40)[/if]"
       requires: "res.coin >= 9600"
       effects: [ { set: flag.h_c_querec_bought }, { add: { res.coin: -9600 } } ]
       text_after: |
-        A private word after Vespers, and the crown's share of the marsh salt for ten years. He takes it, and swears at Michaelmas in a small chapel with three witnesses, and everyone who matters hears what it cost. It is an oath. You will find out what kind.
+        A private word after Vespers, and [if inherited.c5r_querec_exiled || inherited.c5r_querec_executed]his father's land at Quérec back, with forty pounds of the crown's to restock it[else]the crown's share of the marsh salt for ten years[/if]. He takes it, and swears at Michaelmas in a small chapel with three witnesses, and everyone who matters hears what it cost. It is an oath. You will find out what kind.
       next: h_pc05_exchequer
     - id: watch
       text: Let it lie, and have him watched.
       effects: [ { set: flag.h_c_querec_watched }, { set: flag.h_c_querec_defiant } ]
       text_after: |
-        "Next year, then," you say, pleasantly, and turn to the next man. {house.querec_short} goes home to the marsh. Your men go after him, quietly, one as a salt carter, one as a friar. By Michaelmas you know who comes to dinner at Quérec, and it is a longer list than you would like.
+        "Next year, then," you say, pleasantly, and turn to the next man. {house.querec_short} goes south to the marsh. Your men go after him, quietly, one as a salt carter, one as a friar. By Michaelmas you know who comes to dinner with him, and it is a longer list than you would like.
       next: h_pc05_exchequer
 
 - id: h_pc05_exchequer
@@ -165,7 +169,7 @@
   text: |
     Michaelmas, and the crown's reckoning. The treasurer sets up his chequered cloth in the lower hall, and the sheriffs of the West come in one by one to account for their shires, with their tallies and their excuses, and the clerks move the counters on the squares like a game nobody wins.
 
-    You sit through all of it, as you always have. The salt tithe is in. The Sauvemer customs are short, again. The castles on the march want mending, the fleet wants paying, and the Sarenzans want their interest, politely, by letter, in a hand you have learned to dread.
+    You sit through all of it, as you always have. The salt penny is in. The Sauvemer customs are short, again. The castles on the march want mending, the fleet wants paying, and the Sarenzans want their interest, politely, by letter, in a hand you have learned to dread.
 
     "We can do what you want this year, Your Grace," says the treasurer. "We can't do all of it."
 
@@ -178,7 +182,7 @@
       requires: "res.coin >= 2400"
       effects: [ { add: { res.coin: -2400, counter.household: 1 } } ]
       text_after: |
-        You pay every man his wage and a shilling over, and hand the captains theirs yourself. In the guardroom they drink your health and Jehanne's, in that order, and then the other way round, to be safe.
+        You pay every man his wage and a shilling over, and hand the captains theirs yourself. In the guardroom they drink your health and {heir.first}'s, in that order, and then the other way round, to be safe.
       next: h_pc06_embassy
     - id: save
       text: Put coin by, against whatever comes after you.
@@ -201,23 +205,23 @@
   text: |
     At Martinmas an embassy comes over the hills from Cordelle with forty horses and a bishop, to ask for the heir of the West.
 
-    King Amaury VII offers his brother, Prince Lothaire, twenty, for Jehanne. A betrothal now, a marriage when she is fourteen, and peace on the march for as long as it lasts. The bishop puts it beautifully. The Valdrennish lords stand behind him and look at the hall as if pricing it.
+    King Amaury VII offers [if heir.sex == female]his brother, Prince Lothaire, twenty,[else]his daughter, Princess Isabeau, six,[/if] for {heir.first}. A betrothal now, a marriage when the children are of age, and peace on the march for as long as it lasts. The bishop puts it beautifully. The Valdrennish lords stand behind him and look at the hall as if pricing it.
 
-    Mahaut listens to all of it without moving. When they have gone to their lodgings she says, "Amaury tried to marry me to that boy when he was eleven. Now he wants my daughter for him." She turns her rings. "My grandmother let me choose. I chose you."
+    Mahaut listens to all of it without moving. When they have gone to their lodgings she says, [if heir.sex == female]"Amaury tried to marry me to that boy when he was eleven. Now he wants my daughter for him."[else]"Amaury tried to marry me to his brother when the boy was eleven. Now he wants my son for his sister. They are a persistent family."[/if] She turns her rings. "My grandmother let me choose. I chose you."
 
-    [if inherited.c5r_peace_marriage]There is a peace already, made with a marriage. Amaury wants a second.[elif inherited.c5r_no_peace]The march has burned every summer since the war. Amaury is offering it to stop.[else]The peace with Valdrenne is a paper and a habit. Amaury is offering to make it a family.[/if]
+    [if inherited.c5r_peace_bought]You bought the peace with Valdrenne in coin. Amaury is offering to make it a family, which is cheaper and lasts longer, or does not.[elif inherited.c5r_peace_marriage]There is a peace already, made with a marriage. Amaury wants a second.[elif inherited.c5r_no_peace]The march has burned every summer since the war. Amaury is offering it to stop.[else]The peace with Valdrenne is a paper and a habit. Amaury is offering to make it a family.[/if]
   choices:
     - id: valdrenne
-      text: Betroth Jehanne to Prince Lothaire, and buy the march a peace.
+      text: Betroth {heir.first} to {house.match_valdrenne}, and make the peace a family.
       effects: [ { set: flag.h_c_betrothed_valdrenne }, { add: { rel.mahaut_armance.affection: -2, counter.favour: 1 } } ]
       text_after: |
-        The contracts take a month. Jehanne meets her betrothed once, across the great hall, and asks him why his nose is so long, and he laughs, which is the best anyone can say of him. Mahaut signs as Duchess of Armance in a hand like a blade, and does not speak to you for a week.
+        The contracts take a month. [if heir.sex == female]{heir.first} meets her betrothed once, across the great hall, and asks him why his nose is so long, and he laughs, which is the best anyone can say of him.[else]{heir.first} meets his betrothed once, across the great hall, a solemn little girl in Valdrennish black who curtseys to him and then sticks out her tongue, and he decides on the spot that she will do.[/if] Mahaut signs as Duchess of Armance in a hand like a blade, and does not speak to you for a week.
       next: { pool: h_prologue, count: 1, then: h_pc08_estates }
     - id: free
-      text: Send them home. She will choose, as her mother did.
+      text: Send them home. {heir.He} will choose, as {heir.his} mother did.
       effects: [ { set: flag.h_c_jehanne_free }, { add: { rel.mahaut_armance.affection: 2 } } ]
       text_after: |
-        You send them home with gifts and a refusal so courteous that it takes the bishop a day's ride to understand it. On the march that summer the raiders are bolder. Mahaut, at supper, puts her hand over yours on the table, and leaves it there.
+        You send them home with gifts and a refusal so courteous that it takes the bishop a day's ride to understand it.[if !inherited.c5r_peace_bought] On the march that summer the raiders are bolder.[/if] Mahaut, at supper, puts her hand over yours on the table, and leaves it there.
       next: { pool: h_prologue, count: 1, then: h_pc08_estates }
     - id: delay
       text: Answer that the heir of the West is too young to be promised.
@@ -232,30 +236,30 @@
   frames: [free]
   on_enter: [ { catch_up: { year: 52, season: spring } } ]
   text: |
-    You call the Estates of the West to Lannec at Whitsun in the year 52, and they come: the lords on their benches, the bishops in their stalls, the burgesses of the salt towns at the back in their good wool, all of them in the hall where they made you king ten years ago.
+    You call the Estates of the West to Lannec at Whitsun in the year 52, and they come: the lords on their benches, the bishops in their stalls, the burgesses of the salt towns at the back in their good wool, all of them in the hall where they made you king.
 
-    You have called them for one thing. You want them to swear, as a body, to Jehanne as your heir, so that when you are dead nobody can say the West never agreed.
+    [if inherited.c5r_estates_choose]You have called them for one thing. You told them they would choose your successor. You want them to choose now, while you live: to elect {heir.first} {house.ruler} of the West after you, so that when you are dead there is no empty chair to fight over. The kings of Valdrenne did it this way once, when their crown was young. It is also, everyone in the hall knows, exactly what you promised not to do.[else]You have called them for one thing. You want them to swear, as a body, to {heir.first} as your heir, so that when you are dead nobody can say the West never agreed.[/if]
 
-    [if flag.h_c_querec_defiant]{house.querec_start} is in the hall, which nobody expected, with a dozen marsh lords at his back. He has come to say no in public.[elif flag.h_c_querec_bought]{house.querec_start} is in the hall, in a new cloak, and avoids your eye.[else]{house.querec_start} is in the hall, and nods to you, and nods to Jehanne.[/if] Hervé de Penhoët sits on the Armance bench among the Queen's own lords, saying nothing, and taking notes.
+    [if flag.h_c_querec_defiant]{house.querec_start} is in the hall, which nobody expected, with a dozen marsh lords at his back. He has come to say no in public.[elif flag.h_c_querec_bought]{house.querec_start} is in the hall, in a new cloak, and avoids your eye.[else]{house.querec_start} is in the hall, and nods to you, and nods to {heir.first}.[/if] Hervé de Penhoët sits on the Armance bench among the Queen's own lords, saying nothing, and taking notes.
 
-    Jehanne is eight, and sits beside her mother in a gown that does not fit her yet, and swings her feet.
+    {heir.first} is {heir.ageword}, and sits beside {heir.his} mother in a [if heir.sex == female]gown[else]tunic[/if] that does not fit {heir.him} yet, and swings {heir.his} feet.
   choices:
     - id: swear
-      text: Ask the Estates to swear to Jehanne, as your heir, now.
-      check: { attr: presence, skill: diplomacy, difficulty: 6, audience: nobles, mods: [ { if: flag.h_c_querec_swore, add: 1, label: Quérec has sworn }, { if: flag.h_c_querec_bought, add: 1, label: Quérec has been paid }, { if: flag.h_c_largesse, add: 1, label: the salt towns remember }, { if: flag.h_c_querec_defiant, add: -1, label: Quérec's marsh lords } ] }
+      text: "[if inherited.c5r_estates_choose]Ask the Estates to elect {heir.first} now, in your lifetime.[else]Ask the Estates to swear to {heir.first}, as your heir, now.[/if]"
+      check: { attr: presence, skill: diplomacy, difficulty: 6, audience: nobles, mods: [ { if: flag.h_c_querec_swore, add: 1, label: Quérec has sworn }, { if: flag.h_c_querec_bought, add: 1, label: Quérec has been paid }, { if: flag.h_c_largesse, add: 1, label: the salt towns remember }, { if: flag.h_c_querec_defiant, add: -1, label: Quérec's marsh lords }, { if: inherited.c5r_estates_choose, add: -1, label: you promised they would choose }, { if: inherited.c5_spoke_estates, add: 1, label: they remember you speaking in this hall } ] }
       success:
         text: |
-          You speak for a quarter of an hour, which is long for you, about the war and the Estates and the hall you are standing in, and then you sit down. The bishops stand first. Then the burgesses, then the Armance, then the rest. They swear to Jehanne as the heir of the West, as a body, with their hands raised, and the clerk writes it in the roll of the Estates in letters an inch high. Jehanne stands on her chair to see, and Mahaut does not stop her.
+          You speak for a quarter of an hour, which is long for you, about the war and the Estates and the hall you are standing in, and then you sit down. The bishops stand first. Then the burgesses, then the Armance, then the rest. [if inherited.c5r_estates_choose]They elect {heir.first} {house.ruler} of the West after you, as a body, with their hands raised, and the clerk writes it in the roll of the Estates in letters an inch high. They have chosen. That is what they will say, later, when anyone asks.[else]They swear to {heir.first} as the heir of the West, as a body, with their hands raised, and the clerk writes it in the roll of the Estates in letters an inch high.[/if] {heir.first} stands on {heir.his} chair to see, and Mahaut does not stop {heir.him}.
         effects: [ { set: flag.h_c_estates_swore }, { add: { counter.favour: 1 } } ]
         next: h_pc09_illness
       failure:
         text: |
-          You speak, and it goes well enough, and then {house.querec_short}'s marsh lords stand and talk about custom and Valdrenne and a girl, and the hall begins to argue among itself. In the end the Estates swear, but only to "the King's heir, as the law shall be", and the clerk writes that in the roll instead. Everyone knows what it means.
+          You speak, and it goes well enough, and then {house.querec_short}'s friends stand and talk about custom and promises and a child, and the hall begins to argue among itself. [if inherited.c5r_estates_choose]In the end the Estates will not elect a child of {heir.ageword} while {heir.his} father lives, and say so, courteously, and adjourn. The clerk writes that in the roll instead. They will choose when the chair is empty, as you promised.[else]In the end the Estates swear, but only to "the King's heir, as the law shall be", and the clerk writes that in the roll instead. Everyone knows what it means.[/if]
         effects: [ { set: flag.h_c_estates_divided } ]
         next: h_pc09_illness
     - id: law
-      text: "Ask them to write it into law: the eldest child, son or daughter, for ever."
-      check: { attr: presence, skill: diplomacy, difficulty: 8, audience: nobles, mods: [ { if: flag.h_c_querec_swore, add: 1, label: Quérec has sworn }, { if: flag.h_c_largesse, add: 1, label: the salt towns remember }, { if: rel.mahaut_armance.affection >= 2, add: 1, label: the Armance votes with its duchess } ] }
+      text: "[if inherited.c5r_estates_choose]Ask them to make the crown hereditary: the eldest child, son or daughter, for ever.[else]Ask them to write it into law: the eldest child, son or daughter, for ever.[/if]"
+      check: { attr: presence, skill: diplomacy, difficulty: 8, audience: nobles, mods: [ { if: flag.h_c_querec_swore, add: 1, label: Quérec has sworn }, { if: flag.h_c_largesse, add: 1, label: the salt towns remember }, { if: rel.mahaut_armance.affection >= 2, add: 1, label: the Armance votes with its duchess }, { if: inherited.c5r_estates_choose, add: -1, label: you promised they would choose } ] }
       success:
         text: |
           It takes three days. On the third day the Estates of the West write it: the crown to pass to the eldest child of the last wearer, son or daughter. Hervé de Penhoët votes against, quietly, and asks for his vote to be recorded. It is. You have just settled a question for a hundred years, or started one.
@@ -263,14 +267,14 @@
         next: h_pc09_illness
       failure:
         text: |
-          The Estates will not write a law for a hundred years at the end of a long day for a King who is plainly tired. They swear to "the King's heir, as the law shall be", and adjourn. Hervé de Penhoët, on his way out, says to the Armance bench, "As the law shall be," as if tasting it.
+          The Estates will not write a law for a hundred years at the end of a long day for a King who is plainly tired. [if inherited.c5r_estates_choose]They remind you, courteously, of what you promised them in your first year, and adjourn.[else]They swear to "the King's heir, as the law shall be", and adjourn.[/if] Hervé de Penhoët, on his way out, says to the Armance bench, "As the law shall be," as if tasting it.
         effects: [ { set: flag.h_c_estates_divided }, { add: { counter.penhoet: 1 } } ]
         next: h_pc09_illness
     - id: no
-      text: Ask them nothing. A crowned king crowns his heir.
+      text: "[if inherited.c5r_estates_choose]Ask them nothing, and keep your promise. They will choose when you are gone.[else]Ask them nothing. A crowned king crowns his heir.[/if]"
       effects: [ { set: flag.h_c_no_estates } ]
       text_after: |
-        You thank them for coming, and feast them, and send them home, and ask them for nothing at all. The bishops are puzzled. The burgesses are relieved. {house.querec_short} goes home to the marsh, smiling, because a question nobody asks is a question somebody else will.
+        You thank them for coming, and feast them, and send them home, and ask them for nothing at all. The bishops are puzzled. The burgesses are relieved. {house.querec_short} rides south, smiling, because a question nobody asks is a question somebody else will.
       next: h_pc09_illness
 
 - id: h_pc09_illness
@@ -281,7 +285,7 @@
   text: |
     It comes at Christmas, with the great hall full and the boar's head on the table. A shaking first, that you put down to the cold. Then a heat, and a weight on your chest like a man kneeling on it.
 
-    You wake in your own bed with no memory of getting there. Mahaut is sitting beside it in her furs with a book of accounts on her knee, and turns a page, and looks up when you move, and you see on her face what you look like. Jehanne is asleep at the foot of the bed in a nest of cloaks, with her shoes on.
+    You wake in your own bed with no memory of getting there. Mahaut is sitting beside it in her furs with a book of accounts on her knee, and turns a page, and looks up when you move, and you see on her face what you look like. {heir.first} is asleep at the foot of the bed in a nest of cloaks, with {heir.his} shoes on.
 
     The fever goes in a week. The weakness does not. You cannot get up the stairs without stopping. You cannot sit a horse.
 
@@ -331,32 +335,32 @@
   text: |
     Lady Day, the new year. You sit in the gallery in a chair with a fur over your knees, and you know.
 
-    You will live. The physicians say so, and you believe them, and you can feel it: you will sit in the sun for years yet. But you will not ride to the march again, or sit a whole day's assize, or hold a great council by the force of standing up in it. The kingdom cannot wait for you to get better. It can only wait for Jehanne to grow up.
+    You will live. The physicians say so, and you believe them, and you can feel it: you will sit in the sun for years yet. But you will not ride to the march again, or sit a whole day's assize, or hold a great council by the force of standing up in it. The kingdom cannot wait for you to get better. It can only wait for {heir.first} to grow up.
 
-    The kings of Valdrenne used to do it this way, in the old days, when they were afraid: crown the heir while the father lived, so that there was never a day without a crowned head. Jehanne is nine. [if family.children >= 2]Her brothers and sisters are younger.[/if] Mahaut would govern for her. You would be there, behind the throne, for as long as you last.
+    The kings of Valdrenne used to do it this way, in the old days, when they were afraid: crown the heir while the father lived, so that there was never a day without a crowned head. {heir.first} is {heir.ageword}. [if family.children >= 2]{heir.His} brothers and sisters are younger.[/if] Mahaut would govern for {heir.him}. You would be there, behind the throne, for as long as you last.
 
-    [if flag.h_c_estates_swore]The Estates have sworn to her. That will help.[elif flag.h_c_estates_divided]The Estates swore to "the King's heir, as the law shall be". That will not help.[else]Nobody has asked the Estates anything. That may help, or not.[/if] Bishop Évrard of Saint-Lys, who crowned you, is a hundred and one, and has sent word that he would like to crown one more, if it is soon.
+    [if flag.h_c_estates_swore && inherited.c5r_estates_choose]The Estates have elected {heir.him}. That will help.[elif flag.h_c_estates_swore]The Estates have sworn to {heir.him}. That will help.[elif inherited.c5r_estates_choose]You promised the Estates they would choose. They have not chosen. To crown {heir.him} now is to choose for them, and every man in the hall will know it.[elif flag.h_c_estates_divided]The Estates swore to "the King's heir, as the law shall be". That will not help.[else]Nobody has asked the Estates anything. That may help, or not.[/if] Bishop Évrard of Saint-Lys, who crowned you, is a hundred and one, and has sent word that he would like to crown one more, if it is soon.
   choices:
     - id: cathedral
-      text: Crown her at Saint-Lys, before the Estates and all the West.
+      text: Crown {heir.him} at Saint-Lys, before the Estates and all the West.
       effects: [ { set: flag.h_c_crowned_cathedral }, { set: flag.h_c_junior }, { add: { counter.favour: 2, counter.household: 1 } }, { step_down: junior_crown } ]
       text_after: |
-        They carry you into the cathedral in a chair, and you stand for the crowning, because you will not sit for it. Old Évrard sets a small crown on Jehanne's head with hands that shake so badly two canons have to steady them, and the oldest man in the West crowns the youngest, and the nave roars. Jehanne does not cry, and does not smile, and does not drop the sceptre, which is heavier than she is. Afterwards, in the sacristy, she is sick into a basin, and then asks for her dinner.
+        They carry you into the cathedral in a chair, and you stand for the crowning, because you will not sit for it. Old Évrard sets a small crown on {heir.first}'s head with hands that shake so badly two canons have to steady them, and the oldest man in the West crowns the youngest, and the nave roars. {heir.first} does not cry, and does not smile, and does not drop the sceptre, which is heavier than {heir.he} is. Afterwards, in the sacristy, {heir.he} is sick into a basin, and then asks for {heir.his} dinner.
       next: h_pc11_council
     - id: chapel
-      text: Crown her quietly in the palace chapel, and tell the West after.
+      text: Crown {heir.him} quietly in the palace chapel, and tell the West after.
       effects: [ { set: flag.h_c_crowned_chapel }, { set: flag.h_c_junior }, { add: { counter.household: 1, counter.favour: -1 } }, { step_down: junior_crown } ]
       text_after: |
-        Évrard comes to the palace in a litter and crowns her in the chapel with the household packed in to the door and the guard outside it. Fewer people see it. Fewer people can object. A great many people, by midsummer, are saying that a crown given in a cupboard can be taken back in one.
+        Évrard comes to the palace in a litter and crowns {heir.him} in the chapel with the household packed in to the door and the guard outside it. Fewer people see it. Fewer people can object. A great many people, by midsummer, are saying that a crown given in a cupboard can be taken back in one.
       next: h_pc11_council
     - id: council
-      text: Crown her, and name her council in the same hour, so no one else can.
+      text: Crown {heir.him}, and name {heir.his} council in the same hour, so no one else can.
       effects: [ { set: flag.h_c_crowned_council }, { set: flag.h_c_junior }, { set: flag.h_will_conditions }, { add: { counter.household: 2, rel.mahaut_armance.affection: -1 } }, { step_down: junior_crown } ]
       text_after: |
-        At Saint-Lys, with the crown still settling on Jehanne's head, the chancellor reads out the council of her minority, by your order: the Queen as regent, and beside her your own men, four of the old company's sons, two bishops, and nobody from Quérec. Mahaut hears her own name first and the rest after, and her face does not move at all.
+        At Saint-Lys, with the crown still settling on {heir.first}'s head, the chancellor reads out the council of {heir.his} minority, by your order: the Queen as regent, and beside her your own men, four of the old company's sons, two bishops, and nobody from Quérec. Mahaut hears her own name first and the rest after, and her face does not move at all.
       next: h_pc11_council
 
-# ---- the second half: Jehanne, the junior queen (years 53-55) ----
+# ---- the second half: the junior king or queen (years 53-55) ----
 
 - id: h_pc11_council
   chapter: prologue
@@ -366,20 +370,20 @@
   frames: [free]
   on_enter: [ { catch_up: { year: 53, season: summer } } ]
   text: |
-    You are nine years old, and Queen of the West, and the chair in the council chamber was made for your father. Your feet do not reach the floor. Somebody has put a footstool under them, tactfully, and you would like to kick it across the room.
+    You are {age_words} years old, and {house.ruler} of the West, and the chair in the council chamber was made for your father. Your feet do not reach the floor. Somebody has put a footstool under them, tactfully, and you would like to kick it across the room.
 
     Your mother sits at the other end of the table, and governs. She is the regent. That is a word you have learned this spring, along with "minority", "the Great Seal", and "Your Grace", which is what the chancellor calls you now, every time, as if checking it still works.
 
     Your father is in his rooms along the gallery. He is better. He sits in the sun in the mornings, and you go and see him after council, and he asks you what they said, and laughs.
 
-    Today the council is talking about Quérec. [if flag.h_c_querec_defiant]He has not sworn to you, and has not come to your crowning, and is building a wall round his house in the marsh.[else]He swore to you, and kissed your hand, and has sent a letter congratulating your mother on her regency. The council thinks that is worse.[/if] They talk across you, the way grown men talk across a child at dinner. Nobody asks you anything.
+    Today the council is talking about Quérec. [if flag.h_c_querec_defiant && inherited.c5r_querec_exiled || flag.h_c_querec_defiant && inherited.c5r_querec_executed]He has not sworn to you, and has not come to your crowning, and is going from one marsh manor to the next, landless, telling his father's old tenants what the Estates were promised.[elif flag.h_c_querec_defiant]He has not sworn to you, and has not come to your crowning, and is building a wall round his house in the marsh.[else]He swore to you, and kissed your hand, and has sent a letter congratulating your mother on her regency. The council thinks that is worse.[/if] They talk across you, the way grown men talk across a child at dinner. Nobody asks you anything.
   choices:
     - id: speak
       text: Ask a question, out loud, in the middle of it.
       check: { attr: presence, skill: courtesy, difficulty: 2, mods: [ { if: flag.h_heir_court, add: 1, label: your mother's lessons }, { if: flag.h_heir_kept, add: 1, label: you sat through your father's assizes } ] }
       success:
         text: |
-          "What does Quérec want?" you say. It comes out loud. The council stops. The chancellor opens his mouth and shuts it. Your mother looks at you for a long moment, and then says, "That is the question, my lords. Answer the Queen." They try. None of them knows. You see your mother see that.
+          "What does Quérec want?" you say. It comes out loud. The council stops. The chancellor opens his mouth and shuts it. Your mother looks at you for a long moment, and then says, "That is the question, my lords. Answer the {house.ruler}." They try. None of them knows. You see your mother see that.
         effects: [ { add: { counter.shadow: -1, rel.mahaut_armance.respect: 1 } }, { set: flag.h_c_spoke_council } ]
         next: h_pc12_regency
       failure:
@@ -395,7 +399,7 @@
       next: h_pc12_regency
     - id: father
       text: Go to your father after, and ask him what to say.
-      effects: [ { add: { counter.shadow: 2, heir.bond: 1 } } ]
+      effects: [ { add: { counter.shadow: 2, head.bond: 1 } } ]
       text_after: |
         He tells you. He tells you for an hour, in the sun, everything he knows about Quérec and his father and the marsh and the salt. It is wonderful, and you remember all of it, and the council hears it from you the next day and knows exactly whose words they are.
       next: h_pc12_regency
@@ -414,7 +418,7 @@
 
     "Why are you asking me?" you say.
 
-    "Because you are the Queen," she says, "and one day you will remember who I asked."
+    "Because you are the {house.ruler}," she says, "and one day you will remember who I asked."
   choices:
     - id: armance
       text: Give her the Armance council she wants.
@@ -426,7 +430,7 @@
       text: Keep your father's men. They made the crown.
       effects: [ { set: flag.h_c_council_old }, { add: { counter.household: 1, counter.shadow: 1, rel.mahaut_armance.affection: -2 } } ]
       text_after: |
-        "My father's men," you say. Your mother looks at you as if you were someone she has just met. "Very well," she says, and takes the list back, and puts it in the fire. She is perfectly kind to you for the rest of the year, and you never again find her alone in her chamber when you knock.
+        "My father's men," you say. Your mother looks at you as if you were someone she has just met. "As you wish," she says, and takes the list back, and puts it in the fire. She is perfectly kind to you for the rest of the year, and you never again find her alone in her chamber when you knock.
       next: h_pc13_rising
     - id: both
       text: Take half her names, and keep half his.
@@ -448,9 +452,9 @@
   frames: [free]
   on_enter: [ { catch_up: { year: 53, season: winter } } ]
   text: |
-    [if flag.h_c_querec_defiant]At Candlemas {house.querec} rises. He takes the crown's salt-works at the edge of the marsh, and the toll bridge, and hangs a banner from the bridge-tower with a message on it in letters a yard high: NO WOMAN'S CROWN.[elif flag.h_c_querec_bought]At Candlemas the oath {house.querec_short} sold you turns out to have been the kind you buy.[else]At Candlemas the oath {house.querec_short} swore in the great hall, with your guard along the wall, turns out to have been worth what such oaths are worth. He takes the crown's salt-works at the edge of the marsh, and the toll bridge, and says in a letter to every lord in the West that he swore to a King, not to a child and her mother.[/if]
+    [if flag.h_c_querec_defiant]At Candlemas {house.querec} rises. He takes the crown's salt-works at the edge of the marsh, and the toll bridge, and hangs a banner from the bridge-tower with a message on it in letters a yard high: [if inherited.c5r_estates_choose]THE WEST CHOOSES ITS KINGS[elif hero.sex == female]NO WOMAN'S CROWN[else]NO CHILD'S CROWN[/if].[elif flag.h_c_querec_bought]At Candlemas the oath {house.querec_short} sold you turns out to have been the kind you buy. He takes the crown's salt-works at the edge of the marsh, and the toll bridge, and says in a letter to every lord in the West that he swore to a King, not to a child and {his} mother.[else]At Candlemas the oath {house.querec_short} swore in the great hall, with your father's guard along the wall, turns out to have been worth what such oaths are worth. He takes the crown's salt-works at the edge of the marsh, and the toll bridge, and says in a letter to every lord in the West that he swore to a King, not to a child and {his} mother.[/if]
 
-    Forty marsh lords are with him, and two hundred men, and a ship from Valdrenne has been seen off the salt flats, though nobody can say whose.
+    [if inherited.c5r_querec_exiled || inherited.c5r_querec_executed]His father's old tenants have risen for him, and the marsh lords who remember his father.[/if] Forty marsh lords are with him, and two hundred men, and a ship from Valdrenne has been seen off the salt flats, though nobody can say whose.
 
     The council meets for three days. The constable wants to march at once, in the frost. The chancellor wants to treat. Your mother listens to both and says nothing, which you have learned means she has decided and is waiting to see if anyone agrees.
 
@@ -461,12 +465,12 @@
       check: { attr: presence, skill: riding, difficulty: 3, audience: knights, mods: [ { if: flag.h_heir_kept, add: 1, label: you rode with your father }, { if: flag.h_heir_manor, add: 1, label: the Armance knows you } ] }
       success:
         text: |
-          They put you on a grey pony in a cloak of the royal colours, in the middle of six hundred men, and the constable does the rest. At the toll bridge the marsh men see the child queen's banner coming over the causeway in the frost and lose their nerve, half of them, before anyone has drawn. {house.querec_short} holds the tower for two days, and then asks for terms. Your mother gives him the terms, in your name, and makes you watch her do it.
+          They put you on a grey pony in a cloak of the royal colours, in the middle of six hundred men, and the constable does the rest. At the toll bridge the marsh men see the child {house.ruler_lc}'s banner coming over the causeway in the frost and lose their nerve, half of them, before anyone has drawn. {house.querec_short} holds the tower for two days, and then asks for terms. Your mother gives him the terms, in your name, and makes you watch her do it.
         effects: [ { set: flag.h_c_rising_crushed }, { add: { counter.household: 2, counter.shadow: -1 } } ]
         next: h_pc14_question
       failure:
         text: |
-          You ride out, and on the third day in the frost you take a fever, and they carry you back to Lannec in a litter, and the host goes on without you. The constable takes the bridge in a week, and {house.querec_short} gets away into the marsh with the best of his men. People say the Queen came home in a litter. They say it kindly, mostly.
+          You ride out, and on the third day in the frost you take a fever, and they carry you back to Lannec in a litter, and the host goes on without you. The constable takes the bridge in a week, and {house.querec_short} gets away into the marsh with the best of his men. People say the {house.ruler} came home in a litter. They say it kindly, mostly.
         effects: [ { set: flag.h_c_rising_open }, { add: { counter.shadow: 1 } } ]
         next: h_pc14_question
     - id: treat
@@ -494,7 +498,7 @@
 
     Then he stops, and looks at you, and you can see him decide to say it.
 
-    "You're ten," he says. "You've had a year of it. Bridges and councils and your mother." He takes your hand. His is dry and light. "Tell me. Are you going to be me?"
+    "You're {age_words}," he says. "You've had a year of it. Bridges and councils and your mother." He takes your hand. His is dry and light. "Tell me. Are you going to be me?"
   choices:
     - id: be_him
       text: "\"I'll try to be.\""
@@ -552,7 +556,7 @@
   frames: [free]
   on_enter: [ { catch_up: { year: 55, season: spring } } ]
   text: |
-    Lady Day, year 55. You are eleven. The Estates of the West meet at Lannec to acclaim you, in person, as their Queen: not as a child with a crown on, but as the Queen they will obey.
+    Lady Day, year 55. You are {age_words}. The Estates of the West meet at Lannec to acclaim you, in person, as their {house.ruler}: not as a child with a crown on, but as the {house.ruler} they will obey.[if inherited.c5r_estates_choose && !flag.h_c_estates_swore] They did not choose you. Your father chose for them. Today they will say whether they agree.[/if]
 
     The hall is full. Your father sits at the side of the dais in a chair with arms, where everyone can see him and nobody can say he is ruling. Your mother stands behind your chair, which is the old King's chair, with the footstool gone, because you have grown. [if flag.h_c_rising_open]There are empty places on the marsh lords' bench, and everyone looks at them.[elif flag.h_c_rising_crushed]{house.querec_short} is on the marsh lords' bench, under guard, and will kneel today whether he likes it or not.[else]{house.querec_short} is on the marsh lords' bench, with his men, and has not decided what he will do.[/if]
 
@@ -564,24 +568,24 @@
       text: Say the speech the chancellor wrote, every word.
       effects: [ { set: flag.h_oath_plain }, { add: { counter.favour: 1 } } ]
       text_after: |
-        You say it, every word, the Latin too. It takes a quarter of an hour. The Estates acclaim you, and mean it, and some of the bishops weep. Afterwards an old lord says to his neighbour, loud enough, "Well, she can learn a speech," and you decide to take it as kindly meant.
+        You say it, every word, the Latin too. It takes a quarter of an hour. The Estates acclaim you, and mean it, and some of the bishops weep. Afterwards an old lord says to his neighbour, loud enough, "Well, {he} can learn a speech," and you decide to take it as kindly meant.
       next: h_bc01_homage
     - id: own
       text: Put the speech down, and say something of your own.
       check: { attr: presence, skill: courtesy, difficulty: 3, audience: nobles, mods: [ { if: flag.h_c_spoke_council, add: 1, label: you have spoken out before }, { if: flag.h_c_rising_crushed, add: 1, label: they saw you at the bridge } ] }
       success:
         text: |
-          "I am eleven," you say. "My father was nobody, and my mother's grandmother held the Armance against a king. I don't know which of them I'll be. You'll find out when I do." There is a silence like a held breath. Then your father laughs out loud from his chair, and the hall laughs with him, and then it roars. Your mother puts her hand on your shoulder from behind, and leaves it there.
+          "I am {age_words}," you say. "My father was nobody, and my mother's grandmother held the Armance against a king. I don't know which of them I'll be. You'll find out when I do." There is a silence like a held breath. Then your father laughs out loud from his chair, and the hall laughs with him, and then it roars. Your mother puts her hand on your shoulder from behind, and leaves it there.
         effects: [ { set: flag.h_oath_reserved }, { add: { counter.favour: 2, counter.shadow: -1 } } ]
         next: h_bc01_homage
       failure:
         text: |
-          You put the speech down, and say, "I am eleven," and then cannot think what comes next, and the silence goes on, and on. Your mother says, quietly, "Long live the Queen," and the hall takes it up, and it is over, and you are acclaimed. Your face burns until Vespers.
+          You put the speech down, and say, "I am {age_words}," and then cannot think what comes next, and the silence goes on, and on. Your mother says, quietly, "Long live the {house.ruler}," and the hall takes it up, and it is over, and you are acclaimed. Your face burns until Vespers.
         effects: [ { set: flag.h_oath_reserved }, { add: { counter.shadow: 1 } } ]
         next: h_bc01_homage
     - id: mother
       text: Let your mother speak for you.
       effects: [ { set: flag.h_oath_bought }, { add: { rel.mahaut_armance.affection: 1, counter.shadow: 1 } } ]
       text_after: |
-        You stand, and your mother speaks, in the voice she used at the Estates when she chose your father, and the hall acclaims the Queen, and some of them, you notice, are looking at your mother when they do it.
+        You stand, and your mother speaks, in the voice she used at the Estates when she chose your father, and the hall acclaims the {house.ruler}, and some of them, you notice, are looking at your mother when they do it.
       next: h_bc01_homage

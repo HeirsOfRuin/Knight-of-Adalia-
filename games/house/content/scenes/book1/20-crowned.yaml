@@ -1,8 +1,10 @@
-# Book I, Act I for the crowned path (STORY.md, "The crowned path"): years 55-58, played as Queen Jehanne, eleven to
-# fourteen, under her mother's regency, with the old king at court. Penhoët enters with its claim to the Armance by the
-# male line, against the Queen's own inheritance from her mother.
+# Book I, Act I for the crowned path (STORY.md, "The crowned path"): years 55-58, played as Mahaut's child, the young
+# King or Queen of the West, under her regency, with the old king at court. Penhoët enters with its claim to the
+# Armance by the male line, against the Keeper's inheritance from the mother: a daughter's because the custom does not
+# count women, a son's because it does not count a right that comes through one. Where Knight of Adalia left the crown
+# to the Estates (c5r_estates_choose), the Estates in 58 sit to decide whether the crown is theirs to give.
 # Routing: homage -> the claim -> the betrothal -> the Easter court -> Quérec's end -> the brother or sister (if any)
-# -> the Queen and her mother -> the Queen's household -> pool h_b1_late -> before the Estates -> the end.
+# -> the Keeper and the regent -> the guard -> pool h_b1_late -> before the Estates -> the end.
 
 - id: h_bc01_homage
   chapter: book1
@@ -37,14 +39,14 @@
         next: h_bc02_claim
       failure:
         text: |
-          "Swear plain, my lord," you say, and Hervé says, quite gently, "I have sworn, Your Grace. The saving is the truth, and I'll not lie to my queen at her first homage." The hall murmurs. He goes back to his place with the saving still in the roll, and everyone knows you asked him to take it out.
+          "Swear plain, my lord," you say, and Hervé says, quite gently, "I have sworn, Your Grace. The saving is the truth, and I'll not lie to my {house.ruler_lc} at {his} first homage." The hall murmurs. He goes back to his place with the saving still in the roll, and everyone knows you asked him to take it out.
         effects: [ { set: flag.h_bc_saving_taken }, { add: { counter.penhoet: 1 } } ]
         next: h_bc02_claim
     - id: mother
       text: Turn to your mother. It is her duchy.
       effects: [ { set: flag.h_bc_mother_answered }, { add: { rel.mahaut_armance.affection: 1, counter.shadow: 1 } } ]
       text_after: |
-        Your mother steps forward, beside your chair. "The Armance is mine, Sire Hervé," she says, "by my grandmother, and after me it is my daughter's, by the same right. You may save what you like. I hold what I hold." Hervé bows to her, deeply, and does not take the saving back.
+        Your mother steps forward, beside your chair. "The Armance is mine, Sire Hervé," she says, "by my grandmother, and after me it is my [if hero.sex == female]daughter's[else]son's[/if], by the same right. You may save what you like. I hold what I hold." Hervé bows to her, deeply, and does not take the saving back.
       next: h_bc02_claim
 
 - id: h_bc02_claim
@@ -55,19 +57,19 @@
   text: |
     After Michaelmas Hervé de Penhoët puts it in writing, before the council, in his own neat hand.
 
-    The duchy of Armance, he says, descended by the male line for three hundred years, until the war gave it to a woman. His house is the old line's nearest male heir. Your mother holds it for her life; he does not dispute that; he is a loyal man. But at her death, he says, it should come to Penhoët by the custom of the Armance, and not to her daughter, who is Queen of the West already and has a crown to be going on with.
+    The duchy of Armance, he says, descended by the male line for three hundred years, until the war gave it to a woman. His house is the old line's nearest male heir. Your mother holds it for her life; he does not dispute that; he is a loyal man. But at her death, he says, it should come to Penhoët by the custom of the Armance, and not to her [if hero.sex == female]daughter, who is Queen of the West already and has a crown to be going on with.[else]son, whose right comes to him through his mother, and the custom of the Armance has never counted a right that came through a woman. Her son is King of the West already, and has a crown to be going on with.[/if]
 
-    Then, at the bottom, under his seal, the offer. His son Ronan is twenty-one. If the Queen were to marry Ronan, the claim and the duchy would be in one bed, and there would be no quarrel to speak of, ever again.
+    Then, at the bottom, under his seal, the offer. [if hero.sex == female]His son Ronan is twenty-one. If the Queen were to marry Ronan,[else]His daughter Sibylle is eight. If the King were to marry Sibylle, when they are both of age,[/if] the claim and the duchy would be in one bed, and there would be no quarrel to speak of, ever again.
 
     "It's a good letter," says the chancellor, unhappily.
 
     "It's an excellent letter," says your mother. "That is what I don't like about it."
   choices:
     - id: hear
-      text: Hear the offer. Ask to meet Ronan.
+      text: Hear the offer. Ask to meet {house.match_penhoet}.
       effects: [ { set: flag.h_bc_ronan_offer }, { add: { counter.penhoet: 1 } } ]
       text_after: |
-        Ronan de Penhoët comes to court at Martinmas: tall, quiet, his grandfather's shoulders and his father's patience, and none of either's habit of saying the clever thing. He bows to you, and to your mother, and talks to you for an hour about horses as if you were a person, which almost nobody at court does. You do not tell your mother that part.
+        [if hero.sex == female]Ronan de Penhoët comes to court at Martinmas: tall, quiet, his grandfather's shoulders and his father's patience, and none of either's habit of saying the clever thing. He bows to you, and to your mother, and talks to you for an hour about horses as if you were a person, which almost nobody at court does.[else]Sibylle de Penhoët comes to court at Martinmas with her father: eight, solemn, her grandfather's chin and her father's patience. She curtsies to you, and to your mother, and then beats you at merels twice, and does not let you win the third game, which almost nobody at court would dare.[/if] You do not tell your mother that part.
       next: h_bc03_betrothal
     - id: reject
       text: Answer that the Armance is your mother's, and then yours, and there is nothing to discuss.
@@ -79,23 +81,23 @@
       text: Answer that the Estates will settle the law, and the claim with it.
       effects: [ { set: flag.h_bc_claim_deferred } ]
       text_after: |
-        "The Estates of the West will write the law," you write, "and the Queen will keep it." Your mother reads it over your shoulder before it is sealed, and says, "That's what your father would have written," and you cannot tell whether she means it as praise.
+        "The Estates of the West will write the law," you write, "and the {house.ruler} will keep it." Your mother reads it over your shoulder before it is sealed, and says, "That's what your father would have written," and you cannot tell whether she means it as praise.
       next: h_bc03_betrothal
 
 - id: h_bc03_betrothal
   chapter: book1
-  title: The Queen's Hand
+  title: The Betrothal
   frames: [free]
   on_enter: [ { catch_up: { year: 55, season: winter } } ]
   text: |
-    In the dark of the year the council talks about your marriage, as it has every winter since you were crowned, and this year they talk about it in front of you, because you are twelve, and a queen's betrothal at twelve is late.
+    In the dark of the year the council talks about your marriage, as it has every winter since you were crowned, and this year they talk about it in front of you, because you are {age_words}, and a {house.ruler_lc} unpromised at {age_words} is a {house.ruler_lc} every court in the world is writing letters about.
 
-    [if flag.h_c_betrothed_valdrenne]You are promised already, to Prince Lothaire of Valdrenne, who is twenty-five now and writes you letters about hunting, in a secretary's hand, which you answer in a secretary's hand. The betrothal can be kept. It can also be broken, at a price.[else]Your father would not promise you when the Valdrennish came. The offers have kept coming since.[/if] [if flag.h_bc_ronan_offer]Ronan de Penhoët, and the end of the Armance quarrel.[else]Penhoët's son, if Hervé is still willing, and he will be.[/if] Tanguy de Kerguen, the counterweight to Penhoët in the Armance, who is twenty-six and would like to be a king's consort more than he can quite hide. And no one at all, as your mother was no one's until she chose.
+    [if flag.h_c_betrothed_valdrenne][if hero.sex == female]You are promised already, to Prince Lothaire of Valdrenne, who is twenty-five now and writes you letters about hunting, in a secretary's hand, which you answer in a secretary's hand.[else]You are promised already, to Princess Isabeau of Valdrenne, who is eleven, and sends you at Christmas a letter in a secretary's hand and a castle made of sugar, which you answer in a secretary's hand.[/if] The betrothal can be kept. It can also be broken, at a price.[else]Your father would not promise you when the Valdrennish came. The offers have kept coming since.[/if] [if flag.h_bc_ronan_offer]{house.match_penhoet}, and the end of the Armance quarrel.[else]Penhoët's [if hero.sex == female]son[else]daughter[/if], if Hervé is still willing, and he will be.[/if] [if hero.sex == female]Tanguy de Kerguen, the counterweight to Penhoët in the Armance, who is twenty-six and would like to be a king's consort more than he can quite hide.[else]Maëlle de Kerguen, Tanguy's cousin and ward, ten years old: Kerguen, the counterweight to Penhoët in the Armance, and Tanguy would like to see her a queen more than he can quite hide.[/if] And no one at all, as your mother was no one's until she chose.
 
     Your mother says, "Whatever you choose, choose it yourself." Your father, in the garden, says, "Choose the one who'll still be there when it goes wrong."
   choices:
     - id: ronan
-      text: Betroth yourself to Ronan de Penhoët.
+      text: Betroth yourself to {house.match_penhoet}.
       effects: [ { set: flag.h_bc_betrothed_penhoet }, { add: { counter.penhoet: 3, rel.mahaut_armance.affection: -2 } }, { if: flag.h_c_betrothed_valdrenne, then: [ { add: { counter.favour: -2, res.coin: -9600 } } ] } ]
       text_after: |
         [if flag.h_c_betrothed_valdrenne]Breaking the Valdrennish betrothal costs forty pounds and a cold letter from Cordelle.[/if] Hervé comes to sign, and kisses your hand, and then, unexpectedly, your forehead. "The claim's in one bed now," he says. "We'll see whose." Your mother signs as Duchess of Armance. She does not look up from the parchment.
@@ -105,19 +107,19 @@
       text: Keep the Valdrennish betrothal, and the peace with it.
       effects: [ { set: flag.h_bc_betrothed_valdrenne }, { add: { counter.favour: 1, counter.penhoet: -1 } } ]
       text_after: |
-        You write to Lothaire yourself, for the first time, in your own hand, and say that you will keep your father's promise. His answer comes in his own hand too, badly spelled, and says he is glad, and that he has a horse for you.
+        You write to {house.match_valdrenne} yourself, for the first time, in your own hand, and say that you will keep your father's promise. [if hero.sex == female]His answer comes in his own hand too, badly spelled, and says he is glad, and that he has a horse for you.[else]Her answer comes in her own hand too, in large careful letters, and says she is glad, and asks whether it is true that it rains in the West all the year round.[/if]
       next: h_bc04_court
     - id: tanguy
-      text: Betroth yourself to Tanguy de Kerguen.
+      text: Betroth yourself to {house.match_kerguen}.
       effects: [ { set: flag.h_bc_betrothed_kerguen }, { add: { counter.penhoet: -2, rel.tanguy_kerguen.affection: 2 } }, { if: flag.h_c_betrothed_valdrenne, then: [ { add: { counter.favour: -2, res.coin: -9600 } } ] } ]
       text_after: |
-        Tanguy rides to Lannec in the snow to kneel to you, and does it with great style, and stays to dinner, and makes your father laugh twice. Kerguen and the crown, against Penhoët and the custom of the Armance. Hervé hears of it at dinner and finishes his dinner.
+        [if flag.h_c_betrothed_valdrenne]Breaking the Valdrennish betrothal costs forty pounds and a cold letter from Cordelle.[/if] [if hero.sex == female]Tanguy rides to Lannec in the snow to kneel to you, and does it with great style, and stays to dinner, and makes your father laugh twice.[else]Tanguy brings Maëlle to Lannec in the snow to be presented, and kneels to you himself, with great style, and stays to dinner, and makes your father laugh twice. Maëlle says nothing the whole evening, and at the end of it curtsies to you as if she meant it.[/if] Kerguen and the crown, against Penhoët and the custom of the Armance. Hervé hears of it at dinner and finishes his dinner.
       next: h_bc04_court
     - id: none
       text: Promise yourself to no one. Not yet.
       effects: [ { set: flag.h_bc_betrothed_none }, { add: { rel.mahaut_armance.affection: 1 } } ]
       text_after: |
-        "Not yet," you tell the council, and they stare at you, and the chancellor says that a queen's hand is a matter of state. "Yes," you say. "Mine." Your mother, at the end of the table, looks down at her papers to hide her face.
+        "Not yet," you tell the council, and they stare at you, and the chancellor says that a {house.ruler_lc}'s hand is a matter of state. "Yes," you say. "Mine." Your mother, at the end of the table, looks down at her papers to hide her face.
       next: h_bc04_court
 
 - id: h_bc04_court
@@ -128,7 +130,7 @@
   text: |
     At Easter the court keeps the feast at Lannec, the long tables down the great hall, the boar's head, the Sarenzan musicians, and the whole West, or as much of it as owes you or wants something, in one hall.
 
-    [if flag.h_bc_betrothed_penhoet]Ronan sits at your right hand as your betrothed, and Hervé below him, and the Armance lords at the far end of the hall talk among themselves in low voices and do not look up.[elif flag.h_bc_betrothed_kerguen]Tanguy sits at your right hand as your betrothed, and tells stories, and Hervé de Penhoët sits exactly as far down the hall as his rank requires, and watches.[else]Hervé de Penhoët has come, which nobody expected, and stands in the doorway waiting to be told where to sit.[/if]
+    [if flag.h_bc_betrothed_penhoet]{house.match_penhoet} sits at your right hand as your betrothed, and Hervé below, and the Armance lords at the far end of the hall talk among themselves in low voices and do not look up.[elif flag.h_bc_betrothed_kerguen][if hero.sex == female]Tanguy sits at your right hand as your betrothed, and tells stories,[else]Maëlle sits at your right hand as your betrothed, and Tanguy beside her tells stories,[/if] and Hervé de Penhoët sits exactly as far down the hall as his rank requires, and watches.[else]Hervé de Penhoët has come, which nobody expected, and stands in the doorway waiting to be told where to sit.[/if]
 
     Your father sits at the side of the dais in his chair with arms. Halfway through the feast he gets up, slowly, with a hand on your shoulder, and calls for silence, and the hall gives it to him at once, the way it never quite does for you.
 
@@ -138,14 +140,14 @@
       text: Let him make it.
       effects: [ { add: { counter.shadow: 2, counter.household: 1 } } ]
       text_after: |
-        "To the Queen," he says. "Who'll be a better king than I was, and a worse liar." The hall roars, and drinks, and goes on talking about it until Whitsun. You are proud. You are also aware that for the length of the toast, nobody in the hall was looking at you.
+        "To the {house.ruler}," he says. "Who'll be a better king than I was, and a worse liar." The hall roars, and drinks, and goes on talking about it until Whitsun. You are proud. You are also aware that for the length of the toast, nobody in the hall was looking at you.
       next: h_bc05_querec
     - id: stand
       text: Stand, and make it with him.
       check: { attr: presence, skill: courtesy, difficulty: 3, audience: nobles, mods: [ { if: flag.h_oath_reserved, add: 1, label: they remember your acclamation } ] }
       success:
         text: |
-          You stand beside him, and he hears you get up, and gives you the cup instead of raising it. "To the West," you say, "which made my father a king and my mother a queen and me a bother." The hall laughs, and drinks, and your father sits down beaming, and tells everyone for a week that he was interrupted by his own daughter at his own feast.
+          You stand beside him, and he hears you get up, and gives you the cup instead of raising it. "To the West," you say, "which made my father a king and my mother a queen and me a bother." The hall laughs, and drinks, and your father sits down beaming, and tells everyone for a week that he was interrupted by his own [if hero.sex == female]daughter[else]son[/if] at his own feast.
         effects: [ { add: { counter.shadow: -1, counter.favour: 1 } } ]
         next: h_bc05_querec
       failure:
@@ -167,21 +169,21 @@
   frames: [free]
   on_enter: [ { catch_up: { year: 56, season: summer } } ]
   text: |
-    [if flag.h_c_rising_crushed]{house.querec_start} has been under guard at Lannec since the bridge, in a good room with a fire, waiting. The council has argued about him for two years. At midsummer your mother says the council will not decide it. You will. You are twelve.[elif flag.h_c_rising_treated]{house.querec_start} kept his men and his marsh and did not kneel. At midsummer he writes to the council, civilly, to say that he will swear to the Queen when the Estates write a law that lets her be one. He encloses a copy for the Queen.[else]The southern marsh has been {house.querec_short}'s for two summers now. The salt goes to Valdrenne by sea, and three lords pay their tithe to him instead of to you. At midsummer the constable says, in council, that it is a crown or it is not.[/if]
+    [if flag.h_c_rising_crushed]{house.querec_start} has been under guard at Lannec since the bridge, in a good room with a fire, waiting. The council has argued about him for two years. At midsummer your mother says the council will not decide it. You will. You are {age_words}.[elif flag.h_c_rising_treated]{house.querec_start} kept his men and his marsh and did not kneel. At midsummer he writes to the council, civilly, to say that [if inherited.c5r_estates_choose]he will swear to the {house.ruler} the Estates of the West choose, on the day they choose one. He encloses a copy of your father's promise, from the roll of the Estates, for the {house.ruler}.[elif hero.sex == female]he will swear to the Queen when the Estates write a law that lets her be one. He encloses a copy for the Queen.[else]he will swear to the King when the King is old enough to take an oath in his own name. He encloses a copy for the regent.[/if][else]The southern marsh has been {house.querec_short}'s for two summers now. The salt goes to Valdrenne by sea, and three lords pay their tithe to him instead of to you. At midsummer the constable says, in council, that it is a crown or it is not.[/if]
 
     [if flag.h_c_rising_crushed]You go to see him, once, before you decide. He gets up when you come in, and bows, which is not kneeling. "Well," he says. "You've grown."[else]The council waits for you. So does your mother, at the end of the table. So, along the gallery, does your father, who will ask you after what you said.[/if]
   choices:
     - id: pardon
-      text: Pardon him, and give him back his land, before the West.
+      text: Pardon him, and give him the marsh, before the West.
       effects: [ { set: flag.h_bc_querec_pardoned }, { add: { counter.household: -1, counter.favour: 1 } } ]
       text_after: |
-        [if flag.h_c_rising_crushed]You pardon him in the great hall, and he kneels to you at last, slowly, the way old men kneel. "Mercy's dear, Your Grace," he says, low, so only you hear. "Spend it carefully."[else]The pardon goes to the marsh with the chancellor. {house.querec_short} takes it, and gives back the salt-works, and keeps his opinion of the law. The constable resigns his staff, and then, worse, takes it back.[/if]
+        [if flag.h_c_rising_crushed]You pardon him in the great hall, and he kneels to you at last, slowly, the way a proud man kneels. "Mercy's dear, Your Grace," he says, low, so only you hear. "Spend it carefully."[else]The pardon goes to the marsh with the chancellor. {house.querec_short} takes it, and gives back the salt-works, and keeps his opinion of the {house.ruler}. The constable resigns his staff, and then, worse, takes it back.[/if]
       next: { switch: [ { if: sibling.exists, go: h_bc06_sibling } ], default: h_bc07_mother }
     - id: exile
       text: "[if flag.h_c_rising_crushed]Send him over the march, and take his land for the crown.[else]Outlaw him, and give his land to whoever takes it.[/if]"
       effects: [ { set: flag.h_bc_querec_exiled }, { add: { res.coin: 4800, counter.household: 1 } } ]
       text_after: |
-        [if flag.h_c_rising_crushed]{house.querec_short} goes south over the march in a cart, as his father once did or might have, and the marsh comes to the crown.[else]The writ goes out in your name. By Michaelmas the Kerguen and Coatmen men have the marsh between them, and {house.querec_short} is in Valdrenne, writing letters.[/if] The salt comes back to Lannec. So, people say, does the fear of the crown, a little.
+        [if flag.h_c_rising_crushed]{house.querec_short} goes south over the march in a cart, [if inherited.c5r_querec_exiled]as his father did,[elif inherited.c5r_querec_executed]which is more than the crown gave his father,[/if] and the marsh comes to the crown.[else]The writ goes out in your name. By Michaelmas the Kerguen and Coatmen men have the marsh between them, and {house.querec_short} is in Valdrenne, writing letters.[/if] The salt comes back to Lannec. So, people say, does the fear of the crown, a little.
       next: { switch: [ { if: sibling.exists, go: h_bc06_sibling } ], default: h_bc07_mother }
     - id: hostage
       text: Keep his land in his hands, and his son in yours.
@@ -196,9 +198,11 @@
   frames: [free]
   on_enter: [ { catch_up: { year: 56, season: autumn } } ]
   text: |
-    [if sibling.sex == male]Your brother {sibling.first} is {sibling.ageword}. He is the King's son, and you are the King's daughter, and since the day you were crowned there have been men in the West who say so in that order.
+    [if sibling.sex == male && hero.sex == female]Your brother {sibling.first} is {sibling.ageword}. He is the King's son, and you are the King's daughter, and since the day you were crowned there have been men in the West who say so in that order.
 
-    At Michaelmas you hear it said aloud. At the Penhoët table, at a hunting dinner, a Brésy cousin raises his cup "to the King's son", and nobody at the table corrects him. It comes back to you in a day, the way everything does.[else]Your sister {sibling.first} is {sibling.ageword}, and the second most valuable girl in the West, and every great house has noticed. At Michaelmas the offers start coming for her too, as if she were a smaller crown.[/if]
+    At Michaelmas you hear it said aloud. At the Penhoët table, at a hunting dinner, a Brésy cousin raises his cup "to the King's son", and nobody at the table corrects him. It comes back to you in a day, the way everything does.[elif sibling.sex == male]Your brother {sibling.first} is {sibling.ageword}. [if inherited.c5r_estates_choose && !flag.h_c_law_written]The West's crown is the Estates' to give, by your father's promise, and there are men in the West who like to remind each other that what the Estates gave once they can give again, and that the old King has another son.[else]He is your heir until you have children of your own, and there are men in the West who find a younger brother easier to love than a king.[/if]
+
+    At Michaelmas you hear it said aloud. At the Penhoët table, at a hunting dinner, a Brésy cousin raises his cup "to the other son", and nobody at the table corrects him. It comes back to you in a day, the way everything does.[else]Your sister {sibling.first} is {sibling.ageword}, and [if hero.sex == female]the second most valuable girl in the West[else]the King's sister, and the most valuable girl in the West[/if], and every great house has noticed. At Michaelmas the offers start coming for her too, as if she were a smaller crown.[/if]
 
     Your mother says, "You'll have to decide what {sibling.he} is to you. Before someone else does."
   choices:
@@ -219,7 +223,7 @@
       text: Send {sibling.him} to the Armance, to be your mother's.
       effects: [ { set: flag.h_bc_sibling_armance }, { add: { rel.mahaut_armance.affection: 1 } } ]
       text_after: |
-        {sibling.first} goes to the castle above the Armance, where you went at six, to be brought up among your mother's people. It takes {sibling.him} out of Lannec and out of the toasts. It also puts {sibling.him} in the Armance, which is the one place Penhoët wants.
+        {sibling.first} goes to the castle above the Armance, to be brought up among your mother's people. It takes {sibling.him} out of Lannec and out of the toasts. It also puts {sibling.him} in the Armance, which is the one place Penhoët wants.
       next: h_bc07_mother
 
 - id: h_bc07_mother
@@ -228,11 +232,11 @@
   frames: [free]
   on_enter: [ { catch_up: { year: 56, season: winter } } ]
   text: |
-    In the winter you are thirteen, and you have sat through three years of council, and you have stopped kicking the footstool, and you have started, without meaning to, to disagree with your mother in front of people.
+    In the winter you are {age_words}, and you have sat through three years of council, and you have stopped kicking the footstool, and you have started, without meaning to, to disagree with your mother in front of people.
 
     She notices. Of course she notices. At Candlemas she sends for you to her chamber, with the old nurse, and the fire, and the list she keeps of every lord in the West and what he wants.
 
-    "The regency ends when you are sixteen," she says. "Three years. I would like to spend them teaching you how to rule, and not how to quarrel with me. You would like," and she smiles, a little, "to rule now. I know. I was eighteen when my grandmother died and the King made me his ward, and I would have killed for a vote in my own council."
+    "The regency ends when you are sixteen," she says. "I would like to spend the years until then teaching you how to rule, and not how to quarrel with me. You would like," and she smiles, a little, "to rule now. I know. I was eighteen when my grandmother died and the King made me his ward, and I would have killed for a vote in my own council."
 
     "Then give me one."
   choices:
@@ -264,13 +268,13 @@
 
 - id: h_bc08_household
   chapter: book1
-  title: The Queen's Guard
+  title: "The {house.ruler}'s Guard"
   frames: [free]
   on_enter: [ { catch_up: { year: 57, season: summer } } ]
   text: |
     At midsummer the captain of your guard dies, of a fever, at sixty: one of your father's old company, who carried you on his shoulders at your crowning so that you could see. The council has three names for his place.
 
-    His son, a solid, honest knight of thirty who has served in the guard since he was fifteen and has never once been surprised. An Armance knight of your mother's, Sire Guiomar, who held a gate at Mortefontaine with eleven men and is said never to have smiled since. And a young knight of your own choosing, twenty, a younger son with a good horse and no land, who has been at every tourney you have watched this year and has never once looked at the stands.
+    His son, a solid, honest knight of thirty who has served in the guard since he was fifteen and has never once been surprised. An Armance knight of your mother's, Sire Guiomar, who held a gate at Mortefontaine with eleven men and is said never to have smiled since. And a young knight of your own choosing, twenty, a younger son with a good horse and no land, [if hero.sex == female]who has been at every tourney you have watched this year and has never once looked at the stands.[else]who has been teaching you to ride at the ring since the spring, and has never once let you win.[/if]
 
     [if flag.h_companion_counsel || flag.h_companion_side]{house.companion} says, "The son. He's dull. Dull's what you want at a door."[else]Your father, in the garden, says, "Whoever you choose, he'll be at your door for twenty years. Choose someone you can stand."[/if]
   choices:
@@ -287,10 +291,10 @@
         Sire Guiomar takes the guard and changes everything about it in a week, and the old company's sons complain, and nobody gets into the palace that he has not seen first. Your mother says it is the safest you have been since you were born. She does not say from whom.
       next: { pool: h_b1_late, count: 1, then: h_bc09_estates }
     - id: own
-      text: The young knight. A queen should choose her own.
+      text: The young knight. A {house.ruler_lc} should choose {his} own.
       effects: [ { set: flag.h_bc_guard_own }, { add: { counter.shadow: -2, counter.household: -1 } } ]
       text_after: |
-        He kneels to you on the tourney field in front of everyone, which was not the plan, and swears with a voice that cracks on "faith", and the whole court laughs, and he goes scarlet, and so do you. By Michaelmas the court has stopped laughing and started gossiping, and he still has not once looked at the stands.
+        [if hero.sex == female]He kneels to you on the tourney field in front of everyone, which was not the plan, and swears with a voice that cracks on "faith", and the whole court laughs, and he goes scarlet, and so do you. By Michaelmas the court has stopped laughing and started gossiping, and he still has not once looked at the stands.[else]He kneels to you on the tourney field in front of everyone, which was not the plan, and swears with a voice that cracks on "faith", and the whole court laughs, and he goes scarlet. By Michaelmas he has the guard turned out at dawn to ride at the ring with you, and the old company's sons have stopped laughing and started getting up early.[/if]
       next: { pool: h_b1_late, count: 1, then: h_bc09_estates }
 
 - id: h_bc09_estates
@@ -301,13 +305,13 @@
   text: |
     At Lady Day the summons goes out under the Great Seal, in your name, though you did not write it: the Estates of the West will sit at Lannec at Whitsun to settle the law of succession of the crown.
 
-    [if flag.h_c_law_written]Your father had them write it, six years ago: the eldest child, son or daughter. The male-line lords have petitioned to have it written again, and the Estates have agreed to hear them, which is what your father's law is worth without your father standing up in the hall.[else]Nobody has ever written it down. The crown went to you because your father put it on your head. The Estates will decide whether that was a law, or a favour.[/if] You are fourteen. You are the case.
+    [if inherited.c5r_estates_choose && !flag.h_c_law_written]Your father promised the Estates, in the first year of his reign, that they would choose the West's next king. [if flag.h_c_estates_swore]They chose you, in his lifetime, with their hands raised, and the clerk wrote it in letters an inch high.[else]Then he crowned you in his lifetime, and they never chose at all.[/if] Now they will decide whether the crown of the West is theirs to give each time it falls, or whether it goes by blood, and if by blood, whose. You are {age_words}. You are the case.[elif flag.h_c_law_written]Your father had them write it, six years ago: the eldest child, son or daughter. [if inherited.c5r_estates_choose]The lords who liked his first promise better, that the Estates would choose, have petitioned to have it written again[elif hero.sex == female]The male-line lords have petitioned to have it written again[else]The male-line lords have petitioned to have it written again, son before daughter, for the next reign if not for yours[/if], and the Estates have agreed to hear them, which is what your father's law is worth without your father standing up in the hall. You are {age_words}. You are the case.[else]Nobody has ever written it down. The crown went to you because your father put it on your head. The Estates will decide whether that was a law, or a favour. You are {age_words}. You are the case.[/if]
 
-    Hervé de Penhoët comes to court before the summons is a week old, himself, with his hat in his hands. [if flag.h_bc_betrothed_penhoet]"Your Grace is to be my son's wife," he says. "I'd not see my son's wife's crown in doubt. Speak for the custom in the Armance, only the Armance, and Penhoët will vote for your crown in the hall."[else]"I'll vote for Your Grace's crown," he says. "The West has a queen, and I'm a loyal man. I ask only that Your Grace let the Estates write the custom of the Armance as it was: by the male line."[/if]
+    Hervé de Penhoët comes to court before the summons is a week old, himself, with his hat in his hands. [if flag.h_bc_betrothed_penhoet]"Your Grace is to be my [if hero.sex == female]son's wife[else]daughter's husband[/if]," he says. "I'd not see Your Grace's crown in doubt. Speak for the custom in the Armance, only the Armance, and Penhoët will vote for your crown in the hall."[else]"I'll vote for Your Grace's crown," he says. "The West has a {house.ruler_lc}, and I'm a loyal man. I ask only that Your Grace let the Estates write the custom of the Armance as it was: by the male line[if hero.sex == male], and through men[/if]."[/if]
 
     Your mother comes to your chamber that night. "He is offering you your crown," she says, "for my duchy. For your duchy, after me." She sits on the end of your bed, as she did when you were six. "I'll not tell you what to do. I'll tell you that I held it, and my grandmother held it, and I would like you to hold it after me."
 
-    In the garden, in the morning, your father says, "Well. You're the Queen."
+    In the garden, in the morning, your father says, "Well. You're the {house.ruler}."
 
     You put the two answers side by side, and look at them, and do not give either. Not yet.
   choices:
@@ -317,9 +321,10 @@
 
 - id: h_bc_end
   chapter: book1
+  frames: [free]
   kind: ending
   ending: story_so_far
   text: |
-    Here Act I of Book One ends. You are Jehanne, Queen of the West, fourteen, under your mother's regency, with your father in the garden, [if flag.h_bc_betrothed_penhoet]betrothed to Ronan de Penhoët[elif flag.h_bc_betrothed_kerguen]betrothed to Tanguy de Kerguen[elif flag.h_bc_betrothed_valdrenne]betrothed to Prince Lothaire of Valdrenne[else]promised to no one[/if], and the Estates summoned to decide whether you are a law or a favour.
+    Here Act I of Book One ends. You are {name}, {house.ruler} of the West, {age_words}, under your mother's regency, with your father in the garden, [if flag.h_bc_betrothed_penhoet]betrothed to {house.match_penhoet}[elif flag.h_bc_betrothed_kerguen]betrothed to {house.match_kerguen}[elif flag.h_bc_betrothed_valdrenne]betrothed to {house.match_valdrenne} of Valdrenne[else]promised to no one[/if], and the Estates summoned to decide [if inherited.c5r_estates_choose && !flag.h_c_law_written]whether the crown of the West is theirs to give[else]whether you are a law or a favour[/if].
 
-    Act II, *The Law*, is still being written.
+    Act II, The Law, is still being written.

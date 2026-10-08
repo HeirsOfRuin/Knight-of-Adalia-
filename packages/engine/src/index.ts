@@ -67,7 +67,7 @@ export function view(content: ContentBundle, state: GameState, narrator: Narrati
   if (!scene) throw new EngineError(`unknown scene ${state.scene}`);
   const key = gameOf(content).variantKey?.(state);
   const src = (key !== undefined ? scene.variants?.[key] : undefined) ?? scene.text;
-  const card = state.ended ? undefined : cardFor(content, scene.id, state.journal.at(-1)?.scene);
+  const card = state.ended ? undefined : cardFor(content, scene.id, state.journal);
   const choices: ChoiceView[] = state.ended
     ? []
     : visibleChoices(content, state).map((c) => {

@@ -599,4 +599,4 @@
   text: |
     Here Act I of Book One ends. You are head of the house {founder.name} founded, under {realm.sovereign}[if spouse.alive], married to {spouse.name}[/if], with [if flag.h_kerval_lost]{house.claimed} lost to Penhoët[elif flag.h_kerval_shared]{house.claimed} kept, and Penhoët's men in its wood[else]{house.claimed} in your hands[/if], and two offers on the table for the house's vote.
 
-    Act II, *The Law*, is still being written.
+    Act II, The Law, is still being written.

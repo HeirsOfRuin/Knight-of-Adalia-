@@ -16,6 +16,8 @@ export function frameOf(d: DynastyExport): Frame | undefined {
     case 'adalian': return 'adalian';
     case 'partitioned': return 'partitioned';
   }
+  // an export from before `settlement` was written (Knight of Adalia's first release): read `west`
+  if (!d.realm.settlement) return d.realm.west === 'free' ? 'free' : d.realm.west === 'adalian' ? 'adalian' : undefined;
   return undefined;
 }
 
@@ -26,6 +28,8 @@ export function sovereignOf(d: DynastyExport): string | undefined {
     case 'adalia': return 'edwin';
     case 'divided': return d.lands.manor?.name === 'Ormel' || d.lands.manor?.name === 'Marsalin' ? 'edwin_salt' : 'amaury';
   }
+  // an export from before `sovereign` was written: a man who reigns rules the West himself
+  if (!d.realm.sovereign && (d.realm.reigns || d.flags.includes('c5_reigns'))) return 'self';
   return undefined;
 }
 
@@ -63,6 +67,8 @@ export function fromDynasty(content: ContentBundle, d: DynastyExport, opts: Impo
   const gap = Math.max(0, startYear - d.date.year); // years between the end of the life and the start of the house
   const married42 = d.flags.includes('c5_married_mahaut') && d.spouse?.id === 'mahaut_armance';
   return begin(content, opts.seed, opening.id, frame, sovereign, founder, res, { inheritance: d }, (s, c, rng) => {
+    // a crowned founder's reign is dated from the year the life dated it (Knight of Adalia's reign year at its end)
+    if (sovereign === 'self' && d.realm.reigns && d.date.reignYear > 0) s.realm.from = d.date.year - d.date.reignYear + 1;
     // the wife and children the life left, as characters; ages carried forward to the house's first year
     let spouse: string | undefined;
     if (d.spouse) {
@@ -94,9 +100,9 @@ export function fromDynasty(content: ContentBundle, d: DynastyExport, opts: Impo
 }
 
 /**
- * The founder married Mahaut before the Estates in year 42 (STORY.md, crowned path). Their daughter Jehanne is born
- * in year 44 (canon), unless the life already left a daughter of about that age; then Mahaut's other children,
- * drawn by the odds for years 45 to 49 (the author's decision), with Valdrennish names.
+ * The founder married Mahaut before the Estates in year 42 (STORY.md, crowned path). The children the life left are
+ * hers; if it left none, their daughter Jehanne is born in year 44 (canon). Then Mahaut's other children, drawn by
+ * the odds for the years to 49 (the author's decision), a year apart at least, with Valdrennish names.
  */
 function mahautsChildren(s: HouseState, c: ContentBundle, mahaut: string, station: string, rng: RngCursor): void {
   const start = c.config.start_year;
@@ -109,7 +115,8 @@ function mahautsChildren(s: HouseState, c: ContentBundle, mahaut: string, statio
     s.characters[id] = k;
     return id;
   };
-  if (!kids.some((k) => k.sex === 'female' && Math.abs(k.born - at(44)) <= 4)) add('Jehanne', 'female', at(44));
+  // canon's Jehanne is Mahaut's only where the life left her no child of her own (the author's run left a son, Jehan)
+  if (!kids.length) add('Jehanne', 'female', at(44));
   const fert = c.registry.life.fertility;
   for (let y = 45; y < start; y++) {
     if (Object.values(s.characters).some((k) => k.mother === mahaut && k.born >= at(y) - 4)) continue; // a year apart at least

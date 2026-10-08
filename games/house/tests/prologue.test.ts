@@ -9,6 +9,8 @@ import { toDynasty } from '../../knight/src/game/dynasty';
 import { loadPlans, playPlan } from '../../knight/tools/bot-lib';
 import { loadContent as loadKnight } from '../../knight/tools/content-loader';
 import { fromDynasty } from '../src/game/import';
+import { decodeDynasty } from '@dynasty/contract';
+import { readFileSync } from 'node:fs';
 
 // The Founder opening's prologue (STORY.md, Layer 3, P1-P16), played through by preference.
 const c = content();
@@ -252,6 +254,44 @@ describe('the crowned path: King of the West, married to Mahaut', () => {
     const queen = s.characters[s.hero]!;
     expect(renderText('{head.age}', s, c)).toBe('14');
     expect(s.family.regent).toBe(queen.mother);
+  });
+
+  describe("the author's own save: King David, Mahaut, and Jehan", () => {
+    // Knight of Adalia's crowned ending with Mahaut, exported in year 50: Jehan five, the crown left to the Estates,
+    // old Quérec exiled. The save decides the heir, so canon's Jehanne never appears.
+    const code = readFileSync(new URL('./fixtures/author-crowned.koad', import.meta.url), 'utf8').trim();
+    const saved = () => decodeDynasty(code);
+
+    it('imports Jehan as heir under the custom of the eldest, in the second year of King David', async () => {
+      const s = fromDynasty(c, await saved(), { seed: 1 });
+      expect(s.opening).toBe('crowned');
+      expect(s.family.law).toBe('eldest');
+      expect(s.inheritance?.flags).toContain('c5r_estates_choose');
+      const heir = s.characters[select(s, c, 'heir')!]!;
+      expect(heir.name).toBe('Jehan');
+      expect(heir.mother).toBe(s.characters[FOUNDER_ID]!.spouse);
+      expect(Object.values(s.characters).some((x) => x.name === 'Jehanne')).toBe(false);
+      expect(renderText('{date}', s, c)).toMatch(/second year of King David|year 2 of King David/i);
+      expect(renderText('{house.ruler} {house.match_penhoet} {house.querec}', s, c)).toBe('King Sibylle de Penhoët Bertrand de Quérec');
+    });
+
+    it('plays the elective crown through to the end of Act I, with Jehan king under his mother\'s regency', async () => {
+      for (const seed of [1, 2, 3]) {
+        const seen: string[] = [];
+        const s = drive(fromDynasty(c, await saved(), { seed }), CROWNED, seen);
+        expect(s.scene).toBe('h_bc_end');
+        expect(seen).toContain('h_pc08_estates');
+        expect(seen).toContain('h_bc09_estates');
+        const king = s.characters[s.hero]!;
+        expect(king.name).toBe('Jehan');
+        expect(s.family.regent).toBe(king.mother);
+        expect(s.characters[FOUNDER_ID]!.alive).toBe(true);
+        const end = view(c, s).text;
+        expect(end).toMatch(/King of the West/);
+        expect(end).toMatch(/whether the crown of the West is theirs to give/);
+        expect(end).not.toMatch(/Jehanne|Queen of the West/);
+      }
+    });
   });
 
   it('keeps the framework scene for a crowned life without Mahaut', () => {

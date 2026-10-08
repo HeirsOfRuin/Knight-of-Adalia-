@@ -36,57 +36,61 @@ h_b_wed_later: { description: "The Keeper put off marrying", later: book1 }
 h_b_wed_love: { description: "The Keeper married for love, outside the great houses", later: book1 }
 h_b_wed_sauvel: { description: "The Keeper kept the Sauvel marriage made at the peace", later: book1 }
 h_b_wendmere: { description: "The Keeper wrote to Wendmere over the governor's head", later: book1 }
-h_bc_betrothed_kerguen: { description: "The Queen is betrothed to Tanguy de Kerguen", later: book1 }
-h_bc_betrothed_none: { description: "The Queen is promised to no one", later: book1 }
-h_bc_betrothed_penhoet: { description: "The Queen is betrothed to Ronan de Penhoët", later: book1 }
-h_bc_betrothed_valdrenne: { description: "The Queen kept her betrothal to Prince Lothaire", later: book1 }
-h_bc_claim_deferred: { description: "The Queen left Penhoët's claim to the Estates", later: book1 }
-h_bc_claim_rejected: { description: "The Queen rejected Penhoët's claim to the Armance outright", later: book1 }
-h_bc_guard_armance: { description: "Sire Guiomar of the Armance keeps the Queen's door", later: book1 }
-h_bc_guard_old: { description: "The old captain's son keeps the Queen's door", later: book1 }
-h_bc_guard_own: { description: "A young knight of the Queen's own choosing keeps her door", later: book1 }
-h_bc_learned: { description: "Mahaut is teaching the Queen to rule, every evening", later: book1 }
+h_bc_amaury_answered: { description: "The young sovereign answered King Amaury's private letter, and gave nothing away", later: book1 }
+h_bc_amaury_told: { description: "The young sovereign told King Amaury more than was meant in a private letter", later: book1 }
+h_bc_betrothed_kerguen: { description: "The young sovereign is betrothed into Kerguen (Tanguy or Maëlle)", later: book1 }
+h_bc_betrothed_none: { description: "The young sovereign is promised to no one", later: book1 }
+h_bc_betrothed_penhoet: { description: "The young sovereign is betrothed into Penhoët (Ronan or Sibylle)", later: book1 }
+h_bc_betrothed_valdrenne: { description: "The young sovereign kept the Valdrennish betrothal", later: book1 }
+h_bc_charter: { description: "The young sovereign sealed the salt towns' charter", later: book1 }
+h_bc_charter_refused: { description: "The salt towns took their charter home unsealed", later: book1 }
+h_bc_claim_deferred: { description: "The young sovereign left Penhoët's claim to the Estates", later: book1 }
+h_bc_claim_rejected: { description: "The young sovereign rejected Penhoët's claim to the Armance outright", later: book1 }
+h_bc_guard_armance: { description: "Sire Guiomar of the Armance keeps the young sovereign's door", later: book1 }
+h_bc_guard_old: { description: "The old captain's son keeps the young sovereign's door", later: book1 }
+h_bc_guard_own: { description: "A young knight of the young sovereign's own choosing keeps the door", later: book1 }
+h_bc_learned: { description: "Mahaut is teaching the young sovereign to rule, every evening", later: book1 }
 h_bc_mother_answered: { description: "Mahaut answered Hervé's saving at the homage", later: book1 }
-h_bc_querec_exiled: { description: "The Queen exiled or outlawed Quérec and took his land", later: book1 }
-h_bc_querec_hostage: { description: "The Queen holds Quérec's son as her page", later: book1 }
-h_bc_querec_pardoned: { description: "The Queen pardoned Quérec", later: book1 }
-h_bc_ronan_offer: { description: "Hervé offered Ronan for the Queen's hand, and she heard it", later: book1 }
+h_bc_querec_exiled: { description: "The young sovereign exiled or outlawed Quérec and took his land", later: book1 }
+h_bc_querec_hostage: { description: "The young sovereign holds Quérec's son or brother as a page", later: book1 }
+h_bc_querec_pardoned: { description: "The young sovereign pardoned Quérec", later: book1 }
+h_bc_ronan_offer: { description: "Hervé offered his child for the young sovereign's hand, and it was heard", later: book1 }
 h_bc_saving_taken: { description: "Hervé's homage saves his house's right in the Armance", later: book1 }
-h_bc_sibling_armance: { description: "The Queen sent her brother or sister to the Armance", later: book1 }
-h_bc_sibling_church: { description: "The Queen gave her brother to the Church", later: book1 }
-h_bc_sibling_court: { description: "The Queen keeps her brother or sister at her side at court", later: book1 }
-h_bc_swore_plain: { description: "The Queen made Hervé swear plain, without his saving", later: book1 }
-h_bc_vote: { description: "The Queen has a vote in her own council", later: book1 }
+h_bc_sibling_armance: { description: "The young sovereign sent a brother or sister to the Armance", later: book1 }
+h_bc_sibling_church: { description: "The young sovereign gave a brother to the Church", later: book1 }
+h_bc_sibling_court: { description: "The young sovereign keeps a brother or sister at her side at court", later: book1 }
+h_bc_swore_plain: { description: "The young sovereign made Hervé swear plain, without his saving", later: book1 }
+h_bc_vote: { description: "The young sovereign has a vote in the sovereign's own council", later: book1 }
 h_blood_at_kerval: { description: "Blood was spilled at the Kerval boundary", later: book1 }
 h_buried_beside: { description: "The founder lies beside his wife", later: book1 }
 h_buried_home: { description: "The founder lies in the chancel at home", later: book1 }
 h_buried_lannec: { description: "The founder lies at Lannec among the great", later: book1 }
-h_c_betrothed_valdrenne: { description: "Jehanne was betrothed as a child to Prince Lothaire of Valdrenne", later: book1 }
+h_c_betrothed_valdrenne: { description: "The heir was betrothed as a child into Valdrenne (Lothaire or Isabeau)", later: book1 }
 h_c_bishop_anselm: { description: "Master Anselm, the old King's clerk, is Bishop of Saint-Lys", later: book1 }
 h_c_bishop_armance: { description: "Mahaut's confessor is Bishop of Saint-Lys", later: book1 }
 h_c_bishop_valdrenne: { description: "The Valdrennish candidate is Bishop of Saint-Lys", later: book1 }
 h_c_council_armance: { description: "The regency council is Mahaut's Armance men", later: book1 }
 h_c_council_mixed: { description: "The regency council is half Armance, half the old King's men", later: book1 }
 h_c_council_old: { description: "The regency council is the old King's men", later: book1 }
-h_c_crowned_cathedral: { description: "Jehanne was crowned junior queen at Saint-Lys before the Estates", later: book1 }
-h_c_crowned_chapel: { description: "Jehanne was crowned junior queen quietly in the palace chapel", later: book1 }
-h_c_crowned_council: { description: "The King named Jehanne's council at her crowning", later: book1 }
-h_c_embassy_delayed: { description: "The King put off Valdrenne's offer for Jehanne", later: book1 }
+h_c_crowned_cathedral: { description: "The heir was crowned junior king or queen at Saint-Lys before the Estates", later: book1 }
+h_c_crowned_chapel: { description: "The heir was crowned junior king or queen quietly in the palace chapel", later: book1 }
+h_c_crowned_council: { description: "The King named the heir's council at her crowning", later: book1 }
+h_c_embassy_delayed: { description: "The King put off Valdrenne's offer for the heir", later: book1 }
 h_c_estates_divided: { description: "The Estates swore only to the King's heir, as the law shall be", later: book1 }
-h_c_estates_swore: { description: "The Estates of the West swore to Jehanne as the King's heir", later: book1 }
-h_c_jehanne_free: { description: "The King refused Valdrenne's offer: Jehanne will choose, as Mahaut did", later: book1 }
-h_c_junior: { description: "Jehanne wears the crown beside her living father", later: book1 }
+h_c_estates_swore: { description: "The Estates of the West swore to (or elected) the King's heir", later: book1 }
+h_c_jehanne_free: { description: "The King refused Valdrenne's offer: the heir will choose, as Mahaut did", later: book1 }
+h_c_junior: { description: "The heir wears the crown beside her living father", later: book1 }
 h_c_largesse: { description: "The King remitted the salt towns' arrears", later: book1 }
 h_c_law_written: { description: "The Estates wrote the crown's law: the eldest child, son or daughter", later: book1 }
 h_c_no_estates: { description: "The King asked the Estates nothing about his heir", later: book1 }
 h_c_querec_bought: { description: "The King bought Quérec's oath with the marsh salt", later: book1 }
-h_c_querec_defiant: { description: "Quérec refused to swear to a girl as heir", later: book1 }
-h_c_querec_swore: { description: "Quérec swore to Jehanne as heir when the King demanded it", later: book1 }
+h_c_querec_defiant: { description: "Quérec refused to swear to the King's heir", later: book1 }
+h_c_querec_swore: { description: "Quérec swore to the King's heir when the King demanded it", later: book1 }
 h_c_querec_watched: { description: "The King let Quérec's refusal lie, and had him watched", later: book1 }
 h_c_rising_crushed: { description: "Quérec's rising was broken at the toll bridge", later: book1 }
 h_c_rising_open: { description: "The southern marsh is still Quérec's", later: book1 }
 h_c_rising_treated: { description: "Quérec was pardoned for the bridge, and kept his men", later: book1 }
-h_c_spoke_council: { description: "The child queen spoke out at her first council", later: book1 }
+h_c_spoke_council: { description: "The child sovereign spoke out at her first council", later: book1 }
 h_changed_order: { description: "The heir changed the founder's standing order for the gate", later: book1 }
 h_cloister: { description: "The founder took the cowl and lives at the abbey", later: book1 }
 h_companion_counsel: { description: "The founder asked the Old Companion to counsel the heir", later: book1 }

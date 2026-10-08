@@ -1350,12 +1350,19 @@ The author's own Knight of Adalia run ends as King of the West, married to Mahau
 | L3-28 | Mahaut's other children | By the odds for years 45 to 49, always younger than Jehanne. More can be born in the prologue. |
 | L3-29 | The prologue's rival | Quérec, defying a girl's crown: the old lord of Quérec, or his son Bertrand if Knight of Adalia exiled or beheaded him |
 | L3-30 | Penhoët's quarrel in Act I | The Armance by the male line, against the Queen's inheritance from her mother. Hervé offers Ronan to unite the claim and the duchy. |
+| L3-31 | The author's save left a son | The save decides: **Jehan**, five in year 50, is the heir and is played from 53 as the boy king. Canon's Jehanne is added only when the life left Mahaut no children. Every crowned scene reads the Keeper's sex: King or Queen, and the matches by sex (Ronan or Sibylle de Penhoët, Lothaire or Isabeau of Valdrenne, Tanguy or Maëlle de Kerguen). Penhoët's claim against a son is that his right comes through his mother, which the custom of the Armance never counted. |
+| L3-32 | Knight of Adalia left the crown to the Estates (`c5r_estates_choose`) | Honoured: an elective crown. In 52 the King can ask the Estates to elect his child in his lifetime (harder, since he promised they would choose), to make the crown hereditary, or nothing. The Estates of 58 sit to decide whether the crown is theirs to give each time, or goes by blood. |
+| L3-33 | The prologue's rival under an elective crown | Bertrand de Quérec (his father exiled in Knight of Adalia) defies the heir's crown in the name of the Estates' right to choose: THE WEST CHOOSES ITS KINGS. |
 
 **Import rules for this path** (`games/house/src/game/import.ts`):
 - Mahaut is thirty-one in year 50.
 - A child born before year 43 is not given Mahaut as mother.
-- Jehanne, born 44, is added unless the life already left a daughter of about that age.
+- Jehanne, born 44, is added only when the life left Mahaut no children (L3-31); otherwise the eldest of hers is the heir.
 - The odds hold Mahaut to about year 73 (canon).
+- The King's reign is dated from Knight of Adalia's (the author's save reads "year 2 of King David" in summer 50).
+- An export from Knight of Adalia's first release, without `settlement` and `sovereign`, is read from `west` and `reigns`.
+- A husband who has retired (the cloister, or the junior crown) fathers no more children.
+- The manor-scale late pool events (Sir Josselin, the castle, the audit) do not draw on the crowned path; two crown-scale events do: the salt towns' charter, and a private letter from King Amaury.
 
 ---
 
@@ -1408,3 +1415,4 @@ The author's own Knight of Adalia run ends as King of the West, married to Mahau
 | 2026-10-08 | Step 4b | The prologue (P1-P16) written for the Founder opening, free and Adalian frames. Transcripts in `transcripts/`. Waiting on the author's playtest. |
 | 2026-10-08 | Step 4c | Book I, Act I (B1-B12) written for the Founder opening, free and Adalian frames. The playtest link carries the prologue and Act I. |
 | 2026-10-08 | The crowned path | The author's run: King of the West married to Mahaut, no children before her. Junior crown in 53, old king to about 64 (L3-24); eldest of either sex (L3-25); Jehanne played from 53 under Mahaut's regency (L3-26, L3-27); Mahaut's other children by the odds (L3-28); Quérec defies a girl's crown (L3-29); Penhoët claims the Armance by the male line in Act I (L3-30). Written for the prologue and Book I, Act I. |
+| 2026-10-08 | The crowned path, from the author's save | The save left Jehan, five, the crown left to the Estates, and old Quérec exiled. Jehan is the heir; Jehanne only when Mahaut has no child (L3-31). The elective crown honoured (L3-32). Bertrand defies the Estates' right (L3-33). Prologue and Book I, Act I made sex-generic and elective-aware; the save is a test fixture, and `transcripts/crowned-author-save.md` is its run. |

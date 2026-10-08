@@ -259,6 +259,8 @@ export function yearTick(s: HouseState, content: ContentBundle, rng: RngCursor):
     if (!wife.alive || wife.sex !== 'female' || !wife.spouse) continue;
     const husband = s.characters[wife.spouse];
     if (!living(husband) || (husband.house !== HOUSE_ID && id !== s.hero)) continue;
+    // a man who has given up the rule (the cloister, or an illness that ended it) fathers no more children
+    if (husband.retired) continue;
     const a = age(s, wife);
     if (a < life.fertility.from || a > life.fertility.to) continue;
     if (rng.float() * 100 >= (a >= life.fertility.late_from ? life.fertility.late_p : life.fertility.p)) continue;

@@ -45,6 +45,9 @@ Approved with the story's spine and acts (`../docs/STORY.md`, Layers 1 and 2, 20
 | Master Anselm | 50s | The crowned founder's chancellor-clerk, who wrote the crown's patent. A candidate for Bishop of Saint-Lys (year 54) |
 | Sire Guiomar | 40s | An Armance knight of Mahaut's, who held a gate at Mortefontaine with eleven men |
 | Ronan de Penhoët | about 16 | Hervé's son, Yann's grandson. The match Penhoët offers for the founder's second child. |
+| Sibylle de Penhoët | 3 (born year 47) | Hervé's daughter. On the crowned path, the match Penhoët offers a young king, to put the Armance claim and the duchy in one bed. |
+| Princess Isabeau of Valdrenne | 6 (born year 44) | King Amaury VII's daughter. On the crowned path, Valdrenne offers her for a son of Mahaut's, as it offers Lothaire for a daughter. |
+| Maëlle de Kerguen | 5 (born year 45) | A Kerguen cousin's daughter, born after her father's death at the Pont-aux-Moines; Tanguy's ward. On the crowned path, Kerguen's match for a young king. |
 
 ## The law of succession
 The house's headship passes by the house's law: `male_line` (only men, through men), `male_preference` (sons before daughters, then daughters and their lines), or `partible` (the eldest son is head; the younger sons' shares come from the lands). A fresh house starts under male preference, the custom of both kingdoms for land.

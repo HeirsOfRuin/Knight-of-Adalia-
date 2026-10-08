@@ -21,11 +21,11 @@ describe('a house from a Knight of Adalia life', () => {
   it('continues a crowned life as the Crowned opening, in a free West under the founder', () => {
     const s = fromDynasty(c, king, { seed: 1 });
     expect(s.opening).toBe('crowned');
-    expect(s.realm).toEqual({ west: 'free', sovereign: 'self', changes: 0 });
+    expect(s.realm).toEqual({ west: 'free', sovereign: 'self', changes: 0, from: king.date.year - king.date.reignYear + 1 }); // his reign dated from Knight of Adalia's
     expect(heroOf(s).name).toBe(king.founder.name);
     expect(Math.floor((s.time - heroOf(s).born) / 4)).toBe(king.founder.age + (50 - king.date.year));
     expect(s.inheritance?.flags).toContain('c5_reigns');
-    expect(view(c, s).text).toMatch(/you have worn it since the oaths at Lannec/);
+    expect(view(c, s).text).toMatch(/You have worn the crown of the West since the oaths at Lannec/);
   });
 
   it('maps every settlement to its frame and sovereign', () => {

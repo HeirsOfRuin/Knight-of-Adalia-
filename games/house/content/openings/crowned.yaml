@@ -14,3 +14,9 @@ founder:
   coin: 60000
   renown: 20
   men: 60
+  lands:
+    manor: { name: Kerval, people: 300, temper: 2, defence: 5, church: 4, salt: 0, orchard: 6 }
+    holdings:
+      - { id: crown_revenues, name: The revenues of the crown, income: 144000 }
+      - { id: west_gift, name: The salt penny of the West, income: 14400 }
+    knights: 12

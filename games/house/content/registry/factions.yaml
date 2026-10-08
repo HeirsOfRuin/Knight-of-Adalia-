@@ -2,3 +2,12 @@ west: { label: The West, kind: faction }
 adalia: { label: Adalia, kind: faction }
 valdrenne: { label: Valdrenne, kind: faction }
 church: { label: The Church, kind: faction }
+# carried from Knight of Adalia's standing (import.ts): the West's own orders, the banks, and the founder's name
+nobles: { label: The lords, kind: faction }
+knights: { label: The knights, kind: faction }
+commons: { label: The commons, kind: faction }
+merchants: { label: The merchants, kind: faction }
+sarenza: { label: Sarenza, kind: faction }
+honor: { label: Honour, kind: personal }
+ruthlessness: { label: Ruthlessness, kind: personal }
+piety: { label: Piety, kind: personal }

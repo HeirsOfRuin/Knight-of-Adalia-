@@ -275,6 +275,28 @@ describe('the crowned path: King of the West, married to Mahaut', () => {
       expect(renderText('{house.ruler} {house.match_penhoet} {house.querec}', s, c)).toBe('King Sibylle de Penhoët Bertrand de Quérec');
     });
 
+    it('carries the lands, the knights, the standing and the people the life left, and settles them at Michaelmas', async () => {
+      const d = await saved();
+      const s = fromDynasty(c, d, { seed: 1 });
+      expect(s.estate).toMatchObject({ name: 'Marsalin', people: 489, salt: 10, temper: 5 });
+      expect(Object.keys(s.holdings!)).toHaveLength(d.lands.holdings.length);
+      expect(s.holdings!.crown_revenues!.income).toBe(144000);
+      expect(s.vassals).toHaveLength(d.lands.vassals!.length);
+      expect(s.vassals!.find((v) => v.id === 'lesneven')).toMatchObject({ seat: 'Lesneven' });
+      expect(s.rep.church).toBe(d.founder.reputation.church);
+      expect(s.rep.honor).toBe(d.founder.reputation.honor);
+      expect(s.npcs.mahaut_armance!.affection).toBe(10);
+      expect(s.res.coin).toBe(d.wealth.coin);
+      // the children's qualities grow from temperament and upbringing (Jehan is bold)
+      const jehan = Object.values(s.characters).find((x) => x.name === 'Jehan')!;
+      expect(jehan.attributes.strength).toBe(3);
+      // play to the first Michaelmas: one line for the year, and the purse grows by the year's account
+      let t = s;
+      const lines: string[] = [];
+      for (let i = 0; i < 12 && t.time < 3; i++) { const r = choose(c, t, view(c, t).choices.find((x) => x.available)!.id); t = r.state; lines.push(...(t.lastOutcome?.changes ?? [])); }
+      expect(lines.some((l) => /^Michaelmas: £\d+.* came in; the household .* and the men's pay .* went out$/.test(l))).toBe(true);
+    });
+
     it('plays the elective crown through to the end of Act I, with Jehan king under his mother\'s regency', async () => {
       for (const seed of [1, 2, 3]) {
         const seen: string[] = [];

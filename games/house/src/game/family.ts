@@ -291,3 +291,21 @@ export function yearTick(s: HouseState, content: ContentBundle, rng: RngCursor):
 export function headAge(s: HouseState): number {
   return age(s, heroOf(s));
 }
+
+/**
+ * A child's qualities from temperament and upbringing, grown with age (Knight of Adalia exports no children's stats).
+ * Bold: strength and arms; bookish: wits and learning; merry: presence and courtesy; grave: wits and stewardship.
+ * The upbringing adds its training once the child is old enough to have had it (eight).
+ */
+export function shapeChild(s: HouseState, k: Character): void {
+  const age = Math.floor((s.time - k.born) / 4);
+  const up = (path: 'attributes' | 'skills', key: string, n: number) => { if (key in k[path]) k[path][key] = (k[path][key] ?? 0) + n; };
+  const T: Record<string, [string, string]> = { bold: ['strength', 'arms'], bookish: ['wits', 'learning'], merry: ['presence', 'courtesy'], grave: ['wits', 'stewardship'] };
+  const t = T[k.temperament ?? ''];
+  if (t) { up('attributes', t[0], 1); if (age >= 8) up('skills', t[1], 1); }
+  const U: Record<string, [string, number][]> = {
+    page: [['courtesy', 1], ['riding', 1]], church: [['learning', 2]], arms: [['arms', 2], ['riding', 1]],
+    letters: [['learning', 1], ['stewardship', 1]], court: [['courtesy', 1], ['diplomacy', 1]], home: [['riding', 1]],
+  };
+  if (age >= 8) for (const [sk, n] of U[k.upbringing ?? ''] ?? []) up('skills', sk, age >= 14 ? n + 1 : n);
+}

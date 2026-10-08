@@ -13,3 +13,6 @@ founder:
   coin: 8000
   renown: 6
   men: 10
+  lands:
+    manor: { name: Ormel, people: 200, temper: 0, defence: 2, church: 2, salt: 3, orchard: 0 }
+    knights: 2

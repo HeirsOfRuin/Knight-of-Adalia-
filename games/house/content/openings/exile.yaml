@@ -13,3 +13,6 @@ founder:
   coin: 2000
   renown: 6
   men: 4
+  lands:
+    holdings:
+      - { id: exile_pension, name: A pension from the Signory of Sarenza, income: 2400 }

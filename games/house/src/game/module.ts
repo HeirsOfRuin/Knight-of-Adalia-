@@ -12,6 +12,7 @@ import { FRAMES, GAME_ID, HOUSE_LAWS, type ContentBundle, type Effect, type Fram
 import { FOUNDER_ID, HOUSE_ID, type HouseState } from './state';
 import { SELECTORS, select, heirOf, livingChildren, die, queueSuccession, succeed, bear, marry, nameChild, yearTick, SUCCESSION_SCENE } from './family';
 import { ageOfCharacter } from '@engine/character';
+import { economyTick } from './economy';
 
 const st = (s: CoreState) => s as HouseState;
 const ct = (c: CoreContent) => c as ContentBundle;
@@ -76,7 +77,8 @@ export const house: GameModule = {
     return true; // the house goes on; Extinct is an ending the succession reaches
   },
 
-  onSeason(s, c, _changes, rng) {
+  onSeason(s, c, changes, rng) {
+    economyTick(st(s), ct(c), changes); // deterministic: runs whether or not dice may be drawn
     if (rng && s.time % 4 === 2) yearTick(st(s), ct(c), rng); // Michaelmas
   },
 

@@ -106,7 +106,7 @@ He is old now, the salt lord of the southern marsh, the last man in the West who
 
 The hall goes quiet. Quérec looks at you, and at your guard along the wall, and at Jehanne, who is looking straight back at him. Then he kneels, slowly, and kisses her hand, and says the words. On his way out he says to her, quite gently, "You'll do, I expect," and she says, "I know," and half the hall laughs.
 
-*The household: more loyal*
+*The household: more loyal; Michaelmas: £1183 1s 8d came in; the household £169 3d and the men's pay £27 went out; Sir Guillaume de la Hunaudaye dies and leaves a son under age; the wardship of la Hunaudaye is sold for £20; Sir Enguerran de Grandpré dies and leaves a son under age; the wardship of Grandpré is sold for £20*
 
 ### The Exchequer
 
@@ -172,7 +172,7 @@ You know who is left. You could count them on one hand now, and you do, under th
 
 You take a corner of the coffin with Davy Ludd and two of the old company, and your back tells you about it for a week. The whole village comes. At the grave somebody starts the story about Hamon and the Brésy horse, and somebody else corrects it, and by the end there is laughing in the churchyard, which the priest pretends not to hear.
 
-*Coin −£2; The household: more loyal*
+*Coin −£2; The household: more loyal; Michaelmas: £1184 8s 4d came in; the household £169 4s 1d and the men's pay £27 went out; Sir Josselin Salvert of the Salvert dyke dies and leaves a son under age; the wardship of the Salvert dyke is sold for £20; Sir Olivier de Bréhat dies and leaves a son under age; the wardship of Bréhat is sold for £20*
 
 ### The Estates at Whitsun
 
@@ -193,6 +193,8 @@ Jehanne is eight, and sits beside her mother in a gown that does not fit her yet
 **You choose:** Ask the Estates to swear to Jehanne, as your heir, now.
 
 You speak, and it goes well enough, and then Quérec's friends stand and talk about custom and promises and a child, and the hall begins to argue among itself. In the end the Estates swear, but only to "the King's heir, as the law shall be", and the clerk writes that in the roll instead. Everyone knows what it means.
+
+*Michaelmas: £1145 5s came in; the household £163 12s 2d and the men's pay £27 went out*
 
 ### The Illness
 
@@ -282,7 +284,7 @@ Today the council is talking about Quérec. He swore to you, and kissed your han
 
 "What does Quérec want?" you say. It comes out loud. The council stops. The chancellor opens his mouth and shuts it. Your mother looks at you for a long moment, and then says, "That is the question, my lords. Answer the Queen." They try. None of them knows. You see your mother see that.
 
-*Plan's shadow: shorter; Mahaut's respect: higher*
+*Plan's shadow: shorter; Mahaut's respect: higher; Michaelmas: £1146 3s 4d came in; the household £163 14s 9d and the men's pay £27 went out*
 
 ### The Regency
 
@@ -368,7 +370,7 @@ There are three names. Your mother's confessor, a quiet Armance canon who has ne
 
 Master Anselm becomes Bishop of Saint-Lys, the first born in the West, and comes to see your father in the garden the day after, and they laugh together for an hour about things neither will tell you. He will bless what the crown wants. He will also remember what the crown owes him.
 
-*Plan's shadow: longer; The household: more loyal*
+*Plan's shadow: longer; The household: more loyal; Michaelmas: £1147 1s 8d came in; the household £163 17s 5d and the men's pay £27 went out*
 
 ### The Acclamation
 
@@ -418,7 +420,7 @@ Behind you, your mother has gone completely still.
 
 "Swear plain, my lord," you say, "or swear another day." Your voice does not go up at the end. Hervé looks at you for a long moment, as a man looks at a field he has been told is his neighbour's. Then he says the words again, plain, without the saving, and rises, and bows lower than he did before.
 
-*The household: more loyal; Mahaut's respect: higher*
+*The household: more loyal; Mahaut's respect: higher; Michaelmas: £1148 came in; the household £164 and the men's pay £27 went out*
 
 ### Penhoët's Claim
 
@@ -502,7 +504,7 @@ You go to see him, once, before you decide. He gets up when you come in, and bow
 
 His son comes to court as your page, a boy of nine with his father's eyes, and is given a room near yours and a tutor and a pony, and every courtesy, and is never once let out of the walls of Lannec. Quérec swears to you that autumn. He has to.
 
-*Standing in the realm: higher*
+*Standing in the realm: higher; Michaelmas: £1168 18s 4d came in; the household £166 19s 9d and the men's pay £27 went out; Sir Geoffroi de Moncontour dies and leaves a son under age; the wardship of Moncontour is sold for £20*
 
 ### Blanche
 
@@ -561,7 +563,7 @@ Davy Ludd says, "The son. He's dull. Dull's what you want at a door."
 
 He kneels to you on the tourney field in front of everyone, which was not the plan, and swears with a voice that cracks on "faith", and the whole court laughs, and he goes scarlet, and so do you. By Michaelmas the court has stopped laughing and started gossiping, and he still has not once looked at the stands.
 
-*Plan's shadow: much shorter; The household: less loyal*
+*Plan's shadow: much shorter; The household: less loyal; Michaelmas: £1168 18s 4d came in; the household £166 19s 9d and the men's pay £27 went out; Sir Alain de Pontivy dies and leaves a son under age; the wardship of Pontivy is sold for £20; Sir Payen de Fougeray withholds his dues this year, over a quarrel the house's court will have to hear; Sir Gautier d'Aubrac withholds his dues this year, over a quarrel the house's court will have to hear*
 
 ### The Salt Towns' Charter
 

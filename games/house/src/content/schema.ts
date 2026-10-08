@@ -143,6 +143,12 @@ export const OpeningSchema = z.object({
     coin: z.number().int(), // pence
     renown: z.number().int().default(0),
     men: z.number().int().default(0),
+    // the lands of a fresh start (economy.ts); an import brings the life's own
+    lands: z.object({
+      manor: z.object({ name: z.string(), people: z.number().int(), temper: z.number().int(), defence: z.number().int(), church: z.number().int(), salt: z.number().int(), orchard: z.number().int() }).strict().optional(),
+      holdings: z.array(z.object({ id: Id, name: z.string(), income: z.number().int() }).strict()).default([]),
+      knights: z.number().int().default(0), // knights who hold of the house, from the West's (economy.ts WEST_KNIGHTS)
+    }).strict().default({ holdings: [], knights: 0 }),
   }).strict(),
 }).strict();
 export type Opening = z.infer<typeof OpeningSchema>;

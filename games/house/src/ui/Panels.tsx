@@ -12,6 +12,7 @@ import { describeDate, type HouseState } from '../game/index';
 import { heirOf, select } from '../game/family';
 import { FOUNDER_ID, HOUSE_ID } from '../game/state';
 import { GRACE, sovereignStyle } from '../game/module';
+import { ESTATE_LABELS, temperWord, yearBudget, DUES_PER_FEE } from '../game/economy';
 
 function Section({ title, children }: { title: string; children: ComponentChildren }) {
   return (
@@ -51,6 +52,12 @@ export function StatusPanel({ content, state }: { content: ContentBundle; state:
   const age = ageOfCharacter(state, hero);
   const regent = state.family.regent ? state.characters[state.family.regent] : undefined;
   const factions = Object.entries(reg.factions).filter(([, f]) => f.kind === 'faction');
+  const personal = Object.entries(reg.factions).filter(([, f]) => f.kind === 'personal');
+  const e = state.estate;
+  const holdings = Object.entries(state.holdings ?? {});
+  const vassals = state.vassals ?? [];
+  const b = yearBudget(state);
+  const net = b.rent + b.holdings + b.dues - b.household - b.pay;
   const t = tracks(state, content);
   const res = state.res;
   return (
@@ -74,6 +81,42 @@ export function StatusPanel({ content, state }: { content: ContentBundle; state:
         </dl>
       </Section>
 
+      {e && (
+        <Section title={`Your manor: ${e.name}`}>
+          <dl class="kv">
+            <dt>{ESTATE_LABELS.people}</dt><dd>{e.people}</dd>
+            <dt>{ESTATE_LABELS.food}</dt><dd>{e.food}</dd>
+            <dt>{ESTATE_LABELS.temper}</dt><dd>{temperWord(e.temper)}</dd>
+            {(['defence', 'church', 'salt', 'orchard'] as const).filter((k) => e[k] > 0).map((k) => [<dt key={`${k}t`}>{ESTATE_LABELS[k]}</dt>, <dd key={`${k}d`}>{e[k]}/10</dd>])}
+          </dl>
+        </Section>
+      )}
+
+      {holdings.length > 0 && (
+        <Section title="Other holdings">
+          <dl class="kv">{holdings.map(([id, h]) => [<dt key={`${id}t`}>{h.name}</dt>, <dd key={`${id}d`}>{formatCoin(h.income)} a year{h.temper <= -3 ? ', half withheld' : ''}</dd>])}</dl>
+        </Section>
+      )}
+
+      {vassals.length > 0 && (
+        <Section title={`Knights who hold of you (${vassals.length})`}>
+          <ul class="plain">{vassals.map((v) => <li key={v.id}>{capitalise(v.name)}{v.heir === 'minor' ? ' (a ward)' : ''}</li>)}</ul>
+        </Section>
+      )}
+
+      {(b.rent || b.holdings || b.dues || b.pay) > 0 && (
+        <Section title="A year at Michaelmas">
+          <dl class="kv">
+            {b.rent > 0 && <><dt>Rents of the manor</dt><dd>{formatCoin(b.rent)}</dd></>}
+            {b.holdings > 0 && <><dt>Other holdings</dt><dd>{formatCoin(b.holdings)}</dd></>}
+            {b.dues > 0 && <><dt>Knights' dues ({formatCoin(DUES_PER_FEE)} a fee)</dt><dd>{formatCoin(b.dues)}</dd></>}
+            {b.household > 0 && <><dt>The household</dt><dd>−{formatCoin(b.household)}</dd></>}
+            {b.pay > 0 && <><dt>The men's pay (6s a man)</dt><dd>−{formatCoin(b.pay)}</dd></>}
+            <dt><strong>Left over</strong></dt><dd><strong>{net < 0 ? '−' : ''}{formatCoin(Math.abs(net))}</strong></dd>
+          </dl>
+        </Section>
+      )}
+
       {t.length > 0 && (
         <Section title="How things stand">
           <dl class="kv">{t.map(([k, w]) => [<dt key={`${k}t`}>{k}</dt>, <dd key={`${k}d`}>{w}</dd>])}</dl>
@@ -82,6 +125,7 @@ export function StatusPanel({ content, state }: { content: ContentBundle; state:
 
       <Section title="Standing">
         <dl class="kv">{factions.map(([id, f]) => [<dt key={`${id}t`}>{f.label}</dt>, <dd key={`${id}d`}>{standing(state.rep[id] ?? 0)}</dd>])}</dl>
+        <dl class="kv">{personal.map(([id, f]) => [<dt key={`${id}t`}>{f.label}</dt>, <dd key={`${id}d`}>{state.rep[id] ?? 0}</dd>])}</dl>
       </Section>
 
       <Section title="Body and mind">

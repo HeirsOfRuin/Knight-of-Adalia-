@@ -6,7 +6,7 @@ import type { Character } from '@engine/state';
 import type { RngCursor } from '@engine/rng';
 import type { ContentBundle, Frame } from '../content/schema';
 import { begin, checkStart, EngineError } from './index';
-import { newId, person } from './family';
+import { newId, person, shapeChild } from './family';
 import { FOUNDER_ID, HOUSE_ID, type HouseState } from './state';
 
 /** The frame a Knight of Adalia settlement leaves the West in. */
@@ -96,8 +96,46 @@ export function fromDynasty(content: ContentBundle, d: DynastyExport, opts: Impo
       s.characters[id] = child;
     }
     if (married42 && spouse) mahautsChildren(s, c, spouse, founder.station, rng);
+    for (const k of Object.values(s.characters)) if (k !== founder && k.house === HOUSE_ID) shapeChild(s, k);
+    carryStanding(s, c, d);
+    carryLands(s, d);
   });
 }
+
+/** Knight of Adalia's people the house knows under another id. */
+const PEOPLE: Record<string, string> = { prince_edwin: 'king_edwin', amaury_younger: 'king_amaury' };
+
+/** The founder's standing with the realms and with the great folk of both games, as the life left it. */
+function carryStanding(s: HouseState, c: ContentBundle, d: DynastyExport): void {
+  const rep = d.founder.reputation ?? {};
+  for (const id of Object.keys(c.registry.factions)) if (rep[id] !== undefined) s.rep[id] = rep[id]!;
+  // Adalia's regard is the Crown's; the West's is its lords', knights' and commons' together
+  if (rep.crown !== undefined) s.rep.adalia = rep.crown;
+  const west = ['nobles', 'knights', 'commons'].map((k) => rep[k]).filter((x): x is number => x !== undefined);
+  if (west.length) s.rep.west = Math.round(west.reduce((a, b) => a + b, 0) / west.length);
+  for (const p of d.people) {
+    const id = PEOPLE[p.id] ?? p.id;
+    const n = s.npcs[id];
+    if (!n) continue;
+    Object.assign(n, { met: true, alive: p.alive, affection: p.affection, respect: p.respect, loyalty: p.loyalty });
+  }
+}
+
+/** The manor, the other holdings and the knights who hold of him, as the life left them (economy.ts runs them). */
+function carryLands(s: HouseState, d: DynastyExport): void {
+  const m = d.lands.manor;
+  // Knight of Adalia does not export the barn: a manor starts the house with a year's grain in store
+  if (m) s.estate = { name: m.name, people: m.people, food: 4, temper: m.temper, defence: m.defence, church: m.church, salt: m.salt, orchard: m.orchard, founded: m.people };
+  if (d.lands.holdings.length) s.holdings = Object.fromEntries(d.lands.holdings.map((h) => [h.id, { name: h.name, income: h.income, temper: h.temper }]));
+  if (d.lands.vassals?.length) {
+    s.vassals = d.lands.vassals.map((v) => {
+      // "Sir Derrien de Lesneven", "the young lord of Aubrac": the seat is the place he holds
+      const seat = v.name.match(/(?:\bof |\bde |\bd')(.+)$/)?.[1] ?? v.id.replace(/_/g, ' ');
+      return { id: v.id, name: v.name, seat, heir: v.heir ? (/young/.test(v.name) ? 'minor' : 'grown') : undefined };
+    });
+  }
+}
+
 
 /**
  * The founder married Mahaut before the Estates in year 42 (STORY.md, crowned path). The children the life left are

@@ -4,7 +4,8 @@
 import './module';
 import type { ContentBundle, Frame } from '../content/schema';
 import { FOUNDER_ID, HOUSE_ID, type HouseState } from './state';
-import { bear, marry, nameChild, person } from './family';
+import { bear, marry, nameChild, person, shapeChild } from './family';
+import { settleLands } from './economy';
 import { RngCursor, seedRng } from '@engine/rng';
 import { newNpcState } from '@engine/effects';
 import { enterScene } from '@engine/director';
@@ -63,7 +64,11 @@ export function newGame(content: ContentBundle, opts: NewHouseOptions): HouseSta
     station: f.station,
     house: HOUSE_ID,
   };
-  return begin(content, opts.seed, op!.id, opts.frame, sovereign, founder, { coin: f.coin, supplies: 0, horses: 0, renown: f.renown, men: f.men }, {}, freshFamily);
+  return begin(content, opts.seed, op!.id, opts.frame, sovereign, founder, { coin: f.coin, supplies: 0, horses: 0, renown: f.renown, men: f.men }, {}, (s, c, rng) => {
+    freshFamily(s, c, rng);
+    for (const k of Object.values(s.characters)) if (k !== s.characters[FOUNDER_ID] && k.house === HOUSE_ID) shapeChild(s, k);
+    settleLands(s, f.lands);
+  });
 }
 
 /** A fresh founder's family, from the life table's founder_family: a spouse (living or not) and children. */

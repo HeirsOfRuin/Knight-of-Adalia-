@@ -112,6 +112,8 @@ He comes himself a week later, which you did not expect. He is a careful man of 
 
 The steward finds a copy of a copy, in a hand nobody knows, with a hole where the witnesses should be. "It'll do," he says, in the voice of a man who knows it will not. Hervé's clerk asks, politely, whether he might see it, and makes a note.
 
+*Michaelmas: £120 5s came in; the household £12 6d and the men's pay £9 went out*
+
 ### The First Michaelmas
 
 *Autumn 912, the ninth year of Queen Mahaut*
@@ -198,7 +200,7 @@ You know who is left. You could count them on one hand now, and you do, under th
 
 You take a corner of the coffin with Piers atte Brook and two of the old company, and your back tells you about it for a week. The whole village comes. At the grave somebody starts the story about Hamon and the Brésy horse, and somebody else corrects it, and by the end there is laughing in the churchyard, which the priest pretends not to hear.
 
-*Coin −£2; The household: more loyal*
+*Coin −£2; The household: more loyal; Michaelmas: £140 18s 4d came in; the household £14 1s 10d and the men's pay £9 went out; Sir Josselin Salvert dies and leaves a son under age; the wardship of the Salvert dyke is sold for £20*
 
 ### The Summons
 
@@ -244,7 +246,7 @@ When the debate opens you feel the hall turn and look at you. Ten years ago ther
 
 "I have daughters," you say, "and so does every man here. Write it so they can inherit, and you'll never again have to go to war over a girl in a castle." It gets a laugh, and then it gets a silence, which is better. Mahaut sends you a cup of her own wine after.
 
-*Mahaut: much warmer; Penhoët: colder*
+*Mahaut: much warmer; Penhoët: colder; Michaelmas: £121 6s 8d came in; the household £12 2s 8d and the men's pay £9 went out*
 
 ### The Illness
 
@@ -337,7 +339,7 @@ On the fourth morning Piers atte Brook brings you the first thing to sign. It is
 
 You say it, and your voice goes up at the end like a boy's. The old man says, "As you like, my lord," and you would rather he had argued. The gate is cut to six. The men do it. In the yard you hear one of them say, "The old lord'd never," and the other one say, "Well, the old lord isn't here."
 
-*Hal's shadow: shorter; The household: less loyal*
+*Hal's shadow: shorter; The household: less loyal; Michaelmas: £121 15s came in; the household £12 3s 6d and the men's pay £9 went out*
 
 ### The Will
 
@@ -382,7 +384,7 @@ Penhoët's men have been at the boundary in the night. They have taken up the st
 The old knights are in the yard already, half-armed, waiting for somebody to tell them what to do. Upstairs your father is asleep, or pretending. Nobody has gone up. Everybody is looking at you.
 
 - Arm, ride out, and put the stone back. [Even]
-- Send to the court, and let the stone wait for the law. [Even]
+- Send to the court, and let the stone wait for the law. [Favorable]
 - Let them have the wood. Keep the land.
 - Ride to Penhoët, and speak to Hervé through Robert. [Even]
 
@@ -435,7 +437,7 @@ It is not enough. You did not expect it to be.
 
 Under the chancel floor, at the step, where the priest will walk over him every day and the village will see the stone every Sunday. The mason cuts the arms and the name and the year, and nothing else, because you could not decide what else, and in the end that seems right.
 
-*The household: more loyal*
+*The household: more loyal; Michaelmas: £127 5s came in; the household £12 14s 6d and the men's pay £9 went out; Sir Renaud de Saint-Aubin dies; his son pays £5 in relief*
 
 ### The Oath
 
@@ -505,7 +507,7 @@ The hall has gone quiet. Somebody's dog yawns.
 
 "You hold your land of this house," you say, "whoever sits in this chair. Kneel, or give it back." For a long breath he does nothing. Then he goes down on one knee, and then the other, and puts his hands between yours, and says the words. His hands are colder than yours. Behind you somebody lets out a breath they have been holding since Terce.
 
-*The household: more loyal*
+*The household: more loyal; Michaelmas: £122 15s came in; the household £12 5s 6d and the men's pay £9 went out*
 
 ### The Herald from Lannec
 
@@ -592,13 +594,13 @@ Agnès comes to you after the wedding with a clerk from her own family and a rol
 The clerk unrolls the parchment. Her family has already chosen which third.
 
 - Give her the third her family chose, and the house at the ford to live in.
-- Give the third the custom allows, measured by the steward, not the clerk. [Even]
+- Give the third the custom allows, measured by the steward, not the clerk. [Favorable]
 
 **You choose:** Give her the third her family chose, and the house at the ford to live in.
 
 Agnès looks at you, and then at the clerk, who is visibly disappointed not to have to argue. "Well," she says. "Your father would have made me fight for it." She kisses you on the cheek, which she has not done since you were small.
 
-*Coin −£10; The household: more loyal*
+*Coin −£10; The household: more loyal; Michaelmas: £123 5s came in; the household £12 6s 6d and the men's pay £9 went out*
 
 ### Robert
 
@@ -659,7 +661,7 @@ Piers atte Brook rides up beside you, and looks where you are looking, and says 
 
 A pension for life to each of the five oldest, and a place at the high table at Christmas, and their sons first in line for their fathers' service. It costs a great deal. The old men grumble, and take it, and drink to you at Christmas, and mean it.
 
-*Hal's shadow: shorter; Coin −£12*
+*Hal's shadow: shorter; Coin −£12; Michaelmas: £123 5s came in; the household £12 6s 6d and the men's pay £9 went out; Sir Gautier d'Aubrac withholds his dues this year, over a quarrel the house's court will have to hear*
 
 ### Sir Josselin's Daughter
 

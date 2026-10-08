@@ -13,3 +13,10 @@ founder:
   coin: 40000
   renown: 16
   men: 40
+  lands:
+    manor: { name: Kerval, people: 300, temper: 2, defence: 4, church: 3, salt: 0, orchard: 6 }
+    holdings:
+      - { id: west_gift, name: The salt penny of the West, income: 14400 }
+      - { id: vaudrey, name: The rents of Vaudrey, income: 6600 }
+      - { id: road_tolls, name: The bridge tolls, income: 1800 }
+    knights: 8

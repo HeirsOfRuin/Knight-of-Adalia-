@@ -67,6 +67,26 @@ export interface Family {
   manner?: string;
 }
 
+/** The house's own manor (Knight of Adalia's estate): people, grain in seasons, temper -5..5, improvements 0..10. */
+export interface Estate {
+  name: string;
+  people: number;
+  food: number;
+  temper: number;
+  defence: number;
+  church: number;
+  salt: number;
+  orchard: number;
+  /** people when the house came to it: growth slows once it is full again */
+  founded: number;
+}
+
+/** Another holding: its income in pence a year, paid at Michaelmas, and its temper. */
+export interface Holding { name: string; income: number; temper: number }
+
+/** A knight who holds land of the house; heir: his son holds now, as a minor (in wardship) or grown. */
+export interface Vassal { id: string; name: string; seat: string; heir?: 'minor' | 'grown' }
+
 export interface HouseState extends CoreState {
   opening: string;
   realm: Realm;
@@ -74,4 +94,8 @@ export interface HouseState extends CoreState {
   chronicle: ChronicleEntry[];
   /** the Knight of Adalia life this house continues, as exported; absent in a fresh start */
   inheritance?: DynastyExport;
+  /** the lands and the knights (economy.ts); absent for a house with none */
+  estate?: Estate;
+  holdings?: Record<string, Holding>;
+  vassals?: Vassal[];
 }

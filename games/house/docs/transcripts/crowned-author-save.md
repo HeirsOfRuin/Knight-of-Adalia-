@@ -84,8 +84,6 @@ There has only been one crown of the West, and you are wearing it, and the Estat
 
 Mahaut takes him in hand that summer: the council chamber, the household accounts, the order of precedence at a feast, which takes a month. By Michaelmas Jehan can tell a Kerguen from a Quérec across a hall by the way they stand, and says so, loudly, which Mahaut is working on.
 
-*Mahaut: warmer*
-
 ### Quérec
 
 *Summer 912, the second year of King David*
@@ -106,7 +104,7 @@ He is the son of the man you sent over the march in a cart. Quérec is the crown
 
 The hall goes quiet. Bertrand looks at you, and at your guard along the wall, and at Jehan, who is looking straight back at him. Then he kneels, slowly, and kisses his hand, and says the words. On his way out he says to him, quite gently, "You'll do, I expect," and he says, "I know," and half the hall laughs.
 
-*The household: more loyal*
+*The household: more loyal; Michaelmas: £824 19s 2d came in; the household £117 17s and the men's pay £65 14s went out; Sir Guillaume de la Hunaudaye dies and leaves a son under age; the wardship of la Hunaudaye is sold for £20; Sir Enguerran de Grandpré dies and leaves a son under age; the wardship of Grandpré is sold for £20*
 
 ### The Exchequer
 
@@ -152,8 +150,6 @@ You bought the peace with Valdrenne in coin. Amaury is offering to make it a fam
 
 You send them home with gifts and a refusal so courteous that it takes the bishop a day's ride to understand it. Mahaut, at supper, puts her hand over yours on the table, and leaves it there.
 
-*Mahaut: much warmer*
-
 ### The Old Company
 
 *Spring 913, the third year of King David*
@@ -172,7 +168,7 @@ You know who is left. You could count them on one hand now, and you do, under th
 
 You take a corner of the coffin with Davy Ludd and two of the old company, and your back tells you about it for a week. The whole village comes. At the grave somebody starts the story about Hamon and the Brésy horse, and somebody else corrects it, and by the end there is laughing in the churchyard, which the priest pretends not to hear.
 
-*Coin −£2; The household: more loyal*
+*Coin −£2; The household: more loyal; Michaelmas: £831 12s 6d came in; the household £118 16s 1d and the men's pay £65 14s went out; Sir Olivier de Bréhat dies and leaves a son under age; the wardship of Bréhat is sold for £20; Sir Josselin Salvert of the Salvert dyke dies and leaves a son under age; the wardship of the Salvert dyke is sold for £20; Sir Pierre de Saint-Gildas dies; his son pays £5 in relief*
 
 ### The Estates at Whitsun
 
@@ -193,6 +189,8 @@ Jehan is seven, and sits beside his mother in a tunic that does not fit him yet,
 **You choose:** Ask the Estates to elect Jehan now, in your lifetime.
 
 You speak, and it goes well enough, and then Bertrand's friends stand and talk about custom and promises and a child, and the hall begins to argue among itself. In the end the Estates will not elect a child of seven while his father lives, and say so, courteously, and adjourn. The clerk writes that in the roll instead. They will choose when the chair is empty, as you promised.
+
+*Michaelmas: £787 14s 2d came in; the household £112 10s 7d and the men's pay £65 14s went out*
 
 ### The Illness
 
@@ -216,7 +214,7 @@ The fever goes in a week. The weakness does not. You cannot get up the stairs wi
 
 You lie still. Mahaut runs the kingdom from a chair beside your bed for the whole of Lent, and runs it well, and tells you about it every evening whether you want to hear or not. It is the first winter in thirty years you have not ridden out. The West, you notice, does not fall down.
 
-*The household: more loyal; Strength −1; Endurance −1; Mahaut: warmer*
+*The household: more loyal; Strength −1; Endurance −1*
 
 ### The Crowning
 
@@ -282,7 +280,7 @@ Today the council is talking about Quérec. He swore to you, and kissed your han
 
 "What does Quérec want?" you say. It comes out loud. The council stops. The chancellor opens his mouth and shuts it. Your mother looks at you for a long moment, and then says, "That is the question, my lords. Answer the King." They try. None of them knows. You see your mother see that.
 
-*David's shadow: shorter; Mahaut's respect: higher*
+*David's shadow: shorter; Mahaut's respect: higher; Michaelmas: £788 15s 10d came in; the household £112 13s 8d and the men's pay £65 14s went out*
 
 ### The Regency
 
@@ -368,7 +366,7 @@ There are three names. Your mother's confessor, a quiet Armance canon who has ne
 
 Master Anselm becomes Bishop of Saint-Lys, the first born in the West, and comes to see your father in the garden the day after, and they laugh together for an hour about things neither will tell you. He will bless what the crown wants. He will also remember what the crown owes him.
 
-*David's shadow: longer; The household: more loyal*
+*David's shadow: longer; The household: more loyal; Michaelmas: £794 17s 6d came in; the household £113 11s 1d and the men's pay £65 14s went out; Sir Renaud de Saint-Aubin dies; his son pays £5 in relief*
 
 ### The Acclamation
 
@@ -418,7 +416,7 @@ Behind you, your mother has gone completely still.
 
 "Swear plain, my lord," you say, "or swear another day." Your voice does not go up at the end. Hervé looks at you for a long moment, as a man looks at a field he has been told is his neighbour's. Then he says the words again, plain, without the saving, and rises, and bows lower than he did before.
 
-*The household: more loyal; Mahaut's respect: higher*
+*The household: more loyal; Mahaut's respect: higher; Michaelmas: £791 10d came in; the household £113 1d and the men's pay £65 14s went out*
 
 ### Penhoët's Claim
 
@@ -502,7 +500,7 @@ You go to see him, once, before you decide. He gets up when you come in, and bow
 
 His son comes to court as your page, a boy of nine with his father's eyes, and is given a room near yours and a tutor and a pony, and every courtesy, and is never once let out of the walls of Lannec. Bertrand swears to you that autumn. He has to.
 
-*Standing in the realm: higher*
+*Standing in the realm: higher; Michaelmas: £812 4s 2d came in; the household £116 7d and the men's pay £65 14s went out; Sir Geoffroi de Moncontour dies and leaves a son under age; the wardship of Moncontour is sold for £20*
 
 ### Aliénor
 
@@ -561,7 +559,7 @@ Davy Ludd says, "The son. He's dull. Dull's what you want at a door."
 
 He kneels to you on the tourney field in front of everyone, which was not the plan, and swears with a voice that cracks on "faith", and the whole court laughs, and he goes scarlet. By Michaelmas he has the guard turned out at dawn to ride at the ring with you, and the old company's sons have stopped laughing and started getting up early.
 
-*David's shadow: much shorter; The household: less loyal*
+*David's shadow: much shorter; The household: less loyal; Michaelmas: £812 7s 6d came in; the household £116 1s 1d and the men's pay £65 14s went out; The young lord of Aubrac withholds his dues this year, over a quarrel the house's court will have to hear; Sir Payen de Fougeray withholds his dues this year, over a quarrel the house's court will have to hear; Sir Alain de Pontivy dies and leaves a son under age; the wardship of Pontivy is sold for £20*
 
 ### The Salt Towns' Charter
 

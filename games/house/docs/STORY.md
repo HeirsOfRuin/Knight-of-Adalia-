@@ -1,6 +1,6 @@
 # House of Adalia: The Story of the Prologue and Book I
 
-**Status:** Layer 1 (the spine) and Layer 2 (the acts) approved by the author, 2026-10-07. Layer 3 (the beat sheets): the prologue approved 2026-10-07; Book I is drafted act by act. Step 4b's writing of the prologue can start. The process is in the decisions log at the end.
+**Status:** Layer 1 (the spine) and Layer 2 (the acts) approved by the author, 2026-10-07. Layer 3 (the beat sheets) approved: the prologue 2026-10-07, Book I's four acts 2026-10-07/08. Step 4b (writing the prologue) is under way. The process is in the decisions log at the end.
 
 **Holds to:** `../../knight/content/canon.md` and `../content/canon.md` (dates, ages, names); `FRAME.md` §2 (frames and the nine starts); `PLAN.md` §4-8 (systems, timeline, cast, the Knight of Adalia promises); the Knight of Adalia style guide (voice).
 
@@ -1120,7 +1120,7 @@ The likely outcome stands unless a **threshold** is met: votes, standing, men an
 
 ---
 
-## Layer 3: Beat sheets, round 5: Book I, Act IV, *The Test of the Law* (free) / *The Minority* (Adalian) (decisions taken 2026-10-08; awaiting sign-off)
+## Layer 3: Beat sheets, round 5: Book I, Act IV, *The Test of the Law* (free) / *The Minority* (Adalian) (approved 2026-10-08)
 
 **Years:** 66-78. **Strands:** the realm and the rival together, then the family at the Keeper's end.
 
@@ -1352,3 +1352,4 @@ In free runs this slot is Mahaut's last illness: the court at Lannec knows, and 
 | 2026-10-08 | Layer 3, round 5 (Act III) | Aldred III, 9, with Prince Aymer dead in 61 (L3-16); Ronan dies in the Mottle (L3-17); harsh odds with one sure loss (L3-18); Act III ends on the Keeper's will (L3-19). |
 | 2026-10-08 | Layer 3 | Book I, Act III's beat sheets (D1-D11) approved. |
 | 2026-10-08 | Layer 3, round 6 (Act IV) | Hervé dies in 72 (L3-20); Aldred III keeps the Hales unless swung (L3-21); Kerval is a short campaign (L3-22); an end is always taken in E13 (L3-23). |
+| 2026-10-08 | Layer 3 | Book I, Act IV's beat sheets (E1-E13) approved. Layer 3 complete. PLAN.md §6.1-6.2 now point here, and §8 carries the epilogue promises found in Layer 3. |

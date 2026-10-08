@@ -253,6 +253,8 @@ What happens in the world, year by year, unless the player changes it. Frame-spe
 ## 6. The story
 
 ### 6.1 The prologue: The Old Lord (years 50-55; 12-15 scenes)
+> **Superseded by `STORY.md`** (approved by the author 2026-10-07/08). The story's Layer 3 holds the prologue's 16 beat sheets (P1-P16), in two halves played as the founder and then the heir. Where this section and STORY.md differ, STORY.md wins. This section stays as the plan's original outline.
+
 **Purpose.** It teaches the loop (a year, a match, the ledger, a succession) with a character the player already knows: their founder, from Knight of Adalia, or a generated one.
 
 | # | Scene | What it does | Varies by |
@@ -284,6 +286,8 @@ What happens in the world, year by year, unless the player changes it. Frame-spe
 | Ruin | No land; a name struck out. Service with a free company or a great house; the long road back |
 
 ### 6.2 Book I: The Keeper (years 55-78; 40-50 scenes)
+> **Superseded by `STORY.md`.** Its Layers 2-3 hold the four acts and their beat sheets: Act I (B1-B12), Act II (C1-C11), Act III (D1-D11) and Act IV (E1-E13). Act IV is named by frame: *The Test of the Law* (free), *The Minority* (Adalian), *The Drift* (divided). Mahaut's death moved to about year 73. Where this section and STORY.md differ, STORY.md wins.
+
 | Act | Years | Free | Adalian | Divided |
 |---|---|---|---|---|
 | **I. The New Lord** | 55-58 | The founder's men test the heir; the crown asks the house to choose where it stands on the law | Wendmere sends a new governor; the founder's patent is read differently by a new reign's lawyers | The governor's men count your holdings for the new tax |
@@ -379,6 +383,15 @@ An imported start honours its own epilogue (FRAME.md §4). The ones the plan use
 | Heir upbringing `church` | "Becomes Bishop of Saint-Lys, the first born in the West" | The bishopric in about year 70, if the heir lives and is not the head |
 | Heir temperament `bookish` | "Writes a chronicle of the West" | The Chronicle panel is "by" that child, in their voice |
 | Exile with an heir | "One day goes home to the West under another king's peace" | The Exile opening's pardon offer comes to the heir |
+| The wife alive at the end | "Outlives you by eleven years" | The founder's widow dies eleven years after the founder (STORY.md D8, or E3 in cloister runs) |
+| `c5_betrothed_penhoet` | The second child "marries into Penhoët at sixteen, and runs that old house better than any Penhoët has" | Already married into Penhoët in year 50 (P6), and the natural power at Penhoët after Ronan's death (D5) |
+| `c5_betrothal_refused` | The second child "chooses, at nineteen, someone you would never have chosen" | A love match in the prologue, about year 52 |
+| `c5_betrothed_lanzi`, `c5_betrothed_brese`, `c5_surety_*` | The second child's other fates | P6's variants: Penhoët offers a lesser cousin or presses the suit |
+| `c5_thibaut_king` | "Reigns eleven years and dies in the saddle" | Thibaut dies at Martinmas 52, and the Estates choose his successor (P8) |
+| `c5_mahaut_queen` (Kingmaker) | "Queen Mahaut of the West reigns thirty-one years" | Mahaut dies about year 73 in every run |
+| Mahaut not married to the founder | "Marries, in the end, a lord of the Armance, whom she chooses herself, and writes to you every Christmas" | Sire Riwal de Kerguen, killed in 44; her letters, and the last one after her death (E9) |
+| Davy Ludd, Will Cobb, Wat Coker | Their deaths at seventy, at a hundred, and free on his own holding | The old company's deaths as the epilogue says (P2) |
+| The Founder ending | "Four kings and two plagues and a civil war" | The Second Mottle is one plague; the civil war is Book III's war of cousins |
 
 The continuity checker gets one rule per promise.
 
@@ -413,7 +426,7 @@ The framework is done (steps 1-3). Step 4, the slice, is split so the hardest en
 | Step | What | Gate |
 |---|---|---|
 | **4a. Family and succession** (done 2026-10-06) | Characters for the whole family (kinship; selectors `head`, `heir`, `spouse`, `father`, `mother`, `eldest`, `second`, `third`, `youngest`, `bastard`, `regent`, `will`, `news`; pronouns for each); births, deaths and the mortality table (`content/registry/life.yaml`); news scenes for every death, birth, match and majority; the Michaelmas tick; succession under the three laws, with wills, regency, legitimation, stepping down and extinction; play passing to the heir; the chronicle paragraph (`content/registry/chronicle.yaml`) | Unit tests; `npm run house:life`, which plays 75 empty years from every start (results below) |
-| **4b. The prologue** | All 14 scenes for the **Founder** opening in **free and Adalian** frames, fresh and imported; matches (first use); the ledger; the House panel | Validator, frame rule, continuity, a transcript per frame, the author's read |
+| **4b. The prologue** | The 16 scenes of `STORY.md` (P1-P16) for the **Founder** opening in **free and Adalian** frames, fresh and imported; matches (first use); the ledger; the House panel | Validator, frame rule, continuity, a transcript per frame, the author's playtest |
 | **4c. Book I, Act I** | The New Lord, both frames; two rival houses (Penhoët, Kerguen) as state | The same, plus bot balance of standing and money |
 | **5. Systems** | Houses (all ten), the realm, war, the Church | Bot: standing spread, war outcomes, debt |
 | **6. Breadth** | The other openings and the divided frame for the prologue and Book I | Every start reaches the end of Book I |

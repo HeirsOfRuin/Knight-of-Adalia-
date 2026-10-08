@@ -5,3 +5,4 @@ king_edwin: { name: Edwin, title: King, faction: adalia, notes: "King of Adalia 
 king_amaury: { name: Amaury, title: King, faction: valdrenne, notes: "Amaury VII of Valdrenne, nineteen at the War of the West." }
 yann_penhoet: { name: Yann de Penhoët, title: Sire, faction: west, notes: "Old Penhoët: head of the house, about seventy and dying in year 50. Says Kerval was his grandfather's. Dies at Lady Day, year 51." }
 herve_penhoet: { name: Hervé de Penhoët, title: Sire, faction: west, notes: "Yann's son and heir, about forty-five. Careful, patient, never forgets a field. The rival of the Prologue and Book I." }
+tanguy_kerguen: { name: Tanguy de Kerguen, title: Sire, faction: west, notes: "The Kerguen heir: son of Sire Alain (killed at Mortefontaine) and Dame Blanche; 21 in year 50. A young house rising, and the counterweight to Penhoët. Azenor's brother; Jehanne's cousin through his uncle Riwal." }

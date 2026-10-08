@@ -21,8 +21,10 @@ function drive(s: HouseState, prefs: Record<string, string[]>, seen: string[] = 
     for (const t of [v.title ?? '', v.text, v.outcome?.text ?? '', ...v.choices.map((x) => x.text)]) expect(t, `unrendered text in ${v.sceneId}`).not.toMatch(/[{}]|undefined|\[if /);
     const open = v.choices.filter((x) => x.available);
     expect(open.length, `dead end in ${v.sceneId}`).toBeGreaterThan(0);
-    const pick = (prefs[v.sceneId] ?? []).find((id) => open.some((x) => x.id === id)) ?? open[0]!.id;
-    s = choose(c, s, pick).state;
+    // a preference may force its check: "law!failure"
+    const pref = (prefs[v.sceneId] ?? []).map((p) => p.split('!') as [string, string?]).find(([id]) => open.some((x) => x.id === id));
+    const pick = pref?.[0] ?? open[0]!.id;
+    s = choose(c, s, pick, pref?.[1] ? { force: pref[1] as 'success' | 'failure' } : {}).state;
   }
   return s;
 }
@@ -75,9 +77,12 @@ describe('the prologue: The Old Lord', () => {
       seen.length = 0;
       const s = drive(house({ seed }), prefs, seen);
       if (!s.flags.h_cloister) continue;
-      expect(s.characters[FOUNDER_ID]!.alive).toBe(true);
-      expect(s.characters[FOUNDER_ID]!.retired).toBe(true);
+      // alive through the prologue (the abbey gate, not the deathbed), and dead by the abbot's letter in Book I, Act I
+      expect(seen).toContain('h_p16_oath');
       expect(seen).not.toContain('h_p15_funeral');
+      expect(seen).toContain('h_b09_abbot');
+      expect(s.characters[FOUNDER_ID]!.retired).toBe(true);
+      expect(s.characters[FOUNDER_ID]!.alive).toBe(false);
       expect(s.ended?.ending).toBe('story_so_far');
       return;
     }
@@ -115,5 +120,64 @@ describe('the prologue: The Old Lord', () => {
       played++;
     }
     expect(played).toBeGreaterThan(0);
+  });
+});
+
+describe('Book I, Act I: The New Lord', () => {
+  const titles = (seen: string[]) => seen.map((id) => c.scenes[id]?.title ?? id);
+
+  it('judges Kerval by the charter, and moves the verdict one step by the court check', () => {
+    const open = { ...ROUTE, h_p04_suit: ['law'], h_p06_offer: ['refuse'], h_p13_boundary: ['concede'] };
+    const cases: [string, string, string][] = [
+      ['law!success', 'argue!success', 'h_kerval_kept'],
+      ['law!success', 'argue!failure', 'h_kerval_shared'],
+      ['law!failure', 'argue!success', 'h_kerval_shared'],
+      ['law!failure', 'argue!failure', 'h_kerval_lost'],
+    ];
+    for (const [charter, court, want] of cases) {
+      const seen: string[] = [];
+      const s = drive(house(), { ...open, h_p04_suit: [charter], h_b06_suit: [court] }, seen);
+      expect(seen, `${charter} ${court}`).toContain('h_b06_suit');
+      expect(['h_kerval_kept', 'h_kerval_shared', 'h_kerval_lost'].filter((f) => s.flags[f]), `${charter} ${court}`).toEqual([want]);
+    }
+  });
+
+  it('skips the suit when the prologue settled it', () => {
+    const seen: string[] = [];
+    drive(house(), { ...ROUTE, h_p04_suit: ['buy'] }, seen);
+    expect(seen).not.toContain('h_b06_suit');
+    expect(seen).toContain('h_b12_estates');
+  });
+
+  it("marries the Keeper by the story's match, and never offers the founder's children the odds' matches", () => {
+    const seen: string[] = [];
+    const s = drive(house({ seed: 4 }), { ...ROUTE, h_b03_match: ['kerguen'], h_b08_match: ['penhoet'] }, seen);
+    const keeper = s.characters[s.hero]!;
+    expect(s.characters[keeper.spouse!]!.name).toBe(keeper.sex === 'male' ? 'Azenor de Kerguen' : 'Tanguy de Kerguen');
+    expect(titles(seen)).not.toContain('A Match');
+    expect(seen).toContain('h_b04_wedding');
+  });
+
+  it('brings the Sauvel bride over the hills when Knight of Adalia made the peace with a marriage', () => {
+    const knight = loadKnight();
+    const plan = loadPlans().find((p) => playPlan(knight, p).state.ended?.ending === 'founder')!;
+    const d = toDynasty(playPlan(knight, plan).state, knight);
+    d.flags = [...d.flags, 'c5r_peace_marriage'];
+    const seen: string[] = [];
+    const s = drive(fromDynasty(c, d, { seed: 5, frame: 'free', sovereign: 'mahaut' }), ROUTE, seen);
+    expect(seen).toContain('h_b03_sauvel');
+    expect(seen).not.toContain('h_b03_match');
+    expect(s.characters[s.characters[s.hero]!.spouse!]!.name).toMatch(/de Sauvel$/);
+  });
+
+  it('reaches the end of Act I in every frame and sovereign, with the two offers on the table', () => {
+    for (const [frame, sovereign] of [['free', 'mahaut'], ['free', 'duchy'], ['free', 'thibaut'], ['adalian', 'edwin']] as const) {
+      const seen: string[] = [];
+      const s = drive(house({ frame, sovereign }), ROUTE, seen);
+      expect(seen).toContain(frame === 'adalian' ? 'h_b02_governor' : 'h_b02_herald');
+      expect(seen.at(-1)).toBe('h_b12_estates');
+      expect(s.scene).toBe('h_b_end');
+      expect(s.time).toBe(32); // Lady Day, year 58
+    }
   });
 });

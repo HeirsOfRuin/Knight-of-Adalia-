@@ -1354,3 +1354,4 @@ In free runs this slot is Mahaut's last illness: the court at Lannec knows, and 
 | 2026-10-08 | Layer 3, round 6 (Act IV) | Hervé dies in 72 (L3-20); Aldred III keeps the Hales unless swung (L3-21); Kerval is a short campaign (L3-22); an end is always taken in E13 (L3-23). |
 | 2026-10-08 | Layer 3 | Book I, Act IV's beat sheets (E1-E13) approved. Layer 3 complete. PLAN.md §6.1-6.2 now point here, and §8 carries the epilogue promises found in Layer 3. |
 | 2026-10-08 | Step 4b | The prologue (P1-P16) written for the Founder opening, free and Adalian frames. Transcripts in `transcripts/`. Waiting on the author's playtest. |
+| 2026-10-08 | Step 4c | Book I, Act I (B1-B12) written for the Founder opening, free and Adalian frames. The playtest link carries the prologue and Act I. |

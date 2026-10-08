@@ -263,7 +263,10 @@ export function yearTick(s: HouseState, content: ContentBundle, rng: RngCursor):
   for (const [id, c] of Object.entries(s.characters)) {
     if (!c.alive || c.house !== HOUSE_ID) continue;
     const a = age(s, c);
-    if (s.chapter !== 'prologue' && !c.spouse && a >= life.match_age && c.legitimate !== false && s.time - (s.family.offered[id] ?? -999) >= 12) {
+    // while the prologue and Book I are played, the founder's children marry by the story (STORY.md, P6, B3, B8);
+    // the odds offer matches from the next generation on, and to everyone in the empty-years harness
+    const storyMatch = s.chapter === 'book1' && (id === FOUNDER_ID || c.father === FOUNDER_ID || c.mother === FOUNDER_ID);
+    if (s.chapter !== 'prologue' && !storyMatch && !c.spouse && a >= life.match_age && c.legitimate !== false && s.time - (s.family.offered[id] ?? -999) >= 12) {
       s.family.offered[id] = s.time;
       tell(s, { kind: 'match', who: id, at: s.time });
     }

@@ -2,6 +2,7 @@
 import type { Character, CoreState, Sex } from './state';
 import type { CoreContent } from './schema';
 import { gameOf, type Value } from './game';
+import { numberWords } from './format';
 
 /** The character the player plays now. */
 export function heroOf(state: CoreState): Character {
@@ -59,7 +60,7 @@ export function characterValue(state: CoreState, c: Character | undefined, field
     case 'first': return (c.name || 'the baby').split(' ')[0];
     case 'sex': return c.sex;
     case 'age': return ageOfCharacter(state, c);
-    case 'ageword': { const a = ageOfCharacter(state, c); return WORDS[a] ?? String(a); }
+    case 'ageword': { const a = ageOfCharacter(state, c); return WORDS[a] ?? numberWords(a); }
     case 'alive': return c.alive;
     case 'temperament': return c.temperament ?? 'none';
     case 'upbringing': return c.upbringing ?? 'none';

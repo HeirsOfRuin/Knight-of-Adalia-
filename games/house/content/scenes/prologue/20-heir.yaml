@@ -247,13 +247,13 @@
       effects: [ { set: flag.h_oath_plain } ]
       text_after: |
         You say it plain, and rise, and are kissed on both cheeks, and it is done. On the way out an old lord you do not know says to his neighbour, loud enough, "That's {founder.first}'s {son}. Same knees," and you decide to take it as kindly meant.
-      next: h_p_end
+      next: h_b01_homage
     - id: concession
       text: Offer a gift with your homage, to buy the goodwill {house.parent} had.
       effects: [ { set: flag.h_oath_bought }, { add: { counter.favour: 2 } } ]
       text_after: |
         You offer the wardship of the ford farms for seven years, which is worth more to a sovereign's clerk than to you. It is taken with a smile. Goodwill is cheap at the price. You will find out later what the price was.
-      next: h_p_end
+      next: h_b01_homage
     - id: reserve
       text: Swear with a reservation, spoken aloud for the hall to hear.
       check: { attr: presence, skill: courtesy, difficulty: 3, audience: nobles, mods: [ { if: flag.h_heir_court, add: 1, label: you know the court }, { if: realm.west == adalian && inherited.c5_liberties, add: 1, label: the liberties are in the patent } ] }
@@ -261,18 +261,9 @@
         text: |
           "...saving the liberties of the West, and my right in {house.claimed}." There is a stir along the walls. Then [if realm.west == adalian]the governor[else]{realm.sovereign}[/if] smiles, and says, "Saving them," and the clerk writes it down, and it is in the record for ever. On the steps outside an old knight claps you on the shoulder and says, "{house.parent_start}'d have done that." You are not sure he would.
         effects: [ { set: flag.h_oath_reserved }, { add: { counter.favour: -1 } } ]
-        next: h_p_end
+        next: h_b01_homage
       failure:
         text: |
           "...saving the liberties of the West, and my right in {house.claimed}." There is a silence. Then [if realm.west == adalian]the governor[else]{realm.sovereign}[/if] says, "Noted," in a voice that takes the warmth out of the room, and the clerk writes it down. It is in the record now. So is the way it was received.
         effects: [ { set: flag.h_oath_reserved }, { add: { counter.favour: -2 } } ]
-        next: h_p_end
-
-- id: h_p_end
-  chapter: prologue
-  kind: ending
-  ending: story_so_far
-  text: |
-    Here the prologue ends. You are head of the house {founder.name} founded, which is your house now, under {realm.sovereign}, with {house.claimed} still in your hands and Penhoët still across the river.
-
-    Book One, *The Keeper*, is still being written.
+        next: h_b01_homage

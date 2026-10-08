@@ -21,7 +21,9 @@ const SINGLE = ['opening', 'imported'];
 /** family.<field>: the house as a whole. */
 const FAMILY = ['law', 'generation', 'members', 'children', 'sons', 'daughters', 'extinct', 'no_heir', 'minor', 'regency', 'contested', 'news', 'childbed', 'cloister'];
 // {house.*}: the founder's house as Knight of Adalia left it, or as a fresh start has it
-const HOUSE_TEXT = ['manor', 'claimed', 'companion', 'companion_first', 'origin', 'parent', 'parent_start'];
+const HOUSE_TEXT = ['manor', 'claimed', 'companion', 'companion_first', 'origin', 'parent', 'parent_start', 'knights', 'withholder', 'parent_word'];
+// house.<field> in conditions: the founder's knights as Knight of Adalia left them
+const HOUSE_IDS = ['yvon', 'vassals'];
 
 type Op<K extends string> = Extract<Effect, Record<K, unknown>>;
 
@@ -33,7 +35,7 @@ export function sovereignStyle(state: HouseState, content: ContentBundle): strin
 
 export const house: GameModule = {
   id: GAME_ID,
-  namespaces: ['realm', 'opening', 'imported', 'inherited', 'family'],
+  namespaces: ['realm', 'opening', 'imported', 'inherited', 'family', 'house'],
   characterSelectors: SELECTORS,
   selectCharacter: (s, c, sel) => select(st(s), ct(c), sel),
 
@@ -59,6 +61,12 @@ export const house: GameModule = {
       case 'imported': return !!state.inheritance;
       // inherited.<flag>: a story flag set in the Knight of Adalia life this house continues
       case 'inherited': return !!state.inheritance?.flags.includes(a!);
+      case 'house': {
+        const v = state.inheritance?.lands.vassals ?? [];
+        if (a === 'yvon') return v.some((x) => x.id === 'penhoet_cadet');
+        if (a === 'vassals') return v.length;
+        return undefined;
+      }
       case 'family': {
         const f = state.family;
         const kids = livingChildren(state).map((id) => state.characters[id]!);
@@ -94,6 +102,7 @@ export const house: GameModule = {
     if (b !== undefined) return `too many segments in "${path}"`;
     if (ns === 'realm') return REALM_IDS.includes(a) ? null : `unknown realm field in "${path}"`;
     if (ns === 'family') return FAMILY.includes(a) ? null : `unknown family field in "${path}"`;
+    if (ns === 'house') return HOUSE_IDS.includes(a) ? null : `unknown house field in "${path}"`;
     // Knight of Adalia's flags are not in this registry; any id is allowed
     if (ns === 'inherited') return /^[a-z][a-z0-9_]*$/.test(a) ? null : `bad flag id in "${path}"`;
     return `unknown namespace "${ns}" in "${path}"`;
@@ -276,6 +285,19 @@ function houseText(s: HouseState, f: string): string | undefined {
     }
     // the founder, as the founder's children speak of them
     case 'parent': return s.characters[FOUNDER_ID]?.sex === 'female' ? 'your mother' : 'your father';
+    // the knights who held of the founder (Knight of Adalia's lands.vassals), or the West's first names for a fresh house
+    case 'knights': {
+      const names = (d?.lands.vassals ?? []).map((v) => v.name);
+      const list = names.length ? names.slice(0, 4) : ["Sir Gautier d'Aubrac", 'Sir Alain de Coatmen', 'Sir Renaud de Saint-Aubin'];
+      return list.length === 1 ? list[0]! : `${list.slice(0, -1).join(', ')} and ${list.at(-1)}`;
+    }
+    // the knight who withholds homage from the Keeper: Penhoët's cadet if he holds of the house
+    case 'withholder': {
+      const v = d?.lands.vassals ?? [];
+      return v.find((x) => x.id === 'penhoet_cadet')?.name ?? v.at(-1)?.name ?? 'Sir Renaud de Saint-Aubin';
+    }
+    // the founder as the founder's children call them: Father, Mother
+    case 'parent_word': return s.characters[FOUNDER_ID]?.sex === 'female' ? 'Mother' : 'Father';
     case 'parent_start': return s.characters[FOUNDER_ID]?.sex === 'female' ? 'Your mother' : 'Your father';
     case 'origin': {
       // Knight of Adalia's founder ending: a reeve's, a wool merchant's or an archer's son, or else a tirewoman's

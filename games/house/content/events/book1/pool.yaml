@@ -1,0 +1,192 @@
+# Book I, Act I's pools (STORY.md, Layer 2: a rival's border quarrel, an indebted house's daughter, the
+# free company on the road, the founder's widow's dower suit; c5r_peace_castle's hostile holding).
+# h_b1_early is drawn after the wedding (spring 56) and goes on to the suit, the sibling, or the muster;
+# h_b1_late is drawn after the muster (autumn 57) and returns to the Estates.
+
+- id: h_b1p_border
+  chapter: book1
+  kind: pool
+  pool: h_b1_early
+  title: Sheep on the Hill
+  frames: [free, adalian]
+  text: |
+    Quérec's shepherds have been grazing your high pasture since the snow went, three hundred head on grass that is yours by every roll the steward owns. Your own shepherd went up to tell them, and came back with a black eye and a message for you that he will not repeat in front of the chaplain.
+
+    "Quérec's testing you," says the steward. "He tested your father the same way, the first year. Your father went up the hill himself."
+  choices:
+    - id: ride
+      text: Ride up the hill yourself, as {house.parent} did.
+      check: { attr: presence, skill: command, difficulty: 3, audience: commons, mods: [ { if: flag.h_rode_out, add: 1, label: they heard about the boundary stone } ] }
+      success:
+        text: |
+          You ride up with six men and sit your horse in the middle of the flock until the Quérec shepherds come to you. "Off by Sunday," you say, "or the sheep are mine." They are off by Saturday. At the inn in the valley they say you have your father's seat on a horse, which is not true, and you do not correct them.
+        effects: [ { add: { counter.household: 1, counter.shadow: 1 } } ]
+        next: { switch: [ { if: [ "!flag.h_suit_bought", "!flag.h_suit_settled" ], go: h_b06_suit }, { if: sibling.exists, go: h_b07_grievance }, { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
+      failure:
+        text: |
+          The Quérec shepherds are not impressed, and say so, in front of your men. You have to send to Quérec himself in the end, with a lawyer's letter, and the sheep stay on your hill until midsummer, eating your grass.
+        effects: [ { add: { counter.household: -1 } } ]
+        next: { switch: [ { if: [ "!flag.h_suit_bought", "!flag.h_suit_settled" ], go: h_b06_suit }, { if: sibling.exists, go: h_b07_grievance }, { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
+    - id: impound
+      text: Have the reeve impound a hundred head and sell them at Lammas.
+      effects: [ { add: { res.coin: 1200 } }, { set: flag.h_b_impounded } ]
+      text_after: |
+        The reeve takes a hundred and twelve, to be safe, and sells them at the Lammas fair for five pounds. Quérec writes you a furious letter, and keeps his sheep off your hill for ever after. The steward frames the letter.
+      next: { switch: [ { if: [ "!flag.h_suit_bought", "!flag.h_suit_settled" ], go: h_b06_suit }, { if: sibling.exists, go: h_b07_grievance }, { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
+    - id: let_be
+      text: Let it go. It is one hill, and you have a wedding to pay for.
+      effects: [ { add: { counter.shadow: -1, counter.household: -1 } } ]
+      text_after: |
+        You let it go. The sheep stay. So does the shepherd's black eye, and the story of it, which goes round the valley twice and comes back worse.
+      next: { switch: [ { if: [ "!flag.h_suit_bought", "!flag.h_suit_settled" ], go: h_b06_suit }, { if: sibling.exists, go: h_b07_grievance }, { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
+
+- id: h_b1p_company
+  chapter: book1
+  kind: pool
+  pool: h_b1_early
+  title: Men on the Road
+  frames: [free, adalian]
+  text: |
+    Forty men come up the valley road at noon, on foot and horse, with a wagon and a dog and a banner nobody recognises: a free company, paid off after the last war and walking home the long way, through other people's valleys.
+
+    Their captain rides up to your gate alone, which is good manners, and takes off his helm, which is better. He is a Hroswalder with a grey moustache and one ear. "We want bread," he says, "and a night in your barn, and we'll be gone at Prime. Or we want nothing, and we camp by your river, and we see."
+  choices:
+    - id: feed
+      text: Give them bread and the barn, and send them on at Prime. (£1)
+      requires: "res.coin >= 240"
+      effects: [ { add: { res.coin: -240 } } ]
+      text_after: |
+        They eat everything in the bake-house and sleep in the long barn, and in the morning they are gone, as he said, with the dog. The captain leaves a Hroswald coin on the gatepost. "For luck," he tells the porter. "Or for next time."
+      next: { switch: [ { if: [ "!flag.h_suit_bought", "!flag.h_suit_settled" ], go: h_b06_suit }, { if: sibling.exists, go: h_b07_grievance }, { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
+    - id: hire
+      text: Hire a dozen of them for the house. (£6)
+      requires: "res.coin >= 1440"
+      effects: [ { add: { res.coin: -1440, res.men: 12 } }, { set: flag.h_b_hired_company } ]
+      text_after: |
+        Twelve of them stay: the captain picks them himself, the steadiest, he says, and the ones who can count past ten. The old knights look at them the way cats look at a new dog. The rest go on down the valley at Prime, singing.
+      next: { switch: [ { if: [ "!flag.h_suit_bought", "!flag.h_suit_settled" ], go: h_b06_suit }, { if: sibling.exists, go: h_b07_grievance }, { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
+    - id: refuse
+      text: Shut the gate, and post men on the river.
+      effects: [ { add: { counter.household: 1 } } ]
+      text_after: |
+        You shut the gate. They camp by the river, and light fires, and sing until the small hours, and in the morning two of your sheep and a goose are missing, and so is the company. Nobody was hurt. You count that a win, mostly.
+      next: { switch: [ { if: [ "!flag.h_suit_bought", "!flag.h_suit_settled" ], go: h_b06_suit }, { if: sibling.exists, go: h_b07_grievance }, { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
+
+- id: h_b1p_dower
+  chapter: book1
+  kind: pool
+  pool: h_b1_early
+  title: The Dower
+  frames: [free, adalian]
+  requires: "dowager.alive"
+  weight: 20
+  text: |
+    {dowager.first} comes to you after the wedding with a clerk from {dowager.his} own family and a roll of parchment.
+
+    "My dower," {dowager.he} says. "A third of the house's land, for my life, as the custom is. {house.parent_start}'s will gave it to me, and I'd like it measured and set out now, while we're all still speaking." {dowager.He} looks at your new [if spouse.alive]{spouse.lord}[else]household[/if] across the hall. "Before there are more mouths at this table to argue about it."
+
+    The clerk unrolls the parchment. {dowager.His} family has already chosen which third.
+  choices:
+    - id: generous
+      text: Give {dowager.him} the third {dowager.his} family chose, and the house at the ford to live in.
+      effects: [ { add: { res.coin: -2400, counter.household: 1 } }, { set: flag.h_b_dower_generous } ]
+      text_after: |
+        {dowager.first} looks at you, and then at the clerk, who is visibly disappointed not to have to argue. "Well," {dowager.he} says. "{house.parent_start} would have made me fight for it." {dowager.He} kisses you on the cheek, which {dowager.he} has not done since you were small.
+      next: { switch: [ { if: [ "!flag.h_suit_bought", "!flag.h_suit_settled" ], go: h_b06_suit }, { if: sibling.exists, go: h_b07_grievance }, { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
+    - id: letter
+      text: Give the third the custom allows, measured by the steward, not the clerk.
+      check: { attr: wits, skill: stewardship, difficulty: 3 }
+      success:
+        text: |
+          The steward measures it, field by field, and argues the clerk down from the orchard to the hill pasture, and from the mill to the fishery. {dowager.first} takes it with a face like a shut door, and is, by Michaelmas, perfectly civil to you, which you know better than to trust.
+        effects: [ { set: flag.h_b_dower_custom } ]
+        next: { switch: [ { if: [ "!flag.h_suit_bought", "!flag.h_suit_settled" ], go: h_b06_suit }, { if: sibling.exists, go: h_b07_grievance }, { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
+      failure:
+        text: |
+          The clerk is better than the steward. {dowager.first} gets the orchard and the mill, and {dowager.his} family's men put up a fence round them within the month.
+        effects: [ { add: { res.coin: -1200 } }, { set: flag.h_b_dower_custom } ]
+        next: { switch: [ { if: [ "!flag.h_suit_bought", "!flag.h_suit_settled" ], go: h_b06_suit }, { if: sibling.exists, go: h_b07_grievance }, { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
+
+- id: h_b1p_debtor
+  chapter: book1
+  kind: pool
+  pool: h_b1_late
+  on_enter: [ { catch_up: { year: 57, season: autumn } } ]
+  title: Sir Josselin's Daughter
+  frames: [free, adalian]
+  text: |
+    Sir Josselin of the dyke comes at Michaelmas with his hat in his hands and his daughter behind him, a tall girl of fifteen with ink on her fingers. [if flag.h_p_lent]He owes the house ten pounds from {house.parent}'s day, and cannot pay it, and has come to say so to your face, which you have to respect.[else]He owes the Lannec moneylenders forty pounds, and cannot pay it, and has come to the greatest house he knows.[/if]
+
+    "Take her into your household," he says. "She can read and reckon better than my steward. Better than me. In a great house she'll meet a husband I could never find her." He does not look at his daughter while he says it. She looks at you.
+  choices:
+    - id: take
+      text: Take her into the household, and forgive the debt.
+      effects: [ { set: flag.h_b_josselin_girl }, { add: { counter.household: 1 } } ]
+      text_after: |
+        Her name is Perrine. Within a year she is keeping the household's accounts, and finding things in them the steward would rather she had not, and the steward has started, grudgingly, to ask her to check his sums.
+      next: "@return"
+    - id: lend
+      text: Lend him what he needs, at no interest, and send them both home. (£10)
+      requires: "res.coin >= 2400"
+      effects: [ { add: { res.coin: -2400 } }, { set: flag.h_b_josselin_lent } ]
+      text_after: |
+        He weeps, as he did for your father. The girl does not. She thanks you properly at the door, and looks back once at the hall as if memorising it.
+      next: "@return"
+    - id: refuse
+      text: Tell him the house cannot.
+      effects: [ { add: { counter.household: -1 } } ]
+      text_after: |
+        He nods, and goes. In the spring you hear that his land has gone to the Lannec moneylenders, and that the girl has gone into a nunnery at Saint-Lys. The steward says nothing, carefully, for a week.
+      next: "@return"
+
+- id: h_b1p_castle
+  chapter: book1
+  kind: pool
+  pool: h_b1_late
+  on_enter: [ { catch_up: { year: 57, season: autumn } } ]
+  title: The Castle's People
+  frames: [free, adalian]
+  requires: "inherited.c5r_peace_castle"
+  weight: 20
+  text: |
+    The castle {house.parent} gave up for the peace stands across the border on its hill, with a foreign banner on it now. Its people have long memories. At Michaelmas they send their rents to the new lord, and a dead dog to you, wrapped in a sack, with a note in the old tongue that the chaplain will not translate.
+
+    "They think your father sold them," says the steward. "They're not wrong."
+  choices:
+    - id: alms
+      text: Send alms to the castle village, quietly, every year.
+      effects: [ { add: { res.coin: -480 } }, { set: flag.h_b_castle_alms } ]
+      text_after: |
+        Two pounds a year, through the priest at the castle church, with no name on it. They will know whose it is. They may never forgive it. They will, at least, eat.
+      next: "@return"
+    - id: ignore
+      text: Burn the sack, and the note, and say nothing.
+      effects: []
+      text_after: |
+        You burn it in the yard. The note goes up last, curling, in a hand you will never be able to read.
+      next: "@return"
+
+- id: h_b1p_audit
+  chapter: book1
+  kind: pool
+  pool: h_b1_late
+  on_enter: [ { catch_up: { year: 57, season: autumn } } ]
+  title: The Michaelmas Audit
+  frames: [free, adalian]
+  text: |
+    The Michaelmas reckoning takes three days this year. The steward has found a hole in the accounts of the outlying farms: forty shillings a year, for six years, going somewhere that is not the house.
+
+    He has found it in the reeve's accounts at the farm, and the reeve has been with the house since before you were born. He taught you to sit a pony. He is waiting outside.
+  choices:
+    - id: forgive
+      text: Have him in, hear him out, and forgive him if he pays it back.
+      effects: [ { add: { counter.household: 1, res.coin: 480 } } ]
+      text_after: |
+        It was his daughter's dowry, and then her husband's debts, and then her husband's funeral. He pays back what he can, two pounds, and weeps, and you send him home to his farm with his job. The steward says you are soft. The household says something else.
+      next: "@return"
+    - id: dismiss
+      text: Dismiss him, and put the steward's own man in.
+      effects: [ { add: { counter.household: -1, res.coin: 1440 } } ]
+      text_after: |
+        He goes. The new man is honest, and finds another six pounds the old one missed, and is disliked by everyone at the farm for the rest of his life.
+      next: "@return"

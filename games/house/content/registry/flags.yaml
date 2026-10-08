@@ -1,8 +1,41 @@
 # House of Adalia's own story flags. Knight of Adalia's are read as inherited.<flag>; they are not declared here.
-# later: book1 marks a flag the prologue sets for Book I to read (STORY.md, "What Book I inherits").
+# later: book1 marks a flag the prologue sets for Book I to read (STORY.md, "What Book I inherits"); later: book1 on an
+# Act I flag marks it for Act II and after.
 h_answer_self: { description: 'At the deathbed the heir said, "I will be myself"', later: book1 }
 h_answer_silent: { description: "At the deathbed the heir said nothing, and held his hand", later: book1 }
 h_answer_you: { description: 'At the deathbed the heir said, "I will try to be you"', later: book1 }
+h_b_answered: { description: "The Keeper answered the knight who would not kneel, and he knelt", later: book1 }
+h_b_asked_knights: { description: "The Keeper asked each knight what he wanted before he swore", later: book1 }
+h_b_castle_alms: { description: "The Keeper sends alms to the castle the founder gave up", later: book1 }
+h_b_confessed: { description: "The Keeper confessed changing the founder's will, and made it good", later: book1 }
+h_b_dower_custom: { description: "The Keeper gave the founder's widow her dower by the custom", later: book1 }
+h_b_dower_generous: { description: "The Keeper gave the founder's widow her dower generously", later: book1 }
+h_b_enemy_within: { description: "The knight who would not kneel is not truly the Keeper's man", later: book1 }
+h_b_gave_manor: { description: "The Keeper gave the sibling a manor of their own", later: book1 }
+h_b_gave_nothing: { description: "The Keeper gave the sibling nothing", later: book1 }
+h_b_gave_promise: { description: "The Keeper gave the sibling coin and a promise of land", later: book1 }
+h_b_held: { description: "The Keeper held the knight who would not kneel to his oath", later: book1 }
+h_b_herve_high: { description: "The Keeper seated Hervé at the high table at the wedding", later: book1 }
+h_b_hired_company: { description: "The Keeper hired a dozen men of a free company", later: book1 }
+h_b_impounded: { description: "The Keeper impounded Quérec's sheep", later: book1 }
+h_b_josselin_girl: { description: "Sir Josselin's daughter Perrine keeps the household's accounts", later: book1 }
+h_b_josselin_lent: { description: "The Keeper lent Sir Josselin what he needed", later: book1 }
+h_b_new_terms: { description: "The Keeper changed the knights' terms at their homage", later: book1 }
+h_b_old_terms: { description: "The Keeper took the knights' homage on the founder's terms", later: book1 }
+h_b_patent_conceded: { description: "The Keeper conceded the new governor's narrow reading of the patent", later: book1 }
+h_b_patent_stood: { description: "The Keeper stood on the patent as written", later: book1 }
+h_b_released: { description: "The Keeper released the knight who would not kneel", later: book1 }
+h_b_snub: { description: "The Keeper turned Hervé away from the wedding feast", later: book1 }
+h_b_stance_delay: { description: "The Keeper told Lannec the house will speak when the Estates sit", later: book1 }
+h_b_stance_male: { description: "The Keeper told Lannec the house stands for the male line", later: book1 }
+h_b_stance_women: { description: "The Keeper told Lannec the house stands for inheritance through women", later: book1 }
+h_b_wed_armance: { description: "The Keeper married into Mahaut's household", later: book1 }
+h_b_wed_hale: { description: "The Keeper married into the Hales", later: book1 }
+h_b_wed_kerguen: { description: "The Keeper married into Kerguen", later: book1 }
+h_b_wed_later: { description: "The Keeper put off marrying", later: book1 }
+h_b_wed_love: { description: "The Keeper married for love, outside the great houses", later: book1 }
+h_b_wed_sauvel: { description: "The Keeper kept the Sauvel marriage made at the peace", later: book1 }
+h_b_wendmere: { description: "The Keeper wrote to Wendmere over the governor's head", later: book1 }
 h_blood_at_kerval: { description: "Blood was spilled at the Kerval boundary", later: book1 }
 h_buried_beside: { description: "The founder lies beside his wife", later: book1 }
 h_buried_home: { description: "The founder lies in the chancel at home", later: book1 }
@@ -20,13 +53,18 @@ h_handover_will: { description: "The founder handed over the house by a will wit
 h_heir_court: { description: "The founder sent the heir to court", later: book1 }
 h_heir_kept: { description: "The founder kept the heir at his side", later: book1 }
 h_heir_manor: { description: "The founder gave the heir a manor to run", later: book1 }
+h_kerval_kept: { description: "The court kept Kerval for the house, whole", later: book1 }
+h_kerval_lost: { description: "The court gave Kerval to Penhoët", later: book1 }
+h_kerval_shared: { description: "Kerval is shared: the manor to the house, the wood and mill to Penhoët", later: book1 }
 h_law_carried: { description: "The founder's speech on the law carried the hall", later: book1 }
 h_law_male: { description: "The house spoke for the male line", later: book1 }
 h_law_silent: { description: "The house kept silent on the law", later: book1 }
 h_law_women: { description: "The house spoke for inheritance through women", later: book1 }
+h_new_men: { description: "The Keeper raised new men of the Keeper's own", later: book1 }
 h_oath_bought: { description: "The heir bought the sovereign's goodwill with a gift at the oath", later: book1 }
 h_oath_plain: { description: "The heir swore homage plain", later: book1 }
 h_oath_reserved: { description: "The heir swore homage with a reservation spoken aloud", later: book1 }
+h_old_knights: { description: "The Keeper kept the founder's old knights in their places", later: book1 }
 h_p_books: { description: "The founder went over the books with the steward on the first morning", later: book1 }
 h_p_lent: { description: "The founder lent to a neighbour at the first Michaelmas", later: book1 }
 h_p_owed: { description: "The founder put off the Sarenzan debt", later: book1 }
@@ -36,8 +74,13 @@ h_patent_bought: { description: "The founder paid the governor's clerks to lose 
 h_patent_conceded: { description: "The founder conceded a clause of the patent", later: book1 }
 h_patent_defended: { description: "The founder defended the patent word for word", later: book1 }
 h_penhoet_match: { description: "A child of the house is married or promised into Penhoët", later: book1 }
+h_pensioned: { description: "The Keeper pensioned the oldest knights off with honour", later: book1 }
 h_rode_out: { description: "The heir rode out to the boundary stone at Kerval", later: book1 }
+h_second_elsewhere: { description: "The sibling married outside the West's great houses", later: book1 }
 h_second_envoy: { description: "The heir dealt with Hervé through the sibling at Penhoët", later: book1 }
+h_second_inside: { description: "The sibling works for the house from inside Penhoët", later: book1 }
+h_second_kerguen: { description: "The sibling married into Kerguen", later: book1 }
+h_second_penhoet: { description: "The sibling is Penhoët's", later: book1 }
 h_suit_bought: { description: "The founder bought Penhoët off over Kerval", later: book1 }
 h_suit_law: { description: "The founder fought Penhoët's suit for Kerval at law", later: book1 }
 h_suit_match: { description: "The founder offered to settle Kerval between families", later: book1 }

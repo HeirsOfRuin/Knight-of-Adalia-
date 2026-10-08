@@ -458,7 +458,7 @@ The framework is done (steps 1-3). Step 4, the slice, is split so the hardest en
   - bot: 340 runs, 0 failures;
   - `tests/prologue.test.ts`: every frame and sovereign, a female founder, the cloister, and imports from every Knight of Adalia plan that ends as Founder;
   - Knight of Adalia's fingerprint is unchanged.
-- **Transcripts:** `docs/transcripts/prologue-free.md` and `prologue-adalian.md`, made by `npm run house:transcript` (`--frame`, `--sovereign`, `--seed`, `--sex`).
+- **Transcripts:** `docs/transcripts/prologue-act1-free.md` and `prologue-act1-adalian.md` (the prologue and Book I, Act I), made by `npm run house:transcript` (`--frame`, `--sovereign`, `--seed`, `--sex`).
 - **Still open in 4b:**
   - the match system proper (offers, terms, named houses);
   - the ledger and the House panel;
@@ -466,6 +466,30 @@ The framework is done (steps 1-3). Step 4, the slice, is split so the hardest en
 - **Known gaps:**
   - a founder who married Mahaut in Knight of Adalia (`c5_married_mahaut`) gets no variant prose yet;
   - an imported Old Companion is assumed to be a man.
+- **Playtest link:** a private claude.ai Artifact built by `npm run house:build:artifact`. Its notes box saves to the page's store (collection `notes`) for Claude to read back.
+
+### Step 4c progress (2026-10-08): Book I, Act I is written
+- **The scenes.** STORY.md's B1-B12 are written for the Founder opening, free and Adalian frames: `content/scenes/book1/10-new-lord.yaml`, with two pools in `content/events/book1/pool.yaml`.
+- **Routing.** The beats a run does not have are skipped:
+  - the suit, if the prologue settled it;
+  - the sibling's grievance and match, if there is no sibling;
+  - the abbot's letter, if the founder did not take the cowl.
+
+  Every scene sets its own date with `catch_up`.
+- **Outcomes:**
+  - the Kerval verdict is mostly fixed (L3-10): the charter sets it, and the court check moves it one step;
+  - the Keeper's match marries by name (Azenor or Tanguy de Kerguen, Cecily or Hamon Hales);
+  - `c5r_peace_marriage` brings the Sauvel spouse over the hills instead.
+- **Built for it:**
+  - the `house.yvon` and `house.vassals` conditions;
+  - `{house.knights}`, `{house.withholder}` and `{house.parent_word}`;
+  - the founder's children marry only by the story while Book I is played (the empty-years harness is unchanged);
+  - character ages are written in words past twenty.
+- **Tests** in `tests/prologue.test.ts`: the four Kerval verdicts, the settled suit skipped, the Keeper's match and no odds' matches for the founder's children, the Sauvel import, and every frame and sovereign to the end of Act I.
+- **Still open:**
+  - the rival-house state (`counter.penhoet` stands in);
+  - the vassals as state (homage terms are flags);
+  - a later match for a Keeper who put marriage off (`h_b_wed_later`), which Act II must offer.
 
 ### Step 4a results: the odds alone (`npm run house:life`, 75 empty years from every start)
 | Measure | Result | Reading |

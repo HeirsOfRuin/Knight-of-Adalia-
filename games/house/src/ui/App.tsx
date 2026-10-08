@@ -42,7 +42,7 @@ function NewHouse({ content, onStart }: { content: ContentBundle; onStart: (s: H
   return (
     <main class="newgame">
       <h1>House of Adalia</h1>
-      <p class="muted">A playtest build of the sequel. The prologue is written for <strong>Founder of a House</strong>, in a free or an Adalian West; the other openings stop after their first scene. Your place is saved in this browser as you play.</p>
+      <p class="muted">A playtest build of the sequel. The prologue and Book One, Act I are written for <strong>Founder of a House</strong>, in a free or an Adalian West; the other openings stop after their first scene. Your place is saved in this browser as you play.</p>
 
       <h2>Continue a life</h2>
       <label class="field">

@@ -1,0 +1,602 @@
+# Book I, Act I: The New Lord (STORY.md, Layer 3, B1-B12). Years 55-58, played as the Keeper, in the
+# Founder opening's free and Adalian frames. Each scene sets its own date with catch_up, so scenes a
+# run skips (no open suit, no sibling, no cloister) leave the calendar right.
+# Routing:
+#   B1 homage -> B1b the knight who did not kneel -> B2 (free or Adalian) -> B3 match (or B3s the Sauvel
+#   marriage) -> B4 wedding -> pool h_b1_early -> B6 suit (if open) -> B7 grievance and B8 the sibling's
+#   match or visit (if there is a sibling) -> B9 the abbot's letter (cloister) -> B10 old knights or new
+#   men -> pool h_b1_late -> B12 before the Estates -> the end of what is written.
+
+- id: h_b01_homage
+  chapter: book1
+  title: The Homage of the Knights
+  checkpoint: true
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 55, season: summer } } ]
+  text: |
+    They come at midsummer, as they came to {house.parent} every year: the knights who hold land of the house, riding in by twos and threes with their squires and their best horses and their oldest grievances. {house.knights}, and the rest behind them.
+
+    The hall is hung with the house's colours. The chair at the end of it is yours. You sit in it with your hands on the arms where {house.parent}'s hands went, and they come up one by one, and kneel, and put their hands between yours.
+
+    "I become your man of the lands I hold of you," says the first, an old knight with a white beard and a voice like a cart on gravel, "as I was {house.parent}'s." [if counter.shadow >= 3]He says the last part loudly, for the hall.[else]He says the last part quietly, as if it is between the two of you.[/if]
+
+    Then the next, and the next. By the sixth your hands are cold from theirs. The steward stands at your shoulder with the roll, and reads out each man's service as he rises: forty days in war, suit of court, a horse at Michaelmas, a pair of gilt spurs at Easter, as it was in {house.parent}'s day.
+  choices:
+    - id: old_terms
+      text: Take every homage on {house.parent}'s terms, word for word.
+      effects: [ { add: { counter.shadow: 1, counter.household: 1 } }, { set: flag.h_b_old_terms } ]
+      text_after: |
+        You change nothing, and they see you change nothing. The old knight with the white beard nods to you on his way out as if you have passed something. Perhaps you have.
+      next: h_b01_withholder
+    - id: new_terms
+      text: Change the terms as they kneel. Lighter dues, more days in the field.
+      check: { attr: presence, skill: command, difficulty: 3, audience: knights, mods: [ { if: flag.h_heir_kept, add: 1, label: they knew you at the old lord's side }, { if: counter.household >= 2, add: 1, label: the household is with you } ] }
+      success:
+        text: |
+          "Twenty shillings less at Michaelmas," you say to the first man, "and sixty days in war, not forty." He looks at you, and you look back, and after a moment he says the words with the new terms in them. The rest follow. The steward writes it all down with his tongue between his teeth.
+        effects: [ { add: { counter.shadow: -1 } }, { set: flag.h_b_new_terms } ]
+        next: h_b01_withholder
+      failure:
+        text: |
+          The first man hears the new terms and says, "Your father's were good enough for me," and stays on his knees until you give way. You give way. The rest hear it. The new terms go into the roll for two of them, and the old ones for everyone else.
+        effects: [ { add: { counter.household: -1 } } ]
+        next: h_b01_withholder
+    - id: ask
+      text: Ask each man what he wants of you, before he swears.
+      check: { attr: presence, skill: diplomacy, difficulty: 3, mods: [ { if: flag.h_heir_court, add: 1, label: you learned to listen at court } ] }
+      success:
+        text: |
+          It takes until Vespers. A boundary ditch. A widowed sister's dower. A son who wants a place in your household. You say yes to some and no to others, and they can see you thinking about each one. By the end of the day you know every man in the hall better than you did, and some of them know you.
+        effects: [ { add: { counter.household: 2, counter.shadow: -1 } }, { set: flag.h_b_asked_knights } ]
+        next: h_b01_withholder
+      failure:
+        text: |
+          They tell you, at length, every one of them. By None you have agreed to three things you cannot afford, and the old knight with the white beard is asleep on the bench by the door.
+        effects: [ { add: { res.coin: -1200 } }, { set: flag.h_b_asked_knights } ]
+        next: h_b01_withholder
+
+- id: h_b01_withholder
+  chapter: book1
+  title: The Knight Who Did Not Kneel
+  frames: [free, adalian]
+  text: |
+    The last of them does not kneel.
+
+    {house.withholder} stands in front of the chair with his hat in his hand, a lean man in a good cloak, and looks at you with the face of someone who has rehearsed this on the road. [if house.yvon]He is Hervé de Penhoët's cousin, and he holds Kerlan of you, and everyone in the hall knows both.[/if]
+
+    "I held of {house.parent}," he says. [if house.yvon]"I knelt to him gladly. But your father and my cousin had their quarrel and kept it in the courts, like gentlemen. You and my cousin," and he glances at the door, as if Hervé might be behind it, "have been at a boundary stone with carts. So I ask, before I swear: when you and Penhoët fall out, which lord do I serve?"[else]"I'd like to see what you are before I put my hands between yours. No offence meant. I knelt to a man I knew."[/if]
+
+    The hall has gone quiet. Somebody's dog yawns.
+  choices:
+    - id: release
+      text: Release him from his homage, and let him go.
+      effects: [ { set: flag.h_b_released }, { if: house.yvon, then: [ { add: { counter.penhoet: 1 } } ] } ]
+      text_after: |
+        "Then hold of nobody," you say. "Go in peace." He bows, and goes. [if house.yvon]Kerlan is his own now, or Penhoët's, and Hervé writes you a courteous letter about it within the week.[else]His land goes out of your service with him. The steward crosses a line out of the roll, slowly, as if it hurts.[/if]
+      next: { switch: [ { if: realm.west == adalian, go: h_b02_governor } ], default: h_b02_herald }
+    - id: hold
+      text: Hold him to the oath his land owes, here, in front of them all.
+      check: { attr: presence, skill: command, difficulty: 3, audience: knights, mods: [ { if: counter.household >= 2, add: 1, label: the hall is with you }, { if: flag.h_rode_out, add: 1, label: you put the stone back }, { if: flag.h_wood_conceded, add: -1, label: you gave up the wood } ] }
+      success:
+        text: |
+          "You hold your land of this house," you say, "whoever sits in this chair. Kneel, or give it back." For a long breath he does nothing. Then he goes down on one knee, and then the other, and puts his hands between yours, and says the words. His hands are colder than yours. Behind you somebody lets out a breath they have been holding since Terce.
+        effects: [ { set: flag.h_b_held }, { add: { counter.household: 1 } } ]
+        next: { switch: [ { if: realm.west == adalian, go: h_b02_governor } ], default: h_b02_herald }
+      failure:
+        text: |
+          He kneels, in the end, and says the words, but slowly, and with a little pause before "faith", that everyone in the hall hears. [if house.yvon]He is your man on the roll. You will find out whose man he is in the field.[else]He is your man on the roll. You will see what that is worth.[/if]
+        effects: [ { set: flag.h_b_held }, { set: flag.h_b_enemy_within } ]
+        next: { switch: [ { if: realm.west == adalian, go: h_b02_governor } ], default: h_b02_herald }
+    - id: answer
+      text: Answer him plainly, and let him choose.
+      effects: [ { add: { counter.shadow: -1 } }, { set: flag.h_b_answered } ]
+      text_after: |
+        [if house.yvon]"You serve the lord you hold of," you say. "If that's too hard a thing to promise, don't promise it." He looks at you for the space of three breaths. Then he kneels. "That's an answer," he says, low, "my cousin never gave me."[else]"You'll see what I am," you say. "Same as everyone. Kneel or don't." He kneels. "Fair," he says, and grins, which nobody expected, least of all you.[/if]
+      next: { switch: [ { if: realm.west == adalian, go: h_b02_governor } ], default: h_b02_herald }
+
+- id: h_b02_herald
+  chapter: book1
+  title: The Herald from Lannec
+  frames: [free]
+  on_enter: [ { catch_up: { year: 55, season: autumn } } ]
+  text: |
+    At Michaelmas a herald from Lannec rides in with {realm.sovereign}'s arms on his tabard and a letter under seal. Every great house in the West has had the same letter this month: the Estates of the West will sit, in two years or three, to write the law of succession, and {realm.sovereign} would be glad to know, in good time, where each house stands.
+
+    [if realm.sovereign == gaucelin]It is the Brésy regents' letter, really, with the boy king's name at the bottom in a hand still learning its letters. They want the male line written into the law, since it is the law of his own claim, and they would like to hear that the house agrees.[else]It is Mahaut's letter, really. Her daughter Jehanne is eleven, and is all the heir she has. She would like to hear that the house remembers who stood first at Lannec.[/if]
+
+    [if flag.h_law_women]{house.parent_start} spoke for Mahaut at the Estates, and the West remembers it.[elif flag.h_law_male]{house.parent_start} spoke for the male line at the Estates, and the West remembers it.[else]{house.parent_start} said nothing at the Estates, and the West remembers that too.[/if] The herald waits by the fire for your answer, eating your bread and drinking your ale, and carefully not looking at the steward.
+  choices:
+    - id: women
+      text: Answer that the house stands for inheritance through women.
+      effects:
+        - set: flag.h_b_stance_women
+        - add: { rel.mahaut_armance.affection: 1, counter.penhoet: -1 }
+        - if: flag.h_law_women
+          then: [ { add: { counter.shadow: 1 } } ]
+          else: [ { add: { counter.shadow: -1 } } ]
+      text_after: |
+        You write it yourself, so that it is your hand on it. The herald takes it, and bows, and you can see him already counting it among the yeas. [if realm.sovereign == gaucelin]At Lannec the Brésy regents read it and put it with the others they will need to answer.[else]At Lannec Mahaut reads it, the herald says later, twice.[/if]
+      next: h_b03_router
+    - id: male
+      text: Answer that the house stands for the male line.
+      effects:
+        - set: flag.h_b_stance_male
+        - add: { counter.penhoet: 1, rel.mahaut_armance.affection: -1 }
+        - if: flag.h_law_male
+          then: [ { add: { counter.shadow: 1 } } ]
+          else: [ { add: { counter.shadow: -1 } } ]
+      text_after: |
+        You write it yourself. The herald takes it without a flicker. On the road home, you hear later, he stops at Penhoët, and stays to dinner.
+      next: h_b03_router
+    - id: time
+      text: Answer that the house will speak when the Estates sit, and not before.
+      effects: [ { set: flag.h_b_stance_delay } ]
+      text_after: |
+        "Tell {realm.sovereign} the house will speak in the hall, where it can be heard." The herald smiles the smile of a man who will have to carry that back to Lannec and explain it. Both sides will court you now. Both sides will also wonder why.
+      next: h_b03_router
+
+- id: h_b02_governor
+  chapter: book1
+  title: The New Governor
+  frames: [adalian]
+  on_enter:
+    - catch_up: { year: 55, season: autumn }
+    - if: flag.h_patent_bought
+      then: [ { add: { counter.favour: -2 } } ]
+  text: |
+    At Michaelmas a new King's governor at Lannec comes up the valley with forty men, to see the March for himself. He is younger than the last one and has a sharper collar, and he has brought the founder's patent with him in a box, and the old governor's notes on it.
+
+    [if flag.h_patent_bought]He has also brought a clerk who used to work for the old governor, and who has told him, at some length, about twenty pounds in a purse and a question that went into a chest. "I am not interested in what my predecessor was paid," he says. "I am interested in the question."[elif flag.h_patent_conceded]"Your father gave up the forest clause," he says. "It was generous. The King was pleased." He turns a page. "The King would be pleased again."[elif flag.h_patent_defended]"Your father defended every line of this," he says, "and won. I've read his answers. They're good." He does not say it as a compliment.[else]"Your father and my predecessor never got to the bottom of this," he says. "I'd like to."[/if]
+
+    He wants the West's liberties read narrowly: the right to be tried by the West's own courts, the right to refuse service over the Narrow Sea. He wants them read as favours, not as rights.
+  choices:
+    - id: concede
+      text: Concede the reading he wants, and keep the King's goodwill.
+      effects: [ { set: flag.h_b_patent_conceded }, { add: { counter.favour: 1 } } ]
+      text_after: |
+        You give him the narrow reading. He thanks you, and means it, and tells you the King will remember. In the West it is remembered too, differently. At Lannec the Moot's lords say your name in a tone you would rather not hear.
+      next: h_b03_router
+    - id: stand
+      text: Stand on the patent as it is written.
+      effects: [ { set: flag.h_b_patent_stood }, { add: { counter.favour: -1 } } ]
+      text_after: |
+        "It says what it says," you tell him. "{house.parent_word} didn't fight for favours." He writes that down, word for word, and reads it back to you to make sure. It goes to Wendmere by the next courier.
+      next: h_b03_router
+    - id: wendmere
+      text: Write to Wendmere over his head.
+      check: { attr: wits, skill: diplomacy, difficulty: 4, mods: [ { if: inherited.c4_met_edwin, add: 1, label: the King remembers your father }, { if: inherited.c5_earl, add: 1, label: the house holds an earldom }, { if: flag.h_heir_court, add: 1, label: you know the court } ] }
+      success:
+        text: |
+          The letter comes back from Wendmere in a month, under the King's own signet: the King is content with his patents as they were granted. The governor reads it in your hall, and folds it, and says, "Well. You have friends." You do, for now.
+        effects: [ { set: flag.h_b_wendmere }, { add: { counter.favour: 1 } } ]
+        next: h_b03_router
+      failure:
+        text: |
+          Wendmere sends your letter back to the governor, with a note asking him to see to it. He brings it to you himself, so that you can see the note.
+        effects: [ { set: flag.h_b_wendmere }, { add: { counter.favour: -2 } } ]
+        next: h_b03_router
+
+- id: h_b03_router
+  chapter: book1
+  title: The Year's End
+  frames: [free, adalian]
+  text: |
+    The year turns. The roads freeze. In the long evenings the hall is full of people who want to talk to you about one thing, and they all approach it sideways.
+
+    [if inherited.c5r_peace_marriage]The thing is your marriage. You were married as a child, at the peace, by proxy, to a house across the hills, and the house across the hills has written to say that the time has come to keep it.[elif spouse.alive]The thing is the house's future, and whether you will have a child before Michaelmas.[else]The thing is your marriage. You are {age_words}, and unmarried, and the head of a great house, and every family in the West with a daughter or a son of an age has begun to send you wine.[/if]
+  choices:
+    - id: go_on
+      text: Let them talk.
+      next: { switch: [ { if: inherited.c5r_peace_marriage, go: h_b03_sauvel }, { if: spouse.alive, go: { pool: h_b1_early, count: 1, then: h_b10_knights } } ], default: h_b03_match }
+
+- id: h_b03_match
+  chapter: book1
+  title: The Keeper's Match
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 55, season: winter } } ]
+  text: |
+    By Candlemas there are four names on the steward's slate, and a fifth that nobody has written down.
+
+    [if head.sex == male]Azenor de Kerguen, Tanguy's sister, twenty, with her mother's head for accounts and her father's temper.[else]Tanguy de Kerguen himself, twenty-six, who has his mother's head for accounts and his father's temper, and wants a great house to stand beside his own.[/if] [if realm.west == adalian]A lady of Mahaut's household at Lannec, with the Duchess's favour for a dowry.[else]A [if head.sex == male]lady[else]lord[/if] of Mahaut's household at Lannec, with {realm.sovereign}'s favour for a dowry.[/if] [if head.sex == male]Cecily Hales, whose father keeps the King's accounts at Wendmere and whose dowry is in coin.[else]Sir Hamon Hales, whose father keeps the King's accounts at Wendmere, and who has never once been on a horse he did not fall off.[/if]
+
+    And the name nobody writes down, because it belongs to someone of no great house at all, whom you have known since you were children, and whom you look for in every room.
+
+    "Kerguen is the counterweight to Penhoët," says {house.companion}, who has opinions. "Mahaut is the law. Hales is money. The other one," he says, and stops, and looks at you, "is your own business."
+  choices:
+    - id: kerguen
+      text: "[if head.sex == male]Marry Azenor de Kerguen.[else]Marry Tanguy de Kerguen.[/if]"
+      effects:
+        - set: flag.h_b_wed_kerguen
+        - add: { counter.penhoet: -1, rel.tanguy_kerguen.affection: 2 }
+        - if: head.sex == male
+          then: [ { marry: { who: head, culture: valdrennish, to: de Kerguen, name: Azenor de Kerguen } } ]
+          else: [ { marry: { who: head, culture: valdrennish, to: de Kerguen, name: Tanguy de Kerguen } } ]
+      text_after: |
+        Tanguy rides over himself to settle the terms, and drinks your wine, and laughs at the steward's jokes, and does not haggle once. "My mother's done the haggling already," he says. "By letter. You'll find it in your steward's chest." Hervé de Penhoët hears of it within the week. He sends congratulations.
+      next: h_b04_wedding
+    - id: armance
+      text: Marry into Mahaut's household, and the Armance.
+      effects:
+        - set: flag.h_b_wed_armance
+        - add: { rel.mahaut_armance.affection: 2, counter.favour: 1 }
+        - marry: { who: head, culture: valdrennish, to: de Lannec }
+      text_after: |
+        Mahaut writes in her own hand. She is pleased, she says, to see the house so close to hers, and she hopes the house will remember it when the Estates sit. It is a warm letter, and a clear one.
+      next: h_b04_wedding
+    - id: hale
+      text: Marry the Hales money, and the King's ear with it.
+      effects:
+        - set: flag.h_b_wed_hale
+        - add: { res.coin: 9600, counter.favour: 1, rel.mahaut_armance.affection: -1 }
+        - if: head.sex == male
+          then: [ { marry: { who: head, culture: adalian, to: Hales, name: Cecily Hales } } ]
+          else: [ { marry: { who: head, culture: adalian, to: Hales, name: Hamon Hales } } ]
+      text_after: |
+        The Hales lawyers come up from Wendmere with the contract already drawn, and forty pounds in a chest with three locks. The West notices the chest. "An Adalian match," people say at Lannec, in the tone they use for weather.
+      next: h_b04_wedding
+    - id: love
+      text: Marry the one whose name nobody wrote down.
+      effects:
+        - set: flag.h_b_wed_love
+        - add: { counter.household: 1, counter.favour: -1, rel.mahaut_armance.affection: -1 }
+        - marry: { who: head, culture: adalian, to: atte Ford }
+      text_after: |
+        The steward wipes the slate clean without being asked. The great houses are offended, all four of them, in four different ways, and say so in letters that are a pleasure to read. In the hall nobody is offended at all. At the kitchen door the cook says, "About time," and goes back to her bread.
+      next: h_b04_wedding
+    - id: later
+      text: Put it off a year. There is time.
+      effects: [ { set: flag.h_b_wed_later } ]
+      text_after: |
+        "Next year," you say. The steward writes it on the slate, under the names. The wine keeps coming. Next year, you will discover, the offers are worse.
+      next: { pool: h_b1_early, count: 1, then: h_b10_knights }
+
+- id: h_b03_sauvel
+  chapter: book1
+  title: The Bride from Across the Hills
+  frames: [free, adalian]
+  on_enter:
+    - catch_up: { year: 55, season: winter }
+    - set: flag.h_b_wed_sauvel
+    - marry: { who: head, culture: valdrennish, to: de Sauvel }
+  text: |
+    {spouse.name} comes over the hills at Candlemas with a train of mules and two waiting-women and a priest who speaks no word of the West's tongue. You were married to {spouse.him} at the peace, by proxy, when you were both children, so that two kings could stop burning each other's barns. You have never met.
+
+    {spouse.He} gets down from {spouse.his} mule in your yard in the snow, stiff from the road, and looks at you, and at the hall, and at the whole household drawn up in their best to see {spouse.him}, and says, in careful Western, "So. This is the house."
+
+    "This is the house," you say.
+
+    "Good." {spouse.He} pulls off {spouse.his} gloves. "I am cold to the bone. Is there a fire?"
+  choices:
+    - id: warm
+      text: Take {spouse.him} in to the fire yourself, and send the household away.
+      effects: [ { add: { counter.household: -1 } } ]
+      text_after: |
+        You sit by the fire with {spouse.him}, the two of you, for an hour, while the household waits in the yard and grumbles about the cold. {spouse.He} asks good questions. {spouse.He} laughs once, at something you did not know was funny. By Vespers you have found you like {spouse.him}, which nobody arranged.
+      next: h_b04_wedding
+    - id: formal
+      text: Greet {spouse.him} properly, with the household, as the treaty deserves.
+      effects: [ { add: { counter.household: 1 } } ]
+      text_after: |
+        Bread and salt at the door, the chaplain's blessing, the household's bow, the steward's speech, which is long. {spouse.He} stands through all of it with the snow melting off {spouse.his} cloak, and thanks every one of them by name by the end of the week.
+      next: h_b04_wedding
+
+- id: h_b04_wedding
+  chapter: book1
+  title: The Wedding Feast
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 56, season: spring } } ]
+  text: |
+    [if flag.h_b_wed_sauvel]The marriage was made long ago. The feast is now, at Easter, to show the West that it is kept.[else]You are married at Easter, in the chapel, with the household packed in to the door and the yard full of the people who could not get in.[/if] Then the feast: the long tables out, the boar's head, the musicians from Lannec, and the whole West, or as much of it as owes you or wants something, in one hall.
+
+    Hervé de Penhoët has come. [if flag.h_penhoet_match]He has come as kin, with {sibling.first} on one side of him and the Penhoët grandchild on the other, and he stands in the doorway waiting to be told where to sit.[else]He has come, which nobody expected, in good dark wool with a gift in his hands, and he stands in the doorway waiting to be told where to sit.[/if] The steward looks at you. So do the old knights.
+
+    [if dowager.alive]Further up the table {dowager.first} is talking to [if sibling.exists]{sibling.first}[else]the chaplain[/if] in the low, even voice that means trouble, and you can hear the word "dower" from where you sit.[else]Further up the table [if sibling.exists]{sibling.first} is drinking more than {sibling.he} should, and looking at your new {spouse.lord}'s chair as if counting what it cost.[else]the old company has started on a song about Grisolles that nobody's mother would approve of.[/if][/if]
+  choices:
+    - id: high
+      text: Seat Hervé at the high table, beside you.
+      effects: [ { add: { counter.penhoet: 1, counter.household: -1 } }, { set: flag.h_b_herve_high } ]
+      text_after: |
+        Hervé sits at your left hand and talks all through the feast, courteously, about wool prices and the weather and his late father's gout. The old knights at the lower table watch him eat your bread with faces like a hard frost.
+      next: { pool: h_b1_early, count: 1, then: h_b10_knights }
+    - id: rank
+      text: Seat him by his rank, and no higher.
+      effects: []
+      text_after: |
+        The steward seats him by his rank, which is a fine and complicated thing, and puts him halfway down the hall between a bishop's nephew and the Kerguen steward. Hervé bows to you across the hall when the toasts come. He looks entirely content, which is the thing about Hervé.
+      next: { pool: h_b1_early, count: 1, then: h_b10_knights }
+    - id: away
+      text: Have the steward tell him there is no room.
+      effects: [ { add: { counter.penhoet: -1, counter.household: 1 } }, { set: flag.h_b_snub } ]
+      text_after: |
+        The steward tells him, at the door, with every courtesy in the language. Hervé hears him out, leaves his gift on the step, and rides home in the rain. The story is all over the Armance by Whitsun, in two versions, and you come out of neither of them well.
+      next: { pool: h_b1_early, count: 1, then: h_b10_knights }
+
+- id: h_b06_suit
+  chapter: book1
+  title: The Suit Judged
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 56, season: summer } } ]
+  text: |
+    At Whitsun the court hears Penhoët's suit for {house.claimed}, five years after Hervé first brought it into your hall with his hat in his hands. [if realm.west == adalian]The King's justices sit at Lannec on their eyre, three of them in red, with a clerk who has read everything.[else]{realm.sovereign}'s court sits at Lannec, in the old hall, with the windows open for the heat.[/if]
+
+    Hervé has his clerk and two old men who remember his grandfather holding the mill. You have [if flag.h_suit_strong]{house.parent}'s charter, with the seal still on it and two of the witnesses alive[elif flag.h_suit_weak]a copy of a copy, in a hand nobody knows, and the steward, who has not slept[else]the steward, and the rent rolls, and the memory of a man who held it for thirty years[/if].
+
+    [if flag.h_blood_at_kerval]Hervé's pleader begins with the carter's broken head at the boundary stone, and the court listens to every word.[elif flag.h_court_held]The justices have already ordered the stone put back once. They remember it.[else]The court begins with the charters, as courts do, and goes on with them for most of the morning.[/if]
+  choices:
+    - id: argue
+      text: Argue the case yourself.
+      check: { attr: wits, skill: stewardship, difficulty: 3, mods: [ { if: flag.h_heir_manor, add: 1, label: you know the land }, { if: flag.h_blood_at_kerval, add: -1, label: blood at the boundary }, { if: flag.h_court_held, add: 1, label: the court ruled for you before } ] }
+      success:
+        text: |
+          You stand up and talk about the land: who ploughed it, who paid for the mill wheel, whose men mended the leat after the flood in the year of the great storm. You know it, and they can hear you know it. [if flag.h_suit_weak]It moves the court one step: the house keeps the manor, and Penhoët takes the wood and the mill.[elif flag.h_suit_strong]The court finds for the house, whole, and the clerk writes it in the roll in letters an inch high.[else]The court finds for the house: {house.claimed} kept, whole.[/if]
+        effects:
+          - if: flag.h_suit_weak
+            then: [ { set: flag.h_kerval_shared } ]
+            else: [ { set: flag.h_kerval_kept } ]
+          - add: { counter.penhoet: -1 }
+        next: { switch: [ { if: sibling.exists, go: h_b07_grievance }, { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
+      failure:
+        text: |
+          You talk, and the justices listen, and then Hervé's pleader stands up and takes your words apart one at a time, politely, like a man filleting a fish. [if flag.h_suit_strong]Even so, the charter holds for the manor: the court gives the house {house.claimed}, and gives Penhoët the wood and the mill.[else]The court finds for Penhoët. {house.claimed} goes out of the house that {house.parent} built, with its mill and its wood and its people, by the stroke of a clerk's pen.[/if]
+        effects:
+          - if: flag.h_suit_strong
+            then: [ { set: flag.h_kerval_shared } ]
+            else: [ { set: flag.h_kerval_lost } ]
+          - add: { counter.penhoet: 1 }
+        next: { switch: [ { if: sibling.exists, go: h_b07_grievance }, { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
+    - id: pleader
+      text: Hire the best pleader in Lannec. (£15)
+      requires: "res.coin >= 3600"
+      check: { attr: wits, skill: stewardship, difficulty: 2, mods: [ { if: flag.h_blood_at_kerval, add: -1, label: blood at the boundary } ] }
+      success:
+        text: |
+          Master Guérin of Lannec costs fifteen pounds and is worth twenty. He talks for an hour without notes and makes the justices laugh twice. [if flag.h_suit_weak]The court gives you the manor, and gives Penhoët the wood and the mill.[else]The court finds for the house: {house.claimed} kept, whole.[/if]
+        effects:
+          - add: { res.coin: -3600 }
+          - if: flag.h_suit_weak
+            then: [ { set: flag.h_kerval_shared } ]
+            else: [ { set: flag.h_kerval_kept } ]
+        next: { switch: [ { if: sibling.exists, go: h_b07_grievance }, { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
+      failure:
+        text: |
+          Master Guérin is good, and Hervé's pleader is better. [if flag.h_suit_strong]The court gives you the manor on the charter, and gives Penhoët the wood and the mill.[else]The court finds for Penhoët, and {house.claimed} is lost.[/if] Master Guérin keeps the fifteen pounds.
+        effects:
+          - add: { res.coin: -3600 }
+          - if: flag.h_suit_strong
+            then: [ { set: flag.h_kerval_shared } ]
+            else: [ { set: flag.h_kerval_lost } ]
+        next: { switch: [ { if: sibling.exists, go: h_b07_grievance }, { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
+    - id: settle
+      text: Settle on the courthouse steps before the verdict.
+      effects: [ { set: flag.h_kerval_shared }, { add: { counter.penhoet: 1 } } ]
+      text_after: |
+        You find Hervé on the steps at the dinner hour, eating bread and cheese out of a cloth like a farmer. "The manor to me," you say, "the wood to you, the mill shared, and we go home." He chews, and swallows, and offers you some cheese. "Done," he says. "My father would have held out for the mill." The court is told after dinner, and is visibly relieved.
+      next: { switch: [ { if: sibling.exists, go: h_b07_grievance }, { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
+
+- id: h_b07_grievance
+  chapter: book1
+  title: "{sibling.first}"
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 56, season: autumn } } ]
+  text: |
+    After Michaelmas {sibling.first} comes to see you[if flag.h_penhoet_match] from Penhoët, riding alone, with the boar on {sibling.his} saddlecloth[/if]. {sibling.He} is {sibling.ageword} now, and {sibling.he} has {house.parent}'s way of standing in a doorway as if {sibling.he} owns it.
+
+    [if flag.h_will_secret]"I've seen the will," {sibling.he} says, before {sibling.he} has even sat down. "The real one. The chaplain kept a copy, because {house.parent_word} told him to." {sibling.He} puts it on the table between you. "And I've seen what you did with it."[elif flag.h_will_amended]"Half," {sibling.he} says. "{house.parent_word} wanted me to have the ford, and the land south of the river, and you talked {founder.him} down to half. Everyone says it was {founder.his} idea." {sibling.He} looks at you. "Was it?"[elif flag.h_will_honoured]"I have the ford," {sibling.he} says. "Thank you for it. I mean that." {sibling.He} turns {sibling.his} cup. "But it's a mill and some fields. I want something I can build on. I want what you have, a little of it, that's mine."[else]"I want land," {sibling.he} says. "Not much. Something that's mine, that I can build on. {house.parent_word} always said there'd be something. There wasn't."[/if]
+
+    [if flag.h_penhoet_match]Hervé, {sibling.he} does not say, would give {sibling.him} land in a heartbeat, and would want to know what {sibling.he} would give for it.[else]Penhoët, {sibling.he} does not say, has been writing to {sibling.him}.[/if]
+  choices:
+    - id: manor
+      text: Give {sibling.him} a manor of {sibling.his} own, and mean it.
+      effects: [ { set: flag.h_b_gave_manor }, { add: { counter.second: 2, res.coin: -2400 } } ]
+      text_after: |
+        "The Saltings," you say: the manor at the marsh's edge, with two villages and a stretch of the salt, that the steward has kept on his maps since before either of you was born. {sibling.first} looks at you for a long moment, and then laughs, and then, to your great surprise, cries a little, and is furious about it. The steward says nothing for two days. That is what it cost.
+      next: { switch: [ { if: [ flag.h_penhoet_match, "sibling.alive" ], go: h_b08_visit } ], default: h_b08_match }
+    - id: coin
+      text: Give {sibling.him} coin now, and a promise for later. (£10)
+      requires: "res.coin >= 2400"
+      effects: [ { set: flag.h_b_gave_promise }, { add: { res.coin: -2400 } } ]
+      text_after: |
+        Ten pounds, and your word that when the house can spare it, there will be land. {sibling.first} takes the money and the word, and weighs them both, and you can see {sibling.him} decide that the money is worth more.
+      next: { switch: [ { if: [ flag.h_penhoet_match, "sibling.alive" ], go: h_b08_visit } ], default: h_b08_match }
+    - id: nothing
+      text: Tell {sibling.him} the house cannot spare it.
+      effects: [ { add: { counter.second: -2 } }, { set: flag.h_b_gave_nothing } ]
+      text_after: |
+        "The house can't carry it," you say, "not now." {sibling.first} nods as if {sibling.he} expected it. You would rather {sibling.he} had shouted. {sibling.He} rides out the next morning before you are up. [if !flag.h_penhoet_match]The road {sibling.he} takes goes past Penhoët.[/if]
+      next: { switch: [ { if: [ flag.h_penhoet_match, "sibling.alive" ], go: h_b08_visit } ], default: h_b08_match }
+    - id: confess
+      visible_if: flag.h_will_secret
+      text: Tell {sibling.him} the truth, and make it good.
+      effects: [ { add: { counter.second: 2, counter.shadow: -1, res.coin: -2400 } }, { set: flag.h_b_confessed } ]
+      text_after: |
+        "I changed it," you say. "I shouldn't have. You'll have the ford, and the land south of the river, as {founder.he} wanted." {sibling.first} stares at you. "You could have lied," {sibling.he} says. "I know." The steward has to sell a good horse and two years of the orchard to make it up, and tells you so, at length.
+      next: { switch: [ { if: [ flag.h_penhoet_match, "sibling.alive" ], go: h_b08_visit } ], default: h_b08_match }
+
+- id: h_b08_match
+  chapter: book1
+  title: "{sibling.first}'s Match"
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 56, season: winter } } ]
+  text: |
+    In the dark of the year the letters come for {sibling.first}. [if sibling.age < 16]{sibling.He} is only {sibling.ageword}, but a great house's [if sibling.sex == male]younger son[else]daughter[/if] is spoken for young, and the houses want to be first.[else]{sibling.He} is {sibling.ageword}, and a great house's [if sibling.sex == male]younger son[else]daughter[/if] does not stay unspoken for.[/if]
+
+    Penhoët writes, of course: [if sibling.sex == female]Ronan, Hervé's son, now twenty-two, who has grown into his father's patience and his grandfather's shoulders[else]Hervé's daughter, now eighteen, who is said to keep Penhoët's books already[/if]. [if !flag.h_b_wed_kerguen && head.sex == male && sibling.sex == female]Kerguen writes: Tanguy himself, who wants a wife from a great house and has looked at {sibling.first} across your hall at Easter more than once.[elif !flag.h_b_wed_kerguen]Kerguen writes too, for a cousin of Tanguy's.[else]Kerguen writes too: they are your kin by marriage now, and would like to be twice over.[/if] And a Sarenzan house of bankers, through a lawyer at Lannec, who names a sum that makes the steward sit down.
+
+    This is the match the West will watch. [if counter.second >= 2]{sibling.first} comes to you with the letters, and asks what you think.[elif counter.second <= -1]{sibling.first} has read the letters before you, and has opinions, and is not going to share them.[else]{sibling.first} reads the letters at the end of the table, and does not say what {sibling.he} thinks.[/if]
+  choices:
+    - id: penhoet
+      text: Give {sibling.first} to Penhoët.
+      effects:
+        - set: flag.h_second_penhoet
+        - set: flag.h_penhoet_match
+        - add: { counter.penhoet: 2 }
+        - if: "sibling.age >= 16 && sibling.sex == female"
+          then: [ { marry: { who: sibling, culture: valdrennish, to: de Penhoët, name: Ronan de Penhoët } } ]
+        - if: "sibling.age >= 16 && sibling.sex == male"
+          then: [ { marry: { who: sibling, culture: valdrennish, to: de Penhoët } } ]
+      text_after: |
+        Hervé comes himself to sign, and kisses {sibling.first} on both cheeks, and tells {sibling.him} {sibling.he} will be happy, as a man might tell someone the date of Michaelmas. If the law the Estates write goes the wrong way, {sibling.first}'s children will carry Penhoët's claim. Everyone at the table knows it. Nobody says it.
+      next: { switch: [ { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
+    - id: kerguen
+      text: Give {sibling.first} to Kerguen.
+      effects:
+        - set: flag.h_second_kerguen
+        - add: { counter.penhoet: -1, rel.tanguy_kerguen.affection: 1 }
+        - if: "sibling.age >= 16 && sibling.sex == female && !flag.h_b_wed_kerguen && head.sex == male"
+          then: [ { marry: { who: sibling, culture: valdrennish, to: de Kerguen, name: Tanguy de Kerguen } } ]
+          else: [ { if: "sibling.age >= 16", then: [ { marry: { who: sibling, culture: valdrennish, to: de Kerguen } } ] } ]
+      text_after: |
+        Kerguen and the house, bound twice over, or bound at last. Tanguy is delighted and does not hide it. At Penhoët, Hervé hears the news at dinner, the story goes, and finishes his dinner.
+      next: { switch: [ { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
+    - id: sarenza
+      text: Take the Sarenzan money.
+      effects:
+        - set: flag.h_second_elsewhere
+        - add: { res.coin: 12000, counter.second: -1 }
+        - if: "sibling.age >= 16"
+          then: [ { marry: { who: sibling, culture: sarenzan } } ]
+      text_after: |
+        Fifty pounds, and a house in Sarenza, and a family who lend to kings and charge them the full rate. {sibling.first} goes south in the spring with a chest of clothes and a face like a closed door. {sibling.His} letters, when they come, are polite and short, and full of prices.
+      next: { switch: [ { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
+    - id: choose
+      text: Let {sibling.first} choose.
+      effects:
+        - add: { counter.second: 2 }
+        - if: "sibling.temperament == bold || sibling.temperament == merry"
+          then:
+            - set: flag.h_second_kerguen
+            - if: "sibling.age >= 16"
+              then: [ { marry: { who: sibling, culture: valdrennish, to: de Kerguen } } ]
+          else:
+            - set: flag.h_second_elsewhere
+            - if: "sibling.age >= 16"
+              then: [ { marry: { who: sibling, culture: adalian } } ]
+      text_after: |
+        "Choose," you say, and push the letters across the table. {sibling.first} looks at you as if you have spoken in Sarenzan. Then {sibling.he} picks them up. [if flag.h_second_kerguen]{sibling.He} chooses Kerguen, in a week, and tells you {sibling.he} would have chosen it anyway.[else]{sibling.He} chooses none of them, and in the summer marries someone from a small house in the Salt whom nobody had heard of, and is, by every report, happy.[/if]
+      next: { switch: [ { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
+
+- id: h_b08_visit
+  chapter: book1
+  title: "{sibling.first} Comes Home"
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 56, season: winter } } ]
+  text: |
+    At Christmas {sibling.first} comes home for the feast, from Penhoët, with the Penhoët children in the cart and Hervé's good wishes and a cask of the thin sour wine.
+
+    It is a good Christmas. On the third night, when the hall has gone to bed, {sibling.he} sits with you by the fire and says what {sibling.he} came to say.
+
+    "Hervé wants me to carry Penhoët's claim," {sibling.he} says. "If the Estates write the male line, my children have a right in the Armance. He wants me to say so, when the time comes, in the hall at Lannec." {sibling.He} looks at the fire. "You'll want me to say the opposite. I can see it in your face."
+  choices:
+    - id: inside
+      text: Ask {sibling.him} to work for the house, from inside Penhoët.
+      check: { attr: presence, skill: diplomacy, difficulty: 2, mods: [ { if: counter.second >= 2, add: 1, label: "you have been good to each other" }, { if: counter.second <= -1, add: -1, label: old grievances } ] }
+      success:
+        text: |
+          "I'm asking," you say. "Not telling. The house is yours too." {sibling.first} is quiet for a long while. Then {sibling.he} nods. "I'll tell you what he means to do," {sibling.he} says. "Before he does it. That's all I can promise." It is a great deal.
+        effects: [ { set: flag.h_second_inside }, { add: { counter.second: 1 } } ]
+        next: { switch: [ { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
+      failure:
+        text: |
+          "You're asking me to spy on my own children's grandfather," {sibling.he} says. "At Christmas." {sibling.He} goes to bed. In the morning {sibling.he} is civil, and the Penhoët cart leaves before dinner.
+        effects: [ { add: { counter.second: -1 } } ]
+        next: { switch: [ { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
+    - id: let_be
+      text: Tell {sibling.him} to do what is right for {sibling.his} children.
+      effects: [ { set: flag.h_second_penhoet }, { add: { counter.second: 1, counter.penhoet: 1 } } ]
+      text_after: |
+        "They're your children," you say. "Do what's right for them." {sibling.first} looks at you, and you see {sibling.him} understand that you mean it, and that it will cost the house. "Thank you," {sibling.he} says, and kisses you on the forehead, the way {house.parent} used to, and goes to bed.
+      next: { switch: [ { if: flag.h_cloister, go: h_b09_abbot } ], default: h_b10_knights }
+
+- id: h_b09_abbot
+  chapter: book1
+  title: The Letter from the Abbot
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 57, season: spring } } ]
+  text: |
+    {house.parent_start}'s letters have come all through these years, from the abbey a mile and a half away: about the barn roof, and the knights' terms, and your marriage, which {founder.he} had views on, and the suit, which {founder.he} had more. You read them all. Some of them you answered.
+
+    At Lady Day a letter comes in another hand. It is from the abbot. {house.parent_start} died in the night of the feast, in {founder.his} cell, after Compline, without a struggle. The brothers found {founder.him} in the morning with a letter half written on the desk. The abbot encloses it.
+
+    It is to you. It stops in the middle of a sentence: "...and whatever you do about Penhoët, do it in daylight, so that"
+
+    They bury {founder.him} in the abbey, as a brother, under a plain stone. [if realm.west == adalian]A knight comes from Lannec in the King's livery.[else]A herald comes from Lannec in {realm.sovereign}'s colours.[/if] [if flag.h_penhoet_match]Hervé comes, as kin.[else]Hervé de Penhoët stands at the back.[/if] The chaplain reads the house's paragraph for {founder.him}, and it is still not enough.
+  choices:
+    - id: read
+      text: Read the last letter aloud in the hall.
+      effects: [ { add: { counter.household: 1, counter.shadow: 1 } }, { death: { who: founder, cause: "old age, in the abbey" } } ]
+      text_after: |
+        You read it at dinner, standing, to the whole house. When you get to the end, where it stops, nobody says anything. Then {house.companion_first}, if he is there, or the old knight with the white beard, says, "So that what?" and the whole hall laughs, and some of them cry, and it is the best thing anyone could have done.
+      next: h_b10_knights
+    - id: keep
+      text: Keep it, and read it alone.
+      effects: [ { death: { who: founder, cause: "old age, in the abbey" } } ]
+      text_after: |
+        You keep it in the box with the will and the patent and the charter for {house.claimed}, and take it out sometimes, and finish the sentence differently every time.
+      next: h_b10_knights
+
+- id: h_b10_knights
+  chapter: book1
+  title: Old Knights, New Men
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 57, season: summer } } ]
+  text: |
+    The muster at midsummer, in the long meadow, the way {house.parent} held it every year. The knights ride in with their men, and the steward counts them, and you sit your horse at the end of the field and watch.
+
+    They are old. You had not seen it, quite, until you saw them all together in the sun: grey beards under the helms, stiff knees in the stirrups, a man you have known all your life who has to be helped onto his horse. They rode with {house.parent} when the house was nothing. They are what the house was built from.
+
+    Behind them, at the edge of the field, there are younger men watching: younger sons of the West with good horses and no land, a free company's captain who has come to see whether you are hiring, the reeve's eldest boy with a borrowed sword. None of them has ever knelt to anyone in this house.
+
+    [if flag.h_companion_counsel || flag.h_companion_side]{house.companion} rides up beside you, and looks where you are looking, and says nothing for once.[else]The steward comes up beside you with the roll, and looks where you are looking.[/if]
+  choices:
+    - id: keep_old
+      text: Keep the old knights in their places. They earned them.
+      effects: [ { set: flag.h_old_knights }, { add: { counter.shadow: 1, counter.household: 1 } } ]
+      text_after: |
+        You ride down the line and speak to every one of them by name, and they sit straighter for it. The young men at the edge of the field drift away by Vespers. The house will be slow to change. It will also be hard to shake.
+      next: { pool: h_b1_late, count: 1, then: h_b12_estates }
+    - id: new_men
+      text: Raise new men, the Keeper's own.
+      effects: [ { set: flag.h_new_men }, { add: { counter.shadow: -2, counter.household: -1, res.men: 10 } } ]
+      text_after: |
+        You ride over to the young men at the edge of the field, and the old knights watch you do it. By Michaelmas you have ten new men in your household who owe everything to you and nothing to {house.parent}. The old knights are courteous to them, the way you are courteous to a dog someone else has brought into the hall.
+      next: { pool: h_b1_late, count: 1, then: h_b12_estates }
+    - id: pension
+      text: Pension the oldest off with honour, and fill their places slowly. (£12)
+      requires: "res.coin >= 2880"
+      effects: [ { set: flag.h_pensioned }, { add: { counter.shadow: -1, res.coin: -2880 } } ]
+      text_after: |
+        A pension for life to each of the five oldest, and a place at the high table at Christmas, and their sons first in line for their fathers' service. It costs a great deal. The old men grumble, and take it, and drink to you at Christmas, and mean it.
+      next: { pool: h_b1_late, count: 1, then: h_b12_estates }
+
+- id: h_b12_estates
+  chapter: book1
+  title: Before the Estates
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 58, season: spring } } ]
+  text: |
+    [if realm.west == adalian]At Lady Day the word comes from Lannec: the King's justices will sit at Whitsun to hear the matter of the West's liberties, and of the Duchess of Armance's daughter, who is fourteen, and whose wardship King Edwin claims by the law of Adalia.
+
+    The governor's man comes to the house before the week is out. The King would be glad, he says, if the house would speak for the King's right. The King has a long memory for those who are glad to help him.
+
+    Mahaut's steward comes three days later, with a letter in her own hand. Her daughter, she writes, is not a horse to be sold at Wendmere. She asks the house to remember Lannec, and the West's liberties, and who stood first. She offers, if the house speaks for her right, [if sibling.exists && !flag.h_second_penhoet]a place for {sibling.first} in her council[else]the stewardship of the Armance forests[/if].[else]At Lady Day the summons comes, under {realm.sovereign}'s seal: the Estates of the West will sit at Lannec at Whitsun to write the law of succession.
+
+    Mahaut's people come to the house before the summons is a week old: her steward, with a letter in her own hand. Jehanne is fourteen, and is all the heir Mahaut has, and Mahaut asks the house to remember Lannec. She offers, if the house votes for inheritance through women, [if sibling.exists && !flag.h_second_penhoet]a place for {sibling.first} in her council[else]the stewardship of the Armance forests[/if].
+
+    Hervé de Penhoët comes three days later, himself, with his hat in his hands. He would like the house to vote for the male line. He offers [if flag.h_kerval_lost]{house.claimed} back, every field of it, and the mill[elif flag.h_kerval_shared]the wood and the mill at {house.claimed} back, and an end to it[else]to sign away his house's claim to {house.claimed} for ever[/if].[/if]
+
+    You put the two offers side by side on the table in the hall, and look at them, and do not answer either. Not yet.
+
+    [if counter.shadow >= 4]Everyone you meet tells you what {house.parent} would have done.[elif counter.shadow <= -2]Nobody tells you any more what {house.parent} would have done. They are waiting to see what you will.[else]Some people tell you what {house.parent} would have done. Fewer than last year.[/if]
+  choices:
+    - id: end
+      text: Go on.
+      next: h_b_end
+
+- id: h_b_end
+  chapter: book1
+  kind: ending
+  ending: story_so_far
+  text: |
+    Here Act I of Book One ends. You are head of the house {founder.name} founded, under {realm.sovereign}[if spouse.alive], married to {spouse.name}[/if], with [if flag.h_kerval_lost]{house.claimed} lost to Penhoët[elif flag.h_kerval_shared]{house.claimed} kept, and Penhoët's men in its wood[else]{house.claimed} in your hands[/if], and two offers on the table for the house's vote.
+
+    Act II, *The Law*, is still being written.

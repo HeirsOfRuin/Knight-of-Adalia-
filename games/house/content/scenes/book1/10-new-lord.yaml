@@ -568,19 +568,83 @@
       effects: [ { set: flag.h_old_knights }, { add: { counter.shadow: 1, counter.household: 1 } } ]
       text_after: |
         You ride down the line and speak to every one of them by name, and they sit straighter for it. The young men at the edge of the field drift away by Vespers. The house will be slow to change. It will also be hard to shake.
-      next: { pool: h_b1_late, count: 1, then: h_b12_estates }
+      next: h_b11_purse
     - id: new_men
       text: Raise new men, the Keeper's own.
       effects: [ { set: flag.h_new_men }, { add: { counter.shadow: -2, counter.household: -1, res.men: 10 } } ]
       text_after: |
         You ride over to the young men at the edge of the field, and the old knights watch you do it. By Michaelmas you have ten new men in your household who owe everything to you and nothing to {house.parent}. The old knights are courteous to them, the way you are courteous to a dog someone else has brought into the hall.
-      next: { pool: h_b1_late, count: 1, then: h_b12_estates }
+      next: h_b11_purse
     - id: pension
       text: Pension the oldest off with honour, and fill their places slowly. (£12)
       requires: "res.coin >= 2880"
       effects: [ { set: flag.h_pensioned }, { add: { counter.shadow: -1, res.coin: -2880 } } ]
       text_after: |
         A pension for life to each of the five oldest, and a place at the high table at Christmas, and their sons first in line for their fathers' service. It costs a great deal. The old men grumble, and take it, and drink to you at Christmas, and mean it.
+      next: h_b11_purse
+
+- id: h_b11_purse
+  chapter: book1
+  title: The Keeper's Accounts
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 57, season: summer } } ]
+  text: |
+    [if revisit]The steward turns the page.[else]At midsummer you go through the accounts with the steward, all of them, for the first time as the one who has to answer for them. Last Michaelmas brought {house.harvest}. {house.parent_start} left the house {house.standing}, and the rolls say what that is worth: so much from {house.manor}, so much from the holdings, so much from the knights, and the household and the men's pay out of it before you see a penny.
+
+    "There's money for one thing this year, my lord," says the steward. "Perhaps two. Not all of them."[/if]
+
+    You have {coin}.
+  choices:
+    - id: bridge
+      text: Build a stone bridge over the stream below {house.manor}, and toll it. (£75)
+      visible_if: "!holding.manor_bridge"
+      requires: "res.coin >= 18000"
+      effects: [ { add: { res.coin: -18000, rep.merchants: 1 } }, { hold: { id: manor_bridge, name: The bridge below the manor, income: 1800, kind: trade } } ]
+      text_after: |
+        Three arches of grey stone, and a toll-house at the near end with a man in it who could argue with a bishop. The carts come round by your bridge now instead of fording at Penhoët's. Hervé notices.
+      next: h_b11_purse
+    - id: church
+      text: Rebuild the church at {house.manor} in stone, with a tower. (£40)
+      visible_if: "!flag.inv_h_church"
+      requires: "res.coin >= 9600"
+      effects: [ { set: flag.inv_h_church }, { add: { res.coin: -9600, estate.church: 2, estate.temper: 1, rep.church: 1, rep.piety: 1 } } ]
+      text_after: |
+        It takes two summers and a master mason from Lannec who drinks. The tower can be seen from Penhoët land, which was, you tell the priest, not the point.
+      next: h_b11_purse
+    - id: orchard
+      text: Put in a cider press, and new trees where the old ones failed. (£24)
+      visible_if: "!flag.inv_h_press"
+      requires: "res.coin >= 5760"
+      effects: [ { set: flag.inv_h_press }, { add: { res.coin: -5760, estate.orchard: 2 } } ]
+      text_after: |
+        The press is oak and iron and the size of a cart. The first year's cider is sour. The third year's is sold in Lannec under the name of {house.manor}.
+      next: h_b11_purse
+    - id: lend
+      text: Lend Kerguen fifty pounds at ten in the hundred. (£50)
+      visible_if: "!holding.kerguen_loan"
+      requires: "res.coin >= 12000"
+      effects: [ { add: { res.coin: -12000, rival.kerguen.temper: 2 } }, { hold: { id: kerguen_loan, name: Kerguen's bond, income: 1200, kind: fixed } } ]
+      text_after: |
+        Tanguy signs with a flourish and promises the interest at every Michaelmas. A young house rising needs money more than it needs pride, and now it needs you.
+      next: h_b11_purse
+    - id: granary
+      text: Build a stone granary, so a bad year does not empty the manor. (£8)
+      visible_if: "!flag.inv_h_granary"
+      requires: "res.coin >= 1920"
+      effects: [ { set: flag.inv_h_granary }, { add: { res.coin: -1920, estate.food: 3 } } ]
+      text_after: |
+        Stone walls, a slate roof, a floor on staddle stones. {house.parent_start} never built one, and said so. The steward has wanted one for twenty years.
+      next: h_b11_purse
+    - id: watch
+      text: Arm six men of the village as a watch, and pay them. (£6)
+      visible_if: "!flag.inv_h_watch"
+      requires: "res.coin >= 1440"
+      effects: [ { set: flag.inv_h_watch }, { add: { res.coin: -1440, res.garrison: 6, estate.defence: 1 } } ]
+      text_after: |
+        Six men with bills and jacks and a horn. The road is quieter. The alehouse is not.
+      next: h_b11_purse
+    - id: done
+      text: "[if revisit]Enough for this year.[else]Keep the money in the chest.[/if]"
       next: { pool: h_b1_late, count: 1, then: h_b12_estates }
 
 - id: h_b12_estates

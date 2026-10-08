@@ -50,7 +50,7 @@ function hash(seed: number, a: string, b = 0): number {
 // ---- the year's luck (deterministic: the seed and the year decide it, so no dice are drawn) ----------------------
 /** The harvest: what the land's rents and the barn come to, against a fair year. Weighted to about a fair year on average. */
 export const HARVESTS = [
-  { id: 'failed', upto: 0.06, rent: 0.5, grain: 0.3, word: 'the harvest failed' },
+  { id: 'failed', upto: 0.06, rent: 0.5, grain: 0.3, word: 'a failed harvest' },
   { id: 'poor', upto: 0.26, rent: 0.8, grain: 0.7, word: 'a poor harvest' },
   { id: 'fair', upto: 0.74, rent: 1, grain: 1, word: 'a fair harvest' },
   { id: 'good', upto: 0.94, rent: 1.15, grain: 1.3, word: 'a good harvest' },

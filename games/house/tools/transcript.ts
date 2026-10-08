@@ -24,7 +24,7 @@ function crownedWithMahaut(seed: number) {
   return fromDynasty(content, { ...base, flags: [...base.flags, 'c5_married_mahaut'], spouse: { id: 'mahaut_armance', name: "Mahaut d'Armance", alive: true }, heirs: [] }, { seed });
 }
 const route: Record<string, string> = {
-  h_p01_hall: 'bounds', h_p02_company: 'counsel', h_p03_heir: 'manor', h_p04_suit: 'law', h_p05_michaelmas: 'pay',
+  h_p01_hall: 'bounds', h_p02_company: 'counsel', h_p03_heir: 'manor', h_p04_suit: 'law', h_p05_michaelmas: 'pay', h_p05_purse: 'granary,done', h_b11_purse: 'church,done', h_pc05_works: 'road,done', h_bc08_works: 'fair,done',
   h_p06_offer: 'ask', h_p06_request: 'let_go', h_p07_year: 'mass', h_p08_summons: 'ride', h_p08_estates: 'women', h_p08_election: 'queen',
   h_p08_patent: 'defend', h_p09_illness: 'physician', h_p10_handover: 'hall', h_p11_first_days: 'change', h_p12_will: 'amend',
   h_p13_boundary: 'ride', h_p14_deathbed: 'be_myself', h_p15_funeral: 'chancel', h_p16_oath: 'reserve',
@@ -47,7 +47,8 @@ for (let i = 0; i < 200 && !s.ended; i++) {
   out.push(`### ${v.title ?? v.sceneId}`, '', `*${v.date}*`, '', v.text.trim(), '');
   const open = v.choices.filter((c) => c.available);
   for (const c of v.choices) out.push(`- ${c.available ? '' : '~~'}${c.text}${c.available ? '' : `~~ (${c.lockReason})`}${c.band ? ` [${c.band}]` : ''}`);
-  const pick = open.find((c) => c.id === route[v.sceneId]) ?? open[0]!;
+  // a route may name several choices for a scene the player revisits (a purse): the first still open
+  const pick = (route[v.sceneId] ?? '').split(',').map((id) => open.find((c) => c.id === id)).find(Boolean) ?? open[0]!;
   out.push('', `**You choose:** ${pick.text}`, '');
   s = choose(content, s, pick.id).state;
   const o = view(content, s).outcome;

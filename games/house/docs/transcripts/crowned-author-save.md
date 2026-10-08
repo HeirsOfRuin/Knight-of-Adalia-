@@ -104,7 +104,7 @@ He is the son of the man you sent over the march in a cart. Quérec is the crown
 
 The hall goes quiet. Bertrand looks at you, and at your guard along the wall, and at Jehan, who is looking straight back at him. Then he kneels, slowly, and kisses his hand, and says the words. On his way out he says to him, quite gently, "You'll do, I expect," and he says, "I know," and half the hall laughs.
 
-*The household: more loyal; Michaelmas: £824 19s 2d came in; the household £117 17s, the men's pay £65 14s and repairs £35 went out; Sir Guillaume de la Hunaudaye dies and leaves a son under age; the wardship of la Hunaudaye is sold for £20; Sir Enguerran de Grandpré dies and leaves a son under age; the wardship of Grandpré is sold for £20*
+*The household: more loyal; Michaelmas, a poor harvest and steady trade: £747 8s 8d came in; the household £106 15s 6d, the men's pay £65 14s and repairs £35 went out; Sir Guillaume de la Hunaudaye dies and leaves a son under age; the wardship of la Hunaudaye is sold for £20; Sir Enguerran de Grandpré dies and leaves a son under age; the wardship of Grandpré is sold for £20*
 
 ### The Exchequer
 
@@ -129,6 +129,47 @@ You sit through all of it, as you always have. The salt penny is in. The Sauveme
 The arrears of six salt towns, forgiven at a stroke. The bells ring in Sauvemer on Sunday, and the guildmasters, who will sit in the Estates, remember it in their prayers, and in their votes.
 
 *Coin −£100; Standing in the realm: much higher*
+
+### The Crown's Works
+
+*Autumn 912, the second year of King David*
+
+When the sheriffs have gone the treasurer stays, with a second roll, and spreads it over the chequered cloth: the works the crown could do, if it chose, and what each would cost, and what each would bring in, in a fair year, with steady trade, if nobody burns it.
+
+"A kingdom is a manor with a bigger roof, Your Grace," he says. "It wants the same things. Roads, walls, a granary, a market. It just wants them in stone."
+
+You have £3720 8s 8d.
+
+- Pave the salt road from Sauvemer to Lannec, and toll it. (£200)
+- Dredge the harbour at Sauvemer and build a new quay. (£300)
+- Strike the West's own coin at Lannec. (£150)
+- Repair the castles on the march. (£120)
+- Build the crown's granaries at Lannec and Sauvemer. (£80)
+- Endow a school for clerks at Lannec. (£100)
+- Keep the treasure in the strongroom.
+
+**You choose:** Pave the salt road from Sauvemer to Lannec, and toll it. (£200)
+
+Two summers of quarrymen and carters, and a road a cart can use in February. The salt comes up to Lannec in four days instead of seven, and pays the crown for the privilege at every bridge.
+
+*Coin −£200; Standing with the merchants: much higher; You hold: The salt road and its tolls (£20 a year)*
+
+### The Crown's Works
+
+*Autumn 912, the second year of King David*
+
+The treasurer rolls up one plan and unrolls the next.
+
+You have £3520 8s 8d.
+
+- Dredge the harbour at Sauvemer and build a new quay. (£300)
+- Strike the West's own coin at Lannec. (£150)
+- Repair the castles on the march. (£120)
+- Build the crown's granaries at Lannec and Sauvemer. (£80)
+- Endow a school for clerks at Lannec. (£100)
+- Enough for this year.
+
+**You choose:** Enough for this year.
 
 ### The Embassy
 
@@ -168,7 +209,7 @@ You know who is left. You could count them on one hand now, and you do, under th
 
 You take a corner of the coffin with Davy Ludd and two of the old company, and your back tells you about it for a week. The whole village comes. At the grave somebody starts the story about Hamon and the Brésy horse, and somebody else corrects it, and by the end there is laughing in the churchyard, which the priest pretends not to hear.
 
-*Coin −£2; The household: more loyal; Michaelmas: £831 12s 6d came in; the household £118 16s 1d, the men's pay £65 14s and repairs £35 went out; Sir Olivier de Bréhat dies and leaves a son under age; the wardship of Bréhat is sold for £20; Sir Josselin Salvert of the Salvert dyke dies and leaves a son under age; the wardship of the Salvert dyke is sold for £20; Sir Pierre de Saint-Gildas dies; his son pays £5 in relief*
+*Coin −£2; The household: more loyal; Michaelmas, a good harvest and steady trade: £910 4d came in; the household £130 1d, the men's pay £65 14s and repairs £35 went out; Sir Olivier de Bréhat dies and leaves a son under age; the wardship of Bréhat is sold for £20; Sir Josselin Salvert of the Salvert dyke dies and leaves a son under age; the wardship of the Salvert dyke is sold for £20; Sir Pierre de Saint-Gildas dies; his son pays £5 in relief*
 
 ### The Estates at Whitsun
 
@@ -190,7 +231,7 @@ Jehan is seven, and sits beside his mother in a tunic that does not fit him yet,
 
 You speak, and it goes well enough, and then Bertrand's friends stand and talk about custom and promises and a child, and the hall begins to argue among itself. In the end the Estates will not elect a child of seven while his father lives, and say so, courteously, and adjourn. The clerk writes that in the roll instead. They will choose when the chair is empty, as you promised.
 
-*Michaelmas: £787 14s 2d came in; the household £112 10s 7d, the men's pay £65 14s and repairs £35 went out*
+*Michaelmas, a good harvest and brisk trade: £967 1s 11d came in; the household £138 3s 2d, the men's pay £65 14s and repairs £35 went out*
 
 ### The Illness
 
@@ -280,7 +321,7 @@ Today the council is talking about Quérec. He swore to you, and kissed your han
 
 "What does Quérec want?" you say. It comes out loud. The council stops. The chancellor opens his mouth and shuts it. Your mother looks at you for a long moment, and then says, "That is the question, my lords. Answer the King." They try. None of them knows. You see your mother see that.
 
-*David's shadow: shorter; Mahaut's respect: higher; Michaelmas: £788 15s 10d came in; the household £112 13s 8d, the men's pay £65 14s and repairs £35 went out*
+*David's shadow: shorter; Mahaut's respect: higher; Michaelmas, a fair harvest and steady trade: £808 15s 10d came in; the household £115 10s 10d, the men's pay £65 14s and repairs £35 went out*
 
 ### The Regency
 
@@ -366,7 +407,7 @@ There are three names. Your mother's confessor, a quiet Armance canon who has ne
 
 Master Anselm becomes Bishop of Saint-Lys, the first born in the West, and comes to see your father in the garden the day after, and they laugh together for an hour about things neither will tell you. He will bless what the crown wants. He will also remember what the crown owes him.
 
-*David's shadow: longer; The household: more loyal; Michaelmas: £794 17s 6d came in; the household £113 11s 1d, the men's pay £65 14s and repairs £35 went out; Sir Renaud de Saint-Aubin dies; his son pays £5 in relief*
+*David's shadow: longer; The household: more loyal; Michaelmas, a fair harvest and steady trade: £814 17s 6d came in; the household £116 8s 3d, the men's pay £65 14s and repairs £35 went out; Sir Renaud de Saint-Aubin dies; his son pays £5 in relief*
 
 ### The Acclamation
 
@@ -416,7 +457,7 @@ Behind you, your mother has gone completely still.
 
 "Swear plain, my lord," you say, "or swear another day." Your voice does not go up at the end. Hervé looks at you for a long moment, as a man looks at a field he has been told is his neighbour's. Then he says the words again, plain, without the saving, and rises, and bows lower than he did before.
 
-*The household: more loyal; Mahaut's respect: higher; Michaelmas: £791 10d came in; the household £113 1d, the men's pay £65 14s and repairs £35 went out*
+*The household: more loyal; Mahaut's respect: higher; Michaelmas, a fair harvest and slack trade: £710 4s 2d came in; the household £101 9s 2d, the men's pay £65 14s and repairs £35 went out*
 
 ### Penhoët's Claim
 
@@ -500,7 +541,7 @@ You go to see him, once, before you decide. He gets up when you come in, and bow
 
 His son comes to court as your page, a boy of nine with his father's eyes, and is given a room near yours and a tutor and a pony, and every courtesy, and is never once let out of the walls of Lannec. Bertrand swears to you that autumn. He has to.
 
-*Standing in the realm: higher; Michaelmas: £812 4s 2d came in; the household £116 7d, the men's pay £65 14s and repairs £35 went out; Sir Geoffroi de Moncontour dies and leaves a son under age; the wardship of Moncontour is sold for £20*
+*Standing in the realm: higher; Michaelmas, a fair harvest and steady trade: £832 4s 2d came in; the household £118 17s 9d, the men's pay £65 14s and repairs £35 went out; Sir Geoffroi de Moncontour dies and leaves a son under age; the wardship of Moncontour is sold for £20*
 
 ### Aliénor
 
@@ -559,7 +600,50 @@ Davy Ludd says, "The son. He's dull. Dull's what you want at a door."
 
 He kneels to you on the tourney field in front of everyone, which was not the plan, and swears with a voice that cracks on "faith", and the whole court laughs, and he goes scarlet. By Michaelmas he has the guard turned out at dawn to ride at the ring with you, and the old company's sons have stopped laughing and started getting up early.
 
-*David's shadow: much shorter; The household: less loyal; Michaelmas: £812 7s 6d came in; the household £116 1s 1d, the men's pay £65 14s and repairs £35 went out; The young lord of Aubrac withholds his dues this year, over a quarrel the house's court will have to hear; Sir Payen de Fougeray withholds his dues this year, over a quarrel the house's court will have to hear; Sir Alain de Pontivy dies and leaves a son under age; the wardship of Pontivy is sold for £20*
+*David's shadow: much shorter; The household: less loyal*
+
+### The Council of Works
+
+*Summer 919, the fifth year of King Jehan*
+
+Your mother gives the council a day at midsummer for the crown's works, and gives you the chair for it. Last Michaelmas brought a fair harvest and steady trade. The treasurer has his rolls, and the constable has his, and the Bishop of Saint-Lys has a letter.
+
+"Choose, Your Grace," says your mother. "I'll tell you after if it was a mistake."
+
+You have £7236 19s 4d.
+
+- Charter a great fair at Lannec, for three weeks after Midsummer. (£150)
+- Rebuild the walls of Lannec. (£200)
+- Build four cogs to carry the crown's salt to the south. (£250)
+- Lend Kerguen a hundred pounds at ten in the hundred. (£100)
+- Found a hospital on the pilgrims' road to Saint-Lys. (£60)
+- Build the crown's granaries at Lannec and Sauvemer. (£80)
+- Keep the treasure in the strongroom.
+
+**You choose:** Charter a great fair at Lannec, for three weeks after Midsummer. (£150)
+
+The first year there are cloth-men from Vervais and wine-men from the Midi and a bear. By the third, the Sarenzan bankers have a booth, and the crown's clerk at the gate takes a penny on every bale.
+
+*Coin −£150; Standing with the merchants: much higher; You hold: The great fair at Lannec (£15 a year)*
+
+### The Council of Works
+
+*Summer 919, the fifth year of King Jehan*
+
+The treasurer reaches for the next roll.
+
+You have £7086 19s 4d.
+
+- Rebuild the walls of Lannec. (£200)
+- Build four cogs to carry the crown's salt to the south. (£250)
+- Lend Kerguen a hundred pounds at ten in the hundred. (£100)
+- Found a hospital on the pilgrims' road to Saint-Lys. (£60)
+- Build the crown's granaries at Lannec and Sauvemer. (£80)
+- Enough for this year.
+
+**You choose:** Enough for this year.
+
+*Michaelmas, a failed harvest and brisk trade: £753 18s 9d came in; the household £107 14s 1d, the men's pay £65 14s and repairs £35 went out; The young lord of Aubrac withholds his dues this year, over a quarrel the house's court will have to hear; Sir Payen de Fougeray withholds his dues this year, over a quarrel the house's court will have to hear; Sir Alain de Pontivy dies and leaves a son under age; the wardship of Pontivy is sold for £20*
 
 ### The Salt Towns' Charter
 

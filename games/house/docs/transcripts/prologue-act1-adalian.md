@@ -112,7 +112,7 @@ He comes himself a week later, which you did not expect. He is a careful man of 
 
 The steward finds a copy of a copy, in a hand nobody knows, with a hole where the witnesses should be. "It'll do," he says, in the voice of a man who knows it will not. Hervé's clerk asks, politely, whether he might see it, and makes a note.
 
-*Michaelmas: £252 15s came in; the household £25 5s 6d, the men's pay £9 and repairs £20 went out*
+*Michaelmas, a poor harvest and steady trade: £215 came in; the household £21 10s, the men's pay £9 and repairs £20 went out*
 
 ### The First Michaelmas
 
@@ -137,6 +137,49 @@ You sit through all of it. Your father did not have a steward or a cloth or anyt
 You pay every man his wage and a shilling over, and hand each one his money yourself. It takes until Vespers. Your hand aches. Old Hob in the stables bites his shilling, grins, and says, "Still good, then," and the whole yard laughs.
 
 *Coin −£5; The household: more loyal*
+
+### The Steward's List
+
+*Autumn 912, the eleventh year of King Edwin*
+
+When the reckoning is done the steward stays behind, with his list. Every steward has a list. His runs to two sides of parchment and starts with the words "If my lord would only".
+
+The money is there, this year. The harvest was a poor harvest and steady trade. A great house that only collects its rents is a great house that will be a small one in two generations, and you did not build this one to watch it shrink.
+
+You have £284 10s.
+
+- Plant new rows of trees on the ridge, where the old orchard ran. (£16)
+- Buy seed corn and two plough-teams, and let the empty holdings go cheap. (£12)
+- Build a stone granary, so a bad year does not empty the manor. (£8)
+- Buy a charter for a Thursday market and a Michaelmas fair at Kerval. (£32)
+- Raise the walls at Kerval, with a gatehouse. (£48, and their keeping every year)
+- Take six men-at-arms into your pay. (£8, and six shillings a man each Michaelmas)
+- Found an almshouse for the old and the widowed. (£16)
+- Leave it in the chest.
+
+**You choose:** Build a stone granary, so a bad year does not empty the manor. (£8)
+
+Stone walls, a slate roof, a floor on staddle stones so the rats cannot climb. The village thinks it the most foolish thing you ever built, until the next wet summer.
+
+*Coin −£8; Grain in store (seasons) +2*
+
+### The Steward's List
+
+*Autumn 912, the eleventh year of King Edwin*
+
+The steward turns to the next item on his list.
+
+You have £276 10s.
+
+- Plant new rows of trees on the ridge, where the old orchard ran. (£16)
+- Buy seed corn and two plough-teams, and let the empty holdings go cheap. (£12)
+- Buy a charter for a Thursday market and a Michaelmas fair at Kerval. (£32)
+- Raise the walls at Kerval, with a gatehouse. (£48, and their keeping every year)
+- Take six men-at-arms into your pay. (£8, and six shillings a man each Michaelmas)
+- Found an almshouse for the old and the widowed. (£16)
+- Enough for this year.
+
+**You choose:** Enough for this year.
 
 ### Penhoët's Offer
 
@@ -200,7 +243,7 @@ You know who is left. You could count them on one hand now, and you do, under th
 
 You take a corner of the coffin with Piers atte Brook and two of the old company, and your back tells you about it for a week. The whole village comes. At the grave somebody starts the story about Hamon and the Brésy horse, and somebody else corrects it, and by the end there is laughing in the churchyard, which the priest pretends not to hear.
 
-*Coin −£2; The household: more loyal; Michaelmas: £273 8s 4d came in; the household £27 6s 10d, the men's pay £9 and repairs £20 went out; Sir Josselin Salvert dies and leaves a son under age; the wardship of the Salvert dyke is sold for £20*
+*Coin −£2; The household: more loyal; Michaelmas, a good harvest and steady trade: £301 16s 7d came in; the household £30 3s 8d, the men's pay £9 and repairs £20 went out; Sir Josselin Salvert dies and leaves a son under age; the wardship of the Salvert dyke is sold for £20*
 
 ### The Summons
 
@@ -248,7 +291,7 @@ The King's governor at Lannec is a lawyer from Wendmere with a fur collar and co
 
 You take him through it clause by clause, as you once took a company through a ford, and at the end he has nothing in his margins that he can make stick. "The King will be pleased," he says, in a voice that means the King will be told. The West hears of it by Michaelmas.
 
-*The sovereign's favour: lower; Michaelmas: £253 16s 8d came in; the household £25 7s 8d, the men's pay £9 and repairs £20 went out*
+*The sovereign's favour: lower; Michaelmas, a good harvest and brisk trade: £297 6s 2d came in; the household £29 14s 7d, the men's pay £9 and repairs £20 went out*
 
 ### The Illness
 
@@ -341,7 +384,7 @@ On the fourth morning Piers atte Brook brings you the first thing to sign. It is
 
 You say it, and your voice goes up at the end like a boy's. The old man says, "As you like, my lord," and you would rather he had argued. The gate is cut to six. The men do it. In the yard you hear one of them say, "The old lord'd never," and the other one say, "Well, the old lord isn't here."
 
-*Hal's shadow: shorter; The household: less loyal; Michaelmas: £254 5s came in; the household £25 8s 6d, the men's pay £9 and repairs £20 went out*
+*Hal's shadow: shorter; The household: less loyal; Michaelmas, a fair harvest and steady trade: £254 5s came in; the household £25 8s 6d, the men's pay £9 and repairs £20 went out*
 
 ### The Will
 
@@ -439,7 +482,7 @@ It is not enough. You did not expect it to be.
 
 Under the chancel floor, at the step, where the priest will walk over him every day and the village will see the stone every Sunday. The mason cuts the arms and the name and the year, and nothing else, because you could not decide what else, and in the end that seems right.
 
-*The household: more loyal; Michaelmas: £259 15s came in; the household £25 19s 6d, the men's pay £9 and repairs £20 went out; Sir Renaud de Saint-Aubin dies; his son pays £5 in relief*
+*The household: more loyal; Michaelmas, a fair harvest and steady trade: £259 15s came in; the household £25 19s 6d, the men's pay £9 and repairs £20 went out; Sir Renaud de Saint-Aubin dies; his son pays £5 in relief*
 
 ### The Oath
 
@@ -509,7 +552,7 @@ The hall has gone quiet. Somebody's dog yawns.
 
 "You hold your land of this house," you say, "whoever sits in this chair. Kneel, or give it back." For a long breath he does nothing. Then he goes down on one knee, and then the other, and puts his hands between yours, and says the words. His hands are colder than yours. Behind you somebody lets out a breath they have been holding since Terce.
 
-*The household: more loyal; Michaelmas: £255 5s came in; the household £25 10s 6d, the men's pay £9 and repairs £20 went out*
+*The household: more loyal; Michaelmas, a fair harvest and slack trade: £240 5s came in; the household £24 6d, the men's pay £9 and repairs £20 went out*
 
 ### The New Governor
 
@@ -602,7 +645,7 @@ The clerk unrolls the parchment. Her family has already chosen which third.
 
 Agnès looks at you, and then at the clerk, who is visibly disappointed not to have to argue. "Well," she says. "Your father would have made me fight for it." She kisses you on the cheek, which she has not done since you were small.
 
-*Coin −£10; The household: more loyal; Michaelmas: £255 15s came in; the household £25 11s 6d, the men's pay £9 and repairs £20 went out*
+*Coin −£10; The household: more loyal; Michaelmas, a fair harvest and steady trade: £255 15s came in; the household £25 11s 6d, the men's pay £9 and repairs £20 went out*
 
 ### Robert
 
@@ -663,7 +706,48 @@ Piers atte Brook rides up beside you, and looks where you are looking, and says 
 
 A pension for life to each of the five oldest, and a place at the high table at Christmas, and their sons first in line for their fathers' service. It costs a great deal. The old men grumble, and take it, and drink to you at Christmas, and mean it.
 
-*Hal's shadow: shorter; Coin −£12; Michaelmas: £255 15s came in; the household £25 11s 6d, the men's pay £9 and repairs £20 went out; Sir Gautier d'Aubrac withholds his dues this year, over a quarrel the house's court will have to hear*
+*Hal's shadow: shorter; Coin −£12*
+
+### The Keeper's Accounts
+
+*Summer 919, the eighteenth year of King Edwin*
+
+At midsummer you go through the accounts with the steward, all of them, for the first time as the one who has to answer for them. Last Michaelmas brought a fair harvest and steady trade. Your father left the house a great house, and the rolls say what that is worth: so much from Kerval, so much from the holdings, so much from the knights, and the household and the men's pay out of it before you see a penny.
+
+"There's money for one thing this year, my lord," says the steward. "Perhaps two. Not all of them."
+
+You have £1500 14s 6d.
+
+- Build a stone bridge over the stream below Kerval, and toll it. (£75)
+- Rebuild the church at Kerval in stone, with a tower. (£40)
+- Put in a cider press, and new trees where the old ones failed. (£24)
+- Lend Kerguen fifty pounds at ten in the hundred. (£50)
+- Arm six men of the village as a watch, and pay them. (£6)
+- Keep the money in the chest.
+
+**You choose:** Rebuild the church at Kerval in stone, with a tower. (£40)
+
+It takes two summers and a master mason from Lannec who drinks. The tower can be seen from Penhoët land, which was, you tell the priest, not the point.
+
+*Coin −£40; Church and priest +2; Kerval: the village warmer; Standing with the Church: higher; Standing with Piety: higher*
+
+### The Keeper's Accounts
+
+*Summer 919, the eighteenth year of King Edwin*
+
+The steward turns the page.
+
+You have £1460 14s 6d.
+
+- Build a stone bridge over the stream below Kerval, and toll it. (£75)
+- Put in a cider press, and new trees where the old ones failed. (£24)
+- Lend Kerguen fifty pounds at ten in the hundred. (£50)
+- Arm six men of the village as a watch, and pay them. (£6)
+- Enough for this year.
+
+**You choose:** Enough for this year.
+
+*Michaelmas, a failed harvest and brisk trade: £174 12s 6d came in; the household £17 9s 3d, the men's pay £9 and repairs £20 went out; Sir Gautier d'Aubrac withholds his dues this year, over a quarrel the house's court will have to hear*
 
 ### Sir Josselin's Daughter
 

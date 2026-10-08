@@ -283,18 +283,82 @@
       effects: [ { set: flag.h_bc_guard_old }, { add: { counter.household: 1, counter.shadow: 1 } } ]
       text_after: |
         He kneels to you in the guardroom in his father's old harness, too big in the shoulders, and swears, and does not say anything clever, and you sleep better that summer than you have since you were crowned.
-      next: { pool: h_b1_late, count: 1, then: h_bc09_estates }
+      next: h_bc08_works
     - id: armance
       text: Sire Guiomar of the Armance. Your mother's men keep your door.
       effects: [ { set: flag.h_bc_guard_armance }, { add: { rel.mahaut_armance.affection: 1, counter.household: -1 } } ]
       text_after: |
         Sire Guiomar takes the guard and changes everything about it in a week, and the old company's sons complain, and nobody gets into the palace that he has not seen first. Your mother says it is the safest you have been since you were born. She does not say from whom.
-      next: { pool: h_b1_late, count: 1, then: h_bc09_estates }
+      next: h_bc08_works
     - id: own
       text: The young knight. A {house.ruler_lc} should choose {his} own.
       effects: [ { set: flag.h_bc_guard_own }, { add: { counter.shadow: -2, counter.household: -1 } } ]
       text_after: |
         [if hero.sex == female]He kneels to you on the tourney field in front of everyone, which was not the plan, and swears with a voice that cracks on "faith", and the whole court laughs, and he goes scarlet, and so do you. By Michaelmas the court has stopped laughing and started gossiping, and he still has not once looked at the stands.[else]He kneels to you on the tourney field in front of everyone, which was not the plan, and swears with a voice that cracks on "faith", and the whole court laughs, and he goes scarlet. By Michaelmas he has the guard turned out at dawn to ride at the ring with you, and the old company's sons have stopped laughing and started getting up early.[/if]
+      next: h_bc08_works
+
+- id: h_bc08_works
+  chapter: book1
+  title: The Council of Works
+  frames: [free]
+  on_enter: [ { catch_up: { year: 57, season: summer } } ]
+  text: |
+    [if revisit]The treasurer reaches for the next roll.[else]Your mother gives the council a day at midsummer for the crown's works, and gives you the chair for it. Last Michaelmas brought {house.harvest}. The treasurer has his rolls, and the constable has his, and the Bishop of Saint-Lys has a letter.
+
+    "Choose, Your Grace," says your mother. "I'll tell you after if it was a mistake."[/if]
+
+    You have {coin}.
+  choices:
+    - id: fair
+      text: Charter a great fair at Lannec, for three weeks after Midsummer. (£150)
+      visible_if: "!holding.lannec_fair"
+      requires: "res.coin >= 36000"
+      effects: [ { add: { res.coin: -36000, rep.merchants: 2 } }, { hold: { id: lannec_fair, name: The great fair at Lannec, income: 3600, kind: trade } } ]
+      text_after: |
+        The first year there are cloth-men from Vervais and wine-men from the Midi and a bear. By the third, the Sarenzan bankers have a booth, and the crown's clerk at the gate takes a penny on every bale.
+      next: h_bc08_works
+    - id: walls
+      text: Rebuild the walls of Lannec. (£200)
+      visible_if: "!flag.inv_h_lannec_walls"
+      requires: "res.coin >= 48000"
+      effects: [ { set: flag.inv_h_lannec_walls }, { add: { res.coin: -48000, estate.defence: 3, rep.knights: 1, rep.commons: 1 } } ]
+      text_after: |
+        The old walls were the dukes'. The new ones are yours, and the town pays a third, grumbling, and shows them to every visitor.
+      next: h_bc08_works
+    - id: fleet
+      text: Build four cogs to carry the crown's salt to the south. (£250)
+      visible_if: "!holding.salt_fleet"
+      requires: "res.coin >= 60000"
+      effects: [ { add: { res.coin: -60000, rep.sarenza: -1, rep.merchants: 1 } }, { hold: { id: salt_fleet, name: The crown's salt cogs, income: 6000, kind: trade } } ]
+      text_after: |
+        Four broad-bellied cogs out of the yards at Sauvemer, the [if hero.sex == female]Queen[else]King[/if], the Armance, the Saint Lys and the Salt. The Sarenzan shippers lose a carrying trade, and say so.
+      next: h_bc08_works
+    - id: lend
+      text: Lend Kerguen a hundred pounds at ten in the hundred. (£100)
+      visible_if: "!holding.kerguen_loan"
+      requires: "res.coin >= 24000"
+      effects: [ { add: { res.coin: -24000, rival.kerguen.temper: 2 } }, { hold: { id: kerguen_loan, name: Kerguen's bond, income: 2400, kind: fixed } } ]
+      text_after: |
+        Tanguy de Kerguen signs at the end of the council table with great style, and your mother watches him do it. "A house in debt to the crown is a house that votes with it," she says, after. "Remember that at the Estates."
+      next: h_bc08_works
+    - id: hospital
+      text: Found a hospital on the pilgrims' road to Saint-Lys. (£60)
+      visible_if: "!flag.inv_h_hospital"
+      requires: "res.coin >= 14400"
+      effects: [ { set: flag.inv_h_hospital }, { add: { res.coin: -14400, estate.temper: 1, rep.church: 1, rep.commons: 1, rep.piety: 1 } } ]
+      text_after: |
+        Twelve beds, two brothers, a garden of herbs and a bell for the night. It carries your name over the door, and the pilgrims carry it home.
+      next: h_bc08_works
+    - id: granaries
+      text: Build the crown's granaries at Lannec and Sauvemer. (£80)
+      visible_if: "!flag.inv_h_granary"
+      requires: "res.coin >= 19200"
+      effects: [ { set: flag.inv_h_granary }, { add: { res.coin: -19200, estate.food: 4, rep.commons: 1 } } ]
+      text_after: |
+        Two long stone barns with the crown's mark over the doors. [if inherited.c5_married_mahaut]Your father wanted them and never built them. You do not say so to your mother. She says it to you.[else]In a bad year the sheriffs will open them, and the West will remember who built them.[/if]
+      next: h_bc08_works
+    - id: done
+      text: "[if revisit]Enough for this year.[else]Keep the treasure in the strongroom.[/if]"
       next: { pool: h_b1_late, count: 1, then: h_bc09_estates }
 
 - id: h_bc09_estates

@@ -183,18 +183,81 @@
       effects: [ { add: { res.coin: -12000, counter.household: 1 } } ]
       text_after: |
         You pay every man his wage and a shilling over, and hand the captains theirs yourself. In the guardroom they drink your health and {heir.first}'s, in that order, and then the other way round, to be safe.
-      next: h_pc06_embassy
+      next: h_pc05_works
     - id: save
       text: Put coin by, against whatever comes after you.
       effects: [ { set: flag.h_p_saved } ]
       text_after: |
         Two hundred pounds into the strongroom under the chapel, and the key to Mahaut. "Against what?" asks the treasurer. "Against a regency," says Mahaut, and the treasurer writes it down.
-      next: h_pc06_embassy
+      next: h_pc05_works
     - id: largesse
       text: Remit the salt towns' arrears, and let the Estates hear of it.
       effects: [ { add: { res.coin: -24000, counter.favour: 2 } }, { set: flag.h_c_largesse } ]
       text_after: |
         The arrears of six salt towns, forgiven at a stroke. The bells ring in Sauvemer on Sunday, and the guildmasters, who will sit in the Estates, remember it in their prayers, and in their votes.
+      next: h_pc05_works
+
+- id: h_pc05_works
+  chapter: prologue
+  title: The Crown's Works
+  frames: [free]
+  text: |
+    [if revisit]The treasurer rolls up one plan and unrolls the next.[else]When the sheriffs have gone the treasurer stays, with a second roll, and spreads it over the chequered cloth: the works the crown could do, if it chose, and what each would cost, and what each would bring in, in a fair year, with steady trade, if nobody burns it.
+
+    "A kingdom is a manor with a bigger roof, Your Grace," he says. "It wants the same things. Roads, walls, a granary, a market. It just wants them in stone."[/if]
+
+    You have {coin}.
+  choices:
+    - id: road
+      text: Pave the salt road from Sauvemer to Lannec, and toll it. (£200)
+      visible_if: "!holding.salt_road"
+      requires: "res.coin >= 48000"
+      effects: [ { add: { res.coin: -48000, rep.merchants: 2 } }, { hold: { id: salt_road, name: The salt road and its tolls, income: 4800, kind: trade } } ]
+      text_after: |
+        Two summers of quarrymen and carters, and a road a cart can use in February. The salt comes up to Lannec in four days instead of seven, and pays the crown for the privilege at every bridge.
+      next: h_pc05_works
+    - id: harbour
+      text: Dredge the harbour at Sauvemer and build a new quay. (£300)
+      visible_if: "!holding.harbour"
+      requires: "res.coin >= 72000"
+      effects: [ { add: { res.coin: -72000, rep.merchants: 2, rep.sarenza: 1 } }, { hold: { id: harbour, name: The new quay at Sauvemer, income: 7200, kind: trade } } ]
+      text_after: |
+        The dredgers find three wrecks and a Valdrennish cannon from the siege. The quay takes cogs of two hundred tuns, and the Sarenzan factors move their warehouses to face it.
+      next: h_pc05_works
+    - id: mint
+      text: Strike the West's own coin at Lannec. (£150)
+      visible_if: "!holding.mint"
+      requires: "res.coin >= 36000"
+      effects: [ { add: { res.coin: -36000, counter.favour: 1, rep.sarenza: -1 } }, { hold: { id: mint, name: The mint at Lannec, income: 3600, kind: trade } } ]
+      text_after: |
+        A silver penny with the crown of the West on one side and a cross on the other, and the moneyers' cut on every pound struck. The Sarenzans weigh the first ones, twice, and write home about them.
+      next: h_pc05_works
+    - id: castles
+      text: Repair the castles on the march. (£120)
+      visible_if: "!flag.inv_h_march"
+      requires: "res.coin >= 28800"
+      effects: [ { set: flag.inv_h_march }, { add: { res.coin: -28800, estate.defence: 3, rep.knights: 1 } } ]
+      text_after: |
+        New gates, new timber in the hoardings, the wells cleaned out, the ditches recut. Valdrenne will hear of it by Christmas, which is half the point.
+      next: h_pc05_works
+    - id: granaries
+      text: Build the crown's granaries at Lannec and Sauvemer. (£80)
+      visible_if: "!flag.inv_h_granary"
+      requires: "res.coin >= 19200"
+      effects: [ { set: flag.inv_h_granary }, { add: { res.coin: -19200, estate.food: 4, rep.commons: 1 } } ]
+      text_after: |
+        Two long stone barns, raised on pillars, with the crown's mark over the doors. In a good year they fill. In a bad one, the sheriffs open them, and the West remembers who built them.
+      next: h_pc05_works
+    - id: school
+      text: Endow a school for clerks at Lannec. (£100)
+      visible_if: "!flag.inv_h_school"
+      requires: "res.coin >= 24000"
+      effects: [ { set: flag.inv_h_school }, { add: { res.coin: -24000, rep.church: 2, counter.favour: 1 } } ]
+      text_after: |
+        Twelve boys, a master, a hall and a library of forty books. In twenty years the West's chancery will be full of its own clerks instead of Valdrenne's.
+      next: h_pc05_works
+    - id: done
+      text: "[if revisit]Enough for this year.[else]Keep the treasure in the strongroom.[/if]"
       next: h_pc06_embassy
 
 - id: h_pc06_embassy

@@ -30,7 +30,7 @@ describe('the year\'s luck', () => {
     // every band turns up, and the line names it
     const words = new Set(Array.from({ length: 200 }, (_, y) => yearLuck({ ...s, time: y * 4 + 2 }).harvest.id));
     expect(words.size).toBe(HARVESTS.length);
-    expect(michaelmas(s, 3).lines[0]).toMatch(/^Michaelmas, (a|the) .*(harvest|failed) and (slack|steady|brisk) trade: /);
+    expect(michaelmas(s, 3).lines[0]).toMatch(/^Michaelmas, a [a-z]+ harvest and (slack|steady|brisk) trade: /);
     expect(TRADES.map((t) => t.id)).toEqual(['slack', 'steady', 'brisk']);
   });
 

@@ -147,3 +147,16 @@ h_will_conditions: { description: "The founder's will carries conditions", later
 h_will_honoured: { description: "The heir honoured the founder's will", later: book1 }
 h_will_secret: { description: "The heir means to change the founder's will after his death", later: book1 }
 h_wood_conceded: { description: "The heir let Penhoët have the Kerval wood", later: book1 }
+inv_h_almshouse: { description: "The house founded an almshouse", later: book1 }
+inv_h_church: { description: "The Keeper rebuilt the manor church in stone", later: book1 }
+inv_h_granary: { description: "The house built a stone granary (or the crown's granaries); hunger is halved in an empty winter", later: book1 }
+inv_h_hospital: { description: "The crown founded a hospital on the pilgrims' road", later: book1 }
+inv_h_lannec_walls: { description: "The crown rebuilt the walls of Lannec", later: book1 }
+inv_h_march: { description: "The crown repaired the castles on the march", later: book1 }
+inv_h_men: { description: "The house took six men-at-arms into its pay", later: book1 }
+inv_h_press: { description: "The Keeper put in a cider press and new trees", later: book1 }
+inv_h_school: { description: "The crown endowed a school for clerks at Lannec", later: book1 }
+inv_h_seed: { description: "The house bought seed and plough-teams, and let the empty holdings cheap", later: book1 }
+inv_h_walls: { description: "The house raised the manor's walls and a gatehouse", later: book1 }
+inv_h_watch: { description: "The Keeper armed a village watch", later: book1 }
+inv_h_works: { description: "The house dug salt pans or planted orchard rows at the manor", later: book1 }

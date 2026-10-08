@@ -196,19 +196,95 @@
       effects: [ { add: { res.coin: -1200, counter.household: 1 } } ]
       text_after: |
         You pay every man his wage and a shilling over, and hand each one his money yourself. It takes until Vespers. Your hand aches. Old Hob in the stables bites his shilling, grins, and says, "Still good, then," and the whole yard laughs.
-      next: { switch: [ { if: [ inherited.c5_betrothed_penhoet, sibling.exists ], go: h_p06_request } ], default: h_p06_offer }
+      next: h_p05_purse
     - id: save
       text: Put coin by against the suit, and against what comes after you.
       effects: [ { set: flag.h_p_saved } ]
       text_after: |
         You have the steward put forty pounds in the iron chest under the chapel and give the key to nobody. "Against what?" he asks. "Against whatever it is," you say. He writes it in the book as "against whatever it is", and you let him.
-      next: { switch: [ { if: [ inherited.c5_betrothed_penhoet, sibling.exists ], go: h_p06_request } ], default: h_p06_offer }
+      next: h_p05_purse
     - id: lend
       text: Lend to the neighbour who has come asking with his hat in his hands. (£10)
       requires: "res.coin >= 2400"
       effects: [ { add: { res.coin: -2400 } }, { set: flag.h_p_lent } ]
       text_after: |
         Sir Josselin of the dyke has had a bad harvest and a worse son. You lend him ten pounds at no interest, which the Church would call charity and the steward calls madness. Josselin weeps a little, and promises you anything. You write down that he promised it.
+      next: h_p05_purse
+
+- id: h_p05_purse
+  chapter: prologue
+  title: The Steward's List
+  frames: [free, adalian]
+  text: |
+    [if revisit]The steward turns to the next item on his list.[else]When the reckoning is done the steward stays behind, with his list. Every steward has a list. His runs to two sides of parchment and starts with the words "If my lord would only".
+
+    The money is there, this year. The harvest was {house.harvest}. A great house that only collects its rents is a great house that will be a small one in two generations, and you did not build this one to watch it shrink.[/if]
+
+    You have {coin}.
+  choices:
+    - id: works
+      text: "[if estate.salt >= 3]Dig new salt pans along the flats.[else]Plant new rows of trees on the ridge, where the old orchard ran.[/if] (£16)"
+      visible_if: "!flag.inv_h_works"
+      requires: "res.coin >= 3840"
+      effects:
+        - set: flag.inv_h_works
+        - add: { res.coin: -3840 }
+        - if: "estate.salt >= 3"
+          then: [ { add: { estate.salt: 2 } } ]
+          else: [ { add: { estate.orchard: 2 } } ]
+      text_after: |
+        [if estate.salt >= 5]Two seasons of digging and sluicing, and the next August the new pans come up white.[else]Three hundred young trees, in rows your grandson will pick from.[/if] The rents will show it, in a year with any luck.
+      next: h_p05_purse
+    - id: seed
+      text: Buy seed corn and two plough-teams, and let the empty holdings go cheap. (£12)
+      visible_if: "!flag.inv_h_seed"
+      requires: "res.coin >= 2880"
+      effects: [ { set: flag.inv_h_seed }, { add: { res.coin: -2880, estate.people: 11, estate.food: 1 } } ]
+      text_after: |
+        Word goes round the next valley that {house.manor} has oxen and seed and holdings to let. By midsummer eleven families have come over the hill.
+      next: h_p05_purse
+    - id: granary
+      text: Build a stone granary, so a bad year does not empty the manor. (£8)
+      visible_if: "!flag.inv_h_granary"
+      requires: "res.coin >= 1920"
+      effects: [ { set: flag.inv_h_granary }, { add: { res.coin: -1920, estate.food: 3 } } ]
+      text_after: |
+        Stone walls, a slate roof, a floor on staddle stones so the rats cannot climb. The village thinks it the most foolish thing you ever built, until the next wet summer.
+      next: h_p05_purse
+    - id: market
+      text: Buy a charter for a Thursday market and a Michaelmas fair at {house.manor}. (£32)
+      visible_if: "!holding.market_charter"
+      requires: "res.coin >= 7680"
+      effects: [ { add: { res.coin: -7680, rep.merchants: 1, estate.temper: 1 } }, { hold: { id: market_charter, name: The market and fair, income: 1200, kind: trade } } ]
+      text_after: |
+        The charter costs thirty-two pounds and a long wait in a corridor at [if realm.west == adalian]Wendmere[else]Lannec[/if]. The first market has four stalls. In a good year it will have thirty, and you take a toll on every one.
+      next: h_p05_purse
+    - id: walls
+      text: Raise the walls at {house.manor}, with a gatehouse. (£48, and their keeping every year)
+      visible_if: "!flag.inv_h_walls"
+      requires: "res.coin >= 11520"
+      effects: [ { set: flag.inv_h_walls }, { add: { res.coin: -11520, estate.defence: 3, rep.knights: 1 } } ]
+      text_after: |
+        It takes the masons into the next year. When it is done it is ugly and hard to get into, and nobody this side of the march will try it without a siege train. Walls want mending every year, and these will too.
+      next: h_p05_purse
+    - id: men
+      text: Take six men-at-arms into your pay. (£8, and six shillings a man each Michaelmas)
+      visible_if: "!flag.inv_h_men"
+      requires: "res.coin >= 1920"
+      effects: [ { set: flag.inv_h_men }, { add: { res.coin: -1920, res.men: 6 } } ]
+      text_after: |
+        Six men who came home from the war and found nothing to come home to. They have their own jacks, and two have swords. They eat a great deal.
+      next: h_p05_purse
+    - id: almshouse
+      text: Found an almshouse for the old and the widowed. (£16)
+      visible_if: "!flag.inv_h_almshouse"
+      requires: "res.coin >= 3840"
+      effects: [ { set: flag.inv_h_almshouse }, { add: { res.coin: -3840, estate.temper: 2, rep.commons: 1, rep.piety: 1 } } ]
+      text_after: |
+        Six rooms round a yard, a garden and a bell. The women in it pray for you twice a day, by the terms of the foundation, and mean it more than the terms require.
+      next: h_p05_purse
+    - id: done
+      text: "[if revisit]Enough for this year.[else]Leave it in the chest.[/if]"
       next: { switch: [ { if: [ inherited.c5_betrothed_penhoet, sibling.exists ], go: h_p06_request } ], default: h_p06_offer }
 
 - id: h_p06_offer

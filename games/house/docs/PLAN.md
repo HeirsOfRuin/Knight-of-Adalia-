@@ -184,7 +184,7 @@ KoA's economy carries over unchanged (`ECONOMY.md`): 20d a head in rent, a manor
 | A holding | Income (pence a year), temper (−5..5), levy (men), and which side of the border it lies on |
 | The founder's lands | From the export (manor and holdings), or the opening's defaults |
 | A great house's income | £200-£800 a year (a Founder opening starts near £300) |
-| The crown's income (free West) | About £4,000 a year, mostly salt; far less than either king |
+| The crown's income (free West) | £600-£1,000 a year (Knight of Adalia's crown revenues, the point of truth: the author, 2026-10-08), half the domain's rents and half the salt penny and customs; far less than either king |
 | Upkeep | Household 15% of income; men 6s a year each; a castle's repair £20-£60 a year |
 | A dowry | A tenth to a third of a year's income for a daughter of the house; an heiress brings land instead |
 | Interest | 10% a year (Sarenzan); a default triggers the creditor's events |
@@ -517,9 +517,19 @@ The framework is done (steps 1-3). Step 4, the slice, is split so the hardest en
 
     Penhoët's temper ends anywhere from -4 to +7 across runs, and Kerguen's standing from 30 to 40. No comfortable start loses money or leaves its men unpaid. Money locks about 1% of choices, and only for starts in debt.
   - **The finding:** Act I spends little against a great house's surplus, so the purse grows about eightfold by its end. Act II's spends (§4.6: building, dowries for the Keeper's children, war wages, the Lanzi) are where money must bite; or Act I's household share rises to §4.6's 15%. That is for the author (`docs/STORY.md` decisions).
+- **Income that moves, and investments** (2026-10-08, the author asked for both):
+  - **The year's luck** (`economy.ts`), fixed by the seed and the year, so no dice are drawn:
+    - the harvest (failed 6%, poor 20%, fair 48%, good 20%, rich 6%) moves rents and the barn;
+    - the trade (slack, steady, brisk) moves salt, markets, tolls and customs;
+    - the crown's revenues move with both, fees with neither;
+    - war (`war` effect, `realm.war`) cuts the trade and lets raiders reach a manor, the likelier the weaker its walls;
+    - a plague year kills 15% of the village;
+    - a granary halves hunger.
+    - The average is a fair year. A Founder takes £158-£344 at Michaelmas, a crown £535-£924.
+  - **Investments** on Knight of Adalia's purse-scene model and prices: each work once, revisitable, through `estate.*`, `hold` and `holding.*`.
+    - The Founder: *The Steward's List* in the prologue (salt pans or orchards, seed and plough-teams, a granary, a market charter, walls, men-at-arms, an almshouse) and *The Keeper's Accounts* in Act I (a toll bridge, the church in stone, a cider press, a loan to Kerguen, a granary, a village watch).
+    - The crown: *The Crown's Works* (the salt road, the Sauvemer quay, a mint, the march castles, granaries, a school for clerks) and *The Council of Works* (the Lannec fair, Lannec's walls, the salt cogs, a loan to Kerguen, a hospital, granaries).
 - **Still open:**
-  - content reads the purse (`res.coin`) but not yet the manor (`estate.*` paths);
-  - the crown's income follows Knight of Adalia (£600-£1,000), not §4.6's "about £4,000"; §4.6 should be corrected to the save's figures;
   - Knight of Adalia's followers other than the great folk (Davy Ludd and the old company) are text only (`{house.companion}`);
   - the rival-house state (`counter.penhoet` stands in);
   - the vassals as state (homage terms are flags);

@@ -40,6 +40,15 @@ const ROUTE = {
 };
 
 describe('the prologue: The Old Lord', () => {
+  it('lets the founder spend on the manor at the first Michaelmas, once each, and goes on', () => {
+    const seen: string[] = [];
+    const s = drive(house(), { ...ROUTE, h_p05_purse: ['market', 'granary', 'done'] }, seen);
+    expect(seen.filter((x) => x === 'h_p05_purse')).toHaveLength(3);
+    expect(s.holdings?.market_charter).toMatchObject({ income: 1200, kind: 'trade' });
+    expect(s.flags.inv_h_granary).toBe(true);
+    expect(seen).toContain('h_p06_offer');
+  });
+
   it('starts the Founder opening in the hall, as the founder', () => {
     const s = house();
     expect(s.scene).toBe('h_p01_hall');
@@ -294,7 +303,7 @@ describe('the crowned path: King of the West, married to Mahaut', () => {
       let t = s;
       const lines: string[] = [];
       for (let i = 0; i < 12 && t.time < 3; i++) { const r = choose(c, t, view(c, t).choices.find((x) => x.available)!.id); t = r.state; lines.push(...(t.lastOutcome?.changes ?? [])); }
-      expect(lines.some((l) => /^Michaelmas, (a|the) [a-z ]+ harvest[a-z ]* and (slack|steady|brisk) trade: £\d+.* came in; the household .*, the men's pay .* and repairs .* went out$/.test(l))).toBe(true);
+      expect(lines.some((l) => /^Michaelmas, a [a-z]+ harvest and (slack|steady|brisk) trade: £\d+.* came in; the household .*, the men's pay .* and repairs .* went out$/.test(l))).toBe(true);
     });
 
     it('plays the elective crown through to the end of Act I, with Jehan king under his mother\'s regency', async () => {

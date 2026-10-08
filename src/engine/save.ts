@@ -82,6 +82,11 @@ export function fromSave(raw: unknown, content: ContentBundle): LoadResult {
     return ok;
   });
   state.queue = state.queue.filter((q) => !!content.scenes[q.event]);
+  // kin sent for before they were brought to the manor (c3q_kin): bring them, or, past Chapter 3, say they came
+  if (state.flags.c3_sent_for_kin && !state.flags.c3_kin_came && !state.queue.some((q) => q.event === 'c3q_kin') && content.scenes.c3q_kin) {
+    if (state.chapter === 'ch3') state.queue.push({ event: 'c3q_kin', dueAt: state.time, earliestChapter: 'ch3', origin: { scene: 'c3_letters', choice: 'kin', at: state.time, text: 'Sent for his kin' } });
+    else state.flags.c3_kin_came = true;
+  }
   const lordship = backfillLordship(state, content);
   if (lordship.length) warnings.push(`Your lands brought up to date: ${nameList(lordship)}.`);
   if (save.contentHash !== content.hash) warnings.push('The game content has been updated since this save was made.');

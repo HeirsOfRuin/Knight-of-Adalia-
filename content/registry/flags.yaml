@@ -276,6 +276,10 @@ c3_procession: { description: "Held processions and Masses against the plague", 
 c3_sat_with_man: { description: "Sat with his own man to the end in the plague", hidden: true, later: ch4 }
 c3_sent_money: { description: "Sent money home in the plague year", hidden: true, later: ch4 }
 c3_sent_for_kin: { description: "Sent for his surviving kin to come to the manor", later: ch4 }
+c3_kin_came: { description: "His kin came to the manor with the first ships of the spring (c3q_kin)", later: ch5 }
+c3_kin_house: { description: "Gave his kin the house to run", later: ch5 }
+c3_kin_work: { description: "Gave his kin work that suits them (rolls, accounts, the watch, the women's side)", later: ch5 }
+c3_kin_free: { description: "Gave his kin a cottage of their own", later: ch5 }
 c3_reaped: { description: "Reaped the plague harvest with his own hands", hidden: true, later: ch4 }
 c3_paid_wages: { description: "Paid plague wages to bring the harvest in", later: ch4 }
 c3_compelled: { description: "Compelled boon-work by the old custom after the plague", later: ch4 }

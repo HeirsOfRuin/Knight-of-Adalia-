@@ -21,11 +21,11 @@
 
     So you sit down in the empty hall one evening, with a candle and the letters, and think it through.[/if]
 
-    [if suit.mag_coker.status == available]Mag Coker has not married. [if npc.wat_coker.follower]Wat says, when you ask, that she has turned down two men and a widower, and that he has stopped asking her why, because she throws things.[else]Your mother [if flag.c3_sent_for_kin && background == burgess]has it from Wendham[else]writes[/if] that she has turned down two men and a widower, and that nobody in Ashby asks her why any more, because she throws things.[/if] She is twenty-seven, and the reeve's girl's promise was a long time ago.[/if]
+    [if suit.mag_coker.status == available]Mag Coker has not married. [if npc.wat_coker.follower]Wat says, when you ask, that she has turned down two men and a widower, and that he has stopped asking her why, because she throws things.[else]Your mother [if flag.c3_kin_came && background == burgess]has it from Wendham[else]writes[/if] that she has turned down two men and a widower, and that nobody in Ashby asks her why any more, because she throws things.[/if] She is twenty-seven, and the reeve's girl's promise was a long time ago.[/if]
 
-    [if suit.annot_dyer.status == available]Annot Dyer is still in Wendham, still unmarried, still blue to the wrist. Your mother [if flag.c3_sent_for_kin && background == burgess]tells you, in the tone she keeps for Wendham news,[else]writes, in a tone you can hear across the sea,[/if] that Annot's father has refused three matches on her behalf, and that "the girl seems to be waiting for something, God knows what."[/if]
+    [if suit.annot_dyer.status == available]Annot Dyer is still in Wendham, still unmarried, still blue to the wrist. Your mother [if flag.c3_kin_came && background == burgess]tells you, in the tone she keeps for Wendham news,[else]writes, in a tone you can hear across the sea,[/if] that Annot's father has refused three matches on her behalf, and that "the girl seems to be waiting for something, God knows what."[/if]
 
-    [if suit.mariot_wood.status == available]Mariot Wood is still in the forester's cottage at Hollin, nursing her father and doing his work, and has not married. Kit [if flag.c3_sent_for_kin]has it from Hollin[else]writes[/if] that she walks the chase every evening, and stops at the edge of it where the road goes south, and that everyone in Hollin knows why and nobody says.[/if]
+    [if suit.mariot_wood.status == available]Mariot Wood is still in the forester's cottage at Hollin, nursing her father and doing his work, and has not married. Kit [if flag.c3_kin_came]has it from Hollin[else]writes[/if] that she walks the chase every evening, and stops at the edge of it where the road goes south, and that everyone in Hollin knows why and nobody says.[/if]
 
     [if suit.nell_laundress.status == available]Nell is still in the laundry at Ravell Hall, with her arms red to the elbow, and Father Benet writes, carefully, that she has refused a carter and a groom, and laughed at both of them, and that Lady Ravell has noticed.[/if]
 
@@ -418,6 +418,8 @@
     [break]
 
     "An Adalian," an old woman says, close behind you, in Valdrennish, not quietly. "Well. At least he's a tall one."[/if]
+
+    [if flag.c3_kin_came][if background == reeve]Cis runs the feast, the cooks and the bride's mother, in that order, and Avice dances with nobody until Davy asks her, and then with nobody else.[elif background == burgess]Your mother sits at the high table in your father's colours, in the place of honour, and watches the bride the way she used to weigh a bale of wool. By the end of the feast she has made up her mind, and does not tell you what it is.[elif background == archer]Kit stands up with you at the church door, because there is nobody else of your blood to do it[if alias.spouse != mariot_wood], and cries from start to finish, and denies it after[/if].[else]Bet sits where your mother would have sat, in a gown she made herself for the day, and when you kiss her she says, "She'd have liked to see it," and that is all.[/if][/if]
   choices:
     - id: feast
       text: "Feast the whole manor, whatever it costs."
@@ -550,6 +552,8 @@
     They bury her in the chancel. The whole manor comes. You do not remember any of it except the sound of the baby crying, somewhere at the back of the church, all the way through the Mass.[else]A [if heirs.last == son]boy[else]girl[/if]. Red, furious, perfect, with a fist like a walnut. They put it in your arms, and you hold it the way you would hold a hawk, or a lit fuse, and everyone laughs at you, and {npc.@spouse.first}, white and wrecked and grinning in the bed, laughs hardest of all.
 
     "Well," she says. "Go on, then. Give it a name."[/if]
+
+    [if flag.c3_kin_came][if background == reeve]Cis is in the room all night, and comes out once, to tell you to stop walking about.[elif background == burgess]Your mother is in the room with the midwife, and comes out at dawn to tell you before anyone else can.[elif background == archer]Kit sits with you on the stair all night and talks about your father, and the time he fell in the millpond with the Ravell huntsmen watching, until the cry comes.[else]Bet is in the room, and when it is over she comes down the stair and puts the child into your arms herself, and shows you how to hold it.[/if][/if]
   choices:
     - id: son_father
       text: "[if background == reeve]Piers[elif background == burgess]Ralf[else]Hugh[/if], for your father."

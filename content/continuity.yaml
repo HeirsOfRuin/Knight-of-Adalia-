@@ -63,10 +63,10 @@ rules:
   - match: "Madonna Fiammetta sends her regards"
     allow: "alias.spouse != fiammetta_lanzi"
   - match: "Kit writes"
-    allow: "!flag.c3_sent_for_kin"
+    allow: "!flag.c3_kin_came"
     chapters: [ch3, ch4]
   - match: "Your mother writes"
-    allow: "!flag.c3_sent_for_kin || background != burgess"
+    allow: "!flag.c3_kin_came || background != burgess"
     chapters: [ch3, ch4]
     why: The burgess's son can send for his mother; the reeve's son sends for his sisters.
   - match: "Your master is in a Valdrennish prison"
@@ -98,6 +98,7 @@ rules:
     why: A broken sentence; it should never render.
 
 dead_names_ok:
+  c3q_kin: [agnes_tirewoman]      # Bet quotes her dead sister
   c5_chronicle: ['*']            # the chronicle of his life names the dead as they were
   c2q_lanzi: [hamon_darrell]     # a dead man's debt is still owed
   c3_childbed: ['*']             # "Philippa does not." is the death itself

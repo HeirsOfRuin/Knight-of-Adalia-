@@ -69,6 +69,7 @@ The working reference for every recurring character: how they look and talk, wha
 ### Household servant's son, Ravell Hall
 - **Agnes, his mother, tirewoman to Lady Ravell.**
   - **Look and voice:** Proud, anxious, devoted to the family she serves. Straightens collars. Never raises her voice.
+- **Bet, his mother's elder sister.** A dairywoman at Underhill, Ravell's home farm, where Agnes was born. Forty years in the dairy and the arms for it; two girls. Blunt where Agnes was careful. Comes to his manor in Ch3 if he sends for her kin.
 - **Nell, a laundry girl.**
   - **Look and voice:** Laughs at everyone, including the family. Brave in small ways.
 - **Master Ranulf, the marshal.** See Ravell Hall.

@@ -1,0 +1,48 @@
+# Chapter 3 queued events.
+
+# The kin he sent for in the Mottle year (c3_letters) come with the first ships of
+# the spring, and he gives them a place: the house, work that suits them, or a
+# cottage of their own. flag.c3_kin_came is read by the wedding, the childbed,
+# the status page and the epilogue.
+- id: c3q_kin
+  chapter: ch3
+  kind: queued
+  title: "[if background == reeve]Cis and Avice[elif background == burgess]Your Mother[elif background == archer]Kit[else]Bet[/if]"
+  requires: [ flag.c3_sent_for_kin ]
+  on_enter: [ { set: flag.c3_kin_came } ]
+  text: |
+    [if background == reeve]They come up from the harbour on a carrier's cart, with one chest between them and a hen in a basket that Avice would not leave behind. Your mother would not come. She will not leave Ashby, she says in the letter Cis carries, while your father is in the churchyard there, and she has the cottage and her cousins and her own fire. Cis talks from the gate to the hall door without drawing breath: the crossing, the sickness on the ship, the price of everything in Sauvemer. Avice holds the hen and looks at the hall, and the men, and you, and says nothing at all until supper, when she says, low, that you have got tall.[elif background == burgess]She comes by a Sarenzan ship, as a Mercer should, with her own maid, two chests, a bundle of lavender from the Sheep Street garden, and your father's account books, bound in a strap, because she could not leave them to be sold by the pound. She is greyer than you remember, and straighter. She inspects the hall, the kitchen, the chapel, and you, in that order, and says the hall will do. Then she sits down by your fire, and for the first time since you have known her, she does not have anything in her hands.[elif background == archer]She walks the last nine miles from the harbour because the carter wanted a penny she did not have, with a bundle on her back, your mother's spindle in her belt and your father's old bow unstrung over her shoulder. She is brown from the road and has your father's way of standing, weight on one hip, as if she might have to run. "You said a house and a place," she says, at the gate. "I've come for both." Then she drops the bundle and holds on to you, hard, until the men find things to do elsewhere.[else]Bet comes from Underhill with her two girls and a cow she would not sell, all four of them half-starved, and the cow the fattest. She is your mother's elder sister and does not look like her, except about the eyes; she has been a dairywoman forty years and has the arms for it. She looks at the hall, and at the lord standing in the door of it, and says, "Well. Agnes always said you'd land on your feet," and then she cries, once, hard, and stops, and asks where the dairy is.[/if]
+
+    [break]
+
+    They are yours to settle. A place in the house, work that suits [if background == burgess]her[elif background == archer]her[elif background == servant]her[else]them[/if], or a roof of [if background == reeve]their[else]her[/if] own.
+  choices:
+    - id: house
+      text: "[if background == reeve]Give Cis and Avice the house to run, the dairy and the hens.[elif background == burgess]Give your mother the keys of the house.[elif background == archer]Give Kit the house to run, and the dairy.[else]Give Bet the dairy, and the house to run.[/if]"
+      tags: [allies]
+      text_after: |
+        [if background == reeve]Cis runs the kitchen by the end of the week and the household by the end of the month, and nobody quite remembers agreeing to it. Avice keeps the hens, and then the geese, and then, without anyone deciding it, the dairy.[elif background == burgess]She takes the keys as if she had been waiting for them all her life, which she has. By Lady Day the stores are counted, the steward is frightened of her, and there is lavender in the linen.[elif background == archer]Kit runs the house the way your mother did: loud, fair, and without sitting down. The dairymaid gives notice and then takes it back.[else]Bet takes the dairy the first morning and the house the first week. The girls go where she sends them. The cow does as it likes.[/if] There is more in the stores at Michaelmas than there has been since you came.
+      effects: [ { set: flag.c3_kin_house }, { add: { estate.food: 2, estate.people: 2 } } ]
+      next: "@return"
+    - id: work
+      text: "[if background == reeve]Put Cis to the manor rolls. She is a reeve's daughter, and she counts faster than you do.[elif background == burgess]Ask your mother to keep the manor's accounts. She kept your father's for thirty years.[elif background == archer]Let Kit shoot with the watch. She is a Fletcher.[else]Put Bet over the linen and the women's side of the hall, as your mother was over Lady Ravell's.[/if]"
+      tags: [learning]
+      text_after: |
+        [if background == reeve]Cis takes the rolls and the tallies, and goes through three years of your steward's work in a fortnight, and comes to you with a list. Some of it is mistakes. Some of it is not. You learn more about your own manor from her in a month than in the three years before.[elif background == burgess]She reads your accounts for three evenings without a word, and on the fourth she shows you where the money goes, and where it ought to. You learn more from her that winter than you did from your father in twenty years, because this time you listen.[elif background == archer]The watch laugh, once. Then she puts six shafts into the butt at a hundred and eighty paces, the way your father taught you both, and the laughing stops. By summer she has the village boys at the butts every Sunday, and they shoot for her as they never did for your serjeant.[else]Bet runs the women's side of the hall as Agnes ran Lady Ravell's chamber: quietly, without a word raised, and with nothing ever out of place. The village women bring her their quarrels before they bring them to you, and most of them never reach you.[/if]
+      effects:
+        - set: flag.c3_kin_work
+        - add: { estate.people: 2 }
+        - if: { any: [ background == reeve, background == burgess ] }
+          then: [ { train: { stewardship: 1, ceiling: 6 } } ]
+        - if: background == archer
+          then: [ { add: { estate.defence: 1 } } ]
+        - if: background == servant
+          then: [ { add: { estate.temper: 1 } } ]
+      next: "@return"
+    - id: free
+      text: "Give [if background == reeve]them[else]her[/if] a cottage of [if background == reeve]their[else]her[/if] own in the village, and let [if background == reeve]them[else]her[/if] find [if background == reeve]their[else]her[/if] own feet."
+      tags: [allies]
+      text_after: |
+        [if background == reeve]They take the cottage by the mill. Within a year Cis is courted by the miller's son and Avice by nobody she will admit to, and the village has decided that the lord's sisters are its own.[elif background == burgess]She takes the cottage by the church, with a garden, and plants it with lavender. She comes up to the hall on Sundays and feast days, and tells you what the village is saying, which is a great deal, and most of it true.[elif background == archer]She takes the forester's old cottage at the edge of the trees, because it looks like home, and within a month knows every path in the wood and half the poachers in it. She comes to the hall when she likes, which is often.[else]She takes the cottage at the end of the green, with room for the cow. The girls marry within two years, both of them, to men of the manor. Bet says she always meant them to.[/if] The village takes it as a sign that you mean to stay.
+      effects: [ { set: flag.c3_kin_free }, { add: { estate.temper: 1, estate.people: 2 } } ]
+      next: "@return"

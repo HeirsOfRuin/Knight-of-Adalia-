@@ -8,6 +8,22 @@ import { ageOf, describeDate } from '../../engine/calendar';
 import { formatCoin, capitalise, signed } from '../../engine/format';
 import { ESTATE_LABELS, temperWord, payDue } from '../../engine/estate';
 
+/** The kin he sent for in the Mottle year, once they have come (c3q_kin). */
+function kinRow(state: GameState) {
+  const f = state.flags;
+  if (!f.c3_kin_came) return null;
+  const who: Record<string, [string, string, string]> = {
+    reeve: ['Your sisters', 'Cis and Avice', 'keeping the manor rolls'],
+    burgess: ['Your mother', 'Margery', 'keeping your accounts'],
+    archer: ['Your sister', 'Kit', 'captain of the butts'],
+    servant: ['Your aunt', 'Bet', "over the women's side of the hall"],
+  };
+  const [label, name, work] = who[state.background] ?? ['Your kin', 'with you', ''];
+  const plural = state.background === 'reeve';
+  const place = f.c3_kin_house ? `keeping your house` : f.c3_kin_work ? work : f.c3_kin_free ? `in a cottage of ${plural ? 'their' : 'her'} own` : 'with you';
+  return <><dt>{label}</dt><dd>{name}, {place}</dd></>;
+}
+
 const feeling = (n: number) =>
   n <= -6 ? 'hates you' : n <= -3 ? 'dislikes you' : n < 0 ? 'cool' : n === 0 ? 'indifferent' : n <= 2 ? 'warm' : n <= 5 ? 'fond' : 'devoted';
 const regard = (n: number) => (n <= -3 ? 'contempt' : n < 0 ? 'low regard' : n === 0 ? '' : n <= 3 ? 'some respect' : 'high respect');
@@ -74,7 +90,7 @@ export function StatusPanel({ content, state }: { content: ContentBundle; state:
         </Section>
       )}
 
-      {(state.flags.c3_married || (state.heirs?.length ?? 0) > 0) && (
+      {(state.flags.c3_married || state.flags.c3_kin_came || (state.heirs?.length ?? 0) > 0) && (
         <Section title="Your family">
           <dl class="kv">
             {state.flags.c3_married && state.aliases.spouse && (
@@ -83,6 +99,7 @@ export function StatusPanel({ content, state }: { content: ContentBundle; state:
                 <dd>{npcLabel(content, state.aliases.spouse)}{state.npcs[state.aliases.spouse]?.alive === false ? '' : `, ${feeling(state.npcs[state.aliases.spouse]?.affection ?? 0)}`}</dd>
               </>
             )}
+            {kinRow(state)}
             {(state.heirs ?? []).map((h, i) => [
               <dt key={`h${i}t`}>{h.sex === 'son' ? 'Son' : 'Daughter'}</dt>,
               <dd key={`h${i}d`}>

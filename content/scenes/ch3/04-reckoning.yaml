@@ -21,7 +21,6 @@
       text: Find the money and pay it, whatever it takes.
       tags: [wealth]
       requires: [ res.coin >= 960 ]
-      label: "Requires Coin £4"
       text_after: |
         You pay it in full, in coin, by your own messenger, and ask for the quittance under the Earl's seal. It comes back in a month with a letter regretting that you should have troubled yourself. The steward at Carrow, you hear later, was told off for selling you the paper so cheap. You are free of it. You are also, now, a man the Earl of Carrow has noticed.
       effects: [ { add: { res.coin: -960 } }, { clear: flag.c2_lanzi_against_land }, { set: flag.c3_paid_carrow } ]
@@ -86,7 +85,6 @@
       text: Send the King money and a few men, and stay to hold your manor.
       tags: [wealth, cunning]
       requires: [ res.coin >= 480 ]
-      label: "Requires Coin £2"
       text_after: |
         You send twenty pounds' worth of silver and four men, which is a respectable showing for a lord of your size, and a letter about the dangers of the border with the truce so new. The King's clerks enter it in their book. The King, you hear, does not read it.
       effects: [ { set: flag.c3_stayed_home }, { add: { res.coin: -480 } }, { if: npc.wat_coker.follower, then: [ { leave: wat_coker }, { set: flag.c3_wat_went_home } ] } ]
@@ -176,7 +174,6 @@
       text: Send money home for the widows.
       tags: [piety, allies]
       requires: [ res.coin >= 240 ]
-      label: "Requires Coin £1"
       text_after: You send a pound for the widows, by [if background == reeve || background == archer]Father Anselm[else]Father Benet[/if], with no name on it. Everybody at home knows who sent it within the week.
       effects: [ { set: flag.c3_wat_cut_down }, { if: flag.c3_will_leads, then: [], else: [ { kill: wat_coker } ] }, { add: { res.coin: -240, rep.commons: 2, rep.piety: 1 } } ]
       next: c3_march_router
@@ -235,7 +232,6 @@
       text: Pay for a stone wall and a tower at home, and a watch on the fords.
       tags: [wealth, allies]
       requires: [ res.coin >= 3600 ]
-      label: "Requires Coin £3"
       text_after: You pay for a wall round the church and the houses nearest it, and a tower with a bell, and four men to watch the fords. It is the most money you have ever spent on a place you do not live. The next time Ewan comes, the bell rings, and the village goes behind the wall, and he goes home again with nothing. He does not come back after that. He is getting old.
       effects: [ { set: flag.c3_walled_home }, { add: { res.coin: -3600, rep.commons: 1 } } ]
       next: c3_ravell
@@ -294,26 +290,24 @@
       text: "[if background == reeve]Buy Ashby.[elif background == archer]Buy Hollin and the chase.[elif background == burgess]Buy the Wendham rents.[else]Buy Underhill.[/if] A hundred and fifty pounds."
       tags: [wealth]
       requires: [ res.coin >= 36000 ]
-      label: "Requires Coin £30"
       text_after: |
         You buy it. The deed comes under Lord Ravell's seal, and the old man does not come down to sign it in person. [if background == reeve]You ride into Ashby as its lord on a wet day in October. Your mother is at the door of the end cottage. The whole village is out, and nobody says anything, and then old Father Anselm starts to laugh, and cannot stop, and then everyone is laughing, and you are too.[elif background == archer]You ride into Hollin as its lord, past the butts where you ran for arrows at a farthing a dozen. Kit is at the door. "Lord of Hollin," she says. "Our dad would've laughed himself sick."[elif background == burgess]You are the landlord of your father's street. The first rent-day, half the street comes to pay in person, to see your face.[else]You walk round Underhill as its lord, and stand at the door of the cottage where your mother was born, and nobody in the world but you knows why.[/if]
-      effects: [ { add: { res.coin: -36000 } }, { set: flag.c3_holds_home } ]
+      effects: [ { add: { res.coin: -36000 } }, { set: flag.c3_holds_home }, { if: background == reeve, then: [ { hold: { id: ashby, income: 2400 } } ] }, { if: background == archer, then: [ { hold: { id: hollin, income: 2400 } } ] }, { if: background == burgess, then: [ { hold: { id: wendham_rents, income: 3000 } } ] }, { if: background == servant, then: [ { hold: { id: underhill, income: 2400 } } ] } ]
       next: c3_fever_router
     - id: half
       text: Buy it with half down, and half from the rents over five years.
       tags: [wealth, cunning]
       requires: [ res.coin >= 18000 ]
-      label: "Requires Coin £15"
       text_after: |
         Seventy-five pounds now and the rest from the rents. Lord Ravell's steward, who has no choice, agrees. You hold [if background == reeve]Ashby[elif background == archer]Hollin[elif background == burgess]the Wendham rents[else]Underhill[/if] in mortgage, which is to say, as long as you pay. It is yours, mostly. You will be paying for it until your eldest is grown.
-      effects: [ { add: { res.coin: -18000 } }, { set: flag.c3_holds_home }, { set: flag.c3_home_mortgaged } ]
+      # the other half comes out of the rents: a tenth of them, for years
+      effects: [ { add: { res.coin: -18000 } }, { set: flag.c3_holds_home }, { set: flag.c3_home_mortgaged }, { if: background == reeve, then: [ { hold: { id: ashby, income: 2160 } } ] }, { if: background == archer, then: [ { hold: { id: hollin, income: 2160 } } ] }, { if: background == burgess, then: [ { hold: { id: wendham_rents, income: 2700 } } ] }, { if: background == servant, then: [ { hold: { id: underhill, income: 2160 } } ] } ]
       next: c3_fever_router
     - id: lend
       text: Lend Aymer what you can spare, for his own sake.
       tags: [allies]
       visible_if: [ npc.aymer_ravell.alive ]
       requires: [ res.coin >= 4800 ]
-      label: "Requires Coin £4"
       text_after: |
         You lend Aymer twenty pounds, which is not enough to save anything, and you both know it. He takes it anyway, and puts it away in his purse as if it might break, and says, "I'll pay you back," and means it. He will pay you back, in the end, in something other than money.
       effects: [ { add: { res.coin: -4800, favor.aymer_ravell: 1, rel.aymer_ravell.affection: 3 } }, { set: flag.c3_lent_aymer } ]
@@ -349,7 +343,6 @@
       text: Send for the physician.
       tags: [wealth, learning]
       requires: [ res.coin >= 240 ]
-      label: "Requires Coin £1"
       text_after: |
         Maestro Orsini comes, and bleeds the child, which seems to you a strange thing to do to something so small, and casts a horoscope, and leaves powders. [if flag.c3_lost_child]For three days you think it will be all right. On the fourth, it is not.[else]The fever breaks on the fourth day, whether because of him or in spite of him nobody can say. Orsini takes the credit, and the fee.[/if]
       effects: [ { add: { res.coin: -240 } }, { chance: 15, then: [ { heir_dies: last }, { set: flag.c3_lost_child } ] } ]

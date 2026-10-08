@@ -41,12 +41,12 @@
     You have {coin}. [if item.prize_harness]You have the prize harness from the Ravell tourney.[/if][if res.horses >= 1] You have a horse of your own.[/if]
   choices:
     - id: master
-      text: "Accept what your master offers: his spare harness and a horse from his string."
+      text: "[if item.prize_harness]Accept what your master offers: a horse from his string, to carry your prize harness.[else]Accept what your master offers: his spare harness and a horse from his string.[/if]"
       tags: [allies]
       requires: [ npc.@master.alive, rel.@master.affection >= 4 ]
       label: "Requires: your master's affection"
-      text_after: "[if alias.master == hamon_darrell]Sir Hamon gives you his old harness, which was the best in the shire in the old King's day, and his second destrier. He cannot afford either. He will not hear a word about it.[elif alias.master == ancel_brome]Sir Ancel gives you a Caldmoor horse he took in a raid and a harness that has been mended in more places than it has not. \"You'll be killed in it,\" he says. \"Not soon.\"[else]Your master equips you from his own stores. You will owe him for it in service. That is the point.[/if]"
-      effects: [ { set: flag.c1_has_means }, { add: { rel.@master.affection: 1, favor.@master: -1 } }, { item: +harness } ]
+      text_after: "[if item.prize_harness][if alias.master == hamon_darrell]Sir Hamon walks round your prize harness twice, nodding, and gives you his second destrier to carry it. \"Iron you've won,\" he says. \"Legs you need.\" He cannot afford the horse. He will not hear a word about it.[elif alias.master == ancel_brome]Sir Ancel looks over your prize harness, grunts, and gives you a Caldmoor horse he took in a raid. \"Good iron,\" he says. \"Wasted on a man walking.\"[else]Your master gives you a horse from his string to carry your prize harness. You will owe him for it in service. That is the point.[/if][elif alias.master == hamon_darrell]Sir Hamon gives you his old harness, which was the best in the shire in the old King's day, and his second destrier. He cannot afford either. He will not hear a word about it.[elif alias.master == ancel_brome]Sir Ancel gives you a Caldmoor horse he took in a raid and a harness that has been mended in more places than it has not. \"You'll be killed in it,\" he says. \"Not soon.\"[else]Your master equips you from his own stores. You will owe him for it in service. That is the point.[/if]"
+      effects: [ { set: flag.c1_has_means }, { add: { rel.@master.affection: 1, favor.@master: -1, res.horses: 1 } }, { if: "!item.prize_harness", then: [ { item: +harness } ] } ]
       next: c1_knighting
     - id: ravell
       text: Accept a fee from Lord Ravell, ten pounds a year for life, for your service.
@@ -58,7 +58,8 @@
         - set: flag.c1_has_means
         - set: flag.c1_ravell_fee
         - hold: { id: ravell_fee, income: 2400 }
-        - item: +harness
+        - if: "!item.prize_harness"
+          then: [ { item: +harness } ]
         - set: flag.strong_patron
         - trait: +ravell_man
         - add: { favor.thurstan_ravell: -1 }
@@ -71,9 +72,18 @@
       text_after: You owe nobody for it. It is the best feeling you have had in your life, and it lasts until you see the cost of fodder.
       effects: [ { set: flag.c1_has_means }, { add: { rep.knights: 1 } } ]
       next: c1_knighting
+    - id: own_horse
+      text: Wear your prize harness, and buy a horse in Wendham to carry it. Two pounds.
+      tags: [wealth, martial]
+      visible_if: [ item.prize_harness, res.horses < 1 ]
+      requires: [ res.coin >= 480 ]
+      text_after: A bay with a hard mouth and good legs, nine years old, sold by a carter who swears he was a knight's horse once, and may even be telling the truth. The harness you won yourself, in the lists. You owe nobody for any of it. It is the best feeling you have had in your life, and it lasts until you see the cost of fodder.
+      effects: [ { set: flag.c1_has_means }, { add: { res.coin: -480, res.horses: 1, rep.knights: 1 } } ]
+      next: c1_knighting
     - id: buy
       text: Buy a second-hand harness and a horse in Wendham. Six pounds.
       tags: [wealth]
+      visible_if: [ "!item.prize_harness" ]
       requires: [ res.coin >= 1440 ]
       text_after: The harness belonged to a knight who died of the flux at Christmas. The horse belonged to someone who did not want it. Both will do. Your purse will not recover this year.
       effects: [ { set: flag.c1_has_means }, { add: { res.coin: -1440, res.horses: 1 } }, { item: +harness } ]
@@ -87,7 +97,8 @@
       effects:
         - set: flag.c1_has_means
         - set: flag.c1_lanzi_debt
-        - item: +harness
+        - if: "!item.prize_harness"
+          then: [ { item: +harness } ]
         - add: { counter.lanzi_debt: 20, res.horses: 1, rep.sarenza: 1 }
       next: c1_knighting
     - id: joan
@@ -99,8 +110,9 @@
       effects:
         - set: flag.c1_has_means
         - set: flag.c1_joan_harness
-        - item: +harness
-        - add: { suit.joan_wyck.regard: 2, suit.joan_wyck.discretion: -3 }
+        - if: "!item.prize_harness"
+          then: [ { item: +harness } ]
+        - add: { suit.joan_wyck.regard: 2, suit.joan_wyck.discretion: -3, res.horses: 1 }
       next: c1_knighting
     - id: carrow
       text: Accept Sir Walter Pryce's offer of horse and harness from the Earl of Carrow, and wear the Earl's livery.
@@ -111,7 +123,8 @@
       effects:
         - set: flag.c1_has_means
         - set: flag.c1_carrow_livery
-        - item: +harness
+        - if: "!item.prize_harness"
+          then: [ { item: +harness } ]
         - add: { rel.thurstan_ravell.affection: -3, rel.walter_pryce.affection: 1, rep.nobles: 1, res.horses: 1 }
       next: c1_knighting
     - id: none

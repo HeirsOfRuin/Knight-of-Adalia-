@@ -48,7 +48,6 @@
       text: Hire a Sarenzan clerk to audit every holding, every year.
       tags: [wealth, cunning]
       requires: [ res.coin >= 1440 ]
-      label: "Requires Coin £2"
       text_after: |
         Master Benedetto Arbusti comes up from Sauvemer with an abacus, a mule and no sense of humour, and goes round your holdings like a ferret. Two stewards resign before he reaches them. The receipts come back up, and stay up, and every steward you have hates you a little, which is the price.
       effects: [ { set: flag.c4_sarenzan_clerk }, { add: { res.coin: -1440, holding.vaudrey.income: 600, holding.lisle.income: 600, holding.ashdown.income: 600, holding.vaudrey.temper: -1, holding.lisle.temper: -1, holding.ashdown.temper: -1 } } ]

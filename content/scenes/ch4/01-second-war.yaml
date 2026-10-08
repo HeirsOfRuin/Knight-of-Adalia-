@@ -12,23 +12,24 @@
     - advance: { seasons: 1 }
     - meet: prince_edwin
     - heir_set: { which: all, temperament: random }
-    - if: flag.c3_holds_home
+    # saves from before the land came with the deed: hand it over now
+    - if: [ flag.c3_holds_home, "!holding.ashby.held", "!holding.hollin.held", "!holding.wendham_rents.held", "!holding.underhill.held" ]
       then:
         - if: background == reeve
           then: [ { hold: { id: ashby, income: 2400 } } ]
         - if: background == archer
-          then: [ { hold: { id: hollin, income: 2100 } } ]
+          then: [ { hold: { id: hollin, income: 2400 } } ]
         - if: background == burgess
           then: [ { hold: { id: wendham_rents, income: 3000 } } ]
         - if: background == servant
-          then: [ { hold: { id: underhill, income: 2100 } } ]
+          then: [ { hold: { id: underhill, income: 2400 } } ]
         - if: flag.c3_home_mortgaged
-          then: [ { add: { holding.ashby.income: -240, holding.hollin.income: -210, holding.wendham_rents.income: -300, holding.underhill.income: -210 } } ]
-    - if: flag.c3_holds_lisle
+          then: [ { add: { holding.ashby.income: -240, holding.hollin.income: -240, holding.wendham_rents.income: -300, holding.underhill.income: -240 } } ]
+    - if: [ flag.c3_holds_lisle, "!holding.lisle.held" ]
       then: [ { hold: { id: lisle, income: 6000, temper: -1 } } ]
-    - if: flag.c3_holds_wyck
+    - if: [ flag.c3_holds_wyck, "!holding.wyck.held" ]
       then: [ { hold: { id: wyck, income: 3600 } } ]
-    - if: flag.c3_holds_ashdown
+    - if: [ flag.c3_holds_ashdown, "!holding.ashdown.held" ]
       then: [ { hold: { id: ashdown, income: 7200, temper: -1 } } ]
     - if: flag.c3_corbie_vineyard
       then: [ { hold: { id: corbie_vineyard, income: 1200 } } ]
@@ -305,7 +306,6 @@
       text: Keep them happy. Pay them on time and feed them well.
       tags: [allies, wealth]
       requires: [ res.coin >= 480 ]
-      label: "Requires Coin £2"
       text_after: |
         You pay them on time, every quarter, from your own purse when the King's money is late, which is always. You feed them beef at Christmas. By spring they would follow you into the sea, and some of them say so, drunk, and mean it.
       effects: [ { add: { res.coin: -480, counter.mf: 1 } }, { add: { rel.davy_ludd.loyalty: 2, rel.roger_tallis.loyalty: 2, rel.jankin_rooke.loyalty: 2, rel.simkin_barre.loyalty: 2 } } ]

@@ -95,4 +95,13 @@ describe('lordship', () => {
     expect(s.holdings.la_garde!.income).toBe(2400);
     expect(backfillLordship(s, c)).toEqual([]);
   });
+
+  it('hands over Chapter 3 land that an old save bought but never received', () => {
+    const s = game('archer');
+    s.chapter = 'ch3';
+    Object.assign(s.flags, { c3_holds_home: true, c3_home_mortgaged: true });
+    expect(backfillLordship(s, c)).toEqual(['Hollin and the chase']);
+    expect(s.holdings?.hollin?.income).toBe(2160);
+    expect(backfillLordship(s, c)).toEqual([]);
+  });
 });

@@ -64,7 +64,6 @@
       text: Pay it. All of it. Your father's debt is your debt.
       tags: [wealth]
       requires: [ res.coin >= 14400 ]
-      label: "Requires Coin £10"
       text_after: |
         Sixty pounds now and the rest from the wool rents of the West, over three years. The steward is surprised; he had expected you to bargain. You burn the note yourself when the last payment is made, in the same hearth, and you are sorry your father did not live to see it.
       effects: [ { set: flag.c4_note_paid }, { add: { res.coin: -14400, rep.merchants: 2, rep.honor: 1 } } ]
@@ -107,7 +106,6 @@
       text: Give for the chapel, generously, and ask them to pray for the archers as well as the dead.
       tags: [piety, wealth]
       requires: [ res.coin >= 480 ]
-      label: "Requires Coin £2"
       text_after: |
         Two pounds and a promise of the same every year. The monk writes your father's name on the second list again, in his own hand, and draws a small cross beside it. "Now he is on both," he says. Years later a Caldmoor drover tells you there is a chapel at Carn Dubh with a bell that rings at the hour the mill burned, and that the archers' names are cut into the lintel, under the others.
       effects: [ { set: flag.c4_carn_dubh_chapel }, { add: { res.coin: -480, rep.piety: 2, rep.caldmoor: 2 } } ]
@@ -169,6 +167,6 @@
         - set: flag.c4_ravell_squeezed
         - if: flag.c3_holds_home
           then: [ { add: { res.coin: 9600 } } ]
-          else: [ { hold: { id: underhill, income: 2100 } } ]
+          else: [ { hold: { id: underhill, income: 2400 } } ]
         - add: { rep.ruthlessness: 2, rep.nobles: -2, rel.eleanor_ravell.affection: -3 }
       next: "@return"

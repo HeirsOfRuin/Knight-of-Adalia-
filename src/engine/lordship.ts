@@ -132,6 +132,15 @@ export function backfillLordship(state: GameState, content: ContentBundle): stri
   const hold = (id: string, income: number) => { if (!h[id]) { h[id] = { income, temper: 0 }; given.push(content.registry.holdings[id]?.label ?? id); } };
   const knights = (n: number) => { const before = state.vassals?.length ?? 0; addVassals(state, content, n, 'west', []); if ((state.vassals?.length ?? 0) > before) given.push(`${(state.vassals?.length ?? 0) - before} knights who hold of you`); };
   const fresh = !state.vassals;
+  // land bought or married in Chapter 3 was once only handed over at the start of Chapter 4
+  if (state.chapter === 'ch3') {
+    const home = { reeve: 'ashby', archer: 'hollin', burgess: 'wendham_rents', servant: 'underhill' }[state.background as string];
+    const rent = { ashby: 2400, hollin: 2400, wendham_rents: 3000, underhill: 2400 }[home ?? ''] ?? 0;
+    if (f.c3_holds_home && home && !h[home]) hold(home, f.c3_home_mortgaged ? Math.round(rent * 0.9) : rent);
+    if (f.c3_holds_lisle) hold('lisle', 6000);
+    if (f.c3_holds_wyck) hold('wyck', 3600);
+    if (f.c3_holds_ashdown) hold('ashdown', 7200);
+  }
   // holdings granted before the economy was repriced (2026-10-05) pay a fifth of what they should
   const grant = grantIncomes(content);
   let repriced = 0;

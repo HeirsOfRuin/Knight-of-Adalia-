@@ -125,7 +125,6 @@
       text: Bring silver. Votes in an assembly are bought like anything else.
       tags: [wealth, cunning]
       requires: [ res.coin >= 12000 ]
-      label: "Requires Coin £10"
       text_after: |
         You bring fifty pounds in coin and letters of credit for more, and you spend the first week at Lannec dining with the poorer lords of the West, the ones with old names and leaking roofs, and paying for the dinners. Nobody mentions money. Everybody knows.
       effects: [ { set: flag.c4_brought_silver }, { add: { res.coin: -12000, counter.estates: 2 } } ]

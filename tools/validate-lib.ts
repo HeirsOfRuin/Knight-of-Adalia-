@@ -1,6 +1,7 @@
 // Content validator. Static checks over the bundle; per-background structural
 // checks run once the relevant chapter has content (otherwise PENDING).
 import { WIFE_MOMENTS, MARRIAGE_STAGES, type Choice, type ContentBundle, type Effect, type Next, type Outcome, type Scene, type SimpleNext } from '../src/content/schema';
+import { formatCoin } from '../src/engine/format';
 import { validateCond, condPaths, compileCond as rawCompile, type Cond } from '../src/engine/conditions';
 import type { CondInput } from '../src/content/schema';
 
@@ -263,6 +264,10 @@ export function validate(content: ContentBundle): ValidationReport {
       ids.add(c.id);
       checkText(cw, c.text);
       checkText(cw, c.label);
+      // a written label that names a price must name the price the choice requires
+      const need = JSON.stringify(c.requires ?? []).match(/res\.coin >= (\d+)/);
+      const said = c.label?.match(/Coin (£\d+(?:,\d{3})*(?: \d+s)?(?: \d+d)?|\d+s(?: \d+d)?|\d+d)(?=[,.;)\s]|$)/);
+      if (need && said && formatCoin(Number(need[1])) !== said[1]) err(cw, `label says Coin ${said[1]} but the choice requires ${formatCoin(Number(need[1]))}`);
       checkText(cw, c.warn);
       checkCond(cw, c.requires);
       checkCond(cw, c.visible_if);

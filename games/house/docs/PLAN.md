@@ -523,13 +523,14 @@ The framework is done (steps 1-3). Step 4, the slice, is split so the hardest en
     - the trade (slack, steady, brisk) moves salt, markets, tolls and customs;
     - the crown's revenues move with both, fees with neither;
     - war (`war` effect, `realm.war`) cuts the trade and lets raiders reach a manor, the likelier the weaker its walls;
-    - a plague year kills 15% of the village;
+    - a plague year kills 8% of the village (15% was too heavy against Act III's scenes);
     - a granary halves hunger.
     - The average is a fair year. A Founder takes £158-£344 at Michaelmas, a crown £535-£924.
   - **Investments** on Knight of Adalia's purse-scene model and prices: each work once, revisitable, through `estate.*`, `hold` and `holding.*`.
     - The Founder: *The Steward's List* in the prologue (salt pans or orchards, seed and plough-teams, a granary, a market charter, walls, men-at-arms, an almshouse) and *The Keeper's Accounts* in Act I (a toll bridge, the church in stone, a cider press, a loan to Kerguen, a granary, a village watch).
     - The crown: *The Crown's Works* (the salt road, the Sauvemer quay, a mint, the march castles, granaries, a school for clerks) and *The Council of Works* (the Lannec fair, Lannec's walls, the salt cogs, a loan to Kerguen, a hospital, granaries).
 - **Book I, Act II is written** (2026-10-09): the Founder's C1-C11 in both frames and under King Gaucelin (`scenes/book1/30-the-law.yaml`), the crowned path's K1-K11 (`scenes/book1/40-crowned-law.yaml`, STORY.md L3-34 to L3-37), and two pools (`events/book1/pool-law.yaml`). The threshold is `counter.overturn` at six with `counter.allies`; the realm's law is a flag (`h_realm_*`, `h_wardship_*`, `h_crown_*`). The companies' summer and Bertrand's rising put the realm at war for a season. A `borrow` effect lets content lend and repay.
+- **Book I, Act III is written** (2026-10-09): the Founder's D1-D11 (`scenes/book1/50-the-mottle.yaml`), the crowned path's M1-M11 (`scenes/book1/60-crowned-mottle.yaml`, STORY.md L3-38 to L3-41), and a shared pool (`events/book1/pool-mottle.yaml`). The Mottle is `flag.plague` and `flag.plague_children` (`registry/life.yaml`); the answer to the sickness sets the family's odds. Under a crown for life the Estates choose the successor (`h_crown_estates`), and a lost vote makes the house a great house again (`h_crown_lost`). A child dies in 54% of the bot's runs with young children; the house ends in about 2%.
 - **Still open:**
   - Knight of Adalia's followers other than the great folk (Davy Ludd and the old company) are text only (`{house.companion}`);
   - the rival-house state (`counter.penhoet` stands in);

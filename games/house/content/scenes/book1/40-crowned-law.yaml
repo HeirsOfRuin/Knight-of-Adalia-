@@ -345,27 +345,17 @@
       effects: [ { house_law: eldest } ]
       text_after: |
         The chancellor writes it in the crown's book, as your father had it. Your father, at the side of the dais, raises his cup to you and does not say anything, which is the most he has said all feast.
-      next: h_k_end
+      next: h_m01_wedding
     - id: male_pref
       text: Sons first, then daughters.
       effects: [ { house_law: male_preference }, { add: { rival.penhoet.temper: 1 } } ]
       text_after: |
         The chancellor writes it in the crown's book. [if hero.sex == female]You have just written a law that would not have made you {house.ruler}. Your mother looks at you down the table, and goes on looking.[else]Your sisters, at the end of the table, hear it, and say nothing, and will say it later.[/if]
-      next: h_k_end
+      next: h_m01_wedding
     - id: will
       visible_if: "family.children >= 2"
       text: Name your heir by will, whatever the law says.
       effects: [ { designate: eldest } ]
       text_after: |
         You write it yourself and seal it and give it to the bishop. If the law and the will ever disagree, the Estates will be asked to choose between them, which is the one thing you were trying to avoid.
-      next: h_k_end
-
-- id: h_k_end
-  chapter: book1
-  frames: [free]
-  kind: ending
-  ending: story_so_far
-  text: |
-    Here Act II of Book One ends. You are {name}, {house.ruler} of the West, {age_words}, [if flag.h_crown_hereditary]wearing a hereditary crown[elif flag.h_crown_for_life]confirmed for life, with the Estates to choose after you[else]under the crown's own law[/if], [if flag.h_k_bertrand_attainted]with Bertrand de Quérec attainted[elif flag.h_k_treated]with the marsh at peace under a charter[else]with Bertrand de Quérec at large[/if], and [if flag.h_armance_male_line]the Armance promised to Penhoët[elif flag.h_k_penhoet_attainted]Penhoët attainted[else]Penhoët waiting[/if]. A ship's master has mentioned a sickness in Sarenza that takes the children first.
-
-    Act III, The Children's Mortality, is still being written.
+      next: h_m01_wedding

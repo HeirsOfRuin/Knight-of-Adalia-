@@ -1,0 +1,72 @@
+# Book I, Act III's pool (STORY.md D9): one draw in 927, both paths.
+
+- id: h_b3p_friar
+  chapter: book1
+  kind: pool
+  pool: h_b3_pool
+  on_enter: [ { catch_up: { year: 65, season: summer } } ]
+  title: The Friar
+  frames: [free, adalian]
+  text: |
+    A friar comes through in the summer with forty people behind him, barefoot, singing, beating their own backs with knotted cords until the blood runs. The Mottle, he preaches at the cross, is God's anger at the lords, who have taken the poor man's sons for their wars and his rents for their wine. The crowd listens. So does your steward.
+  choices:
+    - id: hear
+      text: Let him preach, and give his people bread.
+      effects: [ { add: { rep.commons: 1, rep.church: -1, estate.food: -1, estate.people: -11 } } ]
+      text_after: |
+        He preaches for three days and moves on, and takes eleven of your people with him, and the valley talks about the lords' wars and the poor man's sons all winter.
+      next: "@return"
+    - id: bishop
+      text: Hand him to the bishop's men.
+      effects: [ { add: { rep.church: 1, rep.commons: -1, estate.temper: -1 } } ]
+      text_after: |
+        The bishop's men take him in chains, and his people scatter, and some of them come back at night and paint something on the church door that the priest scrubs off before Mass.
+      next: "@return"
+
+- id: h_b3p_grave
+  chapter: book1
+  kind: pool
+  pool: h_b3_pool
+  on_enter: [ { catch_up: { year: 65, season: summer } } ]
+  title: The Pit
+  frames: [free, adalian]
+  text: |
+    The churchyard is full. The priest has been burying the dead in the pit behind the church since the spring, without coffins, in their shrouds, and the pit is not consecrated ground, and the village knows it. The priest asks for money for a new churchyard, walled and blessed, on the glebe.
+  choices:
+    - id: pay
+      text: Pay for the new churchyard. (£10)
+      requires: "res.coin >= 2400"
+      effects: [ { add: { res.coin: -2400, estate.church: 1, estate.temper: 1, rep.piety: 1 } } ]
+      text_after: |
+        The bishop comes to bless it in person, with his face wrapped, and the village moves its dead from the pit to the new ground, one by one, at night, by lantern, which takes a month.
+      next: "@return"
+    - id: no
+      text: Tell him the dead are in God's ground wherever they lie.
+      effects: [ { add: { estate.temper: -1 } } ]
+      text_after: |
+        The priest says that is good theology and bad comfort, and is right on both counts.
+      next: "@return"
+
+- id: h_b3p_farms
+  chapter: book1
+  kind: pool
+  pool: h_b3_pool
+  on_enter: [ { catch_up: { year: 65, season: autumn } } ]
+  title: The Empty Farms
+  frames: [free, adalian]
+  text: |
+    At Michaelmas the steward brings the roll of the farms. A quarter of the holdings in the valley have no one in them: dead, or gone over the hill to lords who pay more for hands now there are fewer of them. The land is still there. The people to work it are not.
+  choices:
+    - id: cheap
+      text: Let the empty holdings go cheap, to anyone who will take them. (£12)
+      requires: "res.coin >= 2880"
+      effects: [ { add: { res.coin: -2880, estate.people: 14, estate.temper: 1 } } ]
+      text_after: |
+        The word goes round the next valley. By spring fourteen families have come over the hill with their goods in carts, and two of them are the families who left.
+      next: "@return"
+    - id: wages
+      text: Hold the old rents, and the old wages. The house will not bid against its neighbours.
+      effects: [ { add: { estate.people: -8, rival.kerguen.temper: 1 } } ]
+      text_after: |
+        The neighbours approve. The labourers do not, and go where they are paid, and the rent rolls are shorter at the next Michaelmas.
+      next: "@return"

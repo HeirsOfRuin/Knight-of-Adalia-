@@ -1392,7 +1392,33 @@ Years 58-63 (920-925), written in `scenes/book1/40-crowned-law.yaml`. The Founde
 - **K10. Penhoët's patience** (Michaelmas 924): read the letters before the Estates (attainder; the claim passes to Sir Yvon of Kerlan), reconcile (a council seat), or watch.
 - **K11. The crown's own house** (Easter 925): the house's law, and the ship's master's word of a sickness in Sarenza that takes the children first.
 
-**For Act III (noted, not decided).** If the Keeper dies in Act II or later under an elective crown, the Estates should choose the successor rather than the house's law alone. The engine passes the headship by the house's law today.
+**For Act III (decided below, L3-39).** If the Keeper dies in Act II or later under an elective crown, the Estates should choose the successor rather than the house's law alone. The engine passes the headship by the house's law today.
+
+## Layer 3: The crowned path, Act III, *The Children's Mortality* (decided 2026-10-09)
+
+Years 63-66 (925-928), written in `scenes/book1/60-crowned-mottle.yaml`. The Founder's Act III (D1-D11 above) is written in `scenes/book1/50-the-mottle.yaml`, and both paths share the pool in `events/book1/pool-mottle.yaml`.
+
+| # | Decision | Decided |
+|---|---|---|
+| L3-38 | The old king | **The Mottle takes him**, in the spring of 926. This overrides L3-24's "dies in his bed about year 64": he dies in the plague year instead, and the deathbed is played in M3. |
+| L3-39 | Succession under an elective crown | **Open.** When the sovereign dies while the crown is for life only (`flag.h_crown_for_life`), the Estates choose, and they may choose outside the house. The heir can ask, buy the benches (£300), or stand aside. If the crown goes, the West passes to Tanguy de Kerguen, Hervé de Penhoët or Lothaire of Valdrenne by the house's standing with each, and the house is a great house again: the crown's holdings go, its own lands stay. |
+| L3-40 | The sovereign's wedding | **Easter 925**, just before the Mottle. The match made in Act I (Kerguen or Valdrenne), or made now if none was. |
+| L3-41 | Hervé after Ronan | **Grief hardens him.** If Ronan dies of the Mottle (he does if Jehanne married him), Hervé blames the crown that took his son's claim; `flag.h_herve_hardened` raises Penhoët's temper into Act IV. |
+
+**The beats** (M1-M11):
+- **M1. The wedding** (Easter 925): the Act I match, or Kerguen, Valdrenne, or not yet.
+- **M2. The sickness comes** (summer 925): shut the palace and the gates, stay with the sick, or flee to the Armance hills. The answer sets the plague odds for the family (fled 0.6, shut 0.8, stayed 1.3).
+- **M3. The old king** (spring 926): the Mottle takes David. Sit with him to the end (the risk of the sickness; his last word), or send the physicians and stay away.
+- **M4. The crown in the plague** (summer 926): govern anyway, send the crown's grain and money to the towns, or keep behind the walls.
+- **M5. Black on Penhoët's gate** (autumn 926): Ronan or Hervé's heirs die; condolence and a Mass, a man to count, or nothing.
+- **M6. Succour or strike** (winter 926): bring in Penhoët's harvest, take the Armance forts it holds of the crown, or leave it.
+- **M7. The company at the gate** (spring 927): pay a free company on, fight it, or hire it to sit outside Penhoët.
+- **M8-M9.** Pool draws (the friar, the pit, the empty farms).
+- **M10. The count of the dead** (spring 928): the plague ends; an orphan of the household is taken in, sent to the Church, or placed with a knight.
+- **M11. The crown's will** (summer 928): the eldest, a guardian (the mother if living, else the constable), or provision for the younger ones.
+- **The Estates choose** (whenever the sovereign dies under a crown for life): ask, buy, or stand aside; then **the crown goes** if the vote is lost (kneel at the crowning, or go home).
+
+**Tuning (the bot, 420 runs).** A child dies in 54% of runs with young children; the house ends in about 2% of runs in Act III. Village deaths in the plague years are 8% a year, halved by a granary.
 
 ## Layer 3 decisions, round 1 (2026-10-07)
 | # | Decision | Decided |
@@ -1447,3 +1473,4 @@ Years 58-63 (920-925), written in `scenes/book1/40-crowned-law.yaml`. The Founde
 | 2026-10-08 | Depth and carry-over | The calendar is the Church's years of grace, a fictional count (old year N = 862 + N, so the house starts in 912), shown with the sovereign's year (canon.md, "The calendar"). Knight of Adalia's economy ported whole: manor, holdings, knights' dues, household, men's pay at Michaelmas. The save carries everything it holds. A new start answers seven to ten questions that build the same export an import gives. Hints and results in words, Knight of Adalia style. |
 | 2026-10-08 | The purse | Knight of Adalia is the point of truth for money, the crown's income included (£600-£1,000, not PLAN's £4,000). Income moves with the harvest, the trade, war and plague. Investment scenes on Knight of Adalia's model: two in the prologue (one per path) and two in Book I, Act I. |
 | 2026-10-09 | The crowned path, Act II | The Estates confirm for life unless the crown carries a hereditary crown with an ally (L3-34); Penhoët, refused, waits for Mahaut's death (L3-35); the regency ends in a handover or a struggle (L3-36); Bertrand rises again with the free companies (L3-37). Both paths' Act II written; the threshold is six with an ally. |
+| 2026-10-09 | Book I, Act III, both paths | The Mottle takes David in 926 (L3-38, over L3-24); under a crown for life the Estates choose and may choose outside the house (L3-39); the wedding at Easter 925 (L3-40); grief hardens Hervé (L3-41). Both paths' Act III written, with a shared pool. |

@@ -1,0 +1,322 @@
+# Book I, Act III: The Children's Mortality (STORY.md, Layer 3 round 4, D1-D11), the Founder opening, free and
+# Adalian frames. Years 63-66 (925-928), the Second Mottle: the plague flags raise the odds, children's most of all,
+# and the house's answer (D1) moves its own odds (family.ts). Most of the act's deaths come through the news scene,
+# where a child of the house has its stone or its vow (D3, 90-family.yaml). Ronan de Penhoët dies (L3-17); the
+# Old Companion is the scripted death of the extended family (L3-18); the founder's widow dies in 927 (D8).
+
+- id: h_d01_sickness
+  chapter: book1
+  title: The Sickness Comes
+  checkpoint: true
+  card: { title: "Book One, Act Three", subtitle: The Children's Mortality, epigraph: "In the second Mottle the old buried the young, which is the wrong way round." }
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 63, season: summer } }, { set: flag.plague }, { set: flag.plague_children } ]
+  text: |
+    The ship's master's sickness in Sarenza is in Sauvemer by Midsummer, in the harbour quarter first, in the children first. By Lammas it is in Lannec. By the Assumption a rider comes up the valley to {house.manor} with his face wrapped, and does not get off his horse to say that it is in the next village, a day's ride off.
+
+    [if spouse.alive]{spouse.first} is in the nursery[else]The nurse is in the nursery[/if] with [if family.children >= 1]the children[else]the door shut[/if]. The steward is at the gate. {house.parent_start} lived through the first Mottle, and used to say that the people who lived were the ones who were somewhere else.
+  choices:
+    - id: shut
+      text: Shut the gates of the hall and the village. Nobody in, nobody out.
+      effects: [ { set: flag.h_mottle_shut }, { add: { estate.temper: -1 } } ]
+      text_after: |
+        The gates close on the Feast of Saint Bartholomew. Food comes to the boundary stone and is left there. Inside, the household counts the days, and outside, the village sees the house with its door shut.
+      next: h_d02_village
+    - id: stay
+      text: Stay with the people. Open the hall to the sick.
+      effects: [ { set: flag.h_mottle_stayed }, { add: { estate.temper: 3, rep.commons: 2, rep.piety: 1, res.coin: -2400 } } ]
+      text_after: |
+        The hall is a hospital by Michaelmas, with straw on the floor and the priest going down the rows. You walk through it every morning. The valley will never forget it.
+      next: h_d02_village
+    - id: flee
+      text: Take the children up into the hills, to the shepherds' farms, until it passes.
+      effects: [ { set: flag.h_mottle_fled }, { add: { estate.temper: -3, counter.household: -1, counter.shadow: 1 } } ]
+      text_after: |
+        You go up into the hills with the family and the steward's boy and six men, and the shepherds take you in for money. In the valley they say the house has run. In the alehouse they say {house.parent} would not have.
+      next: h_d02_village
+
+- id: h_d02_village
+  chapter: book1
+  title: The Sealed Village
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 63, season: autumn } } ]
+  text: |
+    At Michaelmas the reeve of the outlying farms comes to the boundary stone and shouts across it: the sickness is in his hamlet, in four houses, and he asks whether to seal it, nobody in, nobody out, the way they did in the first Mottle.
+  choices:
+    - id: seal_feed
+      text: Seal it, and send food to the boundary stone every week. (£10)
+      requires: "res.coin >= 2400"
+      effects: [ { add: { res.coin: -2400, estate.food: -1, estate.people: -6 } } ]
+      text_after: |
+        The hamlet is sealed with a rope across the lane and a cross on a post. The carts go to the stone every Monday. Half the hamlet lives, which in that year is a great deal.
+      next: h_d04_crown
+    - id: seal
+      text: Seal it, and send nothing.
+      effects: [ { add: { estate.people: -14, estate.temper: -2 } } ]
+      text_after: |
+        The rope goes across the lane. Nobody comes out. In the spring the reeve's widow comes out, alone, and walks past the hall without looking at it, and the village will not look at it either for a generation.
+      next: h_d04_crown
+    - id: open
+      text: Leave it open. You cannot keep the sick from their own fields.
+      effects: [ { add: { estate.people: -20 } } ]
+      text_after: |
+        The hamlet stays open, and the sickness walks out of it on two legs, to the next farm and the next. By Christmas it is in the village by the hall.
+      next: h_d04_crown
+
+- id: h_d04_crown
+  chapter: book1
+  title: "[if realm.west == adalian]The King Is Dead[else]The Crown in the Plague[/if]"
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 64, season: spring } } ]
+  text: |
+    [if realm.west == adalian]In Lent of 926 the word comes from Wendmere: King Edwin is dead, at fifty-two, of a fever that may or may not be the Mottle. His son Prince Aymer died three years ago of a fever after the war on the March. His grandson is king: Aldred, the third of the name, who is nine. A regency council governs at Wendmere, and asks every lord of the realm for his homage by proxy, because nobody will ride through the plague to give it in person.[else]{realm.sovereign} is shut in Lannec, and has been since Lammas. The Estates do not meet. The courts do not sit. The West is governed, if it is governed, by whoever holds its valleys, and the house holds more of them than most.[/if]
+  choices:
+    - id: proxy
+      visible_if: "realm.west == adalian"
+      text: Swear to the boy King by proxy, at once.
+      effects: [ { add: { counter.favour: 1 } } ]
+      text_after: |
+        Your proxy kneels at Wendmere, in a hall with the windows shut and vinegar on the floor, and swears for the house. The regency council writes the house's name on the list of the loyal.
+      next: h_d05_penhoet
+    - id: patent
+      visible_if: "realm.west == adalian"
+      text: Ask that {house.parent}'s patent be confirmed first.
+      check: { attr: wits, skill: diplomacy, difficulty: 6 }
+      success:
+        text: |
+          The regency council confirms the patent, every word of it, under the boy King's seal, in a week. A new reign is a reign that needs friends.
+        effects: [ { set: flag.h_patent_confirmed }, { add: { counter.favour: 1 } } ]
+        next: h_d05_penhoet
+      failure:
+        text: |
+          The council writes back that the patent will be considered in due course, and writes the house's name on a different list.
+        effects: [ { add: { counter.favour: -2 } } ]
+        next: h_d05_penhoet
+    - id: govern
+      text: Govern your own country. Justice, the market, the roads.
+      effects: [ { add: { counter.household: 1, estate.temper: 1 } } ]
+      text_after: |
+        You hold the house's court in the open air at the cross-roads, under an awning, with the litigants twenty paces off. The valley has more justice that year than it has had since the war.
+      next: h_d05_penhoet
+    - id: help
+      visible_if: "realm.west == free"
+      text: Send grain and men to Lannec.
+      requires: "res.coin >= 4800"
+      effects: [ { add: { res.coin: -4800, res.men: -4, rel.mahaut_armance.affection: 2 } } ]
+      text_after: |
+        The carts go to Lannec with twenty pounds of grain and four of your men to guard it. Mahaut writes to you from behind her shut doors, in her own hand, which she has not done since the law.
+      next: h_d05_penhoet
+
+- id: h_d05_penhoet
+  chapter: book1
+  title: Black on Penhoët's Gate
+  frames: [free, adalian]
+  on_enter:
+    - catch_up: { year: 64, season: autumn }
+    - if: [ flag.h_second_penhoet, "sibling.sex == female", sibling_spouse.alive ]
+      then: [ { death: { who: sibling_spouse, cause: the Mottle } } ]
+  text: |
+    At Michaelmas the Mottle takes Ronan de Penhoët, at thirty, in three days, the way it takes the young. Hervé survives him, at fifty-nine, and stands at the grave, they say, for an hour after the priest has gone. Penhoët's heir is Ronan's child, a boy of six.
+
+    [if flag.h_second_penhoet && sibling.sex == female]The letter comes from {sibling.first}, at Penhoët, in {sibling.his} own hand: Ronan is dead, and {sibling.he} is a widow, with a son who is the heir of Penhoët, and a father-in-law who has stopped eating. "I am running this house," {sibling.he} writes. "Somebody has to."[elif flag.h_second_penhoet]The letter comes from {sibling.first}, at Penhoët: {sibling.his} brother-in-law is dead, and the house is in black, and Hervé has stopped eating.[else]There is black on Penhoët's gate by Martinmas, and the Penhoët bell rings every evening for a month.[/if]
+  choices:
+    - id: mass
+      text: Send condolence, and pay for a Mass for Ronan's soul.
+      effects: [ { add: { rival.penhoet.temper: 1, res.coin: -240 } } ]
+      text_after: |
+        Hervé writes back to thank you, in a hand that has got old in a season.
+      next: h_d06_succour
+    - id: count
+      text: Send a man to count what Penhoët has left.
+      effects: [ { set: flag.h_counted_penhoet } ]
+      text_after: |
+        Your man comes back at Martinmas: half the tenants dead, a third of the knights, the harvest standing in the fields for want of hands, and the boundary at {house.claimed} unwatched.
+      next: h_d06_succour
+    - id: nothing
+      text: Send nothing.
+      next: h_d06_succour
+
+- id: h_d06_succour
+  chapter: book1
+  title: Succour or Strike
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 64, season: winter } } ]
+  text: |
+    In the dead of winter Penhoët is as weak as it has been in a hundred years. Its men are dead or sick, its harvest is rotting in the fields, and its boundary at {house.claimed} has nobody on it. [if flag.h_counted_penhoet]You know exactly how weak; your man counted.[/if]
+
+    [if flag.h_old_knights || flag.h_b_old_terms]The old knights, at the end of the table, say what {house.parent} would have done, and do not agree with each other about it.[else]The steward says that a house at its weakest remembers who came to its door, both ways.[/if]
+  choices:
+    - id: succour
+      text: Send grain, and men to bring in Penhoët's harvest.
+      check: { attr: presence, skill: diplomacy, difficulty: 4, mods: [ { if: flag.h_counted_penhoet, add: 1, label: you know what it needs }, { if: flag.h_second_penhoet, add: 2, label: your kin are there } ] }
+      success:
+        text: |
+          Your carts go up the Penhoët road with grain and twenty men with sickles. Hervé meets them at the gate himself, and takes the grain, and says nothing for a long while, and then says, "My father would never have forgiven me for taking this." He takes it. Penhoët owes the house now.
+        effects: [ { set: flag.h_succoured }, { assign: { rival.penhoet.temper: 4 } }, { add: { res.coin: -2400 } } ]
+        next: h_d07_company
+      failure:
+        text: |
+          Hervé meets the carts at the gate and sends them back. Penhoët has never needed charity, he says, and will not start in a plague year. Pride is the last thing a house loses.
+        effects: [ { add: { rival.penhoet.temper: -1 } } ]
+        next: h_d07_company
+    - id: strike
+      text: "Strike while it is weak. Take back [if flag.h_kerval_shared]the wood and the mill[else]what Penhoët holds on the Kerval side of the stream[/if]."
+      check: { attr: wits, skill: tactics, difficulty: 4, mods: [ { if: flag.h_counted_penhoet, add: 1, label: you know its strength } ] }
+      success:
+        text: |
+          Your men walk onto the land in a morning, because there is nobody to stop them, and the steward has the boundary stones moved back by noon. It is the house's again. The West calls it justice or robbery according to taste. Penhoët calls it the start of a feud, and means a generation.
+        effects: [ { set: flag.h_struck }, { add: { rival.penhoet.temper: -10, rival.penhoet.standing: -3, rep.ruthlessness: 2 } }, { hold: { id: kerval_mill, name: The wood and the mill at Kerval, income: 1200 } } ]
+        next: h_d07_company
+      failure:
+        text: |
+          There are more of them than your man counted, and they are angrier than they are sick. Your men come home with two dead and the boundary where it was, and Penhoët's feud with them.
+        effects: [ { set: flag.h_struck }, { add: { rival.penhoet.temper: -6, res.men: -2 } } ]
+        next: h_d07_company
+    - id: sibling
+      visible_if: "flag.h_second_penhoet && sibling.alive"
+      text: Help {sibling.first} hold Penhoët for the boy.
+      effects: [ { set: flag.h_sibling_holds_penhoet }, { add: { counter.second: 3, res.coin: -2400 } }, { assign: { rival.penhoet.temper: 3 } } ]
+      text_after: |
+        You send {sibling.first} money, men and the house's steward for a season. By Easter {sibling.he} is running Penhoët better than any Penhoët has, and Hervé, from his chair by the fire, lets {sibling.him}.
+      next: h_d07_company
+    - id: leave
+      text: Leave it. Penhoët will recover.
+      text_after: |
+        Penhoët recovers, slowly, as the valley does. Hervé does not, quite.
+      next: h_d07_company
+
+- id: h_d07_company
+  chapter: book1
+  title: The Company at the Gate
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 65, season: spring } } ]
+  text: |
+    In the spring of 927 a free company comes down the valley road, eighty men who have been living on the plague country since the March war. [if flag.h_c_hired_bastard]It is the Bastard of Ostmark's company, and the Bastard remembers your forty pounds, and your wine, and your priest, and would like to discuss all three.[else]Their captain rides to the gate under a flag of truce and offers the house his protection for the summer, at a price.[/if]
+  choices:
+    - id: pay
+      text: Pay them, and send them on. (£15)
+      requires: "res.coin >= 3600"
+      effects: [ { add: { res.coin: -3600 } } ]
+      text_after: |
+        Fifteen pounds, and they ride on over the hills. The valley is safe for the year, and knows what it cost.
+      next: { switch: [ { if: [ "!flag.h_cloister", dowager.alive ], go: h_d08_widow } ], default: { pool: h_b3_pool, count: 1, then: h_d10_count } }
+    - id: fight
+      text: Fight them, with the house's men.
+      check: { attr: wits, skill: tactics, difficulty: 6, mods: [ { if: "res.men >= 30", add: 1, label: a strong company }, { if: flag.h_c_sent_men, add: 1, label: your men have fought this war } ] }
+      success:
+        text: |
+          You catch them at the ford with the river behind them, and it is short. The captain hangs at the cross-roads with a placard. The roads are quiet for the rest of the year.
+        effects: [ { add: { res.renown: 3, res.men: -3 } } ]
+        next: { switch: [ { if: [ "!flag.h_cloister", dowager.alive ], go: h_d08_widow } ], default: { pool: h_b3_pool, count: 1, then: h_d10_count } }
+      failure:
+        text: |
+          They are better at it than your men, who have spent a year burying people, and they burn two farms on the way out of the valley out of spite.
+        effects: [ { add: { res.men: -8, estate.people: -10, estate.temper: -1 } } ]
+        next: { switch: [ { if: [ "!flag.h_cloister", dowager.alive ], go: h_d08_widow } ], default: { pool: h_b3_pool, count: 1, then: h_d10_count } }
+    - id: hire
+      visible_if: flag.h_struck
+      text: Hire them, and send them to sit outside Penhoët for the summer. (£15)
+      requires: "res.coin >= 3600"
+      effects: [ { add: { res.coin: -3600, rival.penhoet.temper: -3, rep.ruthlessness: 1 } } ]
+      text_after: |
+        The company spends the summer in Penhoët's water-meadows and eats them bare. The feud is worse. The house is feared, which is not the same as respected, says the steward, and not the same as safe.
+      next: { switch: [ { if: [ "!flag.h_cloister", dowager.alive ], go: h_d08_widow } ], default: { pool: h_b3_pool, count: 1, then: h_d10_count } }
+
+- id: h_d08_widow
+  chapter: book1
+  title: "[if mother.alive]Your Mother[else]{dowager.first}[/if]"
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 65, season: summer } } ]
+  text: |
+    In the summer of 927 {dowager.first} is dying: not of the Mottle, which passed her over, but of being {dowager.ageword} and tired, eleven years after {house.parent}. [if mother.alive]She is your mother, and she knew {house.parent} from the inside, the only one who did.[else]She is {house.parent}'s widow, not your mother, and she knew {house.parent} from the inside, the only one living who did.[/if]
+
+    She sends for you on a hot afternoon, with the shutters closed and the bees in the lavender under the window.
+  choices:
+    - id: ask
+      text: Ask her about {house.parent}.
+      effects: [ { add: { counter.shadow: -1 } }, { death: { who: dowager, cause: old age } } ]
+      text_after: |
+        She tells you one thing, and it is not what you expected. [if inherited.c3_wife_keys]"The first week," she says, "I took the books off him. He let me. He'd never told anyone he couldn't read the Sarenzan figures, and he wasn't going to tell me. He just pushed the ledger across the table."[elif inherited.c4_war_debt]"He borrowed from the Lanzi to raise the company," she says, "the year before Mortefontaine. He never told you. He paid it back a penny at a time for six years and never let me see the letters."[else]"He was frightened," she says, "every day of it. From the first manor to the last. He thought someone would come and say it was all a mistake and take it back. Nobody ever did. He never stopped waiting."[/if] She dies two days later, in the morning, with the shutters open. You see the man, after that, and not the legend, and it is easier and harder.
+      next: { pool: h_b3_pool, count: 1, then: h_d10_count }
+    - id: hold
+      text: Ask her nothing. Hold her hand.
+      effects: [ { if: spouse.alive, then: [ { add: { spouse.bond: 1 } } ] }, { death: { who: dowager, cause: old age } } ]
+      text_after: |
+        You sit with her till dark and say nothing, and she says nothing, and it is the best conversation you have ever had with her. She dies two days later, in the morning, with the shutters open.
+      next: { pool: h_b3_pool, count: 1, then: h_d10_count }
+    - id: dower
+      visible_if: "!mother.alive"
+      text: Settle her dower on her own kin, generously, before she goes.
+      effects: [ { add: { res.coin: -4800, counter.household: 1 } }, { death: { who: dowager, cause: old age } } ]
+      text_after: |
+        Her brother's son comes for the deeds, and kisses her hand, and goes away richer than the custom requires. She watches you do it and says that {house.parent} would have done it by the letter, and that you are not {house.parent}, and seems glad.
+      next: { pool: h_b3_pool, count: 1, then: h_d10_count }
+
+- id: h_d10_count
+  chapter: book1
+  title: The Count of the Dead
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 66, season: spring } }, { clear: flag.plague }, { clear: flag.plague_children } ]
+  text: |
+    At Lady Day in 928 the sickness lifts, all at once, the way the first one did, for no reason anyone can give. The bell stops. The pit behind the church is filled in and sown with grass.
+
+    The steward brings the roll of who is left: the household, the villages, the family. [if flag.h_mottle_stayed]The valley does not forget who walked the rows in the hall.[elif flag.h_mottle_fled]The valley does not forget who went up into the hills.[/if] {house.companion}, who rode with {house.parent} from the beginning, is on the roll with a cross. He was the last of the old company.
+
+    At the gate there is a child, a cousin of the house, eight years old, whose parents are in the pits at Sauvemer.
+  choices:
+    - id: take
+      text: Take the child in, as a ward of the house.
+      effects: [ { set: flag.h_cousin_ward }, { set: flag.h_companion_dead }, { add: { counter.household: 1 } } ]
+      text_after: |
+        The child is given a bed in the nursery and a place at the end of the table, and on the first night asks whether you are going to die too. You say not this year.
+      next: h_d11_will
+    - id: church
+      text: Send the child to the Church.
+      effects: [ { set: flag.h_companion_dead }, { add: { rep.church: 1 } } ]
+      text_after: |
+        The abbey takes the child and a gift with it. In twenty years the child will be a canon, and will remember which house sent the gift.
+      next: h_d11_will
+    - id: client
+      text: Find the child a place with one of the house's knights.
+      effects: [ { set: flag.h_companion_dead }, { add: { res.coin: -1200 } } ]
+      text_after: |
+        {house.withholder} takes the child, for five pounds and the house's goodwill, and brings it to the hall at Christmas to show how well it is fed.
+      next: h_d11_will
+
+- id: h_d11_will
+  chapter: book1
+  title: The Keeper's Will
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 66, season: summer } } ]
+  text: |
+    At midsummer you write the will {house.parent} wrote, with the priest and the steward, at the same table. You are {age_words}. [if family.children >= 1]You have children living, and the stone in the chancel has names on it that it did not have three years ago.[else]You have no child living. The stone in the chancel has their names.[/if] [if counter.shadow >= 4]The steward reads you {house.parent}'s will first, for the form, and you hear how much of it you are about to write again.[else]You write it your own way, and the steward does not read you {house.parent}'s first.[/if]
+  choices:
+    - id: heir
+      visible_if: "family.children >= 1"
+      text: Name your heir by will, and seal it.
+      effects: [ { designate: eldest } ]
+      text_after: |
+        You write the name, and seal it, and give it to the priest. Whatever the law says, the will says this, and there will be a quarrel at your graveside if they ever disagree.
+      next: h_d_end
+    - id: guardian
+      text: "Name a guardian for a minority: [if spouse.alive]{spouse.first}[elif sibling.alive]{sibling.first}[else]the steward[/if]."
+      effects: [ { set: flag.h_will_guardian } ]
+      text_after: |
+        The guardian reads it, and asks you not to die soon. You say you will try.
+      next: h_d_end
+    - id: provide
+      text: Provide for the younger ones, out of the lands.
+      effects: [ { add: { counter.household: 1 } }, { set: flag.h_will_provided } ]
+      text_after: |
+        Land for one, the Church for another, a portion for a third, on parchment. {house.parent_start} did the same. You notice that you are writing in the same order, and change it.
+      next: h_d_end
+
+- id: h_d_end
+  chapter: book1
+  frames: [free, adalian]
+  kind: ending
+  ending: story_so_far
+  text: |
+    Here Act III of Book One ends. The Mottle is over. [if family.children >= 1]You have children living, and a will that names one of them.[else]You have no child living, and a will that names someone else's.[/if] [if flag.h_struck]Penhoët will not forgive the winter you struck.[elif flag.h_succoured]Penhoët owes the house a winter's harvest.[/if] The house is {house.standing}.
+
+    Act IV, [if realm.west == adalian]The Minority[else]The Test of the Law[/if], is still being written.

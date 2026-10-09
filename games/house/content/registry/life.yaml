@@ -10,7 +10,7 @@ mortality:
   - { to: 200, p: 15 }
 childbed: 2             # per birth
 fertility: { from: 16, to: 40, p: 30, late_from: 35, late_p: 15 }
-plague: { all: 3, children: 5 }   # the Second Mottle (Book I, Act III) is the children's mortality
+plague: { all: 3, children: 8 }   # the Second Mottle (Book I, Act III) is the children's mortality; tuned so most runs lose a child (STORY.md L3-18)
 majority: 16
 match_age: 17
 founder_family: { spouse_alive: 75, children: [2, 4], born: [27, 41] }   # regnal years of the children's births

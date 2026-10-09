@@ -15,7 +15,7 @@ export const st = (s: CoreState) => s as HouseState;
 export const ct = (c: CoreContent) => c as ContentBundle;
 
 /** The words content uses to name a character: head.age, {heir.He}, spouse.alive. */
-export const SELECTORS = ['head', 'heir', 'spouse', 'father', 'mother', 'eldest', 'second', 'third', 'youngest', 'bastard', 'regent', 'will', 'news', 'founder', 'dowager', 'sibling'] as const;
+export const SELECTORS = ['head', 'heir', 'spouse', 'father', 'mother', 'eldest', 'second', 'third', 'youngest', 'bastard', 'regent', 'will', 'news', 'founder', 'dowager', 'sibling', 'sibling_spouse'] as const;
 
 /** The first succession scene in the queue jumps every other event: the house cannot hear news without a head. */
 export const SUCCESSION_DUE = Number.MIN_SAFE_INTEGER;
@@ -99,6 +99,8 @@ export function select(s: HouseState, content: ContentBundle, sel: string): stri
     // the founder of the house, living or dead, and the founder's spouse
     case 'founder': return s.characters[FOUNDER_ID] ? FOUNDER_ID : undefined;
     case 'dowager': return s.characters[FOUNDER_ID]?.spouse;
+    // the sibling's husband or wife (Ronan de Penhoët, where the second child married him)
+    case 'sibling_spouse': { const sib = select(s, content, 'sibling'); return sib ? s.characters[sib]?.spouse : undefined; }
     // the founder's eldest living child who does not keep the house: not the founder's heir while the founder is head, not the head after
     case 'sibling': {
       const keeper = s.hero === FOUNDER_ID ? heirOf(s, s.family.law, FOUNDER_ID) : s.hero;
@@ -247,11 +249,13 @@ export function yearTick(s: HouseState, content: ContentBundle, rng: RngCursor):
   for (const [id, c] of household(s)) {
     const a = age(s, c);
     const band = life.mortality.find((m) => a <= m.to) ?? life.mortality.at(-1)!;
-    const mult = plague ? (children && a < 15 ? life.plague.children : life.plague.all) : 1;
+    // the house's answer to the Mottle (STORY.md D1) moves its own odds: the hills safest, the open hall worst
+    const answer = s.flags.h_mottle_fled ? 0.6 : s.flags.h_mottle_shut ? 0.8 : s.flags.h_mottle_stayed ? 1.3 : 1;
+    const mult = plague ? (children && a < 15 ? life.plague.children : life.plague.all) * answer : 1;
     // always draw, so holding someone does not shift later rolls
     if (rng.float() * 100 < band.p * mult && !held.has(id)) {
-      die(s, id, plague ? 'the plague' : a < 5 ? 'a fever' : a >= 60 ? 'old age' : 'an illness');
-      if (id !== s.hero) tell(s, { kind: 'death', who: id, cause: plague ? 'the plague' : undefined, at: s.time });
+      die(s, id, plague ? 'the Mottle' : a < 5 ? 'a fever' : a >= 60 ? 'old age' : 'an illness');
+      if (id !== s.hero) tell(s, { kind: 'death', who: id, cause: plague ? 'the Mottle' : undefined, at: s.time });
     }
   }
   // births: a living couple where the husband is of the house, or the wife is its head

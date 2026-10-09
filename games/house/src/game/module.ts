@@ -71,7 +71,8 @@ function changeNote(s: HouseState, c: ContentBundle, path: string, d: number): s
     if (b === 'standing') return say(`${name}'s standing`, 'higher', 'lower');
     if (b === 'claim') return say(`${name}'s claim`, 'stronger', 'weaker');
   }
-  if (ns === 'rep') return say(`Standing with ${c.registry.factions[a]?.label.replace(/^The /, 'the ') ?? a}`, 'higher', 'lower');
+  // a personal name (honour, ruthlessness, piety) is the house's own; a faction's is its regard for the house
+  if (ns === 'rep') return c.registry.factions[a]?.kind === 'personal' ? say(c.registry.factions[a]!.label, 'higher', 'lower') : say(`Standing with ${c.registry.factions[a]?.label.replace(/^The /, 'the ') ?? a}`, 'higher', 'lower');
   return undefined;
 }
 
@@ -206,6 +207,15 @@ export const house: GameModule = {
     if (t) changes.push(t);
   },
 
+  // assign: { rival.<house>.temper: n } sets a rival's temper outright (a debt of gratitude, a feud declared)
+  assignValue(s, c, path, value) {
+    const [ns, a, b] = path.split('.');
+    if (ns !== 'rival' || typeof value !== 'number') throw new Error(`assign: unsupported path ${path}`);
+    const r = rival(st(s), ct(c), a!);
+    if (!r || !(RIVAL_FIELDS as readonly string[]).includes(b!)) throw new Error(`assign: unknown rival path ${path}`);
+    addRival(st(s), ct(c), a!, b!, value - r[b as 'temper']);
+  },
+
   stakesOfAdd(c, path, sign, put) {
     const [ns, a] = path.split('.');
     if (ns === 'rival') put(`rival.${a}`, ct(c).registry.houses[a!]?.name ?? a!, STAKES_RANK.rep, sign);
@@ -239,6 +249,13 @@ export const house: GameModule = {
       const had = h[e.id];
       h[e.id] = { name: e.name, income: (had?.income ?? 0) + e.income, temper: had?.temper ?? 0, kind: e.kind ?? had?.kind };
       ctx.changes.push(`${had ? 'Improved' : 'You hold'}: ${e.name} (${formatCoin(e.income)} a year${had ? ' more' : ''})`);
+    },
+    release(s, _c, effect, ctx) {
+      const id = (effect as Op<'release'>).release;
+      const h = st(s).holdings?.[id];
+      if (!h) return;
+      delete st(s).holdings![id];
+      ctx.changes.push(`Lost: ${h.name}`);
     },
     borrow(s, _c, effect, ctx) {
       const state = st(s);

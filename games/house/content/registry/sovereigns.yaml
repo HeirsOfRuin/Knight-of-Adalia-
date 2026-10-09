@@ -7,3 +7,7 @@ edwin:      { frame: adalian, style: King Edwin, capital: Wendmere, reign_from: 
 edwin_salt: { frame: partitioned, style: King Edwin, capital: Wendmere, reign_from: 40 }
 amaury:     { frame: partitioned, style: King Amaury, capital: Cordelle, reign_from: 33 }
 gaucelin:   { frame: free, style: King Gaucelin, capital: Lannec, reign_from: 53 }   # Thibaut's son, chosen by the Estates at Candlemas 53 (STORY.md, L3-1, L3-8)
+# a crown the Estates gave outside the house (STORY.md L3-38): reign dated from the change (the west effect)
+tanguy:     { frame: free, style: King Tanguy, capital: Lannec, reign_from: 64 }
+herve:      { frame: free, style: King Hervé, capital: Lannec, reign_from: 64 }
+lothaire:   { frame: free, style: King Lothaire, capital: Lannec, reign_from: 64 }

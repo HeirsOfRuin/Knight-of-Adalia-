@@ -479,34 +479,24 @@
       effects: [ { house_law: male_preference } ]
       text_after: |
         The house's law stays as {house.parent} kept it. [if flag.h_realm_male_line]Penhoët notes that the house has not followed the realm, and so does the realm.[/if]
-      next: h_c_end
+      next: h_d01_sickness
     - id: male_line
       text: Adopt the male line. Only sons, and only through sons.
       effects: [ { house_law: male_line }, { add: { rival.penhoet.temper: 1 } } ]
       text_after: |
         The chaplain writes it into the house's book. [if family.daughters >= 1]Your daughters will marry well and inherit nothing, and one of them, who is old enough to understand, does not speak to you until Whitsun.[else]There are no daughters at the table yet to take it badly.[/if]
-      next: h_c_end
+      next: h_d01_sickness
     - id: partible
       visible_if: "family.sons >= 2"
       text: Divide the lands among the sons when the time comes.
       effects: [ { house_law: partible } ]
       text_after: |
         The eldest will be head, and the younger sons will have shares out of the lands. The steward, who will have to cut the shares, says nothing, and drafts three versions that night.
-      next: h_c_end
+      next: h_d01_sickness
     - id: will
       visible_if: "family.children >= 2"
       text: Name your heir by will, whatever the law says.
       effects: [ { designate: eldest } ]
       text_after: |
         You write it yourself, and seal it, and give it to the chaplain to keep. If the law and the will ever disagree, there will be a quarrel at your graveside. There usually is.
-      next: h_c_end
-
-- id: h_c_end
-  chapter: book1
-  frames: [free, adalian]
-  kind: ending
-  ending: story_so_far
-  text: |
-    Here Act II of Book One ends. [if flag.h_realm_male_line]The West has written the male line[elif flag.h_realm_male_pref]The West has written male preference[elif flag.h_wardship_mahaut]The West's liberties have held, and Mahaut keeps her daughter[else]The King has Mahaut's daughter, and her marriage[/if], and the house is {house.standing}. A ship's master has mentioned a sickness in Sarenza that takes the children first.
-
-    Act III, The Children's Mortality, is still being written.
+      next: h_d01_sickness

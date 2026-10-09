@@ -28,9 +28,32 @@
       text: Make a match with a family of the West.
       effects: [ { marry: { who: news, culture: valdrennish } } ]
       next: '@return'
+    # a child of the house (STORY.md D3, Knight of Adalia's epilogue: "remembered on a stone in the chancel, every year, on the day")
+    - id: stone
+      visible_if: "family.news == death && news.age < 16"
+      text: "[if realm.sovereign == self]Raise a stone in the cathedral at Lannec, with {news.his} name. (£20)[else]Raise a stone in the chancel, with {news.his} name. (£5)[/if]"
+      effects:
+        - if: "realm.sovereign == self"
+          then: [ { add: { res.coin: -4800 } } ]
+          else: [ { add: { res.coin: -1200 } } ]
+        - set: flag.h_stone
+      text_after: |
+        The mason cuts {news.first}'s name, and the day, and nothing else, because there is nothing else yet to cut. Every year on the day the priest says {news.his} name at Mass, and the house hears it.
+      next: '@return'
+    - id: vow
+      visible_if: "family.news == death && news.age < 16"
+      text: Make a vow. If the next child lives, the house will build a chapel.
+      effects: [ { set: flag.h_vow }, { add: { rep.piety: 1 } } ]
+      text_after: |
+        You make it at the altar, aloud, with the priest as witness and nobody else. A vow is a debt to God, the priest says, and God is the one creditor the Lanzi cannot buy.
+      next: '@return'
     - id: go_on
-      text: "[if family.news == match]Not yet.[else]Go on.[/if]"
-      effects: [ { if: family.news == birth, then: [ { name_child: { who: news, style: culture } } ] } ]
+      text: "[if family.news == match]Not yet.[elif family.news == death && news.age < 16]Only the grave.[else]Go on.[/if]"
+      effects:
+        - if: family.news == birth
+          then: [ { name_child: { who: news, style: culture } } ]
+        - if: [ "family.news == death", "news.age < 16", spouse.alive ]
+          then: [ { add: { spouse.bond: -1 } } ]
       next: '@return'
 
 - id: h_q_succession
@@ -46,13 +69,14 @@
       text: "[if family.no_heir]Let it end.[else]Let the law stand.[/if]"
       effects: [ { succeed: {} } ]
       text_after: "{chronicle.last}"
-      next: { switch: [ { if: family.extinct, go: h_extinct } ], default: '@return' }
+      # an elective crown (STORY.md L3-34, L3-38): the house's law names the head of the house, and the Estates choose the sovereign
+      next: { switch: [ { if: family.extinct, go: h_extinct }, { if: [ "opening == crowned", flag.h_crown_for_life, "realm.sovereign == self" ], go: h_crown_estates } ], default: '@return' }
     - id: the_will
       visible_if: family.contested
       text: Hold to the will.
       effects: [ { succeed: { heir: will } }, { add: { counter.contested: 1 } } ]
       text_after: "{chronicle.last}"
-      next: { switch: [ { if: family.extinct, go: h_extinct } ], default: '@return' }
+      next: { switch: [ { if: family.extinct, go: h_extinct }, { if: [ "opening == crowned", flag.h_crown_for_life, "realm.sovereign == self" ], go: h_crown_estates } ], default: '@return' }
 
 - id: h_extinct
   chapter: prologue

@@ -28,6 +28,8 @@ export const HOUSE_EFFECTS = [
   // ---- the purse (economy.ts) ----
   // a holding gained or improved: income in pence a year; kind says what moves it (rents, trade, or a fixed fee)
   z.object({ hold: z.object({ id: Id, name: z.string(), income: z.number().int(), kind: z.enum(['land', 'trade', 'fixed']).optional() }).strict() }).strict(),
+  // a holding lost: given up, taken, or the crown's when the crown goes to another house
+  z.object({ release: Id }).strict(),
   // borrow from the Lanzi (pence, at 10% a year); a negative sum repays, as far as the purse and the debt allow
   z.object({ borrow: z.number().int() }).strict(),
   // the realm goes to war with someone, or makes peace (none): trade suffers and the march is raided while it lasts

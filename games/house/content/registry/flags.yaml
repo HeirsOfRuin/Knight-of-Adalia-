@@ -107,13 +107,18 @@ h_c_turned: { description: "The Keeper changed sides in the law fight", later: b
 h_changed_order: { description: "The heir changed the founder's standing order for the gate", later: book1 }
 h_cloister: { description: "The founder took the cowl and lives at the abbey", later: book1 }
 h_companion_counsel: { description: "The founder asked the Old Companion to counsel the heir", later: book1 }
+h_companion_dead: { description: "The Old Companion died in the Mottle, the last of the old company", later: book1 }
 h_companion_holding: { description: "The founder gave the Old Companion a holding of his own", later: book1 }
 h_companion_side: { description: "The founder kept the Old Companion at his side to the end", later: book1 }
 h_counted: { description: "The house watched and counted at the council or the Estates, and said nothing", later: book1 }
+h_counted_penhoet: { description: "The house counted what the Mottle left Penhoët", later: book1 }
 h_court_held: { description: "The court ordered the Kerval stone put back", later: book1 }
+h_cousin_ward: { description: "An orphaned cousin of the house is its ward", later: book1 }
 h_crown_eldest: { description: "The Estates confirmed the crown's law: the eldest child", later: book1 }
 h_crown_for_life: { description: "The Estates confirmed the sovereign for life, and kept the choice of the next", later: book1 }
 h_crown_hereditary: { description: "The Estates made the crown hereditary: the eldest child, for ever", later: book1 }
+h_crown_kept: { description: "The Estates chose the house's heir to wear the crown", later: book1 }
+h_crown_lost: { description: "The Estates gave the crown outside the house", later: book1 }
 h_founder_rallies: { description: "The founder rallied from his illness", later: book1 }
 h_gaucelin_own: { description: "King Gaucelin turned on his Brésy regents at his majority, with the house beside him", later: book1 }
 h_handover_hall: { description: "The founder handed over the house before the household", later: book1 }
@@ -122,6 +127,7 @@ h_handover_will: { description: "The founder handed over the house by a will wit
 h_heir_court: { description: "The founder sent the heir to court", later: book1 }
 h_heir_kept: { description: "The founder kept the heir at his side", later: book1 }
 h_heir_manor: { description: "The founder gave the heir a manor to run", later: book1 }
+h_herve_hardened: { description: "Grief hardened Hervé de Penhoët: he writes over the march to Bertrand and to Valdrenne's friends", later: book1 }
 h_jehanne_penhoet: { description: "Penhoët bought Jehanne's wardship and marriage from the King", later: book1 }
 h_jehanne_ward: { description: "The house bought Jehanne's wardship and marriage from the King", later: book1 }
 h_k_ally_church: { description: "The Church stands with the crown's case at the Estates", later: book1 }
@@ -157,6 +163,11 @@ h_law_carried: { description: "The founder's speech on the law carried the hall"
 h_law_male: { description: "The house spoke for the male line", later: book1 }
 h_law_silent: { description: "The house kept silent on the law", later: book1 }
 h_law_women: { description: "The house spoke for inheritance through women", later: book1 }
+h_m_sat_with_father: { description: "The young sovereign sat with the old king to the end", later: book1 }
+h_m_unwed: { description: "The young sovereign put off marrying again in the year of the Mottle", later: book1 }
+h_mottle_fled: { description: "The house fled the Mottle into the hills", later: book1 }
+h_mottle_shut: { description: "The house shut its gates against the Mottle", later: book1 }
+h_mottle_stayed: { description: "The house stayed with the people in the Mottle, and opened the hall to the sick", later: book1 }
 h_new_men: { description: "The Keeper raised new men of the Keeper's own", later: book1 }
 h_oath_bought: { description: "The heir bought the sovereign's goodwill with a gift at the oath", later: book1 }
 h_oath_plain: { description: "The heir swore homage plain", later: book1 }
@@ -169,6 +180,7 @@ h_p_paid_debt: { description: "The founder paid the Sarenzan debt", later: book1
 h_p_saved: { description: "The founder put coin by at the first Michaelmas", later: book1 }
 h_patent_bought: { description: "The founder paid the governor's clerks to lose the question of the patent", later: book1 }
 h_patent_conceded: { description: "The founder conceded a clause of the patent", later: book1 }
+h_patent_confirmed: { description: "The boy King's council confirmed the founder's patent", later: book1 }
 h_patent_defended: { description: "The founder defended the patent word for word", later: book1 }
 h_penhoet_match: { description: "A child of the house is married or promised into Penhoët", later: book1 }
 h_pensioned: { description: "The Keeper pensioned the oldest knights off with honour", later: book1 }
@@ -181,10 +193,14 @@ h_second_inside: { description: "The sibling works for the house from inside Pen
 h_second_kerguen: { description: "The sibling married into Kerguen", later: book1 }
 h_second_penhoet: { description: "The sibling is Penhoët's", later: book1 }
 h_sibling_council: { description: "The sibling sits in Mahaut's council, the price of the house's vote", later: book1 }
+h_sibling_holds_penhoet: { description: "The sibling holds Penhoët for Ronan's son, with the house behind them", later: book1 }
 h_side_both: { description: "In the law fight the house took both sides' money in secret", later: book1 }
 h_side_mahaut: { description: "In the law fight the house is on Mahaut's side: inheritance through women, or her right to her daughter", later: book1 }
 h_side_own: { description: "In the law fight the house keeps its vote its own", later: book1 }
 h_side_rival: { description: "In the law fight the house is on Penhoët's side (the male line) or the King's (the wardship)", later: book1 }
+h_stone: { description: "A child of the house has a stone in the chancel (or the cathedral)", later: book1 }
+h_struck: { description: "The house struck Penhoët in the Mottle; a feud for a generation", later: book1 }
+h_succoured: { description: "The house succoured Penhoët in the Mottle; Penhoët owes it a harvest", later: book1 }
 h_suit_bought: { description: "The founder bought Penhoët off over Kerval", later: book1 }
 h_suit_law: { description: "The founder fought Penhoët's suit for Kerval at law", later: book1 }
 h_suit_match: { description: "The founder offered to settle Kerval between families", later: book1 }
@@ -192,12 +208,15 @@ h_suit_settled: { description: "The Kerval quarrel was settled by the Penhoët m
 h_suit_strong: { description: "The founder found a good charter for Kerval", later: book1 }
 h_suit_weak: { description: "The founder's charter for Kerval is weak", later: book1 }
 h_thibaut_dead: { description: "King Thibaut died in the saddle at Martinmas, year 52", later: book1 }
+h_vow: { description: "The house vowed a chapel if the next child lives", later: book1 }
 h_wardship_king: { description: "The King's justices gave Jehanne's wardship and marriage to the King", later: book1 }
 h_wardship_mahaut: { description: "The King's justices upheld the West's liberties: Mahaut keeps her daughter", later: book1 }
 h_watched_herve: { description: "The founder watched who came to speak to Hervé at Yann's funeral", later: book1 }
 h_will_amended: { description: "The heir had the founder's will amended", later: book1 }
 h_will_conditions: { description: "The founder's will carries conditions", later: book1 }
+h_will_guardian: { description: "The Keeper's will names a guardian for a minority", later: book1 }
 h_will_honoured: { description: "The heir honoured the founder's will", later: book1 }
+h_will_provided: { description: "The Keeper's will provides for the younger children", later: book1 }
 h_will_secret: { description: "The heir means to change the founder's will after his death", later: book1 }
 h_wood_conceded: { description: "The heir let Penhoët have the Kerval wood", later: book1 }
 inv_h_almshouse: { description: "The house founded an almshouse", later: book1 }
@@ -213,3 +232,5 @@ inv_h_seed: { description: "The house bought seed and plough-teams, and let the 
 inv_h_walls: { description: "The house raised the manor's walls and a gatehouse", later: book1 }
 inv_h_watch: { description: "The Keeper armed a village watch", later: book1 }
 inv_h_works: { description: "The house dug salt pans or planted orchard rows at the manor", later: book1 }
+plague: { description: "The Second Mottle is in the West (life odds raised; economy: deaths in the village, trade cut)", later: book1 }
+plague_children: { description: "The Mottle takes the children first (the children's odds raised most)", later: book1 }

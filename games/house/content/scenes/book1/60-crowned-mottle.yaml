@@ -1,0 +1,417 @@
+# Book I, Act III for the crowned path (STORY.md, "The crowned path, Act III", E1-E11, the author's decisions
+# L3-38 to L3-41): years 63-66 (925-928), the Second Mottle. The royal wedding at Easter 925; the sickness that
+# summer; the Mottle takes the old king in 926 (L3-38, against Knight of Adalia's "in your bed"); Ronan de Penhoët
+# dies and grief hardens Hervé (L3-41). Under an elective crown, a sovereign's death sends the Estates to choose, and
+# they may choose outside the house (h_crown_estates, L3-39): a crown lost leaves the house a great house.
+
+# ---- the Estates choose (after any succession under the elective crown; 90-family.yaml routes here) ----------------
+- id: h_crown_estates
+  chapter: book1
+  kind: queued
+  title: The Estates Choose
+  frames: [free]
+  text: |
+    By the promise of 920 the crown of the West is the Estates' to give each time it falls, and it has fallen. They meet at Lannec within the month[if flag.plague], in the plague, the lords with vinegar cloths over their mouths and the bishops' stalls half empty[/if], to choose.
+
+    The house's law has named {name} head of the house, at {age_words}. [if age < 16]A child, again. The West has had one child's crown, and some of the hall would rather not have another.[/if] The Estates do not have to choose the house. [if rival.kerguen.standing >= 35]Tanguy de Kerguen's friends have been at the inns since the bells stopped.[/if] [if !flag.h_k_penhoet_attainted]The male-line lords have a name too, and it is Hervé de Penhoët's.[/if] And Valdrenne's friends speak, quietly, for Prince Lothaire, who would bring a peace with him.
+
+    You have {coin}.
+  choices:
+    - id: ask
+      text: Stand before the Estates and ask for the crown.
+      check: { attr: presence, skill: diplomacy, difficulty: 5, audience: nobles, mods: [ { if: "house.standing >= 80", add: 1, label: the greatest house in the West }, { if: "counter.favour >= 4", add: 1, label: the realm's goodwill }, { if: "age < 16", add: -2, label: a child }, { if: "rival.kerguen.temper >= 3", add: 1, label: Kerguen will not stand against you }, { if: flag.h_k_treated, add: 1, label: the marsh's charter } ] }
+      success:
+        text: |
+          You stand at the dais where your father stood, and say what you have to say, and sit down, and the Estates choose you, by bench, with their hands raised. It is closer than it should have been. The clerk writes it in letters an inch high anyway.
+        effects: [ { set: flag.h_crown_kept }, { add: { counter.favour: 1 } } ]
+        next: '@return'
+      failure:
+        text: |
+          You stand and ask, and the hall hears you out, and then it counts, and the count is not yours.
+        next: h_crown_lost
+    - id: buy
+      text: Buy the benches that can be bought, and then ask. (£300)
+      requires: "res.coin >= 72000"
+      check: { attr: presence, skill: diplomacy, difficulty: 3, audience: nobles, mods: [ { if: "age < 16", add: -2, label: a child } ] }
+      success:
+        text: |
+          Three hundred pounds goes out of the strongroom in small sums, and the benches that can be bought are bought, and the Estates choose you, and everybody in the hall knows the price. A crown bought is still a crown.
+        effects: [ { set: flag.h_crown_kept }, { add: { res.coin: -72000, rep.honor: -1 } } ]
+        next: '@return'
+      failure:
+        text: |
+          The money goes out, and some of it does its work, and not enough of it. The benches that took it vote against you anyway, and keep it.
+        effects: [ { add: { res.coin: -72000 } } ]
+        next: h_crown_lost
+    - id: aside
+      text: Stand aside. Let them choose another.
+      effects: [ { add: { rep.honor: 1 } } ]
+      text_after: |
+        You send word to the Estates that the house will not ask. The hall is silent when the letter is read, and stays silent, and then it begins to count without you.
+      next: h_crown_lost
+
+- id: h_crown_lost
+  chapter: book1
+  kind: queued
+  title: The Crown Goes
+  frames: [free]
+  on_enter:
+    - set: flag.h_crown_lost
+    - if: "rival.kerguen.standing >= 35"
+      then: [ { west: { frame: free, sovereign: tanguy } } ]
+      else:
+        - if: "!flag.h_k_penhoet_attainted"
+          then: [ { west: { frame: free, sovereign: herve } } ]
+          else: [ { west: { frame: free, sovereign: lothaire } } ]
+    - station: great_lord
+    - release: crown_revenues
+    - release: salt_road
+    - release: harbour
+    - release: mint
+    - release: lannec_fair
+    - release: salt_fleet
+  text: |
+    The Estates choose {realm.sovereign}. [if realm.sovereign == tanguy]Kerguen, the young house rising, has risen as far as a house can, and Tanguy kneels to be crowned at Saint-Lys with great style and, for once, without a word.[elif realm.sovereign == herve]The male-line lords have their king, and he is sixty and grieving and patient, and the crown on his head is the last thing he was patient for.[else]Valdrenne's prince comes over the hills with a peace in one hand and a Valdrennish council in the other, and the West tells itself it has chosen.[/if]
+
+    The house keeps what is the house's: its manor, its own holdings, its knights, its name. The crown's revenues, and the crown's works, go to the crown. You are a great house of the West now, the greatest, and the one every king of the West will watch first.
+  choices:
+    - id: kneel
+      text: Kneel to the new sovereign, at the crowning.
+      effects: [ { add: { counter.favour: 2, counter.household: -1 } } ]
+      text_after: |
+        You kneel, and put your hands between the new sovereign's, and swear, and rise. The hall watches you do it the way it would watch a man walk across a frozen river.
+      next: '@return'
+    - id: home
+      text: Go home to your own lands, and let them crown whom they like.
+      effects: [ { add: { counter.favour: -2, counter.household: 1 } } ]
+      text_after: |
+        You go home before the crowning, and send a cup, and the new sovereign drinks your health from it at the feast, and remembers.
+      next: '@return'
+
+# ---- the act ---------------------------------------------------------------------------------------------------------
+- id: h_m01_wedding
+  chapter: book1
+  title: The Wedding
+  checkpoint: true
+  card: { title: "Book One, Act Three", subtitle: The Children's Mortality, epigraph: "In the second Mottle the old buried the young, which is the wrong way round." }
+  frames: [free]
+  on_enter: [ { catch_up: { year: 63, season: spring } } ]
+  text: |
+    A week after Easter in 925 [if flag.h_bc_betrothed_none]the council puts it to you plainly: you are {age_words}, and unmarried, and the crown has no heir of your body, and the West has noticed.[else]you are married at Saint-Lys, in the cathedral where you were crowned, to [if flag.h_bc_betrothed_penhoet]{house.match_penhoet}[elif flag.h_bc_betrothed_kerguen]{house.match_kerguen}[else]{house.match_valdrenne} of Valdrenne[/if], before the whole West and as much of Valdrenne as could get a pass over the hills.[/if]
+
+    [if flag.h_bc_betrothed_none]There are three letters on the council table, and your mother at the end of it, and your father in his chair with arms by the fire, asleep or pretending.[elif flag.h_bc_betrothed_penhoet]Hervé de Penhoët [if hero.sex == male]gives the bride away[else]stands beside his son at the altar[/if], and weeps once, which nobody has ever seen. Your mother is at the front of the nave and does not.[elif flag.h_bc_betrothed_kerguen]Tanguy de Kerguen is at the front of the nave in a doublet that cost more than a manor, and makes the whole feast laugh, and makes your father laugh twice.[else]The Valdrennish lords stand at the back and price the cathedral. The bishop preaches on peace, at length, in two languages.[/if]
+  choices:
+    - id: wed
+      visible_if: "!flag.h_bc_betrothed_none"
+      text: Go on to the feast.
+      effects:
+        - if: [ flag.h_bc_betrothed_penhoet, "hero.sex == female" ]
+          then: [ { marry: { who: head, culture: valdrennish, to: de Penhoët, name: Ronan de Penhoët } }, { add: { rival.penhoet.temper: 2 } } ]
+        - if: [ flag.h_bc_betrothed_penhoet, "hero.sex == male" ]
+          then: [ { marry: { who: head, culture: valdrennish, to: de Penhoët, name: Sibylle de Penhoët } }, { add: { rival.penhoet.temper: 2 } } ]
+        - if: [ flag.h_bc_betrothed_kerguen, "hero.sex == female" ]
+          then: [ { marry: { who: head, culture: valdrennish, to: de Kerguen, name: Tanguy de Kerguen } }, { add: { rival.kerguen.temper: 2, rival.kerguen.standing: 5 } } ]
+        - if: [ flag.h_bc_betrothed_kerguen, "hero.sex == male" ]
+          then: [ { marry: { who: head, culture: valdrennish, to: de Kerguen, name: Maëlle de Kerguen } }, { add: { rival.kerguen.temper: 2, rival.kerguen.standing: 5 } } ]
+        - if: [ flag.h_bc_betrothed_valdrenne, "hero.sex == female" ]
+          then: [ { marry: { who: head, culture: valdrennish, to: of Valdrenne, name: Prince Lothaire } }, { add: { rep.valdrenne: 2 } } ]
+        - if: [ flag.h_bc_betrothed_valdrenne, "hero.sex == male" ]
+          then: [ { marry: { who: head, culture: valdrennish, to: of Valdrenne, name: Princess Isabeau } }, { add: { rep.valdrenne: 2 } } ]
+      text_after: |
+        The feast lasts three days. On the third, a ship's master from Sauvemer, the same who brought the wine at Easter, asks to see the chancellor, and is a long time with him.
+      next: h_m02_sickness
+    - id: kerguen
+      visible_if: flag.h_bc_betrothed_none
+      text: Marry into Kerguen, the house rising.
+      effects:
+        - if: "hero.sex == female"
+          then: [ { marry: { who: head, culture: valdrennish, to: de Kerguen, name: Tanguy de Kerguen } } ]
+          else: [ { marry: { who: head, culture: valdrennish, to: de Kerguen, name: Maëlle de Kerguen } } ]
+        - add: { rival.kerguen.temper: 3, rival.kerguen.standing: 5, rival.penhoet.temper: -1 }
+      text_after: |
+        A wedding at Saint-Lys a month later, quickly, which the West calls sensible and Kerguen calls the best day in its history. On the last day of the feast a ship's master from Sauvemer asks to see the chancellor.
+      next: h_m02_sickness
+    - id: valdrenne
+      visible_if: "flag.h_bc_betrothed_none && !inherited.c5r_no_peace"
+      text: Marry into Valdrenne, and make the peace a family.
+      effects:
+        - if: "hero.sex == female"
+          then: [ { marry: { who: head, culture: valdrennish, to: of Valdrenne, name: Prince Lothaire } } ]
+          else: [ { marry: { who: head, culture: valdrennish, to: of Valdrenne, name: Princess Isabeau } } ]
+        - add: { rep.valdrenne: 3, counter.favour: -1 }
+      text_after: |
+        Valdrenne sends its bride or groom over the hills with forty horse and a Valdrennish confessor. The West watches the confessor. On the last day of the feast a ship's master from Sauvemer asks to see the chancellor.
+      next: h_m02_sickness
+    - id: wait
+      text: "[if flag.h_bc_betrothed_none]Not yet. The crown can wait for an heir.[else]Go on to the feast, and the bed.[/if]"
+      effects:
+        - if: flag.h_bc_betrothed_none
+          then: [ { set: flag.h_m_unwed }, { add: { counter.favour: -1 } } ]
+      text_after: |
+        [if flag.h_m_unwed]The council writes "not yet" in its roll, for the third year running, and the Estates note it.[else]The feast lasts three days.[/if] At the end of it a ship's master from Sauvemer asks to see the chancellor, and is a long time with him.
+      next: h_m02_sickness
+
+- id: h_m02_sickness
+  chapter: book1
+  title: The Sickness Comes
+  frames: [free]
+  on_enter: [ { catch_up: { year: 63, season: summer } }, { set: flag.plague }, { set: flag.plague_children } ]
+  text: |
+    The ship's master's sickness in Sarenza is in Sauvemer by Midsummer, in the harbour quarter first, in the children first. By Saint John's Eve there are carts in the streets at night and pits outside the walls. By Lammas it is in Lannec.
+
+    Children, the physicians say, the young ones worst, as if the Mottle had come back for what it missed. The court is in the palace. The council is in the council chamber. Your mother has had the windows shut and the doors of the nursery nailed. Your father, in his chair by the fire, says, "I saw the first one. This one is different. It wants the young."
+  choices:
+    - id: shut
+      text: Shut the palace and the city gates. Nobody in, nobody out.
+      effects: [ { set: flag.h_mottle_shut }, { add: { rep.commons: -1, estate.temper: -1 } } ]
+      text_after: |
+        The gates close on the Feast of Saint Bartholomew, and the bells ring every hour for a week to tell the country. Food comes in over the walls in baskets. Inside, the court plays dice and counts the hours, and outside, the West sees the crown with its door shut.
+      next: h_m03_father
+    - id: stay
+      text: Open the palace hospital and the city's churches to the sick, and stay with them.
+      effects: [ { set: flag.h_mottle_stayed }, { add: { rep.commons: 3, rep.piety: 1, estate.temper: 2, res.coin: -12000 } } ]
+      text_after: |
+        [if flag.inv_h_hospital]The hospital on the pilgrims' road is full by Lammas, and the brothers there die faster than the patients.[else]The great hall is turned into a hospital, with straw on the floor and the brothers of Saint-Lys going down the rows.[/if] You walk through it every morning. The West will never forget it. Neither, if you live, will you.
+      next: h_m03_father
+    - id: flee
+      text: Take the family to the Armance hills, and govern from there.
+      effects: [ { set: flag.h_mottle_fled }, { add: { rep.commons: -3, counter.household: -1, counter.favour: -1 } } ]
+      text_after: |
+        You go up into the hills to your mother's castle with the family and the seals and forty men, and shut its gates. In Lannec they say the crown has run. [if flag.h_answer_you]They say your father would not have.[/if]
+      next: h_m03_father
+
+- id: h_m03_father
+  chapter: book1
+  title: The Old King
+  frames: [free]
+  on_enter: [ { catch_up: { year: 64, season: spring } } ]
+  text: |
+    In Lent of 926 your father takes the Mottle. It comes on him in the night, the fever and the dark mottling of the skin, and in the morning the physicians come out of his chamber and will not look at you.
+
+    He asks for you. [if flag.h_mottle_fled]You are in the hills, and the road down to Lannec runs through three villages with the sickness in them.[else]You are in the palace, three doors down the gallery.[/if] [if spouse.alive]{spouse.first} begs you not to go, because the sickness takes the young, and you are young.[/if]
+  choices:
+    - id: go
+      text: Go to him, and sit with him to the end.
+      effects: [ { set: flag.h_m_sat_with_father }, { add: { counter.shadow: -1, counter.household: 2, health: -1 } }, { death: { who: founder, cause: the Mottle } } ]
+      text_after: |
+        You sit with him for three days, with a cloth over your mouth that he makes you take off so he can see your face. On the second night he is clear for an hour.
+
+        [if flag.h_answer_self]"You said you'd be yourself," he says. "You were. I watched." He laughs, and it hurts him. "Better than I'd have been at it."[elif flag.h_answer_you]"You said you'd try to be me," he says. "Don't. I was tired the whole time." He takes your hand. "Be the other thing. The one I couldn't be."[else]"You didn't answer me," he says. "In the garden, when I asked. You held my hand. That was the right answer, I think. It took me years."[/if]
+
+        He dies on the third morning, at the hour of Prime, with the bells going for someone else in the city. He was {founder.ageword}.
+      next: h_m04_crown
+    - id: send
+      text: Send the physicians and the bishop, and stay away, as the council begs.
+      effects: [ { add: { counter.shadow: 1, counter.household: -1 } }, { death: { who: founder, cause: the Mottle } } ]
+      text_after: |
+        You stay away, because the council begs and your mother insists and the child, if there is a child, needs you living. The bishop sits with him instead. He dies on the third morning, asking for you, at the hour of Prime. The bishop tells you that at the end he said you were right not to come. You will never know if that is true.
+      next: h_m04_crown
+
+- id: h_m04_crown
+  chapter: book1
+  title: "[if realm.sovereign == self]The Crown in the Plague[else]The West in the Plague[/if]"
+  frames: [free]
+  on_enter: [ { catch_up: { year: 64, season: summer } } ]
+  text: |
+    Your father is buried in the cathedral at Saint-Lys, in the plague, at night, with twenty people in the nave and the choir singing through cloths. [if realm.sovereign == self]The Estates do not meet. The courts do not sit. The sheriffs send their accounts by letter, those who are alive to send them, and the West is governed, if it is governed, by whoever holds its valleys.[else]{realm.sovereign} is shut in Lannec, and the West is governed by whoever holds its valleys, and the house holds more of them than anyone.[/if]
+  choices:
+    - id: govern
+      text: Govern anyway. Justice, the markets, the roads, in the crown's name.
+      effects: [ { add: { counter.household: 1, counter.favour: 2, res.coin: -4800 } } ]
+      text_after: |
+        You hold court in the open air at the cross-roads below Lannec, under an awning, with the litigants twenty paces off and the clerks shouting the cases. It is the strangest justice the West has ever had, and the most of it.
+      next: h_m05_penhoet
+    - id: help
+      text: Send the crown's grain and money to the towns.
+      requires: "res.coin >= 12000"
+      effects: [ { add: { res.coin: -12000, rep.commons: 2, estate.food: -2 } } ]
+      text_after: |
+        [if flag.inv_h_granary]The crown's granaries at Lannec and Sauvemer open their doors, and the towns eat.[else]Fifty pounds of grain off the Sarenzan ships, bought dear, sent to the towns in the crown's carts.[/if] In Sauvemer they carve your arms over the door of the hospital.
+      next: h_m05_penhoet
+    - id: shut
+      text: Keep everything behind the walls until it passes.
+      effects: [ { add: { counter.favour: -2 } } ]
+      text_after: |
+        The gates stay shut. The West governs itself, badly, for a year, and remembers who did not.
+      next: h_m05_penhoet
+
+- id: h_m05_penhoet
+  chapter: book1
+  title: Black on Penhoët's Gate
+  frames: [free]
+  on_enter:
+    - catch_up: { year: 64, season: autumn }
+    - if: [ "spouse.alive", flag.h_bc_betrothed_penhoet, "hero.sex == female" ]
+      then: [ { death: { who: spouse, cause: the Mottle } } ]
+    - if: "!flag.h_k_penhoet_attainted"
+      then: [ { set: flag.h_herve_hardened }, { add: { rival.penhoet.temper: -2 } } ]
+  text: |
+    At Michaelmas the Mottle takes Ronan de Penhoët, at thirty, in three days, the way it takes the young. [if flag.h_bc_betrothed_penhoet && hero.sex == female]He was your husband for a year and a half, and he talked to you about horses as if you were a person, from the first day to the last.[/if] Penhoët's heir is Ronan's son, a child.
+
+    [if flag.h_k_penhoet_attainted]Penhoët is attainted, and Hervé has nothing left to lose but the boy. Sir Yvon of Kerlan holds the claim now, and does not write.[else]Hervé buries his son in the chapel at Penhoët, and stands at the grave, they say, for an hour after the priest has gone. When he comes back into the hall he is a different man. The patience is gone. What is left wants something before it dies, and has stopped pretending it does not. By Christmas there are letters from Penhoët going over the march, to Bertrand de Quérec's exile, and to Valdrenne's friends.[/if]
+  choices:
+    - id: mass
+      text: Send condolence, and a Mass for Ronan's soul.
+      effects: [ { add: { rival.penhoet.temper: 1, rep.piety: 1 } } ]
+      text_after: |
+        The Mass is said at Saint-Lys, with the crown's arms on the pall. Hervé writes to thank you in a hand that has got old in a season.
+      next: h_m06_succour
+    - id: count
+      text: Send a man to count what Penhoët has left.
+      effects: [ { set: flag.h_counted_penhoet } ]
+      text_after: |
+        Your man comes back at Martinmas: Penhoët has lost half its tenants and a third of its knights, and its letters go to the march by a carter called Guénolé on the first Monday of the month.
+      next: h_m06_succour
+    - id: nothing
+      text: Send nothing.
+      text_after: |
+        The black stays on Penhoët's gate until Candlemas. Nobody from the crown goes past it.
+      next: h_m06_succour
+
+- id: h_m06_succour
+  chapter: book1
+  title: Succour or Strike
+  frames: [free]
+  on_enter: [ { catch_up: { year: 64, season: winter } } ]
+  text: |
+    In the dead of winter Penhoët is as weak as it has been in a hundred years: its men dead or sick, its harvest rotting in the fields for want of hands, its old lord alone with a boy and his letters. [if flag.h_counted_penhoet]You know exactly how weak; your man counted.[/if]
+
+    [if flag.h_herve_hardened]The constable says that a house writing to Bertrand de Quérec in exile is a house that means war when it can, and that it cannot, now.[else]The constable says that a house at its weakest remembers who came to its door.[/if]
+  choices:
+    - id: succour
+      text: Send grain and men to bring in Penhoët's harvest.
+      check: { attr: presence, skill: diplomacy, difficulty: 4, mods: [ { if: flag.h_counted_penhoet, add: 1, label: you know what it needs } ] }
+      success:
+        text: |
+          The crown's carts come up the Penhoët road with grain and forty men to cut what can still be cut. Hervé meets them at the gate himself, and takes the grain, and does not take back the letters. But he owes the crown now, and a man of his kind pays.
+        effects: [ { set: flag.h_succoured }, { add: { rival.penhoet.temper: 4, res.coin: -4800 } } ]
+        next: h_m07_company
+      failure:
+        text: |
+          Hervé meets the carts at the gate and sends them back, with a message that Penhoët has never needed the crown's charity and will not start in a plague year.
+        effects: [ { add: { rival.penhoet.temper: -1 } } ]
+        next: h_m07_company
+    - id: strike
+      text: Strike while it is weak. Take the Armance forts Penhoët holds of the crown.
+      check: { attr: wits, skill: tactics, difficulty: 4, mods: [ { if: flag.h_counted_penhoet, add: 1, label: you know its walls } ] }
+      success:
+        text: |
+          The constable takes the two Penhoët forts on the Armance road in a week, without a siege, because there is nobody on the walls. The West calls it justice or robbery according to taste. Penhoët calls it the beginning of a feud, and means it.
+        effects: [ { set: flag.h_struck }, { add: { rival.penhoet.temper: -6, rival.penhoet.standing: -5, rep.ruthlessness: 2 } }, { hold: { id: penhoet_forts, name: The Penhoët forts on the Armance road, income: 2400 } } ]
+        next: h_m07_company
+      failure:
+        text: |
+          There are more men on the walls than your man counted, and they are angrier. The constable comes home with his dead in carts and Penhoët's feud on his back.
+        effects: [ { set: flag.h_struck }, { add: { rival.penhoet.temper: -5, res.men: -15 } } ]
+        next: h_m07_company
+    - id: leave
+      text: Leave it. Penhoët will recover, and so will the West.
+      text_after: |
+        Penhoët recovers, slowly, as the West does. Its letters go on going over the march.
+      next: h_m07_company
+
+- id: h_m07_company
+  chapter: book1
+  title: The Company at the Gate
+  frames: [free]
+  on_enter: [ { catch_up: { year: 65, season: spring } } ]
+  text: |
+    In the spring of 927 a free company comes down the salt road from the north: eighty men who [if flag.h_k_bertrand_beaten]broke on the causeway under your banner two years ago and have not forgotten it[else]fought for Bertrand de Quérec in the marsh, and were never paid[/if], and have been living on the plague country since. Their captain rides up to the gate of Lannec with a flag of truce and offers the crown his protection for the summer, at a price.
+  choices:
+    - id: pay
+      text: Pay them, and send them on. (£40)
+      requires: "res.coin >= 9600"
+      effects: [ { add: { res.coin: -9600 } } ]
+      text_after: |
+        Forty pounds, and they ride on south over the march into Valdrenne, which has more to steal. The towns grumble that the crown pays robbers. The towns are not burned.
+      next: { pool: h_b3_pool, count: 1, then: h_m10_count }
+    - id: fight
+      text: Fight them, with the crown's men.
+      check: { attr: wits, skill: tactics, difficulty: 6, mods: [ { if: "res.men >= 100", add: 1, label: the crown's men }, { if: flag.h_k_bertrand_beaten, add: 1, label: you have beaten them before } ] }
+      success:
+        text: |
+          You catch them at the ford below Lannec with the river behind them, and it is short. Their captain hangs at the crossroads with a placard. The roads are quiet for the rest of the year.
+        effects: [ { add: { res.renown: 3, res.men: -6, rep.commons: 1 } } ]
+        next: { pool: h_b3_pool, count: 1, then: h_m10_count }
+      failure:
+        text: |
+          They are better at it than the crown's men, who have spent a year burying people, and you lose the ford and twenty men, and the company burns two villages on its way south out of spite.
+        effects: [ { add: { res.men: -20, estate.people: -15, estate.temper: -1 } } ]
+        next: { pool: h_b3_pool, count: 1, then: h_m10_count }
+    - id: hire
+      visible_if: flag.h_herve_hardened
+      text: Hire them, and send them to sit outside Penhoët for the summer. (£40)
+      requires: "res.coin >= 9600"
+      effects: [ { add: { res.coin: -9600, rival.penhoet.temper: -3, rep.ruthlessness: 2 } } ]
+      text_after: |
+        The company camps in Penhoët's water-meadows from Whitsun to Michaelmas and eats everything in them. No letters go over the march that summer. Hervé will not forget who sent them, which was the point, and also the danger.
+      next: { pool: h_b3_pool, count: 1, then: h_m10_count }
+
+- id: h_m10_count
+  chapter: book1
+  title: The Count of the Dead
+  frames: [free]
+  on_enter: [ { catch_up: { year: 66, season: spring } }, { clear: flag.plague }, { clear: flag.plague_children } ]
+  text: |
+    At Lady Day in 928 the sickness lifts, as the first one did, all at once and for no reason anyone can give. The bells stop. The pits outside the walls are filled in and sown with grass.
+
+    The chancellor brings the roll of who is left: the household, the towns, the family. It is a long roll, and every third name has a cross. [if flag.h_mottle_stayed]The West does not forget who walked the hospital rows.[elif flag.h_mottle_fled]The West does not forget who went up into the hills.[/if] {house.companion}, who rode with your father from the beginning, is one of the crosses. He was the last of the old company.
+
+    At the gate there is a child, a cousin of the house, eight years old, whose parents are in the pits at Sauvemer.
+  choices:
+    - id: take
+      text: Take the child in, as a ward of the house.
+      effects: [ { set: flag.h_cousin_ward }, { set: flag.h_companion_dead }, { add: { counter.household: 1 } } ]
+      text_after: |
+        The child is given a room near the nursery and a tutor and a pony, and on the first night asks whether you are going to die too. You say not this year.
+      next: h_m11_will
+    - id: church
+      text: Send the child to the Church, to the abbey at Saint-Lys.
+      effects: [ { set: flag.h_companion_dead }, { add: { rep.church: 1 } } ]
+      text_after: |
+        The abbey takes the child and a gift with it. In twenty years the child will be a canon of Saint-Lys, and will vote in the chapter however the house asks.
+      next: h_m11_will
+    - id: client
+      text: Find the child a place with one of the house's knights.
+      effects: [ { set: flag.h_companion_dead }, { add: { res.coin: -1200 } } ]
+      text_after: |
+        A knight of the house takes the child for five pounds and the house's goodwill, and brings the child to court at Christmas to show how well fed it is.
+      next: h_m11_will
+
+- id: h_m11_will
+  chapter: book1
+  title: "[if realm.sovereign == self]The Crown's Will[else]The House's Will[/if]"
+  frames: [free]
+  on_enter: [ { catch_up: { year: 66, season: summer } } ]
+  text: |
+    At midsummer you write the will your father wrote, with the bishop and the chancellor, in the room where he wrote his. You are {age_words}. You have buried your father[if family.children >= 1], and you have children living[else], and you have no child living[/if]. [if realm.sovereign == self && flag.h_crown_for_life]The Estates will read this will when you are dead, and choose from it, or against it.[elif realm.sovereign == self]The crown's law will read this will when you are dead.[else]The crown is another house's now. This will is for the house, and for what the house means to take back.[/if]
+  choices:
+    - id: heir
+      visible_if: "family.children >= 1"
+      text: Name your eldest as heir, by law and by will.
+      effects: [ { designate: eldest } ]
+      text_after: |
+        You write the name, and seal it, and give it to the bishop. The bishop reads it, and nods, and says nothing about the Estates, which is the most tactful thing he has ever done.
+      next: h_m_end
+    - id: guardian
+      text: "[if mother.alive]Name your mother guardian of the house, if there is a minority.[else]Name the constable guardian of the house, if there is a minority.[/if]"
+      effects: [ { set: flag.h_will_guardian } ]
+      text_after: |
+        [if mother.alive]Your mother reads it and says, "Again?" and laughs, for the first time since the plague.[else]The constable reads it, and is quiet, and asks you not to die soon, because he is too old for it.[/if]
+      next: h_m_end
+    - id: provide
+      text: "Provide for the younger ones: land for one, the Church for another."
+      effects: [ { add: { res.coin: -2400, counter.household: 1 } }, { set: flag.h_will_provided } ]
+      text_after: |
+        The younger ones are provided for, on parchment, which is where provision starts. Your father did the same. You notice that you are writing in his order, and change it.
+      next: h_m_end
+
+- id: h_m_end
+  chapter: book1
+  frames: [free]
+  kind: ending
+  ending: story_so_far
+  text: |
+    Here Act III of Book One ends. The Mottle is over. Your father is in the cathedral at Saint-Lys. [if realm.sovereign == self]You are {name}, {house.ruler} of the West, {age_words}[if spouse.alive], married to {spouse.name}[/if].[else]{realm.sovereign} wears the crown your father made, and the house is {house.standing}.[/if] [if flag.h_herve_hardened]Hervé de Penhoët is writing letters over the march.[/if] Your mother is forty-seven, and the Armance is still hers.
+
+    Act IV, The Test of the Law, is still being written.

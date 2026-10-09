@@ -63,7 +63,7 @@ export const TRADES = [
   { id: 'brisk', upto: 1, mult: 1.25, word: 'brisk trade' },
 ] as const;
 /** War on the realm's borders cuts the trade; a plague year cuts it and empties the villages. */
-const WAR_TRADE = 0.6, PLAGUE_TRADE = 0.7, PLAGUE_DEATHS = 0.15;
+const WAR_TRADE = 0.6, PLAGUE_TRADE = 0.7, PLAGUE_DEATHS = 0.08; // about a fifth of a village over the Second Mottle's three years
 
 /** Holdings by what moves them: rents move with the harvest, tolls and salt with the trade, fees with nothing. */
 const TRADE_HOLDINGS = new Set(['market_charter', 'road_tolls', 'sauvemer_factor', 'west_gift', 'customs', 'salt_road', 'mint', 'harbour']);

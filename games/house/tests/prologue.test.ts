@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { choose, view, heroOf } from '../src/game/index';
-import { heldFromOdds, select } from '../src/game/family';
+import { heldFromOdds, select, die } from '../src/game/family';
 import { FOUNDER_ID, type HouseState } from '../src/game/state';
 import { toSave, fromSave } from '../src/game/save';
 import { renderText } from '@engine/text';
@@ -16,6 +16,13 @@ import { readFileSync } from 'node:fs';
 const c = content();
 
 /** Plays to the end: in each scene the first preferred choice that is open, else the first open choice. */
+/** The head dies, as the odds or a scene would kill them: the succession is queued for the next scene. */
+function applyDeath(s: HouseState, cause: string): HouseState {
+  const t: HouseState = JSON.parse(JSON.stringify(s));
+  die(t, t.hero, cause);
+  return t;
+}
+
 function drive(s: HouseState, prefs: Record<string, string[]>, seen: string[] = [], until?: string): HouseState {
   for (let i = 0; i < 300 && !s.ended && s.scene !== until; i++) {
     const v = view(c, s);
@@ -186,9 +193,12 @@ describe('Book I, Act I: The New Lord', () => {
       const seen: string[] = [];
       const s = drive(house({ frame, sovereign }), ROUTE, seen);
       expect(seen).toContain(frame === 'adalian' ? 'h_b02_governor' : 'h_b02_herald');
-      expect(seen).toEqual(expect.arrayContaining(['h_b12_estates', 'h_c01_offers', 'h_c07_march', 'h_c09_result', 'h_c11_house_law']));
-      expect(s.scene).toBe('h_c_end');
-      expect(s.time).toBe(52); // spring, year 63
+      expect(seen).toEqual(expect.arrayContaining(['h_b12_estates', 'h_c01_offers', 'h_c07_march', 'h_c09_result', 'h_c11_house_law', 'h_d01_sickness', 'h_d06_succour', 'h_d10_count', 'h_d11_will']));
+      expect(s.scene).toBe('h_d_end');
+      expect(s.time).toBe(65); // summer, year 66
+      // the Mottle has come and gone; the Old Companion is dead, and Ronan de Penhoët with him
+      expect(s.flags.plague).toBeFalsy();
+      expect(s.flags.h_companion_dead).toBe(true)
       // the first open choice takes Mahaut's side, so the likely outcome stands
       if (frame === 'adalian') expect(s.flags.h_wardship_king).toBe(true);
       else expect(s.flags.h_realm_male_pref || s.flags.h_realm_male_line).toBe(true);
@@ -264,16 +274,18 @@ describe('the crowned path: King of the West, married to Mahaut', () => {
       expect(seen).toContain('h_pc10_crowning');
       expect(seen).not.toContain('h_p01_hall');
       expect(seen).toEqual(expect.arrayContaining(['h_bc09_estates', 'h_k01_estates', 'h_k05_vote', 'h_k06_majority', 'h_k07_rising']));
-      expect(s.scene).toBe('h_k_end');
+      expect(s.scene).toBe('h_m_end');
       // Mahaut's child heads the house: Jehanne, unless the odds took her in Act II and a brother or sister followed (L2-4)
       const queen = s.characters[s.hero]!;
       expect(s.characters[queen.mother!]!.name).toBe("Mahaut d'Armance");
       expect(Object.values(s.characters).some((x) => x.name === 'Jehanne')).toBe(true);
-      expect(s.characters[FOUNDER_ID]!.alive).toBe(true); // held to his death in about year 64
+      // the Mottle takes the old king in 926 (L3-38)
+      expect(s.characters[FOUNDER_ID]!.alive).toBe(false);
+      expect(s.characters[FOUNDER_ID]!.died).toBe((64 - 50) * 4);
       expect(s.characters[FOUNDER_ID]!.retired).toBe(true);
       expect(s.characters[queen.mother!]!.alive).toBe(true);
       expect(s.flags.h_c_junior).toBe(true);
-      expect(s.time).toBe(52);
+      expect(s.time).toBe(65);
       expect(s.family.regent).toBeUndefined(); // of age in Act II
     }
   });
@@ -338,17 +350,35 @@ describe('the crowned path: King of the West, married to Mahaut', () => {
       expect(short.flags.h_crown_for_life).toBe(true);
     });
 
+    it('sends the Estates to choose when the sovereign dies under the elective crown, and they may choose outside the house', async () => {
+      const route = { ...CROWNED, h_k02_case: ['for_life'], h_crown_estates: ['aside'] };
+      let s = drive(fromDynasty(c, await saved(), { seed: 2 }), route, [], 'h_m04_crown');
+      expect(s.flags.h_crown_for_life).toBe(true);
+      expect(s.realm.sovereign).toBe('self');
+      // the young king dies (the Mottle, by the odds or by this test)
+      s = applyDeath(s, 'the Mottle');
+      const seen: string[] = [];
+      s = drive(s, route, seen);
+      expect(seen).toEqual(expect.arrayContaining(['h_q_succession', 'h_crown_estates', 'h_crown_lost']));
+      expect(s.flags.h_crown_lost).toBe(true);
+      expect(['tanguy', 'herve', 'lothaire']).toContain(s.realm.sovereign);
+      expect(s.characters[s.hero]!.station).toBe('great_lord');
+      expect(s.holdings?.crown_revenues).toBeUndefined();
+      expect(s.estate?.name).toBe('Marsalin'); // the house keeps its own
+      expect(s.scene).toBe('h_m_end');
+    });
+
     it('plays the elective crown through Act II, with Jehan king and of age', async () => {
       for (const seed of [1, 2, 3]) {
         const seen: string[] = [];
         const s = drive(fromDynasty(c, await saved(), { seed }), CROWNED, seen);
-        expect(s.scene).toBe('h_k_end');
+        expect(s.scene).toBe('h_m_end');
         expect(seen).toContain('h_pc08_estates');
         expect(seen).toContain('h_bc09_estates');
         const king = s.characters[s.hero]!;
         expect(king.name).toBe('Jehan');
         expect(s.family.regent).toBeUndefined();
-        expect(s.characters[FOUNDER_ID]!.alive).toBe(true);
+        expect(s.characters[FOUNDER_ID]!.alive).toBe(false); // the Mottle took him (L3-38)
         // the elective crown: confirmed for life unless the crown carried a hereditary one
         expect(s.flags.h_crown_for_life || s.flags.h_crown_hereditary).toBe(true);
         const end = view(c, s).text;

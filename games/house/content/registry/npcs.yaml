@@ -48,6 +48,15 @@ herve_penhoet:
   codex:
     - text: "Yann's son and heir, about forty-five in 912. Careful, patient, and never forgets a field. Dresses in good dark wool, travels with a clerk, and carries no sword."
     - { if: flag.h_bc_saving_taken, text: "He did homage saving the right of his house in the Armance, and the saving is in the roll." }
+yann_penhoet_young:
+  name: Yann de Penhoët
+  title: Sire
+  faction: west
+  notes: "Ronan's son, born year 58, named for his great-grandfather. Heir of Penhoët from the Mottle, head of it at fourteen when Hervé dies in year 72, under guardians."
+  codex:
+    - text: "Ronan's son, born in 920 and named for his great-grandfather. The Mottle made him Penhoët's heir at six, and Hervé's death its head at fourteen."
+    - { if: flag.h_penhoet_reconciled, text: "Promised to the house in the settlement after Hervé's death: the two houses will be one blood in his children." }
+    - { if: flag.h_penhoet_broken, text: "Attainted with his house after Hervé's death. He lives on his mother's dower; the claim has passed to Sir Yvon of Kerlan." }
 tanguy_kerguen:
   name: Tanguy de Kerguen
   title: Sire

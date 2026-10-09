@@ -1420,6 +1420,38 @@ Years 63-66 (925-928), written in `scenes/book1/60-crowned-mottle.yaml`. The Fou
 
 **Tuning (the bot, 420 runs).** A child dies in 54% of runs with young children; the house ends in about 2% of runs in Act III. Village deaths in the plague years are 8% a year, halved by a granary.
 
+## Layer 3: The crowned path, Act IV, *The Test of the Law* (decided 2026-10-09)
+
+Years 66-78 (928-940), written in `scenes/book1/80-crowned-test.yaml`. The Founder's Act IV (E1-E13 above) is written in `scenes/book1/70-the-test.yaml`, and both paths share the pool in `events/book1/pool-test.yaml` (the ransom, the preacher, the Lanzi's letter, the wolf winter, the regent's letter in an Adalian West).
+
+| # | Decision | Decided |
+|---|---|---|
+| L3-42 | Hervé's death in 72 against Penhoët waiting for Mahaut's death in 73 | **He moves at her illness.** Mahaut falls ill at Candlemas 934; Hervé, hardened, rises at Midsummer before she is dead, and dies at Michaelmas 934 at the end of it (in bed, in the field's aftermath, or attainted). L3-20's date holds. |
+| L3-43 | The Armance at Mahaut's death (Lady Day 935) | **The player decides:** unite it with the crown (£200 a year; the Armance lords resent it), give it to the head's brother or sister as a duchy apart, or keep it for a younger child. Under the bargain of 920 (`h_k_bargain`), Penhoët can be given it, or the bargain broken. |
+| L3-44 | How the reign closes by 940 | **The junior crown**, as David did in 53. Under a crown for life the sovereign must ask the Estates for the crown by blood (or buy it); refused, the sovereign crowns the child anyway in defiance (`h_crown_defied`) or lays the crown down and the Estates choose. A death by the odds ends the reign sooner. |
+| L3-45 | Runs that lost the crown in Act III | **The great house's Act IV, and a claim.** The crowned path's scenes play from a great house's side (the letters, Mahaut's illness, Hervé's rising, the Armance), then the claim (`h_n12_claim`): at King Hervé's death the Estates choose again and the house may win the crown back; under Tanguy or Lothaire the Estates name the next sovereign in the king's lifetime, and the house may be named, keep quiet, or renounce for an office. The Founder's E12-E13 then end the headship. The Founder's Kerval and Jehanne scenes do not fit a house whose quarrel with Penhoët is the Armance, so they are not used. |
+
+**The beats** (N1-N12):
+- **N1. After the Mottle** (spring 929): rebuild, thank the Estates (or kneel at the new king's court), or ride the march.
+- **N2. Hervé's letters** (spring 930): take them on the road, ask him to his face, or let them run and copy them. Under King Hervé: his inquest into titles, answered, refused by the Estates' right, or bought off.
+- **N3.** A pool draw, or **N4. The bishop** (931) if a sibling was given to the Church.
+- **N5. The heir** (933): to court, to Mahaut in the Armance, or kept at home; a childless head names an heir or marries.
+- **N6. Mahaut's illness** (Candlemas 934): go up to her, send physicians, or bring her down to Lannec.
+- **N7. Hervé rises** (Midsummer 934; under King Hervé, his commission takes the Armance castles): lead, send the constable, read his letters to the Estates, or treat. The realm is at war until Michaelmas.
+- **N8. The end of Hervé** (Michaelmas 934): Penhoët broken, reconciled by a match, or contained. Under King Hervé, **N8k**: the King is dead, and the Estates choose again (N12).
+- **N9. Mahaut dies** (Lady Day 935): the Armance (L3-43).
+- **N10.** A pool draw.
+- **N11. The junior crown** (Lady Day 938, L3-44), and **N11b** if the Estates refuse.
+- **N12. The claim** (crown-lost runs, L3-45).
+
+**Built for Act IV (both paths):**
+- `adopt`: a Keeper with nobody of the blood left takes the Mottle's orphan ward (D10) or a cousin's orphan into the line at E13, rather than end the house.
+- An event queued "at once" (the succession) now interrupts the scene whose entry passed over the death, and the scene opens again for the new head. Before this, a scene could be read by a head who had died in the years it skipped. Entry effects that must not run twice are guarded.
+- `family.head_from` (the year the head took the house up) lets E12-E13 and N11 tell the Keeper from an heir who has only just succeeded.
+- A child is never given a living brother's or sister's name.
+
+**Tuning (the bot, 360 runs).** Founder houses end in about 5-10% of runs over Acts III-IV, all of it in the Mottle; before the adoption choice, E13 ended another 15% of houses whose Keeper had no heir. The crowned path ends in about 10%.
+
 ## Layer 3 decisions, round 1 (2026-10-07)
 | # | Decision | Decided |
 |---|---|---|
@@ -1474,3 +1506,4 @@ Years 63-66 (925-928), written in `scenes/book1/60-crowned-mottle.yaml`. The Fou
 | 2026-10-08 | The purse | Knight of Adalia is the point of truth for money, the crown's income included (£600-£1,000, not PLAN's £4,000). Income moves with the harvest, the trade, war and plague. Investment scenes on Knight of Adalia's model: two in the prologue (one per path) and two in Book I, Act I. |
 | 2026-10-09 | The crowned path, Act II | The Estates confirm for life unless the crown carries a hereditary crown with an ally (L3-34); Penhoët, refused, waits for Mahaut's death (L3-35); the regency ends in a handover or a struggle (L3-36); Bertrand rises again with the free companies (L3-37). Both paths' Act II written; the threshold is six with an ally. |
 | 2026-10-09 | Book I, Act III, both paths | The Mottle takes David in 926 (L3-38, over L3-24); under a crown for life the Estates choose and may choose outside the house (L3-39); the wedding at Easter 925 (L3-40); grief hardens Hervé (L3-41). Both paths' Act III written, with a shared pool. |
+| 2026-10-09 | Book I, Act IV, both paths | Hervé moves at Mahaut's illness and dies at the end of it (L3-42); the player decides the Armance (L3-43); the reign closes with the junior crown, the last chance at a hereditary crown under a crown for life (L3-44); crown-lost runs play the great house's Act IV and a claim (L3-45). Both paths' Act IV written; Book I is complete. |

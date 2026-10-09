@@ -113,8 +113,9 @@
   frames: [free, adalian]
   on_enter:
     - catch_up: { year: 64, season: autumn }
-    - if: [ flag.h_second_penhoet, "sibling.sex == female", sibling_spouse.alive ]
+    - if: [ flag.h_second_penhoet, "sibling.sex == female", sibling_spouse.alive, "!flag.h_ronan_dead" ]
       then: [ { death: { who: sibling_spouse, cause: the Mottle } } ]
+    - set: flag.h_ronan_dead
   text: |
     At Michaelmas the Mottle takes Ronan de Penhoët, at thirty, in three days, the way it takes the young. Hervé survives him, at fifty-nine, and stands at the grave, they say, for an hour after the priest has gone. Penhoët's heir is Ronan's child, a boy of six.
 
@@ -297,26 +298,16 @@
       effects: [ { designate: eldest } ]
       text_after: |
         You write the name, and seal it, and give it to the priest. Whatever the law says, the will says this, and there will be a quarrel at your graveside if they ever disagree.
-      next: h_d_end
+      next: h_e01_crisis
     - id: guardian
       text: "Name a guardian for a minority: [if spouse.alive]{spouse.first}[elif sibling.alive]{sibling.first}[else]the steward[/if]."
       effects: [ { set: flag.h_will_guardian } ]
       text_after: |
         The guardian reads it, and asks you not to die soon. You say you will try.
-      next: h_d_end
+      next: h_e01_crisis
     - id: provide
       text: Provide for the younger ones, out of the lands.
       effects: [ { add: { counter.household: 1 } }, { set: flag.h_will_provided } ]
       text_after: |
         Land for one, the Church for another, a portion for a third, on parchment. {house.parent_start} did the same. You notice that you are writing in the same order, and change it.
-      next: h_d_end
-
-- id: h_d_end
-  chapter: book1
-  frames: [free, adalian]
-  kind: ending
-  ending: story_so_far
-  text: |
-    Here Act III of Book One ends. The Mottle is over. [if family.children >= 1]You have children living, and a will that names one of them.[else]You have no child living, and a will that names someone else's.[/if] [if flag.h_struck]Penhoët will not forgive the winter you struck.[elif flag.h_succoured]Penhoët owes the house a winter's harvest.[/if] The house is {house.standing}.
-
-    Act IV, [if realm.west == adalian]The Minority[else]The Test of the Law[/if], is still being written.
+      next: h_e01_crisis

@@ -29,9 +29,9 @@ const REALM_IDS = ['west', 'sovereign', 'changes'];
 const REALM_TEXT = ['sovereign', 'capital', 'border', 'assembly', 'law', 'frame'];
 const SINGLE = ['opening', 'imported'];
 /** family.<field>: the house as a whole. */
-const FAMILY = ['law', 'generation', 'members', 'children', 'sons', 'daughters', 'extinct', 'no_heir', 'minor', 'regency', 'contested', 'news', 'childbed', 'cloister', 'junior'];
+const FAMILY = ['law', 'generation', 'members', 'children', 'sons', 'daughters', 'extinct', 'no_heir', 'minor', 'regency', 'contested', 'news', 'childbed', 'cloister', 'junior', 'head_from'];
 // {house.*}: the founder's house as Knight of Adalia left it, or as a fresh start has it
-const HOUSE_TEXT = ['manor', 'claimed', 'companion', 'companion_first', 'origin', 'parent', 'parent_start', 'knights', 'withholder', 'parent_word', 'querec', 'querec_start', 'querec_short', 'ruler', 'ruler_lc', 'match_penhoet', 'match_valdrenne', 'match_kerguen', 'standing', 'harvest', 'law_need'];
+const HOUSE_TEXT = ['manor', 'claimed', 'companion', 'companion_first', 'origin', 'parent', 'parent_start', 'knights', 'withholder', 'parent_word', 'querec', 'querec_start', 'querec_short', 'ruler', 'ruler_lc', 'match_penhoet', 'match_valdrenne', 'match_kerguen', 'standing', 'harvest', 'law_need', 'mahaut', 'mahaut_start'];
 // house.<field> in conditions: the founder's knights as Knight of Adalia left them
 const HOUSE_IDS = ['yvon', 'vassals', 'standing', 'debt'];
 
@@ -152,6 +152,8 @@ export const house: GameModule = {
           case 'cloister': return f.manner === 'cloister';
           // the last head crowned the heir beside them and lives on (the Crowned opening's junior crown)
           case 'junior': return f.manner === 'junior_crown';
+          // the year (old count) the head took the house up: Act IV reads whether the Keeper is still the head
+          case 'head_from': return ct(_c).config.start_year + Math.floor(f.since / 4);
         }
         return undefined;
       }
@@ -298,6 +300,23 @@ export const house: GameModule = {
       const [mother, father] = parent.sex === 'female' ? [parentId!, parent.spouse] : [parent.spouse, parentId!];
       const id = bear(state, ct(c), mother, father, e.birth.sex, ctx.rng);
       ctx.changes.push(state.characters[id]!.sex === 'male' ? 'A son' : 'A daughter');
+    },
+    adopt(s, c, effect, ctx) {
+      const state = st(s);
+      const e = effect as Op<'adopt'>;
+      const head = state.characters[state.hero]!;
+      const spouse = head.spouse && state.characters[head.spouse]?.alive ? head.spouse : undefined;
+      const [mother, father] = head.sex === 'female' ? [state.hero, spouse] : [spouse, state.hero];
+      // under the male line only a son can carry it
+      const id = bear(state, ct(c), mother ?? state.hero, father ?? state.hero, e.adopt.sex ?? (state.family.law === 'male_line' ? 'male' : undefined), ctx.rng);
+      const k = state.characters[id]!;
+      // a kinsman's child, so born before today; the line counts the child as the head's own
+      k.born = state.time - e.adopt.age * 4;
+      if (!mother) k.mother = undefined;
+      if (!father) k.father = undefined;
+      k.traits = [...k.traits, 'adopted'];
+      nameChild(state, ct(c), id, 'culture', ctx.rng);
+      ctx.changes.push(`${k.name} is adopted into the house`);
     },
     name_child(s, c, effect, ctx) {
       const state = st(s);
@@ -449,6 +468,13 @@ function houseText(s: HouseState, f: string): string | undefined {
     }
     // the founder, as the founder's children speak of them
     case 'parent': return s.characters[FOUNDER_ID]?.sex === 'female' ? 'your mother' : 'your father';
+    // Mahaut, as the crowned path's head knows her: the founder's queen, the head's mother or grandmother
+    case 'mahaut': case 'mahaut_start': {
+      const dw = s.characters[FOUNDER_ID]?.spouse;
+      const h = s.characters[s.hero];
+      const kin = h?.mother === dw ? 'your mother' : [h?.father, h?.mother].some((p) => p && s.characters[p]?.mother === dw) ? 'your grandmother' : 'Mahaut';
+      return f === 'mahaut_start' ? kin.charAt(0).toUpperCase() + kin.slice(1) : kin;
+    }
     // the knights who held of the founder (Knight of Adalia's lands.vassals), or the West's first names for a fresh house
     case 'knights': {
       const names = (d?.lands.vassals ?? []).map((v) => v.name);

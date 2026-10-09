@@ -1,0 +1,593 @@
+# Book I, Act IV for the crowned path (STORY.md, "The crowned path, Act IV", N1-N12, the author's decisions L3-42 to
+# L3-45): years 66-78 (928-940). Hervé moves at Mahaut's illness in 934 and dies at the end of it (L3-42); Mahaut dies
+# in 935 and the head decides the Armance (L3-43); the reign closes with the heir crowned junior, which under a crown
+# for life is the last chance to make it hereditary (L3-44). Runs that lost the crown play these scenes from a great
+# house's side, then the claim at the next election (h_n12_claim), then the Founder's E12-E13 (L3-45).
+
+- id: h_n01_after
+  chapter: book1
+  title: "[if realm.sovereign == self]The Crown After the Mottle[else]The House After the Crown[/if]"
+  checkpoint: true
+  card: { title: "Book One, Act Four", subtitle: The Test of the Law, epigraph: "A law is a promise the living make about the dead, and the dead do not keep it." }
+  frames: [free]
+  on_enter: [ { catch_up: { year: 67, season: spring } } ]
+  text: |
+    In the spring of 929 the West counts what the Mottle left it. [if realm.sovereign == self]The chancellor brings you the roll in the council chamber: a third of the towns' taxes uncollected, the bridges on the salt road down, two sheriffs dead and nobody appointed, and the Estates, who have not met since before the sickness, asking when they will.
+
+    "They'll want thanking," he says. "For the crown's peace. For the crown at all, if I'm honest." He folds the roll. "The Estates gave the crown in 920 on terms, and they read the terms more often than you do."[else]{realm.sovereign} holds the first full court of the reign at Lannec, in the hall your father built, under your father's arms painted over and not quite dry. The house's steward brings you the roll at {house.manor}: the mills down, the rents a year behind, and an invitation to the court, in a clerk's hand, that does not say whether it is a summons.
+
+    "They'll want to see you kneel," the steward says. "Or not kneel. Either way they'll want to see you."[/if]
+  choices:
+    - id: rebuild
+      text: "[if realm.sovereign == self]Remit the towns' tax for a year, and rebuild the salt road's bridges. (£80)[else]Remit the year's rents, and rebuild the mills. (£20)[/if]"
+      requires: "realm.sovereign == self && res.coin >= 19200 || realm.sovereign != self && res.coin >= 4800"
+      effects:
+        - if: "realm.sovereign == self"
+          then: [ { add: { res.coin: -19200, rep.commons: 2, rep.merchants: 1 } } ]
+          else: [ { add: { res.coin: -4800, estate.people: 10, estate.temper: 1 } } ]
+      text_after: |
+        [if realm.sovereign == self]The bridges are up by Lammas, in new stone, with the crown's arms cut on the keystones. In Sauvemer they say the crown has paid for the Mottle twice, once in the dead and once in the bridges, and drink to it.[else]The mills are grinding by harvest, and the rents come in at Michaelmas, and the house's tenants say the house remembered them when the crown did not.[/if]
+      next: h_n02_letters
+    - id: court
+      text: "[if realm.sovereign == self]Summon the Estates, and thank them for the crown's peace.[else]Ride to court, and be seen at {realm.sovereign}'s table.[/if]"
+      effects:
+        - if: "realm.sovereign == self"
+          then: [ { set: flag.h_n_estates_thanked }, { add: { counter.favour: 2, res.coin: -4800 } } ]
+          else: [ { add: { counter.favour: 2, counter.household: -1 } } ]
+      text_after: |
+        [if realm.sovereign == self]The Estates meet at Whitsun, and are thanked, at length, with a feast, and go home pleased and twenty pounds the fatter. An old knight of the Armance tells you on the stair that it is the first time a king has thanked them for anything. "Your father asked us," he says. "That was different."[else]You kneel at the court, in the hall your father built, and {realm.sovereign} raises you with both hands and seats you on his right, where the whole court can see the house that was royal eating the new king's bread.[/if]
+      next: h_n02_letters
+    - id: march
+      text: "Ride the march, and look at Penhoët's walls[if realm.sovereign == herve], which are the King's own house[/if]."
+      effects: [ { set: flag.h_n_watched }, { add: { res.renown: 1 } } ]
+      text_after: |
+        You ride the Armance march in a fortnight with twenty men, and stop at every ford. At Penhoët's boundary the walls are being mended, and the masons stop to watch you pass, and one of them takes off his cap.
+      next: h_n02_letters
+
+- id: h_n02_letters
+  chapter: book1
+  title: "[if realm.sovereign == herve]The King's Inquest[else]Hervé's Letters[/if]"
+  frames: [free]
+  on_enter: [ { catch_up: { year: 68, season: spring } } ]
+  text: |
+    [if realm.sovereign == herve]In the spring of 930 the King's justices come into the Armance with a commission of inquiry into titles: by what right every lord holds what he holds. The first title they ask to see is {house.mahaut}'s, to the Armance, which passes, by the custom King Hervé's party has always held to, only through men.
+
+    The justices' clerk is polite, and young, and frightened of you. "It's only a formality, my lord," he says. "His Grace is thorough."[elif flag.h_k_penhoet_attainted]Hervé de Penhoët, attainted, lives at the Valdrennish court on a pension and writes letters: to the Armance lords, to Bertrand de Quérec's exile, to the free companies wintering on the march. Sir Yvon of Kerlan holds Penhoët's claim and writes nothing. A Valdrennish merchant tells the constable that Hervé has asked his king for three hundred men "for when the Duchess is dying."[else]In the spring of 930 Hervé de Penhoët's letters go over the march on the first Monday of every month, by the same carter. The constable has a list of where they go: Bertrand de Quérec's exile in Valdrenne, two captains of free companies, and every lord of the Armance who ever lost a lawsuit to {house.mahaut}.
+
+    "He's sixty-three," the constable says. "He's buried his son. Men like that don't write letters for the pleasure of it."[/if]
+  choices:
+    - id: intercept
+      visible_if: "realm.sovereign != herve"
+      text: Take his letters on the road.
+      check: { attr: wits, skill: intrigue, difficulty: 5, mods: [ { if: flag.h_counted_penhoet, add: 1, label: you know the carter }, { if: flag.h_k_penhoet_watched, add: 1, label: your men watch his table }, { if: flag.h_n_watched, add: 1, label: you rode the march } ] }
+      success:
+        text: |
+          The carter is stopped at a ford with a cart of cheeses and three letters under the cheeses, in Hervé's own hand. To Bertrand: "When the Duchess is dying, not after." To a Valdrennish captain: a sum. To the Armance lords: "The custom is the custom. I will be at Armance castle before her heir is." The constable has them copied, and the copies sealed, and the carter sent on with the cheeses.
+        effects: [ { set: flag.h_n_letters } ]
+        next: { switch: [ { if: [ { any: [ flag.h_bc_sibling_church, inherited.c5_younger_church ] }, sibling.alive ], go: h_n04_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_n05_heir } }
+      failure:
+        text: |
+          The carter is stopped at a ford, and his cart turned over, and there is nothing in it but cheeses. The next month the letters go by a different road, and Hervé sends you a cheese.
+        effects: [ { add: { rival.penhoet.temper: -1 } } ]
+        next: { switch: [ { if: [ { any: [ flag.h_bc_sibling_church, inherited.c5_younger_church ] }, sibling.alive ], go: h_n04_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_n05_heir } }
+    - id: confront
+      visible_if: "realm.sovereign != herve"
+      text: "[if flag.h_k_penhoet_attainted]Write to him at the Valdrennish court, and ask what he wants.[elif realm.sovereign == self]Summon him to court, and ask him what he writes.[else]Ride to Penhoët, and ask him what he writes.[/if]"
+      effects: [ { set: flag.h_n_confronted }, { add: { rival.penhoet.temper: 1 } } ]
+      text_after: |
+        [if flag.h_k_penhoet_attainted]He writes back within the month, a long letter in a clear hand. "I want my house," he says, "and my grandson in it, and I will have them or a grave. You may tell your council so."[else]Hervé answers you to your face, at a table, with the wine poured. "I write to my friends," he says. "I'm old, and I have more of them in the grave than out, and I write to the ones that are left." He looks at you over the cup. "When {house.mahaut}'s custom comes to be tested, I shall test it. You knew that."[/if]
+      next: { switch: [ { if: [ { any: [ flag.h_bc_sibling_church, inherited.c5_younger_church ] }, sibling.alive ], go: h_n04_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_n05_heir } }
+    - id: answer
+      visible_if: "realm.sovereign == herve"
+      text: Answer the inquest with the charters.
+      check: { attr: wits, skill: stewardship, difficulty: 5, mods: [ { if: "counter.favour >= 3", add: 1, label: the court is mindful of you } ] }
+      success:
+        text: |
+          You lay the charters on the justices' table yourself, one by one: Duchess Jehanne's will, the Estates' confirmation, your father's patent, {house.mahaut}'s homage. The young clerk copies them for a week. The commission finds that the titles are good, which is not the same as finding that the custom is.
+        effects: [ { set: flag.h_n_inquest_answered }, { add: { res.renown: 1 } } ]
+        next: { switch: [ { if: [ { any: [ flag.h_bc_sibling_church, inherited.c5_younger_church ] }, sibling.alive ], go: h_n04_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_n05_heir } }
+      failure:
+        text: |
+          One of the charters is a copy, and the original is in a chest at Lannec that the King's chamberlain cannot, for the moment, find. The commission finds the Armance's title "under inquiry," and sends the finding to every lord in the duchy.
+        effects: [ { add: { counter.favour: -1 } } ]
+        next: { switch: [ { if: [ { any: [ flag.h_bc_sibling_church, inherited.c5_younger_church ] }, sibling.alive ], go: h_n04_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_n05_heir } }
+    - id: refuse
+      visible_if: "realm.sovereign == herve"
+      text: Refuse the inquest, by the Estates' right.
+      effects: [ { set: flag.h_n_refused_inquest }, { add: { counter.favour: -2, rep.nobles: 1 } } ]
+      text_after: |
+        You send the justices back to Lannec with a letter: the West's titles are judged by the West's Estates, as the Estates of 920 promised, and not by a king's commission. Half the Armance lords copy the letter and send it after them.
+      next: { switch: [ { if: [ { any: [ flag.h_bc_sibling_church, inherited.c5_younger_church ] }, sibling.alive ], go: h_n04_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_n05_heir } }
+    - id: let
+      text: "[if realm.sovereign == herve]Send the justices gifts, and let them look. (£30)[else]Let the letters run, and have them copied where you can.[/if]"
+      effects:
+        - if: "realm.sovereign == herve"
+          then: [ { add: { res.coin: -7200, counter.favour: 1 } } ]
+          else: [ { set: flag.h_n_reading } ]
+      text_after: |
+        [if realm.sovereign == herve]The justices take the gifts and look, at length, and write that the house was most helpful. They also write down everything they see.[else]The letters run, and the constable's men copy what they can at the inns, and by Christmas you know roughly what Hervé means and when, which is when {house.mahaut} is dying.[/if]
+      next: { switch: [ { if: [ { any: [ flag.h_bc_sibling_church, inherited.c5_younger_church ] }, sibling.alive ], go: h_n04_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_n05_heir } }
+
+# ---- a child of the house given to the Church (B6, or Knight of Adalia's c5_younger_church) ----
+- id: h_n04_bishop
+  chapter: book1
+  title: The Bishop of Saint-Lys
+  frames: [free]
+  on_enter: [ { catch_up: { year: 69, season: spring } } ]
+  text: |
+    In Lent of 931 the Bishop of Saint-Lys dies, and the chapter meets to choose his successor, and {sibling.first} is on the canons' list: {sibling.ageword}, a canon of the cathedral where your father lies, and the founder's child. The West has never had a bishop born in it. [if realm.sovereign == self]Valdrenne wants its own man in the see, and the Pontiff wants his, and both expect the crown to want its own.[else]{realm.sovereign} wants his clerk. The Pontiff wants his.[/if]
+
+    {sibling.first} comes to see you in a plain cassock, with ink on {sibling.his} fingers. "Don't buy it for me," {sibling.he} says. "Or if you do, don't tell me what it cost."
+  choices:
+    - id: weight
+      text: "Put the [if realm.sovereign == self]crown's[else]house's[/if] weight behind {sibling.first}. [if realm.sovereign == self](£150)[else](£40)[/if]"
+      requires: "realm.sovereign == self && res.coin >= 36000 || realm.sovereign != self && res.coin >= 9600"
+      check: { attr: presence, skill: diplomacy, difficulty: 6, audience: clergy, mods: [ { if: "rep.church >= 3", add: 1, label: the Church's goodwill }, { if: "realm.sovereign == self", add: 1, label: the crown's word } ] }
+      success:
+        text: |
+          The canons are seen, and the right ones seen twice, and the chapter elects {sibling.first} on the second count. {sibling.He} is consecrated at Whitsun in the cathedral, under the old king's tomb, and preaches on humility, and looks at you during the part about the rich.
+        effects:
+          - set: flag.h_n_bishop
+          - add: { rep.church: 2, counter.second: 2 }
+          - if: "realm.sovereign == self"
+            then: [ { add: { res.coin: -36000 } } ]
+            else: [ { add: { res.coin: -9600 } } ]
+        next: { pool: h_b4_pool, count: 1, then: h_n05_heir }
+      failure:
+        text: |
+          The money goes out, and the chapter elects the Pontiff's man by one voice. {sibling.first} kneels to him at the consecration with a face like a shut door, and writes to you afterwards that it was God's will, and that God's will was cheaper than yours.
+        effects:
+          - add: { counter.second: -1 }
+          - if: "realm.sovereign == self"
+            then: [ { add: { res.coin: -36000 } } ]
+            else: [ { add: { res.coin: -9600 } } ]
+        next: { pool: h_b4_pool, count: 1, then: h_n05_heir }
+    - id: chapter
+      text: Let the chapter decide.
+      effects:
+        - add: { rep.church: 1 }
+        - chance: 35
+          then: [ { set: flag.h_n_bishop } ]
+      text_after: |
+        [if flag.h_n_bishop]The chapter elects {sibling.first} on the third count, owing nobody, and the West's first bishop says so in the sermon.[else]The chapter elects the Pontiff's man. {sibling.first} stays a canon, and is a better one for it, {sibling.he} says, and almost means it.[/if]
+      next: { pool: h_b4_pool, count: 1, then: h_n05_heir }
+
+- id: h_n05_heir
+  chapter: book1
+  title: "[if realm.sovereign == self]The Crown's Heir[else]The House's Heir[/if]"
+  frames: [free]
+  on_enter: [ { catch_up: { year: 71, season: spring } } ]
+  text: |
+    [if family.children >= 1]In the spring of 933 {eldest.first} is {eldest.ageword}, and has your father's way of standing with {eldest.his} hands behind {eldest.his} back, which nobody taught {eldest.him}. [if realm.sovereign == self]The chancellor says the Estates will want to see the crown's heir before they are asked to crown {eldest.him}, and that they will be asked, one day, and had better have liked what they saw.[else]The steward says that the house's claim will be {eldest.his} claim one day, and that a claim is a thing other people have to believe in.[/if][else]In the spring of 933 you have no child living, and the council says so, at the end of every meeting, in different words. [if family.no_heir]There is nobody of the blood to name.[else]Your heir under the law is {heir.first}.[/if][/if]
+
+    [if dowager.alive]{house.mahaut_start} writes from the Armance: "Send the child to me for a summer. I raised one crown. I can raise another."[/if]
+  choices:
+    - id: court
+      visible_if: "family.children >= 1"
+      text: Bring {eldest.first} to court, to be seen.
+      effects: [ { set: flag.h_n_heir_court }, { add: { counter.favour: 1, eldest.skill.courtesy: 1 } } ]
+      text_after: |
+        {eldest.first} stands at your elbow through the Easter court in a new gown, and bows to the right people in the right order, and afterwards asks you which of them were lying. "Most," you say. "Good," says {eldest.first}. "I thought so."
+      next: { switch: [ { if: dowager.alive, go: h_n06_illness } ], default: h_n07_rising }
+    - id: armance
+      visible_if: "family.children >= 1 && dowager.alive"
+      text: Send {eldest.first} to {house.mahaut} in the Armance.
+      effects: [ { set: flag.h_n_heir_armance }, { add: { counter.household: 1, rival.penhoet.temper: -1 } } ]
+      text_after: |
+        {eldest.first} goes up into the hills for the summer and comes back at Michaelmas speaking with an Armance accent and knowing every lord in the duchy by his first name. Penhoët's men watched the child's escort all the way up the road.
+      next: { switch: [ { if: dowager.alive, go: h_n06_illness } ], default: h_n07_rising }
+    - id: name
+      visible_if: "family.children == 0 && !family.no_heir"
+      text: Name {heir.first} your heir before the council.
+      effects: [ { set: flag.h_n_named_heir }, { designate: heir }, { add: { counter.favour: 1 } } ]
+      text_after: |
+        The council writes {heir.first}'s name in the roll, and the bishop blesses it, and {heir.first} comes to court for the first time looking as if {heir.he} had been handed a sword by the blade.
+      next: { switch: [ { if: dowager.alive, go: h_n06_illness } ], default: h_n07_rising }
+    - id: marry
+      visible_if: "family.children == 0 && !spouse.alive"
+      text: Marry, and quickly.
+      effects: [ { set: flag.h_n_late_match }, { marry: { who: head, culture: valdrennish } }, { add: { counter.favour: 1 } } ]
+      text_after: |
+        The council has a list ready, and has had for years. The wedding is at Whitsun, at Saint-Lys, small, with the bishop hurrying the vows because it is raining on the procession.
+      next: { switch: [ { if: dowager.alive, go: h_n06_illness } ], default: h_n07_rising }
+    - id: home
+      text: "[if family.children >= 1]Keep {eldest.first} at home, with you.[else]Not yet. Let the West wait.[/if]"
+      effects:
+        - if: "family.children >= 1"
+          then: [ { set: flag.h_n_heir_home }, { add: { counter.household: 1 } } ]
+          else: [ { add: { counter.favour: -1 } } ]
+      text_after: |
+        [if family.children >= 1]{eldest.first} stays at home, and learns the accounts at your table, and the West sees less of {eldest.him} than it would like.[else]The council writes "not yet" in the roll again. The Estates will read it.[/if]
+      next: { switch: [ { if: dowager.alive, go: h_n06_illness } ], default: h_n07_rising }
+
+- id: h_n06_illness
+  chapter: book1
+  title: "[if family.generation == 2]Your Mother[else]Mahaut[/if]"
+  frames: [free]
+  on_enter: [ { catch_up: { year: 72, season: spring } } ]
+  text: |
+    At Candlemas in 934 {house.mahaut} falls ill at her castle in the Armance hills: a wasting, the physicians say, and the kind that takes a year. She is fifty-three. The Armance lords ride to her gate to be seen there, and so do Penhoët's men, who are counted by her porter and leave their names.
+
+    Her letter comes in her own hand, shorter than her letters used to be. "Don't come. Or come. I can't decide, which is new. Hervé is counting my breaths. Somebody should count his."
+  choices:
+    - id: go
+      text: Go up into the hills to her.
+      effects: [ { set: flag.h_n_went_mother }, { add: { counter.household: 1, counter.favour: -1 } } ]
+      text_after: |
+        You ride up into the hills with forty men and the [if realm.sovereign == self]seals[else]house's steward[/if], and govern from her castle through the spring. She is propped on pillows in the window over the valley, and makes you read her the reports, and corrects your Latin. "You're in the Armance," she says one evening, looking down the road. "He'll think that's about him. It is, a little."
+      next: h_n07_rising
+    - id: physicians
+      text: "Send her the best physicians in the West. [if realm.sovereign == self](£20)[else](£10)[/if]"
+      requires: "realm.sovereign == self && res.coin >= 4800 || realm.sovereign != self && res.coin >= 2400"
+      effects:
+        - set: flag.h_n_physicians
+        - if: "realm.sovereign == self"
+          then: [ { add: { res.coin: -4800 } } ]
+          else: [ { add: { res.coin: -2400 } } ]
+      text_after: |
+        The physicians go up with their boxes and their boys, and come down at Easter. "Nothing to be done," the eldest says, "and she knew it before we arrived, and was gracious about our fees."
+      next: h_n07_rising
+    - id: bring
+      visible_if: "realm.sovereign == self"
+      text: Bring her down to Lannec, to the palace and its physicians.
+      effects: [ { set: flag.h_n_brought_mother }, { add: { rival.penhoet.temper: -1, rep.nobles: -1 } } ]
+      text_after: |
+        She comes down to Lannec in a litter, protesting all the way, and is put in the queen's rooms she had for twenty years. The Armance lords watch their duchess carried out of the hills, and some of them say that the crown is taking her before the death does.
+      next: h_n07_rising
+
+- id: h_n07_rising
+  chapter: book1
+  title: "[if realm.sovereign == herve]The King's Commission[else]Hervé Rises[/if]"
+  frames: [free]
+  on_enter: [ { catch_up: { year: 72, season: summer } }, { war: penhoet } ]
+  text: |
+    [if realm.sovereign == herve]King Hervé does not wait for the Duchess to die. At Midsummer his commission rides into the Armance: the King's officers are to take the duchy's castles into the King's hand, by the male line, until the succession is settled. He is sixty-seven, and ill himself, they say, and in a hurry.[elif flag.h_k_penhoet_attainted]Hervé de Penhoët comes back over the march at Midsummer with three free companies, Valdrennish silver, and Bertrand de Quérec's banner beside his own. He is attainted, and sixty-seven, and has nothing left to lose but a grandson at a Valdrennish school.[else]Hervé does not wait for the Duchess to die. At Midsummer Penhoët's men ride out, three hundred with the free companies, and take the Armance castles on the Lannec road[if dowager.alive], while {house.mahaut} lies dying four leagues off[/if]. A letter is read in every market in the duchy: the Armance passes by the male line, and the male line is Penhoët's. [if flag.h_succoured]At the bottom, in his own hand: "I have not forgotten the grain."[/if][/if] [if flag.h_k_bargain]The crown signed the Armance's custom to the male line in 920. Hervé means to be sure of what he was promised before anyone can take it back.[/if]
+
+    [if realm.sovereign == self]The constable[else]Your captain[/if] is at the door with mud to the knee. "They're at the bridge below Armance castle. They've not crossed. They want to see what we do first."
+  choices:
+    - id: lead
+      text: "[if realm.sovereign == herve]Hold the Armance castles against the King's officers yourself.[else]Lead the men against him yourself.[/if]"
+      check: { attr: presence, skill: command, difficulty: 6, audience: knights, mods: [ { if: "res.men >= 60", add: 1, label: a strong host }, { if: flag.h_n_watched, add: 1, label: you rode the march }, { if: "flag.h_n_reading || flag.h_n_letters", add: 1, label: you read his letters }, { if: flag.h_k_bertrand_beaten, add: 1, label: you have beaten these men before }, { if: flag.h_n_went_mother, add: 1, label: you are in the Armance already } ] }
+      success:
+        text: |
+          [if realm.sovereign == herve]You ride into Armance castle a day ahead of the King's officers and shut the gate in their faces, and the Armance lords come to the walls to watch the King's commission read to a closed door. By Michaelmas the officers have gone home.[else]You catch them at the bridge at dawn, with the river high, and it is short and ugly. The free companies break first, as free companies do when the pay is in doubt, and Penhoët's knights stand a while longer, and go. You do not notice the cut on your thigh until you try to dismount and your boot is full.[/if]
+        effects:
+          - set: flag.h_n_rising_won
+          - add: { res.renown: 4, res.men: -8, rival.penhoet.temper: -3, rival.penhoet.standing: -5 }
+          - chance: 30
+            then: [ { set: flag.h_n_wounded }, { add: { health: -1 } } ]
+        next: { switch: [ { if: "realm.sovereign == herve", go: h_n08k_king } ], default: h_n08_herve }
+      failure:
+        text: |
+          [if realm.sovereign == herve]The King's officers come with more men than you thought a dying king could raise, and the Armance lords stay on their own walls to see who wins. Two of the duchy's castles open to the commission by Lammas.[else]They hold the bridge, and come round by the ford, and the line folds. You go down in the river under a horse and are dragged out by the collar. Penhoët holds the Armance road and two castles on it by nightfall.[/if]
+        effects:
+          - set: flag.h_n_rising_lost
+          - set: flag.h_n_armance_held
+          - add: { res.men: -20, rival.penhoet.standing: 4 }
+          - chance: 50
+            then: [ { set: flag.h_n_wounded }, { add: { health: -1 } } ]
+        next: { switch: [ { if: "realm.sovereign == herve", go: h_n08k_king } ], default: h_n08_herve }
+    - id: constable
+      text: "[if realm.sovereign == self]Send the constable, and stay at Lannec.[else]Send your captain with the house's men.[/if]"
+      check: { attr: presence, skill: command, difficulty: 7, audience: knights, mods: [ { if: "res.men >= 60", add: 1, label: a strong host }, { if: flag.h_n_watched, add: 1, label: you rode the march }, { if: "flag.h_n_reading || flag.h_n_letters", add: 1, label: you read his letters } ] }
+      success:
+        text: |
+          [if realm.sovereign == self]The constable[else]Your captain[/if] holds the bridge, and then takes it, and sends you the banners in a cart. The West says it was well done, and in the Armance they say the crown's heir would have come in person, once.
+        effects: [ { set: flag.h_n_rising_won }, { add: { res.men: -6, counter.shadow: 1, rival.penhoet.temper: -3, rival.penhoet.standing: -4 } } ]
+        next: { switch: [ { if: "realm.sovereign == herve", go: h_n08k_king } ], default: h_n08_herve }
+      failure:
+        text: |
+          The men come home without the bridge, and without forty of their number, and with the news that the Armance road and two castles on it are in other hands.
+        effects: [ { set: flag.h_n_rising_lost }, { set: flag.h_n_armance_held }, { add: { res.men: -15, rival.penhoet.standing: 3 } } ]
+        next: { switch: [ { if: "realm.sovereign == herve", go: h_n08k_king } ], default: h_n08_herve }
+    - id: letters
+      visible_if: "flag.h_n_letters && realm.sovereign != herve && !flag.h_k_penhoet_attainted || flag.h_k_letters && realm.sovereign != herve && !flag.h_k_penhoet_attainted"
+      text: "Read his letters to [if realm.sovereign == self]the Estates[else]the King's council[/if], and let the Armance hear them."
+      effects: [ { set: flag.h_n_rising_won }, { set: flag.h_n_attainder }, { war: none }, { add: { rival.penhoet.temper: -5, rival.penhoet.standing: -8, rep.honor: 1 } } ]
+      text_after: |
+        The letters are read aloud at Lannec, every one, in Hervé's own words: to Bertrand de Quérec, to the Valdrennish captain, to the Armance lords with the line about being at Armance castle before her heir. By the end of the reading the Armance lords who rode out with Penhoët are riding home, and the free companies, hearing that the paymaster is to be attainted, ask for their money and do not get it.
+      next: h_n08_herve
+    - id: treat
+      text: "[if realm.sovereign == herve]Go to the Estates, and ask them to judge between the King and the house.[else]Treat with him: the Armance's custom to the Estates, and a match between the houses.[/if]"
+      check: { attr: presence, skill: diplomacy, difficulty: 5, audience: nobles, mods: [ { if: flag.h_succoured, add: 2, label: Penhoët ate your grain }, { if: "rival.penhoet.temper >= 3", add: 1, label: Penhoët's goodwill }, { if: flag.h_n_confronted, add: 1, label: you asked him to his face }, { if: flag.h_n_refused_inquest, add: 1, label: the Estates' right } ] }
+      success:
+        text: |
+          [if realm.sovereign == herve]The Estates sit at Lammas and judge that no king's commission can take a duchy before its duchess is dead, and the King's officers come home from the Armance with the judgment pinned to their saddles.[else]You meet him on the bridge below Armance castle, the two of you and a clerk, with the river loud under the planks. He is grey and thin and sits his horse badly. "A match," he says. "And the custom to the Estates, not to you. I can live with that. I'm not going to live long." He gives his hand on it.[/if]
+        effects: [ { set: flag.h_n_treated }, { war: none }, { add: { rival.penhoet.temper: 3 } } ]
+        next: { switch: [ { if: "realm.sovereign == herve", go: h_n08k_king } ], default: h_n08_herve }
+      failure:
+        text: |
+          [if realm.sovereign == herve]The Estates do not sit; the King has not summoned them, and will not. His officers keep the two castles they have taken.[else]He hears you out on the bridge, and shakes his head. "Twenty years ago," he says. "Not now." His men keep the two castles on the Armance road.[/if]
+        effects: [ { set: flag.h_n_armance_held } ]
+        next: { switch: [ { if: "realm.sovereign == herve", go: h_n08k_king } ], default: h_n08_herve }
+
+- id: h_n08_herve
+  chapter: book1
+  title: The End of Hervé
+  frames: [free]
+  on_enter: [ { catch_up: { year: 72, season: autumn } }, { war: none } ]
+  text: |
+    At Michaelmas in 934 Hervé de Penhoët dies at sixty-seven, [if flag.h_k_penhoet_attainted]in a farmhouse on the march, of a fever, three days' ride from the Penhoët he lost[elif flag.h_n_attainder]at Penhoët, with the copies of his letters on the table and the attainder not yet sealed[elif flag.h_n_treated]at Penhoët, a fortnight after the treaty, in his chair, with his clerk reading him the accounts[elif flag.h_n_rising_won]at Penhoët, a month after the bridge, of the wound or of the defeat; nobody can say which[else]in the Armance castle he took, with his banner on the gate and the duchy's keys on a hook by his bed[/if]. His grandson Yann, Ronan's boy, is fourteen, and head of Penhoët under his guardians.
+
+    The generation's quarrel is the next generation's now, and yours to settle. [if realm.sovereign == self]The council waits for the crown's word.[else]{realm.sovereign} writes to ask what the house wants done.[/if]
+  choices:
+    - id: broken
+      visible_if: "flag.h_n_rising_won && realm.sovereign == self || flag.h_n_rising_won && counter.favour >= 3"
+      text: "Break Penhoët. [if realm.sovereign == self]Attaint the house[else]Ask for Penhoët's attainder[/if], and take its lands."
+      effects:
+        - set: flag.h_penhoet_broken
+        - assign: { rival.penhoet.standing: 10, rival.penhoet.temper: -10 }
+        - add: { rep.ruthlessness: 2 }
+        - if: "realm.sovereign == self"
+          then: [ { hold: { id: penhoet_lands, name: The lands of Penhoët, income: 9600 } } ]
+          else: [ { hold: { id: penhoet_lands, name: Penhoët's lands in the Armance hills, income: 4800 } } ]
+      text_after: |
+        The attainder is sealed at Martinmas, for the letters and the bridge. Penhoët's lands go to [if realm.sovereign == self]the crown[else]the house, by the King's grant[/if]. Young Yann goes to his mother's people with a pony and a tutor, and the claim, such as it is now, passes to Sir Yvon of Kerlan, Hervé's cousin, who sends nobody to the funeral and writes nothing, and does not forget.
+      next: h_n09_mahaut
+    - id: reconciled
+      visible_if: "family.children >= 1 && rival.penhoet.temper >= -6 && !flag.h_k_penhoet_attainted || family.children >= 1 && flag.h_n_treated && !flag.h_k_penhoet_attainted"
+      text: Reconcile. A child of the house for young Yann, when they are of age.
+      effects:
+        - set: flag.h_penhoet_reconciled
+        - set: flag.h_penhoet_match
+        - assign: { rival.penhoet.temper: 5 }
+        - add: { counter.household: 1 }
+        - if: flag.h_n_armance_held
+          then: [ { clear: flag.h_n_armance_held }, { set: flag.h_n_castles_dowry } ]
+      text_after: |
+        The contract is signed at Penhoët in the room where Hervé died, with his chair pushed back against the wall. A child of the house and Yann de Penhoët, when they are of age[if flag.h_n_castles_dowry], and the two Armance castles back as the bride's dowry, which is a way of returning them that lets Penhoët's guardians keep their faces[/if]. Yann signs with his tongue between his teeth, and asks whether there will be cake.
+      next: h_n09_mahaut
+    - id: contained
+      text: Contain it. A treaty, the boundary sworn, and Penhoët watched.
+      effects: [ { set: flag.h_penhoet_contained }, { assign: { rival.penhoet.temper: 1 } } ]
+      text_after: |
+        The treaty is sworn on relics at Saint-Lys, with Yann's guardians on one side and [if realm.sovereign == self]the crown's council[else]the house's[/if] on the other. [if flag.h_n_armance_held]Penhoët keeps the two Armance castles it took, for now, which is what the treaty says and nobody believes.[else]The boundary is walked and sworn, and Penhoët's men go home.[/if] The constable calls it a fence with a gate in it.
+      next: h_n09_mahaut
+
+# ---- King Hervé dies, and the crown is the Estates' to give again (the claim, L3-45) ----
+- id: h_n08k_king
+  chapter: book1
+  title: The King Is Dead
+  frames: [free]
+  on_enter: [ { catch_up: { year: 72, season: autumn } }, { war: none }, { set: flag.h_n_vacancy } ]
+  text: |
+    King Hervé dies at Lannec at Michaelmas in 934, at sixty-seven, after eight years on the throne, with his commission still in the Armance and the duchy's castles [if flag.h_n_armance_held]half in his officers' hands[else]still shut against it[/if]. His grandson Yann is fourteen, and Penhoët's, and nobody proposes him for the crown.
+
+    By the promise of 920 the crown is the Estates' to give each time it falls, and it has fallen. They are summoned for Martinmas. In the inns at Lannec the first name said is the house's.
+  choices:
+    - id: on
+      text: Ride to Lannec.
+      next: h_n12_claim
+
+- id: h_n09_mahaut
+  chapter: book1
+  title: "[if family.generation == 2]Your Mother Is Dead[else]Mahaut Is Dead[/if]"
+  frames: [free]
+  on_enter:
+    - catch_up: { year: 73, season: spring }
+    - if: dowager.alive
+      then: [ { death: { who: dowager, cause: a wasting illness } } ]
+  text: |
+    {house.mahaut_start} dies at Lady Day in 935, at fifty-four, [if flag.h_n_went_mother]with you beside her, in the window over the valley[elif flag.h_n_brought_mother]in the queen's rooms at Lannec, with the windows open to the river[else]in her castle in the hills[/if]. She is buried beside your father at Saint-Lys. Her last letter to the house comes after the bell, sealed before she died: a page about the weather and the price of salt, and at the bottom, "Be kind to yourself. Nobody else will be."
+
+    The Armance passes to her heir, and her heir is you. [if flag.h_k_bargain && !flag.h_penhoet_broken && !flag.h_k_penhoet_attainted]But the crown signed the Armance's custom to the male line in 920, for Penhoët's voices, and under that custom the duchy is Yann de Penhoët's.[elif flag.h_n_armance_held]Two of its castles are in other hands.[/if] [if realm.sovereign == self]The council asks whether the duchy is to be the crown's, or given.[else]The steward asks whether the house is to hold it, or give it.[/if]
+  choices:
+    - id: honour
+      visible_if: "flag.h_k_bargain && !flag.h_penhoet_broken && !flag.h_k_penhoet_attainted"
+      text: Honour the bargain of 920. The Armance goes to Penhoët.
+      effects: [ { set: flag.h_armance_penhoet }, { add: { rival.penhoet.temper: 5, rival.penhoet.standing: 15, rep.honor: 2 } } ]
+      text_after: |
+        You send the duchy's keys to Penhoët under seal, with the contract of 920 on top of them. Yann's guardians receive them standing. "Hervé said you'd find a way out of it," one of them says. "He'd have lost the bet."
+      next: { switch: [ { if: [ "realm.sovereign == self", "age >= 18", "!family.no_heir" ], go: { pool: h_b4_pool, count: 1, then: h_n11_crowning } }, { if: [ "realm.sovereign != self", "!flag.h_n_claimed" ], go: { pool: h_b4_pool, count: 1, then: h_n12_claim } }, { if: [ "realm.sovereign != self", "family.head_from <= 66", "heir.age >= 14" ], go: { pool: h_b4_pool, count: 1, then: h_e12_heir } }, { if: [ "realm.sovereign != self", "family.head_from <= 66" ], go: { pool: h_b4_pool, count: 1, then: h_e13_end } }, { if: "realm.sovereign != self", go: { pool: h_b4_pool, count: 1, then: h_e_end } } ], default: { pool: h_b4_pool, count: 1, then: h_n_end } }
+    - id: sibling
+      visible_if: "sibling.alive && !flag.h_n_bishop && !flag.h_bc_sibling_church && !inherited.c5_younger_church"
+      text: Give the Armance to {sibling.first}, as {sibling.his} own duchy.
+      effects: [ { set: flag.h_armance_sibling }, { add: { counter.second: 3, counter.household: 1, rival.penhoet.temper: 1 } } ]
+      text_after: |
+        {sibling.first} does homage for the Armance at Whitsun, on {sibling.his} knees, with {sibling.his} hands between yours, and gets up a duke's equal. The Armance lords like having a lord of their own again. Your chancellor says, quietly, that the West now has two great houses of the same blood, and that he has read some history.
+      next: { switch: [ { if: [ "realm.sovereign == self", "age >= 18", "!family.no_heir" ], go: { pool: h_b4_pool, count: 1, then: h_n11_crowning } }, { if: [ "realm.sovereign != self", "!flag.h_n_claimed" ], go: { pool: h_b4_pool, count: 1, then: h_n12_claim } }, { if: [ "realm.sovereign != self", "family.head_from <= 66", "heir.age >= 14" ], go: { pool: h_b4_pool, count: 1, then: h_e12_heir } }, { if: [ "realm.sovereign != self", "family.head_from <= 66" ], go: { pool: h_b4_pool, count: 1, then: h_e13_end } }, { if: "realm.sovereign != self", go: { pool: h_b4_pool, count: 1, then: h_e_end } } ], default: { pool: h_b4_pool, count: 1, then: h_n_end } }
+    - id: child
+      visible_if: "family.children >= 2"
+      text: Keep the Armance for {second.first}, as {second.his} duchy when {second.he} is grown.
+      effects: [ { set: flag.h_armance_child }, { add: { counter.household: 1 } }, { hold: { id: armance_ward, name: "The Armance, held for a younger child", income: 36000 } } ]
+      text_after: |
+        {second.first} is told at supper, and asks whether a duchy has ponies, and is told it has several. The Armance lords are content to wait for a lord of their own, and Penhoët is content to wait for anything.
+      next: { switch: [ { if: [ "realm.sovereign == self", "age >= 18", "!family.no_heir" ], go: { pool: h_b4_pool, count: 1, then: h_n11_crowning } }, { if: [ "realm.sovereign != self", "!flag.h_n_claimed" ], go: { pool: h_b4_pool, count: 1, then: h_n12_claim } }, { if: [ "realm.sovereign != self", "family.head_from <= 66", "heir.age >= 14" ], go: { pool: h_b4_pool, count: 1, then: h_e12_heir } }, { if: [ "realm.sovereign != self", "family.head_from <= 66" ], go: { pool: h_b4_pool, count: 1, then: h_e13_end } }, { if: "realm.sovereign != self", go: { pool: h_b4_pool, count: 1, then: h_e_end } } ], default: { pool: h_b4_pool, count: 1, then: h_n_end } }
+    - id: unite
+      text: "[if realm.sovereign == self]Take the Armance into the crown.[else]Hold the Armance yourself, as {house.mahaut} did.[/if][if flag.h_k_bargain && !flag.h_penhoet_broken && !flag.h_k_penhoet_attainted] Break the bargain of 920.[/if]"
+      effects:
+        - set: flag.h_armance_united
+        - add: { rival.penhoet.temper: -2 }
+        - if: flag.h_n_armance_held
+          then: [ { hold: { id: armance_duchy, name: "The duchy of Armance, short two castles", income: 24000 } } ]
+          else: [ { hold: { id: armance_duchy, name: The duchy of Armance, income: 48000 } } ]
+        - if: [ flag.h_k_bargain, "!flag.h_penhoet_broken", "!flag.h_k_penhoet_attainted" ]
+          then: [ { set: flag.h_n_bargain_broken }, { add: { rep.honor: -2, rival.penhoet.temper: -5 } } ]
+        - if: "realm.sovereign == self"
+          then: [ { add: { rep.nobles: -1 } } ]
+      text_after: |
+        [if realm.sovereign == self]The Armance's revenues come to the crown's exchequer at Michaelmas, two hundred pounds a year, and the duchy's lords do homage to the crown at Lannec instead of to their own duchess in the hills, and do not like the ride.[else]You do homage to {realm.sovereign} for the Armance at Whitsun, in your own right, and the house is the greatest in the West by two hundred pounds a year and a duchy's worth of lords.[/if] [if flag.h_n_bargain_broken]Penhoët's guardians publish the contract of 920 in every market in the duchy, with the crown's seal on it.[/if]
+      next: { switch: [ { if: [ "realm.sovereign == self", "age >= 18", "!family.no_heir" ], go: { pool: h_b4_pool, count: 1, then: h_n11_crowning } }, { if: [ "realm.sovereign != self", "!flag.h_n_claimed" ], go: { pool: h_b4_pool, count: 1, then: h_n12_claim } }, { if: [ "realm.sovereign != self", "family.head_from <= 66", "heir.age >= 14" ], go: { pool: h_b4_pool, count: 1, then: h_e12_heir } }, { if: [ "realm.sovereign != self", "family.head_from <= 66" ], go: { pool: h_b4_pool, count: 1, then: h_e13_end } }, { if: "realm.sovereign != self", go: { pool: h_b4_pool, count: 1, then: h_e_end } } ], default: { pool: h_b4_pool, count: 1, then: h_n_end } }
+
+# ---- the reign's end: the heir crowned junior (L3-44) ----
+- id: h_n11_crowning
+  chapter: book1
+  title: The Junior Crown
+  frames: [free]
+  on_enter: [ { catch_up: { year: 76, season: spring } } ]
+  # if the sovereign died at the Michaelmas this scene passes over, the succession has run first, and the new head
+  # (family.head_from 76) only goes on
+  text: |
+    [if family.head_from >= 76][if realm.sovereign == self]At Lady Day in 938 the crown is yours, at {age_words}, and has not been for long.[else]At Lady Day in 938 {realm.sovereign} wears the crown the Estates gave away, and the house is yours, at {age_words}.[/if] The council talks about crowning heirs, and stops when you come in.[else]At Lady Day in 938 you are {age_words}, and {heir.first} is {heir.ageword}. [if family.generation == 2]Your father crowned you beside him when you were a child, and lived on at court, and the West had two kings for eleven years and found it could bear it.[else]The old king crowned his heir beside him once, and lived on at court, and the West found it could bear two kings.[/if] The council says it is time to do the same.
+
+    [if flag.h_crown_for_life && !flag.h_crown_hereditary]But the Estates gave you the crown for life in 920, and kept the choice of the next. To crown {heir.first} beside you, you must ask them for what they kept: the crown by blood. If they refuse, they refuse for good, and they will choose when you are gone.[else]The crown goes to the eldest by the Estates' own law. Crowning {heir.first} beside you is a ceremony, and a promise, and a regency while {heir.he} is young, with you at court to watch it.[/if]
+
+    "Your father asked them once," the chancellor says. "They said yes because they were frightened of the alternative. You'll want them frightened again, or grateful."[/if]
+  choices:
+    - id: cathedral
+      visible_if: "family.head_from < 76 && !flag.h_crown_for_life || family.head_from < 76 && flag.h_crown_hereditary"
+      text: Crown {heir.first} beside you in the cathedral at Saint-Lys, before the West.
+      effects: [ { set: flag.h_n_junior }, { add: { counter.favour: 2 } }, { step_down: junior_crown } ]
+      text_after: |
+        {heir.first} is crowned at Whitsun in the cathedral where your father lies, in a crown taken in at the back with a strip of velvet. {heir.He} does not drop it. Afterwards, in the vestry, {heir.he} asks you who {heir.he} is supposed to be now. "Yourself," you say, "probably." It is what your father said.
+      next: h_n_end
+    - id: chapel
+      visible_if: "family.head_from < 76 && !flag.h_crown_for_life || family.head_from < 76 && flag.h_crown_hereditary"
+      text: Crown {heir.first} quietly, in the palace chapel.
+      effects: [ { set: flag.h_n_junior }, { add: { counter.household: 1 } }, { step_down: junior_crown } ]
+      text_after: |
+        A small crowning, at dawn, in the palace chapel, with the household and the council and the bishop and nobody else. The West hears of it at Mass the next Sunday, and some of it minds.
+      next: h_n_end
+    - id: ask
+      visible_if: "family.head_from < 76 && flag.h_crown_for_life && !flag.h_crown_hereditary"
+      text: Ask the Estates to crown {heir.first} beside you, and the crown by blood.
+      check: { attr: presence, skill: diplomacy, difficulty: 6, audience: nobles, mods: [ { if: "house.standing >= 80", add: 1, label: the greatest house in the West }, { if: "counter.favour >= 4", add: 1, label: the realm's goodwill }, { if: flag.h_n_heir_court, add: 1, label: they have seen the heir }, { if: flag.h_n_rising_won, add: 1, label: you broke the rising }, { if: flag.h_n_estates_thanked, add: 1, label: you thanked them }, { if: flag.h_armance_united, add: -1, label: the Armance lords resent the crown }, { if: flag.h_n_bargain_broken, add: -1, label: the broken bargain } ] }
+      success:
+        text: |
+          You stand where your father stood and ask, and the Estates hear you through, and count, and the count is yours, by four benches. The crown of the West is hereditary from that day, in the eldest child. {heir.first} is crowned at Whitsun at Saint-Lys, and the Estates attend in a body, and look pleased with themselves for having been asked.
+        effects: [ { clear: flag.h_crown_for_life }, { set: flag.h_crown_hereditary }, { set: flag.h_n_junior }, { add: { counter.favour: 1 } }, { step_down: junior_crown } ]
+        next: h_n_end
+      failure:
+        text: |
+          You stand and ask, and the Estates hear you through, and count, and the count is not yours. They will not crown a child in a living king's lifetime, they say, and they will not give away what they kept in 920. They will choose, when the time comes. They thank you for asking.
+        next: h_n11b_refused
+    - id: buy
+      visible_if: "family.head_from < 76 && flag.h_crown_for_life && !flag.h_crown_hereditary"
+      text: Buy the benches that can be bought, and then ask. (£300)
+      requires: "res.coin >= 72000"
+      check: { attr: presence, skill: diplomacy, difficulty: 3, audience: nobles, mods: [ { if: flag.h_armance_united, add: -1, label: the Armance lords resent the crown } ] }
+      success:
+        text: |
+          Three hundred pounds goes out of the exchequer in small sums, to the right men in the right order, and the Estates vote the crown hereditary by six benches, and the whole West knows the price. {heir.first} is crowned at Whitsun.
+        effects: [ { clear: flag.h_crown_for_life }, { set: flag.h_crown_hereditary }, { set: flag.h_n_junior }, { add: { res.coin: -72000, rep.honor: -1 } }, { step_down: junior_crown } ]
+        next: h_n_end
+      failure:
+        text: |
+          The money goes out, and does some of its work, and the benches that took it count against you anyway, and keep it.
+        effects: [ { add: { res.coin: -72000 } } ]
+        next: h_n11b_refused
+    - id: abdicate
+      text: "[if family.head_from >= 76]Go on.[elif flag.h_crown_for_life && !flag.h_crown_hereditary]Lay the crown down, and let the Estates choose now, while you live to see it.[else]Lay the crown down for {heir.first}, and let a regency govern.[/if]"
+      effects:
+        - if: "family.head_from < 76"
+          then: [ { set: flag.h_n_abdicated }, { step_down: abdication } ]
+      text_after: |
+        [if family.head_from >= 76]The council goes back to the roads and the salt.[else]You lay the crown on the altar at Saint-Lys at Whitsun, with your own hands, and step back from it. [if flag.h_crown_for_life && !flag.h_crown_hereditary]The Estates are summoned to choose. The West has never had a king who gave the crown back, and does not know where to look.[else]{heir.first} takes it up, with the bishop's help, because it is heavy.[/if][/if]
+      next: h_n_end
+
+- id: h_n11b_refused
+  chapter: book1
+  title: The Estates Refuse
+  frames: [free]
+  text: |
+    The Estates go home. The chancellor stays. "There are two ways from here," he says, "and neither of them is waiting. You can crown the child anyway, in the chapel, with the bishop, without them, and dare them to undo it. Or you can lay the crown down and let them choose now, while you're alive to be watched choosing. They'd likely choose {heir.first}. Likely."
+  choices:
+    - id: defy
+      text: Crown {heir.first} anyway, in the chapel, without them.
+      effects: [ { clear: flag.h_crown_for_life }, { set: flag.h_crown_defied }, { set: flag.h_n_junior }, { add: { counter.favour: -3, rep.honor: -1, rep.nobles: -2 } }, { step_down: junior_crown } ]
+      text_after: |
+        {heir.first} is crowned at dawn in the palace chapel by a bishop who does not meet your eye. By noon the news is in every inn in Lannec, and by Michaelmas half the Estates have written to say that what a king crowns without them, they will uncrown when he is dead. The crown has gone back to blood by force, and the West will remember how.
+      next: h_n_end
+    - id: abdicate
+      text: Lay the crown down, and let the Estates choose.
+      effects: [ { set: flag.h_n_abdicated }, { step_down: abdication } ]
+      text_after: |
+        You lay the crown on the altar at Saint-Lys and step back. The Estates, who refused you a month ago, are summoned to choose, and arrive looking as if they had been caught at something.
+      next: h_n_end
+
+# ---- crown-lost runs: the claim at the next election, or the next designation (L3-45) ----
+- id: h_n12_claim
+  chapter: book1
+  title: "[if flag.h_n_vacancy]The Estates Choose Again[else]The House's Claim[/if]"
+  frames: [free]
+  on_enter:
+    - if: "!flag.h_n_vacancy"
+      then: [ { catch_up: { year: 76, season: spring } } ]
+    - set: flag.h_n_claimed
+  text: |
+    [if flag.h_n_vacancy]The Estates meet at Lannec at Martinmas in 934 to choose King Hervé's successor, and the house's name is on every bench, for and against. Tanguy de Kerguen's friends are in the inns. So are Valdrenne's, for Prince Lothaire. And the old crown's friends, who never stopped calling the house royal, are in the cathedral close lighting candles for it.
+
+    You have {coin}. You are {age_words}.[else]At Lady Day in 938 {realm.sovereign} asks the Estates to name his successor in his lifetime, as your father once asked them, and for the same reason: he wants the next crown decided while he can watch it. The house's name is the first said in the inns, by the old crown's friends and by its enemies, for different reasons.
+
+    "They'll name someone," the steward says. "If it isn't you, it'll be someone who has to deal with you."[/if]
+  choices:
+    - id: ask
+      visible_if: flag.h_n_vacancy
+      text: Stand before the Estates and ask for the crown your father wore.
+      check: { attr: presence, skill: diplomacy, difficulty: 5, audience: nobles, mods: [ { if: "house.standing >= 80", add: 1, label: the greatest house in the West }, { if: "counter.favour >= 4", add: 1, label: the realm's goodwill }, { if: flag.h_n_refused_inquest, add: 1, label: you stood on the Estates' right }, { if: flag.h_n_rising_won, add: 1, label: you held the Armance against him }, { if: "age < 16", add: -2, label: a child } ] }
+      success:
+        text: |
+          You stand at the dais where your father stood, and ask, and the Estates choose the house again, by bench, with their hands raised. The crown comes back to the house eight years after it left, and the clerk who writes it down is the same clerk who wrote it down the first time, and he says so.
+        effects: [ { clear: flag.h_crown_lost }, { set: flag.h_crown_regained }, { west: { frame: free, sovereign: self } }, { station: royal }, { hold: { id: crown_revenues, name: The crown's revenues, income: 120000, kind: fixed } }, { add: { counter.favour: 1 } } ]
+        next: h_n09_mahaut
+      failure:
+        text: |
+          You stand and ask, and the hall hears you out, and counts, and the count is not yours, again.
+        effects:
+          - if: "rival.kerguen.standing >= 35"
+            then: [ { west: { frame: free, sovereign: tanguy } } ]
+            else: [ { west: { frame: free, sovereign: lothaire } } ]
+        next: h_n09_mahaut
+    - id: buy
+      visible_if: flag.h_n_vacancy
+      text: Buy the benches that can be bought, and then ask. (£300)
+      requires: "res.coin >= 72000"
+      check: { attr: presence, skill: diplomacy, difficulty: 3, audience: nobles, mods: [ { if: "age < 16", add: -2, label: a child } ] }
+      success:
+        text: |
+          Three hundred pounds goes out in small sums, and the Estates choose the house again, and the whole West knows the price. A crown bought back is still a crown.
+        effects: [ { clear: flag.h_crown_lost }, { set: flag.h_crown_regained }, { west: { frame: free, sovereign: self } }, { station: royal }, { hold: { id: crown_revenues, name: The crown's revenues, income: 120000, kind: fixed } }, { add: { res.coin: -72000, rep.honor: -1 } } ]
+        next: h_n09_mahaut
+      failure:
+        text: |
+          The money goes out, and the benches that took it vote against you anyway.
+        effects:
+          - add: { res.coin: -72000 }
+          - if: "rival.kerguen.standing >= 35"
+            then: [ { west: { frame: free, sovereign: tanguy } } ]
+            else: [ { west: { frame: free, sovereign: lothaire } } ]
+        next: h_n09_mahaut
+    - id: forward
+      visible_if: "!flag.h_n_vacancy"
+      text: Put the house's name forward, to be named the next sovereign.
+      check: { attr: presence, skill: diplomacy, difficulty: 6, audience: nobles, mods: [ { if: "house.standing >= 80", add: 1, label: the greatest house in the West }, { if: flag.h_armance_united, add: 1, label: the duchy of Armance }, { if: "counter.favour >= 4", add: 1, label: the realm's goodwill } ] }
+      success:
+        text: |
+          The Estates name the house's heir the next sovereign of the West, by bench, after three days, with {realm.sovereign} watching from the dais with a face like a man paying a debt. It is a promise, and promises are what the Estates break most, but it is written.
+        effects: [ { set: flag.h_crown_designated }, { add: { res.renown: 2, counter.favour: -1 } } ]
+        next: { switch: [ { if: [ "family.head_from <= 66", "heir.age >= 14" ], go: h_e12_heir }, { if: "family.head_from <= 66", go: h_e13_end } ], default: h_e_end }
+      failure:
+        text: |
+          The Estates name {realm.sovereign}'s nephew, a boy nobody had heard of at Candlemas, and the house's friends go home with nothing to show but their candles.
+        effects: [ { add: { counter.favour: -1 } } ]
+        next: { switch: [ { if: [ "family.head_from <= 66", "heir.age >= 14" ], go: h_e12_heir }, { if: "family.head_from <= 66", go: h_e13_end } ], default: h_e_end }
+    - id: renounce
+      visible_if: "!flag.h_n_vacancy"
+      text: Renounce the claim, publicly, for the great chamberlainship of the West.
+      effects: [ { set: flag.h_claim_renounced }, { add: { counter.favour: 3, rep.honor: -1 } }, { hold: { id: chamberlain, name: The great chamberlainship of the West, income: 12000, kind: fixed } } ]
+      text_after: |
+        You renounce the house's claim before the Estates in a plain voice, and kneel, and are made great chamberlain with a gold key on a ribbon. The old crown's friends blow out their candles in the cathedral close. Some of them will light them again for your heir. Renunciations are for one life.
+      next: { switch: [ { if: [ "family.head_from <= 66", "heir.age >= 14" ], go: h_e12_heir }, { if: "family.head_from <= 66", go: h_e13_end } ], default: h_e_end }
+    - id: aside
+      text: "[if flag.h_n_vacancy]Stand aside. Let them choose another.[else]Keep the house's claim, and its counsel, to itself.[/if]"
+      effects:
+        - if: flag.h_n_vacancy
+          then:
+            - add: { rep.honor: 1 }
+            - if: "rival.kerguen.standing >= 35"
+              then: [ { west: { frame: free, sovereign: tanguy } } ]
+              else: [ { west: { frame: free, sovereign: lothaire } } ]
+          else: [ { add: { counter.favour: 2 } } ]
+      text_after: |
+        [if flag.h_n_vacancy]The house sends word that it will not ask. The Estates choose {realm.sovereign}, and the house kneels at the crowning, and the old crown's friends blow out their candles.[else]The house says nothing in the Estates, and votes with the majority, and {realm.sovereign} thanks you for it in a letter that is warmer than any he has written you.[/if]
+      next: { switch: [ { if: flag.h_n_vacancy, go: h_n09_mahaut }, { if: [ "family.head_from <= 66", "heir.age >= 14" ], go: h_e12_heir }, { if: "family.head_from <= 66", go: h_e13_end } ], default: h_e_end }
+
+- id: h_n_end
+  chapter: book1
+  frames: [free]
+  kind: ending
+  ending: story_so_far
+  text: |
+    Here Book One, The Keeper, ends. [if realm.sovereign == self]{name} is {house.ruler} of the West, at {age_words}[if family.regency], under a regency[/if].[else]{realm.sovereign} wears the crown, and the house is {house.standing}.[/if] [if flag.h_n_junior]The old sovereign lives on at court, crowned and retired, as the old king did before.[elif flag.h_n_abdicated]The old sovereign laid the crown down, and lives.[/if] [if flag.h_crown_hereditary]The crown is hereditary, by the Estates' vote.[elif flag.h_crown_defied]The crown went back to blood without the Estates, and the Estates have not forgiven it.[elif flag.h_crown_for_life]The Estates keep the choice of every crown.[elif flag.h_crown_eldest]The crown goes to the eldest child, by the Estates' law.[/if] [if flag.h_penhoet_broken]Penhoët is broken, and its claim is Sir Yvon of Kerlan's.[elif flag.h_penhoet_reconciled]Penhoët and the house are to be one blood.[elif flag.h_penhoet_contained]Penhoët is held by a treaty.[/if] [if flag.h_armance_united]The Armance is [if realm.sovereign == self]the crown's[else]the house's[/if].[elif flag.h_armance_sibling]The Armance is a duchy apart, in the hands of the house's own blood.[elif flag.h_armance_child]The Armance waits for a younger child.[elif flag.h_armance_penhoet]The Armance is Penhoët's, by the bargain of 920.[/if]
+
+    Book Two, The Builder, is still being written.

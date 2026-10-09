@@ -4,7 +4,7 @@ import { heldFromOdds, select, die } from '../src/game/family';
 import { FOUNDER_ID, type HouseState } from '../src/game/state';
 import { toSave, fromSave } from '../src/game/save';
 import { renderText } from '@engine/text';
-import { content, house } from './helpers';
+import { content, house, withScenes } from './helpers';
 import { toDynasty } from '../../knight/src/game/dynasty';
 import { loadPlans, playPlan } from '../../knight/tools/bot-lib';
 import { loadContent as loadKnight } from '../../knight/tools/content-loader';
@@ -82,7 +82,7 @@ describe('the prologue: The Old Lord', () => {
   });
 
   it("crowns Mahaut after Thibaut's death unless the house speaks for the boy", () => {
-    const s = drive(house({ frame: 'free', sovereign: 'thibaut' }), ROUTE);
+    const s = drive(house({ frame: 'free', sovereign: 'thibaut' }), ROUTE, [], 'h_e01_crisis');
     expect(s.realm.sovereign).toBe('mahaut');
     expect(s.flags.h_thibaut_dead).toBe(true);
   });
@@ -169,7 +169,7 @@ describe('Book I, Act I: The New Lord', () => {
 
   it("marries the Keeper by the story's match, and never offers the founder's children the odds' matches", () => {
     const seen: string[] = [];
-    const s = drive(house({ seed: 4 }), { ...ROUTE, h_b03_match: ['kerguen'], h_b08_match: ['penhoet'] }, seen);
+    const s = drive(house({ seed: 4 }), { ...ROUTE, h_b03_match: ['kerguen'], h_b08_match: ['penhoet'] }, seen, 'h_e01_crisis');
     const keeper = s.characters[s.hero]!;
     expect(s.characters[keeper.spouse!]!.name).toBe(keeper.sex === 'male' ? 'Azenor de Kerguen' : 'Tanguy de Kerguen');
     expect(titles(seen)).not.toContain('A Match');
@@ -182,7 +182,7 @@ describe('Book I, Act I: The New Lord', () => {
     const d = toDynasty(playPlan(knight, plan).state, knight);
     d.flags = [...d.flags, 'c5r_peace_marriage'];
     const seen: string[] = [];
-    const s = drive(fromDynasty(c, d, { seed: 5, frame: 'free', sovereign: 'mahaut' }), ROUTE, seen);
+    const s = drive(fromDynasty(c, d, { seed: 5, frame: 'free', sovereign: 'mahaut' }), ROUTE, seen, 'h_e01_crisis');
     expect(seen).toContain('h_b03_sauvel');
     expect(seen).not.toContain('h_b03_match');
     expect(s.characters[s.characters[s.hero]!.spouse!]!.name).toMatch(/de Sauvel$/);
@@ -191,11 +191,11 @@ describe('Book I, Act I: The New Lord', () => {
   it('plays Act II, The Law, in every frame and sovereign, to the likely outcome by default', () => {
     for (const [frame, sovereign] of [['free', 'mahaut'], ['free', 'duchy'], ['free', 'thibaut'], ['adalian', 'edwin']] as const) {
       const seen: string[] = [];
-      const s = drive(house({ frame, sovereign }), ROUTE, seen);
+      const s = drive(house({ frame, sovereign }), ROUTE, seen, 'h_e01_crisis');
       expect(seen).toContain(frame === 'adalian' ? 'h_b02_governor' : 'h_b02_herald');
       expect(seen).toEqual(expect.arrayContaining(['h_b12_estates', 'h_c01_offers', 'h_c07_march', 'h_c09_result', 'h_c11_house_law', 'h_d01_sickness', 'h_d06_succour', 'h_d10_count', 'h_d11_will']));
-      expect(s.scene).toBe('h_d_end');
-      expect(s.time).toBe(65); // summer, year 66
+      expect(s.scene).toBe('h_e01_crisis');
+      expect(s.time).toBe(68); // spring, year 67: Act IV opens
       // the Mottle has come and gone; the Old Companion is dead, and Ronan de Penhoët with him
       expect(s.flags.plague).toBeFalsy();
       expect(s.flags.h_companion_dead).toBe(true)
@@ -269,12 +269,12 @@ describe('the crowned path: King of the West, married to Mahaut', () => {
   it('crowns Jehanne junior queen at nine, under her mother\'s regency, and plays to the end of Act I with the old king living', () => {
     for (const seed of [1, 2, 3]) {
       const seen: string[] = [];
-      const s = drive(fromDynasty(c, married(), { seed }), CROWNED, seen);
+      const s = drive(fromDynasty(c, married(), { seed }), CROWNED, seen, 'h_n01_after');
       expect(seen.slice(0, 2)).toEqual(['h_pc00_crown', 'h_pc01_court']);
       expect(seen).toContain('h_pc10_crowning');
       expect(seen).not.toContain('h_p01_hall');
       expect(seen).toEqual(expect.arrayContaining(['h_bc09_estates', 'h_k01_estates', 'h_k05_vote', 'h_k06_majority', 'h_k07_rising']));
-      expect(s.scene).toBe('h_m_end');
+      expect(s.scene).toBe('h_n01_after');
       // Mahaut's child heads the house: Jehanne, unless the odds took her in Act II and a brother or sister followed (L2-4)
       const queen = s.characters[s.hero]!;
       expect(s.characters[queen.mother!]!.name).toBe("Mahaut d'Armance");
@@ -285,7 +285,7 @@ describe('the crowned path: King of the West, married to Mahaut', () => {
       expect(s.characters[FOUNDER_ID]!.retired).toBe(true);
       expect(s.characters[queen.mother!]!.alive).toBe(true);
       expect(s.flags.h_c_junior).toBe(true);
-      expect(s.time).toBe(65);
+      expect(s.time).toBe(68);
       expect(s.family.regent).toBeUndefined(); // of age in Act II
     }
   });
@@ -340,13 +340,13 @@ describe('the crowned path: King of the West, married to Mahaut', () => {
 
     it('carries a hereditary crown only with the case made and an ally, with or without Hervé\'s bargain', async () => {
       const base = { ...CROWNED, h_k02_case: ['hereditary'], h_k05_vote: ['on'] };
-      const bargain = drive(fromDynasty(c, await saved(), { seed: 1 }), { ...base, h_k01_estates: ['accept'], h_k03_count: ['kerguen!success', 'hold'] });
+      const bargain = drive(fromDynasty(c, await saved(), { seed: 1 }), { ...base, h_k01_estates: ['accept'], h_k03_count: ['kerguen!success', 'hold'] }, [], 'h_m01_wedding');
       expect(bargain.flags.h_crown_hereditary).toBe(true);
       expect(bargain.flags.h_armance_male_line).toBe(true);
-      const refused = drive(fromDynasty(c, await saved(), { seed: 1 }), { ...base, h_k01_estates: ['refuse'], h_k03_count: ['spend', 'kerguen!success', 'church!success', 'hold'] });
+      const refused = drive(fromDynasty(c, await saved(), { seed: 1 }), { ...base, h_k01_estates: ['refuse'], h_k03_count: ['spend', 'kerguen!success', 'church!success', 'hold'] }, [], 'h_m01_wedding');
       expect(refused.flags.h_crown_hereditary).toBe(true);
       expect(refused.flags.h_k_penhoet_waits).toBe(true);
-      const short = drive(fromDynasty(c, await saved(), { seed: 1 }), { ...base, h_k01_estates: ['refuse'], h_k03_count: ['hold'] });
+      const short = drive(fromDynasty(c, await saved(), { seed: 1 }), { ...base, h_k01_estates: ['refuse'], h_k03_count: ['hold'] }, [], 'h_m01_wedding');
       expect(short.flags.h_crown_for_life).toBe(true);
     });
 
@@ -358,21 +358,21 @@ describe('the crowned path: King of the West, married to Mahaut', () => {
       // the young king dies (the Mottle, by the odds or by this test)
       s = applyDeath(s, 'the Mottle');
       const seen: string[] = [];
-      s = drive(s, route, seen);
+      s = drive(s, route, seen, 'h_n01_after');
       expect(seen).toEqual(expect.arrayContaining(['h_q_succession', 'h_crown_estates', 'h_crown_lost']));
       expect(s.flags.h_crown_lost).toBe(true);
       expect(['tanguy', 'herve', 'lothaire']).toContain(s.realm.sovereign);
       expect(s.characters[s.hero]!.station).toBe('great_lord');
       expect(s.holdings?.crown_revenues).toBeUndefined();
       expect(s.estate?.name).toBe('Marsalin'); // the house keeps its own
-      expect(s.scene).toBe('h_m_end');
+      expect(s.scene).toBe('h_n01_after');
     });
 
     it('plays the elective crown through Act II, with Jehan king and of age', async () => {
       for (const seed of [1, 2, 3]) {
         const seen: string[] = [];
-        const s = drive(fromDynasty(c, await saved(), { seed }), CROWNED, seen);
-        expect(s.scene).toBe('h_m_end');
+        const s = drive(fromDynasty(c, await saved(), { seed }), CROWNED, seen, 'h_n01_after');
+        expect(s.scene).toBe('h_n01_after');
         expect(seen).toContain('h_pc08_estates');
         expect(seen).toContain('h_bc09_estates');
         const king = s.characters[s.hero]!;
@@ -381,9 +381,8 @@ describe('the crowned path: King of the West, married to Mahaut', () => {
         expect(s.characters[FOUNDER_ID]!.alive).toBe(false); // the Mottle took him (L3-38)
         // the elective crown: confirmed for life unless the crown carried a hereditary one
         expect(s.flags.h_crown_for_life || s.flags.h_crown_hereditary).toBe(true);
-        const end = view(c, s).text;
-        expect(end).toMatch(/King of the West/);
-        expect(end).not.toMatch(/Jehanne|Queen of the West/);
+        expect(renderText('{realm.sovereign}', s, c)).toBe('King Jehan');
+        expect(view(c, s).text).not.toMatch(/Jehanne/);
         // and the end of Act I read as it did
         const mid = drive(fromDynasty(c, await saved(), { seed }), CROWNED, [], 'h_k01_estates');
         expect(mid.family.regent).toBe(king.mother);
@@ -394,5 +393,181 @@ describe('the crowned path: King of the West, married to Mahaut', () => {
   it('keeps the framework scene for a crowned life without Mahaut', () => {
     const s = fromDynasty(c, crowned(), { seed: 1 });
     expect(choose(c, s, 'go_on').state.scene).toBe('h_open');
+  });
+});
+
+describe("Book I, Act IV: the test of the law, and the Keeper's end", () => {
+  for (const [frame, sovereign] of [['free', 'mahaut'], ['free', 'duchy'], ['free', 'thibaut'], ['adalian', 'edwin']] as const) {
+    it(`plays to the end of Book I in a ${frame} West under ${sovereign}, and always ends the Keeper's headship`, () => {
+      const seen: string[] = [];
+      const s = drive(house({ frame, sovereign }), ROUTE, seen);
+      if (s.ended?.ending === 'extinct') return; // the Mottle can still end a house (Act III)
+      expect(s.scene).toBe('h_e_end');
+      expect(seen).toEqual(expect.arrayContaining(['h_e01_crisis', 'h_e02_side', 'h_e04_move', 'h_e06_kerval', 'h_e08_settled', 'h_e09_mahaut', 'h_e10_test']));
+      expect(seen).toContain(frame === 'adalian' ? 'h_e07_majority' : 'h_e07_illness');
+      // Hervé is dead, and Penhoët is settled one of three ways (L2-3)
+      expect(['h_penhoet_broken', 'h_penhoet_reconciled', 'h_penhoet_contained'].filter((f) => s.flags[f])).toHaveLength(1);
+      if (frame === 'free') expect(['h_armance_jehanne', 'h_armance_penhoet', 'h_armance_crown', 'h_armance_cousin'].filter((f) => s.flags[f])).toHaveLength(1);
+      expect(s.realm.war).toBeUndefined();
+      // E13 always ends the headship (L3-23): the Builder heads the house at the close of Book I
+      expect(s.family.generation).toBeGreaterThanOrEqual(3);
+      // by E13, or earlier by the odds (L2-4)
+      expect(seen.includes('h_e13_end') || s.family.since < (77 - 50) * 4).toBe(true);
+    });
+  }
+
+  it("crowns Jehanne under male preference where her mother was Queen, and the Estates choose Gaucelin under the male line", () => {
+    const pref = drive(house({ sovereign: 'mahaut' }), { ...ROUTE, h_e10_test: ['hold_back'] });
+    expect(pref.flags.h_realm_male_pref).toBe(true);
+    expect(pref.flags.h_armance_jehanne).toBe(true);
+    expect(pref.realm.sovereign).toBe('jehanne');
+    const push = { ...ROUTE, h_c01_offers: ['rival'], h_c02_hearing: ['speak!success'], h_c03_price: ['refuse'], h_c05_count: ['ally_kerguen!success'], h_c07_march: ['send!success'], h_c09_vote: ['speak!success'], h_e08_settled: ['contained'], h_e10_test: ['hold_back'] };
+    const line = drive(house({ seed: 3, sovereign: 'mahaut' }), push);
+    expect(line.flags.h_realm_male_line).toBe(true);
+    expect(line.flags.h_armance_penhoet).toBe(true);
+    expect(line.realm.sovereign).toBe('gaucelin');
+    expect(line.flags.h_e_gaucelin_chosen).toBe(true);
+  });
+
+  it('lets a Keeper with nobody of the blood adopt an heir at the end, rather than end the house', () => {
+    let s = house();
+    for (let seed = 1; seed < 30; seed++) {
+      s = drive(house({ seed }), ROUTE, [], 'h_e13_end');
+      if (s.scene === 'h_e13_end') break;
+    }
+    expect(s.scene).toBe('h_e13_end');
+    const t: HouseState = JSON.parse(JSON.stringify(s));
+    const spouse = t.characters[t.hero]!.spouse;
+    for (const [id, x] of Object.entries(t.characters)) if (id !== t.hero && id !== spouse && x.alive) die(t, id, 'a fever');
+    expect(renderText('[if family.no_heir]none[/if]', t, c)).toBe('none');
+    s = drive(t, { h_e13_end: ['hall'] });
+    expect(s.ended?.ending).toBe('story_so_far');
+    expect(s.flags.h_e_adopted).toBe(true);
+    expect(s.characters[s.hero]!.traits).toContain('adopted');
+  });
+
+  it("buries the cloistered founder's widow in Act IV, where Act III passed her over", () => {
+    const prefs = { ...ROUTE, h_p09_illness: ['relic'], h_p10_handover: ['cloister', 'hall'] };
+    for (let seed = 1; seed < 60; seed++) {
+      const s = drive(house({ seed }), prefs, [], 'h_e02_side');
+      if (!s.flags.h_cloister || !s.characters[s.characters[FOUNDER_ID]!.spouse!]?.alive) continue;
+      const seen: string[] = [];
+      const end = drive(s, prefs, seen);
+      expect(seen).toContain('h_e03_widow');
+      expect(end.characters[end.characters[FOUNDER_ID]!.spouse!]!.alive).toBe(false);
+      return;
+    }
+    throw new Error('no seed reached Act IV with the cloistered founder\'s widow living');
+  });
+
+  it("elects the founder's churchly child bishop when Knight of Adalia gave a child to the Church", () => {
+    const knight = loadKnight();
+    for (const plan of loadPlans()) {
+      const end = playPlan(knight, plan).state;
+      if (end.ended?.ending !== 'founder') continue;
+      const d = toDynasty(end, knight);
+      d.flags = [...d.flags, 'c5_younger_church'];
+      for (let seed = 1; seed < 20; seed++) {
+        const s = drive(fromDynasty(c, d, { seed, frame: 'free', sovereign: 'duchy' }), ROUTE, [], 'h_e04_move');
+        if (!select(s, c, 'sibling')) continue;
+        const seen: string[] = [];
+        drive(s, { ...ROUTE, h_e05_bishop: ['weight!success'] }, seen);
+        expect(seen).toContain('h_e05_bishop');
+        return;
+      }
+    }
+    throw new Error('no Founder life left a sibling living into Act IV');
+  });
+});
+
+describe("the crowned path, Act IV: the Armance, and the junior crown", () => {
+  const code = readFileSync(new URL('./fixtures/author-crowned.koad', import.meta.url), 'utf8').trim();
+  const saved = () => decodeDynasty(code);
+  const knightish = { h_pc00_crown: ['go_on'], h_pc10_crowning: ['cathedral'], h_pc16_acclamation: ['written'] };
+  const hereditary = { ...knightish, h_k02_case: ['hereditary'], h_k05_vote: ['on'], h_k01_estates: ['refuse'], h_k03_count: ['spend', 'kerguen!success', 'church!success', 'hold'] };
+
+  it('crowns the heir junior under a hereditary crown, and the old sovereign lives on at court', async () => {
+    for (let seed = 1; seed < 8; seed++) {
+      const seen: string[] = [];
+      const pre = drive(fromDynasty(c, await saved(), { seed }), hereditary, [], 'h_n11_crowning');
+      if (pre.scene !== 'h_n11_crowning') continue;
+      const keeper = pre.hero;
+      expect(pre.flags.h_crown_hereditary).toBe(true);
+      expect(pre.flags.h_armance_united || pre.flags.h_armance_sibling || pre.flags.h_armance_child).toBe(true);
+      const s = drive(pre, { h_n11_crowning: ['cathedral'] }, seen);
+      expect(s.scene).toBe('h_n_end');
+      expect(s.flags.h_n_junior).toBe(true);
+      expect(s.hero).not.toBe(keeper);
+      expect(s.characters[keeper]!.alive).toBe(true);
+      expect(s.characters[keeper]!.retired).toBe(true);
+      expect(s.realm.sovereign).toBe('self');
+      return;
+    }
+    throw new Error('no seed reached the junior crown');
+  });
+
+  it('asks the Estates of a crown for life for the crown by blood; refused, the sovereign can lay it down and they choose', async () => {
+    const forLife = { ...knightish, h_k02_case: ['for_life'] };
+    for (let seed = 1; seed < 8; seed++) {
+      const pre = drive(fromDynasty(c, await saved(), { seed }), forLife, [], 'h_n11_crowning');
+      if (pre.scene !== 'h_n11_crowning') continue;
+      expect(pre.flags.h_crown_for_life).toBe(true);
+      const won = drive(pre, { h_n11_crowning: ['ask!success'] });
+      expect(won.flags.h_crown_hereditary).toBe(true);
+      expect(won.flags.h_crown_for_life).toBeFalsy();
+      const seen: string[] = [];
+      const lost = drive(pre, { h_n11_crowning: ['ask!failure'], h_n11b_refused: ['abdicate'], h_crown_estates: ['aside'] }, seen);
+      expect(seen).toEqual(expect.arrayContaining(['h_n11b_refused', 'h_q_succession', 'h_crown_estates', 'h_crown_lost']));
+      expect(lost.flags.h_crown_lost).toBe(true);
+      expect(lost.scene).toBe('h_n_end');
+      return;
+    }
+    throw new Error('no seed reached the junior crown');
+  });
+
+  it('gives the crown back to the house at King Hervé\'s death, if the Estates will have it', async () => {
+    const route = { ...knightish, h_k02_case: ['for_life'], h_crown_estates: ['aside'], h_n12_claim: ['ask!success'] };
+    let s = drive(fromDynasty(c, await saved(), { seed: 2 }), route, [], 'h_m04_crown');
+    s = applyDeath(s, 'the Mottle');
+    s.houses!.kerguen!.standing = 20; // Kerguen too small to be chosen: the male-line lords' Hervé is
+    const seen: string[] = [];
+    s = drive(s, route, seen, 'h_n01_after');
+    expect(s.realm.sovereign).toBe('herve');
+    s = drive(s, route, seen);
+    expect(seen).toEqual(expect.arrayContaining(['h_n07_rising', 'h_n08k_king', 'h_n12_claim', 'h_n09_mahaut']));
+    expect(seen).not.toContain('h_n08_herve');
+    expect(s.flags.h_crown_regained).toBe(true);
+    expect(s.flags.h_crown_lost).toBeFalsy();
+    expect(s.holdings?.crown_revenues).toBeDefined();
+  });
+
+  it('plays a crown lost to Kerguen through the house\'s claim and the Founder\'s end', async () => {
+    const route = { ...knightish, h_k02_case: ['for_life'], h_crown_estates: ['aside'] };
+    let s = drive(fromDynasty(c, await saved(), { seed: 2 }), route, [], 'h_m04_crown');
+    s = applyDeath(s, 'the Mottle');
+    s.houses!.kerguen!.standing = 40;
+    const seen: string[] = [];
+    s = drive(s, route, seen);
+    expect(seen).toEqual(expect.arrayContaining(['h_n08_herve', 'h_n09_mahaut', 'h_n12_claim']));
+    expect(s.scene).toBe('h_e_end');
+    expect(s.realm.sovereign).toBe('tanguy');
+  });
+});
+
+describe('a death in the years a scene passes over', () => {
+  it('runs the succession before the scene is read, and opens the scene again for the new head', () => {
+    const cx = withScenes([
+      { id: 't_from', chapter: 'book1', title: 'From', text: 'From.', choices: [ { id: 'go', text: 'Go.', next: 't_to' } ] },
+      { id: 't_to', chapter: 'book1', title: 'To', text: '{name} reads this.', on_enter: [ { if: '!flag.t_once', then: [ { set: 'flag.t_once' }, { death: { who: 'head', cause: 'a fever' } } ] } ], choices: [ { id: 'on', text: 'On.', next: 't_to' } ] },
+    ]);
+    let s = drive(house(), ROUTE, [], 'h_b01_homage');
+    const keeper = s.hero;
+    s = { ...s, scene: 't_from' };
+    s = choose(cx, s, 'go').state;
+    expect(s.scene).toBe('h_q_succession');
+    s = choose(cx, s, 'the_law').state;
+    expect(s.scene).toBe('t_to');
+    expect(s.hero).not.toBe(keeper);
+    expect(view(cx, s).text).toContain(s.characters[s.hero]!.name.split(' ')[0]);
   });
 });

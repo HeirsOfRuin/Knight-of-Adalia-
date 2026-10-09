@@ -8,6 +8,7 @@ import { gameOf } from './game';
 import { ageOf, describeDate } from './calendar';
 import { forceOf } from './paths';
 import { capitalise, formatCoin, numberWords } from './format';
+import { renderText } from './text';
 
 export interface CardView extends Card {
   /** label/value lines: date, age, household, lands, force, purse */
@@ -66,5 +67,7 @@ export function cardView(content: ContentBundle, state: GameState, card: Card): 
     dead.push(...(game.cardDead?.(content, state, from) ?? []));
     if (dead.length) since.push(`Dead: ${dead.join(', ')}.`);
   }
-  return { ...card, rows, since };
+  // a card's words may read the state, as scene text does (an act named by frame)
+  const say = (t: string | undefined) => (t === undefined ? undefined : renderText(t, state, content));
+  return { ...card, title: say(card.title)!, subtitle: say(card.subtitle), epigraph: say(card.epigraph), rows, since };
 }

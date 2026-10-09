@@ -141,8 +141,10 @@
   frames: [adalian]
   on_enter:
     - catch_up: { year: 55, season: autumn }
-    - if: flag.h_patent_bought
+    # entry effects guarded: the scene opens again if a succession interrupts it
+    - if: [ flag.h_patent_bought, "!flag.h_b_governor_came" ]
       then: [ { add: { counter.favour: -2 } } ]
+    - set: flag.h_b_governor_came
   text: |
     At Michaelmas a new King's governor at Lannec comes up the valley with forty men, to see the March for himself. He is younger than the last one and has a sharper collar, and he has brought the founder's patent with him in a box, and the old governor's notes on it.
 
@@ -256,8 +258,8 @@
   frames: [free, adalian]
   on_enter:
     - catch_up: { year: 55, season: winter }
-    - set: flag.h_b_wed_sauvel
-    - marry: { who: head, culture: valdrennish, to: de Sauvel }
+    - if: "!flag.h_b_wed_sauvel"
+      then: [ { set: flag.h_b_wed_sauvel }, { marry: { who: head, culture: valdrennish, to: de Sauvel } } ]
   text: |
     {spouse.name} comes over the hills at Candlemas with a train of mules and two waiting-women and a priest who speaks no word of the West's tongue. You were married to {spouse.him} at the peace, by proxy, when you were both children, so that two kings could stop burning each other's barns. You have never met.
 

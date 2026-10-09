@@ -89,7 +89,20 @@ export function transition(state: GameState, content: ContentBundle, rawNext: Ne
   const scene = content.scenes[target!];
   if (!scene) throw new DirectorError(`transition to unknown scene "${target}" from ${state.scene}`);
   enterScene(state, content, scene, changes, rng);
+  // an event queued "at once" by the scene's own entry (a death in the years it passes over) runs before the scene is
+  // read, and the scene opens again after it (its entry effects then find the date already reached)
+  if (scene.kind !== 'ending' && !state.ended && state.queue.some((q) => q.dueAt === AT_ONCE)) {
+    const urgent = takeDueQueued(state, content);
+    if (urgent) {
+      state.returnStack.push(scene.id);
+      state.activeCause = urgent.origin;
+      enterScene(state, content, content.scenes[urgent.event]!, changes, rng);
+    }
+  }
 }
+
+/** A queued event's dueAt that interrupts the scene that queued it on entry (House of Adalia's succession). */
+export const AT_ONCE = Number.MIN_SAFE_INTEGER;
 
 export function enterScene(state: GameState, content: ContentBundle, scene: Scene, changes: string[], rng?: RngCursor): void {
   state.scene = scene.id;

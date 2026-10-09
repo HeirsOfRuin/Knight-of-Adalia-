@@ -1121,8 +1121,254 @@ At midsummer you write the will your father wrote, with the bishop and the chanc
 
 You write the name, and seal it, and give it to the bishop. The bishop reads it, and nods, and says nothing about the Estates, which is the most tactful thing he has ever done.
 
+*Michaelmas, a poor harvest and steady trade: £744 12s 8d came in; the household £106 7s 6d, the men's pay £56 14s and repairs £35 went out*
+
+---
+
+## Book One, Act Four: The Test of the Law
+
+> A law is a promise the living make about the dead, and the dead do not keep it.
+
+### The Crown After the Mottle
+
+*Spring 929, the fifteenth year of King Jehan*
+
+In the spring of 929 the West counts what the Mottle left it. The chancellor brings you the roll in the council chamber: a third of the towns' taxes uncollected, the bridges on the salt road down, two sheriffs dead and nobody appointed, and the Estates, who have not met since before the sickness, asking when they will.
+
+"They'll want thanking," he says. "For the crown's peace. For the crown at all, if I'm honest." He folds the roll. "The Estates gave the crown in 920 on terms, and they read the terms more often than you do."
+
+- Remit the towns' tax for a year, and rebuild the salt road's bridges. (£80)
+- Summon the Estates, and thank them for the crown's peace.
+- Ride the march, and look at Penhoët's walls.
+
+**You choose:** Summon the Estates, and thank them for the crown's peace.
+
+The Estates meet at Whitsun, and are thanked, at length, with a feast, and go home pleased and twenty pounds the fatter. An old knight of the Armance tells you on the stair that it is the first time a king has thanked them for anything. "Your father asked us," he says. "That was different."
+
+*Standing in the realm: much higher; Coin −£20*
+
+### A Birth
+
+*Spring 929, the fifteenth year of King Jehan*
+
+A son is born to the house.
+
+- Name the child for a grandparent.
+- Name the child for a parent.
+- Go on.
+
+**You choose:** Name the child for a grandparent.
+
+*Michaelmas, a fair harvest and steady trade: £853 14s 2d came in; the household £121 19s 2d, the men's pay £56 14s and repairs £35 went out; Sir Tanguy de Rostren dies; his son pays £5 in relief; Sir Robin du Tremblay dies and leaves a son under age; the wardship of tremblay is sold for £20; Sir Even de Kerouac dies; his son pays £5 in relief*
+
+### Hervé's Letters
+
+*Spring 930, the sixteenth year of King Jehan*
+
+In the spring of 930 Hervé de Penhoët's letters go over the march on the first Monday of every month, by the same carter. The constable has a list of where they go: Bertrand de Quérec's exile in Valdrenne, two captains of free companies, and every lord of the Armance who ever lost a lawsuit to your mother.
+
+"He's sixty-three," the constable says. "He's buried his son. Men like that don't write letters for the pleasure of it."
+
+- Take his letters on the road. [Risky]
+- Summon him to court, and ask him what he writes.
+- Let the letters run, and have them copied where you can.
+
+**You choose:** Take his letters on the road.
+
+The carter is stopped at a ford, and his cart turned over, and there is nothing in it but cheeses. The next month the letters go by a different road, and Hervé sends you a cheese.
+
+*Penhoët: colder*
+
+### The Wolf Winter
+
+*Spring 930, the sixteenth year of King Jehan*
+
+The winter comes early and stays into Lent. The river freezes at the ford for the first time in living memory, and the wolves come down out of the hills after the sheep, and then after the shepherds. In the village they shut the doors at Vespers and do not open them for anyone.
+
+The reeve comes up to the hall with snow on his hood. "The barns are full, my lord, and the cottages are empty. Not of people. Of everything else."
+
+- Open the house's barns to the village.
+- Hunt the wolves, with every man who can hold a spear. [Risky]
+- Wait for the thaw.
+
+**You choose:** Open the house's barns to the village.
+
+The village eats the house's barley until Candlemas, and the house eats less of it. In the spring the reeve's wife sends up a cheese, which in that year is a great gift.
+
+*Grain in store (seasons) -1; Marsalin: the village warmer; Michaelmas, a good harvest and slack trade: £778 19s 7d came in; the household £111 5s 8d, the men's pay £56 14s and repairs £35 went out; Michaelmas, a fair harvest and steady trade: £845 7s 6d came in; the household £120 15s 4d, the men's pay £56 14s and repairs £35 went out; The lord of Lanvaux dies; his son pays £5 in relief; Sir Raoul de Lohéac dies; his son pays £5 in relief; Sir Yvon de Penhoët of Kerlan dies; his son pays £5 in relief; Sir Alain de Coatmen dies; his son pays £5 in relief; The new lord of Marans withholds his dues this year, over a quarrel the house's court will have to hear; Michaelmas, a fair harvest and steady trade: £847 10d came in; the household £121 1d, the men's pay £56 14s and repairs £35 went out; Sir Bertrand de la Roche of La Roche-aux-Moines dies and leaves a son under age; the wardship of La Roche-aux-Moines is sold for £20*
+
+### The Crown's Heir
+
+*Spring 933, the nineteenth year of King Jehan*
+
+In the spring of 933 David is five, and has your father's way of standing with his hands behind his back, which nobody taught him. The chancellor says the Estates will want to see the crown's heir before they are asked to crown him, and that they will be asked, one day, and had better have liked what they saw.
+
+Your mother writes from the Armance: "Send the child to me for a summer. I raised one crown. I can raise another."
+
+- Bring David to court, to be seen.
+- Send David to your mother in the Armance.
+- Keep David at home, with you.
+
+**You choose:** Bring David to court, to be seen.
+
+David stands at your elbow through the Easter court in a new gown, and bows to the right people in the right order, and afterwards asks you which of them were lying. "Most," you say. "Good," says David. "I thought so."
+
+*Standing in the realm: higher*
+
+### A Birth
+
+*Spring 933, the nineteenth year of King Jehan*
+
+A son is born to the house.
+
+- Name the child for a grandparent.
+- Name the child for a parent.
+- Go on.
+
+**You choose:** Name the child for a grandparent.
+
+*Michaelmas, a poor harvest and slack trade: £648 19s came in; the household £92 14s 2d, the men's pay £56 14s and repairs £35 went out; Sir Derrien de Lesneven withholds his dues this year, over a quarrel the house's court will have to hear; Sir Anseau de Vaucelles dies; his son pays £5 in relief*
+
+### Your Mother
+
+*Spring 934, the twentieth year of King Jehan*
+
+At Candlemas in 934 your mother falls ill at her castle in the Armance hills: a wasting, the physicians say, and the kind that takes a year. She is fifty-three. The Armance lords ride to her gate to be seen there, and so do Penhoët's men, who are counted by her porter and leave their names.
+
+Her letter comes in her own hand, shorter than her letters used to be. "Don't come. Or come. I can't decide, which is new. Hervé is counting my breaths. Somebody should count his."
+
+- Go up into the hills to her.
+- Send her the best physicians in the West. (£20)
+- Bring her down to Lannec, to the palace and its physicians.
+
+**You choose:** Go up into the hills to her.
+
+You ride up into the hills with forty men and the seals, and govern from her castle through the spring. She is propped on pillows in the window over the valley, and makes you read her the reports, and corrects your Latin. "You're in the Armance," she says one evening, looking down the road. "He'll think that's about him. It is, a little."
+
+*The household: more loyal; Standing in the realm: lower; War with penhoet*
+
+### Hervé Rises
+
+*Summer 934, the twentieth year of King Jehan*
+
+Hervé does not wait for the Duchess to die. At Midsummer Penhoët's men ride out, three hundred with the free companies, and take the Armance castles on the Lannec road, while your mother lies dying four leagues off. A letter is read in every market in the duchy: the Armance passes by the male line, and the male line is Penhoët's. At the bottom, in his own hand: "I have not forgotten the grain."
+
+The constable is at the door with mud to the knee. "They're at the bridge below Armance castle. They've not crossed. They want to see what we do first."
+
+- Lead the men against him yourself. [Even]
+- Send the constable, and stay at Lannec. [Risky]
+- Read his letters to the Estates, and let the Armance hear them.
+- Treat with him: the Armance's custom to the Estates, and a match between the houses. [Even]
+
+**You choose:** Lead the men against him yourself.
+
+They hold the bridge, and come round by the ford, and the line folds. You go down in the river under a horse and are dragged out by the collar. Penhoët holds the Armance road and two castles on it by nightfall.
+
+*Men in your company −20; Penhoët's standing: much higher; Health −1; Michaelmas, a fair harvest and steady trade, in a year of war: £661 2s 6d came in; the household £94 8s 11d, the men's pay £50 14s and repairs £35 went out; Jehan le Bâtard des Salines of the Grand Marais withholds his dues this year, over a quarrel the house's court will have to hear; Sir Guéthenoc de Ploërec withholds his dues this year, over a quarrel the house's court will have to hear; Peace*
+
+### The End of Hervé
+
+*Autumn 934, the twentieth year of King Jehan*
+
+At Michaelmas in 934 Hervé de Penhoët dies at sixty-seven, in the Armance castle he took, with his banner on the gate and the duchy's keys on a hook by his bed. His grandson Yann, Ronan's boy, is fourteen, and head of Penhoët under his guardians.
+
+The generation's quarrel is the next generation's now, and yours to settle. The council waits for the crown's word.
+
+- Reconcile. A child of the house for young Yann, when they are of age.
+- Contain it. A treaty, the boundary sworn, and Penhoët watched.
+
+**You choose:** Reconcile. A child of the house for young Yann, when they are of age.
+
+The contract is signed at Penhoët in the room where Hervé died, with his chair pushed back against the wall. A child of the house and Yann de Penhoët, when they are of age, and the two Armance castles back as the bride's dowry, which is a way of returning them that lets Penhoët's guardians keep their faces. Yann signs with his tongue between his teeth, and asks whether there will be cake.
+
+*The household: more loyal; Mahaut d'Armance is dead*
+
+### Your Mother Is Dead
+
+*Spring 935, the twenty-first year of King Jehan*
+
+Your mother dies at Lady Day in 935, at fifty-four, with you beside her, in the window over the valley. She is buried beside your father at Saint-Lys. Her last letter to the house comes after the bell, sealed before she died: a page about the weather and the price of salt, and at the bottom, "Be kind to yourself. Nobody else will be."
+
+The Armance passes to her heir, and her heir is you. The council asks whether the duchy is to be the crown's, or given.
+
+- Give the Armance to Aliénor, as her own duchy.
+- Keep the Armance for Hal, as his duchy when he is grown.
+- Take the Armance into the crown.
+
+**You choose:** Take the Armance into the crown.
+
+The Armance's revenues come to the crown's exchequer at Michaelmas, two hundred pounds a year, and the duchy's lords do homage to the crown at Lannec instead of to their own duchess in the hills, and do not like the ride.
+
+*Penhoët: much colder; You hold: The duchy of Armance (£200 a year); Standing with the lords: lower*
+
+### The Ransom
+
+*Spring 935, the twenty-first year of King Jehan*
+
+A free company on the march takes one of the house's knights on the road home from a tournament, with his horse and his harness, and sends a boy to the gate with his signet ring and a price. "Twenty pounds," the boy says, "or they'll keep him, and the horse, and send back the rest of him by the piece."
+
+The knight's wife is at the gate behind the boy, with her children.
+
+- Pay the ransom. (£60, for a king's knight)
+- Send men to take him back. [Risky]
+- Tell the boy the house does not buy its knights from thieves.
+
+**You choose:** Pay the ransom. (£60, for a king's knight)
+
+The price triples when the company learns whose knight it holds. You pay it. The knight comes home thin and lousy and grateful, and his wife kisses your hand at Mass in front of the whole household, which embarrasses everyone but her.
+
+*The household: more loyal; Coin −£60; Michaelmas, a rich harvest and brisk trade: £1369 14s 6d came in; the household £195 13s 6d, the men's pay £50 14s and repairs £35 went out; Sir Payen de Fougeray dies and leaves a son under age; the wardship of Fougeray is sold for £20; Sir Hervé de Morlaix of Morlaix-sur-Sel dies; his son pays £5 in relief; Michaelmas, a poor harvest and steady trade: £911 10s 8d came in; the household £130 4s 5d, the men's pay £50 14s and repairs £35 went out; Sir Hugues de Montcalm withholds his dues this year, over a quarrel the house's court will have to hear; Michaelmas, a fair harvest and steady trade: £1052 5s 10d came in; the household £150 6s 7d, the men's pay £50 14s and repairs £35 went out; The lord of the Belair saltings dies and leaves a son under age; the wardship of the Belair saltings is sold for £20; The new lord of Rostren withholds his dues this year, over a quarrel the house's court will have to hear; The new lord of Kerouac withholds his dues this year, over a quarrel the house's court will have to hear*
+
+### The Junior Crown
+
+*Spring 938, the twenty-fourth year of King Jehan*
+
+At Lady Day in 938 you are thirty-one, and David is ten. Your father crowned you beside him when you were a child, and lived on at court, and the West had two kings for eleven years and found it could bear it. The council says it is time to do the same.
+
+The crown goes to the eldest by the Estates' own law. Crowning David beside you is a ceremony, and a promise, and a regency while he is young, with you at court to watch it.
+
+"Your father asked them once," the chancellor says. "They said yes because they were frightened of the alternative. You'll want them frightened again, or grateful."
+
+- Crown David beside you in the cathedral at Saint-Lys, before the West.
+- Crown David quietly, in the palace chapel.
+- Lay the crown down for David, and let a regency govern.
+
+**You choose:** Crown David beside you in the cathedral at Saint-Lys, before the West.
+
+David is crowned at Whitsun in the cathedral where your father lies, in a crown taken in at the back with a strip of velvet. He does not drop it. Afterwards, in the vestry, he asks you who he is supposed to be now. "Yourself," you say, "probably." It is what your father said.
+
+*Standing in the realm: much higher*
+
+### The Succession
+
+*Spring 938, the twenty-fourth year of King Jehan*
+
+Jehan has set the crown on David's head beside his own, and gives the rule into other hands while he lives.
+
+The heir under the law of the house is David, who is ten. Until he comes of age, someone will have to govern for him.
+
+- Let the law stand.
+
+**You choose:** Let the law stand.
+
+Jehan, head of the house from 915 to 938. He crowned his heir in his own lifetime, and gave the rule into other hands while he lived. He left 4 children living, which in that age was a kind of wealth.
+
+*David is head of the house*
+
+### A Birth
+
+*Spring 938, the first year of King David*
+
+A daughter is born to the house.
+
+- Name the child for a grandparent.
+- Name the child for a parent.
+- Go on.
+
+**You choose:** Name the child for a grandparent.
+
 ### The End
 
-Here Act III of Book One ends. The Mottle is over. Your father is in the cathedral at Saint-Lys. You are Jehan, King of the West, twenty-one, married to Maëlle de Kerguen. Hervé de Penhoët is writing letters over the march. Your mother is forty-seven, and the Armance is still hers.
+Here Book One, The Keeper, ends. David is King of the West, at ten, under a regency. The old sovereign lives on at court, crowned and retired, as the old king did before. The crown is hereditary, by the Estates' vote. Penhoët and the house are to be one blood. The Armance is the crown's.
 
-Act IV, The Test of the Law, is still being written.
+Book Two, The Builder, is still being written.

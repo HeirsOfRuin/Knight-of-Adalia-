@@ -167,7 +167,11 @@ export function nameChild(s: HouseState, content: ContentBundle, id: string, sty
   const grand = parent ? s.characters[(c.sex === 'male' ? parent.father : parent.mother) ?? ''] : undefined;
   const first = (x?: Character) => x?.name.split(' ')[0];
   const names = content.registry.names.adalian!;
-  c.name = (style === 'grandparent' ? first(grand) : style === 'parent' ? first(parent) : undefined) ?? pick(c.sex === 'male' ? names.male : names.female, rng);
+  // a living brother or sister's name is not given again (a dead child's may be: houses did)
+  const taken = new Set(Object.entries(s.characters).filter(([k, x]) => k !== id && x.alive && ((c.father && x.father === c.father) || (c.mother && x.mother === c.mother))).map(([, x]) => first(x)));
+  const wanted = style === 'grandparent' ? first(grand) : style === 'parent' ? first(parent) : undefined;
+  const pool = (c.sex === 'male' ? names.male : names.female).filter((n) => !taken.has(n));
+  c.name = (wanted && !taken.has(wanted) ? wanted : undefined) ?? pick(pool.length ? pool : c.sex === 'male' ? names.male : names.female, rng);
 }
 
 // ---- news and the succession -----------------------------------------------------------------

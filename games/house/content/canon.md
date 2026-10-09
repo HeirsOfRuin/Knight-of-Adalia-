@@ -19,7 +19,7 @@ Decided by the author on 2026-10-08. The Church, one Church across every realm u
 | about 64 | **Ronan de Penhoët dies** in the Second Mottle, at about 30. Hervé survives him; Penhoët's heir is Ronan's child, a minor | |
 | 71 | **Aldred III comes of age** and takes the government. He keeps the Hales, Wendmere's officers, unless swung | |
 | 72 | **Hervé de Penhoët dies**, at about 67 | |
-| about 73 | **Mahaut of Armance dies**, at 54. Queen Mahaut's reign, where she was crowned, is thirty-one years | |
+| about 73 | **Mahaut of Armance dies**, at 54. Queen Mahaut's reign, where she was crowned, is thirty-one years. Under male preference Jehanne succeeds (as Queen, where her mother was); under the male line the Armance goes to Penhoët's line, or escheats under Gaucelin, and where Mahaut was Queen the Estates choose Gaucelin de Brésy | |
 | 86-88 | **The Lanzi crash**: Sarenzan banks fail when a crown defaults | Bardi and Peruzzi, 1340s |
 | 89 | **The Schism**: a second Pope is elected in Sarenza against the Pope at Saint-Lys; each realm chooses its obedience | Avignon and Rome, 1378 |
 | 96-100 | **Amaury VII's absences**: the King of Valdrenne is sometimes mad | Charles VI |
@@ -54,6 +54,10 @@ Approved with the story's spine and acts (`../docs/STORY.md`, Layers 1 and 2, 20
 | Sibylle de Penhoët | 3 (born year 47) | Hervé's daughter. On the crowned path, the match Penhoët offers a young king, to put the Armance claim and the duchy in one bed. |
 | Princess Isabeau of Valdrenne | 6 (born year 44) | King Amaury VII's daughter. On the crowned path, Valdrenne offers her for a son of Mahaut's, as it offers Lothaire for a daughter. |
 | Maëlle de Kerguen | 5 (born year 45) | A Kerguen cousin's daughter, born after her father's death at the Pont-aux-Moines; Tanguy's ward. On the crowned path, Kerguen's match for a young king. |
+| Yann de Penhoët | born year 58 | Ronan's son, named for his great-grandfather. Penhoët's heir from the Mottle, its head at fourteen when Hervé dies in year 72. |
+| Hoël | about 25 in year 67 | Sire Guiomar's son, a knight of the Armance. Mahaut's own choice for Jehanne (STORY.md E1). |
+| Lord Edmund Haverell | about 25 in year 67 | An Adalian earl's heir, a candidate for Jehanne in a free West. |
+| Alain de Rosmadec | about 40 in year 73 | Mahaut's cousin's son: the Armance's heir under the male line if Penhoët is broken. |
 
 ## The law of succession
 The house's headship passes by the house's law: `male_line` (only men, through men), `male_preference` (sons before daughters, then daughters and their lines), or `partible` (the eldest son is head; the younger sons' shares come from the lands). A fresh house starts under male preference, the custom of both kingdoms for land.
@@ -81,5 +85,7 @@ The law fight is mostly fixed (STORY.md, L2-2). Each frame has a likely outcome,
 ## The crowned path (a crowned founder married to Mahaut)
 - **The crown's law** is the eldest child of either sex, as Knight of Adalia's crowned ending promised. The Estates may swear to it (year 52), write it into law, or leave it unwritten.
 - **Jehanne**, Mahaut's eldest, is crowned junior queen at Saint-Lys or in the palace chapel at Lady Day, year 53, at nine, by Bishop Évrard, aged a hundred and one. Mahaut is regent until Jehanne is sixteen (year 60).
-- **The old king** reigns nineteen years in all, and dies in his bed about year 64.
+- **The old king** reigns nineteen years in all, and dies of the Second Mottle in Lent of year 64 (STORY.md L3-38, replacing "in his bed").
+- **Mahaut** falls ill at Candlemas of year 72 and dies at Lady Day, year 73, at fifty-four; the head decides the Armance (L3-43).
+- **The reign closes** with the heir crowned junior, about year 76 (L3-44).
 

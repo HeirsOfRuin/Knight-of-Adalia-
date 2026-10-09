@@ -11,3 +11,5 @@ gaucelin:   { frame: free, style: King Gaucelin, capital: Lannec, reign_from: 53
 tanguy:     { frame: free, style: King Tanguy, capital: Lannec, reign_from: 64 }
 herve:      { frame: free, style: King Hervé, capital: Lannec, reign_from: 64 }
 lothaire:   { frame: free, style: King Lothaire, capital: Lannec, reign_from: 64 }
+# Book I, Act IV (STORY.md E10): Mahaut's daughter succeeds to the crown, or the Estates choose Gaucelin under the male line
+jehanne:    { frame: free, style: Queen Jehanne, capital: Lannec, reign_from: 73 }

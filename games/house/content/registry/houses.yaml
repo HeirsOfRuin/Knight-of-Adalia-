@@ -6,7 +6,7 @@ penhoet:
   name: Penhoët
   seat: Penhoët, in the Armance hills
   culture: valdrennish
-  heads: [ { npc: yann_penhoet, until: 51 }, { npc: herve_penhoet, until: 72 } ]
+  heads: [ { npc: yann_penhoet, until: 51 }, { npc: herve_penhoet, until: 72 }, { npc: yann_penhoet_young } ]
   start: { standing: 45, temper: 0, claim: 1 }      # temper 0: watchful (the old rival.penhoet.temper started here)
   openings:
     diminished: { standing: 52, temper: 1 }     # it holds the manor the house lost (L2-7), and can afford to be gracious

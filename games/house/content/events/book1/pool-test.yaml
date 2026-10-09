@@ -1,0 +1,176 @@
+# Book I, Act IV's pool (STORY.md E3, E5, E11; the crowned path's N3 and N10): up to three draws a run, both paths.
+# Prices on the crowned path's scale where the crown pays.
+
+- id: h_b4p_ransom
+  chapter: book1
+  kind: pool
+  pool: h_b4_pool
+  once: true
+  title: The Ransom
+  frames: [free, adalian]
+  text: |
+    A free company on the march takes one of the house's knights on the road home from a tournament, with his horse and his harness, and sends a boy to the gate with his signet ring and a price. "Twenty pounds," the boy says, "or they'll keep him, and the horse, and send back the rest of him by the piece."
+
+    The knight's wife is at the gate behind the boy, with her children.
+  choices:
+    - id: pay
+      text: "Pay the ransom. [if realm.sovereign == self](£60, for a king's knight)[else](£20)[/if]"
+      requires: "realm.sovereign == self && res.coin >= 14400 || realm.sovereign != self && res.coin >= 4800"
+      effects:
+        - add: { counter.household: 1 }
+        - if: "realm.sovereign == self"
+          then: [ { add: { res.coin: -14400 } } ]
+          else: [ { add: { res.coin: -4800 } } ]
+      text_after: |
+        [if realm.sovereign == self]The price triples when the company learns whose knight it holds. You pay it.[else]You pay it.[/if] The knight comes home thin and lousy and grateful, and his wife kisses your hand at Mass in front of the whole household, which embarrasses everyone but her.
+      next: "@return"
+    - id: rescue
+      text: Send men to take him back.
+      check: { attr: wits, skill: tactics, difficulty: 5, mods: [ { if: "res.men >= 30", add: 1, label: men to spare } ] }
+      success:
+        text: |
+          Your men find the company's camp in a wood by the smoke, and go in at dawn, and come out with the knight, the horse, and most of the harness. "You could have paid," the knight says, rubbing his wrists. "I know," you say.
+        effects: [ { add: { res.renown: 2, res.men: -2, counter.household: 1 } } ]
+        next: "@return"
+      failure:
+        text: |
+          The company has moved by the time your men reach the wood. They send the knight back a month later, for double, with a finger missing. You pay.
+        effects: [ { add: { res.coin: -2400, res.men: -3 } } ]
+        next: "@return"
+    - id: leave
+      text: Tell the boy the house does not buy its knights from thieves.
+      effects: [ { add: { counter.household: -2, rep.honor: 1 } } ]
+      text_after: |
+        The knight's wife looks at you for a long moment and goes home. Her husband's own kin pay the ransom at Martinmas, selling a mill to do it, and the household has an opinion about that, which it keeps to the kitchen.
+      next: "@return"
+
+- id: h_b4p_preacher
+  chapter: book1
+  kind: pool
+  pool: h_b4_pool
+  once: true
+  title: A Preacher in the Market
+  frames: [free, adalian]
+  text: |
+    A preacher stands on the market cross on a Saturday and reads the Gospel aloud in the common tongue, from a book he has copied himself, to anyone who will stop. A good many stop. He says the priest has no more power to forgive sins than a cobbler, and the cobbler, who is in the crowd, says he always thought so.
+
+    The bishop's man arrives on Monday. "The bishop would like him," he says, "and the book."
+  choices:
+    - id: bishop
+      text: Give the bishop the preacher, and the book.
+      effects: [ { add: { rep.church: 1, rep.commons: -1 } } ]
+      text_after: |
+        The bishop's men take him in irons, and the book is burned on the cross where he read it. Somebody has copied three pages first. You find one of them nailed to the church door at Easter.
+      next: "@return"
+    - id: protect
+      text: Keep him under the house's protection.
+      effects: [ { add: { rep.commons: 1, rep.church: -2 } } ]
+      text_after: |
+        The bishop writes three letters, each shorter than the last. The preacher reads in the market all summer and moves on at Michaelmas, and in the villages they go on reading his pages aloud in the alehouse, badly, with the cobbler correcting them.
+      next: "@return"
+    - id: banish
+      text: Put him on the road out of the house's lands, with bread.
+      effects: [ { add: { estate.temper: -1 } } ]
+      text_after: |
+        He goes with the bread and a blessing for you that is not quite a curse. The bishop is satisfied. The market is not.
+      next: "@return"
+
+- id: h_b4p_lanzi
+  chapter: book1
+  kind: pool
+  pool: h_b4_pool
+  once: true
+  title: The Lanzi's Letter
+  frames: [free, adalian]
+  text: |
+    A letter comes from the Lanzi's house at Sauvemer, on good paper, in a clerk's beautiful hand. [if house.debt > 0]The bank regrets that it must ask for part of what is owed: its own creditors in Sarenza are pressing it, and it presses those who owe it, as is the custom of banks.[else]The bank has heard that the house is sound, and would be honoured to lend it a hundred pounds at ten in the hundred, for any purpose, on the house's seal.[/if]
+
+    The steward reads it twice. "They want something," he says. "They always want something. The question is only what."
+  choices:
+    - id: repay
+      visible_if: "house.debt > 0"
+      text: Repay what you can.
+      effects: [ { borrow: -12000 }, { add: { rep.merchants: 1 } } ]
+      text_after: |
+        You pay what the strongroom will bear, and the Lanzi's factor writes a receipt in the same beautiful hand, and says the bank will remember the house's promptness, which is what banks say instead of thank you.
+      next: "@return"
+    - id: borrow
+      visible_if: "house.debt <= 0"
+      text: Take the hundred pounds.
+      effects: [ { borrow: 24000 } ]
+      text_after: |
+        The money comes up from Sauvemer in a locked chest with two guards, and the house's seal goes down to Sauvemer on a bond. A hundred pounds, at ten pounds a year, for as long as the house cannot find a hundred pounds.
+      next: "@return"
+    - id: decline
+      text: "[if house.debt > 0]Write back that the house will pay on the terms it signed.[else]Decline, with thanks.[/if]"
+      effects:
+        - if: "house.debt > 0"
+          then: [ { add: { rep.merchants: -1 } } ]
+      text_after: |
+        [if house.debt > 0]The Lanzi write back that of course the terms stand, and the house's name goes into a ledger in Sarenza that nobody in the West will ever see.[else]The Lanzi write back that the offer stands, and will go on standing, which is the most frightening thing a bank can say.[/if]
+      next: "@return"
+
+- id: h_b4p_winter
+  chapter: book1
+  kind: pool
+  pool: h_b4_pool
+  once: true
+  title: The Wolf Winter
+  frames: [free, adalian]
+  text: |
+    The winter comes early and stays into Lent. The river freezes at the ford for the first time in living memory, and the wolves come down out of the hills after the sheep, and then after the shepherds. In the village they shut the doors at Vespers and do not open them for anyone.
+
+    The reeve comes up to the hall with snow on his hood. "The barns are full, my lord, and the cottages are empty. Not of people. Of everything else."
+  choices:
+    - id: barns
+      text: Open the house's barns to the village.
+      effects: [ { add: { estate.food: -1, estate.temper: 2, rep.commons: 1 } } ]
+      text_after: |
+        The village eats the house's barley until Candlemas, and the house eats less of it. In the spring the reeve's wife sends up a cheese, which in that year is a great gift.
+      next: "@return"
+    - id: hunt
+      text: Hunt the wolves, with every man who can hold a spear.
+      check: { attr: endurance, skill: woodcraft, difficulty: 5 }
+      success:
+        text: |
+          Nine wolves in a fortnight, their heads on the church door, and a shepherd's boy who swears he killed one with a crook. The rest go back into the hills. "My lord was on foot in the snow with us," they say in the alehouse, "same as anyone."
+        effects: [ { add: { res.renown: 2, estate.temper: 1 } } ]
+        next: "@return"
+      failure:
+        text: |
+          The wolves are cleverer than the men, and the men are colder than the wolves. You come back with frostbitten toes and two wolf skins, and a shepherd dead in a drift.
+        effects: [ { add: { estate.people: -2, health: -1 } } ]
+        next: "@return"
+    - id: wait
+      text: Wait for the thaw.
+      effects: [ { add: { estate.people: -5, estate.temper: -1 } } ]
+      text_after: |
+        The thaw comes at Lady Day. The priest buries five that winter who would have lived on barley, and says so at Easter, without names, and the village counts them anyway.
+      next: "@return"
+
+- id: h_b4p_regent
+  chapter: book1
+  kind: pool
+  pool: h_b4_pool
+  once: true
+  requires: "realm.west == adalian"
+  title: The Regent's Letter
+  frames: [adalian]
+  text: |
+    A letter comes from Wendmere under the regency council's seal, which is three seals, because the council cannot agree whose to use. The minority has been expensive. The council asks the great houses of the realm for a loan to the crown, "to be repaid at the King's majority, with the King's gratitude."
+
+    "With the King's gratitude," the steward repeats. "That's the interest."
+  choices:
+    - id: lend
+      text: Lend the crown thirty pounds. (£30)
+      requires: "res.coin >= 7200"
+      effects: [ { add: { res.coin: -7200, counter.favour: 2 } } ]
+      text_after: |
+        Thirty pounds goes to Wendmere, and the council's receipt comes back with three seals on it. The King, they say, will remember. A boy of twelve is unlikely to, but his clerks will.
+      next: "@return"
+    - id: refuse
+      text: Refuse, with a letter about the harvest.
+      effects: [ { add: { counter.favour: -1 } } ]
+      text_after: |
+        The council writes back that it understands perfectly. You do not doubt it.
+      next: "@return"

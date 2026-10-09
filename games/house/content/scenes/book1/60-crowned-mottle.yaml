@@ -241,10 +241,11 @@
   frames: [free]
   on_enter:
     - catch_up: { year: 64, season: autumn }
-    - if: [ "spouse.alive", flag.h_bc_betrothed_penhoet, "hero.sex == female" ]
+    - if: [ "spouse.alive", flag.h_bc_betrothed_penhoet, "hero.sex == female", "!flag.h_ronan_dead" ]
       then: [ { death: { who: spouse, cause: the Mottle } } ]
-    - if: "!flag.h_k_penhoet_attainted"
+    - if: [ "!flag.h_k_penhoet_attainted", "!flag.h_herve_hardened" ]
       then: [ { set: flag.h_herve_hardened }, { add: { rival.penhoet.temper: -2 } } ]
+    - set: flag.h_ronan_dead
   text: |
     At Michaelmas the Mottle takes Ronan de Penhoët, at thirty, in three days, the way it takes the young. [if flag.h_bc_betrothed_penhoet && hero.sex == female]He was your husband for a year and a half, and he talked to you about horses as if you were a person, from the first day to the last.[/if] Penhoët's heir is Ronan's son, a child.
 
@@ -392,26 +393,16 @@
       effects: [ { designate: eldest } ]
       text_after: |
         You write the name, and seal it, and give it to the bishop. The bishop reads it, and nods, and says nothing about the Estates, which is the most tactful thing he has ever done.
-      next: h_m_end
+      next: h_n01_after
     - id: guardian
       text: "[if mother.alive]Name your mother guardian of the house, if there is a minority.[else]Name the constable guardian of the house, if there is a minority.[/if]"
       effects: [ { set: flag.h_will_guardian } ]
       text_after: |
         [if mother.alive]Your mother reads it and says, "Again?" and laughs, for the first time since the plague.[else]The constable reads it, and is quiet, and asks you not to die soon, because he is too old for it.[/if]
-      next: h_m_end
+      next: h_n01_after
     - id: provide
       text: "Provide for the younger ones: land for one, the Church for another."
       effects: [ { add: { res.coin: -2400, counter.household: 1 } }, { set: flag.h_will_provided } ]
       text_after: |
         The younger ones are provided for, on parchment, which is where provision starts. Your father did the same. You notice that you are writing in his order, and change it.
-      next: h_m_end
-
-- id: h_m_end
-  chapter: book1
-  frames: [free]
-  kind: ending
-  ending: story_so_far
-  text: |
-    Here Act III of Book One ends. The Mottle is over. Your father is in the cathedral at Saint-Lys. [if realm.sovereign == self]You are {name}, {house.ruler} of the West, {age_words}[if spouse.alive], married to {spouse.name}[/if].[else]{realm.sovereign} wears the crown your father made, and the house is {house.standing}.[/if] [if flag.h_herve_hardened]Hervé de Penhoët is writing letters over the march.[/if] Your mother is forty-seven, and the Armance is still hers.
-
-    Act IV, The Test of the Law, is still being written.
+      next: h_n01_after

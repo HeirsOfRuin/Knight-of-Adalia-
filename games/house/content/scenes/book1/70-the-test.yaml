@@ -1,0 +1,736 @@
+# Book I, Act IV (STORY.md, Layer 3 round 5, E1-E13): The Test of the Law (free) or The Minority (Adalian), the
+# Founder opening. Years 66-78 (928-940). Penhoët's last move and Hervé's death in 72 (L3-20); Mahaut's death in 73,
+# and the test of the law over Jehanne (free) or Aldred III's majority and the new reign's bill (Adalian); the heir of
+# age; the Keeper's end, always taken in E13 (L3-23). The crowned path's runs that lost the crown use E12-E13 and the
+# ending from here (STORY.md L3-45).
+
+- id: h_e01_crisis
+  chapter: book1
+  title: "[if realm.west == adalian]The Council Splits[else]Jehanne's Marriage[/if]"
+  checkpoint: true
+  card: { title: "Book One, Act Four", subtitle: "[if realm.west == adalian]The Minority[else]The Test of the Law[/if]", epigraph: "A law is a promise the living make about the dead, and the dead do not keep it." }
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 67, season: spring } } ]
+  text: |
+    [if realm.west == adalian]In the spring of 929 the boy King's council splits in two across the table at Wendmere. On one side, Carrow's heirs and the Old Baronage, who want the realm governed by its great lords as it was before Edwin. On the other, the Hales: Wendmere's officers, clerks and sheriffs' sons, who governed for Edwin and mean to go on governing for his grandson. Each side wants the West's great houses at its back before the King comes of age.
+
+    The letters come up the valley in the same week, one sealed in red and one in green. The steward lays them side by side on the table, the way you lay out two knives. "Penhoët's had both as well," he says. "If we wait, Hervé chooses first, and we get whichever's left."[else]In the spring of 929 [if realm.sovereign == mahaut]the Queen[else]the Duchess[/if] sends for you to Lannec. Mahaut is forty-eight and grey at the temples, and she receives you in the small room over the river with the window open and nobody else in it.
+
+    "Jehanne is twenty-three," she says. "She is the greatest match in the West, and the law's test in waiting, and every house with a son has written to me. I want the counsel of a house that has nothing to sell me." She smiles, a little. "If there is one."
+
+    On the table: a Sauvel of Valdrenne, the Count of Sauvel's second son, with a peace in his saddlebags; Lord Edmund Haverell, an Adalian earl's heir, with Adalian silver behind him; [if realm.sovereign == gaucelin]King Gaucelin himself, who would put the crown and the duchy in one bed; [/if]and Hoël, Sire Guiomar's son, a knight of the Armance who has nothing but his father's gate at Mortefontaine. Tanguy de Kerguen is her cousin, and would need the Pope.[/if]
+  choices:
+    # ---- free: counsel one candidate; the house's word moves Mahaut's choice (STORY.md E1) ----
+    - id: sauvel
+      visible_if: "realm.west == free && !inherited.c5r_no_peace"
+      text: Counsel the Sauvel, and a peace that is a family.
+      check: { attr: wits, skill: diplomacy, difficulty: 5, mods: [ { if: "rel.mahaut_armance.affection >= 3", add: 1, label: she trusts you }, { if: flag.h_side_mahaut, add: 1, label: you stood by her in the law } ] }
+      success:
+        text: |
+          "Valdrenne will never stop wanting the West back," you say. "Let it want a grandson instead." Mahaut hears you out, and asks two questions about the Sauvel's debts, and writes to Valdrenne that night.
+        effects: [ { set: flag.h_jehanne_wed_sauvel }, { add: { rel.mahaut_armance.respect: 1, rep.valdrenne: 1 } } ]
+        next: h_e02_side
+      failure:
+        text: |
+          She hears you out, and thanks you, and gives Jehanne to Hoël of the Armance at Whitsun, because the Armance lords asked first and loudest. "You were right," she says afterwards. "That is not the same as useful."
+        effects: [ { set: flag.h_jehanne_wed_armance } ]
+        next: h_e02_side
+    - id: adalian
+      visible_if: "realm.west == free"
+      text: Counsel the Adalian earl's heir, and Adalian silver.
+      check: { attr: wits, skill: diplomacy, difficulty: 5, mods: [ { if: "rel.mahaut_armance.affection >= 3", add: 1, label: she trusts you }, { if: flag.h_side_mahaut, add: 1, label: you stood by her in the law } ] }
+      success:
+        text: |
+          "Adalia lost the West," you say. "It hasn't lost the habit of paying for it." Mahaut laughs, which she does not do often, and sends for the Haverell lawyers.
+        effects: [ { set: flag.h_jehanne_wed_adalian }, { add: { rel.mahaut_armance.respect: 1, rival.penhoet.temper: -1 } } ]
+        next: h_e02_side
+      failure:
+        text: |
+          "An Adalian," she says, and looks at the river. "The Armance would never forgive me." She gives Jehanne to Hoël of the Armance at Whitsun, and the Armance lords cheer in the street.
+        effects: [ { set: flag.h_jehanne_wed_armance } ]
+        next: h_e02_side
+    - id: gaucelin
+      visible_if: "realm.sovereign == gaucelin"
+      text: Counsel King Gaucelin himself, and the crown and the duchy in one bed.
+      check: { attr: wits, skill: diplomacy, difficulty: 6, mods: [ { if: "rel.mahaut_armance.affection >= 3", add: 1, label: she trusts you }, { if: flag.h_gaucelin_own, add: 1, label: you stood beside him at his majority } ] }
+      success:
+        text: |
+          "Then there is no test of the law," you say. "There's only a queen." Mahaut is a long while at the window. "Brésy took my crown," she says. "Let Brésy give it back to my daughter." The banns are read at Lannec at Whitsun.
+        effects: [ { set: flag.h_jehanne_wed_gaucelin }, { add: { counter.favour: 2, rival.penhoet.temper: -2 } } ]
+        next: h_e02_side
+      failure:
+        text: |
+          "Brésy," she says, as if the word were a stone in her shoe. "Never." Jehanne marries Hoël of the Armance at Whitsun, and King Gaucelin sends a cup and does not come.
+        effects: [ { set: flag.h_jehanne_wed_armance }, { add: { counter.favour: -1 } } ]
+        next: h_e02_side
+    - id: armance
+      visible_if: "realm.west == free"
+      text: Counsel the Armance knight, Sire Guiomar's son.
+      effects: [ { set: flag.h_jehanne_wed_armance }, { add: { rel.mahaut_armance.affection: 1 } } ]
+      text_after: |
+        "That is what I wanted to hear," she says, "and I am suspicious of it." But she gives Jehanne to Hoël at Whitsun, and the Armance lords cheer in the street, and Penhoët's man at court writes it down.
+      next: h_e02_side
+    # ---- Adalian: the regency council's two parties ----
+    - id: carrow
+      visible_if: "realm.west == adalian"
+      text: Answer the red seal. Carrow's heirs and the Old Baronage.
+      effects: [ { set: flag.h_party_carrow }, { add: { rep.nobles: 1 } } ]
+      text_after: |
+        Carrow's man comes up the valley within the month, an old knight with a broken nose and an expensive horse. "The Hales are clerks," he says. "Clerks count. Lords remember. Which would you rather the King listened to?"
+      next: { switch: [ { if: flag.h_jehanne_ward, go: h_e01b_ward } ], default: h_e02_side }
+    - id: hales
+      visible_if: "realm.west == adalian"
+      text: Answer the green seal. The Hales, and Wendmere's officers.
+      effects: [ { set: flag.h_party_hales }, { add: { counter.favour: 1 } } ]
+      text_after: |
+        The Hales' answer comes in a clerk's hand, polite and exact, with a list of the house's dues to the crown attached and every one of them marked paid. "We like a house that pays," the letter says. You are not sure it is a compliment.
+      next: { switch: [ { if: flag.h_jehanne_ward, go: h_e01b_ward } ], default: h_e02_side }
+    - id: both
+      visible_if: "realm.west == adalian"
+      text: Answer both, warmly, and promise neither.
+      check: { attr: wits, skill: diplomacy, difficulty: 5, mods: [ { if: flag.h_patent_confirmed, add: 1, label: the patent is safe } ] }
+      success:
+        text: |
+          Both letters are answered by the same courier in the same week, in two different hands, and both parties believe the house is leaning their way. The steward says it is like walking two dogs on one lead.
+        effects: [ { set: flag.h_e_both_parties } ]
+        next: { switch: [ { if: flag.h_jehanne_ward, go: h_e01b_ward } ], default: h_e02_side }
+      failure:
+        text: |
+          The courier is careless at an inn in Caldmoor, and both letters are read by the wrong people. By Lammas both parties know the house is selling, and neither wants to buy.
+        effects: [ { add: { counter.favour: -1 } } ]
+        next: { switch: [ { if: flag.h_jehanne_ward, go: h_e01b_ward } ], default: h_e02_side }
+    - id: wait
+      text: "[if realm.west == adalian]Wait. The house stands for the King, and will until he is of age.[else]Say the house has no counsel to give.[/if]"
+      effects:
+        - if: "realm.west == adalian"
+          then: [ { set: flag.h_e_no_party }, { add: { rival.penhoet.standing: 3 } } ]
+          else: [ { set: flag.h_jehanne_wed_armance }, { add: { rel.mahaut_armance.respect: -1 } } ]
+      text_after: |
+        [if realm.west == adalian]You send both letters back with the same answer, that the house is the King's. Penhoët answers the green seal at once, and by midsummer Hervé is sitting with the Hales at Wendmere.[else]"A house with nothing to sell," Mahaut says, "and nothing to say. I should have known there was no such thing." She gives Jehanne to Hoël of the Armance at Whitsun.[/if]
+      next: { switch: [ { if: flag.h_jehanne_ward, go: h_e01b_ward } ], default: h_e02_side }
+
+# ---- Adalian: the house holds Jehanne's marriage (C10's bid) ----
+- id: h_e01b_ward
+  chapter: book1
+  title: The Ward's Marriage
+  frames: [adalian]
+  on_enter: [ { catch_up: { year: 67, season: summer } } ]
+  text: |
+    Jehanne d'Armance is twenty-three, and the house's ward, and her marriage is the house's to make. She has lived at {house.manor} for five years, eaten at your table, beaten your steward at chess and your chaplain at Latin. Her mother writes every month. The last letter says only: "She is not a field."
+
+    Jehanne comes to you herself, in the orchard. "I know what I cost," she says. "A hundred and fifty pounds. I'd like to know what I'm for."
+  choices:
+    - id: heir
+      visible_if: "heir.sex == male && heir.age >= 10"
+      text: Betroth her to {heir.first}, and keep the Armance in the house.
+      effects: [ { set: flag.h_jehanne_wed_house }, { add: { rival.penhoet.temper: -3, rel.mahaut_armance.affection: -1, res.renown: 2 } } ]
+      text_after: |
+        {heir.first} is {heir.ageword}, and Jehanne looks at {heir.him} the way you would look at a horse someone else has bought you. "When he's grown," she says. "Not before." The contract says the same. The Armance lords say the house has bought a duchy, and they are not wrong.
+      next: h_e02_side
+    - id: mother
+      text: Sell the marriage back to her mother, at the price the house paid.
+      effects: [ { set: flag.h_jehanne_wed_armance }, { add: { res.coin: 36000, rel.mahaut_armance.affection: 3 } } ]
+      text_after: |
+        Mahaut pays every penny of it, in Armance silver, and marries her daughter to Hoël, Sire Guiomar's son, at Whitsun. "You could have asked double," Jehanne says, on the morning she leaves. "I know," you say. She kisses your cheek.
+      next: h_e02_side
+    - id: choose
+      text: Let her choose.
+      effects: [ { set: flag.h_jehanne_wed_armance }, { add: { rel.mahaut_armance.affection: 2, rel.mahaut_armance.respect: 2, counter.favour: -1 } } ]
+      text_after: |
+        She chooses Hoël of the Armance, whom she has met twice, because he was kind to a dog at her mother's court. The King's chancery writes that the house has given away a hundred and fifty pounds of the King's goodwill. The house has.
+      next: h_e02_side
+
+- id: h_e02_side
+  chapter: book1
+  title: "[if realm.west == adalian]The Side[else]The Wedding at Lannec[/if]"
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 68, season: summer } } ]
+  text: |
+    [if realm.west == adalian][if flag.h_e_no_party]In 930 the council's quarrel leaves the table. A clerk of the Hales is found in the river at Wendmere with his purse still on him, which means it was not robbery. A Carrow castle on the March shuts its gates on the King's sheriff. Both parties write to the house again, and this time the letters are short.[else]In 930 the council's quarrel leaves the table: a clerk of the Hales in the river at Wendmere with his purse still on him, a Carrow castle on the March with its gates shut on the King's sheriff. Your party writes. It wants proof of the house's side, and it wants it in men or money.[/if][else]Jehanne is married at Lannec at Whitsun in 930, [if flag.h_jehanne_wed_sauvel]to the Sauvel, with a Valdrennish choir and the whole Armance in borrowed silk[elif flag.h_jehanne_wed_adalian]to the Haverell heir, with Adalian lords in the nave pretending not to count the doors[elif flag.h_jehanne_wed_gaucelin]to King Gaucelin, in the cathedral, under two canopies[else]to Hoël of the Armance, with half the duchy in the nave and the other half outside it[/if]. The feast runs three days.
+
+    On the second night Hervé de Penhoët finds you alone on the stair. He is sixty-three and grey and calm, in good dark wool, with no sword.
+
+    "When the Queen is dead," he says, "I will claim the Armance. [if flag.h_realm_male_line]The law gives it to me, and I will take what the law gives.[else]The law gives it to her daughter, and I will see how long a law lasts against men.[/if] I'm telling you because your house has always been honest with mine, after its fashion. I would like you to stay at home that year." He goes back in to the feast.[/if]
+  choices:
+    # free: what the Keeper does with Hervé's words
+    - id: warn
+      visible_if: "realm.west == free"
+      text: Tell Mahaut what Hervé said, word for word.
+      effects: [ { set: flag.h_e_warned }, { add: { rel.mahaut_armance.affection: 1, rival.penhoet.temper: -2 } } ]
+      text_after: |
+        Mahaut listens with her hands folded. "He has been saying it to me for twenty years," she says, "just never aloud. Thank you." By Michaelmas her castellans on the Penhoët side of the duchy have new garrisons, and Hervé knows where they came from.
+      next: { switch: [ { if: [ flag.h_cloister, dowager.alive ], go: h_e03_widow } ], default: { pool: h_b4_pool, count: 1, then: h_e04_move } }
+    - id: secret
+      visible_if: "realm.west == free"
+      text: Keep Hervé's words to yourself.
+      effects: [ { set: flag.h_e_herve_secret } ]
+      text_after: |
+        You go back to the feast and drink Jehanne's health. Hervé raises his cup to you across the hall. It is a small thing to carry, and you carry it home.
+      next: { switch: [ { if: [ flag.h_cloister, dowager.alive ], go: h_e03_widow } ], default: { pool: h_b4_pool, count: 1, then: h_e04_move } }
+    # Adalian: proof of the side
+    - id: men
+      visible_if: "realm.west == adalian && !flag.h_e_no_party"
+      text: Send men. Twenty of the house's own, under a knight.
+      requires: "res.men >= 20"
+      effects: [ { set: flag.h_e_side_proved }, { add: { res.men: -6, counter.favour: 1, res.renown: 1 } } ]
+      text_after: |
+        Twenty men ride east under {house.withholder}, and come home at Martinmas fourteen, with a story about a siege that ended when the castle's cook opened a postern for money. "Lords," says the knight, "are the same everywhere."
+      next: { switch: [ { if: [ flag.h_cloister, dowager.alive ], go: h_e03_widow } ], default: { pool: h_b4_pool, count: 1, then: h_e04_move } }
+    - id: coin
+      visible_if: "realm.west == adalian && !flag.h_e_no_party"
+      text: Send money. Forty pounds, in a locked chest. (£40)
+      requires: "res.coin >= 9600"
+      effects: [ { set: flag.h_e_side_proved }, { add: { res.coin: -9600, counter.favour: 1 } } ]
+      text_after: |
+        The chest goes east under guard and comes back empty with a receipt, which the steward files under Hope.
+      next: { switch: [ { if: [ flag.h_cloister, dowager.alive ], go: h_e03_widow } ], default: { pool: h_b4_pool, count: 1, then: h_e04_move } }
+    - id: late
+      visible_if: "realm.west == adalian && flag.h_e_no_party"
+      text: Join the Hales now, late, and pay for being late. (£30)
+      requires: "res.coin >= 7200"
+      effects: [ { set: flag.h_party_hales }, { set: flag.h_e_side_proved }, { add: { res.coin: -7200 } } ]
+      text_after: |
+        The Hales take the money and the house's name, and put both at the bottom of the list, below Penhoët's.
+      next: { switch: [ { if: [ flag.h_cloister, dowager.alive ], go: h_e03_widow } ], default: { pool: h_b4_pool, count: 1, then: h_e04_move } }
+    - id: words
+      text: "[if realm.west == adalian]Send words. The house's side is the house's word.[else]Answer him in kind, on the stair, before he can go.[/if]"
+      effects:
+        - if: "realm.west == free"
+          then: [ { set: flag.h_e_answered }, { add: { rival.penhoet.temper: -2, res.renown: 1 } } ]
+          else: [ { add: { counter.favour: -1 } } ]
+      text_after: |
+        [if realm.west == adalian]You write a long letter about loyalty and the King's peace. The party reads it the way a hungry man reads a menu.[else]"Then I will not stay at home," you tell him. "I'll be at the bridge." Hervé stops on the stair, and looks back at you for the first time in his life as if you were your own person and not {house.parent}'s child. "Good," he says. "I'd hate to win against nobody."[/if]
+      next: { switch: [ { if: [ flag.h_cloister, dowager.alive ], go: h_e03_widow } ], default: { pool: h_b4_pool, count: 1, then: h_e04_move } }
+
+# ---- cloister runs: the founder's widow dies (D8's scene, moved here) ----
+- id: h_e03_widow
+  chapter: book1
+  title: "[if mother.alive]Your Mother[else]{dowager.first}[/if]"
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 68, season: autumn } } ]
+  text: |
+    In the autumn of 930 {dowager.first} is dying, at {dowager.ageword}, in the hall. She has been a widow twice over: once when {house.parent} took the cowl, and once when {house.parent} died at the abbey in the habit, and was buried inside the cloister, where no one from outside may go. {dowager.He} asks for the shutters open, and for you.
+
+    "The abbot wrote to me when {founder.he} died," {dowager.he} says. "Two lines. He said the brothers sang. I'd like to have heard it." {dowager.He} turns on the pillow. "I'd like to be near {founder.him}. I know I can't."
+  choices:
+    - id: abbey
+      text: Ask the abbot for a grave at the abbey, as near the cloister as the rule allows. (£10)
+      requires: "res.coin >= 2400"
+      effects: [ { add: { res.coin: -2400, counter.shadow: -1, rep.piety: 1 } }, { death: { who: dowager, cause: old age } } ]
+      text_after: |
+        The abbot writes back that the rule is the rule, and that the rule says nothing about the outside of the cloister wall. {dowager.first} dies at Martinmas, and is buried against that wall, under the window of the cell where {house.parent} died, with a stone that says only {dowager.his} name. The brothers sing.
+      next: h_e04_move
+    - id: hold
+      text: Hold her hand.
+      effects: [ { if: spouse.alive, then: [ { add: { spouse.bond: 1 } } ] }, { death: { who: dowager, cause: old age } } ]
+      text_after: |
+        You sit with {dowager.him} till dark. "{founder.He} was frightened, you know," {dowager.he} says, near the end. "Every day of it. He thought someone would come and say it was all a mistake. I think the abbey was the first place nobody could." {dowager.first} dies two days later, in the morning, with the shutters open.
+      next: h_e04_move
+
+- id: h_e04_move
+  chapter: book1
+  title: Hervé's Last Move
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 69, season: spring } } ]
+  text: |
+    [if realm.west == adalian]In the spring of 931 Hervé de Penhoët comes back from Wendmere with a parchment: a commission from [if flag.h_party_hales || flag.h_e_no_party]the Hales[else]the King's council[/if] to keep the King's peace in the Armance. It is a sheriff's commission in a great lord's hands, and the first thing he keeps the peace of is the road to {house.claimed}.[else]In the spring of 931 Penhoët begins to arm, quietly, in the way of a house that has been patient for forty years. The steward's cousin, who sells horses, says Penhoët has bought sixty since Candlemas. A free company winters in Penhoët's barns and is paid in coin, not promises. [if flag.h_realm_male_line]Under the male line the Armance will be Penhoët's when Mahaut dies, and Hervé means to be ready to take it.[else]Under male preference the Armance will be Jehanne's when Mahaut dies, and Hervé means to make his claim anyway, with men.[/if] The nearest road to the Armance runs across the bridge at {house.claimed}.[/if]
+
+    [if flag.h_second_penhoet && sibling.alive]{sibling.first} writes from Penhoët: "He hasn't told me what it's for. That's how I know."[elif flag.h_succoured]Penhoët ate the house's grain in the Mottle. Hervé has not forgotten it. He has also not stopped buying horses.[elif flag.h_struck]Penhoët has not forgotten the winter you struck. Nobody at Penhoët has been allowed to.[/if]
+  choices:
+    - id: read
+      text: Find out what he means to do, before you do anything.
+      check: { attr: wits, skill: tactics, difficulty: 5, mods: [ { if: flag.h_counted_penhoet, add: 1, label: you counted Penhoët before }, { if: [ flag.h_second_penhoet, sibling.alive ], add: 2, label: your kin are there } ] }
+      success:
+        text: |
+          Your man drinks with Penhoët's farrier for a month. "The bridge first," he says when he comes back, "at harvest, when your men are in the fields. Then the Armance road. He's counted your men, and he's counted wrong by about ten." You know the day and the road. That is worth more than walls.
+        effects: [ { set: flag.h_e_read_penhoet } ]
+        next: { switch: [ { if: [ inherited.c5_younger_church, sibling.alive ], go: h_e05_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_e06_kerval } }
+      failure:
+        text: |
+          Your man comes back with a black eye and a story about a hunting party. Penhoët's farrier, it turns out, does not drink.
+        effects: [ { add: { rival.penhoet.temper: -1 } } ]
+        next: { switch: [ { if: [ inherited.c5_younger_church, sibling.alive ], go: h_e05_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_e06_kerval } }
+    - id: arm
+      text: Arm too. Walls, men, and the bridge watched. (£30)
+      requires: "res.coin >= 7200"
+      effects: [ { set: flag.h_e_armed }, { add: { res.coin: -7200, estate.defence: 1, res.men: 10, rival.penhoet.temper: -1 } } ]
+      text_after: |
+        The masons are on the gatehouse by Whitsun, and ten new men are drilling in the meadow by Lammas, badly, with the old sergeant shouting at them. Penhoët's men, across the stream, watch them drill, and laugh, and stop laughing by Michaelmas.
+      next: { switch: [ { if: [ inherited.c5_younger_church, sibling.alive ], go: h_e05_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_e06_kerval } }
+    - id: sovereign
+      text: "Go to [if realm.west == adalian]the King's council, and lay it before them[elif realm.sovereign == gaucelin]King Gaucelin, and lay it before him[else]Mahaut, and lay it before her[/if]."
+      effects: [ { set: flag.h_e_to_sovereign }, { add: { counter.favour: 1 } } ]
+      text_after: |
+        [if realm.west == adalian]The council hears you, and writes to Penhoët reminding it of the limits of its commission, and Penhoët writes back thanking the council for its reminder. Nothing changes but the paper.[else]You are heard, and thanked, and promised that the crown's peace will be kept. "The crown," says the steward on the road home, "keeps a great deal of things. Mostly its distance."[/if]
+      next: { switch: [ { if: [ inherited.c5_younger_church, sibling.alive ], go: h_e05_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_e06_kerval } }
+    - id: penhoet
+      text: "Ride to Penhoët[if flag.h_second_penhoet && sibling.alive], to {sibling.first},[/if] and ask Hervé to his face."
+      effects:
+        - set: flag.h_e_to_penhoet
+        - add: { rival.penhoet.temper: 1 }
+        - if: [ flag.h_second_penhoet, sibling.alive ]
+          then: [ { add: { counter.second: 1, rival.penhoet.temper: 1 } } ]
+      text_after: |
+        Hervé gives you dinner and the best room and an honest answer. "I'm sixty-four," he says. "I've buried my son. I'd like the thing my father wanted before I'm buried too. It's nothing to do with you." He pours the wine himself. "Except the bridge. The bridge is to do with you."
+      next: { switch: [ { if: [ inherited.c5_younger_church, sibling.alive ], go: h_e05_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_e06_kerval } }
+
+# ---- if a child of the house was given to the Church (Knight of Adalia's c5_younger_church) ----
+- id: h_e05_bishop
+  chapter: book1
+  title: The Bishop of Saint-Lys
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 70, season: spring } } ]
+  text: |
+    In Lent of 932 the Bishop of Saint-Lys dies, and the chapter meets to elect his successor, and {sibling.first} is one of three names on the canons' list. {sibling.He} is {sibling.ageword}, a canon of Saint-Lys for ten years, and {house.parent}'s child, and the West has never had a bishop born in it. [if realm.west == adalian]The King's council wants its own clerk. The Pontiff at Saint-Lys wants his.[else]Valdrenne wants its own man. The Pontiff wants his.[/if]
+
+    {sibling.first} writes: "I'd like it. I'd like it more if I didn't have to owe you for it. I expect I'll have to owe you for it."
+  choices:
+    - id: weight
+      text: Put the house's weight behind {sibling.first}. (£40)
+      requires: "res.coin >= 9600"
+      check: { attr: presence, skill: diplomacy, difficulty: 6, audience: clergy, mods: [ { if: "rep.church >= 3", add: 1, label: the Church's goodwill }, { if: "counter.favour >= 3", add: 1, label: the sovereign's favour } ] }
+      success:
+        text: |
+          Forty pounds goes to the right canons in the right order, and the chapter elects {sibling.first} on the second count. {sibling.He} is consecrated at Whitsun, and the first thing {sibling.he} does as bishop is write to you that {sibling.he} intends to be impartial, which means {sibling.he} intends to be seen to be.
+        effects: [ { set: flag.h_e_bishop }, { add: { res.coin: -9600, rep.church: 2, counter.second: 2 } } ]
+        next: h_e06_kerval
+      failure:
+        text: |
+          The money goes out and the chapter elects the Pontiff's man, by one voice. {sibling.first} writes that it is God's will, and in the margin, smaller, that God's will was cheaper than yours.
+        effects: [ { add: { res.coin: -9600, counter.second: -1 } } ]
+        next: h_e06_kerval
+    - id: chapter
+      text: Let the chapter decide.
+      effects:
+        - add: { rep.church: 1 }
+        - chance: 35
+          then: [ { set: flag.h_e_bishop } ]
+      text_after: |
+        [if flag.h_e_bishop]The chapter elects {sibling.first} on the third count, without a penny from the house, and the West's first bishop is consecrated at Whitsun owing nobody but God, which {sibling.he} mentions in the sermon.[else]The chapter elects the Pontiff's man. {sibling.first} kneels to him at the consecration, and stays a canon, and is the better canon for it, or says so.[/if]
+      next: h_e06_kerval
+
+- id: h_e06_kerval
+  chapter: book1
+  title: The Bridge at {house.claimed}
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 70, season: summer } }, { war: penhoet } ]
+  text: |
+    At harvest in 932 [if realm.west == adalian]Penhoët's men come to the bridge at {house.claimed} with the King's commission on a pole, and read it aloud at the gate: the peace of the Armance requires that the bridge be held by the King's officer, who is Hervé de Penhoët.[else]Penhoët's men come to the bridge at {house.claimed} at dawn, sixty horse and the free company, and put a barricade of carts across the far end of it.[/if] [if flag.h_e_read_penhoet]You knew the day. Your men are not in the fields.[else]Your men are in the fields with sickles.[/if]
+
+    The old sergeant comes up from the bridge at a run, with his helmet in his hand. "They're on the far bank, my lord. A hundred, near enough. They've not crossed. They're waiting to see what we do."
+  choices:
+    - id: lead
+      text: Ride down to the bridge and lead the house's men yourself.
+      check: { attr: presence, skill: command, difficulty: 6, audience: knights, mods: [ { if: "res.men >= 30", add: 1, label: a strong company }, { if: flag.h_e_armed, add: 1, label: you armed in time }, { if: flag.h_e_read_penhoet, add: 1, label: you knew the day }, { if: "flag.h_c_sent_men || flag.h_c_hired_bastard", add: 1, label: men who have fought this war } ] }
+      success:
+        text: |
+          You take the bridge at a walk, with your banner, and the house's men behind you, and the barricade of carts comes apart at the first push because the free company has looked at your line and decided it is not paid enough. Penhoët's knights stand a while longer, and break, and leave four dead on the bank. You do not notice the cut on your forearm until the steward points at the blood on your saddle.
+        effects:
+          - set: flag.h_e_kerval_won
+          - war: none
+          - add: { res.renown: 4, res.men: -4, rival.penhoet.temper: -3, rival.penhoet.standing: -4 }
+          - chance: 30
+            then: [ { set: flag.h_e_wounded }, { add: { health: -1 } } ]
+        next: { switch: [ { if: "realm.west == adalian", go: h_e07_majority } ], default: h_e08_settled }
+      failure:
+        text: |
+          The free company holds the carts, and Penhoët's knights come round by the ford, and the house's line folds at the bridge. You are knocked from your horse in the stream and dragged out by the sergeant by the collar. Penhoët holds the far bank and the mill by nightfall.
+        effects:
+          - set: flag.h_e_kerval_lost
+          - set: flag.h_e_wounded
+          - add: { health: -1, res.men: -10, estate.temper: -1, rival.penhoet.standing: 3 }
+          - if: holding.kerval_mill
+            then: [ { release: kerval_mill } ]
+        next: { switch: [ { if: "realm.west == adalian", go: h_e07_majority } ], default: h_e08_settled }
+    - id: send
+      text: Send the house's men under {house.withholder}, and stay at the hall.
+      check: { attr: presence, skill: command, difficulty: 7, audience: knights, mods: [ { if: "res.men >= 30", add: 1, label: a strong company }, { if: flag.h_e_armed, add: 1, label: you armed in time }, { if: flag.h_e_read_penhoet, add: 1, label: you knew the day } ] }
+      success:
+        text: |
+          {house.withholder} takes the bridge back by Vespers, at the cost of two men and his best horse, and sends you Penhoët's barricade cart by cart as firewood. The valley says it was well done. It also says, in the alehouse, that {house.parent} would have been on the bridge.
+        effects: [ { set: flag.h_e_kerval_won }, { war: none }, { add: { res.men: -3, counter.shadow: 1, rival.penhoet.temper: -3, rival.penhoet.standing: -3 } } ]
+        next: { switch: [ { if: "realm.west == adalian", go: h_e07_majority } ], default: h_e08_settled }
+      failure:
+        text: |
+          The house's men are driven off the bridge, and {house.withholder} comes home with his arm in a sling and the news that Penhoët holds the far bank and the mill.
+        effects:
+          - set: flag.h_e_kerval_lost
+          - add: { res.men: -8, estate.temper: -1, rival.penhoet.standing: 3 }
+          - if: holding.kerval_mill
+            then: [ { release: kerval_mill } ]
+        next: { switch: [ { if: "realm.west == adalian", go: h_e07_majority } ], default: h_e08_settled }
+    - id: treat
+      text: Ride down under a white flag, and treat with Penhoët on the bridge.
+      check: { attr: wits, skill: diplomacy, difficulty: 5, mods: [ { if: [ flag.h_second_penhoet, sibling.alive ], add: 2, label: your kin are at Penhoët }, { if: flag.h_succoured, add: 2, label: Penhoët ate your grain }, { if: "rival.penhoet.temper >= 3", add: 1, label: Penhoët's goodwill }, { if: flag.h_e_to_penhoet, add: 1, label: you asked him to his face } ] }
+      success:
+        text: |
+          You meet Penhoët's captain in the middle of the bridge, with the water loud under it, and talk until the light goes. Hervé is not there; he is sixty-five and his knees are bad. But his captain has his word to give, and gives it: the barricade goes back, and the houses will walk the boundary together at Michaelmas, and nobody need die at a mill.
+        effects: [ { set: flag.h_e_treated }, { war: none }, { add: { rival.penhoet.temper: 3 } } ]
+        next: { switch: [ { if: "realm.west == adalian", go: h_e07_majority } ], default: h_e08_settled }
+      failure:
+        text: |
+          Penhoët's captain hears you out, and spits in the stream, and says his orders are the bridge. His men hold it through the winter. The mill is Penhoët's while they do.
+        effects:
+          - set: flag.h_e_kerval_held
+          - if: holding.kerval_mill
+            then: [ { release: kerval_mill } ]
+        next: { switch: [ { if: "realm.west == adalian", go: h_e07_majority } ], default: h_e08_settled }
+    - id: law
+      text: "Go to law, and to [if realm.west == adalian]the King's council[else]the sovereign[/if]. Let them hold the bridge."
+      effects:
+        - set: flag.h_e_kerval_law
+        - add: { res.coin: -4800, estate.temper: -1 }
+        - if: "counter.favour >= 3"
+          then: [ { set: flag.h_e_kerval_won } ]
+          else: [ { set: flag.h_e_kerval_held } ]
+      text_after: |
+        [if flag.h_e_kerval_won]The court sits at Martinmas and gives judgment for the house, and Penhoët's men march off the bridge under a sergeant-at-arms with a white rod, and Hervé would rather have lost a battle. It costs twenty pounds in lawyers.[else]The court sits at Martinmas, and adjourns, and sits again at Candlemas, and adjourns. Penhoët holds the bridge and the mill while it does. It costs twenty pounds in lawyers to find out that the law is slow.[/if]
+      next: { switch: [ { if: "realm.west == adalian", go: h_e07_majority } ], default: h_e08_settled }
+
+# ---- Adalian: the King's majority (STORY.md E7, L3-21) ----
+- id: h_e07_majority
+  chapter: book1
+  title: The King's Majority
+  frames: [adalian]
+  on_enter:
+    - catch_up: { year: 71, season: summer }
+    - war: none
+    # Aldred III keeps the Hales unless the house and an ally swing him for Carrow (L3-21)
+    - if: [ flag.h_party_carrow, flag.h_e_side_proved, { any: [ "counter.allies >= 1", "rival.kerguen.temper >= 3" ] } ]
+      then: [ { set: flag.h_e_carrow_won } ]
+      else: [ { set: flag.h_e_hales_won } ]
+  text: |
+    At midsummer in 933 Aldred, the third of the name, sixteen years old, rides into the hall at Wendmere with his own guard and takes the seals from the council's hands. Every great lord of both realms is there to see it, or has sent someone who will report the colour of the King's face.
+
+    [if flag.h_e_hales_won]He keeps the Hales. The men who raised him stand behind his chair, and Carrow's heirs are sent home to their estates and told to stay there. [if flag.h_party_carrow]The house was on the wrong side.[elif flag.h_party_hales]The house was on the right side, and early.[else]The house was on nobody's side, which the Hales remember as Carrow's.[/if][else]He turns on the Hales. He has been raised by clerks and he is sick of them, and the house and its friends have given him the lords to do it with. The Hales are in the Tower by Lammas. Carrow's heirs stand behind the King's chair, and one of them looks across the hall at you and nods.[/if]
+  choices:
+    - id: kneel
+      text: Kneel first, before the others have finished looking at each other.
+      effects: [ { add: { counter.favour: 2 } } ]
+      text_after: |
+        You are on your knees on the cold flags before the herald has finished the King's style, and Aldred looks down at you with his grandfather's eyes and says, "Armance, isn't it? Or the next valley?" It is a start.
+      next: h_e08_settled
+    - id: reward
+      visible_if: "flag.h_party_hales && flag.h_e_hales_won || flag.h_party_carrow && flag.h_e_carrow_won"
+      text: Ask for the reward. The house was on the winning side.
+      check: { attr: presence, skill: courtesy, difficulty: 5, audience: nobles }
+      success:
+        text: |
+          The King gives you the keeping of the march castles of the Armance, with a fee, and his hand to kiss. Carrow's man, or the Hales', claps you on the shoulder on the stair. Winners pay their debts with things that cost them nothing.
+        effects: [ { add: { counter.favour: 1, res.renown: 2 } }, { hold: { id: march_keeping, name: The keeping of the Armance march castles, income: 4800, kind: fixed } } ]
+        next: h_e08_settled
+      failure:
+        text: |
+          You ask too soon, and too plainly, and the King's new chamberlain writes your name on a list of men who ask. The reward will come, he says, in due course.
+        effects: [ { add: { counter.favour: -1 } } ]
+        next: h_e08_settled
+    - id: mercy
+      visible_if: "flag.h_party_hales && flag.h_e_carrow_won || flag.h_party_carrow && flag.h_e_hales_won"
+      text: Ask for mercy. Pay for it, and keep the patent. (£60)
+      requires: "res.coin >= 14400"
+      effects: [ { set: flag.h_e_mercy }, { add: { res.coin: -14400, counter.favour: 1 } } ]
+      text_after: |
+        Sixty pounds, in a fine, for having been on the wrong side of a boy's quarrel with his tutors. The patent stands. The house's name comes off the list it was on and goes onto a shorter one, of houses that paid.
+      next: h_e08_settled
+
+- id: h_e08_settled
+  chapter: book1
+  title: Penhoët Settled
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 72, season: spring } }, { war: none } ]
+  text: |
+    In Lent of 934 Hervé de Penhoët dies at sixty-seven, in his chair by the fire at Penhoët, with his clerk reading him the accounts. They say he corrected a sum an hour before the end. His grandson Yann, Ronan's boy, is fourteen, and head of Penhoët under his guardians.
+
+    [if flag.h_e_kerval_won]The bridge is the house's, and Penhoët's men are home with their wounds, and the West knows who held {house.claimed}.[elif flag.h_e_treated]The bridge is quiet, and the houses walked the boundary together at Michaelmas, two old enemies and their stewards, stopping at every stone.[else]Penhoët's men are still on the far bank, and the mill is grinding Penhoët's corn.[/if] With Hervé gone, the generation's quarrel is the next generation's to settle, and yours. [if realm.west == adalian]The King's council[elif realm.sovereign == gaucelin]King Gaucelin[else]Mahaut[/if] writes to ask what the house wants done.
+  choices:
+    - id: broken
+      visible_if: "flag.h_e_kerval_won && counter.favour >= 3"
+      text: Break Penhoët. Ask for its attainder, and its lands.
+      effects: [ { set: flag.h_penhoet_broken }, { assign: { rival.penhoet.standing: 10, rival.penhoet.temper: -10 } }, { add: { rep.ruthlessness: 2, counter.second: -2 } }, { hold: { id: penhoet_lands, name: Penhoët's lands on the Kerval side of the hills, income: 4800 } } ]
+      text_after: |
+        The attainder passes at Easter, for the bridge and the commission and the free company. Penhoët's lands go to the crown, and the half on your side of the hills comes to the house. Young Yann goes to his mother's people with a pony and a tutor. The claim, such as it is, passes to Sir Yvon of Kerlan, Hervé's cousin, who does not write, and does not forget. [if flag.h_second_penhoet && sibling.alive]{sibling.first} writes once, a single line, and then not again for a year.[/if]
+      next: { switch: [ { if: "realm.west == free", go: h_e07_illness } ], default: h_e09_mahaut }
+    - id: reconciled
+      visible_if: "family.children >= 1 && rival.penhoet.temper >= -6 || family.children >= 1 && flag.h_e_treated || family.children >= 1 && flag.h_second_penhoet"
+      text: Reconcile. A match between a child of the house and young Yann's line.
+      effects: [ { set: flag.h_penhoet_reconciled }, { set: flag.h_penhoet_match }, { assign: { rival.penhoet.temper: 5 } }, { add: { counter.household: 1 } }, { if: flag.h_e_kerval_held, then: [ { clear: flag.h_e_kerval_held }, { set: flag.h_kerval_shared } ] } ]
+      text_after: |
+        The contract is signed at Penhoët in the room where Hervé died, with his chair pushed back against the wall. A child of the house and Yann de Penhoët, when they are of age, and the mill at {house.claimed} the dowry, held by both. [if flag.h_second_penhoet]Under {sibling.first}'s roof the two houses are already one blood, and now they will be twice.[/if] Yann, fourteen, signs his name with his tongue between his teeth, and asks whether there will be cake.
+      next: { switch: [ { if: "realm.west == free", go: h_e07_illness } ], default: h_e09_mahaut }
+    - id: contained
+      text: Contain it. A treaty, the boundary walked and sworn, the mill shared.
+      effects: [ { set: flag.h_penhoet_contained }, { assign: { rival.penhoet.temper: 1 } }, { if: flag.h_e_kerval_held, then: [ { clear: flag.h_e_kerval_held }, { set: flag.h_kerval_shared } ] } ]
+      text_after: |
+        The treaty is sworn on the bridge at Michaelmas, with relics, and the boundary walked again, and the mill shared by the week, Penhoët's corn Monday to Wednesday and the house's Thursday to Saturday, and nobody's on Sunday. The steward calls it a fence with a gate in it.
+      next: { switch: [ { if: "realm.west == free", go: h_e07_illness } ], default: h_e09_mahaut }
+
+# ---- free: Mahaut's last illness (E7's slot in a free West) ----
+- id: h_e07_illness
+  chapter: book1
+  title: The Queen's Illness
+  frames: [free]
+  on_enter: [ { catch_up: { year: 72, season: winter } } ]
+  text: |
+    At Christmas in 934 Mahaut does not come down to the feast. By Candlemas the court at Lannec knows, and the houses count: who stands where when [if realm.sovereign == mahaut]the crown[else]the duchy[/if] passes, and who has already sent a man to Jehanne's household, and who has sent two. [if flag.h_realm_male_line]Under the male line the Armance is not Jehanne's to have.[else]Under male preference it is Jehanne's, if the West lets her keep it.[/if]
+
+    Mahaut writes to you in her own hand, short. "I have written to your house every Christmas since 912. This is the last one, I think. Come if you like. Don't if it would cost you."
+  choices:
+    - id: visit
+      text: Ride to Lannec, and sit with her.
+      effects: [ { set: flag.h_e_visited }, { add: { rel.mahaut_armance.affection: 2 } } ]
+      text_after: |
+        She is thin, and sharp, and propped up on four pillows, and she makes you tell her about the bridge twice. "{house.parent_start} would have charged," she says. "You talked first. Good." At the door she calls you back. "Jehanne will need someone who talks first."
+      next: h_e09_mahaut
+    - id: count
+      text: Stay in the hall, and count the houses.
+      effects: [ { set: flag.h_e_counted_houses } ]
+      text_after: |
+        You spend Lent with the steward and a list. By Lady Day you know which houses will stand for Jehanne, which for the law, and which for whoever pays, and roughly what they cost.
+      next: h_e09_mahaut
+    - id: physician
+      text: Send her the house's physician, and a letter. (£5)
+      requires: "res.coin >= 1200"
+      effects: [ { add: { res.coin: -1200, rel.mahaut_armance.respect: 1 } } ]
+      text_after: |
+        The physician comes back after a month and says there is nothing in the world to be done, and that she knew it, and was kind to him about it.
+      next: h_e09_mahaut
+
+- id: h_e09_mahaut
+  chapter: book1
+  title: "[if realm.sovereign == mahaut]The Queen Is Dead[else]The Duchess Is Dead[/if]"
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 73, season: spring } } ]
+  text: |
+    Mahaut of Armance dies at Lady Day in 935, at fifty-four, [if realm.sovereign == mahaut]in the thirty-second year of her reign[else]after thirty-one years as Duchess[/if]. Her last letter to the house comes a week after the bell, in her own hand, sealed before she died: a page about the weather and the price of salt, and at the bottom, "Be kind to her."
+
+    [if realm.west == adalian]Jehanne succeeds to the duchy of Armance under King Aldred, at twenty-nine[if flag.h_jehanne_wed_house], and the house's child is her husband by contract, and will be Duke of Armance in her right[/if].[elif realm.sovereign == mahaut]Jehanne, twenty-nine, is proclaimed Queen at Lannec by the heralds, and the proclamation is answered in the Armance by silence.[else]Jehanne, twenty-nine, is Duchess of Armance by her mother's will, and the will is answered in the Armance by silence.[/if] [if flag.h_realm_male_line]The law of the West says the Armance passes only through men, and Mahaut was a woman, and so is her daughter.[elif realm.west == free]The law of the West says the Armance is hers. The West will now say whether it agrees.[/if]
+  choices:
+    - id: ride
+      text: Ride to Lannec at once, and kneel to Jehanne first.
+      effects: [ { set: flag.h_e_rode_first }, { add: { counter.favour: 1, rival.penhoet.temper: -1 } } ]
+      text_after: |
+        You are at Lannec before the funeral, and kneel in the hall with the mourning still going up on the walls. Jehanne raises you with both hands. "You were early," she says. "Mother said you would be."
+      next: { pool: h_b4_pool, count: 1, then: h_e10_test }
+    - id: wait
+      text: Wait, and see who else rides.
+      effects: [ { set: flag.h_e_waited_ride } ]
+      text_after: |
+        You wait a fortnight, and count the riders on the Lannec road. [if flag.h_realm_male_line]Fewer go than Jehanne would like.[else]More go than Penhoët would like.[/if] When you go yourself, you are neither early nor late, and Jehanne gives you exactly the welcome that deserves.
+      next: { pool: h_b4_pool, count: 1, then: h_e10_test }
+    - id: penhoet
+      visible_if: "realm.west == free && flag.h_realm_male_line && !flag.h_penhoet_broken"
+      text: Ride to Penhoët instead, and stand with the male line.
+      effects: [ { set: flag.h_e_with_penhoet }, { add: { rival.penhoet.temper: 3, rel.mahaut_armance.affection: -3 } } ]
+      text_after: |
+        Young Yann's guardians receive you at Penhoët with their hands out. The boy sits in his grandfather's chair with his feet off the floor. "Are you on our side now?" he asks. "The law's," you say, and his guardians smile, because that is the same thing this year.
+      next: { pool: h_b4_pool, count: 1, then: h_e10_test }
+
+# ---- free: the test (E10); Adalian: the new reign's bill ----
+- id: h_e10_test
+  chapter: book1
+  title: "[if realm.west == adalian]The New Reign's Bill[else]The Test[/if]"
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 73, season: autumn } } ]
+  text: |
+    [if realm.west == adalian]King Aldred's first Moot sits at Wendmere at Michaelmas in 935, and the first thing it does is vote the King a tax on the West: a tenth of moveables, to pay the debts of the minority. The patent of the West's liberties is read in the Moot for the third time in thirty years, by a clerk who stumbles over the Western names. It says the West shall not be taxed without its own Estates. The King's chancellor says the patent was a grant, and what a king grants a king can interpret.[else]At Michaelmas in 935 the Estates of the West sit at Lannec to decide whether they will have Jehanne. [if flag.h_realm_male_pref]The law says yes. Penhoët says no[if flag.h_penhoet_broken], or would, if Penhoët were anything now but Sir Yvon of Kerlan's letters[else], with young Yann's guardians and their men in the inns[/if].[elif realm.sovereign == gaucelin]The law says no: under the male line the duchy escheats to the crown, and King Gaucelin's lawyers have the writ already drawn.[else]The law says no. Under the male line the Armance goes [if flag.h_penhoet_broken]to the nearest male of Mahaut's blood, her cousin's son Alain de Rosmadec[else]to Penhoët's line, to a boy of fifteen and his guardians[/if], unless the Estates overturn their own law.[/if] [if realm.sovereign == mahaut]With the Armance goes the crown.[/if]
+
+    The house's voice will be heard. [if counter.allies >= 1 || rival.kerguen.temper >= 3]Kerguen, Jehanne's cousin, will stand where the house stands.[/if][/if]
+  choices:
+    # free
+    - id: back
+      visible_if: "realm.west == free"
+      text: Stand up in the Estates and back Jehanne.
+      check: { attr: presence, skill: command, difficulty: 6, audience: nobles, mods: [ { if: flag.h_e_rode_first, add: 1, label: you knelt first }, { if: flag.h_e_counted_houses, add: 1, label: you know whom to look at }, { if: "rival.kerguen.temper >= 3", add: 1, label: Kerguen beside you }, { if: flag.h_e_with_penhoet, add: -2, label: you rode to Penhoët } ] }
+      success:
+        text: |
+          You stand, and the hall goes quiet the way it went quiet for {house.parent} once, and you say it in a few sentences: that the West made its own law, and can unmake it, and that a law that disinherits a queen's daughter for being a daughter is a law Valdrenne would be glad of. The benches move. You can see them move.
+        effects: [ { set: flag.h_e_backed }, { set: flag.h_e_voice }, { add: { res.renown: 2 } } ]
+        next: h_e10_result
+      failure:
+        text: |
+          You stand and speak for Jehanne, and the hall hears you politely, the way it hears a good sermon, and goes on counting.
+        effects: [ { set: flag.h_e_backed } ]
+        next: h_e10_result
+    - id: against
+      visible_if: "realm.west == free && !flag.h_penhoet_broken"
+      text: Stand up and back the law against her.
+      check: { attr: presence, skill: command, difficulty: 6, audience: nobles, mods: [ { if: flag.h_e_with_penhoet, add: 1, label: Penhoët's men at your back }, { if: flag.h_e_counted_houses, add: 1, label: you know whom to look at } ] }
+      success:
+        text: |
+          "The law is the law," you say, "or it is a wind." The male-line benches stamp. Jehanne, in the gallery, does not look at you, and does not need to.
+        effects: [ { set: flag.h_e_against }, { set: flag.h_e_voice }, { add: { rival.penhoet.temper: 2, rel.mahaut_armance.affection: -3 } } ]
+        next: h_e10_result
+      failure:
+        text: |
+          You speak for the law, and the hall hears in it a house that has chosen the winning side, and discounts it accordingly.
+        effects: [ { set: flag.h_e_against }, { add: { rival.penhoet.temper: 1 } } ]
+        next: h_e10_result
+    - id: price
+      visible_if: "realm.west == free"
+      text: Make the house the price of the settlement. An office, a manor, a match.
+      effects: [ { set: flag.h_e_price }, { add: { rep.honor: -1, res.renown: -1 } }, { hold: { id: settlement_office, name: The stewardship of the Armance salt, income: 7200, kind: fixed } } ]
+      text_after: |
+        Both sides pay. It is what a settlement is: a set of debts with a law at the bottom. The house comes out of the Estates with the stewardship of the Armance salt and thirty pounds a year, and nobody in the hall will ever again ask the house where it stands, because they know: wherever it is paid to.
+      next: h_e10_result
+    # Adalian: the bill
+    - id: pay
+      visible_if: "realm.west == adalian"
+      text: Pay the tenth, and say nothing. (£40)
+      requires: "res.coin >= 9600"
+      effects: [ { add: { res.coin: -9600, counter.favour: 1 } } ]
+      text_after: |
+        You pay, and the King's collector writes a receipt, and the West watches the house pay, and remembers that it did.
+      next: { switch: [ { if: [ "family.head_from <= 66", "heir.age >= 14" ], go: h_e12_heir }, { if: "family.head_from <= 66", go: h_e13_end } ], default: h_e_end }
+    - id: protest
+      visible_if: "realm.west == adalian"
+      text: Protest by the patent. Read it to the Moot yourself.
+      check: { attr: presence, skill: diplomacy, difficulty: 5, audience: nobles, mods: [ { if: flag.h_patent_confirmed, add: 2, label: the boy King confirmed it }, { if: "counter.favour >= 4", add: 1, label: the King is mindful of you } ] }
+      success:
+        text: |
+          You read the patent to the Moot in a plain voice, every clause, and at the end the King's chancellor confers with the King, and the tenth is voted for Adalia and "requested" of the West, through the Estates at Lannec, which is a different thing and everyone in the hall knows it.
+        effects: [ { set: flag.h_e_liberties_kept }, { add: { res.renown: 2, rep.nobles: 1 } } ]
+        next: { switch: [ { if: [ "family.head_from <= 66", "heir.age >= 14" ], go: h_e12_heir }, { if: "family.head_from <= 66", go: h_e13_end } ], default: h_e_end }
+      failure:
+        text: |
+          You read the patent, and the chancellor thanks you, and says the King's interpretation of his grandfather's grant will be published in due course. The tenth is collected at Martinmas. The house's share is collected first.
+        effects: [ { add: { res.coin: -9600, counter.favour: -2 } } ]
+        next: { switch: [ { if: [ "family.head_from <= 66", "heir.age >= 14" ], go: h_e12_heir }, { if: "family.head_from <= 66", go: h_e13_end } ], default: h_e_end }
+    - id: bargain
+      visible_if: "realm.west == adalian"
+      text: Bargain. Pay half, in exchange for the patent confirmed again. (£20)
+      requires: "res.coin >= 4800"
+      effects: [ { set: flag.h_e_bargained }, { add: { res.coin: -4800 } } ]
+      text_after: |
+        Half the tenth, and the patent confirmed under the young King's seal, the third seal on it now. The West's liberties are worth twenty pounds to the King, it turns out, which is less than the West thought and more than the King did.
+      next: { switch: [ { if: [ "family.head_from <= 66", "heir.age >= 14" ], go: h_e12_heir }, { if: "family.head_from <= 66", go: h_e13_end } ], default: h_e_end }
+    - id: hold_back
+      text: "[if realm.west == adalian]Let the other houses protest. Pay late.[else]Hold back. Let the Estates decide without the house.[/if]"
+      effects: [ { set: flag.h_e_held_back } ]
+      text_after: |
+        [if realm.west == adalian]You pay at Candlemas, late, with a letter about the harvest. Nobody is fooled and nobody is punished.[else]The house sits on its bench through three days of speeches and votes with the majority on every count, whatever the majority is.[/if]
+      next: { switch: [ { if: "realm.west == free", go: h_e10_result }, { if: [ "family.head_from <= 66", "heir.age >= 14" ], go: h_e12_heir }, { if: "family.head_from <= 66", go: h_e13_end } ], default: h_e_end }
+
+- id: h_e10_result
+  chapter: book1
+  title: Who Holds the Armance
+  frames: [free]
+  on_enter:
+    # the likely outcome, unless the house carried the hall the other way, with an ally (L3-13 again)
+    - if: flag.h_realm_male_pref
+      then:
+        - if: [ flag.h_e_against, flag.h_e_voice, "!flag.h_penhoet_broken", { any: [ "counter.allies >= 1", flag.h_e_with_penhoet ] } ]
+          then: [ { set: flag.h_armance_penhoet }, { add: { rival.penhoet.standing: 15 } } ]
+          else: [ { set: flag.h_armance_jehanne } ]
+      else:
+        - if: [ flag.h_e_backed, flag.h_e_voice, { any: [ "counter.allies >= 1", "rival.kerguen.temper >= 3" ] } ]
+          then: [ { set: flag.h_armance_jehanne } ]
+          else:
+            - if: "realm.sovereign == gaucelin"
+              then: [ { set: flag.h_armance_crown } ]
+              else:
+                - if: "!flag.h_penhoet_broken"
+                  then: [ { set: flag.h_armance_penhoet }, { add: { rival.penhoet.standing: 15 } } ]
+                  else: [ { set: flag.h_armance_cousin } ]
+    # a queen's crown goes with the Armance: Jehanne's, or the Estates choose Gaucelin de Brésy under the male line
+    - if: "realm.sovereign == mahaut"
+      then:
+        - if: flag.h_armance_jehanne
+          then: [ { west: { frame: free, sovereign: jehanne } } ]
+          else: [ { west: { frame: free, sovereign: gaucelin } }, { set: flag.h_e_gaucelin_chosen } ]
+  text: |
+    [if flag.h_armance_jehanne]The Estates vote for Jehanne, by benches, with the Armance lords voting last and nearly all of them for her. [if realm.sovereign == jehanne]She is crowned Queen of the West at Saint-Lys at Martinmas, in her mother's crown, which has been taken in at the back.[else]She does homage for the Armance at Martinmas, Duchess in her own right.[/if] [if flag.h_e_backed && flag.h_e_voice]Kerguen says afterwards that the house's speech turned twelve benches. Kerguen exaggerates, but not by much.[/if][elif flag.h_armance_crown]The duchy escheats to the crown. King Gaucelin's officers ride into Armance castle at Martinmas with the writ, and Jehanne rides out of it with her husband and her mother's books, to a manor in the hills the King has been gracious enough to leave her.[elif flag.h_armance_cousin]The Armance goes to Alain de Rosmadec, Mahaut's cousin's son, a decent dull man of forty who did not ask for it and does not know what to do with it. Jehanne keeps her mother's dower lands, and her temper.[else]The Armance goes to Penhoët's line, to Yann, fifteen, and his guardians. Hervé, two years dead, has what his father wanted.[/if] [if flag.h_e_gaucelin_chosen]With the Armance gone out of Mahaut's line, the crown goes with it: the Estates choose a king, Gaucelin de Brésy, twenty-nine, Thibaut's son, and crown him at Saint-Lys at Martinmas.[/if]
+  choices:
+    - id: on
+      text: Go on.
+      next: { switch: [ { if: [ "family.head_from <= 66", "heir.age >= 14" ], go: h_e12_heir }, { if: "family.head_from <= 66", go: h_e13_end } ], default: h_e_end }
+
+- id: h_e12_heir
+  chapter: book1
+  title: "[if family.head_from > 66]The First Audit[else]The Heir Comes of Age[/if]"
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 75, season: autumn } } ]
+  text: |
+    [if family.head_from > 66]At Michaelmas in 937 the audit is yours, at {age_words}, because the house is: the bell for the one who kept it before you rang a week ago. The steward lays the rolls out in front of you and stands back, and waits to see what kind of head you will be.[else]At Michaelmas in 937 {heir.first} is {heir.ageword}, and taller than you, and sits at your right hand at the audit for the first time. {heir.He} adds the columns in {heir.his} head before the steward has his pen dipped, and says so. [if counter.shadow >= 4]You hear {house.parent} in it, and so does the steward, who looks up.[else]You hear yourself in it, and do not much like the sound, and are proud anyway.[/if]
+
+    After the audit {heir.he} asks you, plainly, the way you once asked [if flag.h_handover_hall || flag.h_handover_letter || flag.h_handover_will || flag.h_cloister || flag.h_c_junior]{house.parent}[else]nobody[/if]: "What am I for, until it's mine?"[/if]
+  choices:
+    - id: manor
+      visible_if: "family.head_from <= 66"
+      text: Give {heir.first} a manor of {heir.his} own, as {house.parent} gave you one.
+      effects: [ { set: flag.h_e_heir_manor }, { add: { heir.bond: 1, counter.household: 1, counter.shadow: 1 } } ]
+      text_after: |
+        You give {heir.him} the outlying farms and the hall at the ford, and the steward's second son to keep the books, and {heir.he} rides off with a cart of furniture. It is the same gift you were given. You notice it on the road home, and so, you suspect, does {heir.he}.
+      next: h_e13_end
+    - id: court
+      visible_if: "family.head_from <= 66"
+      text: Send {heir.first} to court, to be seen and to see.
+      effects: [ { set: flag.h_e_heir_court }, { add: { heir.skill.courtesy: 1, counter.favour: 1, counter.shadow: -1 } } ]
+      text_after: |
+        {heir.first} goes to [if realm.west == adalian]Wendmere[else]Lannec[/if] with two horses and a tutor and comes back at Christmas with a new way of bowing and three friends you do not trust. "They're useful," {heir.he} says. "You'd like them if you'd let yourself."
+      next: h_e13_end
+    - id: reins
+      text: "[if family.head_from > 66]Do the audit yourself, line by line.[else]Keep the reins. {heir.first} can learn at your elbow.[/if]"
+      effects:
+        - if: "family.head_from <= 66"
+          then: [ { set: flag.h_e_heir_kept }, { add: { counter.household: -1 } } ]
+          else: [ { add: { counter.household: 1 } } ]
+      text_after: |
+        [if family.head_from > 66]You do it line by line, into the evening, and find two mistakes, one of them the steward's. He looks at you differently after that.[else]{heir.first} sits at your elbow at every audit and every court for two years, and learns everything you know, and learns in particular that you do not let go of things.[/if]
+      next: h_e13_end
+
+- id: h_e13_end
+  chapter: book1
+  title: "[if family.head_from > 66]The Year After[else]The Keeper's End[/if]"
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 77, season: spring } } ]
+  # the Keeper's end, unless the odds took the Keeper at the Michaelmas before (the succession runs ahead of this
+  # scene, so the head here may be the heir already: then the year only goes on)
+  text: |
+    [if family.head_from > 66]In the spring of 939 you are {age_words}, and the house is {house.standing}, and it is yours, and has not been for long. The chaplain says Mass on the day for the one who kept it before you, and you sit where they sat, and the household watches you sit there.[else]In the spring of 939 you are {age_words}, and the house is {house.standing}, and you have kept it. [if flag.h_e_wounded || flag.h_n_wounded]The arm you hurt [if flag.h_n_wounded]in the Armance[else]at the bridge[/if] has never been right; in the cold it will not close on a cup, and this winter it has been cold.[elif health < 0]You have not been well since Christmas.[elif family.no_heir]You are well, and tired, and there is nobody to give it to.[else]You are well, and tired, and {heir.first} is ready, or as ready as anyone is.[/if]
+
+    The chaplain, who is old now, comes to you after Mass. "{house.parent_start} asked you a question once," he says, "in the garden. You'll want to ask yours. People always do." [if family.no_heir]There is no heir to ask.[/if][/if]
+  choices:
+    - id: hall
+      text: "[if family.head_from > 66]Take up the year.[elif family.no_heir]Adopt a kinsman's orphan, give the house to the child, and stay on in the hall.[else]Give the house to {heir.first}, and stay on in the hall.[/if]"
+      effects:
+        - if: "family.head_from <= 66"
+          then:
+            - set: flag.h_e_end_hall
+            - if: family.no_heir
+              then: [ { set: flag.h_e_adopted }, { adopt: { age: 12 } } ]
+            - step_down: handover_hall
+      text_after: |
+        [if family.head_from > 66]The steward brings the accounts, and you sign them, and the year goes on, which is what years do.[elif flag.h_e_adopted]The steward finds a child of the blood, twelve years old, a cousin's orphan from the Mottle, living on charity at an abbey in the hills. The priest writes the adoption in the house's book, and at Easter you give the child the keys at the high table and move your chair to the side, by the fire. The child looks at the hall the way you once looked at it.[else]You give {heir.first} the keys and the seal at the high table at Easter, with the household watching, and move your chair to the side, by the fire. "Who will you be?" you ask, as {house.parent} asked you. [if flag.h_e_heir_kept]"I'll let go of things," {heir.he} says, and looks at your hands on the keys until you open them.[elif flag.h_e_heir_court]"Somebody who goes out," {heir.he} says. "You never went out."[else]"Myself," {heir.he} says, "probably. It's what you did."[/if][/if]
+      next: h_e_end
+    - id: cloister
+      visible_if: "family.head_from <= 66 && !family.no_heir"
+      text: "[if flag.h_cloister]Go into the Church, as {house.parent} did.[else]Go into the Church, as {house.parent} never did.[/if]"
+      effects: [ { set: flag.h_e_end_cloister }, { step_down: cloister } ]
+      text_after: |
+        You ride to the abbey at Whitsun with two servants and a box of books and give the house to {heir.first} at the gate. "Who will you be?" you ask, as {house.parent} asked you. {heir.first} thinks about it longer than you would like. "Not a monk," {heir.he} says. The abbot laughs, and you go in.
+      next: h_e_end
+    # a Keeper with nobody left of the blood takes a kinsman's child into the line (the Mottle's orphan, D10)
+    - id: adopt_ward
+      visible_if: "family.head_from <= 66 && family.no_heir && flag.h_cousin_ward"
+      text: Adopt the ward you took in after the Mottle, and give the house to them.
+      effects: [ { set: flag.h_e_adopted }, { adopt: { age: 19 } }, { step_down: handover_hall } ]
+      text_after: |
+        The cousin who came to the gate at eight, whose parents are in the pits at Sauvemer, is nineteen now, and sits at the end of the table, and has never once asked for anything. The priest writes the adoption in the house's book, and the bishop seals it. "Who will you be?" you ask, as {house.parent} asked you. "Grateful," the new heir says, "for about a year. Then myself."
+      next: h_e_end
+    - id: wound
+      visible_if: "family.head_from <= 66 && flag.h_e_wounded || family.head_from <= 66 && flag.h_n_wounded"
+      text: "Let the old wound from [if flag.h_n_wounded]the Armance[else]the bridge[/if] take its course."
+      effects: [ { death: { who: head, cause: an old wound } } ]
+      text_after: |
+        It goes bad at Lent, as wounds do in men past their prime, and the physician says what physicians say. [if family.no_heir]There is nobody to send for.[else]You have time to send for {heir.first}, and to ask who {heir.he} will be, and to hear the answer. It is better than the one you gave.[/if]
+      next: h_e_end
+
+- id: h_e_end
+  chapter: book1
+  frames: [free, adalian]
+  kind: ending
+  ending: story_so_far
+  text: |
+    Here Book One, The Keeper, ends. {name} is head of the house now, at {age_words}. [if flag.h_penhoet_broken]Penhoët is broken, and its claim is Sir Yvon of Kerlan's.[elif flag.h_penhoet_reconciled]Penhoët and the house are to be one blood.[elif flag.h_penhoet_contained]Penhoët and the house share a mill and a treaty.[/if] [if flag.h_armance_jehanne]Jehanne holds the Armance.[elif flag.h_armance_penhoet]Penhoët holds the Armance.[elif flag.h_armance_crown]The Armance is the crown's.[elif flag.h_armance_cousin]The Armance is Alain de Rosmadec's.[/if] [if flag.h_crown_lost]{realm.sovereign} wears the crown the house's founder made, and the house has not forgotten it.[/if] The house is {house.standing}.
+
+    Book Two, The Builder, is still being written.

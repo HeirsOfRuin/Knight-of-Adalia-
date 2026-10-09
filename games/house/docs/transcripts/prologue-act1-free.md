@@ -848,9 +848,9 @@ Who sits where says who has the votes. Mahaut's Armance lords sit together, and 
 
 **You choose:** Speak on the first day.
 
-You speak, and it goes well enough until a Penhoët cousin asks you, from the benches, what your father would have said, and the hall laughs, and you lose the thread. You sit down to polite silence.
+You speak for a quarter of an hour, plainly, for your side, and sit down. Nobody cheers, which in that hall is a good sign. Three men come to you afterwards in the cloister to say they agree with you, and one of them means it.
 
-*Hal's shadow: longer; Michaelmas, a poor harvest and steady trade: £218 5s 4d came in; the household £21 16s 6d, the men's pay £9 and repairs £20 went out*
+*Your cause: much stronger; Michaelmas, a poor harvest and steady trade: £218 5s 4d came in; the household £21 16s 6d, the men's pay £9 and repairs £20 went out*
 
 ### The Price
 
@@ -883,22 +883,21 @@ A son is born to the house.
 
 **You choose:** Name the child for a grandparent.
 
-*Michaelmas, a good harvest and steady trade: £286 8s 7d came in; the household £28 12s 10d, the men's pay £9 and repairs £20 went out*
+### The Wet Summer
 
-### The Master of Arts
+*Summer 921, the eighteenth year of Queen Mahaut*
 
-*Autumn 921, the eighteenth year of Queen Mahaut*
+It rains from Midsummer to Lammas, every day, warm rain that lies in the furrows and rots the wheat in the ear. By August the reeve has stopped saying the harvest will be poor and started saying how poor. The barn at Kerval has enough to see the village through. Down at the ford the Sarenzan grain ships are already in, with prices chalked on boards.
 
-A clerk comes to the house at Michaelmas from the schools, with a master's degree, a cough, and no living. He can read Latin, Greek and the hands of four chanceries, keep accounts in the Sarenzan manner, and argue the law of succession from either side for as long as you like. He would like a place in the household, and eight pounds a year, and a fire.
+- Buy grain off the Sarenzan ships for the village. (£20)
+- Sell the barn's surplus at famine prices, while the prices last.
+- Open the barn to the village, and say nothing.
 
-- Take him into the household. (£8)
-- Send him on to Lannec with a letter, and a shilling.
+**You choose:** Buy grain off the Sarenzan ships for the village. (£20)
 
-**You choose:** Take him into the household. (£8)
+The grain comes up from the ford in your carts, and the reeve gives it out by the household, by the bushel, against a tally. Nobody in the village starves that winter. Nobody in the next valley can say the same, and they notice.
 
-He takes the room over the gate, and coughs through the winter, and by spring you can read a Valdrennish writ yourself, and see in the steward's accounts what the steward did not want you to.
-
-*Coin −£8; Learning +1; Stewardship +1*
+*Coin −£20; Grain in store (seasons) +3; Kerval: the village warmer; Standing with the commons: higher; Michaelmas, a good harvest and steady trade: £286 8s 7d came in; the household £28 12s 10d, the men's pay £9 and repairs £20 went out*
 
 ### The Count
 
@@ -906,7 +905,7 @@ He takes the room over the gate, and coughs through the winter, and by spring yo
 
 In the dark of the year your clerk lays it out on the table in the hall, in two columns, with the names of men down the margin and a mark against each.
 
-Male preference will pass unless Penhoët carries the hall. Penhoët needs four more voices, and you are some of them, and you cannot be all of them.
+Male preference will pass unless Penhoët carries the hall. Penhoët needs two more voices, and you are some of them, and you cannot be all of them.
 
 "Money moves votes," says the clerk. "Friends move more."
 
@@ -916,9 +915,21 @@ Male preference will pass unless Penhoët carries the hall. Penhoët needs four 
 
 **You choose:** Bring Kerguen over to your side.
 
-Tanguy hears you out with great courtesy, and says he must think, and thinks, and in a week writes that Kerguen will vote as its conscience tells it. Its conscience has not told it anything yet.
+Tanguy de Kerguen hears you out at his own table, with his mother at the end of it, and agrees before the cheese. Kerguen's votes, and the votes of the three small houses that go where Kerguen goes, are yours.
 
-*Kerguen: colder*
+*An ally for your cause; Your cause: stronger; Kerguen: colder*
+
+### A Birth
+
+*Winter 921, the eighteenth year of Queen Mahaut*
+
+A daughter is born to the house.
+
+- Name the child for a grandparent.
+- Name the child for a parent.
+- Go on.
+
+**You choose:** Name the child for a grandparent.
 
 ### A Quiet Year
 
@@ -932,23 +943,20 @@ The year after the count is the kind nobody writes chronicles about. The hearing
 
 The house gets on with the year.
 
-### The Pilgrim's Relic
+### The Master of Arts
 
 *Summer 922, the nineteenth year of Queen Mahaut*
 
-A pedlar comes to the gate in Lent with a box of cedarwood and a manner. Inside, on a cushion of faded silk, is a finger bone, which he says is Saint Ebba's, from the shrine at Saint-Lys, sold to him by a sacristan in need. It cures fevers, he says, and the falling sickness, and quarrels between brothers. He has a letter about it. The letter has a seal.
+A clerk comes to the house at Michaelmas from the schools, with a master's degree, a cough, and no living. He can read Latin, Greek and the hands of four chanceries, keep accounts in the Sarenzan manner, and argue the law of succession from either side for as long as you like. He would like a place in the household, and eight pounds a year, and a fire.
 
-The chaplain looks at the seal, and goes on looking, and says nothing, which for him is a great deal.
+- Take him into the household. (£8)
+- Send him on to Lannec with a letter, and a shilling.
 
-- Buy it for the chapel. (£5)
-- Send him and his box to the Bishop of Saint-Lys, and let the Church decide.
-- Throw him out.
+**You choose:** Take him into the household. (£8)
 
-**You choose:** Buy it for the chapel. (£5)
+He takes the room over the gate, and coughs through the winter, and by spring you can read a Valdrennish writ yourself, and see in the steward's accounts what the steward did not want you to.
 
-It goes into a silver reliquary in the chapel, and the village comes to look at it, and at least two fevers that spring get better, which they might have done anyway. Nobody can say. Nobody tries.
-
-*Coin −£5; Church and priest +1; Piety: higher; Michaelmas, a good harvest and brisk trade: £302 2s came in; the household £30 4s 2d, the men's pay £9 and repairs £20 went out; War with the free companies*
+*Coin −£8; Learning +1; Stewardship +1; Michaelmas, a good harvest and brisk trade: £302 3s 11d came in; the household £30 4s 5d, the men's pay £9 and repairs £20 went out; War with the free companies*
 
 ### The March Burns
 
@@ -966,21 +974,7 @@ The Estates vote a war levy for the march castles, and in the corridors votes on
 
 Your men ride north with the levy and come back at Michaelmas with fewer horses and a Caldmoor banner, and the sovereign's thanks under seal. Four lords who had not decided vote with the house's side, because the house's men were there and theirs were not.
 
-*The sovereign's favour: much higher; Your cause: much stronger; Men in your company −3; Renown +3*
-
-### A Birth
-
-*Summer 923, the twentieth year of Queen Mahaut*
-
-A son is born to the house.
-
-- Name the child for a grandparent.
-- Name the child for a parent.
-- Go on.
-
-**You choose:** Name the child for a grandparent.
-
-*Michaelmas, a fair harvest and steady trade, in a year of war: £232 16s 8d came in; the household £23 5s 8d, the men's pay £8 2s and repairs £20 went out; Raiders came over the march to Kerval: the outlying farms burned, 15 people dead or fled, and the barn short; Sir Alain de Coatmen withholds his dues this year, over a quarrel the house's court will have to hear; Peace*
+*The sovereign's favour: much higher; Your cause: much stronger; Men in your company −3; Renown +3; Michaelmas, a fair harvest and steady trade, in a year of war: £233 came in; the household £23 6s, the men's pay £8 2s and repairs £20 went out; Raiders came over the march to Kerval: the outlying farms burned, 15 people dead or fled, and the barn short; Sir Alain de Coatmen withholds his dues this year, over a quarrel the house's court will have to hear; Peace*
 
 ### After the Companies
 
@@ -994,33 +988,20 @@ The men you sent north are home, and talk about it in the alehouse in a way that
 
 **You choose:** Go on.
 
-### A Birth
-
-*Winter 923, the twentieth year of Queen Mahaut*
-
-A daughter is born to the house.
-
-- Name the child for a grandparent.
-- Name the child for a parent.
-- Go on.
-
-**You choose:** Name the child for a grandparent.
-
-### The Tourney at Lannec
+### The Lanzi's Factor
 
 *Spring 924, the twenty-first year of Queen Mahaut*
 
-At Easter there is a tourney at Lannec, the first since the war: lists on the meadow below the cathedral, stands hung with cloth, and every young knight in the West with a new harness and an old horse. The great houses give the prizes, and are seen to.
+The Lanzi bank's factor at Lannec comes himself, in a good black gown, with a ledger he does not open. The bank, he says, holds the house in the highest regard. It would be glad to lend the house a hundred pounds, at the usual rate, for whatever the house has in mind. Houses always have something in mind.
 
-- Ride in the lists yourself. [Risky]
-- Give a prize, and sit in the stands. (£10)
-- Stay at home. Tourneys are for younger men.
+- Borrow a hundred pounds, at ten in the hundred.
+- Thank him, and send him away.
 
-**You choose:** Ride in the lists yourself.
+**You choose:** Borrow a hundred pounds, at ten in the hundred.
 
-You break three lances and unhorse a Kerguen cousin, and the stands roar, and the prize is a gold chain you will wear at every feast for the rest of your life.
+The factor counts it out himself, in Sarenzan florins and West pennies, and the house's seal goes on a bond. Ten pounds every Michaelmas until it is paid, and it is never paid, says the steward, by anybody.
 
-*Renown +4; Standing with the knights: higher*
+*Borrowed from the Lanzi: £100, at ten in the hundred*
 
 ### The Vote
 
@@ -1035,42 +1016,45 @@ The hall turns, and looks at you, because you are one of the houses it has been 
 
 **You choose:** Speak for your side, a last time.
 
-You stand and say it, and it is a good speech, and it is the twentieth good speech the hall has heard that week, and it slides off them like rain off a slate roof.
+You stand, and say it in five sentences, and sit down, and somewhere in the third sentence the hall goes quiet in the way halls do once in a generation. Whatever happens next, they heard you.
+
+*Your cause: much stronger*
 
 ### The Law
 
 *Summer 924, the twenty-first year of Queen Mahaut*
 
-The Estates vote for male preference: sons before daughters, then daughters and their children before any cousin. Jehanne is Mahaut's heir to the Armance. Penhoët's claim is a claim and nothing more. Hervé de Penhoët hears the count, and writes something down, and leaves before the Te Deum.
+The Estates vote for the male line: the lands of the West to pass to sons and through sons, and a daughter to inherit only where there is no man of the blood. Jehanne will hold nothing of her mother's in her own right. Penhoët's claim to the Armance stands over hers. Hervé de Penhoët does not smile. He has never needed to.
 
-The house's side has lost.
+The house's side has won.
 
 - Go on.
 
 **You choose:** Go on.
 
-*Michaelmas, a fair harvest and steady trade: £277 16s 8d came in; the household £27 15s 8d, the men's pay £8 2s and repairs £20 went out; The new lord of Saint-Aubin dies and leaves a son under age; the wardship of Saint-Aubin is sold for £20*
+*Michaelmas, a fair harvest and steady trade: £278 1s 8d came in; the household £27 16s 2d, the men's pay £8 2s, repairs £20 and the Lanzi's interest £10 went out; The new lord of Saint-Aubin dies and leaves a son under age; the wardship of Saint-Aubin is sold for £20*
 
 ### The Reckoning of the Law
 
 *Autumn 924, the twenty-first year of Queen Mahaut*
 
-At Michaelmas the winners reward and the losers remember. Penhoët is checked: Hervé keeps his lands, and his claim, and his temper, and sits at home that winter. Mahaut is secure, and gives a feast at Lannec for the houses that stood by her, and seats them by how early they stood.
+At Michaelmas the winners reward and the losers remember. Penhoët is raised: Hervé sits on the crown's council by Christmas, and his son rides behind the crown's banner at the feast. Mahaut is diminished, and gives no feast.
 
 - Make peace with the side that lost.
+- Press the advantage, and ask the winners for an office.
 - Do nothing. Let the West settle.
 
-**You choose:** Make peace with the side that lost.
+**You choose:** Press the advantage, and ask the winners for an office.
 
-A gift, a letter, a seat at the next feast, a small concession about a boundary. Twenty pounds of goodwill, which is cheap at the price, and does not buy back what was lost, only what can still be lost.
+The winners pay their debts, as winners do, with something that costs them nothing: an office, with a fee. Twenty pounds a year, and a seal of your own, and the losers' hatred for the length of a life.
 
-*Coin −£20; Penhoët: much warmer*
+*The sovereign's favour: higher; Renown +2; You hold: The keeping of the march castles (£20 a year); Mahaut: much colder*
 
 ### A Birth
 
 *Autumn 924, the twenty-first year of Queen Mahaut*
 
-A son is born to the house.
+A daughter is born to the house.
 
 - Name the child for a grandparent.
 - Name the child for a parent.
@@ -1082,20 +1066,19 @@ A son is born to the house.
 
 *Spring 925, the twenty-second year of Queen Mahaut*
 
-At Easter the house is at table: you, Azenor, and the children, the eldest on Hal's stool at the corner, and a ship's master from Sauvemer who has brought the wine and stays to drink it.
+At Easter the house is at table: you, Azenor, and the children, the eldest on Ida's stool at the corner, and a ship's master from Sauvemer who has brought the wine and stays to drink it.
 
-The realm has written male preference, which is what the house has always kept. Whether the house keeps it, or changes it, is the house's own affair. Your daughters are at the table.
+The realm has written the male line. Whether the house writes it too is the house's own affair: a house's law is its own, and many follow the realm's, and some do not. Your daughters are at the table.
 
 The ship's master, between cups, says there is a sickness in Sarenza this spring, in the poor quarters by the harbour. "Takes the children first," he says. "Like the Mottle, but backwards." He drinks. "Nothing to do with us."
 
 - Keep male preference. Sons first, then daughters.
 - Adopt the male line. Only sons, and only through sons.
-- Divide the lands among the sons when the time comes.
 - Name your heir by will, whatever the law says.
 
 **You choose:** Keep male preference. Sons first, then daughters.
 
-The house's law stays as your father kept it.
+The house's law stays as your father kept it. Penhoët notes that the house has not followed the realm, and so does the realm.
 
 *The house's law: male preference*
 
@@ -1121,7 +1104,7 @@ Azenor is in the nursery with the children. The steward is at the gate. Your fat
 
 The hall is a hospital by Michaelmas, with straw on the floor and the priest going down the rows. You walk through it every morning. The valley will never forget it.
 
-*Kerval: the village warmer; Standing with the commons: much higher; Piety: higher; Coin −£10; Michaelmas, a fair harvest and slack trade: £227 8s 4d came in; the household £22 14s 10d, the men's pay £8 2s and repairs £20 went out; The sickness in Kerval: 29 dead this year*
+*Kerval: the village warmer; Standing with the commons: much higher; Piety: higher; Coin −£10; Michaelmas, a fair harvest and slack trade: £247 13s 4d came in; the household £24 15s 4d, the men's pay £8 2s, repairs £20 and the Lanzi's interest £10 went out; The sickness in Kerval: 30 dead this year*
 
 ### The Sealed Village
 
@@ -1143,75 +1126,61 @@ The hamlet is sealed with a rope across the lane and a cross on a post. The cart
 
 *Autumn 925, the twenty-second year of Queen Mahaut*
 
-Azenor de Kerguen is dead of the Mottle. She was thirty-two.
+Robert is dead of the Mottle. He was six.
 
+- Raise a stone in the chancel, with his name. (£5)
+- Make a vow. If the next child lives, the house will build a chapel.
+- Only the grave.
+
+**You choose:** Raise a stone in the chancel, with his name. (£5)
+
+The mason cuts Robert's name, and the day, and nothing else, because there is nothing else yet to cut. Every year on the day the priest says his name at Mass, and the house hears it.
+
+*Coin −£5*
+
+### A Death in the House
+
+*Autumn 925, the twenty-second year of Queen Mahaut*
+
+Aymer is dead of the Mottle. He was five.
+
+- Raise a stone in the chancel, with his name. (£5)
+- Make a vow. If the next child lives, the house will build a chapel.
+- Only the grave.
+
+**You choose:** Raise a stone in the chancel, with his name. (£5)
+
+The mason cuts Aymer's name, and the day, and nothing else, because there is nothing else yet to cut. Every year on the day the priest says his name at Mass, and the house hears it.
+
+*Coin −£5*
+
+### A Death in the House
+
+*Autumn 925, the twenty-second year of Queen Mahaut*
+
+Emma is dead of the Mottle. She was one.
+
+- Raise a stone in the chancel, with her name. (£5)
+- Make a vow. If the next child lives, the house will build a chapel.
+- Only the grave.
+
+**You choose:** Raise a stone in the chancel, with her name. (£5)
+
+The mason cuts Emma's name, and the day, and nothing else, because there is nothing else yet to cut. Every year on the day the priest says her name at Mass, and the house hears it.
+
+*Coin −£5*
+
+### A Birth
+
+*Autumn 925, the twenty-second year of Queen Mahaut*
+
+A daughter is born to the house.
+
+- Name the child for a grandparent.
+- Name the child for a parent.
 - Go on.
 
-**You choose:** Go on.
-
-### A Death in the House
-
-*Autumn 925, the twenty-second year of Queen Mahaut*
-
-Ida is dead of the Mottle. She was six.
-
-- Raise a stone in the chancel, with her name. (£5)
-- Make a vow. If the next child lives, the house will build a chapel.
-- Only the grave.
-
-**You choose:** Raise a stone in the chancel, with her name. (£5)
-
-The mason cuts Ida's name, and the day, and nothing else, because there is nothing else yet to cut. Every year on the day the priest says her name at Mass, and the house hears it.
-
-*Coin −£5*
-
-### A Death in the House
-
-*Autumn 925, the twenty-second year of Queen Mahaut*
-
-Hal is dead of the Mottle. He was three.
-
-- Raise a stone in the chancel, with his name. (£5)
-- Make a vow. If the next child lives, the house will build a chapel.
-- Only the grave.
-
-**You choose:** Raise a stone in the chancel, with his name. (£5)
-
-The mason cuts Hal's name, and the day, and nothing else, because there is nothing else yet to cut. Every year on the day the priest says his name at Mass, and the house hears it.
-
-*Coin −£5*
-
-### A Death in the House
-
-*Autumn 925, the twenty-second year of Queen Mahaut*
-
-Agnes is dead of the Mottle. She was two.
-
-- Raise a stone in the chancel, with her name. (£5)
-- Make a vow. If the next child lives, the house will build a chapel.
-- Only the grave.
-
-**You choose:** Raise a stone in the chancel, with her name. (£5)
-
-The mason cuts Agnes's name, and the day, and nothing else, because there is nothing else yet to cut. Every year on the day the priest says her name at Mass, and the house hears it.
-
-*Coin −£5*
-
-### A Death in the House
-
-*Autumn 925, the twenty-second year of Queen Mahaut*
-
-Hal is dead of the Mottle. He was one.
-
-- Raise a stone in the chancel, with his name. (£5)
-- Make a vow. If the next child lives, the house will build a chapel.
-- Only the grave.
-
-**You choose:** Raise a stone in the chancel, with his name. (£5)
-
-The mason cuts Hal's name, and the day, and nothing else, because there is nothing else yet to cut. Every year on the day the priest says his name at Mass, and the house hears it.
-
-*Coin −£5*
+**You choose:** Name the child for a grandparent.
 
 ### The Crown in the Plague
 
@@ -1226,7 +1195,7 @@ Queen Mahaut is shut in Lannec, and has been since Lammas. The Estates do not me
 
 You hold the house's court in the open air at the cross-roads, under an awning, with the litigants twenty paces off. The valley has more justice that year than it has had since the war.
 
-*The household: more loyal; Michaelmas, a fair harvest and steady trade: £235 16s 8d came in; the household £23 11s 8d, the men's pay £8 2s and repairs £20 went out; The sickness in Kerval: 27 dead this year*
+*The household: more loyal; Michaelmas, a fair harvest and steady trade: £256 1s 8d came in; the household £25 12s 2d, the men's pay £8 2s, repairs £20 and the Lanzi's interest £10 went out; The sickness in Kerval: 28 dead this year*
 
 ### Black on Penhoët's Gate
 
@@ -1244,21 +1213,11 @@ There is black on Penhoët's gate by Martinmas, and the Penhoët bell rings ever
 
 Your man comes back at Martinmas: half the tenants dead, a third of the knights, the harvest standing in the fields for want of hands, and the boundary at Kerval unwatched.
 
-### A Death in the House
-
-*Autumn 926, the twenty-third year of Queen Mahaut*
-
-Agnès de Quérec is dead of the Mottle. She was fifty-eight.
-
-- Go on.
-
-**You choose:** Go on.
-
 ### A Birth
 
 *Autumn 926, the twenty-third year of Queen Mahaut*
 
-A son is born to the house.
+A daughter is born to the house.
 
 - Name the child for a grandparent.
 - Name the child for a parent.
@@ -1299,20 +1258,37 @@ Fifteen pounds, and they ride on over the hills. The valley is safe for the year
 
 *Coin −£15*
 
-### The Friar
+### Your Mother
 
 *Summer 927, the twenty-fourth year of Queen Mahaut*
 
-A friar comes through in the summer with forty people behind him, barefoot, singing, beating their own backs with knotted cords until the blood runs. The Mottle, he preaches at the cross, is God's anger at the lords, who have taken the poor man's sons for their wars and his rents for their wine. The crowd listens. So does your steward.
+In the summer of 927 Agnès is dying: not of the Mottle, which passed her over, but of being fifty-nine and tired, eleven years after your father. She is your mother, and she knew your father from the inside, the only one who did.
 
-- Let him preach, and give his people bread.
-- Hand him to the bishop's men.
+She sends for you on a hot afternoon, with the shutters closed and the bees in the lavender under the window.
 
-**You choose:** Let him preach, and give his people bread.
+- Ask her about your father.
+- Ask her nothing. Hold her hand.
 
-He preaches for three days and moves on, and takes eleven of your people with him, and the valley talks about the lords' wars and the poor man's sons all winter.
+**You choose:** Ask her about your father.
 
-*Standing with the commons: higher; Standing with the Church: lower; Grain in store (seasons) -1; -11 people at Kerval; Michaelmas, a failed harvest and brisk trade: £149 15s came in; the household £14 19s 6d, the men's pay £8 2s and repairs £20 went out; The sickness in Kerval: 25 dead this year; Sir Hervé de Morlaix withholds his dues this year, over a quarrel the house's court will have to hear*
+She tells you one thing, and it is not what you expected. "He was frightened," she says, "every day of it. From the first manor to the last. He thought someone would come and say it was all a mistake and take it back. Nobody ever did. He never stopped waiting." She dies two days later, in the morning, with the shutters open. You see the man, after that, and not the legend, and it is easier and harder.
+
+*Hal's shadow: shorter; Agnès de Quérec is dead*
+
+### The Pit
+
+*Summer 927, the twenty-fourth year of Queen Mahaut*
+
+The churchyard is full. The priest has been burying the dead in the pit behind the church since the spring, without coffins, in their shrouds, and the pit is not consecrated ground, and the village knows it. The priest asks for money for a new churchyard, walled and blessed, on the glebe.
+
+- Pay for the new churchyard. (£10)
+- Tell him the dead are in God's ground wherever they lie.
+
+**You choose:** Pay for the new churchyard. (£10)
+
+The bishop comes to bless it in person, with his face wrapped, and the village moves its dead from the pit to the new ground, one by one, at night, by lantern, which takes a month.
+
+*Coin −£10; Church and priest +1; Piety: higher; Michaelmas, a failed harvest and brisk trade: £170 5s 10d came in; the household £17 7d, the men's pay £8 2s, repairs £20 and the Lanzi's interest £10 went out; The sickness in Kerval: 26 dead this year; Sir Hervé de Morlaix withholds his dues this year, over a quarrel the house's court will have to hear*
 
 ### The Count of the Dead
 
@@ -1334,17 +1310,31 @@ The child is given a bed in the nursery and a place at the end of the table, and
 
 *The household: more loyal*
 
-### A Birth
+### A Death in the House
 
 *Spring 928, the twenty-fifth year of Queen Mahaut*
 
-A son is born to the house.
+Beatrice is dead of the Mottle. She was thirty-two.
 
-- Name the child for a grandparent.
-- Name the child for a parent.
 - Go on.
 
-**You choose:** Name the child for a grandparent.
+**You choose:** Go on.
+
+### A Death in the House
+
+*Spring 928, the twenty-fifth year of Queen Mahaut*
+
+Maud is dead of the Mottle. She was two.
+
+- Raise a stone in the chancel, with her name. (£5)
+- Make a vow. If the next child lives, the house will build a chapel.
+- Only the grave.
+
+**You choose:** Raise a stone in the chancel, with her name. (£5)
+
+The mason cuts Maud's name, and the day, and nothing else, because there is nothing else yet to cut. Every year on the day the priest says her name at Mass, and the house hears it.
+
+*Coin −£5*
 
 ### The Keeper's Will
 
@@ -1353,15 +1343,411 @@ A son is born to the house.
 At midsummer you write the will your father wrote, with the priest and the steward, at the same table. You are thirty-six. You have children living, and the stone in the chancel has names on it that it did not have three years ago. You write it your own way, and the steward does not read you your father's first.
 
 - Name your heir by will, and seal it.
-- Name a guardian for a minority: Robert.
+- Name a guardian for a minority: Azenor.
 - Provide for the younger ones, out of the lands.
 
 **You choose:** Name your heir by will, and seal it.
 
 You write the name, and seal it, and give it to the priest. Whatever the law says, the will says this, and there will be a quarrel at your graveside if they ever disagree.
 
+*Michaelmas, a poor harvest and steady trade: £235 13s 4d came in; the household £23 11s 4d, the men's pay £8 2s, repairs £20 and the Lanzi's interest £10 went out*
+
+---
+
+## Book One, Act Four: The Test of the Law
+
+> A law is a promise the living make about the dead, and the dead do not keep it.
+
+### Jehanne's Marriage
+
+*Spring 929, the twenty-sixth year of Queen Mahaut*
+
+In the spring of 929 the Queen sends for you to Lannec. Mahaut is forty-eight and grey at the temples, and she receives you in the small room over the river with the window open and nobody else in it.
+
+"Jehanne is twenty-three," she says. "She is the greatest match in the West, and the law's test in waiting, and every house with a son has written to me. I want the counsel of a house that has nothing to sell me." She smiles, a little. "If there is one."
+
+On the table: a Sauvel of Valdrenne, the Count of Sauvel's second son, with a peace in his saddlebags; Lord Edmund Haverell, an Adalian earl's heir, with Adalian silver behind him; and Hoël, Sire Guiomar's son, a knight of the Armance who has nothing but his father's gate at Mortefontaine. Tanguy de Kerguen is her cousin, and would need the Pope.
+
+- Counsel the Sauvel, and a peace that is a family. [Risky]
+- Counsel the Adalian earl's heir, and Adalian silver. [Risky]
+- Counsel the Armance knight, Sire Guiomar's son.
+- Say the house has no counsel to give.
+
+**You choose:** Counsel the Sauvel, and a peace that is a family.
+
+She hears you out, and thanks you, and gives Jehanne to Hoël of the Armance at Whitsun, because the Armance lords asked first and loudest. "You were right," she says afterwards. "That is not the same as useful."
+
+*Michaelmas, a fair harvest and steady trade: £274 5s came in; the household £27 8s 6d, the men's pay £8 2s, repairs £20 and the Lanzi's interest £10 went out*
+
+### The Wedding at Lannec
+
+*Summer 930, the twenty-seventh year of Queen Mahaut*
+
+Jehanne is married at Lannec at Whitsun in 930, to Hoël of the Armance, with half the duchy in the nave and the other half outside it. The feast runs three days.
+
+On the second night Hervé de Penhoët finds you alone on the stair. He is sixty-three and grey and calm, in good dark wool, with no sword.
+
+"When the Queen is dead," he says, "I will claim the Armance. The law gives it to me, and I will take what the law gives. I'm telling you because your house has always been honest with mine, after its fashion. I would like you to stay at home that year." He goes back in to the feast.
+
+- Tell Mahaut what Hervé said, word for word.
+- Keep Hervé's words to yourself.
+- Answer him in kind, on the stair, before he can go.
+
+**You choose:** Tell Mahaut what Hervé said, word for word.
+
+Mahaut listens with her hands folded. "He has been saying it to me for twenty years," she says, "just never aloud. Thank you." By Michaelmas her castellans on the Penhoët side of the duchy have new garrisons, and Hervé knows where they came from.
+
+*Mahaut: warmer; Penhoët: much colder*
+
+### The Wolf Winter
+
+*Summer 930, the twenty-seventh year of Queen Mahaut*
+
+The winter comes early and stays into Lent. The river freezes at the ford for the first time in living memory, and the wolves come down out of the hills after the sheep, and then after the shepherds. In the village they shut the doors at Vespers and do not open them for anyone.
+
+The reeve comes up to the hall with snow on his hood. "The barns are full, my lord, and the cottages are empty. Not of people. Of everything else."
+
+- Open the house's barns to the village.
+- Hunt the wolves, with every man who can hold a spear. [Risky]
+- Wait for the thaw.
+
+**You choose:** Open the house's barns to the village.
+
+The village eats the house's barley until Candlemas, and the house eats less of it. In the spring the reeve's wife sends up a cheese, which in that year is a great gift.
+
+*Grain in store (seasons) -1; Standing with the commons: higher; Michaelmas, a good harvest and slack trade: £288 11s 1d came in; the household £28 17s 1d, the men's pay £8 2s, repairs £20 and the Lanzi's interest £10 went out*
+
+### Hervé's Last Move
+
+*Spring 931, the twenty-eighth year of Queen Mahaut*
+
+In the spring of 931 Penhoët begins to arm, quietly, in the way of a house that has been patient for forty years. The steward's cousin, who sells horses, says Penhoët has bought sixty since Candlemas. A free company winters in Penhoët's barns and is paid in coin, not promises. Under the male line the Armance will be Penhoët's when Mahaut dies, and Hervé means to be ready to take it. The nearest road to the Armance runs across the bridge at Kerval.
+
+- Find out what he means to do, before you do anything. [Even]
+- Arm too. Walls, men, and the bridge watched. (£30)
+- Go to Mahaut, and lay it before her.
+- Ride to Penhoët and ask Hervé to his face.
+
+**You choose:** Find out what he means to do, before you do anything.
+
+Your man drinks with Penhoët's farrier for a month. "The bridge first," he says when he comes back, "at harvest, when your men are in the fields. Then the Armance road. He's counted your men, and he's counted wrong by about ten." You know the day and the road. That is worth more than walls.
+
+### A Match
+
+*Spring 931, the twenty-eighth year of Queen Mahaut*
+
+Mariot is seventeen, and of an age to marry. Offers come, the way they do.
+
+- Make a match with a family of Adalia.
+- Make a match with a family of the West.
+- Not yet.
+
+**You choose:** Make a match with a family of Adalia.
+
+*Mariot marries Roger Wyck*
+
+### The Lanzi's Letter
+
+*Spring 931, the twenty-eighth year of Queen Mahaut*
+
+A letter comes from the Lanzi's house at Sauvemer, on good paper, in a clerk's beautiful hand. The bank regrets that it must ask for part of what is owed: its own creditors in Sarenza are pressing it, and it presses those who owe it, as is the custom of banks.
+
+The steward reads it twice. "They want something," he says. "They always want something. The question is only what."
+
+- Repay what you can.
+- Write back that the house will pay on the terms it signed.
+
+**You choose:** Repay what you can.
+
+You pay what the strongroom will bear, and the Lanzi's factor writes a receipt in the same beautiful hand, and says the bank will remember the house's promptness, which is what banks say instead of thank you.
+
+*Repaid the Lanzi: £50; £50 still owed; Standing with the merchants: higher; Michaelmas, a fair harvest and steady trade: £280 11s 8d came in; the household £28 1s 2d, the men's pay £8 2s, repairs £20 and the Lanzi's interest £5 went out; Sir Alain de Coatmen dies; his son pays £5 in relief; War with penhoet*
+
+### The Bridge at Kerval
+
+*Summer 932, the twenty-ninth year of Queen Mahaut*
+
+At harvest in 932 Penhoët's men come to the bridge at Kerval at dawn, sixty horse and the free company, and put a barricade of carts across the far end of it. You knew the day. Your men are not in the fields.
+
+The old sergeant comes up from the bridge at a run, with his helmet in his hand. "They're on the far bank, my lord. A hundred, near enough. They've not crossed. They're waiting to see what we do."
+
+- Ride down to the bridge and lead the house's men yourself. [Even]
+- Send the house's men under Sir Renaud de Saint-Aubin, and stay at the hall. [Risky]
+- Ride down under a white flag, and treat with Penhoët on the bridge. [Risky]
+- Go to law, and to the sovereign. Let them hold the bridge.
+
+**You choose:** Ride down to the bridge and lead the house's men yourself.
+
+You take the bridge at a walk, with your banner, and the house's men behind you, and the barricade of carts comes apart at the first push because the free company has looked at your line and decided it is not paid enough. Penhoët's knights stand a while longer, and break, and leave four dead on the bank. You do not notice the cut on your forearm until the steward points at the blood on your saddle.
+
+*Peace; Renown +4; Men in your company −4; Penhoët: much colder; Penhoët's standing: much lower*
+
+### A Birth
+
+*Summer 932, the twenty-ninth year of Queen Mahaut*
+
+A daughter is born to the house.
+
+- Name the child for a grandparent.
+- Name the child for a parent.
+- Go on.
+
+**You choose:** Name the child for a grandparent.
+
+*Michaelmas, a fair harvest and steady trade: £296 5s came in; the household £29 12s 6d, the men's pay £6 18s, repairs £20 and the Lanzi's interest £5 went out; Sir Bertrand de la Roche dies and leaves a son under age; the wardship of La Roche-aux-Moines is sold for £20; Michaelmas, a poor harvest and slack trade: £223 8s came in; the household £22 6s 10d, the men's pay £6 18s, repairs £20 and the Lanzi's interest £5 went out*
+
+### Penhoët Settled
+
+*Spring 934, the thirty-first year of Queen Mahaut*
+
+In Lent of 934 Hervé de Penhoët dies at sixty-seven, in his chair by the fire at Penhoët, with his clerk reading him the accounts. They say he corrected a sum an hour before the end. His grandson Yann, Ronan's boy, is fourteen, and head of Penhoët under his guardians.
+
+The bridge is the house's, and Penhoët's men are home with their wounds, and the West knows who held Kerval. With Hervé gone, the generation's quarrel is the next generation's to settle, and yours. Mahaut writes to ask what the house wants done.
+
+- Reconcile. A match between a child of the house and young Yann's line.
+- Contain it. A treaty, the boundary walked and sworn, the mill shared.
+
+**You choose:** Reconcile. A match between a child of the house and young Yann's line.
+
+The contract is signed at Penhoët in the room where Hervé died, with his chair pushed back against the wall. A child of the house and Yann de Penhoët, when they are of age, and the mill at Kerval the dowry, held by both. Yann, fourteen, signs his name with his tongue between his teeth, and asks whether there will be cake.
+
+*The household: more loyal*
+
+### A Match
+
+*Spring 934, the thirty-first year of Queen Mahaut*
+
+Hal is eighteen, and of an age to marry. Offers come, the way they do.
+
+- Make a match with a family of Adalia.
+- Make a match with a family of the West.
+- Not yet.
+
+**You choose:** Make a match with a family of Adalia.
+
+*Hal marries Mariot Thorne; Michaelmas, a fair harvest and steady trade: £277 5s came in; the household £27 14s 6d, the men's pay £6 18s, repairs £20 and the Lanzi's interest £5 went out; Sir Guéthenoc de Ploërec withholds his dues this year, over a quarrel the house's court will have to hear*
+
+### The Queen's Illness
+
+*Winter 934, the thirty-first year of Queen Mahaut*
+
+At Christmas in 934 Mahaut does not come down to the feast. By Candlemas the court at Lannec knows, and the houses count: who stands where when the crown passes, and who has already sent a man to Jehanne's household, and who has sent two. Under the male line the Armance is not Jehanne's to have.
+
+Mahaut writes to you in her own hand, short. "I have written to your house every Christmas since 912. This is the last one, I think. Come if you like. Don't if it would cost you."
+
+- Ride to Lannec, and sit with her.
+- Stay in the hall, and count the houses.
+- Send her the house's physician, and a letter. (£5)
+
+**You choose:** Ride to Lannec, and sit with her.
+
+She is thin, and sharp, and propped up on four pillows, and she makes you tell her about the bridge twice. "Your father would have charged," she says. "You talked first. Good." At the door she calls you back. "Jehanne will need someone who talks first."
+
+*Mahaut: much warmer*
+
+### A Death in the House
+
+*Winter 934, the thirty-first year of Queen Mahaut*
+
+Béatrix de Penhoët is dead of an illness. She was forty-two.
+
+- Go on.
+
+**You choose:** Go on.
+
+### The Queen Is Dead
+
+*Spring 935, the thirty-second year of Queen Mahaut*
+
+Mahaut of Armance dies at Lady Day in 935, at fifty-four, in the thirty-second year of her reign. Her last letter to the house comes a week after the bell, in her own hand, sealed before she died: a page about the weather and the price of salt, and at the bottom, "Be kind to her."
+
+Jehanne, twenty-nine, is proclaimed Queen at Lannec by the heralds, and the proclamation is answered in the Armance by silence. The law of the West says the Armance passes only through men, and Mahaut was a woman, and so is her daughter.
+
+- Ride to Lannec at once, and kneel to Jehanne first.
+- Wait, and see who else rides.
+- Ride to Penhoët instead, and stand with the male line.
+
+**You choose:** Ride to Lannec at once, and kneel to Jehanne first.
+
+You are at Lannec before the funeral, and kneel in the hall with the mourning still going up on the walls. Jehanne raises you with both hands. "You were early," she says. "Mother said you would be."
+
+*The sovereign's favour: higher; Penhoët: colder*
+
+### The Ransom
+
+*Spring 935, the thirty-second year of Queen Mahaut*
+
+A free company on the march takes one of the house's knights on the road home from a tournament, with his horse and his harness, and sends a boy to the gate with his signet ring and a price. "Twenty pounds," the boy says, "or they'll keep him, and the horse, and send back the rest of him by the piece."
+
+The knight's wife is at the gate behind the boy, with her children.
+
+- Pay the ransom. (£20)
+- Send men to take him back. [Risky]
+- Tell the boy the house does not buy its knights from thieves.
+
+**You choose:** Pay the ransom. (£20)
+
+You pay it. The knight comes home thin and lousy and grateful, and his wife kisses your hand at Mass in front of the whole household, which embarrasses everyone but her.
+
+*The household: more loyal; Coin −£20; Michaelmas, a rich harvest and brisk trade: £366 11s 6d came in; the household £36 13s 2d, the men's pay £6 18s, repairs £20 and the Lanzi's interest £5 went out; Sir Hervé de Morlaix dies; his son pays £5 in relief*
+
+### The Test
+
+*Autumn 935, the thirty-second year of Queen Mahaut*
+
+At Michaelmas in 935 the Estates of the West sit at Lannec to decide whether they will have Jehanne. The law says no. Under the male line the Armance goes to Penhoët's line, to a boy of fifteen and his guardians, unless the Estates overturn their own law. With the Armance goes the crown.
+
+The house's voice will be heard. Kerguen, Jehanne's cousin, will stand where the house stands.
+
+- Stand up in the Estates and back Jehanne. [Even]
+- Stand up and back the law against her. [Risky]
+- Make the house the price of the settlement. An office, a manor, a match.
+- Hold back. Let the Estates decide without the house.
+
+**You choose:** Stand up in the Estates and back Jehanne.
+
+You stand, and the hall goes quiet the way it went quiet for your father once, and you say it in a few sentences: that the West made its own law, and can unmake it, and that a law that disinherits a queen's daughter for being a daughter is a law Valdrenne would be glad of. The benches move. You can see them move.
+
+*Renown +2*
+
+### A Birth
+
+*Autumn 935, the thirty-second year of Queen Mahaut*
+
+A daughter is born to the house.
+
+- Name the child for a grandparent.
+- Name the child for a parent.
+- Go on.
+
+**You choose:** Name the child for a grandparent.
+
+*The West: A free West, under Queen Jehanne*
+
+### Who Holds the Armance
+
+*Autumn 935, the first year of Queen Jehanne*
+
+The Estates vote for Jehanne, by benches, with the Armance lords voting last and nearly all of them for her. She is crowned Queen of the West at Saint-Lys at Martinmas, in her mother's crown, which has been taken in at the back. Kerguen says afterwards that the house's speech turned twelve benches. Kerguen exaggerates, but not by much.
+
+- Go on.
+
+**You choose:** Go on.
+
+*Michaelmas, a poor harvest and steady trade: £240 4s came in; the household £24 5d, the men's pay £6 18s, repairs £20 and the Lanzi's interest £5 went out; Michaelmas, a fair harvest and steady trade: £280 came in; the household £28, the men's pay £6 18s, repairs £20 and the Lanzi's interest £5 went out*
+
+### The Succession
+
+*Autumn 937, the third year of Queen Jehanne*
+
+John is dead of an illness, at forty-five.
+
+The heir under the law of the house is Ida.
+
+- Let the law stand.
+
+**You choose:** Let the law stand.
+
+John, head of the house from 915 to 937.
+
+*Ida is head of the house*
+
+### A Match
+
+*Autumn 937, the third year of Queen Jehanne*
+
+Ida is eighteen, and of an age to marry. Offers come, the way they do.
+
+- Make a match with a family of Adalia.
+- Make a match with a family of the West.
+- Not yet.
+
+**You choose:** Make a match with a family of Adalia.
+
+*Ida marries Walter Pelham*
+
+### The First Audit
+
+*Autumn 937, the third year of Queen Jehanne*
+
+At Michaelmas in 937 the audit is yours, at eighteen, because the house is: the bell for the one who kept it before you rang a week ago. The steward lays the rolls out in front of you and stands back, and waits to see what kind of head you will be.
+
+- Do the audit yourself, line by line.
+
+**You choose:** Do the audit yourself, line by line.
+
+You do it line by line, into the evening, and find two mistakes, one of them the steward's. He looks at you differently after that.
+
+*The household: more loyal; Michaelmas, a good harvest and slack trade: £315 7s 2d came in; the household £31 10s 9d, the men's pay £6 18s, repairs £20 and the Lanzi's interest £5 went out; Sir Mériadec de Quintin dies and leaves a son under age; the wardship of Quintin is sold for £20*
+
+### The Year After
+
+*Spring 939, the fifth year of Queen Jehanne*
+
+In the spring of 939 you are nineteen, and the house is a great house, and it is yours, and has not been for long. The chaplain says Mass on the day for the one who kept it before you, and you sit where they sat, and the household watches you sit there.
+
+- Take up the year.
+
+**You choose:** Take up the year.
+
+The steward brings the accounts, and you sign them, and the year goes on, which is what years do.
+
+### A Death in the House
+
+*Spring 939, the fifth year of Queen Jehanne*
+
+Katherine is dead of an illness. She was three.
+
+- Raise a stone in the chancel, with her name. (£5)
+- Make a vow. If the next child lives, the house will build a chapel.
+- Only the grave.
+
+**You choose:** Raise a stone in the chancel, with her name. (£5)
+
+The mason cuts Katherine's name, and the day, and nothing else, because there is nothing else yet to cut. Every year on the day the priest says her name at Mass, and the house hears it.
+
+*Coin −£5*
+
+### A Birth
+
+*Spring 939, the fifth year of Queen Jehanne*
+
+A daughter is born to the house.
+
+- Name the child for a grandparent.
+- Name the child for a parent.
+- Go on.
+
+**You choose:** Name the child for a grandparent.
+
+### A Birth
+
+*Spring 939, the fifth year of Queen Jehanne*
+
+A daughter is born to the house.
+
+- Name the child for a grandparent.
+- Name the child for a parent.
+- Go on.
+
+**You choose:** Name the child for a grandparent.
+
+### A Match
+
+*Spring 939, the fifth year of Queen Jehanne*
+
+Isabel is seventeen, and of an age to marry. Offers come, the way they do.
+
+- Make a match with a family of Adalia.
+- Make a match with a family of the West.
+- Not yet.
+
+**You choose:** Make a match with a family of Adalia.
+
+*Isabel marries Giles Malvern*
+
 ### The End
 
-Here Act III of Book One ends. The Mottle is over. You have children living, and a will that names one of them. The house is a great house.
+Here Book One, The Keeper, ends. Ida is head of the house now, at nineteen. Penhoët and the house are to be one blood. Jehanne holds the Armance. The house is a great house.
 
-Act IV, The Test of the Law, is still being written.
+Book Two, The Builder, is still being written.

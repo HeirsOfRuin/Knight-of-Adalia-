@@ -48,6 +48,8 @@ export const HOUSE_EFFECTS = [
   z.object({ house_law: HouseLawId }).strict(),
   // the Church makes a bastard legitimate
   z.object({ legitimate: Who }).strict(),
+  // the head adopts a kinsman's child of the given age into the line, as the head's own child (a ward, a cousin's orphan)
+  z.object({ adopt: z.object({ age: z.number().int().min(0).max(40), sex: z.enum(['male', 'female']).optional() }).strict() }).strict(),
   // the head gives up the headship alive (a religious house, abdication)
   z.object({ step_down: z.string() }).strict(),
   // the succession itself: the law's heir, or the heir named (will) when the player backs the will

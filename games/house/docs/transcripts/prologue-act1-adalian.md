@@ -848,9 +848,9 @@ At Whitsun the King's justices sit at Lannec, in the great hall where the Estate
 
 **You choose:** Speak on the first day.
 
-You speak, and it goes well enough until a Penhoët cousin asks you, from the benches, what your father would have said, and the hall laughs, and you lose the thread. You sit down to polite silence.
+You speak for a quarter of an hour, plainly, for your side, and sit down. Nobody cheers, which in that hall is a good sign. Three men come to you afterwards in the cloister to say they agree with you, and one of them means it.
 
-*Hal's shadow: longer; Michaelmas, a poor harvest and steady trade: £218 5s 4d came in; the household £21 16s 6d, the men's pay £9 and repairs £20 went out*
+*Your cause: much stronger; Michaelmas, a poor harvest and steady trade: £218 5s 4d came in; the household £21 16s 6d, the men's pay £9 and repairs £20 went out*
 
 ### The Price
 
@@ -883,22 +883,21 @@ A son is born to the house.
 
 **You choose:** Name the child for a grandparent.
 
-*Michaelmas, a good harvest and steady trade: £286 8s 7d came in; the household £28 12s 10d, the men's pay £9 and repairs £20 went out*
+### The Wet Summer
 
-### The Master of Arts
+*Summer 921, the twentieth year of King Edwin*
 
-*Autumn 921, the twentieth year of King Edwin*
+It rains from Midsummer to Lammas, every day, warm rain that lies in the furrows and rots the wheat in the ear. By August the reeve has stopped saying the harvest will be poor and started saying how poor. The barn at Kerval has enough to see the village through. Down at the ford the Sarenzan grain ships are already in, with prices chalked on boards.
 
-A clerk comes to the house at Michaelmas from the schools, with a master's degree, a cough, and no living. He can read Latin, Greek and the hands of four chanceries, keep accounts in the Sarenzan manner, and argue the law of succession from either side for as long as you like. He would like a place in the household, and eight pounds a year, and a fire.
+- Buy grain off the Sarenzan ships for the village. (£20)
+- Sell the barn's surplus at famine prices, while the prices last.
+- Open the barn to the village, and say nothing.
 
-- Take him into the household. (£8)
-- Send him on to Lannec with a letter, and a shilling.
+**You choose:** Buy grain off the Sarenzan ships for the village. (£20)
 
-**You choose:** Take him into the household. (£8)
+The grain comes up from the ford in your carts, and the reeve gives it out by the household, by the bushel, against a tally. Nobody in the village starves that winter. Nobody in the next valley can say the same, and they notice.
 
-He takes the room over the gate, and coughs through the winter, and by spring you can read a Valdrennish writ yourself, and see in the steward's accounts what the steward did not want you to.
-
-*Coin −£8; Learning +1; Stewardship +1*
+*Coin −£20; Grain in store (seasons) +3; Kerval: the village warmer; Standing with the commons: higher; Michaelmas, a good harvest and steady trade: £286 8s 7d came in; the household £28 12s 10d, the men's pay £9 and repairs £20 went out*
 
 ### The Count
 
@@ -916,9 +915,21 @@ The justices will rule as the King wants, unless the West makes it too dear for 
 
 **You choose:** Bring Kerguen over to your side.
 
-Tanguy hears you out with great courtesy, and says he must think, and thinks, and in a week writes that Kerguen will vote as its conscience tells it. Its conscience has not told it anything yet.
+Tanguy de Kerguen hears you out at his own table, with his mother at the end of it, and agrees before the cheese. Kerguen's votes, and the votes of the three small houses that go where Kerguen goes, are yours.
 
-*Kerguen: colder*
+*An ally for your cause; Your cause: stronger; Kerguen: colder*
+
+### A Birth
+
+*Winter 921, the twentieth year of King Edwin*
+
+A daughter is born to the house.
+
+- Name the child for a grandparent.
+- Name the child for a parent.
+- Go on.
+
+**You choose:** Name the child for a grandparent.
 
 ### A Quiet Year
 
@@ -932,23 +943,20 @@ The year after the count is the kind nobody writes chronicles about. The hearing
 
 The house gets on with the year.
 
-### The Pilgrim's Relic
+### The Master of Arts
 
 *Summer 922, the twenty-first year of King Edwin*
 
-A pedlar comes to the gate in Lent with a box of cedarwood and a manner. Inside, on a cushion of faded silk, is a finger bone, which he says is Saint Ebba's, from the shrine at Saint-Lys, sold to him by a sacristan in need. It cures fevers, he says, and the falling sickness, and quarrels between brothers. He has a letter about it. The letter has a seal.
+A clerk comes to the house at Michaelmas from the schools, with a master's degree, a cough, and no living. He can read Latin, Greek and the hands of four chanceries, keep accounts in the Sarenzan manner, and argue the law of succession from either side for as long as you like. He would like a place in the household, and eight pounds a year, and a fire.
 
-The chaplain looks at the seal, and goes on looking, and says nothing, which for him is a great deal.
+- Take him into the household. (£8)
+- Send him on to Lannec with a letter, and a shilling.
 
-- Buy it for the chapel. (£5)
-- Send him and his box to the Bishop of Saint-Lys, and let the Church decide.
-- Throw him out.
+**You choose:** Take him into the household. (£8)
 
-**You choose:** Buy it for the chapel. (£5)
+He takes the room over the gate, and coughs through the winter, and by spring you can read a Valdrennish writ yourself, and see in the steward's accounts what the steward did not want you to.
 
-It goes into a silver reliquary in the chapel, and the village comes to look at it, and at least two fevers that spring get better, which they might have done anyway. Nobody can say. Nobody tries.
-
-*Coin −£5; Church and priest +1; Piety: higher; Michaelmas, a good harvest and brisk trade: £302 2s came in; the household £30 4s 2d, the men's pay £9 and repairs £20 went out; War with the free companies*
+*Coin −£8; Learning +1; Stewardship +1; Michaelmas, a good harvest and brisk trade: £302 3s 11d came in; the household £30 4s 5d, the men's pay £9 and repairs £20 went out; War with the free companies*
 
 ### The March Burns
 
@@ -966,21 +974,7 @@ The King needs men for the March, and the West's men are nearest. The governor w
 
 Your men ride north with the levy and come back at Michaelmas with fewer horses and a Caldmoor banner, and the sovereign's thanks under seal. The governor writes that the King is mindful of the house, and of its views on the wardship.
 
-*The sovereign's favour: much higher; Your cause: much stronger; Men in your company −3; Renown +3*
-
-### A Birth
-
-*Summer 923, the twenty-second year of King Edwin*
-
-A son is born to the house.
-
-- Name the child for a grandparent.
-- Name the child for a parent.
-- Go on.
-
-**You choose:** Name the child for a grandparent.
-
-*Michaelmas, a fair harvest and steady trade, in a year of war: £232 16s 8d came in; the household £23 5s 8d, the men's pay £8 2s and repairs £20 went out; Raiders came over the march to Kerval: the outlying farms burned, 15 people dead or fled, and the barn short; Sir Alain de Coatmen withholds his dues this year, over a quarrel the house's court will have to hear; Peace*
+*The sovereign's favour: much higher; Your cause: much stronger; Men in your company −3; Renown +3; Michaelmas, a fair harvest and steady trade, in a year of war: £233 came in; the household £23 6s, the men's pay £8 2s and repairs £20 went out; Raiders came over the march to Kerval: the outlying farms burned, 15 people dead or fled, and the barn short; Sir Alain de Coatmen withholds his dues this year, over a quarrel the house's court will have to hear; Peace*
 
 ### After the Companies
 
@@ -994,33 +988,20 @@ The men you sent north are home, and talk about it in the alehouse in a way that
 
 **You choose:** Go on.
 
-### A Birth
-
-*Winter 923, the twenty-second year of King Edwin*
-
-A daughter is born to the house.
-
-- Name the child for a grandparent.
-- Name the child for a parent.
-- Go on.
-
-**You choose:** Name the child for a grandparent.
-
-### The Tourney at Lannec
+### The Lanzi's Factor
 
 *Spring 924, the twenty-third year of King Edwin*
 
-At Easter there is a tourney at Lannec, the first since the war: lists on the meadow below the cathedral, stands hung with cloth, and every young knight in the West with a new harness and an old horse. The great houses give the prizes, and are seen to.
+The Lanzi bank's factor at Lannec comes himself, in a good black gown, with a ledger he does not open. The bank, he says, holds the house in the highest regard. It would be glad to lend the house a hundred pounds, at the usual rate, for whatever the house has in mind. Houses always have something in mind.
 
-- Ride in the lists yourself. [Risky]
-- Give a prize, and sit in the stands. (£10)
-- Stay at home. Tourneys are for younger men.
+- Borrow a hundred pounds, at ten in the hundred.
+- Thank him, and send him away.
 
-**You choose:** Ride in the lists yourself.
+**You choose:** Borrow a hundred pounds, at ten in the hundred.
 
-You break three lances and unhorse a Kerguen cousin, and the stands roar, and the prize is a gold chain you will wear at every feast for the rest of your life.
+The factor counts it out himself, in Sarenzan florins and West pennies, and the house's seal goes on a bond. Ten pounds every Michaelmas until it is paid, and it is never paid, says the steward, by anybody.
 
-*Renown +4; Standing with the knights: higher*
+*Borrowed from the Lanzi: £100, at ten in the hundred*
 
 ### The Ruling
 
@@ -1035,7 +1016,9 @@ The hall turns, and looks at you, because you are one of the houses it has been 
 
 **You choose:** Speak for your side, a last time.
 
-You stand and say it, and it is a good speech, and it is the twentieth good speech the hall has heard that week, and it slides off them like rain off a slate roof.
+You stand, and say it in five sentences, and sit down, and somewhere in the third sentence the hall goes quiet in the way halls do once in a generation. Whatever happens next, they heard you.
+
+*Your cause: much stronger*
 
 ### The Law
 
@@ -1049,7 +1032,7 @@ The house's side has won.
 
 **You choose:** Go on.
 
-*Michaelmas, a fair harvest and steady trade: £277 16s 8d came in; the household £27 15s 8d, the men's pay £8 2s and repairs £20 went out; The new lord of Saint-Aubin dies and leaves a son under age; the wardship of Saint-Aubin is sold for £20*
+*Michaelmas, a fair harvest and steady trade: £278 1s 8d came in; the household £27 16s 2d, the men's pay £8 2s, repairs £20 and the Lanzi's interest £10 went out; The new lord of Saint-Aubin dies and leaves a son under age; the wardship of Saint-Aubin is sold for £20*
 
 ### The Reckoning of the Law
 
@@ -1074,7 +1057,7 @@ The winners pay their debts, as winners do, with something that costs them nothi
 
 *Autumn 924, the twenty-third year of King Edwin*
 
-A son is born to the house.
+A daughter is born to the house.
 
 - Name the child for a grandparent.
 - Name the child for a parent.
@@ -1086,7 +1069,7 @@ A son is born to the house.
 
 *Spring 925, the twenty-fourth year of King Edwin*
 
-At Easter the house is at table: you, Azenor, and the children, the eldest on Hal's stool at the corner, and a ship's master from Sauvemer who has brought the wine and stays to drink it.
+At Easter the house is at table: you, Azenor, and the children, the eldest on Ida's stool at the corner, and a ship's master from Sauvemer who has brought the wine and stays to drink it.
 
 Adalia's law is the realm's law. Whether the house's own succession follows it, or goes its own way by will, is the house's own affair. Your daughters are at the table.
 
@@ -1094,7 +1077,6 @@ The ship's master, between cups, says there is a sickness in Sarenza this spring
 
 - Keep male preference. Sons first, then daughters.
 - Adopt the male line. Only sons, and only through sons.
-- Divide the lands among the sons when the time comes.
 - Name your heir by will, whatever the law says.
 
 **You choose:** Keep male preference. Sons first, then daughters.
@@ -1125,7 +1107,7 @@ Azenor is in the nursery with the children. The steward is at the gate. Your fat
 
 The hall is a hospital by Michaelmas, with straw on the floor and the priest going down the rows. You walk through it every morning. The valley will never forget it.
 
-*Kerval: the village warmer; Standing with the commons: much higher; Piety: higher; Coin −£10; Michaelmas, a fair harvest and slack trade: £247 8s 4d came in; the household £24 14s 10d, the men's pay £8 2s and repairs £20 went out; The sickness in Kerval: 29 dead this year*
+*Kerval: the village warmer; Standing with the commons: much higher; Piety: higher; Coin −£10; Michaelmas, a fair harvest and slack trade: £247 13s 4d came in; the household £24 15s 4d, the men's pay £8 2s, repairs £20 and the Lanzi's interest £10 went out; The sickness in Kerval: 30 dead this year*
 
 ### The Sealed Village
 
@@ -1147,75 +1129,61 @@ The hamlet is sealed with a rope across the lane and a cross on a post. The cart
 
 *Autumn 925, the twenty-fourth year of King Edwin*
 
-Azenor de Kerguen is dead of the Mottle. She was thirty-two.
+Robert is dead of the Mottle. He was six.
 
+- Raise a stone in the chancel, with his name. (£5)
+- Make a vow. If the next child lives, the house will build a chapel.
+- Only the grave.
+
+**You choose:** Raise a stone in the chancel, with his name. (£5)
+
+The mason cuts Robert's name, and the day, and nothing else, because there is nothing else yet to cut. Every year on the day the priest says his name at Mass, and the house hears it.
+
+*Coin −£5*
+
+### A Death in the House
+
+*Autumn 925, the twenty-fourth year of King Edwin*
+
+Aymer is dead of the Mottle. He was five.
+
+- Raise a stone in the chancel, with his name. (£5)
+- Make a vow. If the next child lives, the house will build a chapel.
+- Only the grave.
+
+**You choose:** Raise a stone in the chancel, with his name. (£5)
+
+The mason cuts Aymer's name, and the day, and nothing else, because there is nothing else yet to cut. Every year on the day the priest says his name at Mass, and the house hears it.
+
+*Coin −£5*
+
+### A Death in the House
+
+*Autumn 925, the twenty-fourth year of King Edwin*
+
+Emma is dead of the Mottle. She was one.
+
+- Raise a stone in the chancel, with her name. (£5)
+- Make a vow. If the next child lives, the house will build a chapel.
+- Only the grave.
+
+**You choose:** Raise a stone in the chancel, with her name. (£5)
+
+The mason cuts Emma's name, and the day, and nothing else, because there is nothing else yet to cut. Every year on the day the priest says her name at Mass, and the house hears it.
+
+*Coin −£5*
+
+### A Birth
+
+*Autumn 925, the twenty-fourth year of King Edwin*
+
+A daughter is born to the house.
+
+- Name the child for a grandparent.
+- Name the child for a parent.
 - Go on.
 
-**You choose:** Go on.
-
-### A Death in the House
-
-*Autumn 925, the twenty-fourth year of King Edwin*
-
-Ida is dead of the Mottle. She was six.
-
-- Raise a stone in the chancel, with her name. (£5)
-- Make a vow. If the next child lives, the house will build a chapel.
-- Only the grave.
-
-**You choose:** Raise a stone in the chancel, with her name. (£5)
-
-The mason cuts Ida's name, and the day, and nothing else, because there is nothing else yet to cut. Every year on the day the priest says her name at Mass, and the house hears it.
-
-*Coin −£5*
-
-### A Death in the House
-
-*Autumn 925, the twenty-fourth year of King Edwin*
-
-Hal is dead of the Mottle. He was three.
-
-- Raise a stone in the chancel, with his name. (£5)
-- Make a vow. If the next child lives, the house will build a chapel.
-- Only the grave.
-
-**You choose:** Raise a stone in the chancel, with his name. (£5)
-
-The mason cuts Hal's name, and the day, and nothing else, because there is nothing else yet to cut. Every year on the day the priest says his name at Mass, and the house hears it.
-
-*Coin −£5*
-
-### A Death in the House
-
-*Autumn 925, the twenty-fourth year of King Edwin*
-
-Agnes is dead of the Mottle. She was two.
-
-- Raise a stone in the chancel, with her name. (£5)
-- Make a vow. If the next child lives, the house will build a chapel.
-- Only the grave.
-
-**You choose:** Raise a stone in the chancel, with her name. (£5)
-
-The mason cuts Agnes's name, and the day, and nothing else, because there is nothing else yet to cut. Every year on the day the priest says her name at Mass, and the house hears it.
-
-*Coin −£5*
-
-### A Death in the House
-
-*Autumn 925, the twenty-fourth year of King Edwin*
-
-Hal is dead of the Mottle. He was one.
-
-- Raise a stone in the chancel, with his name. (£5)
-- Make a vow. If the next child lives, the house will build a chapel.
-- Only the grave.
-
-**You choose:** Raise a stone in the chancel, with his name. (£5)
-
-The mason cuts Hal's name, and the day, and nothing else, because there is nothing else yet to cut. Every year on the day the priest says his name at Mass, and the house hears it.
-
-*Coin −£5*
+**You choose:** Name the child for a grandparent.
 
 ### The King Is Dead
 
@@ -1231,7 +1199,7 @@ In Lent of 926 the word comes from Wendmere: King Edwin is dead, at fifty-two, o
 
 Your proxy kneels at Wendmere, in a hall with the windows shut and vinegar on the floor, and swears for the house. The regency council writes the house's name on the list of the loyal.
 
-*The sovereign's favour: higher; Michaelmas, a fair harvest and steady trade: £255 16s 8d came in; the household £25 11s 8d, the men's pay £8 2s and repairs £20 went out; The sickness in Kerval: 27 dead this year*
+*The sovereign's favour: higher; Michaelmas, a fair harvest and steady trade: £256 1s 8d came in; the household £25 12s 2d, the men's pay £8 2s, repairs £20 and the Lanzi's interest £10 went out; The sickness in Kerval: 28 dead this year*
 
 ### Black on Penhoët's Gate
 
@@ -1249,21 +1217,11 @@ There is black on Penhoët's gate by Martinmas, and the Penhoët bell rings ever
 
 Your man comes back at Martinmas: half the tenants dead, a third of the knights, the harvest standing in the fields for want of hands, and the boundary at Kerval unwatched.
 
-### A Death in the House
-
-*Autumn 926, the twenty-fifth year of King Edwin*
-
-Agnès de Quérec is dead of the Mottle. She was fifty-eight.
-
-- Go on.
-
-**You choose:** Go on.
-
 ### A Birth
 
 *Autumn 926, the twenty-fifth year of King Edwin*
 
-A son is born to the house.
+A daughter is born to the house.
 
 - Name the child for a grandparent.
 - Name the child for a parent.
@@ -1304,20 +1262,37 @@ Fifteen pounds, and they ride on over the hills. The valley is safe for the year
 
 *Coin −£15*
 
-### The Friar
+### Your Mother
 
 *Summer 927, the twenty-sixth year of King Edwin*
 
-A friar comes through in the summer with forty people behind him, barefoot, singing, beating their own backs with knotted cords until the blood runs. The Mottle, he preaches at the cross, is God's anger at the lords, who have taken the poor man's sons for their wars and his rents for their wine. The crowd listens. So does your steward.
+In the summer of 927 Agnès is dying: not of the Mottle, which passed her over, but of being fifty-nine and tired, eleven years after your father. She is your mother, and she knew your father from the inside, the only one who did.
 
-- Let him preach, and give his people bread.
-- Hand him to the bishop's men.
+She sends for you on a hot afternoon, with the shutters closed and the bees in the lavender under the window.
 
-**You choose:** Let him preach, and give his people bread.
+- Ask her about your father.
+- Ask her nothing. Hold her hand.
 
-He preaches for three days and moves on, and takes eleven of your people with him, and the valley talks about the lords' wars and the poor man's sons all winter.
+**You choose:** Ask her about your father.
 
-*Standing with the commons: higher; Standing with the Church: lower; Grain in store (seasons) -1; -11 people at Kerval; Michaelmas, a failed harvest and brisk trade: £169 15s came in; the household £16 19s 6d, the men's pay £8 2s and repairs £20 went out; The sickness in Kerval: 25 dead this year; Sir Hervé de Morlaix withholds his dues this year, over a quarrel the house's court will have to hear*
+She tells you one thing, and it is not what you expected. "He was frightened," she says, "every day of it. From the first manor to the last. He thought someone would come and say it was all a mistake and take it back. Nobody ever did. He never stopped waiting." She dies two days later, in the morning, with the shutters open. You see the man, after that, and not the legend, and it is easier and harder.
+
+*Hal's shadow: shorter; Agnès de Quérec is dead*
+
+### The Pit
+
+*Summer 927, the twenty-sixth year of King Edwin*
+
+The churchyard is full. The priest has been burying the dead in the pit behind the church since the spring, without coffins, in their shrouds, and the pit is not consecrated ground, and the village knows it. The priest asks for money for a new churchyard, walled and blessed, on the glebe.
+
+- Pay for the new churchyard. (£10)
+- Tell him the dead are in God's ground wherever they lie.
+
+**You choose:** Pay for the new churchyard. (£10)
+
+The bishop comes to bless it in person, with his face wrapped, and the village moves its dead from the pit to the new ground, one by one, at night, by lantern, which takes a month.
+
+*Coin −£10; Church and priest +1; Piety: higher; Michaelmas, a failed harvest and brisk trade: £170 5s 10d came in; the household £17 7d, the men's pay £8 2s, repairs £20 and the Lanzi's interest £10 went out; The sickness in Kerval: 26 dead this year; Sir Hervé de Morlaix withholds his dues this year, over a quarrel the house's court will have to hear*
 
 ### The Count of the Dead
 
@@ -1339,17 +1314,31 @@ The child is given a bed in the nursery and a place at the end of the table, and
 
 *The household: more loyal*
 
-### A Birth
+### A Death in the House
 
 *Spring 928, the twenty-seventh year of King Edwin*
 
-A son is born to the house.
+Beatrice is dead of the Mottle. She was thirty-two.
 
-- Name the child for a grandparent.
-- Name the child for a parent.
 - Go on.
 
-**You choose:** Name the child for a grandparent.
+**You choose:** Go on.
+
+### A Death in the House
+
+*Spring 928, the twenty-seventh year of King Edwin*
+
+Maud is dead of the Mottle. She was two.
+
+- Raise a stone in the chancel, with her name. (£5)
+- Make a vow. If the next child lives, the house will build a chapel.
+- Only the grave.
+
+**You choose:** Raise a stone in the chancel, with her name. (£5)
+
+The mason cuts Maud's name, and the day, and nothing else, because there is nothing else yet to cut. Every year on the day the priest says her name at Mass, and the house hears it.
+
+*Coin −£5*
 
 ### The Keeper's Will
 
@@ -1358,15 +1347,320 @@ A son is born to the house.
 At midsummer you write the will your father wrote, with the priest and the steward, at the same table. You are thirty-six. You have children living, and the stone in the chancel has names on it that it did not have three years ago. You write it your own way, and the steward does not read you your father's first.
 
 - Name your heir by will, and seal it.
-- Name a guardian for a minority: Robert.
+- Name a guardian for a minority: Azenor.
 - Provide for the younger ones, out of the lands.
 
 **You choose:** Name your heir by will, and seal it.
 
 You write the name, and seal it, and give it to the priest. Whatever the law says, the will says this, and there will be a quarrel at your graveside if they ever disagree.
 
+*Michaelmas, a poor harvest and steady trade: £235 13s 4d came in; the household £23 11s 4d, the men's pay £8 2s, repairs £20 and the Lanzi's interest £10 went out*
+
+---
+
+## Book One, Act Four: The Minority
+
+> A law is a promise the living make about the dead, and the dead do not keep it.
+
+### The Council Splits
+
+*Spring 929, the twenty-eighth year of King Edwin*
+
+In the spring of 929 the boy King's council splits in two across the table at Wendmere. On one side, Carrow's heirs and the Old Baronage, who want the realm governed by its great lords as it was before Edwin. On the other, the Hales: Wendmere's officers, clerks and sheriffs' sons, who governed for Edwin and mean to go on governing for his grandson. Each side wants the West's great houses at its back before the King comes of age.
+
+The letters come up the valley in the same week, one sealed in red and one in green. The steward lays them side by side on the table, the way you lay out two knives. "Penhoët's had both as well," he says. "If we wait, Hervé chooses first, and we get whichever's left."
+
+- Answer the red seal. Carrow's heirs and the Old Baronage.
+- Answer the green seal. The Hales, and Wendmere's officers.
+- Answer both, warmly, and promise neither. [Risky]
+- Wait. The house stands for the King, and will until he is of age.
+
+**You choose:** Answer the green seal. The Hales, and Wendmere's officers.
+
+The Hales' answer comes in a clerk's hand, polite and exact, with a list of the house's dues to the crown attached and every one of them marked paid. "We like a house that pays," the letter says. You are not sure it is a compliment.
+
+*The sovereign's favour: higher; Michaelmas, a fair harvest and steady trade: £274 5s came in; the household £27 8s 6d, the men's pay £8 2s, repairs £20 and the Lanzi's interest £10 went out*
+
+### The Side
+
+*Summer 930, the twenty-ninth year of King Edwin*
+
+In 930 the council's quarrel leaves the table: a clerk of the Hales in the river at Wendmere with his purse still on him, a Carrow castle on the March with its gates shut on the King's sheriff. Your party writes. It wants proof of the house's side, and it wants it in men or money.
+
+- Send men. Twenty of the house's own, under a knight.
+- Send money. Forty pounds, in a locked chest. (£40)
+- Send words. The house's side is the house's word.
+
+**You choose:** Send men. Twenty of the house's own, under a knight.
+
+Twenty men ride east under Sir Renaud de Saint-Aubin, and come home at Martinmas fourteen, with a story about a siege that ended when the castle's cook opened a postern for money. "Lords," says the knight, "are the same everywhere."
+
+*Men in your company −6; The sovereign's favour: higher; Renown +1*
+
+### The Regent's Letter
+
+*Summer 930, the twenty-ninth year of King Edwin*
+
+A letter comes from Wendmere under the regency council's seal, which is three seals, because the council cannot agree whose to use. The minority has been expensive. The council asks the great houses of the realm for a loan to the crown, "to be repaid at the King's majority, with the King's gratitude."
+
+"With the King's gratitude," the steward repeats. "That's the interest."
+
+- Lend the crown thirty pounds. (£30)
+- Refuse, with a letter about the harvest.
+
+**You choose:** Lend the crown thirty pounds. (£30)
+
+Thirty pounds goes to Wendmere, and the council's receipt comes back with three seals on it. The King, they say, will remember. A boy of twelve is unlikely to, but his clerks will.
+
+*Coin −£30; The sovereign's favour: much higher; Michaelmas, a good harvest and slack trade: £288 11s 1d came in; the household £28 17s 1d, the men's pay £6 6s, repairs £20 and the Lanzi's interest £10 went out*
+
+### Hervé's Last Move
+
+*Spring 931, the thirtieth year of King Edwin*
+
+In the spring of 931 Hervé de Penhoët comes back from Wendmere with a parchment: a commission from the Hales to keep the King's peace in the Armance. It is a sheriff's commission in a great lord's hands, and the first thing he keeps the peace of is the road to Kerval.
+
+- Find out what he means to do, before you do anything. [Even]
+- Arm too. Walls, men, and the bridge watched. (£30)
+- Go to the King's council, and lay it before them.
+- Ride to Penhoët and ask Hervé to his face.
+
+**You choose:** Find out what he means to do, before you do anything.
+
+Your man drinks with Penhoët's farrier for a month. "The bridge first," he says when he comes back, "at harvest, when your men are in the fields. Then the Armance road. He's counted your men, and he's counted wrong by about ten." You know the day and the road. That is worth more than walls.
+
+### A Match
+
+*Spring 931, the thirtieth year of King Edwin*
+
+Mariot is seventeen, and of an age to marry. Offers come, the way they do.
+
+- Make a match with a family of Adalia.
+- Make a match with a family of the West.
+- Not yet.
+
+**You choose:** Make a match with a family of Adalia.
+
+*Mariot marries Gervase Marrick*
+
+### The Ransom
+
+*Spring 931, the thirtieth year of King Edwin*
+
+A free company on the march takes one of the house's knights on the road home from a tournament, with his horse and his harness, and sends a boy to the gate with his signet ring and a price. "Twenty pounds," the boy says, "or they'll keep him, and the horse, and send back the rest of him by the piece."
+
+The knight's wife is at the gate behind the boy, with her children.
+
+- Pay the ransom. (£20)
+- Send men to take him back. [Risky]
+- Tell the boy the house does not buy its knights from thieves.
+
+**You choose:** Pay the ransom. (£20)
+
+You pay it. The knight comes home thin and lousy and grateful, and his wife kisses your hand at Mass in front of the whole household, which embarrasses everyone but her.
+
+*The household: more loyal; Coin −£20; Michaelmas, a fair harvest and steady trade: £280 11s 8d came in; the household £28 1s 2d, the men's pay £6 6s, repairs £20 and the Lanzi's interest £10 went out; Sir Alain de Coatmen dies; his son pays £5 in relief; War with penhoet*
+
+### The Bridge at Kerval
+
+*Summer 932, the thirty-first year of King Edwin*
+
+At harvest in 932 Penhoët's men come to the bridge at Kerval with the King's commission on a pole, and read it aloud at the gate: the peace of the Armance requires that the bridge be held by the King's officer, who is Hervé de Penhoët. You knew the day. Your men are not in the fields.
+
+The old sergeant comes up from the bridge at a run, with his helmet in his hand. "They're on the far bank, my lord. A hundred, near enough. They've not crossed. They're waiting to see what we do."
+
+- Ride down to the bridge and lead the house's men yourself. [Even]
+- Send the house's men under Sir Renaud de Saint-Aubin, and stay at the hall. [Risky]
+- Ride down under a white flag, and treat with Penhoët on the bridge. [Risky]
+- Go to law, and to the King's council. Let them hold the bridge.
+
+**You choose:** Ride down to the bridge and lead the house's men yourself.
+
+You take the bridge at a walk, with your banner, and the house's men behind you, and the barricade of carts comes apart at the first push because the free company has looked at your line and decided it is not paid enough. Penhoët's knights stand a while longer, and break, and leave four dead on the bank. You do not notice the cut on your forearm until the steward points at the blood on your saddle.
+
+*Peace; Renown +4; Men in your company −4; Penhoët: much colder; Penhoët's standing: much lower; Health −1; Michaelmas, a fair harvest and steady trade: £296 5s came in; the household £29 12s 6d, the men's pay £5 2s, repairs £20 and the Lanzi's interest £10 went out; Sir Bertrand de la Roche dies and leaves a son under age; the wardship of La Roche-aux-Moines is sold for £20*
+
+### The King's Majority
+
+*Summer 933, the thirty-second year of King Edwin*
+
+At midsummer in 933 Aldred, the third of the name, sixteen years old, rides into the hall at Wendmere with his own guard and takes the seals from the council's hands. Every great lord of both realms is there to see it, or has sent someone who will report the colour of the King's face.
+
+He keeps the Hales. The men who raised him stand behind his chair, and Carrow's heirs are sent home to their estates and told to stay there. The house was on the right side, and early.
+
+- Kneel first, before the others have finished looking at each other.
+- Ask for the reward. The house was on the winning side. [Risky]
+
+**You choose:** Ask for the reward. The house was on the winning side.
+
+You ask too soon, and too plainly, and the King's new chamberlain writes your name on a list of men who ask. The reward will come, he says, in due course.
+
+*The sovereign's favour: lower*
+
+### A Match
+
+*Summer 933, the thirty-second year of King Edwin*
+
+Hal is seventeen, and of an age to marry. Offers come, the way they do.
+
+- Make a match with a family of Adalia.
+- Make a match with a family of the West.
+- Not yet.
+
+**You choose:** Make a match with a family of Adalia.
+
+*Hal marries Annot Pelham; Michaelmas, a poor harvest and slack trade: £223 8s came in; the household £22 6s 10d, the men's pay £5 2s, repairs £20 and the Lanzi's interest £10 went out*
+
+### Penhoët Settled
+
+*Spring 934, the thirty-third year of King Edwin*
+
+In Lent of 934 Hervé de Penhoët dies at sixty-seven, in his chair by the fire at Penhoët, with his clerk reading him the accounts. They say he corrected a sum an hour before the end. His grandson Yann, Ronan's boy, is fourteen, and head of Penhoët under his guardians.
+
+The bridge is the house's, and Penhoët's men are home with their wounds, and the West knows who held Kerval. With Hervé gone, the generation's quarrel is the next generation's to settle, and yours. The King's council writes to ask what the house wants done.
+
+- Break Penhoët. Ask for its attainder, and its lands.
+- Reconcile. A match between a child of the house and young Yann's line.
+- Contain it. A treaty, the boundary walked and sworn, the mill shared.
+
+**You choose:** Reconcile. A match between a child of the house and young Yann's line.
+
+The contract is signed at Penhoët in the room where Hervé died, with his chair pushed back against the wall. A child of the house and Yann de Penhoët, when they are of age, and the mill at Kerval the dowry, held by both. Yann, fourteen, signs his name with his tongue between his teeth, and asks whether there will be cake.
+
+*The household: more loyal; Michaelmas, a fair harvest and steady trade: £277 5s came in; the household £27 14s 6d, the men's pay £5 2s, repairs £20 and the Lanzi's interest £10 went out; Sir Guéthenoc de Ploërec withholds his dues this year, over a quarrel the house's court will have to hear*
+
+### The Duchess Is Dead
+
+*Spring 935, the thirty-fourth year of King Edwin*
+
+Mahaut of Armance dies at Lady Day in 935, at fifty-four, after thirty-one years as Duchess. Her last letter to the house comes a week after the bell, in her own hand, sealed before she died: a page about the weather and the price of salt, and at the bottom, "Be kind to her."
+
+Jehanne succeeds to the duchy of Armance under King Aldred, at twenty-nine.
+
+- Ride to Lannec at once, and kneel to Jehanne first.
+- Wait, and see who else rides.
+
+**You choose:** Ride to Lannec at once, and kneel to Jehanne first.
+
+You are at Lannec before the funeral, and kneel in the hall with the mourning still going up on the walls. Jehanne raises you with both hands. "You were early," she says. "Mother said you would be."
+
+*The sovereign's favour: higher; Penhoët: colder*
+
+### The Wolf Winter
+
+*Spring 935, the thirty-fourth year of King Edwin*
+
+The winter comes early and stays into Lent. The river freezes at the ford for the first time in living memory, and the wolves come down out of the hills after the sheep, and then after the shepherds. In the village they shut the doors at Vespers and do not open them for anyone.
+
+The reeve comes up to the hall with snow on his hood. "The barns are full, my lord, and the cottages are empty. Not of people. Of everything else."
+
+- Open the house's barns to the village.
+- Hunt the wolves, with every man who can hold a spear. [Risky]
+- Wait for the thaw.
+
+**You choose:** Open the house's barns to the village.
+
+The village eats the house's barley until Candlemas, and the house eats less of it. In the spring the reeve's wife sends up a cheese, which in that year is a great gift.
+
+*Grain in store (seasons) -1; Standing with the commons: higher; Michaelmas, a rich harvest and brisk trade: £366 11s 6d came in; the household £36 13s 2d, the men's pay £5 2s, repairs £20 and the Lanzi's interest £10 went out; Sir Hervé de Morlaix dies; his son pays £5 in relief*
+
+### The New Reign's Bill
+
+*Autumn 935, the thirty-fourth year of King Edwin*
+
+King Aldred's first Moot sits at Wendmere at Michaelmas in 935, and the first thing it does is vote the King a tax on the West: a tenth of moveables, to pay the debts of the minority. The patent of the West's liberties is read in the Moot for the third time in thirty years, by a clerk who stumbles over the Western names. It says the West shall not be taxed without its own Estates. The King's chancellor says the patent was a grant, and what a king grants a king can interpret.
+
+- Pay the tenth, and say nothing. (£40)
+- Protest by the patent. Read it to the Moot yourself. [Risky]
+- Bargain. Pay half, in exchange for the patent confirmed again. (£20)
+- Let the other houses protest. Pay late.
+
+**You choose:** Protest by the patent. Read it to the Moot yourself.
+
+You read the patent, and the chancellor thanks you, and says the King's interpretation of his grandfather's grant will be published in due course. The tenth is collected at Martinmas. The house's share is collected first.
+
+*Coin −£40; The sovereign's favour: much lower; Michaelmas, a poor harvest and steady trade: £240 4s came in; the household £24 5d, the men's pay £5 2s, repairs £20 and the Lanzi's interest £10 went out; Michaelmas, a fair harvest and steady trade: £280 came in; the household £28, the men's pay £5 2s, repairs £20 and the Lanzi's interest £10 went out*
+
+### The Heir Comes of Age
+
+*Autumn 937, the thirty-sixth year of King Edwin*
+
+At Michaelmas in 937 Ida is eighteen, and taller than you, and sits at your right hand at the audit for the first time. She adds the columns in her head before the steward has his pen dipped, and says so. You hear yourself in it, and do not much like the sound, and are proud anyway.
+
+After the audit she asks you, plainly, the way you once asked your father: "What am I for, until it's mine?"
+
+- Give Ida a manor of her own, as your father gave you one.
+- Send Ida to court, to be seen and to see.
+- Keep the reins. Ida can learn at your elbow.
+
+**You choose:** Send Ida to court, to be seen and to see.
+
+Ida goes to Wendmere with two horses and a tutor and comes back at Christmas with a new way of bowing and three friends you do not trust. "They're useful," she says. "You'd like them if you'd let yourself."
+
+*The sovereign's favour: higher; Hal's shadow: shorter*
+
+### A Match
+
+*Autumn 937, the thirty-sixth year of King Edwin*
+
+Ida is eighteen, and of an age to marry. Offers come, the way they do.
+
+- Make a match with a family of Adalia.
+- Make a match with a family of the West.
+- Not yet.
+
+**You choose:** Make a match with a family of Adalia.
+
+*Ida marries Simon Malvern; Michaelmas, a good harvest and slack trade: £315 7s 2d came in; the household £31 10s 9d, the men's pay £5 2s, repairs £20 and the Lanzi's interest £10 went out; Sir Mériadec de Quintin dies and leaves a son under age; the wardship of Quintin is sold for £20*
+
+### The Keeper's End
+
+*Spring 939, the thirty-eighth year of King Edwin*
+
+In the spring of 939 you are forty-seven, and the house is a great house, and you have kept it. The arm you hurt at the bridge has never been right; in the cold it will not close on a cup, and this winter it has been cold.
+
+The chaplain, who is old now, comes to you after Mass. "Your father asked you a question once," he says, "in the garden. You'll want to ask yours. People always do."
+
+- Give the house to Ida, and stay on in the hall.
+- Go into the Church, as your father never did.
+- Let the old wound from the bridge take its course.
+
+**You choose:** Give the house to Ida, and stay on in the hall.
+
+You give Ida the keys and the seal at the high table at Easter, with the household watching, and move your chair to the side, by the fire. "Who will you be?" you ask, as your father asked you. "Somebody who goes out," she says. "You never went out."
+
+### The Succession
+
+*Spring 939, the thirty-eighth year of King Edwin*
+
+John has given the house into other hands while he still lives.
+
+The heir under the law of the house is Ida.
+
+- Let the law stand.
+
+**You choose:** Let the law stand.
+
+John, head of the house from 915 to 939. He gave the house into his heir's hands while he still lived.
+
+*Ida is head of the house*
+
+### A Match
+
+*Spring 939, the thirty-eighth year of King Edwin*
+
+Isabel is seventeen, and of an age to marry. Offers come, the way they do.
+
+- Make a match with a family of Adalia.
+- Make a match with a family of the West.
+- Not yet.
+
+**You choose:** Make a match with a family of Adalia.
+
+*Isabel marries Giles Sayer*
+
 ### The End
 
-Here Act III of Book One ends. The Mottle is over. You have children living, and a will that names one of them. The house is a great house.
+Here Book One, The Keeper, ends. Ida is head of the house now, at nineteen. Penhoët and the house are to be one blood. The house is a great house.
 
-Act IV, The Minority, is still being written.
+Book Two, The Builder, is still being written.

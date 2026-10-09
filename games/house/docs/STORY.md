@@ -1366,6 +1366,34 @@ The author's own Knight of Adalia run ends as King of the West, married to Mahau
 
 ---
 
+## Layer 3: The crowned path, Act II, *The Law* (decided 2026-10-09)
+
+Years 58-63 (920-925), written in `scenes/book1/40-crowned-law.yaml`. The Founder's Act II (C1-C11 above) is written in `scenes/book1/30-the-law.yaml`.
+
+**The threshold**, for both paths (step 5's mechanism, built small for now). The house's work for its side is `counter.overturn`, and the allies it brings over are `counter.allies`. The likely outcome stands unless the house is on the other side, its cause reaches **six**, and **at least one ally** stands with it (L3-13). Scenes say how many voices are still needed (`{house.law_need}`).
+
+| # | Decision | Decided |
+|---|---|---|
+| L3-34 | The Estates of 920, in an elective run | Likely: the young sovereign is confirmed **for life**, and the Estates keep the choice of the next one. The crown can overturn this to a **hereditary** crown (the eldest child) by making the case, spending, and bringing an ally (Kerguen, the Church, or Penhoët through the bargain). |
+| L3-35 | Penhoët refused the Armance by the male line | **Waits for Mahaut's death** (about 935): it votes against the crown and gathers the Armance lords. An attainder is possible if Bertrand's letters are kept and read before the Estates. |
+| L3-36 | The regency's end | At Michaelmas 923, by David's will. Mahaut **hands over** the seals if her respect for her child is high (a vote in council, the evening lessons); otherwise her council resists, and the seals are **taken** by a check, or by the old king's word, or the council is kept for a year. |
+| L3-37 | Act II's war | **Bertrand de Quérec rises again** with the free companies paid off from Caldmoor's war, in the name of the Estates' right. The young sovereign's first command, or the constable's, or a charter. The realm is at war while it lasts (trade falls, the march is raided). |
+
+**The beats** (K1-K11):
+- **K1. The Estates sit** (Whitsun 920). Hervé's bargain: the Armance by the male line for Penhoët's voices. Take it (the case grows, and Penhoët is an ally; Mahaut is wounded), refuse it (Penhoët waits), or leave it to the Estates.
+- **K2. The crown's case** (Michaelmas 920). Elective run: ask for a hereditary crown, ask only to be confirmed for life, or ask nothing. Otherwise: answer the male-line petition yourself or through Mahaut.
+- **K3. The count** (winter 920). Revisitable: spend £150; bring Kerguen over; ask the Bishop of Saint-Lys; or let it stand.
+- **K4.** A pool draw.
+- **K5. The Estates decide** (Whitsun 922): for life, hereditary, or the eldest child's law confirmed; and the Armance's custom, if the bargain was taken.
+- **K7. Bertrand rises** (summer 923): lead, send the constable, or treat (the Estates' right in a charter).
+- **K6. Sixteen** (Michaelmas 923): the seals, handed over or taken.
+- **K8. After the marsh** (winter 923): attaint Bertrand, pardon him and keep his letters, or leave him to the Estates.
+- **K9.** A pool draw.
+- **K10. Penhoët's patience** (Michaelmas 924): read the letters before the Estates (attainder; the claim passes to Sir Yvon of Kerlan), reconcile (a council seat), or watch.
+- **K11. The crown's own house** (Easter 925): the house's law, and the ship's master's word of a sickness in Sarenza that takes the children first.
+
+**For Act III (noted, not decided).** If the Keeper dies in Act II or later under an elective crown, the Estates should choose the successor rather than the house's law alone. The engine passes the headship by the house's law today.
+
 ## Layer 3 decisions, round 1 (2026-10-07)
 | # | Decision | Decided |
 |---|---|---|
@@ -1418,3 +1446,4 @@ The author's own Knight of Adalia run ends as King of the West, married to Mahau
 | 2026-10-08 | The crowned path, from the author's save | The save left Jehan, five, the crown left to the Estates, and old Quérec exiled. Jehan is the heir; Jehanne only when Mahaut has no child (L3-31). The elective crown honoured (L3-32). Bertrand defies the Estates' right (L3-33). Prologue and Book I, Act I made sex-generic and elective-aware; the save is a test fixture, and `transcripts/crowned-author-save.md` is its run. |
 | 2026-10-08 | Depth and carry-over | The calendar is the Church's years of grace, a fictional count (old year N = 862 + N, so the house starts in 912), shown with the sovereign's year (canon.md, "The calendar"). Knight of Adalia's economy ported whole: manor, holdings, knights' dues, household, men's pay at Michaelmas. The save carries everything it holds. A new start answers seven to ten questions that build the same export an import gives. Hints and results in words, Knight of Adalia style. |
 | 2026-10-08 | The purse | Knight of Adalia is the point of truth for money, the crown's income included (£600-£1,000, not PLAN's £4,000). Income moves with the harvest, the trade, war and plague. Investment scenes on Knight of Adalia's model: two in the prologue (one per path) and two in Book I, Act I. |
+| 2026-10-09 | The crowned path, Act II | The Estates confirm for life unless the crown carries a hereditary crown with an ally (L3-34); Penhoët, refused, waits for Mahaut's death (L3-35); the regency ends in a handover or a struggle (L3-36); Bertrand rises again with the free companies (L3-37). Both paths' Act II written; the threshold is six with an ally. |

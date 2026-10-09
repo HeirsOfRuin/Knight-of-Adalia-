@@ -1,0 +1,512 @@
+# Book I, Act II: The Law (STORY.md, Layer 3 round 3, C1-C11), the Founder opening, free and Adalian frames.
+# Years 58-63 (920-925). The law is mostly fixed (L2-2): each frame has a likely outcome that stands unless the house
+# is on the other side and its cause (counter.overturn) reaches house.law's threshold with an ally (counter.allies,
+# L3-13). Sides: flag.h_side_mahaut (Mahaut: inheritance through women, or her right to her daughter), h_side_rival
+# (Penhoët's male line, or the King's wardship), h_side_own (neither), h_side_both (both, in secret).
+# Likely outcomes: free under Mahaut, Thibaut or the duchy, male preference; free under King Gaucelin, the male line
+# unless the house helped him turn on his regents (C6, h_gaucelin_own); Adalian, the King's wardship.
+
+- id: h_c01_offers
+  chapter: book1
+  title: The Two Offers
+  checkpoint: true
+  card: { title: "Book One, Act Two", subtitle: The Law, epigraph: "A law is what is left when the people who argued about it are dead." }
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 58, season: spring } } ]
+  text: |
+    At Lady Day you give your answers. [if realm.west == adalian]The governor's man waits at the inn for his, and Mahaut's steward waits in your hall for hers, and they are careful never to be in the same room.[else]Mahaut's steward waits in your hall for his, and Hervé de Penhoët's clerk waits at the inn for his, and they are careful never to be in the same room.[/if]
+
+    [if flag.h_b_stance_women]You told Lannec a year ago that the house stood with inheritance through women. Mahaut has not forgotten. Nor has Penhoët.[elif flag.h_b_stance_male]You told Lannec a year ago that the house stood with the male line. Penhoët has not forgotten. Nor has Mahaut.[else]You told Lannec a year ago that the house would speak when the hearing sat. It sits at Whitsun.[/if] [if flag.h_b_wed_kerguen]Your wife's people at Kerguen would like to know which way you mean to go before they decide which way they do.[elif flag.h_b_wed_armance]Your marriage into Mahaut's household is a vote cast already, as far as most of the West is concerned.[elif flag.h_b_wed_hale]Your marriage into the Hales is a vote cast already, as far as Wendmere is concerned.[/if]
+
+    "Whatever you do," says {house.companion}, "do it before Whitsun. A house that makes up its mind at the hearing is a house that was bought at the hearing."
+  choices:
+    - id: mahaut
+      text: "[if realm.west == adalian]Take Mahaut's offer, and speak for her right to her daughter.[else]Take Mahaut's offer, and vote for inheritance through women.[/if]"
+      effects:
+        - set: flag.h_side_mahaut
+        - add: { counter.overturn: 1, rel.mahaut_armance.affection: 2, rival.penhoet.temper: -1 }
+        - if: [ sibling.exists, "!flag.h_second_penhoet" ]
+          then: [ { set: flag.h_sibling_council }, { add: { counter.second: 1 } } ]
+          else: [ { hold: { id: armance_forests, name: The stewardship of the Armance forests, income: 1200 } } ]
+      text_after: |
+        Mahaut's steward takes your letter back to Lannec himself. [if flag.h_sibling_council]Within the month {sibling.first} has a seat at the end of her council table, and is learning which of her councillors to believe.[else]Within the month a patent comes for the stewardship of the Armance forests, with a seal the size of a saucer.[/if] [if realm.west == adalian]The governor's man leaves the inn without saying goodbye.[else]At Penhoët, Hervé reads your answer and puts it in a box with the others.[/if]
+      next: h_c02_hearing
+    - id: rival
+      text: "[if realm.west == adalian]Take the King's offer, and speak for his wardship.[else]Take Penhoët's offer, and vote for the male line.[/if]"
+      effects:
+        - set: flag.h_side_rival
+        - add: { counter.overturn: 1, rel.mahaut_armance.affection: -2 }
+        - if: "realm.west == adalian"
+          then: [ { add: { counter.favour: 2 } } ]
+          else:
+            - add: { rival.penhoet.temper: 3 }
+            - if: flag.h_kerval_lost
+              then: [ { set: flag.h_kerval_returned } ]
+              else:
+                - if: flag.h_kerval_shared
+                  then: [ { hold: { id: kerval_mill, name: The wood and the mill at Kerval, income: 1200 } } ]
+                  else: [ { set: flag.h_kerval_claim_signed } ]
+      text_after: |
+        [if realm.west == adalian]The governor's man is pleased, and says so, and promises nothing in writing. The King, he says, will remember.[elif flag.h_kerval_returned]Hervé comes in person to sign {house.claimed} back to you, every field of it, and the mill, and shakes your hand on the step. He has bought your vote with your own land, and you both know it.[elif flag.h_kerval_shared]Hervé comes in person to sign the wood and the mill back to you, and shakes your hand on the step. The Kerval quarrel, after two generations, is over.[else]Hervé comes in person to sign away his house's claim to {house.claimed} for ever, in front of witnesses, and shakes your hand on the step.[/if] Mahaut's steward goes home with nothing in his bag but your letter.
+      next: h_c02_hearing
+    - id: own
+      text: Take neither. The house's vote is its own until the day.
+      effects: [ { set: flag.h_side_own }, { add: { counter.household: 1 } } ]
+      text_after: |
+        You send both of them away with the same courteous letter, word for word. Both sides go on courting. The steward says it is the most expensive letter you will ever write, because now everyone will have to keep paying for you.
+      next: h_c02_hearing
+    - id: both
+      text: Take both, in secret, and play them off.
+      effects: [ { set: flag.h_side_both }, { add: { res.coin: 2400 } } ]
+      text_after: |
+        Two letters, two seals, two promises, each in a hand the other side has never seen. The first instalments arrive in the same week, from opposite directions. {house.companion} counts the money and says nothing, which is the loudest thing {house.companion_first} has said to you in years.
+      next: h_c02_hearing
+
+- id: h_c02_hearing
+  chapter: book1
+  title: "[if realm.west == adalian]The Hearing Opens[else]The Estates Open[/if]"
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 58, season: summer } } ]
+  text: |
+    [if realm.west == adalian]At Whitsun the King's justices sit at Lannec, in the great hall where the Estates once sat, with the royal arms hung over the dais. The King's serjeant opens: a girl of fourteen with a duchy is the King's ward by the law of Adalia, and her marriage is the King's to give. Mahaut's pleader answers with the West's liberties[if inherited.c5_liberties], and reads them out of {house.parent}'s patent, the King's own seal on it[/if]. The hall listens to both and believes neither.[else]At Whitsun the Estates of the West sit at Lannec, in the hall where {house.parent} spoke: the lords on their benches, the bishops in their stalls, the burgesses at the back. The Bishop of Saint-Lys says the opening Mass, and lets it be known, in the sermon, which law the Church could bless and which it could only tolerate.
+
+    Who sits where says who has the votes. [if realm.sovereign == gaucelin]The Brésy regents sit together on the right of the dais, with the boy king between them, and the male-line lords crowd the benches nearest them.[else]Mahaut's Armance lords sit together, and Penhoët's friends sit together, and between them are forty men who have not decided, and know what that is worth.[/if][/if]
+  choices:
+    - id: speak
+      text: Speak on the first day.
+      check: { attr: presence, skill: diplomacy, difficulty: 4, audience: nobles, mods: [ { if: flag.h_oath_reserved, add: 1, label: they heard you at your oath } ] }
+      success:
+        text: |
+          You speak for a quarter of an hour, plainly, for your side, and sit down. Nobody cheers, which in that hall is a good sign. Three men come to you afterwards in the cloister to say they agree with you, and one of them means it.
+        effects: [ { add: { counter.overturn: 2 } }, { set: flag.h_c_spoke } ]
+        next: h_c03_price
+      failure:
+        text: |
+          You speak, and it goes well enough until a Penhoët cousin asks you, from the benches, what {house.parent} would have said, and the hall laughs, and you lose the thread. You sit down to polite silence.
+        effects: [ { add: { counter.shadow: 1 } }, { set: flag.h_c_spoke } ]
+        next: h_c03_price
+    - id: count
+      text: Say nothing. Watch, and count.
+      effects: [ { set: flag.h_counted } ]
+      text_after: |
+        You sit through every day of it and say nothing at all, and make a list in the evenings: who spoke, who nodded, who left early, who dined with whom. By the end of the week you know more about the hall than anyone in it, and nobody knows what you think.
+      next: h_c03_price
+    - id: corridors
+      text: Work the corridors and the inns, with the house's money. (£10)
+      requires: "res.coin >= 2400"
+      check: { attr: wits, skill: courtesy, difficulty: 4 }
+      success:
+        text: |
+          Dinners, a hunting party, a debt quietly paid for a man who will not mention it. By the end of the week four votes have moved, and none of them will ever say why.
+        effects: [ { add: { res.coin: -2400, counter.overturn: 2 } } ]
+        next: h_c03_price
+      failure:
+        text: |
+          Dinners and a hunting party, and the money goes where money goes, and the men you fed vote the way they were always going to. One of them tells the story at the next dinner.
+        effects: [ { add: { res.coin: -2400 } } ]
+        next: h_c03_price
+
+- id: h_c03_price
+  chapter: book1
+  title: The Price
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 58, season: autumn } } ]
+  text: |
+    At Michaelmas the side you did not take sends its own offer, and it is not polite.
+
+    [if flag.h_side_mahaut && realm.west == adalian]The governor's man comes with a parchment: the King's chancery has found a debt of {house.parent}'s to the crown, from the war, with interest. It can be forgiven, he says. It can also be collected.[elif flag.h_side_mahaut]Hervé de Penhoët does not come himself. His lawyer comes, with a writ ready to revive the Kerval suit[if flag.h_second_penhoet], and a letter from {sibling.first}, at Penhoët, saying that life there has become difficult, and asking what you mean to do[/if].[elif flag.h_side_rival]Mahaut's steward comes back, without a letter this time. The Duchess, he says, has a marriage to offer: a son of one of her Armance lords for [if sibling.exists && !flag.h_second_penhoet && !flag.h_second_kerguen && !flag.h_second_elsewhere]{sibling.first}[else]the next child of the house[/if], with the lord's lands to come. She asks only that the house think again.[elif flag.h_side_both]Both sides come, a day apart, each with a little more, because each has heard that the house is thinking. You have to look as though you are.[else]Both sides come, a day apart, each with a little more. A house that has not chosen is a house that has not been paid enough.[/if]
+  choices:
+    - id: take
+      visible_if: "flag.h_side_mahaut || flag.h_side_rival"
+      text: Take it, and change sides.
+      effects:
+        - if: flag.h_side_mahaut
+          then: [ { clear: flag.h_side_mahaut }, { set: flag.h_side_rival }, { add: { rel.mahaut_armance.affection: -3, rival.penhoet.temper: 2 } } ]
+          else: [ { clear: flag.h_side_rival }, { set: flag.h_side_mahaut }, { add: { rel.mahaut_armance.affection: 1, rival.penhoet.temper: -3 } } ]
+        - add: { counter.overturn: -1, counter.household: -1 }
+        - set: flag.h_c_turned
+      text_after: |
+        You change sides at Michaelmas, which is the season for it. The side you leave says what it says about you, in every hall in the West. The side you join takes you in, and counts the spoons.
+      next: { pool: h_b2_early, count: 1, then: h_c05_count }
+    - id: refuse
+      visible_if: "flag.h_side_mahaut || flag.h_side_rival"
+      text: Refuse it, and let them do what they threatened.
+      effects:
+        - set: flag.h_c_held
+        - add: { counter.overturn: 1, counter.household: 1 }
+        - if: [ flag.h_side_mahaut, "realm.west == adalian" ]
+          then: [ { add: { res.coin: -4800, counter.favour: -2 } } ]
+        - if: [ flag.h_side_mahaut, "realm.west != adalian" ]
+          then: [ { add: { rival.penhoet.temper: -1 } }, { if: flag.h_second_penhoet, then: [ { add: { counter.second: -1 } } ] } ]
+      text_after: |
+        [if flag.h_side_mahaut && realm.west == adalian]The chancery collects. Twenty pounds goes to Wendmere, and the governor's man writes a receipt in a hand that says he will remember the house's name.[elif flag.h_side_mahaut]The Kerval suit is revived at Martinmas, and the lawyers start again where they left off, at your expense.[if flag.h_second_penhoet] {sibling.first} writes again from Penhoët, shorter.[/if][else]You send the steward home with nothing. Mahaut finds the Armance lord's son another match by Christmas, and lets the house know she has.[/if] The house holds. That is worth something too, at the next count.
+      next: { pool: h_b2_early, count: 1, then: h_c05_count }
+    - id: pretend
+      visible_if: "flag.h_side_mahaut || flag.h_side_rival"
+      text: Pretend to take it.
+      effects: [ { clear: flag.h_side_mahaut }, { clear: flag.h_side_rival }, { set: flag.h_side_both }, { add: { res.coin: 2400 } } ]
+      text_after: |
+        You thank them, and take the first instalment, and write a letter that could be read either way by a lawyer and only one way by a friend. Now you are on both sides, and will have to stay there.
+      next: { pool: h_b2_early, count: 1, then: h_c05_count }
+    - id: choose
+      visible_if: "flag.h_side_own || flag.h_side_both"
+      text: "[if flag.h_side_both]Keep both sides paying.[else]Hear them both out, and choose at last.[/if]"
+      effects:
+        - if: flag.h_side_own
+          then: [ { clear: flag.h_side_own }, { set: flag.h_side_mahaut }, { add: { counter.overturn: 1, rel.mahaut_armance.affection: 1 } } ]
+          else: [ { add: { res.coin: 2400 } } ]
+      text_after: |
+        [if flag.h_side_both]Two more instalments, from two directions. The steward keeps two ledgers now, in two chests, and sleeps badly.[else]You choose Mahaut's side, in the end, because she asked first and asked plainly, and because Hervé's lawyer called you "my lord" in a tone you did not like.[/if]
+      next: { pool: h_b2_early, count: 1, then: h_c05_count }
+    - id: stay_out
+      text: "[if flag.h_side_own]Stay out of it. The house has no side.[else]Send them away without an answer, and let them wonder.[/if]"
+      effects: [ { add: { counter.household: 1, rel.mahaut_armance.affection: -1, rival.penhoet.temper: -1 } } ]
+      text_after: |
+        [if flag.h_side_own]Both sides take it badly, which proves, says {house.companion}, that it was the right answer.[else]They go away without one. Your side hears that the other came, and wonders what you said, which costs you a little with both.[/if]
+      next: { pool: h_b2_early, count: 1, then: h_c05_count }
+
+- id: h_c05_count
+  chapter: book1
+  title: The Count
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 59, season: winter } } ]
+  text: |
+    In the dark of the year your clerk lays it out on the table in the hall, in two columns, with the names of men down the margin and a mark against each.
+
+    [if flag.h_side_own]You are on neither side, and both columns know it. The clerk has put the house's name in the middle of the page, in a column by itself.[elif flag.h_side_both]You are in both columns. The clerk has written the house's name twice, in two different inks.[elif realm.west == adalian]The justices will rule as the King wants, unless the West makes it too dear for him. [if flag.h_side_mahaut]Mahaut's cause needs {house.law_need} to make it dear enough[if counter.allies >= 1], and it has an ally beside yours[else], and it cannot be done by the house alone[/if].[else]The King's cause is the likely one already. The house's voice makes it surer, and the King will remember who spoke.[/if][elif flag.h_side_rival && realm.sovereign != gaucelin]Male preference will pass unless Penhoët carries the hall. Penhoët needs {house.law_need}, and you are some of them[if counter.allies >= 1], with an ally beside you[else], and you cannot be all of them[/if].[elif flag.h_side_mahaut && realm.sovereign == gaucelin]The regents will carry the male line unless the hall turns. Mahaut's side needs {house.law_need}[if counter.allies >= 1], and has an ally beside yours[else], and the house cannot be all of them[/if].[else]Your side is the likely one. The count is close enough to worry about, and not close enough to lose.[/if]
+
+    "Money moves votes," says the clerk. "Friends move more."
+  choices:
+    - id: spend
+      visible_if: "flag.h_side_mahaut || flag.h_side_rival"
+      text: Spend for your side, coin and men and favours. (£30)
+      requires: "res.coin >= 7200"
+      effects: [ { add: { res.coin: -7200, counter.overturn: 2 } } ]
+      text_after: |
+        Thirty pounds goes out of the chest in small amounts to men who will not thank you for it in public. Your men ride with the waverers' carts to Lannec, so the waverers feel safe. Two names move from one column to the other.
+      next: { switch: [ { if: [ flag.h_side_both, "!flag.h_c_found" ], go: h_c05_secret } ], default: h_c06_majority }
+    - id: ally_kerguen
+      visible_if: "flag.h_side_mahaut || flag.h_side_rival"
+      text: Bring Kerguen over to your side.
+      check: { attr: presence, skill: diplomacy, difficulty: 6, mods: [ { if: flag.h_b_wed_kerguen, add: 2, label: your wife's kin }, { if: flag.h_second_kerguen, add: 2, label: your sibling's house }, { if: "rival.kerguen.temper >= 3", add: 1, label: Kerguen is friendly }, { if: flag.h_counted, add: 1, label: you know the hall } ] }
+      success:
+        text: |
+          Tanguy de Kerguen hears you out at his own table, with his mother at the end of it, and agrees before the cheese. Kerguen's votes, and the votes of the three small houses that go where Kerguen goes, are yours.
+        effects: [ { add: { counter.allies: 1, counter.overturn: 1, rival.kerguen.temper: -1 } }, { set: flag.h_c_ally_kerguen } ]
+        next: { switch: [ { if: [ flag.h_side_both, "!flag.h_c_found" ], go: h_c05_secret } ], default: h_c06_majority }
+      failure:
+        text: |
+          Tanguy hears you out with great courtesy, and says he must think, and thinks, and in a week writes that Kerguen will vote as its conscience tells it. Its conscience has not told it anything yet.
+        effects: [ { add: { rival.kerguen.temper: -1 } } ]
+        next: { switch: [ { if: [ flag.h_side_both, "!flag.h_c_found" ], go: h_c05_secret } ], default: h_c06_majority }
+    - id: ally_kin
+      visible_if: { all: [ { any: [ flag.h_side_mahaut, flag.h_side_rival ] }, { any: [ flag.h_b_wed_armance, flag.h_b_wed_hale, flag.h_second_penhoet ] } ] }
+      text: "Ask your kin by marriage to stand with you: [if flag.h_b_wed_armance]your wife's people in Mahaut's household[elif flag.h_b_wed_hale]the Hales, and the King's ear[else]{sibling.first}, at Penhoët[/if]."
+      check: { attr: presence, skill: diplomacy, difficulty: 6, mods: [ { if: "counter.second >= 2", add: 1, label: you have been good to each other }, { if: flag.h_counted, add: 1, label: you know the hall } ] }
+      success:
+        text: |
+          They come over, in the end, because blood is blood and because you asked in person. It will cost you something later. Kin always does.
+        effects: [ { add: { counter.allies: 1, counter.overturn: 1 } }, { set: flag.h_c_ally_kin } ]
+        next: { switch: [ { if: [ flag.h_side_both, "!flag.h_c_found" ], go: h_c05_secret } ], default: h_c06_majority }
+      failure:
+        text: |
+          They hear you out, and tell you, kindly, that their own house has its own interests, and you have married into a family, not bought one.
+        effects: [ { add: { counter.second: -1 } } ]
+        next: { switch: [ { if: [ flag.h_side_both, "!flag.h_c_found" ], go: h_c05_secret } ], default: h_c06_majority }
+    - id: hold
+      text: Keep what you have. The house's coin is the house's.
+      effects: [ { add: { counter.household: 1 } } ]
+      text_after: |
+        You lock the chest and send the clerk to bed. Let the others spend. A house that spends itself on someone else's law is not a house for long.
+      next: { switch: [ { if: [ flag.h_side_both, "!flag.h_c_found" ], go: h_c05_secret } ], default: h_c06_majority }
+
+- id: h_c05_secret
+  chapter: book1
+  title: Two Ledgers
+  frames: [free, adalian]
+  text: |
+    In the spring a man at Lannec asks your steward, over a cup of wine, how the house manages to be paid by both sides at once. He asks it as a joke. Your steward laughs, and comes home, and tells you, and does not laugh.
+  choices:
+    - id: cover
+      text: Cover it. Somebody is lying about the house, and you will find out who.
+      check: { attr: wits, skill: diplomacy, difficulty: 6, mods: [ { if: flag.h_counted, add: 1, label: you know who talks to whom } ] }
+      success:
+        text: |
+          You find the man, and find out who he drinks with, and make sure the right people hear that he is in Valdrenne's pay, which is nearly true. Nobody asks your steward anything again.
+        next: h_c06_majority
+      failure:
+        text: |
+          You try, and it comes out anyway, at a dinner, in front of both sides. Mahaut's steward and Penhoët's lawyer look at each other across the table, and then at you, and it is the only time they have ever agreed about anything.
+        effects: [ { set: flag.h_c_found }, { add: { rival.penhoet.temper: -3, rel.mahaut_armance.respect: -3, counter.household: -1 } } ]
+        next: h_c06_majority
+    - id: choose
+      text: Choose a side now, before someone chooses for you.
+      effects: [ { clear: flag.h_side_both }, { set: flag.h_side_mahaut }, { add: { rival.penhoet.temper: -2, rel.mahaut_armance.affection: 1 } } ]
+      text_after: |
+        You send Penhoët's money back, all of it, with a letter that says nothing. Hervé reads it and understands it perfectly. Mahaut never knows how close it was, or knows and never says.
+      next: h_c06_majority
+
+- id: h_c06_majority
+  chapter: book1
+  title: "[if realm.sovereign == gaucelin]The King Comes of Age[else]A Quiet Year[/if]"
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 60, season: summer } } ]
+  text: |
+    [if realm.sovereign == gaucelin]At midsummer King Gaucelin is sixteen, and of age, and has to decide whether he is his regents' king or his own. The Brésy regents want the male line, because it is the law of his own claim; the boy is said to want whatever his regents do not. A Brésy cousin comes to your hall to ask the house to stand with the regents at the crowning feast. A boy in a plain cloak comes the next night, alone, by the back gate, and asks you to stand with him.[else]The year after the count is the kind nobody writes chronicles about. The hearing is adjourned to the next Whitsun but one; the lawyers bill; the harvest is {house.harvest}. It is a year for the house's own business.[/if]
+  choices:
+    - id: regents
+      visible_if: "realm.sovereign == gaucelin"
+      text: Stand with the regents.
+      effects: [ { add: { counter.favour: 2, rival.penhoet.temper: 1 } }, { if: flag.h_side_rival, then: [ { add: { counter.overturn: 1 } } ] } ]
+      text_after: |
+        You stand behind the regents at the crowning feast, and drink the King's health, and watch the boy not look at you. The regents are grateful. The boy is sixteen, and will be older.
+      next: h_c07_march
+    - id: boy
+      visible_if: "realm.sovereign == gaucelin"
+      text: Stand with the boy against his regents.
+      check: { attr: presence, skill: courtesy, difficulty: 6, audience: nobles, mods: [ { if: flag.h_counted, add: 1, label: you know who counts } ] }
+      success:
+        text: |
+          At the crowning feast Gaucelin dismisses his regents, one by one, by name, with the house standing at his shoulder and its knights in the yard. The Brésy cousins leave the hall without finishing their dinner. The crown no longer pushes the male line. The boy thanks you, once, and means it, and does not say it again.
+        effects: [ { set: flag.h_gaucelin_own }, { add: { counter.favour: 3 } } ]
+        next: h_c07_march
+      failure:
+        text: |
+          The boy tries, at the crowning feast, and the regents let him finish his speech and then go on governing. The house's name is on the wrong list now, the regents' list, and the boy cannot help you.
+        effects: [ { add: { counter.favour: -2 } } ]
+        next: h_c07_march
+    - id: aside
+      text: "[if realm.sovereign == gaucelin]Keep out of it.[else]Go on.[/if]"
+      effects: [ { if: "realm.sovereign == gaucelin", then: [ { add: { counter.favour: -1 } } ] } ]
+      text_after: |
+        [if realm.sovereign == gaucelin]You stay at home for the crowning, and send a cup. Neither side forgives it, which is the usual price of a cup.[else]The house gets on with the year.[/if]
+      next: { switch: [ { if: "realm.sovereign == gaucelin", go: h_c07_march } ], default: { pool: h_b2_early, count: 1, then: h_c07_march } }
+
+- id: h_c07_march
+  chapter: book1
+  title: The March Burns
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 61, season: summer } }, { war: the free companies } ]
+  text: |
+    In the summer of 923 Caldmoor's regency war spills over the March, and the free companies who fought in it, paid off and unpaid, come south and west along the roads looking for the next war, or the next village.
+
+    [if realm.west == adalian]The King needs men for the March, and the West's men are nearest. The governor writes to every house in the West for its quota. The King's need, says Mahaut's steward, is the West's leverage, if anyone has the nerve to use it.[else]The Estates vote a war levy for the march castles, and in the corridors votes on the law are traded for it, a lance for a vote, a vote for a lance.[/if] A company of eighty men under a Hroswalder called the Bastard of Ostmark has camped at the ford below {house.manor}, and sent to ask, courteously, what the house would pay for them to go away.
+  choices:
+    - id: send
+      text: Send the house's men to the march, under the house's banner.
+      check: { attr: wits, skill: tactics, difficulty: 4, mods: [ { if: "res.men >= 30", add: 1, label: a strong company } ] }
+      success:
+        text: |
+          Your men ride north with the levy and come back at Michaelmas with fewer horses and a Caldmoor banner, and the sovereign's thanks under seal. [if realm.west == adalian]The governor writes that the King is mindful of the house, and of its views on the wardship.[else]Four lords who had not decided vote with the house's side, because the house's men were there and theirs were not.[/if]
+        effects: [ { add: { counter.favour: 2, counter.overturn: 2, res.men: -3, res.renown: 3 } }, { set: flag.h_c_sent_men } ]
+        next: h_c07_company
+      failure:
+        text: |
+          Your men ride north and are caught in the hills by men who know them better, and come home at Michaelmas eight fewer, with nothing but the sovereign's thanks, which are polite.
+        effects: [ { add: { counter.favour: 1, res.men: -8 } }, { set: flag.h_c_sent_men } ]
+        next: h_c07_company
+    - id: hire
+      text: Hire the Bastard's company to guard your own valleys. (£40)
+      requires: "res.coin >= 9600"
+      effects: [ { add: { res.coin: -9600, estate.defence: 1 } }, { set: flag.h_c_hired_bastard } ]
+      text_after: |
+        Forty pounds for a summer of eighty men at the fords. Your valleys are the only ones on that side of the hills nobody burns. The Bastard eats at your table twice a week and has opinions about everything, including your wine, your priest and the law of succession.
+      next: h_c07_company
+    - id: nothing
+      text: Shut the gates, and wait for it to pass.
+      effects: [ { add: { estate.people: -12, estate.temper: -1, counter.household: -1 } } ]
+      text_after: |
+        The company moves on in a week, south, the way companies do. It takes two farms with it, and twelve people, and the miller's daughter, who comes back at Martinmas and will not say where she has been.
+      next: h_c07_company
+
+- id: h_c07_company
+  chapter: book1
+  title: After the Companies
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 61, season: winter } }, { war: none } ]
+  text: |
+    By Christmas the companies have gone south over the hills into Valdrenne, where the wine is better, and the roads are quiet again. The march castles count their dead. The salt carts come back to the causeways, and the toll-keepers come back to their bridges, and the trade, which has been half what it should for a year, begins to remember itself.
+
+    [if flag.h_c_sent_men]The men you sent north are home, and talk about it in the alehouse in a way that makes the young men of the valley want to have been there.[elif flag.h_c_hired_bastard]The Bastard of Ostmark left with your forty pounds and a letter of recommendation you did not write. You have since heard that he is in Valdrenne's pay.[else]The two farms are being rebuilt, slowly. The miller's daughter has married a man from the next valley, in a hurry.[/if]
+  choices:
+    - id: on
+      text: Go on.
+      next: { pool: h_b2_late, count: 1, then: h_c09_vote }
+
+- id: h_c09_vote
+  chapter: book1
+  title: "[if realm.west == adalian]The Ruling[else]The Vote[/if]"
+  checkpoint: true
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 62, season: summer } } ]
+  text: |
+    [if realm.west == adalian]At Whitsun in 924 the King's justices give their ruling in the great hall at Lannec. Before they do, the senior justice asks whether any lord of the West wishes to be heard a last time.[else]At Whitsun in 924 the Estates of the West sit at Lannec to vote the law of succession. Before the vote is called, the presiding lord asks whether any lord wishes to be heard a last time.[/if]
+
+    The hall turns, and looks at you, because you are one of the houses it has been watching for four years.
+  choices:
+    - id: speak
+      visible_if: "flag.h_side_mahaut || flag.h_side_rival"
+      text: Speak for your side, a last time.
+      check: { attr: presence, skill: diplomacy, difficulty: 6, audience: nobles, mods: [ { if: flag.h_c_spoke, add: 1, label: they have heard you before }, { if: flag.h_counted, add: 1, label: you know whom to look at }, { if: flag.h_c_found, add: -1, label: your word is worth less } ] }
+      success:
+        text: |
+          You stand, and say it in five sentences, and sit down, and somewhere in the third sentence the hall goes quiet in the way halls do once in a generation. Whatever happens next, they heard you.
+        effects: [ { add: { counter.overturn: 2 } }, { set: flag.h_c_last_word } ]
+        next: h_c09_result
+      failure:
+        text: |
+          You stand and say it, and it is a good speech, and it is the twentieth good speech the hall has heard that week, and it slides off them like rain off a slate roof.
+        next: h_c09_result
+    - id: silent
+      text: Keep silent, and let the count stand.
+      effects: [ { add: { counter.household: 1 } } ]
+      text_after: |
+        You stay in your seat, and the hall, after a moment, looks away. Silence is a vote too, says {house.companion} afterwards. It is just harder to count.
+      next: h_c09_result
+    - id: both
+      visible_if: "flag.h_side_both && !flag.h_c_found"
+      text: Say something both sides can quote.
+      check: { attr: wits, skill: diplomacy, difficulty: 6 }
+      success:
+        text: |
+          You stand and speak, briefly, on the duty of a lord to the peace of the West, and both sides quote you for a month. Neither side ever finds out.
+        next: h_c09_result
+      failure:
+        text: |
+          You stand and speak, and a man on the Armance bench and a man on Penhoët's bench both stand to thank you, and then look at each other, and the hall understands. So does everyone who ever paid you.
+        effects: [ { set: flag.h_c_found }, { add: { rival.penhoet.temper: -3, rel.mahaut_armance.respect: -3 } } ]
+        next: h_c09_result
+
+- id: h_c09_result
+  chapter: book1
+  title: The Law
+  frames: [free, adalian]
+  on_enter:
+    # the likely outcome, unless the house is on the other side and its cause has reached the threshold with an ally
+    - if: "realm.west == adalian"
+      then:
+        - if: [ flag.h_side_mahaut, "counter.overturn >= 6", "counter.allies >= 1" ]
+          then: [ { set: flag.h_wardship_mahaut } ]
+          else: [ { set: flag.h_wardship_king } ]
+      else:
+        - if: [ "realm.sovereign == gaucelin", "!flag.h_gaucelin_own" ]
+          then:
+            - if: [ flag.h_side_mahaut, "counter.overturn >= 6", "counter.allies >= 1" ]
+              then: [ { set: flag.h_realm_male_pref } ]
+              else: [ { set: flag.h_realm_male_line } ]
+          else:
+            - if: [ flag.h_side_rival, "counter.overturn >= 6", "counter.allies >= 1" ]
+              then: [ { set: flag.h_realm_male_line } ]
+              else: [ { set: flag.h_realm_male_pref } ]
+  text: |
+    [if flag.h_wardship_king]The justices rule for the King. The Duchess of Armance's daughter is the King's ward by the law of Adalia, and will be raised at Wendmere, and her marriage is the King's to give. Mahaut hears it standing, and bows to the bench, and walks out of the hall without looking at anyone, and the Armance lords walk out behind her.[elif flag.h_wardship_mahaut]The justices rule that the West's liberties hold, and that the Duchess of Armance keeps her daughter, and her daughter's marriage, by the custom of the West. The King's serjeant asks for the ruling to be recorded as given "under protest", and it is. Mahaut weeps, which nobody in the West has ever seen, and then stops, which they have.[elif flag.h_realm_male_line]The Estates vote for the male line: the lands of the West to pass to sons and through sons, and a daughter to inherit only where there is no man of the blood. Jehanne will hold nothing of her mother's in her own right. Penhoët's claim to the Armance stands over hers. Hervé de Penhoët does not smile. He has never needed to.[else]The Estates vote for male preference: sons before daughters, then daughters and their children before any cousin. Jehanne is Mahaut's heir to the Armance. Penhoët's claim is a claim and nothing more. Hervé de Penhoët hears the count, and writes something down, and leaves before the Te Deum.[/if]
+
+    [if flag.h_side_mahaut && flag.h_wardship_mahaut || flag.h_side_mahaut && flag.h_realm_male_pref || flag.h_side_rival && flag.h_wardship_king || flag.h_side_rival && flag.h_realm_male_line]The house's side has won.[elif flag.h_side_own]The house had no side, and both sides noticed.[elif flag.h_side_both]The house was on both sides, and so, in a manner of speaking, it has won and lost at once.[else]The house's side has lost.[/if]
+  choices:
+    - id: on
+      text: Go on.
+      next: h_c10_reckoning
+
+- id: h_c10_reckoning
+  chapter: book1
+  title: The Reckoning of the Law
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 62, season: autumn } } ]
+  text: |
+    At Michaelmas the winners reward and the losers remember. [if flag.h_realm_male_line || flag.h_wardship_king]Penhoët is raised: Hervé sits on the [if realm.west == adalian]King's commission for the West[else]crown's council[/if] by Christmas, and his son rides behind the [if realm.west == adalian]governor[else]crown's banner[/if] at the feast.[else]Penhoët is checked: Hervé keeps his lands, and his claim, and his temper, and sits at home that winter.[/if] [if flag.h_wardship_mahaut || flag.h_realm_male_pref]Mahaut is secure, and gives a feast at Lannec for the houses that stood by her, and seats them by how early they stood.[else]Mahaut is diminished, and gives no feast.[/if]
+
+    [if flag.h_wardship_king]The King's chancery lets it be known that the wardship of the Duchess's daughter, and her marriage, are for sale, to a buyer the King approves. Penhoët has made an offer. So have two houses of Adalia.[/if]
+  choices:
+    - id: peace
+      text: Make peace with the side that lost.
+      effects:
+        - add: { res.coin: -4800 }
+        - if: "flag.h_realm_male_line || flag.h_wardship_king"
+          then: [ { add: { rel.mahaut_armance.affection: 2 } } ]
+          else: [ { add: { rival.penhoet.temper: 2 } } ]
+      text_after: |
+        A gift, a letter, a seat at the next feast, a small concession about a boundary. Twenty pounds of goodwill, which is cheap at the price, and does not buy back what was lost, only what can still be lost.
+      next: h_c11_house_law
+    - id: press
+      visible_if: "flag.h_side_mahaut && flag.h_realm_male_pref || flag.h_side_mahaut && flag.h_wardship_mahaut || flag.h_side_rival && flag.h_realm_male_line || flag.h_side_rival && flag.h_wardship_king"
+      text: Press the advantage, and ask the winners for an office.
+      effects:
+        - add: { counter.favour: 1, res.renown: 2 }
+        - if: "realm.west == adalian"
+          then: [ { hold: { id: west_office, name: "A seat on the King's commission for the West", income: 4800, kind: fixed } } ]
+          else: [ { hold: { id: west_office, name: The keeping of the march castles, income: 4800, kind: fixed } } ]
+        - if: "flag.h_realm_male_line || flag.h_wardship_king"
+          then: [ { add: { rel.mahaut_armance.affection: -2 } } ]
+          else: [ { add: { rival.penhoet.temper: -2 } } ]
+      text_after: |
+        The winners pay their debts, as winners do, with something that costs them nothing: an office, with a fee. Twenty pounds a year, and a seal of your own, and the losers' hatred for the length of a life.
+      next: h_c11_house_law
+    - id: bid
+      visible_if: "flag.h_wardship_king"
+      text: Bid for Jehanne's wardship and marriage. (£150)
+      requires: "res.coin >= 36000"
+      check: { attr: wits, skill: diplomacy, difficulty: 6, mods: [ { if: "counter.favour >= 3", add: 1, label: the King is mindful of you }, { if: "rel.mahaut_armance.affection >= 3", add: 1, label: Mahaut would rather it were you } ] }
+      success:
+        text: |
+          The chancery takes your hundred and fifty pounds, and Penhoët's offer is returned unopened. Jehanne d'Armance is the house's ward, and her marriage the house's to make, and the duchy of Armance, one day, may come with it. Mahaut writes to you that night, one line: "Be kind to her."
+        effects: [ { add: { res.coin: -36000, rival.penhoet.temper: -3 } }, { set: flag.h_jehanne_ward } ]
+        next: h_c11_house_law
+      failure:
+        text: |
+          The chancery takes Penhoët's offer, which was larger, and returns yours with the King's thanks. Jehanne goes to Penhoët's household as its ward, and Hervé has the Armance in his hand at last, through a girl of eighteen.
+        effects: [ { set: flag.h_jehanne_penhoet }, { add: { rival.penhoet.standing: 5 } } ]
+        next: h_c11_house_law
+    - id: nothing
+      text: Do nothing. Let the West settle.
+      text_after: |
+        You stay at home through the winter and let other houses scramble. By spring the West has settled, more or less, into the shape the law has given it.
+      next: h_c11_house_law
+
+- id: h_c11_house_law
+  chapter: book1
+  title: The House's Own Law
+  frames: [free, adalian]
+  on_enter: [ { catch_up: { year: 63, season: spring } } ]
+  text: |
+    At Easter the house is at table: you, [if spouse.alive]{spouse.first}, [/if]and [if family.children >= 1]the children, the eldest on {heir.first}'s stool at the corner[else]{house.companion}, and the chaplain[/if], and a ship's master from Sauvemer who has brought the wine and stays to drink it.
+
+    [if flag.h_realm_male_line]The realm has written the male line. Whether the house writes it too is the house's own affair: a house's law is its own, and many follow the realm's, and some do not.[elif flag.h_realm_male_pref]The realm has written male preference, which is what the house has always kept. Whether the house keeps it, or changes it, is the house's own affair.[else]Adalia's law is the realm's law. Whether the house's own succession follows it, or goes its own way by will, is the house's own affair.[/if] [if family.daughters >= 1]Your daughters are at the table.[/if]
+
+    The ship's master, between cups, says there is a sickness in Sarenza this spring, in the poor quarters by the harbour. "Takes the children first," he says. "Like the Mottle, but backwards." He drinks. "Nothing to do with us."
+  choices:
+    - id: keep
+      text: Keep male preference. Sons first, then daughters.
+      effects: [ { house_law: male_preference } ]
+      text_after: |
+        The house's law stays as {house.parent} kept it. [if flag.h_realm_male_line]Penhoët notes that the house has not followed the realm, and so does the realm.[/if]
+      next: h_c_end
+    - id: male_line
+      text: Adopt the male line. Only sons, and only through sons.
+      effects: [ { house_law: male_line }, { add: { rival.penhoet.temper: 1 } } ]
+      text_after: |
+        The chaplain writes it into the house's book. [if family.daughters >= 1]Your daughters will marry well and inherit nothing, and one of them, who is old enough to understand, does not speak to you until Whitsun.[else]There are no daughters at the table yet to take it badly.[/if]
+      next: h_c_end
+    - id: partible
+      visible_if: "family.sons >= 2"
+      text: Divide the lands among the sons when the time comes.
+      effects: [ { house_law: partible } ]
+      text_after: |
+        The eldest will be head, and the younger sons will have shares out of the lands. The steward, who will have to cut the shares, says nothing, and drafts three versions that night.
+      next: h_c_end
+    - id: will
+      visible_if: "family.children >= 2"
+      text: Name your heir by will, whatever the law says.
+      effects: [ { designate: eldest } ]
+      text_after: |
+        You write it yourself, and seal it, and give it to the chaplain to keep. If the law and the will ever disagree, there will be a quarrel at your graveside. There usually is.
+      next: h_c_end
+
+- id: h_c_end
+  chapter: book1
+  frames: [free, adalian]
+  kind: ending
+  ending: story_so_far
+  text: |
+    Here Act II of Book One ends. [if flag.h_realm_male_line]The West has written the male line[elif flag.h_realm_male_pref]The West has written male preference[elif flag.h_wardship_mahaut]The West's liberties have held, and Mahaut keeps her daughter[else]The King has Mahaut's daughter, and her marriage[/if], and the house is {house.standing}. A ship's master has mentioned a sickness in Sarenza that takes the children first.
+
+    Act III, The Children's Mortality, is still being written.

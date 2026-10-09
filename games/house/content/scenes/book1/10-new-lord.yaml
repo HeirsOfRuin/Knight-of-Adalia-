@@ -669,13 +669,4 @@
   choices:
     - id: end
       text: Go on.
-      next: h_b_end
-
-- id: h_b_end
-  chapter: book1
-  kind: ending
-  ending: story_so_far
-  text: |
-    Here Act I of Book One ends. You are head of the house {founder.name} founded, under {realm.sovereign}[if spouse.alive], married to {spouse.name}[/if], with [if flag.h_kerval_lost]{house.claimed} lost to Penhoët[elif flag.h_kerval_shared]{house.claimed} kept, and Penhoët's men in its wood[else]{house.claimed} in your hands[/if], and two offers on the table for the house's vote.
-
-    Act II, The Law, is still being written.
+      next: h_c01_offers

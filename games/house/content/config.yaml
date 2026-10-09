@@ -16,6 +16,8 @@ counter_labels:
   shadow: The founder's shadow
   favour: Favour
   second: The second child
+  overturn: Your cause
+  allies: Allies for your cause
 chapter_cards:
   prologue: { title: Prologue, subtitle: The Old Lord, epigraph: "A house is three generations: the man who makes it, the one who keeps it, and the one who spends it." }
   book1: { title: Book One, subtitle: The Keeper }

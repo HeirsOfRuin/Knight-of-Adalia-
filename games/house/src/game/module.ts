@@ -13,7 +13,10 @@ import { FOUNDER_ID, HOUSE_ID, type HouseState } from './state';
 import { SELECTORS, select, heirOf, livingChildren, die, queueSuccession, succeed, bear, marry, nameChild, yearTick, SUCCESSION_SCENE } from './family';
 import { ageOfCharacter } from '@engine/character';
 import { economyTick, ESTATE_LABELS, HARVESTS, TRADES } from './economy';
-import { formatCoin } from '@engine/format';
+import { formatCoin, numberWords } from '@engine/format';
+
+/** Book I, Act II: the house's cause overturns the likely outcome at this many, and with an ally (STORY.md, L2-2, L3-13). */
+export const LAW_THRESHOLD = 6;
 
 const ESTATE_FIELDS = ['exists', 'people', 'food', 'temper', 'defence', 'church', 'salt', 'orchard'];
 import { rival, addRival, housesYear, standingOf, standingWord, RIVAL_FIELDS } from './houses';
@@ -28,9 +31,9 @@ const SINGLE = ['opening', 'imported'];
 /** family.<field>: the house as a whole. */
 const FAMILY = ['law', 'generation', 'members', 'children', 'sons', 'daughters', 'extinct', 'no_heir', 'minor', 'regency', 'contested', 'news', 'childbed', 'cloister', 'junior'];
 // {house.*}: the founder's house as Knight of Adalia left it, or as a fresh start has it
-const HOUSE_TEXT = ['manor', 'claimed', 'companion', 'companion_first', 'origin', 'parent', 'parent_start', 'knights', 'withholder', 'parent_word', 'querec', 'querec_start', 'querec_short', 'ruler', 'ruler_lc', 'match_penhoet', 'match_valdrenne', 'match_kerguen', 'standing', 'harvest'];
+const HOUSE_TEXT = ['manor', 'claimed', 'companion', 'companion_first', 'origin', 'parent', 'parent_start', 'knights', 'withholder', 'parent_word', 'querec', 'querec_start', 'querec_short', 'ruler', 'ruler_lc', 'match_penhoet', 'match_valdrenne', 'match_kerguen', 'standing', 'harvest', 'law_need'];
 // house.<field> in conditions: the founder's knights as Knight of Adalia left them
-const HOUSE_IDS = ['yvon', 'vassals', 'standing'];
+const HOUSE_IDS = ['yvon', 'vassals', 'standing', 'debt'];
 
 type Op<K extends string> = Extract<Effect, Record<K, unknown>>;
 
@@ -50,6 +53,9 @@ function changeNote(s: HouseState, c: ContentBundle, path: string, d: number): s
       case 'shadow': return say(`${first('founder')}'s shadow`, 'longer', 'shorter');
       case 'favour': return say(s.realm.sovereign === 'self' ? 'Standing in the realm' : "The sovereign's favour", 'higher', 'lower');
       case 'second': return select(s, c, 'sibling') ? say(first('sibling'), 'closer', 'further off') : '';
+      // Book I, Act II's threshold (STORY.md, L3-13): the house's work for its side, and the allies it has brought
+      case 'overturn': return say(s.opening === 'crowned' ? 'The case for a hereditary crown' : 'Your cause', 'stronger', 'weaker');
+      case 'allies': return d > 0 ? 'An ally for your cause' : 'An ally lost to your cause';
       default: return '';
     }
   }
@@ -116,6 +122,7 @@ export const house: GameModule = {
       }
       case 'house': {
         if (a === 'standing') return standingOf(state);
+        if (a === 'debt') return state.debt ?? 0;
         const v = state.inheritance?.lands.vassals ?? [];
         if (a === 'yvon') return v.some((x) => x.id === 'penhoet_cadet');
         if (a === 'vassals') return v.length;
@@ -232,6 +239,16 @@ export const house: GameModule = {
       const had = h[e.id];
       h[e.id] = { name: e.name, income: (had?.income ?? 0) + e.income, temper: had?.temper ?? 0, kind: e.kind ?? had?.kind };
       ctx.changes.push(`${had ? 'Improved' : 'You hold'}: ${e.name} (${formatCoin(e.income)} a year${had ? ' more' : ''})`);
+    },
+    borrow(s, _c, effect, ctx) {
+      const state = st(s);
+      const n = (effect as Op<'borrow'>).borrow;
+      const d = n >= 0 ? n : -Math.min(-n, state.debt ?? 0, Math.max(0, state.res.coin ?? 0));
+      if (!d) return;
+      state.debt = (state.debt ?? 0) + d;
+      state.res.coin = (state.res.coin ?? 0) + d;
+      if (!state.debt) delete state.debt;
+      ctx.changes.push(d > 0 ? `Borrowed from the Lanzi: ${formatCoin(d)}, at ten in the hundred` : `Repaid the Lanzi: ${formatCoin(-d)}${state.debt ? `; ${formatCoin(state.debt)} still owed` : '; the debt is cleared'}`);
     },
     war(s, _c, effect, ctx) {
       const w = (effect as Op<'war'>).war;
@@ -403,6 +420,8 @@ function houseText(s: HouseState, f: string): string | undefined {
   switch (f) {
     // the house's standing in PLAN.md's words (houses.ts)
     case 'standing': return standingWord(standingOf(s));
+    // Act II's count (STORY.md C5): how many more voices the house's cause needs to overturn the likely outcome
+    case 'law_need': { const n = Math.max(0, LAW_THRESHOLD - (s.counters.overturn ?? 0)); return n === 0 ? 'no more voices' : n === 1 ? 'one more voice' : `${numberWords(n)} more voices`; }
     // the last Michaelmas, in words: "a poor harvest and slack trade"
     case 'harvest': { const y = s.year; return y ? `${HARVESTS.find((x) => x.id === y.harvest)?.word ?? y.harvest} and ${TRADES.find((x) => x.id === y.trade)?.word ?? y.trade}` : 'a fair harvest and steady trade'; }
     case 'manor': return manor;

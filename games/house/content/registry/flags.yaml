@@ -4,6 +4,9 @@
 h_answer_self: { description: 'At the deathbed the heir said, "I will be myself"', later: book1 }
 h_answer_silent: { description: "At the deathbed the heir said nothing, and held his hand", later: book1 }
 h_answer_you: { description: 'At the deathbed the heir said, "I will try to be you"', later: book1 }
+h_armance_male_line: { description: "The Estates wrote the Armance's custom by the male line: the duchy goes to Penhoët at Mahaut's death", later: book1 }
+h_b2_master: { description: "A master of arts keeps the house's accounts and teaches the head", later: book1 }
+h_b2_relic: { description: "The house bought a relic for the chapel", later: book1 }
 h_b_answered: { description: "The Keeper answered the knight who would not kneel, and he knelt", later: book1 }
 h_b_asked_knights: { description: "The Keeper asked each knight what he wanted before he swore", later: book1 }
 h_b_castle_alms: { description: "The Keeper sends alms to the castle the founder gave up", later: book1 }
@@ -66,6 +69,8 @@ h_blood_at_kerval: { description: "Blood was spilled at the Kerval boundary", la
 h_buried_beside: { description: "The founder lies beside his wife", later: book1 }
 h_buried_home: { description: "The founder lies in the chancel at home", later: book1 }
 h_buried_lannec: { description: "The founder lies at Lannec among the great", later: book1 }
+h_c_ally_kerguen: { description: "Kerguen stands with the house's cause in the law fight", later: book1 }
+h_c_ally_kin: { description: "The house's kin by marriage stand with its cause in the law fight", later: book1 }
 h_c_betrothed_valdrenne: { description: "The heir was betrothed as a child into Valdrenne (Lothaire or Isabeau)", later: book1 }
 h_c_bishop_anselm: { description: "Master Anselm, the old King's clerk, is Bishop of Saint-Lys", later: book1 }
 h_c_bishop_armance: { description: "Mahaut's confessor is Bishop of Saint-Lys", later: book1 }
@@ -79,9 +84,13 @@ h_c_crowned_council: { description: "The King named the heir's council at her cr
 h_c_embassy_delayed: { description: "The King put off Valdrenne's offer for the heir", later: book1 }
 h_c_estates_divided: { description: "The Estates swore only to the King's heir, as the law shall be", later: book1 }
 h_c_estates_swore: { description: "The Estates of the West swore to (or elected) the King's heir", later: book1 }
+h_c_found: { description: "The house's double game in the law fight was found out", later: book1 }
+h_c_held: { description: "The Keeper refused the other side's price, and held", later: book1 }
+h_c_hired_bastard: { description: "The house hired the Bastard of Ostmark's company to guard its valleys", later: book1 }
 h_c_jehanne_free: { description: "The King refused Valdrenne's offer: the heir will choose, as Mahaut did", later: book1 }
 h_c_junior: { description: "The heir wears the crown beside her living father", later: book1 }
 h_c_largesse: { description: "The King remitted the salt towns' arrears", later: book1 }
+h_c_last_word: { description: "The Keeper's last word at the vote or the ruling carried the hall", later: book1 }
 h_c_law_written: { description: "The Estates wrote the crown's law: the eldest child, son or daughter", later: book1 }
 h_c_no_estates: { description: "The King asked the Estates nothing about his heir", later: book1 }
 h_c_querec_bought: { description: "The King bought Quérec's oath with the marsh salt", later: book1 }
@@ -91,7 +100,10 @@ h_c_querec_watched: { description: "The King let Quérec's refusal lie, and had 
 h_c_rising_crushed: { description: "Quérec's rising was broken at the toll bridge", later: book1 }
 h_c_rising_open: { description: "The southern marsh is still Quérec's", later: book1 }
 h_c_rising_treated: { description: "Quérec was pardoned for the bridge, and kept his men", later: book1 }
+h_c_sent_men: { description: "The house sent its men to the march in the companies' summer", later: book1 }
+h_c_spoke: { description: "The Keeper spoke at the opening of the Estates or the hearing", later: book1 }
 h_c_spoke_council: { description: "The child sovereign spoke out at her first council", later: book1 }
+h_c_turned: { description: "The Keeper changed sides in the law fight", later: book1 }
 h_changed_order: { description: "The heir changed the founder's standing order for the gate", later: book1 }
 h_cloister: { description: "The founder took the cowl and lives at the abbey", later: book1 }
 h_companion_counsel: { description: "The founder asked the Old Companion to counsel the heir", later: book1 }
@@ -99,15 +111,47 @@ h_companion_holding: { description: "The founder gave the Old Companion a holdin
 h_companion_side: { description: "The founder kept the Old Companion at his side to the end", later: book1 }
 h_counted: { description: "The house watched and counted at the council or the Estates, and said nothing", later: book1 }
 h_court_held: { description: "The court ordered the Kerval stone put back", later: book1 }
+h_crown_eldest: { description: "The Estates confirmed the crown's law: the eldest child", later: book1 }
+h_crown_for_life: { description: "The Estates confirmed the sovereign for life, and kept the choice of the next", later: book1 }
+h_crown_hereditary: { description: "The Estates made the crown hereditary: the eldest child, for ever", later: book1 }
 h_founder_rallies: { description: "The founder rallied from his illness", later: book1 }
+h_gaucelin_own: { description: "King Gaucelin turned on his Brésy regents at his majority, with the house beside him", later: book1 }
 h_handover_hall: { description: "The founder handed over the house before the household", later: book1 }
 h_handover_letter: { description: "The founder handed over the house by letter to the sovereign", later: book1 }
 h_handover_will: { description: "The founder handed over the house by a will with conditions", later: book1 }
 h_heir_court: { description: "The founder sent the heir to court", later: book1 }
 h_heir_kept: { description: "The founder kept the heir at his side", later: book1 }
 h_heir_manor: { description: "The founder gave the heir a manor to run", later: book1 }
+h_jehanne_penhoet: { description: "Penhoët bought Jehanne's wardship and marriage from the King", later: book1 }
+h_jehanne_ward: { description: "The house bought Jehanne's wardship and marriage from the King", later: book1 }
+h_k_ally_church: { description: "The Church stands with the crown's case at the Estates", later: book1 }
+h_k_ally_kerguen: { description: "Kerguen stands with the crown's case at the Estates", later: book1 }
+h_k_armance_estates: { description: "The crown left the custom of the Armance to the Estates", later: book1 }
+h_k_asked_church: { description: "The crown asked the Bishop of Saint-Lys to speak for it", later: book1 }
+h_k_asked_hereditary: { description: "The crown asked the Estates for a hereditary crown", later: book1 }
+h_k_asked_kerguen: { description: "The crown asked Kerguen to stand with its case", later: book1 }
+h_k_bargain: { description: "The crown took Hervé's bargain: the Armance by the male line for Penhoët's vote", later: book1 }
+h_k_bertrand_attainted: { description: "Bertrand de Quérec was attainted and exiled", later: book1 }
+h_k_bertrand_beaten: { description: "The young sovereign broke Bertrand de Quérec's rising and took him", later: book1 }
+h_k_bertrand_pardoned: { description: "Bertrand de Quérec was pardoned, and the crown kept his letters", later: book1 }
+h_k_constable: { description: "The constable put down Bertrand's rising; Bertrand escaped", later: book1 }
+h_k_council_year: { description: "The regency council kept the government a year past the majority", later: book1 }
+h_k_for_life_asked: { description: "The crown asked the Estates only to confirm the sovereign for life", later: book1 }
+h_k_handed_over: { description: "Mahaut handed over the seals at her child's majority", later: book1 }
+h_k_letters: { description: "The crown holds Bertrand's letters, two of them from Penhoët", later: book1 }
+h_k_penhoet_attainted: { description: "Hervé de Penhoët was attainted on Bertrand's letters; the claim passes to Sir Yvon of Kerlan", later: book1 }
+h_k_penhoet_council: { description: "Hervé de Penhoët sits on the crown's council", later: book1 }
+h_k_penhoet_waits: { description: "The crown refused Hervé's bargain; Penhoët waits for Mahaut's death", later: book1 }
+h_k_penhoet_watched: { description: "The crown's men watch Penhoët's table", later: book1 }
+h_k_petition_answered: { description: "The male-line petition was answered and withdrawn", later: book1 }
+h_k_spent: { description: "The crown spent in the corridors before the Estates' vote", later: book1 }
+h_k_took_seals: { description: "The young sovereign took the seals at sixteen", later: book1 }
+h_k_treated: { description: "The crown treated with Bertrand: the Estates' right in a charter", later: book1 }
+h_k_war_long: { description: "Bertrand's rising dragged on into the winter", later: book1 }
+h_kerval_claim_signed: { description: "Penhoët signed away its claim to Kerval for the house's vote", later: book1 }
 h_kerval_kept: { description: "The court kept Kerval for the house, whole", later: book1 }
 h_kerval_lost: { description: "The court gave Kerval to Penhoët", later: book1 }
+h_kerval_returned: { description: "Penhoët gave Kerval back for the house's vote", later: book1 }
 h_kerval_shared: { description: "Kerval is shared: the manor to the house, the wood and mill to Penhoët", later: book1 }
 h_law_carried: { description: "The founder's speech on the law carried the hall", later: book1 }
 h_law_male: { description: "The house spoke for the male line", later: book1 }
@@ -128,12 +172,19 @@ h_patent_conceded: { description: "The founder conceded a clause of the patent",
 h_patent_defended: { description: "The founder defended the patent word for word", later: book1 }
 h_penhoet_match: { description: "A child of the house is married or promised into Penhoët", later: book1 }
 h_pensioned: { description: "The Keeper pensioned the oldest knights off with honour", later: book1 }
+h_realm_male_line: { description: "The Estates wrote the male line for the West", later: book1 }
+h_realm_male_pref: { description: "The Estates wrote male preference for the West: Jehanne is Mahaut's heir", later: book1 }
 h_rode_out: { description: "The heir rode out to the boundary stone at Kerval", later: book1 }
 h_second_elsewhere: { description: "The sibling married outside the West's great houses", later: book1 }
 h_second_envoy: { description: "The heir dealt with Hervé through the sibling at Penhoët", later: book1 }
 h_second_inside: { description: "The sibling works for the house from inside Penhoët", later: book1 }
 h_second_kerguen: { description: "The sibling married into Kerguen", later: book1 }
 h_second_penhoet: { description: "The sibling is Penhoët's", later: book1 }
+h_sibling_council: { description: "The sibling sits in Mahaut's council, the price of the house's vote", later: book1 }
+h_side_both: { description: "In the law fight the house took both sides' money in secret", later: book1 }
+h_side_mahaut: { description: "In the law fight the house is on Mahaut's side: inheritance through women, or her right to her daughter", later: book1 }
+h_side_own: { description: "In the law fight the house keeps its vote its own", later: book1 }
+h_side_rival: { description: "In the law fight the house is on Penhoët's side (the male line) or the King's (the wardship)", later: book1 }
 h_suit_bought: { description: "The founder bought Penhoët off over Kerval", later: book1 }
 h_suit_law: { description: "The founder fought Penhoët's suit for Kerval at law", later: book1 }
 h_suit_match: { description: "The founder offered to settle Kerval between families", later: book1 }
@@ -141,6 +192,8 @@ h_suit_settled: { description: "The Kerval quarrel was settled by the Penhoët m
 h_suit_strong: { description: "The founder found a good charter for Kerval", later: book1 }
 h_suit_weak: { description: "The founder's charter for Kerval is weak", later: book1 }
 h_thibaut_dead: { description: "King Thibaut died in the saddle at Martinmas, year 52", later: book1 }
+h_wardship_king: { description: "The King's justices gave Jehanne's wardship and marriage to the King", later: book1 }
+h_wardship_mahaut: { description: "The King's justices upheld the West's liberties: Mahaut keeps her daughter", later: book1 }
 h_watched_herve: { description: "The founder watched who came to speak to Hervé at Yann's funeral", later: book1 }
 h_will_amended: { description: "The heir had the founder's will amended", later: book1 }
 h_will_conditions: { description: "The founder's will carries conditions", later: book1 }

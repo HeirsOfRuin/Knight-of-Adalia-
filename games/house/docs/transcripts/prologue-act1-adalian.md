@@ -809,8 +809,302 @@ Nobody tells you any more what your father would have done. They are waiting to 
 
 **You choose:** Go on.
 
+---
+
+## Book One, Act Two: The Law
+
+> A law is what is left when the people who argued about it are dead.
+
+### The Two Offers
+
+*Spring 920, the nineteenth year of King Edwin*
+
+At Lady Day you give your answers. The governor's man waits at the inn for his, and Mahaut's steward waits in your hall for hers, and they are careful never to be in the same room.
+
+You told Lannec a year ago that the house would speak when the hearing sat. It sits at Whitsun. Your wife's people at Kerguen would like to know which way you mean to go before they decide which way they do.
+
+"Whatever you do," says Piers atte Brook, "do it before Whitsun. A house that makes up its mind at the hearing is a house that was bought at the hearing."
+
+- Take Mahaut's offer, and speak for her right to her daughter.
+- Take the King's offer, and speak for his wardship.
+- Take neither. The house's vote is its own until the day.
+- Take both, in secret, and play them off.
+
+**You choose:** Take the King's offer, and speak for his wardship.
+
+The governor's man is pleased, and says so, and promises nothing in writing. The King, he says, will remember. Mahaut's steward goes home with nothing in his bag but your letter.
+
+*Your cause: stronger; Mahaut: much colder; The sovereign's favour: much higher*
+
+### The Hearing Opens
+
+*Summer 920, the nineteenth year of King Edwin*
+
+At Whitsun the King's justices sit at Lannec, in the great hall where the Estates once sat, with the royal arms hung over the dais. The King's serjeant opens: a girl of fourteen with a duchy is the King's ward by the law of Adalia, and her marriage is the King's to give. Mahaut's pleader answers with the West's liberties. The hall listens to both and believes neither.
+
+- Speak on the first day. [Even]
+- Say nothing. Watch, and count.
+- Work the corridors and the inns, with the house's money. (£10) [Even]
+
+**You choose:** Speak on the first day.
+
+You speak, and it goes well enough until a Penhoët cousin asks you, from the benches, what your father would have said, and the hall laughs, and you lose the thread. You sit down to polite silence.
+
+*Hal's shadow: longer; Michaelmas, a poor harvest and steady trade: £218 5s 4d came in; the household £21 16s 6d, the men's pay £9 and repairs £20 went out*
+
+### The Price
+
+*Autumn 920, the nineteenth year of King Edwin*
+
+At Michaelmas the side you did not take sends its own offer, and it is not polite.
+
+Mahaut's steward comes back, without a letter this time. The Duchess, he says, has a marriage to offer: a son of one of her Armance lords for Robert, with the lord's lands to come. She asks only that the house think again.
+
+- Take it, and change sides.
+- Refuse it, and let them do what they threatened.
+- Pretend to take it.
+- Send them away without an answer, and let them wonder.
+
+**You choose:** Refuse it, and let them do what they threatened.
+
+You send the steward home with nothing. Mahaut finds the Armance lord's son another match by Christmas, and lets the house know she has. The house holds. That is worth something too, at the next count.
+
+*Your cause: stronger; The household: more loyal*
+
+### A Birth
+
+*Autumn 920, the nineteenth year of King Edwin*
+
+A son is born to the house.
+
+- Name the child for a grandparent.
+- Name the child for a parent.
+- Go on.
+
+**You choose:** Name the child for a grandparent.
+
+*Michaelmas, a good harvest and steady trade: £286 8s 7d came in; the household £28 12s 10d, the men's pay £9 and repairs £20 went out*
+
+### The Master of Arts
+
+*Autumn 921, the twentieth year of King Edwin*
+
+A clerk comes to the house at Michaelmas from the schools, with a master's degree, a cough, and no living. He can read Latin, Greek and the hands of four chanceries, keep accounts in the Sarenzan manner, and argue the law of succession from either side for as long as you like. He would like a place in the household, and eight pounds a year, and a fire.
+
+- Take him into the household. (£8)
+- Send him on to Lannec with a letter, and a shilling.
+
+**You choose:** Take him into the household. (£8)
+
+He takes the room over the gate, and coughs through the winter, and by spring you can read a Valdrennish writ yourself, and see in the steward's accounts what the steward did not want you to.
+
+*Coin −£8; Learning +1; Stewardship +1*
+
+### The Count
+
+*Winter 921, the twentieth year of King Edwin*
+
+In the dark of the year your clerk lays it out on the table in the hall, in two columns, with the names of men down the margin and a mark against each.
+
+The justices will rule as the King wants, unless the West makes it too dear for him. The King's cause is the likely one already. The house's voice makes it surer, and the King will remember who spoke.
+
+"Money moves votes," says the clerk. "Friends move more."
+
+- Spend for your side, coin and men and favours. (£30)
+- Bring Kerguen over to your side. [Even]
+- Keep what you have. The house's coin is the house's.
+
+**You choose:** Bring Kerguen over to your side.
+
+Tanguy hears you out with great courtesy, and says he must think, and thinks, and in a week writes that Kerguen will vote as its conscience tells it. Its conscience has not told it anything yet.
+
+*Kerguen: colder*
+
+### A Quiet Year
+
+*Summer 922, the twenty-first year of King Edwin*
+
+The year after the count is the kind nobody writes chronicles about. The hearing is adjourned to the next Whitsun but one; the lawyers bill; the harvest is a good harvest and steady trade. It is a year for the house's own business.
+
+- Go on.
+
+**You choose:** Go on.
+
+The house gets on with the year.
+
+### The Pilgrim's Relic
+
+*Summer 922, the twenty-first year of King Edwin*
+
+A pedlar comes to the gate in Lent with a box of cedarwood and a manner. Inside, on a cushion of faded silk, is a finger bone, which he says is Saint Ebba's, from the shrine at Saint-Lys, sold to him by a sacristan in need. It cures fevers, he says, and the falling sickness, and quarrels between brothers. He has a letter about it. The letter has a seal.
+
+The chaplain looks at the seal, and goes on looking, and says nothing, which for him is a great deal.
+
+- Buy it for the chapel. (£5)
+- Send him and his box to the Bishop of Saint-Lys, and let the Church decide.
+- Throw him out.
+
+**You choose:** Buy it for the chapel. (£5)
+
+It goes into a silver reliquary in the chapel, and the village comes to look at it, and at least two fevers that spring get better, which they might have done anyway. Nobody can say. Nobody tries.
+
+*Coin −£5; Church and priest +1; Standing with Piety: higher; Michaelmas, a good harvest and brisk trade: £302 2s came in; the household £30 4s 2d, the men's pay £9 and repairs £20 went out; War with the free companies*
+
+### The March Burns
+
+*Summer 923, the twenty-second year of King Edwin*
+
+In the summer of 923 Caldmoor's regency war spills over the March, and the free companies who fought in it, paid off and unpaid, come south and west along the roads looking for the next war, or the next village.
+
+The King needs men for the March, and the West's men are nearest. The governor writes to every house in the West for its quota. The King's need, says Mahaut's steward, is the West's leverage, if anyone has the nerve to use it. A company of eighty men under a Hroswalder called the Bastard of Ostmark has camped at the ford below Kerval, and sent to ask, courteously, what the house would pay for them to go away.
+
+- Send the house's men to the march, under the house's banner. [Even]
+- Hire the Bastard's company to guard your own valleys. (£40)
+- Shut the gates, and wait for it to pass.
+
+**You choose:** Send the house's men to the march, under the house's banner.
+
+Your men ride north with the levy and come back at Michaelmas with fewer horses and a Caldmoor banner, and the sovereign's thanks under seal. The governor writes that the King is mindful of the house, and of its views on the wardship.
+
+*The sovereign's favour: much higher; Your cause: much stronger; Men in your company −3; Renown +3*
+
+### A Birth
+
+*Summer 923, the twenty-second year of King Edwin*
+
+A son is born to the house.
+
+- Name the child for a grandparent.
+- Name the child for a parent.
+- Go on.
+
+**You choose:** Name the child for a grandparent.
+
+*Michaelmas, a fair harvest and steady trade, in a year of war: £232 16s 8d came in; the household £23 5s 8d, the men's pay £8 2s and repairs £20 went out; Raiders came over the march to Kerval: the outlying farms burned, 15 people dead or fled, and the barn short; Sir Alain de Coatmen withholds his dues this year, over a quarrel the house's court will have to hear; Peace*
+
+### After the Companies
+
+*Winter 923, the twenty-second year of King Edwin*
+
+By Christmas the companies have gone south over the hills into Valdrenne, where the wine is better, and the roads are quiet again. The march castles count their dead. The salt carts come back to the causeways, and the toll-keepers come back to their bridges, and the trade, which has been half what it should for a year, begins to remember itself.
+
+The men you sent north are home, and talk about it in the alehouse in a way that makes the young men of the valley want to have been there.
+
+- Go on.
+
+**You choose:** Go on.
+
+### A Birth
+
+*Winter 923, the twenty-second year of King Edwin*
+
+A daughter is born to the house.
+
+- Name the child for a grandparent.
+- Name the child for a parent.
+- Go on.
+
+**You choose:** Name the child for a grandparent.
+
+### The Tourney at Lannec
+
+*Spring 924, the twenty-third year of King Edwin*
+
+At Easter there is a tourney at Lannec, the first since the war: lists on the meadow below the cathedral, stands hung with cloth, and every young knight in the West with a new harness and an old horse. The great houses give the prizes, and are seen to.
+
+- Ride in the lists yourself. [Risky]
+- Give a prize, and sit in the stands. (£10)
+- Stay at home. Tourneys are for younger men.
+
+**You choose:** Ride in the lists yourself.
+
+You break three lances and unhorse a Kerguen cousin, and the stands roar, and the prize is a gold chain you will wear at every feast for the rest of your life.
+
+*Renown +4; Standing with the knights: higher*
+
+### The Ruling
+
+*Summer 924, the twenty-third year of King Edwin*
+
+At Whitsun in 924 the King's justices give their ruling in the great hall at Lannec. Before they do, the senior justice asks whether any lord of the West wishes to be heard a last time.
+
+The hall turns, and looks at you, because you are one of the houses it has been watching for four years.
+
+- Speak for your side, a last time. [Risky]
+- Keep silent, and let the count stand.
+
+**You choose:** Speak for your side, a last time.
+
+You stand and say it, and it is a good speech, and it is the twentieth good speech the hall has heard that week, and it slides off them like rain off a slate roof.
+
+### The Law
+
+*Summer 924, the twenty-third year of King Edwin*
+
+The justices rule for the King. The Duchess of Armance's daughter is the King's ward by the law of Adalia, and will be raised at Wendmere, and her marriage is the King's to give. Mahaut hears it standing, and bows to the bench, and walks out of the hall without looking at anyone, and the Armance lords walk out behind her.
+
+The house's side has won.
+
+- Go on.
+
+**You choose:** Go on.
+
+*Michaelmas, a fair harvest and steady trade: £277 16s 8d came in; the household £27 15s 8d, the men's pay £8 2s and repairs £20 went out; The new lord of Saint-Aubin dies and leaves a son under age; the wardship of Saint-Aubin is sold for £20*
+
+### The Reckoning of the Law
+
+*Autumn 924, the twenty-third year of King Edwin*
+
+At Michaelmas the winners reward and the losers remember. Penhoët is raised: Hervé sits on the King's commission for the West by Christmas, and his son rides behind the governor at the feast. Mahaut is diminished, and gives no feast.
+
+The King's chancery lets it be known that the wardship of the Duchess's daughter, and her marriage, are for sale, to a buyer the King approves. Penhoët has made an offer. So have two houses of Adalia.
+
+- Make peace with the side that lost.
+- Press the advantage, and ask the winners for an office.
+- Bid for Jehanne's wardship and marriage. (£150) [Risky]
+- Do nothing. Let the West settle.
+
+**You choose:** Press the advantage, and ask the winners for an office.
+
+The winners pay their debts, as winners do, with something that costs them nothing: an office, with a fee. Twenty pounds a year, and a seal of your own, and the losers' hatred for the length of a life.
+
+*The sovereign's favour: higher; Renown +2; You hold: A seat on the King's commission for the West (£20 a year); Mahaut: much colder*
+
+### A Birth
+
+*Autumn 924, the twenty-third year of King Edwin*
+
+A son is born to the house.
+
+- Name the child for a grandparent.
+- Name the child for a parent.
+- Go on.
+
+**You choose:** Name the child for a grandparent.
+
+### The House's Own Law
+
+*Spring 925, the twenty-fourth year of King Edwin*
+
+At Easter the house is at table: you, Azenor, and the children, the eldest on Hal's stool at the corner, and a ship's master from Sauvemer who has brought the wine and stays to drink it.
+
+Adalia's law is the realm's law. Whether the house's own succession follows it, or goes its own way by will, is the house's own affair. Your daughters are at the table.
+
+The ship's master, between cups, says there is a sickness in Sarenza this spring, in the poor quarters by the harbour. "Takes the children first," he says. "Like the Mottle, but backwards." He drinks. "Nothing to do with us."
+
+- Keep male preference. Sons first, then daughters.
+- Adopt the male line. Only sons, and only through sons.
+- Divide the lands among the sons when the time comes.
+- Name your heir by will, whatever the law says.
+
+**You choose:** Keep male preference. Sons first, then daughters.
+
+The house's law stays as your father kept it.
+
+*The house's law: male preference*
+
 ### The End
 
-Here Act I of Book One ends. You are head of the house Hal Fletcher founded, under King Edwin, married to Azenor de Kerguen, with Kerval in your hands, and two offers on the table for the house's vote.
+Here Act II of Book One ends. The King has Mahaut's daughter, and her marriage, and the house is a great house. A ship's master has mentioned a sickness in Sarenza that takes the children first.
 
-Act II, The Law, is still being written.
+Act III, The Children's Mortality, is still being written.

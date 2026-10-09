@@ -691,8 +691,252 @@ You put the two answers side by side, and look at them, and do not give either. 
 
 **You choose:** Go on.
 
+---
+
+## Book One, Act Two: The Law
+
+> A crown is a promise the Estates made once, and are asked to make again every time it changes heads.
+
+### The Estates Sit
+
+*Summer 920, the sixth year of Queen Jehanne*
+
+At Whitsun in 920 the Estates of the West sit at Lannec, in the hall where your father was made king and you were acclaimed: the lords on their benches, the bishops in their stalls, the burgesses of the salt towns at the back. They have the law of succession in front of them, and a petition from the male-line lords to write it again.
+
+Before the first session Hervé de Penhoët asks for an hour, and gets it, in your mother's solar, with your mother in the room. He says it again, plainly: Penhoët's voice, and the voices of the Armance lords who go with Penhoët, for the queen's cause. In return, the custom of the Armance, written by the Estates as it was: by the male line. At your mother's death the duchy would come to Penhoët.
+
+Your mother says nothing at all. She is looking at you.
+
+- Take Hervé's bargain. The crown is worth a duchy.
+- Refuse him. The Armance is your mother's, and then yours.
+- Tell him the Estates will write the Armance's custom, not the crown.
+
+**You choose:** Refuse him. The Armance is your mother's, and then yours.
+
+Hervé bows, as if you had given him the answer he expected, and says that Penhoët is a patient house. He votes against the crown that week, and so do the Armance lords who go with him. He says nothing about the duchy again. Your mother says, that night, "He'll wait for me to die. Let him wait."
+
+*Penhoët: much colder; Mahaut: much warmer; Mahaut's respect: higher; Michaelmas, a poor harvest and steady trade: £1075 9s 4d came in; the household £153 12s 9d, the men's pay £27 and repairs £40 went out*
+
+### The Crown's Case
+
+*Autumn 920, the sixth year of Queen Jehanne*
+
+At Michaelmas the male-line lords present their petition: the crown and the great fiefs of the West to pass by sons, and through sons, as Valdrenne's do, "for the next reign, if not for this one". For this one too, some of them say, more quietly. The council meets to decide what the crown will answer.
+
+- Let the Estates decide it without the crown.
+- Answer the petition yourself, in the hall. [Risky]
+- Let your mother answer it, as regent.
+
+**You choose:** Let the Estates decide it without the crown.
+
+The crown sends the Estates no word at all. They debate the question anyway, at length, without you, which your mother says is the worst of both.
+
+*The household: more loyal; Standing in the realm: lower*
+
+### The Count
+
+*Winter 920, the sixth year of Queen Jehanne*
+
+In the dark of the year the chancellor lays out the count on the council table: the lords, the bishops and the towns, in two columns.
+
+The Estates will do what the Estates do. The chancellor's columns are the crown's friends and the crown's enemies, and the second is longer than he would like. Penhoët and the Armance lords are in the second column, and will stay there.
+
+You have £9465 4s 3d.
+
+- Spend the crown's money in the corridors. (£150)
+- Bring Kerguen and its friends over. [Even]
+- Ask the Bishop of Saint-Lys to speak for the crown. [Even]
+- Spend nothing. Let the count stand.
+
+**You choose:** Bring Kerguen and its friends over.
+
+Tanguy de Kerguen comes to the council table and puts his hand on it, and the three small houses that go where Kerguen goes put theirs beside it. "For the Queen," he says, and means it, and also means the thing he does not say, about what Kerguen will be owed.
+
+*An ally for your cause; The case for a hereditary crown: much stronger; Kerguen's standing: much higher*
+
+### The Count
+
+*Winter 920, the sixth year of Queen Jehanne*
+
+The chancellor makes a new mark in the second column, or rubs one out.
+
+You have £9465 4s 3d.
+
+- Spend the crown's money in the corridors. (£150)
+- Ask the Bishop of Saint-Lys to speak for the crown. [Even]
+- Enough. Let the count stand.
+
+**You choose:** Ask the Bishop of Saint-Lys to speak for the crown.
+
+The bishop preaches at Candlemas on the text "Render unto Caesar", and makes it clear which Caesar he means. The bishops' bench votes as one.
+
+*An ally for your cause; The case for a hereditary crown: much stronger; Standing with the Church: higher*
+
+### The Count
+
+*Winter 920, the sixth year of Queen Jehanne*
+
+The chancellor makes a new mark in the second column, or rubs one out.
+
+You have £9465 4s 3d.
+
+- Spend the crown's money in the corridors. (£150)
+- Enough. Let the count stand.
+
+**You choose:** Enough. Let the count stand.
+
+The chancellor rolls up his columns. "The crown that has to buy its Estates," your mother says, "will have to buy them every time."
+
+*The household: more loyal; Michaelmas, a good harvest and steady trade: £1269 18s 1d came in; the household £181 8s 4d, the men's pay £27 and repairs £40 went out*
+
+### The Master of Arts
+
+*Autumn 921, the seventh year of Queen Jehanne*
+
+A clerk comes to the house at Michaelmas from the schools, with a master's degree, a cough, and no living. He can read Latin, Greek and the hands of four chanceries, keep accounts in the Sarenzan manner, and argue the law of succession from either side for as long as you like. He would like a place in the household, and eight pounds a year, and a fire.
+
+- Take him into the household. (£8)
+- Send him on to Lannec with a letter, and a shilling.
+
+**You choose:** Take him into the household. (£8)
+
+He takes the room over the gate, and coughs through the winter, and by spring you can read a Valdrennish writ yourself, and see in the steward's accounts what the steward did not want you to.
+
+*Coin −£8; Learning +1; Stewardship +1*
+
+### The Estates Decide
+
+*Summer 922, the eighth year of Queen Jehanne*
+
+At Whitsun in 922 the Estates of the West vote, by bench, with their hands raised, and the clerk writes it in the roll of the Estates.
+
+They confirm the crown's law as it stands, the eldest child, son or daughter. The male-line petition is put to the vote and lost, by fewer voices than the chancellor would like.
+
+- Go on.
+
+**You choose:** Go on.
+
+*Michaelmas, a good harvest and brisk trade: £1421 1s 4d came in; the household £203 2d, the men's pay £27 and repairs £40 went out; Sir Robin du Tremblay withholds his dues this year, over a quarrel the house's court will have to hear; War with Bertrand de Quérec*
+
+### Bertrand Rises
+
+*Summer 923, the ninth year of Queen Jehanne*
+
+At midsummer the free companies come down from the north, paid off from Caldmoor's war and looking for the next one, and the lord of Quérec finds them work.
+
+He rises in the marsh with three companies and the salt lords who never knelt, against "the crown of a child and the child's mother". His son is your page at Lannec. Bertrand sends you word that the boy is yours to do with as you please, which is the worst thing he could have said. The salt-works at the edge of the marsh are his by Lammas. The salt carts stop. The trade of the West stops with them.
+
+The constable is at the door of the council chamber with his helmet under his arm. Your mother, at the end of the table, says, "This one is yours." For the first time in your life, so is the decision.
+
+- Lead the host yourself. It is your first command. [Risky]
+- Send the constable, and stay at Lannec.
+- Treat with him. Offer him the Estates' right, in a charter.
+
+**You choose:** Lead the host yourself. It is your first command.
+
+You take the host down the salt road in the August heat, and the companies come out to meet you on the causeway, as companies do when they are paid by the day. At the toll bridge you put the archers on the dyke and the horse behind the sluice, the way the constable drew it in the dust, and when the companies break they break into the marsh, where the salt lords' tenants are waiting for them with flails. Quérec is taken in a reed hut at dawn, with his boots off.
+
+*Renown +6; Plan's shadow: much shorter; Men in your company −10; Standing with the knights: much higher*
+
+### Of Age
+
+*Summer 923, the ninth year of Queen Jehanne*
+
+Jehanne comes of age, and the regency is over.
+
+- Go on.
+
+**You choose:** Go on.
+
+*Michaelmas, a fair harvest and steady trade, in a year of war: £947 8s 4d came in; the household £135 6s 11d, the men's pay £24 and repairs £40 went out; The lord of Coatmen withholds his dues this year, over a quarrel the house's court will have to hear; The lord of Lanvaux withholds his dues this year, over a quarrel the house's court will have to hear; Peace*
+
+### Sixteen
+
+*Autumn 923, the ninth year of Queen Jehanne*
+
+At Michaelmas in 923 the regency ends. You are seventeen, and of age, and your father's will set the day: the Michaelmas after the marsh was quiet, whatever the custom said, because he wanted you to have one war under your belt before you had the seals.
+
+Your mother comes to the council chamber with the seals in a leather bag, the Great Seal and the privy seal and the signet, and puts them on the table in front of your chair, and steps back. "They're heavier than they look," she says. "I'll be in the solar, if you want me. Try not to want me for a month."
+
+- Take the seals, and ask her to stay on the council.
+- Take the seals, and govern alone.
+- Ask her to keep the seals a year longer.
+
+**You choose:** Take the seals, and ask her to stay on the council.
+
+She stays on the council, at the end of the table, and says almost nothing for a year, and every lord in the room watches her face before he votes. It is the best of both, and it cannot last, and you both know it.
+
+*Mahaut: much warmer; The household: more loyal*
+
+### After the Marsh
+
+*Winter 923, the ninth year of Queen Jehanne*
+
+Quérec is brought to Lannec in a cart, in chains, in the first snow, and put in the room over the gatehouse where the dukes kept their prisoners. In his baggage the constable finds letters. Some are from Valdrenne. Two, in a careful neat hand, are from Penhoët.
+
+- Try him before the Estates for treason.
+- Pardon him, and keep the letters.
+- Leave him to the Estates.
+
+**You choose:** Pardon him, and keep the letters.
+
+You pardon him in the great hall, and he kneels, and you keep the letters in a box in your own chamber, unread by anyone else. A pardoned man with a box of his friends' letters in your keeping is worth more than a dead one.
+
+*Standing with Honour: much higher; The household: less loyal*
+
+### The Tourney at Lannec
+
+*Spring 924, the tenth year of Queen Jehanne*
+
+At Easter there is a tourney at Lannec, the first since the war: lists on the meadow below the cathedral, stands hung with cloth, and every young knight in the West with a new harness and an old horse. The crown gives the prize. The court expects its queen in the stands, at least.
+
+- Ride in the lists yourself. [Risky]
+- Give a prize, and sit in the stands. (£10)
+- Stay at home. Tourneys are for younger men.
+
+**You choose:** Ride in the lists yourself.
+
+A knight from the Salt you have never heard of puts his lance under your shield on the second pass, and you come off into the mud in front of the whole West, and get up, and bow, which is the part they remember.
+
+*Renown +1; Health −1; Michaelmas, a fair harvest and steady trade: £1189 3s 4d came in; the household £169 17s 7d, the men's pay £24 and repairs £40 went out; Sir Raoul de Lohéac withholds his dues this year, over a quarrel the house's court will have to hear; Sir Bernard de Cléder withholds his dues this year, over a quarrel the house's court will have to hear*
+
+### Penhoët's Patience
+
+*Autumn 924, the tenth year of Queen Jehanne*
+
+At Michaelmas Hervé de Penhoët does not come to court. He is at home, in the Armance hills, where the Armance lords dine with him one by one, all that autumn, and go home quiet. Your mother is forty-three. Hervé is fifty-seven, and has a son, and a grandson, and is a patient house. You have two letters of his in a box in your chamber.
+
+- Put his letters before the Estates. [Risky]
+- Reconcile with Penhoët. Offer him an honour, and a seat on the council.
+- Watch him, and let him wait.
+
+**You choose:** Put his letters before the Estates.
+
+The letters are read out in the hall, and Hervé stands and says that a man may write to a neighbour, and the Estates agree with him, by four voices. He bows to you on his way out, and says, low, "Patience, Your Grace. It's a family failing."
+
+*Penhoët: much colder; Standing in the realm: lower*
+
+### The Crown's Own House
+
+*Spring 925, the eleventh year of Queen Jehanne*
+
+At Easter the court keeps the feast at Lannec: you at the high table, Blanche at your left hand, your father in his chair with arms at the side of the dais, your mother beside him.
+
+The crown's law is the eldest child. The house's own law is the house's affair.
+
+A ship's master from Sauvemer, who brought the wine, says between cups that there is a sickness in Sarenza this spring, in the poor quarters by the harbour. "Takes the children first," he says. "Like the Mottle, but backwards." He drinks. "Nothing to do with us."
+
+- Keep the eldest child, son or daughter.
+- Sons first, then daughters.
+
+**You choose:** Keep the eldest child, son or daughter.
+
+The chancellor writes it in the crown's book, as your father had it. Your father, at the side of the dais, raises his cup to you and does not say anything, which is the most he has said all feast.
+
+*The house's law: eldest*
+
 ### The End
 
-Here Act I of Book One ends. You are Jehanne, Queen of the West, fourteen, under your mother's regency, with your father in the garden, betrothed to Tanguy de Kerguen, and the Estates summoned to decide whether you are a law or a favour.
+Here Act II of Book One ends. You are Jehanne, Queen of the West, nineteen, under the crown's own law, with Bertrand de Quérec at large, and Penhoët waiting. A ship's master has mentioned a sickness in Sarenza that takes the children first.
 
-Act II, The Law, is still being written.
+Act III, The Children's Mortality, is still being written.

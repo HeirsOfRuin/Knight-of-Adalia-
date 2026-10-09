@@ -381,14 +381,4 @@
   choices:
     - id: end
       text: Go on.
-      next: h_bc_end
-
-- id: h_bc_end
-  chapter: book1
-  frames: [free]
-  kind: ending
-  ending: story_so_far
-  text: |
-    Here Act I of Book One ends. You are {name}, {house.ruler} of the West, {age_words}, under your mother's regency, with your father in the garden, [if flag.h_bc_betrothed_penhoet]betrothed to {house.match_penhoet}[elif flag.h_bc_betrothed_kerguen]betrothed to {house.match_kerguen}[elif flag.h_bc_betrothed_valdrenne]betrothed to {house.match_valdrenne} of Valdrenne[else]promised to no one[/if], and the Estates summoned to decide [if inherited.c5r_estates_choose && !flag.h_c_law_written]whether the crown of the West is theirs to give[else]whether you are a law or a favour[/if].
-
-    Act II, The Law, is still being written.
+      next: h_k01_estates

@@ -1,0 +1,155 @@
+# Book I, Act II's pools (STORY.md C4, C8): h_b2_early in 921 (and the quiet year, 922, outside Gaucelin's reign),
+# h_b2_late in the spring of 924. Each fits both the Founder and the crowned path.
+
+- id: h_b2p_relic
+  chapter: book1
+  kind: pool
+  pool: h_b2_early
+  on_enter: [ { catch_up: { year: 59, season: spring } } ]
+  title: The Pilgrim's Relic
+  frames: [free, adalian]
+  text: |
+    A pedlar comes to the gate in Lent with a box of cedarwood and a manner. Inside, on a cushion of faded silk, is a finger bone, which he says is Saint Ebba's, from the shrine at Saint-Lys, sold to him by a sacristan in need. It cures fevers, he says, and the falling sickness, and quarrels between brothers. He has a letter about it. The letter has a seal.
+
+    The chaplain looks at the seal, and goes on looking, and says nothing, which for him is a great deal.
+  choices:
+    - id: buy
+      text: Buy it for the chapel. (£5)
+      requires: "res.coin >= 1200"
+      effects: [ { add: { res.coin: -1200, estate.church: 1, rep.piety: 1 } }, { set: flag.h_b2_relic } ]
+      text_after: |
+        It goes into a silver reliquary in the chapel, and the village comes to look at it, and at least two fevers that spring get better, which they might have done anyway. Nobody can say. Nobody tries.
+      next: "@return"
+    - id: bishop
+      text: Send him and his box to the Bishop of Saint-Lys, and let the Church decide.
+      effects: [ { add: { rep.church: 1 } } ]
+      text_after: |
+        The bishop's clerk writes back at Whitsun to thank you, and to say that the shrine at Saint-Lys has all of Saint Ebba's fingers, and that the pedlar is in the bishop's prison, and that the bone was a sheep's.
+      next: "@return"
+    - id: out
+      text: Throw him out.
+      effects: [ { add: { counter.household: 1 } } ]
+      text_after: |
+        He goes, with the box, cursing in three languages. The household is impressed by the languages.
+      next: "@return"
+
+- id: h_b2p_wet
+  chapter: book1
+  kind: pool
+  pool: h_b2_early
+  on_enter: [ { catch_up: { year: 59, season: summer } } ]
+  title: The Wet Summer
+  frames: [free, adalian]
+  text: |
+    It rains from Midsummer to Lammas, every day, warm rain that lies in the furrows and rots the wheat in the ear. By August the reeve has stopped saying the harvest will be poor and started saying how poor. The barn at {house.manor} has [if estate.food >= 6]enough to see the village through[elif estate.food >= 3]enough, just, if nobody is greedy[else]not enough[/if]. Down at the ford the Sarenzan grain ships are already in, with prices chalked on boards.
+  choices:
+    - id: buy
+      text: Buy grain off the Sarenzan ships for the village. (£20)
+      requires: "res.coin >= 4800"
+      effects: [ { add: { res.coin: -4800, estate.food: 3, estate.temper: 1, rep.commons: 1 } } ]
+      text_after: |
+        The grain comes up from the ford in your carts, and the reeve gives it out by the household, by the bushel, against a tally. Nobody in the village starves that winter. Nobody in the next valley can say the same, and they notice.
+      next: "@return"
+    - id: sell
+      text: Sell the barn's surplus at famine prices, while the prices last.
+      visible_if: "estate.food >= 4"
+      effects: [ { add: { res.coin: 3600, estate.food: -3, estate.temper: -2, rep.merchants: 1, rep.commons: -1 } } ]
+      text_after: |
+        Fifteen pounds, from the ships' own agents, who have nowhere else to buy. In the village they say your name in a particular way that winter, and will say it that way for some years.
+      next: "@return"
+    - id: open
+      text: Open the barn to the village, and say nothing.
+      effects: [ { add: { estate.food: -1, estate.temper: 1 } } ]
+      text_after: |
+        The barn doors stand open from Martinmas to Candlemas, and the reeve keeps the tally, and the village eats. It costs the house a season of grain and nothing else.
+      next: "@return"
+
+- id: h_b2p_tutor
+  chapter: book1
+  kind: pool
+  pool: h_b2_early
+  on_enter: [ { catch_up: { year: 59, season: autumn } } ]
+  title: The Master of Arts
+  frames: [free, adalian]
+  text: |
+    A clerk comes to the house at Michaelmas from the schools, with a master's degree, a cough, and no living. He can read Latin, Greek and the hands of four chanceries, keep accounts in the Sarenzan manner, and argue the law of succession from either side for as long as you like. He would like a place in the household, and eight pounds a year, and a fire.
+  choices:
+    - id: hire
+      text: Take him into the household. (£8)
+      requires: "res.coin >= 1920"
+      effects: [ { add: { res.coin: -1920, skill.learning: 1, skill.stewardship: 1 } }, { set: flag.h_b2_master } ]
+      text_after: |
+        He takes the room over the gate, and coughs through the winter, and by spring you can read a Valdrennish writ yourself, and see in the steward's accounts what the steward did not want you to.
+      next: "@return"
+    - id: send
+      text: Send him on to Lannec with a letter, and a shilling.
+      effects: [ { add: { res.coin: -12 } } ]
+      text_after: |
+        He goes on to Lannec with your letter, and finds a place in [if opening == crowned]the chancery[else]Mahaut's chancery[/if], and in ten years is the most dangerous clerk in the West. He remembers the shilling.
+      next: "@return"
+
+- id: h_b2p_lanzi
+  chapter: book1
+  kind: pool
+  pool: h_b2_late
+  on_enter: [ { catch_up: { year: 62, season: spring } } ]
+  title: The Lanzi's Factor
+  frames: [free, adalian]
+  text: |
+    The Lanzi bank's factor at Lannec comes himself, in a good black gown, with a ledger he does not open. The bank, he says, holds the house in the highest regard. [if house.debt > 0]It holds a certain quantity of the house's paper, too, and is content to hold it longer, or to be repaid, whichever the house prefers.[else]It would be glad to lend the house a hundred pounds, at the usual rate, for whatever the house has in mind. Houses always have something in mind.[/if]
+  choices:
+    - id: borrow
+      visible_if: "house.debt == 0"
+      text: Borrow a hundred pounds, at ten in the hundred.
+      effects: [ { borrow: 24000 } ]
+      text_after: |
+        The factor counts it out himself, in Sarenzan florins and West pennies, and the house's seal goes on a bond. Ten pounds every Michaelmas until it is paid, and it is never paid, says the steward, by anybody.
+      next: "@return"
+    - id: repay
+      visible_if: "house.debt > 0"
+      text: Repay what the house owes, as far as the chest allows.
+      effects: [ { borrow: -1000000 } ]
+      text_after: |
+        The factor watches it counted out, and makes a note, and bows. A house that repays the Lanzi is rare enough that the bank will remember it, which is not always to the house's advantage.
+      next: "@return"
+    - id: no
+      text: Thank him, and send him away.
+      text_after: |
+        He goes, unoffended. The bank is patient. The bank has been patient with kings.
+      next: "@return"
+
+- id: h_b2p_tourney
+  chapter: book1
+  kind: pool
+  pool: h_b2_late
+  on_enter: [ { catch_up: { year: 62, season: spring } } ]
+  title: The Tourney at Lannec
+  frames: [free, adalian]
+  text: |
+    At Easter there is a tourney at Lannec, the first since the war: lists on the meadow below the cathedral, stands hung with cloth, and every young knight in the West with a new harness and an old horse. [if opening == crowned]The crown gives the prize. The court expects its {house.ruler_lc} in the stands, at least.[else]The great houses give the prizes, and are seen to.[/if]
+  choices:
+    - id: ride
+      text: Ride in the lists yourself.
+      check: { attr: strength, skill: arms, difficulty: 4, audience: nobles }
+      success:
+        text: |
+          You break three lances and unhorse a Kerguen cousin, and the stands roar, and the prize is a gold chain you will wear at every feast for the rest of your life.
+        effects: [ { add: { res.renown: 4, rep.knights: 1 } } ]
+        next: "@return"
+      failure:
+        text: |
+          A knight from the Salt you have never heard of puts his lance under your shield on the second pass, and you come off into the mud in front of the whole West, and get up, and bow, which is the part they remember.
+        effects: [ { add: { res.renown: 1, health: -1 } } ]
+        next: "@return"
+    - id: prize
+      text: Give a prize, and sit in the stands. (£10)
+      requires: "res.coin >= 2400"
+      effects: [ { add: { res.coin: -2400, res.renown: 2, rep.knights: 1 } } ]
+      text_after: |
+        A silver cup with the house's arms on it, given by your own hand to a young knight from the Armance who does not know which way to bow. He will tell his grandchildren.
+      next: "@return"
+    - id: home
+      text: Stay at home. Tourneys are for younger men.
+      text_after: |
+        You hear about it afterwards, at length, from everyone who went.
+      next: "@return"

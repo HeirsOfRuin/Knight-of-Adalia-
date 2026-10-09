@@ -24,7 +24,7 @@ function crownedWithMahaut(seed: number) {
   return fromDynasty(content, { ...base, flags: [...base.flags, 'c5_married_mahaut'], spouse: { id: 'mahaut_armance', name: "Mahaut d'Armance", alive: true }, heirs: [] }, { seed });
 }
 const route: Record<string, string> = {
-  h_p01_hall: 'bounds', h_p02_company: 'counsel', h_p03_heir: 'manor', h_p04_suit: 'law', h_p05_michaelmas: 'pay', h_p05_purse: 'granary,done', h_b11_purse: 'church,done', h_pc05_works: 'road,done', h_bc08_works: 'fair,done',
+  h_p01_hall: 'bounds', h_p02_company: 'counsel', h_p03_heir: 'manor', h_p04_suit: 'law', h_p05_michaelmas: 'pay', h_p05_purse: 'granary,done', h_c01_offers: 'rival', h_c02_hearing: 'speak', h_c03_price: 'refuse', h_c05_count: 'ally_kerguen', h_c06_majority: 'aside', h_c07_march: 'send', h_c09_vote: 'speak', h_c10_reckoning: 'press,peace', h_c11_house_law: 'keep', h_k01_estates: 'refuse', h_k02_case: 'hereditary', h_k03_count: 'kerguen,church,hold', h_k06_majority: 'thank,take', h_k07_rising: 'lead', h_k08_marsh: 'mercy,on', h_k10_penhoet: 'attaint,watch', h_k11_law: 'eldest', h_b11_purse: 'church,done', h_pc05_works: 'road,done', h_bc08_works: 'fair,done',
   h_p06_offer: 'ask', h_p06_request: 'let_go', h_p07_year: 'mass', h_p08_summons: 'ride', h_p08_estates: 'women', h_p08_election: 'queen',
   h_p08_patent: 'defend', h_p09_illness: 'physician', h_p10_handover: 'hall', h_p11_first_days: 'change', h_p12_will: 'amend',
   h_p13_boundary: 'ride', h_p14_deathbed: 'be_myself', h_p15_funeral: 'chancel', h_p16_oath: 'reserve',

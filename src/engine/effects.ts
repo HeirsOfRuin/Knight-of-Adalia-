@@ -297,7 +297,7 @@ export function applyEffects(state: GameState, content: ContentBundle, effects: 
     } else if ('birth' in e) {
       const sex = e.birth === 'random' ? (ctx.rng && ctx.rng.float() < 0.5 ? 'daughter' : 'son') : e.birth;
       const temperament = ctx.rng ? TEMPERAMENTS[ctx.rng.int(TEMPERAMENTS.length)] : 'merry';
-      (state.heirs ??= []).push({ name: '', sex, born: state.time, alive: true, temperament, bond: 0 });
+      (state.heirs ??= []).push({ name: '', sex, born: state.time, alive: true, temperament, bond: 0, mother: state.aliases.spouse });
       ctx.changes.push(sex === 'son' ? 'A son' : 'A daughter');
     } else if ('name_heir' in e) {
       const h = state.heirs?.find((x) => !x.name);

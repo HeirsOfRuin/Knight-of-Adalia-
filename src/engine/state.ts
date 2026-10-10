@@ -38,6 +38,8 @@ export interface Heir {
   bond?: number;
   /** season index of the child's death */
   died?: number;
+  /** the wife who bore the child (her npc id), recorded at birth */
+  mother?: string;
 }
 
 /** A knight who holds of him. `heir`: the knight has died, and his heir (a minor, or grown) holds now. */

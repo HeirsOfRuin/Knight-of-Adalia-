@@ -54,7 +54,7 @@ const BaseEffectSchema = z.union([
   z.object({ name_heir: z.string().min(1) }).strict(),
   z.object({ heir_dies: z.enum(['last', 'eldest', 'second', 'third']) }).strict(),
   // heirs' growth (Ch4): which child, and what to set. temperament 'random' fills only an unset temperament.
-  z.object({ heir_set: z.object({ which: z.enum(['eldest', 'second', 'third', 'last', 'all']), temperament: z.string().optional(), upbringing: z.string().optional() }).strict() }).strict(),
+  z.object({ heir_set: z.object({ which: z.enum(['eldest', 'second', 'third', 'last', 'heir', 'armance', 'all']), temperament: z.string().optional(), upbringing: z.string().optional() }).strict() }).strict(),
   // other holdings (Ch4): a manor beyond the first, kept as income (pence a year) and temper (-5..5)
   z.object({ hold: z.object({ id: Id, income: z.number().int(), temper: z.number().int().default(0) }).strict() }).strict(),
   // knights who come to hold land of him (registry/vassals.yaml): the next unused names of a region

@@ -602,6 +602,7 @@ c5r_querec_pardoned: { description: "Pardoned Quérec" }
 c5r_querec_exiled: { description: "Exiled Quérec and took his land" }
 c5r_querec_executed: { description: "Had Quérec tried and beheaded" }
 c5r_heir_crowned: { description: "Had his heir crowned in his own lifetime" }
+c5r_armance_crowned: { description: "Had Mahaut's child crowned in his lifetime, before his own heir, so the crown and the Armance go together" }
 c5r_estates_choose: { description: "Left the succession to the Estates" }
 c5k_chancellor: { description: "Became chancellor of the West under the king he made" }
 c5k_marshal: { description: "Became marshal of the West under the king he made" }

@@ -124,12 +124,12 @@
           then: [ { release: la_garde } ]
       next: c5r_petition
     - id: marriage
-      text: "[if heir.eldest.alive]Offer {heir.eldest.name} in marriage to the house of Valdrenne.[else]Offer a marriage between your house and Valdrenne's.[/if]"
+      text: "[if heir.heir.alive]Offer {heir.heir.name}, your heir, in marriage to the house of Valdrenne.[else]Offer a marriage between your house and Valdrenne's.[/if]"
       tags: [diplomacy, allies]
-      visible_if: [ heir.eldest.alive ]
+      visible_if: [ heir.heir.alive ]
       text_after: |
-        Valdrenne takes the match, a princess of the blood for {heir.eldest.name}, and with it signs a peace for the lifetime of both parties. Adalia, outmanoeuvred, signs a truce rather than be left out. [if heir.eldest.age < 10]{heir.eldest.name} is {heir.eldest.ageword}, and is betrothed in the cradle, as princes are, and will be told when [if heir.eldest.sex == son]he[else]she[/if] is old enough to mind.[else]{heir.eldest.name} [if heir.eldest.bond >= 3]trusts you, and agrees, and you hope you have earned it[elif heir.eldest.bond <= -2]agrees, coldly, and you know it will be held against you[else]agrees, after a week of not speaking to you[/if].[/if]
-      effects: [ { set: flag.c5r_peace_marriage }, { add: { counter.reign: 2, rep.valdrenne: 2, heir.eldest.bond: -1 } } ]
+        Valdrenne takes the match, a [if heir.heir.sex == son]princess[else]prince[/if] of the blood for {heir.heir.name}, and with it signs a peace for the lifetime of both parties. Adalia, outmanoeuvred, signs a truce rather than be left out. [if heir.heir.age < 10]{heir.heir.name} is {heir.heir.ageword}, and is betrothed in the cradle, as princes are, and will be told when [if heir.heir.sex == son]he[else]she[/if] is old enough to mind.[else]{heir.heir.name} [if heir.heir.bond >= 3]trusts you, and agrees, and you hope you have earned it[elif heir.heir.bond <= -2]agrees, coldly, and you know it will be held against you[else]agrees, after a week of not speaking to you[/if].[/if]
+      effects: [ { set: flag.c5r_peace_marriage }, { add: { counter.reign: 2, rep.valdrenne: 2, heir.heir.bond: -1 } } ]
       next: c5r_petition
     - id: refuse
       text: Refuse them both. The West paid in blood at the bridge. It will pay nothing more.
@@ -246,17 +246,27 @@
   text: |
     A year and a day after the oaths at Lannec, [if counter.reign >= 6]the West is quiet. Not content, because nowhere is content, but quiet, the way a field is quiet after the harvest is in.[elif counter.reign >= 3]the West is mostly quiet. There are lords who would not mind you dead, and you know their names, and they know you know.[else]the West is still deciding whether it made a mistake. You can feel it in every hall you ride into.[/if]
 
-    [if heir.eldest.alive]{heir.eldest.name} is {heir.eldest.ageword}, [if flag.c5r_peace_marriage]betrothed to a princess of Valdrenne, [/if]and the question of what comes after you is the one every man in the West is asking.[else]There is no child to come after you, and every man in the West is asking what does.[/if]
+    [if heir.heir.alive]{heir.heir.name} is {heir.heir.ageword}, [if flag.c5r_peace_marriage]betrothed to a [if heir.heir.sex == son]princess[else]prince[/if] of Valdrenne, [/if]and [if heirs.eldest_is_heir]your heir[else]your heir before {heirs.eldest}, as sons come before daughters in the West[/if], and the question of what comes after you is the one every man in the West is asking.[if flag.c5_armance_heir && !heirs.heir_is_armance] Mahaut's {heir.armance.name} is heir to the Armance through her, and the Armance lords have begun to ask, not quietly, why the crown and the duchy should ever be parted.[/if][else]There is no child to come after you, and every man in the West is asking what does.[/if]
   choices:
     - id: crown_heir
-      text: Have {heir.eldest.name} crowned in your lifetime, so the Estates cannot choose otherwise.
+      text: Have {heir.heir.name} crowned in your lifetime, so the Estates cannot choose otherwise.
       tags: [cunning, allies]
-      visible_if: [ heir.eldest.alive ]
+      visible_if: [ heir.heir.alive ]
       requires: [ { any: [ counter.reign >= 4, counter.estates >= 8 ] } ]
       label: "Requires: a settled West"
       text_after: |
-        The Estates are summoned, and asked, and agree, because they have seen the year you have had, and {heir.eldest.name} is crowned at Lannec as [if heir.eldest.sex == son]king[else]queen[/if] in your lifetime, the way the old kings of Valdrenne did it. [if heir.eldest.age < 7]{heir.eldest.name} is carried up the nave in [if flag.c5_armance_heir]Mahaut's[else]a nurse's[/if] arms and howls through the anointing, which the old lords take for a good sign, and the Bishop has to hold the crown over [if heir.eldest.sex == son]his[else]her[/if] head, because it would cover [if heir.eldest.sex == son]him[else]her[/if] to the shoulders.[elif heir.eldest.bond >= 3]{heir.eldest.name} looks across at you during the anointing and nearly laughs, and you nearly do.[else]{heir.eldest.name} takes the oil and the crown and the oaths with a face you cannot read.[/if]
-      effects: [ { set: flag.c5r_heir_crowned }, { add: { heir.eldest.bond: 1 } } ]
+        The Estates are summoned, and asked, and agree, because they have seen the year you have had, and {heir.heir.name} is crowned at Lannec as [if heir.heir.sex == son]king[else]queen[/if] in your lifetime, the way the old kings of Valdrenne did it. [if heir.heir.age < 7]{heir.heir.name} is carried up the nave in [if heirs.heir_is_armance]Mahaut's[else]a nurse's[/if] arms and howls through the anointing, which the old lords take for a good sign, and the Bishop has to hold the crown over [if heir.heir.sex == son]his[else]her[/if] head, because it would cover [if heir.heir.sex == son]him[else]her[/if] to the shoulders.[elif heir.heir.bond >= 3]{heir.heir.name} looks across at you during the anointing and nearly laughs, and you nearly do.[else]{heir.heir.name} takes the oil and the crown and the oaths with a face you cannot read.[/if][if flag.c5_armance_heir && !heirs.heir_is_armance] Mahaut stands beside you through all of it, with {heir.armance.name} on her hip, and kisses {heir.heir.name} afterwards on both cheeks, and does not say a word to you about it until you are alone. Then she says a great many.[/if]
+      effects: [ { set: flag.c5r_heir_crowned }, { add: { heir.heir.bond: 1 } }, { if: [ flag.c5_armance_heir, "!heirs.heir_is_armance" ], then: [ { add: { rel.mahaut_armance.affection: -2 } } ] } ]
+      next: c5_epilogue
+    - id: crown_armance
+      text: Have {heir.armance.name} crowned instead, Mahaut's [if heir.armance.sex == son]son[else]daughter[/if], so the crown and the Armance are never parted.
+      tags: [cunning, diplomacy]
+      visible_if: [ flag.c5_armance_heir, heir.armance.alive, "!heirs.heir_is_armance" ]
+      requires: [ { any: [ counter.reign >= 4, counter.estates >= 8 ] } ]
+      label: "Requires: a settled West"
+      text_after: |
+        The Armance lords carry it through the Estates in a day, and the old Adalian lords of the Salt grumble and are outvoted. {heir.armance.name} is crowned at Lannec in Mahaut's arms, with the ducal coronet of the Armance laid on the altar beside the crown, so that nobody can forget that the two go together now. Mahaut does not look at you during the anointing. She does not need to. [if heir.heir.age >= 10]{heir.heir.name} stands in the front of the nave through all of it, in the place that should have been [if heir.heir.sex == son]his[else]hers[/if], and keeps a face like a shut door, and rides home to [if flag.c2_granted_kerval]Kerval[elif flag.c2_granted_marsalin]Marsalin[else]Ormel[/if] that night without a word to anyone.[else]{heir.heir.name} is too young to know what [if heir.heir.sex == son]he[else]she[/if] has lost. One day [if heir.heir.sex == son]he[else]she[/if] will be told.[/if]
+      effects: [ { set: flag.c5r_armance_crowned }, { add: { rel.mahaut_armance.affection: 3, counter.west_estates: 2, rep.nobles: -1, heir.heir.bond: -3, heir.armance.bond: 1 } } ]
       next: c5_epilogue
     - id: estates
       text: Leave it to the Estates, as it was left to them when they chose you.

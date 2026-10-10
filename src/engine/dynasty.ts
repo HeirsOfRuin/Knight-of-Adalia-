@@ -3,6 +3,7 @@
 // registry ids and display names both, so a reader needs no Knight of Adalia content.
 // Encoded as "KOAD1." + base64url of the deflated JSON.
 import type { ContentBundle } from '../content/schema';
+import { pickHeirs } from './heirs';
 import { vassalName } from './lordship';
 import type { GameState } from './state';
 import { ageOf, reignOf, regnalYear, seasonName } from './calendar';
@@ -25,6 +26,10 @@ export interface DynastyHeir {
   match?: string;
   /** crowned in his father's lifetime */
   crowned?: boolean;
+  /** the one who inherits: the eldest son, or with no son the eldest daughter */
+  heir?: boolean;
+  /** the wife who bore the child (npc id), when recorded */
+  mother?: string;
 }
 
 export interface DynastyExport {
@@ -127,7 +132,9 @@ export function toDynasty(state: GameState, content: ContentBundle): DynastyExpo
         upbringing: h.upbringing,
         bond: h.bond ?? 0,
         match: idx >= 0 ? heirMatch(state, idx) : undefined,
-        crowned: idx === 0 && !!f.c5r_heir_crowned ? true : undefined,
+        crowned: (f.c5r_heir_crowned && pickHeirs(state, 'heir')[0] === h) || (f.c5r_armance_crowned && pickHeirs(state, 'armance')[0] === h) ? true : undefined,
+        heir: pickHeirs(state, 'heir')[0] === h ? true : undefined,
+        mother: h.mother,
       };
     }),
     realm: {

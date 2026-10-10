@@ -1,4 +1,4 @@
-import { pickHeirs } from './heirs';
+import { pickHeirs, isHeir } from './heirs';
 import { nameList, vassalName } from './lordship';
 import { ESTATE_FIELDS, ESTATE_LABELS, type EstateField } from './estate';
 // State paths: the shared vocabulary of conditions, effects and text.
@@ -96,6 +96,11 @@ export function getValue(state: GameState, content: ContentBundle, rawPath: stri
         case 'dead': return all.length - living.length;
         case 'lastdead': return all.filter((h) => !h.alive).at(-1)?.name || 'the child';
         case 'eldest_id': return (living[0]?.name || 'none').toLowerCase(); // for conditions: heirs.eldest_id == piers
+        // who inherits, by birth order: the eldest is the heir unless a younger brother comes first
+        case 'eldest_is_heir': return isHeir(state, living[0]);
+        case 'second_is_heir': return isHeir(state, living[1]);
+        // the heir is one of Mahaut's children (so the crown and the Armance go together)
+        case 'heir_is_armance': { const h = pickHeirs(state, 'heir')[0]; return !!h && pickHeirs(state, 'armance')[0] === h; }
         case 'names': {
           const n = living.map((h) => h.name).filter(Boolean);
           return n.length <= 1 ? (n[0] ?? '') : `${n.slice(0, -1).join(', ')} and ${n.at(-1)}`;
@@ -196,11 +201,11 @@ export function checkPath(content: ContentBundle, path: string): string | null {
     case 'npc': return need(a in reg.npcs, 'npc') ?? need(['met', 'alive', 'follower', 'friend'].includes(b ?? ''), 'npc field');
     case 'suit': return need(a in reg.romances, 'romance') ?? need(['status', 'regard', 'family', 'discretion', 'pledge'].includes(b ?? ''), 'suit field');
     case 'calendar': return need(['season', 'year'].includes(a), 'calendar field');
-    case 'heir': return need(['eldest', 'second', 'third', 'last'].includes(a), 'heir selector') ?? need(['alive', 'name', 'sex', 'age', 'ageword', 'temperament', 'upbringing', 'bond'].includes(b ?? ''), 'heir field');
+    case 'heir': return need(['eldest', 'second', 'third', 'last', 'heir', 'armance'].includes(a), 'heir selector') ?? need(['alive', 'name', 'sex', 'age', 'ageword', 'temperament', 'upbringing', 'bond'].includes(b ?? ''), 'heir field');
     case 'holding': return need(a in reg.holdings, 'holding') ?? need(['held', 'income', 'temper'].includes(b ?? ''), 'holding field');
     case 'holdings': return need(['count', 'income'].includes(a), 'holdings field');
     case 'vassals': return need(['count', 'names'].includes(a), 'vassals field');
-    case 'heirs': return need(['count', 'born', 'sons', 'daughters', 'last', 'lastname', 'eldest', 'eldest_id', 'lastdead', 'dead', 'names'].includes(a), 'heirs field');
+    case 'heirs': return need(['count', 'born', 'sons', 'daughters', 'last', 'lastname', 'eldest', 'eldest_id', 'lastdead', 'dead', 'names', 'eldest_is_heir', 'second_is_heir', 'heir_is_armance'].includes(a), 'heirs field');
     default: return `unknown namespace "${ns}" in "${path}"`;
   }
 }

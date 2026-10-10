@@ -14,8 +14,10 @@
 
 rules:
   # A small child does not hold conversations about his future, or sulk over his marriage
-  - match: "What do you want me to be|after a week of not speaking to you|That's the worst advice anyone has ever given me"
+  - match: "What do you want me to be|That's the worst advice anyone has ever given me"
     allow: heir.eldest.age >= 10
+  - match: "after a week of not speaking to you"
+    allow: heir.heir.age >= 10
     why: Mahaut's or Blanche's child can be the eldest and an infant in Chapter 5.
   # Chapter 1 on the lower tracks: an archer or a groom is not a squire until he is made one
   - match: "honest squire|what squires do|Sit in, squire|seen squires before|your master's other squire|The other squires watch|whose squire you are|For a squire, there is one question"

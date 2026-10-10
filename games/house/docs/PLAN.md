@@ -302,6 +302,8 @@ Running through all four acts:
 - the Keeper's end (Act IV).
 
 ### 6.3 Book II: The Builder (years 78-102; 40-50 scenes)
+> **Being laid out in `STORY-BOOK2.md`.** Layer 1 (the spine) is decided: Kerguen is the rival (the match, then the debt), the Builder's conflict is credit, the shape is rise then reckoning. Where this section and STORY-BOOK2.md differ, STORY-BOOK2.md wins.
+
 | Act | Years | Free | Adalian | Divided |
 |---|---|---|---|---|
 | **I. The Great Match** | 78-82 | A marriage into the royal line, or a rival's, that could carry a claim | A marriage into an Adalian earldom, with Wendmere's leave | A marriage across the border, which both kings forbid |

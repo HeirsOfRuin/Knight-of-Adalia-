@@ -35,7 +35,7 @@
           then: [ { set: flag.h_n_estates_thanked }, { add: { counter.favour: 2, res.coin: -4800 } } ]
           else: [ { add: { counter.favour: 2, counter.household: -1 } } ]
       text_after: |
-        [if realm.sovereign == self]The Estates meet at Whitsun, and are thanked, at length, with a feast, and go home pleased and twenty pounds the fatter. An old knight of the Armance tells you on the stair that it is the first time a king has thanked them for anything. "Your father asked us," he says. "That was different."[else]You kneel at the court, in the hall your father built, and {realm.sovereign} raises you with both hands and seats you on his right, where the whole court can see the house that was royal eating the new king's bread.[/if]
+        [if realm.sovereign == self]The Estates meet at Whitsun, and are thanked, at length, with a feast, and go home pleased and twenty pounds the fatter. An old knight of the Armance tells you on the stair that it is the first time a crown has thanked them for anything. "Your father asked us," he says. "That was different."[else]You kneel at the court, in the hall your father built, and {realm.sovereign} raises you with both hands and seats you on his right, where the whole court can see the house that was royal eating the new king's bread.[/if]
       next: h_n02_letters
     - id: march
       text: "Ride the march, and look at Penhoët's walls[if realm.sovereign == herve], which are the King's own house[/if]."
@@ -64,19 +64,19 @@
         text: |
           The carter is stopped at a ford with a cart of cheeses and three letters under the cheeses, in Hervé's own hand. To Bertrand: "When the Duchess is dying, not after." To a Valdrennish captain: a sum. To the Armance lords: "The custom is the custom. I will be at Armance castle before her heir is." The constable has them copied, and the copies sealed, and the carter sent on with the cheeses.
         effects: [ { set: flag.h_n_letters } ]
-        next: { switch: [ { if: [ { any: [ flag.h_bc_sibling_church, inherited.c5_younger_church ] }, sibling.alive ], go: h_n04_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_n05_heir } }
+        next: { switch: [ { if: [ { any: [ flag.h_bc_sibling_church, inherited.c5_younger_church ] }, sibling.alive, "sibling.age >= 25" ], go: h_n04_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_n05_heir } }
       failure:
         text: |
           The carter is stopped at a ford, and his cart turned over, and there is nothing in it but cheeses. The next month the letters go by a different road, and Hervé sends you a cheese.
         effects: [ { add: { rival.penhoet.temper: -1 } } ]
-        next: { switch: [ { if: [ { any: [ flag.h_bc_sibling_church, inherited.c5_younger_church ] }, sibling.alive ], go: h_n04_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_n05_heir } }
+        next: { switch: [ { if: [ { any: [ flag.h_bc_sibling_church, inherited.c5_younger_church ] }, sibling.alive, "sibling.age >= 25" ], go: h_n04_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_n05_heir } }
     - id: confront
       visible_if: "realm.sovereign != herve"
       text: "[if flag.h_k_penhoet_attainted]Write to him at the Valdrennish court, and ask what he wants.[elif realm.sovereign == self]Summon him to court, and ask him what he writes.[else]Ride to Penhoët, and ask him what he writes.[/if]"
       effects: [ { set: flag.h_n_confronted }, { add: { rival.penhoet.temper: 1 } } ]
       text_after: |
         [if flag.h_k_penhoet_attainted]He writes back within the month, a long letter in a clear hand. "I want my house," he says, "and my grandson in it, and I will have them or a grave. You may tell your council so."[else]Hervé answers you to your face, at a table, with the wine poured. "I write to my friends," he says. "I'm old, and I have more of them in the grave than out, and I write to the ones that are left." He looks at you over the cup. "When {house.mahaut}'s custom comes to be tested, I shall test it. You knew that."[/if]
-      next: { switch: [ { if: [ { any: [ flag.h_bc_sibling_church, inherited.c5_younger_church ] }, sibling.alive ], go: h_n04_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_n05_heir } }
+      next: { switch: [ { if: [ { any: [ flag.h_bc_sibling_church, inherited.c5_younger_church ] }, sibling.alive, "sibling.age >= 25" ], go: h_n04_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_n05_heir } }
     - id: answer
       visible_if: "realm.sovereign == herve"
       text: Answer the inquest with the charters.
@@ -85,19 +85,19 @@
         text: |
           You lay the charters on the justices' table yourself, one by one: Duchess Jehanne's will, the Estates' confirmation, your father's patent, {house.mahaut}'s homage. The young clerk copies them for a week. The commission finds that the titles are good, which is not the same as finding that the custom is.
         effects: [ { set: flag.h_n_inquest_answered }, { add: { res.renown: 1 } } ]
-        next: { switch: [ { if: [ { any: [ flag.h_bc_sibling_church, inherited.c5_younger_church ] }, sibling.alive ], go: h_n04_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_n05_heir } }
+        next: { switch: [ { if: [ { any: [ flag.h_bc_sibling_church, inherited.c5_younger_church ] }, sibling.alive, "sibling.age >= 25" ], go: h_n04_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_n05_heir } }
       failure:
         text: |
           One of the charters is a copy, and the original is in a chest at Lannec that the King's chamberlain cannot, for the moment, find. The commission finds the Armance's title "under inquiry," and sends the finding to every lord in the duchy.
         effects: [ { add: { counter.favour: -1 } } ]
-        next: { switch: [ { if: [ { any: [ flag.h_bc_sibling_church, inherited.c5_younger_church ] }, sibling.alive ], go: h_n04_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_n05_heir } }
+        next: { switch: [ { if: [ { any: [ flag.h_bc_sibling_church, inherited.c5_younger_church ] }, sibling.alive, "sibling.age >= 25" ], go: h_n04_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_n05_heir } }
     - id: refuse
       visible_if: "realm.sovereign == herve"
       text: Refuse the inquest, by the Estates' right.
       effects: [ { set: flag.h_n_refused_inquest }, { add: { counter.favour: -2, rep.nobles: 1 } } ]
       text_after: |
         You send the justices back to Lannec with a letter: the West's titles are judged by the West's Estates, as the Estates of 920 promised, and not by a king's commission. Half the Armance lords copy the letter and send it after them.
-      next: { switch: [ { if: [ { any: [ flag.h_bc_sibling_church, inherited.c5_younger_church ] }, sibling.alive ], go: h_n04_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_n05_heir } }
+      next: { switch: [ { if: [ { any: [ flag.h_bc_sibling_church, inherited.c5_younger_church ] }, sibling.alive, "sibling.age >= 25" ], go: h_n04_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_n05_heir } }
     - id: let
       text: "[if realm.sovereign == herve]Send the justices gifts, and let them look. (£30)[else]Let the letters run, and have them copied where you can.[/if]"
       effects:
@@ -106,7 +106,7 @@
           else: [ { set: flag.h_n_reading } ]
       text_after: |
         [if realm.sovereign == herve]The justices take the gifts and look, at length, and write that the house was most helpful. They also write down everything they see.[else]The letters run, and the constable's men copy what they can at the inns, and by Christmas you know roughly what Hervé means and when, which is when {house.mahaut} is dying.[/if]
-      next: { switch: [ { if: [ { any: [ flag.h_bc_sibling_church, inherited.c5_younger_church ] }, sibling.alive ], go: h_n04_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_n05_heir } }
+      next: { switch: [ { if: [ { any: [ flag.h_bc_sibling_church, inherited.c5_younger_church ] }, sibling.alive, "sibling.age >= 25" ], go: h_n04_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_n05_heir } }
 
 # ---- a child of the house given to the Church (B6, or Knight of Adalia's c5_younger_church) ----
 - id: h_n04_bishop
@@ -202,7 +202,7 @@
 
 - id: h_n06_illness
   chapter: book1
-  title: "[if family.generation == 2]Your Mother[else]Mahaut[/if]"
+  title: "[if family.generation == 2 && house.mahaut_blood]Your Mother[else]The Queen's Illness[/if]"
   frames: [free]
   on_enter: [ { catch_up: { year: 72, season: spring } } ]
   text: |
@@ -361,7 +361,7 @@
 
 - id: h_n09_mahaut
   chapter: book1
-  title: "[if family.generation == 2]Your Mother Is Dead[else]Mahaut Is Dead[/if]"
+  title: "[if family.generation == 2 && house.mahaut_blood]Your Mother Is Dead[else]Mahaut Is Dead[/if]"
   frames: [free]
   on_enter:
     - catch_up: { year: 73, season: spring }
@@ -370,7 +370,7 @@
   text: |
     {house.mahaut_start} dies at Lady Day in 935, at fifty-four, [if flag.h_n_went_mother]with you beside her, in the window over the valley[elif flag.h_n_brought_mother]in the queen's rooms at Lannec, with the windows open to the river[else]in her castle in the hills[/if]. She is buried beside your father at Saint-Lys. Her last letter to the house comes after the bell, sealed before she died: a page about the weather and the price of salt, and at the bottom, "Be kind to yourself. Nobody else will be."
 
-    The Armance passes to her heir, and her heir is you. [if flag.h_k_bargain && !flag.h_penhoet_broken && !flag.h_k_penhoet_attainted]But the crown signed the Armance's custom to the male line in 920, for Penhoët's voices, and under that custom the duchy is Yann de Penhoët's.[elif flag.h_n_armance_held]Two of its castles are in other hands.[/if] [if realm.sovereign == self]The council asks whether the duchy is to be the crown's, or given.[else]The steward asks whether the house is to hold it, or give it.[/if]
+    [if !house.mahaut_blood && house.mahaut_child]The Armance passes to her heir, and her heir is her own son, {house.armance_heir}, your half-brother[if flag.h_bc_armance_confirmed], by the confirmation you sealed for her yourself[/if].[else]The Armance passes to her heir, and her heir is you.[/if] [if flag.h_k_bargain && !flag.h_penhoet_broken && !flag.h_k_penhoet_attainted]But the crown signed the Armance's custom to the male line in 920, for Penhoët's voices, and under that custom the duchy is Yann de Penhoët's.[elif flag.h_n_armance_held]Two of its castles are in other hands.[/if] [if !house.mahaut_blood && house.mahaut_child]The council waits to hear whether the crown will confirm him.[elif realm.sovereign == self]The council asks whether the duchy is to be the crown's, or given.[else]The steward asks whether the house is to hold it, or give it.[/if]
   choices:
     - id: honour
       visible_if: "flag.h_k_bargain && !flag.h_penhoet_broken && !flag.h_k_penhoet_attainted"
@@ -380,21 +380,29 @@
         You send the duchy's keys to Penhoët under seal, with the contract of 920 on top of them. Yann's guardians receive them standing. "Hervé said you'd find a way out of it," one of them says. "He'd have lost the bet."
       next: { switch: [ { if: [ "realm.sovereign == self", "age >= 18", "!family.no_heir" ], go: { pool: h_b4_pool, count: 1, then: h_n11_crowning } }, { if: [ "realm.sovereign != self", "!flag.h_n_claimed" ], go: { pool: h_b4_pool, count: 1, then: h_n12_claim } }, { if: [ "realm.sovereign != self", "family.head_from <= 66", "heir.age >= 14" ], go: { pool: h_b4_pool, count: 1, then: h_e12_heir } }, { if: [ "realm.sovereign != self", "family.head_from <= 66" ], go: { pool: h_b4_pool, count: 1, then: h_e13_end } }, { if: "realm.sovereign != self", go: { pool: h_b4_pool, count: 1, then: h_e_end } } ], default: { pool: h_b4_pool, count: 1, then: h_n_end } }
     - id: sibling
-      visible_if: "sibling.alive && !flag.h_n_bishop && !flag.h_bc_sibling_church && !inherited.c5_younger_church"
+      visible_if: "house.mahaut_blood && sibling.alive && !flag.h_n_bishop && !flag.h_bc_sibling_church && !inherited.c5_younger_church"
       text: Give the Armance to {sibling.first}, as {sibling.his} own duchy.
       effects: [ { set: flag.h_armance_sibling }, { add: { counter.second: 3, counter.household: 1, rival.penhoet.temper: 1 } } ]
       text_after: |
         {sibling.first} does homage for the Armance at Whitsun, on {sibling.his} knees, with {sibling.his} hands between yours, and gets up a duke's equal. The Armance lords like having a lord of their own again. Your chancellor says, quietly, that the West now has two great houses of the same blood, and that he has read some history.
       next: { switch: [ { if: [ "realm.sovereign == self", "age >= 18", "!family.no_heir" ], go: { pool: h_b4_pool, count: 1, then: h_n11_crowning } }, { if: [ "realm.sovereign != self", "!flag.h_n_claimed" ], go: { pool: h_b4_pool, count: 1, then: h_n12_claim } }, { if: [ "realm.sovereign != self", "family.head_from <= 66", "heir.age >= 14" ], go: { pool: h_b4_pool, count: 1, then: h_e12_heir } }, { if: [ "realm.sovereign != self", "family.head_from <= 66" ], go: { pool: h_b4_pool, count: 1, then: h_e13_end } }, { if: "realm.sovereign != self", go: { pool: h_b4_pool, count: 1, then: h_e_end } } ], default: { pool: h_b4_pool, count: 1, then: h_n_end } }
     - id: child
-      visible_if: "family.children >= 2"
+      visible_if: "house.mahaut_blood && family.children >= 2"
       text: Keep the Armance for {second.first}, as {second.his} duchy when {second.he} is grown.
       effects: [ { set: flag.h_armance_child }, { add: { counter.household: 1 } }, { hold: { id: armance_ward, name: "The Armance, held for a younger child", income: 36000 } } ]
       text_after: |
         {second.first} is told at supper, and asks whether a duchy has ponies, and is told it has several. The Armance lords are content to wait for a lord of their own, and Penhoët is content to wait for anything.
       next: { switch: [ { if: [ "realm.sovereign == self", "age >= 18", "!family.no_heir" ], go: { pool: h_b4_pool, count: 1, then: h_n11_crowning } }, { if: [ "realm.sovereign != self", "!flag.h_n_claimed" ], go: { pool: h_b4_pool, count: 1, then: h_n12_claim } }, { if: [ "realm.sovereign != self", "family.head_from <= 66", "heir.age >= 14" ], go: { pool: h_b4_pool, count: 1, then: h_e12_heir } }, { if: [ "realm.sovereign != self", "family.head_from <= 66" ], go: { pool: h_b4_pool, count: 1, then: h_e13_end } }, { if: "realm.sovereign != self", go: { pool: h_b4_pool, count: 1, then: h_e_end } } ], default: { pool: h_b4_pool, count: 1, then: h_n_end } }
+    # the Keeper is her stepchild: the duchy is her own son's, and the crown can confirm him or take it over his head
+    - id: half
+      visible_if: "!house.mahaut_blood && house.mahaut_child"
+      text: Confirm {house.armance_heir} as Duke of Armance, as his mother wished.
+      effects: [ { set: flag.h_armance_sibling }, { set: flag.h_armance_half }, { add: { counter.household: 1, rep.honor: 1, rival.penhoet.temper: 1 } } ]
+      text_after: |
+        {house.armance_heir} does homage for the Armance at Whitsun, a boy on his knees with his hands between yours, in his mother's black, and rises Duke of Armance. The Armance lords cheer him in the street. Your chancellor says, quietly, that the West now has a crown and a duchy in two halves of the same family, and that he has read some history.
+      next: { switch: [ { if: [ "realm.sovereign == self", "age >= 18", "!family.no_heir" ], go: { pool: h_b4_pool, count: 1, then: h_n11_crowning } }, { if: [ "realm.sovereign != self", "!flag.h_n_claimed" ], go: { pool: h_b4_pool, count: 1, then: h_n12_claim } }, { if: [ "realm.sovereign != self", "family.head_from <= 66", "heir.age >= 14" ], go: { pool: h_b4_pool, count: 1, then: h_e12_heir } }, { if: [ "realm.sovereign != self", "family.head_from <= 66" ], go: { pool: h_b4_pool, count: 1, then: h_e13_end } }, { if: "realm.sovereign != self", go: { pool: h_b4_pool, count: 1, then: h_e_end } } ], default: { pool: h_b4_pool, count: 1, then: h_n_end } }
     - id: unite
-      text: "[if realm.sovereign == self]Take the Armance into the crown.[else]Hold the Armance yourself, as {house.mahaut} did.[/if][if flag.h_k_bargain && !flag.h_penhoet_broken && !flag.h_k_penhoet_attainted] Break the bargain of 920.[/if]"
+      text: "[if !house.mahaut_blood && house.mahaut_child]Take the Armance into the crown, over {house.armance_heir}'s head.[elif realm.sovereign == self]Take the Armance into the crown.[else]Hold the Armance yourself, as {house.mahaut} did.[/if][if flag.h_k_bargain && !flag.h_penhoet_broken && !flag.h_k_penhoet_attainted] Break the bargain of 920.[/if]"
       effects:
         - set: flag.h_armance_united
         - add: { rival.penhoet.temper: -2 }
@@ -405,7 +413,13 @@
           then: [ { set: flag.h_n_bargain_broken }, { add: { rep.honor: -2, rival.penhoet.temper: -5 } } ]
         - if: "realm.sovereign == self"
           then: [ { add: { rep.nobles: -1 } } ]
+        # disinheriting her son, and breaking the seal if the crown confirmed him
+        - if: [ "!house.mahaut_blood", house.mahaut_child ]
+          then: [ { set: flag.h_armance_taken }, { add: { rep.honor: -2, rep.nobles: -1, counter.household: -1 } } ]
+        - if: flag.h_bc_armance_confirmed
+          then: [ { add: { rep.honor: -2 } } ]
       text_after: |
+        [if flag.h_armance_taken]{house.armance_heir} is sent to the abbey school at Saint-Lys with a pension and a tutor, and the Armance lords watch the boy go, and say nothing in Lannec, and a great deal at home.[if flag.h_bc_armance_confirmed] Your own seal is on the confirmation in his mother's chest. Everyone knows it.[/if][/if] 
         [if realm.sovereign == self]The Armance's revenues come to the crown's exchequer at Michaelmas, two hundred pounds a year, and the duchy's lords do homage to the crown at Lannec instead of to their own duchess in the hills, and do not like the ride.[else]You do homage to {realm.sovereign} for the Armance at Whitsun, in your own right, and the house is the greatest in the West by two hundred pounds a year and a duchy's worth of lords.[/if] [if flag.h_n_bargain_broken]Penhoët's guardians publish the contract of 920 in every market in the duchy, with the crown's seal on it.[/if]
       next: { switch: [ { if: [ "realm.sovereign == self", "age >= 18", "!family.no_heir" ], go: { pool: h_b4_pool, count: 1, then: h_n11_crowning } }, { if: [ "realm.sovereign != self", "!flag.h_n_claimed" ], go: { pool: h_b4_pool, count: 1, then: h_n12_claim } }, { if: [ "realm.sovereign != self", "family.head_from <= 66", "heir.age >= 14" ], go: { pool: h_b4_pool, count: 1, then: h_e12_heir } }, { if: [ "realm.sovereign != self", "family.head_from <= 66" ], go: { pool: h_b4_pool, count: 1, then: h_e13_end } }, { if: "realm.sovereign != self", go: { pool: h_b4_pool, count: 1, then: h_e_end } } ], default: { pool: h_b4_pool, count: 1, then: h_n_end } }
 
@@ -418,7 +432,7 @@
   # if the sovereign died at the Michaelmas this scene passes over, the succession has run first, and the new head
   # (family.head_from 76) only goes on
   text: |
-    [if family.head_from >= 76][if realm.sovereign == self]At Lady Day in 938 the crown is yours, at {age_words}, and has not been for long.[else]At Lady Day in 938 {realm.sovereign} wears the crown the Estates gave away, and the house is yours, at {age_words}.[/if] The council talks about crowning heirs, and stops when you come in.[else]At Lady Day in 938 you are {age_words}, and {heir.first} is {heir.ageword}. [if family.generation == 2]Your father crowned you beside him when you were a child, and lived on at court, and the West had two kings for eleven years and found it could bear it.[else]The old king crowned his heir beside him once, and lived on at court, and the West found it could bear two kings.[/if] The council says it is time to do the same.
+    [if family.head_from >= 76][if realm.sovereign == self]At Lady Day in 938 the crown is yours, at {age_words}, and has not been for long.[else]At Lady Day in 938 {realm.sovereign} wears the crown the Estates gave away, and the house is yours, at {age_words}.[/if] The council talks about crowning heirs, and stops when you come in.[else]At Lady Day in 938 you are {age_words}, and {heir.first} is {heir.ageword}. [if family.generation == 2]Your father crowned you beside him when you were a child, and lived on at court, and the West had two crowned heads for years and found it could bear it.[else]The old king crowned his heir beside him once, and lived on at court, and the West found it could bear two kings.[/if] The council says it is time to do the same.
 
     [if flag.h_crown_for_life && !flag.h_crown_hereditary]But the Estates gave you the crown for life in 920, and kept the choice of the next. To crown {heir.first} beside you, you must ask them for what they kept: the crown by blood. If they refuse, they refuse for good, and they will choose when you are gone.[else]The crown goes to the eldest by the Estates' own law. Crowning {heir.first} beside you is a ceremony, and a promise, and a regency while {heir.he} is young, with you at court to watch it.[/if]
 

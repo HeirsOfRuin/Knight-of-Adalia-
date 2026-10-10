@@ -1444,6 +1444,13 @@ Years 66-78 (928-940), written in `scenes/book1/80-crowned-test.yaml`. The Found
 - **N11. The junior crown** (Lady Day 938, L3-44), and **N11b** if the Estates refuse.
 - **N12. The claim** (crown-lost runs, L3-45).
 
+**A grown heir on the crowned path** (2026-10-10, the author's second save: King Hob, Mahaut, and Ysolde, nineteen in year 50, from the first marriage and already crowned in her father's lifetime). An heir of thirteen or more in year 50 is of age at the handover, and is Mahaut's stepchild (her children are born from year 43). `flag.h_c_grown` (set in P0) switches the crowned path to its grown variants:
+- the prologue: a grown heir at court and on the march; for an heir already crowned (`c5r_heir_crowned`), P10 is **the Handover** of the rule and the seals, not a crowning; no regency, and Mahaut is the Queen beside the throne, with her own son;
+- Book I, Act I: the regent's scene becomes **the Queen's Son**, in which Mahaut asks her stepchild to seal her son's right to the Armance (`h_bc_armance_confirmed`);
+- Act II: the regency's end (K6) is skipped;
+- Act IV: at Mahaut's death the Armance is her own son's; the crown confirms him (`h_armance_half`) or takes it over his head (`h_armance_taken`, dishonour, worse if the crown sealed his right).
+The text reads Mahaut through `{house.mahaut}` (your mother, stepmother or grandmother) and the Armance's heir through `{house.armance_heir}`; conditions `house.mahaut_blood` and `house.mahaut_child`. The save is a test fixture (`tests/fixtures/hob-crowned.koad`) and `transcripts/crowned-hob-save.md` is its run.
+
 **Built for Act IV (both paths):**
 - `adopt`: a Keeper with nobody of the blood left takes the Mottle's orphan ward (D10) or a cousin's orphan into the line at E13, rather than end the house.
 - An event queued "at once" (the succession) now interrupts the scene whose entry passed over the death, and the scene opens again for the new head. Before this, a scene could be read by a head who had died in the years it skipped. Entry effects that must not run twice are guarded.

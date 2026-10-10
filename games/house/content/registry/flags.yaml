@@ -7,10 +7,12 @@ h_answer_you: { description: 'At the deathbed the heir said, "I will try to be y
 h_armance_child: { description: "At Mahaut's death the Armance was kept for a younger child of the head", later: book1 }
 h_armance_cousin: { description: "Under the male line the Armance went to Mahaut's cousin's son, Alain de Rosmadec", later: book1 }
 h_armance_crown: { description: "Under King Gaucelin's male line the Armance escheated to the crown", later: book1 }
+h_armance_half: { description: "At Mahaut's death her own son, the sovereign's half-brother, was confirmed Duke of Armance", later: book1 }
 h_armance_jehanne: { description: "Jehanne holds the Armance after her mother's death", later: book1 }
 h_armance_male_line: { description: "The Estates wrote the Armance's custom by the male line: the duchy goes to Penhoët at Mahaut's death", later: book1 }
 h_armance_penhoet: { description: "Penhoët's line holds the Armance after Mahaut's death", later: book1 }
 h_armance_sibling: { description: "At Mahaut's death the Armance was given to the head's brother or sister as a duchy apart", later: book1 }
+h_armance_taken: { description: "At Mahaut's death the crown took the Armance over her son's head", later: book1 }
 h_armance_united: { description: "At Mahaut's death the Armance was united with the crown, or held by the house itself", later: book1 }
 h_b2_master: { description: "A master of arts keeps the house's accounts and teaches the head", later: book1 }
 h_b2_relic: { description: "The house bought a relic for the chapel", later: book1 }
@@ -50,6 +52,7 @@ h_b_wed_sauvel: { description: "The Keeper kept the Sauvel marriage made at the 
 h_b_wendmere: { description: "The Keeper wrote to Wendmere over the governor's head", later: book1 }
 h_bc_amaury_answered: { description: "The young sovereign answered King Amaury's private letter, and gave nothing away", later: book1 }
 h_bc_amaury_told: { description: "The young sovereign told King Amaury more than was meant in a private letter", later: book1 }
+h_bc_armance_confirmed: { description: "The grown sovereign sealed Mahaut's son's right to the Armance", later: book1 }
 h_bc_betrothed_kerguen: { description: "The young sovereign is betrothed into Kerguen (Tanguy or Maëlle)", later: book1 }
 h_bc_betrothed_none: { description: "The young sovereign is promised to no one", later: book1 }
 h_bc_betrothed_penhoet: { description: "The young sovereign is betrothed into Penhoët (Ronan or Sibylle)", later: book1 }
@@ -93,6 +96,7 @@ h_c_embassy_delayed: { description: "The King put off Valdrenne's offer for the 
 h_c_estates_divided: { description: "The Estates swore only to the King's heir, as the law shall be", later: book1 }
 h_c_estates_swore: { description: "The Estates of the West swore to (or elected) the King's heir", later: book1 }
 h_c_found: { description: "The house's double game in the law fight was found out", later: book1 }
+h_c_grown: { description: "The crowned path's heir was of age at the handover: no regency, and Mahaut's stepchild", later: book1 }
 h_c_held: { description: "The Keeper refused the other side's price, and held", later: book1 }
 h_c_hired_bastard: { description: "The house hired the Bastard of Ostmark's company to guard its valleys", later: book1 }
 h_c_jehanne_free: { description: "The King refused Valdrenne's offer: the heir will choose, as Mahaut did", later: book1 }

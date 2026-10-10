@@ -9,7 +9,7 @@ import { ordinalWords } from '@engine/format';
 import { labelFor } from '@engine/paths';
 import { renderText } from '@engine/text';
 import { FRAMES, GAME_ID, HOUSE_LAWS, type ContentBundle, type Effect, type Frame } from '../content/schema';
-import { FOUNDER_ID, HOUSE_ID, type HouseState } from './state';
+import { FOUNDER_ID, HOUSE_ID, type HouseState, type Character } from './state';
 import { SELECTORS, select, heirOf, livingChildren, die, queueSuccession, succeed, bear, marry, nameChild, yearTick, SUCCESSION_SCENE } from './family';
 import { ageOfCharacter } from '@engine/character';
 import { economyTick, ESTATE_LABELS, HARVESTS, TRADES } from './economy';
@@ -31,9 +31,9 @@ const SINGLE = ['opening', 'imported'];
 /** family.<field>: the house as a whole. */
 const FAMILY = ['law', 'generation', 'members', 'children', 'sons', 'daughters', 'extinct', 'no_heir', 'minor', 'regency', 'contested', 'news', 'childbed', 'cloister', 'junior', 'head_from'];
 // {house.*}: the founder's house as Knight of Adalia left it, or as a fresh start has it
-const HOUSE_TEXT = ['manor', 'claimed', 'companion', 'companion_first', 'origin', 'parent', 'parent_start', 'knights', 'withholder', 'parent_word', 'querec', 'querec_start', 'querec_short', 'ruler', 'ruler_lc', 'match_penhoet', 'match_valdrenne', 'match_kerguen', 'standing', 'harvest', 'law_need', 'mahaut', 'mahaut_start'];
+const HOUSE_TEXT = ['manor', 'claimed', 'companion', 'companion_first', 'origin', 'parent', 'parent_start', 'knights', 'withholder', 'parent_word', 'querec', 'querec_start', 'querec_short', 'ruler', 'ruler_lc', 'match_penhoet', 'match_valdrenne', 'match_kerguen', 'standing', 'harvest', 'law_need', 'mahaut', 'mahaut_start', 'to_mahaut', 'armance_heir', 'armance_heirs'];
 // house.<field> in conditions: the founder's knights as Knight of Adalia left them
-const HOUSE_IDS = ['yvon', 'vassals', 'standing', 'debt'];
+const HOUSE_IDS = ['yvon', 'vassals', 'standing', 'debt', 'mahaut_blood', 'mahaut_child'];
 
 type Op<K extends string> = Extract<Effect, Record<K, unknown>>;
 
@@ -125,6 +125,9 @@ export const house: GameModule = {
         if (a === 'standing') return standingOf(state);
         if (a === 'debt') return state.debt ?? 0;
         const v = state.inheritance?.lands.vassals ?? [];
+        // the Keeper is Mahaut's own child or grandchild (the crowned path), not her stepchild
+        if (a === 'mahaut_blood') return mahautKin(state) === 'mother' || mahautKin(state) === 'grandmother';
+        if (a === 'mahaut_child') return !!mahautEldest(state);
         if (a === 'yvon') return v.some((x) => x.id === 'penhoet_cadet');
         if (a === 'vassals') return v.length;
         return undefined;
@@ -444,6 +447,25 @@ export const house: GameModule = {
   startScene: (s, c) => ct(c).openings[st(s).opening]?.start_scene,
 };
 
+/** The crowned path's Keeper (the heir while the founder heads the house) as Mahaut's kin: mother, grandmother, stepmother, or none. */
+function mahautKin(s: HouseState): 'mother' | 'grandmother' | 'stepmother' | 'none' {
+  const dw = s.characters[FOUNDER_ID]?.spouse;
+  if (!dw) return 'none';
+  const id = s.hero === FOUNDER_ID ? heirOf(s, s.family.law, FOUNDER_ID) : s.hero;
+  const k = s.characters[id ?? ''];
+  if (!k) return 'none';
+  if (k.mother === dw) return 'mother';
+  if ([k.father, k.mother].some((p) => p && s.characters[p]?.mother === dw)) return 'grandmother';
+  return k.father === FOUNDER_ID ? 'stepmother' : 'none';
+}
+
+/** Mahaut's eldest living child who is not the Keeper: the Armance's heir when the Keeper is her stepchild. */
+function mahautEldest(s: HouseState): Character | undefined {
+  const dw = s.characters[FOUNDER_ID]?.spouse;
+  const keeper = s.hero === FOUNDER_ID ? heirOf(s, s.family.law, FOUNDER_ID) : s.hero;
+  return Object.entries(s.characters).filter(([id, c]) => id !== keeper && c.alive && dw && c.mother === dw).sort(([, a], [, b]) => a.born - b.born)[0]?.[1];
+}
+
 function keeperSex(s: HouseState): string | undefined {
   const id = s.hero === FOUNDER_ID ? heirOf(s, s.family.law, FOUNDER_ID) : s.hero;
   return s.characters[id ?? '']?.sex;
@@ -468,12 +490,25 @@ function houseText(s: HouseState, f: string): string | undefined {
     }
     // the founder, as the founder's children speak of them
     case 'parent': return s.characters[FOUNDER_ID]?.sex === 'female' ? 'your mother' : 'your father';
-    // Mahaut, as the crowned path's head knows her: the founder's queen, the head's mother or grandmother
+    // Mahaut, as the crowned path's head knows her: the head's mother, grandmother or stepmother (the founder's queen)
     case 'mahaut': case 'mahaut_start': {
-      const dw = s.characters[FOUNDER_ID]?.spouse;
-      const h = s.characters[s.hero];
-      const kin = h?.mother === dw ? 'your mother' : [h?.father, h?.mother].some((p) => p && s.characters[p]?.mother === dw) ? 'your grandmother' : 'Mahaut';
-      return f === 'mahaut_start' ? kin.charAt(0).toUpperCase() + kin.slice(1) : kin;
+      const kin = mahautKin(s);
+      const word = kin === 'mother' ? 'your mother' : kin === 'grandmother' ? 'your grandmother' : kin === 'stepmother' ? 'your stepmother' : 'Mahaut';
+      return f === 'mahaut_start' ? word.charAt(0).toUpperCase() + word.slice(1) : word;
+    }
+    // what the head is to Mahaut: daughter, son, stepdaughter, granddaughter...
+    case 'to_mahaut': {
+      const kin = mahautKin(s);
+      const fem = keeperSex(s) === 'female';
+      const base = fem ? 'daughter' : 'son';
+      return kin === 'mother' ? base : kin === 'grandmother' ? `grand${base}` : kin === 'stepmother' ? `step${base}` : base;
+    }
+    // who has the Armance after Mahaut: the head, if hers; else her own eldest living child ("you" or "Jehan")
+    case 'armance_heir': case 'armance_heirs': {
+      const kin = mahautKin(s);
+      if (kin !== 'stepmother') return f === 'armance_heir' ? 'you' : 'yours';
+      const first = mahautEldest(s)?.name.split(' ')[0];
+      return first ? (f === 'armance_heir' ? first : `${first}'s`) : (f === 'armance_heir' ? 'her own children' : "her own children's");
     }
     // the knights who held of the founder (Knight of Adalia's lands.vassals), or the West's first names for a fresh house
     case 'knights': {

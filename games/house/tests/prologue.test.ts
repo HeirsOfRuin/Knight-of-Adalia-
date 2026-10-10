@@ -571,3 +571,42 @@ describe('a death in the years a scene passes over', () => {
     expect(view(cx, s).text).toContain(s.characters[s.hero]!.name.split(' ')[0]);
   });
 });
+
+describe("the author's second save: King Hob, Mahaut, and a grown heir from the first marriage", () => {
+  // Knight of Adalia's crowned ending, exported in year 46: Ysolde (15) and Piers (13) from the first marriage, Ysolde
+  // already crowned in her father's lifetime; Jehan (3) is Mahaut's. The heir is of age by the handover and is
+  // Mahaut's stepchild, so the crowned path plays its grown variants (h_c_grown) and the Armance is Jehan's.
+  const code = readFileSync(new URL('./fixtures/hob-crowned.koad', import.meta.url), 'utf8').trim();
+  const saved = () => decodeDynasty(code);
+
+  it('imports Ysolde as the crowned heir, nineteen in 912, and Mahaut as her stepmother', async () => {
+    const s = fromDynasty(c, await saved(), { seed: 1 });
+    expect(s.opening).toBe('crowned');
+    const heir = s.characters[select(s, c, 'heir')!]!;
+    expect(heir.name).toBe('Ysolde');
+    expect(renderText('{heir.age}', s, c)).toBe('19');
+    expect(heir.mother).not.toBe(s.characters[FOUNDER_ID]!.spouse);
+    expect(s.inheritance?.flags).toContain('c5r_heir_crowned');
+    expect(renderText('{house.mahaut} {house.armance_heir}', s, c)).toBe('your stepmother Jehan');
+    const t = choose(c, s, 'go_on').state;
+    expect(t.flags.h_c_grown).toBe(true);
+  });
+
+  it('plays the prologue and all of Book I as a grown, crowned stepdaughter: no regency, the Armance Jehan\'s', async () => {
+    for (const seed of [1, 2, 3]) {
+      const seen: string[] = [];
+      const s = drive(fromDynasty(c, await saved(), { seed }), {}, seen);
+      expect(['h_n_end', 'h_e_end', 'h_extinct']).toContain(s.scene);
+      expect(seen).toEqual(expect.arrayContaining(['h_pc10_crowning', 'h_pc11_council', 'h_bc07_mother', 'h_k07_rising', 'h_m03_father']));
+      // the regency's end is a child's scene, skipped for an heir of age
+      expect(seen).not.toContain('h_k06_majority');
+      expect(s.family.regent === undefined || s.family.generation >= 3).toBe(true);
+    }
+    // the handover, not a crowning, and the stepmother's son in the regent's place
+    const at = drive(fromDynasty(c, await saved(), { seed: 1 }), {}, [], 'h_pc10_crowning');
+    expect(view(c, at).title).toBe('The Handover');
+    const q = drive(at, {}, [], 'h_bc07_mother');
+    expect(view(c, q).title).toBe("The Queen's Son");
+    expect(view(c, q).text).toMatch(/I am not your mother/);
+  });
+});

@@ -1160,7 +1160,7 @@ In the spring of 929 the West counts what the Mottle left it. The chancellor bri
 
 **You choose:** Summon the Estates, and thank them for the crown's peace.
 
-The Estates meet at Whitsun, and are thanked, at length, with a feast, and go home pleased and twenty pounds the fatter. An old knight of the Armance tells you on the stair that it is the first time a king has thanked them for anything. "Your father asked us," he says. "That was different."
+The Estates meet at Whitsun, and are thanked, at length, with a feast, and go home pleased and twenty pounds the fatter. An old knight of the Armance tells you on the stair that it is the first time a crown has thanked them for anything. "Your father asked us," he says. "That was different."
 
 *Standing in the realm: much higher; Coin −£20; Michaelmas, a fair harvest and steady trade: £1207 10s came in; the household £172 10s, the men's pay £18 and repairs £40 went out; Sir Even de Kerouac dies; his son pays £5 in relief; Sir Robin du Tremblay dies and leaves a son under age; the wardship of tremblay is sold for £20*
 

@@ -209,7 +209,7 @@
 
     "Two hundred pounds a year," says the eldest of them, "in silver, for ever. Your Grace's father's men never got a hundred and fifty out of us in a good year."
 
-    The chancellor says the towns will be harder to tax in a bad year. Your mother says the towns will be harder to frighten in a bad year, which is not the same thing, and looks at you.
+    The chancellor says the towns will be harder to tax in a bad year. {house.mahaut_start} says the towns will be harder to frighten in a bad year, which is not the same thing, and looks at you.
   choices:
     - id: seal
       text: Seal the charter.
@@ -222,7 +222,7 @@
       check: { attr: wits, skill: trade, difficulty: 4, mods: [ { if: flag.h_c_largesse, add: 1, label: they owe your father } ] }
       success:
         text: |
-          They go out into the gallery to talk among themselves, loudly, in the salt-town way. They come back at two hundred and fifty, and you seal it at two hundred and fifty, and the eldest burgess says to your mother on his way out that the {house.ruler_lc} will do.
+          They go out into the gallery to talk among themselves, loudly, in the salt-town way. They come back at two hundred and fifty, and you seal it at two hundred and fifty, and the eldest burgess says to {house.mahaut} on his way out that the {house.ruler_lc} will do.
         effects: [ { set: flag.h_bc_charter }, { add: { res.coin: 6000, counter.favour: 1 } } ]
         next: "@return"
       failure:
@@ -234,7 +234,7 @@
       text: Tell them a charter for ever is a matter for the Estates.
       effects: [ { set: flag.h_bc_charter_refused } ]
       text_after: |
-        The burgesses bow, and say that the Estates will hear of it, and take their charter home. Your mother says nothing until they are gone. Then she says, "They will. Every word."
+        The burgesses bow, and say that the Estates will hear of it, and take their charter home. {house.mahaut_start} says nothing until they are gone. Then she says, "They will. Every word."
       next: "@return"
 
 - id: h_b1p_c_letter
@@ -246,18 +246,18 @@
   frames: [free]
   requires: "opening == crowned"
   text: |
-    At Michaelmas a letter comes for you from Cordelle, from King Amaury of Valdrenne, not to the council, not to your mother: to you, under his privy seal, in his own hand.
+    At Michaelmas a letter comes for you from Cordelle, from King Amaury of Valdrenne, not to the council, not to {house.mahaut}: to you, under his privy seal, in his own hand.
 
-    It is a kind letter. It says that he was a king at fourteen himself, with old Gaucelin de Brésy governing in his name, and that he remembers how long the years were. It asks how you do, and what you hunt, and whether you are let to read your own letters yet. It says that if you are ever in need of a friend who is not in your council, you need only write, and that this letter need not go any further than you.
+    It is a kind letter. [if flag.h_c_grown]It says that he too came to a crown while an old man still lived who thought it his, and that he remembers how long those years were. It asks how you do, and what you hunt, and whether your council lets you read your own letters yet.[else]It says that he was a king at fourteen himself, with old Gaucelin de Brésy governing in his name, and that he remembers how long the years were. It asks how you do, and what you hunt, and whether you are let to read your own letters yet.[/if] It says that if you are ever in need of a friend who is not in your council, you need only write, and that this letter need not go any further than you.
 
     The messenger is waiting in the gallery for an answer. He has been told to give it to no one but you.
   choices:
     - id: answer
       text: Write back yourself, warmly, and say nothing that matters.
-      check: { attr: wits, skill: diplomacy, difficulty: 4, mods: [ { if: flag.h_bc_learned, add: 1, label: your mother's lessons } ] }
+      check: { attr: wits, skill: diplomacy, difficulty: 4, mods: [ { if: flag.h_bc_learned, add: 1, label: the Queen's lessons } ] }
       success:
         text: |
-          You write that you hunt hares, mostly, and read everything, and are grateful for his kindness, and that your mother sends her greetings. It takes you an evening and four drafts. The answer that comes back at Christmas is shorter, and more careful, and is addressed to you as a king writes to a king.
+          You write that you hunt hares, mostly, and read everything, and are grateful for his kindness, and that {house.mahaut} sends her greetings. It takes you an evening and four drafts. The answer that comes back at Christmas is shorter, and more careful, and is addressed to you as a king writes to a king.
         effects: [ { set: flag.h_bc_amaury_answered }, { add: { counter.favour: 1 } } ]
         next: "@return"
       failure:
@@ -266,10 +266,10 @@
         effects: [ { set: flag.h_bc_amaury_told } ]
         next: "@return"
     - id: mother
-      text: Take it to your mother.
+      text: Take it to {house.mahaut}.
       effects: [ { add: { rel.mahaut_armance.affection: 1, counter.shadow: 1 } } ]
       text_after: |
-        She reads it twice, and smiles at the part about the long years, and then answers it herself, as regent, in the plainest Latin the chancery has. "He wanted to see whether you'd keep a secret from me," she says. "Next time, keep one. Not this one."
+        She reads it twice, and smiles at the part about the long years, and then answers it herself, [if flag.h_c_grown]as Queen[else]as regent[/if], in the plainest Latin the chancery has. "He wanted to see whether you'd keep a secret from me," she says. "Next time, keep one. Not this one."
       next: "@return"
     - id: burn
       text: Burn it, and send the messenger home with nothing.

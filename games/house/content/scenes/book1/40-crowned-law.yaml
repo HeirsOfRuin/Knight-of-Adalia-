@@ -16,27 +16,27 @@
   text: |
     At Whitsun in 920 the Estates of the West sit at Lannec, in the hall where your father was made king and you were acclaimed: the lords on their benches, the bishops in their stalls, the burgesses of the salt towns at the back. [if inherited.c5r_estates_choose && !flag.h_c_law_written]They have one question in front of them, and it is you: whether the crown of the West is theirs to give each time it falls, or whether it goes by blood.[else]They have the law of succession in front of them, and a petition from the male-line lords to write it again.[/if]
 
-    Before the first session Hervé de Penhoët asks for an hour, and gets it, in your mother's solar, with your mother in the room. He says it again, plainly: Penhoët's voice, and the voices of the Armance lords who go with Penhoët, for the {house.ruler_lc}'s cause. In return, the custom of the Armance, written by the Estates as it was: by the male line[if hero.sex == male], and through men[/if]. At your mother's death the duchy would come to Penhoët.
+    Before the first session Hervé de Penhoët asks for an hour, and gets it, in {house.mahaut}'s solar, with {house.mahaut} in the room. He says it again, plainly: Penhoët's voice, and the voices of the Armance lords who go with Penhoët, for the {house.ruler_lc}'s cause. In return, the custom of the Armance, written by the Estates as it was: by the male line[if hero.sex == male], and through men[/if]. At {house.mahaut}'s death the duchy would come to Penhoët[if !house.mahaut_blood && house.mahaut_child], and not to her son {house.armance_heir}[/if].
 
-    Your mother says nothing at all. She is looking at you.
+    {house.mahaut_start} says nothing at all. She is looking at you.
   choices:
     - id: accept
       text: Take Hervé's bargain. The crown is worth a duchy.
       effects: [ { set: flag.h_k_bargain }, { add: { counter.overturn: 2, counter.allies: 1, rival.penhoet.temper: 4, rel.mahaut_armance.affection: -4 } } ]
       text_after: |
-        Hervé kneels to you, there in the solar, and kisses your hand, and goes out. Your mother stays. "My grandmother held the Armance against a king," she says, "for forty years. I'd hoped it would take longer than an hour to give away." She goes out too. She does not come to Compline that night, or the next.
+        Hervé kneels to you, there in the solar, and kisses your hand, and goes out. {house.mahaut_start} stays. "My grandmother held the Armance against a king," she says, "for forty years. I'd hoped it would take longer than an hour to give away." She goes out too. She does not come to Compline that night, or the next.
       next: h_k02_case
     - id: refuse
-      text: Refuse him. The Armance is your mother's, and then yours.
+      text: Refuse him. The Armance is {house.mahaut}'s, and then {house.armance_heirs}.
       effects: [ { set: flag.h_k_penhoet_waits }, { add: { rival.penhoet.temper: -3, rel.mahaut_armance.affection: 3, rel.mahaut_armance.respect: 1 } } ]
       text_after: |
-        Hervé bows, as if you had given him the answer he expected, and says that Penhoët is a patient house. He votes against the crown that week, and so do the Armance lords who go with him. He says nothing about the duchy again. Your mother says, that night, "He'll wait for me to die. Let him wait."
+        Hervé bows, as if you had given him the answer he expected, and says that Penhoët is a patient house. He votes against the crown that week, and so do the Armance lords who go with him. He says nothing about the duchy again. {house.mahaut_start} says, that night, "He'll wait for me to die. Let him wait."
       next: h_k02_case
     - id: estates
       text: Tell him the Estates will write the Armance's custom, not the crown.
       effects: [ { set: flag.h_k_armance_estates }, { add: { rival.penhoet.temper: -1 } } ]
       text_after: |
-        "Then the Estates will have to be asked," Hervé says, pleasantly, and goes to ask them, bench by bench. Your mother says it was the right answer and the wrong year.
+        "Then the Estates will have to be asked," Hervé says, pleasantly, and goes to ask them, bench by bench. {house.mahaut_start} says it was the right answer and the wrong year.
       next: h_k02_case
 
 - id: h_k02_case
@@ -67,7 +67,7 @@
       text: "[if inherited.c5r_estates_choose && !flag.h_c_law_written]Ask them nothing. You were acclaimed.[else]Let the Estates decide it without the crown.[/if]"
       effects: [ { add: { counter.household: 1, counter.favour: -1 } } ]
       text_after: |
-        The crown sends the Estates no word at all. They debate the question anyway, at length, without you, which your mother says is the worst of both.
+        The crown sends the Estates no word at all. They debate the question anyway, at length, without you, which {house.mahaut} says is the worst of both.
       next: h_k03_count
     - id: answer
       visible_if: "!inherited.c5r_estates_choose || flag.h_c_law_written"
@@ -75,7 +75,7 @@
       check: { attr: presence, skill: diplomacy, difficulty: 6, audience: nobles, mods: [ { if: flag.h_oath_reserved, add: 1, label: they remember your acclamation }, { if: flag.h_bc_vote, add: 1, label: you sit in your own council } ] }
       success:
         text: |
-          You stand at the dais at {age_words} and answer them point by point, the way your mother taught you after Compline, and sit down. The petition is withdrawn a week later "for further consideration", which is how the Estates bury things.
+          You stand at the dais at {age_words} and answer them point by point, the way {house.mahaut} taught you after Compline, and sit down. The petition is withdrawn a week later "for further consideration", which is how the Estates bury things.
         effects: [ { set: flag.h_k_petition_answered }, { add: { counter.favour: 2, rel.mahaut_armance.respect: 1 } } ]
         next: h_k03_count
       failure:
@@ -85,10 +85,10 @@
         next: h_k03_count
     - id: mother
       visible_if: "!inherited.c5r_estates_choose || flag.h_c_law_written"
-      text: Let your mother answer it, as regent.
+      text: "Let {house.mahaut} answer it, [if flag.h_c_grown]as Duchess of Armance[else]as regent[/if]."
       effects: [ { add: { counter.shadow: 1, rel.mahaut_armance.affection: 1 } }, { set: flag.h_k_petition_answered } ]
       text_after: |
-        Your mother answers it in the hall in a quarter of an hour, in the voice she used when she chose your father, and the petition is withdrawn by Martinmas. Everyone agrees it was well done. Everyone notices who did it.
+        {house.mahaut_start} answers it in the hall in a quarter of an hour, in the voice she used when she chose your father, and the petition is withdrawn by Martinmas. Everyone agrees it was well done. Everyone notices who did it.
       next: h_k03_count
 
 - id: h_k03_count
@@ -128,7 +128,7 @@
     - id: church
       text: Ask the Bishop of Saint-Lys to speak for the crown.
       visible_if: "!flag.h_k_asked_church"
-      check: { attr: presence, skill: courtesy, difficulty: 6, mods: [ { if: flag.h_c_bishop_anselm, add: 2, label: your father's clerk is bishop }, { if: flag.h_c_bishop_armance, add: 1, label: your mother's confessor is bishop }, { if: flag.inv_h_school, add: 1, label: the school for clerks } ] }
+      check: { attr: presence, skill: courtesy, difficulty: 6, mods: [ { if: flag.h_c_bishop_anselm, add: 2, label: your father's clerk is bishop }, { if: flag.h_c_bishop_armance, add: 1, label: the Queen's confessor is bishop }, { if: flag.inv_h_school, add: 1, label: the school for clerks } ] }
       success:
         text: |
           The bishop preaches at Candlemas on the text "Render unto Caesar", and makes it clear which Caesar he means. The bishops' bench votes as one.
@@ -143,7 +143,7 @@
       text: "[if revisit]Enough. Let the count stand.[else]Spend nothing. Let the count stand.[/if]"
       effects: [ { if: "!flag.h_k_spent", then: [ { add: { counter.household: 1 } } ] } ]
       text_after: |
-        The chancellor rolls up his columns. [if flag.h_k_spent]"Bought is bought," your mother says. "Let's hope it stays bought."[else]"The crown that has to buy its Estates," your mother says, "will have to buy them every time."[/if]
+        The chancellor rolls up his columns. [if flag.h_k_spent]"Bought is bought," {house.mahaut} says. "Let's hope it stays bought."[else]"The crown that has to buy its Estates," {house.mahaut} says, "will have to buy them every time."[/if]
       next: { pool: h_b2_early, count: 1, then: h_k05_vote }
 
 - id: h_k05_vote
@@ -166,7 +166,7 @@
 
     [if flag.h_crown_hereditary]They make the crown hereditary: the eldest child of the last wearer, son or daughter, for ever. The Estates of the West have given away the one thing they were made to keep, and they cheer when they do it, which nobody had expected. In the marsh, they say, {house.querec_short} heard the news and went out and got drunk.[elif flag.h_crown_for_life]They confirm you as {house.ruler} of the West for your life, as your father promised, and keep for themselves the choosing of whoever comes after you. [if flag.h_k_asked_hereditary]The crown's draft for a hereditary crown is voted down, courteously, bench by bench. You have won your own crown and lost your children's.[else]The crown asked for nothing more, and gets nothing more.[/if] {house.querec_short} says, in the marsh, that the Estates have kept their right, and that rights are kept by being used.[else]They confirm the crown's law as it stands, the eldest child, son or daughter. [if flag.h_k_petition_answered]The male-line petition is not even put to the vote.[else]The male-line petition is put to the vote and lost, by fewer voices than the chancellor would like.[/if][/if]
 
-    [if flag.h_armance_male_line]Then they write the custom of the Armance, as Hervé asked, and as the crown agreed: by the male line. At your mother's death the duchy goes to Penhoët. Your mother is in the hall. She does not move.[elif flag.h_k_armance_estates]Then they debate the custom of the Armance, and adjourn it to the next Estates, and the next. Penhoët will keep asking.[/if]
+    [if flag.h_armance_male_line]Then they write the custom of the Armance, as Hervé asked, and as the crown agreed: by the male line. At {house.mahaut}'s death the duchy goes to Penhoët. {house.mahaut_start} is in the hall. She does not move.[elif flag.h_k_armance_estates]Then they debate the custom of the Armance, and adjourn it to the next Estates, and the next. Penhoët will keep asking.[/if]
   choices:
     - id: on
       text: Go on.
@@ -180,9 +180,9 @@
   text: |
     At midsummer the free companies come down from the north, paid off from Caldmoor's war and looking for the next one, and {house.querec} finds them work.
 
-    [if flag.h_bc_querec_exiled]He comes back over the march from Valdrenne with three companies behind him and his father's banner,[else]He rises in the marsh with three companies and the salt lords who never knelt,[/if] [if flag.h_crown_hereditary]in the name of the Estates' right, which the Estates gave away: THE WEST CHOOSES ITS KINGS.[elif flag.h_crown_for_life]in the name of the Estates' right, which the Estates kept: let them use it now.[else]against "the crown of a child and the child's mother".[/if][if flag.h_bc_querec_hostage] His son is your page at Lannec. Bertrand sends you word that the boy is yours to do with as you please, which is the worst thing he could have said.[/if] The salt-works at the edge of the marsh are his by Lammas. The salt carts stop. The trade of the West stops with them.
+    [if flag.h_bc_querec_exiled]He comes back over the march from Valdrenne with three companies behind him and his father's banner,[else]He rises in the marsh with three companies and the salt lords who never knelt,[/if] [if flag.h_crown_hereditary]in the name of the Estates' right, which the Estates gave away: THE WEST CHOOSES ITS KINGS.[elif flag.h_crown_for_life]in the name of the Estates' right, which the Estates kept: let them use it now.[elif flag.h_c_grown]against "a crown handed over from a sickbed, which nobody chose".[else]against "the crown of a child and the child's mother".[/if][if flag.h_bc_querec_hostage] His son is your page at Lannec. Bertrand sends you word that the boy is yours to do with as you please, which is the worst thing he could have said.[/if] The salt-works at the edge of the marsh are his by Lammas. The salt carts stop. The trade of the West stops with them.
 
-    The constable is at the door of the council chamber with his helmet under his arm. Your mother, at the end of the table, says, "This one is yours." For the first time in your life, so is the decision.
+    The constable is at the door of the council chamber with his helmet under his arm. {house.mahaut_start}, at the end of the table, says, "This one is yours." [if flag.h_c_grown]It is not the first decision you have made. It is the first one nobody else will be blamed for.[else]For the first time in your life, so is the decision.[/if]
   choices:
     - id: lead
       text: Lead the host yourself. It is your first command.
@@ -192,25 +192,25 @@
         text: |
           You take the host down the salt road in the August heat, and the companies come out to meet you on the causeway, as companies do when they are paid by the day. At the toll bridge you put the archers on the dyke and the horse behind the sluice, the way the constable drew it in the dust, and when the companies break they break into the marsh, where the salt lords' tenants are waiting for them with flails. {house.querec_short} is taken in a reed hut at dawn, with his boots off.
         effects: [ { set: flag.h_k_bertrand_beaten }, { add: { res.renown: 6, counter.shadow: -2, res.men: -10, rep.knights: 2 } } ]
-        next: h_k06_majority
+        next: { switch: [ { if: flag.h_c_grown, go: h_k08_marsh } ], default: h_k06_majority }
       failure:
         text: |
           You take the host down the salt road in the August heat, and the companies will not come out to meet you; they burn the salt-works and fall back into the marsh, and you spend the autumn chasing smoke. By Michaelmas the host is half its size, and the companies are still in the marsh, and {house.querec_short} is still writing pamphlets.
         effects: [ { set: flag.h_k_war_long }, { add: { res.men: -25, res.coin: -12000, counter.household: -1 } } ]
-        next: h_k06_majority
+        next: { switch: [ { if: flag.h_c_grown, go: h_k08_marsh } ], default: h_k06_majority }
     - id: constable
       text: Send the constable, and stay at Lannec.
       effects: [ { set: flag.h_k_constable }, { add: { counter.shadow: 1, res.men: -12, res.coin: -7200 } } ]
       text_after: |
         The constable takes the host south and does it the old way, slowly, castle by castle, and it takes him till Martinmas. The companies are paid off with the crown's money in the end, which is what companies are for. {house.querec_short} escapes over the march again, laughing.
-      next: h_k06_majority
+      next: { switch: [ { if: flag.h_c_grown, go: h_k08_marsh } ], default: h_k06_majority }
     - id: treat
       text: Treat with him. Offer him the Estates' right, in a charter.
       visible_if: "!flag.h_crown_hereditary"
       effects: [ { set: flag.h_k_treated }, { add: { counter.favour: 1, rep.commons: 1, counter.household: -2 } } ]
       text_after: |
         You send the bishop, with a charter under the Great Seal: the Estates' right to choose the {house.ruler} after you, confirmed for ever, and a pardon for everyone in the marsh who goes home before Michaelmas. Most of them go home. The companies, who have not been paid, go north again. {house.querec_short} reads the charter twice and puts it inside his coat.
-      next: h_k06_majority
+      next: { switch: [ { if: flag.h_c_grown, go: h_k08_marsh } ], default: h_k06_majority }
 
 - id: h_k06_majority
   chapter: book1
@@ -220,7 +220,7 @@
   text: |
     At Michaelmas in 923 the regency ends. You are {age_words}, and of age, and your father's will set the day: the Michaelmas after the marsh was quiet, whatever the custom said, because he wanted you to have one war under your belt before you had the seals.
 
-    [if rel.mahaut_armance.respect >= 3 || flag.h_bc_vote || flag.h_bc_learned]Your mother comes to the council chamber with the seals in a leather bag, the Great Seal and the privy seal and the signet, and puts them on the table in front of your chair, and steps back. "They're heavier than they look," she says. "I'll be in the solar, if you want me. Try not to want me for a month."[else]Your mother does not come to the council chamber. Her chancellor comes, with a paper: the regency council proposes, for the good of the realm, that the {house.ruler}'s government be shared with the council for a further term, until the {house.ruler} is "settled". The seals stay in your mother's solar. The Armance men on the council look at the table.[/if]
+    [if rel.mahaut_armance.respect >= 3 || flag.h_bc_vote || flag.h_bc_learned]{house.mahaut_start} comes to the council chamber with the seals in a leather bag, the Great Seal and the privy seal and the signet, and puts them on the table in front of your chair, and steps back. "They're heavier than they look," she says. "I'll be in the solar, if you want me. Try not to want me for a month."[else]{house.mahaut_start} does not come to the council chamber. Her chancellor comes, with a paper: the regency council proposes, for the good of the realm, that the {house.ruler}'s government be shared with the council for a further term, until the {house.ruler} is "settled". The seals stay in {house.mahaut}'s solar. The Armance men on the council look at the table.[/if]
   choices:
     - id: thank
       visible_if: "rel.mahaut_armance.respect >= 3 || flag.h_bc_vote || flag.h_bc_learned"
@@ -242,26 +242,26 @@
       check: { attr: presence, skill: command, difficulty: 6, mods: [ { if: "counter.household >= 3", add: 1, label: the household is yours }, { if: flag.h_bc_guard_own, add: 1, label: your own man keeps your door } ] }
       success:
         text: |
-          You go to the solar with your guard captain behind you and the door open, so the whole gallery can see. Your mother looks at you for a long moment. Then she opens the chest and gives you the bag herself, so that it is a gift and not a taking. "Well," she says. "You're the {house.ruler}." It is what your father said, at your crowning, and she knows it.
+          You go to the solar with your guard captain behind you and the door open, so the whole gallery can see. {house.mahaut_start} looks at you for a long moment. Then she opens the chest and gives you the bag herself, so that it is a gift and not a taking. "Well," she says. "You're the {house.ruler}." It is what your father said, at your crowning, and she knows it.
         effects: [ { set: flag.h_k_took_seals }, { add: { counter.shadow: -2, rel.mahaut_armance.respect: 2, rel.mahaut_armance.affection: -2 } } ]
         next: h_k08_marsh
       failure:
         text: |
-          You go to the solar, and your mother's chancellor is at the door, and talks to you for half an hour about the good of the realm, and by the end of it you have agreed to a council "for a year". You come out with nothing in your hands. The gallery saw.
+          You go to the solar, and {house.mahaut}'s chancellor is at the door, and talks to you for half an hour about the good of the realm, and by the end of it you have agreed to a council "for a year". You come out with nothing in your hands. The gallery saw.
         effects: [ { set: flag.h_k_council_year }, { add: { counter.shadow: 1, counter.household: -1 } } ]
         next: h_k08_marsh
     - id: wait
       text: "[if rel.mahaut_armance.respect >= 3 || flag.h_bc_vote || flag.h_bc_learned]Ask her to keep the seals a year longer.[else]Agree to the council, for a year.[/if]"
       effects: [ { set: flag.h_k_council_year }, { add: { counter.shadow: 1, rel.mahaut_armance.affection: 1 } } ]
       text_after: |
-        A year, you say, and your mother's chancellor writes it down. It is the safe answer. The lords of the West note who gave it.
+        A year, you say, and {house.mahaut}'s chancellor writes it down. It is the safe answer. The lords of the West note who gave it.
       next: h_k08_marsh
     - id: father
       visible_if: "rel.mahaut_armance.respect < 3 && !flag.h_bc_vote && !flag.h_bc_learned"
       text: Go to your father in the garden.
       effects: [ { set: flag.h_k_took_seals }, { add: { counter.shadow: 3, rel.mahaut_armance.affection: -2 } } ]
       text_after: |
-        He listens, and gets up, slowly, and walks to the solar on your arm, and says three words to your mother at the door that you do not hear. She gives you the seals. It is your father's last victory in that palace, and it is yours on paper, and everyone knows the difference.
+        He listens, and gets up, slowly, and walks to the solar on your arm, and says three words to {house.mahaut} at the door that you do not hear. She gives you the seals. It is your father's last victory in that palace, and it is yours on paper, and everyone knows the difference.
       next: h_k08_marsh
 
 - id: h_k08_marsh
@@ -299,7 +299,7 @@
   frames: [free]
   on_enter: [ { catch_up: { year: 62, season: autumn } } ]
   text: |
-    [if flag.h_k_bargain]At Michaelmas Hervé de Penhoët comes to court to do you homage again, for the Armance lands he will have one day, and does it plain, without a saving, because he has nothing left to save. Your mother is not at court. She has not been at court since the Estates wrote the custom of the Armance.[elif flag.h_k_penhoet_waits]At Michaelmas Hervé de Penhoët does not come to court. He is at home, in the Armance hills, where the Armance lords dine with him one by one, all that autumn, and go home quiet. Your mother is forty-three. Hervé is fifty-seven, and has a son, and a grandson, and is a patient house.[else]At Michaelmas Hervé de Penhoët comes to court, as he always does, and sits where his rank requires, and asks after your mother's health, as he always does, in a voice that makes the question sound like a calendar.[/if] [if flag.h_k_letters]You have two letters of his in a box in your chamber.[/if]
+    [if flag.h_k_bargain]At Michaelmas Hervé de Penhoët comes to court to do you homage again, for the Armance lands he will have one day, and does it plain, without a saving, because he has nothing left to save. {house.mahaut_start} is not at court. She has not been at court since the Estates wrote the custom of the Armance.[elif flag.h_k_penhoet_waits]At Michaelmas Hervé de Penhoët does not come to court. He is at home, in the Armance hills, where the Armance lords dine with him one by one, all that autumn, and go home quiet. {house.mahaut_start} is forty-three. Hervé is fifty-seven, and has a son, and a grandson, and is a patient house.[else]At Michaelmas Hervé de Penhoët comes to court, as he always does, and sits where his rank requires, and asks after {house.mahaut}'s health, as he always does, in a voice that makes the question sound like a calendar.[/if] [if flag.h_k_letters]You have two letters of his in a box in your chamber.[/if]
   choices:
     - id: attaint
       visible_if: flag.h_k_letters
@@ -319,7 +319,7 @@
       text: Reconcile with Penhoët. Offer him an honour, and a seat on the council.
       effects: [ { add: { rival.penhoet.temper: 3, rival.penhoet.standing: 3, rel.mahaut_armance.affection: -1 } }, { set: flag.h_k_penhoet_council } ]
       text_after: |
-        Hervé takes the seat at the end of the council table, and the honour, and thanks you in a speech nobody can fault. He is the best councillor you have, and he is waiting for your mother to die. Both are true.
+        Hervé takes the seat at the end of the council table, and the honour, and thanks you in a speech nobody can fault. He is the best councillor you have, and he is waiting for {house.mahaut} to die. Both are true.
       next: h_k11_law
     - id: watch
       text: Watch him, and let him wait.
@@ -334,7 +334,7 @@
   frames: [free]
   on_enter: [ { catch_up: { year: 63, season: spring } } ]
   text: |
-    At Easter the court keeps the feast at Lannec: you at the high table, [if sibling.exists]{sibling.first} at your left hand, [/if]your father in his chair with arms at the side of the dais, [if flag.h_k_handed_over]your mother beside him[else]your mother's place empty[/if].
+    At Easter the court keeps the feast at Lannec: you at the high table, [if sibling.exists]{sibling.first} at your left hand, [/if]your father in his chair with arms at the side of the dais, [if flag.h_k_handed_over || flag.h_c_grown && rel.mahaut_armance.affection >= 0]{house.mahaut} beside him[else]{house.mahaut}'s place empty[/if].
 
     [if flag.h_crown_hereditary]The crown is hereditary now, and whose it is after you is a question for the crown's own law: the eldest child, son or daughter, as your father wanted, or a law of your own choosing.[elif flag.h_crown_for_life]The Estates will choose after you. But they will choose from the house, as like as not, and the house's own law will say whom they are offered first.[else]The crown's law is the eldest child. The house's own law is the house's affair.[/if]
 
@@ -350,7 +350,7 @@
       text: Sons first, then daughters.
       effects: [ { house_law: male_preference }, { add: { rival.penhoet.temper: 1 } } ]
       text_after: |
-        The chancellor writes it in the crown's book. [if hero.sex == female]You have just written a law that would not have made you {house.ruler}. Your mother looks at you down the table, and goes on looking.[else]Your sisters, at the end of the table, hear it, and say nothing, and will say it later.[/if]
+        The chancellor writes it in the crown's book. [if hero.sex == female]You have just written a law that would not have made you {house.ruler}. {house.mahaut_start} looks at you down the table, and goes on looking.[else]Your sisters, at the end of the table, hear it, and say nothing, and will say it later.[/if]
       next: h_m01_wedding
     - id: will
       visible_if: "family.children >= 2"

@@ -244,25 +244,25 @@
         text: |
           Your man drinks with Penhoët's farrier for a month. "The bridge first," he says when he comes back, "at harvest, when your men are in the fields. Then the Armance road. He's counted your men, and he's counted wrong by about ten." You know the day and the road. That is worth more than walls.
         effects: [ { set: flag.h_e_read_penhoet } ]
-        next: { switch: [ { if: [ inherited.c5_younger_church, sibling.alive ], go: h_e05_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_e06_kerval } }
+        next: { switch: [ { if: [ inherited.c5_younger_church, sibling.alive, "sibling.age >= 25" ], go: h_e05_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_e06_kerval } }
       failure:
         text: |
           Your man comes back with a black eye and a story about a hunting party. Penhoët's farrier, it turns out, does not drink.
         effects: [ { add: { rival.penhoet.temper: -1 } } ]
-        next: { switch: [ { if: [ inherited.c5_younger_church, sibling.alive ], go: h_e05_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_e06_kerval } }
+        next: { switch: [ { if: [ inherited.c5_younger_church, sibling.alive, "sibling.age >= 25" ], go: h_e05_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_e06_kerval } }
     - id: arm
       text: Arm too. Walls, men, and the bridge watched. (£30)
       requires: "res.coin >= 7200"
       effects: [ { set: flag.h_e_armed }, { add: { res.coin: -7200, estate.defence: 1, res.men: 10, rival.penhoet.temper: -1 } } ]
       text_after: |
         The masons are on the gatehouse by Whitsun, and ten new men are drilling in the meadow by Lammas, badly, with the old sergeant shouting at them. Penhoët's men, across the stream, watch them drill, and laugh, and stop laughing by Michaelmas.
-      next: { switch: [ { if: [ inherited.c5_younger_church, sibling.alive ], go: h_e05_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_e06_kerval } }
+      next: { switch: [ { if: [ inherited.c5_younger_church, sibling.alive, "sibling.age >= 25" ], go: h_e05_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_e06_kerval } }
     - id: sovereign
       text: "Go to [if realm.west == adalian]the King's council, and lay it before them[elif realm.sovereign == gaucelin]King Gaucelin, and lay it before him[else]Mahaut, and lay it before her[/if]."
       effects: [ { set: flag.h_e_to_sovereign }, { add: { counter.favour: 1 } } ]
       text_after: |
         [if realm.west == adalian]The council hears you, and writes to Penhoët reminding it of the limits of its commission, and Penhoët writes back thanking the council for its reminder. Nothing changes but the paper.[else]You are heard, and thanked, and promised that the crown's peace will be kept. "The crown," says the steward on the road home, "keeps a great deal of things. Mostly its distance."[/if]
-      next: { switch: [ { if: [ inherited.c5_younger_church, sibling.alive ], go: h_e05_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_e06_kerval } }
+      next: { switch: [ { if: [ inherited.c5_younger_church, sibling.alive, "sibling.age >= 25" ], go: h_e05_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_e06_kerval } }
     - id: penhoet
       text: "Ride to Penhoët[if flag.h_second_penhoet && sibling.alive], to {sibling.first},[/if] and ask Hervé to his face."
       effects:
@@ -272,7 +272,7 @@
           then: [ { add: { counter.second: 1, rival.penhoet.temper: 1 } } ]
       text_after: |
         Hervé gives you dinner and the best room and an honest answer. "I'm sixty-four," he says. "I've buried my son. I'd like the thing my father wanted before I'm buried too. It's nothing to do with you." He pours the wine himself. "Except the bridge. The bridge is to do with you."
-      next: { switch: [ { if: [ inherited.c5_younger_church, sibling.alive ], go: h_e05_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_e06_kerval } }
+      next: { switch: [ { if: [ inherited.c5_younger_church, sibling.alive, "sibling.age >= 25" ], go: h_e05_bishop } ], default: { pool: h_b4_pool, count: 1, then: h_e06_kerval } }
 
 # ---- if a child of the house was given to the Church (Knight of Adalia's c5_younger_church) ----
 - id: h_e05_bishop

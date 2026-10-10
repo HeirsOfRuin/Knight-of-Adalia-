@@ -1143,7 +1143,7 @@ In the spring of 929 the West counts what the Mottle left it. The chancellor bri
 
 **You choose:** Summon the Estates, and thank them for the crown's peace.
 
-The Estates meet at Whitsun, and are thanked, at length, with a feast, and go home pleased and twenty pounds the fatter. An old knight of the Armance tells you on the stair that it is the first time a king has thanked them for anything. "Your father asked us," he says. "That was different."
+The Estates meet at Whitsun, and are thanked, at length, with a feast, and go home pleased and twenty pounds the fatter. An old knight of the Armance tells you on the stair that it is the first time a crown has thanked them for anything. "Your father asked us," he says. "That was different."
 
 *Standing in the realm: much higher; Coin −£20*
 
@@ -1323,7 +1323,7 @@ The price triples when the company learns whose knight it holds. You pay it. The
 
 *Spring 938, the twenty-fourth year of King Jehan*
 
-At Lady Day in 938 you are thirty-one, and David is ten. Your father crowned you beside him when you were a child, and lived on at court, and the West had two kings for eleven years and found it could bear it. The council says it is time to do the same.
+At Lady Day in 938 you are thirty-one, and David is ten. Your father crowned you beside him when you were a child, and lived on at court, and the West had two crowned heads for years and found it could bear it. The council says it is time to do the same.
 
 The crown goes to the eldest by the Estates' own law. Crowning David beside you is a ceremony, and a promise, and a regency while he is young, with you at court to watch it.
 

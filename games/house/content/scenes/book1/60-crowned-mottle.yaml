@@ -99,7 +99,7 @@
   text: |
     A week after Easter in 925 [if flag.h_bc_betrothed_none]the council puts it to you plainly: you are {age_words}, and unmarried, and the crown has no heir of your body, and the West has noticed.[else]you are married at Saint-Lys, in the cathedral where you were crowned, to [if flag.h_bc_betrothed_penhoet]{house.match_penhoet}[elif flag.h_bc_betrothed_kerguen]{house.match_kerguen}[else]{house.match_valdrenne} of Valdrenne[/if], before the whole West and as much of Valdrenne as could get a pass over the hills.[/if]
 
-    [if flag.h_bc_betrothed_none]There are three letters on the council table, and your mother at the end of it, and your father in his chair with arms by the fire, asleep or pretending.[elif flag.h_bc_betrothed_penhoet]Hervé de Penhoët [if hero.sex == male]gives the bride away[else]stands beside his son at the altar[/if], and weeps once, which nobody has ever seen. Your mother is at the front of the nave and does not.[elif flag.h_bc_betrothed_kerguen]Tanguy de Kerguen is at the front of the nave in a doublet that cost more than a manor, and makes the whole feast laugh, and makes your father laugh twice.[else]The Valdrennish lords stand at the back and price the cathedral. The bishop preaches on peace, at length, in two languages.[/if]
+    [if flag.h_bc_betrothed_none]There are three letters on the council table, and {house.mahaut} at the end of it, and your father in his chair with arms by the fire, asleep or pretending.[elif flag.h_bc_betrothed_penhoet]Hervé de Penhoët [if hero.sex == male]gives the bride away[else]stands beside his son at the altar[/if], and weeps once, which nobody has ever seen. {house.mahaut_start} is at the front of the nave and does not.[elif flag.h_bc_betrothed_kerguen]Tanguy de Kerguen is at the front of the nave in a doublet that cost more than a manor, and makes the whole feast laugh, and makes your father laugh twice.[else]The Valdrennish lords stand at the back and price the cathedral. The bishop preaches on peace, at length, in two languages.[/if]
   choices:
     - id: wed
       visible_if: "!flag.h_bc_betrothed_none"
@@ -159,7 +159,7 @@
   text: |
     The ship's master's sickness in Sarenza is in Sauvemer by Midsummer, in the harbour quarter first, in the children first. By Saint John's Eve there are carts in the streets at night and pits outside the walls. By Lammas it is in Lannec.
 
-    Children, the physicians say, the young ones worst, as if the Mottle had come back for what it missed. The court is in the palace. The council is in the council chamber. Your mother has had the windows shut and the doors of the nursery nailed. Your father, in his chair by the fire, says, "I saw the first one. This one is different. It wants the young."
+    Children, the physicians say, the young ones worst, as if the Mottle had come back for what it missed. The court is in the palace. The council is in the council chamber. {house.mahaut_start} has had the windows shut and the doors of the nursery nailed. Your father, in his chair by the fire, says, "I saw the first one. This one is different. It wants the young."
   choices:
     - id: shut
       text: Shut the palace and the city gates. Nobody in, nobody out.
@@ -177,7 +177,7 @@
       text: Take the family to the Armance hills, and govern from there.
       effects: [ { set: flag.h_mottle_fled }, { add: { rep.commons: -3, counter.household: -1, counter.favour: -1 } } ]
       text_after: |
-        You go up into the hills to your mother's castle with the family and the seals and forty men, and shut its gates. In Lannec they say the crown has run. [if flag.h_answer_you]They say your father would not have.[/if]
+        You go up into the hills to {house.mahaut}'s castle with the family and the seals and forty men, and shut its gates. In Lannec they say the crown has run. [if flag.h_answer_you]They say your father would not have.[/if]
       next: h_m03_father
 
 - id: h_m03_father
@@ -204,7 +204,7 @@
       text: Send the physicians and the bishop, and stay away, as the council begs.
       effects: [ { add: { counter.shadow: 1, counter.household: -1 } }, { death: { who: founder, cause: the Mottle } } ]
       text_after: |
-        You stay away, because the council begs and your mother insists and the child, if there is a child, needs you living. The bishop sits with him instead. He dies on the third morning, asking for you, at the hour of Prime. The bishop tells you that at the end he said you were right not to come. You will never know if that is true.
+        You stay away, because the council begs and {house.mahaut} insists and the child, if there is a child, needs you living. The bishop sits with him instead. He dies on the third morning, asking for you, at the hour of Prime. The bishop tells you that at the end he said you were right not to come. You will never know if that is true.
       next: h_m04_crown
 
 - id: h_m04_crown

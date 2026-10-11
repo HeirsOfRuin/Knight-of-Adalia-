@@ -4,9 +4,11 @@
 import { useEffect, useState } from 'preact/hooks';
 import type { ContentBundle } from '../content/schema';
 import type { HouseState } from '../game/state';
+import { toSave, encodeSaveCode } from '../game/save';
 
 interface Note { scene: string; title: string; date: string; text: string; at: number; frame: string; sovereign: string; seed: number; hero: string; generation: number }
 interface NotesDb { collection(path: string): { add(data: Record<string, unknown>): Promise<unknown> } }
+// the game in progress, as a save code (HOA1.), sent to the shared store (collection "saves") so Claude can load it
 
 const LOCAL_KEY = 'house-of-adalia/playtest-notes';
 let dbPromise: Promise<NotesDb | null> | undefined;
@@ -74,8 +76,38 @@ export function Notes({ content, state, sceneId, title, date }: { content: Conte
           {here.length > 0 && <ul class="changes">{here.map((n) => <li key={n.at}>{n.text}</li>)}</ul>}
         </>
       )}
+      <SendGame content={content} state={state} sceneId={sceneId} title={title} date={date} />
       {status && <p class="muted" role="status">{status}</p>}
       {shared === false && open && !status && <p class="fineprint">Notes are kept in this browser here.</p>}
     </section>
+  );
+}
+
+/** Sends the game in progress to the shared store, where Claude can read it; or copies its save code. */
+function SendGame({ content, state, sceneId, title, date }: { content: ContentBundle; state: HouseState; sceneId: string; title: string; date: string }) {
+  const [status, setStatus] = useState('');
+  useEffect(() => { setStatus(''); }, [sceneId]);
+  const code = () => encodeSaveCode(toSave(state, content));
+  const send = async () => {
+    setStatus('Sending...');
+    const db = await notesDb();
+    try {
+      const saveCode = await code();
+      if (!db) { await navigator.clipboard.writeText(saveCode); setStatus('Copied the save code. Paste it to Claude.'); return; }
+      await db.collection('saves').add({ code: saveCode, scene: sceneId, title, date, hero: state.characters[state.hero]?.name ?? '', at: Date.now(), content: content.hash });
+      setStatus('Sent. Claude can load this game now.');
+    } catch {
+      setStatus('Could not send it. Use "Copy save code" and paste it to Claude.');
+    }
+  };
+  const copy = async () => {
+    try { await navigator.clipboard.writeText(await code()); setStatus('Copied the save code.'); } catch { setStatus('Copying is blocked here.'); }
+  };
+  return (
+    <div class="row">
+      <button class="btn subtle" onClick={send}>Send my game to Claude</button>
+      <button class="btn subtle" onClick={copy}>Copy save code</button>
+      {status && <span class="muted" role="status">{status}</span>}
+    </div>
   );
 }

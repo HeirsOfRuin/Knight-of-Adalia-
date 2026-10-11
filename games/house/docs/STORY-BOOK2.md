@@ -1,6 +1,6 @@
 # House of Adalia: The Story of Book II, *The Builder*
 
-**Status:** Layer 1 (the spine) decided by the author, 2026-10-09/10 (B1-1 to B1-9). Layer 2 (the acts) drafted 2026-10-10 with its four main decisions (B2-1 to B2-4); the remaining Layer 2 decisions are open. The process is the same as Book I's (`STORY.md`): spine, then acts, then beat sheets, with the author's decisions logged at each layer.
+**Status:** Layer 1 (the spine) decided by the author, 2026-10-09/10 (B1-1 to B1-9). Layer 2 (the acts) decided 2026-10-10/11 (B2-1 to B2-8). Next: Layer 3 (beat sheets), and the works and bonds system (B2-7) to build before Book II's scenes are written. The process is the same as Book I's (`STORY.md`): spine, then acts, then beat sheets, with the author's decisions logged at each layer.
 
 **Holds to:** `../../knight/content/canon.md` and `../content/canon.md`; `FRAME.md` §2; `PLAN.md` §5 (the master timeline), §6.3 (Book II's act table), §6.6 (the cast by book), §7 (endings); `STORY.md` for everything Book I settled.
 
@@ -89,7 +89,7 @@ Read at the start of Book II: the house's standing, purse, debt and holdings; Pe
 
 ---
 
-## Layer 2: The acts (drafted 2026-10-10, for the author's sign-off)
+## Layer 2: The acts (decided 2026-10-10/11)
 
 **The chain.** Book II is one chain of cause and effect: the war is fought on credit (Act II), a crown defaults on it and the Lanzi fail (Act III), the crowns tax what they can no longer borrow, and the commons rise against the tax (Act IV). Each act's likely outcome stands unless a strong house overturns it, as in Book I.
 
@@ -102,7 +102,7 @@ Read at the start of Book II: the house's standing, purse, debt and holdings; Pe
 |---|---|
 | Free, Founder | Jehanne's eldest (about nine in 940) is the great match (B1-6); Kerguen courts the same child for Tanguy's grandson. Under King Gaucelin it is his heir; where the Armance went elsewhere, the Armance's heir. |
 | Adalian, Founder | An Adalian earldom, with Wendmere's leave: the Haverell heir (Lord Edmund Haverell's line, from Book I's E1), with Aldred III's goodwill as the dowry. Kerguen wants an Adalian earldom too. |
-| Crowned | The minority first (B1-3, B1-9): the regent and the second power fight for the child until the Builder is sixteen (942 to 945 by run). Then the crown's own match, which every court in the world wants. |
+| Crowned | The minority first (B1-3, B1-9): the regent and the second power fight for the child until the Builder is sixteen (942 to 945 by run). Then the crown's own match (B2-5): **Valdrenne's line**, Amaury VII's granddaughter or grandson, a peace match made just before the war, so the war of Act II is fought against the in-laws. Kerguen, the minority's power, opposes it. |
 | Crown lost | The claim (from Book I's N12) and the match: a marriage into the new king's line would fold the claim into the crown. If the king is Tanguy, it is Kerguen's line. |
 
 **Turning points:**
@@ -132,6 +132,7 @@ Read at the start of Book II: the house's standing, purse, debt and holdings; Pe
 
 **Turning points:**
 1. The summons: serve in person, send the house's men, or pay scutage; each on borrowed money.
+   - **Penhoët returns in the war** (B2-8): if broken, Sir Yvon of Kerlan's claim surfaces with Valdrenne behind it; if reconciled, young Yann (about twenty-five) rides with the house; if contained, Penhoët chooses its side by how the house has treated it.
 2. The first campaign: a march castle besieged; the war system at realm scale.
 3. Kerguen's rise: the constableship, the glory, the ransoms. Kerguen comes out of the war rich (B2-3).
 4. The field: one battle that the house's choices weigh on; the Builder can be taken, ransomed, wounded.
@@ -175,7 +176,7 @@ Read at the start of Book II: the house's standing, purse, debt and holdings; Pe
 4. Amaury VII's absences (958): Valdrenne's king is sometimes mad, and the West's neighbours weaken.
 5. **The Builder's end** (962-964), always taken (B1-8): dead in the rising, broken by the debt (selling up, flight, the cloister), or handing on a house that held.
 
-**Choices that matter:** the house's side in the rising; whether it seizes the frame change or prevents it; how the Builder ends.
+**Choices that matter** (B2-6): in every frame the house can **lead** the rising (in an Adalian West, the breakaway; in a free West, the commons' champion against the crown), **crush** it for the crown (favour, and the commons' hatred), or **broker** terms by riding out to meet the marchers. The house's choice decides whether the frame changes. Then, how the Builder ends.
 
 **Carries forward into Book III:** the frame; the claim; Kerguen's hold on the house; the obedience; the Builder's heir and bond; the war of cousins' first causes.
 
@@ -187,8 +188,8 @@ Read at the start of Book II: the house's standing, purse, debt and holdings; Pe
 - **The peace's length:** `c5r_peace_bought` holds to year 75 and `c5r_peace_marriage` to about 70, so the war of 81 breaks neither.
 
 ### Systems this layer needs (step 5, flagged for design)
-- **Works:** multi-year building with costs before returns; the answer to Book I's hoarded purses.
-- **Credit:** bonds with terms and a holder (the Lanzi, then Kerguen); the crown as a borrower.
+- **Works** (B2-7): building that takes years, costs each year, and pays when done (walls, a bridge, a market town, a castle); the answer to Book I's hoarded purses.
+- **Credit** (B2-7): bonds with a holder, a sum and interest, which can be called in or sold (the Lanzi, then Kerguen); the crown as a borrower.
 - **The crash:** a default, a run, bonds sold.
 - **War at realm scale:** summons, scutage, levies, seasons in the field, ransoms, a field battle; the war's effect on trade (built small in Book I).
 - **The Schism:** obedience as state, read by the Church reputations.
@@ -201,6 +202,10 @@ Read at the start of Book II: the house's standing, purse, debt and holdings; Pe
 | B2-2 | Whose default breaks the Lanzi (949) | **Valdrenne's**, by default; on the crowned path the house's own crown can default first, by choice |
 | B2-3 | Kerguen in the war | **The crown's captain**: the glory and the constableship; rich in ransoms after, which buys the house's bonds |
 | B2-4 | The Schism (951) | **The house tips it**: the Estates or the King with the bishops choose; Saint-Lys means peace on the march, Sarenza relief on Sarenzan debt |
+| B2-5 | The crowned path's great match | **Valdrenne's line**: a peace match before the war, so Act II is fought against the in-laws; Kerguen opposes it |
+| B2-6 | The house in the rising | **Lead, crush or broker**, in every frame; the house's choice decides the frame change |
+| B2-7 | Works and credit | **Works and bonds**: multi-year works that cost before they pay; bonds with a holder, a sum and interest, called in or sold |
+| B2-8 | Penhoët in Book II | **Returns in the war**: Sir Yvon's claim with Valdrenne (broken), young Yann beside the house (reconciled), or a side chosen by the house's treatment (contained) |
 
 ## Layer 1 decisions (2026-10-09)
 | # | Decision | Decided |
@@ -222,3 +227,4 @@ Read at the start of Book II: the house's standing, purse, debt and holdings; Pe
 | 2026-10-10 | Layer 1, round 2 | B1-5 to B1-8 as above; Layer 1 decided |
 | 2026-10-10 | From the second save | B1-9 as above |
 | 2026-10-10 | Layer 2, round 1 | B2-1 to B2-4: a ruinous draw; Valdrenne's default, or the crowned house's own; Kerguen the crown's captain; the house tips the Schism |
+| 2026-10-11 | Layer 2, round 2 | B2-5 to B2-8: Valdrenne's line for the crown; lead, crush or broker the rising; works and bonds; Penhoët back in the war. Layer 2 decided |
